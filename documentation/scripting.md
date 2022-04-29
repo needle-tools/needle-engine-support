@@ -79,7 +79,7 @@ export class Rotate extends Behaviour {
         this.startCoroutine(this.rotate(), FrameEvent.Update);
     }
 
-    // this method is called every frame until it exists
+    // this method is called every frame until it exits
     *rotate() {
         // keep looping forever
         while (true) {
@@ -146,6 +146,24 @@ Networking methods can be accessed via ``this.context.connection``. Please refer
 ### Assets
 Use ``this.context.assets`` to get access to assets that are imported inside GLTF files.
 
+### URL Parameters
+Use `utils.getParam("stream");` to quickly access URL parameters and define behaviour with them:
+```
+import { Behaviour } from "needle.tiny.engine/engine-components/Component";
+import * as utils from "needle.tiny.engine/engine/engine_utils"
+
+export class HLSPlayer extends Behaviour
+{ 
+    targetUrl! : string;
+    
+    onEnable(): void {
+        const urlParam = utils.getParam("target");
+        if (urlParam && typeof urlParam === "string" && urlParam.length > 0) {
+            this.targetUrl = urlParam;
+        }
+    }
+}
+```
 
 ## Accessing components from external javascript
 It is possible to access all the functionality described above using regular javascript code that is no component and lives somewhere else. For that just find the ``<needle-tiny>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``document.getElementById("tiny")?.context``.  
@@ -177,6 +195,6 @@ export class MyClass extends Behaviour {
 
 To serialize from and to custom formats it is possible to derive from the ``TypeSerializer`` class and create an instance. Use ``super()`` in the constructor to register supported types.
 
-## Unity types in Typescript
-This is a list of Unity types and their counterpart types in our engine.
+## Renamed Unity Types in TypeScript
+This is a list of Unity types and their renamed counterpart types in our engine.
 - ``UnityEvent`` → ``EventList``
