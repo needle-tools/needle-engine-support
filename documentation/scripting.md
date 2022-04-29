@@ -11,6 +11,7 @@ To see a list of needle-builtin-components see ``Packages/Needle Unity Threejs/R
 - [Component architecture](#component-architecture)
 - [Finding, adding and removing components](#finding-added-or-removing-components)
 - [The Context and the DOM](#context-and-the-html-dom)
+- [Accessing URL Parameters](#accessing-url-parameters)
 - [Interop with external javascript](#accessing-components-from-external-javascript)
 - [Automatically generating Unity components](#automatically-generating-unity-components-from-typescript-files)
 - [Serialization in glTF files](#serialization--components-in-gltf-files)
@@ -146,7 +147,7 @@ Networking methods can be accessed via ``this.context.connection``. Please refer
 ### Assets
 Use ``this.context.assets`` to get access to assets that are imported inside GLTF files.
 
-### URL Parameters
+## Accessing URL Parameters
 Use `utils.getParam("stream");` to quickly access URL parameters and define behaviour with them:
 ```
 import { Behaviour } from "needle.tiny.engine/engine-components/Component";
