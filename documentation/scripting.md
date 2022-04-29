@@ -149,18 +149,17 @@ Use ``this.context.assets`` to get access to assets that are imported inside GLT
 
 ## Accessing URL Parameters
 Use `utils.getParam("stream");` to quickly access URL parameters and define behaviour with them:
-```
+```ts
 import { Behaviour } from "needle.tiny.engine/engine-components/Component";
 import * as utils from "needle.tiny.engine/engine/engine_utils"
 
-export class HLSPlayer extends Behaviour
+export class MyScript extends Behaviour
 { 
-    targetUrl! : string;
-    
-    onEnable(): void {
+    awake(): void {
+        // access the url parameter
         const urlParam = utils.getParam("target");
         if (urlParam && typeof urlParam === "string" && urlParam.length > 0) {
-            this.targetUrl = urlParam;
+            // const do something based on ?target=some_string
         }
     }
 }
