@@ -12,7 +12,7 @@ public static class OpenCredentials
 	private static async void Init()
 	{
 		await Task.Delay(2000);
-		SettingsService.OpenProjectSettings("Package Manager");
+		SettingsService.OpenProjectSettings("Project/Package Manager/Credentials");
 
 	}
 
