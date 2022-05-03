@@ -3,6 +3,7 @@ starter/*/obj
 starter/*/temp
 starter/*/Library
 starter/*/Logs
+starter/*/UserSettings
 starter/*/*.csproj
 starter/*/*.sln
 starter/*/bin
