@@ -5,6 +5,8 @@
 
 # Getting started 🛎
 
+*Please follow the instructions in the Authentication section first if this is your first time accessing packages by needle or a new machine.*
+
 ## Authentication  
 
 *Needs to be setup once per machine*  
