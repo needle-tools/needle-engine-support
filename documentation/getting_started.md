@@ -15,9 +15,9 @@
 2) It will automatically open a window to ``ProjectSettings/Package Manager/Credentials``. 
 3) Click the ``+`` icon to add your user credentials for the needle package registry.
 4) Enter ``https://packages.needle.tools`` in the **Registry URL** field.
-5) Open [https://packages.needle.tools ⇡](https://packages.needle.tools) in your browser and login (top right corner) with your github account. Then click the ``i`` icon in the top right corner and copy auth token (last row, you can just click the copy icon).
-6) Focus Unity and enter the token in the **Token** field.
-7) Click save and close Unity. You should now have access rights to the needle package registry.
+5) Open [https://packages.needle.tools ⇡](https://packages.needle.tools) in your browser and login (top right corner) with your github account. Then click the ``i`` icon in the top right corner and copy auth token ([see video](https://user-images.githubusercontent.com/5083203/166433857-a0c9e29f-9413-4e10-a1a1-2029e3d3ab06.mp4)).   
+7) Focus Unity and enter the token in the **Token** field.
+8) Click save and close Unity. You should now have access rights to the needle package registry.
 
 ## Quick start
 Open the project in ``starter/Unity_2020_3`` for a Unity → threejs project ready to run.
