@@ -20,7 +20,7 @@
 ## Quick start
 Open the project in ``starter/Unity_2020_3`` for a Unity → threejs project ready to run.
 
-## Unity setup
+## Slow start
 
 *For the purpose of this guide we will use the Unity project at **projects/Unity-Threejs_2020_3** and we would recommend you do the same.*
 
