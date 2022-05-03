@@ -52,6 +52,13 @@
       "scopes": [
         "com.needle"
       ]
+    },
+    {
+      "name": "OpenUPMNeedleConsole",
+      "url": "https://package.openupm.com",
+      "scopes": [
+        "com.needle.console"
+      ]
     }
   ]
 }
