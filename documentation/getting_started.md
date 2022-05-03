@@ -1,13 +1,24 @@
 # Prerequisites 💿
 - [nodejs ⇡](https://nodejs.org/en/) (required)
 - [Unity 2020.3.x ⇡](https://unity3d.com/get-unity/download) (required)
-- [vscode ⇡](https://code.visualstudio.com/) (optional)
+- [vscode ⇡](https://code.visualstudio.com/) (recommended)
 
 # Getting started 🛎
 
-*For the purpose of this guide we will use the Unity project at **projects/Unity-Threejs_2020_3** and we would recommend you do the same.*
+## Authentication
+1) Please open ``starter/Authenticate`` with Unity.
+2) It will automatically open ``ProjectSettings/Package Manager/Credentials``. Click the ``+`` icon to add your user credentials for the needle package registry. This has to be done once per machine.
+3) Enter ``https://packages.needle.tools`` in the **Registry URL** field.
+4) Open [https://packages.needle.tools](https://packages.needle.tools) in your browser and login (top right corner) with your github account. Then click the ``i`` icon in the top right corner and copy auth token (last row, you can just click the copy icon).
+5) Focus Unity and enter the token in the **Token** field.
+6) Click save and close Unity. You should now have access rights to the needle package registry.
+
+## Quick start
+Open the project in ``starter/Unity_2020_3`` for a Unity → threejs project ready to run.
 
 ## Unity setup
+
+*For the purpose of this guide we will use the Unity project at **projects/Unity-Threejs_2020_3** and we would recommend you do the same.*
 
 Open ``Edit/Project Settings`` and find ``Needle/threejs Exporter``. Select the directory for the needle runtime package (``Local js package``) and for the local threejs module (``Local threejs``). 
 
