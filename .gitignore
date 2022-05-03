@@ -1,0 +1,9 @@
+﻿starter/*/.idea
+starter/*/obj
+starter/*/temp
+starter/*/Library
+starter/*/Logs
+starter/*/*.csproj
+starter/*/*.sln
+starter/*/bin
+**/node_modules
