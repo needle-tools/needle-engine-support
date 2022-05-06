@@ -11,16 +11,3 @@ The Unity skybox and environment map are automatically exported as part of the `
 
 ## Exporting Shaders
 TODO
-
----
-# Advanced
-
-## Modifying the Export process
-
-### Interfaces
-- ``IEmitter`` - Core interface that is implemented for example for GLTF files and Unity components. It is very low level in the export process and called for every Component on every GameObject in your scene (Note: GameObjects marked as ``EditorOnly`` or start with ``__`` are being ignored completely).
-- ``IBuildStageCallbacks`` - implement a method to be invoked at different points in the export process.
-- ``IAdditionalDataEmitter`` - Allows to emit additional or generated fields for components/scripts.
-- ``IReferenceResolver`` - Allows to handle specific reference types (e.g. AudioSource referencing AudioClips). Example: Used to replace the clip reference with a path to the clip file and copy the clip file to the output directory.
-- ``ITypeMemberRegisterHandler`` - Invoked on registering type fields. Default is implemented in ``DefaultTypeRegisterHandler``.
-- ``ITypeMemberHandler`` - To modify or ignore fields using ``ShouldIgnore``, ``ShouldRename`` or ``ChangeValue``. Is invoked by ``DefaultTypeRegisterHandler``.
