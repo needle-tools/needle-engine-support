@@ -8,3 +8,5 @@ starter/*/*.csproj
 starter/*/*.sln
 starter/*/bin
 **/node_modules
+starter/Unity_2020_3/projects/*/assets
+starter/Unity_2020_3/projects/**/generated
