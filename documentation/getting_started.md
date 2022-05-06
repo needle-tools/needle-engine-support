@@ -25,15 +25,32 @@ Open the project in ``starter/Unity_2020_3`` for a Unity → threejs project rea
 
 *For the purpose of this guide we will use the Unity project at **projects/Unity-Threejs_2020_3** and we would recommend you do the same.*
 
+### Creating a new project
+
+Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend you install the [Unity Hub ⇡](https://docs.unity3d.com/hub/manual/index.html) to manage your editor installations.
+
+Open ``Edit/Project Settings`` and select ``Package Manager``. Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
+- Name: ``needle``
+- URL: ``https://packages.needle.tools``
+- Scope(s): ``com.needle``
+
+Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``MyRegistries``. Select ``Needle Unity → threejs`` and click install in the bottom right corner.
+
 Open ``Edit/Project Settings`` and find ``Needle/threejs Exporter``. Select the directory for the needle runtime package (``Local js package``) and for the local threejs module (``Local threejs``). 
 
-### Creating a new project
-To create a new project [create a new Unity scene ⇡](https://docs.unity3d.com/Manual/CreatingScenes.html). For exporting to threejs add an ``ExportInfo`` component on one of your GameObjects in the scene. We recommend to mark this GameObject with the ``EditorOnly`` [tag ⇡](https://docs.unity3d.com/Manual/Tags.html) to avoid exporting settings objects.
+### Creating a new scene
 
-Choose a directory for your threejs project in the ``ExportInfo`` component. If the directory does not exist or does not contain a threejs project yet click the ``Generate Project`` button.   
-Note that Unity is automatically running ``npm install`` in the newly generated project. Wait for the installation to finish. If chrome did not open automatically after the installation finished try clicking the ``Play`` button in the Unity editor. It will start a local server and open chrome at port 3000. Allow the unsecure connection: now you should see the default Unity skybox in your browser.  
-⭐ **Congrats!** You just built your first project using Unity to threejs!
+You can export scenes to threejs by adding an ``ExportInfo`` component to any GameObject. In this component you create and quick-access your exported runtime javascript project. It also warns you if any of the required modules is outdated or not installed.
 
+To get started enter a ``Directory Name`` where you want to create a new runtime project. The path is relative to your Unity project.
+
+Next select a template you want to generate a project from (default is using [Vite ⇡](https://vitejs.dev/)) and click ``Generate Project``. Wait for the installation to finish (you can see a progress indicator in the bottom right corner of the editor).
+
+After installation your project should automatically run and a new browser window opens. You might see a warning about ssl security depending on your local configuration. You can just click ``advanced`` and ``proceed to site``. Now you should see the Unity skybox in your browser. ⭐ **Congrats!** You just built your first project using Unity to threejs!
+
+Our exporter comes with a set of prebuilt components that you can use to easily make your scene interactive. One of those components is ``OrbitControls``. Select your ``Main Camera`` GameObject and add a new ``OrbitControls`` script to it. Save your scene. Your browser should refresh and you can now move the camera around!
+
+To add content to the scene create a new GameObject and add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF files. Add a mesh (e.g. via context ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. Again this refreshes your browser to render the cube.
 
 #### **Tips**
 - For future projects start with one of our Unity scene templates (e.g. Basic) for even faster project creation in just a few clicks.
