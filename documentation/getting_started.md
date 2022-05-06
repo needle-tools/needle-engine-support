@@ -11,7 +11,7 @@
 
 *Needs to be setup once per machine.*  
 
-1) Clone this repository and open ``starter/Authenticate`` with Unity.
+1) Clone this repository and open ``starter/Authenticate`` with Unity 2020.3.x
 2) Open [https://packages.needle.tools ⇡](https://packages.needle.tools) in your browser and login (top right corner) with your github account. 
 3) Return to [packages.needle.tools ⇡](packages.needle.tools) and click the ``i`` icon in the top right corner opening the ``Registry Info`` window.
 4) Copy the line containing ``_authToken`` ([see video](https://user-images.githubusercontent.com/5083203/166433857-a0c9e29f-9413-4e10-a1a1-2029e3d3ab06.mp4)).   
