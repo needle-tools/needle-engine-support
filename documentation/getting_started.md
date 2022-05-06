@@ -5,18 +5,17 @@
 
 # Getting started 🛎
 
-*Please follow the instructions in the Authentication section first if this is your first time accessing packages by needle or a new machine.*
+*Please follow the instructions in the Authentication section if this is your first time accessing packages by needle or a new machine.*
 
 ## Authentication  
 
-*Needs to be setup once per machine*  
+*Needs to be setup once per machine.*  
 
-1) Please open ``starter/Authenticate`` with Unity.
-2) It will automatically open a window to ``ProjectSettings/Package Manager/Credentials``. 
-3) Click the ``+`` icon to add your user credentials for the needle package registry.
-4) Enter ``https://packages.needle.tools`` in the **Registry URL** field.
-5) Open [https://packages.needle.tools ⇡](https://packages.needle.tools) in your browser and login (top right corner) with your github account. Then click the ``i`` icon in the top right corner and copy auth token ([see video](https://user-images.githubusercontent.com/5083203/166433857-a0c9e29f-9413-4e10-a1a1-2029e3d3ab06.mp4)).   
-7) Focus Unity and enter the token in the **Token** field.
+1) Clone this repository and open ``starter/Authenticate`` with Unity 2020.3.x
+2) Open [https://packages.needle.tools ⇡](https://packages.needle.tools) in your browser and login (top right corner) with your github account. 
+3) Return to [packages.needle.tools ⇡](packages.needle.tools) and click the ``i`` icon in the top right corner opening the ``Registry Info`` window.
+4) Copy the line containing ``_authToken`` ([see video](https://user-images.githubusercontent.com/5083203/166433857-a0c9e29f-9413-4e10-a1a1-2029e3d3ab06.mp4)).   
+7) Focus Unity - a notification window should open that the information has been added successfully from your clipboard.
 8) Click save and close Unity. You should now have access rights to the needle package registry.
 
 ## Quick start
