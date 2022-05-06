@@ -46,7 +46,7 @@ Next select a template you want to generate a project from (default is using [Vi
 
 After installation your project should automatically run and a new browser window opens. You might see a warning about ssl security depending on your local configuration. You can just click ``advanced`` and ``proceed to site``. Now you should see the Unity skybox in your browser. ⭐ **Congrats!** You just built your first project using Unity to threejs!
 
-Our exporter comes with a set of prebuilt components that you can use to easily make your scene interactive. One of those components is ``OrbitControls``. Select your ``Main Camera`` GameObject and add a new ``OrbitControls`` script to it. Save your scene. Your browser should refresh and you can now move the camera around!
+Our exporter comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``. Select your ``Main Camera`` GameObject and add a new ``OrbitControls`` script to it. Save your scene. Your browser should refresh and you can now move the camera around!
 
 To add content to the scene create a new GameObject and add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF files. Add a mesh (e.g. via context ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. Again this refreshes your browser to render the cube.
 
