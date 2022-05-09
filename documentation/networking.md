@@ -12,3 +12,27 @@ Source at ``engine/engine_networking.ts``
 - ``SyncedTransform`` - handles synchronizing transforms
 - ``SyncedCamera`` - spawns a prefab for any user connected to the room which will follow their position
 - ``WebXRSync`` - handles synchronization for AR and VR users
+
+## Auto networking (experimental)
+
+To automatically network fields in a component you can just decorate a field with a ``@syncField()`` decorator (note: you need to have ``experimentalDecorators: true`` in your ``tsconfig.json`` file for it to work)
+
+Example:
+```ts
+import { Behaviour } from "needle.tiny.engine/engine-components/Component"
+import { syncField } from "needle.tiny.engine/engine/engine_networking_auto";
+
+export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
+
+    @syncField("myValueChanged")
+    mySyncedValue?: number = 1;
+    
+    private myValueChanged() {
+       console.log("My value changed", this.mySyncedValue);
+    }
+    
+    onPointerClick() {
+       this.mySyncedValue = Math.random();
+    }
+}
+```

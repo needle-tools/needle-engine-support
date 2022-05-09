@@ -15,7 +15,7 @@ To see a list of needle-builtin-components see ``Packages/Needle Unity Threejs/R
 - [Interop with external javascript](#accessing-components-from-external-javascript)
 - [Automatically generating Unity components](#automatically-generating-unity-components-from-typescript-files)
 - [Serialization in glTF files](#serialization--components-in-gltf-files)
-- [Unity Types in Typescript](#unity-types-in-typescript)
+- [Unity Types in Typescript](#renamed-unity-types-in-typescript)
 
 ---
 ## Creating a new component
