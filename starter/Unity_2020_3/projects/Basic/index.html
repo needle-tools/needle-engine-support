@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="favicon.png" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+
+  <title>My First 3d Website</title>
+  
+
+  
+  <meta name="twitter:card" content="summary_large_image">
+
+  
+  <meta property="og:title" content="My First 3d Website" />
+  
+
+  <link rel="stylesheet" href="./src/styles/style.css">
+</head>
+
+<body>
+  <script>
+    // hack for simple-peer
+    window.global = window;
+    var parcelRequire;
+  </script>
+  <script type="module" src="./src/generated/gen.js"></script>
+  <script type="module" src="./src/main.ts"></script>
+
+  <div id="main">
+    <needle-tiny src="loadScene" alias="top">
+      <div class="loading"></div>
+    </needle-tiny> 
+  </div>
+</body>
+</html>
