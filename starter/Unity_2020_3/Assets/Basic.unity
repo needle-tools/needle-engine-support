@@ -216,6 +216,19 @@ Transform:
   m_Father: {fileID: 1597275518}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 42.368, y: -221.19, z: -7.708}
+--- !u!114 &340158901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9722be1d85e14bc3a725c1a2e279cd7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ProjectName: 
 --- !u!1001 &402950693
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -832,7 +845,7 @@ MonoBehaviour:
   enablePan: 1
   lookAtConstraint: {fileID: 706762909}
   middleClickToFocus: 1
-  doubleClickToFocus: 1
+  doubleClickToFocus: 0
 --- !u!114 &706762908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -946,7 +959,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   generateInBackground: 0
-  compilerDirectory: myProject/node_modules/@needle-tools/needle-component-compiler/src
+  compilerDirectory: projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!114 &784234926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -959,7 +972,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 500358785998473ebf998f05dc20b650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Glitch: {fileID: 0}
+  Glitch: {fileID: 340158901}
 --- !u!114 &784234927
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1608,6 +1621,7 @@ Transform:
   - {fileID: 1372076890}
   - {fileID: 601492092}
   - {fileID: 402950694}
+  - {fileID: 1760165970}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1623,7 +1637,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa3493724830445e9abb470aad0aec1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UseGltfFast: 0
   SuppressExport: 0
   SmartExport: 0
   <ComponentsInExtension>k__BackingField: 1
@@ -1746,6 +1759,130 @@ Transform:
   m_Father: {fileID: 1597275518}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1760165969
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1760165970}
+  - component: {fileID: 1760165973}
+  - component: {fileID: 1760165972}
+  - component: {fileID: 1760165971}
+  - component: {fileID: 1760165974}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1760165970
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760165969}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.681, z: 0}
+  m_LocalScale: {x: 0.33172, y: 0.33172, z: 0.33172}
+  m_Children: []
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1760165971
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760165969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0714e5d97499175439b1a2a58606b1f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1760165974}
+        m_TargetAssemblyTypeName: Needle.Typescript.GeneratedComponents.RandomizeScale,
+          Assembly-CSharp
+        m_MethodName: ranomizeScaleNow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!23 &1760165972
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760165969}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1760165973
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760165969}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1760165974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760165969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5390868f639594f478985a4e2be4529a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  target: {fileID: 1760165970}
 --- !u!1 &1786657968
 GameObject:
   m_ObjectHideFlags: 0
