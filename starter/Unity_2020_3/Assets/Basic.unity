@@ -328,6 +328,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1001 &403687727
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -427,6 +428,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1 &405594348
 GameObject:
   m_ObjectHideFlags: 0
@@ -637,6 +639,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1001 &601492091
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -736,6 +739,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1 &706762903
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1 &1211803451
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,6 +1323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1001 &1266792148
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1417,6 +1423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1 &1365103852
 GameObject:
   m_ObjectHideFlags: 0
@@ -1579,6 +1586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!1 &1597275517
 GameObject:
   m_ObjectHideFlags: 0
@@ -1772,6 +1780,7 @@ GameObject:
   - component: {fileID: 1760165972}
   - component: {fileID: 1760165971}
   - component: {fileID: 1760165974}
+  - component: {fileID: 1760165975}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -1812,6 +1821,19 @@ MonoBehaviour:
         m_TargetAssemblyTypeName: Needle.Typescript.GeneratedComponents.RandomizeScale,
           Assembly-CSharp
         m_MethodName: ranomizeScaleNow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1760165975}
+        m_TargetAssemblyTypeName: Needle.Typescript.GeneratedComponents.RandomizeColor,
+          Assembly-CSharp
+        m_MethodName: randomizeColor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1883,6 +1905,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1760165970}
+  minScale: 0.1
+  maxScale: 0.3
+--- !u!114 &1760165975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1760165969}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ebb6177a40f1f3743a7079a871d987f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1786657968
 GameObject:
   m_ObjectHideFlags: 0
