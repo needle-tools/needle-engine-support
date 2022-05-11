@@ -179,12 +179,12 @@ The web-component also exposes a reference to the static ``GameObject`` function
 You can use the following typescript attributes to control generation behavior:
 | Attribute | Result |
 | -- | -- |
-| `@generate-component` | Force generation of next class|
-| `@dont-generate-component` | Disable generation of next class |
-| `@serializeField` | Decorate generated field with `[SerializeField]` |
+| `// @generate-component` | Force generation of next class|
+| `// @dont-generate-component` | Disable generation of next class |
+| `// @serializeField` | Decorate generated field with `[SerializeField]` |
 
 ## Serialization / Components in glTF files
-To embed components and recreate components with their correct types in glTF we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). The easiest way to do so is adding a ``@serializeable(<type>)`` decorator above your field or property. 
+To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). The easiest way to do so is adding a ``@serializeable(<type>)`` decorator above your field or property. 
 Example:
 ```js
 export class MyClass extends Behaviour {
