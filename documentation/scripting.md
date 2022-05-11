@@ -175,6 +175,7 @@ The web-component also exposes a reference to the static ``GameObject`` function
 - Open ``<path/to/needle.tiny.engine>/../component-compiler`` and run ``npm install``.
 - In Unity add a ``Component Generator`` component to the GameObject with your ``ExportInfo`` component. Select the path to the ``component-compiler/src`` folder. 
 - Now when adding new components in ``threejs/project/src/scripts`` it will automatically generate Unity scripts in ``Assets/Needle/GeneratedComponents``.
+
 ### Controling component generation
 You can use the following typescript attributes to control generation behavior:
 | Attribute | Result |
@@ -182,6 +183,11 @@ You can use the following typescript attributes to control generation behavior:
 | `// @generate-component` | Force generation of next class|
 | `// @dont-generate-component` | Disable generation of next class |
 | `// @serializeField` | Decorate generated field with `[SerializeField]` |
+
+The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match, or when you want to extend the generated code with custom logic (e.g. Gizmo drawing). You'll have to ensure that the serialized fields match yourself in this case (only matching fields/properties will be exported).
+
+### Version Control
+Make sure your generated components are checked into git/version control, otherwise their GUIDs might change between machines and script connections will be lost.
 
 ## Serialization / Components in glTF files
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). The easiest way to do so is adding a ``@serializeable(<type>)`` decorator above your field or property. 
@@ -193,7 +199,9 @@ export class MyClass extends Behaviour {
 } 
 ``` 
 
-To serialize from and to custom formats it is possible to derive from the ``TypeSerializer`` class and create an instance. Use ``super()`` in the constructor to register supported types.
+To serialize from and to custom formats it is possible to derive from the ``TypeSerializer`` class and create an instance. Use ``super()`` in the constructor to register supported types.  
+
+In addition to matching fields, properties will also be exported when they match to fields in the typescript file.  
 
 ## Renamed Unity Types in TypeScript
 This is a list of Unity types and their renamed counterpart types in our engine.
