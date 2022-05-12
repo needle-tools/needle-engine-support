@@ -167,7 +167,7 @@ export class MyScript extends Behaviour
 
 ## Accessing components from external javascript
 It is possible to access all the functionality described above using regular javascript code that is no component and lives somewhere else. For that just find the ``<needle-tiny>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``document.getElementById("tiny")?.context``.  
-The web-component also exposes a reference to the static ``GameObject`` functions described above. You can find components using ``document.getElementById("tiny")?gameObject.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references as searching the whole scene repeatedly is expensive!
+The web-component also exposes a reference to the static ``GameObject`` functions described above. You can find components using ``document.getElementById("tiny")?.gameObject.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references as searching the whole scene repeatedly is expensive!
 
 
 ## Automatically generating Unity components from typescript files
