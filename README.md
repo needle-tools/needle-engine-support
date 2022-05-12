@@ -8,6 +8,7 @@ Here you can find information and guides on how to use the needle Unity → thre
 - [Project Structure](./documentation/project_structure.md)
 - [Export](./documentation/getting_started.md#export-⚙%EF%B8%8F)
 - [Scripting](./documentation/scripting.md)
+- [HTML](./documentation/html.md)
 - [Deployment](./documentation/deployment.md)
 - [Component Reference](./documentation/component-reference.md)
 
