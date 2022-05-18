@@ -8,6 +8,9 @@ You can organize your assets like in any typical Unity project. If you are not f
 
 **Builtin-runtime components** added specifically for our runtime engine can be found in ``Packages/Needle Unity Threejs/Runtime/Components`` in the [Unity Project window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).
 
+### NPM Definition files
+*TODO - add docs here*
+
 ## Vite project structure
 - ``assets/`` - The asset folder contains exported assets from Unity. E.g. generated ``gltf`` files, audio or video files. It is not recommended to manually add files to ``assets`` as it will get cleared on building the distribution for the project.
 - ``include/`` (optional) - If you have custom assets that you need to reference/load add them to the include directory. On build this directory will be copied to the output folder.
