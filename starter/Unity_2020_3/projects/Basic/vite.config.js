@@ -45,7 +45,11 @@ export default defineConfig({
             'three': () => {
                 const absPath = path.resolve(__dirname, 'node_modules/three');
                 return absPath;
-            }
+            },
+            'needle.tiny.engine': () => {
+                const absPath = path.resolve(__dirname, 'node_modules/needle.tiny.engine');
+                return absPath;
+            },
         }
     }
 });
