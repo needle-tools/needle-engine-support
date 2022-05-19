@@ -1,0 +1,13 @@
+{
+  "name": "mycodemodule",
+  "version": "1.0.0",
+  "dependencies": {},
+  "peerDependencies": {
+    "needle.tiny.engine": ">= 1.0.0-pre",
+    "three": "^0.130"
+  },
+  "devDependencies": {
+    "needle.tiny.engine": "../../../Library/PackageCache/com.needle.tiny.engine@1.0.0-pre.17/package~",
+    "three": "../../../Library/PackageCache/com.needle.tiny.engine@1.0.0-pre.17/package~/node_modules/three"
+  }
+}
