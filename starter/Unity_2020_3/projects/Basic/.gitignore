@@ -1,0 +1,10 @@
+node_modules/
+assets/
+src/generated/
+dist/
+stats.html
+include/draco/
+include/ktx2/
+include/three/
+include/console/
+include/three-mesh-ui-assets/

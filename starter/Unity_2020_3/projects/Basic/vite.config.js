@@ -19,6 +19,9 @@ export default defineConfig({
         // hmr: false,
         // watch: ["generated/**"]
         https: true,
+        proxy: { // workaround: specifying a proxy skips HTTP2 which is currently problematic in Vite since it causes session memory timeouts.
+            'https://localhost:3000': 'https://localhost:3000'
+        },
         watch: {
             awaitWriteFinish: {
                 stabilityThreshold: 500,

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -14,7 +15,9 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noImplicitAny": false,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "skipLibCheck": true,
+    "baseUrl": "node_modules"
   },
   "include": ["./src"]
 }
