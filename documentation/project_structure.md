@@ -9,7 +9,18 @@ You can organize your assets like in any typical Unity project. If you are not f
 **Builtin-runtime components** added specifically for our runtime engine can be found in ``Packages/Needle Unity Threejs/Runtime/Components`` in the [Unity Project window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).
 
 ### NPM Definition files
-*TODO - add docs here*
+*modular projects - re-useable code and assets made easy*  
+
+**NPM Definition** is what we call npm packages that you can install to your projects from within Unity and that are tightly integrated into the Unity Editor. That includes generating component stubs automatically and will in the future also support e.g. automatically copying assets to output/distribution folders. 
+
+To greate a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``. You can add a *NPM Definition* package to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
+
+![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
+
+*NOTE: dont forget to install the newly added package by e.g. clicking Install on the ExportInfo component*
+
+To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser.
+
 
 ## Vite project structure
 - ``assets/`` - The asset folder contains exported assets from Unity. E.g. generated ``gltf`` files, audio or video files. It is not recommended to manually add files to ``assets`` as it will get cleared on building the distribution for the project.
