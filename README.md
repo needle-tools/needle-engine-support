@@ -17,7 +17,7 @@ Here you can find information and guides on how to use the needle Unity → thre
 ## Useful resources 🖇
 
 ### GLTF
-To inspect gltf or glb files use [gltf.report ⇡](https://gltf.report/)   
+To inspect gltf or glb files use [gltf.report ⇡](https://gltf.report/) or the [khrones sample viewer ⇡](https://github.khronos.org/glTF-Sample-Viewer-Release/)   
 You can also try to drop files in [three editor ⇡](https://threejs.org/editor/) or the [babylon sandbox ⇡](https://sandbox.babylonjs.com/)
 
 
