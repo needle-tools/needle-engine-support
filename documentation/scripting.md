@@ -183,6 +183,7 @@ You can use the following typescript attributes to control generation behavior:
 | `// @generate-component` | Force generation of next class|
 | `// @dont-generate-component` | Disable generation of next class |
 | `// @serializeField` | Decorate generated field with `[SerializeField]` |
+| `// @type(UnityEngine.Camera)` | Specify generated C# field type |
 
 The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match, or when you want to extend the generated code with custom logic (e.g. Gizmo drawing). You'll have to ensure that the serialized fields match yourself in this case (only matching fields/properties will be exported).
 
