@@ -17,22 +17,22 @@
       "url": "https://packages.needle.tools"
     },
     "com.needle.tiny.engine": {
-      "version": "1.3.1-pre",
+      "version": "1.4.0-pre",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.needle.tools"
     },
     "com.needle.unity-threejs": {
-      "version": "1.5.0-pre",
+      "version": "1.6.0-pre.1",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.timeline": "1.5.7",
-        "org.khronos.unitygltf": "1.8.0-pre",
+        "org.khronos.unitygltf": "1.8.0-pre.2",
         "com.unity.nuget.newtonsoft-json": "3.0.1",
         "com.unity.sharp-zip-lib": "1.2.2-preview.2",
-        "com.needle.tiny.engine": "1.3.1-pre"
+        "com.needle.tiny.engine": "1.4.0-pre"
       },
       "url": "https://packages.needle.tools"
     },
@@ -188,14 +188,14 @@
       }
     },
     "org.khronos.unitygltf": {
-      "version": "https://github.com/prefrontalcortex/UnityGLTF.git?path=UnityGLTF/Assets/UnityGLTF#feature/khr_animation2",
+      "version": "https://github.com/prefrontalcortex/UnityGLTF.git?path=UnityGLTF/Assets/UnityGLTF#release/pfc/1.8.0-pre.2",
       "depth": 0,
       "source": "git",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "2.0.0",
         "com.unity.modules.imageconversion": "1.0.0"
       },
-      "hash": "8d160b31a5e1118742ebb9c70eaf28d2ea484f65"
+      "hash": "7dcc349077c6836ddf44bae546e0484a91dd4092"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
