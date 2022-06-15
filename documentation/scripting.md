@@ -190,7 +190,7 @@ You can use the following typescript attributes to control generation behavior:
 The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match, or when you want to extend the generated code with custom logic (e.g. Gizmo drawing). You'll have to ensure that the serialized fields match yourself in this case (only matching fields/properties will be exported).
 
 ### Version Control
-Make sure your generated components are checked into git/version control, otherwise their GUIDs might change between machines and script connections will be lost.
+Although generated components use the type name to produce stable guids we recommend checking in generated components in version control as a good practice.
 
 ## Serialization / Components in glTF files
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). The easiest way to do so is adding a ``@serializeable(<type>)`` decorator above your field or property. 
