@@ -23,7 +23,7 @@
 	  "three-mesh-ui": "^6.0.1",
 	  "uuid": "^8.3.2",
 	  "websocket-ts": "^1.1.1",
-	  "mycodemodule": "file:../../Assets/ExampleModules/MyFirstModule~"
+	  "com.needle.shader-example": "file:../../Assets/Scenes/CustomShader/com.needle.shader-example~"
 	},
   "devDependencies": {
     "@gltf-transform/cli": "^1.2.4",
@@ -37,7 +37,7 @@
     "vite-plugin-compression": "^0.3.6",
     "rollup-plugin-visualizer": "^5.5.2",
     "ansi-styles": "^6.1.0",
-    "@needle-tools/needle-component-compiler": "^1.0.0"
+    "@needle-tools/needle-component-compiler": "^1.1.0"
   },
   "copyFiles": [
     {
