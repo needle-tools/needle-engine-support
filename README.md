@@ -6,7 +6,7 @@ Here you can find information and guides on how to use the needle Unity → thre
 ## Contents 📋
 - [Getting started](./documentation/getting_started.md) ⭐
 - [Project Structure](./documentation/project_structure.md)
-- [Export](./documentation/export.md)
+- [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
 - [Scripting](./documentation/scripting.md)
 - [HTML](./documentation/html.md)
 - [Deployment](./documentation/deployment.md)
