@@ -174,9 +174,9 @@ The web-component also exposes a reference to the static ``GameObject`` function
 
 ## Automatically generating Unity components from typescript files
 *Experimental feature to automatically generate Unity components for typescript component in your project - installation and setup might change*  
-- Open ``<path/to/needle.tiny.engine>/../component-compiler`` and run ``npm install``.
-- In Unity add a ``Component Generator`` component to the GameObject with your ``ExportInfo`` component. Select the path to the ``component-compiler/src`` folder. 
-- Now when adding new components in ``threejs/project/src/scripts`` it will automatically generate Unity scripts in ``Assets/Needle/GeneratedComponents``.
+- Install [``@needle-tools/needle-component-compiler`` ⇡](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) in your project (it comes pre-installed using our template projects)
+- In Unity add a ``Component Generator`` component to the GameObject with your ``ExportInfo`` component. when installed to the project the component will automatically fill-out the correct path. 
+- Now when adding new components in ``threejs/project/src/scripts`` or any of your npmdefs it will automatically generate Unity scripts in ``Assets/Needle/GeneratedComponents`` or the respective npmdef codegen directory.
 
 ### Controling component generation
 You can use the following typescript attributes to control generation behavior:
