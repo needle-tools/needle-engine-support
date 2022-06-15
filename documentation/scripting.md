@@ -19,7 +19,9 @@ To see a list of needle-builtin-components see ``Packages/Needle Unity Threejs/R
 
 ---
 ## Creating a new component
-Scripts are written in typescript. To create a new component for your threejs project add a ``.ts`` file inside ``src/scripts/``. You can have one or many components inside one file. Files inside ``src/scripts/`` and subdirectories are automatically scanned for component classes and registered (see ``src/generated/``) when the threejs project is build in Unity.
+Scripts are written in typescript. The simplest way to create a new component for your threejs project is to add a ``.ts`` file inside ``src/scripts/``. You can have one or many components inside one file. Files inside ``src/scripts/`` and subdirectories are automatically scanned for component classes and registered (see ``src/generated/``) when the threejs project is build in Unity.
+
+• ***Note**: While adding scripts directly inside your project works **we recommend creating a npmdef file** inside Unity for a better development experience and code-reusablility. Please see the chapter [here](./project_structure.md#npm-definition-files) for more information.*
 
 #### Example
 To create a simple rotation component create ``src/scripts/Rotate.ts`` and add the following code:
@@ -42,7 +44,7 @@ Open the chrome developer console to inspect the log from the ``Rotate.start`` m
 
 Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.
 
-Note: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. Documentation on that can be found in the [Export document](./export.md).
+• ***Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. Documentation on that can be found in the [Export document](./export.md).*
 
 ---
 ## Component architecture
@@ -62,7 +64,7 @@ Components are added to threejs [Object3Ds ⇡](https://threejs.org/docs/#api/en
 - ``onBeforeRender`` - Last update event before render call
 - ``onAfterRender`` - Called after render event
 
-***Note**: It is important to understand that similar to Unity event methods are only being called when they are declared. So only declare update event methods when they are actually necessary, otherwise it may hurt performance if you have many components with update loops that do nothing.*
+• ***Note**: It is important to understand that similar to Unity event methods are only being called when they are declared. So only declare update event methods when they are actually necessary, otherwise it may hurt performance if you have many components with update loops that do nothing.*
 
 
 ### Coroutines
@@ -126,7 +128,7 @@ export class MyComponent extends Behaviour {
 The context refers to the runtime inside a [web component ⇡](https://developer.mozilla.org/en-US/docs/Web/Web_Components).  
 The threejs scene lives inside a custom HTML component called ``<needle-tiny>`` (see the *index.html* in your project). You can access that element using ``this.context.domElement``.   
 This architecture allows for potentially having multiple needle webgl scenes on one webpage that can either run on their own or act together as split-up views or adding different functionality to parts of your webpage.  
-*Node: Currently the exporter only supportes exporting one scene for one html element but this might change in the future.*
+• ***Note**: Currently the exporter only supportes exporting one scene for one html element but this might change in the future.*
 
 ### Scene
 Access the threejs scene using ``this.context.scene``
@@ -139,7 +141,7 @@ Use ``this.context.input`` to access convenient methods for getting mouse and to
 
 ### Physics
 Use ``this.context.physics`` to conveniently perform raycasts against scene geometry.  
-*Note: [Layers ⇡](https://docs.unity3d.com/Manual/Layers.html) are also exported from Unity to threejs [Layers ⇡](https://threejs.org/docs/#api/en/core/Layers). By default physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. If you need you can override this behaviour using the options parameter that you can pass to the ``physics.raycast`` method but it is generally recommended that you setup your layers as needed in Unity.
+• ***Note**: [Layers ⇡](https://docs.unity3d.com/Manual/Layers.html) are also exported from Unity to threejs [Layers ⇡](https://threejs.org/docs/#api/en/core/Layers). By default physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. If you need you can override this behaviour using the options parameter that you can pass to the ``physics.raycast`` method but it is generally recommended that you setup your layers as needed in Unity.*
 
 ### Networking
 Networking methods can be accessed via ``this.context.connection``. Please refer to the [networking document](./networking.md) for further information.
