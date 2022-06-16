@@ -10,4 +10,7 @@ To export meshes, materials, animations, textures (...) create a new GameObject 
 The Unity skybox and environment map are automatically exported as part of the ``<scene_name>_resources.glb``. You can access them at runtime using for example ``this.context.assets.findTexture("Skybox")``
 
 ## Exporting Shaders
-TODO
+To export custom shaders (e.g. ShaderGraph shaders) from Unity to threejs you can simply add a ``ExportShader`` Asset Label (see bottom of the inspector) to either your shader or material.
+
+## Exporting Lightmaps
+To export lightmaps you simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
