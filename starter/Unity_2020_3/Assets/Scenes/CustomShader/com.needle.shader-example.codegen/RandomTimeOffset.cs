@@ -4,10 +4,8 @@
 
 namespace Needle.Typescript.GeneratedComponents
 {
-	public partial class SetHitPoint : UnityEngine.MonoBehaviour
+	public partial class RandomTimeOffset : UnityEngine.MonoBehaviour
 	{
-		private UnityEngine.Material @_renderers;
 		public void start(){}
-		public void update(){}
 	}
 }
