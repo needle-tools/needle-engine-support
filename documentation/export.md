@@ -6,6 +6,10 @@ To export meshes, materials, animations, textures (...) create a new GameObject 
 - **Note**: Scripts can be added inside or outside of GLTF files but meshes are only exported as part of a GLTF.   
   Read about [scripting here](./scripting.md)
 
+### GLTF Prefabs
+It is also possible to create [Prefabs ⇡](https://docs.unity3d.com/Manual/Prefabs.html) in Unity and add a ``GltfObject`` component to its root. If you reference this prefab from any of your components in your scene it will automatically be exported. These exports can also be nested (so a component in a Prefab can reference another Prefab which will then also be exported. This mechanism allows for composing scenes to be as lightweight as possible and loading the most important content first and defer loading of additional content).  
+For how to easily load those exported prefabs please refer to the [``AssetReference`` section](scripting.md#assetreference--addressables) in the scripting documentation.
+
 ## Exporting the Skybox
 The Unity skybox and environment map are automatically exported as part of the ``<scene_name>_resources.glb``. You can access them at runtime using for example ``this.context.assets.findTexture("Skybox")``
 
