@@ -188,14 +188,14 @@
       }
     },
     "org.khronos.unitygltf": {
-      "version": "https://github.com/prefrontalcortex/UnityGLTF.git?path=UnityGLTF/Assets/UnityGLTF#release/pfc/1.8.0-pre.2",
-      "depth": 0,
-      "source": "git",
+      "version": "1.8.0-pre.2",
+      "depth": 1,
+      "source": "registry",
       "dependencies": {
         "com.unity.nuget.newtonsoft-json": "2.0.0",
         "com.unity.modules.imageconversion": "1.0.0"
       },
-      "hash": "7dcc349077c6836ddf44bae546e0484a91dd4092"
+      "url": "https://packages.needle.tools"
     },
     "com.unity.modules.ai": {
       "version": "1.0.0",
