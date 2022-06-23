@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 501411024}
   - component: {fileID: 501411026}
   - component: {fileID: 501411025}
+  - component: {fileID: 501411027}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -285,6 +286,19 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 501411023}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &501411027
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501411023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 385d14bf62e962549a8aeb84fdd6bad1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  VisibleIn: 5
 --- !u!1 &706762903
 GameObject:
   m_ObjectHideFlags: 0
@@ -619,6 +633,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9ba56a0a7b775340a115f4c712abd91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isGizmo: 0
   size: 10
   divisions: 10
   offset: -0.001
@@ -1025,7 +1040,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0d486f15de1d234da162ec54633ab10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  arScale: 1
+  arScale: 5
   invertForward: 0
 --- !u!114 &1597275522
 MonoBehaviour:

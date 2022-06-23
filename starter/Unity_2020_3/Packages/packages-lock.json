@@ -17,14 +17,14 @@
       "url": "https://packages.needle.tools"
     },
     "com.needle.tiny.engine": {
-      "version": "1.5.0-pre",
+      "version": "1.6.0-pre",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.needle.tools"
     },
     "com.needle.unity-threejs": {
-      "version": "1.8.0-pre.1",
+      "version": "1.10.0-pre",
       "depth": 0,
       "source": "registry",
       "dependencies": {
@@ -32,7 +32,7 @@
         "org.khronos.unitygltf": "1.8.1-pre",
         "com.unity.nuget.newtonsoft-json": "3.0.1",
         "com.unity.sharp-zip-lib": "1.2.2-preview.2",
-        "com.needle.tiny.engine": "1.5.0-pre"
+        "com.needle.tiny.engine": "1.6.0-pre"
       },
       "url": "https://packages.needle.tools"
     },

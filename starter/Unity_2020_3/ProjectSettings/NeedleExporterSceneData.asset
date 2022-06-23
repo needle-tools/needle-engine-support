@@ -16,5 +16,12 @@ MonoBehaviour:
   - Path: Assets/Scenes/Basic.unity
     Projects:
     - ProjectPath: projects/Basic
+  - Path: Assets/Scenes/Lightmaps.unity
+    Projects:
+    - ProjectPath: Projects/Basic
+  - Path: Assets/Scenes/CustomShader.unity
+    Projects:
+    - ProjectPath: Projects/Basic
   Projects:
   - ProjectPath: projects/Basic
+  - ProjectPath: Projects/Basic
