@@ -1,13 +1,14 @@
 {
   "dependencies": {
-    "com.needle.auto-installer": {
-      "version": "file:installer.com.needle.missing-component-info",
-      "depth": 0,
-      "source": "embedded",
-      "dependencies": {}
-    },
     "com.needle.console": {
       "version": "2.3.11",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {},
+      "url": "https://package.openupm.com"
+    },
+    "com.needle.missing-component-info": {
+      "version": "1.2.2-exp",
       "depth": 0,
       "source": "registry",
       "dependencies": {},
