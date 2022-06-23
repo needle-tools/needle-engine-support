@@ -1,5 +1,11 @@
 {
   "dependencies": {
+    "com.needle.auto-installer": {
+      "version": "file:installer.com.needle.missing-component-info",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
     "com.needle.console": {
       "version": "2.3.11",
       "depth": 0,
