@@ -1,0 +1,13 @@
+{
+  "name": "com.needle.lightmaps-example",
+  "version": "1.0.0",
+  "dependencies": {},
+  "peerDependencies": {
+    "needle.tiny.engine": ">= 1.0.0-pre",
+    "three": "^0.130"
+  },
+  "devDependencies": {
+    "needle.tiny.engine": "../../../../Library/PackageCache/com.needle.tiny.engine@1.6.0-pre/package~",
+    "three": "../../../../Library/PackageCache/com.needle.tiny.engine@1.6.0-pre/package~/node_modules/three"
+  }
+}
