@@ -13,6 +13,17 @@ export default defineConfig({
     plugins: [
         viteCompression({ deleteOriginFile: true }),
         visualizer(),
+        {
+            name: 'reload',
+            handleHotUpdate({ file, server }) {
+                if (file.endsWith('.glb') || file.endsWith(".gltf") || file.endsWith(".bin")) {
+                    server.ws.send({
+                        type: 'full-reload',
+                        path: '*'
+                    });
+                }
+            },
+        }
     ],
 
     server: {
