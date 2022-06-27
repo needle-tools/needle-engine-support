@@ -5,9 +5,9 @@ Here you can find information and guides on how to use the needle Unity → thre
 
 ## Contents 📋
 - [Getting started](./documentation/getting_started.md) ⭐
-- [Project Structure](./documentation/project_structure.md) — vite, npm Definition files
+- [Project Structure](./documentation/project_structure.md) — *vite, npm Definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
-- [Scripting](./documentation/scripting.md) — components, codegen, interop
+- [Scripting](./documentation/scripting.md) — *components, codegen, interop*
 - [HTML](./documentation/html.md)
 - [Deployment](./documentation/deployment.md)
 - [Component Reference](./documentation/component-reference.md)
