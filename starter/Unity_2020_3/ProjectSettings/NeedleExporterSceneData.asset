@@ -16,12 +16,28 @@ MonoBehaviour:
   - Path: Assets/Scenes/Basic.unity
     Projects:
     - ProjectPath: projects/Basic
+    BuilderScene: 
   - Path: Assets/Scenes/Lightmaps.unity
     Projects:
     - ProjectPath: Projects/Basic
+    BuilderScene: 
   - Path: Assets/Scenes/CustomShader.unity
     Projects:
     - ProjectPath: Projects/Basic
+    BuilderScene: 
+  - Path: Assets/Scenes/Lightmaps Multiple Scenes.unity
+    Projects:
+    - ProjectPath: Projects/Basic
+    BuilderScene: 
+  - Path: Assets/Scenes/Lightmaps/LightmappedScene 0.unity
+    Projects: []
+    BuilderScene: 
+  - Path: Assets/Scenes/Lightmaps/LightmappedScene 1.unity
+    Projects: []
+    BuilderScene: 
+  - Path: Assets/Scenes/Lightmaps/LightmappedScene 2.unity
+    Projects: []
+    BuilderScene: 
   Projects:
   - ProjectPath: projects/Basic
   - ProjectPath: Projects/Basic
