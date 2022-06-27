@@ -179,7 +179,7 @@ The web-component also exposes a reference to the static ``GameObject`` function
 - In Unity add a ``Component Generator`` component to the GameObject with your ``ExportInfo`` component. when installed to the project the component will automatically fill-out the correct path. 
 - Now when adding new components in ``threejs/project/src/scripts`` or any of your npmdefs it will automatically generate Unity scripts in ``Assets/Needle/GeneratedComponents`` or the respective npmdef codegen directory.
 
-### Controling component generation
+### Controlling component generation
 You can use the following typescript attributes to control generation behavior:
 | Attribute | Result |
 | -- | -- |
@@ -189,6 +189,9 @@ You can use the following typescript attributes to control generation behavior:
 | `// @type(UnityEngine.Camera)` | Specify generated C# field type |
 
 The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match, or when you want to extend the generated code with custom logic (e.g. Gizmo drawing). You'll have to ensure that the serialized fields match yourself in this case (only matching fields/properties will be exported).
+
+### Extending generated componnets
+Components are generated with the [``partial ⇡``](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) flag so that it is easy to extend them with Editor functionality. E.g. to draw gizmos, add context menus or additional fields or functions.
 
 ### Version Control
 Although generated components use the type name to produce stable guids we recommend checking in generated components in version control as a good practice.
