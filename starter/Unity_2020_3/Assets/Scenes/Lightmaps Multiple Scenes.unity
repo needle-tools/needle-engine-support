@@ -326,7 +326,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Needle.Tiny.Codegen.ComponentGenerator, Needle.Tiny $
     GlobalObjectId_V1-2-fb211ff7a577d9448bfd708c7d9fa803-784234925-0
-  generateInBackground: 0
   compilerDirectory: Projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!1 &1211803451
 GameObject:

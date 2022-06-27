@@ -97,8 +97,8 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000000, guid: 114426fb4ae9e354e96452256bf05fb1, type: 2}
-  m_LightingSettings: {fileID: 4890085278179872738, guid: 84e01a6a81dc6824d89b28dc5e4f6656, type: 2}
+  m_LightingDataAsset: {fileID: 112000000, guid: f039ecd3724ecb6439adad54d5bcf90d, type: 2}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: e5cd5dcf6f449054194101643ceb631f, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6c38416c1a949c1a024aacb22e308af, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.OrbitControls, Needle.Tiny $ GlobalObjectId_V1-2-646af1d594f68a942bf7b4cc75319d4e-706762907-0
   autoRotate: 1
   autoRotateSpeed: 0.3
   enableKeys: 1
@@ -336,7 +336,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: UnityEngine.Rendering.Universal.UniversalAdditionalCameraData,
+    Unity.RenderPipelines.Universal.Runtime $ GlobalObjectId_V1-2-646af1d594f68a942bf7b4cc75319d4e-706762908-0
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -387,7 +388,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 986a3a93ac16ec0428d8989979ec0966, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.ExportInfo, Needle.Tiny.Common $ GlobalObjectId_V1-2-646af1d594f68a942bf7b4cc75319d4e-784234923-0
   DirectoryName: Projects/Basic
   AutoExport: 1
   Dependencies: []
@@ -416,8 +417,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 438e3fec673b477cbc6d39ba011bf158, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  generateInBackground: 0
+  m_EditorClassIdentifier: Needle.Tiny.Codegen.ComponentGenerator, Needle.Tiny $
+    GlobalObjectId_V1-2-646af1d594f68a942bf7b4cc75319d4e-784234925-0
   compilerDirectory: Projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!1 &868967606
 GameObject:
