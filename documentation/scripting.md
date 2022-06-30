@@ -7,7 +7,8 @@ To see a list of needle-builtin-components see ``Packages/Needle Unity Threejs/R
 
 
 ## Contents 📋
-- [Creating a new component](#creating-a-new-component)
+- [Creating a new component](#creating-a-new-component)📋
+- [Seeing Data](#seeing-data)
 - [Component architecture](#component-architecture)
 - [Finding, adding and removing components](#finding-added-or-removing-components)
 - [The Context and the DOM](#context-and-the-html-dom)
@@ -46,6 +47,19 @@ Open the chrome developer console to inspect the log from the ``Rotate.start`` m
 Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.
 
 • ***Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. Documentation on that can be found in the [Export document](./export.md).*
+
+--- 
+## Seeing Data
+
+By default only properties *actually declared* on your typescript class will be assigned/deserialized. **For development** you can use add the ``?dev`` url parameter to your url or a ``@allProperties`` tag to the class you are currently working on:
+
+```js
+import { Behaviour } from "needle.tiny.engine/engine-components/Component";
+import { allProperties } from "needle.tiny.engine/engine/engine_serialization_decorator";
+@allProperties
+export class Rotate extends Behaviour
+{
+```
 
 ---
 ## Component architecture
