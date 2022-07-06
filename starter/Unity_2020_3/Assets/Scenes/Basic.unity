@@ -947,10 +947,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 986a3a93ac16ec0428d8989979ec0966, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.ExportInfo, Needle.Tiny.Common $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234923-0
   DirectoryName: projects/Basic
   AutoExport: 1
-  Dependencies: []
 --- !u!4 &784234924
 Transform:
   m_ObjectHideFlags: 0
@@ -976,9 +975,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 438e3fec673b477cbc6d39ba011bf158, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  generateInBackground: 0
-  compilerDirectory: projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
+  m_EditorClassIdentifier: Needle.Tiny.Codegen.ComponentGenerator, Needle.Tiny $
+    GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234925-0
+  compilerDirectory: C:/git/three-exporter-support/starter/Unity_2020_3/Assets/../projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!114 &784234926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -990,7 +989,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 500358785998473ebf998f05dc20b650, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Deployment, Needle.Tiny.Deployment $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234926-0
   Glitch: {fileID: 340158901}
 --- !u!114 &784234927
 MonoBehaviour:
@@ -1003,7 +1002,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f83ead97dcae4ea998bb93b2643b59eb, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Templating.Index, NeedleTiny.Templating $
+    GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234927-0
   name: index
   model:
     title: My First 3d Website
