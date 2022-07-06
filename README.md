@@ -19,7 +19,7 @@ Here you can find information and guides on how to use the needle Unity → thre
 ### GLTF
 To inspect gltf or glb files use [gltf.report ⇡](https://gltf.report/) or the [khrones sample viewer ⇡](https://github.khronos.org/glTF-Sample-Viewer-Release/)   
 You can also try to drop files in [three editor ⇡](https://threejs.org/editor/) or the [babylon sandbox ⇡](https://sandbox.babylonjs.com/)  
-Or use the [glTF shell extension for windows ⇡](https://github.com/bghgary/glTF-Shell-Extensions) to pack/unpack gltf to/from glb
+Or use the [glTF shell extension for windows ⇡](https://apps.microsoft.com/store/detail/gltf-shell-extensions/9NPGVJ9N57MV?hl=en-us&gl=US) to pack/unpack gltf to/from glb
 
 ---
 ## Contact ✒️
