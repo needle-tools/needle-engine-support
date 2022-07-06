@@ -11,6 +11,7 @@ Here you can find information and guides on how to use the needle Unity → thre
 - [HTML](./documentation/html.md)
 - [Deployment](./documentation/deployment.md)
 - [Component Reference](./documentation/component-reference.md)
+- [Samples and Modules](./documentation/samples-and-modules.md)
 
 
 --- 
