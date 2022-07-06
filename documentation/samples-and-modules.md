@@ -1,6 +1,6 @@
 # Samples and Modules 🔭
 
-Projects can be composed of re-usable pieces that we call [**npmdef**](./project_structure.md#npm-definition-files) (which stands for Npm Defintion File). Below you can find links to other repositories that contain Unity packages. These packages can be installed like any Unity package and used in your own projects. They usually contain eihter examples or modules that we use ourselves but that are not part of the code Needle Engine.
+Projects can be composed of re-usable pieces that we call [**npmdef**](./project_structure.md#npm-definition-files) (which stands for Npm Defintion File). Below you can find links to other repositories that contain Unity packages. These packages can be installed like any Unity package and used in your own projects. They usually contain eihter examples or modules that we use ourselves but that are not part of the core Needle Engine.
 
 - [needle-engine-modules ⇡](https://github.com/needle-tools/needle-engine-modules) 
    - Google Drive
