@@ -5,9 +5,9 @@ Here you can find information and guides on how to use the needle Unity → thre
 
 ## Contents 📋
 - [Getting started](./documentation/getting_started.md) ⭐
-- [Project Structure](./documentation/project_structure.md)
+- [Project Structure](./documentation/project_structure.md) — *vite, npm Definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
-- [Scripting](./documentation/scripting.md)
+- [Scripting](./documentation/scripting.md) — *components, codegen, interop*
 - [HTML](./documentation/html.md)
 - [Deployment](./documentation/deployment.md)
 - [Component Reference](./documentation/component-reference.md)
@@ -18,8 +18,8 @@ Here you can find information and guides on how to use the needle Unity → thre
 
 ### GLTF
 To inspect gltf or glb files use [gltf.report ⇡](https://gltf.report/) or the [khrones sample viewer ⇡](https://github.khronos.org/glTF-Sample-Viewer-Release/)   
-You can also try to drop files in [three editor ⇡](https://threejs.org/editor/) or the [babylon sandbox ⇡](https://sandbox.babylonjs.com/)
-
+You can also try to drop files in [three editor ⇡](https://threejs.org/editor/) or the [babylon sandbox ⇡](https://sandbox.babylonjs.com/)  
+Or use the [glTF shell extension for windows ⇡](https://apps.microsoft.com/store/detail/gltf-shell-extensions/9NPGVJ9N57MV?hl=en-us&gl=US) to pack/unpack gltf to/from glb
 
 ---
 ## Contact ✒️
