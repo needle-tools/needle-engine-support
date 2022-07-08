@@ -5,7 +5,7 @@
 
 # Getting started 🛎
 
-*Please follow the instructions in the Authentication section if this is your first time accessing packages by needle or a new machine.*
+*Please follow the instructions in the Authentication section if this is your first time accessing packages by needle on this machine.*
 
 ## Authentication  
 
@@ -30,7 +30,7 @@ Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend
 Open ``Edit/Project Settings`` and select ``Package Manager``. Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
 - Name: ``needle``
 - URL: ``https://packages.needle.tools``
-- Scope(s): ``com.needle``
+- Scope(s): ``[com.needle, org.khronos]``
 
 Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``MyRegistries``. Select ``Needle Unity → threejs`` and click install in the bottom right corner.
 
