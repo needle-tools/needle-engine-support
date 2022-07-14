@@ -9,9 +9,9 @@ import { RaycastOptions } from "needle.tiny.engine/engine/engine_physics";
 export class SetHitPoint extends Behaviour {
 
     // for codegen we can define the unity type like this:
-    // @type(UnityEngine.Material)
     // @serializeable(CustomShader)
-    // material: CustomShader;
+    // @type UnityEngine.Material
+    material: CustomShader; 
 
     private _renderers = new Array<Renderer>();
     

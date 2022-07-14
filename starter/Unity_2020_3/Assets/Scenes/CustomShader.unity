@@ -571,7 +571,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 986a3a93ac16ec0428d8989979ec0966, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.ExportInfo, Needle.Tiny.Common $ GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-784234923-0
   DirectoryName: Projects/Basic
   AutoExport: 1
   Dependencies: []
@@ -600,9 +600,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 438e3fec673b477cbc6d39ba011bf158, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  generateInBackground: 0
-  compilerDirectory: Projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
+  m_EditorClassIdentifier: Needle.Tiny.Codegen.ComponentGenerator, Needle.Tiny $
+    GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-784234925-0
+  compilerDirectory: Projects/Basic/node_modules/needle.tiny.engine/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!1 &806518225
 GameObject:
   m_ObjectHideFlags: 0
@@ -781,6 +781,8 @@ MonoBehaviour:
   enableVR: 1
   enableAR: 1
   defaultAvatar: {fileID: 0}
+  createVRButton: 1
+  createARButton: 1
 --- !u!4 &1211803453
 Transform:
   m_ObjectHideFlags: 0
@@ -1012,7 +1014,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa3493724830445e9abb470aad0aec1e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Export.GltfObject, Needle.Tiny $ GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-1597275519-0
   SuppressExport: 0
   SmartExport: 0
   <ComponentsInExtension>k__BackingField: 1
@@ -1027,7 +1029,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42798c1a37db46409660e69421ebdd09, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.ObjectRaycaster, Needle.Tiny $
+    GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-1597275520-0
 --- !u!114 &1597275521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1039,7 +1042,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0d486f15de1d234da162ec54633ab10, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.WebARSessionRoot, Needle.Tiny $ GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-1597275521-0
   arScale: 5
   invertForward: 0
 --- !u!114 &1597275522
@@ -1053,7 +1056,9 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c64d343cf5ad1cfb01e0e77442e6f93, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Typescript.GeneratedComponents.SetHitPoint, Assembly-CSharp
+    $ GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-1597275522-0
+  material: {fileID: 2100000, guid: 7cdc333938609f945a6c759b8e5be35e, type: 2}
 --- !u!114 &1597275523
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1065,7 +1070,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b8d744734489b9bf72ff09b4ad804b9f, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Typescript.GeneratedComponents.RandomTimeOffset,
+    Assembly-CSharp $ GlobalObjectId_V1-2-74babf34c87b5274083320f9a0b6a8b0-1597275523-0
 --- !u!1 &1609064305
 GameObject:
   m_ObjectHideFlags: 0

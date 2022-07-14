@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Needle.Tiny.Codegen.ComponentGenerator, Needle.Tiny $
     GlobalObjectId_V1-2-fb211ff7a577d9448bfd708c7d9fa803-784234925-0
-  compilerDirectory: Projects/Basic/node_modules/@needle-tools/needle-component-compiler/src
+  compilerDirectory: Projects/Basic/node_modules/needle.tiny.engine/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!1 &1211803451
 GameObject:
   m_ObjectHideFlags: 0
@@ -359,6 +359,8 @@ MonoBehaviour:
   enableVR: 1
   enableAR: 1
   defaultAvatar: {fileID: 0}
+  createVRButton: 1
+  createARButton: 1
 --- !u!4 &1211803453
 Transform:
   m_ObjectHideFlags: 0

@@ -391,6 +391,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Needle.Tiny.ExportInfo, Needle.Tiny.Common $ GlobalObjectId_V1-2-646af1d594f68a942bf7b4cc75319d4e-784234923-0
   DirectoryName: Projects/Basic
   AutoExport: 1
+  Dependencies: []
 --- !u!4 &784234924
 Transform:
   m_ObjectHideFlags: 0
@@ -544,6 +545,8 @@ MonoBehaviour:
   enableVR: 1
   enableAR: 1
   defaultAvatar: {fileID: 0}
+  createVRButton: 1
+  createARButton: 1
 --- !u!4 &1211803453
 Transform:
   m_ObjectHideFlags: 0
