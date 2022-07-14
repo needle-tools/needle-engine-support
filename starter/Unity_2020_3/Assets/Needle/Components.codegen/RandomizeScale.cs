@@ -1,7 +1,11 @@
-// auto generated code - do not edit
+// NEEDLE_CODEGEN_START
+// auto generated code - do not edit directly
+
+#pragma warning disable
+
 namespace Needle.Typescript.GeneratedComponents
 {
-	public class RandomizeScale : UnityEngine.MonoBehaviour
+	public partial class RandomizeScale : UnityEngine.MonoBehaviour
 	{
 		public UnityEngine.Transform @target;
 		public float @minScale = 0.1f;
@@ -11,3 +15,5 @@ namespace Needle.Typescript.GeneratedComponents
 		public void update(){}
 	}
 }
+
+// NEEDLE_CODEGEN_END

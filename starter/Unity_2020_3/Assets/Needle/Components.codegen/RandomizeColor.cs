@@ -1,7 +1,11 @@
-// auto generated code - do not edit
+// NEEDLE_CODEGEN_START
+// auto generated code - do not edit directly
+
+#pragma warning disable
+
 namespace Needle.Typescript.GeneratedComponents
 {
-	public class RandomizeColor : UnityEngine.MonoBehaviour
+	public partial class RandomizeColor : UnityEngine.MonoBehaviour
 	{
 		private UnityEngine.Renderer[] @renderers = new UnityEngine.Renderer[]{ };
 		private float @color;
@@ -11,3 +15,5 @@ namespace Needle.Typescript.GeneratedComponents
 		public void onColorChanged(){}
 	}
 }
+
+// NEEDLE_CODEGEN_END
