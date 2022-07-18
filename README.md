@@ -22,7 +22,7 @@ Or use the [glTF shell extension for windows ⇡](https://apps.microsoft.com/sto
 
 
 ## Feedback 💡
-Please fill out the [alpha tester feedback form ⇡](https://docs.google.com/forms/d/e/1FAIpQLSfIz3BtOTsC9lLDjMkVnl5znzYXXCQnPOX7mu6XCpQoTtVldA/viewform) (it takes only ~1 minute) to help us improve the engine/exporter/documentation
+Please fill out the [alpha tester feedback form ⇡](https://fwd.needle.tools/needle-engine/feedback) (it takes only ~1 minute) to help us improve the engine/exporter/documentation
 
 ---
 ## Contact ✒️
