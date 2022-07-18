@@ -1,7 +1,7 @@
 # Prerequisites 💿
-- [nodejs ⇡](https://nodejs.org/en/) (required)
-- [Unity 2020.3.x ⇡](https://unity3d.com/get-unity/download) (required)
-- [vscode ⇡](https://code.visualstudio.com/) (recommended)
+- [nodejs ⇡](https://nodejs.org/en/) (required for development)
+- [Unity 2020.3.x ⇡](https://unity3d.com/get-unity/download) (required for development)
+- [vscode ⇡](https://code.visualstudio.com/) (recommended for development)
 
 # Getting started 🛎
 
