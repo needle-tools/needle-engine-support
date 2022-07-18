@@ -2,6 +2,8 @@
 To deploy your threejs project you can click ``Build Development Dist`` or ``Build Production Dist`` on your ``ExportInfo`` component.   
 You can also access these functions from the menu at ``Needle/Tiny/Build Dist``.
 
+*NOTE:* that Nodejs is **only** required during development. The distributed website (using the vite template) is not relying on Nodejs and can be used on any regular server.
+
 ### Deploying for development
 See notes above on how to access. The main difference to a production build is that it does not perform [``ktx2`` ⇡](https://github.khronos.org/KTX-Specification/) and [``draco`` ⇡](https://google.github.io/draco/) compression. Both can reduce file-size drastically. We generally recommend making builds using the ``production`` option.
 
