@@ -8,8 +8,8 @@ Here you can find information and guides on how to use the needle Unity → thre
 - [Project Structure](./documentation/project_structure.md) — *vite, npm Definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
 - [Scripting](./documentation/scripting.md) — *components, codegen, interop*
-- [HTML](./documentation/html.md)
-- [Deployment](./documentation/deployment.md)
+- [HTML](./documentation/html.md) — *web-components*
+- [Deployment](./documentation/deployment.md) — *build and upload to a server*
 - [Component Reference](./documentation/component-reference.md)
 - [Samples and Modules](./documentation/samples-and-modules.md)
 
