@@ -13,6 +13,8 @@ Here you can find information and guides on how to use the needle Unity → thre
 - [Component Reference](./documentation/component-reference.md)
 - [Samples and Modules](./documentation/samples-and-modules.md)
 
+## Feedback 💡
+Please fill out the [alpha tester feedback form ⇡](https://docs.google.com/forms/d/e/1FAIpQLSfIz3BtOTsC9lLDjMkVnl5znzYXXCQnPOX7mu6XCpQoTtVldA/viewform) (it takes only ~1 minute) to help us improve the engine/exporter/documentation
 
 --- 
 ## Useful resources 🖇
