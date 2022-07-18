@@ -3,8 +3,7 @@
 Needle Engine is tightly integrated into the Unity Editor:  
 Open ``File/Build Settings`` and select ``Needle Engine`` for options!  
 
-![image](https://user-images.githubusercontent.com/5083203/179509987-6e13ec19-65a1-4b95-915f-839026350707.png)
-
+![image](https://user-images.githubusercontent.com/5083203/179510828-931e534a-c155-44b5-b9aa-29bac33a0c48.png)
 
 
 To deploy your threejs project you can click ``Build`` in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see Deploying for production below) which requires toktx to be installed on your machine.
