@@ -19,4 +19,20 @@ To make a production build you need to have [toktx ⇡](https://github.com/Khron
 NOTE: when building for production using custom extensions make sure to handle those in ``gltf-transform``, see ``needle.tiny.engine/plugins/gltf-packer`` for reference.
 
 ## Deploy to glitch 🐟
-Add the ``Deployment`` component (next to ``ExportInfo``) and follow the instructions on the component.
+1) Add the ``Deployment`` component to the GameObject that also has the ``ExportInfo`` component.
+2) Click the ``Remix on glitch`` button on the component
+3) Your browser will open the glitch project template
+4) Find and click the ``Remix another`` button on the glitch website  
+   ![image](https://user-images.githubusercontent.com/5083203/179834548-acf68b02-95d8-43e5-802a-4e4086e39309.png)
+5) Glitch will now create a remix of the template. Copy the URL from your browser   
+   ![image](https://user-images.githubusercontent.com/5083203/179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1.png)
+6) Open Unity again and paste the URL in the ``Project Name`` field of your ``Deployment`` component  
+  ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
+7) On Glitch open the ``.env`` file and enter a password in the field ``Variable Value`` next to the **DEPLOY_KEY**  
+  ![image](https://user-images.githubusercontent.com/5083203/179835779-ec128288-4db2-42f7-adc0-3c1de6799cef.png)
+8) Add the same password in Unity  
+  ![image](https://user-images.githubusercontent.com/5083203/179835883-b524d23f-d887-4ac1-9a59-d5508b6b30c2.png)
+
+
+
+
