@@ -30,4 +30,4 @@ Please fill out the [alpha tester feedback form ⇡](https://fwd.needle.tools/ne
 [@NeedleTools](https://twitter.com/NeedleTools) • 
 [@marcel_wiessler](https://twitter.com/marcel_wiessler) • 
 [@hybridherbst](https://twitter.com/hybridherbst) • 
-[Needle Discord](https://discord.gg/CFZDp4b)
+[Needle Discord](http://discord.needle.tools)
