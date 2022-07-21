@@ -2,8 +2,6 @@ name: discord message
 on:
   issues:
     types: [opened]
-  issue_comment:
-    types: [created]
 jobs:
   newissue:
     if: contains(github.event.comment.html_url, 'comment') == false
