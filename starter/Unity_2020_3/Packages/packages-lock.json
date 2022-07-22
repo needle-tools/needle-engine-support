@@ -31,7 +31,7 @@
       "url": "https://packages.needle.tools"
     },
     "com.needle.unity-threejs": {
-      "version": "1.24.0-pre",
+      "version": "1.24.1-pre",
       "depth": 0,
       "source": "registry",
       "dependencies": {
