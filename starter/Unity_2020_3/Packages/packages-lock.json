@@ -24,22 +24,22 @@
       "url": "https://packages.needle.tools"
     },
     "com.needle.tiny.engine": {
-      "version": "1.14.2-pre",
+      "version": "1.17.0-pre",
       "depth": 1,
       "source": "registry",
       "dependencies": {},
       "url": "https://packages.needle.tools"
     },
     "com.needle.unity-threejs": {
-      "version": "1.20.3-pre.1",
+      "version": "1.24.0-pre",
       "depth": 0,
       "source": "registry",
       "dependencies": {
         "com.unity.timeline": "1.5.7",
-        "org.khronos.unitygltf": "1.10.0-pre",
+        "org.khronos.unitygltf": "1.10.1-pre",
         "com.unity.nuget.newtonsoft-json": "3.0.1",
         "com.unity.sharp-zip-lib": "1.2.2-preview.2",
-        "com.needle.tiny.engine": "1.14.2-pre"
+        "com.needle.tiny.engine": "1.17.0-pre"
       },
       "url": "https://packages.needle.tools"
     },
@@ -195,7 +195,7 @@
       }
     },
     "org.khronos.unitygltf": {
-      "version": "1.10.0-pre",
+      "version": "1.10.1-pre",
       "depth": 1,
       "source": "registry",
       "dependencies": {

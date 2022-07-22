@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9d9a5969691dba845877d0a52b6d9397, type: 3}
   m_Name: UnityGLTFSettings
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: UnityGLTF.GLTFSettings, UnityGLTFScripts $ GlobalObjectId_V1-3-a605a97ec9d984841856bedb8f611726-11400000-0
   exportNames: 1
   exportFullPath: 1
   requireExtensions: 0
@@ -21,6 +21,7 @@ MonoBehaviour:
   useTextureFileTypeHeuristic: 1
   defaultJpegQuality: 90
   exportAnimations: 1
+  useAnimationPointer: 0
   uniqueAnimationNames: 0
   bakeSkinnedMeshes: 0
   blendShapeExportProperties: -1
