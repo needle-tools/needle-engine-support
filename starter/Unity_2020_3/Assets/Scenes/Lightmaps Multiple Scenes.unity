@@ -355,7 +355,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf409ffccda34166b926284faafa75c8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.WebXR, Needle.Tiny $ GlobalObjectId_V1-2-fb211ff7a577d9448bfd708c7d9fa803-1211803452-0
   enableVR: 1
   enableAR: 1
   defaultAvatar: {fileID: 0}
@@ -368,12 +368,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211803451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.36957884, y: 0.020661592, z: -0.32284284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1597275517
 GameObject:
@@ -407,6 +407,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 706762906}
+  - {fileID: 1211803453}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -424,7 +425,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Needle.Tiny.Export.GltfObject, Needle.Tiny $ GlobalObjectId_V1-2-fb211ff7a577d9448bfd708c7d9fa803-1597275519-0
   SuppressExport: 0
   SmartExport: 0
-  <ComponentsInExtension>k__BackingField: 1
 --- !u!114 &1597275520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -497,7 +497,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: UnityEngine.EventSystems.EventSystem, UnityEngine.UI $
+    GlobalObjectId_V1-2-fb211ff7a577d9448bfd708c7d9fa803-1786657969-0
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -508,7 +509,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786657968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

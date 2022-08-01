@@ -262,7 +262,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 42.368, y: -221.19, z: -7.708}
 --- !u!114 &340158901
 MonoBehaviour:
@@ -298,7 +298,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6542038656970245071, guid: 220d6b488b6d163469ab8892e4daa848, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6542038656970245071, guid: 220d6b488b6d163469ab8892e4daa848, type: 3}
       propertyPath: m_LocalPosition.x
@@ -398,7 +398,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8501538714249080239, guid: 3dc237d2bb9e8914386866d5aacc90e4, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8501538714249080239, guid: 3dc237d2bb9e8914386866d5aacc90e4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -505,7 +505,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &452413157
 GameObject:
@@ -538,7 +538,7 @@ Transform:
   m_LocalScale: {x: 1.9301, y: 0.1, z: 1.9301}
   m_Children: []
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &452413159
 MeshRenderer:
@@ -611,7 +611,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 648247131834236525, guid: b510b2339afad434ea3b9279bbe43d07, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 648247131834236525, guid: b510b2339afad434ea3b9279bbe43d07, type: 3}
       propertyPath: m_LocalPosition.x
@@ -792,7 +792,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 908409272947668052, guid: 518b1eca5e81efa419cc9f707554f59a, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 908409272947668052, guid: 518b1eca5e81efa419cc9f707554f59a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1061,7 +1061,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &706762907
 MonoBehaviour:
@@ -1173,7 +1173,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: Needle.Tiny.ExportInfo, Needle.Tiny.Common $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234923-0
   DirectoryName: projects/Basic
   AutoExport: 1
-  Dependencies: []
+  Dependencies:
+  - Name: mycodemodule
+    VersionOrPath: Assets/ExampleModules/MyFirstModule.npmdef
+    Guid: aea9347d90fe02d4c8acf8ca0582692c
+  - Name: com.needle.shader-example
+    VersionOrPath: Assets/Scenes/CustomShader/com.needle.shader-example.npmdef
+    Guid: 56ca03fbe2e9f3f4480df33c8daa0d0b
+  - Name: com.needle.lightmaps-example
+    VersionOrPath: Assets/Scenes/Lightmaps/com.needle.lightmaps-example.npmdef
+    Guid: 3bb0df87d9f356747b0b82f750d3d159
 --- !u!4 &784234924
 Transform:
   m_ObjectHideFlags: 0
@@ -1270,7 +1279,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b9ba56a0a7b775340a115f4c712abd91, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.GridHelper, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-806518226-0
   isGizmo: 0
   size: 10
   divisions: 10
@@ -1284,12 +1293,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 806518225}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &806518228
 MonoBehaviour:
@@ -1302,7 +1311,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 141c4525abe049cc8376792dfeed6718, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.AxesHelper, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-806518228-0
   Length: 1
   DepthTest: 1
   IsGizmo: 1
@@ -1317,7 +1326,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 385d14bf62e962549a8aeb84fdd6bad1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.XRFlag, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-806518229-0
   VisibleIn: 5
 --- !u!1001 &959497547
 PrefabInstance:
@@ -1332,7 +1341,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3486779157386861422, guid: cadd2a2a1170e044e975849dad927a6d, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3486779157386861422, guid: cadd2a2a1170e044e975849dad927a6d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1447,7 +1456,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cf409ffccda34166b926284faafa75c8, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.WebXR, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1211803452-0
   enableVR: 1
   enableAR: 1
   defaultAvatar: {fileID: 0}
@@ -1460,12 +1469,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1211803451}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.36957884, y: 0.020661592, z: -0.32284284}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.36957884, y: -0.029338408, z: -0.32284284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 17
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1249612787
 PrefabInstance:
@@ -1488,7 +1497,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9094220728068543027, guid: 2f03f3a162fd0d24389f92f0a3ef46a1, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 9094220728068543027, guid: 2f03f3a162fd0d24389f92f0a3ef46a1, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1576,7 +1585,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 990662306271238438, guid: ddfb2bfe0c3c42642a77766b21048540, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 990662306271238438, guid: ddfb2bfe0c3c42642a77766b21048540, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1696,7 +1705,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d77c828be18c7084e96102e50a4903b2, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Networking, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1365103853-0
   url: /socket
   urlParameterName: 
   localhost: needle-tiny-starter.glitch.me
@@ -1711,7 +1720,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3678e6ee7af44e4d9fecf9a0f082ba74, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.SyncedRoom, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1365103854-0
   roomName: GlitchTemplate
   urlParameterName: room
   joinRandomRoom: 1
@@ -1724,12 +1733,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365103852}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1372076889
 PrefabInstance:
@@ -1740,7 +1749,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3445362787198382902, guid: 5fe34d9de64dc004bb27713e0b6f417d, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 3445362787198382902, guid: 5fe34d9de64dc004bb27713e0b6f417d, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1817,7 +1826,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: eb1822f1751a4acabd7c1dba099b6b56, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.DragControls, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1372076892-0
 --- !u!114 &1372076893
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1829,7 +1838,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Tiny.Components.Networking.SyncedTransform, Needle.Tiny
+    $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1372076893-0
   fastMode: 0
 --- !u!1 &1597275517
 GameObject:
@@ -1861,6 +1871,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 806518227}
   - {fileID: 1880705061}
   - {fileID: 706762906}
   - {fileID: 1609064307}
@@ -1876,8 +1887,11 @@ Transform:
   - {fileID: 601492092}
   - {fileID: 402950694}
   - {fileID: 1760165970}
+  - {fileID: 1786657970}
+  - {fileID: 1211803453}
+  - {fileID: 1365103855}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1597275519
 MonoBehaviour:
@@ -1893,7 +1907,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: Needle.Tiny.Export.GltfObject, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275519-0
   SuppressExport: 0
   SmartExport: 0
-  <ComponentsInExtension>k__BackingField: 1
 --- !u!114 &1597275520
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2095,7 +2108,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!114 &1609064308
 MonoBehaviour:
@@ -2144,7 +2157,7 @@ Transform:
   m_LocalScale: {x: 0.25795874, y: 0.25795874, z: 0.25795874}
   m_Children: []
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1760165971
 MonoBehaviour:
@@ -2306,7 +2319,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: UnityEngine.EventSystems.EventSystem, UnityEngine.UI $
+    GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1786657969-0
   m_FirstSelected: {fileID: 0}
   m_sendNavigationEvents: 1
   m_DragThreshold: 10
@@ -2317,12 +2331,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1786657968}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.05, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1880705059
 GameObject:
@@ -2368,5 +2382,5 @@ Transform:
   m_Children:
   - {fileID: 92343084}
   m_Father: {fileID: 1597275518}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
