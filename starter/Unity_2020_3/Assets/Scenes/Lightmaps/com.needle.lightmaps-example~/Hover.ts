@@ -1,4 +1,4 @@
-import { Behaviour } from "needle.tiny.engine/engine-components/Component";
+import { Behaviour } from "@needle-tools/engine/engine-components/Component";
 
 
 export class Hover extends Behaviour {
