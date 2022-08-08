@@ -1,4 +1,4 @@
-﻿import { TypeStore } from "needle.tiny.engine/engine/engine_typestore"
+﻿import { TypeStore } from "@needle-tools/engine/engine/engine_typestore"
 
 // Import types
 import { SetHitPoint } from "../SetHitPoint.ts";

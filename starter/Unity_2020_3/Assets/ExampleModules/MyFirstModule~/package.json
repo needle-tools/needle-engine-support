@@ -3,11 +3,11 @@
   "version": "1.0.0",
   "dependencies": {},
   "peerDependencies": {
-    "needle.tiny.engine": ">= 1.0.0-pre",
+    "@needle-tools/engine": ">= 1.0.0-pre",
     "three": "^0.130"
   },
   "devDependencies": {
-    "needle.tiny.engine": "../../../Library/PackageCache/com.needle.tiny.engine@1.1.0-pre.6/package~",
-    "three": "../../../Library/PackageCache/com.needle.tiny.engine@1.1.0-pre.6/package~/node_modules/three"
+    "@needle-tools/engine": "../../../Library/PackageCache/com.@needle-tools/engine@1.1.0-pre.6/package~",
+    "three": "../../../Library/PackageCache/com.@needle-tools/engine@1.1.0-pre.6/package~/node_modules/three"
   }
 }

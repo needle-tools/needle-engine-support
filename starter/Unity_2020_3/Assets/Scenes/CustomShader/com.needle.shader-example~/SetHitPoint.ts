@@ -1,9 +1,9 @@
 import { Material } from "three";
-import { Behaviour, GameObject } from "needle.tiny.engine/engine-components/Component";
-import { serializeable } from "needle.tiny.engine/engine/engine_serialization_decorator";
-import { CustomShader } from "needle.tiny.engine/engine/extensions/KHR_techniques_webgl";
-import { Renderer } from "needle.tiny.engine/engine-components/Renderer";
-import { RaycastOptions } from "needle.tiny.engine/engine/engine_physics";
+import { Behaviour, GameObject } from "@needle-tools/engine/engine-components/Component";
+import { serializeable } from "@needle-tools/engine/engine/engine_serialization_decorator";
+import { CustomShader } from "@needle-tools/engine/engine/extensions/KHR_techniques_webgl";
+import { Renderer } from "@needle-tools/engine/engine-components/Renderer";
+import { RaycastOptions } from "@needle-tools/engine/engine/engine_physics";
 
 
 export class SetHitPoint extends Behaviour {

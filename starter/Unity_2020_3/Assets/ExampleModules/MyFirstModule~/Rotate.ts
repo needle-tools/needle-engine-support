@@ -1,5 +1,5 @@
-import { Behaviour } from "needle.tiny.engine/engine-components/Component";
-import { serializeable } from "needle.tiny.engine/engine/engine_serialization_decorator";
+import { Behaviour } from "@needle-tools/engine/engine-components/Component";
+import { serializeable } from "@needle-tools/engine/engine/engine_serialization_decorator";
 import { Vector3 } from "three"
 
 export class Rotate extends Behaviour {
