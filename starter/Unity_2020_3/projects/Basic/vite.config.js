@@ -60,8 +60,8 @@ export default defineConfig({
                 const absPath = path.resolve(__dirname, 'node_modules/three');
                 return absPath;
             },
-            'needle.tiny.engine': () => {
-                const absPath = path.resolve(__dirname, 'node_modules/needle.tiny.engine');
+            '@needle-tools/engine': () => {
+                const absPath = path.resolve(__dirname, 'node_modules/@needle-tools/engine');
                 return absPath;
             },
         }
