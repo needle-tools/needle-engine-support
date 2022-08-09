@@ -18,3 +18,4 @@ MonoBehaviour:
   overrideBuildSettings: 1
   exportOnRecompile: 0
   debugMode: 0
+  allowRunningProjectFixes: 1
