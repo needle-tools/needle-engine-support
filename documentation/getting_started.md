@@ -33,9 +33,9 @@ Open ``Edit/Project Settings`` and select ``Package Manager``. Add a new [scoped
 - URL: ``https://packages.needle.tools``
 - Scope(s): ``[com.needle, org.khronos]``
 
-Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``MyRegistries``. Select ``Needle Unity → threejs`` and click install in the bottom right corner.
+Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``MyRegistries``. Select ``Needle Engine Exporter`` and click install in the bottom right corner.
 
-Open ``Edit/Project Settings`` and find ``Needle/threejs Exporter``. Select the directory for the needle runtime package (``Local js package``) and for the local threejs module (``Local threejs``). 
+Open ``Edit/Project Settings`` and find ``Needle/Needle Engine``. Select the directory for the needle runtime package (``Local js package``) and for the local threejs module (``Local threejs``). 
 
 ### Creating a new scene
 
@@ -57,9 +57,9 @@ To add content to the scene create a new GameObject and add a ``GltfObject`` com
 
 #### **Troubleshooting**
 - The local server does not start
-    - Try opening your threejs project directory in a command line tool and run ``npm install`` and then ``npm run dev-host``. Make sure both the local runtime package (``node_modules/needle.tiny.engine``) as well as threejs (``node_modules/three``) did install. You may run ``npm install`` in both of these directories as well.
+    - Try opening your threejs project directory in a command line tool and run ``npm install`` and then ``npm run dev-host``. Make sure both the local runtime package (``node_modules/@needle-tools/engine``) as well as threejs (``node_modules/three``) did install. You may run ``npm install`` in both of these directories as well.
 - The skybox is broken
-    - Try rebuilding the project in Unity (``ExportInfo/Build``) - this is a known issue and happens sometimes but will hopefully be fixed at some point.
+    - Try rebuilding the project in Unity (``ExportInfo/Play`` or ) - this is a known issue and happens sometimes but will hopefully be fixed at some point.
 
 
 You are now ready to continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md)
