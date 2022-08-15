@@ -27,7 +27,7 @@ Supported features:
 - Animator incl. top-level state transitions. Blend trees / sub state machines are currently not supported.
 - AnimationClips
 
-Needle Engine is one of the first to support the new [KHR_ANIMATION_POINTER glTF extension](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer).  
+Needle Engine is one of the first to support the new [glTF extension KHR_ANIMATION_POINTER ⇡](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer).  
 This means that almost all properties, including script variables, are animatable.  
 
 One current limitation is that materials won't be duplicated on export — if you want to animate the same material with different colors, for example, you currently need to split the material in two. 
