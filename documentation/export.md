@@ -70,4 +70,11 @@ These coordinate changes are
 - Transparency isn't automatically set currently. If you want your custom shader to be transparent, you can set that from a custom component on the GameObject.
 
 ## Exporting Lightmaps
-To export lightmaps you simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
+To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
+
+### Recommended Lightmap Settings
+- Lightmap Encoding: Normal Quality (adjust in Project Settings > Player)
+- Progressive GPU (faster and usually accurate enough for small scenes)
+- Non-Directional Lightmaps
+- Max Lightmap Size 2k (you can go higher, but expect large files)
+- Compress Lightmaps OFF (increases quality; otherwise will be compressed again at export time)
