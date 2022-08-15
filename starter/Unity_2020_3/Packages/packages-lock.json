@@ -15,7 +15,7 @@
       "url": "https://packages.needle.tools"
     },
     "com.needle.engine-exporter": {
-      "version": "2.3.0-pre",
+      "version": "2.4.0-pre",
       "depth": 0,
       "source": "registry",
       "dependencies": {
