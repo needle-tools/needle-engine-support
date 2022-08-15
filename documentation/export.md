@@ -86,6 +86,8 @@ These coordinate changes are
 ## Exporting Lightmaps
 To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
 
+> When working on multiple scenes, disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
+
 ### Recommended Lightmap Settings
 - Lightmap Encoding: Normal Quality (adjust in Project Settings > Player)
 - Progressive GPU (faster and usually accurate enough for small scenes)
