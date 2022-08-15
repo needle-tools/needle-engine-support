@@ -66,6 +66,8 @@ To export custom shaders (e.g. ShaderGraph shaders), add an ``ExportShader`` Ass
 These coordinate changes are
   - UV coordinates in Unity start at the bottom left; in glTF they start at the top left.
   - X axis values are flipped in glTF compared to Unity (a variant of a left-handed to right-handed coordinate system change).
+- three.js supports stencil buffers but conversion isn't automatic, refer to the three.js docs for how to set that up: https://threejs.org/examples/?q=sten#webgl_clipping_stencil  
+- Transparency isn't automatically set currently. If you want your custom shader to be transparent, you can set that from a custom component on the GameObject.
 
 ## Exporting Lightmaps
 To export lightmaps you simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
