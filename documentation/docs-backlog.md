@@ -37,6 +37,11 @@ There's no technical limitation to this beyond the capabilities of your device.
 
 You can split up scenes into multiple glTF files with some limitations, and then load those on demand (only when needed). This keeps loading performance fast and file size small.
 
+## Source Control
+
+Generated Projects can either be added to source control or kept dynamic. Adding them to source control unlocks being able to adjust HTML, CSS, etc very flexible.  
+To generate dynamic projects, change their path to `../Library/MyScene`. They will be regenerated if needed.
+
 # How it works
 
 Needle Engine roughly consists of three parts:
