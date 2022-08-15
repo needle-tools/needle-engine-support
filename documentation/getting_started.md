@@ -19,47 +19,56 @@
 6) Focus Unity - a notification window should open that the information has been added successfully from your clipboard.
 7) Click save and close Unity. You should now have access rights to the needle package registry.
 
-## Quick start ⚡
-Open the project in ``starter/Unity_2020_3`` for a Unity → threejs project ready to run.
+## Quick Start — Starter Project ⚡
+Clone this repository and open the project in ``starter/Unity_2020_3`` for a full project that's ready to run.
 
-## Slow start 🐢
+## Start from Scene Template 🌵
 
-### Creating a new project
+We provide a number of Scene Templates for quickly starting new projects. This allows you to go from idea to prototype in a few clicks.
 
-Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend you install the [Unity Hub ⇡](https://docs.unity3d.com/hub/manual/index.html) to manage your editor installations.
+> You can also create your own templates using [``Create/Scene Template ⇡``](https://docs.unity3d.com/Manual/scene-templates.html)
+ 
+## Slow Start — from Scratch 🐢
 
-Open ``Edit/Project Settings`` and select ``Package Manager``. Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
+### Create a new project
+
+Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend you install the [Unity Hub ⇡](https://docs.unity3d.com/hub/manual/index.html) to manage your Editor installations.
+
+Open ``Edit/Project Settings`` and select ``Package Manager``.  
+Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
 - Name: ``needle``
 - URL: ``https://packages.needle.tools``
 - Scope(s): ``[com.needle, org.khronos]``
 
-Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``MyRegistries``. Select ``Needle Engine Exporter`` and click install in the bottom right corner.
+Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``My Registries``. Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
 
-Open ``Edit/Project Settings`` and find ``Needle/Needle Engine``. Select the directory for the needle runtime package (``Local js package``) and for the local threejs module (``Local threejs``). 
+### Create a new scene
 
-### Creating a new scene
+Create a new empty scene. Now, add an empty GameObject, name it "Exporter" and add an `ExportInfo` component to it.  
+In this component you create and quickly access your exported runtime project.  
+It also warns you if any of the required modules is outdated or not installed.  
 
-You can export scenes to threejs by adding an ``ExportInfo`` component to any GameObject. In this component you create and quick-access your exported runtime javascript project. It also warns you if any of the required modules is outdated or not installed.
+The project name is by default the scene name. If you want to change it, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
 
-To get started enter a ``Directory Name`` where you want to create a new runtime project. The path is relative to your Unity project.
+Next select a web template for your project. The default template is based on [Vite ⇡](https://vitejs.dev/), a fast web app bundler.  
+Click ``Generate Project``. Wait for the installation to finish — you can see a progress indicator in the bottom right corner of the editor.  
 
-Next select a template you want to generate a project from (default is using [Vite ⇡](https://vitejs.dev/)) and click ``Generate Project``. Wait for the installation to finish (you can see a progress indicator in the bottom right corner of the editor).
+After installation your project should automatically run and a new browser window opens. You might see a warning about SSL security depending on your local configuration. If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see the default Skybox in your browser.  
 
-After installation your project should automatically run and a new browser window opens. You might see a warning about ssl security depending on your local configuration. You can just click ``advanced`` and ``proceed to site``. Now you should see the Unity skybox in your browser. ⭐ **Congrats!** You just built your first project using Unity to threejs!
+⭐ **Congratulations!** You just started your first project using Needle Engine! We're excited what you'll build.  
 
-Our exporter comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``. Select your ``Main Camera`` GameObject and add a new ``OrbitControls`` script to it. Save your scene. Your browser should refresh and you can now move the camera around!
+Needle Engine comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``, which we're going to use to make the camera interactive.
+1. Select your ``Main Camera`` GameObject
+2. Add a new ``OrbitControls`` component to it 
+3. Press play or save your scene
+4. Your browser should refresh and you can now move the camera around!
 
-To add content to the scene create a new GameObject and add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF files. Add a mesh (e.g. via context ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. Again this refreshes your browser to render the cube.
+To add content to the scene create a new GameObject and add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF files. Add an object (e.g. ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. This will refresh your browser window and the cube should now be displayed.
 
-#### **Tips**
-- For future projects start with one of our Unity scene templates (e.g. Basic) for even faster project creation in just a few clicks.
-- You can also **create your own templates** using ``Create/Scene Template``: [documentation ⇡](https://docs.unity3d.com/Manual/scene-templates.html)
+> **No cube on your website**? Make sure it's a child of your GltfObject root.
+> **The Skybox looks weird**? This is a known issue and will be fixed soon — just press play again and the skybox should appear correctly.
+> **The local server does not start?** Make sure you read and followed the [Prerequisites](#prerequisites-) Also check the console and `ExportInfo` component for warnings or errors. 
 
-#### **Troubleshooting**
-- The local server does not start
-    - Try opening your threejs project directory in a command line tool and run ``npm install`` and then ``npm run dev-host``. Make sure both the local runtime package (``node_modules/@needle-tools/engine``) as well as threejs (``node_modules/three``) did install. You may run ``npm install`` in both of these directories as well.
-- The skybox is broken
-    - Try rebuilding the project in Unity (``ExportInfo/Play`` or ) - this is a known issue and happens sometimes but will hopefully be fixed at some point.
-
+In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 
 You are now ready to continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md)
