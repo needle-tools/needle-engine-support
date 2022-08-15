@@ -4,7 +4,7 @@ This section contains pieces of information that are important, but need to be s
 
 ## Recommended Unity configuration
 
-- Unity 2021.3.1f1+  
+- Unity 2020.3.8f1+ or 2022.1+
 - Render Pipeline: Universal  
 - Color Space: Linear  
 - Non-Directional Lightmaps  
