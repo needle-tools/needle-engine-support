@@ -66,7 +66,7 @@ Materials that can be converted out-of-the-box:
 - URP/Lit
 - URP/Unlit
 
-Other materials are converted using a propery name heuristic. That means that depending on what property names your materials and shaders use, you might want to either refactor your custom shader's properties to use the property names of either URP/Lit or PBRGraph, or export the material as Custom Shader.
+Other materials are converted using a propery name heuristic. That means that depending on what property names your materials and shaders use, you might want to either refactor your custom shader's properties to use the property names of either URP/Lit or PBRGraph, or export the material as [Custom Shader](#custom-shaders).
 
 ### Custom Shaders
 To export custom shaders (e.g. ShaderGraph shaders), add an ``ExportShader`` Asset Label (see bottom of the inspector) to the shader you want to export.  
