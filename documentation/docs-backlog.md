@@ -67,7 +67,8 @@ flowchart LR
 
 ## Goals
 - Fast iteration and rapid deployment.
-- Same ease of working on 3D web projects as on 2D web projects.
+- Same ease of working on 3D web projects as on 2D web projects
+- Improve collaboration between developers and artists
 - Responsive web extends beyond screens – AR and VR should be built in, not afterthoughts.
 - Contributing back to open-source projects
 - Open discussion regarding 3D and web standards
