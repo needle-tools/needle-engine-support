@@ -71,6 +71,4 @@ To add content to the scene create a new GameObject and add a ``GltfObject`` com
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 
-💚
-
-Continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md) →
+👉 Continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md) →
