@@ -19,10 +19,10 @@
 6) Focus Unity - a notification window should open that the information has been added successfully from your clipboard.
 7) Click save and close Unity. You should now have access rights to the needle package registry.
 
-## Quick start
+## Quick start ⚡
 Open the project in ``starter/Unity_2020_3`` for a Unity → threejs project ready to run.
 
-## Slow start
+## Slow start 🐢
 
 ### Creating a new project
 
