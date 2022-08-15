@@ -59,5 +59,24 @@ Ensure your project is set to Linear colorspace.
 </details>
 
 <details>
+  <summary><b>My local server does not start / I do not see a website</b></summary>
+  
+The most likely reason is an incorrect installation. 
+Check the console and the `ExportInfo` component for errors or warnings.  
+
+If these warnings/errors didn't help, try the following steps in order. Give them some time to complete. Stop once your problem has been resolved. Check the console for warnings and errors.  
+  
+- Make sure you follow the [Prerequisites](./getting_started.md#prerequisites-).
+- Install your project by selecting your `ExportInfo` component and clicking `Install` 
+- Run a clean installation by selecting your `ExportInfo` component, holding Alt and clicking `Clean Install`
+- Try opening your web project directory in a command line tool and follow these steps:
+  - run ``npm install`` and then ``npm run dev-host``
+  - Make sure both the local runtime package (``node_modules/@needle-tools/engine``) as well as three.js (``node_modules/three``) did install. 
+  - You may run ``npm install`` in both of these directories as well.
+
+</details>
+
+<details>
   <summary><b>...</b></summary>
+
 </details>
