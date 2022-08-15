@@ -10,7 +10,7 @@ Information and guides on how to use the needle Unity → threejs exporter.
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
 - [Scripting](./documentation/scripting.md) — *components, codegen, interop with the web, interop with three.js*
-- [HTML](./documentation/html.md) — *web-components*
+- [HTML](./documentation/html.md) — *web-components, responsive design*
 - [Deployment](./documentation/deployment.md) — *build and upload to a server*
 - [Component Reference](./documentation/component-reference.md)
 - [Samples and Modules](./documentation/samples-and-modules.md)
