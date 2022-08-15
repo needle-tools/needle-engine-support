@@ -93,4 +93,5 @@ To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Man
 - Progressive GPU (faster and usually accurate enough for small scenes)
 - Non-Directional Lightmaps
 - Max Lightmap Size 2k (you can go higher, but expect large files)
+- Max 4x 2k lightmaps per scene (you can go higher, but expect large files)
 - Compress Lightmaps OFF (increases quality; otherwise will be compressed again at export time)
