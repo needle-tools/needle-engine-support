@@ -33,12 +33,14 @@ Please refer to the [``AssetReference`` section on loading](scripting.md#assetre
 (The check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
 
 ## Exporting Animations
-Supported features:
-- Timeline incl. activation tracks, animation tracks, track offsets
-- Animator incl. top-level state transitions
+Needle Engine supports a considerable and powerful subset of Unity's animation features:
+
+- **Timeline** incl. activation tracks, animation tracks, track offsets
+- **Animator** incl. top-level state transitions
   - Blend trees are currently not supported.
   - Sub state machines are currently not supported.
-- AnimationClips incl. Loop modes
+- **AnimationClips** incl. Loop modes
+- **Procedural Animations** can be created via scripting
 
 Needle Engine is one of the first to support the new [glTF extension KHR_ANIMATION_POINTER ⇡](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer).  
 This means that almost all properties, including script variables, are animatable.  
