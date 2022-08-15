@@ -54,5 +54,10 @@ Ensure your project is set to Linear colorspace.
 </details>
 
 <details>
+<summary><b>I created a new script in a sub-scene but it does not work</b></summary>
+  When creating new scripts in npmdefs in sub-scenes (that is a scene that is exported as a reference from a script in your root export scene) you currently have to re-export the root scene again. This is because the code-gen that is responsible for registering new scripts currently only runs for scenes with a ``ExportInfo`` component. This will be fixed in the future.
+</details>
+
+<details>
   <summary><b>...</b></summary>
 </details>
