@@ -1,5 +1,7 @@
 # Export ⚙️
-By default your Unity scene is always exported on save (if it contains a valid ``ExportInfo`` component). This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.
+To mark any Unity scene as "exportable", add an ``ExportInfo`` component to a root object. This component helps you to generate your new web project from a template, set up dependencies to other component libraries (we call them `NpmDef`), and to deploy your project. 
+
+> By default, your scene is exported on save. This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.  
 
 ## Exporting glTF files
 To export meshes, materials, animations, textures (...) create a new GameObject in your hierarchy and add a ``GltfObject`` component to it. This is the root of a new glTF file. It will be exported whenever you make a change to the scene and save.
@@ -11,7 +13,7 @@ Add a cube as a child of your root object and save your scene. Note that the out
 
 > You can ignore specific objects on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
 
-> **Note:** Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
+> **Note**: Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
 
 ### Prefabs
 [Prefabs ⇡](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To mark a Prefab for export, add a ``GltfObject`` component to the prefab asset. Tt will automatically be exported even when it's not in your scene if you reference it from other GameObjects.  
@@ -33,8 +35,10 @@ Please refer to the [``AssetReference`` section on loading](scripting.md#assetre
 ## Exporting Animations
 Supported features:
 - Timeline incl. activation tracks, animation tracks, track offsets
-- Animator incl. top-level state transitions. Blend trees / sub state machines are currently not supported.
-- AnimationClips
+- Animator incl. top-level state transitions
+  - Blend trees are currently not supported.
+  - Sub state machines are currently not supported.
+- AnimationClips incl. Loop modes
 
 Needle Engine is one of the first to support the new [glTF extension KHR_ANIMATION_POINTER ⇡](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer).  
 This means that almost all properties, including script variables, are animatable.  
