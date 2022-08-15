@@ -4,22 +4,31 @@ By default your Unity scene is always exported on save (if it contains a valid `
 ## Exporting glTF files
 To export meshes, materials, animations, textures (...) create a new GameObject in your hierarchy and add a ``GltfObject`` component to it. This is the root of a new glTF file. It will be exported whenever you make a change to the scene and save.
 
-> You can use the experimental ``Smart Export`` setting to only export when a change in this object's hierarchy is detected. 
 
 Add a cube as a child of your root object and save your scene. Note that the output ``assets/`` folder (see [project structure](#vite-project-structure)) now contains a new ``.glb`` file with the same name as your root GameObject.  
 
-> **Note:** Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
+> You can use the experimental ``Smart Export`` setting to only export when a change in this object's hierarchy is detected. 
 
 > You can ignore specific objects on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
 
+> **Note:** Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
+
 ### Prefabs
-It is also possible to create [Prefabs ⇡](https://docs.unity3d.com/Manual/Prefabs.html) in Unity and add a ``GltfObject`` component to its root. If you reference this prefab from any of your components in your scene it will automatically be exported. These exports can also be nested (so a component in a Prefab can reference another Prefab which will then also be exported. This mechanism allows for composing scenes to be as lightweight as possible and loading the most important content first and defer loading of additional content).  
-For how to easily load those exported prefabs please refer to the [``AssetReference`` section](scripting.md#assetreference--addressables) in the scripting documentation.
+[Prefabs ⇡](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To mark a Prefab for export, add a ``GltfObject`` component to the prefab asset. Tt will automatically be exported even when it's not in your scene if you reference it from other GameObjects.  
+
+These exports can also be nested (so a component in a Prefab can reference another Prefab which will then also be exported).  
+This mechanism allows for composing scenes to be as lightweight as possible and loading the most important content first and defer loading of additional content.  
+
+Please refer to the [``AssetReference`` section on loading](scripting.md#assetreference--addressables) in the scripting documentation for further info.
 
 ### Scene Assets
-Similar to prefabs you can reference a whole other scene. Just create component in Unity with a ``UnityEditor.SceneAsset`` field (it can be an array or list too) and add it to one of your GameObjects inside a GltfObject. This other scene will now be exported as a separate gltf file and you can load/deserialize it as a ``AssetReference`` from typescript. Please refer to the [``AssetReference`` section](scripting.md#assetreference--addressables) in the scripting documentation for further info.
+Similar to Prefab assets, you can reference other Scene assets.  
+To get started, create a component in Unity with a ``UnityEditor.SceneAsset`` field and add it to one of your GameObjects inside a GltfObject. The referenced scene will now be exported as a separate glTF file and can be loaded/deserialized as a ``AssetReference`` from TypeScript.  
 
-> *Note*: you can directly work inside a referenced scene and still update your main exporter scene/website. On save or play we will detect that/if the scene is being used by your currently running server (by checking if a glb inside your ``<web_project>/assets/`` folder exists) and then trigger a re-export for only that glb.*
+Please refer to the [``AssetReference`` section on loading](scripting.md#assetreference--addressables) in the scripting documentation for further info.
+
+> **Note**: You can keep working inside a referenced scene and still update your main exporter scene/website. On scene save or play mode change we will detect if the current scene is being used by your currently running server and then trigger a re-export for only that glb.  
+(The check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
 
 ## Exporting Animations
 Supported features:
