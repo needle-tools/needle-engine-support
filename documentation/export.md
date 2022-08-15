@@ -21,13 +21,13 @@ Add a cube as a child of your root object and save your scene. Note that the out
 These exports can also be nested (so a component in a Prefab can reference another Prefab which will then also be exported).  
 This mechanism allows for composing scenes to be as lightweight as possible and loading the most important content first and defer loading of additional content.  
 
-Please refer to the [``AssetReference`` section on loading](scripting.md#assetreference--addressables) in the scripting documentation for further info.
+Please refer to the [``AssetReference`` section on loading](scripting.md#assetreference-and-addressables) in the scripting documentation for further info.
 
 ### Scene Assets
 Similar to Prefab assets, you can reference other Scene assets.  
 To get started, create a component in Unity with a ``UnityEditor.SceneAsset`` field and add it to one of your GameObjects inside a GltfObject. The referenced scene will now be exported as a separate glTF file and can be loaded/deserialized as a ``AssetReference`` from TypeScript.  
 
-Please refer to the [``AssetReference`` section on loading](scripting.md#assetreference--addressables) in the scripting documentation for further info.
+Please refer to the [``AssetReference`` section on loading](scripting.md#assetreference-and-addressables) in the scripting documentation for further info.
 
 > **Note**: You can keep working inside a referenced scene and still update your main exporter scene/website. On scene save or play mode change we will detect if the current scene is being used by your currently running server and then trigger a re-export for only that glb.  
 (The check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
