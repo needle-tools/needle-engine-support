@@ -51,15 +51,16 @@ flowchart LR
     classDef ndl fill:#BCEDB1;
     classDef ext fill:#B1E1ED;
     Editor([Unity Editor]) --> EditorExt([Editor Extensions])
-    EditorExt -- Export --> glTF([glTF])
+    EditorExt -- export data --> glTF([glTF + Extensions])
     glTF --> Bundler([Bundler - vite])
     Runtime([Needle Runtime]) --> Bundler
     Three([Three.js]) --> Bundler
+    YourWebsite([Your website - HTML, CSS, JS]) --> Bundler
     Bundler -- outputs --> DevPage([web app - dev])
     Bundler -- outputs --> DeploymentPage([web app - deploy])
-    glTF -- compresses --> gltfTransform([glTF-transform]) --> DeploymentPage
+    glTF -- compressed with --> gltfTransform([glTF-transform]) --> DeploymentPage
     class EditorExt,glTF,Runtime ndl;
-    class Editor,Three,Bundler,Page,gltfTransform,DeploymentPage,DevPage ext;
+    class Editor,Three,Bundler,Page,gltfTransform,DeploymentPage,DevPage,YourWebsite ext;
 ```
 
 # Goals and Non-Goals
