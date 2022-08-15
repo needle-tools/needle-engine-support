@@ -16,7 +16,7 @@ To see a list of needle-builtin-components see ``Packages/Needle Unity Threejs/R
 - [Interop with external javascript](#accessing-components-from-external-javascript)
 - [Automatically generating Unity components](#automatically-generating-unity-components-from-typescript-files)
 - [Serialization in glTF files](#serialization--components-in-gltf-files)
-- [AssetReference & Addressables](#assetreference--addressables)
+- [AssetReference and Addressables](#assetreference-and-addressables)
 - [Unity Types in Typescript](#renamed-unity-types-in-typescript)
 
 ---
@@ -224,7 +224,7 @@ To serialize from and to custom formats it is possible to derive from the ``Type
 
 In addition to matching fields, properties will also be exported when they match to fields in the typescript file.  
 
-## AssetReference / Addressables
+## AssetReference and Addressables
 Referenced Prefabs, SceneAssets and [``AssetReferences`` ⇡](https://docs.unity3d.com/Packages/com.unity.addressables@latest/manual/AddressableAssetsGettingStarted.html) in Unity will automatically be exported as gltf files (please refer to the [Export Prefabs](export.md#gltf-prefabs) documentation).  
 These exported gltf files will be serialized as plain string uris. But to simplify loading from typescript components we also added the concept of ``AssetReference`` types. You simple declare the field that references the component like this:
 ```ts
