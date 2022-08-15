@@ -26,12 +26,12 @@ This can have many reasons, but a few common ones are:
 
   <details>
 <summary><b>My lightmaps look different</b></summary>
-- Ensure you're following best practices for lightmaps: <link>
+Ensure you're following best practices for lightmaps: <link>
 </details>
 
 <details>
 <summary><b>My colors look wrong</b></summary>
-- Ensure your project is set to Linear colorspace
+Ensure your project is set to Linear colorspace.
 </details>
 
 <details>
