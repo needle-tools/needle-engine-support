@@ -1,17 +1,19 @@
 # Networking
 
-Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. [The backend server ⇡](https://glitch.com/edit/#!/needle-tiny-server) requires users to be connected to a room.
+Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. [The built-in backend server ⇡](https://glitch.com/edit/#!/needle-tiny-server) requires users to be connected to a room.
 
 Networking is currently based on [websockets ⇡](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers ⇡](https://google.github.io/flatbuffers/) (for frequent updates).
 
-Source at ``engine/engine_networking.ts``
+Source code for networking is at ``engine/engine_networking.ts``.
 
 ## Core Components
-- ``Connection`` - use to customize server backend url
-- ``SyncedRoom`` - handles networking connection and connection to a room
-- ``SyncedTransform`` - handles synchronizing transforms
-- ``SyncedCamera`` - spawns a prefab for any user connected to the room which will follow their position
-- ``WebXRSync`` - handles synchronization for AR and VR users
+
+- ``Connection`` — use to customize server backend url
+- ``SyncedRoom`` — handles networking connection and connection to a room
+- ``SyncedTransform`` — handles synchronizing transforms
+- ``SyncedCamera`` — spawns a prefab for any user connected to the room which will follow their position
+- ``WebXRSync`` — handles synchronization for AR and VR users
+- ``VoIP`` — handles voice-over-IP audio connections, microphone access etc. between users
 
 ## Auto networking (experimental)
 
@@ -36,3 +38,16 @@ export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
     }
 }
 ```
+
+## Flatbuffers for your own components
+
+**TODO**
+- How to generate flatbuffer schemas for custom components
+
+## Built-in Networking on Glitch
+
+**TODO**
+- Limitations
+- How to upgrade to a stronger server
+- How to use your own networking implementation
+- How to change from the default ICE/STUN servers
