@@ -1,6 +1,6 @@
 # Prerequisites 💿
 - [nodejs ⇡](https://nodejs.org/en/) (required for development)
-- [Unity 2020.3.x ⇡](https://unity3d.com/get-unity/download) (required for development)
+- [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download) (required for development)
 - [vscode ⇡](https://code.visualstudio.com/) (recommended for development)
 
 # Getting started 🛎
@@ -71,4 +71,6 @@ To add content to the scene create a new GameObject and add a ``GltfObject`` com
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 
-You are now ready to continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md)
+💚
+
+Continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md) →
