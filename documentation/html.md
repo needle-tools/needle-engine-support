@@ -17,14 +17,23 @@ Vite (our default bundler) has a good explanation why web apps should be bundled
 
 Needle Engine is unoponiated about the choice of framework. The default template only uses vite as bundler. Adding vue to that is easy (see the [vite docs]()), we also provide an (experimental) react-three-fiber template and there should be nothing stopping your from using simpler or more complex frameworks.
 
-You can, for example
-- just use tsc to compile TypeScript, no bundling required
-- pre-build Needle Engine and then just use JavaScript
-- use vite + vue
-- use vite + react
-- use react-three-fiber wrapped around a <NeedleEngine> tag
+You can, for example, use
+- **just vite + HTML**  
+    *Our default template does this*
+    
+- **vite + vue**  
+    *This is what the Needle Tools website uses!*
+- **vite + react**  
+    *There's an experimental template for this, that you can pick when generating a project!*
+- **react-three-fiber wrapped around a `<NeedleEngine>` tag**  
+    *We've used this for some experiments*
+- **`tsc` to compile TypeScript, no bundling required**
+    *No example yet*
+- **a pre-built Needle Engine and direct JavaScript**
+    *No example yet*
 
-In short: let us know what and how you build, and how we can improve the experience!
+In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
+let us know what and how you build, and how we can improve the experience!
 
 ## Content Overlays in WebXR mode
     
