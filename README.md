@@ -2,8 +2,11 @@
 
 # Needle Engine
 
+Needle Engine bridges the gap between 3D development and the web.  
+It comes with modern toolchains and workflows, web-native methodologies and builds on open standards.  
+Projects can be deployed easily and at no cost, and collaboration and XR come naturally.  
+
 Information and guides on how to use the needle Unity → threejs exporter.  
-**Note**: All external links are marked using this icon ⇡
 
 ## Contents 📋
 - [Getting started](./documentation/getting_started.md) ⭐
@@ -12,10 +15,14 @@ Information and guides on how to use the needle Unity → threejs exporter.
 - [VR and AR](./documentation/xr.md) — *WebXR, VR, AR placement, limitations*
 - [Scripting](./documentation/scripting.md) — *components, codegen, interop with the web, interop with three.js*
 - [HTML](./documentation/html.md) — *web-components, responsive design*
-- [Deployment](./documentation/deployment.md) — *build and upload to a server*
+- [Deployment](./documentation/deployment.md) — *bundle, build and upload to a server*
 - [Component Reference](./documentation/component-reference.md)
 - [Samples and Modules](./documentation/samples-and-modules.md)
 - [Frequently Asked Questions](./documentation/faq.md)
+
+## Dive Deeper 🐠
+- [Our vision](./documentation/vision.md) — *conceptual overview*
+- [How it works](./documentation/technical-overview.md) — *technical overview*
 
 ## Useful resources for working with glTF 🖇
 
@@ -37,6 +44,9 @@ For fast support, please join our [Discord](https://discord.needle.tools).
 Please fill out the [Alpha Tester Feedback Form ⇡](https://fwd.needle.tools/needle-engine/feedback) (it takes only ~1 minute) to help us improve the engine/exporter/documentation. Thank you!
 
 ---
+
+> **Note**: All external links are marked using this icon: ⇡
+
 ## Contact ✒️
 <b>[🌵 needle — tools for unity](https://needle.tools)</b> • 
 [@NeedleTools](https://twitter.com/NeedleTools) • 
