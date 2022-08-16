@@ -35,18 +35,6 @@ You can, for example, use
 In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
 let us know what and how you build, and how we can improve the experience!
 
-## Content Overlays in WebXR mode
-    
-If you want to display different html content whether the client is using a regular browser or using AR or VR you can just use a set of html classes. For example to make content appear on desktop and in AR add a ``<div class="desktop ar"> ... </div>`` inside the ``<needle-tiny>`` tag:
-
-```html
-<needle-tiny src="loadScene">
-    <div class="desktop ar" style="pointer-events:none;">
-        your content for AR and desktop goes here
-    </div>
-</needle-tiny>
-```
-
 ## Accessing components from regular javascript
     
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
