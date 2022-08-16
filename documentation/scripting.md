@@ -48,19 +48,6 @@ Now add a new field ``public float speed = 5`` to your Unity component and save 
 
 • ***Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. Documentation on that can be found in the [Export document](./export.md).*
 
---- 
-## Seeing Data
-
-By default only properties *actually declared* on your typescript class will be assigned/deserialized. **For development** you can use add the ``?dev`` url parameter to your url or a ``@allProperties`` tag to the class you are currently working on:
-
-```js
-import { Behaviour } from "needle.tiny.engine/engine-components/Component";
-import { allProperties } from "needle.tiny.engine/engine/engine_serialization_decorator";
-@allProperties
-export class Rotate extends Behaviour
-{
-```
-
 ---
 ## Component architecture
 Components are added to threejs [Object3Ds ⇡](https://threejs.org/docs/#api/en/core/Object3D) similar to how [components in Unity ⇡](https://docs.unity3d.com/ScriptReference/Component.html) are added to [GameObjects ⇡](https://docs.unity3d.com/ScriptReference/GameObject.html). Therefor when we want to access a threejs Object3D we do so like ``this.gameObject`` where the ``gameObject`` is our Object3D.  
