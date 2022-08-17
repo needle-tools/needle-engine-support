@@ -2,7 +2,7 @@
 
 ## Adding VR and AR capabilities to a scene
 
-AR, VR and networking capabilites in Needle Engine are very modular. You can choose to not support any of them, or add only specific features. Here's how:  
+AR, VR and networking capabilites in Needle Engine are designed to be modular. You can choose to not support any of them, or add only specific features. 
 
 ### Basic capabilities
 
