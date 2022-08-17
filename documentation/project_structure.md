@@ -32,9 +32,9 @@ The following folders are excluded:
 > **Note**: Currently some files use codegen (e.g. registering your npmdef types) and may show up in sourcecontrol even if they have not changed (e.g. ``register_types.js``. This might be improved in the future. 
    Npmdefs also reference ``@needle-tools/engine`` via a local path at the moment (these paths are also updated automatically) so they might show up as changed if you use them in multiple projects. This might be removed in the future if/when ``@needle-tools/engine`` is resolved/loaded from npm.
 
-### In-Library Projects
+### Temporary Projects
 
-If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control.
+If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control (since the Unity Library is usually excluded). We consider these projects temporary because of that.
 
 ## Vite project structure
 - ``assets/`` - The asset folder contains exported assets from Unity. E.g. generated ``gltf`` files, audio or video files. It is not recommended to manually add files to ``assets`` as it will get cleared on building the distribution for the project.
