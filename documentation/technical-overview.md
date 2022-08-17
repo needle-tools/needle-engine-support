@@ -5,12 +5,13 @@
 
 ### Supported extensions
 
-A typical production glTF produced by Needle Engine uses the following extensions:
+A typical production glTF created by Needle Engine uses the following extensions:  
 ```json
 "extensionsUsed": [
   "KHR_lights_punctual",
   "KHR_materials_unlit",
   "KHR_texture_transform",
+  "KHR_animation_pointer",
   "KHR_techniques_webgl",
   "NEEDLE_gameobject_data",
   "NEEDLE_components",
@@ -24,7 +25,11 @@ A typical production glTF produced by Needle Engine uses the following extension
 
 ## Vendor-specific NEEDLE_* glTF Extensions
 
-We're currently not prodiving schemas for these extensions as they are still in development. The information below demonstrates extension usage by example and includes notes on architectural choices and what we may change in a future release.  
+Needle Engine stores custom data in glTF files through vendor extensions. This covers everything from components to animator controllers to lightmaps.  
+
+> We're currently not prodiving schemas for these extensions as they are still in development. The information below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
+
+> References between pieces of data are currently constructed through a mix of indices into other parts of the glTF file, string-based GUIDs and JSON pointers. We may consolidate these approaches in a future release. 
 
 ### NEEDLE_components
 
@@ -47,7 +52,7 @@ Multiple components with the same name can be added to the same node.
     {
       "name": "SyncedRoom",
       "guid": "1516450552",
-      "roomName": "M3-HQ",
+      "roomName": "network-room",
       "urlParameterName": "room",
       "joinRandomRoom": true,
       "requireRoomParameter": false,
@@ -84,7 +89,7 @@ Multiple components with the same name can be added to the same node.
 
 > **Note**: Currently there's no versioning information in the extension (which npm packaage does a component belong to, which version of that package was it exported against). We're planning to include versioning information in a future release.  
 
-> **Note**: Currently all components are in the `builtin_components` array. This may be renamed to just `components` in a future release.  
+> **Note**: Currently all components are in the `builtin_components` array. We might rename this to just `components` in a future release.  
 
 ### NEEDLE_gameobject_data
 
