@@ -35,6 +35,9 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
 
 > **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
 
+ > **[Castle Builder](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
+ > — #madebyneedle 💚  
+   
 ### Special AR Components
 
 - **Define the AR Session Root and Scale**  
@@ -56,6 +59,9 @@ Needle Engine supports the [`sessiongranted`](https://github.com/immersive-web/n
 
 Currently, this is only supported on Oculus Quest 1 and 2 in the Oculus Browser. On other platforms, users will be kicked out of their current immersive session and have to enter VR again on the new page.  
 
+- **Click on objects to open links**  
+  The [samples repository](https://github.com/needle-tools/needle-engine-samples) contains a small script [`ClickToOpenWebsite`](https://github.com/needle-tools/needle-engine-samples/blob/main/package/Runtime/Needle%20Engine%20Samples~/ClickToOpenWebsite.ts) that makes it very easy to build connected worlds.  
+
 ## Avatars
 
 While we don't currently provide an out-of-the-box integration external avatar systems, you can create application-specific avatars or custom systems.  
@@ -68,7 +74,10 @@ While we don't currently provide an out-of-the-box integration external avatar s
 
 ### Experimental Avatar Components
 
-There's a number of experimental components to build more expressive Avatars. It's recommended to duplicate these and make your own variants since they might be removed at a later point.  
+There's a number of experimental components to build more expressive Avatars. At this point we recommended duplicating them to make your own variants, since they might be changed or removed at a later point.  
+
+![20220817-230858-87dG-Unity_PLjQ](https://user-images.githubusercontent.com/2693840/185243523-57c4b2a9-0ec7-4f88-b53b-585e879d504d.gif)  
+*Example Avatar Rig with basic neck model and limb constraints*
 
 - **Random Player Colors**  
   As an example for avatar customization, you can add a `PlayerColor` component to your renderers.  
@@ -81,12 +90,12 @@ There's a number of experimental components to build more expressive Avatars. It
   `AvatarBlink_Simple` randomly hides GameObjects (eyes) every few seconds, emulating a blink.  
   
   ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)  
-  *Avatar Prefab hierarchy*
+  *Example Avatar Prefab hierarchy*
   
 - **Offset Constraint**  
   `OffsetConstraint` allows to shift an object in relation to another one in Avatar space. This allows, for example, to have a Body follow the Head but keep rotation levelled. It also allows to construct simple neck models.  
   
-- **IK Constraint**  
+- **Limb Constraint**  
   `BasicIKConstraint` is a very minimalistic constraint that takes two transforms and a hint. This is useful to construct simple arm or leg chains. As rotation is currently not properly implemented, arms and legs may need to be rotationally symmetric to "look right". It's called "Basic" for a reason!  
 
 ## HTML Content Overlays in AR  
@@ -116,7 +125,7 @@ A number of options and workarounds exist to still give iOS users _some_ AR:
    An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.
    - The [three.js USDZ converter](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.  
 
- > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively build scenes on their screens and then view the results in AR on iOS. On Android, they can also build in WebXR.   
+ > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively place text into the scene on their screens and then view the results in AR on iOS. On Android, they can also interact right in WebXR.   
  > — #madewithneedle by Katja Rempel 💚  
 
 2. **Using camera access and custom algorithms on iOS devices.**  
