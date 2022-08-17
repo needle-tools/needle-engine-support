@@ -5,6 +5,7 @@
 AR, VR and networking capabilites in Needle Engine are very modular. You can choose to not support any of them, or add only specific features. Here's how:  
 
 ### Basic capabilities
+
 - **Enable AR and VR**  
   Add a `WebXR` component.  
   *Optional:* you can set a custom avatar by referencing an [Avatar Prefab](#avatars).   
@@ -19,6 +20,7 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
   We're planning to add a component to have more control over this functionality.  
 
 ### Multiplayer
+
 - **Enable Networking**  
   Add a `SyncedRoom` component.
 
@@ -58,9 +60,28 @@ While we don't currently provide an out-of-the-box integration external avatar s
   - Add objects named `HandLeft` and `HandRight`
   - Add your graphics below these objects.
 
-- **Assign Random Player Colors**  
+### Experimental Avatar Components
+
+There's a number of experimental components to build more expressive Avatars. It's recommended to duplicate these and make your own variants since they might be removed at a later point.  
+
+- **Random Player Colors**  
   As an example for avatar customization, you can add a `PlayerColor` component to your renderers.  
-  The randomized color is synchronized across objects using the script and across the network to other players.  
+  This randomized color is synchronized between players.  
+
+- **Eye Rotation**  
+  `AvatarEyeLook_Rotation` rotates GameObjects (eyes) to follow other avatars and a random target. This component is synchronized between players.  
+  
+- **Eye Blinking**  
+  `AvatarBlink_Simple` randomly hides GameObjects (eyes) every few seconds, emulating a blink.  
+  
+  ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)
+  *Avatar Prefab hierarchy*
+  
+- **Offset Constraint**  
+  `OffsetConstraint` allows to shift an object in relation to another one in Avatar space. This allows, for example, to have a Body follow the Head but keep rotation levelled. It also allows to construct simple neck models.  
+  
+- **IK Constraint**  
+  `BasicIKConstraint` is a very minimalistic constraint that takes two transforms and a hint. This is useful to construct simple arm or leg chains. As rotation is currently not properly implemented, arms and legs may need to be rotationally symmetric to "look right". It's called "Basic" for a reason!  
 
 ## HTML Content Overlays in AR  
     
