@@ -11,7 +11,7 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
   *Optional:* you can set a custom avatar by referencing an [Avatar Prefab](#avatars).   
   By default a very basic `DefaultAvatar` is assigned.
   
-- **Enable Teleportings**  
+- **Enable Teleportation**  
   Add a `TeleportTarget` component to object hierarchies that can be teleported on.  
   To exclude specific objects, set their layer to `IgnoreRaycasting`.  
 
@@ -50,6 +50,12 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
   - hiding floors when entering AR
   - hiding Avatar parts in First or Third Person views (e.g. first-person head shouldn't be visible).
 
+### Travelling between VR worlds
+
+Needle Engine supports the [`sessiongranted`](https://github.com/immersive-web/navigation) state. This allows users to seamlessly traverse between WebXR applications without leaving an immersive session – they stay in VR or AR.  
+
+Currently, this is only supported on Oculus Quest 1 and 2 in the Oculus Browser. On other platforms, users will be kicked out of their current immersive session and have to enter VR again on the new page.  
+
 ## Avatars
 
 While we don't currently provide an out-of-the-box integration external avatar systems, you can create application-specific avatars or custom systems.  
@@ -74,7 +80,7 @@ There's a number of experimental components to build more expressive Avatars. It
 - **Eye Blinking**  
   `AvatarBlink_Simple` randomly hides GameObjects (eyes) every few seconds, emulating a blink.  
   
-  ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)
+  ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)  
   *Avatar Prefab hierarchy*
   
 - **Offset Constraint**  
@@ -110,8 +116,8 @@ A number of options and workarounds exist to still give iOS users _some_ AR:
    An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.
    - The [three.js USDZ converter](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.  
 
- > *#madewithneedle* 💚   
-  **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively build scenes on their screens and then view the results in AR on iOS. On Android, they can also build in WebXR.  
+ > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively build scenes on their screens and then view the results in AR on iOS. On Android, they can also build in WebXR.   
+ > — #madewithneedle by Katja Rempel 💚  
 
 2. **Using camera access and custom algorithms on iOS devices.**  
    It's to request camera image access and run custom algorithms to determine device pose.  
