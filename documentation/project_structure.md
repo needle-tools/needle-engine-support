@@ -21,6 +21,17 @@ To greate a *NPM Definition* right click in the Unity Project browser and select
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser.
 
+### Version Control (git etc.)
+
+The generated project folders should be added to source control. The `assets`, `generated` and `node_modules` folders should be excluded.  
+Here's a handy `.gitignore` pattern:  
+```
+
+```
+
+### In-Library Projects
+
+If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control.
 
 ## Vite project structure
 - ``assets/`` - The asset folder contains exported assets from Unity. E.g. generated ``gltf`` files, audio or video files. It is not recommended to manually add files to ``assets`` as it will get cleared on building the distribution for the project.
