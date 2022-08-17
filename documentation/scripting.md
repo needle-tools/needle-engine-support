@@ -19,7 +19,7 @@ JavaScript components attached to [three.js objects](https://threejs.org/docs/#a
 
 To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).  
 
-> **Note**: Needle Engine does _not_ compile your C# code to Web Assembly. While using Web Assembly may result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+> **Note**: Needle Engine's Exporter does _not_ compile your existing C# code to Web Assembly. While using Web Assembly may result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
 
 ## Contents 📋
 - [Creating a new component](#creating-a-new-component)📋
