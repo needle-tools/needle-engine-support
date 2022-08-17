@@ -9,6 +9,14 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
   Add a `WebXR` component.  
   *Optional:* you can set a custom avatar by referencing an [Avatar Prefab](#avatars).   
   By default a very basic `DefaultAvatar` is assigned.
+  
+- **Enable Teleportings**  
+  Add a `TeleportTarget` component to object hierarchies that can be teleported on.  
+  To exclude specific objects, set their layer to `IgnoreRaycasting`.  
+
+- **Enable going into Miniature Mode**  
+  Pointing onto a surface and pressing <kb>A</kb> on a controller switches between 1:10 scale (miniature mode) and 1:1 scale.  
+  We're planning to add a component to have more control over this functionality.  
 
 ### Multiplayer
 - **Enable Networking**  
@@ -38,7 +46,7 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
   
   Common usecases are
   - hiding floors when entering AR
-  - hiding Avatar parts in first or third person views (e.g. first-person head shouldn't be visible).
+  - hiding Avatar parts in First or Third Person views (e.g. first-person head shouldn't be visible).
 
 ## Avatars
 
