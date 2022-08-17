@@ -21,10 +21,15 @@ To greate a *NPM Definition* right click in the Unity Project browser and select
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser.
 
-### Version Control (git etc.)
+### Using Version Control (git)
 
-The generated project folders should be added to source control. The `assets`, `generated` and `node_modules` folders should be excluded.  
-Here's a handy `.gitignore` pattern:  
+The generated web project folders should be added to source control.  
+The following folders can be excluded:
+- `assets`
+- `generated`
+- `node_modules`
+
+Here's a handy `.gitignore` pattern for excluding them:  
 ```
 
 ```
