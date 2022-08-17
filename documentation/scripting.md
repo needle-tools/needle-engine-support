@@ -10,9 +10,7 @@ flowchart LR
   class Editor,gltf,Runtime bg;
 ```
 
-Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to physics, rendering or lights are already [included in Needle Engine]((./component-reference.md#unity-components).  
-
-> **Note**: Needle Engine does _not_ compile your C# code to Web Assembly. While using Web Assembly may ultimately result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to physics, rendering or lights are already [included in Needle Engine](./component-reference.md#unity-components).  
 
 Our JavaScript runtime API mimicks the component model of the Unity Editor and provides a lot of similar functionality.  
 JavaScript components attached to [three.js objects](https://threejs.org/docs/#api/en/core/Object3D) have lifecycle methods similar to Unity, like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate``, that you can implement.   
@@ -20,6 +18,8 @@ JavaScript components attached to [three.js objects](https://threejs.org/docs/#a
 > Learn more about the Unity event loop [here ⇡](https://docs.unity3d.com/Manual/ExecutionOrder.html) and which parts of that we currently support in the [section about Events](#events-methods) below.  
 
 To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).  
+
+> **Note**: Needle Engine does _not_ compile your C# code to Web Assembly. While using Web Assembly may ultimately result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
 
 ## Contents 📋
 - [Creating a new component](#creating-a-new-component)📋
