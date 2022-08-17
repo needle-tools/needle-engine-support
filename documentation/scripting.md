@@ -110,11 +110,11 @@ export class Rotate extends Behaviour {
         // the second argument is optional and allows you to specifiy 
         // when it should be called in the current frame loop
         // coroutine events are called after regular component events of the same name
-        // e.g. Update coroutine events are called after component.update() functions
+        // for example: Update coroutine events are called after component.update() functions
         this.startCoroutine(this.rotate(), FrameEvent.Update);
     }
 
-    // this method is called every frame until it exits
+    // this method is called every frame until the component is disabled
     *rotate() {
         // keep looping forever
         while (true) {
@@ -124,11 +124,11 @@ export class Rotate extends Behaviour {
 }
 ```
 
-To stop a coroutine, either exit the routine by returning from it, or cache the return value of ``startCoroutine`` and call ``this.stopCoroutine(<...>)``.
+To stop a coroutine, either exit the routine by returning from it, or cache the return value of ``startCoroutine`` and call ``this.stopCoroutine(<...>)``. All Coroutines are stopped at ``onDisable`` / when disabling a component.
 
 ## Finding, adding and removing components
 
-To access other components, use the static methods on ``GameObject``. For example, to access a `Renderer` component in the parent use ``GameObject.getComponentInParent(this.gameObject, Renderer)``.  
+To access other components, use the static methods on ``GameObject`` or ``this.gameObject`` methods. For example, to access a `Renderer` component in the parent use ``GameObject.getComponentInParent(this.gameObject, Renderer)`` or ``this.gameObject.getComponentInParent(Renderer)``.  
 
 **Example:**
 ```ts
