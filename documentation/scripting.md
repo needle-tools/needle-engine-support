@@ -40,11 +40,11 @@ To get an in-depth overview of built-in components, you can inspect the folder `
 Scripts are written in TypeScript (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
 - Simply add a `.ts` or `.js` file inside `src/scripts/` in your generated project directory.  
-  Generated C# components are placed under `Assets/Needle/GeneratedComponents`.  
+  Generated C# components are placed under `Assets/Needle/Components.codegen`.  
 
 - Organize your code into NPM Definition Files. These help you to modularize and re-use code between projects.  
   Generated C# components are placed in a `.codegen` folder next to the NpmDef.  
-  You can create NpmDef files via `Create > Needle > NpmDef` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > Needle Engine > TypeScript`. Please see [this chapter](./project_structure.md#npm-definition-files) for more information.  
+  You can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project_structure.md#npm-definition-files) for more information.  
 
 In both approaches, source directories are watched for changes and C# components are regenerated whenever a change is detected. Changes to the source files also result in a hot reload of the running website – you don't have to wait for Unity to recompile the C# components. This makes iterating on code pretty much instant.  
 
