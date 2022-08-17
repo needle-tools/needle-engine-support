@@ -29,8 +29,8 @@ The following folders are excluded:
 - `generated`
 - `node_modules`
 
-> **Note**: Currently, some files are updated per-machine, especially the package.json files of NpmDefs and projects.  
-   This is needed to properly resolve local paths. We're planning on improving this in the future.  
+> **Note**: Currently some files use codegen (e.g. registering your npmdef types) and may show up in sourcecontrol even if they have not changed (e.g. ``register_types.js``. This might be improved in the future. 
+   Npmdefs also reference ``@needle-tools/engine`` via a local path at the moment (these paths are also updated automatically) so they might show up as changed if you use them in multiple projects. This might be removed in the future if/when ``@needle-tools/engine`` is resolved/loaded from npm.
 
 ### In-Library Projects
 
