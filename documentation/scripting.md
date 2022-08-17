@@ -12,7 +12,9 @@ flowchart LR
 
 Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
 
-Our JavaScript runtime API mimicks the component model of the Unity Editor and provides a lot of similar functionality.  
+----
+
+Our JavaScript runtime API adopts a component model similar to the Unity Editor and provides a lot of similar functionality.  
 JavaScript components attached to [three.js objects](https://threejs.org/docs/#api/en/core/Object3D) have lifecycle methods similar to Unity, like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate``, that you can implement.   
 
 > Learn more about the Unity event loop [here ⇡](https://docs.unity3d.com/Manual/ExecutionOrder.html) and which parts of that we currently support in the [section about Lifecycle Methods](#lifecycle-methods) below.  
