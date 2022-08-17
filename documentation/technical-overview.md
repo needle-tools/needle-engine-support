@@ -2,7 +2,6 @@
 
 ## glTF Assets
 
-## glTF Extensions
 
 ### Supported extensions
 
@@ -22,6 +21,10 @@ A typical production glTF produced by Needle Engine uses the following extension
   "KHR_draco_mesh_compression"
 ]
 ```
+
+## Vendor-specific NEEDLE_* glTF Extensions
+
+We're currently not prodiving schemas for these extensions as they are still in development. The information below demonstrates extension usage by example and includes notes on architectural choices and what we may change in a future release.  
 
 ### NEEDLE_components
 
@@ -85,7 +88,7 @@ Multiple components with the same name can be added to the same node.
 
 ### NEEDLE_gameobject_data
 
-This extension contains additional per-node data related to state, layers, and tags. 
+This extension contains additional per-node data related to state, layers, and tags. Layers are used for both rendering and physics, similar to how [three.js](https://threejs.org/docs/#api/en/core/Layers) and [Unity](https://docs.unity3d.com/Manual/Layers.html) treat them.  
 
 ```json
 "NEEDLE_gameobject_data": {
@@ -98,11 +101,11 @@ This extension contains additional per-node data related to state, layers, and t
 }
 ```
 
-> **Note**: We may need to better explain why this is not simply another entry in NEEDLE_component. 
+> **Note**: We may need to better explain why this is not another entry in [`NEEDLE_components`](#needle_components). 
 
 ### NEEDLE_lighting_settings
 
-This is a root extension defining ambient lighting and intensity per glTF file.   
+This is a root extension defining ambient lighting properties per glTF file.   
 
 ```json
 "NEEDLE_lighting_settings": {
@@ -117,6 +120,8 @@ This is a root extension defining ambient lighting and intensity per glTF file.
   "defaultReflectionMode": 0
 }
 ```
+
+> **Note**: This extension might have to be defined per-scene instead of per-file.
 
 ### NEEDLE_lightmaps
 
@@ -136,16 +141,20 @@ This is a root extension defining a set of lightmaps for the glTF file.
 
 > **Note**: At the moment this extension also contains environment texture references. We're planning to change that in a future release. 
 
-How lightmaps are applied is defined in the `MeshRenderer` component inside the `NEEDLE_components` extension per node:  
+| Texture Type | Value |
+| -- | -- |
+| Lightmap | 0 |
+| Skybox  | 1 |
+| Reflection | 2 |
+
+How lightmaps are applied is defined in the `MeshRenderer` component inside the [`NEEDLE_components`](#needle_components) extension per node:  
 
 ```json
 "NEEDLE_components": {
   "builtin_components": [
     {
       "name": "MeshRenderer",
-      "guid": "11047666986256490050_963857268",
-      "shadowCastingMode": 1,
-      "receiveShadows": true,
+      ...
       "lightmapIndex": 0,
       "lightmapScaleOffset": {
         "x": 1.00579774,
@@ -153,28 +162,19 @@ How lightmaps are applied is defined in the `MeshRenderer` component inside the 
         "z": -0.00392889744,
         "w": -0.00392889744
       },
-      "enableInstancing": [
-        false
-      ],
-      "renderOrder": [
-        0
-      ]
+      ...
     }
   ]
 }
 ```
 
-> **Note**: We're planning to change that in a future release and move lightmap-related data to a `NEEDLE_lightmap` extension entry per node.
+> **Note**: We may change that in a future release and move lightmap-related data to a `NEEDLE_lightmap` extension entry per node. 
 
 ### NEEDLE_persistent_assets
 
+
 ### KHR_techniques_webgl
-
-
 
 ## TypeScript
 
-
-
 ## Rendering with three.js
-
