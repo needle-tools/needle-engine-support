@@ -55,7 +55,7 @@ In both approaches, source directories are watched for changes and C# components
 - **Create a component that rotates an object**  
   Create ``src/scripts/Rotate.ts`` and add the following code:  
 ```ts
-import { Behaviour } from "needle.tiny.engine/engine-components/Component";
+import { Behaviour } from "@needle-tools/engine/engine-components/Component";
 
 export class Rotate extends Behaviour
 {
@@ -132,8 +132,8 @@ To access other components, use the static methods on ``GameObject`` or ``this.g
 
 **Example:**
 ```ts
-import { Behaviour, GameObject } from "needle.tiny.engine/engine-components/Component";
-import { Renderer } from "needle.tiny.engine/engine-components/Renderer";
+import { Behaviour, GameObject } from "@needle-tools/engine/engine-components/Component";
+import { Renderer } from "@needle-tools/engine/engine-components/Renderer";
 
 export class MyComponent extends Behaviour {
 
@@ -193,8 +193,8 @@ Use `utils.getParam(<..>)` to quickly access URL parameters and define behaviour
 
 **Example:**
 ```ts
-import { Behaviour } from "needle.tiny.engine/engine-components/Component";
-import * as utils from "needle.tiny.engine/engine/engine_utils"
+import { Behaviour } from "@needle-tools/engine/engine-components/Component";
+import * as utils from "@needle-tools/engine/engine/engine_utils"
 
 export class MyScript extends Behaviour
 { 
