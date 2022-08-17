@@ -2,16 +2,13 @@
 
 ## Adding VR and AR capabilities to a scene
 
+AR, VR and networking capabilites in Needle Engine are very modular. You can choose to not support any of them, or add only specific features. Here's how:  
+
 ### Basic capabilities
 - **Enable AR and VR**  
-  Add a `WebXR` component.
-  
-- *Optional:* you can set a custom avatar by referencing a Prefab. 
-    By default a very basic `DefaultAvatar` is assigned.
-    
-- *Optional:* You can specify if AR and/or VR should be allowed for your scene by toggling them on and off.
-- 
-- *Optional:* If you don't want the default AR/VR buttons, disable `Create VR/AR button`.
+  Add a `WebXR` component.  
+  *Optional:* you can set a custom avatar by referencing an [Avatar Prefab](#avatars).   
+  By default a very basic `DefaultAvatar` is assigned.
 
 ### Multiplayer
 - **Enable Networking**  
@@ -30,16 +27,17 @@
 
 ### Special AR Components
 
-- **Define the AR Session Root and Scale**
-  Add a `WebARSessionRoot` component to your root object. You can define the user scale to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
+- **Define the AR Session Root and Scale**  
+  Add a `WebARSessionRoot` component to your root object.  
+  Here you can define the user scale to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
 
 ### Controlling object display for XR
 
-- **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**
+- **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**  
   Add a `XR Flag` component to the object you want to control. By default, it's always visible.  
+  
   Common usecases are
-  - hiding floor objects when entering AR
-  - hiding backdrops when entering VR
+  - hiding floors when entering AR
   - hiding Avatar parts in first or third person views (e.g. first-person head shouldn't be visible).
 
 ## Avatars
