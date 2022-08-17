@@ -1,4 +1,4 @@
-# Frequently Asked Questions 💡
+# Questions And Answers 💡
 
 <details>
 <summary><b>My objects are white after export</b></summary>
@@ -76,7 +76,23 @@ If these warnings/errors didn't help, try the following steps in order. Give the
 
 </details>
 
+
+<details>
+  <summary><b>Does C# component generation work with javascript only too?</b></summary>
+  While generating C# components does technically run with vanilla javascript too we don't recommend it and fully support it since it is more guesswork or simply impossible for the generator to know which C# type to create for your javascript class. Below you find a minimal example on how to generate a Unity Component from javascript if you really want to tho.    
+  
+```js
+class MyScript extends Behaviour
+{
+    //@type float
+    myField = 5;
+}
+```
+</details>
+
+
 <details>
   <summary><b>...</b></summary>
 
 </details>
+
