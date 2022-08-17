@@ -29,6 +29,9 @@ The following folders are excluded:
 - `generated`
 - `node_modules`
 
+> **Note**: Currently, some files are updated per-machine, especially the package.json files of NpmDefs and projects.  
+   This is needed to properly resolve local paths. We're planning on improving this in the future.  
+
 ### In-Library Projects
 
 If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control.
