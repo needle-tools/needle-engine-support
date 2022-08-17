@@ -20,7 +20,7 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
 - **Enable XR Avatar Sync**  
   Add a `WebXRSync` component.
   
-- **Enable voice chat**  
+- **Enable Voice Chat**  
   Add a `VoIP` component.
 
 > **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
@@ -34,7 +34,7 @@ AR, VR and networking capabilites in Needle Engine are very modular. You can cho
 ### Controlling object display for XR
 
 - **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**  
-  Add a `XR Flag` component to the object you want to control. By default, it's always visible.  
+  Add a `XR Flag` component to the object you want to control. Change options on the dropdown as needed.  
   
   Common usecases are
   - hiding floors when entering AR
@@ -67,11 +67,11 @@ This is controlled via HTML element classes. For example, to make content appear
 </needle-tiny>
 ```
 
-## Limitations
+## Limitations for WebXR on iOS
 
-Due to Apple currently not supporting WebXR on iOS devices, augmented reality experiences on iOS are limited.  
+Due to Apple currently not supporting WebXR on iOS devices, Augmented Reality experiences on iOS are limited.  
 
-A number of options exist in the meantime:  
+A number of options and workarounds exist to still give iOS users _some_ AR:  
 
 1. **Guiding users towards WebXR-compatible browsers on iOS.**
    Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
@@ -79,16 +79,19 @@ A number of options exist in the meantime:
 3. **Exporting content on-the-fly as USDZ files.**  
    These files can be displayed on iOS devices in AR. They lack interactivity (besides a small set of built-in components) but can be sufficient for product configurators and similar relatively static usecases.
    An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.
-   - The [three.js USDZ converter](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.
+   - The [three.js USDZ converter](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.  
+
+ > *#madewithneedle* 💚   
+  **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively build scenes on their screens and then view the results in AR on iOS. On Android, they can also build in WebXR.  
 
 2. **Using camera access and custom algorithms on iOS devices.**  
-   Similar to what 8th Wall and some other platform do, it's possible to request camera image access and run custom algorithms to determine device pose and some other properties.
-   While we don't provide built-in components for this, here's a few references for things we want to try in the future:
-   - [AR.js](https://github.com/AR-js-org/AR.js)
-   - [Mind AR](https://github.com/hiukim/mind-ar-js)
-   - [8th Wall](https://www.8thwall.com/)
+   It's to request camera image access and run custom algorithms to determine device pose.  
+   While we don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
+   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
+   - [8th Wall](https://www.8thwall.com/) (commercial)
 
 ## References
 
-[WebXR Device API](https://www.w3.org/TR/webxr/)
-[caniuse: WebXR](https://caniuse.com/webxr)
+[WebXR Device API](https://www.w3.org/TR/webxr/)  
+[caniuse: WebXR](https://caniuse.com/webxr)  
