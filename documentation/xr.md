@@ -1,14 +1,65 @@
 # Virtual and Augmented Reality
 
-## VR (Virtual Reality)
+## Adding VR and AR capabilities to a scene
 
-## AR (Augmented Reality)
+### Basic capabilities
+- **Enable AR and VR**  
+  Add a `WebXR` component.
+  
+- *Optional:* you can set a custom avatar by referencing a Prefab. 
+    By default a very basic `DefaultAvatar` is assigned.
+    
+- *Optional:* You can specify if AR and/or VR should be allowed for your scene by toggling them on and off.
+- 
+- *Optional:* If you don't want the default AR/VR buttons, disable `Create VR/AR button`.
+
+### Multiplayer
+- **Enable Networking**  
+  Add a `SyncedRoom` component.
+
+- **Enable Desktop Viewer Sync**  
+  Add a `SyncedCamera` component.
+
+- **Enable XR Avatar Sync**  
+  Add a `WebXRSync` component.
+  
+- **Enable voice chat**  
+  Add a `VoIP` component.
+
+> **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
+
+### Special AR Components
+
+- **Define the AR Session Root and Scale**
+  Add a `WebARSessionRoot` component to your root object. You can define the user scale to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
+
+### Controlling object display for XR
+
+- **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**
+  Add a `XR Flag` component to the object you want to control. By default, it's always visible.  
+  Common usecases are
+  - hiding floor objects when entering AR
+  - hiding backdrops when entering VR
+  - hiding Avatar parts in first or third person views (e.g. first-person head shouldn't be visible).
 
 ## Avatars
 
-## Content Overlays in WebXR mode
+While we don't currently provide an out-of-the-box integration external avatar systems, you can create application-specific avatars or custom systems.  
+
+- **Create a custom Avatar**  
+  - Create an empty GameObject as avatar root
+  - Add an object named `Head` and add a `XRFlag` that's set to Third Person
+  - Add objects named `HandLeft` and `HandRight`
+  - Add your graphics below these objects.
+
+- **Assign Random Player Colors**  
+  As an example for avatar customization, you can add a `PlayerColor` component to your renderers.  
+  The randomized color is synchronized across objects using the script and across the network to other players.  
+
+## HTML Content Overlays in AR  
     
-If you want to display different html content whether the client is using a regular browser or using AR or VR you can just use a set of html classes. For example to make content appear on desktop and in AR add a ``<div class="desktop ar"> ... </div>`` inside the ``<needle-tiny>`` tag:
+If you want to display different html content whether the client is using a regular browser or using AR or VR, you can just use a set of html classes.  
+This is controlled via HTML element classes. For example, to make content appear on desktop and in AR add a ``<div class="desktop ar"> ... </div>`` inside the `<needle-tiny>` tag:  
 
 ```html
 <needle-tiny src="loadScene">
