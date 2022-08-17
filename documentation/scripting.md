@@ -69,12 +69,12 @@ export class Rotate extends Behaviour
 }
 ```
 
-Now inside Unity create a new script inside your project named ``Rotate.cs``. Add the script to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene. The cube is now rotating inside the browser.   
-Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and non-public fields and all public properties are exported.  
+Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the script to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene. The cube is now rotating inside the browser.   
+Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
 
 Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
 
-> **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. Documentation on that can be found in the [Export document](./export.md).
+> **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
 
 ---
 ## Component architecture
@@ -214,10 +214,11 @@ It is possible to access all the functionality described above using regular Jav
 The web-component also exposes a reference to the static ``GameObject`` functions described above. You can find components using ``document.getElementById("tiny")?.gameObject.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive.
 
 ## Automatically generating Unity components from typescript files
-*Experimental feature to automatically generate Unity components for typescript component in your project - installation and setup might change*  
-- Install [``@needle-tools/needle-component-compiler`` ⇡](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) in your project (it comes pre-installed using our template projects)
-- In Unity add a ``Component Generator`` component to the GameObject with your ``ExportInfo`` component. when installed to the project the component will automatically fill-out the correct path. 
-- Now when adding new components in ``threejs/project/src/scripts`` or any of your npmdefs it will automatically generate Unity scripts in ``Assets/Needle/GeneratedComponents`` or the respective npmdef codegen directory.
+*Automatically generate Unity components for typescript component in your project*  
+- If you want to add scripts inside the ``src/scripts`` folder in your project then you need to have a ``Component Generator`` on the GameObject with your ``ExportInfo`` component.
+- Now when adding new components in ``your/threejs/project/src/scripts``it will automatically generate Unity scripts in ``Assets/Needle/Components.codegen`.
+- If you want to add scripts to any NpmDef file you can just create them - each NpmDef automatically watches script changes and handles component generation, so you don't need any additional component in your scene.
+> **Note**: for C# fields to be correctly generated it is currently important that you explictly declare a Typescript type. For example ``myField : number = 5``
 
 ### Controlling component generation
 You can use the following typescript attributes to control C# code generation behavior:  
@@ -226,9 +227,9 @@ You can use the following typescript attributes to control C# code generation be
 | `// @generate-component` | Force generation of next class|
 | `// @dont-generate-component` | Disable generation of next class |
 | `// @serializeField` | Decorate generated field with `[SerializeField]` |
-| `// @type(UnityEngine.Camera)` | Specify generated C# field type |
+| `// @type UnityEngine.Camera` | Specify generated C# field type |
 
-The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match, or when you want to extend the generated code with custom logic (e.g. Gizmo drawing). You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported.
+The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match. You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported. Please note that exported members will start with a lowercase letter. For example if your C# member is named ``MyString`` it will be assigned to ``myString``.
 
 ### Extending generated components
 Component C# classes are generated with the [`partial ⇡`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) flag so that it is easy to extend them with functionality. This is helpful to draw gizmos, add context menus or add additional fields or methods that are not part of a built-in component.  
