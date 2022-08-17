@@ -1,10 +1,25 @@
 
 # Scripting 📑
 
-We refer to scripts mostly as components. This is because Unity's editor is component based. Our runtime javascript package mimicks the Unity editor and provides a lot of similar functionality. Javascript components are attached to threejs objects just like in Unity and have similar event functions like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update``, ``lateUpdate``. You can learn more about the Unity event loop [here ⇡](https://docs.unity3d.com/Manual/ExecutionOrder.html) and how/what we support under in the [Events chapter](#events-methods) below.
+Code for Needle Engine is written in TypeScript or JavaScript. We automatically generate C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
 
-To see a list of needle-builtin-components see ``Packages/Needle Unity Threejs/Runtime/Components`` in the [Unity Project window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).
+```mermaid
+flowchart LR
+  classDef bg fill:#BCEDB1;
+  Editor([<b>C# components</b><br/>on GameObjects]) --> gltf[<b>JSON data</b><br/>as glTF Extension] --> Runtime([<b>JavaScript components</b><br/>on Object3D])
+  class Editor,gltf,Runtime bg;
+```
 
+Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to physics, rendering or lights are already [included in Needle Engine]((./component-reference.md#unity-components).  
+
+> **Note**: Needle Engine does _not_ compile your C# code to Web Assembly. While using Web Assembly may ultimately result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+
+Our JavaScript runtime API mimicks the component model of the Unity Editor and provides a lot of similar functionality.  
+JavaScript components attached to [three.js objects](https://threejs.org/docs/#api/en/core/Object3D) have lifecycle methods similar to Unity, like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate``, that you can implement.   
+
+> Learn more about the Unity event loop [here ⇡](https://docs.unity3d.com/Manual/ExecutionOrder.html) and which parts of that we currently support in the [section about Events](#events-methods) below.  
+
+To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).  
 
 ## Contents 📋
 - [Creating a new component](#creating-a-new-component)📋
