@@ -10,16 +10,16 @@ flowchart LR
   class Editor,gltf,Runtime bg;
 ```
 
-Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to physics, rendering or lights are already [included in Needle Engine](./component-reference.md#unity-components).  
+Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
 
 Our JavaScript runtime API mimicks the component model of the Unity Editor and provides a lot of similar functionality.  
 JavaScript components attached to [three.js objects](https://threejs.org/docs/#api/en/core/Object3D) have lifecycle methods similar to Unity, like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate``, that you can implement.   
 
-> Learn more about the Unity event loop [here ⇡](https://docs.unity3d.com/Manual/ExecutionOrder.html) and which parts of that we currently support in the [section about Events](#events-methods) below.  
+> Learn more about the Unity event loop [here ⇡](https://docs.unity3d.com/Manual/ExecutionOrder.html) and which parts of that we currently support in the [section about Lifecycle Methods](#lifecycle-methods) below.  
 
 To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).  
 
-> **Note**: Needle Engine does _not_ compile your C# code to Web Assembly. While using Web Assembly may ultimately result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+> **Note**: Needle Engine does _not_ compile your C# code to Web Assembly. While using Web Assembly may result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
 
 ## Contents 📋
 - [Creating a new component](#creating-a-new-component)📋
@@ -37,7 +37,7 @@ To get an in-depth overview of built-in components, you can inspect the folder `
 ## Creating a new component
 Scripts are written in TypeScript (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
-- Simply add a `.ts` or `.jss` file inside `src/scripts/` in your generated project directory.  
+- Simply add a `.ts` or `.js` file inside `src/scripts/` in your generated project directory.  
   Generated C# components are placed under `Assets/Needle/GeneratedComponents`.  
 
 - Organize your code into NPM Definition Files. These help you to modularize and re-use code between projects.  
@@ -76,7 +76,7 @@ Now add a new field ``public float speed = 5`` to your Unity component and save 
 
 ---
 ## Component architecture
-Components are added to threejs [Object3Ds ⇡](https://threejs.org/docs/#api/en/core/Object3D) similar to how [components in Unity ⇡](https://docs.unity3d.com/ScriptReference/Component.html) are added to [GameObjects ⇡](https://docs.unity3d.com/ScriptReference/GameObject.html). Therefor when we want to access a threejs Object3D we do so like ``this.gameObject`` where the ``gameObject`` is our Object3D.  
+Components are added to threejs [Object3Ds ⇡](https://threejs.org/docs/#api/en/core/Object3D) similar to how [components in Unity ⇡](https://docs.unity3d.com/ScriptReference/Component.html) are added to [GameObjects ⇡](https://docs.unity3d.com/ScriptReference/GameObject.html). Therefore when we want to access a three.js Object3D, we can access it as ``this.gameObject`` which returns our `Object3D`.  
 
 ***Note**: Setting ``visible`` to false on a Object3D will act like ``SetActive(false)`` in Unity - meaning it will also disable all the current components on this object and its children. Update events for inactive components are not being called until ``visible`` is set to true again.*
 
