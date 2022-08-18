@@ -9,7 +9,7 @@ Projects can be deployed easily and at no cost, and collaboration and XR come na
 Information and guides on how to use the needle Unity → threejs exporter.  
 
 ## Contents 📋
-- [Getting started](./documentation/getting_started.md) ⭐
+- [Getting started](./documentation/getting-started.md) ⭐
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
 - [VR and AR](./documentation/xr.md) — *WebXR, VR, AR placement, limitations*
