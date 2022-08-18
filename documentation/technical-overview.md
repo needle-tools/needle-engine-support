@@ -55,9 +55,9 @@ For production, we compress glTF assets with [`glTF-transform`](https://gltf-tra
 
 ## Vendor-specific glTF Extensions (NEEDLE_*)
 
-Needle Engine stores custom data in glTF files through our vendor extensions.  
+Needle Engine stores custom data in glTF files through our vendor extensions. These extensions are designed to be flexible and allow relatively arbitrary data to put into them. Notably, no code is stored in these files. Interactive components is restored from the data at runtime. This has some similarities to how AssetBundles function in Unity – the receiving side of an asset needs to have matching code for components stored in the file.  
 
-> We're currently not prodiving schemas for these extensions as they are still in development. The information below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
+> We're currently not prodiving schemas for these extensions as they are still in development. The JSON snippets below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
 
 > References between pieces of data are currently constructed through a mix of indices into other parts of the glTF file and JSON pointers. We may consolidate these approaches in a future release. We're also storing string-based GUIDs for cases where ordering is otherwise hard to resolve (e.g. two components referencing each other) that we may remove in the future.  
 
