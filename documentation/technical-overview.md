@@ -2,25 +2,50 @@
 
 ## glTF Assets
 
-### Supported extensions
+Models, textures, animations, lights, cameras and more are stored as .glb files in Needle Engine.  
+Custom data is stored in vendor extensions. This covers everything from interactive components to timelines/sequencing and lightmaps.  
+
+### Supported glTF extensions
 
 A typical production glTF created by Needle Engine uses the following extensions:  
 ```json
-"extensionsUsed": [
-  "KHR_lights_punctual",
-  "KHR_materials_unlit",
-  "KHR_texture_transform",
-  "KHR_animation_pointer",
-  "NEEDLE_techniques_webgl",
-  "NEEDLE_gameobject_data",
-  "NEEDLE_components",
-  "NEEDLE_persistent_assets",
-  "NEEDLE_lightmaps",
-  "NEEDLE_lighting_settings",
-  "KHR_texture_basisu",
-  "KHR_draco_mesh_compression"
-]
+KHR_lights_punctual
+KHR_materials_unlit
+KHR_texture_transform
+KHR_animation_pointer
+NEEDLE_techniques_webgl
+NEEDLE_gameobject_data
+NEEDLE_components
+NEEDLE_persistent_assets
+NEEDLE_lightmaps
+NEEDLE_lighting_settings
+KHR_texture_basisu
+KHR_draco_mesh_compression
 ```
+
+Other supported extensions:
+```
+EXT_meshopt_compression
+EXT_mesh_gpu_instancing (import and export)
+```
+
+Supported material extensions:  
+
+```
+KHR_materials_clearcoat
+KHR_materials_ior
+KHR_materials_specular
+KHR_materials_transmission
+KHR_materials_iridescence
+KHR_materials_unlit
+KHR_materials_volume
+```
+
+> **Note**: Materials using these extensions can be exported from Unity via UnityGLTF's `PBRGraph` material.  
+
+> **Note**: Audio and variants are already supported in Needle Engine through `NEEDLE_components` and `NEEDLE_persistent_assets`, but there are some options for more alignment to existing proposals such as `KHR_audio` and `KHR_materials_variants`.
+
+[Learn more about GLTF loading in three.js](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
 
 ### Compression
 
