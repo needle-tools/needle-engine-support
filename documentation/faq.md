@@ -10,6 +10,24 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 </details>
 
 <details>
+<summary><b>There's a SSL error when opening the local website</b></summary>
+
+This is expected. We're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box, but that means some browsers complain that the SSL connection (between your local development server and the local website) can't be verified.   
+
+You can generate a local self-signed SSL certificate to fix this if you want.  
+  
+</details>
+
+<details>
+<summary><b>My local website stays black</b></summary>
+  
+If that happens there's usually an exception either in engine code or your code. Open the dev tools (<kbd>Ctrl + Shift + I</kbd> in Chrome) and check the Console for errors.  
+In some cases, especially when you just updated the Needle Engine package version, this can be fixed by stopping and restarting the local dev server.  
+For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
+
+</details>
+
+<details>
 <summary><b>My website becomes to large (too many MB)</b></summary>
   
 This can have many reasons, but a few common ones are:
