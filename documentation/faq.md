@@ -35,8 +35,9 @@ Ensure you're following best practices for lightmaps: <link>
 
 <details>
 <summary><b>My scene is too bright / lighting looks different than in Unity</b></summary>
-Currently we face the following limitations:
-  - Lights set to mixed (with lightmapping) do affect objects twice in threejs since there is currently no way to exclude lightmapped objects from lighting
+Currently we face the following limitations: 
+  
+- Lights set to mixed (with lightmapping) do affect objects twice in threejs since there is currently no way to exclude lightmapped objects from lighting
 </details>
 
 <details>
