@@ -27,10 +27,16 @@ This can have many reasons, but a few common ones are:
 - Components that already have matching JS will show that in the Inspector.  
 </details>
 
-  <details>
+<details>
 <summary><b>My lightmaps look different</b></summary>
-  
+
 Ensure you're following best practices for lightmaps: <link>
+</details>
+
+<details>
+<summary><b>My scene is too bright / lighting looks different than in Unity</b></summary>
+Currently we face the following limitations:
+  - Lights set to mixed (with lightmapping) do affect objects twice in threejs since there is currently no way to exclude lightmapped objects from lighting
 </details>
 
 <details>
