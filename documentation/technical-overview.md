@@ -3,7 +3,7 @@
 ## glTF Assets
 
 Models, textures, animations, lights, cameras and more are stored as .glb files in Needle Engine.  
-Custom data is stored in vendor extensions. This covers everything from interactive components to timelines/sequencing and lightmaps.  
+Custom data is stored in vendor extensions. This covers everything from interactive components to physics, sequencing and lightmaps.  
 
 ### Supported glTF extensions
 
@@ -55,7 +55,7 @@ For production, we compress glTF assets with [`glTF-transform`](https://gltf-tra
 
 ## Vendor-specific glTF Extensions (NEEDLE_*)
 
-Needle Engine stores custom data in glTF files through vendor extensions. This covers everything from components to animator controllers to lightmaps.  
+Needle Engine stores custom data in glTF files through our vendor extensions.  
 
 > We're currently not prodiving schemas for these extensions as they are still in development. The information below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
 
