@@ -289,7 +289,10 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
           "preExtrapolationMode": 1,
           "postExtrapolationMode": 1
         },
-  ... 
+        ... 
+      ]
+    }
+  ]
 }
 ```
 
@@ -312,13 +315,13 @@ This extension builds upon the archived [`KHR_techniques_webgl`](https://github.
     {
       "name": "Pass-FRAGMENT",
       "type": 35632,
-      "uri": "<embedded WebGL fragment shader code>",
+      "uri": "<embedded WebGL fragment shader code ...>",
       "id": 1
     },
     {
       "name": "Pass-VERTEX",
       "type": 35633,
-      "uri": "<embedded WebGL vertex shader code>",
+      "uri": "<embedded WebGL vertex shader code ...>",
       "id": 0
     }
   ],
