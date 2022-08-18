@@ -2,7 +2,6 @@
 
 ## glTF Assets
 
-
 ### Supported extensions
 
 A typical production glTF created by Needle Engine uses the following extensions:  
@@ -12,7 +11,7 @@ A typical production glTF created by Needle Engine uses the following extensions
   "KHR_materials_unlit",
   "KHR_texture_transform",
   "KHR_animation_pointer",
-  "KHR_techniques_webgl",
+  "NEEDLE_techniques_webgl",
   "NEEDLE_gameobject_data",
   "NEEDLE_components",
   "NEEDLE_persistent_assets",
@@ -22,6 +21,12 @@ A typical production glTF created by Needle Engine uses the following extensions
   "KHR_draco_mesh_compression"
 ]
 ```
+
+### Compression
+
+For production, we compress glTF assets with [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Textures use either `etc1s`, `uastc` or no compression, depending on texture type. Meshes use `draco`. Custom extensions are passed through in an opaque way.  
+
+> **Note**: We might switch to meshopt compression in the future, but there's a number of open issues in three.js related to raycasts and bounds for meshopt-compressed assets.  
 
 ## Vendor-specific glTF Extensions (NEEDLE_*)
 
@@ -35,6 +40,8 @@ Needle Engine stores custom data in glTF files through vendor extensions. This c
 
 This extension contains per-node component data. The component names map to type names on both the JavaScript and C# side.  
 Multiple components with the same name can be added to the same node.  
+
+Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR_animation_pointer`](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer) extension.  
 
 ```json
 "NEEDLE_components": {
