@@ -2,7 +2,7 @@
 
 ## glTF Assets
 
-Models, textures, animations, lights, cameras and more are stored as .glb files in Needle Engine.  
+Models, textures, animations, lights, cameras and more are stored as [glTF assets](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) in Needle Engine.  
 Custom data is stored in vendor extensions. This covers everything from interactive components to physics, sequencing and lightmaps.  
 
 ### Supported glTF extensions
