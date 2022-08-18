@@ -297,7 +297,7 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
 
 ### NEEDLE_techniques_webgl
 
-This extension builds upon the archived KHR_techniques_webgl extension and extends it in a few crucial places. 
+This extension builds upon the archived [`KHR_techniques_webgl`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) extension and extends it in a few crucial places. While the original extension was specified against WebGL 1.0, we're using it with WebGL 2.0 here and have added a number of  uniform types.  
 
 ```json
 "KHR_techniques_webgl": {
@@ -312,17 +312,14 @@ This extension builds upon the archived KHR_techniques_webgl extension and exten
     {
       "name": "Pass-FRAGMENT",
       "type": 35632,
-      "uri": "...",
-      "id": 1,
-      "filePath": "Shader Graphs_River_Water-Pass-FRAGMENT-frag.glsl"
+      "uri": "<embedded WebGL fragment shader code>",
+      "id": 1
     },
     {
       "name": "Pass-VERTEX",
       "type": 35633,
-      "uri": "...",
-      ,
-      "id": 0,
-      "filePath": "Shader Graphs_River_Water-Pass-VERTEX-vert.glsl"
+      "uri": "<embedded WebGL vertex shader code>",
+      "id": 0
     }
   ],
   "techniques": [
@@ -350,6 +347,10 @@ This extension builds upon the archived KHR_techniques_webgl extension and exten
   ]
 }     
 ```
+
+> **Note**: Currently, vertex and fragment shaders are always embedded as URI; we plan on moving that data into more reasonable bufferViews in the future.  
+
+> **Note**: There's some redundant properties in here that we plan on cleaning up.  
 
 ## TypeScript
 
