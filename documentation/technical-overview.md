@@ -8,7 +8,7 @@ Custom data is stored in vendor extensions. This covers everything from interact
 ### Supported glTF extensions
 
 A typical production glTF created by Needle Engine uses the following extensions:  
-```json
+```
 KHR_lights_punctual
 KHR_materials_unlit
 KHR_texture_transform
