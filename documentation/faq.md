@@ -38,6 +38,7 @@ Ensure you're following best practices for lightmaps: <link>
 Currently we face the following limitations: 
   
 - Lights set to mixed (with lightmapping) do affect objects twice in threejs since there is currently no way to exclude lightmapped objects from lighting
+- The ``Intensity Multiplier`` factor for Skybox in ``Lighting/Environment`` is currently not supported and has no effect in Needle Engine 
 </details>
 
 <details>
