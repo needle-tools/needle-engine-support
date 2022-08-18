@@ -53,3 +53,7 @@ Please fill out the [Alpha Tester Feedback Form ⇡](https://fwd.needle.tools/ne
 [@marcel_wiessler](https://twitter.com/marcel_wiessler) • 
 [@hybridherbst](https://twitter.com/hybridherbst) • 
 [Needle Discord](https://discord.needle.tools)
+
+
+
+*Needle Engine is not sponsored by or affiliated with Unity Technologies or its affiliates. "Unity" is a trademark or registered trademark of Unity Technologies or its affiliates in the U.S. and elsewhere.*
