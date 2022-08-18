@@ -179,8 +179,8 @@ This is a root extension defining a set of lightmaps for the glTF file.
 | Texture Type | Value |
 | -- | -- |
 | Lightmap | 0 |
-| Skybox  | 1 |
-| Reflection | 2 |
+| Environment Map  | 1 |
+| Reflection Map | 2 |
 
 How lightmaps are applied is defined in the `MeshRenderer` component inside the [`NEEDLE_components`](#needle_components) extension per node:  
 
