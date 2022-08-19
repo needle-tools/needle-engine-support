@@ -18,7 +18,7 @@ Information and guides on how to use the needle Unity → threejs exporter.
 - [Deployment](./documentation/deployment.md) — *bundle, build and upload to a server*
 - [Component Reference](./documentation/component-reference.md)
 - [Samples and Modules](./documentation/samples-and-modules.md)
-- [Frequently Asked Questions](./documentation/faq.md)
+- [Questions and Answers](./documentation/faq.md)
 
 ## Dive Deeper 🐠
 - [Our vision](./documentation/vision.md) — *conceptual overview*
