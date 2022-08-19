@@ -5,10 +5,12 @@
 Needle Engine bridges the gap between 3D development and the web.  
 It comes with modern toolchains and workflows, web-native methodologies and builds on open standards.  
 Projects can be deployed easily and at no cost, and collaboration and XR come naturally.  
+[See here for a high level feature overview](./documentation/features-overview.md).  
 
-Information and guides on how to use the needle Unity → threejs exporter.  
+Information and guides on how to use the Needle Engine and Needle Engine Exporter.  
 
 ## Contents 📋
+- [Features Overview](./documentation/features-overview.md)
 - [Getting started](./documentation/getting-started.md) ⭐
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
