@@ -83,14 +83,15 @@ Ensure your project is set to Linear colorspace.
 <summary><b>I'm using networking and Glitch and it doesn't work if more than 30 people visit the Glitch page at the same time</b></summary>
   
 - Deploying on Glitch is a fast way to prototype and might even work for some small productions. The little server there doesn't have the power and bandwidth to host many people in a persistent session.  
-- We're working on other networking ideas, but in the meantime you cab host the website somewhere else (with node.js support) or simply remix it to distribute load among multiple servers.
+- We're working on other networking ideas, but in the meantime you can host the website somewhere else (with node.js support) or simply remix it to distribute load among multiple servers. You can also host the [networking backend package](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) itself somewhere else where it can scale e.g. Google Cloud.
 </details>
 
 <details>
 <summary><b>My website doesn't have AR/VR buttons</b></summary>
   
 - Make sure to add the `WebXR` component somewhere inside your root `GltfObject`.
-- Optionally add a `AR Session Root` on your root `GltfObject` to specify scale and orientation for WebXR.
+- Optionally add a `AR Session Root` component on your root `GltfObject` or within the child hierarchy to specify placement, scale and orientation for WebXR.
+- Optionally add a `XR Rig` component to control where users start in VR
 </details>
 
 <details>
