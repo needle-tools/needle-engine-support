@@ -36,7 +36,7 @@ This can have many reasons, but a few common ones are:
 - meshes have vertex attributes you don't actually need (e.g. have normals and tangents but you're not using them)
 - objects are disabled and not ignored – disabled objects get exported as well in case you want to turn them on at runtime! Set their Tag to `EditorOnly` to completely ignore them for export.
   
-If loading itself is an issue you can try to split up your content into multiple glb files and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting/Addressables in the documentation](./scripting.md#assetreference-and-addressables).
+If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting/Addressables in the documentation](./scripting.md#assetreference-and-addressables).
 </details>
 
 <details>
