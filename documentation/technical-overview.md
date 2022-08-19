@@ -207,7 +207,7 @@ How lightmaps are applied is defined in the `MeshRenderer` component inside the 
 
 ### NEEDLE_persistent_assets
 
-Components in `NEEDLE_components` can reference data via JSON Pointers. These pieces of data are often referenced multiple times by different components, and are thus stored separately in a root extension `NEEDLE_persistent_assets`. By design, they are always referenced by something else, and thus do not store type information at all: they're simply pieces of JSON data and components referencing them currently need to know what they expect. 
+Components in `NEEDLE_components` can reference data via JSON Pointers. The data in `NEEDLE_persistent_assets` is often referenced multiple times by different components and is thus stored separately in a root extension. By design, they are always referenced by something else (or have references within each other), and thus do not store type information at all: they're simply pieces of JSON data and components referencing them currently need to know what they expect. 
 
 Examples for assets/data stored in here are:  
 - AnimatorControllers, their layers and states
