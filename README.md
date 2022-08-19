@@ -41,7 +41,7 @@ To inspect them locally:
 
 For fast support, please join our [Discord](https://discord.needle.tools).
 
-Please fill out the [Alpha Tester Feedback Form ⇡](https://fwd.needle.tools/needle-engine/feedback) (it takes only ~1 minute) to help us improve the engine/exporter/documentation. Thank you!
+Please fill out the [Feedback Form ⇡](https://fwd.needle.tools/needle-engine/feedback) (it takes only ~1 minute) to help us improve the engine/exporter/documentation. Thank you!
 
 ---
 
