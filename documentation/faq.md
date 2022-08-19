@@ -58,6 +58,18 @@ Currently we face the following limitations:
 - Lights set to mixed (with lightmapping) do affect objects twice in threejs since there is currently no way to exclude lightmapped objects from lighting
 - The ``Intensity Multiplier`` factor for Skybox in ``Lighting/Environment`` is currently not supported and has no effect in Needle Engine  
   ![image](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
+- Light shadow intensity can currently not be changed due to a three.js limitation.
+
+</details>
+
+<details>
+<summary><b>My Shadows are not visible or cut off</b></summary>  
+  
+Please the following points:   
+  
+  - Your light has shadows enabled (either Soft Shadow or Hard Shadow)
+  - Your objects are set to "Cast Shadows: On" (see MeshRenderer component)
+  - For directional lights the position of the light is currently important since the shadow camera will be placed where the light is located in the scene.
 
 </details>
 
