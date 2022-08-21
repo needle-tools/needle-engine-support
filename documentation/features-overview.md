@@ -39,3 +39,8 @@ Use Rigidbodies, Box- or SphereColliders to add some juicy physics to your world
 
 ## Scripting 🧩
 Needle Engine uses as [component based workflow](./documentation/scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
+
+---
+# Where to go next
+See our [getting started](./documentation/getting-started.md) to learn about how to download and install Needle Engine.   
+Learn about [our vision here](./documentation/vision.md) or dive deeper into some of the [technical background and glTF](./documentation/technical-overview.md) powering it all.
