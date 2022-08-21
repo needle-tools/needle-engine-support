@@ -37,4 +37,4 @@ The supported tracks include: AnimationTracks, AudioTracks, ActivationTracks, Co
 Use Rigidbodies, Box- or SphereColliders to add some juicy physics to your world!
 
 ## Scripting
-Needle Engine uses as [component based workflow](./documentation/scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/need-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/need-engine/docs/component-compiler) produces Unity components magically on the fly. 
+Needle Engine uses as [component based workflow](./documentation/scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
