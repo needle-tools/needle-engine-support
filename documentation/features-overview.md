@@ -7,7 +7,7 @@ Needle Engine Exporter for Unity provides a tight (but flexible) integration int
 Use the node based [ShaderGraph ⇡](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
 
 ## Crossplatform: VR, AR, Mobile, Desktop 💻  
-Needle Engine runs everywhere web technology does: run the same application on desktop, mobile, AR or VR. 
+Needle Engine runs everywhere web technology does: run the same application on desktop, mobile, AR or VR. We build Needle Engine [with XR in mind](./documentation/xr.md) and consider this as and integral part of responsive webdesign!
 
 ## Lightmaps 💡
 
@@ -31,7 +31,8 @@ Needle Engine has core support for all of [Unity's Timeline ⇡](https://unity.c
 The supported tracks include: AnimationTracks, AudioTracks, ActivationTracks, ControlTracks, SignalTracks. 
 
 > **Note**: Sub-Timelines are currently not supported  
-> **Note**: Yes it is even possible to export your custom timeline tracks!  
+
+> **Note**: Yes it is even possible to [export your custom timeline tracks](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml)!
 
 ## Physics 🏓
 Use Rigidbodies, Box- or SphereColliders to add some juicy physics to your world!
