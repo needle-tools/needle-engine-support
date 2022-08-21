@@ -1,13 +1,13 @@
 # Features Overview
 
 ## Fast Iteration ⚡
-Needle Engine Exporter for Unity provides a tight (but flexible) integration into a world class game engine. You can keep using your workflows and we take care to bring your content to the web in seconds (not minutes). We embrace web technologies so [all your code is written in typescript and javascript](./documentation/scripting.md). This allows for almost instant reloads. Paired with a poweful editor and asset management you get the best of both worlds!   
+Needle Engine Exporter for Unity provides a tight (but flexible) integration into a world class game engine. You can keep using your workflows and we take care to bring your content to the web in seconds (not minutes). We embrace web technologies so [all your code is written in typescript and javascript](./scripting.md). This allows for almost instant reloads. Paired with a poweful editor and asset management you get the best of both worlds!   
 
 ## Shader Graph 🕸
 Use the node based [ShaderGraph ⇡](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
 
 ## Crossplatform: VR, AR, Mobile, Desktop 💻  
-Needle Engine runs everywhere web technology does: run the same application on desktop, mobile, AR or VR. We build Needle Engine [with XR in mind](./documentation/xr.md) and consider this as and integral part of responsive webdesign!
+Needle Engine runs everywhere web technology does: run the same application on desktop, mobile, AR or VR. We build Needle Engine [with XR in mind](./xr.md) and consider this as and integral part of responsive webdesign!
 
 ## Lightmaps 💡
 
@@ -38,9 +38,9 @@ The supported tracks include: AnimationTracks, AudioTracks, ActivationTracks, Co
 Use Rigidbodies, Box- or SphereColliders to add some juicy physics to your world!
 
 ## Scripting 🧩
-Needle Engine uses as [component based workflow](./documentation/scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
+Needle Engine uses as [component based workflow](./scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
 
 ---
 # Where to go next
-See our [getting started](./documentation/getting-started.md) to learn about how to download and install Needle Engine.   
-Learn about [our vision here](./documentation/vision.md) or dive deeper into some of the [technical background and glTF](./documentation/technical-overview.md) powering it all.
+See our [getting started](./getting-started.md) to learn about how to download and install Needle Engine.   
+Learn about [our vision here](./vision.md) or dive deeper into some of the [technical background and glTF](./technical-overview.md) powering it all.
