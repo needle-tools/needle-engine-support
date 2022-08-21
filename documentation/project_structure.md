@@ -11,6 +11,9 @@ You can organize your assets like in any typical Unity project. If you are not f
 ### NPM Definition files
 *modular projects - re-useable code and assets made easy* (see [twitter thread ⇡](https://twitter.com/marcel_wiessler/status/1536006405605449729))  
 
+![image](https://user-images.githubusercontent.com/5083203/185805355-0618aa93-a9ca-463a-86b8-e735e8772bda.png)
+
+
 **NPM Definition** is what we call npm packages that you can install to your projects from within Unity and that are tightly integrated into the Unity Editor. That includes generating component stubs automatically and will in the future also support e.g. automatically copying assets to output/distribution folders. 
 
 To greate a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``. You can add a *NPM Definition* package to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
