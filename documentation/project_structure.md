@@ -14,13 +14,15 @@ You can organize your assets like in any typical Unity project. If you are not f
 ![image](https://user-images.githubusercontent.com/5083203/185805355-0618aa93-a9ca-463a-86b8-e735e8772bda.png)
 
 
-**NPM Definition** is what we call npm packages that you can install to your projects from within Unity and that are tightly integrated into the Unity Editor. That includes generating component stubs automatically and will in the future also support e.g. automatically copying assets to output/distribution folders. 
+**NPM Definition** is what we call npm packages that you can install to your projects from within Unity, and that are tightly integrated into the Unity Editor. That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
+
+> Basically, each NpmDef contains a npm package (written in TypeScript) and a matching UPM package (C#). The public fields and method wrappers on the C# side can be automatically generated from TypeScript.  
 
 To greate a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``. You can add a *NPM Definition* package to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
-*NOTE: dont forget to install the newly added package by e.g. clicking Install on the ExportInfo component*
+> **NOTE**: don't forget to install the newly added package by e.g. clicking Install on the ExportInfo component.
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser.
 
@@ -49,4 +51,4 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 - ``index.scriban`` (optional) - The project template index file. Add an ``index`` component to your Unity scene to automatically generate the ``index.html`` from this file using the [scriban ⇡](https://github.com/scriban/scriban) templating engine.
 - ``vite.config`` - The default template uses [vite ⇡](https://vitejs.dev/). Settings for building the distribution and hosting the development server are made here. It is usually not necessary to edit these settings.
 
-**Note**: Our exporter can be used with other project structures as well, vite is just our go to frontend bundling tool because of its speed but feel free to setup your javascript project as you like. It is important to note tho that component names **must not be removed** for ``getComponent`` calls to work. See [scripting documentation](./scripting.md) for more info.
+> **Note**: Our exporter can be used with other project structures as well, vite is just our go-to frontend bundling tool because of its speed. Feel free to set up your JavaScript project as you like. It is important to note tho that script names **must not be removed** for ``getComponent`` calls to work. See the [Scripting Documentation](./scripting.md) for more info.
