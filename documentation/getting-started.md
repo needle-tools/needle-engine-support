@@ -12,7 +12,6 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
   [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
   [Universal Render Pipeline or Built-In Render Pipeline]
 
-
 ## Quick Start — Starter Project ⚡
 1. **Clone this repository**  
    It's set up with the right packages and settings to get you started right away.  
@@ -30,6 +29,12 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
   Open `starter/Unity_2020_3` for a full sandbox project that's ready to run.  
   This is a sandbox builder project!  
   Just add your own assets and you have your first multi-user, cross-platform, 3D sandbox website.  
+
+## Quick Start — Package Installer 📦
+1. [Click here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.needle.engine-exporter?registry=https://packages.needle.tools) to download a Needle Engine Exporter installer package
+2. [Click here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.khronos.unitygltf?registry=https://packages.needle.tools) to download a UnityGLTF installer package
+3. Drop both into your project to install the required packages from our registry 
+4. Wait for the installation to finish
 
 ## Regular Start — from a Template or from Scratch 🐢
 
