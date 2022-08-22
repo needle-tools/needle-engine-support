@@ -18,14 +18,6 @@ This section contains pieces of information that are important, but need to be s
 
 <sup>1</sup>: no custom shader support
 
-## Recommended Lightmap Settings
-
-- Lightmap Encoding: Normal Quality (adjust in `Project Settings > Player`)
-- Progressive GPU  
-- Non-Directional Lightmaps  
-- Max Lightmap Size 2k  
-- Compress Lightmaps OFF (otherwise will be compressed again at export time)  
-
 ## Recommended scene complexity
 
 > The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths.  
