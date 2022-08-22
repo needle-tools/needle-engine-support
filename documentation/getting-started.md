@@ -26,7 +26,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
    ```
   
 2. **Open the starter project**  
-  Open `starter/Unity_2020_3` for a full sandbox project that's ready to run.  
+  Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
   This is a sandbox builder project!  
   Just add your own assets and you have your first multi-user, cross-platform, 3D sandbox website.  
 
