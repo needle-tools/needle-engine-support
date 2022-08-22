@@ -139,3 +139,6 @@ class MyScript extends Behaviour
 
 </details>
 
+
+## Still have questions? 😱
+[Ask in our friendly discord community](https://discord.needle.tools)
