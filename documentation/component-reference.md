@@ -1,6 +1,6 @@
 # Component Reference 🧩
 
-Here is a overview of some of the most common components that we provide. For a complete list please have a look at the components inside ``node_modules/needle.tiny.engine/engine-components`` and ``engine-components-experimental``.  
+Here is a overview of some of the most common components that we provide. For a complete list please have a look at the components inside ``node_modules/@needle-tools/engine/engine-components`` and ``engine-components-experimental``.  
 
 > You can always add your own components or add wrappers for Unity components we haven't provided yet. Take a look at the [Scripting](./scripting.md) section.
 
@@ -66,5 +66,3 @@ Here is a overview of some of the most common components that we provide. For a 
 - Image
 - RawImage
 
----
-TODO: add description per component
