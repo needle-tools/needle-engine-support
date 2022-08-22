@@ -72,6 +72,9 @@ Other materials are converted using a propery name heuristic. That means that de
 
 ### Custom Shaders
 To export custom shaders (e.g. ShaderGraph shaders), add an ``ExportShader`` Asset Label (see bottom of the inspector) to the shader you want to export.  
+
+![2022-08-22-172029_Needle_Website_-_CustomShaders_-_Windows,_Mac,_Lin](https://user-images.githubusercontent.com/5083203/185957781-9fae18c5-09ff-490f-8958-57e138aa0003.png)
+
 > Custom Shaders aren't part of the ratified glTF material model. The resulting GLB files will not display correctly in other viewers (the materials will most likely display white).
 
 #### Current limitations
