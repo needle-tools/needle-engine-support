@@ -4,7 +4,6 @@ Projects can be composed of re-usable pieces that we call [**NpmDef**](./project
 
 Below you can find links to other repositories that contain Unity packages. These packages can be installed like any Unity package and used in your own projects. They usually contain eihter examples or modules that we use ourselves, but that are not ready to be part of the core Needle Engine.  
 
-> **Note**: The projects and their components linked below can change at any time. If you want to use these in your own projects, it's currently recommended to copy them and adjust as needed. Once they mature, some of the components will most likely move into the Needle Engine core components.  
 
 ## [needle-engine-modules ⇡](https://github.com/needle-tools/needle-engine-modules) 
    - **Custom Timeline Tracks**  
