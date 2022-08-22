@@ -26,3 +26,10 @@ The following parameters can be added to URLs to emit more debugging info, chang
 - make a production build
 - in that directory, run `http-server -g` (-g enables gzip support)
 - if you want to test WebXR, generate a [self-signed SSL certificate ⇡](https://stackoverflow.com/a/35231213), then run `http-server -g -S` to enable https (required for WebXR).
+
+## Mobile Console 
+
+We're providing a simple but effective console overlay for seeing logs from mobile devices. iOS issues are otherwise notoriously hard to debug.  
+(not documented yet) 
+
+For Android, you can attach Chrome Dev Tools to your device and see logs right from your PC. 
