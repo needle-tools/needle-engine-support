@@ -23,23 +23,6 @@ This section contains pieces of information that are important, but need to be s
 Generated Projects can either be added to source control or kept dynamic. Adding them to source control unlocks being able to adjust HTML, CSS, etc very flexible.  
 To generate dynamic projects, change their path to `../Library/MyScene`. They will be regenerated if needed.
 
-# Goals and Non-Goals
-
-## Goals
-- Fast iteration and rapid deployment.
-- Same ease of working on 3D web projects as on 2D web projects
-- Improve collaboration between developers and artists
-- Responsive web extends beyond screens – AR and VR should be built in, not afterthoughts.
-- Contributing back to open-source projects
-- Open discussion regarding 3D and web standards
-- Ability to bring and take your data in open formats
-- Ability to choose what web framework you use, not locked into a particular one
-- Common usecases work without or with limited coding experience
-- 
-## Non-Goals
-- It's not a goal to have 100% coverage of all combinations of Editor versions, feature sets, render pipelines.
-- It's not a goal to provide a no-code environment.
-
 *Please follow the instructions in the Authentication section if this is your first time accessing packages by needle on this machine.*
 
 # Licensing Setup
