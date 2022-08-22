@@ -48,8 +48,7 @@ This means that almost all properties, including script variables, are animatabl
 One current limitation is that materials won't be duplicated on export — if you want to animate the same material with different colors, for example, you currently need to split the material in two. 
 
 ## Exporting the Skybox
-The Unity skybox is baked into a texture on export and automatically exported as part of the ``<scene_name>_resources.glb``. It's set as scene background and reflection environment.  
-You can access resources at runtime using (for example) ``this.context.assets.findTexture("Skybox")``.  
+The Unity skybox and custom reflection (if any) are baked into a texture on export and automatically exported inside the ``NEEDLE_lightmaps`` extension.
 
 ## Exporting Materials
 
