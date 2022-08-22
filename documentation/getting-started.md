@@ -1,4 +1,8 @@
-# Prerequisites 💿
+# Getting started 🛎
+
+## Prerequisites 💿
+
+These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project and also done your first deployment to Glitch. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](.networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
 **Tools you'll need**   
   [Node.js (14.x or 16.x) ⇡](https://nodejs.org/en/) (required)  
@@ -8,7 +12,6 @@
   [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
   [Universal Render Pipeline or Built-In Render Pipeline]
 
-# Getting started 🛎
 
 ## Quick Start — Starter Project ⚡
 1. **Clone this repository**  
