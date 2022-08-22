@@ -32,6 +32,10 @@ Please refer to the [``AssetReference`` section on loading](scripting.md#assetre
 > **Note**: You can keep working inside a referenced scene and still update your main exporter scene/website. On scene save or play mode change we will detect if the current scene is being used by your currently running server and then trigger a re-export for only that glb.  
 (The check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
 
+As an example on [our website](https://needle.tools) each section is setup as a separate scene and on export packed into multiple glb files that we load on demand:
+
+![2022-08-22-172605_Needle_Website_-_Website_-_Windows,_Mac,_Linux_-_U](https://user-images.githubusercontent.com/5083203/185958983-71913c97-5eec-4cfd-99f5-76798582373e.png)
+
 ## Exporting Animations
 Needle Engine supports a considerable and powerful subset of Unity's animation features:
 
