@@ -9,9 +9,10 @@ There's no technical limitation to this beyond the capabilities of your device.
 - Max. 500k vertices (less if you target mobile VR as well)  
 - Max. 4x 2k lightmaps  
 
-You can split up scenes into multiple glTF files with some limitations, and then load those on demand (only when needed). This keeps loading performance fast and file size small.
+You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See the [AssetReference section in the Scripting docs](scripting.md#assetreference-and-addressables).
 
 ## Unity project structure
+
 You can organize your assets like in any typical Unity project. If you are not familiar with Unity you may follow [this guide ⇡](https://learn.unity.com/tutorial/project-organization-2019-3#5f68a346edbc2a002004052b) for a first overview. In general Unity assets are organized in two main parts: ``Assets`` and ``Packages``.
 
 - ``Assets`` - this is where project specific/exclusive assets live.
@@ -50,9 +51,10 @@ The following folders are excluded:
 
 ### Temporary Projects
 
-If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control (since the Unity Library is usually excluded). We consider these projects temporary because of that.
+If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control (the Library folder should be excluded from source control). We call these projects _temporary projects_. They're great for quickly testing out ideas!
 
 ## Vite project structure
+
 - ``assets/`` - The asset folder contains exported assets from Unity. E.g. generated ``gltf`` files, audio or video files. It is not recommended to manually add files to ``assets`` as it will get cleared on building the distribution for the project.
 - ``include/`` (optional) - If you have custom assets that you need to reference/load add them to the include directory. On build this directory will be copied to the output folder.
 - ``src/`` - This is where all the source code goes
