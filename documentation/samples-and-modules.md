@@ -11,10 +11,10 @@ Projects can be composed of re-usable pieces that we call [**NpmDef**](./project
   Contains various simple scripts to show things such as:  
   
   - **Clock**  
-    sample for a custom component that references other objects)
+    sample for a custom component that references other objects
     
   - **RenderTexture**  
-    sample for translating a Unity RenderTexture into a three.js RenderTexture)
+    sample for translating a Unity RenderTexture into a three.js RenderTexture
     
   - **TextGeometry**  
     sample for integrating existing three.js components such as 3D text into the scene graph
