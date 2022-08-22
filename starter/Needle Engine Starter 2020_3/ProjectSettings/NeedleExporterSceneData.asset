@@ -15,7 +15,7 @@ MonoBehaviour:
   Scenes:
   - Path: Assets/Scenes/Basic.unity
     Projects:
-    - ProjectPath: projects/Basic
+    - ProjectPath: Library/Basic
     BuilderScene: 
   - Path: Assets/Scenes/Lightmaps.unity
     Projects:
@@ -41,3 +41,4 @@ MonoBehaviour:
   Projects:
   - ProjectPath: projects/Basic
   - ProjectPath: Projects/Basic
+  - ProjectPath: Library/Basic

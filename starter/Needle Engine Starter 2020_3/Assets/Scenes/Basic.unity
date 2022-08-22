@@ -1171,7 +1171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 986a3a93ac16ec0428d8989979ec0966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Needle.Engine.ExportInfo, Needle.Engine.Common $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234923-0
-  DirectoryName: projects/Basic
+  DirectoryName: Library/Basic
   AutoExport: 1
   Dependencies:
   - Name: mycodemodule
@@ -1210,7 +1210,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Needle.Engine.Codegen.ComponentGenerator, Needle.Engine
     $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234925-0
-  compilerDirectory: projects/Basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
+  compilerDirectory: F:/git/three-exporter-support/starter/Needle Engine Starter
+    2020_3/Assets/../Library/Basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!114 &784234926
 MonoBehaviour:
   m_ObjectHideFlags: 0
