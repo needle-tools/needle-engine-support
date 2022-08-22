@@ -1,6 +1,5 @@
 # Virtual and Augmented Reality
 
-## Contents
 - [Adding VR and AR](#adding-vr-and-ar-capabilities-to-a-scene)
 - [Avatars](#avatars)
 - [HTML Content Overlays](#html-content-overlays-in-ar)
