@@ -27,6 +27,8 @@ To generate dynamic projects, change their path to `../Library/MyScene`. They wi
 
 # Licensing Setup
 
+> **Note**: This section is deprecated. Needle Engine is currently on Open Beta, and there's no need to authenticate against our registry at this point.
+
 ## Authentication  
 
 Make sure you have a Needle Engine and Exporter license, otherwise the following steps will fail (you'll not be able to get authenticated package access).  
