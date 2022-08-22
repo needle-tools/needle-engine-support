@@ -14,8 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Scenes:
   - Path: Assets/Scenes/Basic.unity
-    Projects:
-    - ProjectPath: Library/Basic
+    Projects: []
     BuilderScene: 
   - Path: Assets/Scenes/Lightmaps.unity
     Projects:
@@ -38,7 +37,23 @@ MonoBehaviour:
   - Path: Assets/Scenes/Lightmaps/LightmappedScene 2.unity
     Projects: []
     BuilderScene: 
+  - Path: Assets/Starter Template Scene.unity
+    Projects: []
+    BuilderScene: 
+  - Path: Assets/CollaborativeSandbox.unity
+    Projects:
+    - ProjectPath: projects/basic
+    BuilderScene: 
+  - Path: Assets/CollaborativeSandbox 1.unity
+    Projects:
+    - ProjectPath: Library/Temp
+    BuilderScene: 
+  - Path: Assets/Scenes/Lightmap.unity
+    Projects:
+    - ProjectPath: Projects/Basic
+    BuilderScene: 
   Projects:
   - ProjectPath: projects/Basic
   - ProjectPath: Projects/Basic
-  - ProjectPath: Library/Basic
+  - ProjectPath: Library/Temp
+  - ProjectPath: projects/basic

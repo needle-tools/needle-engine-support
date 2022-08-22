@@ -7,7 +7,7 @@
     "three": "^0.130"
   },
   "devDependencies": {
-    "@needle-tools/engine": "../../../../Library/PackageCache/com.@needle-tools/engine@1.4.0-pre/package~",
-    "three": "../../../../Library/PackageCache/com.@needle-tools/engine@1.4.0-pre/package~/node_modules/three"
+    "@needle-tools/engine": "../../../../Library/PackageCache/com.needle.engine@2.6.1-pre/package~",
+    "three": "../../../../Library/PackageCache/com.needle.engine@2.6.1-pre/package~/node_modules/three"
   }
 }

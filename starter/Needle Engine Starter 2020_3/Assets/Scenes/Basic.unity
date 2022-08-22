@@ -1074,7 +1074,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e6c38416c1a949c1a024aacb22e308af, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Engine.Components.OrbitControls, Needle.Engine
+    $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-706762907-0
   autoRotate: 1
   autoRotateSpeed: 0.3
   enableKeys: 1
@@ -1098,7 +1099,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: UnityEngine.Rendering.Universal.UniversalAdditionalCameraData,
+    Unity.RenderPipelines.Universal.Runtime $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-706762908-0
   m_RenderShadows: 1
   m_RequiresDepthTextureOption: 2
   m_RequiresOpaqueTextureOption: 2
@@ -1210,8 +1212,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Needle.Engine.Codegen.ComponentGenerator, Needle.Engine
     $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-784234925-0
-  compilerDirectory: F:/git/three-exporter-support/starter/Needle Engine Starter
-    2020_3/Assets/../Library/Basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
+  compilerDirectory: Library/Basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!114 &784234926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1906,7 +1907,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: aa3493724830445e9abb470aad0aec1e, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Needle.Tiny.Export.GltfObject, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275519-0
+  m_EditorClassIdentifier: Needle.Engine.Components.GltfObject, Needle.Engine $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275519-0
   SuppressExport: 0
   SmartExport: 0
 --- !u!114 &1597275520
@@ -1920,8 +1921,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 42798c1a37db46409660e69421ebdd09, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Needle.Tiny.Components.ObjectRaycaster, Needle.Tiny $
-    GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275520-0
+  m_EditorClassIdentifier: Needle.Engine.Components.ObjectRaycaster, Needle.Engine
+    $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275520-0
 --- !u!114 &1597275521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1933,7 +1934,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0d486f15de1d234da162ec54633ab10, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Needle.Tiny.WebARSessionRoot, Needle.Tiny $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275521-0
+  m_EditorClassIdentifier: Needle.Engine.Components.WebARSessionRoot, Needle.Engine
+    $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1597275521-0
   arScale: 1
   invertForward: 0
 --- !u!1 &1607947356
@@ -2172,7 +2174,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0714e5d97499175439b1a2a58606b1f7, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Typescript.GeneratedComponents.MyFirstComponent,
+    Assembly-CSharp $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1760165971-0
   onClick:
     m_PersistentCalls:
       m_Calls:
@@ -2262,7 +2265,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5390868f639594f478985a4e2be4529a, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Typescript.GeneratedComponents.RandomizeScale,
+    Assembly-CSharp $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1760165974-0
   target: {fileID: 1760165970}
   minScale: 0.1
   maxScale: 0.3
@@ -2277,7 +2281,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ebb6177a40f1f3743a7079a871d987f5, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Typescript.GeneratedComponents.RandomizeColor,
+    Assembly-CSharp $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1760165975-0
 --- !u!114 &1760165976
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2289,7 +2294,8 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2d8c64a13071e8d4ab58d408cdc0a49b, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
+  m_EditorClassIdentifier: Needle.Typescript.GeneratedComponents.Rotate, Assembly-CSharp
+    $ GlobalObjectId_V1-2-e93502921dbd61842bf3f7e8a22b0941-1760165976-0
   axes: {x: 0, y: 0, z: 0}
   randomAxes: 1
   speed: 1

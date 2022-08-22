@@ -33,9 +33,9 @@
   <script type="module" src="./src/main.ts"></script>
 
   <div id="main">
-    <needle-tiny src="loadScene" alias="top">
+    <needle-engine src="loadScene" alias="top">
       <div class="loading"></div>
-    </needle-tiny> 
+    </needle-engine> 
   </div>
 </body>
 </html>

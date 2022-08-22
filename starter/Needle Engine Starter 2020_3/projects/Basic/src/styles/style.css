@@ -28,7 +28,7 @@ body {
     /* border: 1px solid red; */
 }
 
-needle-tiny {
+needle-engine {
     z-index: 1;
     margin: 0;
     position: relative;
@@ -37,21 +37,21 @@ needle-tiny {
     width: 100%;
 }
 
-needle-tiny canvas {
+needle-engine canvas {
     position: absolute;
 }
 
 /* important to enable pointer events on overlay content entries by default again
 currently the overlay code does disable pointer events so that when adding content
 the threejs dom still receives events */
-needle-tiny .ar>*,
-needle-tiny .vr>*,
-needle-tiny .desktop>* {
+needle-engine .ar>*,
+needle-engine .vr>*,
+needle-engine .desktop>* {
     pointer-events: auto !important;
 }
 
 /* styles for default are close button */
-needle-tiny .quit-ar {
+needle-engine .quit-ar {
     position: absolute;
     top: 0;
     right: 0;
@@ -66,7 +66,7 @@ needle-tiny .quit-ar {
     z-index: 10;
 }
 
-needle-tiny .loading {
+needle-engine .loading {
     position: absolute;
     top: 0;
     left: 0;
@@ -82,7 +82,7 @@ needle-tiny .loading {
     color: white;
 }
 
-needle-tiny .webxr-buttons {
+needle-engine .webxr-buttons {
     position: absolute;
     /* border: red 2px solid; */
     bottom: 21px;
@@ -96,13 +96,13 @@ needle-tiny .webxr-buttons {
     gap: 10px;
 }
 
-needle-tiny .webxr-button:disabled {
+needle-engine .webxr-button:disabled {
     transform: none;
     opacity: 0.5 !important;
     /* display: none; */
 }
 
 /* presentation */
-needle-tiny.presentation-mode .hide-in-presentation {
+needle-engine.presentation-mode .hide-in-presentation {
     display: none !important;
 }
