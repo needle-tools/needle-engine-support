@@ -35,11 +35,14 @@ Needle Engine brings powerful animations, state control and sequencing to the we
 
 ### Animator
 
+![2022-08-22-221820_MinimalBike_-_Needle-Bike-Scene_-_PC,_Mac_ _Linux_](https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png)
+
 The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers.
 
 > **Note**: Sub-states and Blend Trees are not supported.  
 
 > **Note**: StateMachineBehaviours support ``OnStateEnter``, ``OnStateUpdate`` and ``OnStateExit``  
+
 
 ### Timeline
 
