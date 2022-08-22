@@ -53,7 +53,7 @@ It's worth noting that it's not a goal to ship actual code inside glTF; shipping
 
 ## Needle Engine and Unity WebGL
 
-From working with Unity for many years we've found that while the engine and editor progress at a great pace, WebGL output has somewhat lacked behind. Integration of Unity players into web-based systems is rather hard, "talking" to the surrounding website requires a number of workarounds, and most of all, iteration times are very slow due to the way that Unity packs all code into WebAssembly via IL2CPP. These technologies are awesome, and result in great runtime performance and a lot of flexibility. But they're so much slower and walled off compared to modern web development workflows that we decided to look for alternate options.  
+From working with Unity for many years we've found that while the engine and editor progress at a great pace, WebGL output has somewhat lacked behind. Integration of Unity players into web-based systems is rather hard, "talking" to the surrounding website requires a number of workarounds, and most of all, iteration times are very slow due to the way that Unity packs all code into WebAssembly via IL2CPP. These technologies are awesome, and result in great runtime performance and a lot of flexibility. But they're so much slower and walled off compared to modern web development workflows that we decided to take matters into our own hands.  
 
 ## Needle Engine and three.js
 
