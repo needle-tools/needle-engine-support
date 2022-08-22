@@ -13,6 +13,7 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 - [Feature Overview](./documentation/features-overview.md)
 - [Getting started](./documentation/getting-started.md) ⭐
 - [Export](./documentation/export.md) — *glTF files, shaders, lightmaps, Skybox, ...*
+- [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [VR and AR](./documentation/xr.md) — *WebXR, VR, AR placement, limitations*
 - [Scripting](./documentation/scripting.md) — *components, codegen, interop with the web, interop with three.js*
 - [HTML](./documentation/html.md) — *web-components, responsive design*
@@ -23,7 +24,6 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 ## Dive Deeper 🐠
 - [Our Vision](./documentation/vision.md) — *conceptual overview*
 - [Technical Overview](./documentation/technical-overview.md) — *technical overview, glTF extensions*
-- [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [Component Reference](./documentation/component-reference.md)
 - [Debugging](./documentation/debugging.md) — *debug flags, mobile console*
 
