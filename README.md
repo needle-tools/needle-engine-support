@@ -17,7 +17,6 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 - [Scripting](./documentation/scripting.md) — *components, codegen, interop with the web, interop with three.js*
 - [HTML](./documentation/html.md) — *web-components, responsive design*
 - [Deployment](./documentation/deployment.md) — *bundle, build and upload to a server*
-- [Component Reference](./documentation/component-reference.md)
 - [Samples and Modules](./documentation/samples-and-modules.md)
 - [Questions and Answers](./documentation/faq.md)
 
@@ -25,6 +24,7 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 - [Our Vision](./documentation/vision.md) — *conceptual overview*
 - [Technical Overview](./documentation/technical-overview.md) — *technical overview, glTF extensions*
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
+- [Component Reference](./documentation/component-reference.md)
 - [Debugging](./documentation/debugging.md) — *debug flags, mobile console*
 
 ## Useful resources for working with glTF 🖇
