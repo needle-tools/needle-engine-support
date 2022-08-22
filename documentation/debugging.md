@@ -9,11 +9,9 @@ Use ``?help`` to get a list of ALL parameters available.
 
 The following parameters can be added to URLs to emit more debugging info, change behaviour or show gizmos/helpers: 
 
-- ``avatar=<id>`` avatar to spawn when entering VR  
-- ``mirror`` opens another window to render world when entering VR  
-- ``postfx`` enables threejs postprocessing [EffectComposer ⇡](https://threejs.org/docs/#examples/en/postprocessing/EffectComposer)  
-
-### Debugging
+- ``help`` print all available url parameter
+- ``printGltf`` logs loaded gltf files to the console
+- ``debugextension`` logs gltf extension debug information. Beware: it might be a lot
 - ``debug`` shows transform gizmos (if any)
 - ``debugnet`` networking debug
 - ``debugowner`` ownership logs
@@ -24,6 +22,7 @@ The following parameters can be added to URLs to emit more debugging info, chang
 - ``debugvoip`` logs voip related messages
 - ``disableRT`` used to disable render textures (e.g. tv screen)
 - ``gizmos`` enables gizmo rendering (e.g. when using BoxCollider or AxesHelper components)
+- and a lot more: please use ``help`` to see them all
 
 ### Local Testing of release builds
 - First, install http-server: `npm install -g http-server` 
