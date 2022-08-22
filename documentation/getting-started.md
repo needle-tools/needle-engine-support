@@ -32,7 +32,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 
 ## Quick Start — Package Installer 📦
 1. [Click here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.needle.engine-exporter?registry=https://packages.needle.tools) to download a Needle Engine Exporter installer package
-2. [Click here](https://package-installer.glitch.me/v1/installer/OpenUPM/com.khronos.unitygltf?registry=https://packages.needle.tools) to download a UnityGLTF installer package
+2. [Click here](https://package-installer.glitch.me/v1/installer/OpenUPM/org.khronos.unitygltf?registry=https://packages.needle.tools) to download a UnityGLTF installer package
 3. Drop both into your project to install the required packages from our registry 
 4. Wait for the installation to finish
 
