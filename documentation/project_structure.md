@@ -1,5 +1,16 @@
 # Project structure 📚
 
+## Recommended scene complexity
+
+> The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths.  
+There's no technical limitation to this beyond the capabilities of your device.  
+
+- Max. 50 MB export size uncompressed (usually ends up ~10-20 MB compressed)  
+- Max. 500k vertices (less if you target mobile VR as well)  
+- Max. 4x 2k lightmaps  
+
+You can split up scenes into multiple glTF files with some limitations, and then load those on demand (only when needed). This keeps loading performance fast and file size small.
+
 ## Unity project structure
 You can organize your assets like in any typical Unity project. If you are not familiar with Unity you may follow [this guide ⇡](https://learn.unity.com/tutorial/project-organization-2019-3#5f68a346edbc2a002004052b) for a first overview. In general Unity assets are organized in two main parts: ``Assets`` and ``Packages``.
 
