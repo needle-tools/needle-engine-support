@@ -94,6 +94,8 @@ flowchart LR
 
 ## Authentication  
 
+Make sure you have a Needle Engine and Exporter license, otherwise the following steps will fail (you'll not be able to get authenticated package access).  
+
 *Needs to be setup once per machine.*  
 
 1) Clone this repository and open ``starter/Authenticate`` with Unity 2020.3.x
