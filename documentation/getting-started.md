@@ -88,7 +88,7 @@ If you don't want to start from a template, you can
     This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.  
     If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see your scene in the browser!  
 
-⭐⭐⭐⭐⭐ **Congratulations!** You just started your first project using Needle Engine! We're excited what you'll build.  
+⭐ **Congratulations!**  You just started your first project using Needle Engine! We're excited what you'll build.  
 
 ------------
 
