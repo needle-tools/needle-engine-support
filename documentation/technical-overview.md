@@ -1,5 +1,34 @@
 # Technical Overview
 
+## How it works
+
+Needle Engine roughly consists of three parts:
+- a number of _editor extensions_ that allow you to set up scenes for Needle Engine from e.g. the Unity Editor.
+- an _exporter_ that turns scene and component data into glTF
+- a _web runtime_ that loads and runs the produced glTF files and their extensions.
+
+The editor extensions currently support the Unity Editor, with some promising experiments for Blender on the horizon (but no ETA).  
+The web runtime uses three.js for rendering, adds a component system on top of the three scene graph and hooks up extension loaders for our custom glTF extensions.  
+
+Effectively, this turns the Unity Editor into a full member of a regular web development toolchain – "just" one more piece that gets added to the regular HTML, JavaScript, CSS and bundling workflow.  
+
+```mermaid
+flowchart LR
+    classDef ndl fill:#BCEDB1;
+    classDef ext fill:#B1E1ED;
+    Editor([Unity Editor]) --> EditorExt([Editor Extensions])
+    EditorExt -- export data --> glTF([glTF + Extensions])
+    glTF --> Bundler([Bundler - vite])
+    Runtime([Needle Runtime]) --> Bundler
+    Three([Three.js]) --> Bundler
+    YourWebsite([Your website - HTML, CSS, JS]) --> Bundler
+    Bundler -- outputs --> DevPage([web app - dev])
+    Bundler -- outputs --> DeploymentPage([web app - deploy])
+    glTF -- compressed with --> gltfTransform([glTF-transform]) --> DeploymentPage
+    class EditorExt,glTF,Runtime ndl;
+    class Editor,Three,Bundler,Page,gltfTransform,DeploymentPage,DevPage,YourWebsite ext;
+```
+
 ## glTF Assets
 
 Models, textures, animations, lights, cameras and more are stored as [glTF 2.0 files](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) in Needle Engine.  
