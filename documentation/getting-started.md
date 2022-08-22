@@ -1,13 +1,18 @@
 # Prerequisites 💿
-- [nodejs ⇡](https://nodejs.org/en/) (required for development)
-- [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download) (required for development)
-- [vscode ⇡](https://code.visualstudio.com/) (recommended for development)
+
+**Tools you'll need**   
+  [Node.js (14.x or 16.x) ⇡](https://nodejs.org/en/) (required)  
+  [VS Code ⇡](https://code.visualstudio.com/) (recommended)  
+  
+**Recommended Unity Versions**  
+  [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
+  [Universal Render Pipeline or Built-In Render Pipeline]
 
 # Getting started 🛎
 
 ## Quick Start — Starter Project ⚡
 1. **Clone this repository**  
-   This repostory has all the right package setup from the start.  
+   It's set up with the right packages and settings to get you started right away.  
    
    _Clone with HTTPS:_  
    ```
