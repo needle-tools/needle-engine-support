@@ -23,7 +23,7 @@ Needle Engine runs everywhere web technology does: run the same application on d
 Lightmaps [baked in Unity](https://docs.unity3d.com/Manual/progressive-lightmapper.html) to easily bake static light for your 3d content. Lightbaking for the web was never as easy. Just mark objects that you want to lightmap as static in Unity, add one or many lights to your scene (or use emissive materials) and click bake. Needle Engine will export your lightmaps per scene and automatically load and display them just as you see it in the Editor! 
 
 > **Note**: There is no technical limitation on which lightmapper to use, as long as they end up in Unity's lightmapping data structures. Third party lightmappers such as [Bakery ⇡](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218) thus are also supported. 
->  
+
 > Read more about [Exporting Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps)
 
 ## Multiplayer and Networking 🎭
@@ -46,7 +46,6 @@ The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-
 
 > **Note**: StateMachineBehaviours support ``OnStateEnter``, ``OnStateUpdate`` and ``OnStateExit``  
 
-
 ### Timeline
 
 We're also translating [Unity's Timeline ⇡](https://unity.com/features/timeline) setup and tracks into a web-ready format.  
@@ -57,9 +56,10 @@ Supported tracks include: AnimationTrack, AudioTrack, ActivationTrack, ControlTr
 > **Note**: It's possible to [export custom timeline tracks](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).  
 
 > Read more about [Animation Components](./component-reference.md#animation)
-> 
+
 ## Physics 🏓
 Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to your world.
+
 > **Note**: MeshColliders are currently not supported  
 
 > Read more about [Physics Components](./component-reference.md#physics)
