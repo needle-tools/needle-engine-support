@@ -52,6 +52,10 @@ MonoBehaviour:
     Projects:
     - ProjectPath: Projects/Basic
     BuilderScene: 
+  - Path: Assets/Sandbox2.unity
+    Projects:
+    - ProjectPath: Library/Temp
+    BuilderScene: 
   Projects:
   - ProjectPath: projects/Basic
   - ProjectPath: Projects/Basic
