@@ -18,17 +18,6 @@ This section contains pieces of information that are important, but need to be s
 
 <sup>1</sup>: no custom shader support
 
-## Recommended scene complexity
-
-> The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths.  
-There's no technical limitation to this beyond the capabilities of your device.  
-
-- Max. 20 MB export size uncompressed (usually ends up ~5-8 MB compressed)  
-- Max. 500k vertices (less if you target mobile VR as well)  
-- Max. 4 2k lightmaps  
-
-You can split up scenes into multiple glTF files with some limitations, and then load those on demand (only when needed). This keeps loading performance fast and file size small.
-
 ## Source Control
 
 Generated Projects can either be added to source control or kept dynamic. Adding them to source control unlocks being able to adjust HTML, CSS, etc very flexible.  
