@@ -49,7 +49,7 @@ Needle Engine brings powerful animations, state control and sequencing to the we
 
 ### Animator
 
-<img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" style="height:300px;width:auto" />
+<img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" />
 
 The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers.
 
@@ -58,6 +58,8 @@ The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-
 > **Note**: StateMachineBehaviours support ``OnStateEnter``, ``OnStateUpdate`` and ``OnStateExit``  
 
 ### Timeline
+
+![2022-08-23-013517_Scene](https://user-images.githubusercontent.com/5083203/186037829-ee99340d-b19c-484d-b551-94797519c9d9.png)
 
 We're also translating [Unity's Timeline ⇡](https://unity.com/features/timeline) setup and tracks into a web-ready format.  
 Supported tracks include: AnimationTrack, AudioTrack, ActivationTrack, ControlTrack, SignalTrack.   
@@ -78,7 +80,7 @@ Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to 
 ## Scripting 🧩
 Needle Engine uses as [component based workflow](./scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
 
-> Read more about [Scripting Reference](https://fwd.needle.tools/needle-engine/docs/scripting)
+> Read more about [Scripting Reference](https://fwd.needle.tools/needle-engine/docs/scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
 
 ---
 # Where to go next
