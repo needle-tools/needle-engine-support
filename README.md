@@ -2,15 +2,15 @@
 
 # Needle Engine
 
-Needle Engine bridges the gap between 3D development and the web.  
-It comes with modern toolchains and workflows, web-native methodologies and builds on open standards.  
-Projects can be deployed easily and at no cost, and collaboration and XR come naturally.  
-[See here for a high level feature overview](./documentation/features-overview.md).  
+**Needle Engine** is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.  
 
-Information and guides on how to use the Needle Engine and Needle Engine Exporter.  
+**Needle Exporter for Unity** bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.  
+
+**Together**, they enable incredible iteration speeds and help you to bring your content to the web.  
+Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
 
 ## Contents 📋
-- [Features Overview](./documentation/features-overview.md)
+- [Feature Overview](./documentation/features-overview.md)
 - [Getting started](./documentation/getting-started.md) ⭐
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [Export](./documentation/export.md) — *glTF, Shaders, Lightmaps, Skybox*
