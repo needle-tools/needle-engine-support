@@ -1,4 +1,4 @@
-# Project structure 📚
+# Project structure and organization 📚
 
 ## Recommended scene complexity
 
@@ -37,6 +37,8 @@ To greate a *NPM Definition* right click in the Unity Project browser and select
 > **NOTE**: don't forget to install the newly added package by e.g. clicking Install on the ExportInfo component.
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser.
+
+[Read more about scripting](https://fwd.needle.tools/needle-engine/docs/scripting)
 
 ### Version Control (git)
 
