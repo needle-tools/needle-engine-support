@@ -21,6 +21,25 @@ At the core of Needle Engine stands the glTF format and its ability to be extend
   
 [Read more about our use of glTF and extensions](./technical-overview.md)
   
+# Goals and Non-Goals
+
+## Goals
+- Fast iteration and rapid deployment.
+- Same ease of working on 3D web projects as on 2D web projects
+- Improve collaboration between developers and artists
+- Responsive web extends beyond screens – AR and VR should be built in, not afterthoughts.
+- Contributing back to open-source projects
+- Open discussion regarding 3D and web standards
+- Ability to bring and take your data in open formats
+- Ability to choose what web framework you use, not locked into a particular one
+- Common usecases work without or with limited coding experience
+- 
+## Non-Goals
+- It's not a goal to have 100% coverage of all combinations of Editor versions, feature sets, render pipelines.
+- It's not a goal to provide a no-code environment.
+  
+# Relation to other engines and frameworks  
+
 ## Needle Engine and Unity WebGL
 
 From working with Unity for many years we've found that while the engine and editor progress at a great pace, WebGL output has somewhat lacked behind. Integration of Unity players into web-based systems is rather hard, "talking" to the surrounding website requires a number of workarounds, and most of all, iteration times are very slow due to the way that Unity packs all code into WebAssembly via IL2CPP. These technologies are awesome, and result in great runtime performance and a lot of flexibility. But they're so much slower and walled off than modern web development workflows should be that we decided to look for alternate options.  
