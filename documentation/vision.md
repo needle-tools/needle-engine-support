@@ -19,11 +19,15 @@ We want to bridge these worlds and combine the best of both worlds: artist-frien
   
 ## Creating a Workflow, not an Editor
   
-We think the next wave of 3D apps on the web will come with better _workflows_: everyone should be able to put together a 3D scene, an art gallery, present a product or 3D scan on the web or make simple games. Reaching this goal will require more than just supporting one particular system and exporting to the web from there. Our goal is to allow people to bring data to the web from _their_ creative tools: be it Unity, Blender, Photoshop, or something else. We're aware that this is a big goal – but instead of doing everything at once, we want to iterate and get closer to it together.  
+We think the next wave of 3D apps on the web will come with better _workflows_: everyone should be able to put together a 3D scene, an art gallery, present a product or 3D scan on the web or make simple games. Reaching this goal will require more than just supporting one particular system and exporting to the web from there.
+  
+Our goal is to allow people to bring data to the web from _their_ creative tools: be it Unity, Blender, Photoshop, or something else. We're aware that this is a big goal – but instead of doing everything at once, we want to iterate and get closer to it together.  
   
 ## Open Standards instead of Proprietary Containers
 
-At the core of Needle Engine stands the [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) format and its ability to be extended with custom extensions. The goal is: a single `.glb` file can contain your entire application's data. It's worth noting that it's not a goal to ship actual code inside glTF; shipping and running code is the job of modern web runtimes and bundling. We certainly can imagine that abstract representations of logic (e.g. graphs, state machines, and so on) can be standardized to a certain degree and allow for interoperable worlds, but we're not there yet.  
+At the core of Needle Engine stands the [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) format and its ability to be extended with custom extensions. The goal is: a single `.glb` file can contain your entire application's data. 
+  
+It's worth noting that it's not a goal to ship actual code inside glTF; shipping and running code is the job of modern web runtimes and bundling. We certainly can imagine that abstract representations of logic (e.g. graphs, state machines, and so on) can be standardized to a certain degree and allow for interoperable worlds, but we're not there yet.  
   
 [Read more about our use of glTF and extensions](./technical-overview.md)
 
@@ -49,7 +53,7 @@ At the core of Needle Engine stands the [glTF](https://registry.khronos.org/glTF
 
 ## Needle Engine and Unity WebGL
 
-From working with Unity for many years we've found that while the engine and editor progress at a great pace, WebGL output has somewhat lacked behind. Integration of Unity players into web-based systems is rather hard, "talking" to the surrounding website requires a number of workarounds, and most of all, iteration times are very slow due to the way that Unity packs all code into WebAssembly via IL2CPP. These technologies are awesome, and result in great runtime performance and a lot of flexibility. But they're so much slower and walled off than modern web development workflows should be that we decided to look for alternate options.  
+From working with Unity for many years we've found that while the engine and editor progress at a great pace, WebGL output has somewhat lacked behind. Integration of Unity players into web-based systems is rather hard, "talking" to the surrounding website requires a number of workarounds, and most of all, iteration times are very slow due to the way that Unity packs all code into WebAssembly via IL2CPP. These technologies are awesome, and result in great runtime performance and a lot of flexibility. But they're so much slower and walled off compared to modern web development workflows that we decided to look for alternate options.  
 
 ## Needle Engine and three.js
 
