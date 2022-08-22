@@ -1,13 +1,24 @@
 # Feature Overview
 
+[Fast Iteration](./features-overview.md#fast-iteration) • 
+[Shaders and Materials](./features-overview.md#shaders-and-materials) • 
+[VR and AR](./features-overview.md#crossplatform-vr-ar-mobile-desktop-) • 
+[Lightmaps](./features-overview.md#lightmaps) • 
+[Multiplayer and Networking](./features-overview.md#multiplayer-and-networking) • 
+[Animations and Sequencing](./features-overview.md#animations-and-sequencing) • 
+[Physics](./features-overview.md#physics) • 
+[Scripting](./features-overview.md#scripting)
+
 ## Fast Iteration ⚡
 Needle Exporter for Unity provides a flexible integration into a world-class game engine. You can keep using your workflows and we take care of bringing your content to the web in seconds. We embrace modern web technologies, so [all your code is written in TypeScript and JavaScript](./scripting.md). This allows for almost instant reloads. Paired with a powerful editor and asset management you get the best of both worlds!  
 
 > Read more about [Getting Started](./getting-started.md) • [Scripting](./scripting.md) • [Assets and Export](./export.md)
 
-## Shader Graph 🕸
+## Shaders and Materials 🕸
 
-<img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" style="height:300px;width:auto" />
+Both PBR Materials and Custom shaders created with Shader Graph or other systems can be exported. 
+
+<img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" />
 
 Use the node based [ShaderGraph ⇡](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
 
@@ -31,7 +42,7 @@ Networking is built into the core runtime. Needle Engine deployments to Glitch c
 
 > Read more about [Networking](https://fwd.needle.tools/needle-engine/docs/networking) • [Scripting](https://fwd.needle.tools/needle-engine/docs/scripting)
 
-## Animation 🏇
+## Animations and Sequencing 🏇
 Needle Engine brings powerful animations, state control and sequencing to the web — from just playing a single animation to orchestrating and blending complex animations and character controllers. The Exporter can translate Unity components like Animator and Timeline into a web-ready format.  
 
 > Read more about [Animation Components](./component-reference.md#animation)
