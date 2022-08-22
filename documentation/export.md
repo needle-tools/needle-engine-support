@@ -86,6 +86,9 @@ These coordinate changes are
 - Advanced effects such as scene color and depth access can be set up in three.js but aren't automatically exported at this time.  
 
 ## Exporting Lightmaps
+![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
+
+
 To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
 
 > When working on multiple scenes, disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
@@ -97,3 +100,6 @@ To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Man
 - Max Lightmap Size 2k (you can go higher, but expect large files)
 - Max 4x 2k lightmaps per scene (you can go higher, but expect large files)
 - Compress Lightmaps OFF (increases quality; otherwise will be compressed again at export time)
+
+![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad13-4e6d-a14c-c8ec5c1fcfd4.png)
+
