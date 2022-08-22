@@ -6,6 +6,9 @@ Needle Exporter for Unity provides a flexible integration into a world-class gam
 > Read more about [Getting Started](./getting-started.md) • [Scripting](./scripting.md) • [Assets and Export](./export.md)
 
 ## Shader Graph 🕸
+
+<img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" style="height:300px;width:auto" />
+
 Use the node based [ShaderGraph ⇡](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
 
 > Read more about [PBR Materials](./export.md#custom-shaders) • [Custom Shaders](./export.md#physically-based-materials-pbr)
@@ -35,7 +38,7 @@ Needle Engine brings powerful animations, state control and sequencing to the we
 
 ### Animator
 
-![2022-08-22-221820_MinimalBike_-_Needle-Bike-Scene_-_PC,_Mac_ _Linux_](https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png)
+<img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" style="height:300px;width:auto" />
 
 The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers.
 
