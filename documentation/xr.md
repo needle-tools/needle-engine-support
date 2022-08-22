@@ -123,7 +123,7 @@ Due to Apple currently not supporting WebXR on iOS devices, Augmented Reality ex
 A number of options and workarounds exist to still give iOS users _some_ AR:  
 
 1. **Guiding users towards WebXR-compatible browsers on iOS.**
-   Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
+   Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer ⇡](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
    
 3. **Exporting content on-the-fly as USDZ files.**  
    These files can be displayed on iOS devices in AR. They lack interactivity (besides a small set of built-in components) but can be sufficient for product configurators and similar relatively static usecases.
