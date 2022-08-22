@@ -4,11 +4,11 @@
 
 By default, Needle Engine gets bundled into a web app on deployment. This ensures smaller files, tree-shaking (similar to code stripping in Unity) and optimizes load times. Instead of downloading numerous small scripts and components, only one or a few are downloaded that contain the minimal code needed.  
 
-Vite (our default bundler) has a good explanation why web apps should be bundled: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+Vite (our default bundler) has a good explanation why web apps should be bundled: [Why Bundle for Production ⇡](https://vitejs.dev/guide/why.html)
 
 ## Vue, React, Mustache, etc.
 
-Needle Engine is unoponiated about the choice of framework. The default template only uses vite as bundler. Adding vue to that is easy (see the [vite docs]()), we also provide an (experimental) react-three-fiber template and there should be nothing stopping your from using simpler or more complex frameworks.
+Needle Engine is unoponiated about the choice of framework. The default template only uses vite as bundler. Adding vue to that is easy (see the [vite docs ⇡](https://vitejs.dev)), we also provide an (experimental) react-three-fiber template and there should be nothing stopping your from using simpler or more complex frameworks.
 
 You can, for example, use
 - **just vite + HTML**  
