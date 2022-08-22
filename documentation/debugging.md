@@ -36,4 +36,6 @@ The following parameters can be added to URLs to emit more debugging info, chang
 We're providing a simple but effective console overlay for seeing logs from mobile devices. iOS issues are otherwise notoriously hard to debug.  
 (not documented yet) 
 
-For Android, you can attach Chrome Dev Tools to your device and see logs right from your PC. 
+For **Android**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
+
+For **Quest**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
