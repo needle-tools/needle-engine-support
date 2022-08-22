@@ -35,9 +35,11 @@ Needle Engine brings powerful animations, state control and sequencing to the we
 
 ### Animator
 
-The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, transitions and layers.
+The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers.
 
-> **Note**: Sub-states, Blend Trees and State Behaviours currently aren't supported.  
+> **Note**: Sub-states and Blend Trees are not supported.  
+
+> **Note**: StateMachineBehaviours support ``OnStateEnter``, ``OnStateUpdate`` and ``OnStateExit``  
 
 ### Timeline
 
