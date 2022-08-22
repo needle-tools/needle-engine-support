@@ -25,6 +25,7 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 - [Our Vision](./documentation/vision.md) — *conceptual overview*
 - [Technical Overview – How it works](./documentation/technical-overview.md) — *technical overview, glTF extensions*
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
+- [Debugging](./documentation/debugging.md) — *debug flags, mobile console*
 
 ## Useful resources for working with glTF 🖇
 
