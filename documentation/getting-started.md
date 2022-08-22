@@ -88,20 +88,22 @@ If you don't want to start from a template, you can
     This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.  
     If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see your scene in the browser!  
 
-⭐ **Congratulations!** You just started your first project using Needle Engine! We're excited what you'll build.  
+⭐⭐⭐⭐⭐ **Congratulations!** You just started your first project using Needle Engine! We're excited what you'll build.  
+
+------------
 
 6. **Add content**    
-  1. Create a new empty GameObject
-  2. Add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF file. 
-  3. Add an object (e.g. ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. 
-  4. Your browser should refresh and your object is visible.
+   1. Create a new empty GameObject
+   1. Add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF file. 
+   1. Add an object (e.g. ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. 
+   1. Your browser should refresh and your object is visible.
 
 6. **Make it interactive**  
   Needle Engine comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``, which we're going to use to make the camera interactive.
-  1. Select your ``Main Camera`` GameObject
-  2. Add a new ``OrbitControls`` component to it 
-  3. Press play or save your scene
-  4. Your browser should refresh and you can now move the camera around.
+    1. Select your ``Main Camera`` GameObject
+    1. Add a new ``OrbitControls`` component to it 
+    1. Press play or save your scene
+    1. Your browser should refresh and you can now move the camera around.
 
 > **The local server does not start / no website in your browser?**  
   Make sure you read and followed the [Prerequisites](#prerequisites-).  
@@ -135,6 +137,8 @@ Glitch is a free website hosting and code editing environment, right in your bro
   Your browser window will open on your new project.
 
 ⭐ **Congratulations!** You just deployed your first project from Unity to the web.  
+
+------------
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 
