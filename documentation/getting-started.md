@@ -16,14 +16,8 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 1. **Clone this repository**  
    It's set up with the right packages and settings to get you started right away.  
    
-   _Clone with HTTPS:_  
-   ```
-   https://github.com/needle-tools/three-exporter-support.git
-   ```
-   _Or clone with SSH:_  
-   ```
-   git@github.com:needle-tools/three-exporter-support.git
-   ```
+   _Clone with HTTPS:_ ``https://github.com/needle-tools/three-exporter-support.git``  
+   _OR clone with SSH:_ ``git@github.com:needle-tools/three-exporter-support.git``  
   
 2. **Open the starter project**  
   Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
@@ -31,7 +25,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
   Just add your own assets and you have your first multi-user, cross-platform, 3D sandbox website.  
 
 ## Option 2: Quick Start — Package Installer 📦
-1. [Click here](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) to download a Needle Engine Exporter installer package
+1. [**Click here to download a Needle Engine Exporter installer package**](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) 
 2. Drop both into your project to install the required packages from our registry 
 3. Wait for the installation to finish
 4. Now maybe create a new scene and select on of our scene templates!
