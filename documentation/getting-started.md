@@ -27,7 +27,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 ## Option 2: Quick Start — Package Installer 📦
 1. [**Click here to download a Needle Engine Exporter installer package**](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) 
 2. Drop both into a Unity project to install the Needle Engine, Needle Engine Exporter and UnityGLTF package
-3. Wait for the installation to finish
+3. Wait for the installation to finish (You might need to click ``Refresh`` in the Unity Project browser after the installer has finished)
 4. Now create a new scene and select one of our scene templates!
 
 ## Option 3: Regular Start — from a Template or from Scratch 🐢
