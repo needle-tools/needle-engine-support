@@ -33,13 +33,15 @@ https://user-images.githubusercontent.com/5083203/186149117-ca7cf22f-dc7d-4c74-8
 https://user-images.githubusercontent.com/5083203/186147814-159a33f9-f1a6-47d4-804f-5f8f5a63125d.mp4
 
 ## Pokémon Card
-[Pokémon Card ⇡](https://fwd.needle.tools/needle-engine/projects/pokemon-card) — Scene from Alex Ameye  
+[Pokémon Card ⇡](https://fwd.needle.tools/needle-engine/projects/pokemon-card) — Scene from Alex Ameye • [Original Blog Post by Alex ⇡](https://alexanderameye.github.io/notes/holographic-card-shader/)  
 
 https://user-images.githubusercontent.com/5083203/186149736-49a697b3-4282-4b71-ab13-a6b176955c13.mp4
 
 
 ## Encryption in Space  
 [Encryption in Space ⇡](https://fwd.needle.tools/needle-engine/projects/encryption) — by Katja Rempel & Nick Jwu  
+
+https://user-images.githubusercontent.com/5083203/186151157-0c0a7d05-ad42-44be-b553-8d4cd48cbb81.mp4
 
 ## Physics Playground
 [Physics Playground ⇡](https://bruno-simon-20k-needle.glitch.me/) — Scene from Bruno Simon  
