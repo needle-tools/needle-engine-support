@@ -116,14 +116,14 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 > **The Skybox looks weird?**    
   This is a known issue and will be fixed soon — just press play again and the skybox should appear correctly.  
 
-## Deploy your project to Glitch
+## Deploy your project to Glitch) 🎏
 
-Glitch is a free website hosting and code editing environment, right in your browser. You can use Glitch as a fast-easy-free way to host prototypes and little apps. You'll even get a small web server included that provides networking and persistence for your projects.  
+[Glitch ⇡](https://glitch.com) is a free website hosting and code editing environment, right in your browser. You can use Glitch as a fast-easy-free way to host prototypes and little apps. You'll even get a small web server included that provides networking and persistence for your projects.  
 
 1. **Add the Deployment component**  
   Select your `ExportInfo` object, and add a new `Deployment` component to it.
 
-2. **Remix [our starter](https://fwd.needle.tools/needle-engine/glitch-starter-editor), right from Unity**  
+2. **Remix [our starter ⇡](https://fwd.needle.tools/needle-engine/glitch-starter-editor), right from Unity**  
    1. **Click on `Create new Glitch Remix`.**  
     ![image](https://user-images.githubusercontent.com/2693840/185919478-8ba99499-cea9-4d29-ae1c-6d6da602f869.png)  
     This will open your browser and remix the page.  
@@ -131,7 +131,6 @@ Glitch is a free website hosting and code editing environment, right in your bro
    2. **Paste the name of your new remix**  
   Copy the URL of your new remix and paste it into the `Project Name` text field in Unity.    
   ![179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1](https://user-images.githubusercontent.com/5083203/186165097-9b44f3dc-ec2f-48f4-819b-8fab5fac5270.png)
-
 
    3. **Deploy to Glitch**  
   Click on `Build & Deploy: Prod`. This will kick of bundling, compression, and upload of your project.  
