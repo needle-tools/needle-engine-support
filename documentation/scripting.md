@@ -229,7 +229,9 @@ You can use the following typescript attributes to control C# code generation be
 | `// @serializeField` | Decorate generated field with `[SerializeField]` |
 | `// @type UnityEngine.Camera` | Specify generated C# field type |
 
-The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match. You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported. Please note that exported members will start with a lowercase letter. For example if your C# member is named ``MyString`` it will be assigned to ``myString``.
+The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match. You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported. 
+
+> **Note**: exported members will start with a lowercase letter. For example if your C# member is named ``MyString`` it will be assigned to ``myString``.
 
 ### Extending generated components
 Component C# classes are generated with the [`partial ⇡`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) flag so that it is easy to extend them with functionality. This is helpful to draw gizmos, add context menus or add additional fields or methods that are not part of a built-in component.  
