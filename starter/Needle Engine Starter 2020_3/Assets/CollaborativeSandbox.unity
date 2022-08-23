@@ -1157,10 +1157,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 7448133477906616876, guid: 2d0e7e9e3a92c6c43b8ba9db1d431990, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: a3d0fb8a599f34e4a9bef30627fc8ea5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 4356647446942177815, guid: 2d0e7e9e3a92c6c43b8ba9db1d431990, type: 3}
 --- !u!4 &637917646 stripped
@@ -1518,7 +1514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Needle.Engine.Codegen.ComponentGenerator, Needle.Engine
     $ GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-784234925-0
-  compilerDirectory: projects/basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
+  compilerDirectory: F:/git/three-exporter-support/starter/Needle Engine Starter
+    2020_3/Assets/../projects/basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!114 &784234926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1609,10 +1606,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 695196123134611305, guid: acb013f31cad638439273ba3bcca8c39, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 66240bb94a74d654e8c1c60f7c8dad39, type: 2}
     - target: {fileID: 7320128899306317035, guid: acb013f31cad638439273ba3bcca8c39, type: 3}
       propertyPath: m_Name
       value: GroundCubeQuad
@@ -1644,7 +1637,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 385d14bf62e962549a8aeb84fdd6bad1, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Needle.Engine.Components.XRFlag, Needle.Engine $ GlobalObjectId_V1-2-d541a43e59ef6e94b8483da1bfc954ea-809835443-0
+  m_EditorClassIdentifier: Needle.Engine.Components.XRFlag, Needle.Engine $ GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-809835443-0
   VisibleIn: 5
 --- !u!1 &969208504
 GameObject:
