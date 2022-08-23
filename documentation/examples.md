@@ -1,6 +1,13 @@
 
 # Example Projects ✨
 
+Explore some real world applications, websites and demos made with Needle Engine.
+
+<p align="left">
+<a href="./documentation/getting-started.md">Get started now</a> • <a href="./documentation/vision.md">Learn more about our vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a>
+</p>
+
+
 ## Needle Website  
 <a href="https://needle.tools" target="_blank">Visit Website</a> — by Needle   
 
