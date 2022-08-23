@@ -11,7 +11,8 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 
 
 
-https://user-images.githubusercontent.com/5083203/186119046-dbe1972b-d4e9-4b40-b35b-89af84029f94.mp4
+https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a694-c445f1d82b81.mp4
+
 
 
 
