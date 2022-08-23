@@ -116,7 +116,7 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 > **The Skybox looks weird?**    
   This is a known issue and will be fixed soon — just press play again and the skybox should appear correctly.  
 
-## Deploy your project to Glitch) 🎏
+## Deploy your project to Glitch 🎏
 
 [Glitch ⇡](https://glitch.com) is a free website hosting and code editing environment, right in your browser. You can use Glitch as a fast-easy-free way to host prototypes and little apps. You'll even get a small web server included that provides networking and persistence for your projects.  
 
