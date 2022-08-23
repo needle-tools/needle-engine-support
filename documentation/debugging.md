@@ -1,9 +1,23 @@
 # Debugging
 
-> **Warning**: This section is under construction and the information here might be outdated or incomplete. 🏗️
+## Useful resources for working with glTF 🖇
+
+To inspect glTF or glb files online:
+- [gltf.report ⇡](https://gltf.report/) - three.js based
+- [modelviewer.dev/editor ⇡](https://modelviewer.dev/editor) - three.js based
+- [Khronos glTF Sample Viewer ⇡](https://github.khronos.org/glTF-Sample-Viewer-Release/)
+- [Babylon Sandbox ⇡](https://sandbox.babylonjs.com/)
+- [glTF Validator ⇡](https://github.khronos.org/glTF-Validator/)
+
+To inspect them locally:
+- use the [glTF Shell Extension for Windows ⇡](https://apps.microsoft.com/store/detail/gltf-shell-extensions/9NPGVJ9N57MV?hl=en-us&gl=US) to convert between glTF and glb
+- use the [glTF Tools VS Code Extension ⇡](https://marketplace.visualstudio.com/items?itemName=cesium.gltf-vscode) to see validation errors and in-engine previews locally
+
 
 ## Built-in URL parameters 🔖
 
+> **Warning**: This section is under construction and the information here might be outdated or incomplete. 🏗️
+> 
 Debug Flags can be appended as URL query parameters.  
 Use ``?help`` to get a list of ALL parameters available.  
 
