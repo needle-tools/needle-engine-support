@@ -2,7 +2,7 @@
 # Example Projects ✨
 
 ## Needle Website  
-[Visit Website ⇡](https://needle.tools) — by Needle   
+<a href="https://needle.tools" target="_blank">Visit Website</a> — by Needle   
 
 https://user-images.githubusercontent.com/5083203/186126996-27b45c5f-f3b9-40f7-b8c7-6ecba1d25a6e.mp4
 
