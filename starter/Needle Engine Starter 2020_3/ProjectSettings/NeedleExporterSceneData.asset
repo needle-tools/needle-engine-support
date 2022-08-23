@@ -45,19 +45,16 @@ MonoBehaviour:
     - ProjectPath: projects/basic
     BuilderScene: 
   - Path: Assets/CollaborativeSandbox 1.unity
-    Projects:
-    - ProjectPath: Library/Temp
+    Projects: []
     BuilderScene: 
   - Path: Assets/Scenes/Lightmap.unity
     Projects:
     - ProjectPath: Projects/Basic
     BuilderScene: 
   - Path: Assets/Sandbox2.unity
-    Projects:
-    - ProjectPath: Library/Temp
+    Projects: []
     BuilderScene: 
   Projects:
   - ProjectPath: projects/Basic
   - ProjectPath: Projects/Basic
-  - ProjectPath: Library/Temp
   - ProjectPath: projects/basic
