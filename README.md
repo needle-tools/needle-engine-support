@@ -9,14 +9,17 @@
 **Together**, they enable incredible iteration speeds and help you to bring your content to the web.  
 Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
 
+<p align="center">
+<a href="./documentation/getting-started.md">Get started now</a> • <a href="./documentation/vision.md">Learn more about our vision</a> • <a href="">Projects Made with Needle</a>
+</p>
 
 
 https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a694-c445f1d82b81.mp4
 
 
+---
 
-
-## Contents 📋
+# Contents 📋
 - [Feature Overview](./documentation/features-overview.md)
 - [Getting started](./documentation/getting-started.md) ⭐
 - [Export](./documentation/export.md) — *glTF files, shaders, lightmaps, Skybox, ...*
@@ -48,7 +51,7 @@ To inspect them locally:
 - use the [glTF Shell Extension for Windows ⇡](https://apps.microsoft.com/store/detail/gltf-shell-extensions/9NPGVJ9N57MV?hl=en-us&gl=US) to convert between glTF and glb
 - use the [glTF Tools VS Code Extension ⇡](https://marketplace.visualstudio.com/items?itemName=cesium.gltf-vscode) to see validation errors and in-engine previews locally
 
-## Feedback 💡
+# Feedback 💡
 
 For fast support, please join our [Discord](https://discord.needle.tools).
 
@@ -58,7 +61,7 @@ Please fill out the [Feedback Form ⇡](https://fwd.needle.tools/needle-engine/f
 
 > **Note**: All external links are marked using this icon: ⇡
 
-## Contact ✒️
+# Contact ✒️
 <b>[🌵 needle — tools for unity](https://needle.tools)</b> • 
 [@NeedleTools](https://twitter.com/NeedleTools) • 
 [@marcel_wiessler](https://twitter.com/marcel_wiessler) • 
