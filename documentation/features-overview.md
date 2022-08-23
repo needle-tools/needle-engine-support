@@ -10,7 +10,7 @@
 [Scripting](./features-overview.md#scripting)
 
 ## Fast Iteration ⚡
-Needle Exporter for Unity provides a flexible integration into a world-class game engine. You can keep using your workflows and we take care of bringing your content to the web in seconds. We embrace modern web technologies, so [all your code is written in TypeScript and JavaScript](./scripting.md). This allows for almost instant reloads. Paired with a powerful editor and asset management you get the best of both worlds!  
+Needle Engine together with Needle Exporter for Unity provide a flexible integration into a world-class 3D editor. You can keep using your workflows and we take care of bringing your content to the web in seconds. We embrace modern web technologies, so [all your code is written in TypeScript and JavaScript](./scripting.md). This allows for almost instant reloads. Paired with a powerful editor and asset management you get the best of both worlds!  
 
 > Read more about [Getting Started](./getting-started.md) • [Scripting](./scripting.md) • [Assets and Export](./export.md)
 
