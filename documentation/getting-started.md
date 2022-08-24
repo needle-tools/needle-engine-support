@@ -9,7 +9,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
   [VS Code ⇡](https://code.visualstudio.com/) (recommended)  
   
 **Recommended Unity Versions**  
-  [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
+  [Unity 2020.3.16+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
   [Universal Render Pipeline or Built-In Render Pipeline]
 
 ## Option 1: Quick Start — Starter Project ⚡
