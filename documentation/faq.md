@@ -48,9 +48,9 @@ If loading time itself is an issue you can **try to split up your content into m
 </details>
 
 <details>
-<summary><b>My lightmaps look different</b></summary>
+<summary><b>My lightmaps look different / too bright</b></summary>
 
-Ensure you're following best practices for lightmaps: <link>
+Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps) <link>
 </details>
 
 <details>
