@@ -70,6 +70,8 @@ KHR_materials_unlit
 KHR_materials_volume
 ```
 
+More extensions and custom extensions can be added using the export callbacks of UnityGLTF (not documented yet) and the [glTF import extensions](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) of three.js.  
+
 > **Note**: Materials using these extensions can be exported from Unity via UnityGLTF's `PBRGraph` material.  
 
 > **Note**: Audio and variants are already supported in Needle Engine through `NEEDLE_components` and `NEEDLE_persistent_assets`, but there are some options for more alignment to existing proposals such as `KHR_audio` and `KHR_materials_variants`.
