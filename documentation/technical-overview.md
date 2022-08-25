@@ -416,6 +416,10 @@ This extension builds upon the archived [`KHR_techniques_webgl` ⇡](https://git
 
 > **Note**: There's some redundant properties in here that we plan on cleaning up.  
 
-## TypeScript
+## TypeScript and Data Mapping
+
+> 🏗️ Under Construction
 
 ## Rendering with three.js
+
+> 🏗️ Under Construction

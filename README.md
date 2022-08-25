@@ -20,8 +20,8 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 ---
 
 # Contents 📋
-- [Feature Overview](./documentation/features-overview.md)
 - [Getting started](./documentation/getting-started.md) ⭐
+- [Feature Overview](./documentation/features-overview.md)
 - [Export](./documentation/export.md) — *glTF files, shaders, lightmaps, Skybox, ...*
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
 - [VR and AR](./documentation/xr.md) — *WebXR, VR, AR placement, limitations*

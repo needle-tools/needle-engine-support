@@ -9,15 +9,15 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
   [VS Code ⇡](https://code.visualstudio.com/) (recommended)  
   
 **Recommended Unity Versions**  
-  [Unity 2020.3+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
+  [Unity 2020.3.16+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
   [Universal Render Pipeline or Built-In Render Pipeline]
 
 ## Option 1: Quick Start — Starter Project ⚡
 1. **Clone this repository**  
    It's set up with the right packages and settings to get you started right away.  
    
-   _Clone with HTTPS:_ ``https://github.com/needle-tools/three-exporter-support.git``  
-   _OR clone with SSH:_ ``git@github.com:needle-tools/three-exporter-support.git``  
+   _Clone with HTTPS:_ ``https://github.com/needle-tools/needle-engine-support.git``  
+   _OR clone with SSH:_ ``git@github.com:needle-tools/needle-engine-support.git``  
   
 2. **Open the starter project**  
   Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
@@ -34,15 +34,26 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 
 ### Create a new project
 
+1. **Set up a new project**  
 Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend you install the [Unity Hub ⇡](https://docs.unity3d.com/hub/manual/index.html) to manage your Editor installations.
 
+1. **Add our registry to Package Manager**  
 Open ``Edit/Project Settings`` and select ``Package Manager``.  
 Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
-- Name: ``needle``
-- URL: ``https://packages.needle.tools``
-- Scope(s): ``[com.needle, org.khronos]``
+    - Name: ``needle``
+    - URL: ``https://packages.needle.tools``
+    - Scope(s):   
+      `com.needle`  
+      `org.khronos`  
+  ![image](https://user-images.githubusercontent.com/2693840/186287175-0de831b8-9112-43fa-989d-c13680186ff0.png)
 
-Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``. In the dropdown in top left corner of the window select ``My Registries``. Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
+
+1. **Add the Exporter package**  
+Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``.  
+In the dropdown in top left corner of the window select ``My Registries``.  
+Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
+
+> **Note**: You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
 
 ### Create a new scene from a Scene Template 🌵
 

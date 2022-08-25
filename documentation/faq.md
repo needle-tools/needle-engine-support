@@ -48,9 +48,9 @@ If loading time itself is an issue you can **try to split up your content into m
 </details>
 
 <details>
-<summary><b>My lightmaps look different</b></summary>
+<summary><b>My lightmaps look different / too bright</b></summary>
 
-Ensure you're following best practices for lightmaps: <link>
+Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps) <link>
 </details>
 
 <details>
@@ -133,6 +133,13 @@ class MyScript extends Behaviour
 ```
 </details>
 
+<details>
+<summary><b>I don't have any buttons like "Generate Project" in my components/inspector</b></summary>  
+  
+Please check that you're not accidentally in the Inspector's `Debug` mode – switch back to `Normal`:
+  ![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
+
+</details>
 
 <details>
   <summary><b>...</b></summary>
