@@ -36,7 +36,7 @@ You can **install a *NPM Definition* package** to your runtime project by e.g. s
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
-> **NOTE**: don't forget to install the newly added package by e.g. clicking Install on the ExportInfo component.
+> **NOTE**: don't forget to install the newly added package by e.g. clicking Install on the ExportInfo component and also restart the server if it is already running
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser.
 
