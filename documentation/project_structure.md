@@ -30,7 +30,9 @@ You can organize your assets like in any typical Unity project. If you are not f
 
 > Basically, each NpmDef contains a npm package (written in TypeScript) and a matching UPM package (C#). The public fields and method wrappers on the C# side can be automatically generated from TypeScript.  
 
-To greate a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``. You can add a *NPM Definition* package to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
+#### Creating and installing
+To greate a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
+You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
