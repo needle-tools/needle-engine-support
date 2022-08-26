@@ -109,3 +109,25 @@ To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Man
 
 ![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad13-4e6d-a14c-c8ec5c1fcfd4.png)
 
+### Mixing Baked and Non-Baked Objects
+
+There's no 100% mapping between how Unity handles lights and environment and how three.js handle that. For example, Unity has entirely separate code paths for lightmapped and non-lightmapped objects (lightmapped objects don't receive ambient light since that is already baked into their maps), and three.js doesn't distinguish in that way.  
+
+This means that to get best results, we currently recommend specific settings if you're mixing baked and non-baked objects in a scene:  
+```
+Environment Lighting: Skybox
+Ambient Intensity: 1
+Ambient Color: black
+```
+
+**2021.3+**  
+![20220826-175324-SqBL-Unity_pMXa-needle](https://user-images.githubusercontent.com/2693840/186947184-2446672f-420c-47e8-8f7d-970a7d52bf35.png)
+
+**2020.3+**  
+![20220826-175514-tnGc-Unity_mycs-needle](https://user-images.githubusercontent.com/2693840/186947203-2d7d96c3-f566-44b4-889c-4103fac505d4.png)
+
+If you have no baked objects in your scene, then the following settings should also yield correct results:  
+```
+Environment Lighting: Color
+Ambient Color: any
+```
