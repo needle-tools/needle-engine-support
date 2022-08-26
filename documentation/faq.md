@@ -50,17 +50,19 @@ If loading time itself is an issue you can **try to split up your content into m
 <details>
 <summary><b>My lightmaps look different / too bright</b></summary>
 
-Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps) <link>
+Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps) and read about [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects)
 </details>
 
 <details>
 <summary><b>My scene is too bright / lighting looks different than in Unity</b></summary>
-Currently we face the following limitations: 
+Make sure that your lights are set to "Baked" or "Realtime". "Mixed" is currently not supported.  
   
-- Lights set to mixed (with lightmapping) do affect objects twice in threejs since there is currently no way to exclude lightmapped objects from lighting
+- Lights set to mixed (with lightmapping) do affect objects twice in three.js, since there is currently no way to exclude lightmapped objects from lighting
 - The ``Intensity Multiplier`` factor for Skybox in ``Lighting/Environment`` is currently not supported and has no effect in Needle Engine  
   ![image](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
 - Light shadow intensity can currently not be changed due to a three.js limitation.
+  
+Also see the docs on [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects).
 
 </details>
 
