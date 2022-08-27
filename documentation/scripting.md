@@ -24,7 +24,7 @@ To get an in-depth overview of built-in components, you can inspect the folder `
 > **Note**: Needle Engine's Exporter does _not_ compile your existing C# code to Web Assembly. While using Web Assembly may result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
 
 ## Contents 📋
-- [Creating a new component](#creating-a-new-component)📋
+- [Creating a new component](#creating-a-new-component)
 - [Component architecture](#component-architecture)
 - [Finding, adding and removing components](#finding-added-or-removing-components)
 - [The Context and the DOM](#context-and-the-html-dom)
