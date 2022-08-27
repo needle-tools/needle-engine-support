@@ -21,8 +21,8 @@ To automatically network fields in a component you can just decorate a field wit
 
 Example:
 ```ts
-import { Behaviour } from "needle.tiny.engine/engine-components/Component"
-import { syncField } from "needle.tiny.engine/engine/engine_networking_auto";
+import { Behaviour } from "@needle-tools/engine/engine-components/Component"
+import { syncField } from "@needle-tools/engine/engine/engine_networking_auto";
 
 export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
 
