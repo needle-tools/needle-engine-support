@@ -67,7 +67,7 @@ These allow you to go from idea to prototype in a few clicks.
  
 ### Create a new scene from scratch
 
-If you don't want to start from a template, you can follow these steps.  
+If you don't want to start from a scene template, you can follow these steps.  
 Effectively, we're going to recreate the "Minimal (Needle)" template that's shipping with the package.  
 
 1. **Ceate a new empty scene**  
