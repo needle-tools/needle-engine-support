@@ -436,3 +436,11 @@ When looking into modern web workflows, we found that code reload times during d
 We believe that for iteration and tight testing workflows, it's beneficial to be able to test on device and on the target platform (the browser, in this case) as quickly and as often as possible - which is why we're skipping Unity's entire play mode, effectively always running in the browser. 
 
 > **Note**: A really nice side effect is avoiding the entire slow "domain reload" step that usually costs 15-60 seconds each time you enter Play Mode. You're just "live" in the browser the moment you press Play.
+
+## Cross-Platform Deployment Workflows
+
+It's possible to create regular Unity projects where you can build both to Needle Engine and to regular Unity platforms such as Desktop or even WebGL. Our "component mapping" approach means that no runtime logic is modified inside Unity - if you want you can regularily use Play Mode and build to other target platforms. In some cases this will mean that you have duplicate code (C# code and matching TypeScript logic). The amount of extra work through this depends on your project.  
+
+**Enter Play Mode in Unity**  
+In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and `Override Build settings` to switch between Needle's build process and Unity's build process:  
+![image](https://user-images.githubusercontent.com/2693840/187308490-5acb9016-ffff-4113-be62-4de450a42b08.png)
