@@ -28,6 +28,19 @@ You can, for example, use
 In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
 let us know what and how you build, and how we can improve the experience!
 
+## Creating custom web project templates
+
+> **Note**: 🏗️ This section is Under Construction. 
+
+You can create and share your own web project templates to use other bundlers, build systems, or none at all.  
+
+**Create a new Template**  
+1. Select `Create/Needle Engine/Project Template` to add a ProjectTemplate into the folder you want to use as a template 
+2. Done! It's that simple.
+
+The dependencies come from unity when there is a NpmDef in the project (so when your project uses local references).  
+You could also publish your packages to npm and reference them via version number.  
+
 ## Accessing components from regular javascript
     
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
