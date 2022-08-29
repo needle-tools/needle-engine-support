@@ -24,10 +24,11 @@ To get an in-depth overview of built-in components, you can inspect the folder `
 > **Note**: Needle Engine's Exporter does _not_ compile your existing C# code to Web Assembly. While using Web Assembly may result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
 
 ## Contents 📋
+- [When you don't need to write code](#when-you-dont-need-to-write-code)  
 - [Creating a new component](#creating-a-new-component)
 - [Component architecture](#component-architecture)
-- [Finding, adding and removing components](#finding-added-or-removing-components)
-- [The Context and the DOM](#context-and-the-html-dom)
+- [Finding, adding and removing components](#finding-adding-and-removing-components)
+- [The Context and the DOM](#the-context-and-the-html-dom)
 - [Accessing URL Parameters](#accessing-url-parameters)
 - [Interop with external javascript](#accessing-components-from-external-javascript)
 - [Automatically generating Unity components](#automatically-generating-unity-components-from-typescript-files)
@@ -36,6 +37,18 @@ To get an in-depth overview of built-in components, you can inspect the folder `
 - [Unity Types in Typescript](#renamed-unity-types-in-typescript)
 
 ---
+
+## When you don't need to write code
+
+Often, interactive scenes can be realized using Events in Unity and calling methods on built-in components. A typical example is playing an animation on button click - you create a button, add a Click event in the inspector, and have that call Animator.SetTrigger or similar to play a specific animation.  
+
+Needle Engine translates Unity Events into JavaScript method calls, which makes this a very fast and flexible workflow - set up your events as usual, and when they're called they'll work the same as in Unity.  
+
+![image](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)   
+_An example of a Button Click Event that is working out-of-the-box in Needle Engine — no code needed._  
+
+The same works for custom components that implement UnityEvent<>. This means that you can create custom components for artists and designers to wire up complex behaviours without writing any code.  
+
 ## Creating a new component
 Scripts are written in TypeScript (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
