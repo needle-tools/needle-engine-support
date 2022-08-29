@@ -116,6 +116,15 @@ This is controlled via HTML element classes. For example, to make content appear
 </needle-tiny>
 ```
 
+## Image Tracking
+
+WebXR doesn't yet support Image Tracking, it's still in a "draft" phase: [Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)  
+
+Without that spec, one can still request camera image access and run custom algorithms to determine device pose.  
+While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
+   - [AR.js ⇡](https://github.com/AR-js-org/AR.js) (open source)
+   - [Mind AR ⇡](https://github.com/hiukim/mind-ar-js) (open source)
+
 ## Limitations for WebXR on iOS
 
 Due to Apple currently not supporting WebXR on iOS devices, Augmented Reality experiences on iOS are limited.  
@@ -134,8 +143,8 @@ A number of options and workarounds exist to still give iOS users _some_ AR:
  > — #madewithneedle by Katja Rempel 💚  
 
 2. **Using camera access and custom algorithms on iOS devices.**  
-   It's to request camera image access and run custom algorithms to determine device pose.  
-   While we don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
+   One can request camera image access and run custom algorithms to determine device pose.  
+   While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
    - [AR.js ⇡](https://github.com/AR-js-org/AR.js) (open source)
    - [Mind AR ⇡](https://github.com/hiukim/mind-ar-js) (open source)
    - [8th Wall ⇡](https://www.8thwall.com/) (commercial)
