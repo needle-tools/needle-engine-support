@@ -16,16 +16,16 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | Meta Quest 2 | ✔️ Oculus Browser | support for sessiongranted |
 | Pico Neo 3 | ✔️ Pico Browser | no hand tracking support, inverted controller thumbsticks |
 | Oculus Rift 1/2 | ✔️ Chrome |  |
-| Hololens 2 | ✔️ Microsoft Edge | in VR mode, background is rendered as well |
+| Hololens 2 | ✔️ Edge | in VR mode, background is rendered as well |
 | Quest 1/2 via Oculus Link | ✔️ Chrome | known issues with repeated refresh of a WebXR session |
 
 | Tested AR Device | Browser | Notes |
 | -- | -- | -- |
 | Android 10+ | ✔️ Chrome | |
 | Android 10+ | ✔️ Firefox | |
-| iOS 15+ | ✔️ Mozilla WebXR Viewer | some nonstandard behaviours but works |
+| iOS 15+ | ✔️ WebXR Viewer | some nonstandard behaviours but works |
 | iOS 15+ | ❌ Safari | can fall back to interactive USDZ files or [other approaches](#limitations-for-webxr-on-ios) |
-| Hololens 2 | ✔️ Microsoft Edge | |
+| Hololens 2 | ✔️ Edge | |
 | Hololens 1 | ❌ | no WebXR support |
 
 ## Adding VR and AR capabilities to a scene
