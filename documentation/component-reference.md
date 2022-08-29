@@ -66,7 +66,7 @@ Physics is implemented using [cannon-es](https://github.com/pmndrs/cannon-es).
 
 ## XR / WebXR  
 
-[Read more](xr.md)
+[Read the XR docs](xr.md)
 
 | Name  | Description |
 | ------------- | ------------- |
