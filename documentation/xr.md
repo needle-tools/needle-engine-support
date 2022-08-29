@@ -1,11 +1,11 @@
 # Virtual and Augmented Reality
 
-- [Supported Devices](#supported-devices)  
-- [Adding VR and AR](#adding-vr-and-ar-capabilities-to-a-scene)  
-- [Avatars](#avatars)  
-- [HTML Content Overlays](#html-content-overlays-in-ar)  
-- [Image and Marker Tracking](#image-tracking) 
-- [Limitations for WebXR on iOS](#limitations-for-webxr-on-ios)  
+[Supported Devices](#supported-devices) •
+[Adding VR and AR](#adding-vr-and-ar-capabilities-to-a-scene) •
+[Avatars](#avatars) •
+[HTML Content Overlays](#html-content-overlays-in-ar) •
+[Image and Marker Tracking](#image-tracking) •
+[Limitations for WebXR on iOS](#limitations-for-webxr-on-ios)  
 
 ## Supported Devices
 Theoretically all WebXR-capable devices and browsers should be supported. That being said, we've tested the following configurations:  
