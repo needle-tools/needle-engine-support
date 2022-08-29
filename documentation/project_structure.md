@@ -59,6 +59,8 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 
 ## Vite project structure
 
+[Learn more in the docs about bundling](html.md#vue-react-mustache-etc)
+
 - ``assets/`` - The asset folder contains exported assets from Unity. E.g. generated ``gltf`` files, audio or video files. It is not recommended to manually add files to ``assets`` as it will get cleared on building the distribution for the project.
 - ``include/`` (optional) - If you have custom assets that you need to reference/load add them to the include directory. On build this directory will be copied to the output folder.
 - ``src/`` - This is where all the source code goes
@@ -68,4 +70,4 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 - ``index.scriban`` (optional) - The project template index file. Add an ``index`` component to your Unity scene to automatically generate the ``index.html`` from this file using the [scriban ⇡](https://github.com/scriban/scriban) templating engine.
 - ``vite.config`` - The default template uses [vite ⇡](https://vitejs.dev/). Settings for building the distribution and hosting the development server are made here. It is usually not necessary to edit these settings.
 
-> **Note**: Our exporter can be used with other project structures as well, vite is just our go-to frontend bundling tool because of its speed. Feel free to set up your JavaScript project as you like. It is important to note tho that script names **must not be removed** for ``getComponent`` calls to work. See the [Scripting Documentation](./scripting.md) for more info.
+> **Note**: Our exporter can be used with other project structures as well, vite is just our go-to frontend bundling tool because of its speed. Feel free to set up your JavaScript project as you like. It is important to note tho that script names **must not be removed** for ``getComponent`` calls to work. See the [Scripting Documentation](./scripting.md) for more info.  
