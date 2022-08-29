@@ -53,11 +53,16 @@ Here is a overview of some of the most common components that we provide. For a 
 | SpatialTriggerReceiver | Use to receive events from SpatialTrigger |
 
 ## Physics
+
+Physics is implemented using [cannon-es](https://github.com/pmndrs/cannon-es).  
+
 | Name  | Description |
 | ------------- | ------------- |
 | BoxCollider |  |
 | SphereCollider |  |
 | Rigidbody |  |
+
+> **Note**: MeshCollider is currently not supported.
 
 ## XR / WebXR
 | Name  | Description |
