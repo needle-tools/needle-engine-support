@@ -14,11 +14,14 @@ To deploy your threejs project you can click ``Build`` in the Unity Editor Build
 See notes above on how to access. The main difference to a production build is that it does not perform [``ktx2`` ⇡](https://github.khronos.org/KTX-Specification/) and [``draco`` ⇡](https://google.github.io/draco/) compression. Both can reduce file-size drastically. We generally recommend making builds using the ``production`` option.
 
 ### Deploying for production (optimized and compressed)
-To make a production build you need to have [toktx ⇡](https://github.com/KhronosGroup/KTX-Software/releases) to be installed (for compressing your files). Please go to the [toktx Releases Page ⇡](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version of `toktx`. You may need to restart Unity after installing it.  
+
+To make a production build you need to have [toktx ⇡](https://github.com/KhronosGroup/KTX-Software/releases) to be installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page ⇡](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0-rc3 at the time of writing, there might be a newer one). You may need to restart Unity after installing it.  
+
+> **Note**: If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.  
 
 > **Note**: If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See `needle.tiny.engine/plugins/gltf-packer` for reference.
 
-## Deploy to glitch 🎏
+## Deploy to Glitch 🎏
 
 [Glitch](https://glitch.com/) provides a fast and free way for everyone to host small and large websites. We're providing an easy way to remix and deploy to a new Glitch page (based on our starter), and also to run a minimalistic networking server on the same Glitch page if needed.  
 
