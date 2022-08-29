@@ -64,7 +64,10 @@ Physics is implemented using [cannon-es](https://github.com/pmndrs/cannon-es).
 
 > **Note**: MeshCollider is currently not supported.
 
-## XR / WebXR
+## XR / WebXR  
+
+[Read more](xr.md)
+
 | Name  | Description |
 | ------------- | ------------- |
 | WebXR | Add to scene for AR and VR avatars |
@@ -73,25 +76,30 @@ Physics is implemented using [cannon-es](https://github.com/pmndrs/cannon-es).
 | XRFlag | Control when objects are visible, e.g. only in VR or AR or only in ThirdPerson |
 | WebARSessionRoot | Put your AR content inside a WebARSessionRoot for placement and scale |
 
-## Debugging
+## Debugging  
 | Name  | Description |
 | ------------- | ------------- |
 | GridHelper | Draws a grid |
 | BoxGizmo | Draws a box |
 | AxesHelper | Draws axes |
 
-## IO
+## Runtime File Input/Output  
 | Name  | Description |
 | ------------- | ------------- |
 | GltfExport | Experimental! Use to export gltf from web runtime. |
 | DropListener | Receive file drop events for uploading and networking |
 
 ## UI
+
+Spatial UI components are mapped from Unity UI (Canvas, not UI Toolkit) to [three-mesh-ui ⇡](https://github.com/felixmariotto/three-mesh-ui). 
+UI can be animated.   
+
 | Name  | Description |
 | ------------- | ------------- |
-| Canvas | Unity's UI system. Must be outside of GltfObject currently. This will change in the future. |
+| Canvas | Unity's UI system. Needs to be in World Space mode right now. |
 | Text |  |
 | Button |  |
 | Image |  |
 | RawImage |  |
 
+> **Note**: Depending on your project, often a mix of spatial and 2D UI makes sense for cross-platform projects where VR, AR, and screens are supported. Typically, you'd build the 2D parts with HTML for best accessibility, and the 3D parts with geometric UIs that also support depth offsets (e.g. button hover states and the like).  
