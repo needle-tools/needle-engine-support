@@ -425,3 +425,14 @@ This extension builds upon the archived [`KHR_techniques_webgl` ⇡](https://git
 ## Rendering with three.js
 
 > 🏗️ Under Construction
+
+## Why aren't you compiling to WebAssembly?
+
+While Unity's compilation process from C# to IL to C++ (via IL2CPP) to WASM (via emscripten) is ingenious, it's also relatively slow. Building even a simple project to WASM takes many minutes, and that process is pretty much repeated on every code change. Some of it can be avoided through clever caching and ensuring that dev builds don't try to strip as much code, but it still stays slow.  
+> We do have a prototype for some WASM translation, but it's far from complete and the iteration speed stays slow, so we are not actively investigating this path right now. 
+
+When looking into modern web workflows, we found that code reload times during development are neglectible, usually in sub-second ranges. This of course trades some performance (interpretation of JavaScript on the fly instead of compiler optimization at build time) for flexibility, but browsers got really good at getting the most out of JavaScript.  
+
+We believe that for iteration and tight testing workflows, it's beneficial to be able to test on device and on the target platform (the browser, in this case) as quickly and as often as possible - which is why we're skipping Unity's entire play mode, effectively always running in the browser. 
+
+> **Note**: A really nice side effect is avoiding the entire slow "domain reload" step that usually costs 15-60 seconds each time you enter Play Mode. You're just "live" in the browser the moment you press Play.
