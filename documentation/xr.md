@@ -1,9 +1,10 @@
 # Virtual and Augmented Reality
 
-- [Adding VR and AR](#adding-vr-and-ar-capabilities-to-a-scene)
-- [Avatars](#avatars)
-- [HTML Content Overlays](#html-content-overlays-in-ar)
-- [Limitations for WebXR on iOS](#limitations-for-webxr-on-ios)
+- [Adding VR and AR](#adding-vr-and-ar-capabilities-to-a-scene)  
+- [Avatars](#avatars)  
+- [HTML Content Overlays](#html-content-overlays-in-ar)  
+- [Image and Marker Tracking](#image-tracking))  
+- [Limitations for WebXR on iOS](#limitations-for-webxr-on-ios)  
 
 ## Adding VR and AR capabilities to a scene
 
