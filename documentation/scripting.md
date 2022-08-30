@@ -49,6 +49,12 @@ _An example of a Button Click Event that is working out-of-the-box in Needle Eng
 
 The same works for custom components that implement UnityEvent<>. This means that you can create custom components for artists and designers to wire up complex behaviours without writing any code.  
 
+If you intend to expose/generate a UnityEvent in a custom component that you work on you can do it like this:
+```ts
+@serializable(EventList)
+myEvent : EventList;
+```
+
 ## Creating a new component
 Scripts are written in TypeScript (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
