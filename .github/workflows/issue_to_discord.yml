@@ -16,4 +16,4 @@ jobs:
         webhook_token: ${{ secrets.WEBHOOK_TOKEN }}
         username: "${{github.event.issue.user.login}}"
         avatar_url : "${{github.event.issue.user.avatar_url}}"
-        message: "**New issue** → ${{github.event.issue.title}}\n${{github.event.issue.html_url}}.\n${{github.event.issue.body}}"
+        message: "**New issue** → ${{github.event.issue.title}}\n${{github.event.issue.html_url}}."
