@@ -52,3 +52,12 @@ We're providing a simple but effective console overlay for seeing logs from mobi
 For **Android**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
 
 For **Quest**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
+
+### Debug Chrome on Mobile (Android)
+See the official chrome documentation [here ⇡](https://developer.chrome.com/docs/devtools/remote-debugging/)
+- [Activate Developer Mode ⇡](https://developer.android.com/studio/debug/dev-options)
+- Connect your phone to your computer via USB
+- Open this url in your browser ``chrome://inspect/#devices``
+- On your mobile device allow the USB connection to your computer
+- On your computer in chrome you should see a list of open tabs after a while (on ``chrome://inspect/#devices``)
+- Click ``Inspect`` on the tab you want to debug
