@@ -11,3 +11,4 @@ starter/*/bin
 starter/Unity_2020_3/projects/*/assets
 starter/Unity_2020_3/projects/**/generated
 starter/*/projects/*/build.log
+starter/**/projects/**/include/fonts
