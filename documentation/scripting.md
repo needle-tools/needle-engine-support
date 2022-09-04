@@ -300,6 +300,6 @@ For future compatibility, some Unity-specific types are mapped to different type
 | -- | -- |
 | ``UnityEvent`` | ``EventList`` |
 | ``Transform`` | ``Object3D`` |
-| ``Transform`` | ``AssetReference`` |
+| ``Transform`` | ``AssetReference`` (for loading at runtime) |
 | ``float`` | ``Number`` |
 | ``Color`` | ``RGBAColor`` |
