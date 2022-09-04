@@ -299,3 +299,7 @@ For future compatibility, some Unity-specific types are mapped to different type
 | Unity Type | Type in Needle Engine |
 | -- | -- |
 | ``UnityEvent`` | ``EventList`` |
+| ``Transform`` | ``Object3D`` |
+| ``Transform`` | ``AssetReference`` |
+| ``float`` | ``Number`` |
+| ``Color`` | ``RGBAColor`` |
