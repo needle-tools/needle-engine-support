@@ -88,6 +88,13 @@ export class Rotate extends Behaviour
 }
 ```
 
+Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the script to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene. The cube is now rotating inside the browser.   
+Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
+
+Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
+
+> **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
+
 ### Function with argument
 ```ts
 import { Behaviour } from "@needle-tools/engine/engine-components/Component";
@@ -103,13 +110,6 @@ export class PrintNumberComponent extends Behaviour
     }
 }
 ```
-
-Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the script to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene. The cube is now rotating inside the browser.   
-Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
-
-Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
-
-> **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
 
 ---
 ## Component architecture
