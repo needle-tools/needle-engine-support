@@ -56,7 +56,7 @@ myEvent : EventList;
 ```
 
 ## Creating a new component
-Scripts are written in TypeScript (recommended) or JavaScript. There's two ways to add custom scripts to your project:
+Scripts are written in [TypeScript ⇡](https://www.typescriptlang.org/docs/) (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
 - Simply add a `.ts` or `.js` file inside `src/scripts/` in your generated project directory.  
   Generated C# components are placed under `Assets/Needle/Components.codegen`.  
@@ -84,6 +84,22 @@ export class Rotate extends Behaviour
 
     update(){
         this.gameObject.rotateY(this.context.time.deltaTime);
+    }
+}
+```
+
+### Function with argument
+```ts
+import { Behaviour } from "@needle-tools/engine/engine-components/Component";
+
+export class PrintNumberComponent extends Behaviour
+{
+    start(){
+      this.printNumber(42);
+    }
+    
+    printNumber(myNumber : number){
+        console.log("My Number is: " + myNumber);
     }
 }
 ```
