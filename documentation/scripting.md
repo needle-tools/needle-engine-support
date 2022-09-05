@@ -96,6 +96,7 @@ Now add a new field ``public float speed = 5`` to your Unity component and save 
 > **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
 
 ### Function with argument
+Please refer to the [TypeScript ⇡](https://www.typescriptlang.org/docs/) documentation to learn more about the syntax and language.
 ```ts
 import { Behaviour } from "@needle-tools/engine/engine-components/Component";
 
