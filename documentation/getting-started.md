@@ -18,7 +18,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 ### Download these tools for production builds
 
   [toktx 4.x ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) (recommended) – for texture compression   
-  _Scroll down to the "Assets" section, download and run the right installer for your system_
+  _Scroll down to the "Assets" section, download and run the right installer for your system – Windows-x64.exe or Darwin-arm64.pkg_
   
 After installing the tools above, you might have to 
 
