@@ -4,13 +4,23 @@
 
 These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project and also done your first deployment to Glitch. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](.networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
-**Tools you'll need**   
-  [Node.js (14.x or 16.x) ⇡](https://nodejs.org/en/) (required)  
-  [VS Code ⇡](https://code.visualstudio.com/) (recommended)  
+### Download these tools for development
+
+  [Node.js (14.x or 16.x) ⇡](https://nodejs.org/en/) (required) – for running a local development server  
+    
+  [git ⇡](https://git-scm.com/downloads) (required) – for downloading packages from GitHub  
+   
+  [VS Code ⇡](https://code.visualstudio.com/) (recommended) – for code editing  
   
-**Recommended Unity Versions**  
-  [Unity 2020.3.16+ or 2022.2+⇡](https://unity3d.com/get-unity/download)
-  [Universal Render Pipeline or Built-In Render Pipeline]
+  [Unity 2020.3.16+, 2021.3+ or 2022.2+ ⇡](https://unity3d.com/get-unity/download)  (required) – for setting up your scene and components  
+  _Universal Render Pipeline or Built-In Render Pipeline_  
+  
+### Download these tools for production builds
+
+  [toktx 4.x ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) (recommended) – for texture compression   
+  _Scroll down to the "Assets" section, download and run the right installer for your system_
+  
+After installing the tools above, you might have to 
 
 ## Option 1: Quick Start — Starter Project ⚡
 1. **Clone this repository**  
