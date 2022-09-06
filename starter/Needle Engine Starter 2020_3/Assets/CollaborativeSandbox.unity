@@ -1514,8 +1514,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Needle.Engine.Codegen.ComponentGenerator, Needle.Engine
     $ GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-784234925-0
-  compilerDirectory: F:/git/three-exporter-support/starter/Needle Engine Starter
-    2020_3/Assets/../projects/basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
+  compilerDirectory: projects/basic/node_modules/@needle-tools/engine/node_modules/@needle-tools/needle-component-compiler/src
 --- !u!114 &784234926
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1913,6 +1912,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: -7712011457787127092, guid: ff341511bebd94b45835b85c6ba3315b, type: 3}
   m_PrefabInstance: {fileID: 1062385452}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1062385455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062385454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a036248111e742749a39ce7bcbd68c7b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fastMode: 0
 --- !u!114 &1062385456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1925,7 +1937,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1822f1751a4acabd7c1dba099b6b56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Needle.Engine.Components.DragControls, Needle.Engine $
-    GlobalObjectId_V1-2-d541a43e59ef6e94b8483da1bfc954ea-1062385456-0
+    GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-1062385456-0
 --- !u!1001 &1077555936
 PrefabInstance:
   m_ObjectHideFlags: 0
