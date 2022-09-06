@@ -56,7 +56,7 @@ myEvent : EventList;
 ```
 
 ## Creating a new component
-Scripts are written in TypeScript (recommended) or JavaScript. There's two ways to add custom scripts to your project:
+Scripts are written in [TypeScript ⇡](https://www.typescriptlang.org/docs/) (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
 - Simply add a `.ts` or `.js` file inside `src/scripts/` in your generated project directory.  
   Generated C# components are placed under `Assets/Needle/Components.codegen`.  
@@ -94,6 +94,23 @@ Open the chrome developer console to inspect the log from the ``Rotate.start`` m
 Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
 
 > **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
+
+### Function with argument
+Please refer to the [TypeScript ⇡](https://www.typescriptlang.org/docs/) documentation to learn more about the syntax and language.
+```ts
+import { Behaviour } from "@needle-tools/engine/engine-components/Component";
+
+export class PrintNumberComponent extends Behaviour
+{
+    start(){
+      this.printNumber(42);
+    }
+    
+    printNumber(myNumber : number){
+        console.log("My Number is: " + myNumber);
+    }
+}
+```
 
 ---
 ## Component architecture
@@ -247,6 +264,7 @@ You can use the following typescript attributes to control C# code generation be
 | `// @dont-generate-component` | Disable generation of next class |
 | `// @serializeField` | Decorate generated field with `[SerializeField]` |
 | `// @type UnityEngine.Camera` | Specify generated C# field type |
+| `// @nonSerialized` | Skip generating the next field |
 
 The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match. You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported. 
 
@@ -299,3 +317,7 @@ For future compatibility, some Unity-specific types are mapped to different type
 | Unity Type | Type in Needle Engine |
 | -- | -- |
 | ``UnityEvent`` | ``EventList`` |
+| ``Transform`` | ``Object3D`` |
+| ``Transform`` | ``AssetReference`` (for loading at runtime) |
+| ``float`` | ``Number`` |
+| ``Color`` | ``RGBAColor`` |

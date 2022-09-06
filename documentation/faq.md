@@ -66,6 +66,23 @@ Also see the docs on [mixing baked and non-baked objects](https://github.com/nee
 
 </details>
 
+
+<details>
+<summary><b>My skybox resolution is low? How to change my skybox resolution</b></summary><br/>   
+
+  - **If you use a custom cubemap**: You can override the texture import settings of the skybox texture (assigned to your cubemap)
+  
+    ![image](https://user-images.githubusercontent.com/5083203/188179104-1e078cda-3397-4ebe-aaf9-7faa23ee4904.png)   
+
+ 
+  - **If you use the default skybox**: Add a ``SkyboxExportSettings`` component anywhere in your scene to override the default resolution   
+  
+    ![image](https://user-images.githubusercontent.com/5083203/188171443-578380ab-2036-4d70-a8a7-f8cd9da9f603.png)
+</details>
+
+
+
+
 <details>
 <summary><b>My Shadows are not visible or cut off</b></summary>  
   
