@@ -4,23 +4,29 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 
 ## Prerequisites 💿
 
+Below each tool, you find quick links to download the latest version at the time of writing.  
+
 ### Download these tools for development
 
-  [Node.js (14.x or 16.x) ⇡](https://nodejs.org/en/) (required) – for running a local development server  
+  [**Node.js** (14.x or 16.x) ⇡](https://nodejs.org/en/) – for running a local development server (required)   
+  [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
     
-  [git ⇡](https://git-scm.com/downloads) (required) – for downloading packages from GitHub  
+  [**git** ⇡](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
+  [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
    
-  [VS Code ⇡](https://code.visualstudio.com/) (recommended) – for code editing  
+  [**VS Code** ⇡](https://code.visualstudio.com/) – for code editing (recommended)  
+  [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) • [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)  
   
-  [Unity 2020.3.16+, 2021.3+ or 2022.2+ ⇡](https://unity3d.com/get-unity/download)  (required) – for setting up your scene and components  
+  [**Unity** 2020.3.16+, 2021.3+ or 2022.2+ ⇡](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
   _Universal Render Pipeline or Built-In Render Pipeline_  
   
 ### Download these tools for production builds
 
-  [toktx 4.x ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) (recommended) – for texture compression   
-  _Scroll down to the "Assets" section, download and run the right installer for your system – Windows-x64.exe or Darwin-arm64.pkg_
+  [**toktx** 4.x ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
+  [Windows x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.1.0-rc3/KTX-Software-4.1.0-rc3-Windows-x64.exe) • [MacOS x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.1.0-rc3/KTX-Software-4.1.0-rc3-Darwin-x86_64.pkg) • [Mac OS with Apple Silicon](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.1.0-rc3/KTX-Software-4.1.0-rc3-Darwin-arm64.pkg)  
+  _Have a different platform? Scroll down to the "Assets" section on the link above, download and run the right installer for your system._  
   
-After installing the tools above, you might have to 
+After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
 
 ## Option 1: Quick Start — Starter Project ⚡
 1. **Clone this repository**  
