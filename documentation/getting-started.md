@@ -37,8 +37,18 @@ After installing the tools above, you might have to restart your machine so that
   
 2. **Open the starter project**  
   Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
-  This is a sandbox builder project!  
-  Just add your own assets and you have your first multi-user, cross-platform, 3D sandbox website.  
+  This is a sandbox builder project! It already comes with multi-player capabilities, and works across mobile, desktop, VR and AR.  
+
+3. **Press Play**  
+  Make sure the scene CollaborativeSandbox is open, and press Play! This will automatically do some setup steps and start a local server.  
+  Once the setup is complete, a browser window will open, and your project is live.  
+  From now on, all changes you do in Unity will be immediately visible in your browser.  
+
+    > **Note**: Your browser might warn you about an untrusted SSL connection. Don't worry, the connection is still encrypted – please click "Advance" if your browser asks you to verify that you're sure you want to visit your server.  
+
+4. **Make it your own**  
+  Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
+  You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 
 ## Option 2: Quick Start — Package Installer 📦
 1. [**Click here to download a Needle Engine Exporter installer package**](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) 
