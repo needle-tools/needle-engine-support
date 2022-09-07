@@ -19,6 +19,13 @@ These methods are also available on the static GameObject type.
 For example: ``GameObject.getComponent(this.gameObject, Animator)``.   
 Search in the whole scene by calling ``GameObject.findObjectOfType(Animator)``
 
+### Transform
+Transform data can be accessed on the [threejs Object3D ⇡](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
+- ``this.gameObject.position`` - local space position
+- ``this.gameObject.rotation`` - local space rotation in euler angles
+- ``this.gameObject.quaternion`` - local space rotation as quaternion
+- ``this.gameObject.scale`` - local space scale
+
 ### Events
 ```ts
 import { Behaviour, GameObject } from "@needle-tools/engine";
