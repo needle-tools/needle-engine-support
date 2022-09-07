@@ -97,7 +97,7 @@ export class OrbitEventExample extends Behaviour {
 
 ### InputSystem callbacks
 Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events
-> **Note**: For this to work your object must have for example a ``ObjectRaycaster`` component in the parent hierarchy
+> **Note**: For this to work your object must have for example a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy
 
 ```ts
 import { Behaviour } from "@needle-tools/engine";
