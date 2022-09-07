@@ -8,6 +8,17 @@ Below you can find some common code examples that help you getting familiar when
 Please also refer to the [Typescript reference ⇡](https://www.typescriptlang.org/docs/) for syntax and general language questions!  
 
 
+### Components
+For getting component you can use the familiar methods similar to Unity:   
+For example 
+- ``this.gameObject.getComponent(Animator)`` - returns the animator component on this gameobject (and null if none is found)
+- ``this.gameObject.getComponentInChildren(Animator)`` - returns the first animator component in the child hierarchy
+- ``this.gameObject.getComponentsInParents(Animator)`` - returns all animator components in the parent hierarchy (including the current gameObject)
+   
+These methods are also available on the static GameObject type.   
+For example: ``GameObject.getComponent(this.gameObject, Animator)``.   
+Search in the whole scene by calling ``GameObject.findObjectOfType(Animator)``
+
 ### Events
 ```ts
 import { Behaviour, GameObject } from "@needle-tools/engine";
