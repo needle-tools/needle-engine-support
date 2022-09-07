@@ -18,7 +18,7 @@ Below you can find links to other repositories that contain Unity packages. Thes
    - **Google Drive Integration**  
      Sketches around drag-drop integration of Google Drive, file picking, app integration
      
-   ## [needle-engine-samples ⇡](https://github.com/needle-tools/needle-engine-modules)  
+   ## [needle-engine-samples ⇡](https://github.com/needle-tools/needle-engine-samples)  
   Contains various simple scripts to show things such as:  
   
   - **Clock**  
