@@ -31,6 +31,7 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 - [Samples and Modules](./documentation/samples-and-modules.md)
 - [Questions and Answers](./documentation/faq.md)
 - [Example Projects](./documentation/examples.md)
+- [For Unity Developers](./documentation/for-unity-developers.md)
 
 ## Dive Deeper 🐠
 - [Our Vision](./documentation/vision.md) — *conceptual overview*
