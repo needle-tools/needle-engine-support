@@ -26,6 +26,42 @@ Transform data can be accessed on the [threejs Object3D ⇡](https://threejs.org
 - ``this.gameObject.quaternion`` - local space rotation as quaternion
 - ``this.gameObject.scale`` - local space scale
 
+
+### Time
+Use ``this.context.time`` to get access to time data. For example ``this.context.time.deltaTime``
+
+
+### Raycasting
+Use ``this.context.physics.raycast()`` to perform a raycast from the mouse position (by default).  
+Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [threejs ray ⇡](https://threejs.org/docs/#api/en/math/Ray)
+
+### Input
+Use ``this.context.input`` to poll input state 
+
+```ts
+export class MyScript extends Behaviour
+{
+    update(){
+        if(this.context.input.getPointerDown(0)){
+            // CLICKED
+        }
+    }
+}
+```
+
+You can also subscribe to browser events. For example to receive mouse clicks:
+```ts
+export class MyScript extends Behaviour
+{
+    start(){
+        window.addEventListener("click", () => {
+            console.log("MOUSE CLICK");
+        });
+    }
+}
+```
+
+
 ### Events
 ```ts
 import { Behaviour, GameObject } from "@needle-tools/engine";
@@ -55,30 +91,6 @@ export class OrbitEventExample extends Behaviour {
 
     onEnded(args) {
         console.log("ENDED", args);
-    }
-}
-```
-
-### Input
-
-```ts
-export class MyScript extends Behaviour
-{
-    update(){
-        if(this.context.input.getPointerDown(0)){
-            // CLICKED
-        }
-    }
-}
-```
-
-```ts
-export class MyScript extends Behaviour
-{
-    start(){
-        window.addEventListener("click", () => {
-            console.log("MOUSE CLICK");
-        });
     }
 }
 ```
