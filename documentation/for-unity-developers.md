@@ -94,3 +94,18 @@ export class OrbitEventExample extends Behaviour {
     }
 }
 ```
+
+### InputSystem callbacks
+Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events
+> **Note**: For this to work your object must have for example a ``ObjectRaycaster`` component in the parent hierarchy
+
+```ts
+import { Behaviour } from "@needle-tools/engine";
+import { IPointerEventHandler, PointerEventData } from "@needle-tools/engine/engine-components/ui/PointerEvents";
+
+export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+    onPointerClick(args: PointerEventData) {
+        console.log("Click", args);
+    }
+}
+```
