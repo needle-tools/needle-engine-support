@@ -23,7 +23,7 @@ Below each tool, you find quick links to download the latest version at the time
 ### Download these tools for production builds
 
   [**toktx** 4.0 ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.0.0) – for texture compression (recommended)   
-  [Windows x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Windows-x64.exe) • [MacOS x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Darwin-x86_64.pkg) • [Mac OS with Apple Silicon](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Darwin-arm64.pkg)  
+  [Windows x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-win64.exe) • [MacOS x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Darwin.pkg) • [Mac OS with Apple Silicon](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Darwin.pkg)  
   _Have a different platform? Scroll down to the "Assets" section on the link above, download and run the right installer for your system._  
   
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
