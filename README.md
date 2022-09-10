@@ -30,7 +30,7 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 - [Deployment](./documentation/deployment.md) — *bundle, build and upload to a server*
 - [Samples and Modules](./documentation/samples-and-modules.md)
 - [Questions and Answers](./documentation/faq.md)
-- [Example Projects](./documentation/examples.md)
+- [Showcase](./documentation/examples.md)
 - [For Unity Developers](./documentation/for-unity-developers.md)
 
 ## Dive Deeper 🐠
