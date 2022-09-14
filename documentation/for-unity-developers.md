@@ -109,3 +109,26 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
     }
 }
 ```
+
+
+### Exporting VideoClips
+
+Generate a C# component that takes a list of VideoClips. VideoClips are on export copied to the output directory and your typescript component receives a list of relative paths to the videos (e.g. ``["assets/myVideo1.mp4", "assets/myOtherVideo.mp4"]``)
+
+```ts
+import { Behaviour, serializeable } from "@needle-tools/engine";
+
+declare type VideoClip = string;
+
+export class MyVideos extends Behaviour {
+
+    @serializeable(null)
+    videos?: Array<VideoClip>;
+
+    video? : VideoClip;
+
+    start(){
+        console.log(this);
+    }
+}
+```
