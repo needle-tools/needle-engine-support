@@ -99,7 +99,7 @@ UI can be animated.
 | Name  | Description |
 | ------------- | ------------- |
 | Canvas | Unity's UI system. Needs to be in World Space mode right now. |
-| Text |  |
+| Text | Render Text using Unity's UI. Currently font export does not work automatically. For custom fonts generate a ``msdf.json`` and ``.png`` file [using this generator](https://msdf-bmfont.donmccurdy.com/) and add them with your font name and style to the ``include/fonts`` folder of your web project (e.g. ``arial-bold.png`` and ``arial-bold-msdf.json``). |
 | Button |  |
 | Image |  |
 | RawImage |  |
