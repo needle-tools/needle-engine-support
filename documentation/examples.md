@@ -4,7 +4,7 @@
 Explore some real world applications, websites and demos made with Needle Engine.
 
 <p align="left">
-<a href="./documentation/getting-started.md">Get started now</a> • <a href="./documentation/vision.md">Learn more about our vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a>
+<a href="./documentation/getting-started.md">Get started now</a> • <a href="./documentation/vision.md">Learn more about our vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="https://docs.needle.tools/samples">Samples to download</a>
 </p>
 
 
