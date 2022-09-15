@@ -174,4 +174,4 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 
-👉 Continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md) →
+👉 Continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md) or have a look at [our samples](https://docs.needle.tools/samples) →
