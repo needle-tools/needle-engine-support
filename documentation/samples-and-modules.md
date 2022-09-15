@@ -18,17 +18,30 @@ Below you can find links to other repositories that contain Unity packages. Thes
    - **Google Drive Integration**  
      Sketches around drag-drop integration of Google Drive, file picking, app integration
      
-   ## [needle-engine-samples ⇡](https://github.com/needle-tools/needle-engine-samples)  
-  Contains various simple scripts to show things such as:  
+## [needle-engine-samples ⇡](https://github.com/needle-tools/needle-engine-samples)  
+Contains code and small project samples to show things such as:  
   
-  - **Clock**  
-    sample for a custom component that references other objects
-    
-  - **RenderTexture**  
-    sample for translating a Unity RenderTexture into a three.js RenderTexture
-    
-  - **TextGeometry**  
-    sample for integrating existing three.js components such as 3D text into the scene graph
-    
-  - **Html Mesh**  
-    sample for custom rendering and interaction
+- [Brune Simons 20k](https://bruno-simon-20k-needle.glitch.me/)  
+  *Physics*
+- [Stencil Portals](https://needle-stencil-rendering.glitch.me/)  
+  *URP RenderObject stencil to threejs*
+- [Custom Shaders](https://needle-custom-shader-sample.glitch.me/)  
+  *Unity ShaderGraph to threejs*
+- [Sandbox](https://needle-tiny-starter.glitch.me/)  
+  *Multi-user sandbox builder*
+- [VideoPlayer](https://needle-videoplayer-sample.glitch.me/)  
+  *Minimal Unity VideoPlayer sample*  
+- [UI Button](https://needle-ui-button-sample.glitch.me/)   
+  *Minimal UI button event sample*
+- [Spatial Trigger](https://needle-spatial-trigger-sample.glitch.me/)  
+  *Define areas in your world and hookup events from Unity*
+  
+
+
+https://user-images.githubusercontent.com/5083203/189973321-aeafc83b-7c71-4517-a482-45cd9dbf9a4c.mp4  
+
+https://user-images.githubusercontent.com/5083203/189970610-9f913d5e-4f77-4a64-bc15-beb8220e82cf.mp4  
+
+https://user-images.githubusercontent.com/5083203/189973474-2d907e1c-fae3-439f-a349-5fe2c9b25b15.mp4
+
+https://user-images.githubusercontent.com/5083203/190458268-c66bad1e-fd68-4171-85b0-2ce001591650.mp4
