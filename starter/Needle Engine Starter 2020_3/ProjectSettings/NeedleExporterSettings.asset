@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 26665fb87b1e43f0944abcb2688aa8bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  localRuntimePackage: Library/PackageCache/com.needle.engine@2.13.3-pre/package~
-  localThreejsPackage: Library/PackageCache/com.needle.engine@2.13.3-pre/package~/node_modules/three
+  localRuntimePackage: Library/PackageCache/com.needle.engine@2.17.1-pre/package~
+  localThreejsPackage: Library/PackageCache/com.needle.engine@2.17.1-pre/package~/node_modules/three
   overrideEnterPlaymode: 1
   overrideBuildSettings: 1
   exportOnRecompile: 0

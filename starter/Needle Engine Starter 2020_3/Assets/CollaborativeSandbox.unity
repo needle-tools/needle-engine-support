@@ -1243,7 +1243,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 706762903}
-  m_LocalRotation: {x: 0.058189016, y: -0.88905805, z: 0.11798186, w: 0.43848616}
+  m_LocalRotation: {x: 0.05818904, y: -0.889058, z: 0.11798185, w: 0.43848634}
   m_LocalPosition: {x: 9.75, y: 3.79, z: 7.48}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -2304,7 +2304,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1139443096}
-  - component: {fileID: 1139443095}
   - component: {fileID: 1139443094}
   m_Layer: 0
   m_Name: SyncCamera
@@ -2328,20 +2327,6 @@ MonoBehaviour:
     GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-1139443094-0
   cam: {fileID: 706762905}
   cameraPrefab: {fileID: 4473676541219362434}
---- !u!114 &1139443095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1139443093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: aa3493724830445e9abb470aad0aec1e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Needle.Engine.Components.GltfObject, Needle.Engine $ GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-1139443095-0
-  SuppressExport: 0
-  SmartExport: 0
 --- !u!4 &1139443096
 Transform:
   m_ObjectHideFlags: 0
@@ -2350,12 +2335,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1139443093}
   m_LocalRotation: {x: -0, y: 0.70710677, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: 0.817, y: 0.203, z: 0.664}
+  m_LocalPosition: {x: 0.817, y: 0.153, z: 0.664}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5483926022662570040}
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 1597275518}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1001 &1148522097
 PrefabInstance:
@@ -2849,6 +2834,7 @@ Transform:
   - {fileID: 1211803453}
   - {fileID: 1459212022}
   - {fileID: 969208505}
+  - {fileID: 1139443096}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2866,6 +2852,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Needle.Engine.Components.GltfObject, Needle.Engine $ GlobalObjectId_V1-2-59cc0fa09c1e3904cb6f1d868fe15e8b-1597275519-0
   SuppressExport: 0
   SmartExport: 0
+  EmbedSkybox: 1
 --- !u!1 &1609064305
 GameObject:
   m_ObjectHideFlags: 0
