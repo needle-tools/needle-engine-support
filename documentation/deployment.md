@@ -2,9 +2,9 @@
 
 ## Content
 - [Basics](#basics)
-- [Deploy to glitch](deployment.md#deploy-to-glitch-)
-- [Deploy to FTP](deployment.md#deploy-to-ftp)
-- [Deploy to itch.io](deployment.md#deploy-to-itchio)
+- [Deploy to glitch](#deploy-to-glitch-)
+- [Deploy to FTP](#deploy-to-ftp)
+- [Deploy to itch.io](#deploy-to-itchio)
 
 ## Basics
 
