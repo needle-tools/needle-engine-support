@@ -1,10 +1,17 @@
 # Deployment ⚒
 
+## Content
+- [Basics](#basics)
+- [Deploy to glitch](deployment.md#deploy-to-glitch-)
+- [Deploy to FTP](deployment.md#deploy-to-ftp)
+- [Deploy to itch.io](deployment.md#deploy-to-itchio)
+
+## Basics
+
 Needle Engine is tightly integrated into the Unity Editor:  
 Open ``File/Build Settings`` and select ``Needle Engine`` for options!  
 
 ![image](https://user-images.githubusercontent.com/5083203/179510828-931e534a-c155-44b5-b9aa-29bac33a0c48.png)
-
 
 To deploy your threejs project you can click ``Build`` in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see Deploying for production below) which requires toktx to be installed on your machine.
 
@@ -63,15 +70,6 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
 
 > **Note**: If you're getting errors during compression, please let us know and report a bug! If your project works locally and only fails when doing production builds, you can get unstuck right away by doing a Development Build. For that, simply toggle `Development Build` on in the Build Settings.
 
-## Cross-Platform Deployment Workflows
-
-It's possible to create regular Unity projects where you can build both to Needle Engine and to regular Unity platforms such as Desktop or even WebGL. Our "component mapping" approach means that no runtime logic is modified inside Unity - if you want you can regularily use Play Mode and build to other target platforms. In some cases this will mean that you have duplicate code (C# code and matching TypeScript logic). The amount of extra work through this depends on your project.  
-
-**Enter Play Mode in Unity**  
-In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and `Override Build settings` to switch between Needle's build process and Unity's build process:  
-![image](https://user-images.githubusercontent.com/2693840/187308490-5acb9016-ffff-4113-be62-4de450a42b08.png)
-
-
 ## Deploy to itch.io  
 
 1) Create a new project on [itch.io](https://itch.io/game/new)
@@ -89,3 +87,14 @@ In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and
 If you see this error after uploading your project make sure you do not upload a gzipped index.html.
 You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
 ![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)
+
+---
+
+## Cross-Platform Deployment Workflows
+
+It's possible to create regular Unity projects where you can build both to Needle Engine and to regular Unity platforms such as Desktop or even WebGL. Our "component mapping" approach means that no runtime logic is modified inside Unity - if you want you can regularily use Play Mode and build to other target platforms. In some cases this will mean that you have duplicate code (C# code and matching TypeScript logic). The amount of extra work through this depends on your project.  
+
+**Enter Play Mode in Unity**  
+In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and `Override Build settings` to switch between Needle's build process and Unity's build process:  
+![image](https://user-images.githubusercontent.com/2693840/187308490-5acb9016-ffff-4113-be62-4de450a42b08.png)
+
