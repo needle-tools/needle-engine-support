@@ -81,7 +81,8 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
   ![20220920-104629_Create_a_new_project_-_itch io_-_Google_Chrome-needle](https://user-images.githubusercontent.com/5083203/191212661-f626f0cb-bc8e-4738-ad2c-3982aca65f39.png)
 6) Select ``This file will be played in the browser``  
   ![image](https://user-images.githubusercontent.com/5083203/191212967-00b687f3-bf56-449e-880c-d8daf8a52247.png)
-7) Save your itch page and view
+7) Save your itch page and view the itch project page.  
+  It should now load your Needle Engine project 😊
 
 ### Troubleshooting itch.io  
 
