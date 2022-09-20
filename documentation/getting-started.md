@@ -6,7 +6,7 @@ These steps will get you started with Needle Engine and Exporter for Unity. Afte
 
 Below each tool, you find quick links to download the latest version at the time of writing.  
 
-### Download these tools for development
+### Install these tools for development
 
   [**Node.js** (14.x or 16.x) ⇡](https://nodejs.org/en/) – for running a local development server (required)   
   [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
@@ -20,7 +20,7 @@ Below each tool, you find quick links to download the latest version at the time
   [**Unity** 2020.3.16+, 2021.3+ or 2022.2+ ⇡](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
   _Universal Render Pipeline or Built-In Render Pipeline_  
   
-### Download these tools for production builds
+### Install these tools for production builds
 
   [**toktx** 4.0 ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.0.0) – for texture compression (recommended)   
   [Windows x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-win64.exe) • [MacOS x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Darwin.pkg) • [Mac OS with Apple Silicon](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.0.0/KTX-Software-4.0.0-Darwin.pkg)  
