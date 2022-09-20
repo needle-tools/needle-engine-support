@@ -84,6 +84,10 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
   ![image](https://user-images.githubusercontent.com/5083203/191212967-00b687f3-bf56-449e-880c-d8daf8a52247.png)
 7) Save your itch page and view the itch project page.  
   It should now load your Needle Engine project 😊
+  
+### Optional settings
+![image](https://user-images.githubusercontent.com/5083203/191217263-355d9b72-5431-4170-8eca-bfbbb39ae810.png)
+
 
 ### Troubleshooting itch.io  
 
