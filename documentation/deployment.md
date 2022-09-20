@@ -75,7 +75,8 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
 1) Create a new project on [itch.io](https://itch.io/game/new)
 2) Set ``Kind of project`` to ``HTML``  
   ![image](https://user-images.githubusercontent.com/5083203/191211856-8a114480-bae7-4bd1-868e-2e955587acd7.png)
-3) Build your Needle Engine project (make sure to remove ``viteCompression({ deleteOriginFile: true })`` in ``vite.config.js``)
+3) Build your Needle Engine project 
+  > **Note**: make sure to remove ``viteCompression({ deleteOriginFile: true })`` in ``vite.config.js`` since itch requires your upload to contain a index.html file!
 4) Zip the ``dist`` folder which contains your built project
 5) Upload the ``dist.zip`` to itch.io  
   ![20220920-104629_Create_a_new_project_-_itch io_-_Google_Chrome-needle](https://user-images.githubusercontent.com/5083203/191212661-f626f0cb-bc8e-4738-ad2c-3982aca65f39.png)
