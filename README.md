@@ -27,7 +27,7 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 - [VR and AR](./documentation/xr.md) — *WebXR, VR, AR placement, limitations*
 - [Scripting](./documentation/scripting.md) — *components, codegen, interop with the web, interop with three.js*
 - [HTML](./documentation/html.md) — *web-components, responsive design*
-- [Deployment](./documentation/deployment.md) — *bundle, build and upload to a server*
+- [Deployment](./documentation/deployment.md) — *bundle, build and upload to a server like glitch, itch.io or your own FTP server*
 - [Project Samples, Examples and Modules](./documentation/samples-and-modules.md) — *go here to find example projects, code and more for downloading*
 - [Questions and Answers](./documentation/faq.md)
 - [Showcase](./documentation/examples.md)
