@@ -252,7 +252,7 @@ It is possible to access all the functionality described above using regular Jav
 The web-component also exposes a reference to the static ``GameObject`` functions described above. You can find components using ``document.getElementById("tiny")?.gameObject.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive.
 
 ## Automatically generating Unity components from typescript files
-*Automatically generate Unity components for typescript component in your project*  
+*Automatically generate Unity components for typescript component in your project using [Needle component compiler ⇡](https://www.npmjs.com/package/@needle-tools/needle-component-compiler)*  
 - If you want to add scripts inside the ``src/scripts`` folder in your project then you need to have a ``Component Generator`` on the GameObject with your ``ExportInfo`` component.
 - Now when adding new components in ``your/threejs/project/src/scripts``it will automatically generate Unity scripts in ``Assets/Needle/Components.codegen`.
 - If you want to add scripts to any NpmDef file you can just create them - each NpmDef automatically watches script changes and handles component generation, so you don't need any additional component in your scene.
