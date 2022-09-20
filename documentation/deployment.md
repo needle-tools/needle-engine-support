@@ -84,9 +84,11 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
 7) Save your itch page and view
 
 ### Troubleshooting itch.io  
+
+#### Failed to find index.html
+![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)  
 If you see this error after uploading your project make sure you do not upload a gzipped index.html.
 You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
-![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)
 
 ---
 
