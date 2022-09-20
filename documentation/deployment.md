@@ -70,3 +70,22 @@ It's possible to create regular Unity projects where you can build both to Needl
 **Enter Play Mode in Unity**  
 In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and `Override Build settings` to switch between Needle's build process and Unity's build process:  
 ![image](https://user-images.githubusercontent.com/2693840/187308490-5acb9016-ffff-4113-be62-4de450a42b08.png)
+
+
+## Deploy to itch.io  
+
+1) Create a new project on [itch.io](https://itch.io/game/new)
+2) Set ``Kind of project`` to ``HTML``  
+  ![image](https://user-images.githubusercontent.com/5083203/191211856-8a114480-bae7-4bd1-868e-2e955587acd7.png)
+3) Build your Needle Engine project (make sure to remove ``viteCompression({ deleteOriginFile: true })`` in ``vite.config.js``)
+4) Zip the ``dist`` folder which contains your built project
+5) Upload the ``dist.zip`` to itch.io  
+  ![20220920-104629_Create_a_new_project_-_itch io_-_Google_Chrome-needle](https://user-images.githubusercontent.com/5083203/191212661-f626f0cb-bc8e-4738-ad2c-3982aca65f39.png)
+6) Select ``This file will be played in the browser``  
+  ![image](https://user-images.githubusercontent.com/5083203/191212967-00b687f3-bf56-449e-880c-d8daf8a52247.png)
+7) Save your itch page and view
+
+### Troubleshooting itch.io  
+If you see this error after uploading your project make sure you do not upload a gzipped index.html.
+You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
+![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)
