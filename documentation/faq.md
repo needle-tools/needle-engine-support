@@ -15,7 +15,7 @@ You can generate a local self-signed SSL certificate to fix this if you want.
   
 ## My local website stays black
 
-If that happens there's usually an exception either in engine code or your code. Open the dev tools (<kbd>Ctrl + Shift + I</kbd> in Chrome) and check the Console for errors.  
+If that happens there's usually an exception either in engine code or your code. Open the dev tools (<kbd>Ctrl + Shift + I</kbd> or <kbd>F12</kbd> in Chrome) and check the Console for errors.  
 In some cases, especially when you just updated the Needle Engine package version, this can be fixed by stopping and restarting the local dev server.  
 For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
 
