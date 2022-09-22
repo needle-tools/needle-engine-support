@@ -20,13 +20,14 @@ In some cases, especially when you just updated the Needle Engine package versio
 For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
 
 
-## My website becomes to large (too many MB)
+## My website becomes to large / is loading slow (too many MB)
   
 This can have many reasons, but a few common ones are:
 - too many textures or textures are too large
 - meshes have too many vertices
 - meshes have vertex attributes you don't actually need (e.g. have normals and tangents but you're not using them)
 - objects are disabled and not ignored – disabled objects get exported as well in case you want to turn them on at runtime! Set their Tag to `EditorOnly` to completely ignore them for export.
+- you have multiple ``GltfObject`` components in your scene and they all have ``EmbedSkybox`` enabled (you need to have the skybox only once per scene you export)
   
 If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting/Addressables in the documentation](./scripting.md#assetreference-and-addressables).
 
