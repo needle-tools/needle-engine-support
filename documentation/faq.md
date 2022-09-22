@@ -81,6 +81,9 @@ Please the following points:
   
 Ensure your project is set to Linear colorspace.
 
+![image](https://user-images.githubusercontent.com/5083203/191774978-66e9feb1-0551-4549-85d3-3e5b8021f162.png)
+
+
 
 ## I'm using networking and Glitch and it doesn't work if more than 30 people visit the Glitch page at the same time
   
