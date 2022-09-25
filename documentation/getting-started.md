@@ -29,11 +29,13 @@ Below each tool, you find quick links to download the latest version at the time
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
 
 ## Option 1: Quick Start — Starter Project ⚡
-1. **Clone this repository**  
+1. **Download or Clone this repository**  
    It's set up with the right packages and settings to get you started right away.  
-   
+
    _Clone with HTTPS:_ ``https://github.com/needle-tools/needle-engine-support.git``  
    _OR clone with SSH:_ ``git@github.com:needle-tools/needle-engine-support.git``  
+   _OR download directly:_ <a href="https://github.com/needle-tools/needle-engine-support/archive/refs/heads/main.zip" target="_blank">Download Repository</a>
+   
   
 2. **Open the starter project**  
   Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
