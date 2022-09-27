@@ -21,10 +21,10 @@ Search in the whole scene by calling ``GameObject.findObjectOfType(Animator)``
 
 ### Transform
 Transform data can be accessed on the [threejs Object3D ⇡](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
-- ``this.gameObject.position`` - local space position
-- ``this.gameObject.rotation`` - local space rotation in euler angles
-- ``this.gameObject.quaternion`` - local space rotation as quaternion
-- ``this.gameObject.scale`` - local space scale
+- ``this.gameObject.position`` - local space [position ⇡]([ ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position))
+- ``this.gameObject.rotation`` - local space [rotation in euler angles ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation)
+- ``this.gameObject.quaternion`` - local space rotation as [quaternion ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion)
+- ``this.gameObject.scale`` - local space [scale ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale)
 
 
 ### Time
