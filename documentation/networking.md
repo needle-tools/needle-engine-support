@@ -60,13 +60,24 @@ export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
 
 ## Flatbuffers for your own components
 
-**TODO**
-- How to generate flatbuffer schemas for custom components
+> 🏗️ Under construction – generating flatbuffer schemas for custom components
 
 ## Built-in Networking on Glitch
 
-**TODO**
-- Limitations
-- How to upgrade to a stronger server
-- How to use your own networking implementation
-- How to change from the default ICE/STUN servers
+When deploying your app to Glitch, we include a simple networking backend that is great for prototyping and small deployments (~12-20 people at the same time). You can later update to a bigger/better/stronger networking solution if required.  
+
+### Limitations
+
+- approx. 12-20 people maximum – afterwards the tiny Glitch server instance becomes slow
+
+### How to upgrade to a stronger server
+
+> 🏗️ Under construction.
+
+### How to use your own networking implementation
+
+> 🏗️ Under construction.
+
+### How to change from the default ICE/STUN servers used for VoIP
+
+> 🏗️ Under construction.
