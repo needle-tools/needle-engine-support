@@ -50,7 +50,7 @@ Please fill out the [Feedback Form ⇡](https://fwd.needle.tools/needle-engine/f
 > **Note**: All external links are marked using this icon: ⇡
 
 # Contact ✒️
-<b>[🌵 needle — tools for unity](https://needle.tools)</b> • 
+<b>[🌵 needle — tools for creators](https://needle.tools)</b> • 
 [@NeedleTools](https://twitter.com/NeedleTools) • 
 [@marcel_wiessler](https://twitter.com/marcel_wiessler) • 
 [@hybridherbst](https://twitter.com/hybridherbst) • 
