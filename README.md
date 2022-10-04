@@ -26,16 +26,19 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 > Unbelievable Unity editor integration by an order of magnitude,  
   and as straightforward as the docs claim. Wow. — [Chris Mahoney](https://twitter.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19)
 
-> [needle.tools](https://needle.tools) is a wonderful showcase of what @NeedleTools contributes to 3D via the web.   
-  I just love it. — [Kevin Curry](https://twitter.com/kmcurry/status/1574333302022062080)
+> [needle.tools](https://needle.tools) is a wonderful showcase of what @NeedleTools contributes to 3D via the web. I just love it. — [Kevin Curry](https://twitter.com/kmcurry/status/1574333302022062080)
 
 > Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real time 3d tools - export scenes from Unity, where you can leverage the extensive 3d editor ecosystem & content, and then render them in your own web-based engine — [Stella Cannefax](https://twitter.com/0xstella/status/1574853012585172993)
 
 > Played with this a bit this morning 🤯🤯 pretty magical — [Brit Gardner](https://twitter.com/britg/status/1562443905580163072)
 
 > This is huge for WebXR and shared, immersive 3D experiences! Thank you so much for putting in the work on this @NeedleTools crew! Hoping @Apple
- sort out their WebXR situation sooner rather than later.   
-   The AR part worked flawlessly on my @SamsungMobile S21. — [Marc Wakefield](https://twitter.com/mrm_design/status/1567391880169545729)
+ sort out their WebXR situation sooner rather than later. The AR part worked flawlessly on my @SamsungMobile S21. — [Marc Wakefield](https://twitter.com/mrm_design/status/1567391880169545729)
+
+> Finally checking out @NeedleTools with Unity. Super easy to get something up and running in the cloud using their @glitch
+ integration. — [Pete Patterson](https://twitter.com/VRSpatialist/status/1572300394285383680)
+ 
+ > This is amazing and if you are curious about #WebXR with Unity this will help us get there 👇 — [Dilmer Valecillos](https://twitter.com/Dilmerv/status/1562209049856188420)
 
 > Right? — [threejs](https://twitter.com/threejs/status/1576944690737209344)
 
