@@ -75,7 +75,9 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
 1) Create a new project on [itch.io](https://itch.io/game/new)
 2) Set ``Kind of project`` to ``HTML``  
   ![image](https://user-images.githubusercontent.com/5083203/191211856-8a114480-bae7-4bd1-868e-2e955587acd7.png)
-3) Add the ``DeployToItch`` component to your scene and click the ``Build`` button
+3) Add the ``DeployToItch`` component to your scene and click the ``Build`` button  
+  ![image](https://user-images.githubusercontent.com/5083203/193812540-1881837e-ed9e-49fc-9658-52e5a914299a.png)
+
 4) Wait for the build to finish, it will open a folder with the final zip when it has finished
 5) Upload to final zip to itch.io  
   ![20220920-104629_Create_a_new_project_-_itch io_-_Google_Chrome-needle](https://user-images.githubusercontent.com/5083203/191212661-f626f0cb-bc8e-4738-ad2c-3982aca65f39.png)
