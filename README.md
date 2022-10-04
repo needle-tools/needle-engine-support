@@ -27,6 +27,9 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 
 > thanks to @NeedleTools, seeing quite a bit of this solution for web-based real time 3d tools - export scenes from Unity, where you can leverage the extensive 3d editor ecosystem & content, and then render them in your own web-based engine — [Stella Cannefax](https://twitter.com/0xstella/status/1574853012585172993)
 
+> Played with this a bit this morning 🤯🤯 pretty magical — [Brit Gardner](https://twitter.com/britg/status/1562443905580163072)
+
+> Right? — [threejs](https://twitter.com/threejs/status/1576944690737209344)
 
 ---
 
