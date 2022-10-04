@@ -2,6 +2,8 @@
 
 # Needle Engine
 
+> This is huge for WebXR and shared, immersive 3D experiences! — [Marc Wakefield](https://twitter.com/mrm_design/status/1567391880169545729)
+
 **Needle Engine** is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.  
 
 **Needle Exporter for Unity** bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.  
@@ -17,7 +19,7 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a694-c445f1d82b81.mp4
 
 
-# Testimonials 😇
+# Testimonials
 
 > This is the best thing I have seen after cinemachine in unity. Unity should acquire this — [Rinesh Thomas](https://twitter.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19)
 
