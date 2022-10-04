@@ -32,7 +32,8 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 > Played with this a bit this morning 🤯🤯 pretty magical — [Brit Gardner](https://twitter.com/britg/status/1562443905580163072)
 
 > This is huge for WebXR and shared, immersive 3D experiences! Thank you so much for putting in the work on this @NeedleTools crew! Hoping @Apple
- sort out their WebXR situation sooner rather than later. The AR part worked flawlessly on my @SamsungMobile S21. — [Marc Wakefield](https://twitter.com/mrm_design/status/1567391880169545729)
+ sort out their WebXR situation sooner rather than later.   
+   The AR part worked flawlessly on my @SamsungMobile S21. — [Marc Wakefield](https://twitter.com/mrm_design/status/1567391880169545729)
 
 > Right? — [threejs](https://twitter.com/threejs/status/1576944690737209344)
 
