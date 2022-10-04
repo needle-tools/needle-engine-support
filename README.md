@@ -17,7 +17,7 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a694-c445f1d82b81.mp4
 
 
-# Testimonials
+# Testimonials 😇
 
 > This is the best thing I have seen after cinemachine in unity. Unity should acquire this — [Rinesh Thomas](https://twitter.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19)
 
@@ -25,7 +25,7 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 
 > [needle.tools](https://needle.tools) is a wonderful showcase of what @NeedleTools contributes to 3D via the web. I just love it. — [Kevin Curry](https://twitter.com/kmcurry/status/1574333302022062080)
 
-> thanks to @NeedleTools, seeing quite a bit of this solution for web-based real time 3d tools - export scenes from Unity, where you can leverage the extensive 3d editor ecosystem & content, and then render them in your own web-based engine — [Stella Cannefax](https://twitter.com/0xstella/status/1574853012585172993)
+> Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real time 3d tools - export scenes from Unity, where you can leverage the extensive 3d editor ecosystem & content, and then render them in your own web-based engine — [Stella Cannefax](https://twitter.com/0xstella/status/1574853012585172993)
 
 > Played with this a bit this morning 🤯🤯 pretty magical — [Brit Gardner](https://twitter.com/britg/status/1562443905580163072)
 
