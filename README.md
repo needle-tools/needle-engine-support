@@ -35,8 +35,8 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 > This is huge for WebXR and shared, immersive 3D experiences! Thank you so much for putting in the work on this @NeedleTools crew! Hoping @Apple
  sort out their WebXR situation sooner rather than later. The AR part worked flawlessly on my @SamsungMobile S21. — [Marc Wakefield](https://twitter.com/mrm_design/status/1567391880169545729)
 
-> Finally checking out @NeedleTools with Unity. Super easy to get something up and running in the cloud using their @glitch
- integration. — [Pete Patterson](https://twitter.com/VRSpatialist/status/1572300394285383680)
+> Finally checking out @NeedleTools with Unity. Super easy to get something up and running in the cloud using their [@glitch
+ integration](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/deployment.md#deploy-to-glitch-). — [Pete Patterson](https://twitter.com/VRSpatialist/status/1572300394285383680)
  
  > This is amazing and if you are curious about #WebXR with Unity this will help us get there 👇 — [Dilmer Valecillos](https://twitter.com/Dilmerv/status/1562209049856188420)
 
