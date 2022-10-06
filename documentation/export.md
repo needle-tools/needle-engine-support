@@ -86,10 +86,7 @@ To export custom shaders (e.g. ShaderGraph shaders), add an ``ExportShader`` Ass
 - As there's multiple coordinate system changes when going from Unity to three.js and glTF, there might be some changes necessary to get advanced effects to work. 
 These coordinate changes are
   - UV coordinates in Unity start at the bottom left; in glTF they start at the top left.
-  - X axis values are flipped in glTF compared to Unity (a variant of a left-handed to right-handed coordinate system change).
-- three.js supports stencil buffers but conversion isn't automatic, refer to the three.js docs for how to set that up: https://threejs.org/examples/?q=sten#webgl_clipping_stencil  
-- Transparency isn't automatically set currently. If you want your custom shader to be transparent, you can set that from a custom component on the GameObject.
-- Advanced effects such as scene color and depth access can be set up in three.js but aren't automatically exported at this time.  
+  - X axis values are flipped in glTF compared to Unity (a variant of a left-handed to right-handed coordinate system change).  
 
 ## Exporting Lightmaps
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
