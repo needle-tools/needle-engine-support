@@ -23,7 +23,7 @@ Below each tool, you find quick links to download the latest version at the time
 ### Install these tools for production builds
 
   [**toktx** 4.1 ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
-  [Windows x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.1.0-rc3/KTX-Software-4.1.0-rc3-Windows-x64.exe) • [MacOS x64](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.1.0-rc3/KTX-Software-4.1.0-rc3-Darwin-x86_64.pkg) • [Mac OS with Apple Silicon](https://github.com/KhronosGroup/KTX-Software/releases/download/v4.1.0-rc3/KTX-Software-4.1.0-rc3-Darwin-arm64.pkg)  
+  [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon)  
   _Have a different platform? Scroll down to the "Assets" section on the link above, download and run the right installer for your system._  
   
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
