@@ -12,7 +12,7 @@
 Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
 
 <p align="center">
-<a href="./documentation/getting-started.md">Get started now</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="./documentation/vision.md">Our Vision</a> • <a href="https://fwd.needle.tools/needle-engine/projects">Made with Needle</a> • <a href="./documentation/samples-and-modules.md">Samples to Download</a> • <a href="#testimonials">Testimonials</a>
+<a href="./documentation/getting-started.md">Getting started</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="./documentation/vision.md">Our Vision</a> • <a href="https://fwd.needle.tools/needle-engine/projects">Made with Needle</a> • <a href="./documentation/samples-and-modules.md">Samples to Download</a> • <a href="#testimonials">Testimonials</a>
 </p>
 
 
