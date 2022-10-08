@@ -54,8 +54,8 @@ After installing the tools above, you might have to restart your machine so that
 
 ## Option 2: Quick Start — Package Installer 📦
 1. [**Click here to download a Needle Engine installer package for Unity**](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) 
-2. Drop both into a Unity project to install the Needle Engine, Needle Engine Exporter and UnityGLTF package
-3. Wait for the installation to finish (You might need to click ``Refresh`` in the Unity Project browser after the installer has finished)
+2. Drop the .unitypackage file into a Unity project to install the Needle Engine, Needle Engine Exporter and UnityGLTF packages
+3. Wait for the installation to finish (you may have to click _Assets/Refresh_ once)
 4. Now create a new scene and select one of our scene templates!
 
 ## Option 3: Regular Start — from a Template or from Scratch 🐢
