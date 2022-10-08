@@ -141,6 +141,8 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
     > **Note**: You might see a warning in your browser about SSL Security depending on your local configuration.  
     This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.  
     If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see your scene in the browser!  
+    
+    > **Note**: Keep an eye for console warnings! We log useful details about recommended project settings and so on. For example, your project should be set to Linear color space (not Gamma), and we'll log an error if that's not the case.  
 
 ⭐ **Congratulations!**  You just started your first project using Needle Engine! We're excited what you'll build.  
 
@@ -171,7 +173,7 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
 
 [Glitch ⇡](https://glitch.com) is a free website hosting and code editing environment, right in your browser. You can use Glitch as a fast-easy-free way to host prototypes and little apps. You'll even get a small web server included that provides networking and persistence for your projects.  
 
-1. **Add the Deploy To Glitch component**   
+1. **Add the `Deploy To Glitch` component**   
   Select your `ExportInfo` object, click on <kbd>Add Component</kbd>, and add a new `Deploy To Glitch` component to it.  
 
 2. **Remix and Deploy**  
