@@ -54,6 +54,7 @@ After installing the tools above, you might have to restart your machine so that
   You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 
 ## Option 2: Quick Start — Package Installer 📦
+
 1. **Download the installer.**  
   [Click here to download 🔗](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)  
   
@@ -70,7 +71,7 @@ After installing the tools above, you might have to restart your machine so that
 
 5. **Continue [here](#generate-a-web-project-and-add-content)**.
 
-## Option 3: Regular Start — from a Template or from Scratch 🐢
+## Option 3: Start from Scratch — Manual Setup 🐢
 
 ### Create a new project
 
@@ -95,9 +96,7 @@ Select ``Needle Engine Exporter`` and click install in the bottom right corner.
 
     > **Note**: You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
 
-4. **Continue [here](#generate-a-web-project-and-add-content)**.  
-
-### Create a new scene from a Scene Template 🌵
+### Create a new scene from a Scene Template
 
 We provide a number of Scene Templates for quickly starting new projects.  
 These allow you to go from idea to prototype in a few clicks.  
@@ -107,7 +106,6 @@ These allow you to go from idea to prototype in a few clicks.
 3. **Continue [here](#generate-a-web-project-and-add-content)**.
 
 ![20220822-140539-wqvW-Unity_oC0z-needle](https://user-images.githubusercontent.com/2693840/185917275-a147cd90-d515-4086-950d-78358185b1ef.png)
-
 
 ### Create a new scene from scratch
 
