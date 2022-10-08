@@ -55,8 +55,11 @@ After installing the tools above, you might have to restart your machine so that
 ## Option 2: Quick Start — Package Installer 📦
 1. [**Click here to download a Needle Engine installer package for Unity**](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) 
 2. Drop the .unitypackage file into a Unity project to install the Needle Engine, Needle Engine Exporter and UnityGLTF packages
-3. Wait for the installation to finish (you may have to click _Assets/Refresh_ once)
+3. Wait for the installation to finish (you may have to click _Assets/Refresh_ once)  
+  > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
 4. Now create a new scene and select one of our scene templates!
+
+5. **Continue [here](#generate-a-web-project-and-add-content)**.
 
 ## Option 3: Regular Start — from a Template or from Scratch 🐢
 
@@ -65,7 +68,7 @@ After installing the tools above, you might have to restart your machine so that
 1. **Set up a new project**  
 Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend you install the [Unity Hub ⇡](https://docs.unity3d.com/hub/manual/index.html) to manage your Editor installations.
 
-1. **Add our registry to Package Manager**  
+2. **Add our registry to Package Manager**  
 Open ``Edit/Project Settings`` and select ``Package Manager``.  
 Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
     - Name: ``needle``
@@ -76,12 +79,14 @@ Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html)
   ![image](https://user-images.githubusercontent.com/2693840/186287175-0de831b8-9112-43fa-989d-c13680186ff0.png)
 
 
-1. **Add the Exporter package**  
+3. **Add the Exporter package**  
 Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``.  
 In the dropdown in top left corner of the window select ``My Registries``.  
 Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
 
 > **Note**: You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
+
+4. **Continue [here](#generate-a-web-project-and-add-content)**.  
 
 ### Create a new scene from a Scene Template 🌵
 
@@ -89,10 +94,12 @@ We provide a number of Scene Templates for quickly starting new projects.
 These allow you to go from idea to prototype in a few clicks.  
 
 1. Click on `File > New Scene`
-2. Select one of the templates with (needle) in their name.
+2. Select one of the templates with (needle) in their name and click `Create`.
+3. **Continue [here](#generate-a-web-project-and-add-content)**.
 
 ![20220822-140539-wqvW-Unity_oC0z-needle](https://user-images.githubusercontent.com/2693840/185917275-a147cd90-d515-4086-950d-78358185b1ef.png)
- 
+
+
 ### Create a new scene from scratch
 
 If you don't want to start from a scene template, you can follow these steps.  
@@ -100,7 +107,7 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 
 1. **Ceate a new empty scene**  
 
-3. **Set up your scene for exporting**   
+2. **Set up your scene for exporting**   
   Add an empty GameObject, name it "Exporter" and add an `ExportInfo` component to it.  
   In this component you create and quickly access your exported runtime project.  
   It also warns you if any of our packages and modules are outdated or not locally installed in your web project.  
@@ -109,12 +116,19 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
  
 3. **Choose a web project template**  
   Now, select a web project template for your project. The default template is based on [Vite ⇡](https://vitejs.dev/), a fast web app bundler.  
- 
-5. **Generate your web project**   
-  Click ``Generate Project``. 
-  Wait for the installation to finish — you can see a progress indicator in the bottom right corner of the editor.  
 
-5. **View your project in a browser**
+4. **Continue [here](#generate-a-web-project-and-add-content)**.
+
+## Generate a Web Project and add content
+
+Needle Engine is a web-based runtime, and so there's always two projects: your Unity project and a web project that contains regular HTML and CSS. Needle Exporter brings these together into a fast, iterative workflow.  
+Usually, one Unity Scene with ExportInfo matches to one web project, so we're going to generate one now.  
+
+1. **Generate your web project**   
+  On the `ExportInfo` component, click ``Generate Project``.   
+  Wait a moment for the installation to finish — you can see a progress indicator in the bottom right corner of the editor.  
+
+2. **View your project in a browser**
   After a few seconds of installation, your project should automatically run and a new browser window opens. 
   
   > **Note**: You might see a warning in your browser about SSL Security depending on your local configuration.  
@@ -125,13 +139,13 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 
 ------------
 
-6. **Add content**    
+3. **Add content**    
    1. Create a new empty GameObject
    1. Add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF file. 
    1. Add an object (e.g. ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. 
    1. Your browser should refresh and your object is visible.
 
-6. **Make it interactive**  
+4. **Make it interactive**  
   Needle Engine comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``, which we're going to use to make the camera interactive.
     1. Select your ``Main Camera`` GameObject
     1. Add a new ``OrbitControls`` component to it 
@@ -145,9 +159,6 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
   
 > **No cube on your website?**   
   Make sure it's a child of your GltfObject root.  
-  
-> **The Skybox looks weird?**    
-  This is a known issue and will be fixed soon — just press play again and the skybox should appear correctly.  
 
 ## Deploy your project to Glitch 🎏
 
@@ -175,5 +186,6 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 ------------
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
+You can also join our [Needle Discord](https://discord.needle.tools)!
 
-👉 Continue reading about [exporting GLTF content](./export.md) and [scripting](./scripting.md) or have a look at [our samples](https://docs.needle.tools/samples) →
+👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or have a look at [our samples](https://docs.needle.tools/samples).
