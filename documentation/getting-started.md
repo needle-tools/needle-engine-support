@@ -19,13 +19,14 @@ Below each tool, you find quick links to download the latest version at the time
   
   [**Unity** 2020.3.16+, 2021.3+ or 2022.2+ ⇡](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
   _Universal Render Pipeline or Built-In Render Pipeline_  
+  _Linear Colorspace_
   
 ### Install these tools for production builds
 
   [**toktx** 4.1 ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
   [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon)  
   _Have a different platform? Scroll down to the "Assets" section on the link above, download and run the right installer for your system._  
-  
+ 
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
 
 ## Option 1: Quick Start — Starter Project ⚡
@@ -53,11 +54,19 @@ After installing the tools above, you might have to restart your machine so that
   You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 
 ## Option 2: Quick Start — Package Installer 📦
-1. [**Click here to download a Needle Engine installer package for Unity**](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos) 
-2. Drop the .unitypackage file into a Unity project to install the Needle Engine, Needle Engine Exporter and UnityGLTF packages
-3. Wait for the installation to finish (you may have to click _Assets/Refresh_ once)  
-  > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
-4. Now create a new scene and select one of our scene templates!
+1. **Download the installer.**  
+  [Click here to download 🔗](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)  
+  
+2. **Install by dropping into Unity.**   
+   Drop the downloaded `.unitypackage` file into a Unity project.  
+   This will install the Needle Engine, Needle Exporter and UnityGLTF packages.
+
+4. **Wait for the installation to finish.**  
+   You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
+     > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
+
+5. **Create a new scene from a template.**
+   Select _File > New Scene_ and start with one of the Needle templates.  
 
 5. **Continue [here](#generate-a-web-project-and-add-content)**.
 
@@ -84,7 +93,7 @@ Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html
 In the dropdown in top left corner of the window select ``My Registries``.  
 Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
 
-> **Note**: You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
+    > **Note**: You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
 
 4. **Continue [here](#generate-a-web-project-and-add-content)**.  
 
@@ -112,7 +121,7 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
   In this component you create and quickly access your exported runtime project.  
   It also warns you if any of our packages and modules are outdated or not locally installed in your web project.  
 
-  > By default, the project name matches the name of your scene. If you want to change that, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
+     > By default, the project name matches the name of your scene. If you want to change that, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
  
 3. **Choose a web project template**  
   Now, select a web project template for your project. The default template is based on [Vite ⇡](https://vitejs.dev/), a fast web app bundler.  
@@ -131,7 +140,7 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
 2. **View your project in a browser**
   After a few seconds of installation, your project should automatically run and a new browser window opens. 
   
-  > **Note**: You might see a warning in your browser about SSL Security depending on your local configuration.  
+    > **Note**: You might see a warning in your browser about SSL Security depending on your local configuration.  
     This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.  
     If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see your scene in the browser!  
 
@@ -164,24 +173,24 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
 
 [Glitch ⇡](https://glitch.com) is a free website hosting and code editing environment, right in your browser. You can use Glitch as a fast-easy-free way to host prototypes and little apps. You'll even get a small web server included that provides networking and persistence for your projects.  
 
-1. **Add the Deployment component**  
-  Select your `ExportInfo` object, and add a new `Deployment` component to it.
+1. **Add the Deploy To Glitch component**   
+  Select your `ExportInfo` object, click on <kbd>Add Component</kbd>, and add a new `Deploy To Glitch` component to it.  
 
-2. **Remix [our starter ⇡](https://fwd.needle.tools/needle-engine/glitch-starter-editor), right from Unity**  
+2. **Remix and Deploy**  
    1. **Click on `Create new Glitch Remix`.**  
     ![image](https://user-images.githubusercontent.com/2693840/185919478-8ba99499-cea9-4d29-ae1c-6d6da602f869.png)  
-    This will open your browser and remix the page.  
+    This will open your browser and remix [our Glitch starter ⇡](https://fwd.needle.tools/needle-engine/glitch-starter-editor).  
     
-   2. **Paste the name of your new remix**  
-  Copy the URL of your new remix and paste it into the `Project Name` text field in Unity.    
+   2. **Paste the URL of your new remix**  
+  Copy the URL of your new remix and paste it into the `Project Name` field in Unity.    
   ![179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1](https://user-images.githubusercontent.com/5083203/186165097-9b44f3dc-ec2f-48f4-819b-8fab5fac5270.png)
 
    3. **Deploy to Glitch**  
   Click on `Build & Deploy: Prod`. This will kick of bundling, compression, and upload of your project.  
-  Wait for a few seconds.
-  Your browser window will open on your new project.
+  Wait for a few seconds.  
+  Your new project will open in a browser. 
 
-⭐ **Congratulations!** You just deployed your first project from Unity to the web.  
+⭐ **Congratulations!** You just deployed your first project from Unity to the web. Ready to be shared with the world!   
 
 ------------
 
