@@ -12,7 +12,7 @@
 Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
 
 <p align="center">
-<a href="./documentation/getting-started.md">Getting started</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="./documentation/vision.md">Our Vision</a> • <a href="https://fwd.needle.tools/needle-engine/projects">Made with Needle</a> • <a href="./documentation/samples-and-modules.md">Samples to Download</a> • <a href="#testimonials">Testimonials</a>
+<a href="./documentation/getting-started.md">Getting started ⭐</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="./documentation/vision.md">Our Vision</a> • <a href="https://fwd.needle.tools/needle-engine/projects">Made with Needle</a> • <a href="./documentation/samples-and-modules.md">Samples to Download</a> • <a href="#testimonials">Testimonials</a>
 </p>
 
 
@@ -20,7 +20,7 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 
 
 # Contents 📋
-- [Getting started](./documentation/getting-started.md) ⭐
+- [Getting started ⭐](./documentation/getting-started.md)
 - [Feature Overview](./documentation/features-overview.md)
 - [Export](./documentation/export.md) — *glTF files, shaders, lightmaps, Skybox, ...*
 - [Project Structure](./documentation/project_structure.md) — *vite, npm definition files*
@@ -31,7 +31,7 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
 - [Project Samples, Examples and Modules](./documentation/samples-and-modules.md) — *go here to find example projects, code and more for downloading*
 - [FAQ](./documentation/faq.md) — *questions and answers*  
 - [Showcase](./documentation/examples.md)
-- [For Unity Developers](./documentation/for-unity-developers.md)
+- [Tips for Unity Developers](./documentation/for-unity-developers.md)
 
 ## Dive Deeper 🐠
 - [Our Vision](./documentation/vision.md) — *conceptual overview*
