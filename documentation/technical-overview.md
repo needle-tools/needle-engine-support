@@ -16,8 +16,6 @@ Effectively, this turns the Unity Editor into a full member of a regular web dev
 
 ```mermaid
 flowchart LR
-    classDef ndl fill:#BCEDB1;
-    classDef ext fill:#B1E1ED;
     Editor([Unity Editor]) --> EditorExt([Components + Tools])
     EditorExt -- export data --> glTF([glTF + Extensions])
     glTF --> Bundler([Bundler - vite])
