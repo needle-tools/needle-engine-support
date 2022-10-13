@@ -10,10 +10,12 @@ Below each tool, you find quick links to download the latest version at the time
 
   [**Node.js** (14.x or 16.x) ⇡](https://nodejs.org/en/) – for running a local development server (required)   
   [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
-    
+  
+  <!--
   [**git** ⇡](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
   [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
-   
+   -->
+  
   [**VS Code** ⇡](https://code.visualstudio.com/) – for code editing (recommended)  
   [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) • [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)  
   
@@ -29,6 +31,7 @@ Below each tool, you find quick links to download the latest version at the time
  
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
 
+<!--
 ## Option 1: Quick Start — Starter Project ⚡
 1. **Download or Clone this repository**  
    It's set up with the right packages and settings to get you started right away.  
@@ -52,11 +55,17 @@ After installing the tools above, you might have to restart your machine so that
 4. **Make it your own**  
   Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
   You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
+-->
 
-## Option 2: Quick Start — Package Installer 📦
+## Option 1: Quick Start — Package Installer 📦
 
-1. **Download the installer.**  
+1. **Create a new Unity project.**  
+  Open Unity Hub and create a new project. 2021.3 recommended!  
+  Make sure to switch it to Linear color space in `Project Settings > Player`.
+  
+3. **Download our installer.**  
   [Click here to download 🔗](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)  
+  Our installer is just a `.unitypackage` that will set everything up for you.  
   
 2. **Install by dropping into Unity.**   
    Drop the downloaded `.unitypackage` file into a Unity project.  
@@ -66,17 +75,19 @@ After installing the tools above, you might have to restart your machine so that
    You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
      > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
 
-5. **Create a new scene from a template.**
+5. **Create a new scene from a template.**  
    Select _File > New Scene_ and start with one of the Needle templates.  
 
-5. **Continue [here](#generate-a-web-project-and-add-content)**.
+5. **Continue [here](#generate-a-web-project-and-add-content) to add content and make it your own.**  
+   Learn how to iterate, test, build and publish your projects.  
 
-## Option 3: Start from Scratch — Manual Setup 🐢
+## Option 2: Start from Scratch — Manual Setup 🐢
 
 ### Create a new project
 
 1. **Set up a new project**  
-Create a new Unity project. Currently we support 2020.3.x and 2022. We recommend you install the [Unity Hub ⇡](https://docs.unity3d.com/hub/manual/index.html) to manage your Editor installations.
+Create a new Unity project via the [Hub](https://docs.unity3d.com/hub/manual/index.html).  
+We recommend 2021.3 LTS. Make sure to switch to Linear color space!  
 
 2. **Add our registry to Package Manager**  
 Open ``Edit/Project Settings`` and select ``Package Manager``.  
