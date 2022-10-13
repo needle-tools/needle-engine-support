@@ -5,7 +5,6 @@ Code for Needle Engine is written in TypeScript or JavaScript. We automatically 
 
 ```mermaid
 flowchart LR
-  classDef bg fill:#BCEDB1;
   Editor([<b>C# components</b><br/>on GameObjects]) --> gltf[<b>JSON data</b><br/>as glTF Extension] --> Runtime([<b>JavaScript components</b><br/>on Object3D])
   class Editor,gltf,Runtime bg;
 ```
