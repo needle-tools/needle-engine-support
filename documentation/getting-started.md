@@ -26,8 +26,7 @@ Below each tool, you find quick links to download the latest version at the time
 ### Install these tools for production builds
 
   [**toktx** 4.1 ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
-  [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon)  
-  _Have a different platform? Scroll down to the "Assets" section on the link above, download and run the right installer for your system._  
+  [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) • [Other](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)    
  
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
 
@@ -68,17 +67,18 @@ After installing the tools above, you might have to restart your machine so that
   Our installer is just a `.unitypackage` that will set everything up for you.  
   
 2. **Install by dropping into Unity.**   
-   Drop the downloaded `.unitypackage` file into a Unity project.  
-   This will install the Needle Engine, Needle Exporter and UnityGLTF packages.
+   Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
+   This will set up the Needle Engine, Needle Exporter and UnityGLTF packages.  
 
 4. **Wait for the installation to finish.**  
    You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
      > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
 
 5. **Create a new scene from a template.**  
-   Select _File > New Scene_ and start with one of the Needle templates.  
+   Select _File > New Scene_ and choose from one of the Needle templates.  
+   We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer, and adding assets.  
 
-5. **Continue [here](#generate-a-web-project-and-add-content) to add content and make it your own.**  
+5. **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
    Learn how to iterate, test, build and publish your projects.  
 
 ## Option 2: Start from Scratch — Manual Setup 🐢
