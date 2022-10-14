@@ -59,6 +59,8 @@ https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a
  integration](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/deployment.md#deploy-to-glitch-). — [Pete Patterson](https://twitter.com/VRSpatialist/status/1572300394285383680)
  
  > This is amazing and if you are curious about #WebXR with Unity this will help us get there 👇 — [Dilmer Valecillos](https://twitter.com/Dilmerv/status/1562209049856188420)
+ 
+ > I am a long time Unity dev and recently started playing with Needle Tools and I love it! It's a great on ramp for Unity devs who want to learn WebXR and three.js. The runtime engine is awesome and it was pretty easy to create my own custom component — [VRSpatialist](https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530) [↑](https://twitter.com/VRSpatialist)
 
 > [...] we just gotta say WOW 🤩 — [Unity for Digital Twins](https://twitter.com/DigitalTwin/status/1576934958681055233)  
 > Right?! — [three.js](https://twitter.com/threejs/status/1576944690737209344)
