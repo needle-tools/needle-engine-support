@@ -9,10 +9,6 @@
     * [Scripting](./scripting.md)
     * [HTML](./html.md)
     * [Deployment](./deployment.md)
-    * [Project Samples, Examples and Modules](./samples-and-modules.md)
-    * [FAQ](./faq.md)
-    * [Showcase](./examples.md)
-    * [Tips for Unity Developers](./for-unity-developers.md)
 
 # Samples
 * [Samples and Examples](./samples-and-modules.md)
