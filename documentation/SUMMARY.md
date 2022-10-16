@@ -15,7 +15,8 @@
     * [Tips for Unity Developers](./for-unity-developers.md)
 
 
-* [Samples and Examples ⭐](./samples-and-modules.md)
+## Samples
+* [Samples and Examples](./samples-and-modules.md)
     * [Tips for Unity Developers](./for-unity-developers.md)
     * [Showcase](./examples.md)
     * [Project Samples, Examples and Modules](./samples-and-modules.md)
@@ -23,7 +24,7 @@
 
 
 ## Dive Deeper 🐠
-* [Our Vision 🐠](./vision.md)
+* [Our Vision](./vision.md)
     * [Technical Overview](./technical-overview.md)
     * [Component Reference](./component-reference.md)
     * [Debugging](./debugging.md)
