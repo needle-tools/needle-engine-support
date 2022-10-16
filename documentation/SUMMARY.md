@@ -14,16 +14,14 @@
     * [Showcase](./examples.md)
     * [Tips for Unity Developers](./for-unity-developers.md)
 
-
-## Samples
+# Samples
 * [Samples and Examples](./samples-and-modules.md)
     * [Tips for Unity Developers](./for-unity-developers.md)
     * [Showcase](./examples.md)
     * [Project Samples, Examples and Modules](./samples-and-modules.md)
     * [FAQ](./faq.md)
 
-
-## Dive Deeper 🐠
+# Dive Deeper 🐠
 * [Our Vision](./vision.md)
     * [Technical Overview](./technical-overview.md)
     * [Component Reference](./component-reference.md)
