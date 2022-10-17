@@ -26,7 +26,7 @@ You can organize your assets like in any typical Unity project. If you are not f
 ![image](https://user-images.githubusercontent.com/5083203/185805355-0618aa93-a9ca-463a-86b8-e735e8772bda.png)
 
 
-**NPM Definition** is what we call npm packages that you can install to your projects from within Unity, and that are tightly integrated into the Unity Editor. That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
+**NPM Definition** is what we call [npm packages ⇡](https://www.npmjs.com/) that you can install to your projects from within Unity, and that are tightly integrated into the Unity Editor. That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
 
 > Basically, each NpmDef contains a npm package (written in TypeScript) and a matching UPM package (C#). The public fields and method wrappers on the C# side can be automatically generated from TypeScript.  
 
