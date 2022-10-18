@@ -2,8 +2,6 @@
 
 # Needle Engine
 
-> [Read some of our Testimonials 🤗](#testimonials-)
-
 **Needle Engine** is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.  
 
 **Needle Exporter for Unity** bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.  
@@ -12,7 +10,7 @@
 Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
 
 <p align="center">
-<a href="./documentation/getting-started.md">Getting started ⭐</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="./documentation/vision.md">Our Vision</a> • <a href="https://fwd.needle.tools/needle-engine/projects">Made with Needle</a> • <a href="./documentation/samples-and-modules.md">Samples to Download</a> • <a href="#testimonials">Testimonials</a>
+<a href="./documentation/getting-started.md">Getting started ⭐</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="./documentation/vision.md">Our Vision</a> • <a href="https://fwd.needle.tools/needle-engine/projects">Made with Needle</a> • <a href="./documentation/samples-and-modules.md">Samples to Download</a> • <a href="#testimonials-">Testimonials</a>
 </p>
 
 
