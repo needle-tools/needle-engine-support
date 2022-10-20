@@ -246,9 +246,23 @@ export class MyScript extends Behaviour
 ```
 
 ## Accessing components from external JavaScript
-It is possible to access all the functionality described above using regular JavaScript code that is not inside components and lives somewhere else. For that just find the ``<needle-tiny>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``document.getElementById("tiny")?.context``.  
+It is possible to access all the functionality described above using regular JavaScript code that is not inside components and lives somewhere else. All the components and functionality of the needle runtime is accessible via the global ``Needle`` namespace (you can write ``console.log(Needle)`` to get an overview)
 
-The web-component also exposes a reference to the static ``GameObject`` functions described above. You can find components using ``document.getElementById("tiny")?.gameObject.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive.
+For that just find the ``<needle-engine>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``await document.queryElement("needle-engine")?.getContext()``.   
+
+You can find components using ``Needle.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive. See the list for [finding adding and removing components](#finding-adding-and-removing-components) above.  
+
+For getting callbacks for the initial scene load see the following example:  
+```js
+<needle-engine loadstart="loadingStarted" progress="loadingProgress" loadfinished="loadingFinished"></needle-engine>
+
+<script type="text/javascript">
+function loadingStarted() { console.log("START") }
+function loadingProgress() { console.log("LOADING...") }
+function loadingFinished() { console.log("FINISHED!") }
+</script>
+```
+
 
 ## Automatically generating Unity components from typescript files
 *Automatically generate Unity components for typescript component in your project using [Needle component compiler ⇡](https://www.npmjs.com/package/@needle-tools/needle-component-compiler)*  
