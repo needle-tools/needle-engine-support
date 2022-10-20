@@ -35,6 +35,8 @@ To get an in-depth overview of built-in components, you can inspect the folder `
 - [AssetReference and Addressables](#assetreference-and-addressables)
 - [Unity Types in Typescript](#renamed-unity-types-in-typescript)
 
+If you are a Unity dev and want to learn more about typescript and Needle Engine you can also learn more in [Needle Engine for Unity developers](https://docs.needle.tools/unity-dev) ☺
+
 ---
 
 ## When you don't need to write code
