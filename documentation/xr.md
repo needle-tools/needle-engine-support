@@ -12,8 +12,8 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 
 | Tested VR Device | Browser | Notes |
 | -- | -- | -- |
-| Meta Quest 1 | ✔️ Oculus Browser | support for sessiongranted |
-| Meta Quest 2 | ✔️ Oculus Browser | support for sessiongranted |
+| Meta Quest 1 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup> |
+| Meta Quest 2 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup> |
 | Pico Neo 3 | ✔️ Pico Browser | no hand tracking support, inverted controller thumbsticks |
 | Oculus Rift 1/2 | ✔️ Chrome |  |
 | Hololens 2 | ✔️ Edge | in VR mode, background is rendered as well |
@@ -27,6 +27,8 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | iOS 15+ | ❌ Safari | can fall back to interactive USDZ files or [other approaches](#limitations-for-webxr-on-ios) |
 | Hololens 2 | ✔️ Edge | |
 | Hololens 1 | ❌ | no WebXR support |
+
+<sup>1</sup>: Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`
 
 ## Adding VR and AR capabilities to a scene
 
@@ -86,6 +88,7 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
 Needle Engine supports the [`sessiongranted` ⇡](https://github.com/immersive-web/navigation) state. This allows users to seamlessly traverse between WebXR applications without leaving an immersive session – they stay in VR or AR.  
 
 Currently, this is only supported on Oculus Quest 1 and 2 in the Oculus Browser. On other platforms, users will be kicked out of their current immersive session and have to enter VR again on the new page.  
+Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`  
 
 - **Click on objects to open links**  
   The [samples repository ⇡](https://github.com/needle-tools/needle-engine-samples) contains a small script [`ClickToOpenWebsite` ⇡](https://github.com/needle-tools/needle-engine-samples/blob/main/package/Runtime/Needle%20Engine%20Samples~/ClickToOpenWebsite.ts) that makes it very easy to build connected worlds.  
