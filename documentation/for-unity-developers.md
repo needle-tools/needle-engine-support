@@ -4,6 +4,7 @@
 
 Below you can find some common code examples that help you getting familiar when coming from Unity and starting to dive into web development with Needle Engine. 
 
+General information about [scripting in Needle Engine can be found here](https://docs.needle.tools/scripting).
 
 Please also refer to the [Typescript reference ⇡](https://www.typescriptlang.org/docs/) for syntax and general language questions!  
 
