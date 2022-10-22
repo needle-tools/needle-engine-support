@@ -7,5 +7,13 @@
 			"path": "./node_modules/vuepress"
 		}
 	],
-	"settings": {}
+	"settings": {
+		"files.exclude": {
+			"node_modules": true,
+			"**/dist": true,
+			"**/.vuepress/.cache": true,
+			"**/.vuepress/.temp": true,
+			"**/.vuepress/*.mjs": true,
+		}
+	}
 }

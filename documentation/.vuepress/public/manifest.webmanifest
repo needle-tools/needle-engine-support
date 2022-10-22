@@ -1,0 +1,15 @@
+{
+    "id" : "needle_engine_docs",
+    "name": "Needle Engine Documentation",
+    "short_name": "Needle Engine Docs",
+    "description": "Needle Engine is a web-based runtime for 3D apps",
+    "start_url": "https://uploads.needle.tools/needle-engine-support/",
+    "display": "standalone",
+    "icons": [
+        {
+            "src": "/needle-engine-support/android-chrome-144x144.png",
+            "sizes": "144x144",
+            "type": "image/png"
+        }
+    ]
+  }

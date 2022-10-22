@@ -4,21 +4,40 @@ import { searchPlugin } from '@vuepress/plugin-search'
 // import * as mermaidPlugin from "@renovamen/vuepress-plugin-mermaid";
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
+import { pwaPlugin } from '@vuepress/plugin-pwa'
+
+const _base = "/needle-engine-support/";
 
 export default defineUserConfig({
-    base: "/needle-engine-support/",
+    base: _base,
     lang: 'en-US',
     title: 'Needle Engine',
     dest: "dist",
     description: 'Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.',
+    plugins: [
+        searchPlugin({
+        }),
+        //@ts-ignore
+        pwaPlugin({ }),
+        // mermaidPlugin,
+        registerComponentsPlugin({
+            componentsDir: path.resolve(__dirname, './components'),
+        }),
+        // videoplayer
+    ],
+    head: [
+      ['link', { rel: 'manifest', href: 'manifest.webmanifest' }],
+      ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+      // ...other tags
+    ],
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
         docsRepo: "needle-tools/needle-engine-support",
         docsBranch: "vuepress",
         docsDir: "documentation",
         logo: "/logo.png",
-        colorModeSwitch: true, // disable until https://github.com/vuepress/vuepress-next/issues/1140
-        lastUpdated: true, // disable until https://github.com/vuepress/vuepress-next/issues/1140
+        colorModeSwitch: true,
+        lastUpdated: false,
         contributors: false,
         editLink: true,
         navbar: [
@@ -33,6 +52,10 @@ export default defineUserConfig({
                     "vision",
                     "features-overview",
                     "technical-overview",
+                    {
+                        text: 'Testimonials 💬',
+                        link: 'testimonials',
+                    },
                 ]
             },
             {
@@ -49,8 +72,7 @@ export default defineUserConfig({
                     "networking",
                     "scripting",
                     "xr",
-                    "faq",
-                    "debugging"
+                    "debugging",
                 ]
             },
             {
@@ -59,6 +81,8 @@ export default defineUserConfig({
                     "samples-and-modules",
                     "for-unity-developers",
                     "component-reference",
+                    "debugging",
+                    "faq",
                 ]
             },
             {
@@ -72,14 +96,6 @@ export default defineUserConfig({
                         text: 'Product Configurator 🚲',
                         link: 'showcase-bike',
                     }
-                ]
-            },
-            {
-                text: 'Learn More',
-                children: [
-                    "vision",
-                    "features-overview",
-                    "technical-overview",
                 ]
             },
             {
@@ -102,30 +118,20 @@ export default defineUserConfig({
                         link: 'https://twitter.com/needletools'
                     },
                     {
-                        text: 'Send email',
-                        link: 'mailto:hi@needle.tools'
-                    },
-                    {
                         text: 'Newsletter',
-                        link: ""
+                        link: "https://fwd.needle.tools/needle-engine/newsletter"
                     },
                     {
                         text: 'Beta Feedback',
                         link: "https://fwd.needle.tools/needle-engine/feedback"
                     },
+                    {
+                        text: 'Send email',
+                        link: 'mailto:hi@needle.tools'
+                    },
                 ]
             },
         ],
     }),
-    plugins: [
-        searchPlugin({
-
-        }),
-        // mermaidPlugin,
-        registerComponentsPlugin({
-            componentsDir: path.resolve(__dirname, './components'),
-        }),
-        // videoplayer
-    ],
 
 })
