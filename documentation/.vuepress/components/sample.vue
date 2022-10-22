@@ -9,13 +9,26 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
+iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  aspect-ratio: 16/9
+}
 
+@media (max-aspect-ratio: 1/1) {
+  iframe {
+    aspect-ratio: 9/9
+  }
+}
+@media (max-aspect-ratio: 9/16) {
+  iframe {
+    aspect-ratio: 9/14
+  }
+}
 </style>
 
 <template>
-    
-    <iframe style="border:none; width:100%; aspect-ratio:16/9"
-        :src="src"
-        allow="xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
+  <iframe :src="src" allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
 </template>
