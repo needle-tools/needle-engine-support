@@ -1,0 +1,22 @@
+{
+  "name": "docs2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "docs:dev": "vuepress dev documentation",
+    "docs:build": "vuepress build documentation"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "vuepress": "^2.0.0-beta.52"
+  },
+  "devDependencies": {
+    "@vuepress/plugin-external-link-icon": "^2.0.0-beta.52",
+    "@vuepress/plugin-register-components": "^2.0.0-beta.52",
+    "@vuepress/plugin-search": "^2.0.0-beta.52",
+    "vuepress-plugin-core-video-player": "^1.1.0",
+    "vuepress-plugin-mermaidjs": "^2.0.0-beta.2"
+  }
+}
