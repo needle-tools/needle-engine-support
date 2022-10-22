@@ -79,13 +79,15 @@ Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to 
 
 > Read more about [Physics Components](./component-reference.md#physics)
 
-## Scripting 🧩
-Needle Engine uses as [component based workflow](./scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
+<sample src="https://needle-physics-cannon-sample.glitch.me" />
 
-> Read more about [Scripting Reference](https://fwd.needle.tools/needle-engine/docs/scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
+## Scripting 🧩
+Needle Engine uses as [component based workflow](scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
+
+> Read more about [Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
 
 ---
 # Where to go next
 
-See our [Getting Started Guide](https://fwd.needle.tools/needle-engine/docs/getting-started) to learn about how to download and set up Needle Engine.   
-Learn about [our vision](https://fwd.needle.tools/needle-engine/docs/vision) or dive deeper into some of the [technical background and glTF](https://fwd.needle.tools/needle-engine/docs/technical-overview) powering it all.  
+See our [Getting Started Guide](getting-started) to learn about how to download and set up Needle Engine.   
+Learn about [our vision](vision) or dive deeper into some of the [technical background and glTF](technical-overview) powering it all.  
