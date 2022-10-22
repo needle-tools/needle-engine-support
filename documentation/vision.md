@@ -10,7 +10,7 @@ At Needle, we believe ideating and creating in this space about this should be e
 
 ## Why another platform for 3D on the web? Aren't there enough options already?
 
-There's numerous options, that's true! We found that current systems<sup>1</sup> can be roughly sorted into two categories: some have great asset handling, tools, and artist-friendly workflows but output some sort of binary blob, and others are more code-focussed, developer-friendly and allow for great integration into modern web workflows<sup>2<sup>.  
+There's numerous options, that's true! We found that current systems<sup>1</sup> can be roughly sorted into two categories: some have great asset handling, tools, and artist-friendly workflows but output some sort of binary blob, and others are more code-focussed, developer-friendly and allow for great integration into modern web workflows<sup>2</sup>.  
 
 We want to bridge these worlds and combine the best of both worlds: artist-friendly workflows and modern web technologies. Combined with modern formats and a snappy workflow, we believe this will allow many more creators to bring their content to the web. We also saw an opportunity to get AR, VR and collaboration right from the start.  
   
