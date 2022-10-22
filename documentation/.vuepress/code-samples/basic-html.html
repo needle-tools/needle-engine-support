@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Made with Needle</title>
+
+    <!-- importmap -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three":  "https://unpkg.com/three/build/three.module.js",
+            "three/": "https://unpkg.com/three/"
+          }
+        }
+    </script>
+    <!-- parcel require must currently defined somewhere for peerjs -->
+    <script> var parcelRequire; </script>
+    <!-- loading the needle engine js file -->
+    <script type="module" src="https://unpkg.com/@needle-tools/engine"></script>
+
+</head>
+
+<body>
+
+    <!-- load a gltf or glb here as your scene and listen to the finished event to start interacting with it -->
+    <needle-engine src="scene.glb" loadfinished="onLoaded"></needle-engine>
+
+</body>
+
+<script>
+    function onLoaded(ctx) {
+        console.log("Loading finished", ctx);
+    }
+</script>
+
+</html>

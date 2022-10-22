@@ -18,7 +18,7 @@ export default defineUserConfig({
         searchPlugin({
         }),
         //@ts-ignore
-        pwaPlugin({ }),
+        pwaPlugin({}),
         // mermaidPlugin,
         registerComponentsPlugin({
             componentsDir: path.resolve(__dirname, './components'),
@@ -26,10 +26,16 @@ export default defineUserConfig({
         // videoplayer
     ],
     head: [
-      ['link', { rel: 'manifest', href: 'manifest.webmanifest' }],
-      ['meta', { name: 'theme-color', content: '#3eaf7c' }],
-      // ...other tags
+        ['link', { rel: 'manifest', href: 'manifest.webmanifest' }],
+        ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+        // ...other tags
     ],
+    markdown: {
+        importCode: {
+            handleImportPath: (str) =>
+                str.replace(/^@code/, path.resolve(__dirname, 'code-samples')),
+        },
+    },
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
         docsRepo: "needle-tools/needle-engine-support",
@@ -40,6 +46,10 @@ export default defineUserConfig({
         lastUpdated: false,
         contributors: false,
         editLink: true,
+        notFound: [
+            "Oops, this page does not exist 😥",
+            "Gosh! You found a 🌵 glitch",
+        ],
         navbar: [
             {
                 text: 'Needle Engine',
@@ -65,14 +75,31 @@ export default defineUserConfig({
             {
                 text: 'Guides',
                 children: [
-                    "project_structure",
-                    "export",
-                    "html",
-                    "deployment",
-                    "networking",
-                    "scripting",
-                    "xr",
-                    "debugging",
+                    {
+                        text: "Basics",
+                        children: [
+                            "getting-started",
+                            "project_structure",
+                            "export",
+                            "html",
+                            "deployment",
+                            "debugging",
+                        ]
+                    },
+                    {
+                        text: "Scripting",
+                        children: [
+                            "scripting",
+                            "scripting-examples",
+                        ]
+                    },
+                    {
+                        text: "Advanced",
+                        children: [
+                            "networking",
+                            "xr",
+                        ]
+                    },
                 ]
             },
             {

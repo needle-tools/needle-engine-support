@@ -7,7 +7,10 @@ title: Getting Started
 
 These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project and also done your first deployment to Glitch. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
-You can also watch our [Getting Started Video on Youtube](https://www.youtube.com/watch?v=3dB-d1Jo_Mk) 😊  
+You can watch our [Getting Started Video on Youtube](https://www.youtube.com/watch?v=3dB-d1Jo_Mk)   
+or continue reading the getting started guide below 😊  
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" />
+
 
 ## Prerequisites 💿
 
@@ -187,32 +190,9 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
 > **No cube on your website?**   
   Make sure it's a child of your GltfObject root.  
 
-## Deploy your project to Glitch 🎏
-
-[Glitch ⇡](https://glitch.com) is a free website hosting and code editing environment, right in your browser. You can use Glitch as a fast-easy-free way to host prototypes and little apps. You'll even get a small web server included that provides networking and persistence for your projects.  
-
-1. **Add the `Deploy To Glitch` component**   
-  Select your `ExportInfo` object, click on <kbd>Add Component</kbd>, and add a new `Deploy To Glitch` component to it.  
-
-2. **Remix and Deploy**  
-   1. **Click on `Create new Glitch Remix`.**  
-    ![image](https://user-images.githubusercontent.com/2693840/185919478-8ba99499-cea9-4d29-ae1c-6d6da602f869.png)  
-    This will open your browser and remix [our Glitch starter ⇡](https://fwd.needle.tools/needle-engine/glitch-starter-editor).  
-    
-   2. **Paste the URL of your new remix**  
-  Copy the URL of your new remix and paste it into the `Project Name` field in Unity.    
-  ![179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1](https://user-images.githubusercontent.com/5083203/186165097-9b44f3dc-ec2f-48f4-819b-8fab5fac5270.png)
-
-   3. **Deploy to Glitch**  
-  Click on `Build & Deploy: Prod`. This will kick of bundling, compression, and upload of your project.  
-  Wait for a few seconds.  
-  Your new project will open in a browser. 
-
-⭐ **Congratulations!** You just deployed your first project from Unity to the web. Ready to be shared with the world!   
-
 ------------
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 You can also join our [Needle Discord](https://discord.needle.tools)!
 
-👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or have a look at [our samples](https://docs.needle.tools/samples).
+👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)!

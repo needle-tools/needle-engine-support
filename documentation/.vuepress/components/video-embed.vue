@@ -2,22 +2,32 @@
 
 <script>
 // export default {}
-export default {
+const props = {
   props: {
     src: String,
     controls: Boolean,
   }
 }
+
+export default props;
 </script>
 
 <style scoped>
-    video {
-        max-width: 100%;
-        height: auto;
-    }
+video, #ytplayer {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/9;
+  height: auto;
+}
 </style>
 
 <template>
+  <div v-if='src.includes("youtube.com")'>
+    <iframe id="ytplayer" class="video" :src='src.replace("watch?v=", "embed/") + "?autoplay=1&origin=http://needle.tools"' frameborder="0"
+    allowfullscreen />
+  </div>
+  <div v-else>
     <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->
     <video loop autoplay="autoplay" controls :src="src"></video>
+  </div>
 </template>

@@ -1,32 +1,24 @@
 # Deployment ⚒
 
-## Content
-- [Basics](#basics)
-- [Deploy to glitch](#deploy-to-glitch-)
-- [Deploy to FTP](#deploy-to-ftp)
-- [Deploy to itch.io](#deploy-to-itchio)
-
-## Basics
+## How to build? What does deployment mean?
 
 Needle Engine is tightly integrated into the Unity Editor:  
-Open ``File/Build Settings`` and select ``Needle Engine`` for options!  
+Open ``File/Build Settings`` and select ``Needle Engine`` for options!
 
-![image](https://user-images.githubusercontent.com/5083203/179510828-931e534a-c155-44b5-b9aa-29bac33a0c48.png)
-
-To deploy your threejs project you can click ``Build`` in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see Deploying for production below) which requires toktx to be installed on your machine.
+To deploy your web project you can click **Build** in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
 
 > **Note**: Nodejs is **only** required during development. The distributed website (using the vite template) is a static page, doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
-### Deploying for development
+### Building a development distribution
 See notes above on how to access. The main difference to a production build is that it does not perform [``ktx2`` ⇡](https://github.khronos.org/KTX-Specification/) and [``draco`` ⇡](https://google.github.io/draco/) compression. Both can reduce file-size drastically. We generally recommend making builds using the ``production`` option.
 
-### Deploying for production (optimized and compressed)
+### Building a production distribution (optimized and compressed)
 
 To make a production build you need to have [toktx ⇡](https://github.com/KhronosGroup/KTX-Software/releases) to be installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page ⇡](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0-rc3 at the time of writing, there might be a newer one). You may need to restart Unity after installing it.  
 
 > **Note**: If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.  
 
-> **Note**: If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See `needle.tiny.engine/plugins/gltf-packer` for reference.
+> **Note**: If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-transform-extensionsw](https://www.npmjs.com/package/@needle-tools/gltf-transform-extensions) for reference.
 
 ## Deploy to Glitch 🎏
 

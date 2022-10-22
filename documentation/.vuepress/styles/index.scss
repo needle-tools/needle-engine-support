@@ -13,4 +13,11 @@
   
   --content-width: 1200px;
   --homepage-width: 100%;
+
+  // --c-bg-navbar: rgba(245, 245, 245, 1);
+
+  .navbar-dropdown {
+    box-shadow: 0 0 10px rgba(20, 20, 20, .2);
+    border-radius: .7em;
+  }
 }
