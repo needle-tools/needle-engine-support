@@ -14,7 +14,8 @@ iframe {
   width: 100%;
   height: 100%;
   border: 0;
-  aspect-ratio: 16/9
+  aspect-ratio: 16/9;
+  border-radius: 1em;
 }
 
 @media (max-aspect-ratio: 1/1) {
@@ -22,6 +23,7 @@ iframe {
     aspect-ratio: 9/9
   }
 }
+
 @media (max-aspect-ratio: 9/16) {
   iframe {
     aspect-ratio: 9/14
