@@ -10,13 +10,11 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "vuepress": "^2.0.0-beta.52"
+    "vuepress": "2.0.0-beta.51"
   },
   "devDependencies": {
-    "@vuepress/plugin-external-link-icon": "^2.0.0-beta.52",
-    "@vuepress/plugin-register-components": "^2.0.0-beta.52",
-    "@vuepress/plugin-search": "^2.0.0-beta.52",
-    "vuepress-plugin-core-video-player": "^1.1.0",
-    "vuepress-plugin-mermaidjs": "^2.0.0-beta.2"
+    "@vuepress/plugin-external-link-icon": "2.0.0-beta.51",
+    "@vuepress/plugin-register-components": "2.0.0-beta.51",
+    "@vuepress/plugin-search": "2.0.0-beta.51"
   }
 }

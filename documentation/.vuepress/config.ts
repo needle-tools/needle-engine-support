@@ -1,15 +1,15 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import { path } from '@vuepress/utils'
-// import { searchPlugin } from '@vuepress/plugin-search'
-// // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
+import { searchPlugin } from '@vuepress/plugin-search'
+// import * as mermaidPlugin from "@renovamen/vuepress-plugin-mermaid";
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
-
 
 export default defineUserConfig({
     base: "/needle-engine-support/",
     lang: 'en-US',
     title: 'Needle Engine',
+    dest: "dist",
     description: 'Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.',
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
@@ -17,11 +17,10 @@ export default defineUserConfig({
         docsBranch: "vuepress",
         docsDir: "documentation",
         logo: "/logo.png",
-        colorModeSwitch: false, // disable until https://github.com/vuepress/vuepress-next/issues/1140
-        lastUpdated: false, // disable until https://github.com/vuepress/vuepress-next/issues/1140
-        // editLink: false,
+        colorModeSwitch: true, // disable until https://github.com/vuepress/vuepress-next/issues/1140
+        lastUpdated: true, // disable until https://github.com/vuepress/vuepress-next/issues/1140
         contributors: false,
-        editLink: false,
+        editLink: true,
         navbar: [
             {
                 text: 'Needle Engine',
@@ -119,9 +118,9 @@ export default defineUserConfig({
         ],
     }),
     plugins: [
-        // searchPlugin({
+        searchPlugin({
 
-        // }),
+        }),
         // mermaidPlugin,
         registerComponentsPlugin({
             componentsDir: path.resolve(__dirname, './components'),

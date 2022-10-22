@@ -4,7 +4,8 @@
 // export default {}
 export default {
   props: {
-    src: String
+    src: String,
+    controls: Boolean,
   }
 }
 </script>
@@ -17,5 +18,6 @@ export default {
 </style>
 
 <template>
+    <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->
     <video loop autoplay="autoplay" controls :src="src"></video>
 </template>

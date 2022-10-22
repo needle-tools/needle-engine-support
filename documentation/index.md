@@ -1,7 +1,10 @@
 ---
+# home: true
 next: getting-started.md
 sidebar: false
-# footer: "Copyright © 2022 Needle Tools GmbH"
+editLink: false
+lastUpdated: false
+footer: "Copyright © 2022 Needle Tools GmbH"
 ---
 
 

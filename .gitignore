@@ -14,8 +14,10 @@ starter/*/projects/*/build.log
 starter/**/projects/**/include/fonts
 
 # vuepress
+dist
 **/node_modules
 .cache
 .temp
 src/docs/.vuepress/config.ts.*.mjs
 src/docs/.vuepress/dist
+documentation/.vuepress/*.ts.*.mjs
