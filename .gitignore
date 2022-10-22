@@ -21,3 +21,4 @@ dist
 src/docs/.vuepress/config.ts.*.mjs
 src/docs/.vuepress/dist
 documentation/.vuepress/*.ts.*.mjs
+package-lock.json
