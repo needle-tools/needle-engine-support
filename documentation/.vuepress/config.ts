@@ -9,7 +9,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 export default defineUserConfig({
     base: "/needle-engine-support/",
     lang: 'en-US',
-    title: 'Needle Engine Documentation',
+    title: 'Needle Engine',
     description: 'Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.',
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
@@ -21,11 +21,16 @@ export default defineUserConfig({
         lastUpdated: false, // disable until https://github.com/vuepress/vuepress-next/issues/1140
         // editLink: false,
         contributors: false,
+        editLink: false,
         navbar: [
             {
                 text: 'Needle Engine',
                 link: '/',
                 children: [
+                    {
+                        text: 'Needle Engine',
+                        link: '/',
+                    },
                     "vision",
                     "features-overview",
                     "technical-overview",
@@ -38,7 +43,6 @@ export default defineUserConfig({
             {
                 text: 'Guides',
                 children: [
-                    "getting-started",
                     "project_structure",
                     "export",
                     "html",
@@ -59,6 +63,19 @@ export default defineUserConfig({
                 ]
             },
             {
+                text: 'Case studies',
+                children: [
+                    {
+                        text: 'Castle Builder 🏰',
+                        link: 'showcase-castle',
+                    },
+                    {
+                        text: 'Product Configurator 🚲',
+                        link: 'showcase-bike',
+                    }
+                ]
+            },
+            {
                 text: 'Learn More',
                 children: [
                     "vision",
@@ -66,28 +83,41 @@ export default defineUserConfig({
                     "technical-overview",
                 ]
             },
-        ],
-        locales: {
-            '/': {
-                selectLanguageName: 'English',
+            {
+                text: 'Contact',
+                children: [
+                    {
+                        text: 'Needle Website',
+                        link: 'https://needle.tools'
+                    },
+                    {
+                        text: 'Github',
+                        link: 'https://github.com/needle-tools'
+                    },
+                    {
+                        text: 'Discord',
+                        link: 'https://discord.needle.tools'
+                    },
+                    {
+                        text: 'Twitter',
+                        link: 'https://twitter.com/needletools'
+                    },
+                    {
+                        text: 'Send email',
+                        link: 'mailto:hi@needle.tools'
+                    },
+                    {
+                        text: 'Newsletter',
+                        link: ""
+                    },
+                    {
+                        text: 'Beta Feedback',
+                        link: "https://fwd.needle.tools/needle-engine/feedback"
+                    },
+                ]
             },
-            // '/zh/': {
-            //   selectLanguageName: '简体中文',
-            // },
-        },
+        ],
     }),
-    locales: {
-        '/': {
-            lang: 'en-US',
-            title: 'Needle Engine Documentation',
-            description: 'Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.',
-        },
-        // '/zh/': {
-        //   lang: 'zh-CN',
-        //   title: 'VuePress',
-        //   description: 'Vue 驱动的静态网站生成器',
-        // },
-    },
     plugins: [
         // searchPlugin({
 

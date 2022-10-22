@@ -1,3 +1,11 @@
+---
+head:
+  - - meta
+    - name: foo
+      content: yaml array syntax
+  - [meta, { name: bar , content: square brackets syntax }]
+---
+
 # Debugging
 
 ## Useful resources for working with glTF 🖇
