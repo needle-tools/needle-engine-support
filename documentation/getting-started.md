@@ -68,23 +68,25 @@ After installing the tools above, you might have to restart your machine so that
 
 ## Option 1: Quick Start — Package Installer 📦
 
-1. **Create a new Unity project.**  
+1. **Create a new Unity project**  
   Open Unity Hub and create a new project. 2021.3 recommended!  
   Make sure to switch it to Linear color space in `Project Settings > Player`.
   
-3. **Download our installer.**  
-  [Click here to download 🔗](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)  
+3. **Download our installer**  
+  [Click here to download our installer](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
   Our installer is just a `.unitypackage` that will set everything up for you.  
+  ### Badge 
+
   
-2. **Install by dropping into Unity.**   
+2. **Install by dropping into Unity**   
    Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
    This will set up the Needle Engine, Needle Exporter and UnityGLTF packages.  
 
-4. **Wait for the installation to finish.**  
+4. **Wait for the installation to finish**  
    You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
      > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
 
-5. **Create a new scene from a template.**  
+5. **Create a new scene from a template**  
    Select _File > New Scene_ and choose from one of the Needle templates.  
    We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer, and adding assets.  
 

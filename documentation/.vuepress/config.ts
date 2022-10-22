@@ -122,6 +122,10 @@ export default defineUserConfig({
                     {
                         text: 'Product Configurator 🚲',
                         link: 'showcase-bike',
+                    },
+                    {
+                        text: 'Needle Website',
+                        link: 'showcase-website',
                     }
                 ]
             },
