@@ -26,7 +26,7 @@ export default defineUserConfig({
         // videoplayer
     ],
     head: [
-        ['link', { rel: 'icon', href: '/icons/favicon.ico' }],
+        ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
         ['link', { rel: 'manifest', href: 'manifest.webmanifest' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
     ],
