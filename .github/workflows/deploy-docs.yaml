@@ -87,5 +87,5 @@ jobs:
         with:
           webhook_id: ${{ secrets.DEPLOY_WEBHOOK_ID }}
           webhook_token: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
-          username: "$Deploy Bot"
+          username: "Deploy 🤖"
           message: "Docs have been updated → https://uploads.needle.tools/needle-engine-support"
