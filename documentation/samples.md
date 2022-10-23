@@ -1,11 +1,7 @@
-# Samples 🔭
-
-### Live 
-
 <sample src="https://needle-stencil-rendering-sample.glitch.me/" />
 
-## [needle-engine-samples ⇡](https://github.com/needle-tools/needle-engine-samples)  
-Contains code and small project samples to show things such as:  
+# Samples to download and play
+[This repository](https://github.com/needle-tools/needle-engine-samples) contains code and small project samples to show things such as:  
   
 - [Brune Simons 20k](https://bruno-simon-20k-needle.glitch.me/)  
   *Physics*
@@ -23,7 +19,6 @@ Contains code and small project samples to show things such as:
   *Define areas in your world and hookup events from Unity*
   
   
-
 ### Videos
 
 <video-embed src="https://user-images.githubusercontent.com/5083203/189970610-9f913d5e-4f77-4a64-bc15-beb8220e82cf.mp4" />
@@ -36,5 +31,6 @@ Contains code and small project samples to show things such as:
 ---
 
 <actiongroup>
-<action href="getting-started">Get started now</action>
+<action href="getting-started">Read the getting started guide ⭐</action>
+<action href="https://github.com/needle-tools/needle-engine-samples">Get the samples on github</action>
 </actiongroup>

@@ -12,13 +12,16 @@ footer: "Copyright © 2022 Needle Tools GmbH"
 
 <actiongroup>
     <action href="getting-started">
-    Get started now ⭐
+    Get started ⭐
+    </action>
+    <action href="vision">
+    Our vision 🔮
     </action>
     <action href="testimonials">
-    Read testimonials 💬
+    Testimonials 💬
     </action>
     <action href="samples">
-    View samples 👀
+    Samples 👀
     </action>
 </actiongroup>
 
