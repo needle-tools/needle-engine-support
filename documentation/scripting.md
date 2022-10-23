@@ -118,6 +118,7 @@ export class PrintNumberComponent extends Behaviour
 ```
 
 ---
+
 ## Component architecture
 Components are added to threejs [Object3Ds ⇡](https://threejs.org/docs/#api/en/core/Object3D) similar to how [components in Unity ⇡](https://docs.unity3d.com/ScriptReference/Component.html) are added to [GameObjects ⇡](https://docs.unity3d.com/ScriptReference/GameObject.html). Therefore when we want to access a three.js Object3D, we can access it as ``this.gameObject`` which returns our `Object3D`.  
 
@@ -200,6 +201,7 @@ export class MyComponent extends Behaviour {
 - ``GameObject.getComponentsInParent`` - same as ``getComponents`` but also searches in parent objects.
 - ``GameObject.findObjectOfType`` - searches the whole scene for a type.
 - ``GameObject.findObjectsOfType`` - searches the whole scene for all matching types.
+
 
 ## The Context and the HTML DOM
 

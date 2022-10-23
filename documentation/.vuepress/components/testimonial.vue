@@ -31,7 +31,6 @@ export default {
     margin: -1.2rem -.7rem;
 }
 
-.quote {}
 </style>
 
 <template>

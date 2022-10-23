@@ -1,5 +1,7 @@
 ---
 sidebar: false
+next: getting-started
+editLink: false
 ---
 
 # Testimonials 💬 
