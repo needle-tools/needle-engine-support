@@ -1,11 +1,6 @@
-# Virtual and Augmented Reality
-
-[Supported Devices](#supported-devices) •
-[Adding VR and AR](#adding-vr-and-ar-capabilities-to-a-scene) •
-[Avatars](#avatars) •
-[HTML Content Overlays](#html-content-overlays-in-ar) •
-[Image and Marker Tracking](#image-tracking) •
-[Limitations for WebXR on iOS](#limitations-for-webxr-on-ios)  
+---
+title: Virtual and Augmented Reality
+---
 
 ## Supported Devices
 Theoretically all WebXR-capable devices and browsers should be supported. That being said, we've tested the following configurations:  
@@ -132,14 +127,14 @@ There's a number of experimental components to build more expressive Avatars. At
 ## HTML Content Overlays in AR  
     
 If you want to display different html content whether the client is using a regular browser or using AR or VR, you can just use a set of html classes.  
-This is controlled via HTML element classes. For example, to make content appear on desktop and in AR add a ``<div class="desktop ar"> ... </div>`` inside the `<needle-tiny>` tag:  
+This is controlled via HTML element classes. For example, to make content appear on desktop and in AR add a ``<div class="desktop ar"> ... </div>`` inside the `<needle-engine>` tag:  
 
 ```html
-<needle-tiny src="loadScene">
+<needle-engine>
     <div class="desktop ar" style="pointer-events:none;">
         your content for AR and desktop goes here
     </div>
-</needle-tiny>
+</needle-engine>
 ```
 
 ## Image Tracking
@@ -149,7 +144,9 @@ WebXR doesn't yet support Image Tracking, it's still in a "draft" phase: [Marker
 Without that spec, one can still request camera image access and run custom algorithms to determine device pose.  
 While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
    - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+     - [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
+
 
 ## Limitations for WebXR on iOS
 
@@ -172,6 +169,7 @@ A number of options and workarounds exist to still give iOS users _some_ AR:
    One can request camera image access and run custom algorithms to determine device pose.  
    While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
    - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+     - [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
    - [8th Wall](https://www.8thwall.com/) (commercial)
 
