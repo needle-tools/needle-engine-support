@@ -135,6 +135,15 @@ export default defineUserConfig({
                                 text: 'Product Configurator 🚲',
                                 link: 'showcase-bike',
                             },
+                        ],
+                    },
+                    {
+                        text: 'Community Contributions',
+                        children: [
+                            {
+                                text: 'AR.js integration',
+                                link: 'https://github.com/FireDragonGameStudio/NeedleAndARjs',
+                            },
                         ]
                     },
                 ]
