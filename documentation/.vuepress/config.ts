@@ -176,6 +176,11 @@ export default defineUserConfig({
                         link: "https://fwd.needle.tools/needle-engine/feedback"
                     },
                     {
+                        text: 'Needle on Glitch 🎏',
+                        link: "https://glitch.com/@needle-tools"
+                    },
+                    
+                    {
                         text: 'Send email',
                         link: 'mailto:hi@needle.tools'
                     },

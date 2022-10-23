@@ -16,6 +16,7 @@ iframe {
   border: 0;
   aspect-ratio: 16/9;
   border-radius: 1em;
+  margin: .75em 0;
 }
 
 @media (max-aspect-ratio: 1/1) {

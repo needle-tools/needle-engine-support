@@ -36,9 +36,13 @@ Contains code and small project samples to show things such as:
 - [Spatial Trigger](https://needle-spatial-trigger-sample.glitch.me/)  
   *Define areas in your world and hookup events from Unity*
   
+  
+### Live 
 
-<video-embed src="https://user-images.githubusercontent.com/5083203/189973321-aeafc83b-7c71-4517-a482-45cd9dbf9a4c.mp4 " />
- 
+<sample src="https://needle-stencil-rendering-sample.glitch.me/" />
+
+### Videos
+
 <video-embed src="https://user-images.githubusercontent.com/5083203/189970610-9f913d5e-4f77-4a64-bc15-beb8220e82cf.mp4" />
  
 <video-embed src="https://user-images.githubusercontent.com/5083203/189973474-2d907e1c-fae3-439f-a349-5fe2c9b25b15.mp4" />

@@ -13,18 +13,26 @@ export default props;
 </script>
 
 <style scoped>
-video, #ytplayer {
+video,
+#ytplayer {
+  background: rgba(0, 0, 0, .2);
   display: block;
   width: 100%;
-  aspect-ratio: 16/9;
   height: auto;
+  margin: .75em 0;
+  border-radius: 1em;
+}
+
+#ytplayer {
+  aspect-ratio: 16/9;
 }
 </style>
 
 <template>
   <div v-if='src.includes("youtube.com")'>
-    <iframe id="ytplayer" class="video" :src='src.replace("watch?v=", "embed/") + "?autoplay=1&origin=http://needle.tools"' frameborder="0"
-    allowfullscreen />
+    <iframe id="ytplayer" class="video"
+      :src='src.replace("watch?v=", "embed/") + "?autoplay=1&origin=http://needle.tools"' frameborder="0"
+      allowfullscreen />
   </div>
   <div v-else>
     <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->
