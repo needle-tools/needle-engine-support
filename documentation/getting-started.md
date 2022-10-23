@@ -76,8 +76,6 @@ After installing the tools above, you might have to restart your machine so that
 3. **Download our installer**  
   [Click here to download our installer](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
   Our installer is just a `.unitypackage` that will set everything up for you.  
-  ### Badge 
-
   
 2. **Install by dropping into Unity**   
    Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
