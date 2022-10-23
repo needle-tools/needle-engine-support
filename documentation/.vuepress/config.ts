@@ -1,10 +1,12 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import { path } from '@vuepress/utils'
 import { searchPlugin } from '@vuepress/plugin-search'
-// import * as mermaidPlugin from "@renovamen/vuepress-plugin-mermaid";
+// import * as mermaidPlugin from "vuepress-plugin-mermaidjs";
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 import { pwaPlugin } from '@vuepress/plugin-pwa'
+// import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
+
 
 const _base = "/needle-engine-support/";
 
@@ -19,7 +21,7 @@ export default defineUserConfig({
         }),
         //@ts-ignore
         pwaPlugin({}),
-        // mermaidPlugin,
+        // mermaidPlugin({}),
         registerComponentsPlugin({
             componentsDir: path.resolve(__dirname, './components'),
         }),

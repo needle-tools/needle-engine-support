@@ -11,15 +11,15 @@ head:
 ## Useful resources for working with glTF 🖇
 
 To inspect glTF or glb files online:
-- [gltf.report ⇡](https://gltf.report/) - three.js based
-- [modelviewer.dev/editor ⇡](https://modelviewer.dev/editor) - three.js based
-- [Khronos glTF Sample Viewer ⇡](https://github.khronos.org/glTF-Sample-Viewer-Release/)
-- [Babylon Sandbox ⇡](https://sandbox.babylonjs.com/)
-- [glTF Validator ⇡](https://github.khronos.org/glTF-Validator/)
+- [gltf.report](https://gltf.report/) - three.js based
+- [modelviewer.dev/editor](https://modelviewer.dev/editor) - three.js based
+- [Khronos glTF Sample Viewer](https://github.khronos.org/glTF-Sample-Viewer-Release/)
+- [Babylon Sandbox](https://sandbox.babylonjs.com/)
+- [glTF Validator](https://github.khronos.org/glTF-Validator/)
 
 To inspect them locally:
-- use the [glTF Shell Extension for Windows ⇡](https://apps.microsoft.com/store/detail/gltf-shell-extensions/9NPGVJ9N57MV?hl=en-us&gl=US) to convert between glTF and glb
-- use the [glTF Tools VS Code Extension ⇡](https://marketplace.visualstudio.com/items?itemName=cesium.gltf-vscode) to see validation errors and in-engine previews locally
+- use the [glTF Shell Extension for Windows](https://apps.microsoft.com/store/detail/gltf-shell-extensions/9NPGVJ9N57MV?hl=en-us&gl=US) to convert between glTF and glb
+- use the [glTF Tools VS Code Extension](https://marketplace.visualstudio.com/items?itemName=cesium.gltf-vscode) to see validation errors and in-engine previews locally
 
 
 ## Built-in URL parameters 🔖
@@ -52,7 +52,7 @@ The following parameters can be added to URLs to emit more debugging info, chang
 - First, install http-server: `npm install -g http-server` 
 - make a production build
 - in that directory, run `http-server -g` (-g enables gzip support)
-- if you want to test WebXR, generate a [self-signed SSL certificate ⇡](https://stackoverflow.com/a/35231213), then run `http-server -g -S` to enable https (required for WebXR).
+- if you want to test WebXR, generate a [self-signed SSL certificate](https://stackoverflow.com/a/35231213), then run `http-server -g -S` to enable https (required for WebXR).
 
 ## Mobile Console 
 
@@ -64,8 +64,8 @@ For **Android**, you can attach Chrome Dev Tools to your device and see logs rig
 For **Quest**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
 
 ### Debug Chrome on Mobile (Android)
-See the official chrome documentation [here ⇡](https://developer.chrome.com/docs/devtools/remote-debugging/)
-- [Activate Developer Mode ⇡](https://developer.android.com/studio/debug/dev-options)
+See the official chrome documentation [here](https://developer.chrome.com/docs/devtools/remote-debugging/)
+- [Activate Developer Mode](https://developer.android.com/studio/debug/dev-options)
 - Connect your phone to your computer via USB
 - Open this url in your browser ``chrome://inspect/#devices``
 - On your mobile device allow the USB connection to your computer

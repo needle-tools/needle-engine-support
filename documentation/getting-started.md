@@ -19,24 +19,24 @@ Below each tool, you find quick links to download the latest version at the time
 
 ### Install these tools for development
 
-  [**Node.js** (14.x or 16.x) ⇡](https://nodejs.org/en/) – for running a local development server (required)   
+  [**Node.js** (14.x or 16.x)](https://nodejs.org/en/) – for running a local development server (required)   
   [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
   
   <!--
-  [**git** ⇡](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
+  [**git**](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
   [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
    -->
   
-  [**VS Code** ⇡](https://code.visualstudio.com/) – for code editing (recommended)  
+  [**VS Code**](https://code.visualstudio.com/) – for code editing (recommended)  
   [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) • [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)  
   
-  [**Unity** 2020.3.16+, 2021.3+ or 2022.2+ ⇡](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
+  [**Unity** 2020.3.16+, 2021.3+ or 2022.2+](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
   _Universal Render Pipeline or Built-In Render Pipeline_  
   _Linear Colorspace_
   
 ### Install these tools for production builds
 
-  [**toktx** 4.1 ⇡](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
+  [**toktx** 4.1](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
   [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) • [Other](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)    
  
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
@@ -102,7 +102,7 @@ We recommend 2021.3 LTS. Make sure to switch to Linear color space!
 
 2. **Add our registry to Package Manager**  
 Open ``Edit/Project Settings`` and select ``Package Manager``.  
-Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html):
+Add a new [scoped registry](https://docs.unity3d.com/Manual/upm-scoped.html):
     - Name: ``needle``
     - URL: ``https://packages.needle.tools``
     - Scope(s):   
@@ -112,7 +112,7 @@ Add a new [scoped registry ⇡](https://docs.unity3d.com/Manual/upm-scoped.html)
 
 
 3. **Add the Exporter package**  
-Open the [Unity Package Manager ⇡](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``.  
+Open the [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``.  
 In the dropdown in top left corner of the window select ``My Registries``.  
 Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
 
@@ -144,7 +144,7 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
      > By default, the project name matches the name of your scene. If you want to change that, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
  
 3. **Choose a web project template**  
-  Now, select a web project template for your project. The default template is based on [Vite ⇡](https://vitejs.dev/), a fast web app bundler.  
+  Now, select a web project template for your project. The default template is based on [Vite](https://vitejs.dev/), a fast web app bundler.  
 
 4. **Continue [here](#generate-a-web-project-and-add-content)**.
 

@@ -20,11 +20,11 @@ video,
   width: 100%;
   height: auto;
   margin: .75em 0;
-  border-radius: 1em;
 }
 
 #ytplayer {
   aspect-ratio: 16/9;
+  border-radius: 1em;
 }
 </style>
 

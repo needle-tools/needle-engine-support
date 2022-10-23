@@ -31,8 +31,8 @@ flowchart LR
 
 ## glTF Assets
 
-Models, textures, animations, lights, cameras and more are stored as [glTF 2.0 files ⇡](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) in Needle Engine.  
-Custom data is stored in [vendor extensions ⇡](#vendor-specific-gltf-extensions-needle_). These cover everything from interactive components to physics, sequencing and lightmaps.  
+Models, textures, animations, lights, cameras and more are stored as [glTF 2.0 files](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) in Needle Engine.  
+Custom data is stored in [vendor extensions](#vendor-specific-gltf-extensions-needle_). These cover everything from interactive components to physics, sequencing and lightmaps.  
 
 ### Supported glTF extensions
 
@@ -76,11 +76,11 @@ More extensions and custom extensions can be added using the export callbacks of
 
 > **Note**: Audio and variants are already supported in Needle Engine through `NEEDLE_components` and `NEEDLE_persistent_assets`, but there are some options for more alignment to existing proposals such as `KHR_audio` and `KHR_materials_variants`.
 
-[Learn more about GLTF loading in three.js ⇡](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
+[Learn more about GLTF loading in three.js](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
 
 ### Compression
 
-For production, we compress glTF assets with [`glTF-transform` ⇡](https://gltf-transform.donmccurdy.com/). Textures use either `etc1s`, `uastc` or no compression, depending on texture type. Meshes use `draco`. Custom extensions are passed through in an opaque way.  
+For production, we compress glTF assets with [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Textures use either `etc1s`, `uastc` or no compression, depending on texture type. Meshes use `draco`. Custom extensions are passed through in an opaque way.  
 
 > **Note**: We might switch to meshopt compression in the future, but there's a number of open issues in three.js related to raycasts and bounds for meshopt-compressed assets.  
 
@@ -97,7 +97,7 @@ Needle Engine stores custom data in glTF files through our vendor extensions. Th
 This extension contains per-node component data. The component names map to type names on both the JavaScript and C# side.  
 Multiple components with the same name can be added to the same node.  
 
-Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR_animation_pointer` ⇡](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer) extension.  
+Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR_animation_pointer`](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer) extension.  
 
 ```json
 "NEEDLE_components": {
@@ -154,7 +154,7 @@ Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR
 
 ### NEEDLE_gameobject_data
 
-This extension contains additional per-node data related to state, layers, and tags. Layers are used for both rendering and physics, similar to how [three.js ⇡](https://threejs.org/docs/#api/en/core/Layers) and [Unity ⇡](https://docs.unity3d.com/Manual/Layers.html) treat them.  
+This extension contains additional per-node data related to state, layers, and tags. Layers are used for both rendering and physics, similar to how [three.js](https://threejs.org/docs/#api/en/core/Layers) and [Unity](https://docs.unity3d.com/Manual/Layers.html) treat them.  
 
 ```json
 "NEEDLE_gameobject_data": {
@@ -363,7 +363,7 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
 
 ### NEEDLE_techniques_webgl
 
-This extension builds upon the archived [`KHR_techniques_webgl` ⇡](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) extension and extends it in a few crucial places. While the original extension was specified against WebGL 1.0, we're using it with WebGL 2.0 here and have added a number of  uniform types.  
+This extension builds upon the archived [`KHR_techniques_webgl`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) extension and extends it in a few crucial places. While the original extension was specified against WebGL 1.0, we're using it with WebGL 2.0 here and have added a number of  uniform types.  
 
 ```json
 "KHR_techniques_webgl": {

@@ -20,7 +20,7 @@ Both PBR Materials and Custom shaders created with Shader Graph or other systems
 
 <img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" />
 
-Use the node based [ShaderGraph ⇡](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
+Use the node based [ShaderGraph](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
 
 > Read more about [PBR Materials](./export.md#custom-shaders) • [Custom Shaders](./export.md#physically-based-materials-pbr)
 
@@ -35,7 +35,7 @@ Needle Engine runs everywhere web technology does: run the same application on d
 
 Lightmaps [baked in Unity](https://docs.unity3d.com/Manual/progressive-lightmapper.html) to easily bake static light for your 3d content. Lightbaking for the web was never as easy. Just mark objects that you want to lightmap as static in Unity, add one or many lights to your scene (or use emissive materials) and click bake. Needle Engine will export your lightmaps per scene and automatically load and display them just as you see it in the Editor! 
 
-> **Note**: There is no technical limitation on which lightmapper to use, as long as they end up in Unity's lightmapping data structures. Third party lightmappers such as [Bakery ⇡](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218) thus are also supported. 
+> **Note**: There is no technical limitation on which lightmapper to use, as long as they end up in Unity's lightmapping data structures. Third party lightmappers such as [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218) thus are also supported. 
 
 > Read more about [Exporting Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps)
 
@@ -53,7 +53,7 @@ Needle Engine brings powerful animations, state control and sequencing to the we
 
 <img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" />
 
-The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers.
+The [Animator and AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers.
 
 > **Note**: Sub-states and Blend Trees are not supported.  
 
@@ -63,7 +63,7 @@ The [Animator and AnimatorController ⇡](https://docs.unity3d.com/Manual/class-
 
 ![2022-08-23-013517_Scene](https://user-images.githubusercontent.com/5083203/186037829-ee99340d-b19c-484d-b551-94797519c9d9.png)
 
-We're also translating [Unity's Timeline ⇡](https://unity.com/features/timeline) setup and tracks into a web-ready format.  
+We're also translating [Unity's Timeline](https://unity.com/features/timeline) setup and tracks into a web-ready format.  
 Supported tracks include: AnimationTrack, AudioTrack, ActivationTrack, ControlTrack, SignalTrack.   
 
 > **Note**: Sub-Timelines are currently not supported.  

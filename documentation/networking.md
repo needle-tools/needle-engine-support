@@ -1,8 +1,8 @@
 # Networking
 
-Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. [The built-in backend server ⇡](https://glitch.com/edit/#!/needle-tiny-server) requires users to be connected to a room.
+Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. [The built-in backend server](https://glitch.com/edit/#!/needle-tiny-server) requires users to be connected to a room.
 
-Networking is currently based on [websockets ⇡](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers ⇡](https://google.github.io/flatbuffers/) (for frequent updates).
+Networking is currently based on [websockets](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers](https://google.github.io/flatbuffers/) (for frequent updates).
 
 Source code for networking is at ``engine/engine_networking.ts``.
 
@@ -22,7 +22,7 @@ Source code for networking is at ``engine/engine_networking.ts``.
 
 > **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
 
- > **[Castle Builder ⇡](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
+ > **[Castle Builder](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
  > — #madebyneedle 💚  
 
 ## Core Components

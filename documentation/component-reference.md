@@ -93,7 +93,7 @@ Physics is implemented using [cannon-es](https://github.com/pmndrs/cannon-es).
 
 ## UI
 
-Spatial UI components are mapped from Unity UI (Canvas, not UI Toolkit) to [three-mesh-ui ⇡](https://github.com/felixmariotto/three-mesh-ui). 
+Spatial UI components are mapped from Unity UI (Canvas, not UI Toolkit) to [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui). 
 UI can be animated.   
 
 | Name  | Description |

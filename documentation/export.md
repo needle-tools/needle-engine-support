@@ -16,7 +16,7 @@ Add a cube as a child of your root object and save your scene. Note that the out
 > **Note**: Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
 
 ### Prefabs
-[Prefabs ⇡](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
+[Prefabs](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
 
 Exporting Prefabs works with nesting too: a component in a Prefab can reference another Prefab which will then also be exported.  
 This mechanism allows for composing scenes to be as lightweight as possible and loading the most important content first and defer loading of additional content.  
@@ -46,7 +46,7 @@ Needle Engine supports a considerable and powerful subset of Unity's animation f
 - **AnimationClips** incl. Loop modes
 - **Procedural Animations** can be created via scripting
 
-Needle Engine is one of the first to support the new [glTF extension KHR_ANIMATION_POINTER ⇡](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer).  
+Needle Engine is one of the first to support the new [glTF extension KHR_ANIMATION_POINTER](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer).  
 This means that almost all properties, including script variables, are animatable.  
 
 One current limitation is that materials won't be duplicated on export — if you want to animate the same material with different colors, for example, you currently need to split the material in two. 
@@ -102,7 +102,7 @@ These coordinate changes are
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
 
 
-To export lightmaps simply [generate lightmaps ⇡](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
+To export lightmaps simply [generate lightmaps](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
 
 > When working on multiple scenes, disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
 

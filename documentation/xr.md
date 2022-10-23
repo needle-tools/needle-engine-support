@@ -65,7 +65,7 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
 
 > **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
 
- > **[Castle Builder ⇡](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
+ > **[Castle Builder](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
  > — #madebyneedle 💚  
    
 ### Special AR Components
@@ -85,13 +85,13 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
 
 ### Travelling between VR worlds
 
-Needle Engine supports the [`sessiongranted` ⇡](https://github.com/immersive-web/navigation) state. This allows users to seamlessly traverse between WebXR applications without leaving an immersive session – they stay in VR or AR.  
+Needle Engine supports the [`sessiongranted`](https://github.com/immersive-web/navigation) state. This allows users to seamlessly traverse between WebXR applications without leaving an immersive session – they stay in VR or AR.  
 
 Currently, this is only supported on Oculus Quest 1 and 2 in the Oculus Browser. On other platforms, users will be kicked out of their current immersive session and have to enter VR again on the new page.  
 Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`  
 
 - **Click on objects to open links**  
-  The [samples repository ⇡](https://github.com/needle-tools/needle-engine-samples) contains a small script [`ClickToOpenWebsite` ⇡](https://github.com/needle-tools/needle-engine-samples/blob/main/package/Runtime/Needle%20Engine%20Samples~/ClickToOpenWebsite.ts) that makes it very easy to build connected worlds.  
+  The [samples repository](https://github.com/needle-tools/needle-engine-samples) contains a small script [`ClickToOpenWebsite`](https://github.com/needle-tools/needle-engine-samples/blob/main/package/Runtime/Needle%20Engine%20Samples~/ClickToOpenWebsite.ts) that makes it very easy to build connected worlds.  
 
 ## Avatars
 
@@ -148,8 +148,8 @@ WebXR doesn't yet support Image Tracking, it's still in a "draft" phase: [Marker
 
 Without that spec, one can still request camera image access and run custom algorithms to determine device pose.  
 While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
-   - [AR.js ⇡](https://github.com/AR-js-org/AR.js) (open source)
-   - [Mind AR ⇡](https://github.com/hiukim/mind-ar-js) (open source)
+   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
 
 ## Limitations for WebXR on iOS
 
@@ -158,24 +158,24 @@ Due to Apple currently not supporting WebXR on iOS devices, Augmented Reality ex
 A number of options and workarounds exist to still give iOS users _some_ AR:  
 
 1. **Guiding users towards WebXR-compatible browsers on iOS.**
-   Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer ⇡](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
+   Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
    
 3. **Exporting content on-the-fly as USDZ files.**  
    These files can be displayed on iOS devices in AR. They lack interactivity (besides a small set of built-in components) but can be sufficient for product configurators and similar relatively static usecases.
-   An example is [Castle Builder ⇡](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.
-   - The [three.js USDZ converter ⇡](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.  
+   An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.
+   - The [three.js USDZ converter](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.  
 
- > **[Encryption in Space ⇡](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively place text into the scene on their screens and then view the results in AR on iOS. On Android, they can also interact right in WebXR.   
+ > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively place text into the scene on their screens and then view the results in AR on iOS. On Android, they can also interact right in WebXR.   
  > — #madewithneedle by Katja Rempel 💚  
 
 2. **Using camera access and custom algorithms on iOS devices.**  
    One can request camera image access and run custom algorithms to determine device pose.  
    While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
-   - [AR.js ⇡](https://github.com/AR-js-org/AR.js) (open source)
-   - [Mind AR ⇡](https://github.com/hiukim/mind-ar-js) (open source)
-   - [8th Wall ⇡](https://www.8thwall.com/) (commercial)
+   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
+   - [8th Wall](https://www.8thwall.com/) (commercial)
 
 ## References
 
-[WebXR Device API ⇡](https://www.w3.org/TR/webxr/)  
-[caniuse: WebXR ⇡](https://caniuse.com/webxr)  
+[WebXR Device API](https://www.w3.org/TR/webxr/)  
+[caniuse: WebXR](https://caniuse.com/webxr)  

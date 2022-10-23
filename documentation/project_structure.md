@@ -13,20 +13,20 @@ You can split up scenes and prefabs into multiple glTF files, and then load thos
 
 ## Unity project structure
 
-You can organize your assets like in any typical Unity project. If you are not familiar with Unity you may follow [this guide ⇡](https://learn.unity.com/tutorial/project-organization-2019-3#5f68a346edbc2a002004052b) for a first overview. In general Unity assets are organized in two main parts: ``Assets`` and ``Packages``.
+You can organize your assets like in any typical Unity project. If you are not familiar with Unity you may follow [this guide](https://learn.unity.com/tutorial/project-organization-2019-3#5f68a346edbc2a002004052b) for a first overview. In general Unity assets are organized in two main parts: ``Assets`` and ``Packages``.
 
 - ``Assets`` - this is where project specific/exclusive assets live.
-- ``Packages`` - this is where packages installed for this project live. A package can contain any asset type. The main difference is that it can be added to multiple Unity projects. It therefor is a great method to share code or assets. To learn more about packages see [the Unity documentation about packages ⇡](https://docs.unity3d.com/Manual/PackagesList.html).
+- ``Packages`` - this is where packages installed for this project live. A package can contain any asset type. The main difference is that it can be added to multiple Unity projects. It therefor is a great method to share code or assets. To learn more about packages see [the Unity documentation about packages](https://docs.unity3d.com/Manual/PackagesList.html).
 
-**Builtin-runtime components** added specifically for our runtime engine can be found in ``Packages/Needle Unity Threejs/Runtime/Components`` in the [Unity Project window ⇡](https://docs.unity3d.com/Manual/ProjectView.html).
+**Builtin-runtime components** added specifically for our runtime engine can be found in ``Packages/Needle Unity Threejs/Runtime/Components`` in the [Unity Project window](https://docs.unity3d.com/Manual/ProjectView.html).
 
 ### NPM Definition files
-*modular projects - re-useable code and assets made easy* (see [twitter thread ⇡](https://twitter.com/marcel_wiessler/status/1536006405605449729))  
+*modular projects - re-useable code and assets made easy* (see [twitter thread](https://twitter.com/marcel_wiessler/status/1536006405605449729))  
 
 ![image](https://user-images.githubusercontent.com/5083203/185805355-0618aa93-a9ca-463a-86b8-e735e8772bda.png)
 
 
-**NPM Definition** is what we call [npm packages ⇡](https://docs.npmjs.com/about-packages-and-modules) that you can install to your projects from within Unity, and that are tightly integrated into the Unity Editor. That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
+**NPM Definition** is what we call [npm packages](https://docs.npmjs.com/about-packages-and-modules) that you can install to your projects from within Unity, and that are tightly integrated into the Unity Editor. That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
 
 > Basically, each NpmDef contains a npm package (written in TypeScript) and a matching UPM package (C#). The public fields and method wrappers on the C# side can be automatically generated from TypeScript.  
 
@@ -67,7 +67,7 @@ If you're planning to only add custom files via NpmDefs and not change the proje
     - ``src/generated/`` - The generated javascript code. Do not edit manually.
     - ``src/scripts/`` - Your project specific scripts / components.
     - ``src/styles/`` - Stylesheets
-- ``index.scriban`` (optional) - The project template index file. Add an ``index`` component to your Unity scene to automatically generate the ``index.html`` from this file using the [scriban ⇡](https://github.com/scriban/scriban) templating engine.
-- ``vite.config`` - The default template uses [vite ⇡](https://vitejs.dev/). Settings for building the distribution and hosting the development server are made here. It is usually not necessary to edit these settings.
+- ``index.scriban`` (optional) - The project template index file. Add an ``index`` component to your Unity scene to automatically generate the ``index.html`` from this file using the [scriban](https://github.com/scriban/scriban) templating engine.
+- ``vite.config`` - The default template uses [vite](https://vitejs.dev/). Settings for building the distribution and hosting the development server are made here. It is usually not necessary to edit these settings.
 
 > **Note**: Our exporter can be used with other project structures as well, vite is just our go-to frontend bundling tool because of its speed. Feel free to set up your JavaScript project as you like. It is important to note tho that script names **must not be removed** for ``getComponent`` calls to work. See the [Scripting Documentation](./scripting.md) for more info.  

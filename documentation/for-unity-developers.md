@@ -6,7 +6,7 @@ Below you can find some common code examples that help you getting familiar when
 
 General information about [scripting in Needle Engine can be found here](https://docs.needle.tools/scripting).
 
-Please also refer to the [Typescript reference ⇡](https://www.typescriptlang.org/docs/) for syntax and general language questions!  
+Please also refer to the [Typescript reference](https://www.typescriptlang.org/docs/) for syntax and general language questions!  
 
 
 ### Components
@@ -21,11 +21,11 @@ For example: ``GameObject.getComponent(this.gameObject, Animator)``.
 Search in the whole scene by calling ``GameObject.findObjectOfType(Animator)``
 
 ### Transform
-Transform data can be accessed on the [threejs Object3D ⇡](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
-- ``this.gameObject.position`` - local space [position ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position)
-- ``this.gameObject.rotation`` - local space [rotation in euler angles ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation)
-- ``this.gameObject.quaternion`` - local space rotation as [quaternion ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion)
-- ``this.gameObject.scale`` - local space [scale ⇡](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale)
+Transform data can be accessed on the [threejs Object3D](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
+- ``this.gameObject.position`` - local space [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position)
+- ``this.gameObject.rotation`` - local space [rotation in euler angles](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation)
+- ``this.gameObject.quaternion`` - local space rotation as [quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion)
+- ``this.gameObject.scale`` - local space [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale)
 
 
 ### Time
@@ -34,7 +34,7 @@ Use ``this.context.time`` to get access to time data. For example ``this.context
 
 ### Raycasting
 Use ``this.context.physics.raycast()`` to perform a raycast from the mouse position (by default).  
-Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [threejs ray ⇡](https://threejs.org/docs/#api/en/math/Ray)
+Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [threejs ray](https://threejs.org/docs/#api/en/math/Ray)
 
 ### Input
 Use ``this.context.input`` to poll input state 
