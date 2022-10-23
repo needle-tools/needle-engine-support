@@ -1,11 +1,12 @@
 ---
 lang: en-US
 title: Getting Started
+next: deployment.md
 ---
 
 # Getting started 🛎
 
-These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project and also done your first deployment to Glitch. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
+These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
 You can watch our [Getting Started Video on Youtube](https://www.youtube.com/watch?v=3dB-d1Jo_Mk)   
 or continue reading the getting started guide below 😊  

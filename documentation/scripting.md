@@ -51,10 +51,8 @@ _An example of a Button Click Event that is working out-of-the-box in Needle Eng
 The same works for custom components that implement UnityEvent<>. This means that you can create custom components for artists and designers to wire up complex behaviours without writing any code.  
 
 If you intend to expose/generate a UnityEvent in a custom component that you work on you can do it like this:
-```ts
-@serializable(EventList)
-myEvent : EventList;
-```
+
+@[code](@code/component-unityevent.ts)
 
 ## Creating a new component
 Scripts are written in [TypeScript ⇡](https://www.typescriptlang.org/docs/) (recommended) or JavaScript. There's two ways to add custom scripts to your project:
@@ -75,16 +73,20 @@ In both approaches, source directories are watched for changes and C# components
 - **Create a component that rotates an object**  
   Create ``src/scripts/Rotate.ts`` and add the following code:  
 ```ts
-import { Behaviour } from "@needle-tools/engine/engine-components/Component";
+import { Behaviour, serializable } from "@needle-tools/engine";
 
 export class Rotate extends Behaviour
 {
+    @serializable()
     speed : number = 1;
 
     start(){
+        // logging this is useful for debugging in the browser. 
+        // You can open the developer console (F12) to see what data your component contains
         console.log(this);
     }
 
+    // update will be called every frame
     update(){
         this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
     }
@@ -101,7 +103,7 @@ Now add a new field ``public float speed = 5`` to your Unity component and save 
 ### Function with argument
 Please refer to the [TypeScript ⇡](https://www.typescriptlang.org/docs/) documentation to learn more about the syntax and language.
 ```ts
-import { Behaviour } from "@needle-tools/engine/engine-components/Component";
+import { Behaviour } from "@needle-tools/engine";
 
 export class PrintNumberComponent extends Behaviour
 {
@@ -109,7 +111,7 @@ export class PrintNumberComponent extends Behaviour
       this.printNumber(42);
     }
     
-    printNumber(myNumber : number){
+    private printNumber(myNumber : number){
         console.log("My Number is: " + myNumber);
     }
 }
@@ -143,6 +145,8 @@ To start a coroutine, call ``this.startCoroutine(this.myRoutineName());``
 
 **Example**
 ```ts
+import { Behaviour, FrameEvent } from "@needle-tools/engine";
+
 export class Rotate extends Behaviour {
 
     start() {
@@ -171,8 +175,7 @@ To access other components, use the static methods on ``GameObject`` or ``this.g
 
 **Example:**
 ```ts
-import { Behaviour, GameObject } from "@needle-tools/engine/engine-components/Component";
-import { Renderer } from "@needle-tools/engine/engine-components/Renderer";
+import { Behaviour, GameObject, Renderer } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
 
@@ -232,14 +235,14 @@ Use `utils.getParam(<..>)` to quickly access URL parameters and define behaviour
 
 **Example:**
 ```ts
-import { Behaviour } from "@needle-tools/engine/engine-components/Component";
-import * as utils from "@needle-tools/engine/engine/engine_utils"
+import { Behaviour } from "@needle-tools/engine";
+import { getParam } from "@needle-tools/engine/engine/engine_utils"
 
 export class MyScript extends Behaviour
 { 
     awake(): void {
         // access the url parameter
-        const urlParam = utils.getParam("target");
+        const urlParam = getParam("target");
         if (urlParam && typeof urlParam === "string" && urlParam.length > 0) {
             // const do something based on ?target=some_string
         }
@@ -252,7 +255,7 @@ It is possible to access all the functionality described above using regular Jav
 
 For that just find the ``<needle-engine>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``await document.queryElement("needle-engine")?.getContext()``.   
 
-You can find components using ``Needle.findObjectOfType("AudioSource")`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive. See the list for [finding adding and removing components](#finding-adding-and-removing-components) above.  
+You can find components using ``Needle.findObjectOfType(Needle.AudioSource)`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive. See the list for [finding adding and removing components](#finding-adding-and-removing-components) above.  
 
 For getting callbacks for the initial scene load see the following example:  
 ```js
@@ -297,12 +300,7 @@ While generated C# components use the type name to produce stable GUIDs, we reco
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializeable(<type>)`` decorator above your field or property. 
 
 **Example:**
-```js
-export class MyClass extends Behaviour {
-    @serializeable(Object3D) // this will be a "Transform" field in Unity
-    myObjectReference: THREE.Object3D | null = null;
-} 
-``` 
+@[code](@code/component-object-reference.ts)
 
 To serialize from and to custom formats, it is possible to extend from the ``TypeSerializer`` class and create an instance. Use ``super()`` in the constructor to register supported types.  
 
@@ -314,27 +312,17 @@ Referenced Prefabs, SceneAssets and [``AssetReferences`` ⇡](https://docs.unity
 These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components, we added the concept of ``AssetReference`` types. They can be loaded at runtime and thus allow to defer loading parts of your app or loading external content.
 
 **Example:**
-```ts
-    @serializeable(AssetReference)
-    myPrefab?: AssetReference;
-    
-    start() {
-      // load only, instantiate later
-      await myPrefab?.loadAssetAsync();
-      // or directly instantiate
-      await myPrefab?.instantiate();
-    }  
-```
+@[code](@code/component-prefab.ts)
 
 AssetReferences are cached by URI, so if you reference the same exported glTF/Prefab in multiple components/scripts it will only be loaded once and then re-used.  
 
 ## Renamed Unity Types in TypeScript
 For future compatibility, some Unity-specific types are mapped to different type names in our engine.  
 
-| Unity Type | Type in Needle Engine |
-| -- | -- |
-| ``UnityEvent`` | ``EventList`` |
-| ``Transform`` | ``Object3D`` |
-| ``Transform`` | ``AssetReference`` (for loading at runtime) |
-| ``float`` | ``Number`` |
-| ``Color`` | ``RGBAColor`` |
+| Unity Type | Type in Needle Engine | Description |
+| -- | -- | -- |
+| ``UnityEvent`` | ``EventList`` | |
+| ``Transform`` | ``Object3D`` | |
+| ``Transform`` | ``AssetReference`` | when assigning a prefab or scene asset in Unity |
+| ``float`` | ``number`` | |
+| ``Color`` | ``RGBAColor`` | |

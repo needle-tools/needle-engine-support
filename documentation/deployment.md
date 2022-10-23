@@ -1,24 +1,23 @@
 # Deployment ⚒
 
-## How to build? What does deployment mean?
+### How to build for uploading to the web
 
 Needle Engine is tightly integrated into the Unity Editor:  
 Open ``File/Build Settings`` and select ``Needle Engine`` for options!
 
-To deploy your web project you can click **Build** in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
+To build your web project for deployment you can click **Build** in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
 
 > **Note**: Nodejs is **only** required during development. The distributed website (using the vite template) is a static page, doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
-### Building a development distribution
+#### Building a development distribution
 See notes above on how to access. The main difference to a production build is that it does not perform [``ktx2`` ⇡](https://github.khronos.org/KTX-Specification/) and [``draco`` ⇡](https://google.github.io/draco/) compression. Both can reduce file-size drastically. We generally recommend making builds using the ``production`` option.
 
-### Building a production distribution (optimized and compressed)
+#### Building a production distribution (optimized and compressed)
 
 To make a production build you need to have [toktx ⇡](https://github.com/KhronosGroup/KTX-Software/releases) to be installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page ⇡](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0-rc3 at the time of writing, there might be a newer one). You may need to restart Unity after installing it.  
+*If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.*  
 
-> **Note**: If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.  
-
-> **Note**: If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-transform-extensionsw](https://www.npmjs.com/package/@needle-tools/gltf-transform-extensions) for reference.
+If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-transform-extensionsw](https://www.npmjs.com/package/@needle-tools/gltf-transform-extensions) for reference.
 
 ## Deploy to Glitch 🎏
 
@@ -38,29 +37,6 @@ To make a production build you need to have [toktx ⇡](https://github.com/Khron
   ![image](https://user-images.githubusercontent.com/5083203/179835779-ec128288-4db2-42f7-adc0-3c1de6799cef.png)
 8) Add the same password in Unity  
   ![image](https://user-images.githubusercontent.com/5083203/179835883-b524d23f-d887-4ac1-9a59-d5508b6b30c2.png)
-
-## Deploy to FTP
-
-1) Open `File > Build Settings`, select `Needle Engine`, and click on <kbd>Build</kbd>
-6) Wait for the build to complete - the resulting `dist` folder will open automatically after all build and compression steps have run.
-7) Copy the files from the `dist` folder to your FTP storage.
-
-![20220830-003602_explorer-needle](https://user-images.githubusercontent.com/2693840/187311461-e6afb2d7-5761-48cf-bacb-1c1733bb768b.png)
-
-That's it! 
-
-> **Note**: If the result doesn't work, it might be that your web server does not support serving gzipped files. By default, we're outputting gzipped files ready for deployment, but you can turn that off.
-
-_Optional:_ **Disable gzipping of files if your server does not support it:**  
-1. open the VSCode workspace by clicking <kbd>VS Workspace</kbd> on your ExportInfo component
-2. Find and open `vite.config.js`
-3. Comment out the line that starts with `viteCompression(` - this turns compression off.
-4. Create and upload a new build
-
-![image](https://user-images.githubusercontent.com/2693840/187311408-c8a90de4-559e-4d38-b2e1-7e3d36c5a9de.png)
-
-
-> **Note**: If you're getting errors during compression, please let us know and report a bug! If your project works locally and only fails when doing production builds, you can get unstuck right away by doing a Development Build. For that, simply toggle `Development Build` on in the Build Settings.
 
 ## Deploy to itch.io  
 
@@ -88,6 +64,31 @@ _Optional:_ **Disable gzipping of files if your server does not support it:**
 ![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)  
 If you see this error after uploading your project make sure you do not upload a gzipped index.html.
 You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
+
+
+
+## Deploy to FTP
+
+1) Open `File > Build Settings`, select `Needle Engine`, and click on <kbd>Build</kbd>
+6) Wait for the build to complete - the resulting `dist` folder will open automatically after all build and compression steps have run.
+7) Copy the files from the `dist` folder to your FTP storage.
+
+![20220830-003602_explorer-needle](https://user-images.githubusercontent.com/2693840/187311461-e6afb2d7-5761-48cf-bacb-1c1733bb768b.png)
+
+That's it! 
+
+> **Note**: If the result doesn't work, it might be that your web server does not support serving gzipped files. By default, we're outputting gzipped files ready for deployment, but you can turn that off.
+
+_Optional:_ **Disable gzipping of files if your server does not support it:**  
+1. open the VSCode workspace by clicking <kbd>VS Workspace</kbd> on your ExportInfo component
+2. Find and open `vite.config.js`
+3. Comment out the line that starts with `viteCompression(` - this turns compression off.
+4. Create and upload a new build
+
+![image](https://user-images.githubusercontent.com/2693840/187311408-c8a90de4-559e-4d38-b2e1-7e3d36c5a9de.png)
+
+
+> **Note**: If you're getting errors during compression, please let us know and report a bug! If your project works locally and only fails when doing production builds, you can get unstuck right away by doing a Development Build. For that, simply toggle `Development Build` on in the Build Settings.
 
 ---
 

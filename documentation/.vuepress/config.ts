@@ -79,10 +79,14 @@ export default defineUserConfig({
                         text: "Basics",
                         children: [
                             "getting-started",
+                            "deployment",
                             "project_structure",
                             "export",
                             "html",
-                            "deployment",
+                            {
+                                text: "Vanilla javascript",
+                                link: "vanilla-js"
+                            },
                             "debugging",
                         ]
                     },
@@ -108,6 +112,7 @@ export default defineUserConfig({
                     "samples-and-modules",
                     "for-unity-developers",
                     "component-reference",
+                    "scripting",
                     "debugging",
                     "faq",
                 ]
@@ -116,17 +121,22 @@ export default defineUserConfig({
                 text: 'Case studies',
                 children: [
                     {
-                        text: 'Castle Builder 🏰',
-                        link: 'showcase-castle',
+                        text: 'Needle',
+                        children: [
+                            {
+                                text: 'Needle Website 🌐',
+                                link: 'showcase-website',
+                            },
+                            {
+                                text: 'Castle Builder 🏰',
+                                link: 'showcase-castle',
+                            },
+                            {
+                                text: 'Product Configurator 🚲',
+                                link: 'showcase-bike',
+                            },
+                        ]
                     },
-                    {
-                        text: 'Product Configurator 🚲',
-                        link: 'showcase-bike',
-                    },
-                    {
-                        text: 'Needle Website',
-                        link: 'showcase-website',
-                    }
                 ]
             },
             {

@@ -30,7 +30,9 @@ let us know what and how you build, and how we can improve the experience!
 
 ## Creating custom web project templates
 
-> **Note**: 🏗️ This section is Under Construction. 
+::: warning
+This section is Under Construction.  🏗️
+:::
 
 You can create and share your own web project templates to use other bundlers, build systems, or none at all.  
 
