@@ -1,4 +1,4 @@
-name: docs
+name: deploy docs
 
 on:
   # trigger deployment on every push to main branch
@@ -55,16 +55,3 @@ jobs:
         env:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # checkout branch
-      - uses: actions/checkout@v3
-        with:
-          ref: gh_pages
-      
-      # deploy to ftp
-      - name: 📂 Deploy to ftp
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: f0152dc5
-          password: ${{ secrets.FTP_PASSWORD }}
