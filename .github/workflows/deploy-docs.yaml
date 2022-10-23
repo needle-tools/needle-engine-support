@@ -55,3 +55,26 @@ jobs:
         env:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
+  upload:
+    needs: docs
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
+
+      # checkout branch
+      - uses: actions/checkout@v3
+        with:
+          ref: gh_pages
+      
+      # deploy to ftp
+      - name: 📂 Deploy to ftp
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: f0152dc5
+          password: ${{ secrets.FTP_PASSWORD }}

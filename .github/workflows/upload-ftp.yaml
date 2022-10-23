@@ -1,11 +1,12 @@
 name: Upload to FTP
 
+# this only works on default branch
 # Only trigger, when the build workflow succeeded
-on:
-  workflow_run:
-    workflows: ["deploy docs"]
-    types:
-      - completed
+# on:
+#   workflow_run:
+#     workflows: ["deploy docs"]
+#     types:
+#       - completed
 
 jobs:
   upload:
