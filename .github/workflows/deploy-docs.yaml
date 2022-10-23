@@ -83,9 +83,8 @@ jobs:
     needs: upload
     runs-on: ubuntu-latest
     steps:
-      - uses: appleboy/discord-action@master
+      - uses: tsickert/discord-webhook@v5.3.0
         with:
-          webhook_id: ${{ secrets.DEPLOY_WEBHOOK_ID }}
-          webhook_token: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+          webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
           username: "Deploy 🤖"
-          message: "Docs have been updated → https://uploads.needle.tools/needle-engine-support\n`${{ github.event.head_commit.message }}`"
+          content: "Docs have been updated → https://uploads.needle.tools/needle-engine-support\n`${{ github.event.head_commit.message }}`"
