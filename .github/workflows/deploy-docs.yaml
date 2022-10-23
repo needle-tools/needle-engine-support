@@ -78,3 +78,14 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: f0152dc5
           password: ${{ secrets.FTP_PASSWORD }}
+
+  notify_discord:
+    needs: upload
+    runs-on: ubuntu-latest
+    steps:
+      - uses: appleboy/discord-action@master
+        with:
+          webhook_id: ${{ secrets.DEPLOY_WEBHOOK_ID }}
+          webhook_token: ${{ secrets.DEPLOY_WEBHOOK_SECRET }}
+          username: "$Deploy Bot"
+          message: "Docs have been updated → https://uploads.needle.tools/needle-engine-support"
