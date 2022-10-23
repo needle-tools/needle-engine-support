@@ -20,7 +20,7 @@ footer: "Copyright © 2022 Needle Tools GmbH"
     <action href="testimonials">
     Testimonials 💬
     </action>
-    <action href="samples">
+    <action href="samples-and-modules">
     Samples 👀
     </action>
 </actiongroup>

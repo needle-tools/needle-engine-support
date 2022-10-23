@@ -1,3 +1,7 @@
+---
+next: features-overview
+---
+
 # Our Vision 🔮
 
 ## The Future of the 3D Web
