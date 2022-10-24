@@ -3,7 +3,7 @@ name: deploy docs
 on:
   # trigger deployment on every push to main branch
   push:
-    branches: [vuepress]
+    branches: [main]
   # trigger deployment manually
   workflow_dispatch:
 
@@ -45,7 +45,7 @@ jobs:
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: Deploy to GitHub Pages
+      - name: Deploy github pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
           # deploy to gh-pages branch

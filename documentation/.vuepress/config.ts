@@ -172,7 +172,7 @@ export default defineUserConfig({
                     },
                     {
                         text: 'Github',
-                        link: 'https://github.com/needle-tools'
+                        link: 'https://github.com/needle-tools/needle-engine-support'
                     },
                     {
                         text: 'Discord 💜',
