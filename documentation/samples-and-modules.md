@@ -7,21 +7,23 @@ title: Samples and Modules
 ## Samples to download and play
 [This repository](https://github.com/needle-tools/needle-engine-samples) contains code and small project samples to show things such as:  
   
-- [Brune Simons 20k](https://bruno-simon-20k-needle.glitch.me/)  
+- [Brune Simons 20k](https://engine.needle.tools/samples/buno-simon-20k)  
   *Physics*
-- [Stencil Portals](https://needle-stencil-rendering-sample.glitch.me/)  
+- [Stencil Portals](https://engine.needle.tools/samples/stencil-portals)  
   *URP RenderObject stencil to threejs*
-- [Custom Shaders](https://needle-custom-shader-sample.glitch.me/)  
+- [Custom Shaders](https://engine.needle.tools/samples/custom-shaders)  
   *Unity ShaderGraph to threejs*
 - [Sandbox](https://needle-tiny-starter.glitch.me/)  
   *Multi-user sandbox builder*
 - [VideoPlayer](https://needle-videoplayer-sample.glitch.me/)  
   *Minimal Unity VideoPlayer sample*  
-- [UI Button](https://needle-ui-button-sample.glitch.me/)   
+- [UI Button](https://engine.needle.tools/samples/ui-button)   
   *Minimal UI button event sample*
 - [Spatial Trigger](https://needle-spatial-trigger-sample.glitch.me/)  
   *Define areas in your world and hookup events from Unity*
+- and [more](https://engine.needle.tools/samples/)
 
+---
 
 <video-embed src="https://user-images.githubusercontent.com/5083203/189970610-9f913d5e-4f77-4a64-bc15-beb8220e82cf.mp4" />
  
