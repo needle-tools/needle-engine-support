@@ -87,4 +87,4 @@ jobs:
         with:
           webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
           username: "Deploy 🤖"
-          content: "Docs have been updated → https://uploads.needle.tools/needle-engine-support\n`${{ github.event.head_commit.message }}`"
+          content: "Docs have been updated → http://engine.needle.tools/docs/\n`${{ github.event.head_commit.message }}`"
