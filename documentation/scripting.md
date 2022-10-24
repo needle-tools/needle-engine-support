@@ -112,18 +112,26 @@ Components are added to threejs [Object3Ds](https://threejs.org/docs/#api/en/cor
 
 ### Lifecycle methods
 
-- ``awake`` - First method being called when a new component is created
-- ``onEnable`` - Called when a component is enabled (e.g. when ``enabled`` changes from false to true)
-- ``onDisable`` - Called when a component is disabled (e.g. when ``enabled`` changes from true to false)
-- ``onDestroy`` - called when the Object3D or component is being destroyed
-- ``start`` - Called on the start of the first frame after the component was created
-- ``earlyUpdate`` - First mainloop update event
-- ``update`` - Regular mainloop update event
-- ``lateUpdate``
-- ``onBeforeRender`` - Last update event before render call
-- ``onAfterRender`` - Called after render event
+- ``awake()`` - First method being called when a new component is created
+- ``onEnable()`` - Called when a component is enabled (e.g. when ``enabled`` changes from false to true)
+- ``onDisable()`` - Called when a component is disabled (e.g. when ``enabled`` changes from true to false)
+- ``onDestroy()`` - called when the Object3D or component is being destroyed
+- ``start()`` - Called on the start of the first frame after the component was created
+- ``earlyUpdate()`` - First mainloop update event
+- ``update()`` - Regular mainloop update event
+- ``lateUpdate()``
+- ``onBeforeRender()`` - Last update event before render call
+- ``onAfterRender()`` - Called after render event
 
 > **Note**: It is important to understand that similar to Unity lifecycle methods are only being called when they are declared. So only declare `update` lifecycle methods when they are actually necessary, otherwise it may hurt performance if you have many components with update loops that do nothing.
+
+### Physic event methods
+- ``onCollisionEnter(col : Collision)``
+- ``onCollisionStay(col : Collision)``
+- ``onCollisionExit(col : Collision)``
+- ``onTriggerEnter(col : Collision)``
+- ``onTriggerStay(col : Collision)``
+- ``onTriggerExit(col : Collision)``
 
 ### Coroutines
 
