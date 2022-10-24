@@ -5,6 +5,7 @@
     --c-brand-light: #D7DB0A;
     --c-text-accent: #826aed;
     
+    
   // code blocks vars
   --code-bg-color: #383838;
   --code-hl-bg-color: rgba(0, 0, 0, 0.5);
@@ -14,10 +15,16 @@
   --content-width: 1200px;
   --homepage-width: 100%;
 
+  --c-text-quote: rgb(130, 122, 165);
+  
   // --c-bg-navbar: rgba(245, 245, 245, 1);
 
   .navbar-dropdown {
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
     border-radius: .7em;
   }
+}
+
+.search-box {
+  --search-border-color: rgba(138, 125, 189, 0.5);
 }

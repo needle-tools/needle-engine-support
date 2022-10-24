@@ -4,12 +4,11 @@ title: Getting Started
 next: deployment.md
 ---
 
-# Getting started 🛎
+# Getting started 🎈
 
 These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
-You can watch our [Getting Started Video on Youtube](https://www.youtube.com/watch?v=3dB-d1Jo_Mk)   
-or continue reading the getting started guide below 😊  
+You can either watch our Getting Started video or continue reading below 😊  
 <video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" />
 
 
@@ -67,7 +66,7 @@ After installing the tools above, you might have to restart your machine so that
   You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 -->
 
-## Option 1: Quick Start — Package Installer 📦
+## Option 1: Quick Start ⚡ — Package Installer
 
 1. **Create a new Unity project**  
   Open Unity Hub and create a new project. 2021.3 recommended!  
@@ -92,7 +91,7 @@ After installing the tools above, you might have to restart your machine so that
 5. **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
    Learn how to iterate, test, build and publish your projects.  
 
-## Option 2: Start from Scratch — Manual Setup 🐢
+## Option 2: Start from Scratch 🐢 — Manual Setup 
 
 ### Create a new project
 
@@ -194,6 +193,6 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
 ------------
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
-You can also join our [Needle Discord](https://discord.needle.tools)!
+You can also join our [Discord Community](https://discord.needle.tools)!
 
 👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)!
