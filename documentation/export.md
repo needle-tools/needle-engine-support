@@ -13,9 +13,16 @@ To export meshes, materials, animations, textures (...) create a new GameObject 
 
 Add a cube as a child of your root object and save your scene. Note that the output ``assets/`` folder (see [project structure](#vite-project-structure)) now contains a new ``.glb`` file with the same name as your root GameObject.  
 
-> You can use the experimental ``Smart Export`` setting to only export when a change in this object's hierarchy is detected. 
 
-> **Note**: Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
+::: tip
+You can use the experimental ``Smart Export`` setting to only export when a change in this object's hierarchy is detected. 
+:::
+
+::: tip
+Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.   
+Read about [scripting here](./scripting.md)   
+:::
+
 
 #### Skip exporting objects
 You can **ignore specific objects** on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
