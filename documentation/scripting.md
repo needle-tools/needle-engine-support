@@ -272,7 +272,7 @@ function loadingFinished() { console.log("FINISHED!") }
 - If you want to add scripts to any NpmDef file you can just create them - each NpmDef automatically watches script changes and handles component generation, so you don't need any additional component in your scene.
 > **Note**: for C# fields to be correctly generated it is currently important that you explictly declare a Typescript type. For example ``myField : number = 5``
 
-:::::details See codegen example and how to extend it
+:::::details See codegen example and how to extend it 🤘
 You can switch between **Typescript** input and generated **C#** stub components using the tabs below
 :::: code-group
 ::: code-group-item Typescript
