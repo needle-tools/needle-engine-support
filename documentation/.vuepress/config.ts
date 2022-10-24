@@ -57,7 +57,7 @@ export default defineUserConfig({
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
         docsRepo: "needle-tools/needle-engine-support",
-        docsBranch: "vuepress",
+        docsBranch: "main",
         docsDir: "documentation",
         logo: "/logo.png",
         colorModeSwitch: true,
