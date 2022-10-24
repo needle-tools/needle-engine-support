@@ -21,10 +21,10 @@ You can, for example, use
 - **vite + react**  
     *There's an experimental template for this, that you can pick when generating a project!*
 - **react-three-fiber wrapped around a `<NeedleEngine>` tag**  
-    *We've used this for some experiments*
-- **`tsc` to compile TypeScript, no bundling required**
-    *No example yet*
-- **a pre-built Needle Engine and direct JavaScript**
+    *We've used this for some experiments*  
+- **`tsc` to compile TypeScript, no bundling required**  
+    *No example yet*  
+- **a pre-built Needle Engine and direct JavaScript**  
     *No example yet*
 
 In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
