@@ -272,6 +272,115 @@ function loadingFinished() { console.log("FINISHED!") }
 - If you want to add scripts to any NpmDef file you can just create them - each NpmDef automatically watches script changes and handles component generation, so you don't need any additional component in your scene.
 > **Note**: for C# fields to be correctly generated it is currently important that you explictly declare a Typescript type. For example ``myField : number = 5``
 
+:::::details See codegen example and how to extend it
+You can switch between **Typescript** input and generated **C#** stub components using the tabs below
+:::: code-group
+::: code-group-item Typescript
+```ts
+import { AssetReference, Behaviour, serializeable } from "@needle-tools/engine";
+import { Object3D } from "three";
+
+export class MyCustomComponent extends Behaviour {
+    @serializeable()
+    myFloatValue: number = 42;
+
+    @serializeable(Object3D)
+    myOtherObject?: Object3D;
+
+    @serializeable(AssetReference)
+    prefabs: AssetReference[] = [];
+
+    start() {
+        this.sayHello();
+    }
+
+    private sayHello() {
+        console.log("Hello World", this);
+    }
+}
+```
+:::
+::: code-group-item Generated C#
+```csharp
+// NEEDLE_CODEGEN_START
+// auto generated code - do not edit directly
+
+#pragma warning disable
+
+namespace Needle.Typescript.GeneratedComponents
+{
+	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
+	{
+		public float @myFloatValue = 42f;
+		public UnityEngine.Transform @myOtherObject;
+		public UnityEngine.Transform[] @prefabs = new UnityEngine.Transform[]{ };
+		public void start(){}
+		public void update(){}
+	}
+}
+
+// NEEDLE_CODEGEN_END
+```
+:::
+::: code-group-item Extending Generated C#
+```csharp
+using UnityEditor;
+
+// you can add code above or below the NEEDLE_CODEGEN_ blocks
+
+// NEEDLE_CODEGEN_START
+// auto generated code - do not edit directly
+
+#pragma warning disable
+
+namespace Needle.Typescript.GeneratedComponents
+{
+	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
+	{
+		public float @myFloatValue = 42f;
+		public UnityEngine.Transform @myOtherObject;
+		public UnityEngine.Transform[] @prefabs = new UnityEngine.Transform[]{ };
+		public void start(){}
+		public void update(){}
+	}
+}
+
+// NEEDLE_CODEGEN_END
+
+namespace Needle.Typescript.GeneratedComponents
+{
+    // This is how you extend the generated component (namespace and class name must match!)
+	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
+	{
+		
+		public void MyAdditionalMethod()
+		{
+		}
+
+		private void OnValidate()
+		{
+			myFloatValue = 42;
+		}
+	}
+
+    // of course you can also add custom editors
+	[CustomEditor(typeof(MyCustomComponent))]
+	public class MyCustomComponentEditor : Editor
+	{
+		public override void OnInspectorGUI()
+		{
+			EditorGUILayout.HelpBox("This is my sample component", MessageType.None);
+			base.OnInspectorGUI();
+		}
+	}
+}
+
+```
+:::
+::::
+:::::
+
+
 ### Controlling component generation
 You can use the following typescript attributes to control C# code generation behavior:  
 | Attribute | Result |
