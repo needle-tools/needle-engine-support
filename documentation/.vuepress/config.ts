@@ -8,14 +8,22 @@ import { pwaPlugin } from '@vuepress/plugin-pwa'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 
 
+const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
+
+const _title = "Needle Engine Documentation";
+const _description = "Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.\n\nNeedle Exporter for Unity bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.";
+const _previewImg = "preview.jpeg";
+
+// https://css-tricks.com/essential-meta-tags-social-media/
+// https://ogp.me/
 
 export default defineUserConfig({
     base: _base,
     lang: 'en-US',
-    title: 'Needle Engine',
+    title: _title,
     dest: "dist",
-    description: 'Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally.',
+    description: _description,
     plugins: [
         searchPlugin({
         }),
@@ -31,6 +39,14 @@ export default defineUserConfig({
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
         ['link', { rel: 'manifest', href: 'manifest.webmanifest' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
+
+        ['meta', { property: "og:title", content: _title }],
+        ['meta', { property: "og:type", content: "website" }],
+        ['meta', { property: "og:description", content: _description }],
+        ['meta', { property: "og:image", content: _previewImg }],
+        ['meta', { property: "og:url", content: _url }],
+        ['meta', { property: "twitter:card", content: "summary_large_image" }],
+
     ],
     markdown: {
         importCode: {
