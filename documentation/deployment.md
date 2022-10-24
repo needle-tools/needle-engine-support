@@ -1,4 +1,6 @@
-# Deployment ⚒
+---
+title: Deploying to the Web
+---
 
 ### How to build for uploading to the web
 

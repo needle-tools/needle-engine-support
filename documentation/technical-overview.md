@@ -14,20 +14,6 @@ The web runtime uses three.js for rendering, adds a component system on top of t
 
 Effectively, this turns the Unity Editor into a full member of a regular web development toolchain – "just" one more piece that gets added to the regular HTML, JavaScript, CSS and bundling workflow.  
 
-```mermaid
-flowchart LR
-    Editor([Unity Editor]) --> EditorExt([Components + Tools])
-    EditorExt -- export data --> glTF([glTF + Extensions])
-    glTF --> Bundler([Bundler - vite])
-    Runtime([Needle Runtime]) --> Bundler
-    Three([Three.js]) --> Bundler
-    YourWebsite([Classic web files - HTML, CSS, JS]) --> Bundler
-    Bundler -- outputs --> DevPage([web app - dev])
-    Bundler -- outputs --> DeploymentPage([web app - deploy])
-    glTF -- compressed with --> gltfTransform([glTF-transform]) --> DeploymentPage
-    class EditorExt,glTF,Runtime ndl;
-    class Editor,Three,Bundler,Page,gltfTransform,DeploymentPage,DevPage,YourWebsite ext;
-```
 
 ## glTF Assets
 

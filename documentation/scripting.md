@@ -1,14 +1,13 @@
+---
+title: Writing Custom Components
+---
 
-# Scripting 📑
 
-Code for Needle Engine is written in TypeScript or JavaScript. We automatically generate C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
+## Introduction
+
+Runtime code for Needle Engine is written in [TypeScript](https://typescriptlang.org) (recommended) or [JavaScript](https://javascript.info/). We automatically generate C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
 
 
-```mermaid
-flowchart LR
-  Editor([<b>C# components</b><br/>on GameObjects]) --> gltf[<b>JSON data</b><br/>as glTF Extension] --> Runtime([<b>JavaScript components</b><br/>on Object3D])
-  class Editor,gltf,Runtime bg;
-``` 
 
 Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
 
@@ -41,7 +40,7 @@ If you intend to expose/generate a UnityEvent in a custom component that you wor
 
 @[code](@code/component-unityevent.ts)
 
-## Creating a new component
+## Creating a new component 📑
 Scripts are written in [TypeScript](https://www.typescriptlang.org/docs/) (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
 - Simply add a `.ts` or `.js` file inside `src/scripts/` in your generated project directory.  

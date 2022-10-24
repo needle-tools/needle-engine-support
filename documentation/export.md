@@ -1,9 +1,13 @@
-# Export ⚙️
+---
+title: Exporting
+---
+
+# Exporting Assets, Animations, Prefabs, Materials, Lightmaps...
 To mark any Unity scene as "exportable", add an ``ExportInfo`` component to a root object. This component helps you to generate your new web project from a template, set up dependencies to other component libraries (we call them NpmDef) and to deploy your project. 
 
-> By default, your scene is exported on save. This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.  
+By default, your scene is exported on save. This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.  
 
-## Exporting glTF files
+## 📦 Exporting glTF files 
 To export meshes, materials, animations, textures (...) create a new GameObject in your hierarchy and add a ``GltfObject`` component to it. This is the root of a new glTF file. It will be exported whenever you make a change to the scene and save.
 
 
@@ -11,9 +15,11 @@ Add a cube as a child of your root object and save your scene. Note that the out
 
 > You can use the experimental ``Smart Export`` setting to only export when a change in this object's hierarchy is detected. 
 
-> You can ignore specific objects on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
-
 > **Note**: Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.  Read about [scripting here](./scripting.md)  
+
+#### Skip exporting objects
+You can **ignore specific objects** on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
+
 
 ### Prefabs
 [Prefabs](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
@@ -36,7 +42,7 @@ As an example on [our website](https://needle.tools) each section is setup as a 
 
 ![2022-08-22-172605_Needle_Website_-_Website_-_Windows,_Mac,_Linux_-_U](https://user-images.githubusercontent.com/5083203/185958983-71913c97-5eec-4cfd-99f5-76798582373e.png)
 
-## Exporting Animations
+## 🏇 Exporting Animations 
 Needle Engine supports a considerable and powerful subset of Unity's animation features:
 
 - **Timeline** incl. activation tracks, animation tracks, track offsets
@@ -51,7 +57,7 @@ This means that almost all properties, including script variables, are animatabl
 
 One current limitation is that materials won't be duplicated on export — if you want to animate the same material with different colors, for example, you currently need to split the material in two. 
 
-## Exporting the Skybox
+## 🌍 Exporting the Skybox 
 The Unity skybox and custom reflection (if any) are baked into a texture on export and automatically exported inside the ``NEEDLE_lightmaps`` extension.  
 
 To change the skybox resolution you can add a ``SkyboxExportSettings`` component to your scene.  
@@ -64,7 +70,7 @@ If you don't want to skybox to be exported at all in a glb file you can untick t
 ![image](https://user-images.githubusercontent.com/5083203/196030825-8a05037f-5acc-4795-9128-2bdacedd0d49.png)
 
 
-## Exporting Materials
+## ✨ Exporting Materials
 
 ### Physically Based Materials (PBR)
 By default, materials are converted into glTF materials on export. glTF supports a physically based material model and has a number of extensions that help to represent complex materials.  
@@ -98,7 +104,7 @@ These coordinate changes are
   - UV coordinates in Unity start at the bottom left; in glTF they start at the top left.
   - X axis values are flipped in glTF compared to Unity (a variant of a left-handed to right-handed coordinate system change).  
 
-## Exporting Lightmaps
+## 💡 Exporting Lightmaps 
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
 
 

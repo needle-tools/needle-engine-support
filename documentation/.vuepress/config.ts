@@ -81,14 +81,10 @@ export default defineUserConfig({
                         text: "Basics",
                         children: [
                             "getting-started",
+                            "export",
                             "deployment",
                             "project_structure",
-                            "export",
                             "html",
-                            {
-                                text: "Vanilla javascript",
-                                link: "vanilla-js"
-                            },
                             "debugging",
                         ]
                     },
@@ -114,7 +110,9 @@ export default defineUserConfig({
                     "samples-and-modules",
                     "for-unity-developers",
                     "component-reference",
+                    "vanilla-js",
                     "scripting",
+                    "scripting-examples",
                     "debugging",
                     "faq",
                 ]

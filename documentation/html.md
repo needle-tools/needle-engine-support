@@ -1,4 +1,6 @@
-# HTML 🧱
+---
+title: Bundling and Templates
+---
 
 ## Bundling
 
