@@ -13,7 +13,7 @@ export default {}
 }
 
 a {
-    color: rgba(0, 0, 0, 0.8);
+    color: inherit;
     font-weight: normal;
     margin-left: 5px;
 }
