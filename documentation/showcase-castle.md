@@ -2,11 +2,15 @@
 lang: en-US
 title: Castle Builder 🏰
 sidebar: false
+editLink: false
 ---
 
 ### Live demo
 
 <sample src="https://castle.needle.tools" />
+
+
+[Visit website](https://castle.needle.tools)
 
 ### How To Play
 Build your own castle! Drag 3D models from the various palettes onto the stage, and create your very own world.
