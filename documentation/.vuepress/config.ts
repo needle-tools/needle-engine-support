@@ -8,7 +8,7 @@ import { pwaPlugin } from '@vuepress/plugin-pwa'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 
 
-const _base = "/needle-engine-support/";
+const _base = "/";
 
 export default defineUserConfig({
     base: _base,
