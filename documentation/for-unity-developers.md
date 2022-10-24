@@ -1,6 +1,8 @@
 # Needle Engine for Unity Developers
 
-> **Note**: This page is under construction. 
+::: warning
+This page is under construction. 
+:::
 
 Below you can find some common code examples that help you getting familiar when coming from Unity and starting to dive into web development with Needle Engine. 
 
@@ -37,7 +39,7 @@ Use ``this.context.physics.raycast()`` to perform a raycast from the mouse posit
 Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [threejs ray](https://threejs.org/docs/#api/en/math/Ray)
 
 ### Input
-Use ``this.context.input`` to poll input state 
+Use ``this.context.input`` to poll input state
 
 ```ts
 export class MyScript extends Behaviour
@@ -46,6 +48,21 @@ export class MyScript extends Behaviour
         if(this.context.input.getPointerDown(0)){
             // CLICKED
         }
+    }
+}
+```
+
+You can also subscribe to events in the ``InputEvents`` enum like so:
+```ts
+import { Behaviour } from "@needle-tools/engine";
+import { InputEvents } from "@needle-tools/engine/engine/engine_input";
+
+export class MyScript extends Behaviour
+{
+    start(){
+        this.context.input.addEventListener(InputEvents.PointerDown, evt => {
+            console.log(evt);
+        });
     }
 }
 ```
@@ -63,7 +80,15 @@ export class MyScript extends Behaviour
 ```
 
 
-### Events
+### Subscribing to Events
+
+Any component can dispatch events by calling ``this.dispatchEvent()``, see [javascript documentation](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent).  
+Vice-versa you can subscribe to any component ``this.otherComponent.addEventListener("someEvent", ...)``    
+
+Any ``EventList`` / ``UnityEvent`` will automatically also be dispatched as a event. For example if your field is ``myEvent : EventList`` it will be dispatched as ``my-event``.
+
+*The following example shows how to subscribe to the [threejs OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) events* 
+
 ```ts
 import { Behaviour, GameObject } from "@needle-tools/engine";
 import { OrbitControls } from "@needle-tools/engine/engine-components/OrbitControls";
@@ -96,9 +121,10 @@ export class OrbitEventExample extends Behaviour {
 }
 ```
 
+
 ### InputSystem callbacks
 Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events
-> **Note**: For this to work your object must have for example a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy
+> **Note**: Make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy
 
 ```ts
 import { Behaviour } from "@needle-tools/engine";
@@ -115,6 +141,8 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
 ### Exporting VideoClips
 
 Generate a C# component that takes a list of VideoClips. VideoClips are on export copied to the output directory and your typescript component receives a list of relative paths to the videos (e.g. ``["assets/myVideo1.mp4", "assets/myOtherVideo.mp4"]``)
+
+You can also use the ``VideoPlayer`` component if you just want to playback some video.
 
 ```ts
 import { Behaviour, serializeable } from "@needle-tools/engine";

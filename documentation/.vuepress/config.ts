@@ -111,7 +111,6 @@ export default defineUserConfig({
                     "for-unity-developers",
                     "component-reference",
                     "vanilla-js",
-                    "scripting",
                     "scripting-examples",
                     "debugging",
                     "faq",

@@ -1,4 +1,6 @@
-# Questions And Answers 💡
+---
+title: Questions and Answers (FAQ) 💡
+---
 
 ## My objects are white after export
 This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.  
