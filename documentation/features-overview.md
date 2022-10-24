@@ -79,12 +79,18 @@ Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to 
 
 > Read more about [Physics Components](./component-reference.md#physics)
 
-<sample src="https://needle-physics-cannon-sample.glitch.me" />
+<sample src="https://engine.needle.tools/samples/physics-cannon/" />
 
 ## Scripting 🧩
 Needle Engine uses as [component based workflow](scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
 
 Read more about [Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
+
+## UI 🍀
+Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons (static layouts only right now)  
+See the [ui component reference](component-reference.html#ui) for supported component.
+
+<sample src="https://engine.needle.tools/samples/ui-button/" />
 
 ---
 # Where to go next

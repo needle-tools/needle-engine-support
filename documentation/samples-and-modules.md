@@ -2,7 +2,7 @@
 title: Samples and Modules
 ---
 
-<sample src="https://needle-stencil-rendering-sample.glitch.me/" />
+<sample src="https://engine.needle.tools/samples/stencil-portals/" />
 
 ## Samples to download and play
 [This repository](https://github.com/needle-tools/needle-engine-samples) contains code and small project samples to show things such as:  
