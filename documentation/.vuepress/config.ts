@@ -8,7 +8,7 @@ import { pwaPlugin } from '@vuepress/plugin-pwa'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 
 
-const _base = "/";
+const _base = "/docs";
 
 export default defineUserConfig({
     base: _base,

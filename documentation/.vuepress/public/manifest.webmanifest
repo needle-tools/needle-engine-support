@@ -3,7 +3,7 @@
     "name": "Needle Engine Documentation",
     "short_name": "Needle Engine Docs",
     "description": "Needle Engine is a web-based runtime for 3D apps",
-    "start_url": "/",
+    "start_url": "/docs",
     "display": "standalone",
     "icons": [
         {
