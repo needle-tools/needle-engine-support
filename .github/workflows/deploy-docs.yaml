@@ -45,7 +45,7 @@ jobs:
 
       # please check out the docs of the workflow for more details
       # @see https://github.com/crazy-max/ghaction-github-pages
-      - name: ${{ github.event.head_commit.message }}
+      - name: Deploy github pages
         uses: crazy-max/ghaction-github-pages@v2
         with:
           # deploy to gh-pages branch
