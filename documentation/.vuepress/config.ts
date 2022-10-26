@@ -123,13 +123,23 @@ export default defineUserConfig({
             {
                 text: 'Reference',
                 children: [
-                    "samples-and-modules",
                     "for-unity-developers",
                     "component-reference",
                     "vanilla-js",
                     "scripting-examples",
                     "debugging",
                     "faq",
+                    {
+                        text: "Releases and Changelog",
+                        link: "https://github.com/needle-tools/needle-engine-support/releases"
+                    },
+                    {
+                        text: "Download and Learn",
+                        children: [
+                            "samples-and-modules",
+                            "modules",
+                        ]
+                    },
                 ]
             },
             {
