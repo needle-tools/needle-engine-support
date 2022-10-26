@@ -218,7 +218,7 @@ Use ``this.context.input`` to access convenient methods for getting mouse and to
 ### Physics
 Use ``this.context.physics`` to access the physics API, for example to perform raycasts against scene geometry.  
 
-> **Note**: [Layers](https://docs.unity3d.com/Manual/Layers.html) are mapped from Unity to three.js [Layers](https://threejs.org/docs/#api/en/core/Layers). By default, physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. We recommended setting up your layers as needed in Unity, but if you need, you can override this behaviour using the `options` parameter that you can pass to the ``physics.raycast`` method. 
+> **Note**: [Unity Layers](https://docs.unity3d.com/Manual/Layers.html) are mapped from Unity to [three.js Layers](https://threejs.org/docs/#api/en/core/Layers). By default, physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. We recommended setting up your layers as needed in Unity, but if you need, you can override this behaviour using the `options` parameter that you can pass to the ``physics.raycast`` method. 
 
 ### Networking
 Networking methods can be accessed via ``this.context.connection``. Please refer to the [networking docs](./networking.md) for further information.
