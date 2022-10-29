@@ -10,7 +10,7 @@ We believe the use of 3D on the web will expand considerably in the next years. 
 
 Add to that a push towards more interactivity and collaboration, and you have an interesting mix of challenges.  
 
-At Needle, we believe ideating and creating in this space about this should be easy. We've set out to speed things up – creating our own runtime to reach these goals. That's why we're baking the ability to deploy to AR and VR right into our core components, and continually test that new ideas work across platforms. 
+At Needle, we believe ideating and creating in this space should be easy. We've set out to speed things up – creating our own runtime to reach these goals. That's why we're baking the ability to deploy to AR and VR right into our core components, and continually test that new ideas work across platforms. 
 
 ## Why another platform for 3D on the web? Aren't there enough options already?
 
