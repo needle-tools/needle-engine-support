@@ -30,15 +30,15 @@ We're using this skybox:
 
 Which looks like this on the paint job:
 
-![Paintjob](/showcase-mercedes/2_paintjob_simple.png)
+![Paintjob](/showcase-mercedes/2_paintjob_simple.jpg)
 
 Then to add a slight detail, i've added 2 directional lights with an insignificant intensity (0.04) to create specular highlights. So before it looked like this:
 
-![Specular off](/showcase-mercedes/3_SpecularHighlights_off.png)
+![Specular off](/showcase-mercedes/3_SpecularHighlights_off.jpg)
 
 But with the added directional lights it added a better dynamic. The effect could be deepened with higher intensity:
 
-![Specular on](/showcase-mercedes/4_SpecularHighlights_on.png)
+![Specular on](/showcase-mercedes/4_SpecularHighlights_on.jpg)
 
 
 
