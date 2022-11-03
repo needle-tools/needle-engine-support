@@ -10,13 +10,12 @@ Hello, my name is Kryštof and i did a research project about Needle. At our com
 
 
 <sample src="https://engine.needle.tools/demos/mercedes-benz-demo/" />
-___
+
 
 ## Context
 
 I'm not very well experienced with javascript, typescript or three.js, so my point of view is as a semi-experienced Unity developer trying out the simplest way how to create a web experience. For those who would suggest Unity WebGL, that sadly doesn't work and isn't flexible on mobile browsers. Needle is 💚
 
-___
 
 ## Lighting
 
@@ -24,7 +23,6 @@ Our lighting model is based on reflection probes in unity. We do not need any di
 
 Needle uses the skybox as an source of lighting, it currently doesn't support any other source of "Environment Lighting". So we have to choose a source of reflections and lighting accordingly.
 
-___
 
 We're using this skybox:
 
@@ -43,7 +41,6 @@ But with the added directional lights it added a better dynamic. The effect coul
 ![Specular on](showcase-mercedes/4_SpecularHighlights_on.png)
 
 
-___
 
 ## Background
 
@@ -69,7 +66,6 @@ By using shaders it's simpler to use and iterate the gradiant. By using Needle's
 
 ![Gradiant](showcase-mercedes/8_Gradiant.png)
 
-___
 
 ## Car fake movement
 
@@ -110,7 +106,6 @@ export class Rotator extends Behaviour {
 }
 ```
 
-___
 
 The user now sees a car driving in deep nothingness, the color doesn't resemble anything and the experience is dull. We want to ground the model and that's done by adding a grid and then shifting it so it seems the car is moving. This is what we want to achieve:
 
@@ -120,7 +115,6 @@ The shader for the grid was comprised of two parts. A simple tiled texture of th
 
 ![Grid](showcase-mercedes/11_GridShader.jpg)
 
-___
 
 ## Extra elements
 
@@ -134,19 +128,16 @@ Adding this shader to a plane will result in a dashed circle which is rotating b
 
 ![Wheel shader](showcase-mercedes/13_WheelShader.jpg)
 
-___
-
 After showcasing the wheels we want to finish with a broad information about the product. In this case, that would be the car's full name and perhaps some available configurations.
 
 ![Rear UI](showcase-mercedes/14_RearUI.jpg)
 
-___
+
 
 ## Wrap up
 
 By using the Unity's timeline we can control when the wheel dashes and text will be shown. This is complemented by the camera animation.
 
-___
 
 ## Conclusion
 
