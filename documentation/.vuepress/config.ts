@@ -169,6 +169,10 @@ export default defineUserConfig({
                                 text: 'AR.js integration',
                                 link: 'https://github.com/FireDragonGameStudio/NeedleAndARjs',
                             },
+                            {
+                                text: 'Mercedes Benz Techdemo',
+                                link: 'showcase-mercedes-benz',
+                            },
                         ]
                     },
                 ]
