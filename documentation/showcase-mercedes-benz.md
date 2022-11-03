@@ -26,7 +26,7 @@ Needle uses the skybox as an source of lighting, it currently doesn't support an
 
 We're using this skybox:
 
- ![Skybox](/docs/showcase-mercedes/1_skybox.png)
+ ![Skybox](/showcase-mercedes/1_skybox.png)
 
 Which looks like this on the paint job:
 
