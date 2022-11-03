@@ -30,15 +30,15 @@ We're using this skybox:
 
 Which looks like this on the paint job:
 
-<!-- ![Paintjob](showcase-mercedes/2_paintjob_simple.png)
+![Paintjob](/showcase-mercedes/2_paintjob_simple.png)
 
 Then to add a slight detail, i've added 2 directional lights with an insignificant intensity (0.04) to create specular highlights. So before it looked like this:
 
-![Specular off](showcase-mercedes/3_SpecularHighlights_off.png)
+![Specular off](/showcase-mercedes/3_SpecularHighlights_off.png)
 
 But with the added directional lights it added a better dynamic. The effect could be deepened with higher intensity:
 
-![Specular on](showcase-mercedes/4_SpecularHighlights_on.png)
+![Specular on](/showcase-mercedes/4_SpecularHighlights_on.png)
 
 
 
@@ -46,11 +46,11 @@ But with the added directional lights it added a better dynamic. The effect coul
 
 The scene now looks like this:
 
-![No background](showcase-mercedes/5_NoBackground.jpg)
+![No background](/showcase-mercedes/5_NoBackground.jpg)
 
 The black background isn't very pretty. So to differentiate between visual and lighting skyboxes i've added an inverse sphere which wraps the whole map.
 
-![With background](showcase-mercedes/6_MapBackground.png)
+![With background](/showcase-mercedes/6_MapBackground.png)
 
 Regarding the gradient goes from a slight gray to a white color..
 
@@ -58,13 +58,13 @@ This effect could be easily made with just a proper UV mapping and a single pixe
 
 I've made an unlit shader in the shader graph:
 
-![Evironemnt shader](showcase-mercedes/7_EnvShaderGraph.jpg)
+![Evironemnt shader](/showcase-mercedes/7_EnvShaderGraph.jpg)
 
 I've noticed a color banding issue, so i've tried to implement dithering. Frankly, it didn't help the artefacts but i bet there's a simple solution to that issue. So the upper part of the shader does sample the gradient based on the Y axis in object space. And the lower part tries to negate the color banding.
 
 By using shaders it's simpler to use and iterate the gradiant. By using Needle's Shadergraph markdown asset, it's even simpler! 🌵
 
-![Gradiant](showcase-mercedes/8_Gradiant.png)
+![Gradiant](/showcase-mercedes/8_Gradiant.png)
 
 
 ## Car fake movement
@@ -73,7 +73,7 @@ The scene right now is static since nothing moves. We can negate that by adding 
 
 With a simple component called Rotator, we define an axis and speed along it.
 
-![Rotator](showcase-mercedes/9_Rotator.png)
+![Rotator](/showcase-mercedes/9_Rotator.png)
 ```ts
 import { Behaviour, serializeable } from "@needle-tools/engine";
 
@@ -109,11 +109,11 @@ export class Rotator extends Behaviour {
 
 The user now sees a car driving in deep nothingness, the color doesn't resemble anything and the experience is dull. We want to ground the model and that's done by adding a grid and then shifting it so it seems the car is moving. This is what we want to achieve:
 
-![Motion](showcase-mercedes/10_WheelsAndGrid.png)
+![Motion](/showcase-mercedes/10_WheelsAndGrid.png)
 
 The shader for the grid was comprised of two parts. A simple tiled texture of the grid that's being multipled by a circular gradient to make the edges fade off.
 
-![Grid](showcase-mercedes/11_GridShader.jpg)
+![Grid](/showcase-mercedes/11_GridShader.jpg)
 
 
 ## Extra elements
@@ -122,15 +122,15 @@ This tech demo takes it's goal to showcase the car's capabilities.
 
 Let's start by highlighting the wheels.
 
-![Wheel highlight](showcase-mercedes/12_WheelWithText.png)
+![Wheel highlight](/showcase-mercedes/12_WheelWithText.png)
 
 Adding this shader to a plane will result in a dashed circle which is rotating by a defined speed. Combined with world space UI with a normal Text component this can highlight some interesting capabilities or parameters of the given product.
 
-![Wheel shader](showcase-mercedes/13_WheelShader.jpg)
+![Wheel shader](/showcase-mercedes/13_WheelShader.jpg)
 
 After showcasing the wheels we want to finish with a broad information about the product. In this case, that would be the car's full name and perhaps some available configurations.
 
-![Rear UI](showcase-mercedes/14_RearUI.jpg)
+![Rear UI](/showcase-mercedes/14_RearUI.jpg)
 
 
 
@@ -147,4 +147,4 @@ There are a few features which we miss.
 
 That would be for example proper support for the Lit Shader Graphs. But nothing stops us to create shaders the three.js way and create simmilar shaders in Unity for our content team to tweak the materials.
 
-Using Needle was a blast! 🌵 -->
+Using Needle was a blast! 🌵
