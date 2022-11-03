@@ -6,7 +6,7 @@ editLink: false
 
 ## About
 
-Hello, my name is Kryštof and i did a research project about Needle. At our company, we wanted to determine how Needle can help us in our workflow. We have one local client which focuses on reselling luxury cars. We already delivered a mobile app and VR experience using Unity. We have around 30 unique cars ready in the engine. We plan to expand the client's website with visually pleasing digital clones with more configuration options. Needle could achieve a perfect 1:1 conversion between unity and web visuals. It would be a massive benefit to our workflow. So that's what sparked our research.
+Hello, my name is Kryštof and i did a research project about Needle. At [our company](https://www.ishowroom.cz/home/), we wanted to determine how Needle can help us in our workflow. We have one local client which focuses on reselling luxury cars. We already delivered a mobile app and VR experience using Unity. We have around 30 unique cars ready in the engine. We plan to expand the client's website with visually pleasing digital clones with more configuration options. Needle could achieve a perfect 1:1 conversion between unity and web visuals. It would be a massive benefit to our workflow. So that's what sparked our research.
 
 
 <sample src="https://engine.needle.tools/demos/mercedes-benz-demo/" />
