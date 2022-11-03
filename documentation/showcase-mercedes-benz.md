@@ -26,11 +26,11 @@ Needle uses the skybox as an source of lighting, it currently doesn't support an
 
 We're using this skybox:
 
- ![Skybox](showcase-mercedes/1_skybox.png)
+ ![Skybox](/docs/showcase-mercedes/1_skybox.png)
 
 Which looks like this on the paint job:
 
-![Paintjob](showcase-mercedes/2_paintjob_simple.png)
+<!-- ![Paintjob](showcase-mercedes/2_paintjob_simple.png)
 
 Then to add a slight detail, i've added 2 directional lights with an insignificant intensity (0.04) to create specular highlights. So before it looked like this:
 
@@ -147,4 +147,4 @@ There are a few features which we miss.
 
 That would be for example proper support for the Lit Shader Graphs. But nothing stops us to create shaders the three.js way and create simmilar shaders in Unity for our content team to tweak the materials.
 
-Using Needle was a blast! 🌵
+Using Needle was a blast! 🌵 -->
