@@ -31,7 +31,7 @@ video,
 <template>
   <div v-if='src.includes("youtube.com")'>
     <iframe id="ytplayer" class="video"
-      :src='src.replace("watch?v=", "embed/") + "?autoplay=1&origin=http://needle.tools"' frameborder="0"
+      :src='src.replace("watch?v=", "embed/") + "?autoplay=0&origin=http://needle.tools"' frameborder="0"
       allowfullscreen />
   </div>
   <div v-else>
