@@ -77,12 +77,12 @@ export default defineUserConfig({
                         text: 'Needle Engine',
                         link: '/',
                     },
-                    "vision",
-                    "features-overview",
-                    "technical-overview",
+                    "/vision",
+                    "/features-overview",
+                    "/technical-overview",
                     {
                         text: 'Testimonials 💬',
-                        link: 'testimonials',
+                        link: '/testimonials',
                     },
                 ]
             },
@@ -96,26 +96,26 @@ export default defineUserConfig({
                     {
                         text: "Basics",
                         children: [
-                            "getting-started",
-                            "export",
-                            "deployment",
-                            "project_structure",
-                            "html",
-                            "debugging",
+                            "/getting-started",
+                            "/export",
+                            "/deployment",
+                            "/project_structure",
+                            "/html",
+                            "/debugging",
                         ]
                     },
                     {
                         text: "Scripting",
                         children: [
-                            "scripting",
-                            "scripting-examples",
+                            "/scripting",
+                            "/scripting-examples",
                         ]
                     },
                     {
                         text: "Advanced",
                         children: [
-                            "networking",
-                            "xr",
+                            "/networking",
+                            "/xr",
                         ]
                     },
                 ]
@@ -123,12 +123,16 @@ export default defineUserConfig({
             {
                 text: 'Reference',
                 children: [
-                    "for-unity-developers",
-                    "component-reference",
-                    "vanilla-js",
-                    "scripting-examples",
-                    "debugging",
-                    "faq",
+                    "/for-unity-developers",
+                    "/component-reference",
+                    {
+                        text: "Api Reference",
+                        link: "/api"
+                    },
+                    "/vanilla-js",
+                    "/scripting-examples",
+                    "/debugging",
+                    "/faq",
                     {
                         text: "Releases and Changelog",
                         link: "https://github.com/needle-tools/needle-engine-support/releases"
@@ -136,8 +140,8 @@ export default defineUserConfig({
                     {
                         text: "Download and Learn",
                         children: [
-                            "samples-and-modules",
-                            "modules",
+                            "/samples-and-modules",
+                            "/modules",
                         ]
                     },
                 ]
@@ -150,15 +154,15 @@ export default defineUserConfig({
                         children: [
                             {
                                 text: 'Needle Website 🌐',
-                                link: 'showcase-website',
+                                link: '/showcase-website',
                             },
                             {
                                 text: 'Castle Builder 🏰',
-                                link: 'showcase-castle',
+                                link: '/showcase-castle',
                             },
                             {
                                 text: 'Product Configurator 🚲',
-                                link: 'showcase-bike',
+                                link: '/showcase-bike',
                             },
                         ],
                     },
@@ -167,11 +171,11 @@ export default defineUserConfig({
                         children: [
                             {
                                 text: 'AR.js integration',
-                                link: 'https://github.com/FireDragonGameStudio/NeedleAndARjs',
+                                link: '/https://github.com/FireDragonGameStudio/NeedleAndARjs',
                             },
                             {
                                 text: 'Mercedes Benz Techdemo',
-                                link: 'showcase-mercedes-benz',
+                                link: '/showcase-mercedes-benz',
                             },
                         ]
                     },
