@@ -8,7 +8,8 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | Tested VR Device | Browser | Notes |
 | -- | -- | -- |
 | Meta Quest 1 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup> |
-| Meta Quest 2 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup> |
+| Meta Quest 2 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup>, passthrough |
+| Meta Quest Pro | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup>, passthrough |
 | Pico Neo 3 | ✔️ Pico Browser | no hand tracking support, inverted controller thumbsticks |
 | Oculus Rift 1/2 | ✔️ Chrome |  |
 | Hololens 2 | ✔️ Edge | in VR mode, background is rendered as well |
