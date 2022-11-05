@@ -73,7 +73,7 @@ After installing the tools above, you might have to restart your machine so that
   Make sure to switch it to Linear color space in `Project Settings > Player`.
   
 3. **Download our installer**  
-  [Click here to download our installer](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
+  [Click here to download our installer](https://engine.needle.tools/downloads/unity) • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
   Our installer is just a `.unitypackage` that will set everything up for you.  
   
 2. **Install by dropping into Unity**   
