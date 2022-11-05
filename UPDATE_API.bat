@@ -1,0 +1,1 @@
+npm install & npm run docs:build-api & timeout 10
