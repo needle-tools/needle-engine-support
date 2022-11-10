@@ -68,29 +68,44 @@ If you see this error after uploading your project make sure you do not upload a
 You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
 
 
-
 ## Deploy to FTP
+1) Add the ``DeloyToFTP`` component¹ on a GameObject in your scene (it is good practice to add it to the same GameObject as ExportInfo - but it is not mandatory) 
+2) Assign an FTP server asset and fill out server, username, and password if you have not already ²    
+  *This asset contains the access information to your FTP server - you get them when you create a new FTP account at your hosting provider*
+3) Click the <kbd>Build & Deploy</kbd> button on the ``DeployToFTP`` component to build your project and uploading it to your FTP account  
+
+
+![Deploy to FTP component in Unity](/deployment/deploytoftp.jpg)  
+*¹ Deploy to FTP component*
+
+![Deploy to FTP server asset](/deployment/deploytoftp2.jpg)  
+*² FTP Server asset containing the access information of your FTP user account*
+
+![Deploy to FTP component in Unity with server asset assigned](/deployment/deploytoftp3.jpg)  
+*Deploy To FTP component after server asset is assigned. You can directly deploy to a subfolder on your server using the path field* 
+
+## Deploy to FTP (manual upload)
 
 1) Open `File > Build Settings`, select `Needle Engine`, and click on <kbd>Build</kbd>
-6) Wait for the build to complete - the resulting `dist` folder will open automatically after all build and compression steps have run.
-7) Copy the files from the `dist` folder to your FTP storage.
+2) Wait for the build to complete - the resulting `dist` folder will open automatically after all build and compression steps have run.
+3) Copy the files from the `dist` folder to your FTP storage.
+
+**That's it!** 😉
 
 ![20220830-003602_explorer-needle](https://user-images.githubusercontent.com/2693840/187311461-e6afb2d7-5761-48cf-bacb-1c1733bb768b.png)
 
-That's it! 
 
-> **Note**: If the result doesn't work, it might be that your web server does not support serving gzipped files. By default, we're outputting gzipped files ready for deployment, but you can turn that off.
 
-_Optional:_ **Disable gzipping of files if your server does not support it:**  
-1. open the VSCode workspace by clicking <kbd>VS Workspace</kbd> on your ExportInfo component
-2. Find and open `vite.config.js`
-3. Comment out the line that starts with `viteCompression(` - this turns compression off.
-4. Create and upload a new build
 
-![image](https://user-images.githubusercontent.com/2693840/187311408-c8a90de4-559e-4d38-b2e1-7e3d36c5a9de.png)
-
+> **Note**: If the result doesn't work when uploaded it might be that your web server does not support serving gzipped files. You have two options to fix the problem:   
+Option 1: You can try enabling gzip compression on your server using a htaccess file!    
+Option 2: You can turn gzip compression off in the build settings at File/Build Window and selecting the Needle Engine platform.  
 
 > **Note**: If you're getting errors during compression, please let us know and report a bug! If your project works locally and only fails when doing production builds, you can get unstuck right away by doing a Development Build. For that, simply toggle `Development Build` on in the Build Settings.
+
+
+![Unity build window showing Needle Engine platform](/deployment/buildoptions_gzip.jpg)  
+
 
 ---
 
