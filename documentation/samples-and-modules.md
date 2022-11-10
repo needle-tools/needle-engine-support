@@ -2,7 +2,7 @@
 title: Samples Projects
 ---
 
-<sample src="https://engine.needle.tools/samples/stencil-portals/" />
+<sample src="https://engine.needle.tools/samples/character-controller/" />
 
 ## Samples to download and play
 [This repository](https://github.com/needle-tools/needle-engine-samples) contains code and small project samples to show things such as:  
@@ -25,12 +25,16 @@ title: Samples Projects
 
 ---
 
+<sample src="https://engine.needle.tools/samples/particles/" />
+
 <video-embed src="https://user-images.githubusercontent.com/5083203/189970610-9f913d5e-4f77-4a64-bc15-beb8220e82cf.mp4" />
  
 <video-embed src="https://user-images.githubusercontent.com/5083203/189973474-2d907e1c-fae3-439f-a349-5fe2c9b25b15.mp4" />
  
 <video-embed src="https://user-images.githubusercontent.com/5083203/190458268-c66bad1e-fd68-4171-85b0-2ce001591650.mp4" />
 
+
+<sample src="https://engine.needle.tools/samples/stencil-portals/" />
 
 <!-- <actiongroup>
 <action href="https://github.com/needle-tools/needle-engine-samples">Get the samples on github</action>
