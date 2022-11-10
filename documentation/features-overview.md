@@ -88,6 +88,8 @@ See the [ui component reference](component-reference.html#ui) for supported comp
 <sample src="https://engine.needle.tools/samples/ui-button/" />
 
 ## Particles ✨
+Export of Unity ParticleSystem (Shuriken) is in development. Features currently include world/local space simulation, box and sphere emitter shapes, emission over time as well as burst emission, velocity- and color over time, emission by velocity, texturesheet animation, basic trails.   
+See a [live sample](https://engine.needle.tools/samples/particles) of supported features below:
 
 <sample src="https://engine.needle.tools/samples/particles/" />
 
