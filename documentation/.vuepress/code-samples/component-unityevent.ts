@@ -1,8 +1,8 @@
-import { Behaviour, serializeable, EventList } from "@needle-tools/engine"
+import { Behaviour, serializable, EventList } from "@needle-tools/engine"
 
 export class MyComponent extends Behaviour {
 
-    @serializeable(EventList)
+    @serializable(EventList)
     myEvent? : EventList;
 
     start() {

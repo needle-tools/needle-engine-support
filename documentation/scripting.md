@@ -59,11 +59,11 @@ In both approaches, source directories are watched for changes and C# components
 - **Create a component that rotates an object**  
   Create ``src/scripts/Rotate.ts`` and add the following code:  
 ```ts
-import { Behaviour, serializeable } from "@needle-tools/engine";
+import { Behaviour, serializable } from "@needle-tools/engine";
 
 export class Rotate extends Behaviour
 {
-    @serializeable()
+    @serializable()
     speed : number = 1;
 
     start(){
@@ -80,7 +80,7 @@ export class Rotate extends Behaviour
 ```
 
 Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the script to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene. The cube is now rotating inside the browser.   
-Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializeable fields and all public properties are exported.  
+Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
 
 Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
 
