@@ -1,9 +1,9 @@
-import { Behaviour, serializable } from "@needle-tools/engine"
+import { Behaviour, serializeable } from "@needle-tools/engine"
 import { Object3D } from "three"
 
 export class MyComponent extends Behaviour {
 
-    @serializable(Object3D)
+    @serializeable(Object3D)
     myObjectReference?: Object3D;
 
     start() {
