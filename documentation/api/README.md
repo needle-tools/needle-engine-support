@@ -185,7 +185,7 @@ com.needle.engine - v2.39.0-pre
 - [markAsInstancedRendered](README.md#markasinstancedrendered)
 - [moveComponentInstance](README.md#movecomponentinstance)
 - [removeComponent](README.md#removecomponent)
-- [serializeable](README.md#serializeable)
+- [serializable](README.md#serializable)
 - [setActive](README.md#setactive)
 - [showBalloonMessage](README.md#showballoonmessage)
 - [showBalloonWarning](README.md#showballoonwarning)
@@ -631,9 +631,9 @@ ___
 
 ___
 
-### serializeable
+### serializable
 
-▸ **serializeable**<`T`\>(`type?`): (`_target`: `any`, `_propertyKey`: `string`) => `void`
+▸ **serializable**<`T`\>(`type?`): (`_target`: `any`, `_propertyKey`: `string`) => `void`
 
 #### Type parameters
 

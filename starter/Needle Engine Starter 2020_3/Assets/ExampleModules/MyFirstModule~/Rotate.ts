@@ -1,10 +1,10 @@
 import { Behaviour } from "@needle-tools/engine/engine-components/Component";
-import { serializeable } from "@needle-tools/engine/engine/engine_serialization_decorator";
+import { serializable } from "@needle-tools/engine/engine/engine_serialization_decorator";
 import { Vector3 } from "three"
 
 export class Rotate extends Behaviour {
 
-    @serializeable(Vector3)
+    @serializable(Vector3)
     axes?: Vector3;
     randomAxes: boolean = true;
     speed: number = 1;

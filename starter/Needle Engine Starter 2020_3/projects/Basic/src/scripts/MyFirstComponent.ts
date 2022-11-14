@@ -3,13 +3,13 @@ import { EventList } from "@needle-tools/engine/engine-components/EventList";
 import { Renderer } from "@needle-tools/engine/engine-components/Renderer";
 import { IPointerClickHandler, PointerEventData } from "@needle-tools/engine/engine-components/ui/PointerEvents";
 import { Mathf } from "@needle-tools/engine/engine/engine_math";
-import { serializeable } from "@needle-tools/engine/engine/engine_serialization_decorator";
+import { serializable } from "@needle-tools/engine/engine/engine_serialization_decorator";
 import { Object3D } from "three";
 import { syncField } from "@needle-tools/engine/engine/engine_networking_auto";
 import { Color } from "three";
 
 export class MyFirstComponent extends Behaviour implements IPointerClickHandler {
-    @serializeable(EventList)
+    @serializable(EventList)
     onClick?: EventList;
 
     onPointerClick(evt: PointerEventData) {
@@ -19,7 +19,7 @@ export class MyFirstComponent extends Behaviour implements IPointerClickHandler 
 }
 
 export class RandomizeScale extends Behaviour {
-    @serializeable(Object3D)
+    @serializable(Object3D)
     target?: Object3D;
 
     minScale: number = .1;

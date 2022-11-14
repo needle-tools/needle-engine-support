@@ -147,13 +147,13 @@ Generate a C# component that takes a list of VideoClips. VideoClips are on expor
 You can also use the ``VideoPlayer`` component if you just want to playback some video.
 
 ```ts
-import { Behaviour, serializeable } from "@needle-tools/engine";
+import { Behaviour, serializable } from "@needle-tools/engine";
 
 declare type VideoClip = string;
 
 export class MyVideos extends Behaviour {
 
-    @serializeable(null)
+    @serializable(null)
     videos?: Array<VideoClip>;
 
     video? : VideoClip;

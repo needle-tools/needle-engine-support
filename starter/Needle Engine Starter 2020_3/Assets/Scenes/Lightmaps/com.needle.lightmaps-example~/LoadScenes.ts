@@ -1,11 +1,11 @@
 import { Behaviour, InstantiateOptions } from "@needle-tools/engine/engine-components/Component";
 import { AssetReference } from "@needle-tools/engine/engine/engine_addressables";
 import { InstantiateIdProvider } from "@needle-tools/engine/engine/engine_networking_instantiate";
-import { serializeable } from "@needle-tools/engine/engine/engine_serialization_decorator";
+import { serializable } from "@needle-tools/engine/engine/engine_serialization_decorator";
 
 export class LoadScenes extends Behaviour {
     //@type(UnityEditor.SceneAsset[])
-    @serializeable(AssetReference)
+    @serializable(AssetReference)
     scenes?: AssetReference[];
 
     async start() {

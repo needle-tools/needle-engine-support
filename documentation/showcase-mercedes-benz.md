@@ -75,7 +75,7 @@ With a simple component called Rotator, we define an axis and speed along it.
 
 ![Rotator](/showcase-mercedes/9_Rotator.png)
 ```ts
-import { Behaviour, serializeable } from "@needle-tools/engine";
+import { Behaviour, serializable } from "@needle-tools/engine";
 
 export enum RotationAxis {
     X, Y, Z
@@ -83,10 +83,10 @@ export enum RotationAxis {
 
 export class Rotator extends Behaviour {
     //@type RotationAxis
-    @serializeable()
+    @serializable()
     axis : RotationAxis = RotationAxis.X;
 
-    @serializeable()
+    @serializable()
     speed : number = 1;
 
     update() {

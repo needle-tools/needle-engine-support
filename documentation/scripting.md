@@ -277,17 +277,17 @@ You can switch between **Typescript** input and generated **C#** stub components
 :::: code-group
 ::: code-group-item Typescript
 ```ts
-import { AssetReference, Behaviour, serializeable } from "@needle-tools/engine";
+import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
 
 export class MyCustomComponent extends Behaviour {
-    @serializeable()
+    @serializable()
     myFloatValue: number = 42;
 
-    @serializeable(Object3D)
+    @serializable(Object3D)
     myOtherObject?: Object3D;
 
-    @serializeable(AssetReference)
+    @serializable(AssetReference)
     prefabs: AssetReference[] = [];
 
     start() {
@@ -402,7 +402,7 @@ Component C# classes are generated with the [`partial`](https://docs.microsoft.c
 While generated C# components use the type name to produce stable GUIDs, we recommend checking in generated components in version control as a good practice.  
 
 ## Serialization / Components in glTF files
-To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializeable(<type>)`` decorator above your field or property. 
+To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
 
 **Example:**
 @[code](@code/component-object-reference.ts)
