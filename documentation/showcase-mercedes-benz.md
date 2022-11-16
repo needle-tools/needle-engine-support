@@ -21,8 +21,6 @@ I'm not very well experienced with javascript, typescript or three.js, so my poi
 
 Our lighting model is based on reflection probes in unity. We do not need any directional or point lights, only ambient lighting. 
 
-Needle uses the skybox as an source of lighting, it currently doesn't support any other source of "Environment Lighting". So we have to choose a source of reflections and lighting accordingly.
-
 
 We're using this skybox:
 
