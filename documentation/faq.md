@@ -2,6 +2,7 @@
 title: Questions and Answers (FAQ) 💡
 ---
 
+
 ## My objects are white after export
 This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.  
 You can either make sure you're using glTF-compatible materials and shaders, or mark shaders as "custom" to export them directly.  
@@ -21,6 +22,12 @@ If that happens there's usually an exception either in engine code or your code.
 In some cases, especially when you just updated the Needle Engine package version, this can be fixed by stopping and restarting the local dev server.  
 For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
 
+## THREE.EXRLoader: provided file doesnt appear to be in OpenEXR format
+
+Please make sure that sure that you have set Lightmap Encoding to **Normal Quality**.   
+Go to *Edit/Project Settings/Player* for changing the setting.  
+
+![](/faq/lightmap_encoding.jpg)  
 
 ## My website becomes to large / is loading slow (too many MB)
   
