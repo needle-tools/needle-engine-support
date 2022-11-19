@@ -10,9 +10,9 @@ export class MyClass extends Behaviour {
     
     async start() {
       // directly instantiate
-      const myInstance = await myPrefab?.instantiate();
+      const myInstance = await this.myPrefab?.instantiate();
 
       // you can also just load and instantiate later
-      // myPrefab.loadAssetAsync();
+      // this.myPrefab.loadAssetAsync();
     }  
 } 
