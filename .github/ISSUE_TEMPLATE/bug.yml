@@ -16,15 +16,6 @@ body:
     validations:
       required: true
       
-  - type: textarea
-    id: reproduction
-    attributes:
-      label: Reproduction ♻
-      description: Please provide a link for download or a link to a repo that can reproduce the problem you ran into. A [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) is required ([Why?](https://antfu.me/posts/why-reproductions-are-required)). If a report is vague (e.g. just a generic error message) and has no reproduction, it will receive a "need reproduction" label. For quickly collecting all the necessary files in Unity you can use the menu item under ``Needle Engine/Bug Report/Zip Scene`` 
-      placeholder: Reproduction URL or file
-    validations:
-      required: true
-      
   - type: dropdown
     id: OS
     attributes:
@@ -80,7 +71,15 @@ body:
         1. Click the menu item ``Needle Engine/Bug Report/Copy Project Info``
         2. Paste the copied project info in the format below (this will automatically formatted - no need for backticks)
       render: json
-       
+      
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Reproduction ♻
+      description: Please provide a link for download or a link to a repo that can reproduce the problem you ran into. A [minimal reproduction](https://stackoverflow.com/help/minimal-reproducible-example) is favored ([Why?](https://antfu.me/posts/why-reproductions-are-required)). If a report is vague (e.g. just a generic error message) and has no reproduction, it will receive a "need reproduction" label. For quickly collecting the scene files needed for a report you can use the menu item under ``Needle Engine/Bug Report/Zip Scene`` in Unity. Thank you! 
+      placeholder: Reproduction URL or file
+    validations:
+      required: false
      
   - type: checkboxes
     id: checkboxes
