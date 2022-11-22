@@ -153,6 +153,16 @@ Content Overlays are implemented using the optional `dom-overlay` feature which 
 
 Use the `.ar-session-active` class to show/hide specific content while in AR. The [`:xr-overlay` pseudo class](https://www.w3.org/TR/webxr-dom-overlays-1/#css-pseudo-class) shouldn't be used at this point because using it breaks Mozilla's WebXR Viewer. 
 
+```css
+.only-in-ar {
+  display: none;
+}
+
+.ar-session-active .only-in-ar {
+  display:initial;
+}
+```
+
 It's worth noting that the overlay element [will be always displayed fullscreen while in XR](https://www.w3.org/TR/webxr-dom-overlays-1/#ua-style-sheet-defaults), independent of styling that has been applied. If you want to align items differently, you should make a container _inside_ the `class="ar"` element.  
 
 <sample src="https://engine.needle.tools/samples/ar-overlay/"/>
