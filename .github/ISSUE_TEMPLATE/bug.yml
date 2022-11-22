@@ -12,7 +12,7 @@ body:
     attributes:
       label: Describe the bug 💬
       description: A clear and concise description of what the bug is. Thanks!
-      placeholder: I am doing ... What I expect is ... What actually happening is ...
+      placeholder: I am doing ... What I expect is ... What's actually happening is ...
     validations:
       required: true
       
@@ -107,7 +107,7 @@ body:
           required: true
         - label: Check that there isn't [already an issue](https://github.com/needle-tools/needle-engine-support/issues) that reports the same bug to avoid creating a duplicate.
           required: true
-        - label: Make sure this is a Vite issue and not a Needle-Engine-specific issue. For example, if it's a Unity related bug, it should likely be reported to [Unity](https://unity3d.com/unity/qa/bug-reporting) instead.
+        - label: Make sure this is a Needle-Engine-specific issue. For example if it's a Unity related bug, it should be reported to [Unity](https://unity3d.com/unity/qa/bug-reporting) instead.
           required: true
         - label: Check that this is a concrete bug. For Q&A open a [GitHub Discussion](https://github.com/needle-tools/needle-engine-support/discussions) or join our [Discord Chat Server](https://discord.needle.tools).
           required: true
