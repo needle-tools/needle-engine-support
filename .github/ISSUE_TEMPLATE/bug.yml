@@ -77,10 +77,8 @@ body:
       label: Project Info (Unity only)
       description: |
         Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
-
         1. Click the menu item ``Needle Engine/Bug Report/Copy Project Info``
         2. Paste the copied project info in the format below (this will automatically formatted - no need for backticks)
-        ````
       render: json
        
      
