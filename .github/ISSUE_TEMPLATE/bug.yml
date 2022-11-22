@@ -72,7 +72,7 @@ body:
       required: true
       
   - type: textarea
-    id: project info
+    id: project-info
     attributes:
       label: Project Info (Unity only)
       description: |
