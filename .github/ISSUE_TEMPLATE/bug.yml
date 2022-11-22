@@ -1,8 +1,6 @@
 name: 🐞 Bug Report
 description: File a bug report
 labels: ["untriaged"]
-assignees:
-  - octocat
 body:
   - type: markdown
     attributes:
@@ -18,7 +16,7 @@ body:
     validations:
       required: true
       
-  - type: input
+  - type: textarea
     id: reproduction
     attributes:
       label: Reproduction
