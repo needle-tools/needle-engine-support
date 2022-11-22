@@ -151,20 +151,7 @@ This is controlled via HTML element classes. For example, to make content appear
 
 Content Overlays are implemented using the optional `dom-overlay` feature which is usually supported on screen-based AR devices (phones, tablets).  
 
-While in XR, the [`:xr-overlay` pseudo class](https://www.w3.org/TR/webxr-dom-overlays-1/#css-pseudo-class) can be used to style content:  
-```css
-.only-in-ar {
-  display: none;
-}
-
-:xr-overlay .only-in-ar, /* for modern browsers */
-.ar-session-active .only-in-ar /* for WebXR Viewer */
-{
-  display:initial;
-}
-```
-
-> **Note**: Mozilla WebXR Viewer does not support the `:xr-overlay` pseudoclass for styling. Alternatively, you can use the built-in `.ar-session-active` class for the same purpose.  
+Use the `.ar-session-active` class to show/hide specific content while in AR. The [`:xr-overlay` pseudo class](https://www.w3.org/TR/webxr-dom-overlays-1/#css-pseudo-class) shouldn't be used at this point because using it breaks Mozilla's WebXR Viewer. 
 
 It's worth noting that the overlay element [will be always displayed fullscreen while in XR](https://www.w3.org/TR/webxr-dom-overlays-1/#ua-style-sheet-defaults), independent of styling that has been applied. If you want to align items differently, you should make a container _inside_ the `class="ar"` element.  
 
