@@ -70,6 +70,26 @@ body:
       placeholder: Create a new minimal template, add _this_ script and start the server
     validations:
       required: true
+      
+  - type: textarea
+    id: project info
+    attributes:
+      label: Project Info (Unity only)
+      description: |
+        Optional if provided reproduction. Please try not to insert an image but copy paste the log text.
+
+        1. Click the menu item ``Needle Engine/Bug Report/Copy Project Info``
+        2. Paste the copied project info in the format below
+
+        ````
+        <details>
+        <summary>Click to expand!</summary>
+
+        ```json
+        // paste the log text here
+        ```
+        </details>
+        ````
      
   - type: checkboxes
     id: checkboxes
