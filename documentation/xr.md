@@ -7,13 +7,15 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 
 | Tested VR Device | Browser | Notes |
 | -- | -- | -- |
-| Meta Quest 1 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup> |
-| Meta Quest 2 | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup>, passthrough |
-| Meta Quest Pro | ✔️ Oculus Browser | support for sessiongranted<sup>1</sup>, passthrough |
-| Pico Neo 3 | ✔️ Pico Browser | no hand tracking support, inverted controller thumbsticks |
+| Meta Quest 1 | ✔️ Oculus Browser | hand tracking, support for sessiongranted<sup>1</sup> |
+| Meta Quest 2 | ✔️ Oculus Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough (black and white) |
+| Meta Quest Pro | ✔️ Oculus Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough |
+| Pico Neo 3 | ✔️ Pico Browser | no hand tracking, inverted controller thumbsticks |
+| Pico Neo 4 | ✔️ Pico Browser | passthrough, hand tracking<sup>2</sup> |
 | Oculus Rift 1/2 | ✔️ Chrome |  |
-| Hololens 2 | ✔️ Edge | in VR mode, background is rendered as well |
-| Quest 1/2 via Oculus Link | ✔️ Chrome | known issues with repeated refresh of a WebXR session |
+| Hololens 2 | ✔️ Edge | hand tracking, support for AR and VR (in VR mode, background is rendered as well) |
+| Quest 1/2 via Oculus Link | ✔️ Chrome | no hand tracking, known issues with repeated refresh of a WebXR session in Chrome |
+| Looking Glass Portrait | ✔️ Chrome | requires shim, see samples | 
 
 | Tested AR Device | Browser | Notes |
 | -- | -- | -- |
@@ -24,7 +26,13 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | Hololens 2 | ✔️ Edge | |
 | Hololens 1 | ❌ | no WebXR support |
 
-<sup>1</sup>: Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`
+| Not Tested but Should Work™️ | Browser | Notes |
+| -- | -- | -- |
+| Magic Leap 1 | | please let us know if you tried! |
+| Magic Leap 2 | | please let us know if you tried! |
+
+<sup>1</sup>: Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`   
+<sup>2</sup>: Requires enabling a toggle in the Developer settings    
 
 ## Adding VR and AR capabilities to a scene
 
