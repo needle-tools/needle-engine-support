@@ -68,6 +68,8 @@ body:
       label: Steps to reproduce
       description: Please provide any reproduction steps that may need to be described. E.g. if it happens only when running the dev or build script make sure it's clear which one to use.
       placeholder: Create a new minimal template, add _this_ script and start the server
+    validations:
+      required: true
      
   - type: checkboxes
     id: checkboxes
