@@ -21,7 +21,7 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | -- | -- | -- |
 | Android 10+ | ✔️ Chrome | |
 | Android 10+ | ✔️ Firefox | |
-| iOS 15+ | ✔️ WebXR Viewer | some nonstandard behaviours but works |
+| iOS 15+ | ✔️ WebXR Viewer | does not fully implement standards, but supported |
 | iOS 15+ | ❌ Safari | can fall back to interactive USDZ files or [other approaches](#limitations-for-webxr-on-ios) |
 | Hololens 2 | ✔️ Edge | |
 | Hololens 1 | ❌ | no WebXR support |
