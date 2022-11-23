@@ -20,11 +20,14 @@ body:
     id: OS
     attributes:
       label: Operating System 👩‍💻
-      description: Which operating system are you using?
+      description: Which operating system are you using? (Please select both your desktop system and a mobile device if the bug happens on a specific device)
+      multiple: true
       options:
         - Windows
         - macOS
         - Linux
+        - iOS (mobile)
+        - Android (mobile)
     validations:
       required: true
       
