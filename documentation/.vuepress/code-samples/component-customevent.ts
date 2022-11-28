@@ -7,7 +7,7 @@ export class CustomEventCaller extends Behaviour {
     // The next line is not just a comment, it defines 
     // a specific type for the component generator to use.
 
-    //@type(UnityEngine.Events.UnityEvent<string, UnityEngine.GameObject>)
+    //@type UnityEngine.Events.UnityEvent<string, UnityEngine.GameObject>
     @serializeable(EventList)
     myEvent: EventList;
 
