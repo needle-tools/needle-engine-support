@@ -1,4 +1,3 @@
-
 import { Behaviour, serializable, AssetReference } from "@needle-tools/engine";
 
 export class MyClass extends Behaviour {

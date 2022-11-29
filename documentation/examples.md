@@ -1,4 +1,3 @@
-
 # Example Projects ✨
 
 Explore some real world applications, websites and demos made with Needle Engine.

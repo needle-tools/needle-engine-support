@@ -5,7 +5,7 @@ sidebar: false
 editLink: false
 ---
 
-### Live demo
+### Live
 
 <sample src="https://needle.tools" />
 

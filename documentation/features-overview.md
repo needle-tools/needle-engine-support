@@ -1,14 +1,5 @@
 # Feature Overview
 
-[Fast Iteration](./features-overview.md#fast-iteration) • 
-[Shaders and Materials](./features-overview.md#shaders-and-materials) • 
-[VR and AR](./features-overview.md#crossplatform-vr-ar-mobile-desktop-) • 
-[Lightmaps](./features-overview.md#lightmaps) • 
-[Multiplayer and Networking](./features-overview.md#multiplayer-and-networking) • 
-[Animations and Sequencing](./features-overview.md#animations-and-sequencing) • 
-[Physics](./features-overview.md#physics) • 
-[Scripting](./features-overview.md#scripting)
-
 ## Fast Iteration ⚡
 Needle Engine together with Needle Exporter for Unity provide a flexible integration into a world-class 3D editor. You can keep using your workflows and we take care of bringing your content to the web in seconds. We embrace modern web technologies, so [all your code is written in TypeScript and JavaScript](./scripting.md). This allows for almost instant reloads. Paired with a powerful editor and asset management you get the best of both worlds!  
 
