@@ -24,6 +24,7 @@ Use ``?help`` to get a list of ALL parameters available.
 Here are some of the most commonly used:
 
 - ``help`` print all available url parameter in the console
+- ``console`` opens an on-screen dev console, useful for mobile debugging
 - ``printGltf`` logs loaded gltf files to the console
 - ``debug`` shows transform gizmos (if any)
 - ``debugavatar=<avatarid>`` instantiates one debug avatar in center of world
@@ -31,7 +32,7 @@ Here are some of the most commonly used:
 - ``gizmos`` enables gizmo rendering (e.g. when using BoxCollider or AxesHelper components)
 - and a lot more: please use ``help`` to see them all
 
-## 🧐 Local Testing of release builds
+## 🍃 Local Testing of release builds
 - First, install http-server: `npm install -g http-server`
 - make a build (development or production)
 - open the *dist* directory with a commandline tool
@@ -40,17 +41,26 @@ Here are some of the most commonly used:
 
 ## 📱 Mobile 
 
-### Android Debug
-For **Android**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
+### Android Debugging
+
+For **Android** debugging, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
 
 See the official chrome documentation [here](https://developer.chrome.com/docs/devtools/remote-debugging/)
-- [Activate Developer Mode](https://developer.android.com/studio/debug/dev-options)
+- Make sure [Developer Mode](https://developer.android.com/studio/debug/dev-options) is enabled on your phone 
 - Connect your phone to your computer via USB
 - Open this url in your browser ``chrome://inspect/#devices``
 - On your mobile device allow the USB connection to your computer
 - On your computer in chrome you should see a list of open tabs after a while (on ``chrome://inspect/#devices``)
 - Click ``Inspect`` on the tab you want to debug
 
-### Quest Debug
-For **Quest**, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
+### iOS Debugging
 
+For easy iOS debugging add the ``?console`` URL parameter to get a useful on-screen JavaScript console.  
+
+If you have a Mac, you can also attach to Safari (similar to the Android workflow above).   
+
+WebXR usage and debugging on iOS requires using a third-party browser: [Mozilla WebXR Viewer](https://labs.mozilla.org/projects/webxr-viewer/).
+
+### Quest Debugging
+
+Quest is just an Android device - see the [Android Debugging](#android-debugging) section for steps.  
