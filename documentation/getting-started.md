@@ -6,89 +6,39 @@ next: deployment.md
 
 # Getting started 🎈
 
-These steps will get you started with Needle Engine and Exporter for Unity. After following them, you'll have a fully functional project. From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
+These steps will get you started with **Needle Engine for Unity**.  
+After following them, you'll have a fully functional project.  
+From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
 You can either watch our Getting Started video or continue reading below 😊  
-<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" />
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limitHeight=false />
 
+## Quick Start ⚡ — Package Installer
 
-## Prerequisites 💿
+1. **Make sure node.js and Unity are installed - <a href="#prerequisites-💿">see details</a>**  
 
-Below each tool, you find quick links to download the latest version at the time of writing.  
-
-### Install these tools for development
-
-  [**Node.js** (14.x or 16.x)](https://nodejs.org/en/) – for running a local development server (required)   
-  [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
-  
-  <!--
-  [**git**](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
-  [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
-   -->
-  
-  [**VS Code**](https://code.visualstudio.com/) – for code editing (recommended)  
-  [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) • [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)  
-  
-  [**Unity** 2020.3.16+, 2021.3+ or 2022.2+](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
-  _Universal Render Pipeline or Built-In Render Pipeline_  
-  _Linear Colorspace_
-  
-### Install these tools for production builds
-
-  [**toktx** 4.1](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
-  [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) • [Other](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)    
- 
-After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
-
-<!--
-## Option 1: Quick Start — Starter Project ⚡
-1. **Download or Clone this repository**  
-   It's set up with the right packages and settings to get you started right away.  
-
-   _Clone with HTTPS:_ ``https://github.com/needle-tools/needle-engine-support.git``  
-   _OR clone with SSH:_ ``git@github.com:needle-tools/needle-engine-support.git``  
-   _OR download directly:_ <a href="https://github.com/needle-tools/needle-engine-support/archive/refs/heads/main.zip" target="_blank">Download Repository</a>
-   
-  
-2. **Open the starter project**  
-  Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
-  This is a sandbox builder project! It already comes with multi-player capabilities, and works across mobile, desktop, VR and AR.  
-
-3. **Press Play**  
-  Make sure the scene CollaborativeSandbox is open, and press Play! This will automatically do some setup steps and start a local server.  
-  Once the setup is complete, a browser window will open, and your project is live.  
-  From now on, all changes you do in Unity will be immediately visible in your browser.  
-
-    > **Note**: Your browser might warn you about an untrusted SSL connection. Don't worry, the connection is still encrypted – please click "Advance" if your browser asks you to verify that you're sure you want to visit your server.  
-
-4. **Make it your own**  
-  Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
-  You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
--->
-
-## Option 1: Quick Start ⚡ — Package Installer
-
-1. **Create a new Unity project**  
+2. **Create a new Unity project**  
   Open Unity Hub and create a new project. 2021.3 recommended!  
   Make sure to switch it to Linear color space in `Project Settings > Player`.
   
-3. **Download our installer**  
-  [Click here to download our installer](https://engine.needle.tools/downloads/unity) • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
-  Our installer is just a `.unitypackage` that will set everything up for you.  
-  
-2. **Install by dropping into Unity**   
-   Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
-   This will set up the Needle Engine, Needle Exporter and UnityGLTF packages.  
+1. **Download our installer**  
+    <download-button href="https://engine.needle.tools/downloads/unity">Download Needle Engine for Unity</download-button>  • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
 
-4. **Wait for the installation to finish**  
+    Our installer is a `.unitypackage` that will set everything up for you.  
+  
+1. **Install by dropping into Unity**   
+   Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
+   This will set up Needle Engine and Needle Exporter for Unity.  
+
+2. **Wait for the installation to finish**  
    You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
      > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
 
-5. **Create a new scene from a template**  
+3. **Create a new scene from a template**  
    Select _File > New Scene_ and choose from one of the Needle templates.  
    We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer, and adding assets.  
 
-5. **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
+4. **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
    Learn how to iterate, test, build and publish your projects.  
 
 ## Option 2: Start from Scratch 🐢 — Manual Setup 
@@ -147,16 +97,16 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 
 4. **Continue [here](#generate-a-web-project-and-add-content)**.
 
-## Generate a Web Project and add content
+## Generate a web project and add content
 
 Needle Engine is a web-based runtime, and so there's always two projects: your Unity project and a web project that contains regular HTML and CSS. Needle Exporter brings these together into a fast, iterative workflow.  
-Usually, one Unity Scene with ExportInfo matches to one web project, so we're going to generate one now.  
+Usually, one Unity Scene with `ExportInfo` has one web project, so we're going to generate one now.  
 
 1. **Generate your web project**   
   On the `ExportInfo` component, click ``Generate Project``.   
   Wait a moment for the installation to finish — you can see a progress indicator in the bottom right corner of the editor.  
 
-2. **View your project in a browser**
+1. **View your project in a browser**
   After a few seconds of installation, your project should automatically run and a new browser window opens. 
   
     > **Note**: You might see a warning in your browser about SSL Security depending on your local configuration.  
@@ -189,6 +139,63 @@ Usually, one Unity Scene with ExportInfo matches to one web project, so we're go
   
 > **No cube on your website?**   
   Make sure it's a child of your GltfObject root.  
+
+------------
+
+
+## Prerequisites 💿
+
+Below each tool, you find quick links to download the latest version at the time of writing.  
+
+### Install these tools for development
+
+  [**Node.js** (14.x or 16.x)](https://nodejs.org/en/) – for running a local development server (required)   
+  [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
+  
+  <!--
+  [**git**](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
+  [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
+   -->
+  
+  [**VS Code**](https://code.visualstudio.com/) – for code editing (recommended)  
+  [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) • [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)  
+  
+  [**Unity** 2020.3.16+, 2021.3+ or 2022.2+](https://unity3d.com/get-unity/download) – for setting up your scene and components  (required)  
+  _Universal Render Pipeline or Built-In Render Pipeline_  
+  _Linear Colorspace_
+  
+### Install these tools for production builds
+
+  [**toktx** 4.1](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3) – for texture compression (recommended)   
+  [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) • [Other](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)    
+ 
+After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
+
+<!--
+## Option 1: Quick Start — Starter Project ⚡
+1. **Download or Clone this repository**  
+   It's set up with the right packages and settings to get you started right away.  
+
+   _Clone with HTTPS:_ ``https://github.com/needle-tools/needle-engine-support.git``  
+   _OR clone with SSH:_ ``git@github.com:needle-tools/needle-engine-support.git``  
+   _OR download directly:_ <a href="https://github.com/needle-tools/needle-engine-support/archive/refs/heads/main.zip" target="_blank">Download Repository</a>
+   
+  
+2. **Open the starter project**  
+  Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
+  This is a sandbox builder project! It already comes with multi-player capabilities, and works across mobile, desktop, VR and AR.  
+
+3. **Press Play**  
+  Make sure the scene CollaborativeSandbox is open, and press Play! This will automatically do some setup steps and start a local server.  
+  Once the setup is complete, a browser window will open, and your project is live.  
+  From now on, all changes you do in Unity will be immediately visible in your browser.  
+
+    > **Note**: Your browser might warn you about an untrusted SSL connection. Don't worry, the connection is still encrypted – please click "Advance" if your browser asks you to verify that you're sure you want to visit your server.  
+
+4. **Make it your own**  
+  Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
+  You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
+-->
 
 ------------
 

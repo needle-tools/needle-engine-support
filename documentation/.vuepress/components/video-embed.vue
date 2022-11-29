@@ -22,6 +22,11 @@ video,
   margin: .75em 0;
 }
 
+.limit-height {
+  height: 400px;
+  max-height:400px;
+}
+
 #ytplayer {
   aspect-ratio: 16/9;
   border-radius: 1em;
