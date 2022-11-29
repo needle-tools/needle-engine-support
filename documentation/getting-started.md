@@ -11,9 +11,9 @@ After following them, you'll have a fully functional project.
 From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
 You can either watch our Getting Started video or continue reading below 😊  
-<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limitHeight=false />
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 
-## Quick Start ⚡ — Package Installer
+## Quick Start ⚡
 
 1. **Make sure node.js and Unity are installed - <a href="#prerequisites-💿">see details</a>**  
 
@@ -22,7 +22,7 @@ You can either watch our Getting Started video or continue reading below 😊
   Make sure to switch it to Linear color space in `Project Settings > Player`.
   
 1. **Download our installer**  
-    <download-button href="https://engine.needle.tools/downloads/unity">Download Needle Engine for Unity</download-button>  • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
+    <needle-button href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button>  • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
 
     Our installer is a `.unitypackage` that will set everything up for you.  
   
@@ -65,7 +65,9 @@ Open the [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) vi
 In the dropdown in top left corner of the window select ``My Registries``.  
 Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
 
-    > **Note**: You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
+::: tip Note
+You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
+:::
 
 ### Create a new scene from a Scene Template
 
@@ -90,7 +92,9 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
   In this component you create and quickly access your exported runtime project.  
   It also warns you if any of our packages and modules are outdated or not locally installed in your web project.  
 
-     > By default, the project name matches the name of your scene. If you want to change that, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
+::: tip Note
+By default, the project name matches the name of your scene. If you want to change that, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
+:::
  
 3. **Choose a web project template**  
   Now, select a web project template for your project. The default template is based on [Vite](https://vitejs.dev/), a fast web app bundler.  
@@ -109,11 +113,15 @@ Usually, one Unity Scene with `ExportInfo` has one web project, so we're going t
 1. **View your project in a browser**
   After a few seconds of installation, your project should automatically run and a new browser window opens. 
   
-    > **Note**: You might see a warning in your browser about SSL Security depending on your local configuration.  
-    This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.  
-    If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see your scene in the browser!  
-    
-    > **Note**: Keep an eye for console warnings! We log useful details about recommended project settings and so on. For example, your project should be set to Linear color space (not Gamma), and we'll log an error if that's not the case.  
+::: tip Note
+You might see a warning in your browser about SSL Security depending on your local configuration.  
+This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.  
+If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see your scene in the browser!  
+:::
+
+::: tip Note    
+Keep an eye for console warnings! We log useful details about recommended project settings and so on. For example, your project should be set to Linear color space (not Gamma), and we'll log an error if that's not the case.  
+:::
 
 ⭐ **Congratulations!**  You just started your first project using Needle Engine! We're excited what you'll build.  
 
@@ -132,13 +140,18 @@ Usually, one Unity Scene with `ExportInfo` has one web project, so we're going t
     1. Press play or save your scene
     1. Your browser should refresh and you can now move the camera around.
 
-> **The local server does not start / no website in your browser?**  
+::: tip Note    
+**The local server does not start / no website in your browser?**  
   Make sure you read and followed the [Prerequisites](#prerequisites-).  
   Also check the console and `ExportInfo` component for warnings or errors.   
   And last but not least, press `Play` to start the local server.  
+:::
   
-> **No cube on your website?**   
+
+::: tip Note    
+**No cube on your website?**   
   Make sure it's a child of your GltfObject root.  
+:::
 
 ------------
 

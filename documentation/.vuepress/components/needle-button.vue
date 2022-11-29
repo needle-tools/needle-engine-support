@@ -14,7 +14,7 @@ export default {
 <style scoped>
 button {
     border: none;
-    border-radius: 2em;
+    border-radius: 10em;
     text-shadow: none;
     padding: 1em 2em;
     background-color: v-bind('secondary ? "#aaa" : "#826bed"');
@@ -22,6 +22,7 @@ button {
     margin: .2em;
     cursor: pointer;
     margin-left:-0.3em;
+    color: white;
 }
 
 button:hover {
@@ -31,7 +32,6 @@ button:hover {
 }
 
 a {
-    color: white;
     text-shadow: none !important;
 }
 </style>
