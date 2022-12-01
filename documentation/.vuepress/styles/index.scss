@@ -44,3 +44,43 @@ img {
   padding: .2em .2em .5em 2.4em !important;
   max-width: 80%;
 }
+
+
+
+
+// LICENSE styles
+.license {
+  padding-bottom: .5em;
+}
+
+.license details {
+  position: relative;
+  margin-left: 5px;
+  user-select: none;
+}
+
+.license details[open] {
+  // font-weight: bold;
+}
+
+.license details[open] summary {
+  margin-bottom: 1em;
+}
+
+.license summary{
+  // display: block;
+  position: relative;
+}
+.license summary:hover {
+cursor: pointer;
+}
+
+.license .license-content code {
+  color: var(--c-text-color);
+}
+
+.license .license-content {
+  font-weight: initial;
+  font-size: .8em;
+  user-select: text;
+}
