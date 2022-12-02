@@ -1,8 +1,8 @@
-## Dependencies
+## Runtime Licenses
 
 
 <div class="license">
-<h3>@dimforge/rapier3d-compat</h3>
+<h3>@dimforge/rapier3d-compat 0.9.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -215,7 +215,7 @@
 
 
 <div class="license">
-<h3>flatbuffers</h3>
+<h3>flatbuffers 2.0.4</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -429,12 +429,12 @@
 
 
 <div class="license">
-<h3>md5</h3>
+<h3>md5 2.3.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
-Copyright ┬® 2011-2012, Paul Vorbach.
-Copyright ┬® 2009, Jeff Mott.
+Copyright © 2011-2012, Paul Vorbach.
+Copyright © 2009, Jeff Mott.
 
 All rights reserved.
 
@@ -468,7 +468,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 <div class="license">
-<h3>peerjs</h3>
+<h3>peerjs 1.3.2</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -502,7 +502,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 <div class="license">
-<h3>simplex-noise</h3>
+<h3>simplex-noise 4.0.1</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -535,7 +535,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>stats.js</h3>
+<h3>stats.js 0.17.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -568,13 +568,13 @@ THE SOFTWARE.
 
 
 <div class="license">
-<h3>three</h3>
+<h3>three 0.146.1</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
 The MIT License
 
-Copyright ┬® 2010-2022 three.js authors
+Copyright © 2010-2022 three.js authors
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -601,7 +601,7 @@ THE SOFTWARE.
 
 
 <div class="license">
-<h3>three-mesh-ui</h3>
+<h3>three-mesh-ui 6.5.2</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -634,7 +634,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>three.meshline</h3>
+<h3>three.meshline 1.4.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -667,7 +667,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>three.quarks</h3>
+<h3>three.quarks 0.7.3</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -700,7 +700,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>uuid</h3>
+<h3>uuid 9.0.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -721,7 +721,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 <div class="license">
-<h3>websocket-ts</h3>
+<h3>websocket-ts 1.1.1</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -752,11 +752,11 @@ SOFTWARE.
 </div>
         
 
-## Dev Dependencies
+## Development Licenses
 
 
 <div class="license">
-<h3>@babel/runtime</h3>
+<h3>@babel/runtime 7.20.6</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -790,7 +790,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 <div class="license">
-<h3>@luncheon/esbuild-plugin-gzip</h3>
+<h3>@luncheon/esbuild-plugin-gzip 0.1.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -816,7 +816,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 <div class="license">
-<h3>@types/three</h3>
+<h3>@types/three 0.146.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -849,7 +849,7 @@ WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 <div class="license">
-<h3>copy-files-from-to</h3>
+<h3>copy-files-from-to 3.6.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -882,7 +882,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>esbuild</h3>
+<h3>esbuild 0.15.16</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -915,11 +915,11 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>jsdoc-babel</h3>
+<h3>jsdoc-babel 0.5.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
-Copyright (c) 2015 - 2018 Christian Mu├▒oz
+Copyright (c) 2015 - 2018 Christian Muñoz
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
@@ -946,7 +946,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>jsdoc-to-markdown</h3>
+<h3>jsdoc-to-markdown 7.1.1</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -979,7 +979,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>madge</h3>
+<h3>madge 5.0.1</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -1012,7 +1012,7 @@ SOFTWARE.
 
 
 <div class="license">
-<h3>msdf-bmfont-xml</h3>
+<h3>msdf-bmfont-xml 2.7.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -1044,7 +1044,7 @@ OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 <div class="license">
-<h3>npm-watch</h3>
+<h3>npm-watch 0.11.0</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
@@ -1075,7 +1075,7 @@ THE SOFTWARE.
 
 
 <div class="license">
-<h3>typescript</h3>
+<h3>typescript 4.9.3</h3>
 <details>
 <summary>License</summary>
 <div class="license-content">
