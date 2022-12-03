@@ -7,6 +7,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 
+import { needleEngineTheme } from './theme'
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
@@ -54,7 +55,7 @@ export default defineUserConfig({
                 str.replace(/^@code/, path.resolve(__dirname, 'code-samples')),
         },
     },
-    theme: defaultTheme({
+    theme: needleEngineTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
         docsRepo: "needle-tools/needle-engine-support",
         docsBranch: "main",
