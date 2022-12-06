@@ -148,4 +148,6 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 
 ## Still have questions? 😱
-[Ask in our friendly discord community](https://discord.needle.tools)
+[Ask in our friendly discord community](https://discord.needle.tools) 
+
+<a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>

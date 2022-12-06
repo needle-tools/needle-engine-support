@@ -40,4 +40,10 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
 <p></p> 
 <actiongroup>
 <github-star/>
+<!-- <a href="https://github.com/needle-tools/needle-engine-support" target="_blank"><img height=20 src="https://img.shields.io/github/stars/needle-tools/needle-engine-support?style=social" /></a> -->
+</actiongroup>
+
+<p></p> 
+<actiongroup>
+<a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
 </actiongroup>
