@@ -6,3 +6,5 @@
 Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
 
 Visit the docs at [engine.needle.tools/docs](https://engine.needle.tools/docs)
+
+<a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
