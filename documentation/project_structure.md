@@ -35,7 +35,7 @@ Each NpmDef contains a npm package (written in TypeScript) and is linked to a ma
 ![image](https://user-images.githubusercontent.com/5083203/185805355-0618aa93-a9ca-463a-86b8-e735e8772bda.png)
 
 #### Creating and installing a npmdef
-To greate a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
+To create a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
 You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
