@@ -247,7 +247,7 @@ export class MyScript extends Behaviour
 ## Accessing components from external JavaScript
 It is possible to access all the functionality described above using regular JavaScript code that is not inside components and lives somewhere else. All the components and functionality of the needle runtime is accessible via the global ``Needle`` namespace (you can write ``console.log(Needle)`` to get an overview)
 
-For that just find the ``<needle-engine>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``await document.queryElement("needle-engine")?.getContext()``.   
+For that just find the ``<needle-engine>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``await document.querySelector("needle-engine")?.getContext()``.   
 
 You can find components using ``Needle.findObjectOfType(Needle.AudioSource)`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive. See the list for [finding adding and removing components](#finding-adding-and-removing-components) above.  
 
