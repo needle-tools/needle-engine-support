@@ -2,77 +2,71 @@ import fs from 'fs';
 import path from 'path'
 import spawn from 'cross-spawn'
 
+let samplesJson = {};
+let samplesJsonPath = "";
+
 module.exports = (args, ctx) => {
-    // console.log(args.pluginApi);
+
+    const options = args.options;
+    const outputDirectory = options.source + '/.vuepress/public/meta';
+    if (!fs.existsSync(outputDirectory))
+        fs.mkdirSync(outputDirectory);
+    samplesJsonPath = outputDirectory + '/samples.json';
+    samplesJson = {};
+    writeSamplesJson();
+
     return {
         name: 'generate-samples-meta',
-        extendsPage : ($page) => {
-            const data = $page.data;
-            if(data.path.includes("api/")) return;
-            if(!data.path.includes("_meta-test")) return;
-            
-            // console.log("EXTEND", $page);
-            // $page.content = "";
-        },
-        // chainMarkdown: (config) => {
-        //     config.use(myPlugin);
+        // extendsPage : ($page) => {
+        //     const data = $page.data;
+        //     if(data.path.includes("api/")) return;
+        //     if(!data.path.includes("_meta-test")) return;
         // },
         extendsMarkdown: (md) => {
-            // md.set({ breaks: true })
             md.use(sampleMetaParser)
-            // console.log("\nEXTEND MARKDOWN");
-            // console.dir(md);
-            // const render = md.render;
-            // console.log("RULES", md.renderer.rules);
-            
-            // const defaultLinkOpen = md.renderer.rules.link_open;
-            // md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
-                
-            //     const aIndex = tokens[idx].attrIndex('target');
-            //     return "";
-
-            // };
-            // let ran = false;
-            // md.render = (...args) => {
-            //     if(!ran){
-            //         ran = true;
-            //         console.log("RENDER", args)
-
-            //     }
-            //   // original content
-            //   args[0] = 'original content';
-            //   const html = render.call(md, ...args);
-            //   return 'new content';
-            // };
+        },
+        generated() {
+            console.log("GENERATED");
+        },
+        chainWebpack(config, isServer) {
+            console.log("CHAIN WEBPACK");
         }
     }
 }
-    
+
 
 
 // import md from 'markdown-it';
 
 const sampleMetaParser = (md, options) => {
-    // console.log("\n-------- Use my plugin;")
-    // console.log(md.renderer);
-    // const defaultLinkOpen = md.renderer.rules.link_open;
-    // md.renderer.rules.fence = function (tokens, idx, options, env, self) 
-    // {
-    //     return "tes32131t";
-    // }
-
     const link_open = md.renderer.rules.link_open;
     let logged = false;
-    md.renderer.rules.link_open = function(tokens, idx, options, env, self) {
-        for(const tok of tokens){
-            if(tok.content?.includes("$sample")){
-
-                const aIndex = tokens[idx];
-                if(!logged){
+    md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
+        const currentToken = tokens[idx];
+        for (const tok of tokens) {
+            const sampleInfos = parseSampleInfos(tok.content);
+            if (sampleInfos !== null) {
+                const anchor = removeSampleInfoFromHref(tokens);
+                tok.content = sampleInfos.display + " 🌵";
+                // const aIndex = tokens[idx];
+                if (!logged) {
                     logged = true;
-                    console.log("LINK OPEN", tokens[idx], tokens);
+                    console.log(sampleInfos);
                 }
-                tok.content = "my_test_header";
+                // console.log(env);
+                const page = env.filePathRelative.replace(/.md$/, "");
+                const sampleName = sampleInfos.id;
+                if (sampleInfos[sampleName] === undefined) sampleInfos[sampleName] = [];
+                const arr = sampleInfos[sampleName];
+                arr.push({
+                    "page": page,
+                    "anchor": anchor,
+                    "description": sampleInfos.description
+                });
+                samplesJson[sampleName] = arr;
+                writeSamplesJson();
+                console.log(samplesJson);
+
             }
         }
         // tokens[idx].attrs[aIndex][1] = '_blank';
@@ -81,30 +75,51 @@ const sampleMetaParser = (md, options) => {
 }
 
 
-    
-    // const options = args.options;
-    // const outputDirectory = options.source + '/meta';
-    // if (!fs.existsSync(outputDirectory))
-    //     fs.mkdirSync(outputDirectory);
-    // fs.writeFileSync(outputDirectory + '/samples-meta.json', JSON.stringify({}));
+function removeSampleInfoFromHref(tokens) {
+    for (let i = 0; i < tokens.length; i++) {
+        const tok = tokens[i];
+        if (tok.attrs && tok.type === "link_open") {
+            for (const attr of tok.attrs) {
+                if (attr[0] === "href") {
+                    const href = attr[1];
+                    const sampleIndex = href.indexOf("-sample-");
+                    if (sampleIndex > -1) {
+                        attr[1] = href.substring(0, sampleIndex);
+                        return attr[1];
+                    }
+                }
+            }
+        }
+    }
+}
 
-    // // console.log(args.pluginApi);
-    // return {
-    // })
+
+function writeSamplesJson() {
+    fs.writeFileSync(samplesJsonPath, JSON.stringify(samplesJson));
+}
+
+function parseSampleInfos(str) {
+    if (str.includes(" $sample ") === false) return null;
+    const sections = str.split(" $sample ");
+    const display = sections[0];
+    const sampleInfosString = sections[1];
+
+    // https://regex101.com/r/IQZBm6/1
+    const sampleMeta = /(?<id>[ \w]+) ?(\((?<description>.+)\))?/g.exec(sampleInfosString);
+    const id = sampleMeta.groups.id?.trim();
+    const description = sampleMeta.groups.description?.trim();
+
+    return {
+        display: display,
+        id: cleanSampleName(id),
+        description: description
+    }
+}
 
 
-// function defaultTransformer (timestamp, lang, dateOptions) {
-//     return new Date(timestamp).toLocaleString(lang, dateOptions)
-//   }
-  
-//   function getGitLastUpdatedTimeStamp (filePath) {
-//     let lastUpdated
-//     try {
-//       lastUpdated = parseInt(spawn.sync(
-//         'git',
-//         ['log', '-1', '--format=%at', path.basename(filePath)],
-//         { cwd: path.dirname(filePath) }
-//       ).stdout.toString('utf-8')) * 1000
-//     } catch (e) { /* do not handle for now */ }
-//     return lastUpdated
-//   }
+function cleanSampleName(name) {
+    let sampleName = name.trim().replace(/\"/g, "");
+    while (sampleName.endsWith("-")) sampleName = sampleName.substring(0, sampleName.length - 1);
+    while (sampleName.startsWith("-")) sampleName = sampleName.substring(1);
+    return sampleName.toLowerCase();
+}
