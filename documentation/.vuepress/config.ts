@@ -6,7 +6,8 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
-
+//@ts-ignore
+import generateSamplesMeta from "./plugins/generate-samples-meta/index"
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
@@ -34,6 +35,7 @@ export default defineUserConfig({
             componentsDir: path.resolve(__dirname, './components'),
         }),
         // videoplayer
+        generateSamplesMeta
     ],
     head: [
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
