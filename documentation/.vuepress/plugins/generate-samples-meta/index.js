@@ -2,13 +2,16 @@ import fs from 'fs';
 import path from 'path'
 import spawn from 'cross-spawn'
 
+
+const k_sampleInfoSeparator = " $sample ";
 let samplesJson = {};
 let samplesJsonPath = "";
 let baseUrl = null;
 
-module.exports = (args, ctx) => {
+export const generateMetaPlugin = (args, ctx) => {
 
     const options = args.options;
+    // console.log(options.plugins);
     const outputDirectory = options.source + '/.vuepress/public/meta';
     if (!fs.existsSync(outputDirectory))
         fs.mkdirSync(outputDirectory);
@@ -36,6 +39,8 @@ module.exports = (args, ctx) => {
         //     if(data.path.includes("api/")) return;
         //     if(!data.path.includes("_meta-test")) return;
         // },
+        chainMarkdown(config) {
+        },
         extendsMarkdown: (md) => {
             md.use(sampleMetaParser)
         },
@@ -53,21 +58,16 @@ module.exports = (args, ctx) => {
 // import md from 'markdown-it';
 
 const sampleMetaParser = (md, options) => {
-    const link_open = md.renderer.rules.link_open;
     let logged = false;
+    // console.log(md.renderer.rules);
+    const link_open = md.renderer.rules.link_open;
     md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
         const currentToken = tokens[idx];
         for (const tok of tokens) {
             const sampleInfos = parseSampleInfos(tok.content);
             if (sampleInfos !== null) {
                 const anchor = removeSampleInfoFromHref(tokens);
-                tok.content = sampleInfos.display + " 🌵";
-                // const aIndex = tokens[idx];
-                if (!logged) {
-                    logged = true;
-                    console.log(sampleInfos);
-                }
-                // console.log(env);
+                tok.content = sampleInfos.display;
                 const page = env.filePathRelative.replace(/.md$/, "");
                 const sampleName = sampleInfos.id;
                 if (sampleInfos[sampleName] === undefined) sampleInfos[sampleName] = [];
@@ -80,8 +80,10 @@ const sampleMetaParser = (md, options) => {
                 });
                 samplesJson[sampleName] = arr;
                 writeSamplesJson();
-                console.log(samplesJson);
-
+                if(!logged) {
+                    logged = true;
+                    console.log("SAMPLES JSON", samplesJson);
+                }
             }
         }
         // tokens[idx].attrs[aIndex][1] = '_blank';
@@ -97,15 +99,32 @@ function removeSampleInfoFromHref(tokens) {
             for (const attr of tok.attrs) {
                 if (attr[0] === "href") {
                     const href = attr[1];
-                    const sampleIndex = href.indexOf("-sample-");
-                    if (sampleIndex > -1) {
-                        attr[1] = href.substring(0, sampleIndex);
-                        return attr[1];
-                    }
+                    attr[1] = cleanLink(href);
+                    return attr[1];
                 }
             }
         }
     }
+}
+
+export function cleanLink(slug){
+    const sampleIndex = slug.indexOf(" $sample ");
+    if (sampleIndex > -1) {
+        slug = slug.substring(0, sampleIndex);
+        slug = slug.replace(/ /g, "-");
+        slug = slug.toLowerCase()
+        return slug;
+    }
+    return slug;
+}
+
+
+export function cleanHeader(str){
+    const sampleIndex = str.indexOf(" $sample ");
+    if (sampleIndex > -1) {
+        return str.substring(0, sampleIndex);
+    }
+    return str;
 }
 
 
@@ -114,8 +133,8 @@ function writeSamplesJson() {
 }
 
 function parseSampleInfos(str) {
-    if (str.includes(" $sample ") === false) return null;
-    const sections = str.split(" $sample ");
+    if (str.includes(k_sampleInfoSeparator) === false) return null;
+    const sections = str.split(k_sampleInfoSeparator);
     const display = sections[0];
     const sampleInfosString = sections[1];
 

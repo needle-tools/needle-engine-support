@@ -5,9 +5,10 @@ import { searchPlugin } from '@vuepress/plugin-search'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 import { pwaPlugin } from '@vuepress/plugin-pwa'
+
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
-import generateSamplesMeta from "./plugins/generate-samples-meta/index"
+import { generateMetaPlugin, cleanLink, cleanHeader } from "./plugins/generate-samples-meta/index"
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
@@ -35,7 +36,7 @@ export default defineUserConfig({
             componentsDir: path.resolve(__dirname, './components'),
         }),
         // videoplayer
-        generateSamplesMeta
+        generateMetaPlugin
     ],
     head: [
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
@@ -55,6 +56,11 @@ export default defineUserConfig({
             handleImportPath: (str) =>
                 str.replace(/^@code/, path.resolve(__dirname, 'code-samples')),
         },
+        slugify: (str) => cleanLink(str),
+        headers: {
+            // https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers
+            format: (link) => cleanHeader(link),
+        }
     },
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
