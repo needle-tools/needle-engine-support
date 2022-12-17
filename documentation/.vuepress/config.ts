@@ -127,10 +127,6 @@ export default defineUserConfig({
                 children: [
                     "/for-unity-developers",
                     "/component-reference",
-                    {
-                        text: "Api Reference",
-                        link: "/api"
-                    },
                     "/vanilla-js",
                     "/scripting-examples",
                     "/debugging",

@@ -2,6 +2,9 @@ import { execSync } from 'child_process';
 import TypeDoc from 'typedoc';
 import fs from 'fs';
 
+console.log("Generating API documentation is disabled")
+process.exit(0);
+
 // run npm command
 // const cmd = "typedoc --plugin typedoc-plugin-markdown --out documentation/api node_modules/@needle-tools/engine/src/needle-engine.ts";
 // execSync(cmd);
