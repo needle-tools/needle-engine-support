@@ -4,6 +4,7 @@ import spawn from 'cross-spawn'
 
 let samplesJson = {};
 let samplesJsonPath = "";
+let baseUrl = null;
 
 module.exports = (args, ctx) => {
 
@@ -14,6 +15,19 @@ module.exports = (args, ctx) => {
     samplesJsonPath = outputDirectory + '/samples.json';
     samplesJson = {};
     writeSamplesJson();
+
+    options.head || (options.head = []);
+    for(const head of options.head) {
+        if(head[0] === "meta"){
+            const val = head[1];
+            if(val.property?.includes("url")){
+                baseUrl = val.content;
+                // the base url must not end with a slash
+                while(baseUrl.endsWith("/")) baseUrl = baseUrl.substring(0, baseUrl.length - 1);
+                break;
+            }
+        }
+    }
 
     return {
         name: 'generate-samples-meta',
@@ -61,6 +75,7 @@ const sampleMetaParser = (md, options) => {
                 arr.push({
                     "page": page,
                     "anchor": anchor,
+                    "absolute-url": baseUrl + "/" + page + anchor,
                     "description": sampleInfos.description
                 });
                 samplesJson[sampleName] = arr;
