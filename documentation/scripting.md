@@ -263,7 +263,7 @@ function loadingFinished() { console.log("FINISHED!") }
 ```
 
 
-## Automatically generating Unity components from typescript files
+## Automatically generating Unity components from typescript files :tags codegen
 *Automatically generate Unity components for typescript component in your project using [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler)*  
 - If you want to add scripts inside the ``src/scripts`` folder in your project then you need to have a ``Component Generator`` on the GameObject with your ``ExportInfo`` component.
 - Now when adding new components in ``your/threejs/project/src/scripts``it will automatically generate Unity scripts in ``Assets/Needle/Components.codegen`.
@@ -379,7 +379,7 @@ namespace Needle.Typescript.GeneratedComponents
 :::::
 
 
-### Controlling component generation
+### Controlling component generation :tags codegen
 You can use the following typescript attributes to control C# code generation behavior:  
 | Attribute | Result |
 | -- | -- |
@@ -399,7 +399,7 @@ Component C# classes are generated with the [`partial`](https://docs.microsoft.c
 ### Version Control
 While generated C# components use the type name to produce stable GUIDs, we recommend checking in generated components in version control as a good practice.  
 
-## Serialization / Components in glTF files
+## Serialization / Components in glTF files :tags serialization
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
 
 **Example:**

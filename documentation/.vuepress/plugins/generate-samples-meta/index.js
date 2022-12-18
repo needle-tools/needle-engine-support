@@ -143,8 +143,8 @@ export function cleanLink(slug) {
     if (index > -1 && index !== null) {
         // const original = slug;
         slug = slug.substring(0, index);
-        slug = slug.replace(/ /g, "-");
-        slug = slug.toLowerCase();
+        slug = encodeURIComponent(slug);
+        // slug = slug.toLowerCase();
         // console.log(original, slug, index);
         return slug;
     }
