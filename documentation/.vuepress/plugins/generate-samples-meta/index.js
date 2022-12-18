@@ -143,9 +143,11 @@ export function cleanLink(slug) {
     if (index > -1 && index !== null) {
         // const original = slug;
         slug = slug.substring(0, index);
-        slug = encodeURIComponent(slug);
+        // TODO: would be nice to clean all links like this but it would break existing links
+        // slug = slug.replace(/ /g, "-");
         // slug = slug.toLowerCase();
         // console.log(original, slug, index);
+        slug = encodeURIComponent(slug);
         return slug;
     }
     return slug;
