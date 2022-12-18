@@ -3,10 +3,17 @@ import path from 'path'
 import spawn from 'cross-spawn'
 
 
-const k_sampleInfoSeparator = " $sample ";
+const k_sampleInfoSeparator = " :sample ";
+const k_tagSeparator = " :tags ";
+const k_separators = [k_sampleInfoSeparator, k_tagSeparator];
+
+let baseUrl = null;
+
 let samplesJson = {};
 let samplesJsonPath = "";
-let baseUrl = null;
+
+let tagsJson = {};
+let tagsPath = "";
 
 export const generateMetaPlugin = (args, ctx) => {
 
@@ -17,16 +24,20 @@ export const generateMetaPlugin = (args, ctx) => {
         fs.mkdirSync(outputDirectory);
     samplesJsonPath = outputDirectory + '/samples.json';
     samplesJson = {};
-    writeSamplesJson();
+    write(samplesJsonPath, samplesJson);
+
+    tagsPath = outputDirectory + '/tags.json';
+    tagsJson = {};
+    write(tagsPath, tagsJson);
 
     options.head || (options.head = []);
-    for(const head of options.head) {
-        if(head[0] === "meta"){
+    for (const head of options.head) {
+        if (head[0] === "meta") {
             const val = head[1];
-            if(val.property?.includes("url")){
+            if (val.property?.includes("url")) {
                 baseUrl = val.content;
                 // the base url must not end with a slash
-                while(baseUrl.endsWith("/")) baseUrl = baseUrl.substring(0, baseUrl.length - 1);
+                while (baseUrl.endsWith("/")) baseUrl = baseUrl.substring(0, baseUrl.length - 1);
                 break;
             }
         }
@@ -64,25 +75,45 @@ const sampleMetaParser = (md, options) => {
     md.renderer.rules.link_open = function (tokens, idx, options, env, self) {
         const currentToken = tokens[idx];
         for (const tok of tokens) {
-            const sampleInfos = parseSampleInfos(tok.content);
-            if (sampleInfos !== null) {
-                const anchor = removeSampleInfoFromHref(tokens);
-                tok.content = sampleInfos.display;
+            const metaInfo = parseMeta(tok.content);
+            if (metaInfo !== null) {
+                const anchor = cleanAnchors(tokens);
+                tok.content = metaInfo.display;
                 const page = env.filePathRelative.replace(/.md$/, "");
-                const sampleName = sampleInfos.id;
-                if (sampleInfos[sampleName] === undefined) sampleInfos[sampleName] = [];
-                const arr = sampleInfos[sampleName];
-                arr.push({
-                    "page": page,
-                    "anchor": anchor,
-                    "absolute-url": baseUrl + "/" + page + anchor,
-                    "description": sampleInfos.description
-                });
-                samplesJson[sampleName] = arr;
-                writeSamplesJson();
-                if(!logged) {
+
+                const hasSample = metaInfo.samples.length > 0;
+                for (const sample of metaInfo.samples) {
+                    const sampleName = sample.id;
+                    if (sample[sampleName] === undefined) sample[sampleName] = [];
+                    const arr = sample[sampleName];
+                    arr.push({
+                        "name": sampleName,
+                        "page": page,
+                        "anchor": anchor,
+                        "absolute-url": baseUrl + "/" + page + anchor,
+                        "description": sample.description,
+                        tags: metaInfo.tags
+                    });
+                    samplesJson[sampleName] = arr;
+                }
+                if (hasSample)
+                    write(samplesJsonPath, samplesJson);
+
+                for (const tag of metaInfo.tags) {
+                    if (tagsJson[tag] === undefined) tagsJson[tag] = [];
+                    const arr = tagsJson[tag];
+                    arr.push({
+                        "page": page,
+                        "anchor": anchor,
+                        "absolute-url": baseUrl + "/" + page + anchor,
+                    });
+                }
+                write(tagsPath, tagsJson);
+
+                if (!logged) {
                     logged = true;
-                    console.log("SAMPLES JSON", samplesJson);
+                    // console.log("\n> Anchor", anchor, tokens);
+                    // console.log(metaInfo);
                 }
             }
         }
@@ -92,7 +123,7 @@ const sampleMetaParser = (md, options) => {
 }
 
 
-function removeSampleInfoFromHref(tokens) {
+function cleanAnchors(tokens) {
     for (let i = 0; i < tokens.length; i++) {
         const tok = tokens[i];
         if (tok.attrs && tok.type === "link_open") {
@@ -107,49 +138,81 @@ function removeSampleInfoFromHref(tokens) {
     }
 }
 
-export function cleanLink(slug){
-    const sampleIndex = slug.indexOf(" $sample ");
-    if (sampleIndex > -1) {
-        slug = slug.substring(0, sampleIndex);
+export function cleanLink(slug) {
+    const index = getStartIndex(slug);
+    if (index > -1 && index !== null) {
+        // const original = slug;
+        slug = slug.substring(0, index);
         slug = slug.replace(/ /g, "-");
-        slug = slug.toLowerCase()
+        slug = slug.toLowerCase();
+        // console.log(original, slug, index);
         return slug;
     }
     return slug;
 }
 
 
-export function cleanHeader(str){
-    const sampleIndex = str.indexOf(" $sample ");
-    if (sampleIndex > -1) {
-        return str.substring(0, sampleIndex);
+export function cleanHeader(str) {
+    const index = getStartIndex(str);
+    if (index > -1) {
+        return str.substring(0, index);
     }
     return str;
 }
 
-
-function writeSamplesJson() {
-    fs.writeFileSync(samplesJsonPath, JSON.stringify(samplesJson));
+function getStartIndex(str) {
+    const shortestIndexAboveZero = k_separators.map(s => str.indexOf(s)).filter(i => i > -1).sort((a, b) => a - b)[0];
+    if (shortestIndexAboveZero > -1) {
+        return shortestIndexAboveZero;
+    }
+    return -1;
 }
 
-function parseSampleInfos(str) {
-    if (str.includes(k_sampleInfoSeparator) === false) return null;
-    const sections = str.split(k_sampleInfoSeparator);
-    const display = sections[0];
-    const sampleInfosString = sections[1];
+function write(path, obj) {
+    fs.writeFileSync(path, JSON.stringify(obj));
+}
 
-    // https://regex101.com/r/IQZBm6/1
-    const sampleMeta = /(?<id>[ \w]+) ?(\((?<description>.+)\))?/g.exec(sampleInfosString);
-    const id = sampleMeta.groups.id?.trim();
-    const description = sampleMeta.groups.description?.trim();
+function parseMeta(str) {
+    const index = getStartIndex(str);
+    if (index < 0 || index == null) {
+        return null;
+    }
+    const obj = {
+        display: str.substring(0, index),
+        samples: [],
+        tags: []
+    }
 
-    return {
-        display: display,
-        id: cleanSampleName(id),
+    tryParseSampleMeta(str, obj.samples);
+    tryParseTags(str, obj.tags);
+    return obj;
+}
+
+// https://regex101.com/r/ueCSSZ/1
+function tryParseSampleMeta(str, array) {
+    const sampleRegex = /\:sample (?<sample_title>[\w\s\.]+)(\((?<description>.+)\))?/g;
+    const match = sampleRegex.exec(str);
+    if (match === null) return;
+    const title = match.groups.sample_title;
+    const description = match.groups.description?.trim();
+    array.push({
+        id: cleanSampleName(title),
         description: description
+    });
+}
+// https://regex101.com/r/AHWD0H/1
+function tryParseTags(str, array) {
+    const tagsRegex = /\:tags (?<tags>[\,\w\s]+)+/g;
+    const match = tagsRegex.exec(str);
+    if(match === null) return;
+    const tags = match.groups.tags;
+    if (tags) {
+        const tagList = tags.split(",");
+        for (const tag of tagList) {
+            array.push(tag.trim());
+        }
     }
 }
-
 
 function cleanSampleName(name) {
     let sampleName = name.trim().replace(/\"/g, "");
