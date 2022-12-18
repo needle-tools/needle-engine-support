@@ -144,7 +144,7 @@ export default defineUserConfig({
                     {
                         text: "Download and Learn",
                         children: [
-                            "/samples-and-modules",
+                            "https://engine.needle.tools/samples",
                             "/modules",
                         ]
                     },
