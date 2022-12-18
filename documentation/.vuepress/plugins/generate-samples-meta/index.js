@@ -191,20 +191,22 @@ function parseMeta(str) {
 // https://regex101.com/r/ueCSSZ/1
 function tryParseSampleMeta(str, array) {
     const sampleRegex = /\:sample (?<sample_title>[\w\s\.]+)(\((?<description>.+)\))?/g;
-    const match = sampleRegex.exec(str);
-    if (match === null) return;
-    const title = match.groups.sample_title;
-    const description = match.groups.description?.trim();
-    array.push({
-        id: cleanSampleName(title),
-        description: description
-    });
+    const matches = [...str.matchAll(sampleRegex)];
+    if (matches.length === 0) return;
+    for (const match of matches) {
+        const title = match.groups.sample_title;
+        const description = match.groups.description?.trim();
+        array.push({
+            id: cleanSampleName(title),
+            description: description
+        });
+    }
 }
 // https://regex101.com/r/AHWD0H/1
 function tryParseTags(str, array) {
     const tagsRegex = /\:tags (?<tags>[\,\w\s]+)+/g;
     const match = tagsRegex.exec(str);
-    if(match === null) return;
+    if (match === null) return;
     const tags = match.groups.tags;
     if (tags) {
         const tagList = tags.split(",");
