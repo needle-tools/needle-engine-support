@@ -24,7 +24,7 @@ Some have called it the "Missing Link" between artist-friendly workflows and mod
     <action href="testimonials">
     Testimonials 💬
     </action>
-    <action href="samples-and-modules">
+    <action href="https://engine.needle.tools/samples">
     Samples 👀
     </action>
 </actiongroup>
