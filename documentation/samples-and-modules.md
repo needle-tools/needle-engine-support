@@ -5,9 +5,9 @@ title: Samples Projects
 <sample src="https://engine.needle.tools/samples/physics-cannon/" />
 
 ## Samples to download and play
-[This repository](https://github.com/needle-tools/needle-engine-samples) contains code and small project samples to show things such as:  
+View all samples at [engine.needle.tools/samples](https://engine.needle.tools/samples) with a live preview and links for download and installation.
   
-- [Brune Simons 20k](https://engine.needle.tools/samples/buno-simon-20k)  
+<!-- - [Brune Simons 20k](https://engine.needle.tools/samples/buno-simon-20k)  
   *Physics*
 - [Stencil Portals](https://engine.needle.tools/samples/stencil-portals)  
   *URP RenderObject stencil to threejs*
@@ -35,7 +35,7 @@ title: Samples Projects
 
 <sample src="https://engine.needle.tools/samples/stencil-portals/" />
 
-<sample src="https://engine.needle.tools/samples/iframe-content/" />
+<sample src="https://engine.needle.tools/samples/iframe-content/" /> -->
 
 
 <!-- <actiongroup>
