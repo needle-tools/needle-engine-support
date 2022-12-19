@@ -92,6 +92,10 @@ export default defineUserConfig({
                         text: 'Testimonials 💬',
                         link: '/testimonials',
                     },
+                    {
+                        text: "Releases and Changelog",
+                        link: "https://github.com/needle-tools/needle-engine-support/releases"
+                    },
                 ]
             },
             {
@@ -113,17 +117,17 @@ export default defineUserConfig({
                         ]
                     },
                     {
-                        text: "Scripting",
-                        children: [
-                            "/scripting",
-                            "/scripting-examples",
-                        ]
-                    },
-                    {
                         text: "Advanced",
                         children: [
                             "/networking",
                             "/xr",
+                        ]
+                    },
+                    {
+                        text: "Troubleshooting",
+                        children: [
+                            "/debugging",
+                            "/faq",
                         ]
                     },
                 ]
@@ -131,21 +135,22 @@ export default defineUserConfig({
             {
                 text: 'Reference',
                 children: [
-                    "/for-unity-developers",
-                    "/component-reference",
-                    "/vanilla-js",
-                    "/scripting-examples",
-                    "/debugging",
-                    "/faq",
                     {
-                        text: "Releases and Changelog",
-                        link: "https://github.com/needle-tools/needle-engine-support/releases"
+                        text: "Scripting",
+                        children: [
+                            "/scripting",
+                            "/scripting-examples",
+                            "/for-unity-developers",
+                            "/component-reference",
+                            "/vanilla-js",
+                            "/scripting-examples",
+                        ]
                     },
                     {
                         text: "Download and Learn",
                         children: [
                             {
-                                text: "Sample Projects", 
+                                text: "Samples for Download", 
                                 link: "https://engine.needle.tools/samples",
                             },
                             "/modules",
