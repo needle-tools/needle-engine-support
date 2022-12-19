@@ -178,7 +178,7 @@ export default defineUserConfig({
                         children: [
                             {
                                 text: 'AR.js integration',
-                                link: '/https://github.com/FireDragonGameStudio/NeedleAndARjs',
+                                link: 'https://github.com/FireDragonGameStudio/NeedleAndARjs',
                             },
                             {
                                 text: 'Mercedes Benz Techdemo',
