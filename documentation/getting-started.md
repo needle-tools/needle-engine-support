@@ -1,12 +1,30 @@
 ---
 lang: en-US
 title: Getting Started
-next: deployment.md
+sidebar: false
+editLink: false
 ---
 
-# Getting started 🎈
 
-These steps will get you started with **Needle Engine for Unity**.  
+The following guides will guide you through installation and creating your first project
+
+<actiongroup>
+
+  <action href="./guides/unity">
+  Get started with Unity 🎲
+  </action>
+
+  <action href="getting-started" disabled>
+  Get started with Blender 🐵
+  </action>
+
+  <action href="getting-started" disabled>
+  Get started with React Three Fiber
+  </action>
+
+</actiongroup>
+
+<!-- These steps will get you started with **Needle Engine for Unity**.  
 After following them, you'll have a fully functional project.  
 From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
@@ -165,10 +183,6 @@ Below each tool, you find quick links to download the latest version at the time
   [**Node.js** (14.x or 16.x)](https://nodejs.org/en/) – for running a local development server (required)   
   [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
   
-  <!--
-  [**git**](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
-  [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
-   -->
   
   [**VS Code**](https://code.visualstudio.com/) – for code editing (recommended)  
   [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) • [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)  
@@ -184,35 +198,10 @@ Below each tool, you find quick links to download the latest version at the time
  
 After installing the tools above, you might have to restart your machine so that all environment variables are properly updated.  
 
-<!--
-## Option 1: Quick Start — Starter Project ⚡
-1. **Download or Clone this repository**  
-   It's set up with the right packages and settings to get you started right away.  
-
-   _Clone with HTTPS:_ ``https://github.com/needle-tools/needle-engine-support.git``  
-   _OR clone with SSH:_ ``git@github.com:needle-tools/needle-engine-support.git``  
-   _OR download directly:_ <a href="https://github.com/needle-tools/needle-engine-support/archive/refs/heads/main.zip" target="_blank">Download Repository</a>
-   
-  
-2. **Open the starter project**  
-  Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
-  This is a sandbox builder project! It already comes with multi-player capabilities, and works across mobile, desktop, VR and AR.  
-
-3. **Press Play**  
-  Make sure the scene CollaborativeSandbox is open, and press Play! This will automatically do some setup steps and start a local server.  
-  Once the setup is complete, a browser window will open, and your project is live.  
-  From now on, all changes you do in Unity will be immediately visible in your browser.  
-
-    > **Note**: Your browser might warn you about an untrusted SSL connection. Don't worry, the connection is still encrypted – please click "Advance" if your browser asks you to verify that you're sure you want to visit your server.  
-
-4. **Make it your own**  
-  Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
-  You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
--->
 
 ------------
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 You can also join our [Discord Community](https://discord.needle.tools)!
 
-👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)!
+👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)! -->

@@ -2,7 +2,8 @@
 // export default {}
 export default {
     props: {
-        href: String
+        href: String,
+        disabled: Boolean,
     }
 }
 </script>
@@ -32,10 +33,15 @@ a:hover {
     transform: scale(1.1);
     transition: transform .1s ease-in-out;
 }
+
+.action.disabled {
+    opacity: .5;
+    pointer-events: none;
+}
 </style>
 
 <template>
-    <a class="action" :href="href">
+    <a class="action" :href="href" :class="disabled ? 'disabled' : ''">
         <slot></slot>
     </a>
 </template>

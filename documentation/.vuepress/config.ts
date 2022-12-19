@@ -106,7 +106,16 @@ export default defineUserConfig({
                 text: 'Guides',
                 children: [
                     {
-                        text: "Basics",
+                        text: "Unity",
+                        children: [
+                            {
+                                text: "Get started with Unity",
+                                link: "/guides/unity",
+                            }
+                        ]
+                    },
+                    {
+                        text: "General",
                         children: [
                             "/getting-started",
                             "/export",
