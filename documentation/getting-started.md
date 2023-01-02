@@ -15,7 +15,7 @@ You can either watch our Getting Started video or continue reading below 😊
 
 ## Quick Start ⚡
 
-1. **Make sure node.js and Unity are installed - <a href="#prerequisites-💿">see details</a>**  
+1. **Make sure node.js and Unity are installed - <a href="#Prerequisites%20%F0%9F%92%BF">see details</a>**  
 
 2. **Create a new Unity project**  
   Open Unity Hub and create a new project. 2021.3 recommended!  
