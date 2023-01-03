@@ -16,23 +16,22 @@ The current state of the exporter for Blender is early which means many features
 ## Download and Installation 💿
 
 1) [Download the latest version](https://engine.needle.tools/downloads/blender) of Needle Engine Exporter for Blender
-2) Install the Addon
-3) Make sure you have the [Node.js](https://fwd.needle.tools/needle-engine/docs/prerequisites) installed
+2) Install the addon (see the [Blender documentation](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html#installing-add-ons))
+3) Make sure you have [Node.js and npm](https://fwd.needle.tools/needle-engine/docs/prerequisites) installed
 
 
 ## Getting Started 🚩
 
-All options for starting a server and adding components can be found in the Object Properties tab: 
+All options for generating a web project, starting the local server, building for deployment and making your scene interactive can be found in the Object Properties tab: 
 
  ![Object panels](/blender/object-panels.webp)
 
-First create or open a new blend file that you want to run in the web. Save the file on disc to generate a project for the web.   
-After saving you can click `Start Server` to generate a web project next to your blend file:
+First create or open a new blend file that you want to run in the web.  
+Save the file on disc to be able to generate a web project. After saving you can click `Start Server` to generate a project next to your blend file. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.
  
  ![Object panels](/blender/project-panel.webp)
 
- It will automatically install and start the server - once it has finished your browser should open and the scene should load.
-
+By default your scene will automatically re-exported when you save the blend file.
 
 ## Interactivity
 
