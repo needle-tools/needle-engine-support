@@ -33,7 +33,41 @@ Save the file on disc to be able to generate a web project. After saving you can
 
 By default your scene will automatically re-exported when you save the blend file.
 
-## Interactivity
+## Animation 🏇
+
+For simple usecases you can use the Animation component for playback of one or multiple animationclips.  
+Just select your object, add an Animation component and assign the clip (you can add additional clips to be exported to the clips array.  
+By default it will only playback the first clip assigned when `playAutomatically` is enabled. You can trigger the other clips using a simple custom typescript component)  
+<video-embed limit_height src="/blender/animation.mp4" />   
+
+### AnimatorController
+The animator controller can be created for more complex scenarios. It works as a statemachine which allows you to create multiple animation states in a graph and configure conditions and interpolation settings for transitioning between those. 
+
+#### Creating an AnimatorController
+
+The AnimatorController editor can be opened using the EditorType dropdown in the topleft corner of each panel:
+
+![AnimatorController open window](/blender/animatorcontroller-open.webp)
+
+<video-embed limit_height max_height="188px" src="/blender/animatorcontroller-create.mp4" /> 
+*Creating a new animator-controller asset ☝ or select one from your previously created assets*  
+
+##### Graph overview  
+![AnimatorController overview](/blender/animatorcontroller-overview.webp)
+1) Use `Shift+A` to create a new AnimatorState
+2) The `Parameters` node will be created once you add a first node. Select it to setup parameters to be used in transitions (via the Node panel on the right border)
+3) This is an AnimatorState. the orange state is the start state (it can be changed using the `Set default state` button in the Node/Properties panel)
+4) The Properties for an AnimatorState can be used to setup one or multiple transitions to other states. Use the `Conditions` array to select parameters that must match the condition for doing the transition.
+
+#### Using an AnimatorController
+
+To use an AnimatorController add an Animator component to the root object of your animations and select the AnimatorController asset that you want to use for this object.
+
+![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)  
+
+You can set the Animator parameters from typescript or by e.g. using the event of a Button component:
+
+## Interactivity 😎
 
 You can add or remove components to objects in your hierarchy using the Needle Components panel:
 
@@ -52,7 +86,7 @@ Custom components can also be easily added by simply writing Typescript classes.
 To create custom components open the workspace via the Needle Project panel and add a `.ts` script file in `src/scripts` inside your web project. Please refer to the [scripting documentation](http://docs.needle.tools/scripting) to learn how to write custom components for Needle Engine.
 
 
-## Lightmapping
+## Lightmapping 💡
 
 Needle Lightmapping will automatically generate lightmap UVs for all models marked to be lightmapped. For lightmapping to work you need at least one light and one object with `Lightmapped` turned on.
 
@@ -71,3 +105,11 @@ For quick access to lightmap settings and baking options you can use the scene v
 Alternatively you can also use the Lightmapping panel in the `Render Properties` tab:   
 
 ![Ligthmapping object](/blender/lightmapping-panel.webp)
+
+
+
+## Updating
+
+The lightbulb in the Needle Project panel informs you when a new version of the addon is available.  
+Simply click the icon to download the new version.    
+![Update notification](/blender/updates.webp)

@@ -7,6 +7,7 @@ const props = {
     src: String,
     controls: Boolean,
     limit_height: Boolean,
+    max_height: String,
   }
 }
 
@@ -17,6 +18,7 @@ export default props;
 .container {
   max-width: 100%;
   height: v-bind('limit_height ? "400px" : "initial"');
+  max-height: v-bind('limit_height ? max_height : "initial"');
 }
 
 video,
@@ -28,6 +30,7 @@ video,
   max-width: 100%;
   max-height: 100%;
   margin: .75em 0;
+  max-height: v-bind('limit_height ? max_height : "100%"');
 }
 
 #ytplayer {
