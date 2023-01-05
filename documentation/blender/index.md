@@ -38,7 +38,7 @@ By default your scene will automatically re-exported when you save the blend fil
 For simple usecases you can use the Animation component for playback of one or multiple animationclips.  
 Just select your object, add an Animation component and assign the clip (you can add additional clips to be exported to the clips array.  
 By default it will only playback the first clip assigned when `playAutomatically` is enabled. You can trigger the other clips using a simple custom typescript component)  
-<video-embed limit_height src="/blender/animation.mp4" />   
+<video-embed limit_height src="/docs/blender/animation.mp4" />   
 
 ### AnimatorController
 The animator controller can be created for more complex scenarios. It works as a statemachine which allows you to create multiple animation states in a graph and configure conditions and interpolation settings for transitioning between those. 
@@ -49,7 +49,7 @@ The AnimatorController editor can be opened using the EditorType dropdown in the
 
 ![AnimatorController open window](/blender/animatorcontroller-open.webp)
 
-<video-embed limit_height max_height="188px" src="/blender/animatorcontroller-create.mp4" /> 
+<video-embed limit_height max_height="188px" src="/docs/blender/animatorcontroller-create.mp4" /> 
 *Creating a new animator-controller asset ☝ or select one from your previously created assets*  
 
 ##### Graph overview  
