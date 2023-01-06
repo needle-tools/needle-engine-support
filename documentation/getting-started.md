@@ -10,7 +10,7 @@ These steps will get you started with **Needle Engine for Unity**.
 After following them, you'll have a fully functional project.  
 From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
 
-You can either watch our Getting Started video or continue reading below 😊  
+You can either watch our Getting Started video or continue reading below 😊   
 <video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 
 ## Quick Start ⚡
@@ -210,9 +210,9 @@ After installing the tools above, you might have to restart your machine so that
   You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 -->
 
-------------
+## What's next?
+
+👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)!
 
 In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
 You can also join our [Discord Community](https://discord.needle.tools)!
-
-👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)!

@@ -124,12 +124,21 @@ export default defineUserConfig({
                         ]
                     },
                     {
+                        text: "Tutorials",
+                        children: [
+                            {
+                                text: "Tutorials on Youtube",
+                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
+                            },
+                        ]
+                    },
+                    {
                         text: "Troubleshooting",
                         children: [
                             "/debugging",
                             "/faq",
                         ]
-                    },
+                    }
                 ]
             },
             {
@@ -150,10 +159,14 @@ export default defineUserConfig({
                         text: "Download and Learn",
                         children: [
                             {
-                                text: "Samples for Download", 
+                                text: "Samples for Download",
                                 link: "https://engine.needle.tools/samples",
                             },
                             "/modules",
+                            {
+                                text: "Tutorials on Youtube",
+                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
+                            },
                         ]
                     },
                 ]
