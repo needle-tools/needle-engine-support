@@ -9,7 +9,7 @@ Thanks for participating in our pre-alpha tester phase. Please read the followin
 
 ## Preface
 
-The current state of the exporter for Blender is early which means many features you may know from Needle Engine Exporter for Unity are not yet implemented. Your feedback is invaluable when it comes to deciding which of those features should be prioritizes. If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-for-blender-alpha/discussions)! If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-for-blender-alpha/issues). Thank you!
+The current state of the exporter for Blender is early which means many features you may know from Needle Engine Exporter for Unity are not yet implemented. Your feedback is invaluable when it comes to deciding which of those features should be prioritizes. If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-support/discussions)! If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-support/issues). Thank you!
 
 > **Note**: At this early stage we support windows only. Versions for OSX and Linux will follow later
 
