@@ -141,15 +141,16 @@ function cleanAnchors(tokens) {
 export function cleanLink(slug) {
     const index = getStartIndex(slug);
     if (index > -1 && index !== null) {
-        // const original = slug;
         slug = slug.substring(0, index);
-        // TODO: would be nice to clean all links like this but it would break existing links
-        // slug = slug.replace(/ /g, "-");
-        // slug = slug.toLowerCase();
-        // console.log(original, slug, index);
-        slug = encodeURIComponent(slug);
-        return slug;
     }
+    // replace all thats not a letter, number, dash or dot
+    slug = slug.replace(/[^a-zA-Z0-9-\.]/g, "-");
+    // replace duplicate dashes
+    slug = slug.replace(/-+/g, "-");
+    if(slug.endsWith("-")) slug = slug.substring(0, slug.length - 1);
+    if(slug.startsWith("-")) slug = slug.substring(1);
+    slug = slug.toLowerCase()
+    slug = encodeURIComponent(slug);
     return slug;
 }
 
