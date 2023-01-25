@@ -67,6 +67,48 @@ To use an AnimatorController add an Animator component to the root object of you
 
 You can set the Animator parameters from typescript or by e.g. using the event of a Button component:
 
+### Timeline — nla tracks export 🎬
+
+Exporting Blender nla tracks to threejs.  
+Add a PlayableDirector component (via `Add Component`) to a any blender object. Assign the objects in the ``animation tracks`` list in the component for which you want the nla tracks to be exported.
+
+![](/blender/timeline_setup.webp)  
+![](/blender/timeline.webp)  
+
+::: details Code example for interactive timeline playback
+Add this script to `src/scripts` (see custom components section) and add it to any object in Blender to make a timeline's time be controlled by scrolling in the browsers
+```ts
+import { Behaviour, PlayableDirector, serializable } from "@needle-tools/engine";
+import { Mathf } from "@needle-tools/engine/engine/engine_math";
+
+export class ScrollTimeline extends Behaviour {
+
+    @serializable(PlayableDirector)
+    timeline?: PlayableDirector;
+
+    private _targetTime: number = 0;
+
+    awake() {
+        this.context.domElement.addEventListener("wheel", this.onWheel.bind(this));
+    }
+
+    onWheel(e: WheelEvent) {
+        if (this.timeline) {
+            this._targetTime = this.timeline.time + e.deltaY * 0.01;
+        }
+    }
+
+    update(): void {
+        if (!this.timeline) return;
+        const time = Mathf.lerp(this.timeline.time, this._targetTime, this.context.time.deltaTime / .3);
+        this.timeline.time = time;
+        this.timeline.evaluate();
+    }
+}
+
+```
+:::
+
 ## Interactivity 😎
 
 You can add or remove components to objects in your hierarchy using the Needle Components panel:
@@ -85,6 +127,9 @@ Custom components can also be easily added by simply writing Typescript classes.
 
 To create custom components open the workspace via the Needle Project panel and add a `.ts` script file in `src/scripts` inside your web project. Please refer to the [scripting documentation](http://docs.needle.tools/scripting) to learn how to write custom components for Needle Engine.
 
+::: warning Note
+Make sure ``@needle-tools/needle-component-compiler`` 2.x is installed in your web project (package.json devDependencies)
+::: 
 
 ## Lightmapping 💡
 
