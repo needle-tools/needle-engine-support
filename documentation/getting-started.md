@@ -85,7 +85,7 @@ These allow you to go from idea to prototype in a few clicks.
 If you don't want to start from a scene template, you can follow these steps.  
 Effectively, we're going to recreate the "Minimal (Needle)" template that's shipping with the package.  
 
-1. **Ceate a new empty scene**  
+1. **Create a new empty scene**  
 
 2. **Set up your scene for exporting**   
   Add an empty GameObject, name it "Exporter" and add an `ExportInfo` component to it.  
