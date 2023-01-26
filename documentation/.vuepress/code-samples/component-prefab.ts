@@ -12,6 +12,9 @@ export class MyClass extends Behaviour {
       const myInstance = await this.myPrefab?.instantiate();
 
       // you can also just load and instantiate later
-      // this.myPrefab.loadAssetAsync();
+      // const myInstance = await this.myPrefab.loadAssetAsync();
+      // this.gameObject.add(myInstance)
+      // this is useful if you know that you want to load this asset only once because it will not create a copy
+      // since ``instantiate()`` does create a copy of the asset after loading it
     }  
 } 

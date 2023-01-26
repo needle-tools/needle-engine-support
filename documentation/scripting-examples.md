@@ -11,6 +11,9 @@ see [scripting](scripting#lifecycle-methods) for all component events
 ### Reference and load an asset from Unity (Prefab or SceneAsset)
 @[code](@code/component-prefab.ts)
 
+### Reference and load scenes from Unity
+@[code](@code/component-scene.ts)
+
 ### Receive Clicks on Objects
 @[code](@code/component-click.ts)
 
