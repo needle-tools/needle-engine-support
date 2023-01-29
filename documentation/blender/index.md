@@ -19,6 +19,7 @@ The current state of the exporter for Blender is early which means many features
 2) Install the addon (see the [Blender documentation](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html#installing-add-ons))
 3) Make sure you have [Node.js and npm](https://fwd.needle.tools/needle-engine/docs/prerequisites) installed
 
+The recommended Blender version is 3.3.1
 
 ## Getting Started 🚩
 
@@ -140,6 +141,8 @@ You are using an early preview of these features - we recommend creating a backu
 ::: 
 
 <video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" /> 
+
+> You can download the original blend file from the video [here](https://engine.needle.tools/downloads/blender/lightmaps.blend).
 
 Use the Needle Object panel to enable lightmapping for a mesh object or light: 
 
