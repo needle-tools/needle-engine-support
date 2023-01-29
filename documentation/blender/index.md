@@ -139,6 +139,8 @@ Needle Lightmapping will automatically generate lightmap UVs for all models mark
 You are using an early preview of these features - we recommend creating a backup of your blend file when using Lightmapping at this point in time. Please report problems or errors you encounter in [our discord](https://discord.needle.tools) 🙏
 ::: 
 
+<video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" /> 
+
 Use the Needle Object panel to enable lightmapping for a mesh object or light: 
 
 ![Ligthmapping object](/blender/lightmapping-object.webp)
