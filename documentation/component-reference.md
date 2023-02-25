@@ -56,15 +56,15 @@ For a complete list please have a look at the components inside the folders ``no
 
 ## Physics
 
-Physics is implemented using [cannon-es](https://github.com/pmndrs/cannon-es).  
+Physics is implemented using [rapier](https://rapier.rs/).  
 
 | Name  | Description |
 | ------------- | ------------- |
+| Rigidbody |  |
 | BoxCollider |  |
 | SphereCollider |  |
-| Rigidbody |  |
-
-> **Note**: MeshCollider is currently not supported.
+| CapsuleCollider |  |
+| MeshCollider |  |
 
 ## XR / WebXR  
 
