@@ -60,11 +60,12 @@ Physics is implemented using [rapier](https://rapier.rs/).
 
 | Name  | Description |
 | ------------- | ------------- |
-| Rigidbody |  |
+| Rigidbody | |
 | BoxCollider |  |
 | SphereCollider |  |
 | CapsuleCollider |  |
 | MeshCollider |  |
+| [Physics Materials](https://docs.unity3d.com/Manual/class-PhysicMaterial.html) | Physics materials can be used to define e.g. the bouncyness of a collider |
 
 ## XR / WebXR  
 
