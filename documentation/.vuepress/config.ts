@@ -5,7 +5,7 @@ import { searchPlugin } from '@vuepress/plugin-search'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 import { pwaPlugin } from '@vuepress/plugin-pwa'
-// import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
@@ -29,14 +29,14 @@ export default defineUserConfig({
     dest: "dist",
     description: _description,
     plugins: [
-        searchPlugin({
-        }),
-        //@ts-ignore
-        // docsearchPlugin({
-        //     appId: "2LT25GG3KX",
-        //     apiKey: "389be16f732f82c611e1b0f22c031dff",
-        //     indexName: "needle-engine"
+        // searchPlugin({
         // }),
+        // @ts-ignore
+        docsearchPlugin({
+            appId: "2LT25GG3KX",
+            apiKey: "389be16f732f82c611e1b0f22c031dff",
+            indexName: "needle-engine"
+        }),
         //@ts-ignore
         pwaPlugin({}),
         // mermaidPlugin({}),
