@@ -35,7 +35,7 @@ export default defineUserConfig({
         docsearchPlugin({
             appId: "2LT25GG3KX",
             apiKey: "389be16f732f82c611e1b0f22c031dff",
-            indexName: "needle-engine"
+            indexName: "engine-needle"
         }),
         //@ts-ignore
         pwaPlugin({}),
