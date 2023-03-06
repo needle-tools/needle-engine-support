@@ -23,16 +23,12 @@ The recommended Blender version is 3.3.1
 
 ## Getting Started 🚩
 
-All options for generating a web project, starting the local server, building for deployment and making your scene interactive can be found in the Object Properties tab: 
-
- ![Object panels](/blender/object-panels.webp)
-
-First create or open a new blend file that you want to run in the web.  
-Save the file on disc to be able to generate a web project. After saving you can click `Start Server` to generate a project next to your blend file. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.
+First create or open a new blend file that you want to be exported to the web.   
+Open the Properties window open the scene category. Select a `Project Path` in the Needle Engine panel. Then click `Generate Project`. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.
  
- ![Object panels](/blender/project-panel.webp)
+![Project panel](/blender/project-panel.webp)
 
-By default your scene will automatically re-exported when you save the blend file.
+By default your scene will automatically re-exported when you save the blend file. 
 
 ## Animation 🏇
 
