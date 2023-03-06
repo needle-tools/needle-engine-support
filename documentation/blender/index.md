@@ -28,7 +28,21 @@ Open the Properties window open the scene category. Select a `Project Path` in t
  
 ![Project panel](/blender/project-panel.webp)
 
-By default your scene will automatically re-exported when you save the blend file. 
+By default your scene will automatically re-exported when you save the blend file.  
+When your web project already exists and you just want to continue working on the website click the blue `Run Project` button to start the local server:  
+![Project panel](/blender/project-panel-2.webp)
+
+### Project Panel overview
+![Project panel](/blender/project-panel-3.webp)
+
+1) The path to your web project. You can use the little folder button on the right to select a different path.
+2) The `Run Project` button shows up when the Project path shows to a valid web project. A web project is valid when it contains a `package.json`
+3) `Directory` open the directory of your web project (the `Project Path`)
+4) This button re-exports the current scene as a glb to your local web project. This also happens by default when saving your blend file.
+5) `Code Editor` tries to open the vscode workspace in your web project
+6) If you work with multiple scenes in one blend file you can configure which scene is your "main" scene and should be exported to the web. If any of your components references another scene they will also be exported as separate glb files.
+7) Use the `Build: Development` or `Build: Production` buttons when you want to upload your web project to a server. This will bundle your web project and produce the files that you can upload. When clicking `Build: Production` it will also apply optimization to your textures (they will be compressed for the web)
+8) Open the documentation
 
 ## Animation 🏇
 
