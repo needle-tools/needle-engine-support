@@ -29,7 +29,11 @@ Open the Properties window open the scene category. Select a `Project Path` in t
 ![Project panel](/blender/project-panel.webp)
 
 By default your scene will automatically re-exported when you save the blend file.  
-When your web project already exists and you just want to continue working on the website click the blue `Run Project` button to start the local server:  
+If the local server is running (e.g. by clicking `Run Project`) the website will automatically refresh with your changed model.
+
+
+When your web project already exists and you just want to continue working on the website  
+click the blue `Run Project` button to start the local server:  
 ![Project panel](/blender/project-panel-2.webp)
 
 ### Project Panel overview
