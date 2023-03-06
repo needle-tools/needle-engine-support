@@ -17,7 +17,7 @@ The current state of the exporter for Blender is early which means many features
 
 1) [Download the latest version](https://engine.needle.tools/downloads/blender) of Needle Engine Exporter for Blender
 2) Install the addon (see the [Blender documentation](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html#installing-add-ons))
-3) Make sure you have [Node.js and npm](https://fwd.needle.tools/needle-engine/docs/prerequisites) installed
+3) Make sure you have [Node.js 16 or newer and npm](http://localhost:8080/docs/getting-started.html#prerequisites) installed
 
 The recommended Blender version is 3.3.1
 

@@ -162,7 +162,7 @@ Below each tool, you find quick links to download the latest version at the time
 
 ### Install these tools for development
 
-  [**Node.js** (14.x or 16.x)](https://nodejs.org/en/) – for running a local development server (required)   
+  [**Node.js** (16.x or 18.x)](https://nodejs.org/en/) – for running a local development server (required)   
   [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) • [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
   
   <!--
