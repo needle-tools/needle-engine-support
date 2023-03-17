@@ -6,11 +6,13 @@ next: deployment.md
 
 # Getting started 🎈
 
-These steps will get you started with **Needle Engine for Unity**.  
-After following them, you'll have a fully functional project.  
-From here, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md), [Networking](./networking.md), or the various [Samples and Modules](./samples-and-modules.md).  
+To get an idea for what kind of things are possible using Needle Tools, check out the  [Samples and Modules](./samples-and-modules.md).  
 
-You can either watch our Getting Started video or continue reading below 😊   
+Once you're ready to start your own project, the steps below will get you started with **Needle Engine** and **Needle Tools for Unity**.  
+After following them, you'll have a fully functional project.
+From there, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md) or [Networking](./networking.md)
+
+You can watch our Getting Started video and follow along with the instructions below 😊   
 <video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 
 ## Quick Start ⚡
@@ -24,11 +26,11 @@ You can either watch our Getting Started video or continue reading below 😊
 1. **Download our installer**  
     <needle-button href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button>  • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
 
-    Our installer is a `.unitypackage` that will set everything up for you.  
+    Our installer is a `.unitypackage` that will set everything up for you. It is very small, and it rarely changes. It contains just enough code to download and install Needle packages from our code registry. 
   
 1. **Install by dropping into Unity**   
    Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
-   This will set up Needle Engine and Needle Exporter for Unity.  
+   This will download the latest version of Needle Engine and Needle Tools for Unity directly from our custom package registry.
 
 2. **Wait for the installation to finish**  
    You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
@@ -45,11 +47,13 @@ You can either watch our Getting Started video or continue reading below 😊
 
 ### Create a new project
 
-1. **Set up a new project**  
+1. **Make sure node.js and Unity are installed - <a href="#prerequisites">see details</a>**  
+
+2. **Set up a new project**  
 Create a new Unity project via the [Hub](https://docs.unity3d.com/hub/manual/index.html).  
 We recommend 2021.3 LTS. Make sure to switch to Linear color space!  
 
-2. **Add our registry to Package Manager**  
+3. **Add our registry to Package Manager**  
 Open ``Edit/Project Settings`` and select ``Package Manager``.  
 Add a new [scoped registry](https://docs.unity3d.com/Manual/upm-scoped.html):
     - Name: ``needle``
@@ -60,7 +64,7 @@ Add a new [scoped registry](https://docs.unity3d.com/Manual/upm-scoped.html):
   ![image](https://user-images.githubusercontent.com/2693840/186287175-0de831b8-9112-43fa-989d-c13680186ff0.png)
 
 
-3. **Add the Exporter package**  
+4. **Add the Exporter package**  
 Open the [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``.  
 In the dropdown in top left corner of the window select ``My Registries``.  
 Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
@@ -103,14 +107,14 @@ By default, the project name matches the name of your scene. If you want to chan
 
 ## Generate a web project and add content
 
-Needle Engine is a web-based runtime, and so there's always two projects: your Unity project and a web project that contains regular HTML and CSS. Needle Exporter brings these together into a fast, iterative workflow.  
+Needle Engine is a web-based runtime, and so there's always two projects: your Unity project and a web project that contains regular HTML, Jaascript, Typescript and CSS. Needle Exporter brings these together into a fast, iterative workflow.  
 Usually, one Unity Scene with `ExportInfo` has one web project, so we're going to generate one now.  
 
 1. **Generate your web project**   
   On the `ExportInfo` component, click ``Generate Project``.   
   Wait a moment for the installation to finish — you can see a progress indicator in the bottom right corner of the editor.  
 
-1. **View your project in a browser**
+2. **View your project in a browser**
   After a few seconds of installation, your project should automatically run and a new browser window opens. 
   
 ::: tip Note
@@ -124,6 +128,7 @@ Keep an eye for console warnings! We log useful details about recommended projec
 :::
 
 ⭐ **Congratulations!**  You just started your first project using Needle Engine! We're excited what you'll build.  
+If you did the quick start and chose the collaborative sandbox example to start with, you might want to go back and generate a new project from scratch before proceeding with the steps below to add content.
 
 ------------
 
