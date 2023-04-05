@@ -5,12 +5,13 @@
 ## How it works
 
 Needle Engine roughly consists of three parts:
-- a number of **components and tools** that allow you to set up scenes for Needle Engine from e.g. the Unity Editor.  
-- an **exporter** that turns scene and component data into glTF.
-- a **web runtime** that loads and runs the produced glTF files and their extensions.
+- a number of **components and tools** that allow developers to set up scenes for Needle Engine from the Unity Editor, including an **exporter** that turns scene and component data into glTF and a **component generator** that turns your three.js typescript code into Unity components.
+- a **web runtime** that loads and runs the produced glTF files and their extensions in the users web browser.
+- an optional **tiny node.js server** that implements networking features like file storage, VOIP, scene synchronization and RPC in the cloud
 
 The editor extensions currently support the Unity Editor, with some promising experiments for Blender on the horizon (but no ETA).  
 The web runtime uses three.js for rendering, adds a component system on top of the three scene graph and hooks up extension loaders for our custom glTF extensions.  
+The tiny server provides networking services such as VOIP, webcam streaming, RPC messaging, room management, remote storage and network screen sharing. 
 
 Effectively, this turns the Unity Editor into a full member of a regular web development toolchain – "just" one more piece that gets added to the regular HTML, JavaScript, CSS and bundling workflow.  
 

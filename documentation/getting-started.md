@@ -12,10 +12,10 @@ Once you're ready to start your own project, the steps below will get you starte
 After following them, you'll have a fully functional project.
 From there, you can dive deeper into [Scripting](./scripting.md), [VR and AR](./xr.md) or [Networking](./networking.md)
 
-You can watch our Getting Started video and follow along with the instructions below 😊   
-<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
+## Get Ready
 
-## Quick Start ⚡
+The first set of instructions is the same no matter if you want to start with one of our scene
+templates, one of our sample projects, or create your own needle tools based app from scratch.
 
 1. **Make sure node.js and Unity are installed - <a href="#prerequisites">see details</a>**  
 
@@ -23,60 +23,41 @@ You can watch our Getting Started video and follow along with the instructions b
   Open Unity Hub and create a new project. 2021.3 recommended!  
   Make sure to switch it to Linear color space in `Project Settings > Player`.
   
-1. **Download our installer**  
+3. **Download our installer**  
     <needle-button href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button>  • [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
 
     Our installer is a `.unitypackage` that will set everything up for you. It is very small, and it rarely changes. It contains just enough code to download and install Needle packages from our code registry. 
   
-1. **Install by dropping into Unity**   
+4. **Install by dropping into Unity**   
    Drop the downloaded `.unitypackage` file into a Unity project and confirm that you want to import it.  
    This will download the latest version of Needle Engine and Needle Tools for Unity directly from our custom package registry.
 
-2. **Wait for the installation to finish**  
+5. **Wait for the installation to finish**  
    You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
      > **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
 
-3. **Create a new scene from a template**  
+
+## Collab Sandbox Showcase ⚡
+
+The collaborative sandbox example will show you how to quickly get a Needle Tools site up and running with all of the advanced components included. Watch our Getting Started video and follow along with the instructions below to build a fully functional networked example 😊   
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
+
+1. **Create a new scene from the Collab Sandbox template**  
    Select _File > New Scene_ and choose from one of the Needle templates.  
    We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer, and adding assets.  
 
-4. **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
-   Learn how to iterate, test, build and publish your projects.  
+2. **Continue [here](#generate-a-web-project-and-add-content)** to learn how to build and deploy the project, then return here to continue with a more in depth look at how to build a Needle Tools app from scratch.
 
-## Option 2: Start from Scratch 🐢 — Manual Setup 
-
-### Create a new project
-
-1. **Make sure node.js and Unity are installed - <a href="#prerequisites">see details</a>**  
-
-2. **Set up a new project**  
-Create a new Unity project via the [Hub](https://docs.unity3d.com/hub/manual/index.html).  
-We recommend 2021.3 LTS. Make sure to switch to Linear color space!  
-
-3. **Add our registry to Package Manager**  
-Open ``Edit/Project Settings`` and select ``Package Manager``.  
-Add a new [scoped registry](https://docs.unity3d.com/Manual/upm-scoped.html):
-    - Name: ``needle``
-    - URL: ``https://packages.needle.tools``
-    - Scope(s):   
-      `com.needle`  
-      `org.khronos`  
-  ![image](https://user-images.githubusercontent.com/2693840/186287175-0de831b8-9112-43fa-989d-c13680186ff0.png)
-
-
-4. **Add the Exporter package**  
-Open the [Unity Package Manager](https://docs.unity3d.com/Manual/upm-ui.html) via ``Window/Package Manager``.  
-In the dropdown in top left corner of the window select ``My Registries``.  
-Select ``Needle Engine Exporter`` and click install in the bottom right corner.  
-
-::: tip Note
-You only need to install `Needle Engine Exporter` – other packages will automatically be installed as dependencies.  
-:::
+⭐ **Congratulations!**  You just started your first project using Needle Engine! We're excited what you'll build.  
+Next we will show you how to generate a new project from scratch and show you the steps below to add your own custom content.
 
 ### Create a new scene from a Scene Template
 
+1. Follow the steps in the Get Ready section to set up your project as a Needle Tools project.
+
 We provide a number of Scene Templates for quickly starting new projects.  
-These allow you to go from idea to prototype in a few clicks.  
+These allow you to go from idea to prototype in a few clicks.  You can
+use one of the scene templates by following the steps below.
 
 1. Click on `File > New Scene`
 2. Select one of the templates with (needle) in their name and click `Create`.
@@ -86,7 +67,7 @@ These allow you to go from idea to prototype in a few clicks.
 
 ### Create a new scene from scratch
 
-If you don't want to start from a scene template, you can follow these steps.  
+To create a scene from scratch, you can follow these steps.  
 Effectively, we're going to recreate the "Minimal (Needle)" template that's shipping with the package.  
 
 1. **Create a new empty scene**  
@@ -103,9 +84,36 @@ By default, the project name matches the name of your scene. If you want to chan
 3. **Choose a web project template**  
   Now, select a web project template for your project. The default template is based on [Vite](https://vitejs.dev/), a fast web app bundler.  
 
-4. **Continue [here](#generate-a-web-project-and-add-content)**.
+4. **Continue [here](#generate-a-web-project-and-add-content)** to learn how to build and deploy the project, then return here to continue with a more in depth look at how to build a Needle Tools app from scratch.
 
-## Generate a web project and add content
+5. **Add content**    
+   1. Create a new empty GameObject
+   1. Add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF file. 
+   1. Add an object (e.g. ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. 
+   1. Your browser should refresh and your object is visible.
+
+6. **Make it interactive**  
+  Needle Engine comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``, which we're going to use to make the camera interactive.
+    1. Select your ``Main Camera`` GameObject
+    1. Add a new ``OrbitControls`` component to it 
+    1. Press play or save your scene
+    1. Your browser should refresh and you can now move the camera around.
+
+::: tip Note    
+**The local server does not start / no website in your browser?**  
+  Make sure you read and followed the [Prerequisites](#prerequisites-).  
+  Also check the console and `ExportInfo` component for warnings or errors.   
+  And last but not least, press `Play` to start the local server.  
+:::
+  
+
+::: tip Note    
+**No cube on your website?**   
+  Make sure it's a child of your GltfObject root.  
+:::
+
+------------
+## Generate a web project and view it in a browser
 
 Needle Engine is a web-based runtime, and so there's always two projects: your Unity project and a web project that contains regular HTML, Jaascript, Typescript and CSS. Needle Exporter brings these together into a fast, iterative workflow.  
 Usually, one Unity Scene with `ExportInfo` has one web project, so we're going to generate one now.  
@@ -127,39 +135,8 @@ If that happens: click ``Advanced`` and ``Proceed to Site``. Now you should see 
 Keep an eye for console warnings! We log useful details about recommended project settings and so on. For example, your project should be set to Linear color space (not Gamma), and we'll log an error if that's not the case.  
 :::
 
-⭐ **Congratulations!**  You just started your first project using Needle Engine! We're excited what you'll build.  
-If you did the quick start and chose the collaborative sandbox example to start with, you might want to go back and generate a new project from scratch before proceeding with the steps below to add content.
 
 ------------
-
-3. **Add content**    
-   1. Create a new empty GameObject
-   1. Add a ``GltfObject`` component to it. This component marks parts of your hierarchy to be exported as glTF file. 
-   1. Add an object (e.g. ``Create/3D Object/Cube``) as a child to the ``GltfObject`` hierarchy and save. 
-   1. Your browser should refresh and your object is visible.
-
-4. **Make it interactive**  
-  Needle Engine comes with a set of [prebuilt components](./component-reference.md) that you can use to easily make your scene interactive. One of those components is ``OrbitControls``, which we're going to use to make the camera interactive.
-    1. Select your ``Main Camera`` GameObject
-    1. Add a new ``OrbitControls`` component to it 
-    1. Press play or save your scene
-    1. Your browser should refresh and you can now move the camera around.
-
-::: tip Note    
-**The local server does not start / no website in your browser?**  
-  Make sure you read and followed the [Prerequisites](#prerequisites-).  
-  Also check the console and `ExportInfo` component for warnings or errors.   
-  And last but not least, press `Play` to start the local server.  
-:::
-  
-
-::: tip Note    
-**No cube on your website?**   
-  Make sure it's a child of your GltfObject root.  
-:::
-
-------------
-
 
 ## Prerequisites 💿
 

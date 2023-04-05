@@ -1,18 +1,22 @@
 # Component Reference 🧩
 
-Here is a overview of some of the components that we provide. Some of them map directly to Unity components, while others are core components from Needle Engine.   
+Here is a overview of some of the components that we provide. Some of them map directly to Unity components, while others are core components from Needle Engine. For Unity components, there may be an additional component called ???Data. These Data components contain additional parameters beyond the built in Unity components since we can't modify their inspector properties directly.
 For a complete list please have a look at the components inside the folders ``node_modules/@needle-tools/engine/engine-components`` and ``engine-components-experimental``.  
 
 > You can always add your own components or add wrappers for Unity components we haven't provided yet.  
 > Read more in the [Scripting](./scripting.md) section of our docs.
 
 ## Audio
+Audio is implemented using a custom mixer in the Needle runtime engine.  
+
 | Name  | Description |
 | ------------- | ------------- |
-| AudioListener |  |
-| AudioSource |  |
+| AudioListener |  Maps the standard Unity Audiolistener parameters to web browser audio. |
+| AudioSource |  Maps a Unity audio source to a web base audio source. |
 
 ## Animation
+Animation is implemented using custom code the Needle runtime engine.  
+
 | Name  | Description |
 | ------------- | ------------- |
 | Animator + AnimatorController | Export with animation state machine, conditions, transitions  |
@@ -20,16 +24,20 @@ For a complete list please have a look at the components inside the folders ``no
 | PlayableDirector + Timeline | Export powerful sequences to control animation, audio, state and more |
 
 ## Rendering
+Rendering is implemented using WebGL and WebXR code in the Needle runtime engine.  
+
 | Name  | Description |
 | ------------- | ------------- |
-| Camera |  |
-| LODGroup |  |
-| Light |  |
+| Camera | Maps Unity camera to a standard three.js camera. |
+| LODGroup | Creates an LOD Group |
+| Light | Maps Unity light to one of the standard three.js lights |
 | ParticleSystem | Experimental and currently not fully supported |
 | XRFlag | Control when objects will be visible. E.g. only enable object when in AR  |
 | VideoPlayer  | Playback videos from url or referenced video file (will be copied to output on export) |
 
 ## Networking
+Networking is implemented in the Needle runtime engine and requires a Needle Tiny Server. 
+
 | Name  | Description |
 | ------------- | ------------- |
 | SyncedRoom | Main networking component. Put in your scene to enable networking |
@@ -40,17 +48,19 @@ For a complete list please have a look at the components inside the folders ``no
 | Voip | Enables voice-chat |
 
 ## Interaction
+Interaction is implemented in the Needle runtime engine. Some features below may require a Needle tiny server for fullfunctionallity.
+
 | Name  | Description |
 | ------------- | ------------- |
 | EventSystem |  |
-| ObjectRaycater | Required for DragControls and Duplicatable |
-| DragControls | Requires raycaster in parent hierarchy, e.g. ObjectRaycaster |
-| Duplicatable | Requires DragControls |
+| ObjectRaycaster | Adds a three.js raycaster that casts rays into it's child hierarchy. Required for DragControls and Duplicatable |
+| DragControls | Allos an object to be dragged. Requires ObjectRaycaster in parent hierarchy |
+| Duplicatable | Works with DragControls to make an object cloneable by dragging. Requires DragControls |
 | Interactable | Basic component to mark an object to be interactable. |
-| OrbitControls | Add to camera to add camera orbit control functionality |
+| OrbitControls | Add to camera to add camera orbit control functionality using three.js OrbitControls |
 | SmoothFollow | Allows to interpolate smoothly to another object's transform |
 | DeleteBox |  |
-| DropListener | Add to receive file drop events for uploading |
+| DropListener | Add to receive file drop events for uploading to a Needle tiny storage server |
 | SpatialTrigger | Use to raise event if an object enters a specific space or area |
 | SpatialTriggerReceiver | Use to receive events from SpatialTrigger |
 
@@ -60,11 +70,11 @@ Physics is implemented using [rapier](https://rapier.rs/).
 
 | Name  | Description |
 | ------------- | ------------- |
-| Rigidbody | |
-| BoxCollider |  |
-| SphereCollider |  |
-| CapsuleCollider |  |
-| MeshCollider |  |
+| Rigidbody | Maps to a Rapier Rigidbody|
+| BoxCollider | Creates a Rapier box collider |
+| SphereCollider |  Creates a Rapier box collider  |
+| CapsuleCollider | Creates a Rapier box collider   |
+| MeshCollider | Creates a Rapier mesh collider   |
 | [Physics Materials](https://docs.unity3d.com/Manual/class-PhysicMaterial.html) | Physics materials can be used to define e.g. the bouncyness of a collider |
 
 ## XR / WebXR  
@@ -80,17 +90,23 @@ Physics is implemented using [rapier](https://rapier.rs/).
 | WebARSessionRoot | Put your AR content inside a WebARSessionRoot for placement and scale |
 
 ## Debugging  
+
+Implemented using standard three.js helpers.
+
 | Name  | Description |
 | ------------- | ------------- |
-| GridHelper | Draws a grid |
-| BoxGizmo | Draws a box |
-| AxesHelper | Draws axes |
+| GridHelper | Draws a three.js grid |
+| BoxGizmo | Draws a three.js box |
+| AxesHelper | Draws three.hs axes |
 
 ## Runtime File Input/Output  
+
+These features are still experimental.
+
 | Name  | Description |
 | ------------- | ------------- |
-| GltfExport | Experimental! Use to export gltf from web runtime. |
-| DropListener | Receive file drop events for uploading and networking |
+| GltfExport | Use to export gltf from web runtime. |
+| DropListener | Receive file drop events for uploading and networking, Requires Needle tiny storage server |
 
 ## UI
 

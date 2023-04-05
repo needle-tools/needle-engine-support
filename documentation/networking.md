@@ -1,5 +1,7 @@
 # Networking
 
+Networking features require you to have a Needle Tools Network component in your scene graph that points to a Needle Tiny Server deployed on a server of your choice. Our deploy to glitch component can manage all of the setup for you.
+
 Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. [The built-in backend server](https://glitch.com/edit/#!/needle-tiny-server) requires users to be connected to a room.
 
 Networking is currently based on [websockets](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers](https://google.github.io/flatbuffers/) (for frequent updates).
@@ -100,11 +102,29 @@ When deploying your app to Glitch, we include a simple networking backend that i
 
 ### How to upgrade to a stronger server
 
-> 🏗️ Under construction.
+If you have your own server that can run a node.js app, you can use it instead of glitch. You will need to figure out the deployment details on your own, but you can use this as a guide.
+
+The default implementation for the Needle Tiny Server is here:
+
+https://glitch.com/edit/#!/needle-tiny-server?path=package.json%3A1%3A0
+
+You can create a VSCode project to connect to this glitch template and pull the code to a local folder on your own machine.
+
+You can then re-deploy the code to your own node.js server and arrange to run it there. Don't forget to update the URI in your scenes Network components to point at the new location.
+
+### How to run a local development server
+
+Follow the instructions above to download a copy of the default Needle Tiny Server from glitch.io to your local machine.
+
+Once you have the code on your local machine, run a local copy of the server using the START.BAT file or via 'npm run start'
+
+You can then point your Network components localhost parameter to the location of your running Needle Tiny Server.
 
 ### How to use your own networking implementation
 
-> 🏗️ Under construction.
+Follow the instructions above to download a copy of the default Needle Tiny Server from glitch.io to your local machine.
+
+Once you have the code on your local machine, you can look at the code in the src folder to see what the needle tiny server API provides. Write your own methods to implement the main functions in the tiny server so the existing networking features in the browser runtime engine will work seamlessly with your own code.
 
 ### How to change from the default ICE/STUN servers used for VoIP
 
