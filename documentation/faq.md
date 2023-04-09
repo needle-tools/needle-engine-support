@@ -147,10 +147,17 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 
 ## Toktx can not be found 
-On Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
+On Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``   
 
 ![image](/imgs/ktx-env-variable.webp)
 
+
+## Installing the web project takes forever / does never finish / EONET: no such file or directory
+- **Make sure to not create a project on a drive formatted as exFAT** because exFAT does not support symlinks which is required for Needle Engine for Unity prior to version 3.x.    
+  You can check the formatting of your drives using the following steps:
+  1. Open "System Information" (either windows key and type that or enter "msinfo32" in cmd)
+  2. Select Components > Storage > Drives
+  3. Select all (Ctrl + A) on the right side of the screen and copy that (Ctrl + C) and paste here (Ctrl + V)
 
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
