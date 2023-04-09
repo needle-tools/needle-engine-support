@@ -146,6 +146,11 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 ![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
 
 
+## Toktx can not be found 
+On Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
+
+![image](/imgs/ktx-env-variable.webp)
+
 
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 

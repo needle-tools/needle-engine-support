@@ -21,6 +21,13 @@ To make a production build you need to have [toktx](https://github.com/KhronosGr
 
 If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-transform-extensionsw](https://www.npmjs.com/package/@needle-tools/gltf-transform-extensions) for reference.
 
+##### Troubleshooting production builds
+
+- Toktx can not be found  
+  Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
+  ![image](/imgs/ktx-env-variable.webp)
+
+
 ## Deploy to Glitch 🎏
 
 [Glitch](https://glitch.com/) provides a fast and free way for everyone to host small and large websites. We're providing an easy way to remix and deploy to a new Glitch page (based on our starter), and also to run a minimalistic networking server on the same Glitch page if needed.  
