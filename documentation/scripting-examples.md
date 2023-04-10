@@ -29,23 +29,39 @@ Make sure you have an ObjectRaycaster component in your parent hierarchy (or on 
 ### Play Animation on click
 @[code](@code/component-animation-onclick.ts)
 
+### Reference an animationclip
+This can be useful if you want to run your custom animation logic.   
+You can also export an array of clips.
+@[code](@code/component-animationclip.ts)
+
 
 ## Create and invoke a UnityEvent
+
 @[code](@code/component-unityevent.ts)
 ::: tip
 EventList events are also invoked on the component level. This means you can also subscribe to the event declared above using ``myComponent.addEventListener("my-event", evt => {...})`` as well.   
 This is an experimental feature: please provide feedback in our [discord](https://discord.needle.tools)
 :::
 
+
 ### Declare a custom event type
-::: tip
 This is useful for when you want to expose an event to Unity or Blender with some custom arguments (like a string)
-:::
 @[code](@code/component-customevent.ts)
 
 _Example use:_  
 ![20221128-210735_Unity-needle](https://user-images.githubusercontent.com/2693840/204370950-4c89b877-90d7-4e6f-8266-3352e6da16f4.png)
 
 
-## Get current location
+## Use Web APIs
+::: tip
+Keep in mind that you still have access to all web apis and [npm](https://npmjs.org) packages!    
+That's the beauty of Needle Engine if we're allowed to say this here 😊
+:::
+
+### Display current location
 @[code](@code/component-location.ts) 
+
+### Display current time using a Coroutine
+@[code](@code/component-time.ts) 
+
+<video-embed src="/videos/component-time.mp4" limit_height />
