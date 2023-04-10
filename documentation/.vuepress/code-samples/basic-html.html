@@ -19,7 +19,7 @@
     <!-- parcel require must currently defined somewhere for peerjs -->
     <script> var parcelRequire; </script>
     <!-- loading the needle engine js file -->
-    <script type="module" src="https://unpkg.com/@needle-tools/engine"></script>
+    <script type="module" src="https://unpkg.com/@needle-tools/engine/dist/needle-engine.js"></script>
 
     <style>
         body { margin: 0; }
@@ -28,7 +28,7 @@
             display: block;
             width: 100%;
             height: 100%;
-            background: black;
+            background: grey;
         }
     </style>
 
@@ -37,13 +37,14 @@
 <body>
 
     <!-- load a gltf or glb here as your scene and listen to the finished event to start interacting with it -->
-    <needle-engine src="myscene.glb" loadfinished="onLoaded"></needle-engine>
+    <needle-engine src="myScene.glb" loadfinished="onLoaded"></needle-engine>
 
 </body>
 
 <script>
     function onLoaded(ctx) {
-        console.log("Loading finished", ctx);
+        console.log("Loading a glb file finished 😎");
+        console.log("This is the scene: ", ctx.scene);
     }
 </script>
 
