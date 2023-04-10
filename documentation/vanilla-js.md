@@ -12,7 +12,7 @@ Then open this index.html with the live-server and navigate to ``http://localhos
 
 ::: tip
 Make sure to update the ``<needle-engine src="myScene.glb">`` path to an existing glb file   
-or [download this sample glb](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb) (put it in the same folder as the index.html and name it ``myScene.glb``)
+or [download this sample glb](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb) and put it in the same folder as the index.html, name it ``myScene.glb`` or update the src path.
 :::
 
 @[code](@code/basic-html.html) 
