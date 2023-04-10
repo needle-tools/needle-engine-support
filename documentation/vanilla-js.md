@@ -4,7 +4,8 @@ title: Vanilla Javascript
 
 # Basic html
 
-The following is an example for how to use Needle Engine with vanilla javascript / without using a bundler  
+The following is an example for how to use Needle Engine with vanilla javascript / without using a bundler.  
+See it [live here](https://engine.needle.tools/samples/vanillajs/).
 
 ### How to run locally
 Install [vscode live-server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).   
