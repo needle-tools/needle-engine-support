@@ -160,7 +160,16 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
   You can check the formatting of your drives using the following steps:
   1. Open "System Information" (either windows key and type that or enter "msinfo32" in cmd)
   2. Select Components > Storage > Drives
-  3. Select all (Ctrl + A) on the right side of the screen and copy that (Ctrl + C) and paste here (Ctrl + V)
+  3. Select all (Ctrl + A) on the right side of the screen and copy that (<kbd>Ctrl + C</kbd>) and paste here (<kbd>Ctrl + V</kbd>)
+
+## NPM install fails and there are errors about hard drive / IO
+Make sure your project is on a disk that is known to work with node.js. Main reason for failures is that the disk doesn't support symlinks (symbolic links / softlinks), which is a requirement for proper functioning of node.js.  
+<kbd>NTFS</kbd> formatting should always work. Known problematic file system formattings are <kbd>exFAT</kbd> and <kbd>FAT32</kbd>. 
+
+To check the format of your drives, you can:
+1. Open "System Information" (either <kbd>Windows key</kbd> and type "System Information" or enter `msinfo32` in cmd <kbd>Windows + R</kbd>)
+2. Select "Components > Storage > Drives"
+3. There, you can see all drives and their formatting listed. Put your projects on a drive that is NTFS-formatted.
 
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
