@@ -156,7 +156,7 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 
 ## Installing the web project takes forever / does never finish / EONET: no such file or directory
-- **Make sure to not create a project on a drive formatted as exFAT** because exFAT does not support symlinks which is required for Needle Engine for Unity prior to version 3.x.    
+- **Make sure to not create a project on a drive formatted as exFAT** because exFAT does not support symlinks, which is required for Needle Engine for Unity prior to version 3.x.    
   You can check the formatting of your drives using the following steps:
   1. Open "System Information" (either windows key and type that or enter "msinfo32" in cmd)
   2. Select Components > Storage > Drives
@@ -169,7 +169,7 @@ Make sure your project is on a disk that is known to work with node.js. Main rea
 To check the format of your drives, you can:
 1. Open "System Information" (either <kbd>Windows key</kbd> and type "System Information" or enter `msinfo32` in cmd <kbd>Windows + R</kbd>)
 2. Select "Components > Storage > Drives"
-3. There, you can see all drives and their formatting listed. Put your projects on a drive that is NTFS-formatted.
+3. There, you can see all drives and their formatting listed. Put your projects on a drive that is NTFS formatted.
 
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
