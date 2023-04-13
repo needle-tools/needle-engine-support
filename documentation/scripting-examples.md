@@ -51,6 +51,19 @@ This is useful for when you want to expose an event to Unity or Blender with som
 _Example use:_  
 ![20221128-210735_Unity-needle](https://user-images.githubusercontent.com/2693840/204370950-4c89b877-90d7-4e6f-8266-3352e6da16f4.png)
 
+### Use nested objects and serialization
+
+You can nest objects and their data. With properly matching `@serializable(SomeType)` decorators, the data will be serialized and deserialized into the correct types automatically.  
+
+In your typescript component:  
+@[code](@code/component-nested-serialization.ts)
+
+In C# in any script:  
+@[code](@code/component-nested-serialization-cs.cs)
+
+::: tip
+Without the correct type decorators, you will still get the data, but just as a plain object. This is useful when you're porting components, as you'll have access to all data and can add types as required.
+:::
 
 ## Use Web APIs
 ::: tip
