@@ -29,7 +29,7 @@ Make sure you have an ObjectRaycaster component in your parent hierarchy (or on 
 ### Play Animation on click
 @[code](@code/component-animation-onclick.ts)
 
-### Reference an animationclip
+## Reference an Animation Clip
 This can be useful if you want to run your custom animation logic.   
 You can also export an array of clips.
 @[code](@code/component-animationclip.ts)
@@ -51,7 +51,7 @@ This is useful for when you want to expose an event to Unity or Blender with som
 _Example use:_  
 ![20221128-210735_Unity-needle](https://user-images.githubusercontent.com/2693840/204370950-4c89b877-90d7-4e6f-8266-3352e6da16f4.png)
 
-### Use nested objects and serialization
+## Use nested objects and serialization
 
 You can nest objects and their data. With properly matching `@serializable(SomeType)` decorators, the data will be serialized and deserialized into the correct types automatically.  
 
