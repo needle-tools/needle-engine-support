@@ -6,6 +6,8 @@ import { defineClientConfig } from '@vuepress/client'
 export default defineClientConfig({
     setup() {
         onMounted(() => {
+            const quotesContainer = document.querySelector('.quotes');
+            quotesContainer.style.display = 'flex';
             const quotes = document.querySelectorAll('.quotes > div');
             for (let i = 0; i < quotes.length; i++) {
                 if (i !== 0) {
@@ -26,13 +28,13 @@ export default defineClientConfig({
 
 <style scoped>
 .quotes {
-    display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     padding: 1em;
     text-align: center;
     min-height: 100px;
+    display: none;
 }
 
 @media (max-width: 768px) {
@@ -59,9 +61,6 @@ export default defineClientConfig({
     font-style: italic;
 }
 
-.quotes>div {
-    border: 1px solid red;
-}
 </style>
 
 <template>
