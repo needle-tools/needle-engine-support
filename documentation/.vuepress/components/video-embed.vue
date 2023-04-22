@@ -60,6 +60,6 @@ video,
   </div>
   <div v-else class="container">
     <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->
-    <video loop autoplay="autoplay" controls :src="src"></video>
+    <video loop autoplay controls :src="src"></video>
   </div>
 </template>

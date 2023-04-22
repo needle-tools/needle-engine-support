@@ -7,13 +7,31 @@ lastUpdated: false
 footer: "Copyright © 2022 Needle Tools GmbH"
 ---
 
-**Needle Engine** is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible and has built-in support for collaboration and XR! 
+**Needle Engine** is a web engine for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible and has built-in support for collaboration and XR! It is built around the glTF standard for 3D assets.
 
-**Needle Exporter for Unity** bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.  
+**Needle Engine for Unity** utilizes allows you to use Unity to author and manage your web application: It helps you to export your assets, animations, lightmaps and more.  
 
-**Together**, they enable incredible iteration speeds and help you to bring your content to the web.  
-Some have called it the "Missing Link" between artist-friendly workflows and modern web development!
+<quoteslides>
+<div>Unbelievable Unity editor integration by an order of magnitude,<br/>and as straightforward as the docs claim. Wow. — Chris Mahoney</div>
 
+<div>This is the best thing I have seen after cinemachine in Unity — Rinesh Thomas</div>
+
+<div>Spent the last 2.5 months building this game, never built a game or used Unity before<br/>but absolutely loving the whole process. So rapid! — Matthew Pieri</div>
+
+<div><a href="https://needle.tools">needle.tools</a> is a wonderful showcase of what Needle contributes to 3D via the web. I just love it. — Kevin Curry</div>
+
+<div>Played with this a bit this morning 🤯🤯 pretty magical — Brit Gardner</div>
+
+<div>This is huge for WebXR and shared, immersive 3D experiences! The AR part worked flawlessly on my Samsung S21. — Marc Wakefield</div>
+
+<div>This is amazing and if you are curious about WebXR with Unity this will help us get there — Dilmer Valecillos</div>
+
+<div>We just gotta say WOW 🤩 — Unity for Digital Twins</div>
+
+
+</quoteslides>
+
+---
 <actiongroup>
     <action href="getting-started">
     Get started ⭐
