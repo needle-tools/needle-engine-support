@@ -10,6 +10,7 @@ export default {}
     align-items: center;
     padding: 1em;
     font-size: .8em;
+    opacity: .8;
 }
 
 a {
@@ -21,7 +22,7 @@ a {
 
 <template>
     <div class="footer">
-        Copyright © 2022 Needle Tools GmbH — Made with 🌵 in Germany — <a target="_blank"
+        Copyright © 2022 Needle Tools GmbH — <a target="_blank"
             href="https://needle.tools/contact#privacy-policy">Privacy Policy</a>
     </div>
 </template>
