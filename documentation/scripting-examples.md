@@ -82,6 +82,7 @@ That's the beauty of Needle Engine if we're allowed to say this here 😊
 
 ## Change custom shader property
 
-Assuming you have a custom shader with a property name `_Speed` that is a float value this is how you would change it from a script:
+Assuming you have a custom shader with a property name `_Speed` that is a float value this is how you would change it from a script.   
+You can find a live [example to download in our samples](https://engine.needle.tools/samples?open=1#shaders).
 @[code](@code/component-customshaderproperty.ts)
 
