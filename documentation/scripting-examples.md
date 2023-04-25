@@ -78,3 +78,10 @@ That's the beauty of Needle Engine if we're allowed to say this here 😊
 @[code](@code/component-time.ts) 
 
 <video-embed src="/videos/component-time.mp4" limit_height />
+
+
+## Change custom shader property
+
+Assuming you have a custom shader with a property name `_Speed` that is a float value this is how you would change it from a script:
+@[code](@code/component-customshaderproperty.ts)
+

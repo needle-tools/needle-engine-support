@@ -1,5 +1,4 @@
-import { Behaviour, Text, serializable, showBalloonMessage } from "@needle-tools/engine";
-import { WaitForSeconds } from "@needle-tools/engine/src/engine/engine_coroutine";
+import { Behaviour, Text, serializable, WaitForSeconds } from "@needle-tools/engine";
 
 export class DisplayTime extends Behaviour {
 

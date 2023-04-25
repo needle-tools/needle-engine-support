@@ -1,5 +1,4 @@
-import { Behaviour } from "@needle-tools/engine";
-import { IPointerClickHandler, PointerEventData } from "@needle-tools/engine/engine-components/ui/PointerEvents";
+import { Behaviour, IPointerClickHandler, PointerEventData } from "@needle-tools/engine";
 
 export class ClickExample extends Behaviour implements IPointerClickHandler {
 
