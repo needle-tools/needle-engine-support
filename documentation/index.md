@@ -48,9 +48,7 @@ footer: "Copyright © 2022 Needle Tools GmbH"
 </actiongroup>
 
 
-
-
-<video-embed src="https://user-images.githubusercontent.com/5083203/186121100-b02a83ef-a5df-42f9-a694-c445f1d82b81.mp4" />
+<video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" />
  
 
  --- 
