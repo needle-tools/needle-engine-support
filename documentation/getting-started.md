@@ -41,6 +41,9 @@ You can either watch our Getting Started video or continue reading below 😊
 4. **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
    Learn how to iterate, test, build and publish your projects.  
 
+### Starting from a fresh Unity project  
+<video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
+
 ## Option 2: Start from Scratch 🐢 — Manual Setup 
 
 ### Create a new project
