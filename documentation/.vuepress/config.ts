@@ -198,6 +198,10 @@ export default defineUserConfig({
                                 text: 'Product Configurator 🚲',
                                 link: '/showcase-bike',
                             },
+                            {
+                                text: 'Monster Hands 💀',
+                                link: '/showcase-monsterhands',
+                            },
                         ],
                     },
                     {
@@ -210,6 +214,14 @@ export default defineUserConfig({
                             {
                                 text: 'Mercedes Benz Techdemo',
                                 link: '/showcase-mercedes-benz',
+                            },
+                            {
+                                text: 'ZenRepublic Website',
+                                link: '/showcase-zenrepublic',
+                            },
+                            {
+                                text: 'Towerdefence Game',
+                                link: '/showcase-towerdefence',
                             },
                         ]
                     },
