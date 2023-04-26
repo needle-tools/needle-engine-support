@@ -121,6 +121,7 @@ export default defineUserConfig({
                             "/deployment",
                             "/project_structure",
                             "/html",
+                            "/customization",
                             "/debugging",
                         ]
                     },
