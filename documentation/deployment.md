@@ -1,3 +1,6 @@
+---
+title: Deployment & Compression
+---
 
 ## Building for the web (deployment)
 
