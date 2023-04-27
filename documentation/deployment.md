@@ -27,14 +27,14 @@ We generally recommend making production builds for optimized file size and load
 To make a production build you need to have [toktx](https://github.com/KhronosGroup/KTX-Software/releases) to be installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0-rc3 at the time of writing, there might be a newer one). You may need to restart Unity after installing it.  
 *If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.*  
 
-If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-transform-extensionsw](https://www.npmjs.com/package/@needle-tools/gltf-transform-extensions) for reference.
+If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-build-pipeline](https://www.npmjs.com/package/@needle-tools/gltf-build-pipeline) for reference.
 
 
 ### Optimization and Compression Options  
 
 #### Texture compression
 Production builds will by default compress textures using **KTX2** (either ETC1S or UASTC depending on their usage in the project)   
-but you can also select **WebP** compression and selecting a quality level.  
+but you can also select **WebP** compression and select a quality level.  
 
 You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer options.
  
@@ -43,13 +43,13 @@ You have the option to select texture compression and progressive loading option
 ![image](/imgs/unity-texture-compression-options.jpg)  
 :::
 
-You can also add the `Progressive Texture Settings` component anywhere in your scene to make all textures in your project be progressively loaded. Note that progressive loading does not support lightmaps or skybox textures at this point.  
+You can also add the `Progressive Texture Settings` component anywhere in your scene to make all textures in your project be progressively loaded. Note that progressive loading is not applied to lightmaps or skybox textures at this point.  
 
 ![image](/imgs/unity-progressive-textures.jpg)  
 
 #### Mesh compression
 By default a production build will compress meshes using `draco` compression. We also offer an option to automatically simplify your meshes by using Mesh-Simplifier.     
-We're working on adding options choosing between `meshopt` and `draco` per mesh depending on your usecase.
+We're working on adding options for choosing between `meshopt` and `draco` per mesh depending on your usecase.
 
 #### Mesh simplification
 
