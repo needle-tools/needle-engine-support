@@ -1,38 +1,79 @@
----
-title: Deploying to the Web
----
 
-### How to build for uploading to the web
+## Building for the web (deployment)
 
-Needle Engine is tightly integrated into the Unity Editor:  
+### How to: Unity  
 Open ``File/Build Settings`` and select ``Needle Engine`` for options!
 
-To build your web project for deployment you can click **Build** in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
+:::details Where do I find the Build Options in Unity?
+![image](/imgs/unity-build-window-menu.jpg)    
+![image](/imgs/unity-build-window.jpg)  
+::: 
+
+To build your web project for deployment to a web server you can click **Build** in the Unity Editor Build Settings Window.   
+You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
 
 > **Note**: Nodejs is **only** required during development. The distributed website (using the vite template) is a static page, doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
-#### Building a development distribution
-See notes above on how to access. The main difference to a production build is that it does not perform [``ktx2``](https://github.khronos.org/KTX-Specification/) and [``draco``](https://google.github.io/draco/) compression. Both can reduce file-size drastically. We generally recommend making builds using the ``production`` option.
+## Building a development distribution
+See guides above on how to access the options from within your Editor (e.g. Unity or Blender).  
+The main difference to a production build is that it does not perform [``ktx2``](https://github.khronos.org/KTX-Specification/) and [``draco``](https://google.github.io/draco/) compression (for reduction of file size and loading speed) as well as the option to progressively load high-quality textures.  
+We generally recommend making production builds for optimized file size and loading speed (see more information below)
 
-#### Building a production distribution (optimized and compressed)
+## Building a production distribution
 
 To make a production build you need to have [toktx](https://github.com/KhronosGroup/KTX-Software/releases) to be installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0-rc3 at the time of writing, there might be a newer one). You may need to restart Unity after installing it.  
 *If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.*  
 
 If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-transform-extensionsw](https://www.npmjs.com/package/@needle-tools/gltf-transform-extensions) for reference.
 
+
+### Optimization and Compression Options  
+
+#### Texture compression
+Production builds will by default compress textures using **KTX2** (either ETC1S or UASTC depending on their usage in the project)   
+but you can also select **WebP** compression and selecting a quality level.  
+
+You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer options.
+ 
+:::details Where to find per texture compression options
+![image](/imgs/unity-texture-compression.jpg)  
+![image](/imgs/unity-texture-compression-options.jpg)  
+:::
+
+You can also add the `Progressive Texture Settings` component anywhere in your scene to make all textures in your project be progressively loaded. Note that progressive loading does not support lightmaps or skybox textures at this point.  
+
+![image](/imgs/unity-progressive-textures.jpg)  
+
+#### Mesh compression
+By default a production build will compress meshes using `draco` compression. We also offer an option to automatically simplify your meshes by using Mesh-Simplifier.     
+We're working on adding options choosing between `meshopt` and `draco` per mesh depending on your usecase.
+
+#### Mesh simplification
+
+:::details Where to find mesh simplification options?
+Select a Mesh and open the Needle importer options to see available options for the selected mesh:  
+![image](/imgs/unity-mesh-compression.jpg)
+:::
+
 ##### Troubleshooting production builds
 
-- Toktx can not be found  
+:::details Toktx can not be found  
   Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
   ![image](/imgs/ktx-env-variable.webp)
+:::
 
 
-## Deploy to Glitch 🎏
+## Deployment Options  
+
+
+### Deploy to Glitch 🎏
 
 [Glitch](https://glitch.com/) provides a fast and free way for everyone to host small and large websites. We're providing an easy way to remix and deploy to a new Glitch page (based on our starter), and also to run a minimalistic networking server on the same Glitch page if needed.  
 
-1) Add the ``Deployment`` component to the GameObject that also has the ``ExportInfo`` component.
+You can deploy to glitch by adding the `DeployToGlitch` component to your scene and following the instructions.
+
+:::details Detailed instructions for deploying to Glitch
+1) Add the ``DeployToGlitch`` component to the GameObject that also has the ``ExportInfo`` component.
 
 3) Click the ``Remix on glitch`` button on the component
 4) Your browser will open the glitch project template
@@ -46,8 +87,18 @@ If you plan on adding your own custom glTF extensions, building for production r
   ![image](https://user-images.githubusercontent.com/5083203/179835779-ec128288-4db2-42f7-adc0-3c1de6799cef.png)
 8) Add the same password in Unity  
   ![image](https://user-images.githubusercontent.com/5083203/179835883-b524d23f-d887-4ac1-9a59-d5508b6b30c2.png)
+::: 
 
-## Deploy to itch.io  
+
+### Deploy to Netlify  
+Just add the `DeployToNetlify` component to your scene and follow the instructions. You can create new projects with the click of a button or deployt to existing projects.  
+
+![Deploy to netlify component](/deployment/deploytonetlify-2.jpg)  
+
+![Deploy to netlify component](/deployment/deploytonetlify.jpg)  
+
+
+### Deploy to itch.io  
 
 1) Create a new project on [itch.io](https://itch.io/game/new)
 2) Set ``Kind of project`` to ``HTML``  
@@ -63,19 +114,18 @@ If you plan on adding your own custom glTF extensions, building for production r
 7) Save your itch page and view the itch project page.  
   It should now load your Needle Engine project 😊
   
-### Optional settings
+#### Optional settings
 ![image](https://user-images.githubusercontent.com/5083203/191217263-355d9b72-5431-4170-8eca-bfbbb39ae810.png)
 
 
-### Troubleshooting itch.io  
+#### Troubleshooting itch.io  
 
 #### Failed to find index.html
 ![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)  
 If you see this error after uploading your project make sure you do not upload a gzipped index.html.
 You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
 
-
-## Deploy to FTP
+### Deploy to FTP
 1) Add the ``DeloyToFTP`` component¹ on a GameObject in your scene (it is good practice to add it to the same GameObject as ExportInfo - but it is not mandatory) 
 2) Assign an FTP server asset and fill out server, username, and password if you have not already ²    
   *This asset contains the access information to your FTP server - you get them when you create a new FTP account at your hosting provider*
@@ -91,7 +141,7 @@ You can disable gzip compression in ``vite.config.js`` in your Needle web projec
 ![Deploy to FTP component in Unity with server asset assigned](/deployment/deploytoftp3.jpg)  
 *Deploy To FTP component after server asset is assigned. You can directly deploy to a subfolder on your server using the path field* 
 
-## Deploy to FTP (manual upload)
+### Deploy to FTP (manual upload)
 
 1) Open `File > Build Settings`, select `Needle Engine`, and click on <kbd>Build</kbd>
 2) Wait for the build to complete - the resulting `dist` folder will open automatically after all build and compression steps have run.
