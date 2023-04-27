@@ -117,11 +117,11 @@ export default defineUserConfig({
                         text: "Basics",
                         children: [
                             "/getting-started",
-                            "/export",
-                            "/deployment",
                             "/project_structure",
+                            "/export",
                             "/html",
                             "/customization",
+                            "/deployment",
                             "/debugging",
                         ]
                     },
