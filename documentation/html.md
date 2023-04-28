@@ -71,6 +71,6 @@ To change the loading appearance the following attributes can be used:
 - `secondary-color`
 
 For example:  
-``<needle-engine loading-background-color="#444" loading-text-color="#000000" loading-logo-src="yourloog.png" primary-color="#00ff00" secondary-color="#ff0000"></needle-engine>``    
+``<needle-engine loading-background-color="#444" loading-text-color="#000000" loading-logo-src="your_logo.png" primary-color="#00ff00" secondary-color="#ff0000"></needle-engine>``    
 
 During styling of the loading bar you can append `?debugloadingbarrendering` to your URL to keep the loading overlay visible.
