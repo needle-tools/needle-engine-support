@@ -1,6 +1,6 @@
 
 import * as dotenv from 'dotenv';
-import { writeFileSync } from 'fs'
+import { existsSync, unlinkSync, writeFileSync } from 'fs'
 
 dotenv.config();
 
@@ -64,15 +64,25 @@ export async function generateCommunityContributions() {
         const validCategories = ["Share"];
         const needsThumpsUpFromUser = ["marwie", "hybridherbst"]
         const contributions = [];
-        
+
         discussionsJSON.data.repository.discussions.nodes.forEach((discussion) => {
             if (validCategories.includes(discussion.category.name)) {
 
-                if (!discussion?.reactions?.nodes) return;
+                const fileName = discussion.title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
+                const path = `./documentation/community/${fileName}.md`;
+
+                if (!discussion?.reactions?.nodes) return dismiss(path);
+
                 // Check if the discussion has a thumbs up from an authorized user (see array above)
                 if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_UP" && needsThumpsUpFromUser.includes(reaction.user.login)).length === 0) {
                     console.log("No thumbs up from authorized user: \"" + discussion.title + "\" - " + discussion.url);
-                    return;
+                    return dismiss(path);
+                }
+
+                // check if an authorized user has given their thumbs down
+                if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_DOWN" && needsThumpsUpFromUser.includes(reaction.user.login)).length > 0) {
+                    console.log("Thumbs down from authorized user: \"" + discussion.title + "\" - " + discussion.url);
+                    return dismiss(path);
                 }
 
                 contributions.push({
@@ -81,13 +91,19 @@ export async function generateCommunityContributions() {
                     body: discussion.body,
                 });
 
-                const fileName = discussion.title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
-                writeFileSync(`./documentation/community/${fileName}.md`, discussion.body);
+                writeFileSync(path, discussion.body);
 
             }
         });
 
         writeFileSync(`./documentation/community/contributions.json`, JSON.stringify(discussionsJSON, null, 2));
+
+        function dismiss(filePath) {
+            if(existsSync(filePath)) {
+                console.log("Deleting " + filePath);
+                unlinkSync(filePath);
+            }
+        }
     }
 
 }
