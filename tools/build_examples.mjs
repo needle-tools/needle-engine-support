@@ -36,7 +36,16 @@ export async function generateCommunityContributions() {
                             }
                             category {
                                 name
+                            },
+                            reactions(first: 100) {
+                                nodes {
+                                    content,
+                                    user {
+                                        login
+                                    }
+                                }
                             }
+
                         }
                     }
                 }
@@ -46,22 +55,31 @@ export async function generateCommunityContributions() {
     });
     const discussionsJSON = await discussions.json();
 
-    if(discussionsJSON.errors) {
+    if (discussionsJSON.errors) {
         throw new Error(JSON.stringify(discussionsJSON.errors));
     }
-    else{
+    else {
         console.log("Discussions fetched");
-        
+
         const validCategories = ["Share"];
-        const validDiscussions = [];
+        const needsThumpsUpFromUser = ["marwie", "hybridherbst"]
+        const contributions = [];
+        
         discussionsJSON.data.repository.discussions.nodes.forEach((discussion) => {
-            if(validCategories.includes(discussion.category.name)) {
-                validDiscussions.push({
+            if (validCategories.includes(discussion.category.name)) {
+
+                if (!discussion?.reactions?.nodes) return;
+                // Check if the discussion has a thumbs up from an authorized user (see array above)
+                if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_UP" && needsThumpsUpFromUser.includes(reaction.user.login)).length === 0) {
+                    console.log("No thumbs up from authorized user: \"" + discussion.title + "\" - " + discussion.url);
+                    return;
+                }
+
+                contributions.push({
                     title: discussion.title,
                     url: discussion.url,
                     body: discussion.body,
                 });
-
 
                 const fileName = discussion.title.replace(/[^a-zA-Z0-9]/g, "-").toLowerCase();
                 writeFileSync(`./documentation/community/${fileName}.md`, discussion.body);
@@ -69,7 +87,7 @@ export async function generateCommunityContributions() {
             }
         });
 
-        writeFileSync(`./documentation/community/contributions.json`, JSON.stringify(validDiscussions, null, 2));
+        writeFileSync(`./documentation/community/contributions.json`, JSON.stringify(discussionsJSON, null, 2));
     }
 
 }

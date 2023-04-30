@@ -24,3 +24,4 @@ documentation/.vuepress/*.ts.*.mjs
 package-lock.json
 documentation/.vuepress/public/meta
 .env
+documentation/community/contributions.json

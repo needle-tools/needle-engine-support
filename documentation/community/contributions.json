@@ -1,7 +1,0 @@
-[
-  {
-    "title": "Script example test",
-    "url": "https://github.com/needle-tools/needle-engine-support/discussions/146",
-    "body": "This is my example 123\r\n\r\n```ts\r\nimport { Behaviour, serializable } from \"@needle-tools/engine\"\r\nimport { Object3D } from \"three\"\r\n\r\nexport class MyComponent extends Behaviour {\r\n\r\n    @serializable(Object3D)\r\n    myObjectReference?: Object3D;\r\n\r\n    start() {\r\n        console.log(\"Hello world\", this);\r\n    }\r\n\r\n    update() {\r\n        // called every frame\r\n    }\r\n}\r\n```\r\n\r\nSome text after the code"
-  }
-]
