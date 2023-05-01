@@ -19,7 +19,7 @@ export default defineClientConfig({
                 quotes[i].style.display = 'none';
                 i = (i + 1) % quotes.length;
                 quotes[i].style.display = 'block';
-            }, 3000);
+            }, 5000);
         })
     }
 })
