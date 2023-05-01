@@ -120,7 +120,6 @@ export default defineUserConfig({
                             "/project_structure",
                             "/export",
                             "/html",
-                            "/customization",
                             "/deployment",
                             "/debugging",
                         ]
