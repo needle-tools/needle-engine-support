@@ -6,6 +6,8 @@ on:
     branches: [main]
   # trigger deployment manually
   workflow_dispatch:
+  schedule:
+    - cron: "* */12 * * *"
 
 jobs: 
   docs:
