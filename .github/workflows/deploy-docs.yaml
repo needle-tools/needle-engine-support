@@ -7,7 +7,7 @@ on:
   # trigger deployment manually
   workflow_dispatch:
   schedule:
-    - cron: "* */12 * * *"
+    - cron: "* * */2 * *"
 
 jobs: 
   docs:
