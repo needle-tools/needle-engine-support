@@ -6,9 +6,6 @@ on:
     branches: [main]
   # trigger deployment manually
   workflow_dispatch:
-  schedule:
-    - cron: "* */12 * * *"
-
 jobs: 
   docs:
     runs-on: ubuntu-latest
@@ -89,4 +86,4 @@ jobs:
         with:
           webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
           username: "Deploy Docs 🤖"
-          content: "Docs have been updated → https://engine.needle.tools/docs/\n`${{ github.event.head_commit.message }}`"
+          content: "Docs have been updated → <https://engine.needle.tools/docs/>\n`${{ github.event.head_commit.message }}`"
