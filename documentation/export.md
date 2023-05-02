@@ -99,17 +99,20 @@ Other materials are converted using a propery name heuristic. That means that de
 ### Custom Shaders
 To export custom shaders (e.g. ShaderGraph shaders), add an ``ExportShader`` Asset Label (see bottom of the inspector) to the shader you want to export.
 
-::: warning Please see limitations listed below :::
+::: warning
+Please see limitations listed below
+:::
 
 ![2022-08-22-172029_Needle_Website_-_CustomShaders_-_Windows,_Mac,_Lin](https://user-images.githubusercontent.com/5083203/185957781-9fae18c5-09ff-490f-8958-57e138aa0003.png)
 
 > Custom Shaders aren't part of the ratified glTF material model. The resulting GLB files will not display correctly in other viewers (the materials will most likely display white).
 
 #### Current limitations
-- We currently only support custom unlit shaders
+- We currently only support custom **Unlit** shaders — Lit shader conversion is not officially supported.
 - Custom Lit Shaders are currently experimental. Not all rendering modes are supported. 
-- Shadow receiving is not supported.
-- As there's multiple coordinate system changes when going from Unity to three.js and glTF, there might be some changes necessary to get advanced effects to work. 
+- Shadow receiving on custom shaders is not supported
+- Skinned meshes with custom shaders are not supported
+- As there's multiple coordinate system changes when going from Unity to three.js and glTF, there might be some changes necessary to get advanced effects to work. We try to convert data on export but may not catch all cases where conversions are necessary.  
 These coordinate changes are
   - UV coordinates in Unity start at the bottom left; in glTF they start at the top left.
   - X axis values are flipped in glTF compared to Unity (a variant of a left-handed to right-handed coordinate system change).  
