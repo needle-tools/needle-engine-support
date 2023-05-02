@@ -97,6 +97,9 @@ body:
       placeholder: Reproduction URL or file
     validations:
       required: false
+      
+  - type: input
+    id: discord post / discussion
      
   - type: checkboxes
     id: checkboxes
