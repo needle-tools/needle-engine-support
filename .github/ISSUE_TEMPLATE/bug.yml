@@ -102,6 +102,7 @@ body:
     id: discussion_link
     attributes:
       label: Discord or Discussion link
+      description: Please add a link to your discord forum post or github discussion
       placeholder: https://discord.com/channels/717429793926283276/1024686103598477383
     validations:
       required: false
