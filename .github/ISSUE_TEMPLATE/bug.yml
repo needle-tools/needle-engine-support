@@ -99,7 +99,12 @@ body:
       required: false
       
   - type: input
-    id: discord post / discussion
+    id: discussion_link
+    attributes:
+      label: Discord or Discussion link
+      placeholder: https://discord.com/channels/717429793926283276/1024686103598477383
+    validations:
+      required: false
      
   - type: checkboxes
     id: checkboxes
