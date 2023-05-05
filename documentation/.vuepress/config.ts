@@ -101,6 +101,10 @@ export default defineUserConfig({
                         link: '/testimonials',
                     },
                     {
+                        text: 'Pricing & Plans',
+                        link: "https://needle.tools/pricing"
+                    },
+                    {
                         text: "Releases and Changelog",
                         link: "https://github.com/needle-tools/needle-engine-support/releases"
                     },
@@ -225,6 +229,10 @@ export default defineUserConfig({
                         ]
                     },
                 ]
+            },
+            {
+                text: 'Pricing',
+                link: "https://needle.tools/pricing"
             },
             {
                 text: 'Contact',
