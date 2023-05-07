@@ -81,7 +81,8 @@ Select a Mesh and open the Needle importer options to see available options for 
 
 You can deploy to glitch by adding the `DeployToGlitch` component to your scene and following the instructions.
 
-:::details Detailed instructions for deploying to Glitch
+:::details How do I deploy to Glitch from Unity?
+
 1) Add the ``DeployToGlitch`` component to the GameObject that also has the ``ExportInfo`` component.
 
 3) Click the ``Remix on glitch`` button on the component
@@ -98,17 +99,18 @@ You can deploy to glitch by adding the `DeployToGlitch` component to your scene 
   ![image](https://user-images.githubusercontent.com/5083203/179835883-b524d23f-d887-4ac1-9a59-d5508b6b30c2.png)
 ::: 
 
-
 ### Deploy to Netlify  
+:::details How do I deploy to Netlify from Unity?
 Just add the `DeployToNetlify` component to your scene and follow the instructions. You can create new projects with the click of a button or deployt to existing projects.  
 
 ![Deploy to netlify component](/deployment/deploytonetlify-2.jpg)  
 
 ![Deploy to netlify component](/deployment/deploytonetlify.jpg)  
-
+:::
 
 ### Deploy to itch.io  
 
+:::details How do I deploy to itch.io from Unity?
 1) Create a new project on [itch.io](https://itch.io/game/new)
 2) Set ``Kind of project`` to ``HTML``  
   ![image](https://user-images.githubusercontent.com/5083203/191211856-8a114480-bae7-4bd1-868e-2e955587acd7.png)
@@ -125,16 +127,20 @@ Just add the `DeployToNetlify` component to your scene and follow the instructio
   
 #### Optional settings
 ![image](https://user-images.githubusercontent.com/5083203/191217263-355d9b72-5431-4170-8eca-bfbbb39ae810.png)
+:::
 
-
-#### Troubleshooting itch.io  
+:::details Itch.io: failed to find index.html
 
 #### Failed to find index.html
 ![image](https://user-images.githubusercontent.com/5083203/191213162-2be63e46-2a65-4d41-a713-98c753ccb600.png)  
 If you see this error after uploading your project make sure you do not upload a gzipped index.html.
 You can disable gzip compression in ``vite.config.js`` in your Needle web project folder. Just remove the line with ``viteCompression({ deleteOriginFile: true })``. The build your project again and upload to itch.  
 
+::: 
+
 ### Deploy to FTP
+
+:::details How do I deploy to my FTP server from Unity?
 1) Add the ``DeloyToFTP`` component¹ on a GameObject in your scene (it is good practice to add it to the same GameObject as ExportInfo - but it is not mandatory) 
 2) Assign an FTP server asset and fill out server, username, and password if you have not already ²    
   *This asset contains the access information to your FTP server - you get them when you create a new FTP account at your hosting provider*
@@ -149,8 +155,9 @@ You can disable gzip compression in ``vite.config.js`` in your Needle web projec
 
 ![Deploy to FTP component in Unity with server asset assigned](/deployment/deploytoftp3.jpg)  
 *Deploy To FTP component after server asset is assigned. You can directly deploy to a subfolder on your server using the path field* 
+:::
 
-### Deploy to FTP (manual upload)
+:::details How do I deploy to my FTP server manually?
 
 1) Open `File > Build Settings`, select `Needle Engine`, and click on <kbd>Build</kbd>
 2) Wait for the build to complete - the resulting `dist` folder will open automatically after all build and compression steps have run.
@@ -169,10 +176,19 @@ Option 2: You can turn gzip compression off in the build settings at File/Build 
 
 > **Note**: If you're getting errors during compression, please let us know and report a bug! If your project works locally and only fails when doing production builds, you can get unstuck right away by doing a Development Build. For that, simply toggle `Development Build` on in the Build Settings.
 
-
 ![Unity build window showing Needle Engine platform](/deployment/buildoptions_gzip.jpg)  
 
+:::
 
+
+
+### Deploy to Github Pages
+:::details How do I deploy to Github Pages from Unity?
+
+Add the DeployToGithubPages component to your scene and copy-paste the github repository (or github pages url) that you want to deploy to.  
+![Deploy To github pages component](/deployment/deploytogithubpages.jpg) 
+
+:::
 ---
 
 ## Cross-Platform Deployment Workflows
