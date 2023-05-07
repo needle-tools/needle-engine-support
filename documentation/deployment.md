@@ -48,17 +48,23 @@ You can also add the `Progressive Texture Settings` component anywhere in your s
 ![image](/imgs/unity-progressive-textures.jpg)  
 
 #### Mesh compression
-By default a production build will compress meshes using `draco` compression. We also offer an option to automatically simplify your meshes by using Mesh-Simplifier.     
-We're working on adding options for choosing between `meshopt` and `draco` per mesh depending on your usecase.
+By default a production build will compress meshes using `draco` compression. We also offer an option to automatically simplify your meshes by using Mesh-Simplifier to reduce the polycount for production builds. When viewing your application in the browser you can append `?wireframe` to your URL to preview the meshes.       
+  
+:::details How to choose between draco and meshopt compression?
+Add the MeshCompression component to select which compression should be applied per exported glTF.   
 
-#### Mesh simplification
-
-:::details Where to find mesh simplification options?
-Select a Mesh and open the Needle importer options to see available options for the selected mesh:  
-![image](/imgs/unity-mesh-compression.jpg)
+![image](/imgs/unity-mesh-compression-component.jpg)    
+- To change compression for the **current scene** just add it anywhere in your root scene.
+- To change compression for a **prefab or NestedGltf** add it to a `GltfObject` or the prefab that is referenced / exported by any of your components.
+- To change compression for a **referenced scene** just add it to the referenced scene that is exported  
 :::
 
-##### Troubleshooting production builds
+:::details Where to find mesh simplification options to reduce the vertex count when building for production?
+Select a Mesh and open the Needle importer options to see available options for the selected mesh:  
+![image](/imgs/unity-mesh-simplification.jpg)
+:::
+
+#### Troubleshooting production builds
 
 :::details Toktx can not be found  
   Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    

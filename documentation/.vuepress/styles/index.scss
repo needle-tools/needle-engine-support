@@ -44,3 +44,31 @@ img {
   padding: .2em .2em .5em 2.4em !important;
   max-width: 80%;
 }
+
+details
+{
+  border-radius: 10px !important;
+  border: 2px solid rgba(255,255,255,.1) !important;
+  outline: 1px solid rgba(0,0,0,.2);
+  box-shadow: inset 0 0 20px rgba(0,0,0,.1) !important;
+  padding: 1em !important;
+  margin: .5em 0 !important;
+}
+
+details summary {
+  font-weight: bold !important;
+}
+
+details p {
+  margin-top: .5em;
+}
+
+// details summary::-webkit-details-marker,
+// details summary::marker {
+//  display: none; 
+//  content: "▶ ";
+// }
+// details[open] > summary::marker {
+//   display: none;
+//   content: "▼ ";
+// }
