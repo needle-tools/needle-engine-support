@@ -43,6 +43,32 @@ The dependencies come from unity when there is a NpmDef in the project (so when 
 You could also publish your packages to npm and reference them via version number.  
 :::
 
+### Tree-shaking to reduce bundle size
+
+Tree shaking refers to a common practice when it comes to bundling of web applications ([see MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). It means that code paths and features that are not used in your code will be removed from the final bundled javascript file(s) to reduce filesize. See below about features that Needle Engine includes and remove them: 
+
+:::details How to remove Rapier physics engine? (Reduce the overall bundle size by about 600KB to 2MB)
+
+- **Option 1**: via needlePlugins config:  
+Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleConfig, { useRapier: false }),`
+
+- **Option 2**: via vite.define config:  
+  Declare the `NEEDLE_USE_RAPIER` define with `false`
+  ```js
+  define: {
+    NEEDLE_USE_RAPIER: false
+  },
+  ```
+
+- **Option 3**: via .env  
+  Create a `.env` file in your web project and add `VITE_NEEDLE_USE_RAPIER=false`
+
+- **Option 4**: via Unity component   
+  Add the `Needle Engine Modules` component to your scene and set `Physics Engine` to `None`  
+  ![](/imgs/unity-needle-engine-modules-physics.jpg)
+
+:::
+
 ## Accessing Needle Engine and Components from external javascript
     
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
