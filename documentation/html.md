@@ -47,7 +47,7 @@ You could also publish your packages to npm and reference them via version numbe
 
 Tree shaking refers to a common practice when it comes to bundling of web applications ([see MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). It means that code paths and features that are not used in your code will be removed from the final bundled javascript file(s) to reduce filesize. See below about features that Needle Engine includes and remove them: 
 
-:::details How to remove Rapier physics engine? (Reduce the overall bundle size by about 600KB to 2MB)
+:::details How to remove Rapier physics engine? (Reduce the overall bundle size removing ~2MB (~600KB when gzipping))
 
 - **Option 1**: via needlePlugins config:  
 Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleConfig, { useRapier: false }),`
