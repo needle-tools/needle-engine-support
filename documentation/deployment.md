@@ -48,7 +48,8 @@ You can also add the `Progressive Texture Settings` component anywhere in your s
 ![image](/imgs/unity-progressive-textures.jpg)  
 
 #### Mesh compression
-By default a production build will compress meshes using `draco` compression. We also offer an option to automatically simplify your meshes by using Mesh-Simplifier to reduce the polycount for production builds. When viewing your application in the browser you can append `?wireframe` to your URL to preview the meshes.       
+By default a production build will compress meshes using `draco` compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
+Additionally you can setup mesh simplification to reduce the polycount for production builds in the mesh import settings (Unity). When viewing your application in the browser you can append `?wireframe` to your URL to preview the meshes.       
   
 :::details How to choose between draco and meshopt compression?
 Add the MeshCompression component to select which compression should be applied per exported glTF.   
