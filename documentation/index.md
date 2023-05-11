@@ -9,7 +9,7 @@ footer: "Copyright © 2022 Needle Tools GmbH"
 
 **Needle Engine** is a web engine for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible and has built-in support for collaboration and XR! It is built around the glTF standard for 3D assets.
 
-**Needle Engine for Unity** utilizes allows you to use Unity to author and manage your web application: It helps you to export your assets, animations, lightmaps and more.  
+**Needle Engine for Unity** allows you to use Unity and Blender to author and manage web applications: It helps you to export your assets, animations, lightmaps and more.  
 
 <quoteslides>
 <div>Unbelievable Unity editor integration by an order of magnitude,<br/>and as straightforward as the docs claim. Wow. — Chris Mahoney</div>
