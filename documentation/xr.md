@@ -22,17 +22,19 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | Android 10+ | ✔️ Chrome | |
 | Android 10+ | ✔️ Firefox | |
 | iOS 15+ | ✔️ WebXR Viewer | does not fully implement standards, but supported |
-| iOS 15+ | ❌ Safari | can fall back to interactive USDZ files or [other approaches](#limitations-for-webxr-on-ios) |
+| iOS 15+ | (✔️)<sup>3</sup> Safari | No full code support, but Needle [Everywhere Actions](everywhere-actions.md) are supported for creating dynamic, interactive USDZ files. |
 | Hololens 2 | ✔️ Edge | |
 | Hololens 1 | ❌ | no WebXR support |
+| Magic Leap 2 | ✔️ | |
 
 | Not Tested but Should Work™️ | Browser | Notes |
 | -- | -- | -- |
 | Magic Leap 1 | | please let us know if you tried! |
-| Magic Leap 2 | | please let us know if you tried! |
+
 
 <sup>1</sup>: Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`   
 <sup>2</sup>: Requires enabling a toggle in the Developer settings    
+<sup>3</sup>: Uses [Everywhere Actions](everywhere-actions.md) or [other approaches](#augmented-reality-and-webxr-on-ios)
 
 ## Adding VR and AR capabilities to a scene
 
@@ -178,23 +180,32 @@ While we currently don't provide built-in components for this, here's a few refe
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
 
 
-## Limitations for WebXR on iOS
+## Augmented Reality and WebXR on iOS
 
-Due to Apple currently not supporting WebXR on iOS devices, Augmented Reality experiences on iOS are limited.  
+Augmented Reality experiences on iOS are somewhat limited, due to Apple currently not supporting WebXR on iOS devices.  
 
-A number of options and workarounds exist to still give iOS users _some_ AR:  
+Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill that gap, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information. 
 
-1. **Guiding users towards WebXR-compatible browsers on iOS.**
-   Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
-   
+### Musical Instrument – WebXR and QuickLook support
+
+Here's an example for a musical instrument that uses Everywhere Actions and thus works in browsers and in AR on iOS devices. 
+It uses spatial audio, animation, and tap interactions.  
+<sample src="https://engine.needle.tools/samples/musical-instrument" />
+
+### Everywhere Actions and other options for iOS AR
+
+There's also other options for guiding iOS users to even more capable interactive AR experiences:
+
 3. **Exporting content on-the-fly as USDZ files.**  
-   These files can be displayed on iOS devices in AR. They lack interactivity (besides a small set of built-in components) but can be sufficient for product configurators and similar relatively static usecases.
-   An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.
-   - The [three.js USDZ converter](https://threejs.org/examples/misc_exporter_usdz.html) can be used like any other three.js example to create and view USDZ files at runtime.  
+   These files can be displayed on iOS devices in AR. When exported from scenes with Everywhere Actions the interactivity is the same, more than sufficient for product configurators, narrative experiences and similar.
+   An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.  
 
  > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively place text into the scene on their screens and then view the results in AR on iOS. On Android, they can also interact right in WebXR.   
  > — #madewithneedle by Katja Rempel 💚  
 
+1. **Guiding users towards WebXR-compatible browsers on iOS.**
+   Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
+   
 2. **Using camera access and custom algorithms on iOS devices.**  
    One can request camera image access and run custom algorithms to determine device pose.  
    While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
@@ -207,3 +218,4 @@ A number of options and workarounds exist to still give iOS users _some_ AR:
 
 [WebXR Device API](https://www.w3.org/TR/webxr/)  
 [caniuse: WebXR](https://caniuse.com/webxr)  
+[Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)

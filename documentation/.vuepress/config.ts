@@ -122,6 +122,7 @@ export default defineUserConfig({
                         children: [
                             "/getting-started",
                             "/project_structure",
+                            "/everywhere-actions",
                             "/export",
                             "/html",
                             "/deployment",
@@ -164,7 +165,6 @@ export default defineUserConfig({
                             "/for-unity-developers",
                             "/component-reference",
                             "/vanilla-js",
-                            "/scripting-examples",
                         ]
                     },
                     {

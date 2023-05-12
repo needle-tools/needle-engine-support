@@ -2,9 +2,32 @@
 title: Deployment & Compression
 ---
 
+## What's deployment?
+
+Deployment is the process of making your application available to the public on a website. Needle Engine ensures that your project is as small and fast as possible by using the latest compression techniques such as [KTX2](), [Draco](), and [Meshopt]().  
+
+We provide a number of easy-to-use deployment options out of the box:  
+
+- [Glitch](#deploy-to-glitch)
+  No login required, great for experimentation. 
+- [Netlify](#deploy-to-netlify)
+  Great for hosting your own website and custom domain names.
+- [itch.io](#deploy-to-itch.io)
+  Often used for games.
+- [GitHub Pages](#deploy-to-github-pages)
+  Free static page hosting.
+- [FTP Upload](#deploy-to-ftp)
+  Deploy directly to any server with FTP support.
+- [Build to folder](#production-builds)
+  Bring your project anywhere!
+  
+::: tip
+Feel something is missing? Please let us know in our [discord](https://discord.needle.tools)!
+:::
+
 ## Building for the web (deployment)
 
-### How to: Unity  
+### From the Unity Integration
 Open ``File/Build Settings`` and select ``Needle Engine`` for options!
 
 :::details Where do I find the Build Options in Unity?
@@ -17,18 +40,22 @@ You can enable the ``Development Build`` checkbox to omit compression (see below
 
 > **Note**: Nodejs is **only** required during development. The distributed website (using the vite template) is a static page, doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
-## Building a development distribution
+## Development Builds
+
 See guides above on how to access the options from within your Editor (e.g. Unity or Blender).  
+
 The main difference to a production build is that it does not perform [``ktx2``](https://github.khronos.org/KTX-Specification/) and [``draco``](https://google.github.io/draco/) compression (for reduction of file size and loading speed) as well as the option to progressively load high-quality textures.  
-We generally recommend making production builds for optimized file size and loading speed (see more information below)
 
-## Building a production distribution
+We generally recommend making production builds for optimized file size and loading speed (see more information below).
 
-To make a production build you need to have [toktx](https://github.com/KhronosGroup/KTX-Software/releases) to be installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0-rc3 at the time of writing, there might be a newer one). You may need to restart Unity after installing it.  
-*If you're sure that you have installed toktx and it's part of your path but it still can't be found, please restart your machine and try again.*  
+## Production Builds
 
+To make a production build, you need to have [toktx](https://github.com/KhronosGroup/KTX-Software/releases) installed, which provides texture compression using the KTX2 supercompression format. Please go to the [toktx Releases Page](https://github.com/KhronosGroup/KTX-Software/releases) and download and install the latest version (v4.1.0 at the time of writing). You may need to restart Unity after installing it.  
+*If you're sure that you have installed toktx and it's part of your PATH but still can't be found, please restart your machine and try build again.*  
+
+:::details Advanced: Custom glTF extensions
 If you plan on adding your own custom glTF extensions, building for production requires handling those in ``gltf-transform``. See [@needle-tools/gltf-build-pipeline](https://www.npmjs.com/package/@needle-tools/gltf-build-pipeline) for reference.
-
+:::
 
 ### Optimization and Compression Options  
 
@@ -36,22 +63,41 @@ If you plan on adding your own custom glTF extensions, building for production r
 Production builds will by default compress textures using **KTX2** (either ETC1S or UASTC depending on their usage in the project)   
 but you can also select **WebP** compression and select a quality level.  
 
+:::details How do I choose between ETC1S, UASTC and WebP compression?
+
+| Format | ETC1S | UASTC | WebP |
+| --- | --- | --- | --- |
+| **GPU Memory Usage** | Low | Low | High (uncompressed) |
+| **File Size** | Low | High | Very low |
+| **Quality** | Medium | Very high | Depends on quality setting |
+| **Typical usage** | Works for everything, but best for color textures | High-detail data textures: normal maps, roughness, metallic, etc. | Files where ETC1S quality is not sufficient but UASTC is too large |
+:::
+
 You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer options.
  
-:::details Where to find per texture compression options
+:::details How can I set per-texture compression settings?
 ![image](/imgs/unity-texture-compression.jpg)  
 ![image](/imgs/unity-texture-compression-options.jpg)  
 :::
 
-You can also add the `Progressive Texture Settings` component anywhere in your scene to make all textures in your project be progressively loaded. Note that progressive loading is not applied to lightmaps or skybox textures at this point.  
+You can also add the `Progressive Texture Settings` component anywhere in your scene, to make all textures in your project be progressively loaded. Progressive loading is not applied to lightmaps or skybox textures at this point.  
 
 ![image](/imgs/unity-progressive-textures.jpg)  
 
-#### Mesh compression
-By default a production build will compress meshes using `draco` compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
-Additionally you can setup mesh simplification to reduce the polycount for production builds in the mesh import settings (Unity). When viewing your application in the browser you can append `?wireframe` to your URL to preview the meshes.       
+#### Mesh compression and simplification
+
+By default, a production build will compress meshes using `draco` compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
+Additionally you can setup mesh simplification to reduce the polycount for production builds in the mesh import settings (Unity). When viewing your application in the browser, you can append `?wireframe` to your URL to preview the meshes.       
   
-:::details How to choose between draco and meshopt compression?
+:::details How do I choose between Draco and Meshopt?
+| Format | Draco | Meshopt |
+| --- | --- | --- |
+| **GPU Memory Usage** | Medium | Low |
+| **File Size** | Lowest | Low |
+| **Animation compression** | No | Yes |
+:::
+
+:::details How can I set draco and meshopt compression settings?
 Add the MeshCompression component to select which compression should be applied per exported glTF.   
 
 ![image](/imgs/unity-mesh-compression-component.jpg)    
