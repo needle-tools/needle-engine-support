@@ -18,8 +18,9 @@
     </script>
     <!-- parcel require must currently defined somewhere for peerjs -->
     <script> var parcelRequire; </script>
-    <!-- loading the needle engine js file -->
-    <script type="module" src="https://unpkg.com/@needle-tools/engine/dist/needle-engine.js"></script>
+    
+    <!-- the .light version does not include dependencies like Rapier.js (so no physics) to reduce the bundle size, if your project needs physics then just change it to needle-engine.min.js -->
+    <script type="module" src="https://unpkg.com/@needle-tools/engine@3.5.6-alpha/dist/needle-engine.light.min.js"></script>
 
     <style>
         body { margin: 0; }
