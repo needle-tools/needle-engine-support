@@ -4,8 +4,6 @@ Access to core networking functionality can be obtained by using ``this.context.
 
 Networking is currently based on [websockets](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers](https://google.github.io/flatbuffers/) (for frequent updates).
 
-Source code for networking is at ``engine/engine_networking.ts``.
-
 ## Using Multiplayer
 
 - **Enable Networking**  
@@ -20,21 +18,19 @@ Source code for networking is at ``engine/engine_networking.ts``.
 - **Enable Voice Chat**  
   Add a `VoIP` component.
 
-> **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
-
 
 ## Core Components
 
-- ``SyncedRoom`` — handles networking connection and connection to a room
+- ``SyncedRoom`` — handles networking connection and connection to a room.   
+  This can also be done by code using the networking api  accessible from `this.context.connection`
 - ``SyncedTransform`` — handles synchronizing transforms
 - ``SyncedCamera`` — spawns a prefab for any user connected to the room which will follow their position
 - ``WebXRSync`` — handles synchronization for AR and VR users
 - ``VoIP`` — handles voice-over-IP audio connections, microphone access etc. between users
-- ``Networking`` — use to customize server backend url
+- ``Networking`` — use to customize the server backend url
 
 
 ## Manual Networking
-> 🏗️ Under construction
 
 ### Sending
 
@@ -87,20 +83,27 @@ export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
 - [Generating a schema](https://google.github.io/flatbuffers/flatbuffers_guide_writing_schema.html)
 - [Flatbuffer in Typescript](https://google.github.io/flatbuffers/flatbuffers_guide_use_typescript.html)
 
-> 🏗️ Under construction
 
 
 ## Built-in Networking on Glitch
 
-When deploying your app to Glitch, we include a simple networking backend that is great for prototyping and small deployments (~12-20 people at the same time). You can later update to a bigger/better/stronger networking solution if required.  
+When deploying your app to Glitch, we include a simple networking backend that is great for prototyping and small deployments (~15-20 people at the same time). You can later update to a bigger/better/stronger networking solution if required.  
 
 ### Limitations
 
-- approx. 12-20 people maximum – afterwards the tiny Glitch server instance becomes slow
+- approx. 15-20 people maximum – afterwards the small default Glitch server instance becomes slow
 
 ### How to upgrade to a stronger server
 
-> 🏗️ Under construction.
+Needle Engine currently uses its [own networking package](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) hosted on npm. By default if not configured differently using the `Networking` component Needle Engine will connect to a server running on Glitch.
+
+It can be added to your own fastiy or express server running on any server for example by adding the following code on your server after installing the package:
+```js
+import networking from "@needle-tools/needle-tiny-networking-ws";
+networking.startServerFastify(fastifyApp, { endpoint: "/socket" });
+```
+See the [package's Readme](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) for more information.
+
 
 ### How to use your own networking implementation
 
