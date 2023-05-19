@@ -4,7 +4,7 @@ title: Needle Engine for Unity Developers
 
 Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
 
-The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or threejs background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in Needle Engine. *Spoiler: things are very similar* 
+The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or threejs background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in threejs or Needle Engine.
 
 ### The Basics
 Needle Engine is a 3d web engine running on-top threejs. Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are basically also talking about a threejs `Object3D`, the base type of any object in threejs. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
