@@ -27,6 +27,11 @@
   }
 }
 
+::selection {
+  color: #000;
+  background: #a3d03d;
+}
+
 .search-box {
   --search-border-color: rgba(138, 125, 189, 0.5);
 }
