@@ -7,9 +7,9 @@ lastUpdated: false
 footer: "Copyright © 2022 Needle Tools GmbH"
 ---
 
-**Needle Engine** is a web engine for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible and has built-in support for collaboration and XR! It is built around the glTF standard for 3D assets.
 
-**Needle Engine for Unity** allows you to use Unity and Blender to author and manage web applications: It helps you to export your assets, animations, lightmaps and more.  
+**Needle Engine** is a web engine for complex and simple 3D applications alike. Run on your machine and deploy anywhere. It is flexible, extensible and has built-in support for **collaboration and XR**! It is built around the **glTF standard** for 3D assets. Powerful integrations for **Unity** and **Blender** allow artists and developers to collaborate and manage web applications inside battle-tested 3d editors. **Needle Engine Integrations** allow you to use Editor features for exporting models, author materials, animate and sequence animations, bake lightmaps and more with ease. Our powerful **compression and optimization pipeline for the web** make sure your files are ready, small and load fast!  
+
 
 <quoteslides>
 <div>Unbelievable Unity editor integration by an order of magnitude,<br/>and as straightforward as the docs claim. Wow. — Chris Mahoney</div>
@@ -31,7 +31,7 @@ footer: "Copyright © 2022 Needle Tools GmbH"
 
 </quoteslides>
 
----
+
 <actiongroup>
     <action href="getting-started">
     Get started ⭐
@@ -48,14 +48,24 @@ footer: "Copyright © 2022 Needle Tools GmbH"
 </actiongroup>
 
 
-<video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" />
+<!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
  
+ <br/>
+ <br/>
 
- --- 
-<p></p> 
 <actiongroup>
-<a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
+
+  
+<a href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=000000&colorB=000000"/></a>
+
+<a href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=000000&colorB=000000"/></a>
+
+
+<a href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=000000&colorB=000000&label=discord&logo=discord&logoColor=ffffff"></a>
+  
+
 </actiongroup>
+
 
 
 

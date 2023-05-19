@@ -81,7 +81,7 @@ export default defineUserConfig({
         contributors: false,
         editLink: true,
         notFound: [
-            "Oops, this page does not exist 😥",
+            "Oh no — this page does not exist!",
             "Gosh! You found a 🌵 glitch",
         ],
         navbar: [
@@ -111,8 +111,14 @@ export default defineUserConfig({
                 ]
             },
             {
-                text: 'Getting Started ⭐',
-                link: '/getting-started'
+                text: 'Getting Started',
+                link: '/getting-started',
+                // children: [
+                //     {
+                //         text: 'Needle Engine',
+                //         link: '/',
+                //     }
+                // ]
             },
             {
                 text: 'Guides',

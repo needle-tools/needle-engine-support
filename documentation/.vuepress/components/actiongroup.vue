@@ -2,12 +2,16 @@
 export default {}
 </script>
 
-<style scoped>
+<style>
 .actiongroup {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+}
+
+.actiongroup>* {
+    margin: .0em .5em;
 }
 </style>
 

@@ -1,9 +1,9 @@
 // https://v2.vuepress.vuejs.org/reference/default-theme/styles.html#style-file
 :root {
-    // brand colors
-    --c-brand: #99CC33;
-    --c-brand-light: #D7DB0A;
-    --c-text-accent: #826aed;
+  // brand colors
+  --c-brand: #99CC33;
+  --c-brand-light: #D7DB0A;
+  --c-text-accent: #826aed;
     
     
   // code blocks vars
@@ -12,11 +12,12 @@
   --code-ln-color: #fff;
   --code-ln-wrapper-width: 2rem;
   
-  --content-width: 1200px;
+  --content-width: 1000px;
   --homepage-width: 100%;
 
   --c-text-quote: rgb(130, 122, 165);
   --c-tip: #b5d935 !important;
+  --c-details-bg: rgba(125,125,125,.05);
   // --c-bg-light: rgba(125,125,125,.12);
   
   // --c-bg-navbar: rgba(245, 245, 245, 1);
@@ -25,6 +26,20 @@
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
     border-radius: .7em;
   }
+}
+
+.theme-container, blockquote {
+  font-size: 1.1rem;
+}
+p, ul, ol {
+  line-height: 1.5em;
+}
+
+code{
+  border-radius: .2em;
+  background-color: #646464 !important;
+  color: white !important;
+  box-shadow: inset 0 0 10px rgba(0,0,0,.5) !important;
 }
 
 ::selection {
@@ -47,15 +62,15 @@ img {
   border-left-width: .25em !important;
   // border: 1px solid rgba(0,0,0,.5) !important;
   padding: .2em .2em .5em 2.4em !important;
-  max-width: 80%;
+  max-width: 700px;
 }
 
 details, .custom-container
 {
   border-radius: 10px !important;
-  border: 2px solid rgba(255,255,255,.1) !important;
+  border: 2px solid rgba(255,255,255,.05) !important;
   outline: 1px solid rgba(0,0,0,.2);
-  box-shadow: inset 0 0 20px rgba(0,0,0,.1) !important;
+  box-shadow: inset 0 0 20px rgba(0,0,0,.05) !important;
   padding: 1em !important;
   margin: .5em 0 !important;
 }
@@ -68,9 +83,10 @@ details p {
   margin-top: .5em;
 }
 
-.custom-container p {
+.custom-container p:not(:first) {
   margin: 0;
 }
+
 .custom-container-title {
   padding-bottom: .5em;
 }

@@ -4,9 +4,9 @@ title: Deployment & Compression
 
 ## What's deployment?
 
-Deployment is the process of making your application available to the public on a website. Needle Engine ensures that your project is as small and fast as possible by using the latest compression techniques such as [KTX2](), [Draco](), and [Meshopt]().  
+Deployment is the process of making your application available to the public on a website. Needle Engine ensures that your project is as small and fast as possible by using the latest compression techniques such as **KTX2**, **Draco**, and **Meshopt**.  
 
-We provide a number of easy-to-use deployment options out of the box:  
+## Available Deployment Targets 
 
 - [Glitch](#deploy-to-glitch)
   No login required, great for experimentation. 
@@ -16,6 +16,8 @@ We provide a number of easy-to-use deployment options out of the box:
   Often used for games.
 - [GitHub Pages](#deploy-to-github-pages)
   Free static page hosting.
+- [Vercel](#deploy-to-github-pages)
+  Platform for frontend developers
 - [FTP Upload](#deploy-to-ftp)
   Deploy directly to any server with FTP support.
 - [Build to folder](#production-builds)
@@ -25,9 +27,8 @@ We provide a number of easy-to-use deployment options out of the box:
 Feel something is missing? Please let us know in our [discord](https://discord.needle.tools)!
 :::
 
-## Building for the web (deployment)
+## Deploying to the web from Unity
 
-### From the Unity Integration
 Open ``File/Build Settings`` and select ``Needle Engine`` for options!
 
 :::details Where do I find the Build Options in Unity?
@@ -44,7 +45,7 @@ You can enable the ``Development Build`` checkbox to omit compression (see below
 
 See guides above on how to access the options from within your Editor (e.g. Unity or Blender).  
 
-The main difference to a production build is that it does not perform [``ktx2``](https://github.khronos.org/KTX-Specification/) and [``draco``](https://google.github.io/draco/) compression (for reduction of file size and loading speed) as well as the option to progressively load high-quality textures.  
+The main difference to a production build is that it does not perform [ktx2](https://registry.khronos.org/KTX/specs/2.0/ktxspec.v2.html) and [draco](https://google.github.io/draco/) compression (for reduction of file size and loading speed) as well as the option to progressively load high-quality textures.  
 
 We generally recommend making production builds for optimized file size and loading speed (see more information below).
 
@@ -80,13 +81,27 @@ You have the option to select texture compression and progressive loading option
 ![image](/imgs/unity-texture-compression-options.jpg)  
 :::
 
-You can also add the `Progressive Texture Settings` component anywhere in your scene, to make all textures in your project be progressively loaded. Progressive loading is not applied to lightmaps or skybox textures at this point.  
+:::details Toktx can not be found  
+  Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
+  ![image](/imgs/ktx-env-variable.webp)
+:::
 
-![image](/imgs/unity-progressive-textures.jpg)  
+#### Progressive Texture loading
+
+You can also add the `Progressive Texture Settings` component anywhere in your scene, to make all textures in your project be progressively loaded. Progressive loading is not applied to lightmaps or skybox textures at this point.   
+
+With progressive loading textures will first be loaded using a lower resolution version. A full quality version will be loaded dynamically when the texture becomes visible. This usually reduces initial loading of your scene significantly.
+
+:::details How can I enable progressive texture loading?
+### Progressive textures can be enabled per texture<br/>or for all textures in your project:  
+![image](/imgs/unity-texture-compression.jpg)    
+### Enable for all textures in the project that don't have any other specific setting:  
+![image](/imgs/unity-progressive-textures.jpg)   
+:::
 
 #### Mesh compression and simplification
 
-By default, a production build will compress meshes using `draco` compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
+By default, a production build will compress meshes using Draco compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
 Additionally you can setup mesh simplification to reduce the polycount for production builds in the mesh import settings (Unity). When viewing your application in the browser, you can append `?wireframe` to your URL to preview the meshes.       
   
 :::details How do I choose between Draco and Meshopt?
@@ -109,13 +124,6 @@ Add the MeshCompression component to select which compression should be applied 
 :::details Where to find mesh simplification options to reduce the vertex count when building for production?
 Select a Mesh and open the Needle importer options to see available options for the selected mesh:  
 ![image](/imgs/unity-mesh-simplification.jpg)
-:::
-
-#### Troubleshooting production builds
-
-:::details Toktx can not be found  
-  Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
-  ![image](/imgs/ktx-env-variable.webp)
 :::
 
 
@@ -154,6 +162,16 @@ Just add the `DeployToNetlify` component to your scene and follow the instructio
 
 ![Deploy to netlify component](/deployment/deploytonetlify.jpg)  
 :::
+
+### Deploy to Vercel
+
+1) Create a new project on vercel
+2) Add your web project to a github repository
+3) Add the repository to your project on vercel
+
+
+See our [sample project](https://github.com/needle-engine/nextjs-sample) for the project configuration
+
 
 ### Deploy to itch.io  
 

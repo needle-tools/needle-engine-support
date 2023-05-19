@@ -1,10 +1,8 @@
 ---
-title: Reference for Unity Devs
+title: Needle Engine for Unity Developers
 ---
 
-::: warning
-This page is under construction. 
-:::
+Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
 
 Below you can find some common code examples that help you getting familiar when coming from Unity and starting to dive into web development with Needle Engine. 
 
@@ -44,6 +42,7 @@ Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using
 Use ``this.context.input`` to poll input state
 
 ```ts
+import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
     update(){
@@ -56,8 +55,7 @@ export class MyScript extends Behaviour
 
 You can also subscribe to events in the ``InputEvents`` enum like so:
 ```ts
-import { Behaviour } from "@needle-tools/engine";
-import { InputEvents } from "@needle-tools/engine/engine/engine_input";
+import { Behaviour, InputEvents } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
 {
@@ -92,33 +90,36 @@ Any ``EventList`` / ``UnityEvent`` will automatically also be dispatched as a ev
 *The following example shows how to subscribe to the [threejs OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) events* 
 
 ```ts
-import { Behaviour, GameObject } from "@needle-tools/engine";
-import { OrbitControls } from "@needle-tools/engine/engine-components/OrbitControls";
+import { Behaviour, GameObject, OrbitControls } from "@needle-tools/engine";
 
 export class OrbitEventExample extends Behaviour {
     start() {
         const orbit = GameObject.findObjectOfType(OrbitControls);
 
-        orbit?.controls?.addEventListener("start", args => {
-            this.onStarted(args);
-        });
+        // Usually you want to subscribe and unsubscribe to events in onEnable and onDisable
+        // But for the purpose of this example we will just subscribe inside the start() method:
 
+        // Variant 1: subscribe using arrow syntax (have a look at how this.onStarted is declared below)
+        orbit?.controls?.addEventListener("start", this.onStarted);
+    
+        // Variant 2: subscribe with binding a method (this is what happens implictly when using arrow functions)
+        orbit?.controls?.addEventListener("end", this.onEnded.bind(this));
+
+        // Variant 3: subscribe with inline function. With this variant you can not unsubscribe from the event (e.g. when the component gets destroyed or disabled)
         orbit?.controls?.addEventListener("change", args => {
             console.log("CHANGE");
         });
 
-        orbit?.controls?.addEventListener("end", args => {
-            this.onEnded(args);
-        });
-
     }
 
-    onStarted(args) {
-        console.log("STARTED", args);
+    // Variant 1
+    onStarted = (args) => {
+        console.log("STARTED", args, this);
     }
 
+    // Variant 2 When subscribing to an event with this signature make sure to bind the method, otherwise `this` will be undefined
     onEnded(args) {
-        console.log("ENDED", args);
+        console.log("ENDED", args, this);
     }
 }
 ```
@@ -129,8 +130,7 @@ Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/P
 > **Note**: Make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy
 
 ```ts
-import { Behaviour } from "@needle-tools/engine";
-import { IPointerEventHandler, PointerEventData } from "@needle-tools/engine/engine-components/ui/PointerEvents";
+import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
 
 export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
     onPointerClick(args: PointerEventData) {
