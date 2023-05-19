@@ -4,12 +4,12 @@ title: Needle Engine for Unity Developers
 
 Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
 
-The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or threejs background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in threejs or Needle Engine.
+The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or three.js background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in three.js or Needle Engine.
 
 ### The Basics
-Needle Engine is a 3d web engine running on-top threejs. Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are basically also talking about a threejs `Object3D`, the base type of any object in threejs. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
+Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 
-This also means that - if you are already familiar with threejs - you will have no problem at all using Needle Engine. Everything you can do with threejs can be done in Needle Engine as well. You are free to use as much or as little of the Needle Engine framework for you development as you like.
+This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. You are free to use as much or as little of the Needle Engine framework for you development as you like.
 
 ### Key differences between C#, Javascript or Typescript
 
@@ -96,7 +96,7 @@ void MyExampleVectorMethod(Vector3 position){
 
 A method is called with a Vector3 named position. Inside the method the passed in vector `position` is modified: x is set to 42. But in C# the original vector that is being passed into this method (see line 2) is **not** changed and x will **still** be 0 (line 4).  
 
-The same is not true for Javascript/Typescript. Here we don't have custom value types, meaning if you come across a Vector in Needle Engine or threejs you will always have a reference type.   
+The same is not true for Javascript/Typescript. Here we don't have custom value types, meaning if you come across a Vector in Needle Engine or three.js you will always have a reference type.   
 Consider the following example in typescript:  
 ```ts
 import { Vector3 } from "three"
@@ -147,7 +147,7 @@ For example: ``GameObject.getComponent(this.gameObject, Animator)``.
 Search in the whole scene by calling ``GameObject.findObjectOfType(Animator)``
 
 ### Transform
-Transform data can be accessed on the [threejs Object3D](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
+Transform data can be accessed on the [three.js Object3D](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
 - ``this.gameObject.position`` - local space [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position)
 - ``this.gameObject.rotation`` - local space [rotation in euler angles](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation)
 - ``this.gameObject.quaternion`` - local space rotation as [quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion)
@@ -155,7 +155,7 @@ Transform data can be accessed on the [threejs Object3D](https://threejs.org/doc
 
 #### World Position, Rotation, Scale...
 
-In threejs (and thus also in Needle Engine) the `object.position`, `object.rotation`, `object.scale` are all local space coordinates. This is different to Unity where we are used to `position` being worldspace and using `localPosition` to deliberately use the local space position.  
+In three.js (and thus also in Needle Engine) the `object.position`, `object.rotation`, `object.scale` are all local space coordinates. This is different to Unity where we are used to `position` being worldspace and using `localPosition` to deliberately use the local space position.  
 
 If you want to access the world coordinates in Needle Engine we have utility methods that you can use with your objects. Call `getWorldPosition(yourObject)` to calculate the world position. Similar methods exist for rotation/quaternion and scale.
 
@@ -166,7 +166,7 @@ Use ``this.context.time`` to get access to time data. For example ``this.context
 
 ### Raycasting
 Use ``this.context.physics.raycast()`` to perform a raycast from the mouse position (by default).  
-Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [threejs ray](https://threejs.org/docs/#api/en/math/Ray)
+Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
 
 ### Input
 Use ``this.context.input`` to poll input state
@@ -217,7 +217,7 @@ Vice-versa you can subscribe to any component ``this.otherComponent.addEventList
 
 Any ``EventList`` / ``UnityEvent`` will automatically also be dispatched as a event. For example if your field is ``myEvent : EventList`` it will be dispatched as ``my-event``.
 
-*The following example shows how to subscribe to the [threejs OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) events* 
+*The following example shows how to subscribe to the [three.js OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) events* 
 
 ```ts
 import { Behaviour, GameObject, OrbitControls } from "@needle-tools/engine";
