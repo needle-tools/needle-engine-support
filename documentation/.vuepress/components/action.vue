@@ -15,7 +15,7 @@ export default {
     color: inherit;
     padding: 1em 1em 1.2em 1em;
     border-radius: 1em;
-    margin: 1em;
+    margin: .5em;
     box-shadow: 0 0 .5em rgba(100, 100, 100, .2), inset 0 0 1.5em rgba(100, 100, 100, .1);
     border: 1px solid rgba(100, 100, 100, .3);
     transition: transform .2s ease-in-out;
