@@ -4,16 +4,17 @@ title: Project Structure
 
 # Project Structure and Organization 📚
 
-## Recommended Scene Complexity
-
-> The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths.  
-There's no technical limitation to this beyond the capabilities of your device.  
+## Recommended Complexity per glTF
 
 - Max. 50 MB export size uncompressed (usually ends up ~10-20 MB compressed)  
 - Max. 500k vertices (less if you target mobile VR as well)  
 - Max. 4x 2k lightmaps  
 
 You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See the [AssetReference section in the Scripting docs](scripting.md#assetreference-and-addressables).
+
+::: tip
+ The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths. There's no technical limitation to this beyond the capabilities of your device.  
+:::
 
 ## Unity Project Structure
 
@@ -24,9 +25,9 @@ You can organize your assets like in any typical Unity project. If you are not f
 
 **Builtin-runtime components** added specifically for our runtime engine can be found in ``Packages/Needle Engine Exporter/Runtime/Components`` in the [Unity Project window](https://docs.unity3d.com/Manual/ProjectView.html).
 
-### NPM Definition files
+### Organizing Typescript in Unity
 
-*modular projects - re-useable code and assets made easy* (see [twitter thread](https://twitter.com/marcel_wiessler/status/1536006405605449729))  
+*modular projects - re-useable code and assets made easy* - see [twitter](https://twitter.com/marcel_wiessler/status/1536006405605449729)   
 
 **NPM Definition** is what we call [npm packages](https://docs.npmjs.com/about-packages-and-modules) that you can install to your projects from within Unity, and that are tightly integrated into the Unity Editor. That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
 

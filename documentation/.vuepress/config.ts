@@ -246,7 +246,7 @@ export default defineUserConfig({
                         link: 'https://github.com/needle-tools/needle-engine-support'
                     },
                     {
-                        text: 'Discord 💜',
+                        text: 'Support Community',
                         link: 'https://discord.needle.tools'
                     },
                     {
@@ -258,20 +258,8 @@ export default defineUserConfig({
                         link: "https://fwd.needle.tools/needle-engine/newsletter"
                     },
                     {
-                        text: 'Needle on Glitch 🎏',
-                        link: "https://glitch.com/@needle-tools"
-                    },
-                    {
-                        text: 'Send an email',
-                        link: 'mailto:hi@needle.tools'
-                    },
-                    {
-                        text: 'Beta Feedback',
-                        link: "https://fwd.needle.tools/needle-engine/feedback"
-                    },
-                    {
-                        text: 'Report a bug',
-                        link: "https://github.com/needle-tools/needle-engine-support/issues/new"
+                        text: 'Email',
+                        link: 'mailto:hi+docs@needle.tools'
                     },
                 ]
             },

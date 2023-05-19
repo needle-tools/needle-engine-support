@@ -45,7 +45,7 @@ img {
   max-width: 80%;
 }
 
-details
+details, .custom-container
 {
   border-radius: 10px !important;
   border: 2px solid rgba(255,255,255,.1) !important;
@@ -62,6 +62,14 @@ details summary {
 details p {
   margin-top: .5em;
 }
+
+.custom-container p {
+  margin: 0;
+}
+.custom-container-title {
+  padding-bottom: .5em;
+}
+
 
 // details summary::-webkit-details-marker,
 // details summary::marker {
