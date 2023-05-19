@@ -6,7 +6,7 @@ Needle Engine provides a tight integration into the Unity Editor. This allows de
 
 The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or threejs background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in Needle Engine. *Spoiler: things are very similar* 
 
-### The Foundation
+### The Basics
 Needle Engine is a 3d web engine running on-top threejs. Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are basically also talking about a threejs `Object3D`, the base type of any object in threejs. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 
 This also means that - if you are already familiar with threejs - you will have no problem at all using Needle Engine. Everything you can do with threejs can be done in Needle Engine as well. You are free to use as much or as little of the Needle Engine framework for you development as you like.
@@ -54,6 +54,28 @@ The above is perfectly fine Typescript code because you don't re-assign `myPosit
 ```ts
 const myPosition : Vector3 = new Vector3(0, 0, 0);
 myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
+```
+
+### Using or Importing Types
+
+In Unity you usually add `using` statements at the top of you code to import specific namespaces from Assemblies that are references in your project or - in certain cases - you migth find yourself importing a specific type with a name from a namespace.   
+See the following example:
+```csharp
+using UnityEngine;
+// importing just a specific type and giving it a name
+using MonoBehaviour = UnityEngine.MonoBehaviour;
+```
+
+This is how you do the same in Typescript to import specific types from a package:
+```ts
+import { Vector3 } from `three`
+import { Behaviour } from `@needle-tools/engine`
+```
+
+You *can* also import all the types from a specific package by giving it a name which you might see here and there:
+```ts
+import * as THREE from `three`
+const myVector : THREE.Vector3 = new THREE.Vector3(1, 2, 3);
 ```
 
 ### Primitive Types
@@ -272,6 +294,40 @@ export class MyVideos extends Behaviour {
 }
 ```
 
+
+### Managing Dependencies
+In C# you usually work with a solution containing one or many projects. In Unity this solution is managed by Unity for you and when you open a C# script it opens the project and shows you the file.   
+You usually install Packages using Unity's built-in package manager to add features provided by either Unity or other developers (either on your team or e.g. via Unity's AssetStore). Unity does a great job of making adding and managing packages easy with their PackageManager and you might never have had to manually edit a file like the `manifest.json` (this is what Unity uses to track which packages are installed) or run a command from the command line to install a package.
+
+In a web environment you use `npm` - the Node Package Manager - to manage dependencies / packages for you. It does basically the same to what Unity's PackageManager does - it installs (downloads) packages from *some* server (you hear it usually called a *registry* in that context) and puts them inside a folder named `node_modules`.     
+
+When working with a web project most of you dependencies are installed from [npmjs.com](https://npmjs.com/). It is the most popular package registry out there for web projects.  
+
+#### Installing
+To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i @needle-tools/engine`. This will then add the package to the `package.json` inside the `dependencies` array.  
+Here is an example of how such a package.json might look like: 
+```json
+{
+  "name": "my-needle-engine-project",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vite --host"
+  },
+  "dependencies": {
+	  "@needle-tools/engine": "^3.5.9-beta",
+	  "three": "npm:@needle-tools/three@0.146.8"
+	},
+  "devDependencies": {
+	  "@types/three": "0.146.0",
+	  "@vitejs/plugin-basic-ssl": "^1.0.1",
+	  "typescript": "^5.0.4",
+	  "vite": "^4.3.4",
+	  "vite-plugin-compression": "^0.5.1"
+	}
+}
+```
+
+Note that there are two separate entries here that relate to *a dependency*. One is `dependencies` and the other is `devDependencies`. The crucial difference between the two is that `dependencies` are always installed (or bundled) while `devDependencies` are **only** installed when developing the project and otherwise **not** be included in your *bundled*  application (a *bundle* is basically all your code that is required to run your application inside one javascript file to be uploaded to a web server. It is "final" and you can think of it as maybe the `exe`, `app` or a `dll` of your application) 
 
 
 # Learning more
