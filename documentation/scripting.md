@@ -38,21 +38,26 @@ If you intend to expose/generate a UnityEvent in a custom component that you wor
 
 @[code](@code/component-unityevent.ts)
 
-## Creating a new component 📑
-Scripts are written in [TypeScript](https://www.typescriptlang.org/docs/) (recommended) or JavaScript. There's two ways to add custom scripts to your project:
 
-- Simply add a `.ts` or `.js` file inside `src/scripts/` in your generated project directory.  
-  Generated C# components are placed under `Assets/Needle/Components.codegen`.  
+## Creating a new component
+Scripts are written in [TypeScript](https://www.typescriptlang.org/docs/) (recommended) or JavaScript.   
+There are two ways to add custom scripts to your project:
 
-- Organize your code into NPM Definition Files. These help you to modularize and re-use code between projects.  
-  Generated C# components are placed in a `.codegen` folder next to the NpmDef.  
-  You can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project_structure.md#npm-definition-files) for more information.  
+- Simply add a file with an `.ts` or `.js` extension inside `src/scripts/` in your generated project directory, for example `src/scripts/MyFirstScript.ts`
 
-In both approaches, source directories are watched for changes and C# components are regenerated whenever a change is detected. Changes to the source files also result in a hot reload of the running website – you don't have to wait for Unity to recompile the C# components. This makes iterating on code pretty much instant.  
+- Unity specific:   
+  Organize your code into NPM Definition Files. These help you to modularize and re-use code between projects and if you are familiar with web development they are in fact regular npm packages that are installed locally.  
+  In Unity you can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project_structure.md#npm-definition-files) for more information.  
 
-> **Tip**: You can have multiple components inside one file.
 
-### Example Workflow
+In both approaches, source directories are watched for changes and C# components are regenerated whenever a change is detected.   
+Changes to the source files also result in a hot reload of the running website – you don't have to wait for Unity to recompile the C# components. This makes iterating on code pretty much instant.  
+
+You can even have multiple component types inside one file (e.g. you can declare `export class MyComponent1` and `export class MyOtherComponent` in the same Typescript file).
+
+If you are new to writing Javascript or Typescript we recommend reading the [Typescript Essentials Guide](./getting-started/typescript-essentials.md) guide first before continuing with this guide.
+
+:::details Example: Creating a Component that rotates an object
 
 - **Create a component that rotates an object**  
   Create ``src/scripts/Rotate.ts`` and add the following code:  
@@ -77,15 +82,17 @@ export class Rotate extends Behaviour
 }
 ```
 
-Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the script to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene. The cube is now rotating inside the browser.   
-Open the chrome developer console to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
+Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the new Unity component to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene.   
+The cube is now rotating inside the browser.   
+Open the chrome developer console by `F12` to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
 
 Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
 
 > **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
+:::
 
-### Function with argument
-Please refer to the [TypeScript](https://www.typescriptlang.org/docs/) documentation to learn more about the syntax and language.
+:::details Create component with a custom function
+Refer to the [Typescript Essentials Guide](./getting-started/typescript-essentials.md) to learn more about the syntax and language.
 ```ts
 import { Behaviour } from "@needle-tools/engine";
 
@@ -100,36 +107,41 @@ export class PrintNumberComponent extends Behaviour
     }
 }
 ```
+:::
 
----
 
 ## Component architecture
-Components are added to threejs [Object3Ds](https://threejs.org/docs/#api/en/core/Object3D) similar to how [components in Unity](https://docs.unity3d.com/ScriptReference/Component.html) are added to [GameObjects](https://docs.unity3d.com/ScriptReference/GameObject.html). Therefore when we want to access a three.js Object3D, we can access it as ``this.gameObject`` which returns our `Object3D`.  
+Components are added to three.js `Object3Ds`. This is similar to how Components in Unity are added to `GameObjects`. Therefore when we want to access a three.js Object3D, we can access it as ``this.gameObject`` which returns the `Object3D` that the component is attached to.  
 
 ***Note**: Setting ``visible`` to false on a Object3D will act like ``SetActive(false)`` in Unity - meaning it will also disable all the current components on this object and its children. Update events for inactive components are not being called until ``visible`` is set to true again.*
 
 ### Lifecycle methods
 
-- ``awake()`` - First method being called when a new component is created
-- ``onEnable()`` - Called when a component is enabled (e.g. when ``enabled`` changes from false to true)
-- ``onDisable()`` - Called when a component is disabled (e.g. when ``enabled`` changes from true to false)
-- ``onDestroy()`` - called when the Object3D or component is being destroyed
-- ``start()`` - Called on the start of the first frame after the component was created
-- ``earlyUpdate()`` - First mainloop update event
-- ``update()`` - Regular mainloop update event
-- ``lateUpdate()``
-- ``onBeforeRender()`` - Last update event before render call
-- ``onAfterRender()`` - Called after render event
+Note that lifecycle methods are only being called when they are declared. So only declare `update` lifecycle methods when they are actually necessary, otherwise it may hurt performance if you have many components with update loops that do nothing.
 
-> **Note**: It is important to understand that similar to Unity lifecycle methods are only being called when they are declared. So only declare `update` lifecycle methods when they are actually necessary, otherwise it may hurt performance if you have many components with update loops that do nothing.
+| Method name | Description |
+| -- | --
+| `awake()` | First method being called when a new component is created
+| `onEnable()` | Called when a component is enabled (e.g. when ``enabled`` changes from false to true)
+| `onDisable()` | Called when a component is disabled (e.g. when ``enabled`` changes from true to false)
+| `onDestroy()` | called when the Object3D or component is being destroyed
+| `start()` | Called on the start of the first frame after the component was created
+| `earlyUpdate()` | First update event
+| `update()` | Default update event
+| `lateUpdate()` | Called after update
+| `onBeforeRender()` | Last update event before render call
+| `onAfterRender()` | Called after render event
+
 
 ### Physic event methods
-- ``onCollisionEnter(col : Collision)``
-- ``onCollisionStay(col : Collision)``
-- ``onCollisionExit(col : Collision)``
-- ``onTriggerEnter(col : Collision)``
-- ``onTriggerStay(col : Collision)``
-- ``onTriggerExit(col : Collision)``
+| Method name | Description |
+| -- | --
+| `onCollisionEnter(col : Collision)` | 
+| `onCollisionStay(col : Collision)` | 
+| `onCollisionExit(col : Collision)` | 
+| `onTriggerEnter(col : Collision)` | 
+| `onTriggerStay(col : Collision)` | 
+| `onTriggerExit(col : Collision)` | 
 
 ### Coroutines
 
@@ -180,19 +192,23 @@ export class MyComponent extends Behaviour {
 ```
 
 ### Some of the available methods:
-- ``GameObject.instantiate(Object3D, InstantiateOptions)`` - creates a new instance of this object including new instances of all its components.
-- ``GameObject.destroy(Object3D|Component)`` - destroy a component or Object3D (and its components)
-- ``GameObject.addNewComponent(Object3D, Type)`` - adds (and creates) a new component for a type to the provided object. Note that ``awake`` and ``onEnable`` is already called when the component is returned.
-- ``GameObject.addComponent(Object3D, Component)`` - moves a component instance to the provided object.
-- ``GameObject.removeComponent(Component)`` - removes a component from a gameObject
-- ``GameObject.getComponent(Object3D, Type)`` - returns the first component matching a type on the provided object.
-- ``GameObject.getComponents(Object3D, Type)`` - returns all components matching a type on the provided object.
-- ``GameObject.getComponentInChildren`` - same as ``getComponent`` but also searches in child objects.
-- ``GameObject.getComponentsInChildren`` - same as ``getComponents`` but also searches in child objects.
-- ``GameObject.getComponentInParent`` - same as ``getComponent`` but also searches in parent objects.
-- ``GameObject.getComponentsInParent`` - same as ``getComponents`` but also searches in parent objects.
-- ``GameObject.findObjectOfType`` - searches the whole scene for a type.
-- ``GameObject.findObjectsOfType`` - searches the whole scene for all matching types.
+
+
+| Method |  |
+| -- | -- 
+| `GameObject.instantiate(Object3D, InstantiateOptions)` | creates a new instance of this object including new instances of all its components 
+| `GameObject.destroy(Object3D \| Component)` | destroy a component or Object3D (and its components) 
+| `GameObject.addNewComponent(Object3D, Type)` | adds (and creates) a new component for a type to the provided object. Note that ``awake`` and ``onEnable`` is already called when the component is returned 
+| `GameObject.addComponent(Object3D, Component)` |  moves a component instance to the provided object. It is useful if you already have an instance e.g. when you create a component with e.g. `new MyComponent()` and then attach it to a object
+| `GameObject.removeComponent(Component)` | removes a component from a gameObject
+| `GameObject.getComponent(Object3D, Type)` | returns the first component matching a type on the provided object.
+| `GameObject.getComponents(Object3D, Type)` | returns all components matching a type on the provided object.
+| `GameObject.getComponentInChildren` | same as ``getComponent`` but also searches in child objects.
+| `GameObject.getComponentsInChildren` | same as ``getComponents`` but also searches in child objects.
+| `GameObject.getComponentInParent` | same as ``getComponent`` but also searches in parent objects.
+| `GameObject.getComponentsInParent` | same as ``getComponents`` but also searches in parent objects.
+| `GameObject.findObjectOfType` | searches the whole scene for a type.
+| `GameObject.findObjectsOfType` | searches the whole scene for all matching types.
 
 
 ## The Context and the HTML DOM
@@ -208,7 +224,13 @@ This architecture allows for potentially having multiple needle WebGL scenes on 
 Access the three.js [scene](https://threejs.org/docs/#api/en/scenes/Scene) using ``this.context.scene``.
 
 ### Time
-Use ``this.context.time`` to access ``time``, ``frameCount`` or ``deltaTime`` (time since last frame in milliseconds).  
+Use `this.context.time` to get access to time data:  
+- `this.context.time.time` is the time since the application started running
+- `this.context.time.deltaTime` is the time that has passed since the last frame
+- `this.context.time.frameCount` is the number of frames that have passed since the application started
+- `this.context.time.realtimeSinceStartup` is the unscaled time since the application has started running  
+
+It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
 
 ### Input
 Use ``this.context.input`` to access convenient methods for getting mouse and touch data. WebXR controller access is currently separate.  
@@ -216,32 +238,19 @@ Use ``this.context.input`` to access convenient methods for getting mouse and to
 ### Physics
 Use ``this.context.physics`` to access the physics API, for example to perform raycasts against scene geometry.  
 
-> **Note**: [Unity Layers](https://docs.unity3d.com/Manual/Layers.html) are mapped from Unity to [three.js Layers](https://threejs.org/docs/#api/en/core/Layers). By default, physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. We recommended setting up your layers as needed in Unity, but if you need, you can override this behaviour using the `options` parameter that you can pass to the ``physics.raycast`` method. 
+Note that [Unity Layers](https://docs.unity3d.com/Manual/Layers.html) are mapped from Unity to [three.js Layers](https://threejs.org/docs/#api/en/core/Layers). By default, physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. We recommended setting up your layers as needed in Unity, but if you need, you can override this behaviour using the `options` parameter that you can pass to the ``physics.raycast`` method. 
 
 ### Networking
 Networking methods can be accessed via ``this.context.connection``. Please refer to the [networking docs](./networking.md) for further information.
-
-### Assets
-Use ``this.context.assets`` to get access to assets and resources that are imported inside glTF files.
 
 ## Accessing URL Parameters
 Use `utils.getParam(<..>)` to quickly access URL parameters and define behaviour with them.
 
 **Example:**
 ```ts
-import { Behaviour } from "@needle-tools/engine";
-import { getParam } from "@needle-tools/engine/engine/engine_utils"
-
-export class MyScript extends Behaviour
-{ 
-    awake(): void {
-        // access the url parameter
-        const urlParam = getParam("target");
-        if (urlParam && typeof urlParam === "string" && urlParam.length > 0) {
-            // const do something based on ?target=some_string
-        }
-    }
-}
+import { getParam } from "@needle-tools/engine";
+const urlParam = getParam("target");
+console.log("MyTarget is " + urlParam);
 ```
 
 ## Accessing components from external JavaScript
@@ -432,4 +441,4 @@ For future compatibility, some Unity-specific types are mapped to different type
 
 
 ## For Unity Devs
-If you are a Unity dev and want to learn more about typescript and Needle Engine you can also learn more in [Needle Engine for Unity developers](for-unity-developers) 😊
+If you are a Unity dev and want to learn more about typescript and Needle Engine you can also learn more in [Needle Engine for Unity developers](./getting-started/for-unity-developers) 😊

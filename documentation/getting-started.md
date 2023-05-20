@@ -1,50 +1,43 @@
 ---
 lang: en-US
-title: Getting Started
+title: Getting Started & Installation
 next: deployment.md
 ---
 After following the steps below you will have a fully functional project ready for the web. 
 
 
 ## Prerequisites 💿
-
-::: details Install the tools that you need (nodejs, vscode, toktx) 
-
---- 
 Below each tool, you find quick links to download the latest version at the time of writing.  
 
 ### Install these tools for development
 
-  - **Node.js** (16.x or 18.x) – for running a local development server (required)   
-  Download for [Windows 16.7](https://nodejs.org/dist/v16.17.0/node-v16.17.0-x64.msi) or [MacOS Universal](https://nodejs.org/dist/v16.17.0/node-v16.17.0.pkg)  
-
-  ---
+| Tool | Version | Description |
+| -- | -- | -- | 
+| **Node.js** (required) | 16.x or 18.x <br>[Windows](https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi) <br/> [MacOS](https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg)   | For running a local development server
+| **VS Code** | any version<br/>[Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) <br/> [MacOS](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal) | For code editing (optional)  |
+| **Unity** | 2020.3.16+ <br/>2021.3+ <br/>2022.2+<br/>[Get Unity Hub](https://unity.com/download) | For setting up your scene and components |
   
-  <!--
-  [**git**](https://git-scm.com/downloads) – for downloading packages from GitHub (required)  
-  [Windows](https://git-scm.com/download/win) • [MacOS Universal](https://git-scm.com/download/mac)  
-   -->
-  
-  - **VS Code** – for code editing (recommended)  
-  Download for [Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) or [MacOS Universal](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal)    
-  ---
-  
-  - Optional: **Unity** 2020.3.16+, 2021.3+ or 2022.2+ – for setting up your scene and components   
 
   
 ### Install these tools for production builds  
-  ---
 
-  - **toktx** 4.1 – for texture compression (recommended)   
-  Download for [Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) • [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) • [Mac OS with Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) • [Other](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)    
- 
-----
+| Tool | Version | Description |
+| -- | -- | -- |
+| | | |
+| **toktx** | 4.1<br/>[Windows x64](https://fwd.needle.tools/needle-engine/toktx/win) <br/> [MacOS x64](https://fwd.needle.tools/needle-engine/toktx/osx) <br/> [Mac OS Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) <br/> [Other Releases](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)  | For texture compression (recommended) <br/>You can read more about that [here](./deployment.md#production-builds) in our docs
+
 
 After installing the tools above, you might have to restart your machine  
 so that all environment variables are properly updated.  
 
 
-:::
+## Using Needle Engine without Unity
+
+If you just want to work with the Needle Engine runtime and don't want to use any Editor integration just yet then go ahead and install it from npm by running:   
+<br/>
+`npm i @needle-tools/engine`  
+
+
 
 ## Unity Quick Start ⚡
 
@@ -69,20 +62,20 @@ Make sure to switch it to Linear color space in *Project Settings / Player*.
 Our installer is a .unitypackage that will set everything up for you.  
   
 ### Step 4 • **Install by dropping into Unity**   
-   Drop the downloaded .unitypackage file into a Unity project and confirm that you want to import it.  
-   This will set up Needle Engine and Needle Exporter for Unity.  
+Drop the downloaded .unitypackage file into a Unity project and confirm that you want to import it.  
+This will set up Needle Engine and Needle Exporter for Unity.  
 
 **Wait for the installation to finish**  
-   You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
+You may have to click _Assets > Refresh_ once or focus another app and then focus Unity again.  
 
-> **Note**: A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window.  
+A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window and continue with the next step below.  
 
 ### Step 5 •  **Create a new scene from a template**  
-   Select _File > New Scene_ and choose from one of the Needle templates.  
-   We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer, and adding assets.  
+Select _File > New Scene_ and choose from one of the Needle templates.  
+We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
 
 ### Step 6 • **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
-   Learn how to iterate, test, build and publish your projects.  
+Learn how to iterate, test, build and publish your projects.  
 
 
 

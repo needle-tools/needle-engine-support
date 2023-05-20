@@ -135,6 +135,64 @@ details p {
 //   content: "▼ ";
 // }
 
-div.theme-default-content:not(.custom) {
-  max-width: 100%;
+
+
+
+table {
+  // flex-direction: column;
+  box-shadow: inset 0 0 40px rgba(0,0,0,.1) !important;
+  border-radius: .5em;
+  padding: .5em;
+  padding-left: 1em;
+  min-width: 100%;
+}
+
+@media screen and (min-width: 1600px) {
+  table {
+    min-width: 1000px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  table {
+    min-width: 1200px;
+  }
+}
+
+td {
+  width: 20%;
+}
+
+td:last-child {
+  width: 30%;
+}
+
+th {
+  text-align: left;
+}
+
+tr, td, th {
+  border: none !important;
+  padding: 0 !important;
+  padding-right: 1em !important;
+  padding-top: .5em !important;
+  padding-bottom: .8em !important;
+}
+
+tr, td, th {
+  font-size: .9em !important;
+  background: none !important;
+}
+
+tr {
+  border-bottom: 1px solid rgba(0,0,0,.1) !important;
+  display:table-row;
+}
+
+tr:last-child {
+  border-bottom: none !important;
+}
+
+td {
+  vertical-align: top;
 }

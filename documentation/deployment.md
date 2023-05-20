@@ -23,8 +23,8 @@ Deployment is the process of making your application available to the public on 
 - [Build to folder](#production-builds)
   Bring your project anywhere!
   
-::: tip
-Feel something is missing? Please let us know in our [discord](https://discord.needle.tools)!
+::: tip Feel something is missing? 
+Please let us know in our [discord](https://discord.needle.tools)!
 :::
 
 ## Deploying to the web from Unity
