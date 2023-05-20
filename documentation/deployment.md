@@ -2,7 +2,7 @@
 title: Deployment & Compression
 ---
 
-## What's deployment?
+## What does deployment mean?
 
 Deployment is the process of making your application available to the public on a website. Needle Engine ensures that your project is as small and fast as possible by using the latest compression techniques such as **KTX2**, **Draco**, and **Meshopt**.  
 
@@ -39,7 +39,7 @@ Open ``File/Build Settings`` and select ``Needle Engine`` for options!
 To build your web project for deployment to a web server you can click **Build** in the Unity Editor Build Settings Window.   
 You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
 
-> **Note**: Nodejs is **only** required during development. The distributed website (using the vite template) is a static page, doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
+Nodejs is **only** required during development. The distributed website (using our default vite template) is a static page that doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
 ## Development Builds
 

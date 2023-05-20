@@ -131,17 +131,23 @@ export default defineUserConfig({
                                 text: "Typescript Essentials",
                                 link: "/getting-started/typescript-essentials",
                             },
+                            "/getting-started/for-unity-developers",
+                        ]
+                    },
+                    {
+                        text: "Creating your Project",
+                        children: [
                             "/project_structure",
                             "/everywhere-actions",
                             "/export",
                             "/html",
                             "/deployment",
-                            "/debugging",
                         ]
                     },
                     {
                         text: "Advanced",
                         children: [
+                            "/scripting",
                             "/networking",
                             "/xr",
                         ]
@@ -170,9 +176,7 @@ export default defineUserConfig({
                     {
                         text: "Scripting",
                         children: [
-                            "/scripting",
                             "/scripting-examples",
-                            "/getting-started/for-unity-developers",
                             "/component-reference",
                             "/vanilla-js",
                         ]
@@ -306,6 +310,7 @@ export default defineUserConfig({
                     children: [
                         "/scripting-examples",
                         "/component-reference",
+                        "/reference/needle-config-json"
                     ]
                 },
             ]

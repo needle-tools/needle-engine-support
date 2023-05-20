@@ -2,6 +2,8 @@
 title: Exporting Assets to glTF
 ---
 
+
+
 # Exporting Assets, Animations, Prefabs, Materials, Lightmaps...
 To mark any Unity scene as "exportable", add an ``ExportInfo`` component to a root object. This component helps you to generate your new web project from a template, set up dependencies to other component libraries (we call them NpmDef) and to deploy your project. 
 
@@ -27,6 +29,18 @@ Read about [scripting here](./scripting.md)
 #### Skip exporting objects
 You can **ignore specific objects** on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
 
+
+### Recommended Complexity per glTF
+
+- Max. 50 MB export size uncompressed (usually ends up ~10-20 MB compressed)  
+- Max. 500k vertices (less if you target mobile VR as well)  
+- Max. 4x 2k lightmaps  
+
+You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See the [AssetReference section in the Scripting docs](scripting.md#assetreference-and-addressables).
+
+::: tip
+ The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths. There's no technical limitation to this beyond the capabilities of your device.  
+:::
 
 ### Prefabs
 [Prefabs](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
