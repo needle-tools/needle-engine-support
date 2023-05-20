@@ -23,10 +23,11 @@ For a complete list please have a look at the components inside the folders ``no
 | Name  | Description |
 | ------------- | ------------- |
 | Camera |  |
-| LODGroup |  |
 | Light |  |
-| ParticleSystem | Experimental and currently not fully supported |
 | XRFlag | Control when objects will be visible. E.g. only enable object when in AR  |
+| DeviceFlag | Control on which device objects will be visible  |
+| LODGroup |  |
+| ParticleSystem | Experimental and currently not fully supported |
 | VideoPlayer  | Playback videos from url or referenced video file (will be copied to output on export) |
 
 ## Networking
@@ -78,6 +79,8 @@ Physics is implemented using [rapier](https://rapier.rs/).
 | SpectatorCamera | Mirrors VR view to screen when e.g. connected via Oculus Link |
 | XRFlag | Control when objects are visible, e.g. only in VR or AR or only in ThirdPerson |
 | WebARSessionRoot | Put your AR content inside a WebARSessionRoot for placement and scale |
+| WebXRImageTracking | Assign images to be tracked and optionally instantiate an object at the image position |
+| WebXRPlaneTracking | Create plane meshes or colliders for tracked planes |
 
 ## Debugging  
 | Name  | Description |

@@ -127,6 +127,10 @@ export default defineUserConfig({
                         text: "Basics",
                         children: [
                             "/getting-started",
+                            {
+                                text: "Typescript Essentials",
+                                link: "/getting-started/typescript-essentials",
+                            },
                             "/project_structure",
                             "/everywhere-actions",
                             "/export",
@@ -168,7 +172,7 @@ export default defineUserConfig({
                         children: [
                             "/scripting",
                             "/scripting-examples",
-                            "/for-unity-developers",
+                            "/getting-started/for-unity-developers",
                             "/component-reference",
                             "/vanilla-js",
                         ]
@@ -211,19 +215,15 @@ export default defineUserConfig({
                                 text: 'Monster Hands 💀',
                                 link: '/showcase-monsterhands',
                             },
+                            {
+                                text: 'Samples',
+                                link: 'https://engine.needle.tools/samples',
+                            },
                         ],
                     },
                     {
-                        text: 'Community Contributions',
+                        text: 'Other',
                         children: [
-                            {
-                                text: 'AR.js integration',
-                                link: 'https://github.com/FireDragonGameStudio/NeedleAndARjs',
-                            },
-                            {
-                                text: 'Mercedes Benz Techdemo',
-                                link: '/showcase-mercedes-benz',
-                            },
                             {
                                 text: 'ZenRepublic Website',
                                 link: '/showcase-zenrepublic',
@@ -270,6 +270,76 @@ export default defineUserConfig({
                 ]
             },
         ],
+        sidebarDepth: 1,
+        sidebar: {
+            '/': [
+                "/getting-started",
+                "/project_structure",
+                {
+                    text: "Creating your Project",
+                    children: [
+                        "/everywhere-actions",
+                        "/export",
+                        "/html",
+                        "/deployment",
+                        "/debugging",
+                        "/faq",
+                    ]
+                },
+                {
+                    text: "Scripting",
+                    children: [
+                        "/getting-started/typescript-essentials",
+                        "/getting-started/for-unity-developers",
+                        "/scripting",
+                    ]
+                },
+                {
+                    text: "Advanced",
+                    children: [
+                        "/xr",
+                        "/networking",
+                    ]
+                },
+                {
+                    text: "Reference",
+                    children: [
+                        "/scripting-examples",
+                        "/component-reference",
+                    ]
+                },
+            ]
+            // '/getting-started/': [
+            //     "/getting-started/typescript-essentials",
+            //     "/getting-started/for-unity-developers",
+            //     "/project_structure",
+            //     "/everywhere-actions",
+            //     "/export",
+            //     "/html",
+            //     "/deployment",
+            //     "/debugging",
+            // ],
+            // '/getting-started': [
+            //     '',
+            //     {
+            //         text: "Typescript Essentials",
+            //         link: "/getting-started/typescript-essentials",
+            //     },
+            //     {
+            //         text: "For Unity Developers",
+            //         link: "/getting-started/for-unity-developers",
+            //     },
+            //     "/project_structure",
+            //     "/everywhere-actions",
+            //     "/export",
+            //     "/html",
+            //     "/deployment",
+            //     "/debugging",
+            // ],
+            // '/': [
+            //     '', /* fallback, generate by header by default */
+            // ]
+        }
     }),
 
 })

@@ -1,6 +1,6 @@
 ---
 lang: en-US
-title: Monster Hands 💀
+title: Tower Defense
 sidebar: false
 editLink: false
 ---

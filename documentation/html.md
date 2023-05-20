@@ -2,7 +2,7 @@
 title: Frameworks, Bundlers, HTML
 ---
 
-## Bundling and usage with various web frontends
+## Bundling and web frontends
 
 Needle Engine is build as a web component.   
 This means just install `@needle-tools/engine` in your project and include `<needle-engine src="path/to/your.glb">` anywhere in your web-project.  

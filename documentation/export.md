@@ -1,5 +1,5 @@
 ---
-title: Exporting to glTF
+title: Exporting Assets to glTF
 ---
 
 # Exporting Assets, Animations, Prefabs, Materials, Lightmaps...
