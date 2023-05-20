@@ -6,14 +6,19 @@ Needle Engine provides a tight integration into the Unity Editor. This allows de
 
 The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or three.js background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in three.js or Needle Engine.
 
-### The Basics
+## The Basics
 Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 
 This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. You are free to use as much or as little of the Needle Engine framework for you development as you like.
 
-### Key differences between C#, Javascript or Typescript
 
-#### Compile Time and Runtime
+:::details How to create a new Unity project with Needle Engine? (Video)
+<video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />  
+:::
+
+## Key differences between C#, Javascript or Typescript
+
+### Compile Time and Runtime
 
 **CSharp** or **C#** is a statically typed & compiled language. It means that **before** your code can run (or be executed) it has to be compiled - translated - into IL or CIL, an intermediate language that is a little closer to *machine code*. The important bit to understand here is that your code is analyzed and has to pass certain checks and rules that are **enforced** by the compiler. You will get compiler errors **in Unity** and your application not even start running if you write code that violates any of the rules of the C# language. You will not be able to enter Play-Mode with compiler errors.
 
@@ -22,7 +27,7 @@ This also means that - if you are already familiar with three.js - you will have
 **Typescript** is a language designed by Microsoft that **compiles to javascript**  
 It adds a lot of features like for example **type-safety**. That means when you write code in Typescript you *can* declare types and hence get errors at *compile-time* when you try to e.g. make invalid assignments or call methods with unexpected types. Read more about types in Javascript and Typescript below. 
 
-#### Types — or the lack thereof
+### Types — or the lack thereof
 
 **Vanilla Javascript** does (as of today) **not** have any concept of *types*: there is no guarantuee that a variable that you declared as `let points = 100` will still be a *number* later in your application. That means that in Javascript it is perfectly valid code to assign `points = new Vector3(100, 0, 0);` later in your code. Or even `points = null` or `points = myRandomObject` - you get the idea. This is all OK while you write the code **but** it may crash horrible when your code is executed because later you write `points -= 1` and **now** you get errors in the browser when your application is already running.
 
@@ -32,7 +37,7 @@ It is important to understand that you *basically* still write Javascript when y
 
 While *vanilla Javascript* does not offer types you can still add type-annotations to your javascript variables, classes and methods by using **[JSDoc](https://jsdoc.app/)**.
 
-### Variables
+## Variables
 
 In C# you write variables either by using the type or the `var` keyword.   
 For example you can either write `int points = 100;`  
@@ -56,7 +61,7 @@ const myPosition : Vector3 = new Vector3(0, 0, 0);
 myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
 ```
 
-### Using or Importing Types
+## Using or Importing Types
 
 In Unity you usually add `using` statements at the top of you code to import specific namespaces from Assemblies that are references in your project or - in certain cases - you migth find yourself importing a specific type with a name from a namespace.   
 See the following example:
@@ -78,7 +83,7 @@ import * as THREE from `three`
 const myVector : THREE.Vector3 = new THREE.Vector3(1, 2, 3);
 ```
 
-### Primitive Types
+## Primitive Types
 *Vector2, Vector3, Vector4...*  
 If you have a C# background you might be familiar with the difference between a class and a struct. While a class is a reference type a struct is a custom value type. Meaning it is, depending on the context, allocated on the stack and when being passed to a method by default a copy is created.   
 Consider the following example in C#:
@@ -112,7 +117,7 @@ function myExampleVectorMethod(position: Vector3) : void {
 Do you see the difference? Because vectors and all custom objects *are* in fact reference types we will have modified the original `position` variable (line 3) and x is now 42.  
 
 
-### Vector Maths and Operators
+## Vector Maths and Operators
 
 While in C# you can use operator overloading this is not available in Javascript unfortunately. This means that while you can multiply a Vector3 in C# like this: 
 
@@ -133,43 +138,56 @@ myFirstVector.multiplyScalar(myFactor);
 ```
 
 
-### Components
-Needle Engine is making heavy use of a Component System that is similar to that of Unity.
+## Components
+Needle Engine is making heavy use of a Component System that is similar to that of Unity. This means that you can add or remove components to any `Object3D` / `GameObject` in the scene. A component will be registered to the engine when using `addNewComponent(<Object3D>, <ComponentType>)`.   
+The event methods that the attached component will then automatically be called by the engine (e.g. `update` or `onBeforeRender`)    
 
-For getting component you can use the familiar methods similar to Unity:   
-For example 
-- ``this.gameObject.getComponent(Animator)`` - returns the animator component on this gameobject (and null if none is found)
-- ``this.gameObject.getComponentInChildren(Animator)`` - returns the first animator component in the child hierarchy
-- ``this.gameObject.getComponentsInParents(Animator)`` - returns all animator components in the parent hierarchy (including the current gameObject)
+### Finding Components in the Scene
+For getting component you can use the familiar methods similar to Unity. Note that the following uses the `Animator` type as an example but you can as well use any component type that is either built-in or created by you.
+- ``this.gameObject.getComponent(Animator)``   
+  Get the `Animator` component on a GameObject/Object3D. It will either return the `Animator` instance if it has an Animator component or `null` if the object has no such componnent.
+- ``this.gameObject.getComponentInChildren(Animator)``  
+  Get the first `Animator` component on a GameObject/Object3D or on any of its children
+- ``this.gameObject.getComponentsInParents(Animator)``   
+  Get all animator components in the parent hierarchy (including the current GameObject/Object3D)
    
-These methods are also available on the static GameObject type.   
-For example: ``GameObject.getComponent(this.gameObject, Animator)``.   
-Search in the whole scene by calling ``GameObject.findObjectOfType(Animator)``
+These methods are also available on the static GameObject type. For example you can use ``GameObject.getComponent(this.gameObject, Animator)`` to get the `Animator` component on a passed in GameObject/Object3D.     
 
-### Transform
-Transform data can be accessed on the [three.js Object3D](https://threejs.org/docs/#api/en/core/Object3D) (we also call it GameObject) directly. Unlike to Unity there is no extra transform component. 
-- ``this.gameObject.position`` - local space [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position)
-- ``this.gameObject.rotation`` - local space [rotation in euler angles](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation)
-- ``this.gameObject.quaternion`` - local space rotation as [quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion)
-- ``this.gameObject.scale`` - local space [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale)
+To search the whole scene for one or multiple components you can use ``GameObject.findObjectOfType(Animator)`` or `GameObject.findObjectsOfType(Animator)`.
 
-#### World Position, Rotation, Scale...
+## Transform
+Transform data can be accessed on the `GameObject` / `Object3D` directly. Unlike to Unity there is no extra transform component that holds this data.  
+- ``this.gameObject.position`` is the [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) in local space
+- ``this.gameObject.rotation`` is the [rotation in euler angles](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation) in local space
+- ``this.gameObject.quaternion`` - is the [quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion) in local space
+- ``this.gameObject.scale`` - is the [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale) in local space
+
+The major difference here to keep in mind is that `position` in three.js is by default a localspace position whereas in Unity `position` would be worldspace. The next section will explain how to get the worldspace position in three.js.
+
+### WORLD- Position, Rotation, Scale...
 
 In three.js (and thus also in Needle Engine) the `object.position`, `object.rotation`, `object.scale` are all local space coordinates. This is different to Unity where we are used to `position` being worldspace and using `localPosition` to deliberately use the local space position.  
 
-If you want to access the world coordinates in Needle Engine we have utility methods that you can use with your objects. Call `getWorldPosition(yourObject)` to calculate the world position. Similar methods exist for rotation/quaternion and scale.
+If you want to access the world coordinates in Needle Engine we have utility methods that you can use with your objects. Call `getWorldPosition(yourObject)` to calculate the world position. Similar methods exist for rotation/quaternion and scale. To get access to those methods just import them from Needle Engine like so `import { getWorldPosition } from "@needle.tools/engine"`
 
 
-### Time
-Use ``this.context.time`` to get access to time data. For example ``this.context.time.deltaTime``
+## Time
+Use `this.context.time` to get access to time data:  
+- `this.context.time.time` is the time since the application started running
+- `this.context.time.deltaTime` is the time that has passed since the last frame
+- `this.context.time.frameCount` is the number of frames that have passed since the application started
+- `this.context.time.realtimeSinceStartup` is the unscaled time since the application has started running  
+
+It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
 
 
-### Raycasting
-Use ``this.context.physics.raycast()`` to perform a raycast from the mouse position (by default).  
+## Raycasting
+Use ``this.context.physics.raycast()`` to perform a raycast. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
+
 Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
 
-### Input
-Use ``this.context.input`` to poll input state
+## Input
+Use ``this.context.input`` to poll input state:
 
 ```ts
 import { Behaviour } from "@needle-tools/engine";
@@ -210,7 +228,7 @@ export class MyScript extends Behaviour
 ```
 
 
-### Subscribing to Events
+## Subscribing to Events
 
 Any component can dispatch events by calling ``this.dispatchEvent()``, see [javascript documentation](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent).  
 Vice-versa you can subscribe to any component ``this.otherComponent.addEventListener("someEvent", ...)``    
@@ -255,7 +273,7 @@ export class OrbitEventExample extends Behaviour {
 ```
 
 
-### InputSystem callbacks
+## InputSystem callbacks
 Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events
 > **Note**: Make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy
 
@@ -270,7 +288,7 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
 ```
 
 
-### Exporting VideoClips
+## Exporting VideoClips
 
 Generate a C# component that takes a list of VideoClips. VideoClips are on export copied to the output directory and your typescript component receives a list of relative paths to the videos (e.g. ``["assets/myVideo1.mp4", "assets/myOtherVideo.mp4"]``)
 
@@ -295,7 +313,7 @@ export class MyVideos extends Behaviour {
 ```
 
 
-### Managing Dependencies
+## Managing Dependencies
 In C# you usually work with a solution containing one or many projects. In Unity this solution is managed by Unity for you and when you open a C# script it opens the project and shows you the file.   
 You usually install Packages using Unity's built-in package manager to add features provided by either Unity or other developers (either on your team or e.g. via Unity's AssetStore). Unity does a great job of making adding and managing packages easy with their PackageManager and you might never have had to manually edit a file like the `manifest.json` (this is what Unity uses to track which packages are installed) or run a command from the command line to install a package.
 
