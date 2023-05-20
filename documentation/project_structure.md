@@ -51,8 +51,8 @@ Our exporter can be used with other project structures as well, vite is just our
 | **Unity** | |
 | `Assets` | This is where project specific/exclusive assets live. |
 | `Packages` | This is where packages installed for this project live. A package can contain any asset type. The main difference is that it can be added to multiple Unity projects. It therefor is a great method to share code or assets. To learn more about packages see [the Unity documentation about packages](https://docs.unity3d.com/Manual/PackagesList.html).
-| **Needle Engine Package** | |
-| ``Packages/Needle Engine Exporter/Core/Runtime/Components`` | Contains all Needle Engine built-in runtime components (See `Packages/Needle Engine Exporter` in the Unity Project Window)
+| **Needle Engine Unity Package** | |
+| ``Core/Runtime/Components`` | Contains all Needle Engine built-in runtime components (See `Packages/Needle Engine Exporter` in the Unity Project Window)
 
 
 
