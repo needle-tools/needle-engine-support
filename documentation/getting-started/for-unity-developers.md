@@ -228,6 +228,7 @@ Note that there are two separate entries here that relate to *a dependency*. One
 
 # Learning more
 
-General information about [scripting in Needle Engine can be found here](./scripting).
+- [Scripting in Needle Engine](../scripting)
+- [Typescript Essentials](./typescript-essentials.md)
+- [Component Reference](../component-reference.md)
 
-Please also refer to the [Typescript reference](https://www.typescriptlang.org/docs/) for syntax and general language questions!  
