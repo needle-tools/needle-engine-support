@@ -7,7 +7,6 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
-
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
 import { generateMetaPlugin, cleanLink, cleanHeader } from "./plugins/generate-samples-meta/index"
