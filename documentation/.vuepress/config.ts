@@ -277,11 +277,19 @@ export default defineUserConfig({
         sidebarDepth: 1,
         sidebar: {
             '/': [
-                "/getting-started",
-                "/project_structure",
+                {
+                    text: "Getting Started",
+                    children: [
+                        {
+                            text: 'Installation',
+                            link: "/getting-started",
+                        }
+                    ]
+                },
                 {
                     text: "Creating your Project",
                     children: [
+                        "/project_structure",
                         "/everywhere-actions",
                         "/export",
                         "/html",
