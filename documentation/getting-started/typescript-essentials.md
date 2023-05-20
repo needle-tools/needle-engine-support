@@ -5,6 +5,11 @@ sidebarDepth: 2
 
 The following guide tries to highlight some of the key differences between C#, Javascript and Typescript. This is most useful for developers new to the web ecosystem.
 
+Here are also some useful resources for learning how to write Typescript:  
+
+- [Typescript Tutorial](https://www.typescripttutorial.net/)
+- [Learn Typescript](https://www.tutorialsteacher.com/typescript)
+- [Typescript Documentation](https://www.typescriptlang.org/docs/)
 
 ### Key differences between C#, Javascript or Typescript
 

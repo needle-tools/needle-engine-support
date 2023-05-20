@@ -164,6 +164,10 @@ td {
   width: 20%;
 }
 
+td:first-child {
+  min-width: 10%;
+}
+
 td:last-child {
   width: 30%;
 }

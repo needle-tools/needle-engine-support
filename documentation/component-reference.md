@@ -1,3 +1,7 @@
+---
+description: A overview of some of the components that we provide
+---
+
 # Component Reference 🧩
 
 Here is a overview of some of the components that we provide. Some of them map directly to Unity components, while others are core components from Needle Engine.   

@@ -23,14 +23,13 @@ The event methods that the attached component will then automatically be called 
 
 ### Finding Components in the Scene
 For getting component you can use the familiar methods similar to Unity. Note that the following uses the `Animator` type as an example but you can as well use any component type that is either built-in or created by you.
-- ``this.gameObject.getComponent(Animator)``   
-  Get the `Animator` component on a GameObject/Object3D. It will either return the `Animator` instance if it has an Animator component or `null` if the object has no such componnent.
-- ``this.gameObject.getComponentInChildren(Animator)``  
-  Get the first `Animator` component on a GameObject/Object3D or on any of its children
-- ``this.gameObject.getComponentsInParents(Animator)``   
-  Get all animator components in the parent hierarchy (including the current GameObject/Object3D)
-   
-These methods are also available on the static GameObject type. For example you can use ``GameObject.getComponent(this.gameObject, Animator)`` to get the `Animator` component on a passed in GameObject/Object3D.     
+| Method name | Desciption |
+| --- | --- |
+| `this.gameObject.getComponent(Animator)` | Get the `Animator` component on a GameObject/Object3D. It will either return the `Animator` instance if it has an Animator component or `null` if the object has no such componnent. |
+| `this.gameObject.getComponentInChildren(Animator)` | Get the first `Animator` component on a GameObject/Object3D or on any of its children
+| `this.gameObject.getComponentsInParents(Animator)` | Get all animator components in the parent hierarchy (including the current GameObject/Object3D)
+
+These methods are also available on the static GameObject type. For example ``GameObject.getComponent(this.gameObject, Animator)`` to get the `Animator` component on a passed in GameObject/Object3D. 
 
 To search the whole scene for one or multiple components you can use ``GameObject.findObjectOfType(Animator)`` or `GameObject.findObjectsOfType(Animator)`.
 
