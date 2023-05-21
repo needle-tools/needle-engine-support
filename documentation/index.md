@@ -7,6 +7,7 @@ lastUpdated: false
 footer: "Copyright © 2022 Needle Tools GmbH"
 ---
 
+![](/imgs/banner.webp)
 
 **Needle Engine** is a web engine for complex and simple 3D applications alike. Run on your machine and deploy anywhere. It is flexible, extensible and has built-in support for **collaboration and XR**! It is built around the **glTF standard** for 3D assets. Powerful integrations for **Unity** and **Blender** allow artists and developers to collaborate and manage web applications inside battle-tested 3d editors. **Needle Engine Integrations** allow you to use Editor features for exporting models, author materials, animate and sequence animations, bake lightmaps and more with ease. Our powerful **compression and optimization pipeline for the web** make sure your files are ready, small and load fast!  
 
