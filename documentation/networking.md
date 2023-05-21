@@ -17,6 +17,9 @@ Networking is currently based on [websockets](https://github.com/jjxxs/websocket
   
 - **Enable Voice Chat**  
   Add a `VoIP` component.
+  
+- **Enable Screensharing**  
+  Add a `Screensharing` component.
 
 
 ## Core Components
