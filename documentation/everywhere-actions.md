@@ -18,7 +18,10 @@ From low-level triggers and actions, higher-level complex interactive behaviours
 
 ## How do I use Everywhere Actions?
 
-After selecting an object, click `Add Component > Needle > Everywhere Actions > [Action]`.
+For iOS support add the `USDZExporter` component to your scene. It is good practice to add it to the same object as the `WebXR` component (but not mandatory)
+
+To add an action to any object in your scene  
+select it and then click `Add Component > Needle > Everywhere Actions > [Action]`.
 
 ![](/imgs/everywhere-actions-component-menu.gif)
 
@@ -66,7 +69,7 @@ Demonstrates how to attach 3D content onto a custom image marker. Start the scen
 
 <sample src="https://engine.needle.tools/samples/usdz-interactivity" />
 
-## Creating your own Everywhere Actions
+## Create your own Everywhere Actions
 
 Creating new Everywhere Actions involves writing code for your action in TypeScript, which will be used in the browser and for WebXR, and using our TriggerBuilder and ActionBuilder API to create a matching setup for Augmented Reality on iOS via QuickLook. When creating custom actions, keep in mind that QuickLook has a limited set of features available. You can still use any code you want for the browser and WebXR, but the behaviour for QuickLook may need to be an approximation built from the available triggers and actions. 
 
@@ -74,7 +77,7 @@ Creating new Everywhere Actions involves writing code for your action in TypeScr
 Often constructing specific behaviours requires thinking outside the box and creatively applying the available low-level actions. An example would be a "Tap to Place" action – there is no raycasting or hit testing available in QuickLook, but you could cover the expected placement area with a number of invisible objects and use a "Tap" trigger to move the object to be placed to the position of the tapped invisible object.  
 :::
 
-Triggers and Actions for QuickLook are based on <a href="https://developer.apple.com/documentation/arkit/usdz_schemas_for_ar/actions_and_triggers" target="_blank">Apple's Preliminary Interactive USD Schemas</a>.
+Triggers and Actions for QuickLook are based on [Apple's Preliminary Interactive USD Schemas](https://developer.apple.com/documentation/arkit/usdz_schemas_for_ar/actions_and_triggers)
 
 ### Code Example
 
@@ -85,29 +88,31 @@ Here's the implementation for `HideOnStart` as an example for how to create an E
 Often, getting the right behaviour will involve composing _higher-level actions_ from the available _lower-level actions_. For example, our "Change Material on Click" action is composed of a number of `fadeActions` and internally duplicates objects with different sets of materials each. By carefully constructing these actions, complex behaviours can be achieved.  
 :::
 
-### List of triggers
+### Low level methods for building your own actions
 
-- TriggerBuilder.sceneStartTrigger
-- TriggerBuilder.tapTrigger
+| Triggers | |
+| --- | --- |
+| `TriggerBuilder.sceneStartTrigger` | |
+| `TriggerBuilder.tapTrigger` | |
 
-### List of actions
+| Actions | |
+| --- | --- |
+| `ActionBuilder.fadeAction` | |
+| `ActionBuilder.startAnimationAction` | |
+| `ActionBuilder.waitAction` | |
+| `ActionBuilder.lookAtCameraAction` | |
+| `ActionBuilder.emphasize` | |
+| `ActionBuilder.transformAction` | |
+| `ActionBuilder.playAudioAction` | |
 
-- ActionBuilder.fadeAction
-- ActionBuilder.startAnimationAction
-- ActionBuilder.waitAction
-- ActionBuilder.lookAtCameraAction
-- ActionBuilder.emphasize
-- ActionBuilder.transformAction
-- ActionBuilder.playAudioAction
-
-### List of group actions
-
-- ActionBuilder.sequence
-- ActionBuilder.parallel
-- GroupAction.addAction
-- GroupAction.makeParallel
-- GroupAction.makeSequence
-- GroupAction.makeLooping
-- GroupAction.makeRepeat
+|  Group Actions | |
+| --- | --- |
+| `ActionBuilder.sequence` | |
+| `ActionBuilder.parallel` | |
+| `GroupAction.addAction` | |
+| `GroupAction.makeParallel` | |
+| `GroupAction.makeSequence` | |
+| `GroupAction.makeLooping` | |
+| `GroupAction.makeRepeat` | |
 
 To see the implementation of our built-in Everywhere Actions, please take look at `src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`.

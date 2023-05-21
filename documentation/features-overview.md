@@ -89,6 +89,12 @@ Needle Engine uses as [component based workflow](scripting.md#component-architec
 
 Read more about [Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
 
+## And there is more
+
+- PostProcessing → Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction...
+- EditorSync → Live synchronize editing in Unity to the running three.js application for local development
+- Interactive AR on iOS and Android → Use our [Everywhere Actions](./everywhere-actions.md) feature set or build your own
+
 ---
 # Where to go next
 

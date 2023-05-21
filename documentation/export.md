@@ -10,25 +10,23 @@ To mark any Unity scene as "exportable", add an ``ExportInfo`` component to a ro
 By default, your scene is exported on save. This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.  
 
 ## 📦 Exporting glTF files 
-To export meshes, materials, animations, textures (...) create a new GameObject in your hierarchy and add a ``GltfObject`` component to it. This is the root of a new glTF file. It will be exported whenever you make a change to the scene and save.
+To export meshes, materials, animations, textures (...) create a new GameObject in your hierarchy and add a ``GltfObject`` component to it. This is the root of a new glTF file. It will be exported whenever you make a change to the scene and save.  
+
+Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported. 
 
 
 Add a cube as a child of your root object and save your scene. Note that the output ``assets/`` folder (see [project structure](#vite-project-structure)) now contains a new ``.glb`` file with the same name as your root GameObject.  
 
+You can enable the ``Smart Export`` setting (via `Edit/Project Settings/Needle` ) to only export when a change in this object's hierarchy is detected. 
 
-::: tip
-You can use the experimental ``Smart Export`` setting to only export when a change in this object's hierarchy is detected. 
+:::details How to prevent specific objects from being exported
+Objects with the `EditorOnly` tag will be ignored on export including their child hierarchy.   
+Be aware that this is preferred over disabling objects as disabled will still get exported in case they're turned on later.
 :::
 
-::: tip
-Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported.   
-Read about [scripting here](./scripting.md)   
-:::
+### Lazy loading and multiple levels / scenes
 
-
-#### Skip exporting objects
-You can **ignore specific objects** on export by tagging them as `EditorOnly`. This is often preferred over simply disabling them, as disabled objects still get exported in case they're turned on later.
-
+If you want to split up your application into multiple levels or scenes then you can simply use the `SceneSwitcher` component. You can then structure your application into multiple scenes or prefabs and add them to the SceneSwitcher array to be loaded and unloaded at runtime. This is a great way to avoid having to load all your content upfront and to keep loading times small (for example it is what we did on [needle.tools](https://needle.tools) by separating each section of your website into its own scene and only loading them when necessary)
 
 ### Recommended Complexity per glTF
 
@@ -38,30 +36,29 @@ You can **ignore specific objects** on export by tagging them as `EditorOnly`. T
 
 You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See the [AssetReference section in the Scripting docs](scripting.md#assetreference-and-addressables).
 
-::: tip
- The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths. There's no technical limitation to this beyond the capabilities of your device.  
-:::
+ The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths. There's no technical limitation to this beyond the capabilities of your device.
 
 ### Prefabs
-[Prefabs](https://docs.unity3d.com/Manual/Prefabs.html) can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
+Prefabs can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
 
 Exporting Prefabs works with nesting too: a component in a Prefab can reference another Prefab which will then also be exported.  
 This mechanism allows for composing scenes to be as lightweight as possible and loading the most important content first and defer loading of additional content.  
-
-Please refer to the [``AssetReference`` section on loading](https://fwd.needle.tools/needle-engine/docs/addressables) in the scripting documentation for further info.
 
 ### Scene Assets
 Similar to Prefab assets, you can reference other Scene assets.  
 To get started, create a component in Unity with a ``UnityEditor.SceneAsset`` field and add it to one of your GameObjects inside a GltfObject. The referenced scene will now be exported as a separate glTF file and can be loaded/deserialized as a ``AssetReference`` from TypeScript.  
 
-Please refer to the [``AssetReference`` section on loading](https://fwd.needle.tools/needle-engine/docs/addressables) in the scripting documentation for further info.
-
-> **Note**: You can keep working inside a referenced scene and still update your main exporter scene/website. On scene save or play mode change we will detect if the current scene is being used by your currently running server and then trigger a re-export for only that glb.  
-(The check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
+You can keep working inside a referenced scene and still update your main exporter scene/website. On scene save or play mode change we will detect if the current scene is being used by your currently running server and then trigger a re-export for only that glb. (This check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
 
 As an example on [our website](https://needle.tools) each section is setup as a separate scene and on export packed into multiple glb files that we load on demand:
 
 ![2022-08-22-172605_Needle_Website_-_Website_-_Windows,_Mac,_Linux_-_U](https://user-images.githubusercontent.com/5083203/185958983-71913c97-5eec-4cfd-99f5-76798582373e.png)
+
+#### Loading a Prefab or Scene from a custom script
+If you want to reference and load a prefab from one of your scripts you can declare a `AssetReference` type.  
+Here is a minimal example: 
+
+@[code](@code/component-prefab.ts)
 
 ## 🏇 Exporting Animations 
 Needle Engine supports a considerable and powerful subset of Unity's animation features:
@@ -119,7 +116,7 @@ Please see limitations listed below
 
 ![2022-08-22-172029_Needle_Website_-_CustomShaders_-_Windows,_Mac,_Lin](https://user-images.githubusercontent.com/5083203/185957781-9fae18c5-09ff-490f-8958-57e138aa0003.png)
 
-> Custom Shaders aren't part of the ratified glTF material model. The resulting GLB files will not display correctly in other viewers (the materials will most likely display white).
+Note that **Custom Shaders** aren't part of the ratified glTF material model. The resulting GLB files will not display correctly in other viewers (the materials will most likely display white).
 
 #### Current limitations
 - We currently only support custom **Unlit** shaders — Lit shader conversion is not officially supported.
@@ -137,7 +134,7 @@ These coordinate changes are
 
 To export lightmaps simply [generate lightmaps](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
 
-> When working on multiple scenes, disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
+When working on multiple scenes, disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
 
 ### Recommended Lightmap Settings
 - Lightmap Encoding: Normal Quality (adjust in Project Settings > Player)
