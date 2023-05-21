@@ -26,5 +26,20 @@ The `needle.config.json` is used to provide configuration for the Needle Editor 
 }
 ```
 
+#### Copy Example
+```json
+{
+  "buildDirectory": "dist",
+  "assetsDirectory": "assets",
+  "scriptsDirectory": "src/scripts",
+  "codegenDirectory": "src/generated",
+  "build": {
+    "copy": [
+      "cards"
+    ]
+  }
+}
+```
+
 #### Related Links
 - [Project Structure](../project_structure.md)
