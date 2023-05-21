@@ -31,10 +31,11 @@ export default defineClientConfig({
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    padding: 1em;
+    padding: .5em;
     text-align: center;
-    min-height: 100px;
+    min-height: 90px;
     display: none;
+    padding-top: 0;
 }
 
 @media (max-width: 768px) {
@@ -57,7 +58,7 @@ export default defineClientConfig({
 } */
 
 .quotes {
-    font-size: 1.5em;
+    font-size: 1.2em;
     font-style: italic;
 }
 
