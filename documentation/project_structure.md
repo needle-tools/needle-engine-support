@@ -80,6 +80,6 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 #### Continue Reading
 
 - [Typescript Guide for Unity Developers](./getting-started/for-unity-developers.md)
-- [Typescript Essentials](./getting-started/typescript-essentials.md.md)
+- [Typescript Essentials](./getting-started/typescript-essentials.md)
 - [Writing custom scripts](./scripting.md)
 - [Everywhere Actions](./everywhere-actions.md)
