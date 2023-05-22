@@ -1,7 +1,5 @@
 # Technical Overview
 
-[How it works](#how-it-works) • [glTF Assets](#gltf-assets) • [glTF Extensions](#vendor-specific-gltf-extensions-needle_) • [Data Mapping](#typescript-and-data-mapping) • [Rendering with three.js](#rendering-with-threejs) • [A word about WASM](#why-arent-you-compiling-to-webassembly)
-
 ## How it works
 
 Needle Engine roughly consists of three parts:

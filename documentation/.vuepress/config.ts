@@ -317,6 +317,7 @@ export default defineUserConfig({
                     text: "Reference",
                     children: [
                         "/features-overview",
+                        "/technical-overview",
                         "/scripting-examples",
                         "/component-reference",
                         "/reference/needle-config-json"
