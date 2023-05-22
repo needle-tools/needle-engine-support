@@ -1,8 +1,7 @@
 # Script Examples
 
-
-
 ## Basic component 
+<stackblitz file="@code/basic-component.ts"></stackblitz> 
 @[code](@code/basic-component.ts)
 
 see [scripting](scripting#lifecycle-methods) for all component events

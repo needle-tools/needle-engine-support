@@ -11,6 +11,6 @@ export class MyComponent extends Behaviour {
     }
 
     update() {
-        // called every frame
+        this.gameObject.rotateY(this.context.time.deltaTime);
     }
 }
