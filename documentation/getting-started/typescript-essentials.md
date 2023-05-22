@@ -131,3 +131,66 @@ myFirstVector.multiplyScalar(myFactor);
 // → myFirstVector is now 100, 100, 100
 ```
 
+### Equality Checks
+
+#### loose vs strict comparison
+In C# when you want to check if two variables are the same you can write it as follows:
+```csharp
+var playerIsNull = myPlayer == null;
+```
+in Javascript/Typescript there is a difference between `==` and `===` where `===` is more strictly checking for the type:
+```ts
+const playerIsNull = myPlayer === null;
+const playerIsNullOrUndefined = myPlayer == null;
+```
+You notice that the second variable `playerIsNullOrUndefined` is using `==` which does a loose equality check in which case `null` and `undefined` will both result in `true`here. You can read more about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+
+### Events & Binding `this`
+
+When you subscribe to an Event in C# you do it like this:
+```csharp
+// this is how an event is declared
+event Action MyEvent;
+// you subscribe by adding to (or removing from)
+void OnEnable() {
+    MyEvent += OnMyEvent;
+}
+void OnDisable() {
+    MyEvent -= OnMyEvent;
+}
+void OnMyEvent() {}
+```
+In Typescript and Javascript when you add a method to a list you have to "bind this". That essentially means you create a method where you explictly set `this` to (usually) your current class instance. There are two way to archieve this.   
+
+Please note that we are using the type `EventList` here which is a Needle Engine type to declare events (the EventList will also automatically be converted to a UnityEvent and or a event list in Blender when you use them with our Editor integrations)
+
+The short and **recommended** syntax for doing this is to use [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).  
+
+```ts
+myEvent?: EventList;
+void onEnable() {
+    this.myEvent.addEventListener(this.onMyEvent);
+}
+void onDisable() {
+    this.myEvent.removeEventListener(this.onMyEvent);
+}
+// Declaring the function as an arrow method
+// to automatically bind this:
+private onMyEvent = () => {
+    console.log(this !== undefined, this)
+ }
+```
+There is also the more verbose "classical" way to archieve the same thing by manually binding this (and saving the method in a variable to later remove it again from the event list):
+```ts
+myEvent?: EventList;
+private _onMyEventFn?: Function;
+void onEnable() {
+    // bind this
+    this._onMyEventFn = this.onMyEvent.bind(this);
+    // add the bound method to the event
+    this.myEvent?.addEventListener(this._onMyEventFn);
+} 
+void onDisable() {
+    this.myEvent?.removeEventListener(this._onMyEventFn);
+}
+```
