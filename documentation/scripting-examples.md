@@ -77,7 +77,7 @@ That's the beauty of Needle Engine if we're allowed to say this here 😊
 ### Display current time using a Coroutine
 @[code](@code/component-time.ts) 
 
-<video-embed src="/videos/component-time.mp4" limit_height />
+<video-embed src="./videos/component-time.mp4" limit_height />
 
 
 ## Change custom shader property
