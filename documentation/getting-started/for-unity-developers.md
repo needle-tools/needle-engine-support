@@ -1,27 +1,58 @@
 ---
-title: Needle Engine for Unity Developers
+title: Needle Engine Introduction
 ---
 
 Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
 
-The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or three.js background. It tries to cover some basics in Typescript and Javascript, differences to C# and then dives into topics of how certain things are done in Unity vs in three.js or Needle Engine.
+The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or three.js background. It covers topics regarding how things are done in Unity vs in three.js or Needle Engine.
+
+If you are all new to Typescript and Javascript and you want to dive into writing scripts for Needle Engine then we also recommend reading the [Typescript Essentials Guide](./typescript-essentials) for a basic understanding between the differences between C# and Javascript/Typescript.
 
 ## The Basics
 Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 
-This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. You are free to use as much or as little of the Needle Engine framework for your development as you like.
+This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. If you are already using certain libraries then you will be able to also use them in a Needle Engine based environment. You are free to use as much or as little of our for your development as you like.
 
 
 :::details How to create a new Unity project with Needle Engine? (Video)
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />  
 :::
 
+## Script Fields
+
+### serializable
+If you have seen some Needle Engine scripts then you might have noticed that some variables are annotated with `@serializable` above their declaration. This is a Decorator in Typescript and can be used to modify or annotate code. In Needle Engine this is used for example to let the core serialization know which types we expect in our script when it converts from the raw component information stored in the glTF to a Component instance.   
+Consider the following example: 
+```ts
+@serializable(Behaviour)
+myOtherComponent?: Behaviour;
+@serializable(Object3D)
+someOtherObject?: Object3D;
+```
+This tells Needle Engine that `myOtherComponent` should be of type `Behaviour`. It will then automatically assign the correct reference to the field when your scene is loaded. The same is true for `someOtherObject` where we want to deserialize to an `Object3D` reference.  
+
+Note that in some cases the type can be ommitted. This can be done for all [primitive types in Javascript](https://developer.mozilla.org/en-US/docs/Glossary/Primitive). These are `boolean`, `number`, `bigint`, `string`, `null` and `undefined`.
+```ts
+@serializable() // < no type is needed here because the field type is a primitive
+myString?: string;
+```
+
+### public vs private
+Field without any accessor modified like `private`, `public` or `protected` will by default be `public` in javascript  
+```ts
+/// no accessor means it is public:
+myNumber?: number;
+// explicitly making it private:
+private myPrivateNumber?: number;
+protected myProtectedNumber?: number;
+```
+The same is true for methods as well.
 
 ## Components
 Needle Engine is making heavy use of a Component System that is similar to that of Unity. This means that you can add or remove components to any `Object3D` / `GameObject` in the scene. A component will be registered to the engine when using `addNewComponent(<Object3D>, <ComponentType>)`.   
 The event methods that the attached component will then automatically be called by the engine (e.g. `update` or `onBeforeRender`)    
 
-### Finding Components in the Scene
+#### Finding Components in the Scene
 For getting component you can use the familiar methods similar to Unity. Note that the following uses the `Animator` type as an example but you can as well use any component type that is either built-in or created by you.
 | Method name | Desciption |
 | --- | --- |
