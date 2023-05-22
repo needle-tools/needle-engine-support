@@ -57,6 +57,9 @@ export default defineUserConfig({
         ['meta', { property: "og:image", content: _previewImg }],
         ['meta', { property: "og:url", content: _url }],
         ['meta', { property: "twitter:card", content: "summary_large_image" }],
+        
+        // stackblitz
+        ['script', { src: 'https://unpkg.com/@stackblitz/sdk/bundles/sdk.umd.js' }],
 
     ],
     markdown: {
