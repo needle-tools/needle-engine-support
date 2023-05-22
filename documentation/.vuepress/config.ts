@@ -62,7 +62,7 @@ export default defineUserConfig({
     markdown: {
         importCode: {
             handleImportPath: (str) =>
-                str.replace(/^@code/, path.resolve(__dirname, 'code-samples')),
+                str.replace(/^@code/, path.resolve(__dirname, 'public', 'code-samples')),
         },
         slugify: (str) => cleanLink(str),
         headers: {
