@@ -74,8 +74,7 @@ A window may open stating that "A new scoped registry is now available in the Pa
 Select _File > New Scene_ and choose from one of the Needle templates.  
 We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
 
-### Step 6 • **Continue [here](#generate-a-web-project-and-add-content) to make it your own.**  
-Learn how to iterate, test, build and publish your projects.  
+
 
 
 
@@ -86,7 +85,7 @@ These allow you to go from idea to prototype in a few clicks.
 
 1. Click on `File > New Scene`
 2. Select one of the templates with (needle) in their name and click `Create`.
-3. **Continue [here](#generate-a-web-project-and-add-content)**.
+3. Click Play to install and startup your new web project.
 
 ![20220822-140539-wqvW-Unity_oC0z-needle](https://user-images.githubusercontent.com/2693840/185917275-a147cd90-d515-4086-950d-78358185b1ef.png)
 
@@ -109,7 +108,7 @@ By default, the project name matches the name of your scene. If you want to chan
 3. **Choose a web project template**
   Now, select a web project template for your project. The default template is based on [Vite](https://vitejs.dev/), a fast web app bundler.  
 
-4. **Continue [here](#generate-a-web-project-and-add-content)**.
+4. Click Play to install and start your new web project
 
 ## Questions?
   
