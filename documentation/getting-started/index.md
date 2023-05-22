@@ -38,7 +38,8 @@ If you just want to work with the Needle Engine runtime and don't want to use an
 `npm i @needle-tools/engine`  
 
 
-[Click this link](https://stackblitz.com/fork/github/needle-engine/vite-template) if you quickly want to try Needle Engine without having to install anything.
+[Click this link](https://engine.needle.tools/new) if you quickly want to try and edit Needle Engine in the browser   
+*it creates a project on StackBlitz*
 
 
 ## Unity Quick Start ⚡
