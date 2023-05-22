@@ -38,6 +38,8 @@ If you just want to work with the Needle Engine runtime and don't want to use an
 `npm i @needle-tools/engine`  
 
 
+[Click this link](https://stackblitz.com/fork/github/needle-engine/vite-template) if you quickly want to try Needle Engine without having to install anything.
+
 
 ## Unity Quick Start ⚡
 

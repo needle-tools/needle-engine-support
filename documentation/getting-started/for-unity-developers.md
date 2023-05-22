@@ -8,6 +8,8 @@ The following guide is mainly aimed at developers with a Unity3D background but 
 
 If you are all new to Typescript and Javascript and you want to dive into writing scripts for Needle Engine then we also recommend reading the [Typescript Essentials Guide](./typescript-essentials) for a basic understanding between the differences between C# and Javascript/Typescript.
 
+If you want to code-along with the following examples without having to install anything you just click the following link to [spin-up a StackBlitz virtual environment](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
+
 ## The Basics
 Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 

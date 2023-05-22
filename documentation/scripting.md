@@ -7,6 +7,8 @@ Runtime code for Needle Engine is written in [TypeScript](https://typescriptlang
 
 Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
 
+If you want to code-along with the following examples without having to install anything you just click the following link to [spin-up a StackBlitz virtual environment](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
+
 ----
 
 Our JavaScript runtime API adopts a component model similar to the Unity Editor, and provides a lot of functionality that will feel familiar to Unity devs.  
