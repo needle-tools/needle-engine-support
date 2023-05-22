@@ -1,7 +1,7 @@
 ---
 lang: en-US
 title: Getting Started & Installation
-next: deployment.md
+next: ../project-structure.md
 ---
 After following the steps below you will have a fully functional project ready for the web. 
 
@@ -151,7 +151,7 @@ Keep an eye for console warnings! We log useful details about recommended projec
 
 ## What's next?
 
-👉 Continue reading about [exporting 3D objects and content](./export.md), [scripting](./scripting.md) or learn about how to [deploy your website to the web](./deployment)!
+👉 Continue reading about [exporting 3D objects and content](../export.md), [scripting](../scripting.md) or learn about how to [deploy your website to the web](../deployment)!
 
-In case you need more troubleshooting help, please see the [Questions and Answers](./faq.md) section.  
+In case you need more troubleshooting help, please see the [Questions and Answers](../faq.md) section.  
 You can also join our [Discord Community](https://discord.needle.tools)!

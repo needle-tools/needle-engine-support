@@ -137,7 +137,7 @@ export default defineUserConfig({
                     {
                         text: "Creating your Project",
                         children: [
-                            "/project_structure",
+                            "/project-structure",
                             "/everywhere-actions",
                             "/export",
                             "/html",
@@ -289,7 +289,7 @@ export default defineUserConfig({
                 {
                     text: "Creating your Project",
                     children: [
-                        "/project_structure",
+                        "/project-structure",
                         "/everywhere-actions",
                         "/export",
                         "/html",
@@ -327,7 +327,7 @@ export default defineUserConfig({
             // '/getting-started/': [
             //     "/getting-started/typescript-essentials",
             //     "/getting-started/for-unity-developers",
-            //     "/project_structure",
+            //     "/project-structure",
             //     "/everywhere-actions",
             //     "/export",
             //     "/html",
@@ -344,7 +344,7 @@ export default defineUserConfig({
             //         text: "For Unity Developers",
             //         link: "/getting-started/for-unity-developers",
             //     },
-            //     "/project_structure",
+            //     "/project-structure",
             //     "/everywhere-actions",
             //     "/export",
             //     "/html",

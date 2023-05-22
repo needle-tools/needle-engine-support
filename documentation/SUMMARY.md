@@ -4,7 +4,7 @@
 * [Getting Started ⭐](./getting-started.md)
     * [Feature Overview](./features-overview.md)
     * [Export](./export.md)
-    * [Project Structure](./project_structure.md)
+    * [Project Structure](./project-structure.md)
     * [VR and AR](./xr.md)
     * [Scripting](./scripting.md)
     * [HTML](./html.md)

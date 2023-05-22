@@ -110,6 +110,23 @@ function myExampleVectorMethod(position: Vector3) : void {
 ```
 Do you see the difference? Because vectors and all custom objects *are* in fact reference types we will have modified the original `position` variable (line 3) and x is now 42.  
 
+This is not only important to understand for methods but also when working with variables.  
+In C# the following code will produce two instances of Vector3 and changing one will not affect the other:  
+```csharp
+var myVector = new Vector3(1,1,1);
+var myOtherVector = myVector;
+myOtherVector.x = 42;
+// will log: 1, 42
+UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x); 
+``` 
+If you do the same in Typescript you will **not** create a copy but get a reference to the same `myVector` instance instead:
+```ts
+const myVector = new Vector3(1,1,1);
+const myOtherVector = myVector;
+myOtherVector.x = 42;
+// will log: 42, 42
+console.log(myVector.x, myOtherVector.x); 
+```
 
 ### Vector Maths and Operators
 
@@ -122,7 +139,7 @@ myFirstVector *= myFactor;
 // → myFirstVector is now 100, 100, 100
 ```
 
-you have to use a method on the `Vector3.prototype` to archieve the same result (just with a  little more boilerplate code)
+you have to use a method on the Vector3 type to archieve the same result (just with a little more boilerplate code)
 
 ```ts
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
@@ -145,7 +162,7 @@ const playerIsNullOrUndefined = myPlayer == null;
 ```
 You notice that the second variable `playerIsNullOrUndefined` is using `==` which does a loose equality check in which case `null` and `undefined` will both result in `true`here. You can read more about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
 
-### Events & Binding `this`
+### Events, Binding and `this`
 
 When you subscribe to an Event in C# you do it like this:
 ```csharp

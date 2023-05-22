@@ -45,7 +45,7 @@ There are two ways to add custom scripts to your project:
 
 - Unity specific:   
   Organize your code into NPM Definition Files. These help you to modularize and re-use code between projects and if you are familiar with web development they are in fact regular npm packages that are installed locally.  
-  In Unity you can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project_structure.md#npm-definition-files) for more information.  
+  In Unity you can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project-structure.md#npm-definition-files) for more information.  
 
 
 In both approaches, source directories are watched for changes and C# components are regenerated whenever a change is detected.   

@@ -42,4 +42,4 @@ The `needle.config.json` is used to provide configuration for the Needle Editor 
 ```
 
 #### Related Links
-- [Project Structure](../project_structure.md)
+- [Project Structure](../project-structure.md)
