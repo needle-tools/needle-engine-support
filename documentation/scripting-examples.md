@@ -3,7 +3,6 @@
 
 
 ## Basic component 
-<stackblitz file="@code/basic-component.ts"></stackblitz> 
 @[code](@code/basic-component.ts)
 
 see [scripting](scripting#lifecycle-methods) for all component events
@@ -26,6 +25,10 @@ Find a [working example in our samples](https://engine.needle.tools/samples/?ope
 ::: tip
 Make sure you have an ObjectRaycaster component in your parent hierarchy (or on the object that should receive clicks)
 :::
+
+<stackblitz file="@code/component-click.ts">
+test
+</stackblitz> 
 
 @[code](@code/component-click.ts)
 
