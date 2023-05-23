@@ -22,6 +22,27 @@ If that happens there's usually an exception either in engine code or your code.
 In some cases, especially when you just updated the Needle Engine package version, this can be fixed by stopping and restarting the local dev server.  
 For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
 
+## How to fix Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
+
+If you are using vite or next.js make sure to add the Needle Engine plugins to your config.
+Example for vite:
+```js
+const { needlePlugins } = await import('@needle-tools/engine/plugins/vite/index.js');
+plugins: [needlePlugins(command, needleConfig)]
+```
+Example for next.js
+```js
+const { needleNext } = await import("@needle-tools/engine/plugins/next/index.js");
+return needleNext({}, { modules: { webpack } });
+```
+You can also just declare the missing variables in e.g. your root `index.html` in a script tag like so:
+```html
+<script>
+  var NEEDLE_ENGINE_META = {}
+  var NEEDLE_USE_RAPIER = true;
+</script>
+```
+
 ## THREE.EXRLoader: provided file doesnt appear to be in OpenEXR format
 
 Please make sure that sure that you have set Lightmap Encoding to **Normal Quality**.   
