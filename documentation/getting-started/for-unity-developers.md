@@ -1,5 +1,5 @@
 ---
-title: Needle Engine for Unity Developers
+title: Intro to Needle Engine Scripting
 ---
 
 Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
@@ -20,14 +20,20 @@ This also means that - if you are already familiar with three.js - you will have
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />  
 :::
 
-## Debug.Log
-The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.  
-```ts
-console.log("Hello web");
-// You can pass in as many arguments as you want like so:
-console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
+## Creating a Component
+In Unity you create a new component by deriving from `MonoBehaviour`:
+```csharp
+using UnityEngine;
+public class MyComponent : MonoBehaviour { 
+}
 ```
 
+A custom component in Needle Engine on the other hand is written as follows:
+```ts
+import { Behaviour } from "@needle-tools/engine"
+export class MyComponent extends Behaviour { 
+}
+```
 ## Script Fields
 
 ### serializable
@@ -130,13 +136,19 @@ It is also possible to use `this.context.time.timeScale` to deliberately slow do
 
 
 ## Raycasting
-Use ``this.context.physics.raycast()`` to perform a raycast. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
+Use ``this.context.physics.raycast()`` to perform a raycast and get a list of intersections. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
 
 Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
 
 Note that the calls above are by default raycasting against visible scene objects. That is different to Unity where you always need colliders to hit objects. The default three.js solution has both pros and cons where one major con is that it can perform quite slow depending on your scene geometry. It may be especially slow when raycasting against skinned meshes. It is therefor recommended to usually set objects with SkinnedMeshRenderers in Unity to the `Ignore Raycast` layer which will then be ignored by default by Needle Engine as well.   
 
-Another option is to use the physics raycast methods which will only return hits with colliders in the scene.
+Another option is to use the physics raycast methods which will only return hits with colliders in the scene. 
+
+```ts
+const hit = this.context.physics.engine?.raycast();
+```
+
+Here is a editable [example for physics raycast](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore)
 
 ## Input
 Use ``this.context.input`` to poll input state:
@@ -191,6 +203,60 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
         console.log("Click", args);
     }
 }
+```
+
+## Debug.Log
+The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.  
+```ts
+console.log("Hello web");
+// You can pass in as many arguments as you want like so:
+console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
+```
+
+## Gizmos
+In Unity you normally have to use special methods to draw Gizmos like `OnDrawGizmos` or `OnDrawGizmosSelected`. In Needle Engine on the other hand such methods dont exist and you are free to draw gizmos from anywhere in your script. Note that it is also your responsibility then to *not* draw them in e.g. your deployed web application (you can just filter them by `if(isDevEnvironment))`).  
+
+Here is an example to draw a red wire sphere for one second for e.g. visualizing a point in worldspace
+```ts
+Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
+```
+Here are some of the available gizmo methods:  
+| Method name |  |
+| --- | --- |
+| `Gizmos.DrawArrow` | |
+| `Gizmos.DrawBox` | |
+| `Gizmos.DrawBox3` | |
+| `Gizmos.DrawDirection` | |
+| `Gizmos.DrawLine` | |
+| `Gizmos.DrawRay` | |
+| `Gizmos.DrawRay` | |
+| `Gizmos.DrawSphere` | |
+| `Gizmos.DrawWireSphere` | |
+
+
+## Useful Utility Methods
+
+Import from `@needle-tools/engine` e.g. `import { getParam } from "@needle-tools/engine"`
+
+| Method name | Description |
+| --- | --- |
+| `getParam()` | Checks if a url parameter exists. Returns true if it exists but has no value (e.g. `?help`), false if it is not found in the url or is set to 0 (e.g. `?help=0`), otherwise it returns the value (e.g. `?message=test`) |
+| `isMobileDevice()` | Returns true if the app is accessed from a mobile device |
+| `isDevEnvironment()` | Returns true if the current app is running on a local server |
+| `isMozillaXR()` | |
+| `isiOS` | |
+| `isSafari` | |
+
+```ts
+import { isMobileDevice } from "@needle-tools/engine"
+if( isMobileDevice() )
+```
+
+```ts
+import { getParam } from "@needle-tools/engine"
+// returns true 
+const myFlag = getParam("some_flag")
+console.log(myFlag)
 ```
 
 ## The Web project
