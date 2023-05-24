@@ -211,17 +211,40 @@ export class MyComponent extends Behaviour {
 | `GameObject.findObjectsOfType` | searches the whole scene for all matching types.
 
 
-## The Context and the HTML DOM
+## Three.js and the HTML DOM
 
 The context refers to the runtime inside a [web component](https://developer.mozilla.org/en-US/docs/Web/Web_Components).  
-The three.js scene lives inside a custom HTML component called ``<needle-engine>`` (see the *index.html* in your project). You can access that element using ``this.context.domElement``.   
+The three.js scene lives inside a custom HTML component called ``<needle-engine>`` (see the *index.html* in your project). You can access the `<needle-engine>` web component using ``this.context.domElement``.   
 
 This architecture allows for potentially having multiple needle WebGL scenes on the same webpage, that can either run on their own or communicate between each other as parts of your webpage.  
 
-> **Note**: The exporter currently only supports exporting one scene for one html element, but you can create HTML files with multiple contexts. We might make this easier in the future. 
+### Access the scene
+To access the current scene from a component you use `this.scene` which is equivalent to `this.context.scene`, this gives you the root three.js scene object.
 
-### Three.js Scene
-Access the three.js [scene](https://threejs.org/docs/#api/en/scenes/Scene) using ``this.context.scene``.
+To traverse the hierarchy from a component you can either iterate over the children of an object   
+with a for loop:  
+```ts
+for(let i = 0; i < this.gameObject.children; i++) 
+    const ch = this.gameObject.children[i];
+```
+or you can iterate using the `foreach` equivalent:
+```ts
+for(const child of this.gameObject.children) {
+    console.log(child);
+}
+```
+You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
+```ts
+this.gameObject.traverse(obj => console.log(obj))
+```
+or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
+
+Another option that is quite useful when you just want to iterate objects being renderable you can query all renderer components and iterate over them like so:   
+```ts
+for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
+    console.log(renderer);
+```
+For more information about getting components see the next section.
 
 ### Time
 Use `this.context.time` to get access to time data:  
@@ -233,30 +256,65 @@ Use `this.context.time` to get access to time data:
 It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
 
 ### Input
-Use ``this.context.input`` to access convenient methods for getting mouse and touch data. WebXR controller access is currently separate.  
+Use ``this.context.input`` to poll input state:
+
+```ts
+import { Behaviour } from "@needle-tools/engine";
+export class MyScript extends Behaviour
+{
+    update(){
+        if(this.context.input.getPointerDown(0)){
+            console.log("POINTER DOWN")
+        }
+    }
+}
+```
+
+You can also subscribe to events in the ``InputEvents`` enum like so:
+```ts
+import { Behaviour, InputEvents } from "@needle-tools/engine";
+
+export class MyScript extends Behaviour
+{
+    onEnable(){
+        this.context.input.addEventListener(InputEvents.PointerDown, this.onPointerDown);
+    }
+    onDisable() {
+        // it is recommended to also unsubscribe from events when your component becomes inactive
+        this.context.input.removeEventListener(InputEvents.PointerDown, this.onPointerDown);
+    }
+
+    private onPointerDown = (evt) => { console.log(evt); }
+}
+```
+
+If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
+```ts
+window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
+```
+Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down). 
 
 ### Physics
-Use ``this.context.physics`` to access the physics API, for example to perform raycasts against scene geometry.  
+Use ``this.context.physics.raycast()`` to perform a raycast and get a list of intersections. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
 
-Note that [Unity Layers](https://docs.unity3d.com/Manual/Layers.html) are mapped from Unity to [three.js Layers](https://threejs.org/docs/#api/en/core/Layers). By default, physics will ignore objects on layer 2 (this is the ``Ignore Raycast`` layer in Unity) but hit all other layers. We recommended setting up your layers as needed in Unity, but if you need, you can override this behaviour using the `options` parameter that you can pass to the ``physics.raycast`` method. 
+Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
+
+Note that the calls above are by default raycasting against visible scene objects. That is different to Unity where you always need colliders to hit objects. The default three.js solution has both pros and cons where one major con is that it can perform quite slow depending on your scene geometry. It may be especially slow when raycasting against skinned meshes. It is therefor recommended to usually set objects with SkinnedMeshRenderers in Unity to the `Ignore Raycast` layer which will then be ignored by default by Needle Engine as well.   
+
+Another option is to use the physics raycast methods which will only return hits with colliders in the scene. 
+
+```ts
+const hit = this.context.physics.engine?.raycast();
+```
+
+Here is a editable [example for physics raycast](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore)
 
 ### Networking
 Networking methods can be accessed via ``this.context.connection``. Please refer to the [networking docs](./networking.md) for further information.
 
-## Accessing URL Parameters
-Use `utils.getParam(<..>)` to quickly access URL parameters and define behaviour with them.
 
-**Example:**
-```ts
-import { getParam } from "@needle-tools/engine";
-const urlParam = getParam("target");
-console.log("MyTarget is " + urlParam);
-```
-
-## Accessing components from external JavaScript
+## Accessing Needle Engine and components from anywhere
 It is possible to access all the functionality described above using regular JavaScript code that is not inside components and lives somewhere else. All the components and functionality of the needle runtime is accessible via the global ``Needle`` namespace (you can write ``console.log(Needle)`` to get an overview)
-
-For that just find the ``<needle-engine>`` web-component in your DOM and retrieve the ``Context`` from it e.g. by calling ``await document.querySelector("needle-engine")?.getContext()``.   
 
 You can find components using ``Needle.findObjectOfType(Needle.AudioSource)`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive. See the list for [finding adding and removing components](#finding-adding-and-removing-components) above.  
 
@@ -269,141 +327,18 @@ function loadingStarted() { console.log("START") }
 function loadingProgress() { console.log("LOADING...") }
 function loadingFinished() { console.log("FINISHED!") }
 </script>
-```
+```  
 
-
-## Automatically generating Unity components from typescript files :tags codegen
-*Automatically generate Unity components for typescript component in your project using [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler)*  
-- If you want to add scripts inside the ``src/scripts`` folder in your project then you need to have a ``Component Generator`` on the GameObject with your ``ExportInfo`` component.
-- Now when adding new components in ``your/threejs/project/src/scripts``it will automatically generate Unity scripts in ``Assets/Needle/Components.codegen`.
-- If you want to add scripts to any NpmDef file you can just create them - each NpmDef automatically watches script changes and handles component generation, so you don't need any additional component in your scene.
-> **Note**: for C# fields to be correctly generated it is currently important that you explictly declare a Typescript type. For example ``myField : number = 5``
-
-:::::details See codegen example and how to extend it 🤘
-You can switch between **Typescript** input and generated **C#** stub components using the tabs below
-:::: code-group
-::: code-group-item Typescript
+You can also subscribe to the globale `ContextRegistry` to receive a callback when a Needle Engine context has been created:
 ```ts
-import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
-import { Object3D } from "three";
-
-export class MyCustomComponent extends Behaviour {
-    @serializable()
-    myFloatValue: number = 42;
-
-    @serializable(Object3D)
-    myOtherObject?: Object3D;
-
-    @serializable(AssetReference)
-    prefabs: AssetReference[] = [];
-
-    start() {
-        this.sayHello();
-    }
-
-    private sayHello() {
-        console.log("Hello World", this);
-    }
-}
+ContextRegistry.addContextCreatedCallback((args) => {
+  const context = args.context;
+  const scene = context.scene;
+  const myInstance = GameObject.getComponentInChildren(scene, YourComponentType);
+});
 ```
-:::
-::: code-group-item Generated C#
-```csharp
-// NEEDLE_CODEGEN_START
-// auto generated code - do not edit directly
-
-#pragma warning disable
-
-namespace Needle.Typescript.GeneratedComponents
-{
-	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
-	{
-		public float @myFloatValue = 42f;
-		public UnityEngine.Transform @myOtherObject;
-		public UnityEngine.Transform[] @prefabs = new UnityEngine.Transform[]{ };
-		public void start(){}
-		public void update(){}
-	}
-}
-
-// NEEDLE_CODEGEN_END
-```
-:::
-::: code-group-item Extending Generated C#
-```csharp
-using UnityEditor;
-
-// you can add code above or below the NEEDLE_CODEGEN_ blocks
-
-// NEEDLE_CODEGEN_START
-// auto generated code - do not edit directly
-
-#pragma warning disable
-
-namespace Needle.Typescript.GeneratedComponents
-{
-	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
-	{
-		public float @myFloatValue = 42f;
-		public UnityEngine.Transform @myOtherObject;
-		public UnityEngine.Transform[] @prefabs = new UnityEngine.Transform[]{ };
-		public void start(){}
-		public void update(){}
-	}
-}
-
-// NEEDLE_CODEGEN_END
-
-namespace Needle.Typescript.GeneratedComponents
-{
-    // This is how you extend the generated component (namespace and class name must match!)
-	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
-	{
-		
-		public void MyAdditionalMethod()
-		{
-		}
-
-		private void OnValidate()
-		{
-			myFloatValue = 42;
-		}
-	}
-
-    // of course you can also add custom editors
-	[CustomEditor(typeof(MyCustomComponent))]
-	public class MyCustomComponentEditor : Editor
-	{
-		public override void OnInspectorGUI()
-		{
-			EditorGUILayout.HelpBox("This is my sample component", MessageType.None);
-			base.OnInspectorGUI();
-		}
-	}
-}
-
-```
-:::
-::::
-:::::
 
 
-### Controlling component generation :tags codegen
-You can use the following typescript attributes to control C# code generation behavior:  
-| Attribute | Result |
-| -- | -- |
-| `// @generate-component` | Force generation of next class|
-| `// @dont-generate-component` | Disable generation of next class |
-| `// @serializeField` | Decorate generated field with `[SerializeField]` |
-| `// @type UnityEngine.Camera` | Specify generated C# field type |
-| `// @nonSerialized` | Skip generating the next field or method |
-
-The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match. You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported. 
-
-> **Note**: exported members will start with a lowercase letter. For example if your C# member is named ``MyString`` it will be assigned to ``myString``.
-
-### Extending generated components
-Component C# classes are generated with the [`partial`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) flag so that it is easy to extend them with functionality. This is helpful to draw gizmos, add context menus or add additional fields or methods that are not part of a built-in component.  
 
 ### Version Control
 While generated C# components use the type name to produce stable GUIDs, we recommend checking in generated components in version control as a good practice.  
@@ -418,7 +353,7 @@ To serialize from and to custom formats, it is possible to extend from the ``Typ
 
 > **Note**: In addition to matching fields, matching properties will also be exported when they match to fields in the typescript file. 
 
-## AssetReference and Addressables
+## Loading Scenes
 Referenced Prefabs, SceneAssets and [``AssetReferences``](https://docs.unity3d.com/Packages/com.unity.addressables@latest/manual/AddressableAssetsGettingStarted.html) in Unity will automatically be exported as glTF files (please refer to the [Export Prefabs](export.md) documentation).  
 
 These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components, we added the concept of ``AssetReference`` types. They can be loaded at runtime and thus allow to defer loading parts of your app or loading external content.
@@ -428,16 +363,7 @@ These exported gltf files will be serialized as plain string URIs. To simplify l
 
 AssetReferences are cached by URI, so if you reference the same exported glTF/Prefab in multiple components/scripts it will only be loaded once and then re-used.  
 
-## Renamed Unity Types in TypeScript
-For future compatibility, some Unity-specific types are mapped to different type names in our engine.  
 
-| Unity Type | Type in Needle Engine | Description |
-| -- | -- | -- |
-| ``UnityEvent`` | ``EventList`` | |
-| ``Transform`` | ``Object3D`` | |
-| ``Transform`` | ``AssetReference`` | when assigning a prefab or scene asset in Unity |
-| ``float`` | ``number`` | |
-| ``Color`` | ``RGBAColor`` | |
 
 
 ## For Unity Devs

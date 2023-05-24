@@ -108,6 +108,16 @@ These methods are also available on the static GameObject type. For example ``Ga
 
 To search the whole scene for one or multiple components you can use ``GameObject.findObjectOfType(Animator)`` or `GameObject.findObjectsOfType(Animator)`.
 
+## Renamed Unity Types
+Some Unity-specific types are mapped to different type names in our engine. See the following list:  
+
+| Type in Unity | Type in Needle Engine |  |
+| -- | -- | -- |
+| `UnityEvent` | `EventList` | A UnityEvent will be exported as a `EventList` type (use `serializable(EventList)` to deserialize UnityEvents) |
+| `GameObject` | `Object3D` | |
+| `Transform` | `Object3D` | In three.js and Needle Engine a GameObject and a Transform are the same (there is no `Transform` component). The only exception to that rule is when referencing a `RectTransform` which is a component in Needle Engine as well. |
+| `Color` | `RGBAColor` | The three.js color type doesnt have a alpha property. Because of that all Color types exported from Unity will be exported as `RGBAColor` which is a custom Needle Engine type |
+
 ## Transform
 Transform data can be accessed on the `GameObject` / `Object3D` directly. Unlike to Unity there is no extra transform component that holds this data.  
 - ``this.gameObject.position`` is the [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) in local space

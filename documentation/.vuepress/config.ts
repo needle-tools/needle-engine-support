@@ -141,6 +141,7 @@ export default defineUserConfig({
                         text: "Advanced",
                         children: [
                             "/scripting",
+                            "/component-compiler",
                             "/networking",
                             "/xr",
                         ]
@@ -297,6 +298,7 @@ export default defineUserConfig({
                         "/getting-started/typescript-essentials",
                         "/getting-started/for-unity-developers",
                         "/scripting",
+                        "/component-compiler",
                     ]
                 },
                 {
