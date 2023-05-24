@@ -116,12 +116,6 @@ export default defineUserConfig({
             {
                 text: 'Getting Started',
                 link: '/getting-started',
-                // children: [
-                //     {
-                //         text: 'Needle Engine',
-                //         link: '/',
-                //     }
-                // ]
             },
             {
                 text: 'Guides',
@@ -129,11 +123,7 @@ export default defineUserConfig({
                     {
                         text: "Basics",
                         children: [
-                            "/getting-started",
-                            {
-                                text: "Typescript Essentials",
-                                link: "/getting-started/typescript-essentials",
-                            },
+                            "/getting-started/typescript-essentials",
                             "/getting-started/for-unity-developers",
                         ]
                     },

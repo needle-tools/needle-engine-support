@@ -233,12 +233,15 @@ In a web environment you use `npm` - the Node Package Manager - to manage depend
 
 When working with a web project most of you dependencies are installed from [npmjs.com](https://npmjs.com/). It is the most popular package registry out there for web projects.  
 
-#### Installing
-To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i @needle-tools/engine`. This will then add the package to the `package.json` inside the `dependencies` array.  
-Here is an example of how such a package.json might look like: 
+### Installing
+To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i <the/package_name>` (shorthand for `npm install`)  
+For example run `npm i @needle-tools/engine` to install [Needle Engine](https://www.npmjs.com/package/@needle-tools/engine). This will then add the package to your `package.json` to the `dependencies` array.  
+To install a package as a devDependency only you can run `npm i --save-dev <package_name>`. More about the difference between dependencies and devDependencies below.    
+
+Here is an example of how a package.json might look like: 
 ```json
 {
-  "name": "my-needle-engine-project",
+  "name": "@optional_org/package_name",
   "version": "1.0.0",
   "scripts": {
     "start": "vite --host"
@@ -256,9 +259,64 @@ Here is an example of how such a package.json might look like:
 	}
 }
 ```
+#### What's the difference between 'dependencies' and 'devDependencies'
+You may have noticed that there are two entries containing *dependency* - `dependencies` and `devDependencies`.   
 
-Note that there are two separate entries here that relate to *a dependency*. One is `dependencies` and the other is `devDependencies`. The crucial difference between the two is that `dependencies` are always installed (or bundled) while `devDependencies` are **only** installed when developing the project and otherwise **not** be included in your *bundled*  application (a *bundle* is basically all your code that is required to run your application inside one javascript file to be uploaded to a web server. It is "final" and you can think of it as maybe the `exe`, `app` or a `dll` of your application) 
+`dependencies` are **always installed** (or bundled) when either your web project is installed or in cases where you develop a library and your package is installed as a dependency of another project.  
 
+`devDependencies` are **only** installed when developing the project (meaning that when you directly run `install` in the specific directory) and they are otherwise **not** included in your project.
+
+#### How do I install another package or dependency and how to use it?
+The [Installing](#installing) section taught us that you can install dependencies by running `npm i <package_name>` in your project directory where the `package_name` can be any package that you find on [npm.js](https://npmjs.org).
+
+Let's assume you want to add a tweening library to your project. We will use [`@tweenjs/tween.js`](https://www.npmjs.com/package/@tweenjs/tween.js) for this example. [Here](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts) is the final project if you want to jump ahead and just see the result.
+
+First run `npm install @tweenjs/tween.js` in the terminal and wait for the installation to finish. This will add a new entry to our package.json:  
+```json
+"dependencies": {
+    "@needle-tools/engine": "^3.5.11-beta",
+    "@tweenjs/tween.js": "^20.0.3",
+    "three": "npm:@needle-tools/three@0.146.8"
+}
+```    
+
+Then open one of your script files in which you want to use tweening and import at the top of the file:   
+```ts
+import * as TWEEN from '@tweenjs/tween.js';
+```
+Note that we do here import all types in the library by writing `* as TWEEN`. We could also just import specific types like `import { Tween } from @tweenjs/tween.js`.   
+
+Now we can use it in our script. It is always recommended to refer to the documentation of the library that you want to use. In the case of tween.js they provide a [user guide](https://github.com/tweenjs/tween.js/blob/HEAD/docs/user_guide.md) that we can follow. Usually the Readme page of the package on npm contains information on how to install and use the package.   
+
+To rotate a cube we create a new component type called `TweenRotation`, we then go ahead and create our tween instance for the object rotation, how often it should repeat, which easing to use, the tween we want to perform and then we start it. We then only have to call `update` every frame to update the tween animation. The final script looks like this:
+```ts
+export class TweenRotation extends Behaviour {
+
+    // save the instance of our tweener
+    private _tween?: TWEEN.Tween<any>; 
+
+    start() {
+        // create the tween instance
+        this._tween = new TWEEN.Tween(this.gameObject.rotation);
+        // set it to repeat forever
+        this._tween.repeat(Infinity);
+        // set the easing to use
+        this._tween.easing(TWEEN.Easing.Quintic.InOut);
+        // set the values to tween
+        this._tween.to({ y: Math.PI * 0.5 }, 1000);
+        // start it
+        this._tween.start();
+    }
+    
+    update() {
+        // update the tweening every frame
+        // the '?' is a shorthand for checking if _tween has been created
+        this._tween?.update();
+    }
+}
+```
+Now we only have to add it to any of the objects in our scene to rotate them forever.   
+You can see the final script in action [here](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts).
 
 # Learning more
 
