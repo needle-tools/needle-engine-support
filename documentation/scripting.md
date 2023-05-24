@@ -14,12 +14,12 @@ If you want to code-along with the following examples without having to install 
 Our JavaScript runtime API adopts a component model similar to the Unity Editor, and provides a lot of functionality that will feel familiar to Unity devs.  
 JavaScript components attached to [three.js objects](https://threejs.org/docs/#api/en/core/Object3D) have lifecycle methods, like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate``, that you can implement. You can also use [Coroutines](#coroutines).   
 
-> Learn about Needle Engine lifecycle in the [section about Lifecycle Methods](#lifecycle-methods) below.  
-> Learn more about the Unity lifecycle [here](https://docs.unity3d.com/Manual/ExecutionOrder.html).  
-> 
-To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window](https://docs.unity3d.com/Manual/ProjectView.html).  
+- Learn more about [Needle Engine lifecycle methods](#lifecycle-methods)  
+- Learn more about the Unity lifecycle [here](https://docs.unity3d.com/Manual/ExecutionOrder.html)  
+- To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window](https://docs.unity3d.com/Manual/ProjectView.html).  
 
-**Needle Engine's Exporter does _not_ compile your existing C# code to Web Assembly**. While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+Please note: **Needle Engine's Exporter does _NOT_ compile your existing C# code to Web Assembly**.   
+While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
 
 ----
 
@@ -30,13 +30,7 @@ Often, interactive scenes can be realized using Events in Unity and calling meth
 Needle Engine translates Unity Events into JavaScript method calls, which makes this a very fast and flexible workflow - set up your events as usual and when they're called they'll work the same as in Unity.  
 
 ![image](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)   
-_An example of a Button Click Event that is working out-of-the-box in Needle Engine — no code needed._  
-
-The same works for custom components that implement UnityEvent<>. This means that you can create custom components for artists and designers to wire up complex behaviours without writing any code.  
-
-If you intend to expose/generate a UnityEvent in a custom component that you work on you can do it like this:
-
-@[code](@code/component-unityevent.ts)
+_An example of a Button Click Event that is working out-of-the-box in Needle Engine — no code needed._ 
 
 
 ## Creating a new component

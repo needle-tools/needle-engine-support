@@ -38,8 +38,8 @@ If you just want to work with the Needle Engine runtime and don't want to use an
 `npm i @needle-tools/engine`  
 
 
-[Click this link](https://engine.needle.tools/new) if you quickly want to try and edit Needle Engine in the browser   
-*it creates a project on StackBlitz*
+To quickly test Needle Engine in the browser use [engine.needle.tools/new](https://engine.needle.tools/new)   
+*It creates a new project on StackBlitz*
 
 
 ## Unity Quick Start ⚡
