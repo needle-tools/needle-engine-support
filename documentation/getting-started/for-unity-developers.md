@@ -8,7 +8,7 @@ The following guide is mainly aimed at developers with a Unity3D background but 
 
 If you are all new to Typescript and Javascript and you want to dive into writing scripts for Needle Engine then we also recommend reading the [Typescript Essentials Guide](./typescript-essentials) for a basic understanding between the differences between C# and Javascript/Typescript.
 
-If you want to code-along with the following examples without having to install anything you just [click here to create a small project](https://engine.needle.tools/new) that you can edit in the browser.
+If you want to code-along you can [open engine.needle.tools/new](https://engine.needle.tools/new) to create a small project that you can edit in the browser ⚡
 
 ## The Basics
 Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
@@ -98,6 +98,10 @@ Use ``this.context.physics.raycast()`` to perform a raycast. If you dont pass in
 
 Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
 
+Note that the calls above are by default raycasting against visible scene objects. That is different to Unity where you always need colliders to hit objects. The default three.js solution has both pros and cons where one major con is that it can perform quite slow depending on your scene geometry. It may be especially slow when raycasting against skinned meshes. It is therefor recommended to usually set objects with SkinnedMeshRenderers in Unity to the `Ignore Raycast` layer which will then be ignored by default by Needle Engine as well.   
+
+Another option is to use the physics raycast methods which will only return hits with colliders in the scene.
+
 ## Input
 Use ``this.context.input`` to poll input state:
 
@@ -107,7 +111,7 @@ export class MyScript extends Behaviour
 {
     update(){
         if(this.context.input.getPointerDown(0)){
-            // CLICKED
+            console.log("POINTER DOWN")
         }
     }
 }
@@ -119,75 +123,29 @@ import { Behaviour, InputEvents } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
 {
-    start(){
-        this.context.input.addEventListener(InputEvents.PointerDown, evt => {
-            console.log(evt);
-        });
+    onEnable(){
+        this.context.input.addEventListener(InputEvents.PointerDown, this.onPointerDown);
     }
+    onDisable() {
+        // it is recommended to also unsubscribe from events when your component becomes inactive
+        this.context.input.removeEventListener(InputEvents.PointerDown, this.onPointerDown);
+    }
+
+    private onPointerDown = (evt) => { console.log(evt); }
 }
 ```
 
-You can also subscribe to browser events. For example to receive mouse clicks:
+If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
 ```ts
-export class MyScript extends Behaviour
-{
-    start(){
-        window.addEventListener("click", () => {
-            console.log("MOUSE CLICK");
-        });
-    }
-}
+window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ```
+Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down).
 
 
-## Subscribing to Events
+## InputSystem Callbacks
+Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events on the component itself.
 
-Any component can dispatch events by calling ``this.dispatchEvent()``, see [javascript documentation](https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/dispatchEvent).  
-Vice-versa you can subscribe to any component ``this.otherComponent.addEventListener("someEvent", ...)``    
-
-Any ``EventList`` / ``UnityEvent`` will automatically also be dispatched as a event. For example if your field is ``myEvent : EventList`` it will be dispatched as ``my-event``.
-
-*The following example shows how to subscribe to the [three.js OrbitControls](https://threejs.org/docs/#examples/en/controls/OrbitControls) events* 
-
-```ts
-import { Behaviour, GameObject, OrbitControls } from "@needle-tools/engine";
-
-export class OrbitEventExample extends Behaviour {
-    start() {
-        const orbit = GameObject.findObjectOfType(OrbitControls);
-
-        // Usually you want to subscribe and unsubscribe to events in onEnable and onDisable
-        // But for the purpose of this example we will just subscribe inside the start() method:
-
-        // Variant 1: subscribe using arrow syntax (have a look at how this.onStarted is declared below)
-        orbit?.controls?.addEventListener("start", this.onStarted);
-    
-        // Variant 2: subscribe with binding a method (this is what happens implictly when using arrow functions)
-        orbit?.controls?.addEventListener("end", this.onEnded.bind(this));
-
-        // Variant 3: subscribe with inline function. With this variant you can not unsubscribe from the event (e.g. when the component gets destroyed or disabled)
-        orbit?.controls?.addEventListener("change", args => {
-            console.log("CHANGE");
-        });
-
-    }
-
-    // Variant 1
-    onStarted = (args) => {
-        console.log("STARTED", args, this);
-    }
-
-    // Variant 2 When subscribing to an event with this signature make sure to bind the method, otherwise `this` will be undefined
-    onEnded(args) {
-        console.log("ENDED", args, this);
-    }
-}
-```
-
-
-## InputSystem callbacks
-Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events
-> **Note**: Make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy
+To make this work make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy.
 
 ```ts
 import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
@@ -199,44 +157,13 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
 }
 ```
 
-
-## Exporting VideoClips
-
-Generate a C# component that takes a list of VideoClips. VideoClips are on export copied to the output directory and your typescript component receives a list of relative paths to the videos (e.g. ``["assets/myVideo1.mp4", "assets/myOtherVideo.mp4"]``)
-
-You can also use the ``VideoPlayer`` component if you just want to playback some video.
-
-```ts
-import { Behaviour, serializable } from "@needle-tools/engine";
-
-declare type VideoClip = string;
-
-export class MyVideos extends Behaviour {
-
-    @serializable(null)
-    videos?: Array<VideoClip>;
-
-    video? : VideoClip;
-
-    start(){
-        console.log(this);
-    }
-}
-```
-
-
-## Managing Dependencies
+## The Web project
 In C# you usually work with a solution containing one or many projects. In Unity this solution is managed by Unity for you and when you open a C# script it opens the project and shows you the file.   
 You usually install Packages using Unity's built-in package manager to add features provided by either Unity or other developers (either on your team or e.g. via Unity's AssetStore). Unity does a great job of making adding and managing packages easy with their PackageManager and you might never have had to manually edit a file like the `manifest.json` (this is what Unity uses to track which packages are installed) or run a command from the command line to install a package.
 
 In a web environment you use `npm` - the Node Package Manager - to manage dependencies / packages for you. It does basically the same to what Unity's PackageManager does - it installs (downloads) packages from *some* server (you hear it usually called a *registry* in that context) and puts them inside a folder named `node_modules`.     
 
-When working with a web project most of you dependencies are installed from [npmjs.com](https://npmjs.com/). It is the most popular package registry out there for web projects.  
-
-### Installing
-To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i <the/package_name>` (shorthand for `npm install`)  
-For example run `npm i @needle-tools/engine` to install [Needle Engine](https://www.npmjs.com/package/@needle-tools/engine). This will then add the package to your `package.json` to the `dependencies` array.  
-To install a package as a devDependency only you can run `npm i --save-dev <package_name>`. More about the difference between dependencies and devDependencies below.    
+When working with a web project most of you dependencies are installed from [npmjs.com](https://npmjs.com/). It is the most popular package registry out there for web projects.    
 
 Here is an example of how a package.json might look like: 
 ```json
@@ -259,14 +186,23 @@ Here is an example of how a package.json might look like:
 	}
 }
 ```
-#### What's the difference between 'dependencies' and 'devDependencies'
+
+Our default template uses Vite as its bundler and has no frontend framework pre-installed. Needle Engine is unoppionated about which framework to use so you are free to work with whatever framework you like. We have samples for popular frameworks like Vue.js, Svelte, Next.js, React or React Three Fiber.
+
+## Installing packages & dependencies
+To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i <the/package_name>` (shorthand for `npm install`)  
+For example run `npm i @needle-tools/engine` to install [Needle Engine](https://www.npmjs.com/package/@needle-tools/engine). This will then add the package to your `package.json` to the `dependencies` array.  
+To install a package as a devDependency only you can run `npm i --save-dev <package_name>`. More about the difference between dependencies and devDependencies below.    
+
+### What's the difference between 'dependencies' and 'devDependencies'
 You may have noticed that there are two entries containing *dependency* - `dependencies` and `devDependencies`.   
 
 `dependencies` are **always installed** (or bundled) when either your web project is installed or in cases where you develop a library and your package is installed as a dependency of another project.  
 
 `devDependencies` are **only** installed when developing the project (meaning that when you directly run `install` in the specific directory) and they are otherwise **not** included in your project.
 
-#### How do I install another package or dependency and how to use it?
+
+### How do I install another package or dependency and how to use it?
 The [Installing](#installing) section taught us that you can install dependencies by running `npm i <package_name>` in your project directory where the `package_name` can be any package that you find on [npm.js](https://npmjs.org).
 
 Let's assume you want to add a tweening library to your project. We will use [`@tweenjs/tween.js`](https://www.npmjs.com/package/@tweenjs/tween.js) for this example. [Here](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts) is the final project if you want to jump ahead and just see the result.
