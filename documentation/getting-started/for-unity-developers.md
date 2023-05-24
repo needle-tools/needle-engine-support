@@ -20,6 +20,14 @@ This also means that - if you are already familiar with three.js - you will have
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />  
 :::
 
+## Debug.Log
+The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.  
+```ts
+console.log("Hello web");
+// You can pass in as many arguments as you want like so:
+console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
+```
+
 ## Script Fields
 
 ### serializable
@@ -50,9 +58,37 @@ protected myProtectedNumber?: number;
 ```
 The same is true for methods as well.
 
+## GameObjects and the Scene
+To access the current scene from a component you use `this.scene` which is equivalent to `this.context.scene`, this gives you the root three.js scene object.
+
+To traverse the hierarchy from a component you can either iterate over the children of an object   
+with a for loop:  
+```ts
+for(let i = 0; i < this.gameObject.children; i++) 
+    const ch = this.gameObject.children[i];
+```
+or you can iterate using the `foreach` equivalent:
+```ts
+for(const child of this.gameObject.children) {
+    console.log(child);
+}
+```
+You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
+```ts
+this.gameObject.traverse(obj => console.log(obj))
+```
+or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
+
+Another option that is quite useful when you just want to iterate objects being renderable you can query all renderer components and iterate over them like so:   
+```ts
+for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
+    console.log(renderer);
+```
+For more information about getting components see the next section.
+
 ## Components
 Needle Engine is making heavy use of a Component System that is similar to that of Unity. This means that you can add or remove components to any `Object3D` / `GameObject` in the scene. A component will be registered to the engine when using `addNewComponent(<Object3D>, <ComponentType>)`.   
-The event methods that the attached component will then automatically be called by the engine (e.g. `update` or `onBeforeRender`)    
+The event methods that the attached component will then automatically be called by the engine (e.g. `update` or `onBeforeRender`). A full list of event methods can be found in the [scripting documentation](../scripting.md#lifecycle-methods)    
 
 #### Finding Components in the Scene
 For getting component you can use the familiar methods similar to Unity. Note that the following uses the `Animator` type as an example but you can as well use any component type that is either built-in or created by you.
