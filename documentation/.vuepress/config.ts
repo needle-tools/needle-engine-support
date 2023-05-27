@@ -170,8 +170,10 @@ export default defineUserConfig({
                     {
                         text: "Scripting",
                         children: [
-                            "/scripting-examples",
                             "/component-reference",
+                            "/reference/needle-engine-attributes",
+                            "/reference/needle-config-json",
+                            "/scripting-examples",
                             "/vanilla-js",
                         ]
                     },
@@ -315,7 +317,8 @@ export default defineUserConfig({
                         "/technical-overview",
                         "/scripting-examples",
                         "/component-reference",
-                        "/reference/needle-config-json"
+                        "/reference/needle-config-json",
+                        "/reference/needle-engine-attributes"
                     ]
                 },
             ]

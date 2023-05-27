@@ -91,3 +91,8 @@ Assuming you have a custom shader with a property name `_Speed` that is a float 
 You can find a live [example to download in our samples](https://engine.needle.tools/samples?open=1#shaders).
 @[code](@code/component-customshaderproperty.ts)
 
+
+
+## Switching src attribute
+
+See [live example](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html) on StackBlitz
