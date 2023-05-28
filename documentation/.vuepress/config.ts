@@ -173,6 +173,7 @@ export default defineUserConfig({
                             "/component-reference",
                             "/reference/needle-engine-attributes",
                             "/reference/needle-config-json",
+                            "/reference/typescript-decorators",
                             "/scripting-examples",
                             "/vanilla-js",
                         ]
@@ -318,7 +319,8 @@ export default defineUserConfig({
                         "/scripting-examples",
                         "/component-reference",
                         "/reference/needle-config-json",
-                        "/reference/needle-engine-attributes"
+                        "/reference/needle-engine-attributes",
+                        "/reference/typescript-decorators",
                     ]
                 },
             ]
