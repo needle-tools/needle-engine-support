@@ -120,28 +120,23 @@ export default defineUserConfig({
             {
                 text: 'Guides',
                 children: [
+                    "/project-structure",
+                    "/everywhere-actions",
+                    "/export",
+                    "/html",
+                    "/deployment",
                     {
-                        text: "Basics",
+                        text: "Scripting",
                         children: [
                             "/getting-started/typescript-essentials",
                             "/getting-started/for-unity-developers",
-                        ]
-                    },
-                    {
-                        text: "Creating your Project",
-                        children: [
-                            "/project-structure",
-                            "/everywhere-actions",
-                            "/export",
-                            "/html",
-                            "/deployment",
+                            "/scripting",
+                            "/component-compiler",
                         ]
                     },
                     {
                         text: "Advanced",
                         children: [
-                            "/scripting",
-                            "/component-compiler",
                             "/networking",
                             "/xr",
                         ]
