@@ -3,25 +3,30 @@ title: Needle Engine for Blender
 editLink: false
 ---
 
-# Needle Engine Exporter for Blender — *Pre Alpha*
+# Needle Engine Exporter for Blender - Alpha Version
 
-Thanks for participating in our pre-alpha tester phase. Please read the following docs carefully.   
+Thanks for participating in our alpha phase. Please read the following docs for an overview over available features.
+
+[[toc]]
 
 ## Preface
 
-The current state of the exporter for Blender is early which means many features you may know from Needle Engine Exporter for Unity are not yet implemented. Your feedback is invaluable when it comes to deciding which of those features should be prioritizes. If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-support/discussions)! If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-support/issues). Thank you!
+The current state of the exporter for Blender is early which means many features you may know from Needle Engine Exporter for Unity are not yet implemented. **Your feedback is invaluable** when it comes to deciding which of those features should be prioritizes. If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-support/discussions)! If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-support/issues). Thank you!
 
-> **Note**: At this early stage we support windows only. Versions for OSX and Linux will follow later
+Note: At this early stage versions for OSX and Linux might not fully work yet. If you come across bugs or issues please report them to us.
 
 ## Download and Installation 💿
 
-1) [Download the latest version](https://engine.needle.tools/downloads/blender) of Needle Engine Exporter for Blender
-2) Install the addon (see the [Blender documentation](https://docs.blender.org/manual/en/latest/editors/preferences/addons.html#installing-add-ons))
-3) Make sure you have [Node.js 16 or newer and npm](http://localhost:8080/docs/getting-started.html#prerequisites) installed
+### Step 1 • **Make sure node.js and Blender 3.3, 3.4 or 3.5 are installed**
 
-The recommended Blender version is 3.3.1
+### Step 2 • Download and Install our Addon for Blender
+<br/> 
+<needle-button href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
+
+The Blender addon is downloaded as a zip file. In Blender go to _File / Settings / Add-ons_ and click the `Install` button. Then select the downloaded zip to install it.
 
 ## Getting Started 🚩
+
 
 First create or open a new blend file that you want to be exported to the web.   
 Open the Properties window open the scene category. Select a `Project Path` in the Needle Engine panel. Then click `Generate Project`. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.

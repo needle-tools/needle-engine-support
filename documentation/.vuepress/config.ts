@@ -147,6 +147,12 @@ export default defineUserConfig({
                         ]
                     },
                     {
+                        text: "Blender",
+                        children: [
+                            "/blender"
+                        ]
+                    },
+                    {
                         text: "Tutorials",
                         children: [
                             {
@@ -321,6 +327,15 @@ export default defineUserConfig({
                         "/reference/needle-config-json",
                         "/reference/needle-engine-attributes",
                         "/reference/typescript-decorators",
+                    ]
+                },
+                {
+                    text: "Blender",
+                    children: [
+                        {
+                            text: "Needle Engine for Blender",
+                            link: "/blender"
+                        }
                     ]
                 },
             ]
