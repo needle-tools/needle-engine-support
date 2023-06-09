@@ -13,19 +13,14 @@ Runtime code for Needle Engine is written in [TypeScript](https://typescriptlang
 
 Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
 
-If you want to code-along with the following examples without having to install anything you just click the following link to [spin-up a StackBlitz virtual environment](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
+If you want to code-along with the following examples without having to install anything you just click the following link:
+
+- [Create virtual workspace to code along](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
 
 ----
 
-Our JavaScript runtime API adopts a component model similar to the Unity Editor, and provides a lot of functionality that will feel familiar to Unity devs.  
-JavaScript components attached to [three.js objects](https://threejs.org/docs/#api/en/core/Object3D) have lifecycle methods, like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate``, that you can implement. You can also use [Coroutines](#coroutines).   
-
-- Learn more about [Needle Engine lifecycle methods](#lifecycle-methods)  
-- Learn more about the Unity lifecycle [here](https://docs.unity3d.com/Manual/ExecutionOrder.html)  
-- To get an in-depth overview of built-in components, you can inspect the folder ``Packages/Needle Engine Exporter/Core/Runtime/Components`` in the [Project Window](https://docs.unity3d.com/Manual/ProjectView.html).  
-
-Please note: **Needle Engine's Exporter does _NOT_ compile your existing C# code to Web Assembly**.   
-While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+Our web runtime engine adopts a component model similar to Unity and thus provides a lot of functionality that will feel familiar.
+Components attached to three's Object3D objects have lifecycle methods like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate`` that you can implement. You can also use [Coroutines](#coroutines).   
 
 ----
 
@@ -40,17 +35,17 @@ _An example of a Button Click Event that is working out-of-the-box in Needle Eng
 
 
 ## Creating a new component
-Scripts are written in [TypeScript](https://www.typescriptlang.org/docs/) (recommended) or JavaScript.   
+Scripts are written in TypeScript (recommended) or JavaScript.   
 There are two ways to add custom scripts to your project:
 
 - Simply add a file with an `.ts` or `.js` extension inside `src/scripts/` in your generated project directory, for example `src/scripts/MyFirstScript.ts`
 
 - Unity specific:   
-  Organize your code into NPM Definition Files. These help you to modularize and re-use code between projects and if you are familiar with web development they are in fact regular npm packages that are installed locally.  
+  Organize your code into NPM Definition Files (npm packages). These help you to modularize and re-use code between projects and if you are familiar with web development they are in fact regular npm packages that are installed locally.  
   In Unity you can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project-structure.md#npm-definition-files) for more information.  
 
 
-In both approaches, source directories are watched for changes and C# components are regenerated whenever a change is detected.   
+In both approaches, source directories are watched for changes and C# stub components or Blender panels are regenerated whenever a change is detected.   
 Changes to the source files also result in a hot reload of the running website – you don't have to wait for Unity to recompile the C# components. This makes iterating on code pretty much instant.  
 
 You can even have multiple component types inside one file (e.g. you can declare `export class MyComponent1` and `export class MyOtherComponent` in the same Typescript file).
@@ -86,9 +81,7 @@ Now inside Unity a new script called ``Rotate.cs`` will be automatically generat
 The cube is now rotating inside the browser.   
 Open the chrome developer console by `F12` to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
 
-Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned.  
-
-> **Note**: It is also possible to ignore, convert or add fields on export in Unity by extending our export process. This is currently undocumented and subject to change.
+Now add a new field ``public float speed = 5`` to your Unity component and save it. The Rotate component inspector now shows a ``speed`` field that you can edit. Save the scene (or click the ``Build`` button) and note that the javascript component now has the exported ``speed`` value assigned. 
 :::
 
 :::details Create component with a custom function
@@ -109,11 +102,15 @@ export class PrintNumberComponent extends Behaviour
 ```
 :::
 
+:::details Version Control & Unity
+While generated C# components use the type name to produce stable GUIDs, we recommend checking in generated components in version control as a good practice. 
+::: 
+
 
 ## Component architecture
 Components are added to three.js `Object3Ds`. This is similar to how Components in Unity are added to `GameObjects`. Therefore when we want to access a three.js Object3D, we can access it as ``this.gameObject`` which returns the `Object3D` that the component is attached to.  
 
-***Note**: Setting ``visible`` to false on a Object3D will act like ``SetActive(false)`` in Unity - meaning it will also disable all the current components on this object and its children. Update events for inactive components are not being called until ``visible`` is set to true again.*
+***Note**: Setting ``visible`` to false on a Object3D will act like ``SetActive(false)`` in Unity - meaning it will also disable all the current components on this object and its children. Update events for inactive components are not being called until ``visible`` is set to true again.* If you want to hide an object without affecting components you can just disable the Needle Engine `Renderer` component.
 
 ### Lifecycle methods
 
@@ -329,19 +326,15 @@ function loadingFinished() { console.log("FINISHED!") }
 </script>
 ```  
 
-You can also subscribe to the globale `ContextRegistry` to receive a callback when a Needle Engine context has been created:
+You can also subscribe to the globale `NeedleEngine` to receive a callback when a Needle Engine context has been created:
 ```ts
-ContextRegistry.addContextCreatedCallback((args) => {
+NeedleEngine.addContextCreatedCallback((args) => {
   const context = args.context;
   const scene = context.scene;
   const myInstance = GameObject.getComponentInChildren(scene, YourComponentType);
 });
 ```
-
-
-
-### Version Control
-While generated C# components use the type name to produce stable GUIDs, we recommend checking in generated components in version control as a good practice.  
+ 
 
 ## Serialization / Components in glTF files :tags serialization
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
