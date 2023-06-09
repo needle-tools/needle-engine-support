@@ -227,6 +227,10 @@ export default defineUserConfig({
                         text: 'Other',
                         children: [
                             {
+                                text: 'Songs Of Cultures',
+                                link: 'https://app.songsofcultures.com',
+                            },
+                            {
                                 text: 'ZenRepublic Website',
                                 link: '/showcase-zenrepublic',
                             },
