@@ -192,6 +192,12 @@ To check the format of your drives, you can:
 2. Select "Components > Storage > Drives"
 3. There, you can see all drives and their formatting listed. Put your projects on a drive that is NTFS formatted.
 
+
+## I'm getting errors with "Unexpected token `@`. Expected identifier, string literal, numeric literal or ..."
+
+Needle Engine uses typescript decorators for serialization.   
+To fix this error make sure to enable `experimentalDecorators` in your tsconfig.json 
+
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
 
