@@ -171,10 +171,16 @@ It's worth noting that the overlay element [will be always displayed fullscreen 
 
 ## Image Tracking
 
-WebXR doesn't yet support Image Tracking, it's still in a "draft" phase: [Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)  
+WebXR ImageTracking is still in "draft" phase: [Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)   
+But you can still use WebXR ImageTracking with Needle Engine today:
+
+- Enable `WebXR Incubations` in chrome
+- Add the `WebXRImageTracking` component
+
+You can find additional documentation in the [Everywhere Actions](everywhere-actions.md#image-tracking) section
 
 Without that spec, one can still request camera image access and run custom algorithms to determine device pose.  
-While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
+Libraries to add image tracking:  
    - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
      - [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
