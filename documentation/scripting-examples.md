@@ -20,16 +20,21 @@ Find a [working example in our samples](https://engine.needle.tools/samples/?ope
 @[code](@code/component-scene.ts)
 
 ## Receive Clicks on Objects
-
-::: tip
-Make sure you have an ObjectRaycaster component in your parent hierarchy (or on the object that should receive clicks)
-:::
+Add this script to any object in your scene that you want to be clickable. Make sure to also have an `ObjectRaycaster` component in the parent hierarchy of that object.  
 
 <stackblitz file="@code/component-click.ts">
 test
 </stackblitz> 
 
 @[code](@code/component-click.ts)
+
+
+## Networking Clicks on Objects
+
+Add this script to any object in your scene that you want to be clickable. Make sure to also have an `ObjectRaycaster` component in the parent hierarchy of that object.   
+The component will send the received click to all connected clients and will raise an event that you can then react to in your app. If you are using Unity or Blender you can simply assign functions to call to the `onClick` event to e.g. play an animation or hide objects.
+
+@[code](@code/component-click-networking.ts)
 
 ### Play Animation on click
 @[code](@code/component-animation-onclick.ts)
@@ -96,3 +101,14 @@ You can find a live [example to download in our samples](https://engine.needle.t
 ## Switching src attribute
 
 See [live example](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html) on StackBlitz
+
+
+## Adding new postprocessing effects
+
+Make sure to install [`npm i postprocessing`](https://github.com/pmndrs/postprocessing) in your web project. Then you can add new effects by deriving from `PostProcessingEffect`.  
+
+To use the effect add it to the same object as your `Volume` component.
+
+Here is an example that wraps the [Outline postprocessing effect](https://pmndrs.github.io/postprocessing/public/demo/#outline). You can expose variables and settings as usual as any effect is also just a component in your three.js scene.
+
+@[code](@code/custom-post-effect.ts) 
