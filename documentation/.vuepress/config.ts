@@ -132,6 +132,7 @@ export default defineUserConfig({
                             "/getting-started/for-unity-developers",
                             "/scripting",
                             "/component-compiler",
+                            "/scripting-examples",
                         ]
                     },
                     {
@@ -307,6 +308,7 @@ export default defineUserConfig({
                         "/getting-started/for-unity-developers",
                         "/scripting",
                         "/component-compiler",
+                        "/scripting-examples",
                     ]
                 },
                 {
@@ -321,7 +323,6 @@ export default defineUserConfig({
                     children: [
                         "/features-overview",
                         "/technical-overview",
-                        "/scripting-examples",
                         "/component-reference",
                         "/reference/needle-config-json",
                         "/reference/needle-engine-attributes",
