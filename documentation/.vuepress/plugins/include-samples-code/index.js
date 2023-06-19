@@ -203,6 +203,9 @@ const injectCodeSamples = async (md, options) => {
 
                 args[0] = before + insert + after;
             }
+            else {
+                console.log(">>> SAMPLE CODE NOT FOUND", id, parsedCode)
+            }
         }
         const result = originalRender.apply(md, args);
         return result;
