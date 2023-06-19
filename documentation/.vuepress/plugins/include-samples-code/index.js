@@ -20,6 +20,7 @@ Example:
 
 */
 
+// TODO: trigger a rebuild of this when code is pushed to the sample repository, see https://www.amaysim.technology/blog/using-github-actions-to-trigger-actions-across-repos
 
 const samplesRepositoryBranch = "docs/code-marker";
 
@@ -122,25 +123,35 @@ function getGithubUrl(branchName, filepath, line) {
 function parseCode(branchName, codeFiles, samples) {
     const startRegex = new RegExp(/(?<spaces>\s*)\/\/\s*\[START\s+(?<id>.+)\]/);
     const endRegex = new RegExp(/\s*\/\/\s*\[END\s+(?<id>.+)\]/);
+    let totalCount = 0;
+    /**
+     * @type {Record<string, {startIndex:number, key:string, indentationToRemove:number}>}
+     */
+    const stack = {};
     for (const file of codeFiles) {
         const code = file.content;
         const lines = code.split("\n");
-        let startIndex = -1;
-        let key = "";
-        let indentationToRemove = 0;
         for (let i = 0; i < lines.length; i++) {
             const line = lines[i];
             // https://regex101.com/r/TtTqcl/1
             const startMatch = startRegex.exec(line);
             if (startMatch) {
-                startIndex = i + 1;
-                key = startMatch.groups.id;
-                indentationToRemove = startMatch.groups.spaces.length;
+                const startIndex = i + 1;
+                const key = startMatch.groups.id.trim();
+                const indentationToRemove = startMatch.groups.spaces.length;
+                stack[key] = { startIndex, key, indentationToRemove };
                 console.log("<<< FOUND SAMPLE MARKER \"" + key + "\"", "in", file.path);
                 continue;
             }
             const endMatch = endRegex.exec(line);
             if (endMatch) {
+                const entry = stack[endMatch.groups.id.trim()];
+                if (!entry) {
+                    continue;
+                }
+                const startIndex = entry.startIndex;
+                const key = entry.key;
+                const indentationToRemove = entry.indentationToRemove;
                 if (startIndex >= 0 && startIndex < i) {
                     const relevantLines = lines.slice(startIndex, i);
                     for (let j = relevantLines.length - 1; j >= 0; j--) {
@@ -159,11 +170,12 @@ function parseCode(branchName, codeFiles, samples) {
                         samples.set(key, []);
                     }
                     samples.get(key).push(sample);
+                    totalCount++;
                 }
-                startIndex = -1;
             }
         }
     }
+    console.log("Found", samples.size, "code sample keys. Total samples:", totalCount);
 }
 
 
@@ -175,7 +187,7 @@ function parseCode(branchName, codeFiles, samples) {
 const injectCodeSamples = async (md, options) => {
     console.log("~~~ BEGIN INJECT CODE SAMPLES");
 
-    const sampleMarkerRegex = /\<\!--\s*SAMPLE_CODE\s+(?<id>.+)\s*--\>/g;
+    const sampleMarkerRegex = /\<\!--\s*SAMPLE\s+(?<id>.+)\s*--\>/g;
 
     const originalRender = md.render;
     md.render = async (...args) => {
@@ -195,7 +207,7 @@ const injectCodeSamples = async (md, options) => {
                     const samples = parsedCode.get(id);
                     for (const sample of samples) {
 
-                        let codeSample = "```ts\n";
+                        let codeSample = "\n```ts\n";
                         codeSample += sample.code;
                         codeSample += "\n```";
                         insert += codeSample;
@@ -207,11 +219,9 @@ const injectCodeSamples = async (md, options) => {
                     }
 
                     code = before + insert + after;
-                    // offset the index by the amount we inserted
-                    sampleMarkerRegex.lastIndex += insert.length;
                 }
                 else {
-                    console.log("??? SAMPLE CODE NOT FOUND", id)
+                    console.log("??? SAMPLE CODE NOT FOUND:\"" + id + "\"")
                 }
             }
         }
