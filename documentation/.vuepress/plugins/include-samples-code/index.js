@@ -1,6 +1,8 @@
 
 import fetch from 'node-fetch';
 
+// https://v2.vuepress.vuejs.org/reference/plugin-api.html#development-hooks
+
 
 /*
 
@@ -48,11 +50,11 @@ const samplesRepositoryBranch = "docs/code-marker";
  * @returns {import("vuepress").Plugin}
  */
 export const includeSampleCode = (args, ctx) => {
-
-    getCode();
-
     return {
         name: 'include-samples-code',
+        extendsMarkdownOptions: (_config) => {
+            return getCode();
+        },
         extendsMarkdown: (md) => {
             md.use(injectCodeSamples)
         },
@@ -175,7 +177,7 @@ const injectCodeSamples = async (md, options) => {
     const sampleMarkerRegex = new RegExp(/\<\!--\s*\[SAMPLE_CODE\s+(?<id>.+)\].*--\>/, "g");
 
     const originalRender = md.render;
-    md.render = (...args) => {
+    md.render = async (...args) => {
         const code = args[0];
         const match = sampleMarkerRegex.exec(code);
         if (match && parsedCode) {
