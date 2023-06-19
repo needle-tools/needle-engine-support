@@ -175,41 +175,47 @@ function parseCode(branchName, codeFiles, samples) {
 const injectCodeSamples = async (md, options) => {
     console.log("BEGIN INJECT CODE SAMPLES");
 
-    const sampleMarkerRegex = new RegExp(/\<\!--\s*\[SAMPLE_CODE\s+(?<id>.+)\].*--\>/, "g");
+    const sampleMarkerRegex = /\<\!--\s*SAMPLE_CODE\s+(?<id>.+)\s*--\>/g;
 
     const originalRender = md.render;
     md.render = async (...args) => {
-        const code = args[0];
-        const match = sampleMarkerRegex.exec(code);
-        if (match && parsedCode) {
-            const id = match.groups.id;
-            if (parsedCode.has(id)) {
-                console.log("FOUND SAMPLE CODE", id)
-                const startIndex = match.index;
-                const endIndex = match.index + match[0].length;
-                const before = code.substring(0, startIndex);
-                const after = code.substring(endIndex);
-                let insert = "";
-                const samples = parsedCode.get(id);
-                for (const sample of samples) {
-                    insert += `<div>`;
-                    insert += `<a href="${sample.githubUrl}" target="_blank">`;
-                    insert += `<img src="https://img.shields.io/badge/View%20on-GitHub-blue?style=flat-square" alt="View on GitHub" />`;
-                    insert += `</a>`;
-                    insert += "</div>\n\n";
+        let code = args[0];
+        sampleMarkerRegex.lastIndex = 0;
+        let match;
+        while (match = sampleMarkerRegex.exec(code)) {
+            if (match && parsedCode) {
+                const id = match.groups.id?.trim();
+                if (parsedCode.has(id)) {
+                    console.log("FOUND SAMPLE CODE", id)
+                    const startIndex = match.index;
+                    const endIndex = match.index + match[0].length;
+                    const before = code.substring(0, startIndex);
+                    const after = code.substring(endIndex);
+                    let insert = "";
+                    const samples = parsedCode.get(id);
+                    for (const sample of samples) {
 
-                    let codeSample = "```ts\n";
-                    codeSample += sample.code;
-                    codeSample += "\n```";
-                    insert += codeSample;
+                        let codeSample = "```ts\n";
+                        codeSample += sample.code;
+                        codeSample += "\n```";
+                        insert += codeSample;
+                        insert += `\n<div>`;
+                        insert += `<a href="${sample.githubUrl}" target="_blank">`;
+                        insert += `<img src="https://img.shields.io/badge/View%20on-GitHub-green?style=flat-square" alt="View on GitHub" />`;
+                        insert += `</a>`;
+                        insert += "</div>\n\n";
+                    }
+
+                    code = before + insert + after;
+                    // offset the index by the amount we inserted
+                    sampleMarkerRegex.lastIndex += insert.length;
                 }
-
-                args[0] = before + insert + after;
-            }
-            else {
-                console.log(">>> SAMPLE CODE NOT FOUND", id, parsedCode)
+                else {
+                    console.log("??? SAMPLE CODE NOT FOUND", id)
+                }
             }
         }
+        args[0] = code;
         const result = originalRender.apply(md, args);
         return result;
     };
