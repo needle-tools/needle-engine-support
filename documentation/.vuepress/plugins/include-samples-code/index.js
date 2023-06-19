@@ -173,6 +173,7 @@ function parseCode(branchName, codeFiles, samples) {
 
 // https://github.com/markdown-it/markdown-it/issues/337
 const injectCodeSamples = async (md, options) => {
+    console.log("BEGIN INJECT CODE SAMPLES");
 
     const sampleMarkerRegex = new RegExp(/\<\!--\s*\[SAMPLE_CODE\s+(?<id>.+)\].*--\>/, "g");
 
