@@ -7,11 +7,13 @@
     "start" : "npm run docs:dev",
     "docs:dev": "vuepress dev documentation",
     "docs:build": "vuepress build documentation",
-    "docs:build-api": "node tools/build_api_docs.mjs"
+    "docs:build-api": "node tools/build_api_docs.mjs",
+    "docs:build-examples" : "node tools/build_examples.mjs"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "dotenv": "^16.0.3",
     "vue-github-button": "^3.1.0",
     "vuepress": "2.0.0-beta.60"
   },
