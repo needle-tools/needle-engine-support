@@ -16,10 +16,10 @@ let tagsJson = {};
 let tagsPath = "";
 
 export const generateMetaPlugin = (args, ctx) => {
-
     const options = args.options;
     // console.log(options.plugins);
     const outputDirectory = options.source + '/.vuepress/public/meta';
+    console.log("OUTPUT DIRECTORY", outputDirectory)
     if (!fs.existsSync(outputDirectory))
         fs.mkdirSync(outputDirectory);
     samplesJsonPath = outputDirectory + '/samples.json';
@@ -90,7 +90,7 @@ const sampleMetaParser = (md, options) => {
                         "name": sampleName,
                         "page": page,
                         "anchor": anchor,
-                        "absolute-url": baseUrl + "/" + page + anchor,
+                        "absolute-url": baseUrl + "/" + page + "#" + anchor,
                         "description": sample.description,
                         tags: metaInfo.tags
                     });
@@ -105,7 +105,7 @@ const sampleMetaParser = (md, options) => {
                     arr.push({
                         "page": page,
                         "anchor": anchor,
-                        "absolute-url": baseUrl + "/" + page + anchor,
+                        "absolute-url": baseUrl + "/" + page + "#" + anchor,
                     });
                 }
                 write(tagsPath, tagsJson);
