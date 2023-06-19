@@ -11,7 +11,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
 import { generateMetaPlugin, cleanLink, cleanHeader } from "./plugins/generate-samples-meta/index"
-import { includeSampleCode } from './plugins/include-samples.json'
+import { includeSampleCode } from './plugins/include-samples-code/index'
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
@@ -73,7 +73,7 @@ export default defineUserConfig({
         headers: {
             // https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers
             format: (link) => cleanHeader(link),
-        }
+        },
     },
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link

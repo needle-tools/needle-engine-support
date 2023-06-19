@@ -2,6 +2,26 @@
 import fetch from 'node-fetch';
 
 
+/*
+
+Insert comments into your ts sample code to mark the start and end of a code sample.
+Example:
+    // [START subscribe_to_events]
+        <code here>
+    // [END subscribe_to_events]
+
+
+Insert a html comment in your markdown to replace it with a code sample from the needle-engine-samples repository.
+Example:
+    <!-- [SAMPLE_CODE subscribe_to_events] --> 
+
+
+*/
+
+
+const samplesRepositoryBranch = "docs/code-marker";
+
+
 /** 
  * @typedef GithubFileInfoResponse
  * @property {string} path
@@ -24,15 +44,17 @@ import fetch from 'node-fetch';
  * @property {string} url
  */
 
-export const includeSampleCode = async (args, ctx) => {
+/** 
+ * @returns {import("vuepress").Plugin}
+ */
+export const includeSampleCode = (args, ctx) => {
 
-    const code = await getCode();
-    console.log(code);
+    getCode();
 
     return {
         name: 'include-samples-code',
         extendsMarkdown: (md) => {
-            md.use(sampleMetaParser)
+            md.use(injectCodeSamples)
         },
     }
 };
@@ -50,7 +72,7 @@ let __didGetCode = false;
 async function getCode() {
     if (__didGetCode) return parsedCode;
     __didGetCode = true;
-    const branchName = "docs/code-marker";
+    const branchName = samplesRepositoryBranch;
     const filesUrl = `https://api.github.com/repos/needle-tools/needle-engine-samples/git/trees/${branchName}?recursive=1`
     console.log("Load code files from branch", branchName, "...", filesUrl);
     const files = await fetch(filesUrl).then(r => r.json());
@@ -101,7 +123,6 @@ function parseCode(branchName, codeFiles, samples) {
     for (const file of codeFiles) {
         const code = file.content;
         const lines = code.split("\n");
-        if (file.path.includes("HTMLButtonEvent")) console.log(code);
         let startIndex = -1;
         let key = "";
         let indentationToRemove = 0;
@@ -110,7 +131,7 @@ function parseCode(branchName, codeFiles, samples) {
             // https://regex101.com/r/TtTqcl/1
             const startMatch = startRegex.exec(line);
             if (startMatch) {
-                startIndex = i;
+                startIndex = i + 1;
                 key = startMatch.groups.id;
                 indentationToRemove = startMatch.groups.spaces.length;
                 console.log("FOUND START", key, "in", file.path);
@@ -118,13 +139,12 @@ function parseCode(branchName, codeFiles, samples) {
             }
             const endMatch = endRegex.exec(line);
             if (endMatch) {
-                if (startIndex >= 0) {
+                if (startIndex >= 0 && startIndex < i) {
                     const relevantLines = lines.slice(startIndex, i);
-                    if (indentationToRemove > 0) {
-                        for (let j = 0; j < relevantLines.length; j++) {
-                            const line = relevantLines[j];
-                            relevantLines[j] = line.substring(indentationToRemove);
-                        }
+                    for (let j = relevantLines.length - 1; j >= 0; j--) {
+                        let line = relevantLines[j];
+                        line = line.substring(indentationToRemove);
+                        relevantLines[j] = line;
                     }
                     const sampleCode = relevantLines.join("\n");
                     const githubUrl = getGithubUrl(branchName, file.path, startIndex + 1);
@@ -149,5 +169,72 @@ function parseCode(branchName, codeFiles, samples) {
 
 
 
-const sampleMetaParser = (md, options) => {
+// https://github.com/markdown-it/markdown-it/issues/337
+const injectCodeSamples = async (md, options) => {
+
+    const sampleMarkerRegex = new RegExp(/\<\!--\s*\[SAMPLE_CODE\s+(?<id>.+)\].*--\>/, "g");
+
+    const originalRender = md.render;
+    md.render = (...args) => {
+        const code = args[0];
+        const match = sampleMarkerRegex.exec(code);
+        if (match && parsedCode) {
+            const id = match.groups.id;
+            if (parsedCode.has(id)) {
+                console.log("FOUND SAMPLE CODE", id)
+                const startIndex = match.index;
+                const endIndex = match.index + match[0].length;
+                const before = code.substring(0, startIndex);
+                const after = code.substring(endIndex);
+                let insert = "";
+                const samples = parsedCode.get(id);
+                for (const sample of samples) {
+                    insert += `<div>`;
+                    insert += `<a href="${sample.githubUrl}" target="_blank">`;
+                    insert += `<img src="https://img.shields.io/badge/View%20on-GitHub-blue?style=flat-square" alt="View on GitHub" />`;
+                    insert += `</a>`;
+                    insert += "</div>\n\n";
+
+                    let codeSample = "```ts\n";
+                    codeSample += sample.code;
+                    codeSample += "\n```";
+                    insert += codeSample;
+                }
+
+                args[0] = before + insert + after;
+            }
+        }
+        const result = originalRender.apply(md, args);
+        return result;
+    };
+
+    // getCode();
+
+    // const inject = (file) => {
+    //     const tokens = file.tokens;
+    //     for (const token of tokens) {
+    //         if (token.type == "html_block") {
+    //             const content = token.content;
+    //             const match = sampleMarkerRegex.exec(content);
+    //             if (match) {
+    //                 const id = match.groups.id;
+    //                 token.content = `
+    //                 <div class="language-typescript line-numbers-mode" data-ext="ts">
+    //                 <pre class="language-typescript">
+    //                     <code>
+    //                     test
+    //                     </code>
+    //                 </pre>
+    //                 </div>`;
+    //             }
+    //         }
+    //     }
+    // }
+
+
+    // md.core.ruler.push('inject-code-samples', inject);
+    // md.renderer.rules['inject-code-samples'] = (tokens, idx) => {
+    //     var token = tokens[idx];
+    //     return '<span' + self.renderAttrs(token) + '>' + this.escapeHtml(tokens[idx].content) + '</span>';
+    // };
 };
