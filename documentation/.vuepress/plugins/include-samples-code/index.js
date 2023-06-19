@@ -136,7 +136,7 @@ function parseCode(branchName, codeFiles, samples) {
                 startIndex = i + 1;
                 key = startMatch.groups.id;
                 indentationToRemove = startMatch.groups.spaces.length;
-                console.log("FOUND START", key, "in", file.path);
+                console.log("<<< FOUND SAMPLE MARKER \"" + key + "\"", "in", file.path);
                 continue;
             }
             const endMatch = endRegex.exec(line);
@@ -173,7 +173,7 @@ function parseCode(branchName, codeFiles, samples) {
 
 // https://github.com/markdown-it/markdown-it/issues/337
 const injectCodeSamples = async (md, options) => {
-    console.log("BEGIN INJECT CODE SAMPLES");
+    console.log("~~~ BEGIN INJECT CODE SAMPLES");
 
     const sampleMarkerRegex = /\<\!--\s*SAMPLE_CODE\s+(?<id>.+)\s*--\>/g;
 
@@ -186,7 +186,7 @@ const injectCodeSamples = async (md, options) => {
             if (match && parsedCode) {
                 const id = match.groups.id?.trim();
                 if (parsedCode.has(id)) {
-                    console.log("FOUND SAMPLE CODE", id)
+                    console.log(">>> INJECT SAMPLE CODE: \"" + id + "\"")
                     const startIndex = match.index;
                     const endIndex = match.index + match[0].length;
                     const before = code.substring(0, startIndex);
