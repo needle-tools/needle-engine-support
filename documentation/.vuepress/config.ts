@@ -11,6 +11,7 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
 import { generateMetaPlugin, cleanLink, cleanHeader } from "./plugins/generate-samples-meta/index"
+import { includeSampleCode } from './plugins/include-samples.json'
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
@@ -44,7 +45,8 @@ export default defineUserConfig({
             componentsDir: path.resolve(__dirname, './components'),
         }),
         // videoplayer
-        generateMetaPlugin
+        generateMetaPlugin,
+        includeSampleCode,
     ],
     head: [
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],

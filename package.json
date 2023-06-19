@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start" : "npm run docs:dev",
+    "start": "npm run docs:dev",
     "docs:dev": "vuepress dev documentation",
     "docs:build": "vuepress build documentation",
     "docs:build-api": "node tools/build_api_docs.mjs",
-    "docs:build-examples" : "node tools/build_examples.mjs"
+    "docs:build-examples": "node tools/build_examples.mjs"
   },
   "author": "",
   "license": "ISC",
@@ -23,6 +23,7 @@
     "@vuepress/plugin-pwa": "2.0.0-beta.60",
     "@vuepress/plugin-register-components": "2.0.0-beta.60",
     "@vuepress/plugin-search": "2.0.0-beta.60",
+    "node-fetch": "^3.3.1",
     "typedoc": "^0.24.0",
     "typedoc-plugin-markdown": "^3.13.6"
   }
