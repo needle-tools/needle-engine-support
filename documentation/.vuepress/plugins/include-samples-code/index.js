@@ -8,14 +8,14 @@ import fetch from 'node-fetch';
 
 Insert comments into your ts sample code to mark the start and end of a code sample.
 Example:
-    // [START subscribe_to_events]
+    // START MARKER subscribe_to_events
         <code here>
-    // [END subscribe_to_events]
+    // END MARKER subscribe_to_events
 
 
 Insert a html comment in your markdown to replace it with a code sample from the needle-engine-samples repository.
 Example:
-    <!-- [SAMPLE_CODE subscribe_to_events] --> 
+    <!-- SAMPLE subscribe_to_events --> 
 
 
 */
@@ -121,8 +121,8 @@ function getGithubUrl(branchName, filepath, line) {
  * @param {Map<string,CodeSampleInfo[]>} samples
  */
 function parseCode(branchName, codeFiles, samples) {
-    const startRegex = new RegExp(/(?<spaces>\s*)\/\/\s*\[START\s+(?<id>.+)\]/);
-    const endRegex = new RegExp(/\s*\/\/\s*\[END\s+(?<id>.+)\]/);
+    const startRegex = new RegExp(/(?<spaces>\s*)\/\/\s*START MARKER\s+(?<id>.+)/);
+    const endRegex = new RegExp(/\s*\/\/\s*END MARKER\s+(?<id>.+)/);
     let totalCount = 0;
     /**
      * @type {Record<string, {startIndex:number, key:string, indentationToRemove:number}>}

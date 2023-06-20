@@ -22,4 +22,6 @@ Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem
 
 <!-- SAMPLE physics_triggers -->
 
+<!-- SAMPLE play_animation_on_trigger -->
+
 End of page
