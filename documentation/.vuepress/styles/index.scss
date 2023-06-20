@@ -207,3 +207,17 @@ tr:last-child {
 td {
   vertical-align: top;
 }
+
+
+
+
+.sample-code-links {
+  display: flex;
+  margin-top: -15px;
+  top: 0px;
+  // background: rgba(0,0,0,.2);
+  padding: .4em .1em .15em .5em;
+  border-radius: 0 0 10px 10px;
+  width: calc(100% - .6em);
+  padding-left: .6em;
+}

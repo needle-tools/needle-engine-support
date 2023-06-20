@@ -211,7 +211,7 @@ const injectCodeSamples = async (md, options) => {
                         codeSample += sample.code;
                         codeSample += "\n```";
                         insert += codeSample;
-                        insert += `\n<div>`;
+                        insert += `\n<div class="sample-code-links">`;
                         insert += `<a href="${sample.githubUrl}" target="_blank">`;
                         insert += `<img src="https://img.shields.io/badge/View%20on-GitHub-green?style=flat-square" alt="View on GitHub" />`;
                         insert += `</a>`;
