@@ -4,8 +4,9 @@ on:
   # trigger deployment on every push to main branch
   push:
     branches: [main]
-  # trigger deployment manually
-  workflow_dispatch:
+  repository_dispatch:
+    types: [updated_docs]
+
 jobs: 
   docs:
     runs-on: ubuntu-latest
