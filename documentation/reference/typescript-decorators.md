@@ -13,7 +13,7 @@ You can think of them as Attributes on steroids (if you are familiar with C#) - 
 | `@syncField()` | Add to a field to network the value when it changes. You can pass in a method to be called when the field changes |
 | `@validate()` | Add to receive callbacks in the component event method `onValidate` whenever the value changes. This behaves similar to Unity's onValidate. |
 | **Method Decorators** | |
-| `@prefix(<type>)` (experimental) | Can be used to easily inject custom code into other components. See the [example below](#prefix) |
+| `@prefix(<type>)` (experimental) | Can be used to easily inject custom code into other components. Optionally return `false` to prevent the original method from being executed. See the [example below](#prefix) |
 | **Class Decorators** | |
 | `@registerType` | No argument. Can be added to a custom component class to be registered to the Needle Engine types and to enable hot reloading support. |
 
@@ -77,13 +77,17 @@ export class MyScript extends Behaviour {
 
 
 ### Prefix
+[Live example](https://stackblitz.com/edit/needle-engine-prefix-example?file=src%2Fmain.ts)
 ```ts
 import { Camera } from "@needle-tools/engine";
 class YourClass {
-    @prefix(Camera)
-    awake() {
+    @prefix(Camera) // < this is type that has the method you want to change
+    awake() { // < this is the method name you want to change
+
         // this is now called before the Camera.awake method runs
+        // NOTE: `this` does now refer to the Camera instance and NOT `YourClass` anymore. This allows you to access internal state of the component as well
         console.log("Hello camera:", this)
+        // optionally return false if you want to prevent the default behaviour
     }
 }
 ```
