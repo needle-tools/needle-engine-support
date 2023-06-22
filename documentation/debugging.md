@@ -2,7 +2,7 @@
 title: How To Debug
 ---
 
-## 🔍 Useful resources for working with glTF
+## Useful resources for working with glTF
 
 To inspect glTF or glb files online:
 - [gltf.report](https://gltf.report/) - three.js based
@@ -16,7 +16,7 @@ To inspect them locally:
 - use the [glTF Tools VS Code Extension](https://marketplace.visualstudio.com/items?itemName=cesium.gltf-vscode) to see validation errors and in-engine previews locally
 
 
-## 🔖 Built-in URL parameters
+## Built-in URL parameters
 
 Debug Flags can be appended as URL query parameters.  
 Use ``?help`` to get a list of ALL parameters available.  
@@ -26,20 +26,46 @@ Here are some of the most commonly used:
 - ``help`` print all available url parameter in the console
 - ``console`` opens an on-screen dev console, useful for mobile debugging
 - ``printGltf`` logs loaded gltf files to the console
-- ``debug`` shows transform gizmos (if any)
 - ``debugavatar=<avatarid>`` instantiates one debug avatar in center of world
-- ``debugphysics`` shows physics colliders
+- ``showcolliders`` shows physics colliders
 - ``gizmos`` enables gizmo rendering (e.g. when using BoxCollider or AxesHelper components)
 - and a lot more: please use ``help`` to see them all
 
-## 🍃 Local Testing of release builds
+## Local Testing of release builds
 - First, install http-server: `npm install -g http-server`
 - make a build (development or production)
 - open the *dist* directory with a commandline tool
 - run `http-server -g` | *`-g` enables gzip support*  
 - optional: if you want to test WebXR, generate a [self-signed SSL certificate](https://stackoverflow.com/a/35231213), then run `http-server -g -S` to enable https (required for WebXR).
 
-## 📱 Mobile 
+
+
+## VSCode
+
+You can attach VSCode to the running local server to set breakpoint and debug your code.    
+
+Create a launch.json file at `.vscode/launch.json` in your web project with the following content:  
+```json
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "name": "Attach Chrome",
+            "url": "https://localhost:3000",
+            "webRoot": "${workspaceFolder}"
+        }
+    ]
+}
+```
+
+If you have changed the port on which your server starts make sure to update the `url` field accordingly.  
+You can then start your local server from within VSCode:  
+  
+![](/debugging/vscode-start-debugging.webp)
+
+## Mobile 
 
 ### Android Debugging
 
