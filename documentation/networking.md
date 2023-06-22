@@ -60,13 +60,24 @@ Unsubscribe with ``stopListenBinary``
 
 To automatically network fields in a component you can just decorate a field with a ``@syncField()`` decorator (note: you need to have ``experimentalDecorators: true`` in your ``tsconfig.json`` file for it to work)
 
-Example:
+<!-- SAMPLE network color change syncField
+-->
+
+
+:::details Example Code
+
+<!-- SAMPLE network color change
+*Automatically network a color field. The following script also changes the color randomly on click*
+-->
+
+*Simple networking of a number*
 ```ts
-import { Behaviour } from "@needle-tools/engine"
-import { syncField } from "@needle-tools/engine/engine/engine_networking_auto";
+import { Behaviour, syncField } from "@needle-tools/engine"
 
 export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
 
+    // Use `@syncField` to automatically network a field. 
+    // You can optionally assign a method or method name to be called when the value changes
     @syncField("myValueChanged")
     mySyncedValue?: number = 1;
     
@@ -79,6 +90,7 @@ export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
     }
 }
 ```
+:::
 
 ## Flatbuffers for your own components
 

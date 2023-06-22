@@ -199,6 +199,15 @@ function parseCode(branchName, codeFiles, samples) {
 const injectCodeSamples = async (md, options) => {
     console.log("~~~ BEGIN INJECT CODE SAMPLES");
 
+    getCode().then(c => {
+        const keys = Array.from(c.keys());
+        console.log("\n\t>>> AVAILABLE SAMPLE MARKERS:");
+        for(const key of keys){ 
+            console.log("\t» \"" + key + "\"");
+        }
+        console.log("\n")
+    });
+
     const sampleMarkerRegex = /\<\!--\s*SAMPLE\s+(?<id>.+?)(\n(?<markdown>.+?))?\s*--\>/gms;
 
     const originalRender = md.render;
