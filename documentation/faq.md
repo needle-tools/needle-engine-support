@@ -13,7 +13,8 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 
 This is expected. We're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box, but that means some browsers complain that the SSL connection (between your local development server and the local website) can't be verified.   
 
-You can generate a local self-signed SSL certificate to fix this if you want.  
+You can generate a local self-signed SSL certificate to fix this if you want.   
+If you Vite you can use the [vite mkcert plugin](https://github.com/liuweiGL/vite-plugin-mkcert). Just follow the instructions in their readme.  
   
   
 ## My local website stays black
