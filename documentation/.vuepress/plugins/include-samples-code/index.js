@@ -163,7 +163,12 @@ function parseCode(branchName, codeFiles, samples) {
                     const relevantLines = lines.slice(startIndex, i);
                     for (let j = relevantLines.length - 1; j >= 0; j--) {
                         let line = relevantLines[j];
-                        line = line.substring(indentationToRemove);
+                        // Remove indentation based on the indendation of the start marker
+                        // But we only remove so much until we reach the first character because we don't want to cut off any code or word
+                        for (let k = 0; k < indentationToRemove; k++) {
+                            if (line[0] !== " ") break;
+                            line = line.substring(1);
+                        }
                         relevantLines[j] = line;
                     }
                     const sampleCode = relevantLines.join("\n");
@@ -214,7 +219,7 @@ const injectCodeSamples = async (md, options) => {
                     const samples = parsedCode.get(id);
                     for (const sample of samples) {
                         const markdown = match.groups.markdown;
-                        if(markdown) {
+                        if (markdown) {
                             insert += markdown;
                         }
                         let codeSample = "\n```ts\n";
