@@ -60,15 +60,13 @@ Unsubscribe with ``stopListenBinary``
 
 To automatically network fields in a component you can just decorate a field with a ``@syncField()`` decorator (note: you need to have ``experimentalDecorators: true`` in your ``tsconfig.json`` file for it to work)
 
-<!-- SAMPLE network color change syncField
--->
-
-
 :::details Example Code
+
 
 <!-- SAMPLE network color change
 *Automatically network a color field. The following script also changes the color randomly on click*
 -->
+
 
 *Simple networking of a number*
 ```ts
