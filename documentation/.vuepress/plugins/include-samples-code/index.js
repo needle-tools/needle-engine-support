@@ -17,10 +17,15 @@ Insert a html comment in your markdown to replace it with a code sample from the
 Example:
     <!-- SAMPLE subscribe_to_events --> 
 
-
+You can also insert additional markdown inside of the HTML comment. It will then only be rendered if the sample code can be found.
+For example:
+    <!-- SAMPLE disable environment light 
+    ## Disable environment light
+    -->
+This is looking for a sample marker with "disable environment light" and if it finds it, it will render the markdown in the subsequent rows and then the code
 */
 
-// TODO: trigger a rebuild of this when code is pushed to the sample repository, see https://www.amaysim.technology/blog/using-github-actions-to-trigger-actions-across-repos
+
 
 const samplesRepositoryBranch = "docs/code-marker";
 
@@ -87,7 +92,9 @@ async function getCode() {
     );
     console.log("Found", codefiles.length, "code files");
     const allCode = await loadCodeFiles(`https://raw.githubusercontent.com/needle-tools/needle-engine-samples/${branchName}/`, codefiles);
+    console.log("\n");
     parseCode(branchName, allCode, parsedCode);
+    console.log("\n");
     return parsedCode;
 }
 
@@ -187,7 +194,7 @@ function parseCode(branchName, codeFiles, samples) {
 const injectCodeSamples = async (md, options) => {
     console.log("~~~ BEGIN INJECT CODE SAMPLES");
 
-    const sampleMarkerRegex = /\<\!--\s*SAMPLE\s+(?<id>.+)\s*--\>/g;
+    const sampleMarkerRegex = /\<\!--\s*SAMPLE\s+(?<id>.+?)(\n(?<markdown>.+?))?\s*--\>/gms;
 
     const originalRender = md.render;
     md.render = async (...args) => {
@@ -206,7 +213,10 @@ const injectCodeSamples = async (md, options) => {
                     let insert = "";
                     const samples = parsedCode.get(id);
                     for (const sample of samples) {
-
+                        const markdown = match.groups.markdown;
+                        if(markdown) {
+                            insert += markdown;
+                        }
                         let codeSample = "\n```ts\n";
                         codeSample += sample.code;
                         codeSample += "\n```";

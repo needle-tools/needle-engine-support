@@ -112,3 +112,15 @@ To use the effect add it to the same object as your `Volume` component.
 Here is an example that wraps the [Outline postprocessing effect](https://pmndrs.github.io/postprocessing/public/demo/#outline). You can expose variables and settings as usual as any effect is also just a component in your three.js scene.
 
 @[code](@code/custom-post-effect.ts) 
+
+
+
+<!-- SAMPLE receive click from HTML button
+## Receiving html element click in component
+-->
+
+
+
+<!-- SAMPLE disable environment light 
+## Disable environment light
+-->
