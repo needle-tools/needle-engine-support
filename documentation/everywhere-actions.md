@@ -37,7 +37,7 @@ select it and then click `Add Component > Needle > Everywhere Actions > [Action]
 | Set Active on Click | Show or hide objects. |  |
 | Change Transform on Click | Move, rotate or scale an object. Allows for absolute or relative movement. | Characters, products, UI animation (use animation for more complex movements) |
 | Audio Source | Plays audio on start and keeps looping. Spatial or non-spatial | Background music, ambient sounds |
-| Image Tracking | Tracks an image target and shows or hides objects. | AR experiences, product presentations |
+| WebXR Image Tracking | Tracks an image target and shows or hides objects. | AR experiences, product presentations |
 
 ## Samples
 
