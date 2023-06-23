@@ -98,15 +98,7 @@ export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
 
 
 
-## Built-in Networking on Glitch
-
-When deploying your app to Glitch, we include a simple networking backend that is great for prototyping and small deployments (~15-20 people at the same time). You can later update to a bigger/better/stronger networking solution if required.  
-
-### Limitations
-
-- approx. 15-20 people maximum – afterwards the small default Glitch server instance becomes slow
-
-### How to upgrade to a stronger server
+## Networking Package
 
 Needle Engine currently uses its [own networking package](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) hosted on npm. By default if not configured differently using the `Networking` component Needle Engine will connect to a server running on Glitch.
 
@@ -115,13 +107,20 @@ It can be added to your own fastiy or express server running on any server for e
 import networking from "@needle-tools/needle-tiny-networking-ws";
 networking.startServerFastify(fastifyApp, { endpoint: "/socket" });
 ```
-See the [package's Readme](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) for more information.
+
+The following options are available:
+
+|  |  | 
+| -- | -- |
+| `endpoint` *string* | relative path to the websocket endpoint (e.g. `/socket`) |
+| `maxUsers` *number* | Amount of users allowed per room |
+| `defaultUserTimeout` *number* | Timeout length in seconds until a user is kicked from a room (if no ping is received). Defaults to 30 seconds |
 
 
-### How to use your own networking implementation
+## Networking on Glitch
 
-> 🏗️ Under construction.
+When deploying your app to Glitch, we include a simple networking backend that is great for prototyping and small deployments (~15-20 people at the same time). You can later update to a bigger/better/stronger networking solution if required.  
 
-### How to change from the default ICE/STUN servers used for VoIP
+### Limitations
 
-> 🏗️ Under construction.
+- approx. 15-20 people maximum – afterwards the small default Glitch server instance becomes slow
