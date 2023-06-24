@@ -37,11 +37,11 @@ footer: "Copyright © 2022 Needle Tools GmbH"
     <action href="getting-started">
     Get started ⭐
     </action>
-    <action href="https://engine.needle.tools/samples">
-    Samples 🎨
+    <action href="features-overview">
+    Features 🎨
     </action>
-    <action href="vision">
-    Our vision 🔮
+    <action href="https://engine.needle.tools/samples">
+    Samples 🎏
     </action>
     <action href="https://discord.needle.tools">
     Community 💬
