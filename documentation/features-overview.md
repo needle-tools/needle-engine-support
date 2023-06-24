@@ -69,14 +69,14 @@ Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to 
 
 - Read more about [Physics Components](./component-reference.md#physics)
 
-<sample src="https://engine.needle.tools/samples/physics-cannon/" />
+<sample src="https://engine.needle.tools/samples/physics-animation/" />
 
 ## UI
 Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons.  
- 
+
 See the [ui component reference](component-reference.html#ui) for supported component.
 
-<sample src="https://engine.needle.tools/samples/ui-button/" />
+<sample src="https://engine.needle.tools/samples/screenspace-ui" />
 
 ## Particles
 Export of Unity ParticleSystem (Shuriken) is in development. Features currently include world/local space simulation, box and sphere emitter shapes, emission over time as well as burst emission, velocity- and color over time, emission by velocity, texturesheet animation, basic trails.   
