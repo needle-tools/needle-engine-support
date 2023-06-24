@@ -63,9 +63,7 @@ Supported tracks include: AnimationTrack, AudioTrack, ActivationTrack, ControlTr
 - Read more about [Animation Components](./component-reference.md#animation)
 
 ## Physics
-Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to your world.
-
-> **Note**: MeshColliders are currently not supported  
+Use Rigidbodies, Mesh Colliders, Box Colliders and SphereColliders to add some juicy physics to your world.
 
 - Read more about [Physics Components](./component-reference.md#physics)
 
