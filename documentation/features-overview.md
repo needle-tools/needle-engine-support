@@ -72,7 +72,8 @@ Use Rigidbodies, Box Colliders and SphereColliders to add some juicy physics to 
 <sample src="https://engine.needle.tools/samples/physics-cannon/" />
 
 ## UI
-Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons (static layouts only right now)  
+Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons.  
+ 
 See the [ui component reference](component-reference.html#ui) for supported component.
 
 <sample src="https://engine.needle.tools/samples/ui-button/" />
