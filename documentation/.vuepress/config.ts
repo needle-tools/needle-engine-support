@@ -12,6 +12,10 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 //@ts-ignore
 import { generateMetaPlugin, cleanLink, cleanHeader } from "./plugins/generate-samples-meta/index"
 import { includeSampleCode } from './plugins/include-samples-code/index'
+import { generateSharedCode } from './plugins/generate-shared-code/index'
+import * as dotenv from 'dotenv'
+
+dotenv.config()
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
@@ -47,6 +51,7 @@ export default defineUserConfig({
         // videoplayer
         generateMetaPlugin,
         includeSampleCode,
+        generateSharedCode,
     ],
     head: [
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
