@@ -3,27 +3,30 @@
 
 
 <template>
-
     <div class="list">
         <slot></slot>
     </div>
-
 </template>
 
 
 <style>
-.list{
+.list {
     display: flex;
     flex-direction: column;
     justify-content: start;
 }
 
-.list > * {
+.list>* {
     width: 95%;
     margin-bottom: 20px;
-    padding: 1em;
-    border: 1px solid #ccc;
+    border: 1px solid rgba(100, 100, 200, .3);
     border-radius: .5em;
+    padding: .5em;
+    background: linear-gradient(180deg, rgba(100, 100, 200, .1) 0%, rgba(200, 200, 200, .2) 50%);
+    box-shadow: inset 0 0 100px rgba(0, 0, 100, .1);
 }
 
+html.dark .list>* {
+    background: linear-gradient(180deg, rgba(100, 100, 200, .1) 0%, rgba(100, 100, 100, .2) 50%);
+}
 </style>

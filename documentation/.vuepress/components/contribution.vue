@@ -1,4 +1,3 @@
-
 <script setup>
 
 // props
@@ -8,7 +7,7 @@ defineProps({
     page: String,
     author: String,
     profileImage: String,
-    contributions: Array,
+    githubUrl: String,
 })
 
 
@@ -23,6 +22,12 @@ defineProps({
                     <span>{{ author }}</span>
                 </a>
             </div>
+            <div class="links">
+                <a v-if="githubUrl" :href="githubUrl" target="_blank" rel="noopener noreferrer">View on Github</a>
+            </div>
+        </div>
+        <div v-if="title" class="title">
+            <h2>{{ title }}</h2>
         </div>
         <slot></slot>
     </div>
@@ -32,12 +37,22 @@ defineProps({
 .contribution {
     margin-bottom: 20px;
 }
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 .profile {
     display: flex;
     align-items: center;
     margin-top: .5em;
     margin-bottom: 1em;
+    margin-left: .9em;
+    margin-top: 1em;
 }
+
 .profile img {
     width: 50px;
     height: 50px;
@@ -47,10 +62,15 @@ defineProps({
     border: 2px solid #ccc;
     pointer-events: none;
 }
+
 .profile .authorname {
     font-size: 1.2rem;
     font-weight: 600;
     color: #000;
     text-decoration: none;
+}
+
+html.dark .authorname {
+    color: #fff;
 }
 </style>

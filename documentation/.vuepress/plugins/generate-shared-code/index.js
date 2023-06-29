@@ -1,5 +1,6 @@
 import fetch from "node-fetch";
 import { createPage } from "vuepress";
+import { cleanLink } from "../generate-samples-meta";
 
 const baseUrl = "/docs";
 
@@ -60,38 +61,46 @@ const generateContributionPages = async (app, config) => {
     indexContent += "<contributions-overview>\n"
 
     for (const [author, entry] of contributionsByAuthor) {
-        const contributionHeader = `<contribution
-            url="${entry.profileUrl}"
-            author="${author.toString()}"
-            page="${baseUrl}${baseContributionUrl}/${author}"
-            profileImage="${entry.profileImage}"
-            >`;
-
         const authorPage = baseContributionUrl + "/" + author;
         app.pages.push(await createPage(app, {
             path: authorPage,
             content: `${author}`,
         }))
 
-        indexContent += `${contributionHeader}\n`;
+        indexContent += `<contribution
+        url="${entry.profileUrl}"
+        author="${author.toString()}"
+        page="${baseUrl}${baseContributionUrl}/${author}"
+        profileImage="${entry.profileImage}"
+        >\n`;
 
         for (const cont of entry.contributions) {
-            let contributionContent = ``;
-            contributionContent += contributionHeader + "</contribution>\n\n";
-            contributionContent += `# ${cont.title}\n\n`;
-            contributionContent += cont.body;
-            contributionContent += "\n\n";
-            contributionContent += `<a href="${cont.url}">View on Github</a>\n\n`;
+            let contributionPage = `<a hreF="../">Overview</a>\n\n`;
+            contributionPage += `<contribution
+            url="${entry.profileUrl}"
+            author="${author.toString()}"
+            page="${baseUrl}${baseContributionUrl}/${author}"
+            profileImage="${entry.profileImage}"
+            githubUrl="${cont.url}"
+            title="${cont.title}"
+            gradient="true"
+            ></contribution>\n\n`;
+            contributionPage += cont.body;
+            contributionPage += "\n\n";
+
+            const pageName = cleanLink(cont.title);
             app.pages.push(await createPage(app, {
-                path: authorPage + "/" + cont.title,
-                content: contributionContent,
+                path: authorPage + "/" + pageName,
+                content: contributionPage,
             }))
+
+            // Add to preview
+            indexContent += `<contribution-listentry
+                title="${cont.title}"
+                url="${baseUrl}${authorPage}/${pageName}"
+            ></contribution-listentry>\n\n`;
         }
 
-
-        for (const cont of entry.contributions) {
-            indexContent += `<a href="./${author}/${cont.title}">${cont.title}</a>\n`
-        }
 
         indexContent += `</contribution>\n`
     }
