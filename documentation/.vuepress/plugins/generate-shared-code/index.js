@@ -54,7 +54,7 @@ const generateContributionPages = async (app, config) => {
         contributionsByAuthor.set(cont.authorLogin, entry);
     }
 
-    let indexContent = "# Community Scripts\n\n";
+    let indexContent = "<h1>Community Scripts</h1>\n\n";
     indexContent += "To contribute a script, please create a new discussion in the [Share category](https://github.com/needle-tools/needle-engine-support/discussions/categories/share)"
     indexContent += "\n\n";
 
@@ -230,6 +230,15 @@ async function collectContributionData() {
                     console.log("Thumbs down from authorized user: \"" + discussion.title + "\" - " + discussion.url);
                     approved = false;
                     // return;
+                }
+
+                if (discussion.body.includes("<script")) {
+                    console.log("Script tag found: \"" + discussion.title + "\" - " + discussion.url);
+                    approved = false;
+                }
+                else if (discussion.body.includes("iframe")) {
+                    console.log("Iframe tag found: \"" + discussion.title + "\" - " + discussion.url);
+                    approved = false;
                 }
 
                 contributions.push({
