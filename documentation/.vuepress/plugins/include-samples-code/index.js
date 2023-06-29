@@ -84,6 +84,10 @@ async function getCode() {
     const filesUrl = `https://api.github.com/repos/needle-tools/needle-engine-samples/git/trees/${branchName}?recursive=1`
     console.log("Load code files from branch", branchName, "...", filesUrl);
     const files = await fetch(filesUrl).then(r => r.json());
+    if(files.message) {
+        console.warn("Failed to load code files from branch", branchName, files.message);
+        return parsedCode;
+    }
     const codefiles = files.tree.filter(f => {
         if (f.path.endsWith(".ts")) return true;
         if (f.path.endsWith(".js") && !f.path.endsWith("register_types.js")) return true;
