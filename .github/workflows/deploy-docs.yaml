@@ -6,9 +6,16 @@ on:
     branches: [main]
   repository_dispatch:
     types: [updated_docs]
+  discussion:
+    types: [created, edited]
 
 jobs: 
   docs:
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'repository_dispatch' ||
+      (github.event_name == 'discussion' && (github.event.action == 'created' || github.event.action == 'edited') && github.event.discussion.category.name == 'Share')
+
     runs-on: ubuntu-latest
 
     steps:
