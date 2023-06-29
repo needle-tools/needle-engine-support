@@ -92,9 +92,24 @@ jobs:
   notify_discord:
     needs: upload
     runs-on: ubuntu-latest
+    if: |
+      github.event_name == 'push' ||
+      github.event_name == 'repository_dispatch'
     steps:
       - uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
           username: "Deploy Docs 🤖"
-          content: "Docs have been updated → <https://engine.needle.tools/docs/>\n`${{ github.event.head_commit.message }}${{github.event.client_payload.reason}}${{github.event_name == 'discussion' ? github.event.discussion.html_url : ''}}`"
+          content: "Docs have been updated → <https://engine.needle.tools/docs/>\n`${{ github.event.head_commit.message }}${{github.event.client_payload.reason}}`"
+  
+  notify_discord_by_contribution:
+    needs: upload
+    runs-on: ubuntu-latest
+    if: |
+      (github.event_name == 'discussion' && (github.event.action == 'created' || github.event.action == 'edited') && github.event.discussion.category.name == 'Share')
+    steps:
+      - uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
+          username: "Deploy Docs (Contribution) 🤖"
+          content: "Docs have been updated → <https://engine.needle.tools/docs/> by discussion:\n<${{ github.event.discussion.html_url}}>"
