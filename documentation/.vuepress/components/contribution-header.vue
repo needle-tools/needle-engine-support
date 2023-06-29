@@ -45,6 +45,7 @@ defineProps({
     justify-content: space-between;
     border-radius: 1em;
     padding-right: 1em;
+    user-select: none;
 }
 
 .header.gradient {

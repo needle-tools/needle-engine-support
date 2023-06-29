@@ -61,48 +61,68 @@ const generateContributionPages = async (app, config) => {
     indexContent += "<contributions-overview>\n"
 
     for (const [author, entry] of contributionsByAuthor) {
-        const authorPage = baseContributionUrl + "/" + author;
-        app.pages.push(await createPage(app, {
-            path: authorPage,
-            content: `${author}`,
-        }))
+        const authorPage = baseContributionUrl + "/" + cleanLink(author);
+        const overviewLink = `<a href="${baseUrl + baseContributionUrl}">Overview</a>\n\n`;
 
-        indexContent += `<contribution
+        let authorPageContent = `<contributions-author
+        overviewLink="${baseUrl + baseContributionUrl}"
+        name="${author}"
+        url="${entry.profileUrl}"
+        profileImage="${entry.profileImage}"
+        githubUrl="${entry.profileUrl}"
+        >\n`;
+
+        indexContent += `<contribution-header
         url="${entry.profileUrl}"
         author="${author.toString()}"
         page="${baseUrl}${baseContributionUrl}/${author}"
         profileImage="${entry.profileImage}"
         >\n`;
 
+
         for (const cont of entry.contributions) {
-            let contributionPage = `<a hreF="../">Overview</a>\n\n`;
-            contributionPage += `<contribution
+            // Create contribution page
+            let contributionPage = `${overviewLink}`;
+            contributionPage += `<contribution-header
             url="${entry.profileUrl}"
-            author="${author.toString()}"
+            author="${author}"
             page="${baseUrl}${baseContributionUrl}/${author}"
             profileImage="${entry.profileImage}"
             githubUrl="${cont.url}"
             title="${cont.title}"
             gradient="True"
-            ></contribution>\n\n`;
+            ></contribution-header>\n\n`;
             contributionPage += cont.body;
             contributionPage += "\n\n";
-
             const pageName = cleanLink(cont.title);
             app.pages.push(await createPage(app, {
                 path: authorPage + "/" + pageName,
                 content: contributionPage,
-            }))
+            }));
 
-            // Add to preview
+            // Create author page content
+            authorPageContent += `<contribution-preview 
+            title="${cont.title}"
+            pageUrl="${baseUrl}${authorPage}/${pageName}"
+            >\n\n`;
+            authorPageContent += cont.body;
+            authorPageContent += `\n\n</contribution-preview>\n\n`;
+
+            // Add to overview
             indexContent += `<contribution-listentry
                 title="${cont.title}"
                 url="${baseUrl}${authorPage}/${pageName}"
             ></contribution-listentry>\n\n`;
         }
 
+        authorPageContent += `\n</contributions-author>\n\n`;
+        app.pages.push(await createPage(app, {
+            path: authorPage,
+            content: authorPageContent,
+        }))
 
-        indexContent += `</contribution>\n`
+
+        indexContent += `</contribution-header>\n`
     }
 
 
