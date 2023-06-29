@@ -56,6 +56,9 @@ const generateContributionPages = async (app, config) => {
     let indexContent = "# Community Scripts\n\n";
     indexContent += "To contribute a script, please create a new discussion in the [Share category](https://github.com/needle-tools/needle-engine-support/discussions/categories/share)"
     indexContent += "\n\n";
+
+    indexContent += "<contributions-overview>\n"
+
     for (const [author, entry] of contributionsByAuthor) {
         const contributionHeader = `<contribution
             url="${entry.profileUrl}"
@@ -77,6 +80,8 @@ const generateContributionPages = async (app, config) => {
             contributionContent += contributionHeader + "</contribution>\n\n";
             contributionContent += `# ${cont.title}\n\n`;
             contributionContent += cont.body;
+            contributionContent += "\n\n";
+            contributionContent += `<a href="${cont.url}">View on Github</a>\n\n`;
             app.pages.push(await createPage(app, {
                 path: authorPage + "/" + cont.title,
                 content: contributionContent,
@@ -89,8 +94,11 @@ const generateContributionPages = async (app, config) => {
         }
 
         indexContent += `</contribution>\n`
-
     }
+
+
+    indexContent += "</contributions-overview>\n"
+
     app.pages.push(await createPage(app, {
         path: baseContributionUrl,
         content: indexContent,
@@ -186,13 +194,13 @@ async function collectContributionData() {
                 // Check if the discussion has a thumbs up from an authorized user (see array above)
                 if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_UP" && needsThumpsUpFromUser.includes(reaction.user.login)).length === 0) {
                     console.log("No thumbs up from authorized user: \"" + discussion.title + "\" - " + discussion.url);
-                    approved = false;
                 }
 
                 // check if an authorized user has given their thumbs down
                 if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_DOWN" && needsThumpsUpFromUser.includes(reaction.user.login)).length > 0) {
                     console.log("Thumbs down from authorized user: \"" + discussion.title + "\" - " + discussion.url);
-                    return;
+                    approved = false;
+                    // return;
                 }
 
                 contributions.push({

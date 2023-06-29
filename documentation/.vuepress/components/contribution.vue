@@ -35,6 +35,8 @@ defineProps({
 .profile {
     display: flex;
     align-items: center;
+    margin-top: .5em;
+    margin-bottom: 1em;
 }
 .profile img {
     width: 50px;
