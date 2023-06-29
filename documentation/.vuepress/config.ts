@@ -140,6 +140,10 @@ export default defineUserConfig({
                             "/scripting",
                             "/component-compiler",
                             "/scripting-examples",
+                            {
+                                text: "Community Contributions",
+                                link: "/community/contributions"
+                            }
                         ]
                     },
                     {
@@ -185,6 +189,10 @@ export default defineUserConfig({
                             "/reference/typescript-decorators",
                             "/scripting-examples",
                             "/vanilla-js",
+                            {
+                                text: "Community Contributions",
+                                link: "/community/contributions"
+                            }
                         ]
                     },
                     {
@@ -246,6 +254,10 @@ export default defineUserConfig({
                                 text: 'Towerdefence Game',
                                 link: '/showcase-towerdefence',
                             },
+                            {
+                                text: "Community Contributions",
+                                link: "/community/contributions"
+                            }
                         ]
                     },
                 ]
@@ -316,6 +328,10 @@ export default defineUserConfig({
                         "/scripting",
                         "/component-compiler",
                         "/scripting-examples",
+                        {
+                            text: "Community Contributions",
+                            link: "/community/contributions"
+                        },
                     ]
                 },
                 {
