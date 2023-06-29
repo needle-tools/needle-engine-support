@@ -8,6 +8,7 @@ defineProps({
     author: String,
     profileImage: String,
     githubUrl: String,
+    gradient: Boolean,
 })
 
 
@@ -15,7 +16,7 @@ defineProps({
 
 <template>
     <div class="contribution">
-        <div class="header">
+        <div class="header" :class="gradient ? 'gradient' : ''">
             <div class="profile">
                 <img :src="profileImage" alt="profile image" />
                 <a class="authorname" :href="page">
@@ -35,13 +36,19 @@ defineProps({
 
 <style scoped>
 .contribution {
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
 .header {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-radius: 1em;
+    padding-right: 1em;
+}
+
+.header.gradient {
+    background: linear-gradient(180deg, rgba(100, 100, 200, 0) 0%, rgba(100, 100, 200, .1) 3%, rgba(200, 200, 200, 0) 100%);
 }
 
 .profile {

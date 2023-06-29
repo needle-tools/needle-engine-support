@@ -83,7 +83,7 @@ const generateContributionPages = async (app, config) => {
             profileImage="${entry.profileImage}"
             githubUrl="${cont.url}"
             title="${cont.title}"
-            gradient="true"
+            gradient="True"
             ></contribution>\n\n`;
             contributionPage += cont.body;
             contributionPage += "\n\n";

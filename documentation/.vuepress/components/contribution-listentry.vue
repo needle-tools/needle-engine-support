@@ -19,11 +19,12 @@ defineProps({
 <style scoped>
 .entry {
     display: block;
-    padding: .4em;
-    padding-bottom: .5em;
+    padding: .2em;
+    padding-bottom: .3em;
     padding-left: 1em;
     border-radius: .7em;
-    font-size: 1.3em;
+    font-size: 1.4em;
+    font-weight: normal;
     /* border: 1px solid rgba(0, 0, 0, 0); */
 }
 
