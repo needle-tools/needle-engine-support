@@ -11,6 +11,10 @@ on:
 
 jobs: 
   docs:
+    # https://github.com/orgs/community/discussions/25641
+    # https://github.com/orgs/community/discussions/25389
+    # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#discussion
+    # https://docs.github.com/en/webhooks-and-events/webhooks/webhook-events-and-payloads#discussion
     if: |
       github.event_name == 'push' ||
       github.event_name == 'repository_dispatch' ||
