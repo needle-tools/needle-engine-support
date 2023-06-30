@@ -75,7 +75,7 @@ const generateContributionPages = async (app, config) => {
         indexContent += `<contribution-header
         url="${entry.profileUrl}"
         author="${author.toString()}"
-        page="${baseUrl}${baseContributionUrl}/${author}"
+        page="${baseUrl}${baseContributionUrl}/${cleanLink(author)}"
         profileImage="${entry.profileImage}"
         >\n`;
 
@@ -86,7 +86,7 @@ const generateContributionPages = async (app, config) => {
             contributionPage += `<contribution-header
             url="${entry.profileUrl}"
             author="${author}"
-            page="${baseUrl}${baseContributionUrl}/${author}"
+            page="${baseUrl}${baseContributionUrl}/${cleanLink(author)}"
             profileImage="${entry.profileImage}"
             githubUrl="${cont.url}"
             title="${cont.title}"
