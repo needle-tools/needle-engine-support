@@ -14,7 +14,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     // take a slice from the content
                     const content = page.content;
                     const startIndex1 = content.indexOf('---', 5);
-                    let contentSlice = content.slice(startIndex1 + 3, 600);
+                    let contentSlice = content.slice(startIndex1 + 3, 1200);
                     // remove markdown images
                     contentSlice = contentSlice.replaceAll(/!\[.*\]\(.*\)/g, '');
                     // try to find an empoty line to cut off the description there
@@ -26,17 +26,36 @@ export const modifyHtmlMeta = (args, ctx) => {
                     if (tableStart > 0)
                         contentSlice = contentSlice.slice(0, tableStart);
                     // try to find the end of a sentence to cut the description off there
-                    const sentenceEnd = contentSlice.lastIndexOf(". ");
-                    if (sentenceEnd > 0)
-                        contentSlice = contentSlice.slice(0, sentenceEnd + 1);
                     const componentStart = contentSlice.indexOf(/<.+>/);
                     if (componentStart > 0)
-                        contentSlice = contentSlice.slice(0, componentStart);                        
+                        contentSlice = contentSlice.slice(0, componentStart);
+                    const sentenceEnd = contentSlice.lastIndexOf(/\.[\n\r ]/);
+                    if (sentenceEnd > 0)
+                        contentSlice = contentSlice.slice(0, sentenceEnd + 1);
+
+                    // if (contentSlice.includes("With this Addon you'll be")) 
+                    {
+                        const lines = contentSlice.split("\n");
+                        const newLines = [];
+                        for (let i = 0; i < lines.length; i++) {
+                            let line = lines[i];
+                            line = line.trim();
+                            if (line.startsWith("#"))
+                                continue;
+                            if (!line.length)
+                                continue;
+                            newLines.push(line);
+                        }
+                        contentSlice = newLines.join("\n");
+                    }
                     // cleanup markdown
                     contentSlice = contentSlice.replaceAll("#", '');
                     contentSlice = contentSlice.replaceAll("[[toc]]", '');
                     contentSlice = contentSlice.trim();
                     description = contentSlice;
+                    if (!description.length) {
+                        description = app.siteData.description;
+                    }
                     frontmatter.description = description;
                 }
                 if (!description.length) {
