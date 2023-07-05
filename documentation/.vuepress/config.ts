@@ -71,7 +71,7 @@ export default defineUserConfig({
         ['meta', { property: "og:type", content: "website" }],
         // this is inserted via the html-meta plugin from the frontmatter description
         // ['meta', { property: "og:description", content: _description }],
-        ['meta', { property: "og:image", content: _previewImg }],
+        ['meta', { property: "og:image", content: _url + "/" + _previewImg }],
         ['meta', { property: "og:url", content: _url }],
         ['meta', { property: "twitter:card", content: "summary_large_image" }],
         
