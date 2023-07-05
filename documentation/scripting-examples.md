@@ -131,3 +131,31 @@ Here is an example that wraps the [Outline postprocessing effect](https://pmndrs
 Make sure to install the mediapipe package. Visit the github link below to see the complete project setup.  
 Try it [live here](https://engine.needle.tools/samples/mediapipe-hands/) - requires a webcam/camera
 -->
+
+
+<!-- SAMPLE Change Color On Collision
+## Change Color On Collision
+-->
+
+<!-- SAMPLE Physics Trigger Relay
+## Physics Trigger Relay
+Invoke events using an objects physics trigger methods 
+-->
+
+<!-- SAMPLE Auto Reset
+## Auto Reset
+Reset an object's position automatically when it's leaving a physics trigger
+-->
+
+<!-- SAMPLE Play Audio On Collision
+## Play Audio On Collision
+-->
+
+<!-- SAMPLE Set Random Color
+## Set Random Color
+Randomize the color of an object on start. Note that the materials are cloned in the `start` method
+-->
+
+<!-- SAMPLE Timed Spawn
+## Spawn Objects Over Time
+-->
