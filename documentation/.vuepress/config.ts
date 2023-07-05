@@ -15,6 +15,7 @@ import { includeSampleCode } from './plugins/include-samples-code/index'
 import { generateSharedCode } from './plugins/generate-shared-code/index'
 import * as dotenv from 'dotenv'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+import { modifyHtmlMeta } from './plugins/html-meta/index'
 
 
 dotenv.config()
@@ -54,6 +55,7 @@ export default defineUserConfig({
         generateMetaPlugin,
         includeSampleCode,
         generateSharedCode,
+        modifyHtmlMeta,
         //@ts-ignore
         googleAnalyticsPlugin({
             id: "G-V2Q445L3XQ",
@@ -67,7 +69,8 @@ export default defineUserConfig({
 
         ['meta', { property: "og:title", content: _title }],
         ['meta', { property: "og:type", content: "website" }],
-        ['meta', { property: "og:description", content: _description }],
+        // this is inserted via the html-meta plugin from the frontmatter description
+        // ['meta', { property: "og:description", content: _description }],
         ['meta', { property: "og:image", content: _previewImg }],
         ['meta', { property: "og:url", content: _url }],
         ['meta', { property: "twitter:card", content: "summary_large_image" }],
