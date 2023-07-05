@@ -51,6 +51,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     // cleanup markdown
                     contentSlice = contentSlice.replaceAll("#", '');
                     contentSlice = contentSlice.replaceAll("[[toc]]", '');
+                    contentSlice = contentSlice.replaceAll("\"", '\'');
                     contentSlice = contentSlice.trim();
                     description = contentSlice;
                     if (!description.length) {
