@@ -14,7 +14,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     // take a slice from the content
                     const content = page.content;
                     const startIndex = content.indexOf('---', 5);
-                    let contentSlice = content.slice(startIndex + 5, 2000);
+                    let contentSlice = content.slice(startIndex, 2000);
                     // remove markdown images
                     contentSlice = contentSlice.replaceAll(/!\[.*\]\(.*\)/g, '');
                     // try to find an empoty line to cut off the description there
@@ -28,7 +28,6 @@ export const modifyHtmlMeta = (args, ctx) => {
                     const sentenceEnd = contentSlice.lastIndexOf(/\.[\n\r ]/);
                     if (sentenceEnd > 0)
                         contentSlice = contentSlice.slice(0, sentenceEnd + 1);
-
                     // until first div
                     const divStart = contentSlice.indexOf("<div");
                     if (divStart > 0)
