@@ -57,7 +57,7 @@ export default defineUserConfig({
         //@ts-ignore
         googleAnalyticsPlugin({
             id: "G-V2Q445L3XQ",
-            debug: true,
+            debug: false,
         })
     ],
     head: [
