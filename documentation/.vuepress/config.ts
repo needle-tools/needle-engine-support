@@ -56,7 +56,7 @@ export default defineUserConfig({
         generateSharedCode,
         //@ts-ignore
         googleAnalyticsPlugin({
-            id: process.env.GOOGLE_ANALYTICS_ID!,
+            id: "G-V2Q445L3XQ",
             debug: true,
         })
     ],
