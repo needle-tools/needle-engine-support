@@ -1,7 +1,8 @@
 
 import fetch from 'node-fetch';
 
-const debugLog = false;
+// show more logs in production (when building on github)
+const debugLog = process.env.NODE_ENV === "production";
 console.log("ENV", process.env.NODE_ENV);
 
 // https://v2.vuepress.vuejs.org/reference/plugin-api.html#development-hooks
