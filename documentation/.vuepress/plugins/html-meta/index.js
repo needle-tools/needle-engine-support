@@ -70,6 +70,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     contentSlice = contentSlice.replaceAll("#", '');
                     contentSlice = contentSlice.replaceAll("[[toc]]", '');
                     contentSlice = contentSlice.replaceAll("\"", '\'');
+                    contentSlice = contentSlice.replaceAll("*", '');
                     contentSlice = contentSlice.trim();
                     description = contentSlice;
                     if (!description.length) {
