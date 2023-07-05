@@ -44,7 +44,7 @@ Send a flatbuffer binary array to all users in the same room:
 ``this.context.connect.sendBinary(arr:Uint8Array)``
 
 #### Persistence
-When sending an object containing a `guid` field it will saved in the persistant storage and automatically sent to users that connect later or come back later to the site (e.g. to restore state).   
+When sending an object containing a `guid` field it will be saved in the persistant storage and automatically sent to users that connect later or come back later to the site (e.g. to restore state).   
 To delete state for a specific guid from the backend storage you can use `delete-state` as the key and provide an object with `{ guid: "guid_to_delete" } ` 
 
 ### Receiving

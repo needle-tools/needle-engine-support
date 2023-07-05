@@ -51,7 +51,7 @@ Go to *Edit/Project Settings/Player* for changing the setting.
 
 ![](/faq/lightmap_encoding.jpg)  
 
-## My website becomes to large / is loading slow (too many MB)
+## My website becomes too large / is loading slow (too many MB)
   
 This can have many reasons, but a few common ones are:
 - too many textures or textures are too large

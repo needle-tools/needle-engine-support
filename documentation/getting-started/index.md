@@ -86,7 +86,7 @@ We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) templa
 
 ---
 
-::::details Create a new scene from a Scene Templatd
+::::details Create a new scene from a Scene Template
 
 We provide a number of Scene Templates for quickly starting new projects.  
 These allow you to go from idea to prototype in a few clicks.  
