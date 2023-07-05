@@ -26,15 +26,15 @@ export const modifyHtmlMeta = (args, ctx) => {
                     if (tableStart > 0)
                         contentSlice = contentSlice.slice(0, tableStart);
                     // try to find the end of a sentence to cut the description off there
-                    const sentenceEnd = contentSlice.lastIndexOf(".");
+                    const sentenceEnd = contentSlice.lastIndexOf(". ");
                     if (sentenceEnd > 0)
                         contentSlice = contentSlice.slice(0, sentenceEnd + 1);
                     const componentStart = contentSlice.indexOf(/<.+>/);
                     if (componentStart > 0)
-                        contentSlice = contentSlice.slice(0, componentStart);
-                        
+                        contentSlice = contentSlice.slice(0, componentStart);                        
                     // cleanup markdown
                     contentSlice = contentSlice.replaceAll("#", '');
+                    contentSlice = contentSlice.replaceAll("[[toc]]", '');
                     contentSlice = contentSlice.trim();
                     description = contentSlice;
                     frontmatter.description = description;
