@@ -13,8 +13,8 @@ export const modifyHtmlMeta = (args, ctx) => {
                 if (!description) {
                     // take a slice from the content
                     const content = page.content;
-                    const startIndex1 = content.indexOf('---', 5);
-                    let contentSlice = content.slice(startIndex1 + 3, 1200);
+                    const startIndex = content.indexOf('---', 5);
+                    let contentSlice = content.slice(startIndex + 5, 2000);
                     // remove markdown images
                     contentSlice = contentSlice.replaceAll(/!\[.*\]\(.*\)/g, '');
                     // try to find an empoty line to cut off the description there
@@ -25,13 +25,31 @@ export const modifyHtmlMeta = (args, ctx) => {
                     const tableStart = contentSlice.indexOf("|");
                     if (tableStart > 0)
                         contentSlice = contentSlice.slice(0, tableStart);
-                    // try to find the end of a sentence to cut the description off there
-                    const componentStart = contentSlice.indexOf(/<.+>/);
-                    if (componentStart > 0)
-                        contentSlice = contentSlice.slice(0, componentStart);
                     const sentenceEnd = contentSlice.lastIndexOf(/\.[\n\r ]/);
                     if (sentenceEnd > 0)
                         contentSlice = contentSlice.slice(0, sentenceEnd + 1);
+
+                    // until first div
+                    const divStart = contentSlice.indexOf("<div");
+                    if (divStart > 0)
+                        contentSlice = contentSlice.slice(0, divStart);
+
+                    // replace markdown links
+                    const markdownLinksRegex = /\[(?<content>.+?)\]\(.+?\)/g;
+                    contentSlice = contentSlice.replaceAll(markdownLinksRegex, '$<content>');
+
+                    // const markdownComponentsRegex = /(<[\w\-\n\r\=\' \(\)\/]+>.*<\/.+>)/gsm;
+                    const startOfComponent = /<[\w\-\n\r\=\' \(\)\/]{5,}?>/g;
+                    const startOfComponentIndex = contentSlice.search(startOfComponent);
+                    if (startOfComponentIndex > 0)
+                        contentSlice = contentSlice.slice(0, startOfComponentIndex);
+
+                    // remove html divs and tags
+                    const htmlTagsRegex = /<.+?>/g;
+                    contentSlice = contentSlice.replaceAll(htmlTagsRegex, '');
+
+
+                    if (contentSlice.includes("Community Scripts")) console.log(content);
 
                     // if (contentSlice.includes("With this Addon you'll be")) 
                     {
