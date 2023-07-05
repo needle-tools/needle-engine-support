@@ -1,7 +1,23 @@
 # HOW TO
 
+## Development setup
 
+### Initial Setup
 
+- copy .env.template to .env
+- set the correct values in .env, namely GITHUB_ACCESS_TOKEN
+- get a Github access token from https://github.com/settings/tokens?type=beta with access to https://github.com/needle-tools/needle-engine-support
+  - only needs permissions for discussions
+
+### Local Development
+
+- open the VS Code workspace
+- run `npm install`
+- run `npm run start`
+
+### Adding new pages
+
+- in documentation/.vuepress/config.js add a new entry to the sidebar and navbar
 
 ## Inject Sample Code
 

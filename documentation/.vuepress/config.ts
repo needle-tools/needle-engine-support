@@ -141,6 +141,7 @@ export default defineUserConfig({
                     "/everywhere-actions",
                     "/export",
                     "/html",
+                    "/testing",
                     "/deployment",
                     {
                         text: "Scripting",
@@ -325,6 +326,7 @@ export default defineUserConfig({
                         "/everywhere-actions",
                         "/export",
                         "/html",
+                        "/testing",
                         "/deployment",
                         "/debugging",
                         "/faq",

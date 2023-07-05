@@ -25,3 +25,4 @@ package-lock.json
 documentation/.vuepress/public/meta
 .env
 documentation/community/contributions.json
+.DS_Store
