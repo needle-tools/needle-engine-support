@@ -29,7 +29,9 @@ async function getTemplateFiles(stackblitzFiles, baseGlb) {
     insertFile(promises, "package-lock.json", "https://raw.githubusercontent.com/needle-engine/vite-template/main/package-lock.json", stackblitzFiles);
     // insertFile(promises, "src/main.ts", "https://raw.githubusercontent.com/needle-engine/vite-template/main/src/main.ts", stackblitzFiles);
     insertFile(promises, "src/styles/style.css", "https://raw.githubusercontent.com/needle-engine/vite-template/main/src/styles/style.css", stackblitzFiles);
-    insertFile(promises, "vite.config.js", "https://raw.githubusercontent.com/needle-engine/vite-template/main/vite.config.js", stackblitzFiles);
+    insertFile(promises, "vite.config.js", "https://raw.githubusercontent.com/needle-engine/vite-template/main/vite.config.js", stackblitzFiles, content => {
+        return content.replace("needlePlugins(command, needleConfig)", "needlePlugins(command, needleConfig, { noPoster: true })")
+    });
     insertFile(promises, "tsconfig.json", "https://raw.githubusercontent.com/needle-engine/vite-template/main/tsconfig.json", stackblitzFiles);
     insertFile(promises, "index.html", "https://raw.githubusercontent.com/needle-engine/vite-template/main/index.html", stackblitzFiles, content => {
         return content.replace(/\<needle-engine ?\>/, `\<needle-engine camera-controls src="${baseGlb}"\>`);
