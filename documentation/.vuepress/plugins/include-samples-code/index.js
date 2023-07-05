@@ -1,6 +1,9 @@
 
 import fetch from 'node-fetch';
 
+const debugLog = false;
+console.log("ENV", process.env.NODE_ENV);
+
 // https://v2.vuepress.vuejs.org/reference/plugin-api.html#development-hooks
 
 
@@ -84,7 +87,7 @@ async function getCode() {
     const filesUrl = `https://api.github.com/repos/needle-tools/needle-engine-samples/git/trees/${branchName}?recursive=1`
     console.log("Load code files from branch", branchName, "...", filesUrl);
     const files = await fetch(filesUrl).then(r => r.json());
-    if(files.message) {
+    if (files.message) {
         console.warn("Failed to load code files from branch", branchName, files.message);
         return parsedCode;
     }
@@ -151,7 +154,8 @@ function parseCode(branchName, codeFiles, samples) {
                 const key = startMatch.groups.id.trim();
                 const indentationToRemove = startMatch.groups.spaces.length;
                 stack[key] = { startIndex, key, indentationToRemove };
-                console.log("<<< FOUND SAMPLE MARKER \"" + key + "\"", "in", file.path);
+                if (debugLog)
+                    console.log("<<< FOUND SAMPLE MARKER \"" + key + "\"", "in", file.path);
                 continue;
             }
             const endMatch = endRegex.exec(line);
@@ -201,16 +205,20 @@ function parseCode(branchName, codeFiles, samples) {
 
 // https://github.com/markdown-it/markdown-it/issues/337
 const injectCodeSamples = async (md, options) => {
-    console.log("~~~ BEGIN INJECT CODE SAMPLES");
+    if (debugLog)
+        console.log("~~~ BEGIN INJECT CODE SAMPLES");
 
-    getCode().then(c => {
-        const keys = Array.from(c.keys());
-        console.log("\n\t>>> AVAILABLE SAMPLE MARKERS:");
-        for(const key of keys){ 
-            console.log("\t» \"" + key + "\"");
-        }
-        console.log("\n")
-    });
+
+    if (debugLog) {
+        getCode().then(c => {
+            const keys = Array.from(c.keys());
+            console.log("\n\t>>> AVAILABLE SAMPLE MARKERS:");
+            for (const key of keys) {
+                console.log("\t» \"" + key + "\"");
+            }
+            console.log("\n")
+        });
+    }
 
     const sampleMarkerRegex = /\<\!--\s*SAMPLE\s+(?<id>.+?)(\n(?<markdown>.+?))?\s*--\>/gms;
 
@@ -223,7 +231,8 @@ const injectCodeSamples = async (md, options) => {
             if (match && parsedCode) {
                 const id = match.groups.id?.trim();
                 if (parsedCode.has(id)) {
-                    console.log(">>> INJECT SAMPLE CODE: \"" + id + "\"")
+                    if (debugLog)
+                        console.log(">>> INJECT SAMPLE CODE: \"" + id + "\"")
                     const startIndex = match.index;
                     const endIndex = match.index + match[0].length;
                     const before = code.substring(0, startIndex);

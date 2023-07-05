@@ -49,7 +49,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     contentSlice = contentSlice.replaceAll(htmlTagsRegex, '');
 
 
-                    if (contentSlice.includes("Community Scripts")) console.log(content);
+                    // if (contentSlice.includes("Community Scripts")) console.log(content);
 
                     // if (contentSlice.includes("With this Addon you'll be")) 
                     {

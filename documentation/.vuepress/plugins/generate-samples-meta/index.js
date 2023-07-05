@@ -1,7 +1,4 @@
 import fs from 'fs';
-import path from 'path'
-import spawn from 'cross-spawn'
-
 
 const k_sampleInfoSeparator = " :sample ";
 const k_tagSeparator = " :tags ";

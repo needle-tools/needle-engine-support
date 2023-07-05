@@ -121,7 +121,6 @@ const generateContributionPages = async (app, config) => {
             content: authorPageContent,
         }))
 
-
         indexContent += `</contribution-header>\n`
     }
 
@@ -221,9 +220,9 @@ async function collectContributionData() {
                 let approved = true;
 
                 // Check if the discussion has a thumbs up from an authorized user (see array above)
-                if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_UP" && needsThumpsUpFromUser.includes(reaction.user.login)).length === 0) {
-                    console.log("No thumbs up from authorized user: \"" + discussion.title + "\" - " + discussion.url);
-                }
+                // if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_UP" && needsThumpsUpFromUser.includes(reaction.user.login)).length === 0) {
+                //     console.log("No thumbs up from authorized user: \"" + discussion.title + "\" - " + discussion.url);
+                // }
 
                 // check if an authorized user has given their thumbs down
                 if (discussion.reactions.nodes.filter((reaction) => reaction.content === "THUMBS_DOWN" && needsThumpsUpFromUser.includes(reaction.user.login)).length > 0) {
