@@ -14,6 +14,8 @@ import { generateMetaPlugin, cleanLink, cleanHeader } from "./plugins/generate-s
 import { includeSampleCode } from './plugins/include-samples-code/index'
 import { generateSharedCode } from './plugins/generate-shared-code/index'
 import * as dotenv from 'dotenv'
+import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
+
 
 dotenv.config()
 
@@ -52,6 +54,11 @@ export default defineUserConfig({
         generateMetaPlugin,
         includeSampleCode,
         generateSharedCode,
+        //@ts-ignore
+        googleAnalyticsPlugin({
+            id: process.env.GOOGLE_ANALYTICS_ID!,
+            debug: true,
+        })
     ],
     head: [
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
