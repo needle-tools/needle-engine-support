@@ -66,7 +66,10 @@ export const modifyHtmlMeta = (args, ctx) => {
                         contentSlice = newLines.join("\n");
                     }
                     // cleanup markdown
-                    contentSlice = contentSlice.replaceAll("#", '');
+                    contentSlice = contentSlice.replaceAll("# ", '');
+                    contentSlice = contentSlice.replaceAll("## ", '');
+                    contentSlice = contentSlice.replaceAll("### ", '');
+                    contentSlice = contentSlice.replaceAll("#### ", '');
                     contentSlice = contentSlice.replaceAll("[[toc]]", '');
                     contentSlice = contentSlice.replaceAll("\"", '\'');
                     contentSlice = contentSlice.replaceAll("*", '');
