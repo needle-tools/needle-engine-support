@@ -264,3 +264,18 @@ It's possible to create regular Unity projects where you can build both to Needl
 In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and `Override Build settings` to switch between Needle's build process and Unity's build process:  
 ![image](https://user-images.githubusercontent.com/2693840/187308490-5acb9016-ffff-4113-be62-4de450a42b08.png)
 
+
+
+## Commandline Arguments for Unity
+
+Needle Engine for Unity supports various commandline arguments to export single assets (Prefabs or Scenes) or to build a whole web project in batch mode (windowsless).     
+
+The following list gives a table over the available options:  
+
+| | |
+| -- | -- |
+| `-scene` | path to a scene or a asset to be exported e.g. `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
+| `-outputPath <path/to/output.glb>` | set the output path for the build (only valid when building a scene) |
+| `-buildProduction` | run a production build | 
+| `-buildDevelopment` | run a development build |
+| `-debug` | open a console window for debugging |
