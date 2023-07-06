@@ -11,10 +11,9 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 
 ## There's a SSL error when opening the local website
 
-This is expected. We're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box, but that means some browsers complain that the SSL connection (between your local development server and the local website) can't be verified.   
+This is expected. We're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box, but that means some browsers complain that the SSL connection (between your local development server and the local website) can't be verified. It also prevents Automatic Reload from working on iOS and MacOS.  
 
-You can generate a local self-signed SSL certificate to fix this if you want.   
-If you Vite you can use the [vite mkcert plugin](https://github.com/liuweiGL/vite-plugin-mkcert). Just follow the instructions in their readme.  
+See [the Testing docs](/documentation/testing.md) for information on how to set up a self-signed certificate for a smoother development experience.
   
   
 ## My local website stays black
@@ -198,6 +197,15 @@ To check the format of your drives, you can:
 
 Needle Engine uses typescript decorators for serialization.   
 To fix this error make sure to enable `experimentalDecorators` in your tsconfig.json 
+
+## I'm getting an error 'failed to load config ... vite.config.js' when running npm commands on Mac OS
+
+You're likely using an x86_64 version of Unity on an (ARM) Apple Silicon processor. Unity 2020.3 is only available for x86_64, later versions also have Apple Silicon versions.  
+Our Unity integration calling npm will thus do so from an x86_64 process, resulting in the x86_64 version of node and vite/esbuild being used. When you afterwards try to run npm commands in the same project from an Apple Silicon app (e.g. VS Code), npm will complain about mismatching architectures with a long error message.  
+
+To fix this, use an Apple Silicon version of Unity (2021.1 or later).  
+
+You can also temporarily fix it on 2020.3 by deleting the `node_modules` folder and running `npm install` again from VS Code. You'll have to delete `node_modules` again when you switch back to Unity.
 
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 

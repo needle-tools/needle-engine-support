@@ -35,6 +35,9 @@ We're using websocket connections to communicate between the browser and the loc
 | iOS | (✓ after page reload) | ❌ |
 | Xcode Simulators | (✓ after page reload) | ❌ |
 
+::: tip
+For auto-generating a certificate, we're using the [vite-plugin-basic-ssl](https://github.com/vitejs/vite-plugin-basic-ssl) npm package.
+:::
 
 **With a self-signed, trusted root certificate**  
 No security warning is displayed. You need to install the generated certificate on your device(s). 
@@ -50,7 +53,8 @@ No security warning is displayed. You need to install the generated certificate 
 ### Generating a self-signed development certificate
 
 - in Unity/Blender, click on "Open Workspace" to open VS Code
-- check that you're using `vite-plugin-mkcert` instead of `vite-plugin-basic-ssl` (the latter doesn't generate a trusted root certificate, which we need)
+- check that you're using `vite-plugin-mkcert` instead of `vite-plugin-basic-ssl` (the latter doesn't generate a trusted root certificate, which we need) in your `vite.config.ts` file:
+  ![](/testing/switch-to-mkcert.webp)
 - run `npm run start` once from VS Code's terminal
   - on Windows, this will open a new window and guide you through the creation and installation of the certificate
   - on MacOS, the terminal prompts for your password and then generates and installs the certificate.
@@ -63,7 +67,7 @@ On your development devices, you need to _install_ the generated certificate and
 From Windows: find the certificate in `Users/<your-user>/.../rootCA.pem`
 From MacOS: find the certificate in `Users/<your-user>/.vite-plugin-mkcert/rootCA.pem`
 
-Send the device to yourself (e.g. via E-Mail, iCloud, via USB, ...) so that you can access it on your development devices(s).
+Send the device to yourself (e.g. via E-Mail, AirDrop, iCloud, via USB, ...) so that you can access it on your development devices(s).
 
 ### Installing the certificate on Android
 
