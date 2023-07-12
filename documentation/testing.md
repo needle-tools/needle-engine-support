@@ -85,10 +85,10 @@ Send the device to yourself (e.g. via E-Mail, AirDrop, iCloud, USB, Slack, ...) 
 
 ### Installing the certificate on iOS / iPadOS / VisionOS
 1. Open the file.
-2. You'll be prompted to _add_ the profile to your device.
+2. You'll be prompted to _add_ the profile to your device. Confirm.
 3. Go to Settings
 4. There will be a new entry "Profile". Select it and allow the profile to be _active_ for this device.
-5. On iOS / iPadOS, you also need to allow "Root Certificate Trust". For this, go to `Settings > General > About > Info > Certificate Trust Settings` and enable trust for the certificate.
+5. On iOS / iPadOS, you also need to allow "Root Certificate Trust". For this, search for `Trust` or go to `Settings > General > About > Info > Certificate Trust Settings` and enable full trust for the root certificate.
 
 ::: tip
 The certificate is automatically installed on the machine you generated it on. For other machines in the local network, follow the steps below to also establish a trusted connection.
