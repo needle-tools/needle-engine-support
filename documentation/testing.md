@@ -34,7 +34,7 @@ We're using websocket connections to communicate between the browser and the loc
 | Linux | (✓) | ✓ |
 | Android | (✓) | ✓ |
 | macOS | (✓) | ❌ |
-| iOS | (✓ after page reload) | ❌ |
+| iOS | (✓ Safari and Chrome, after page reload)<br/>❌ Mozilla XR Viewer | ❌ |
 | Xcode Simulators | (✓ after page reload) | ❌ |
 
 **With a self-signed, trusted root certificate**  
@@ -70,14 +70,14 @@ _Uses the [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert) n
 - you can stop the terminal process again.
 - from now on, pressing Play in Unity/Blender will use the generated certificate for the local server, and no "security warning" will be shown anymore, since your browser now trusts the local connection.
 
+## Installing the certificate on your development devices
+
 On your development devices, you need to _install_ the generated certificate and allow the OS to _trust_ it. This is different for each OS. For each of them, you'll need the rootCA.pem file that was generated, and send it to the device you want to authenticate.
 
-From Windows: find the certificate in `Users/<your-user>/.../rootCA.pem`
-From MacOS: find the certificate in `Users/<your-user>/.vite-plugin-mkcert/rootCA.pem`
+**On Windows:** find the certificate in `Users/<your-user>/.vite-plugin-mkcert/rootCA.pem`  
+**On MacOS:** find the certificate in `Users/<your-user>/.vite-plugin-mkcert/rootCA.pem`  
 
-Send the device to yourself (e.g. via E-Mail, AirDrop, iCloud, via USB, ...) so that you can access it on your development devices(s).
-
-## Installing the certificate on your development devices
+Send the device to yourself (e.g. via E-Mail, AirDrop, iCloud, USB, Slack, ...) so that you can access it on your development devices.
 
 ### Installing the certificate on Android
 
