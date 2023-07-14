@@ -207,7 +207,23 @@ To fix this, use an Apple Silicon version of Unity (2021.1 or later).
 
 You can also temporarily fix it on 2020.3 by deleting the `node_modules` folder and running `npm install` again from VS Code. You'll have to delete `node_modules` again when you switch back to Unity.
 
+## My scene is not loading and the console contains a warning with "circular references" / failed to update active state
+
+This can happen when you have e.g. a `SceneSwitcher` (or any other component that loads a scene or asset) and the referenced Asset in Unity contains a `GltfObject` that has the same name as your original scene with the `SceneSwitcher`. You can double check this in Unity if you get an error that says something like:
+
+```
+Failed to export ↑ YourSceneName.glb
+you seem to have objects with the same name referencing each other.
+```
+
+To fix this you can:
+- Remove the `GltfObject` in the referenced Prefab or Scene
+- Rename the GameObject with the component that loads the referenced scenes
+
+If this doesn't fix the problem please ask [in our discord](https://discord.needle.tools).
+
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
+
