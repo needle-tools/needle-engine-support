@@ -207,7 +207,7 @@ To fix this, use an Apple Silicon version of Unity (2021.1 or later).
 
 You can also temporarily fix it on 2020.3 by deleting the `node_modules` folder and running `npm install` again from VS Code. You'll have to delete `node_modules` again when you switch back to Unity.
 
-## My scene is not loading and the console contains a warning with "circular references" / failed to update active state
+## Circular reference error
 
 This can happen when you have e.g. a `SceneSwitcher` (or any other component that loads a scene or asset) and the referenced Asset in Unity contains a `GltfObject` that has the same name as your original scene with the `SceneSwitcher`. You can double check this in Unity if you get an error that says something like:
 
@@ -221,6 +221,9 @@ To fix this you can:
 - Rename the GameObject with the component that loads the referenced scenes
 
 If this doesn't fix the problem please ask [in our discord](https://discord.needle.tools).
+
+## My scene is not loading and the console contains a warning with 'circular references' or 'failed to update active state'
+Please see the [circular reference error](#circular-reference-error) section.
 
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
