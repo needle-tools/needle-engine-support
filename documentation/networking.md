@@ -19,7 +19,7 @@ Networking is currently based on [websockets](https://github.com/jjxxs/websocket
   Add a `VoIP` component.
   
 - **Enable Screensharing**  
-  Add a `Screensharing` component.
+  Add a `ScreenCapture` component.
 
 
 ## Core Components

@@ -218,6 +218,16 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
 }
 ```
 
+Note: `IPointerEventHandler` subscribes the object to all possible pointer events. The handlers for them are:
+- `onPointerDown`
+- `onPointerUp`
+- `onPointerEnter`
+- `onPointerMove`
+- `onPointerExit`
+- `onPointerClick`
+
+All have a `PointerEventData` argument describing the event.
+
 ## Debug.Log
 The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.  
 ```ts
