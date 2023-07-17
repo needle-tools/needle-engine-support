@@ -304,6 +304,10 @@ export default defineUserConfig({
                         text: 'Email',
                         link: 'mailto:hi+docs@needle.tools'
                     },
+                    {
+                        text: 'Feedback',
+                        link: 'https://fwd.needle.tools/needle-engine/feedback'
+                    },
                 ]
             },
         ],
