@@ -42,7 +42,7 @@ Here are some of the most commonly used:
 
 ## VSCode
 
-You can attach VSCode to the running local server to set breakpoint and debug your code.    
+You can attach VSCode to the running local server to set breakpoints and debug your code. You can read more about [debugging with VSCode](https://code.visualstudio.com/docs/editor/debugging) here.    
 
 Create a launch.json file at `.vscode/launch.json` in your web project with the following content:  
 ```json
