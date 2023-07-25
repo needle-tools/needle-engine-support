@@ -140,7 +140,7 @@ Check the console and the `ExportInfo` component for errors or warnings.
 
 If these warnings/errors didn't help, try the following steps in order. Give them some time to complete. Stop once your problem has been resolved. Check the console for warnings and errors.  
   
-- Make sure you follow the [Prerequisites](./getting_started/#prerequisites).
+- Make sure you follow the [Prerequisites](./getting-started/#prerequisites).
 - Install your project by selecting your `ExportInfo` component and clicking `Install` 
 - Run a clean installation by selecting your `ExportInfo` component, holding Alt and clicking `Clean Install`
 - Try opening your web project directory in a command line tool and follow these steps:
