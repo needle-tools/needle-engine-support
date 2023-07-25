@@ -24,7 +24,7 @@ Thank you!
 
 ## Download and Installation 💿
 
-### Step 1 • **Make sure node.js and Blender 3.3, 3.4 or 3.5 are installed**
+### Step 1 • **Make sure node.js and Blender 3.3, 3.4, 3.5 or 3.6 are installed**
 
 ### Step 2 • Download and Install our Addon for Blender
 <br/> 
