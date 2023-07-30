@@ -1,3 +1,5 @@
+import { exec, execSync } from "child_process";
+import { existsSync } from "fs";
 
 /** 
  * @returns {import("vuepress").Plugin}
@@ -6,9 +8,31 @@ export const modifyHtmlMeta = (args, ctx) => {
     return {
         name: 'modify-html-meta',
         async onInitialized(app) {
+
+            // modify the og:image, move it from the siteData to fontMatter
+            const ogImage = app.siteData.head.find((item) => item[0] === 'meta' && item[1].property === 'og:image');
+            const defaultOgImageUrl = ogImage?.[1].content;
+            if (ogImage) {
+                // remove from siteData
+                const index = app.siteData.head.indexOf(ogImage);
+                app.siteData.head.splice(index, 1);
+            }
+
             // console.log(app);
             for (const page of app.pages) {
                 const frontmatter = page.frontmatter;
+
+                if (!frontmatter.head) {
+                    frontmatter.head = [];
+                }
+                // add og:image to frontmatter
+                const ogImageValue = { name: 'og:image', content: defaultOgImageUrl };
+                if (ogImage) {
+                    frontmatter.head.push(
+                        ['meta', ogImageValue]
+                    );
+                }
+
                 let description = frontmatter.description;
                 if (!description) {
                     // take a slice from the content
@@ -93,6 +117,8 @@ export const modifyHtmlMeta = (args, ctx) => {
                     // console.log("INSERT META", description);
                     frontmatter.head.push(['meta', { name: 'og:description', content: description }]);
                 }
+
+                await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.dataFilePath);
             }
 
             // await page.contentRendered
@@ -103,3 +129,106 @@ export const modifyHtmlMeta = (args, ctx) => {
         },
     }
 };
+
+/**
+ * @param {{content: string}} ogImage
+ * @param {String} title
+ * @param {string} description
+ */
+async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
+
+    const toolPath = process.cwd() + "/node_modules/@needle-tools/helper";
+    if (!existsSync(toolPath)) {
+        console.error("Could not find @needle-tools/helper");
+        return;
+    }
+
+    const originalTitle = title;
+
+    if (title.includes("/")) {
+        const elements = title.split("/");
+        title = "";
+        // get last element with length > 0 (because it may just end with a /);
+        for (let i = elements.length - 1; i >= 0; i--) {
+            if (elements[i].length > 0) {
+                // this happens if we have a path like "community-contributions/marwie"
+                // we then want a title like: Community Contributions: marwie
+                if (title.length > 0) {
+                    title = elements[i] + ": " + title;
+                    break;
+                }
+                else
+                    title = elements[i];
+            }
+        }
+    }
+    // remove file ending
+    if (title.includes(".")) {
+        const elements = title.split(".");
+        title = elements[0];
+    }
+
+    // make all lowecase because the code below will make it nice
+    title = title.toLowerCase();
+
+    // make nice display title
+    const sections = title.split(/[ -]/);
+    const dontUppercase = ["a", "of", "by", "or", "in", "on", "the", "and", "to", "for", "at"];
+    const alwaysUppercase = ["html", "vr", "css", "ar", "faq", "vr", "i"];
+    const customCasing = {
+        "gltf": "glTF",
+    }
+    title = sections.map(section => {
+
+        section = section.trim();
+        const sectionLC = section.toLocaleLowerCase();
+        if (dontUppercase.includes(sectionLC)) return section;
+        if (alwaysUppercase.includes(sectionLC)) return section.toUpperCase();
+        if (customCasing[sectionLC]) return customCasing[sectionLC];
+        if (section.length <= 2) {
+            return section.toUpperCase();
+        }
+        if (section.startsWith("(") && section.endsWith(")"))
+            return "";
+        return section.charAt(0).toUpperCase() + section.slice(1)
+    }).join(" ");
+
+
+    // remove non ascii characters (e.g. emojis)
+    title = title.replace(/[^\x00-\x7F]/g, "");
+
+    title = title.trim();
+
+    if (title.length <= 0) {
+        title = "Needle Engine";
+        console.warn("?? No title for og image", originalTitle, "at", pageFilePath, "using", title);
+    }
+
+
+    description = description.replace(/"/g, '\'');
+    description = description.replace(/\n/g, ' ');
+    description = description.replace("---", '');
+    if (description.length > 100) description = description.substring(0, 300) + "...";
+    description = description.trim();
+    if (description.length <= 0) {
+        console.warn("?? No description for og image", originalTitle, "at", pageFilePath);
+        return;
+    }
+
+    try {
+        const urlBase = "https://engine.needle.tools/docs";
+        const targetPathRel = ".preview/" + title.toLowerCase() + ".png";
+        const targetPath = process.cwd() + "/documentation/.vuepress/public/" + targetPathRel;
+        const fullUrl = urlBase + "/" + targetPathRel;
+        const gradientFilePath = process.cwd() + "/assets/gradient.png";
+        const cmd = "npm run tool:generate-unfurl-image -- --title \"" + title + "\" --description \"" + description.trim() + "\" --backgroundImage \"" + gradientFilePath + "\" --targetPath \"" + targetPath + "\"";
+        console.log("RUN", cmd, "\nat", toolPath);
+        execSync(cmd, { cwd: toolPath, stdio: 'inherit' });
+        ogImage.content = fullUrl;
+        console.log("Generated og image: " + fullUrl);
+        return fullUrl;
+    }
+    catch (e) {
+        console.error("Could not generate og image", e, cmd);
+    }
+}
