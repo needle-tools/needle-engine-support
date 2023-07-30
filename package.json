@@ -18,7 +18,7 @@
     "vuepress": "2.0.0-beta.60"
   },
   "devDependencies": {
-    "@needle-tools/helper": "^0.11.0-alpha",
+    "@needle-tools/helper": "^0.11.0",
     "@vuepress/plugin-docsearch": "2.0.0-beta.60",
     "@vuepress/plugin-external-link-icon": "2.0.0-beta.60",
     "@vuepress/plugin-google-analytics": "2.0.0-beta.60",

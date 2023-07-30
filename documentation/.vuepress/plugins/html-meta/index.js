@@ -208,7 +208,7 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
     description = description.replace(/"/g, '\'');
     description = description.replace(/\n/g, ' ');
     description = description.replace("---", '');
-    const maxLength = 300;
+    const maxLength = 600;
     if (description.length > maxLength) description = description.substring(0, maxLength) + "...";
     description = description.trim();
     if (description.length <= 0) {
