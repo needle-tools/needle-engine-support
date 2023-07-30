@@ -208,7 +208,8 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
     description = description.replace(/"/g, '\'');
     description = description.replace(/\n/g, ' ');
     description = description.replace("---", '');
-    if (description.length > 100) description = description.substring(0, 300) + "...";
+    const maxLength = 300;
+    if (description.length > maxLength) description = description.substring(0, maxLength) + "...";
     description = description.trim();
     if (description.length <= 0) {
         console.warn("?? No description for og image", originalTitle, "at", pageFilePath);
@@ -221,7 +222,7 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
         const targetPath = process.cwd() + "/documentation/.vuepress/public/" + targetPathRel;
         const fullUrl = urlBase + "/" + targetPathRel;
         const gradientFilePath = process.cwd() + "/assets/gradient.png";
-        const cmd = "npm run tool:generate-unfurl-image -- --title \"" + title + "\" --description \"" + description.trim() + "\" --backgroundImage \"" + gradientFilePath + "\" --targetPath \"" + targetPath + "\"";
+        const cmd = "npm run tool:generate-unfurl-image -- --title \"" + title + "\" --description \"" + description + "\" --backgroundImage \"" + gradientFilePath + "\" --targetPath \"" + targetPath + "\"";
         console.log("RUN", cmd, "\nat", toolPath);
         execSync(cmd, { cwd: toolPath, stdio: 'inherit' });
         ogImage.content = fullUrl;
