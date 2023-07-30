@@ -208,8 +208,15 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
     description = description.replace(/"/g, '\'');
     description = description.replace(/\n/g, ' ');
     description = description.replace("---", '');
-    const maxLength = 600;
-    if (description.length > maxLength) description = description.substring(0, maxLength) + "...";
+    const maxLength = 400;
+    if (description.length > maxLength) {
+        description = description.substring(0, maxLength);
+        const lastEndOfSentence = description.lastIndexOf(".");
+        if (lastEndOfSentence > 0) {
+            description = description.substring(0, lastEndOfSentence);
+        }
+        else description += "...";
+    }
     description = description.trim();
     if (description.length <= 0) {
         console.warn("?? No description for og image", originalTitle, "at", pageFilePath);
