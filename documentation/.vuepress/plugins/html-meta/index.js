@@ -208,7 +208,7 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
     description = description.replace(/"/g, '\'');
     description = description.replace(/\n/g, ' ');
     description = description.replace("---", '');
-    const maxLength = 400;
+    const maxLength = 300;
     if (description.length > maxLength) {
         description = description.substring(0, maxLength);
         const lastEndOfSentence = description.lastIndexOf(".");
@@ -221,6 +221,10 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
     if (description.length <= 0) {
         console.warn("?? No description for og image", originalTitle, "at", pageFilePath);
         return;
+    }
+    if (description.length <= 10) {
+        console.warn("?? Description for og image is too short", originalTitle, "at", pageFilePath, description);
+        description = " ";
     }
 
     try {
