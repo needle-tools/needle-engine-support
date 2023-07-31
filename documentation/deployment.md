@@ -206,7 +206,7 @@ You can disable gzip compression in ``vite.config.js`` in your Needle web projec
 ### Deploy to FTP
 
 :::details How do I deploy to my FTP server from Unity?
-1) Add the ``DeloyToFTP`` component¹ on a GameObject in your scene (it is good practice to add it to the same GameObject as ExportInfo - but it is not mandatory) 
+1) Add the ``DeployToFTP`` component¹ on a GameObject in your scene (it is good practice to add it to the same GameObject as ExportInfo - but it is not mandatory) 
 2) Assign an FTP server asset and fill out server, username, and password if you have not already ²    
   *This asset contains the access information to your FTP server - you get them when you create a new FTP account at your hosting provider*
 3) Click the <kbd>Build & Deploy</kbd> button on the ``DeployToFTP`` component to build your project and uploading it to your FTP account  
