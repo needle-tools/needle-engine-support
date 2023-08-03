@@ -4,7 +4,7 @@ title: Editor Component Generator
 
 ### Automatically generating Editor components :tags codegen
 
-When working in Unity or Blender then you will notice that when you create a new Needle Engine component in Typescript or Javascript it will automatically generate a Unity C# sub component or a Blender panel for you.
+When working in Unity or Blender then you will notice that when you create a new Needle Engine component in Typescript or Javascript it will automatically generate a Unity C# stub component OR a Blender panel for you.
 
 This is thanks to the magic of the [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) that runs behind the scenes in an editor environment and watches changes to your script files. When it notices that you created a new Needle Engine component it will then generate the correct Unity component or Blender panel including public variables or properties that you can then set or link from within the Editor.
 
