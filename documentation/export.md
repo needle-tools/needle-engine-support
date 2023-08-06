@@ -5,7 +5,7 @@ title: Exporting Assets to glTF
 
 
 # Exporting Assets, Animations, Prefabs, Materials, Lightmaps...
-To mark any Unity scene as "exportable", add an ``ExportInfo`` component to a root object. This component helps you to generate your new web project from a template, set up dependencies to other component libraries (we call them NpmDef) and to deploy your project. 
+Add an ``ExportInfo`` component to your Unity scene to generate a new web project from a template, link to an existing web project that you want to export to, set up dependencies to other libraries and packages and to deploy your project. 
 
 By default, your scene is exported on save. This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.  
 
