@@ -117,8 +117,10 @@ export const modifyHtmlMeta = (args, ctx) => {
                     // console.log("INSERT META", description);
                     frontmatter.head.push(['meta', { name: 'og:description', content: description }]);
                 }
-
-                await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.dataFilePath);
+                
+                if (process.env.CI) {
+                    await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.dataFilePath);
+                }
             }
 
             // await page.contentRendered
@@ -135,7 +137,9 @@ export const modifyHtmlMeta = (args, ctx) => {
  * @param {String} title
  * @param {string} description
  */
+
 async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
+
 
     const toolPath = process.cwd() + "/node_modules/@needle-tools/helper";
     if (!existsSync(toolPath)) {
