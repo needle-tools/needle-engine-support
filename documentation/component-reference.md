@@ -36,8 +36,29 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 | `MeshRenderer` | Used to handle rendering of objects including lightmapping and instancing |
 | `SkinnedMeshRenderer` | *See MeshRenderer* |
 | `SpriteRenderer` | Used to render Sprites and Spriteanimations |
-| `Volume` with `PostProcessing` asset | Provides support for Bloom, DepthOfField, Vignette, ColorCorrection, Screenspace Ambient Occlusion (SSAO) |
+| `Volume` with `PostProcessing` asset | See [table below](#postprocessing) |
 
+### Postprocessing
+
+Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs.com/package/postprocessing) under the hood. This means you can also easily add your own custom effects and get an automatically optimized postprocessing pass.
+
+- **Unity only**: *Note that Postprocessing effect export in Unity is only supported with URP.*
+
+- **Unity only**: *extra Component* means that the effect component is an extra component that has to be added next to the Volume component. For example for Antialiasing add a `Volume` component and an `Antialiasing` component to the same GameObject. 
+
+| Effect Name | |
+| --- | --- | 
+| Antialiasing | *extra Unity Component* |
+| Bloom | *via Volume asset* |
+| Chromatic Aberration | *via Volume asset* |
+| Color Adjustments / Color Correction | *via Volume asset* | 
+| Depth Of Field | *via Volume asset* |
+| Pixelation | |
+| Screenspace Ambient Occlusion N8 | |
+| Screenspace Ambient Occlusion | |
+| Tilt Shift Effect | |
+| Vignette | *via Volume asset* |
+| *Your custom effect* | Create a new class that extends from Needle Engine's `PostProcessingEffect` class. Then call `registerCustomEffectType` with your effect name and class type. |
 
 ## Networking
 | Name  | Description |

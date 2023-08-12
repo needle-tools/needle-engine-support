@@ -82,6 +82,12 @@ See a [live sample](https://engine.needle.tools/samples/particles) of supported 
 
 <sample src="https://engine.needle.tools/samples/particles/" />
 
+## PostProcessing  
+
+Builtin effects include Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction. You can also create your own custom effects. See [the component reference](./component-reference.md#postprocessing) for a complete list.  
+
+<sample src="https://engine.needle.tools/samples/postprocessing/" />
+
 ## Editor Integrations
 Needle Engine comes with powerful integrations into the Unity Editor and Blender.   
 It allows you to setup and export complex scenes in a visual way providing easy and flexible collaboration between artists and developers. 
@@ -90,6 +96,7 @@ It allows you to setup and export complex scenes in a visual way providing easy 
 Needle Engine uses as [component based workflow](scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
 
 - Read more about [Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
+
 
 ## And there is more
 
