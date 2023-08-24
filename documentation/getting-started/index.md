@@ -46,6 +46,11 @@ If you just want to work with the Needle Engine runtime and don't want to use an
 To quickly test Needle Engine in the browser use [engine.needle.tools/new](https://engine.needle.tools/new)   
 *It creates a new project on StackBlitz*
 
+Alternatively you can add a prebundled version of Needle Engine to your website: 
+
+`https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js`  
+`https://unpkg.com/@needle-tools/engine/dist/needle-engine.light.min.js` *no physics module*
+
 
 <br/>
 <br/>
