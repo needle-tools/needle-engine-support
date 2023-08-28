@@ -225,6 +225,13 @@ If this doesn't fix the problem please ask [in our discord](https://discord.need
 ## My scene is not loading and the console contains a warning with 'circular references' or 'failed to update active state'
 Please see the [circular reference error](#circular-reference-error) section.
 
+## Does my machine support WebGL 2?
+
+Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if your device supports WebGL 2, it also hints at what could be the cause of your problem, but generally make sure you have updated your browser and driver. WebGL 1 is not supported.
+
+#### Known devices to cause issues:
+- Lenovo Thinkpad - T495  
+
 ## Still have questions? 😱
 [Ask in our friendly discord community](https://discord.needle.tools) 
 
