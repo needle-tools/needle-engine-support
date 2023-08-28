@@ -227,7 +227,7 @@ Please see the [circular reference error](#circular-reference-error) section.
 
 ## Does my machine support WebGL 2?
 
-Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if your device supports WebGL 2, it also hints at what could be the cause of your problem, but generally make sure you have updated your browser and driver. WebGL 1 is not supported.
+Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if your device supports WebGL 2, it also hints at what could be the cause of your problem, but generally make sure you have updated your browser and drivers. WebGL 1 is not supported.
 
 #### Known devices to cause issues:
 - Lenovo Thinkpad - T495  
