@@ -126,7 +126,16 @@ When deploying your app to Glitch, we include a simple networking backend that i
 - approx. 15-20 people maximum – afterwards the small default Glitch server instance becomes slow
 
 
-### Local Networking
+## Local Networking
 
 For testing and development purposes it can be desired to run the needle engine networking package on a local server. We have prepared a repository that is setup to host the websocket package and to make that easy for you. Please follow the instructions in the linked repository:
 - [Local Networking Repository](https://fwd.needle.tools/needle-engine/local-networking-repository)
+
+
+## peerjs
+
+Needle Engine `Screencapture` / Screensharing and `Voip` components use [peerjs](https://peerjs.com/) for networking audio and video. 
+
+### Customizing peerjs options
+
+- If you want to modify the default peerjs options you can call `setPeerOptions(opts: PeerjsOptions)` with your custom options. This can be used to modify the hosting provider in case where you host your own peerjs server.
