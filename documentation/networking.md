@@ -1,6 +1,6 @@
 # Networking
 
-Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. The built-in backend server requires users to be connected to a room.
+Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. The default backend server connects users to rooms. Users in the same room will share state and receive messages from each other.
 
 Networking is currently based on [websockets](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers](https://google.github.io/flatbuffers/) (for frequent updates). Continue reading below for more details:
 
