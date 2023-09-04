@@ -1,8 +1,8 @@
 # Networking
 
-Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. [The built-in backend server](https://glitch.com/edit/#!/needle-tiny-server) requires users to be connected to a room.
+Access to core networking functionality can be obtained by using ``this.context.connection`` from a component. The built-in backend server requires users to be connected to a room.
 
-Networking is currently based on [websockets](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers](https://google.github.io/flatbuffers/) (for frequent updates).
+Networking is currently based on [websockets](https://github.com/jjxxs/websocket-ts) and sending either json strings (for infrequent updates) or [flatbuffers](https://google.github.io/flatbuffers/) (for frequent updates). Continue reading below for more details:
 
 ## Using Multiplayer
 
