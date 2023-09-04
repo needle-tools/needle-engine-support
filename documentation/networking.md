@@ -135,6 +135,10 @@ For testing and development purposes it can be desired to run the needle engine 
 
 You can also deploy your own networking server on e.g. **google cloud**. For further instructions please refer to the description found here: [Local Networking Repository](https://fwd.needle.tools/needle-engine/local-networking-repository)
 
+If you want to use a different server for your local development and your hosted development (and the hosted server is not the same as your needle engine deployed website) then you can also enter a absolute URL in the `Networking` component `URL` field as well:    
+
+![Needle Engine Networking component with networking server hosted elswhere](/imgs/networking_absolute.webp)
+
 ## peerjs
 
 Needle Engine `Screencapture` / Screensharing and `Voip` components use [peerjs](https://peerjs.com/) for networking audio and video. 
