@@ -131,6 +131,9 @@ When deploying your app to Glitch, we include a simple networking backend that i
 For testing and development purposes it can be desired to run the needle engine networking package on a local server. We have prepared a repository that is setup to host the websocket package and to make that easy for you. Please follow the instructions in the linked repository:
 - [Local Networking Repository](https://fwd.needle.tools/needle-engine/local-networking-repository)
 
+## Hosting your own Networking Server
+
+You can also deploy your own networking server on e.g. **google cloud**. For further instructions please refer to the description found here: [Local Networking Repository](https://fwd.needle.tools/needle-engine/local-networking-repository)
 
 ## peerjs
 
