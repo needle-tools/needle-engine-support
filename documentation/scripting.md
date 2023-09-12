@@ -328,6 +328,7 @@ function loadingFinished() { console.log("FINISHED!") }
 
 You can also subscribe to the globale `NeedleEngine` (sometimes also referred to as *ContextRegistry*) to receive a callback when a Needle Engine context has been created or to access all available contexts:
 ```ts
+import { NeedleEngine } from "@needle-tools/engine";
 NeedleEngine.addContextCreatedCallback((args) => {
   const context = args.context;
   const scene = context.scene;
