@@ -257,6 +257,10 @@ Option 2: You can turn gzip compression off in the build settings at File/Build 
 Add the DeployToGithubPages component to your scene and copy-paste the github repository (or github pages url) that you want to deploy to.  
 ![Deploy To github pages component](/deployment/deploytogithubpages.jpg) 
 
+
+<video-embed src="https://www.youtube.com/watch?v=Vyk3cWB6u-c" />
+
+
 :::
 ---
 
