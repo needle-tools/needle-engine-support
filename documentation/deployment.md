@@ -156,7 +156,22 @@ You can deploy to glitch by adding the `DeployToGlitch` component to your scene 
   ![image](https://user-images.githubusercontent.com/5083203/179835779-ec128288-4db2-42f7-adc0-3c1de6799cef.png)
 8) Add the same password in Unity  
   ![image](https://user-images.githubusercontent.com/5083203/179835883-b524d23f-d887-4ac1-9a59-d5508b6b30c2.png)
+
 ::: 
+
+:::details How do I deploy to Glitch from Blender?
+
+![Deploy To Glitch from Blender component](/blender/deploy_to_glitch.webp) 
+
+1) Find the Deploy To Glitch panel in the Scene tab
+2) Click the ``Remix on glitch`` button on the component
+3) Your browser will open the glitch project template
+4) Wait for Glitch to generate a new project
+5) Copy paste the project URL in the Blender DeployToGlitch panel as the project name (you can paste the full URL, the panel will extract the necessary information)
+6) On Glitch open the ``.env`` file and enter a password in the field ``Variable Value`` next to the **DEPLOY_KEY**  
+7) Enter the same password in Blender in the `Key` field
+8) Click the `DeployToGlitch` button to build and upload your project to glitch. A browser will open when the upload has finished. Try to refresh the page if it shows black after having opened it.
+:::
 
 ### Deploy to Netlify  
 :::details How do I deploy to Netlify from Unity?
