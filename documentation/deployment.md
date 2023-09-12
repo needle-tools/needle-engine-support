@@ -76,12 +76,13 @@ but you can also select **WebP** compression and select a quality level.
 
 You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer in Unity or in the Material tab in Blender.
  
-:::details How can I set per-texture compression settings?
-## Unity
+:::details Unity: How can I set per-texture compression settings?
 ![image](/imgs/unity-texture-compression.jpg)  
 ![image](/imgs/unity-texture-compression-options.jpg)  
+:::
 
-## Blender
+:::details Blender: How can I set per-texture compression settings?
+Select the material tab. You will see compression options for all textures that are being used by that material.  
 ![Texture Compression options in Blender](/blender/texture-compression.webp)
 :::
 
