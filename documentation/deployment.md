@@ -74,11 +74,15 @@ but you can also select **WebP** compression and select a quality level.
 | **Typical usage** | Works for everything, but best for color textures | High-detail data textures: normal maps, roughness, metallic, etc. | Files where ETC1S quality is not sufficient but UASTC is too large |
 :::
 
-You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer options.
+You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer in Unity or in the Material tab in Blender.
  
 :::details How can I set per-texture compression settings?
+## Unity
 ![image](/imgs/unity-texture-compression.jpg)  
 ![image](/imgs/unity-texture-compression-options.jpg)  
+
+## Blender
+![Texture Compression options in Blender](/blender/texture-compression.webp)
 :::
 
 :::details Toktx can not be found  

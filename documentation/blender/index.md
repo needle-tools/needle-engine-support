@@ -172,17 +172,22 @@ You are using an early preview of these features - we recommend creating a backu
 
 Use the Needle Object panel to enable lightmapping for a mesh object or light: 
 
-![Ligthmapping object](/blender/lightmapping-object.webp)
+![Lightmapping object](/blender/lightmapping-object.webp)
 
 For quick access to lightmap settings and baking options you can use the scene view panel in the `Needle` tab:
 
-![Ligthmapping scene panel](/blender/lightmapping-scene-panel.webp)
+![Lightmapping scene panel](/blender/lightmapping-scene-panel.webp)
  
 Alternatively you can also use the Lightmapping panel in the `Render Properties` tab:   
 
-![Ligthmapping object](/blender/lightmapping-panel.webp)
+![Lightmapping object](/blender/lightmapping-panel.webp)
 
 
+## Texture Compression
+
+You can modify the compression that is being applied per texture. To override the default compression settings go to the `Material` tab and open the `Needle Material Settings`. There you will find a toggle to override the texture settings per texture used in your material.  
+
+![Texture Compression options in Blender](/blender/texture-compression.webp)
 
 ## Updating
 
