@@ -64,9 +64,10 @@ More extensions and custom extensions can be added using the export callbacks of
 
 ### Compression
 
-For production, we compress glTF assets with [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Textures use either `etc1s`, `uastc` or no compression, depending on texture type. Meshes use `draco`. Custom extensions are passed through in an opaque way.  
+For production, we compress glTF assets with [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Textures use either `etc1s`, `uastc`, `webp` or no compression, depending on texture type. Meshes use `draco` by default but can be configured to use `meshtopt` (per glTF file). Custom extensions are passed through in an opaque way.  
 
-> **Note**: We might switch to meshopt compression in the future, but there's a number of open issues in three.js related to raycasts and bounds for meshopt-compressed assets.  
+See the [deployment & compression](./deployment.md#optimization-and-compression-options) page for more information
+
 
 ## Vendor-specific glTF Extensions (NEEDLE_*)
 
