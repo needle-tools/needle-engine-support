@@ -1,5 +1,5 @@
 ---
-title: Intro to Needle Engine Scripting
+title: Scripting Introduction
 ---
 
 Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
@@ -378,6 +378,7 @@ export class TweenRotation extends Behaviour {
 ```
 Now we only have to add it to any of the objects in our scene to rotate them forever.   
 You can see the final script in action [here](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts).
+
 
 # Learning more
 

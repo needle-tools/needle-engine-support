@@ -1,5 +1,5 @@
 ---
-title: Writing Custom Components
+title: Needle Engine Scripting
 ---
 
 If you are new to scripting we recommend reading the following guides first:
@@ -326,7 +326,7 @@ function loadingFinished() { console.log("FINISHED!") }
 </script>
 ```  
 
-You can also subscribe to the globale `NeedleEngine` to receive a callback when a Needle Engine context has been created:
+You can also subscribe to the globale `NeedleEngine` (sometimes also referred to as *ContextRegistry*) to receive a callback when a Needle Engine context has been created or to access all available contexts:
 ```ts
 NeedleEngine.addContextCreatedCallback((args) => {
   const context = args.context;
@@ -334,6 +334,21 @@ NeedleEngine.addContextCreatedCallback((args) => {
   const myInstance = GameObject.getComponentInChildren(scene, YourComponentType);
 });
 ```
+
+You can also access all available contexts via `NeedleEngine.Registered` which returns the internal array. (Note that this array should not be modified but can be used to iterate all active contexts to modify settings, e.g. set all contexts to `context.isPaused = true`) 
+
+Below you find a list of available events on the static `NeedleEngine` type.   
+You can subscribe to those events via `NeedleEngine.registerCallback(ContextEvent.ContextCreated, (args) => {})`
+
+| ContextEvent options | |
+|---|---|
+| `ContextEvent.ContextRegistered` | Called when the context is registered to the registry. |
+| `ContextEvent.ContextCreationStart` | Called before the first glb is loaded and can be used to initialize the physics engine. Can return a promise |
+| `ContextEvent.ContextCreated` | Called when the context has been created before the first frame |
+| `ContextEvent.ContextDestroyed` | Called when the context has been destroyed |
+| `ContextEvent.MissingCamera` | Called when the context could not find a camera, currently only called during creation |
+| `ContextEvent.ContextClearing` | Called when the context is being cleared: all objects in the scene are being destroyed and internal state is reset |
+| `ContextEvent.ContextCleared` | Called after the context has been cleared |
  
 
 ## Serialization / Components in glTF files :tags serialization
@@ -355,9 +370,3 @@ These exported gltf files will be serialized as plain string URIs. To simplify l
 @[code](@code/component-prefab.ts)
 
 AssetReferences are cached by URI, so if you reference the same exported glTF/Prefab in multiple components/scripts it will only be loaded once and then re-used.  
-
-
-
-
-## For Unity Devs
-If you are a Unity dev and want to learn more about typescript and Needle Engine you can also learn more in [Needle Engine for Unity developers](./getting-started/for-unity-developers) 😊

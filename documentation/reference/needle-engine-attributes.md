@@ -26,3 +26,38 @@ The table below shows a list of the most important ones:
 | **Internal** | |
 | `hash` | Used internally, is appended to the files being loaded to force an update (e.g. when the browser has cached a glb file). Should not be edited manually. |
 
+
+# Examples
+
+```html
+<!-- Setting the path to a custom glb to be loaded -->
+<needle-engine src="path/to/your.glb"></needle-engine>
+```
+
+```html
+<!-- Overriding where the draco decoder is located -->
+<needle-engine src="path/to/your.glb" dracoDecoderPath="path/to/draco/folder"></needle-engine>
+```
+
+Setting environment images, playing animation and automatic camera controls. [See it live on stackblitz](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)
+```html
+<needle-engine
+      camera-controls
+      auto-rotate
+      autoplay
+      skybox-image="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/industrial_sunset_puresky_1k.hdr"
+      environment-image="https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/industrial_sunset_puresky_1k.hdr"
+      src="https://raw.githubusercontent.com/KhronosGroup/glTF-Sample-Models/master/2.0/DamagedHelmet/glTF-Embedded/DamagedHelmet.gltf"
+      >
+      </needle-engine>
+```
+
+Receiving an event when the needle-engine context has finished loading:
+```html
+<needle-engine loadfinished="onLoadFinished"> </needle-engine>
+<script>
+    function onLoadFinished() {
+        console.log("Needle Engine has finished loading");
+    }
+</script>
+```
