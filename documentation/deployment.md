@@ -64,7 +64,7 @@ If you plan on adding your own custom glTF extensions, building for production r
 Production builds will by default compress textures using **KTX2** (either ETC1S or UASTC depending on their usage in the project)   
 but you can also select **WebP** compression and select a quality level.  
 
-:::details How do I choose between ETC1S, UASTC and WebP compression?
+#### How do I choose between ETC1S, UASTC and WebP compression?
 
 | Format | ETC1S | UASTC | WebP |
 | --- | --- | --- | --- |
@@ -72,7 +72,7 @@ but you can also select **WebP** compression and select a quality level.
 | **File Size** | Low | High | Very low |
 | **Quality** | Medium | Very high | Depends on quality setting |
 | **Typical usage** | Works for everything, but best for color textures | High-detail data textures: normal maps, roughness, metallic, etc. | Files where ETC1S quality is not sufficient but UASTC is too large |
-:::
+
 
 You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer in Unity or in the Material tab in Blender.
  
@@ -108,13 +108,13 @@ With progressive loading textures will first be loaded using a lower resolution 
 By default, a production build will compress meshes using Draco compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
 Additionally you can setup mesh simplification to reduce the polycount for production builds in the mesh import settings (Unity). When viewing your application in the browser, you can append `?wireframe` to your URL to preview the meshes.       
   
-:::details How do I choose between Draco and Meshopt?
+#### How do I choose between Draco and Meshopt?
 | Format | Draco | Meshopt |
 | --- | --- | --- |
 | **GPU Memory Usage** | Medium | Low |
 | **File Size** | Lowest | Low |
 | **Animation compression** | No | Yes |
-:::
+
 
 :::details How can I set draco and meshopt compression settings?
 Add the MeshCompression component to select which compression should be applied per exported glTF.   
