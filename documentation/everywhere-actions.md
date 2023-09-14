@@ -57,9 +57,9 @@ Demonstrates combining animations, look at, and movement.
 
 Demonstrates how to attach 3D content onto a custom image marker. Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.     
 
-<img src="https://engine.needle.tools/samples/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />    
+<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />    
 
-<a href="https://engine.needle.tools/samples/image-tracking/assets/needle-marker.png" target="_blank">Download Sample Image Marker</a>  
+<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Download Sample Image Marker</a>  
 
 **On Android:** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.  
 
