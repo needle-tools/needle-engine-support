@@ -208,3 +208,8 @@ You can modify the compression that is being applied per texture. To override th
 The lightbulb in the Needle Project panel informs you when a new version of the addon is available.  
 Simply click the icon to download the new version.    
 ![Update notification](/blender/updates.webp)
+
+## Debugging / Reporting a problem
+
+If you run into any problems we're more than happy to help! Please join [our discord](https://discord.needle.tools) for fast support.   
+Please also check the logs in Blender - you can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.
