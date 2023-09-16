@@ -60,6 +60,20 @@ click the blue `Run Project` button to start the local server:
 7) Use the `Build: Development` or `Build: Production` buttons when you want to upload your web project to a server. This will bundle your web project and produce the files that you can upload. When clicking `Build: Production` it will also apply optimization to your textures (they will be compressed for the web)
 8) Open the documentation
 
+
+
+## Blender Settings
+
+### Color Management
+
+By default the blender viewport is set to `Filmic` - with this setting your colors in Blender and in three.js will not match.
+To fix this go to the Blender Render category and in the ColorManagement panel select `View Transform`: `Standard`
+
+![Correct color management settings](/blender/settings-color-management.webp)
+
+
+
+
 ## Animation 🏇
 
 For simple usecases you can use the Animation component for playback of one or multiple animationclips.  
