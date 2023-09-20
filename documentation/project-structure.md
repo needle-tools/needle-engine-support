@@ -55,8 +55,22 @@ Our exporter can be used with other project structures as well, vite is just our
 | ``Core/Runtime/Components`` | Contains all Needle Engine built-in runtime components (See `Packages/Needle Engine Exporter` in the Unity Project Window)
 
 
+## Projects in Unity
 
-### Typescript in Unity
+When creating a new web project in Unity you can choose to create it from a local template (by default we ship a vite based web template). It is also possible to create custom local templates using the Project View context menu in `Create/Needle Engine/Project Template`.
+
+![Unity ExportInfo local templates](/imgs/unity-project-local-template.jpg)
+
+You can also reference remote templates by entering a repository URL in the ExportInfo project path (this can be saved with your scene for example). When creating a new web project the repository will be either cloned or downloaded (depending on if you have git installed) and searched for a `needle.config.json` file. If none can be found in the cloned repository the root directory will be used. Examples of remote template projects can be found on [github.com/needle-engine](https://github.com/needle-engine)
+
+![Unity ExportInfo local templates](/imgs/unity-project-remote-template.jpg)
+
+### Temporary Projects
+
+If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control (the Library folder should be excluded from source control). We call these projects _temporary projects_. They're great for quickly testing out ideas!
+
+
+## Typescript in Unity
 
 **NPM Definition** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor.    
 
@@ -72,9 +86,6 @@ Don't forget to install the newly added package by e.g. clicking Install on the 
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser and it will open the vscode workspace that comes with each npmdef.
 
-#### Temporary Projects
-
-If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control (the Library folder should be excluded from source control). We call these projects _temporary projects_. They're great for quickly testing out ideas!
 
 
 #### Continue Reading
