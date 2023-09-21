@@ -23,6 +23,13 @@ The table below shows a list of the most important ones:
 | `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
 | `progress` | Name of the function to call when loading updates |
 | `loadfinished` | Name of the function to call when loading finishes | 
+| **Loading Display** | *Available options to change how the Needle Engine loading display looks. Use `?debugloadingrendering` for easier editing* |
+| `loading-style` | Options are `light` or `dark` |
+| `loading-background-color` | **PRO** — Change the loading background color (e.g. `=#dd5500`) |
+| `loading-text-color` | **PRO** — Change the loading text color |
+| `loading-logo-src` | **PRO** — Change the loading logo image |
+| `primary-color` | **PRO** — Change the primary loading color |
+| `secondary-color` | **PRO** — Change the secondary loading color |
 | **Internal** | |
 | `hash` | Used internally, is appended to the files being loaded to force an update (e.g. when the browser has cached a glb file). Should not be edited manually. |
 
@@ -61,3 +68,10 @@ Receiving an event when the needle-engine context has finished loading:
     }
 </script>
 ```
+
+### Custom Loading Style (PRO)
+
+You can easily modify how Needle Engine looks by setting the appropriate attributes on the `<needle-engine>` web component. Please see the table above for details.
+
+![custom loading](/imgs/custom-loading-style.webp)  
+[See code on github](https://github.com/needle-engine/vite-template/blob/loading-style/custom/index.html)
