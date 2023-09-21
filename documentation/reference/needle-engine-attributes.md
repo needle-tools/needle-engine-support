@@ -30,6 +30,7 @@ The table below shows a list of the most important ones:
 | `loading-logo-src` | **PRO** — Change the loading logo image |
 | `primary-color` | **PRO** — Change the primary loading color |
 | `secondary-color` | **PRO** — Change the secondary loading color |
+| `hide-loading-overlay` | **PRO** — Do not show the loading overlay, added in Needle Engine > 3.17.1
 | **Internal** | |
 | `hash` | Used internally, is appended to the files being loaded to force an update (e.g. when the browser has cached a glb file). Should not be edited manually. |
 
