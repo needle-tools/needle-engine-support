@@ -7,8 +7,9 @@ editLink: false
 
 # Needle Engine for Blender
 
-Thank you for using Needle Engine for Blender Alpha. With this addon you can create highly interactive and optimized webgl and webxr experiences inside Blender that run using Needle Engine and three.js.  
-You'll be able to sequence animations, lightmap your scenes, add interactive components or create your own interactive scripts written in Typescript or Javascript that run on the web.  
+Thank you for using Needle Engine for Blender Alpha.   
+With this addon you can create highly interactive and optimized WebGL and WebXR experiences inside Blender that run using Needle Engine and three.js.  
+You'll be able to sequence animations, easily lightmap your scenes, add interactivity or create your own scripts written in Typescript or Javascript that run on the web. You own your content! 
 
 
 <video-embed src="/docs/blender/environment-light.mp4" />
