@@ -210,9 +210,11 @@ Alternatively you can also use the Lightmapping panel in the `Render Properties`
 ![Lightmapping object](/blender/lightmapping-panel.webp)
 
 
-## Texture Compression
+## Texture Compression  
 
-You can modify the compression that is being applied per texture. To override the default compression settings go to the `Material` tab and open the `Needle Material Settings`. There you will find a toggle to override the texture settings per texture used in your material.  
+The Needle Engine Build Pipeline automatically compresses textures using ECT1S and UASTC (depending on their usage in materials) when making a production build (**requires [toktx](../getting-started/index.md#install-these-tools-for-production-builds) being installed**). But you can override or change the compression type per texture in the Material panel.
+
+You can modify the compression that is being applied per texture. To override the default compression settings go to the `Material` tab and open the `Needle Material Settings`. There you will find a toggle to override the texture settings per texture used in your material. See the [texture compression table](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression) for a brief overview over the differences between each compression algorithm.
 
 ![Texture Compression options in Blender](/blender/texture-compression.webp)
 
