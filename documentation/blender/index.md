@@ -12,6 +12,10 @@ You'll be able to sequence animations, lightmap your scenes, add interactive com
 
 
 <video-embed src="/blender/environment-light.mp4" />
+*Automatically export HDRI environment lights directly from blender. Save to reload your local server*
+
+<video-embed src="/blender/animatorcontroller-web.mp4" />
+*Create and export [animator statemachines](#animatorcontroller) for controlling complex character animations*
 
 [[toc]]
 
@@ -217,5 +221,10 @@ Simply click the icon to download the new version.
 
 ## Debugging / Reporting a problem
 
-If you run into any problems we're more than happy to help! Please join [our discord](https://discord.needle.tools) for fast support.   
-Please also check the logs in Blender - you can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.
+If you run into any problems we're more than happy to help! Please join [our discord](https://discord.needle.tools) for fast support.  
+
+Please also check the logs in Blender. You can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.    
+
+### Integrated Bugreporter
+![Needle Blender bugreporter panel](/blender/bugreporter.webp)  
+You can also automatically create and upload a bugreport directly from Blender (this currently requires a node.js web project being setup). Uploaded bugreports will solely used for debugging, they are encrypted on our backend and will deleted after 30 days.   
