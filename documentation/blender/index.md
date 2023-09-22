@@ -18,6 +18,8 @@ You'll be able to sequence animations, easily lightmap your scenes, add interact
 <video-embed src="/docs/blender/animatorcontroller-web.mp4" />
 *Create and export [animator statemachines](#animatorcontroller) for controlling complex character animations*
 
+
+# Content Overview
 [[toc]]
 
 ## Preface
