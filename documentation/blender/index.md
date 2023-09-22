@@ -11,10 +11,10 @@ Thank you for using Needle Engine for Blender Alpha. With this addon you can cre
 You'll be able to sequence animations, lightmap your scenes, add interactive components or create your own interactive scripts written in Typescript or Javascript that run on the web.  
 
 
-<video-embed src="/blender/environment-light.mp4" />
+<video-embed src="/docs/blender/environment-light.mp4" />
 *Automatically export HDRI environment lights directly from blender. Save to reload your local server*
 
-<video-embed src="/blender/animatorcontroller-web.mp4" />
+<video-embed src="/docs/blender/animatorcontroller-web.mp4" />
 *Create and export [animator statemachines](#animatorcontroller) for controlling complex character animations*
 
 [[toc]]
