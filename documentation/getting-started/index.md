@@ -17,7 +17,7 @@ Below each tool, you find quick links to download the latest version at the time
 | VS Code | any version<br/>[Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) <br/> [MacOS](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal) | For code editing (optional)  |
 | **Supported Editors** | |
 | Unity | 2020.3.16+ <br/>2021.3+ <br/>2022.2+<br/>[Get Unity Hub](https://unity.com/download) | For setting up your scenes, components, animations... |
-| Blender | 3.3<br/>3.4<br/>3.5<br/>[Get Blender](https://www.blender.org/download/) | For setting up your scenes, components, animations... |
+| Blender | 3.3<br/>3.4<br/>3.5<br/>3.6<br/>[Get Blender](https://www.blender.org/download/) | For setting up your scenes, components, animations... |
   
 
   
@@ -130,20 +130,30 @@ By default, the project name matches the name of your scene. If you want to chan
 
 <br/>
 <br/>
+<br/>
 
 
 
 ## Needle Engine with Blender
 
-### Step 1 • **Make sure node.js and Blender 3.3, 3.4 or 3.5 are installed**
+With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
+They can easily deployed to the web are get optimized automatically by the Needle Engine Build Pipeline* 
 
-### Step 2 • Download and Install our Addon for Blender
+_*Needs Node.js installed_
+
+### Step 1 • Install Blender 3.3, 3.4, 3.5 or 3.6
+
+### Step 2 • Install Node.js (optional but recommended)
+
+### Step 3 • Download and Install the addon
 <br/> 
 <needle-button href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
 
-The Blender addon is downloaded as a zip file. In Blender go to _File / Settings / Add-ons_ and click the `Install` button. Then select the downloaded zip to install it.
+The Blender addon is downloaded as a zip file.   
+In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
+Then select the downloaded zip to install it.
 
-### Step 3 • Read [Needle Engine for Blender Alpha](../blender/index.md) 
+- Read [Needle Engine for Blender](../blender/index.md) for a full feature list and instructions
 
 <br/>
 <br/>

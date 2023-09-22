@@ -3,7 +3,7 @@ title: Needle Engine for Blender
 editLink: false
 ---
 
-# Needle Engine for Blender – Alpha Version
+# Needle Engine for Blender (Alpha)
 
 Thanks for participating in our alpha phase. Please read the following docs for an overview over available features.
 
@@ -11,7 +11,7 @@ Thanks for participating in our alpha phase. Please read the following docs for 
 
 ## Preface
 
-With this Addon you'll be able to build and export interactive web experiences right inside Blender. You'll be able to sequence animations, lightmap your scenes, add interactive components or create your own interactive scripts written in Typescript or Javascript that run on the web.   
+With this addon you'll be able to build and export interactive web experiences right inside Blender. You'll be able to sequence animations, lightmap your scenes, add interactive components or create your own interactive scripts written in Typescript or Javascript that run on the web.   
 
 Needle Engine runs on three.js - so everything you can do in three.js you can also do in Needle Engine.
 
@@ -24,13 +24,19 @@ Thank you!
 
 ## Download and Installation 💿
 
-### Step 1 • **Make sure node.js and Blender 3.3, 3.4, 3.5 or 3.6 are installed**
+### Step 1 • Install Blender 3.3, 3.4, 3.5 or 3.6
 
-### Step 2 • Download and Install our Addon for Blender
+### Step 2 • Install Node.js (optional but recommended)
+
+### Step 3 • Download and Install the addon
 <br/> 
 <needle-button href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
 
-The Blender addon is downloaded as a zip file. In Blender go to _File / Settings / Add-ons_ and click the `Install` button. Then select the downloaded zip to install it.
+The Blender addon is downloaded as a zip file.   
+In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
+Then select the downloaded zip to install it.
+
+![Settings](/blender/settings.webp)
 
 ## Getting Started 🚩
 
