@@ -3,24 +3,19 @@ title: Needle Engine for Blender
 editLink: false
 ---
 
-# Needle Engine for Blender (Alpha)
+# Needle Engine for Blender
 
-Thanks for participating in our alpha phase. Please read the following docs for an overview over available features.
+Thank you for using Needle Engine for Blender Alpha. With this addon you can create highly interactive and optimized webgl and webxr experiences inside Blender that run using Needle Engine and three.js.  
+You'll be able to sequence animations, lightmap your scenes, add interactive components or create your own interactive scripts written in Typescript or Javascript that run on the web.  
 
 [[toc]]
 
 ## Preface
 
-With this addon you'll be able to build and export interactive web experiences right inside Blender. You'll be able to sequence animations, lightmap your scenes, add interactive components or create your own interactive scripts written in Typescript or Javascript that run on the web.   
+Please note: The current state of the exporter for Blender is in the alpha phase - which means that some features you may know from the Needle Engine Unity Integration may not yet be implemented. **Your feedback is invaluable** when it comes to deciding which of those features should be prioritizes.   
+If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-support/discussions) or in our [discord community](https://discord.needle.tools)!
 
-Needle Engine runs on three.js - so everything you can do in three.js you can also do in Needle Engine.
-
-Please note: The current state of the exporter for Blender is early which means many features you may know from Needle Engine Exporter for Unity are not yet implemented. **Your feedback is invaluable** when it comes to deciding which of those features should be prioritizes.   
-If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-support/discussions)!   
-If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-support/issues).  
-Join our [discord community](https://discord.needle.tools) for questions or additional feedback.
-
-Thank you!
+If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-support/issues) or ask on discord.
 
 ## Download and Installation 💿
 

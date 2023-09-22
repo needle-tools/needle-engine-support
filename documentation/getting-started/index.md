@@ -134,7 +134,9 @@ By default, the project name matches the name of your scene. If you want to chan
 
 
 
-## Needle Engine with Blender
+<img src="/blender/logo.png" style="max-height:70px;" />
+
+## Needle Engine with Blender 
 
 With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
 They can easily deployed to the web are get optimized automatically by the Needle Engine Build Pipeline* 
