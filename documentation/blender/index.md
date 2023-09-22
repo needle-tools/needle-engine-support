@@ -2,6 +2,8 @@
 title: Needle Engine for Blender
 editLink: false
 ---
+<br/>
+<img src="/blender/logo.png" style="max-height:70px;" />
 
 # Needle Engine for Blender
 
