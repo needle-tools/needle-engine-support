@@ -99,7 +99,7 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 | `SphereCollider` | *See BoxCollider* |
 | `CapsuleCollider` | *See BoxCollider* |
 | `MeshCollider` | *See BoxCollider* |
-| [`Physics Materials`](https://docs.unity3d.com/Manual/class-PhysicMaterial.html) | Physics materials can be used to define e.g. the bouncyness of a collider |
+| Physics Materials | Physics materials can be used to define e.g. the bouncyness of a collider |
 
 ## XR / WebXR  
 
