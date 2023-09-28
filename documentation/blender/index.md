@@ -132,23 +132,30 @@ Add a PlayableDirector component (via `Add Component`) to a any blender object. 
 ::: details Code example for interactive timeline playback
 Add this script to `src/scripts` (see custom components section) and add it to any object in Blender to make a timeline's time be controlled by scrolling in the browsers
 ```ts
-import { Behaviour, PlayableDirector, serializable } from "@needle-tools/engine";
-import { Mathf } from "@needle-tools/engine/engine/engine_math";
+import { Behaviour, PlayableDirector, serializable, Mathf } from "@needle-tools/engine";
 
 export class ScrollTimeline extends Behaviour {
 
     @serializable(PlayableDirector)
     timeline?: PlayableDirector;
 
+    @serializable()
+    sensitivity: number = .5;
+
+    @serializable()
+    clamp: boolean = false;
+
     private _targetTime: number = 0;
 
     awake() {
-        this.context.domElement.addEventListener("wheel", this.onWheel.bind(this));
+        this.context.domElement.addEventListener("wheel", this.onWheel);
+        if (this.timeline) this.timeline.pause();
     }
 
-    onWheel(e: WheelEvent) {
+    private onWheel = (e: WheelEvent) => {
         if (this.timeline) {
-            this._targetTime = this.timeline.time + e.deltaY * 0.01;
+            this._targetTime = this.timeline.time + e.deltaY * 0.01 * this.sensitivity;
+            if (this.clamp) this._targetTime = Mathf.clamp(this._targetTime, 0, this.timeline.duration);
         }
     }
 
@@ -156,10 +163,10 @@ export class ScrollTimeline extends Behaviour {
         if (!this.timeline) return;
         const time = Mathf.lerp(this.timeline.time, this._targetTime, this.context.time.deltaTime / .3);
         this.timeline.time = time;
+        this.timeline.pause();
         this.timeline.evaluate();
     }
 }
-
 ```
 :::
 
