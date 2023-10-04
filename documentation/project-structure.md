@@ -72,9 +72,9 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 
 ## Typescript in Unity
 
-**NPM Definition** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor.    
+**NPM Definition** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor which makes it easily possible to share scripts with multiple web- or even Unity projects.    
 
-That includes generating C# component stubs automatically. In the future, we're planning to support automatically copying assets to output/distribution folders as well. 
+C# component stubs for typescript files will also be automatically generated for scripts inside npmdef packages.
 
 #### Creating and installing a npmdef
 To create a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
