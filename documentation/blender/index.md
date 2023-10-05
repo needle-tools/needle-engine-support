@@ -86,6 +86,11 @@ To fix this go to the Blender Render category and in the ColorManagement panel s
 
 
 
+## Export
+
+To exclude an object from being exported you can disable the Viewport and the Render display (see image below)
+
+![Exclude from export](/blender/dont-export.webp)
 
 ## Animation 🏇
 
