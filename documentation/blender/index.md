@@ -180,6 +180,8 @@ export class ScrollTimeline extends Behaviour {
 You can add or remove components to objects in your hierarchy using the Needle Components panel:
 
 ![Component panel](/blender/components-panel.webp)  
+
+![Component panel](/blender/components-panel-select.webp)  
 *For example by adding an `OrbitControls` component to the camera object*  
 *you get basic camera controls for mobile and desktop devices*
 *Adjust settings for each component in their respective panels*
