@@ -12,7 +12,7 @@ export default {
             const os = navigator.userAgent;
             if (os.indexOf('Windows') !== -1) {
                 return this.windows_url;
-            } else if (os.indexOf('Macintosh') !== -1) {
+            } else if (os.indexOf('Mac') !== -1) {
                 if(this.osx_silicon_url && os.indexOf('Intel') === -1)
                     return this.osx_silicon_url;
                 return this.osx_url;
