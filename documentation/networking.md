@@ -56,6 +56,16 @@ Subscribe to flatbuffer binary events
 ``this.context.connection.beginListenBinrary(identifier:string, callback:(data : ByteBuffer) => void)``   
 Unsubscribe with ``stopListenBinary``
 
+#### Common Events
+
+| **Room Events** ||  
+| - | - |
+| `this.context.beginListen(RoomEvents.JoinedRoom, () => { })` | Listen to the event when *you* have joined a networked room |
+| `this.context.beginListen(RoomEvents.LeftRoom, () => { })` | Listen to the event when *you* have left a networked room |
+| `this.context.beginListen(RoomEvents.UserJoinedRoom, () => { })` | Listen to the event when *another user* has joined your networked room |
+| `this.context.beginListen(RoomEvents.UserLeftRoom, () => { })` | Listen to the event when *another user* has left your networked room |
+
+
 ## Auto Networking (experimental)
 
 To automatically network fields in a component you can just decorate a field with a ``@syncField()`` decorator (note: you need to have ``experimentalDecorators: true`` in your ``tsconfig.json`` file for it to work)
