@@ -3,53 +3,53 @@ lang: en-US
 title: Getting Started & Installation
 next: ../project-structure.md
 ---
-After following the steps below you will have a fully functional project ready for the web. 
-
 
 ## Prerequisites
-Below each tool, you find quick links to download the latest version at the time of writing.  
+Below you find a list of tools that you need or that we recommend for using Needle Engine. We recommend installing those first.
 
-### Install these tools for development
 
-| Tool |  |  |
+<br/><os-link windows_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi" osx_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg">Download Nodejs ⭐</os-link>   
+Node.js is necessary to preview your website on your computer.   
+It is also used for uploading your website when you are finished and you want to share your results.
+
+<br/>
+
+---
+### The following tools are optional - *but recommended*
+
+<br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
+When you plan to edit code then we *recommend* that you download and install VSCode as your code editor
+
+
+<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download Toktx 🗜</os-link>   
+We use Toktx for texture compression (KTX2). You can read more about that [here](./deployment.md#production-builds) in our docs
+<br/>
+
+
+
+<br/>
+<br/>
+After having installed the tools listed above you might have to restart your machine once!
+<br/>
+<br/>
+
+<!-- | Tool |  |  |
 | -- | -- | -- | 
-| Node.js (required) | 16.x or 18.x <br>[Windows](https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi) <br/> [MacOS](https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg)   | For running a local development server
-| VS Code | any version<br/>[Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) <br/> [MacOS](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal) | For code editing (optional)  |
+| Node.js **(required)** | 16.x or 18.x <br>[Windows](https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi) <br/> [MacOS](https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg)   | For running a local development server
+| VS Code *(recommended)* | any version<br/>[Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) <br/> [MacOS](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal) | For code editing (optional)  |
 | **Supported Editors** | |
 | Unity | 2020.3.16+ <br/>2021.3.9+ <br/>2022.3.0+<br/>[Get Unity Hub](https://unity.com/download) | For setting up your scenes, components, animations... |
 | Blender | 3.3<br/>3.4<br/>3.5<br/>3.6<br/>[Get Blender](https://www.blender.org/download/) | For setting up your scenes, components, animations... |
-  
+   -->
 
   
-### Install these tools for production builds  
+<!-- ### For optimized builds 
 
 | Tool | | |
 | -- | -- | -- |
 | | | |
-| **toktx** | 4.1<br/>[Windows](https://fwd.needle.tools/needle-engine/toktx/win) <br/> [MacOS](https://fwd.needle.tools/needle-engine/toktx/osx) <br/> [Mac OS Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) <br/> [Other Releases](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)  | For texture compression (recommended) <br/>You can read more about that [here](./deployment.md#production-builds) in our docs
+| **toktx** | 4.1<br/>[Windows](https://fwd.needle.tools/needle-engine/toktx/win) <br/> [MacOS](https://fwd.needle.tools/needle-engine/toktx/osx) <br/> [Mac OS Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) <br/> [Other Releases](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)  | For texture compression (recommended) <br/>You can read more about that [here](./deployment.md#production-builds) in our docs -->
 
-
-After installing the tools above, you might have to restart your machine  
-so that all environment variables are properly updated.  
-
-
-<br/>
-<br/>
-
-## Needle Engine without Editor
-
-If you just want to work with the Needle Engine runtime and don't want to use any Editor integration just yet then go ahead and install it from npm by running:   
-<br/>
-`npm i @needle-tools/engine`  
-
-
-To quickly test Needle Engine in the browser use [engine.needle.tools/new](https://engine.needle.tools/new)   
-*It creates a new project on StackBlitz*
-
-Alternatively you can add a prebundled version of Needle Engine to your website: 
-
-`https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js`  
-`https://unpkg.com/@needle-tools/engine/dist/needle-engine.light.min.js` *no physics module*
 
 
 <br/>
@@ -159,8 +159,28 @@ Then select the downloaded zip to install it.
 
 <br/>
 <br/>
-<br/>
 
+
+
+## Needle Engine with Code
+
+If you just want to work with the Needle Engine runtime and don't want to use any Editor integration just yet then go ahead and install it from npm by running:   
+<br/>
+`npm i @needle-tools/engine`  
+
+
+To quickly test Needle Engine in the browser use [engine.needle.tools/new](https://engine.needle.tools/new)   
+*It creates a new project on StackBlitz*
+
+Alternatively you can add a prebundled version of Needle Engine to your website: 
+
+`https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js`  
+`https://unpkg.com/@needle-tools/engine/dist/needle-engine.light.min.js` *no physics module*
+
+
+<br/>
+<br/>
+<br/>
 
 ## Questions?
   
