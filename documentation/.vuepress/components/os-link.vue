@@ -2,6 +2,7 @@
 export default {
     props: {
         text: String,
+        generic_url: String,
         windows_url: String,
         osx_url: String,
         osx_silicon_url: String,
@@ -11,18 +12,21 @@ export default {
         getUrl: function () {
             const os = navigator.userAgent;
             if (os.indexOf('Windows') !== -1) {
-                return this.windows_url;
+                if (this.windows_url)
+                    return this.windows_url;
             } else if (os.indexOf('Mac') !== -1) {
-                if(this.osx_silicon_url && os.indexOf('Intel') === -1)
+                if (this.osx_silicon_url && os.indexOf('Intel') === -1)
                     return this.osx_silicon_url;
-                return this.osx_url;
+                if (this.osx_url)
+                    return this.osx_url;
             } else if (os.indexOf('Linux') !== -1) {
                 if (this.linux_url)
                     return this.linux_url;
-                return this.osx_url;
-            } else {
-                return this.windows_url;
+                if (this.osx_url)
+                    return this.osx_url;
             }
+
+            return this.generic_url ?? this.windows_url;
         }
     }
 }

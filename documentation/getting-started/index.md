@@ -5,10 +5,11 @@ next: ../project-structure.md
 ---
 
 ## Prerequisites
-Below you find a list of tools that you need or that we recommend for using Needle Engine. We recommend installing those first.
-
+Before getting started we recommend you install Nodejs (if you don't have it already)   
 
 <ClientOnly>
+
+<!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
 
 <br/><os-link windows_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi" osx_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg">Download Nodejs ⭐</os-link>   
 Node.js is used to preview and build the website that you are creating on your computer.   
@@ -32,7 +33,10 @@ When you plan to edit or write code (js or HTML) then we *recommend* that you us
 
 <br/>
 <br/>
-After having installed the tools listed above you might have to restart your machine once!
+After having installed the tools listed above you might have to restart your machine once!  
+
+Then continue below at [Needle Engine for Unity](#needle-engine-with-unity) or [Needle Engine for Blender](#needle-engine-with-blender)
+
 <br/>
 <br/>
 
