@@ -60,37 +60,26 @@ After having installed the tools listed above you might have to restart your mac
 
 ## Needle Engine with Unity 
 
+<br/>
+
+<needle-button large href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button> 
+<!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
+  
+- Drop the downloaded .unitypackage file into a Unity project (or double click to open) and confirm that you want to import it.
+- Wait for the installation and import to finish.  
+- Click _Assets > Refresh_ once or focus another app and then focus Unity again  
+- A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window and continue with the next step below.  
+
+- **Create a new scene from a template**  
+Select _File > New Scene_ and choose from one of the Needle templates.  
+We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
+
 
 :::details Video: Starting from a fresh Unity project  
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />  
 
 <video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 :::
-
-### Step 1 • **Make sure node.js and Unity are installed**
-
-### Step 2 • **Create a new Unity project**  
-
-Open Unity Hub and create a new project. 2021.3 recommended!  
-Make sure to switch it to Linear color space in *Project Settings / Player*.
-  
-### Step 3 • **Install the Unity Integration** 
-<br/>
-
-<needle-button href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button> [Alternative](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)   
-
-Our installer is a .unitypackage that will set everything up for you.  
-  
-Drop the downloaded .unitypackage file into a Unity project (or double click to open) and confirm that you want to import it.  
-This will set up our Needle Engine Unity integration - wait for the installation and import to finish.  
-
-If the Installation has finished you seems not installed yet click _Assets > Refresh_ once or focus another app and then focus Unity again.  
-
-A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window and continue with the next step below.  
-
-### Step 4 •  **Create a new scene from a template**  
-Select _File > New Scene_ and choose from one of the Needle templates.  
-We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
 
 ---
 
@@ -141,24 +130,18 @@ By default, the project name matches the name of your scene. If you want to chan
 
 ## Needle Engine with Blender 
 
-With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
-They can easily deployed to the web are get optimized automatically by the Needle Engine Build Pipeline* 
+<br/>
+<needle-button large href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
 
-_*Needs Node.js installed_
-
-### Step 1 • Install Blender 3.3, 3.4, 3.5 or 3.6
-
-### Step 2 • Install Node.js (optional but recommended)
-
-### Step 3 • Download and Install the addon
+*With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
+They can easily deployed to the web are get optimized automatically by the Needle Engine Build Pipeline (needs Node.js installed)*
 <br/> 
-<needle-button href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
 
-The Blender addon is downloaded as a zip file.   
-In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
-Then select the downloaded zip to install it.
+- The Blender addon is downloaded as a zip file.
+- In Blender go to `File / Settings / Add-ons` and click the `Install` button.
+- Then select the downloaded zip to install it.
 
-- Read [Needle Engine for Blender](../blender/index.md) for a full feature list and instructions
+**Continue reading [Needle Engine for Blender](../blender/index.md)** for a full feature list and instructions
 
 <br/>
 <br/>

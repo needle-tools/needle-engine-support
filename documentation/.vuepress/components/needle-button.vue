@@ -6,6 +6,7 @@ export default {
         href: String,
         secondary: Boolean,
         same_tab: Boolean,
+        large: Boolean,
     }
 }
 
@@ -23,6 +24,7 @@ button {
     cursor: pointer;
     margin-left:-0.3em;
     color: white;
+    font-size: v-bind('large ? "1em" : ".8em"');
 }
 
 button:hover {
