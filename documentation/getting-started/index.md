@@ -74,9 +74,14 @@ Then continue below at [Needle Engine for Unity](#needle-engine-with-unity) or [
 - Click _Assets > Refresh_ once or focus another app and then focus Unity again  
 - A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window and continue with the next step below.  
 
-- **Create a new scene from a template**  
-Select _File > New Scene_ and choose from one of the Needle templates.  
-We recommend the [Collab Sandbox](https://needle-tiny-starter.glitch.me/) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
+- Continue....
+  - **Option 1: Explore Samples**  
+  Select _Needle Engine > Explore Samples_ to view, open and modify all available [sample scenes](https://engine.needle.tools/samples).  
+
+
+  - **Option 2: Create a new scene from a template**  
+  Select _File > New Scene_ and choose from one of the Needle templates.  
+  We recommend the [Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
 
 
 :::details Video: Starting from a fresh Unity project  
