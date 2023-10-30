@@ -14,6 +14,7 @@ Below you find a list of tools that you need or that we recommend for using Need
 Node.js is used to preview and build the website that you are creating on your computer.   
 It is also used for uploading (deploy) your website when you are finished and when you want to share it.
 <br/>
+<br/>
 
 ---
 ### The following tools are optional - *but recommended*
