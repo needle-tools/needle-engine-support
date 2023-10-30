@@ -9,20 +9,22 @@ Below you find a list of tools that you need or that we recommend for using Need
 
 
 <ClientOnly>
-<br/><os-link windows_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi" osx_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg">Download Nodejs ⭐</os-link>   
-Node.js is necessary to preview your website on your computer.   
-It is also used for uploading your website when you are finished and you want to share your results.
 
+<br/><os-link windows_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi" osx_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg">Download Nodejs ⭐</os-link>   
+Node.js is used to preview and build the website that you are creating on your computer.   
+It is also used for uploading (deploy) your website when you are finished and when you want to share it.
 <br/>
 
 ---
 ### The following tools are optional - *but recommended*
-<br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
-When you plan to edit code then we *recommend* that you download and install VSCode as your code editor
-
 
 <br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download Toktx 🗜</os-link>   
-We use Toktx for texture compression (KTX2). You can read more about that [here](./deployment.md#production-builds) in our docs
+We use Toktx in production builds (optimized builds) for texture compression (KTX2). You can read more about production builds [here](./deployment.md#production-builds) in our docs
+
+<br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
+When you plan to edit or write code (js or HTML) then we *recommend* that you use VSCode as your code editor.
+
+
 <br/>
 </ClientOnly>
 
