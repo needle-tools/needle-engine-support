@@ -62,6 +62,8 @@ Then continue below at [Needle Engine for Unity](#needle-engine-with-unity) or [
 <br/>
 <br/>
 
+<img src="/imgs/unity-logo.webp" style="max-height:70px;" />
+
 ## Needle Engine with Unity 
 
 <br/>
