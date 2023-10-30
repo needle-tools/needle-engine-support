@@ -8,6 +8,7 @@ next: ../project-structure.md
 Below you find a list of tools that you need or that we recommend for using Needle Engine. We recommend installing those first.
 
 
+<ClientOnly>
 <br/><os-link windows_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi" osx_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg">Download Nodejs ⭐</os-link>   
 Node.js is necessary to preview your website on your computer.   
 It is also used for uploading your website when you are finished and you want to share your results.
@@ -16,7 +17,6 @@ It is also used for uploading your website when you are finished and you want to
 
 ---
 ### The following tools are optional - *but recommended*
-
 <br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
 When you plan to edit code then we *recommend* that you download and install VSCode as your code editor
 
@@ -24,7 +24,7 @@ When you plan to edit code then we *recommend* that you download and install VSC
 <br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download Toktx 🗜</os-link>   
 We use Toktx for texture compression (KTX2). You can read more about that [here](./deployment.md#production-builds) in our docs
 <br/>
-
+</ClientOnly>
 
 
 <br/>
