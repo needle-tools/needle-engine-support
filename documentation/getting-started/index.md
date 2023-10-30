@@ -156,12 +156,15 @@ They can easily deployed to the web are get optimized automatically by the Needl
 
 <br/>
 <br/>
+<br/>
 
 
 
-## Needle Engine with Code
+<img src="/imgs/threejs-logo.webp" style="max-height:70px;" />
 
-If you just want to work with the Needle Engine runtime and don't want to use any Editor integration just yet then go ahead and install it from npm by running:   
+## Needle Engine without Editor
+
+Needle Engine is built ontop of three.js. If you just want to work with the Needle Engine runtime and don't want to use any Editor integration just yet then go ahead and install it from npm by running:   
 <br/>
 `npm i @needle-tools/engine`  
 
