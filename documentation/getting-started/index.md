@@ -11,7 +11,7 @@ Before getting started we recommend you install Nodejs (if you don't have it alr
 
 <!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
 
-<br/><os-link windows_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi" osx_url="https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg">Download Nodejs ⭐</os-link>   
+<br/><os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Download Nodejs ⭐</os-link>   
 Node.js is used to preview and build the website that you are creating on your computer.   
 It is also used for uploading (deploy) your website when you are finished and when you want to share it.
 <br/>
