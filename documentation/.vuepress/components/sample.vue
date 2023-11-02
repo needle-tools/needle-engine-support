@@ -4,19 +4,93 @@
 // export default {}
 export default {
   props: {
-    src: String
+    src: String,
+    split: Boolean = false,
+    noRoom: Boolean = false
+  },
+  data() {
+    return {
+      sanitizedUrl: "",
+    }
+  },
+  watch: {
+    src: {
+      immediate: true,
+      handler(newSrc) {
+        const url = new URL(newSrc);
+        const id = Math.random().toString(36).substring(2, 6);
+
+        // generate random room
+        url.searchParams.delete("room");
+        if (!this.noRoom) {
+          url.searchParams.append("room", `needle_docs_${id}`);
+        }
+
+        url.searchParams.append("hideClose", "");
+        this.sanitizedUrl = url.toString();
+      }
+    }
+  },
+  mounted() {
+    // patch touch-action inside the iframes
+    const patch = (frame) => {
+      if (!frame || !frame.contentWindow)
+        return;
+
+      const needleFrame = frame.contentWindow.document.getElementsByTagName("iframe")[0];
+
+      if (needleFrame) {
+        const needleDoc = needleFrame.contentWindow.document;
+        const needleElement = needleDoc.querySelector("needle-engine");
+        if (needleElement) {
+          needleElement.style.touchAction = "pan-y";
+        }
+      }
+    };
+
+    patch(this.$refs.frame1);
+    patch(this.$refs.frame2);
   }
 }
 </script>
 
+<template>
+  <div>
+    <iframe :src="sanitizedUrl" ref="frame1"
+      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
+    <iframe v-if="split" :src="sanitizedUrl" ref="frame2"
+      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
+  </div>
+</template>
+
 <style scoped>
+div {
+  margin-top: 0.3em;
+  display: flex;
+  flex-direction: column;
+}
+
 iframe {
   width: 100%;
   height: 100%;
   border: 0;
   aspect-ratio: 16/9;
+}
+
+iframe:only-of-type {
   border-radius: 1em;
-  margin: .75em 0;
+}
+
+iframe:first-of-type {
+  border-top-left-radius: 1em;
+  border-top-right-radius: 1em;
+  margin-bottom: 0.1em;
+}
+
+iframe:last-of-type {
+  border-bottom-left-radius: 1em;
+  border-bottom-right-radius: 1em;
+  margin-top: 0.1em;
 }
 
 @media (max-aspect-ratio: 1/1) {
@@ -31,7 +105,3 @@ iframe {
   }
 }
 </style>
-
-<template>
-  <iframe :src="src" allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
-</template>
