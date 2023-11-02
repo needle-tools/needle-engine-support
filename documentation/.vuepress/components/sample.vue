@@ -5,8 +5,14 @@
 export default {
   props: {
     src: String,
-    split: Boolean = false,
-    noRoom: Boolean = false
+    split: {
+      type: Boolean,
+      default: false
+    },
+    noRoom: {
+      type: Boolean,
+      default: false
+    }
   },
   data() {
     return {
@@ -58,7 +64,7 @@ export default {
   <div>
     <iframe :src="sanitizedUrl" ref="frame1"
       allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
-    <iframe v-if="split" :src="sanitizedUrl" ref="frame2"
+    <iframe v-if="split === true" :src="sanitizedUrl" ref="frame2"
       allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
   </div>
 </template>
