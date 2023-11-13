@@ -31,6 +31,12 @@ Here are some of the most commonly used:
 - ``gizmos`` enables gizmo rendering (e.g. when using BoxCollider or AxesHelper components)
 - and a lot more: please use ``help`` to see them all
 
+
+## Debug Methods
+
+Needle Engine also has some very powerful and useful debugging methods that are part of the static `Gizmos` class. See the [scripting documentation](./scripting.md#gizmos) for more information.
+
+
 ## Local Testing of release builds
 - First, install http-server: `npm install -g http-server`
 - make a build (development or production)

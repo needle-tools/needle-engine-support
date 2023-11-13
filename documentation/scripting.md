@@ -352,6 +352,24 @@ You can subscribe to those events via `NeedleEngine.registerCallback(ContextEven
 | `ContextEvent.ContextCleared` | Called after the context has been cleared |
  
 
+## Gizmos
+
+The static `Gizmos` class can be used to draw lines, shapes and text which is mostly useful for debugging.  
+All gizmos function have multiple options for e.g. colors or for how long they should be displayed in the scene. Internally they are cached and re-used. 
+
+| Gizmos | |
+| -- | -- |
+| `Gizmos.DrawLabel` | Draws a label with a background optionally. It can be attached to an object. Returns a Label handle which can be used to update the text. |
+| `Gizmos.DrawRay` | Takes an origin and direction in worldspace to draw an infinite ray line |
+| `Gizmos.DrawDirection` | Takes a origin and direction to draw a direction in worldspace |
+| `Gizmos.DrawLine` | Takes two vec3 worldspace points to draw a line |
+| `Gizmos.DrawWireSphere` | Draws a wireframe sphere in worldspace |
+| `Gizmos.DrawSphere` | Draws a solid sphere in worldspace |
+| `Gizmos.DrawWireBox` | Draws a wireframe box in worldspace |
+| `Gizmos.DrawWireBox3` | Draws a wireframe box3 |
+| `Gizmos.DrawArrow` | Draws an arrow taking two points in worldspace |
+
+
 ## Serialization / Components in glTF files :tags serialization
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
 
