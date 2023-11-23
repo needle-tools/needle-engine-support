@@ -21,7 +21,7 @@ The table below shows a list of the most important ones:
 | `auto-rotate` | add to enable auto-rotate (only used with `camera-controls`) |
 | **Events** | |
 | `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
-| `progress` | Name of the function to call when loading updates |
+| `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }`   |
 | `loadfinished` | Name of the function to call when loading finishes | 
 | **Loading Display** | *Available options to change how the Needle Engine loading display looks. Use `?debugloadingrendering` for easier editing* |
 | `loading-style` | Options are `light` or `dark` |
