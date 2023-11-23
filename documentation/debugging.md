@@ -26,8 +26,8 @@ Here are some of the most commonly used:
 - ``help`` print all available url parameter in the console
 - ``console`` opens an on-screen dev console, useful for mobile debugging
 - ``printGltf`` logs loaded gltf files to the console
-- ``debugavatar=<avatarid>`` instantiates one debug avatar in center of world
-- ``showcolliders`` shows physics colliders
+- ``stats`` shows FPS module and logs threejs renderer stats every few seconds
+- ``showcolliders`` visualizes physics colliders
 - ``gizmos`` enables gizmo rendering (e.g. when using BoxCollider or AxesHelper components)
 - and a lot more: please use ``help`` to see them all
 
