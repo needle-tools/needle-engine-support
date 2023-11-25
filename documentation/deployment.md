@@ -141,24 +141,23 @@ Select a Mesh and open the Needle importer options to see available options for 
 
 [Glitch](https://glitch.com/) provides a fast and free way for everyone to host small and large websites. We're providing an easy way to remix and deploy to a new Glitch page (based on our starter), and also to run a minimalistic networking server on the same Glitch page if needed.  
 
-You can deploy to glitch by adding the `DeployToGlitch` component to your scene and following the instructions.
+You can deploy to glitch by adding the `DeployToGlitch` component to your scene and following the instructions.  
+
+Note that free projects hosted on glitch may not exceed ~100 MB. If you need to upload a larger project consider using a different deployment target.
 
 :::details How do I deploy to Glitch from Unity?
 
 1) Add the ``DeployToGlitch`` component to the GameObject that also has the ``ExportInfo`` component.
 
-3) Click the ``Remix on glitch`` button on the component
-4) Your browser will open the glitch project template
-5) Find and click the ``Remix another`` button on the glitch website  
-   ![image](https://user-images.githubusercontent.com/5083203/179834548-acf68b02-95d8-43e5-802a-4e4086e39309.png)
-5) Glitch will now create a remix of the template. Copy the URL from your browser   
+2) Click the ``Create new Glitch Remix`` button on the component
+   ![image](/deployment/deploytoglitch-1.jpg)
+3) Glitch will now create a remix of the template. Copy the URL from your browser   
    ![image](https://user-images.githubusercontent.com/5083203/179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1.png)
-6) Open Unity again and paste the URL in the ``Project Name`` field of your ``Deployment`` component  
+4) Open Unity again and paste the URL in the ``Project Name`` field of your ``Deployment`` component  
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
-7) On Glitch open the ``.env`` file and enter a password in the field ``Variable Value`` next to the **DEPLOY_KEY**  
-  ![image](https://user-images.githubusercontent.com/5083203/179835779-ec128288-4db2-42f7-adc0-3c1de6799cef.png)
-8) Add the same password in Unity  
-  ![image](https://user-images.githubusercontent.com/5083203/179835883-b524d23f-d887-4ac1-9a59-d5508b6b30c2.png)
+5) Wait a few seconds until Unity has received your deployment key from glitch (this key is safely stored in the `.env` file on glitch. Do not share it with others, everyone with this key will be able to upload to your glitch website)  
+  ![waiting for the key](deployment/deploytoglitch-2.jpg)
+6) Once the Deploy Key has been received you can click the `Build & Deploy` button to upload to glitch.
 
 ::: 
 
@@ -175,6 +174,10 @@ You can deploy to glitch by adding the `DeployToGlitch` component to your scene 
 7) Enter the same password in Blender in the `Key` field
 8) Click the `DeployToGlitch` button to build and upload your project to glitch. A browser will open when the upload has finished. Try to refresh the page if it shows black after having opened it.
 :::
+
+#### Troubleshooting Glitch
+
+If you click `Create new Glitch Remix` and the browser shows an error like `there was an error starting the editor` you can click **OK**. Then go to [glitch.com](https://glitch.com/) and make sure you are signed in. After that you then try clicking the button again in Unity or Blender.
 
 ### Deploy to Netlify  
 :::details How do I deploy to Netlify from Unity?
