@@ -153,7 +153,7 @@ Note that free projects hosted on glitch may not exceed ~100 MB. If you need to 
    ![image](/deployment/deploytoglitch-1.jpg)
 3) Glitch will now create a remix of the template. Copy the URL from your browser   
    ![image](https://user-images.githubusercontent.com/5083203/179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1.png)
-4) Open Unity again and paste the URL in the ``Project Name`` field of your ``Deployment`` component  
+4) Open Unity again and paste the URL in the ``Project Name`` field of your ``Deploy To Glitch`` component  
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) Wait a few seconds until Unity has received your deployment key from glitch (this key is safely stored in the `.env` file on glitch. Do not share it with others, everyone with this key will be able to upload to your glitch website)  
   ![waiting for the key](deployment/deploytoglitch-2.jpg)
