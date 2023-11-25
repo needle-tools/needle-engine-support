@@ -18,6 +18,8 @@ Deployment is the process of making your application available to the public on 
   Free static page hosting.
 - [Vercel](#deploy-to-github-pages)
   Platform for frontend developers
+- [Facebook Instant Games](#deploy-to-facebook-instant-games)
+  Games platform on Facebook and Facebook Messenger
 - [FTP Upload](#deploy-to-ftp)
   Deploy directly to any server with FTP support.
 - [Build to folder](#production-builds)
@@ -278,6 +280,43 @@ Add the DeployToGithubPages component to your scene and copy-paste the github re
 
 
 :::
+
+### Deploy to Facebook Instant Games
+
+With Needle Engine you can build to Facebook Instant Games automatically  
+No manual adjustments to your web app or game are required.  
+
+
+:::details How do I deploy to Facebook Instant Games from Unity?
+- Add the `Deploy To Facebook Instant Games` component to your scene:
+  ![Deploy to facebook instant games component](/deployment/deploytofacebookinstantgames.jpg) 
+- Click the `Build For Instant Games` button
+- After the build has finished you will get a ZIP file that you can upload to your facebook app.   
+- On Facebook add the `Instant Games` module and go to `Instant Games/Web hosting` 
+  ![Hosting a facebook instant games](/deployment/deploytofacebookinstantgames-hosting.jpg) 
+- You can upload your zip using the `Upload version` button (1). After the upload has finished and the zip has been processed click the `Stage for testing` button to test your app (2, here the blue button) or `Push to production` (the button with the star icon)
+  ![Upload the zip to facebook instant games](/deployment/deploytofacebookinstantgames-upload.jpg) 
+- That's it - you can then click the `Play` button next to each version to test your game on facebook.
+
+:::
+
+
+:::details How do I create a app on Facebook (with Instant Games capabilities)
+
+1) [Create a new app](https://developers.facebook.com/apps/creation/) and select `Other`. Then click `Next`
+  ![Create facebook instant games app](/deployment/facebookinstantgames-1.jpg) 
+
+2) Select type `Instant Games`
+  ![Create facebook instant games app](/deployment/facebookinstantgames-2.jpg) 
+
+3) After creating the app add the `Instant Games` product
+  ![Add instant games product](/deployment/facebookinstantgames-3.jpg) 
+
+Here you can find [the official instant games documentation](https://developers.facebook.com/docs/games/build/instant-games) on facebook.  
+**Note** that all you have to do is to create an app with instant games capabilities.  
+We will take care of everything else and no manual adjustments to your Needle Engine website are required.
+:::
+
 ---
 
 ## Cross-Platform Deployment Workflows
@@ -290,7 +329,7 @@ In `Project Settings > Needle Engine`, you can turn off `Override Play Mode` and
 
 
 
-## Commandline Arguments for Unity
+## Needle Engine Commandline Arguments for Unity
 
 Needle Engine for Unity supports various commandline arguments to export single assets (Prefabs or Scenes) or to build a whole web project in batch mode (windowsless).     
 
