@@ -145,7 +145,7 @@ By default, the project name matches the name of your scene. If you want to chan
 <needle-button large href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
 
 *With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
-They can easily deployed to the web are get optimized automatically by the Needle Engine Build Pipeline (needs Node.js installed)*
+They can easily deployed to the web and get optimized automatically by the Needle Engine Build Pipeline (needs Node.js installed)*
 <br/> 
 
 - The Blender addon is downloaded as a zip file.
