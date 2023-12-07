@@ -11,17 +11,32 @@ This is thanks to the magic of the [Needle component compiler](https://www.npmjs
 
 
 ### Controlling component generation :tags codegen
-You can use the following typescript attributes to control C# code generation behavior:  
+You can use the following comments in your typescript code to control C# code generation behavior:  
 | Attribute | Result |
 | -- | -- |
 | `// @generate-component` | Force generation of next class|
-| `// @dont-generate-component` | Disable generation of next class |
+| `// @dont-generate-component` | Disable generation of next class, this is useful in cases where you already have an existing C# script in your project |
 | `// @serializeField` | Decorate generated field with `[SerializeField]` |
 | `// @type UnityEngine.Camera` | Specify generated C# field type |
 | `// @nonSerialized` | Skip generating the next field or method |
 
-The attribute `@dont-generate-component` is especially useful if you have an existing Unity script you want to match. You'll have to ensure yourself that the serialized fields match in this case – only matching fields/properties will be exported. 
+#### Examples
 
+Force the component compiler to generate a C# AudioClip field named `myAudioClip`
+```ts
+export class MyComponent extends Behaviour {
+	//@type UnityEngine.AudioClip
+	@serializable()
+	myAudioClip?:string;
+}
+```
+
+Force the component compiler to derive from a specific subclass
+```ts
+//@type MyNamespace.MyCustomBaseClass
+export class MyComponent extends MyCustomBaseClass {
+}
+```
 
 
 ### Component Compiler in Unity
