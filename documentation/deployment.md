@@ -156,7 +156,7 @@ Note that free projects hosted on glitch may not exceed ~100 MB. If you need to 
 4) Open Unity again and paste the URL in the ``Project Name`` field of your ``Deploy To Glitch`` component  
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) Wait a few seconds until Unity has received your deployment key from glitch (this key is safely stored in the `.env` file on glitch. Do not share it with others, everyone with this key will be able to upload to your glitch website)  
-  ![waiting for the key](deployment/deploytoglitch-2.jpg)
+  ![waiting for the key](/deployment/deploytoglitch-2.jpg)
 6) Once the Deploy Key has been received you can click the `Build & Deploy` button to upload to glitch.
 
 ::: 
