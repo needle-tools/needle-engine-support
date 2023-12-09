@@ -114,6 +114,11 @@ Here is an example that wraps the [Outline postprocessing effect](https://pmndrs
 @[code](@code/custom-post-effect.ts) 
 
 
+## Custom ParticleSystem Behaviour
+
+
+@[code](@code/custom-particle-system-behaviour.ts) 
+
 
 <!-- SAMPLE receive click from HTML button
 ## Receiving html element click in component
