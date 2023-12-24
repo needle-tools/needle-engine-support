@@ -73,7 +73,6 @@ Then continue below at [Needle Engine for Unity](#needle-engine-with-unity) or [
   
 - Drop the downloaded .unitypackage file into a Unity project (or double click to open) and confirm that you want to import it.
 - Wait for the installation and import to finish.  
-- Click _Assets > Refresh_ once or focus another app and then focus Unity again  
 - A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window and continue with the next step below.  
 
 - Continue....
