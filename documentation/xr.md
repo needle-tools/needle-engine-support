@@ -167,7 +167,7 @@ Use the `.ar-session-active` class to show/hide specific content while in AR. Th
 
 It's worth noting that the overlay element [will be always displayed fullscreen while in XR](https://www.w3.org/TR/webxr-dom-overlays-1/#ua-style-sheet-defaults), independent of styling that has been applied. If you want to align items differently, you should make a container _inside_ the `class="ar"` element.  
 
-<sample src="https://engine.needle.tools/samples/ar-overlay/"/>
+<sample src="https://engine.needle.tools/samples/html-ar-overlay/"/>
 
 ## Image Tracking
 
