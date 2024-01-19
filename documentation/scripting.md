@@ -129,26 +129,6 @@ Note that lifecycle methods are only being called when they are declared. So onl
 | `onBeforeRender()` | Last update event before render call
 | `onAfterRender()` | Called after render event
 
-### Special Lifecycle hooks
-
-Needle Engine also exposes a few lifecycle hooks that you can use to hook into the update loop without having to write a full component.  
-Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component)  
-| Method name | Description |
-| -- | --
-| `onInitialized()` | Called when a new context is initialized (before the first frame)
-| `onStart()` | Called directly after components `start` at the beginning of a frame (once per context)
-| `onUpdate()` | Called directly after components `update`
-| `onBeforeRender()` | called before calling render
-
-For example:
-```ts
-// this can be put into e.g. main.ts or a svelte component (similar to onMount)
-import { onUpdate } from "@needle-tools/engine"
-onUpdate((context:Context) => {
-    // do something... e.g. access the scene via context.scene
-}
-```
-
 ### Physic event methods
 | Method name | Description |
 | -- | --
@@ -190,6 +170,31 @@ export class Rotate extends Behaviour {
 
 To stop a coroutine, either exit the routine by returning from it, or cache the return value of ``startCoroutine`` and call ``this.stopCoroutine(<...>)``. All Coroutines are stopped at ``onDisable`` / when disabling a component.
 
+
+
+
+## Special Lifecycle hooks
+
+Needle Engine also exposes a few lifecycle hooks that you can use to hook into the update loop without having to write a full component.  
+Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component)  
+| Method name | Description |
+| -- | --
+| `onInitialized()` | Called when a new context is initialized (before the first frame)
+| `onStart()` | Called directly after components `start` at the beginning of a frame (once per context)
+| `onUpdate()` | Called directly after components `update`
+| `onBeforeRender()` | called before calling render
+
+For example:
+```ts
+// this can be put into e.g. main.ts or a svelte component (similar to onMount)
+import { onUpdate } from "@needle-tools/engine"
+onUpdate((context:Context) => {
+    // do something... e.g. access the scene via context.scene
+}
+```
+
+
+
 ## Finding, adding and removing components
 
 To access other components, use the static methods on ``GameObject`` or ``this.gameObject`` methods. For example, to access a `Renderer` component in the parent use ``GameObject.getComponentInParent(this.gameObject, Renderer)`` or ``this.gameObject.getComponentInParent(Renderer)``.  
@@ -206,6 +211,9 @@ export class MyComponent extends Behaviour {
     }
 }
 ```
+
+
+
 
 ### Some of the available methods:
 
