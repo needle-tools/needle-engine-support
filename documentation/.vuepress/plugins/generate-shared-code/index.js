@@ -35,8 +35,10 @@ const sharedCode = [];
 async function getSharedCode() {
     sharedCode.length = 0;
     const contributions = await collectContributionData();
-    sharedCode.push(...contributions);
-    console.log("Shared code contributions:", sharedCode.length);
+    if (contributions) {
+        sharedCode.push(...contributions);
+        console.log("Shared code contributions:", sharedCode.length);
+    }
 };
 
 const generateContributionPages = async (app, config) => {
@@ -141,7 +143,8 @@ async function collectContributionData() {
     let GITHUB_ACCESS_TOKEN = process.env.GITHUB_ACCESS_TOKEN;
     if (!GITHUB_ACCESS_TOKEN) GITHUB_ACCESS_TOKEN = process.env.GITHUB_TOKEN;
     if (!GITHUB_ACCESS_TOKEN) {
-        throw new Error("GITHUB_ACCESS_TOKEN or GITHUB_TOKEN environment variable must be set");
+        console.error("GITHUB_ACCESS_TOKEN or GITHUB_TOKEN environment variable must be set");
+        return;
     }
 
     const repository = "needle-engine-support";
