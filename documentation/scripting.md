@@ -129,6 +129,25 @@ Note that lifecycle methods are only being called when they are declared. So onl
 | `onBeforeRender()` | Last update event before render call
 | `onAfterRender()` | Called after render event
 
+### Special Lifecycle hooks
+
+Needle Engine also exposes a few lifecycle hooks that you can use to hook into the update loop without having to write a full component.  
+Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component)  
+| Method name | Description |
+| -- | --
+| `onInitialized()` | Called when a new context is initialized (before the first frame)
+| `onStart()` | Called directly after components `start` at the beginning of a frame (once per context)
+| `onUpdate()` | Called directly after components `update`
+| `onBeforeRender()` | called before calling render
+
+For example:
+```ts
+// this can be put into e.g. main.ts or a svelte component (similar to onMount)
+import { onUpdate } from "@needle-tools/engine"
+onUpdate((context:Context) => {
+    // do something... e.g. access the scene via context.scene
+}
+```
 
 ### Physic event methods
 | Method name | Description |
