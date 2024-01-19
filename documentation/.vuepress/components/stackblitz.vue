@@ -41,30 +41,8 @@ async function getTemplateFiles(stackblitzFiles, baseGlb) {
 
 async function insertScript(stackblitzFiles, file) {
     let src = `// Generated via ${window.location.href} at ${new Date().toISOString()}
-import * as NEEDLE from '@needle-tools/engine';
+import { NeedleEngine, RemoteSkybox, GameObject, ObjectRaycaster } from '@needle-tools/engine';
 import * as THREE from 'three';
-
-NEEDLE.ContextRegistry.addContextCreatedCallback((args) => {
-  const context = args.context;
-  const scene = context.scene;
-
-  const grid = new THREE.GridHelper();
-  scene.add(grid);
-
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshStandardMaterial({ color: 0xdddddd });
-  const cube = new THREE.Mesh(geometry, material);
-  cube.name = "Cube";
-  cube.position.y += 0.5;
-  scene.add(cube);
-  onAttachExampleScript(cube);
-
-  const remoteSkybox = new NEEDLE.RemoteSkybox();
-  remoteSkybox.background = false;
-  remoteSkybox.url =
-    'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/cyclorama_hard_light_1k.hdr';
-  NEEDLE.GameObject.addComponent(grid, remoteSkybox);
-});
 `;
 
     const mainFile = resolvePath(file);
@@ -79,18 +57,32 @@ NEEDLE.ContextRegistry.addContextCreatedCallback((args) => {
     const componentNameMatch = scriptContent.match(/export class\s+?(?<component_name>.+?)\s+extends Behaviour/);
     const componentName = componentNameMatch?.groups?.component_name?.trim();
     console.log(componentName)
-    src += "\n\n" + scriptContent;
+    src += "\n// SAMPLE SCRIPT START\n" + scriptContent + "\n// SAMPLE SCRIPT END\n";
     src += `
-function onAttachExampleScript(obj : THREE.Object3D){
-  NEEDLE.GameObject.addComponent(obj, new ${componentName}());
-  `
 
-if(scriptContent.includes("IPointerClickHandler")){
-    src += `NEEDLE.GameObject.addNewComponent(obj, NEEDLE.ObjectRaycaster);`
-}
+NeedleEngine.addContextCreatedCallback((args) => {
+  const context = args.context;
+  const scene = context.scene;
 
-  src += `
-}`
+  const grid = new THREE.GridHelper();
+  scene.add(grid);
+
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshStandardMaterial({ color: 0xdddddd });
+  const cube = new THREE.Mesh(geometry, material);
+  cube.name = "Cube";
+  cube.position.y += 0.5;
+  scene.add(cube);
+  GameObject.addComponent(cube, new ${componentName}());
+  ${scriptContent.includes("IPointerClickHandler") ? "GameObject.addNewComponent(cube, ObjectRaycaster)" : ""}
+
+  const remoteSkybox = new RemoteSkybox();
+  remoteSkybox.background = false;
+  remoteSkybox.url =
+    'https://dl.polyhaven.org/file/ph-assets/HDRIs/hdr/1k/cyclorama_hard_light_1k.hdr';
+  GameObject.addComponent(grid, remoteSkybox);
+});
+`
 
     stackblitzFiles[scriptPath] = src;
     return scriptPath;
