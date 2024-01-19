@@ -363,6 +363,8 @@ NeedleEngine.addContextCreatedCallback((args) => {
 });
 ```
 
+Another option is using the `onInitialized(ctx => {})` [lifecycle hook](#special-lifecycle-hooks)
+
 You can also access all available contexts via `NeedleEngine.Registered` which returns the internal array. (Note that this array should not be modified but can be used to iterate all active contexts to modify settings, e.g. set all contexts to `context.isPaused = true`) 
 
 Below you find a list of available events on the static `NeedleEngine` type.   
