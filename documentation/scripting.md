@@ -158,7 +158,7 @@ Note that lifecycle methods are only being called when they are declared. So onl
 | `onBeforeXR(mode: XRSessionMode, init: XRSessionInit)` | Called right before a XRSession is requested and can be used to modify the XRSessionInit object
 | `onEnterXR(args: NeedleXREventArgs)` | Callback when this component joins a xr session (or becomes active in a running XR session)
 | `onUpdateXR(args: NeedleXREventArgs)` | Callback when a xr session updates (while it is still active in XR session)
-| `onLeaveXR(args: NeedleXREventArgs)` | 
+| `onLeaveXR(args: NeedleXREventArgs)` | allback when this component exists a xr session (or when it becomes inactive in a running XR session) 
 | `onControllerAdded(args: NeedleXRControllerEventArgs)` | Callback when a controller is connected/added while in a XR session    OR when the component joins a running XR session that has already connected controllers   OR when the component becomes active during a running XR session that has already connected controllers
 | `onControllerRemoved(args: NeedleXRControllerEventArgs)` | callback when a controller is removed while in a XR session   OR when the component becomes inactive during a running XR session
 
