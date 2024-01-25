@@ -139,6 +139,29 @@ Note that lifecycle methods are only being called when they are declared. So onl
 | `onTriggerStay(col : Collision)` | 
 | `onTriggerExit(col : Collision)` | 
 
+### Input event methods
+| Method name | Description |
+| -- | --
+| `onPointerEnter(args : PointerEventData)` | Called when a cursor starts to hover over an object (or any of it's children)
+| `onPointerMove(args : PointerEventData)` | Called when a cursor moves over an object (or any of it's children)
+| `onPointerExit(args : PointerEventData)` | Called when a cursor exists (stops hovering) an object
+| `onPointerDown(args : PointerEventData)` | Called when a cursor is pressed over an object 
+| `onPointerUp(args : PointerEventData)` | Called when a cursor is released over an object
+| `onPointerClick(args : PointerEventData)` | Called when a cursor is clicked over an object
+
+
+### XR event methods
+*requires Needle Engine >= 3.32.0*
+| Method name | Description |
+| -- | --
+| `supportsXR(mode: XRSessionMode)` | Optionally implement if you only want to receive XR callbacks for specific XR modes like `immersive-vr` or `immersive-ar`. Return `true` to notify the system that you want callbacks for the passed in mode
+| `onBeforeXR(mode: XRSessionMode, init: XRSessionInit)` | Called right before a XRSession is requested and can be used to modify the XRSessionInit object
+| `onEnterXR(args: NeedleXREventArgs)` | Callback when this component joins a xr session (or becomes active in a running XR session)
+| `onUpdateXR(args: NeedleXREventArgs)` | Callback when a xr session updates (while it is still active in XR session)
+| `onLeaveXR(args: NeedleXREventArgs)` | 
+| `onControllerAdded(args: NeedleXRControllerEventArgs)` | Callback when a controller is connected/added while in a XR session    OR when the component joins a running XR session that has already connected controllers   OR when the component becomes active during a running XR session that has already connected controllers
+| `onControllerRemoved(args: NeedleXRControllerEventArgs)` | callback when a controller is removed while in a XR session   OR when the component becomes inactive during a running XR session
+
 ### Coroutines
 
 Coroutines can be declared using the [JavaScript Generator Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator).  
