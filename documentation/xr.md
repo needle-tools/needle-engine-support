@@ -97,7 +97,10 @@ Currently, this is only supported on Oculus Quest 1 and 2 in the Oculus Browser.
 Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`  
 
 - **Click on objects to open links**  
-  The [samples repository](https://github.com/needle-tools/needle-engine-samples) contains a small script [`ClickToOpenWebsite`](https://github.com/needle-tools/needle-engine-samples/blob/main/package/Runtime/Needle%20Engine%20Samples~/ClickToOpenWebsite.ts) that makes it very easy to build connected worlds.  
+  Add the `OpenURL` component that makes it very easy to build connected worlds.  
+
+## Scripting  
+Read more about scripting for XR at the [scripting XR documentation](./scripting.md#xr-event-methods)
 
 ## Avatars
 
