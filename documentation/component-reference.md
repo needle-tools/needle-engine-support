@@ -32,7 +32,7 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 | `DeviceFlag` | Control on which device objects will be visible  |
 | `LODGroup` |  |
 | `ParticleSystem` | Experimental and currently not fully supported |
-| `VideoPlayer` | Playback videos from url or referenced video file (will be copied to output on export) |
+| `VideoPlayer` | Playback videos from url or referenced video file (will be copied to output on export). The VideoPlayer also supports streaming from MediaStream objects or `M3U8` livestream URLs |
 | `MeshRenderer` | Used to handle rendering of objects including lightmapping and instancing |
 | `SkinnedMeshRenderer` | *See MeshRenderer* |
 | `SpriteRenderer` | Used to render Sprites and Spriteanimations |
@@ -107,14 +107,16 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 
 | Name  | Description |
 | ------------- | ------------- |
-| `WebXR` | Add to scene for AR and VR avatars |
-| `WebXRSync` | Responsible for networking avatars |
+| `WebXR` | Add to scene for VR, AR and Passthrough support as well as rendering Avatar models |
 | [`USDZExporter`](./everywhere-actions.md) | Add to enable USD and Quicklook support
-| `SpectatorCamera` | Mirrors VR view to screen when e.g. connected via Oculus Link |
 | `XRFlag` | Control when objects are visible, e.g. only in VR or AR or only in ThirdPerson |
-| `WebARSessionRoot` | Put your AR content inside a WebARSessionRoot for placement and scale |
+| `WebARSessionRoot` | Handles placement and scale of your scene in AR mode |
+| `WebARCameraBackground` | Add to access the AR camera image and apply effects or use it for rendering |
 | `WebXRImageTracking` | Assign images to be tracked and optionally instantiate an object at the image position |
 | `WebXRPlaneTracking` | Create plane meshes or colliders for tracked planes |
+| `XRControllerModel` | Can be added to render device controllers or hand models (will be created by default when enabled in the WebXR component) |
+| `XRControllerMovement` | Can be added to provide default movement and teleport controls |
+| `XRControllerFollow` | Can be added to any object in the scene and configured to follow either left or right hands or controllers |
 
 
 ## Debugging  
