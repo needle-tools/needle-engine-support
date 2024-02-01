@@ -124,6 +124,13 @@ Here is an example that wraps the [Outline postprocessing effect](https://pmndrs
 @[code](@code/custom-particle-system-behaviour.ts) 
 
 
+## Custom 2D Audio Component
+
+This is an example how you could create your own audio component.   
+For most usecases however you can use the core AudioSource component and don't have to write code.
+
+@[code](@code/component-2d-audio.ts)
+
 <!-- SAMPLE receive click from HTML button
 ## Receiving html element click in component
 -->
