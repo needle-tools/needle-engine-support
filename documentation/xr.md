@@ -1,5 +1,5 @@
 ---
-title: Virtual and Augmented Reality
+title: VR & AR (WebXR)
 ---
 
 ## Supported Devices
