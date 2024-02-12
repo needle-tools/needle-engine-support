@@ -45,13 +45,13 @@ select it and then click `Add Component > Needle > Everywhere Actions > [Action]
 
 Demonstrates spatial audio, animation, and interactions.
 
-<sample src="https://engine.needle.tools/samples/musical-instrument" />
+<sample src="https://engine.needle.tools/samples-uploads/musical-instrument" />
 
 ### Simple Character Controllers
 
 Demonstrates combining animations, look at, and movement.  
 
-<sample src="https://engine.needle.tools/samples/usdz-characters" />
+<sample src="https://engine.needle.tools/samples-uploads/usdz-characters" />
 
 ### Image Tracking
 
@@ -63,11 +63,11 @@ Demonstrates how to attach 3D content onto a custom image marker. Start the scen
 
 **On Android:** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.  
 
-<sample src="https://engine.needle.tools/samples/image-tracking" />
+<sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
 
 ### Interactive Building Blocks Overview
 
-<sample src="https://engine.needle.tools/samples/usdz-interactivity" />
+<sample src="https://engine.needle.tools/samples-uploads/usdz-interactivity" />
 
 ## Create your own Everywhere Actions
 

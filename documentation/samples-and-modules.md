@@ -2,7 +2,7 @@
 title: Samples Projects
 ---
 
-<sample src="https://engine.needle.tools/samples/physics-cannon/" />
+<sample src="https://engine.needle.tools/samples-uploads/physics-cannon/" />
 
 ## Samples to download and play
 View all samples at [engine.needle.tools/samples](https://engine.needle.tools/samples) with a live preview and links for download and installation.

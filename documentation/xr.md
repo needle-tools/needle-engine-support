@@ -170,7 +170,7 @@ Use the `.ar-session-active` class to show/hide specific content while in AR. Th
 
 It's worth noting that the overlay element [will be always displayed fullscreen while in XR](https://www.w3.org/TR/webxr-dom-overlays-1/#ua-style-sheet-defaults), independent of styling that has been applied. If you want to align items differently, you should make a container _inside_ the `class="ar"` element.  
 
-<sample src="https://engine.needle.tools/samples/html-ar-overlay/"/>
+<sample src="https://engine.needle.tools/samples-uploads/ar-overlay/"/>
 
 ## Image Tracking
 
@@ -199,7 +199,7 @@ Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill
 
 Here's an example for a musical instrument that uses Everywhere Actions and thus works in browsers and in AR on iOS devices. 
 It uses spatial audio, animation, and tap interactions.  
-<sample src="https://engine.needle.tools/samples/musical-instrument" />
+<sample src="https://engine.needle.tools/samples-uploads/musical-instrument" />
 
 ### Everywhere Actions and other options for iOS AR
 

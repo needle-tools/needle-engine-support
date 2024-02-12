@@ -67,26 +67,26 @@ Use Rigidbodies, Mesh Colliders, Box Colliders and SphereColliders to add some j
 
 - Read more about [Physics Components](./component-reference.md#physics)
 
-<sample src="https://engine.needle.tools/samples/physics-animation/" />
+<sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
 
 ## UI
 Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons.  
 
 See the [ui component reference](component-reference.html#ui) for supported component.
 
-<sample src="https://engine.needle.tools/samples/screenspace-ui" />
+<sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
 
 ## Particles
 Export of Unity ParticleSystem (Shuriken) is in development. Features currently include world/local space simulation, box and sphere emitter shapes, emission over time as well as burst emission, velocity- and color over time, emission by velocity, texturesheet animation, basic trails.   
 See a [live sample](https://engine.needle.tools/samples/particles) of supported features below:
 
-<sample src="https://engine.needle.tools/samples/particles/" />
+<sample src="https://engine.needle.tools/samples-uploads/particles/" />
 
 ## PostProcessing  
 
 Builtin effects include Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction. You can also create your own custom effects. See [the component reference](./component-reference.md#postprocessing) for a complete list.  
 
-<sample src="https://engine.needle.tools/samples/postprocessing/" />
+<sample src="https://engine.needle.tools/samples-uploads/postprocessing/" />
 
 ## Editor Integrations
 Needle Engine comes with powerful integrations into the Unity Editor and Blender.   
