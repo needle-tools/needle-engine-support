@@ -78,7 +78,7 @@ Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleCo
 ## Accessing Needle Engine and Components from external javascript
     
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
-For accessing components from regular javascript outside of the engine please refer to the [interop with regular javascript section](./scripting.md#accessing-components-from-external-javascript)
+For accessing components from regular javascript outside of the engine please refer to the [interop with regular javascript section](./scripting.md#accessing-needle-engine-and-components-from-anywhere)
 
 
 ## Customizing how loading looks
