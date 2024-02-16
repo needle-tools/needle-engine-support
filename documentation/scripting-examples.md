@@ -131,6 +131,12 @@ For most usecases however you can use the core AudioSource component and don't h
 
 @[code](@code/component-2d-audio.ts)
 
+
+## Arbitrary external files
+
+Use the FileReference type to load external files (e.g. a json file)
+@[code](@code/component-filereference.ts)
+
 <!-- SAMPLE receive click from HTML button
 ## Receiving html element click in component
 -->
