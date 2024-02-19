@@ -75,6 +75,34 @@ Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleCo
 
 :::
 
+## Creating a PWA
+
+We support creating a Progressive Web App (PWA) from your vite based project. 
+
+1) Install the [Vite PWA plugin](https://vite-pwa-org.netlify.app/) in your web project: `npm install vite-plugin-pwa --save-dev`
+2) Modify `.vite.config.js` and pass the options both to the `needlePlugins` as well as the `VitePWA` method (see code below)
+
+```js
+import { VitePWA } from 'vite-plugin-pwa';
+
+export default defineConfig(async ({ command }) => {
+
+    // create the PWAOptions object. 
+    // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
+    /** @type {import("vite-plugin-pwa").VitePWAOptions} */
+    const PWAOptions = {};
+  
+    const { needlePlugins } = await import("@needle-tools/engine/plugins/vite/index.js");
+
+    return {
+        plugins: [
+            // pass the PWAOptions object to the needlePlugins and the VitePWA function
+            needlePlugins(command, needleConfig, { pwaOptions: PWAOptions }),
+            VitePWA(PWAOptions),
+        ],
+        // the rest of your vite config...
+```
+
 ## Accessing Needle Engine and Components from external javascript
     
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
