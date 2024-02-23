@@ -74,7 +74,7 @@ export default defineUserConfig({
         ['meta', { property: "og:image", content: _url + "/" + _previewImg }],
         ['meta', { property: "og:url", content: _url }],
         ['meta', { property: "twitter:card", content: "summary_large_image" }],
-        
+
         // stackblitz
         ['script', { src: 'https://unpkg.com/@stackblitz/sdk/bundles/sdk.umd.js' }],
 
@@ -290,6 +290,10 @@ export default defineUserConfig({
                     },
                     {
                         text: 'Support Community',
+                        link: 'https://forum.needle.tools'
+                    },
+                    {
+                        text: 'Discord Server',
                         link: 'https://discord.needle.tools'
                     },
                     {

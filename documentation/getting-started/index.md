@@ -232,4 +232,4 @@ Please also have a look at [our FAQ](../faq.md) if your question is not answered
 - [Scripting Reference](../scripting.md) 
 
 In case you need more troubleshooting help, please see the [Questions and Answers](../faq.md) section.  
-You can also join our [Discord Community](https://discord.needle.tools)
+You can also join our [Discord Community](https://discord.needle.tools) or [Forum](https://forum.needle.tools)

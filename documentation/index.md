@@ -43,8 +43,8 @@ footer: "Copyright © 2022 Needle Tools GmbH"
     <action href="https://engine.needle.tools/samples">
     Samples 🎏
     </action>
-    <action href="https://discord.needle.tools">
-    Community 💬
+    <action href="https://forum.needle.tools">
+    Forum 💬
     </action>
 </actiongroup>
 
