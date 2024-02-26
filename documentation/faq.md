@@ -13,7 +13,7 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 
 This is expected. We're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box, but that means some browsers complain that the SSL connection (between your local development server and the local website) can't be verified. It also prevents Automatic Reload from working on iOS and MacOS.  
 
-See [the Testing docs](/documentation/testing.md) for information on how to set up a self-signed certificate for a smoother development experience.
+See [the Testing docs](/docs/testing.md) for information on how to set up a self-signed certificate for a smoother development experience.
   
   
 ## My local website stays black
