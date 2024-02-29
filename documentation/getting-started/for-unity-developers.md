@@ -13,7 +13,7 @@ If you want to code-along you can [open engine.needle.tools/new](https://engine.
 ## The Basics
 Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 
-This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. If you are already using certain libraries then you will be able to also use them in a Needle Engine based environment. You are free to use as much or as little of our for your development as you like.
+This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. If you are already using certain libraries then you will be able to also use them in a Needle Engine based environment.
 
 Note: **Needle Engine's Exporter does _NOT_ compile your existing C# code to Web Assembly**.   
 While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
