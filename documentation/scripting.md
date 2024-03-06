@@ -162,6 +162,15 @@ Note that lifecycle methods are only being called when they are declared. So onl
 | `onControllerAdded(args: NeedleXRControllerEventArgs)` | Callback when a controller is connected/added while in a XR session    OR when the component joins a running XR session that has already connected controllers   OR when the component becomes active during a running XR session that has already connected controllers
 | `onControllerRemoved(args: NeedleXRControllerEventArgs)` | callback when a controller is removed while in a XR session   OR when the component becomes inactive during a running XR session
 
+#### Additional XR events
+
+| Method name | Description |
+| -- | --
+| `window.addEventListener("needle-xrsession-start")` | CustomEvent that is invoked when a XRSession starts. `details` contains the `NeedleXRSession`
+| `window.addEventListener("needle-xrsession-end")` | CustomEvent that is invoked when a XRSession starts. `details` contains the `NeedleXRSession`
+| `onXRSessionStart(args: { session:NeedleXRSession } )` | global event hook. To unsubscribe use `offXRSessionStart`
+
+
 ### Coroutines
 
 Coroutines can be declared using the [JavaScript Generator Syntax](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Generator).  
