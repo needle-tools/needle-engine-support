@@ -21,7 +21,7 @@ It is also used for uploading (deploy) your website when you are finished and wh
 ### The following tools are optional - *but recommended*
 
 <br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download Toktx 🗜</os-link>   
-We use Toktx in production builds (optimized builds) for texture compression (KTX2). You can read more about production builds [here](./deployment.md#production-builds) in our docs
+We use Toktx in production builds (optimized builds) for texture compression (KTX2). You can read more about production builds [here](../deployment.md#production-builds) in our docs
 
 <br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
 When you plan to edit or write code (js or HTML) then we *recommend* that you use VSCode as your code editor.
