@@ -1,0 +1,33 @@
+import{_ as i,M as a,p as l,q as p,N as e,V as t,R as n,t as s}from"./framework-c782e227.js";const u={},r=n("p",null,[s('Add this class to your project to always open with Chrome instead of your default browser (Firefox in my case) when you click "Play" or "Start Server". Note: This is an editor class and should either be put into an editor-only assembly or wrapped in '),n("code",null,"#if UNITY_EDITOR"),s(" and "),n("code",null,"#endif"),s(".")],-1),k=n("div",{class:"language-csharp line-numbers-mode","data-ext":"cs"},[n("pre",{class:"language-csharp"},[n("code",null,[n("span",{class:"token keyword"},"using"),s(),n("span",{class:"token namespace"},[s("System"),n("span",{class:"token punctuation"},"."),s("Diagnostics")]),n("span",{class:"token punctuation"},";"),s(`
+`),n("span",{class:"token keyword"},"using"),s(),n("span",{class:"token namespace"},"UnityEditor"),n("span",{class:"token punctuation"},";"),s(`
+`),n("span",{class:"token keyword"},"using"),s(),n("span",{class:"token namespace"},"UnityEngine"),n("span",{class:"token punctuation"},";"),s(`
+`),n("span",{class:"token keyword"},"using"),s(),n("span",{class:"token namespace"},[s("Needle"),n("span",{class:"token punctuation"},"."),s("Engine")]),n("span",{class:"token punctuation"},";"),s(`
+
+`),n("span",{class:"token punctuation"},"["),n("span",{class:"token attribute"},[n("span",{class:"token class-name"},"InitializeOnLoad")]),n("span",{class:"token punctuation"},"]"),s(`
+`),n("span",{class:"token keyword"},"public"),s(),n("span",{class:"token keyword"},"static"),s(),n("span",{class:"token keyword"},"class"),s(),n("span",{class:"token class-name"},"CustomBrowserOpen"),s(`
+`),n("span",{class:"token punctuation"},"{"),s(`
+    `),n("span",{class:"token keyword"},"static"),s(),n("span",{class:"token function"},"CustomBrowserOpen"),n("span",{class:"token punctuation"},"("),n("span",{class:"token punctuation"},")"),s(`
+    `),n("span",{class:"token punctuation"},"{"),s(`
+        `),n("span",{class:"token function"},"Init"),n("span",{class:"token punctuation"},"("),n("span",{class:"token punctuation"},")"),n("span",{class:"token punctuation"},";"),s(`
+    `),n("span",{class:"token punctuation"},"}"),s(`
+
+    `),n("span",{class:"token punctuation"},"["),n("span",{class:"token attribute"},[n("span",{class:"token class-name"},"RuntimeInitializeOnLoadMethod")]),n("span",{class:"token punctuation"},"]"),s(`
+    `),n("span",{class:"token keyword"},"static"),s(),n("span",{class:"token return-type class-name"},[n("span",{class:"token keyword"},"void")]),s(),n("span",{class:"token function"},"Init"),n("span",{class:"token punctuation"},"("),n("span",{class:"token punctuation"},")"),s(`
+    `),n("span",{class:"token punctuation"},"{"),s(`
+        ActionsBrowser`),n("span",{class:"token punctuation"},"."),s("BeforeOpen "),n("span",{class:"token operator"},"+="),s(" ActionsBrowser_BeforeOpen"),n("span",{class:"token punctuation"},";"),s(`
+    `),n("span",{class:"token punctuation"},"}"),s(`
+
+    `),n("span",{class:"token keyword"},"private"),s(),n("span",{class:"token keyword"},"static"),s(),n("span",{class:"token return-type class-name"},[n("span",{class:"token keyword"},"void")]),s(),n("span",{class:"token function"},"ActionsBrowser_BeforeOpen"),n("span",{class:"token punctuation"},"("),n("span",{class:"token class-name"},[s("ActionsBrowser"),n("span",{class:"token punctuation"},"."),s("OpenBrowserArguments")]),s(" args"),n("span",{class:"token punctuation"},")"),s(`
+    `),n("span",{class:"token punctuation"},"{"),s(`
+        args`),n("span",{class:"token punctuation"},"."),s("PreventDefault "),n("span",{class:"token operator"},"="),s(),n("span",{class:"token boolean"},"true"),n("span",{class:"token punctuation"},";"),s(`
+        `),n("span",{class:"token class-name"},[n("span",{class:"token keyword"},"string")]),s(" processArgs "),n("span",{class:"token operator"},"="),s(" args"),n("span",{class:"token punctuation"},"."),s("Url"),n("span",{class:"token punctuation"},";"),s(`
+        `),n("span",{class:"token class-name"},[n("span",{class:"token keyword"},"var")]),s(" psi "),n("span",{class:"token operator"},"="),s(),n("span",{class:"token keyword"},"new"),s(),n("span",{class:"token constructor-invocation class-name"},"ProcessStartInfo"),s(`
+        `),n("span",{class:"token punctuation"},"{"),s(`
+            FileName `),n("span",{class:"token operator"},"="),s(),n("span",{class:"token string"},'"chrome.exe"'),n("span",{class:"token punctuation"},","),s(`
+            Arguments `),n("span",{class:"token operator"},"="),s(` processArgs
+        `),n("span",{class:"token punctuation"},"}"),n("span",{class:"token punctuation"},";"),s(`
+        Process`),n("span",{class:"token punctuation"},"."),n("span",{class:"token function"},"Start"),n("span",{class:"token punctuation"},"("),s("psi"),n("span",{class:"token punctuation"},")"),n("span",{class:"token punctuation"},";"),s(`
+    `),n("span",{class:"token punctuation"},"}"),s(`
+`),n("span",{class:"token punctuation"},"}"),s(`
+
+`)])]),n("div",{class:"line-numbers","aria-hidden":"true"},[n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"}),n("div",{class:"line-number"})])],-1);function d(m,b){const o=a("contribution-preview"),c=a("contributions-author");return l(),p("div",null,[e(c,{overviewLink:"/docs/community/contributions",name:"krisrok",url:"https://github.com/krisrok",profileImage:"https://avatars.githubusercontent.com/u/3404365?s=100&u=7025bf7e83b4a3cd72dc2cae9cec729080ee8970&v=4",githubUrl:"https://github.com/krisrok"},{default:t(()=>[e(o,{title:"Always open in specific browser",pageUrl:"/docs/community/contributions/krisrok/always-open-in-specific-browser"},{default:t(()=>[r,k]),_:1})]),_:1})])}const w=i(u,[["render",d],["__file","index.html.vue"]]);export{w as default};

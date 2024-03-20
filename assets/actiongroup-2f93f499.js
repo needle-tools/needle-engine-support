@@ -1,0 +1,1 @@
+import{_ as o,p as t,q as s,s as n}from"./framework-c782e227.js";const _={},a={class:"actiongroup"};function c(e,r,p,i,u,l){return t(),s("div",a,[n(e.$slots,"default")])}const f=o(_,[["render",c],["__file","actiongroup.vue"]]);export{f as default};
