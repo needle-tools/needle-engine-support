@@ -27,3 +27,4 @@ documentation/.vuepress/public/meta
 documentation/community/contributions.json
 .DS_Store
 documentation/.vuepress/public/.preview
+documentation/api
