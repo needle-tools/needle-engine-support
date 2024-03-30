@@ -1,9 +1,12 @@
-name: deploy docs
+name: deploy api
 
 on:
     # schedule once a day at 8 pm
     schedule:
       - cron: '0 20 * * *'
+    # manual
+    workflow_dispatch:
+
 
 jobs: 
   api:
