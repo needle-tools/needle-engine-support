@@ -154,7 +154,11 @@ export default defineUserConfig({
                             {
                                 text: "Community Contributions",
                                 link: "/community/contributions"
-                            }
+                            },
+                            {
+                                text: "Needle Engine API",
+                                link: "https://engine.needle.tools/docs/api",
+                            },
                         ]
                     },
                     {
@@ -199,11 +203,15 @@ export default defineUserConfig({
                             "/reference/needle-config-json",
                             "/reference/typescript-decorators",
                             "/scripting-examples",
+                            {
+                                text: "Needle Engine API",
+                                link: "https://engine.needle.tools/docs/api",
+                            },
                             "/vanilla-js",
                             {
                                 text: "Community Contributions",
                                 link: "/community/contributions"
-                            }
+                            },
                         ]
                     },
                     {
@@ -223,55 +231,8 @@ export default defineUserConfig({
                 ]
             },
             {
-                text: 'Case studies',
-                children: [
-                    {
-                        text: 'Needle',
-                        children: [
-                            {
-                                text: 'Needle Website 🌐',
-                                link: '/showcase-website',
-                            },
-                            {
-                                text: 'Castle Builder 🏰',
-                                link: '/showcase-castle',
-                            },
-                            {
-                                text: 'Product Configurator 🚲',
-                                link: '/showcase-bike',
-                            },
-                            {
-                                text: 'Monster Hands 💀',
-                                link: '/showcase-monsterhands',
-                            },
-                            {
-                                text: 'Samples',
-                                link: 'https://engine.needle.tools/samples',
-                            },
-                        ],
-                    },
-                    {
-                        text: 'Other',
-                        children: [
-                            {
-                                text: 'Songs Of Cultures',
-                                link: 'https://app.songsofcultures.com',
-                            },
-                            {
-                                text: 'ZenRepublic Website',
-                                link: '/showcase-zenrepublic',
-                            },
-                            {
-                                text: 'Towerdefence Game',
-                                link: '/showcase-towerdefence',
-                            },
-                            {
-                                text: "Community Contributions",
-                                link: "/community/contributions"
-                            }
-                        ]
-                    },
-                ]
+                text: 'Samples',
+                link: 'https://engine.needle.tools/samples',
             },
             {
                 text: 'Pricing',
