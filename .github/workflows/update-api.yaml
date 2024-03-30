@@ -1,0 +1,39 @@
+name: deploy docs
+
+on:
+    # schedule once a day at 8 pm
+    schedule:
+      - cron: '0 20 * * *'
+
+jobs: 
+  api:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          # choose node.js version to use
+          node-version: '20'
+
+      # install dependencies if the cache did not hit
+      - name: Install dependencies
+        run: npm install
+
+      - name: Update needle engine api
+        run: npm run docs:build-api
+        env:
+            API_FTP_USER: ${{ secrets.API_FTP_USER }}
+            API_FTP_PASSWORD: ${{ secrets.API_FTP_PASSWORD }}
+            API_FTP_HOST: ${{ secrets.API_FTP_HOST }}
+
+  notify_discord:
+    needs: api
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
+          username: "Update Api 🤖"
+          content: "API has been updated → <https://engine.needle.tools/docs/api>"

@@ -32,9 +32,14 @@ async function main() {
     /** @type {string} */
     const versionFile = "v1";
 
+    /** @type {string[]} */
+    const uploaded = new Array();
+
+    const startTime = new Date().getTime();
+
     for (const version of Object.keys(content.versions)) {
 
-        if (!version.startsWith("3.3")) continue;
+        if (!version.startsWith("3")) continue;
 
         const versionInfo = content.versions[version];
 
@@ -68,8 +73,13 @@ async function main() {
 
         await upload(output, packageName + "/" + packageVersion);
         console.log("API documentation uploaded to " + packageName + "/" + packageVersion);
-        await delay(2000);
+        uploaded.push(packageName + "/" + packageVersion);
+        await delay(1000);
     }
+
+    console.log("Uploaded API documentations: " + uploaded.length + ":\n" + uploaded.map(u => "https://engine.needle.tools/docs/api/" + u).join("\n"));
+    // log duration in minutes
+    console.log("Finished in " + ((new Date().getTime() - startTime) / 1000 / 60).toFixed(2) + " minutes");
 
 }
 
