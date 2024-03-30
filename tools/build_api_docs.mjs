@@ -27,14 +27,19 @@ async function main() {
 
     const needleEngineApiBaseUrl = "https://engine.needle.tools/docs/api";
 
+    // this version file can be used to re-upload existing documentation
+    // to re-upload previously uploaded documentations just change the string:
+    /** @type {string} */
+    const versionFile = "v1";
+
     for (const version of Object.keys(content.versions)) {
 
-        if (!version.startsWith("3.35")) continue;
+        if (!version.startsWith("3.3")) continue;
 
         const versionInfo = content.versions[version];
 
-        const url = needleEngineApiBaseUrl + "/" + versionInfo.name + "/" + versionInfo.version + "/index.html";
-
+        const url = needleEngineApiBaseUrl + "/" + versionInfo.name + "/" + versionInfo.version + "/" + versionFile;
+        console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
         const response = await fetch(url, { method: "HEAD" });
         if (response.status === 200) {
             console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
@@ -57,6 +62,9 @@ async function main() {
 
         const output = await produceDocs(packageDir, outputDirectoryFull);
         console.log("API documentation generated at " + output);
+
+        // create version file
+        fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
 
         await upload(output, packageName + "/" + packageVersion);
         console.log("API documentation uploaded to " + packageName + "/" + packageVersion);
@@ -171,7 +179,7 @@ async function produceDocs(packageDir, outputDirectory) {
         // Project may not have converted correctly
         console.log("Generating documentation");
         await app.generateDocs(project, outputDirectory);
-        // await app.generateJson(project, outputDir + "/documentation.json");
+        await app.generateJson(project, outputDirectory + "/api.json");
         return outputDirectory;
     }
 
@@ -197,14 +205,14 @@ async function upload(directory, remotepath) {
         // upload everything except dot files
         include: ["*", "**/*"],
         // delete ALL existing files at destination before uploading, if true
-        deleteRemote: false,
+        deleteRemote: true,
         // Passive mode is forced (EPSV command is not sent)
         forcePasv: true,
         // use sftp or ftp
         sftp: false,
     };
     ftpDeploy.on("uploading", function (data) {
-        console.log("Uploading " + data.transferredFileCount + "/" + data.totalFilesCount + ": " + data.filename);
+        console.log("Uploading " + data.transferredFileCount + "/" + data.totalFilesCount + " to " + remotepath + ": " + data.filename);
     });
     return new Promise(res => {
         ftpDeploy
