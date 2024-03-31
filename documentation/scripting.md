@@ -7,6 +7,8 @@ If you are new to scripting we recommend reading the following guides first:
 - [Typescript Essentials](./getting-started/typescript-essentials.md)
 - [Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
 
+Sometimes it can also be helpful to dive into the [Needle Engine Api documentation](https://engine.needle.tools/docs/api).
+
 ---
 
 Runtime code for Needle Engine is written in [TypeScript](https://typescriptlang.org) (recommended) or [JavaScript](https://javascript.info/). We automatically generate C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
