@@ -173,7 +173,13 @@ async function produceDocs(packageDir, outputDirectory) {
         // plugin: "typedoc-neo-theme",
         // theme: "./node_modules/typedoc-neo-theme/bin/default",
 
-        plugin: ["typedoc-plugin-inline-sources", "typedoc-plugin-mdn-links", "typedoc-plugin-keywords", "typedoc-plugin-extras"],
+        plugin: [
+            "typedoc-plugin-inline-sources",
+            "typedoc-plugin-mdn-links",
+            "typedoc-plugin-keywords",
+            "typedoc-plugin-extras",
+            "./tools/api-plugins/index.js",
+        ],
         keywords: ["typescript", "library", "threejs", "webgl", "engine", "browser", "webxr", "api"],
         footerDate: true,
     });
