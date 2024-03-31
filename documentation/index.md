@@ -1,6 +1,6 @@
 ---
 # home: true
-next: getting-started.md
+next: ./getting-started/index.md
 sidebar: false
 editLink: false
 lastUpdated: false

@@ -4,21 +4,23 @@ title: Getting Started & Installation
 next: ../project-structure.md
 ---
 
-## Prerequisites
-Before getting started we recommend you install Nodejs (if you don't have it already)   
+## Required
 
 <ClientOnly>
 
 <!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
 
-<br/><os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Download Nodejs ⭐</os-link>   
-Node.js is used to preview and build the website that you are creating on your computer.   
-It is also used for uploading (deploy) your website when you are finished and when you want to share it.
+<br/>
+<os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Download Nodejs ⭐</os-link><br/> 
+Node.js is used to preview and build the website that you are creating on your computer.     
+It is also used for uploading (deploy) your website to the internet.    
+Just download and run the installer above!  
+<br/>
 <br/>
 <br/>
 
 ---
-### The following tools are optional - *but recommended*
+### Optional - *but recommended*
 
 <br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download Toktx 🗜</os-link>   
 We use Toktx in production builds (optimized builds) for texture compression (KTX2). You can read more about production builds [here](../deployment.md#production-builds) in our docs
@@ -26,16 +28,14 @@ We use Toktx in production builds (optimized builds) for texture compression (KT
 <br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
 When you plan to edit or write code (js or HTML) then we *recommend* that you use VSCode as your code editor.
 
-
 <br/>
 </ClientOnly>
 
 
-<br/>
-<br/>
-After having installed the tools listed above you might have to restart your machine once!  
-
-Then continue below at [Needle Engine for Unity](#needle-engine-with-unity) or [Needle Engine for Blender](#needle-engine-with-blender)
+Next continue at
+- [Needle Engine for Unity](#needle-engine-with-unity) 
+- [Needle Engine for Blender](#needle-engine-with-blender)
+- [Needle Engine without Editor](#needle-engine-without-editor)
 
 <br/>
 <br/>
