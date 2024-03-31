@@ -46,7 +46,7 @@ export default defineUserConfig({
             indexName: "engine-needle"
         }),
         //@ts-ignore
-        pwaPlugin({}),
+        // pwaPlugin(),
         // mermaidPlugin({}),
         registerComponentsPlugin({
             componentsDir: path.resolve(__dirname, './components'),
