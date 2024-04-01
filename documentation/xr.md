@@ -10,12 +10,14 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 | Meta Quest 1 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup> |
 | Meta Quest 2 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough (black and white) |
 | Meta Quest Pro | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough |
+| Meta Quest 3 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
 | Pico Neo 3 | ✔️ Pico Browser | no hand tracking, inverted controller thumbsticks |
 | Pico Neo 4 | ✔️ Pico Browser | passthrough, hand tracking<sup>2</sup> |
 | Oculus Rift 1/2 | ✔️ Chrome |  |
 | Hololens 2 | ✔️ Edge | hand tracking, support for AR and VR (in VR mode, background is rendered as well) |
 | Meta Quest 1/2 via Oculus Link | ✔️ Chrome | no hand tracking, known issues with repeated refresh of a WebXR session in Chrome |
 | Looking Glass Portrait | ✔️ Chrome | requires shim, see samples | 
+| Apple Vision Pro | ✔️ Safari Browser | hand tracking, support for transient pointer |
 
 | Tested AR Device | Browser | Notes |
 | -- | -- | -- |
