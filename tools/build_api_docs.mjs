@@ -37,7 +37,18 @@ async function main() {
 
     const startTime = new Date().getTime();
 
-    for (const version of Object.keys(content.versions)) {
+    const versions = Object.keys(content.versions);
+    // sort versions by major.minor (latest first)
+    versions.sort((a, b) => {
+        const majorMinorSum = (version) => {
+            const parts = version.split(".");
+            const sum = parseInt(parts[0]) * 1000 + parseInt(parts[1]);
+            return sum;
+        };
+        return majorMinorSum(b) - majorMinorSum(a);
+    });
+
+    for (const version of versions) {
 
         if (!version.startsWith("3")) continue;
 
@@ -208,6 +219,10 @@ async function upload(directory, remotepath) {
     const user = process.env.API_FTP_USER;
     const password = process.env.API_FTP_PASSWORD;
     const host = process.env.API_FTP_HOST;
+
+    if (!user) {
+        throw new Error("API_FTP_USER not set");
+    }
 
     const ftpDeploy = new FtpDeploy();
     const config = {
