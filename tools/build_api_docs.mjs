@@ -46,7 +46,7 @@ async function main() {
         const url = needleEngineApiBaseUrl + "/" + versionInfo.name + "/" + versionInfo.version + "/" + versionFile;
         console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
         const response = await fetch(url, { method: "HEAD" });
-        if (response.status === 200) {
+        if (response.status === 200 && !response.redirected) {
             console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
             continue;
         }
