@@ -52,10 +52,6 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
   Add a `TeleportTarget` component to object hierarchies that can be teleported on.  
   To exclude specific objects, set their layer to `IgnoreRaycasting`.  
 
-- **Enable going into Miniature Mode**  
-  Pointing onto a surface and pressing <kb>A</kb> on a controller switches between 1:10 scale (miniature mode) and 1:1 scale.  
-  We're planning to add a component to have more control over this functionality.  
-
 ### Multiplayer
 
 - **Enable Networking**  
@@ -63,9 +59,6 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
 
 - **Enable Desktop Viewer Sync**  
   Add a `SyncedCamera` component.
-
-- **Enable XR Avatar Sync**  
-  Add a `WebXRSync` component.
   
 - **Enable Voice Chat**  
   Add a `VoIP` component.
