@@ -3,6 +3,21 @@ title: Questions and Answers (FAQ) 💡
 ---
 
 
+## I purchased a license - how can I activate my Needle Engine License?
+
+### Activating the license in Unity
+Open `Edit/Project Settings/Needle` to get the Needle Engine plugin settings. At the top of the window you'll find fields for entering your license information.
+- `Email` - Enter the email you purchased the license with
+- `Invoice ID` - Enter one of the invoice ids that you received by email
+
+![unity license window](/imgs/unity-needle-engine-license.jpg)
+
+### Activating the license in Blender
+Open `Addon Preferences/Needle Engine` to get to the Needle Engine addon settings 
+- `Email` - Enter the email you purchased the license with
+- `Invoice ID` - Enter one of the invoice ids that you received by email
+
+
 ## My objects are white after export
 This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.  
 You can either make sure you're using glTF-compatible materials and shaders, or mark shaders as "custom" to export them directly.  
