@@ -1,6 +1,10 @@
 # Script Examples
 
-Below you will find a few basic scripts as a quick reference. We also offer a lot of sample scenes and complete projects that you can download and use as a starting point:  
+[Here is a video for writing custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
+
+Below you will find a few basic scripts as a quick reference. 
+
+We also offer a lot of sample scenes and complete projects that you can download and use as a starting point:  
 - [Visit Samples Website](https://engine.needle.tools/samples)
 - [Download Samples Package](https://engine.needle.tools/downloads/unity/samples)
 - [Needle Engine Stackblitz Collection](https://stackblitz.com/@marwie/collections/needle-engine)
