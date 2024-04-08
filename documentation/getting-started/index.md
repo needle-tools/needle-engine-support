@@ -66,7 +66,7 @@ Next continue at
 
 ## Needle Engine with Unity 
 
-*We support Unity 2021 and 2022 LTS*
+*We support Unity 2021 LTS and 2022 LTS*
 
 <needle-button large href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button> 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
@@ -139,7 +139,7 @@ By default, the project name matches the name of your scene. If you want to chan
 <img src="/blender/logo.png" style="max-height:70px;" />
 
 ## Needle Engine with Blender 
-*We support Blender 3.6 and Blender 4.0*
+*We support Blender 4.0 and Blender 4.1+*
 
 <needle-button large href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>  
  
