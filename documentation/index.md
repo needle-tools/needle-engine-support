@@ -73,5 +73,6 @@ footer: "Copyright © 2022 Needle Tools GmbH"
 <p></p> 
 <copyright></copyright>
 
-
+<ClientOnly>
 <removeserviceworker/>
+</ClientOnly>
