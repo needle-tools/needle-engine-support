@@ -1,10 +1,10 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import { path } from '@vuepress/utils'
-import { searchPlugin } from '@vuepress/plugin-search'
+// import { searchPlugin } from '@vuepress/plugin-search'
 // import * as mermaidPlugin from "vuepress-plugin-mermaidjs";
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
-import { pwaPlugin } from '@vuepress/plugin-pwa'
+// import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 
 
