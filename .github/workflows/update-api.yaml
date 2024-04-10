@@ -3,7 +3,7 @@ name: deploy api
 on:
     # schedule once a day at 8 pm
     schedule:
-      - cron: '0 14 * * *'
+      - cron: '0 20 * * *'
     # manual
     workflow_dispatch:
 
