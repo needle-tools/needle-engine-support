@@ -37,6 +37,7 @@ async function scan() {
 
     console.log(`Scanned total of ${result.links.length} links!`);
     const brokeLinks = result.links.filter(x => x.state === 'BROKEN');
+    console.log(brokeLinks);
     console.log(`Detected ${brokeLinks.length} broken links.`);
 
     console.log(process.env.DEPLOY_DISCORD_WEBHOOK)
