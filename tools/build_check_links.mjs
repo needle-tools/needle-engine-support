@@ -52,6 +52,9 @@ async function scan() {
             let parentLink = broken.parent;
             let pageName = parentLink.split('/').pop();
             pageName = pageName.split('?')[0];
+            if (pageName?.length <= 0) {
+                pageName = "docs";
+            }
             brokenLinksStrings.push(`**${broken.url}** on [${pageName}](${broken.parent})`);
         }
 
@@ -65,7 +68,7 @@ async function scan() {
         }
 
         const msg = {
-            content: `Detected ${brokeLinks.length} broken links in the documentation.`,
+            content: `Detected ${brokeLinks.length} broken link(s) in the documentation.`,
             embeds
         }
         fetch(process.env.DEPLOY_DISCORD_WEBHOOK, {
