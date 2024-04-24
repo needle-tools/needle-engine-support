@@ -10,6 +10,7 @@ on:
     types: [created, edited, deleted, labeled, unlabeled, category_changed]
 
 jobs: 
+
   docs:
     # https://github.com/orgs/community/discussions/25641
     # https://github.com/orgs/community/discussions/25389
@@ -33,17 +34,6 @@ jobs:
         with:
           # choose node.js version to use
           node-version: '16'
-
-      # cache node_modules
-      # - name: Cache dependencies
-      #   uses: actions/cache@v2
-      #   id: yarn-cache
-      #   with:
-      #     path: |
-      #       **/node_modules
-      #     key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-      #     restore-keys: |
-      #       ${{ runner.os }}-yarn-
 
       # install dependencies if the cache did not hit
       - name: Install dependencies
@@ -69,7 +59,9 @@ jobs:
         env:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-  
+
+          
+
   upload:
     needs: docs
     runs-on: ubuntu-latest
@@ -93,6 +85,8 @@ jobs:
           username: f0152dc5
           password: ${{ secrets.FTP_PASSWORD }}
 
+
+
   notify_discord:
     needs: upload
     runs-on: ubuntu-latest
@@ -106,6 +100,8 @@ jobs:
           username: "Deploy Docs 🤖"
           content: "Docs have been updated → <https://engine.needle.tools/docs/>\n`${{ github.event.head_commit.message }}${{github.event.client_payload.reason}}`"
   
+
+
   notify_discord_by_contribution:
     needs: upload
     runs-on: ubuntu-latest
@@ -117,3 +113,30 @@ jobs:
           webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
           username: "Deploy Docs (Contribution) 🤖"
           content: "Docs have been updated → <https://engine.needle.tools/docs/community/contributions> by discussion:\n<${{ github.event.discussion.html_url}}>"
+
+
+
+
+  check_links:
+    needs: upload
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          # fetch all commits to get last updated time or other git log info
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          # choose node.js version to use
+          node-version: '16'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Test Links
+        run: npm run test:links
+        env:
+          GITHUB_TOKEN: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}

@@ -8,7 +8,8 @@
     "docs:dev": "vuepress dev documentation",
     "docs:build": "vuepress build documentation",
     "docs:build-api": "node tools/build_api_docs.mjs",
-    "docs:build-examples": "node tools/build_examples.mjs"
+    "docs:build-examples": "node tools/build_examples.mjs",
+    "test:links": "node tools/build_check_links.mjs"
   },
   "author": "",
   "license": "ISC",
@@ -26,6 +27,7 @@
     "@vuepress/plugin-register-components": "2.0.0-beta.60",
     "@vuepress/plugin-search": "2.0.0-beta.60",
     "ftp-deploy": "^2.4.7",
+    "linkinator": "^6.0.4",
     "node-fetch": "^3.3.1",
     "typedoc": "^0.25.12",
     "typedoc-plugin-extras": "^3.0.0",
