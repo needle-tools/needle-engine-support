@@ -139,4 +139,4 @@ jobs:
       - name: Test Links
         run: npm run test:links
         env:
-          GITHUB_TOKEN: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
+          DEPLOY_DISCORD_WEBHOOK: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
