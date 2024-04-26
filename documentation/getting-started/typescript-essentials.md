@@ -211,3 +211,7 @@ void onDisable() {
     this.myEvent?.removeEventListener(this._onMyEventFn);
 }
 ```
+
+## What's next?
+
+- [Needle Engine Scripting](/scripting.md)
