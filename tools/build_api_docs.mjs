@@ -21,6 +21,9 @@ async function main() {
     if (fs.existsSync(baseDownloadDirectory))
         fs.rmSync(baseDownloadDirectory, { recursive: true });
 
+    const isDev = process.argv.includes("--dev");
+    console.log("Dev mode: " + isDev);
+
     // download and unzip latest needle-engine package
     const npmEndpoint = "https://registry.npmjs.org/@needle-tools/engine";
     const content = await fetch(npmEndpoint).then(res => res.json());
@@ -54,12 +57,15 @@ async function main() {
 
         const versionInfo = content.versions[version];
 
-        const url = needleEngineApiBaseUrl + "/" + versionInfo.name + "/" + versionInfo.version + "/" + versionFile;
-        console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
-        const response = await fetch(url, { method: "HEAD" });
-        if (response.status === 200 && !response.redirected) {
-            console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
-            continue;
+        // in dev mode we don't want to check if the documentation already exists because we only build one version
+        if (!isDev) {
+            const url = needleEngineApiBaseUrl + "/" + versionInfo.name + "/" + versionInfo.version + "/" + versionFile;
+            console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
+            const response = await fetch(url, { method: "HEAD" });
+            if (response.status === 200 && !response.redirected) {
+                console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
+                continue;
+            }
         }
 
         const targetDirectory = baseDownloadDirectory + "/" + versionInfo.name + "/" + versionInfo.version;
@@ -82,6 +88,10 @@ async function main() {
         // create version file
         fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
 
+        // in dev mode we don't upload the documentation and just build one version
+        if (isDev) {
+            break;
+        }
         await upload(output, packageName + "/" + packageVersion);
         console.log("API documentation uploaded to " + packageName + "/" + packageVersion);
         uploaded.push(packageName + "/" + packageVersion);
