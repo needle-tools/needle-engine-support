@@ -22,26 +22,12 @@ Deployment is the process of making your application available to the public on 
   Games platform on Facebook and Facebook Messenger
 - [FTP Upload](#deploy-to-ftp)
   Deploy directly to any server with FTP support.
-- [Build to folder](#production-builds)
+- [Build to folder](#build-to-folder)
   Bring your project anywhere!
   
 ::: tip Feel something is missing? 
 Please let us know in our [discord](https://discord.needle.tools)!
 :::
-
-## Deploying to the web from Unity
-
-Open ``File/Build Settings`` and select ``Needle Engine`` for options!
-
-:::details Where do I find the Build Options in Unity?
-![image](/imgs/unity-build-window-menu.jpg)    
-![image](/imgs/unity-build-window.jpg)  
-::: 
-
-To build your web project for deployment to a web server you can click **Build** in the Unity Editor Build Settings Window.   
-You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.
-
-Nodejs is **only** required during development. The distributed website (using our default vite template) is a static page that doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
 ## Development Builds
 
@@ -135,6 +121,7 @@ Select a Mesh and open the Needle importer options to see available options for 
 
 
 ## Deployment Options  
+
 
 
 ### Deploy to Glitch 🎏
@@ -319,6 +306,26 @@ Here you can find [the official instant games documentation](https://developers.
 **Note** that all you have to do is to create an app with instant games capabilities.  
 We will take care of everything else and no manual adjustments to your Needle Engine website are required.
 :::
+
+
+
+## Build To Folder
+
+
+In Unity open ``File/Build Settings`` and select ``Needle Engine`` for options:
+
+![image](/imgs/unity-build-window-menu.jpg)    
+
+![image](/imgs/unity-build-window.jpg)  
+
+ 
+
+To build your web project for uploading to any web server you can click **Build** in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.   
+
+To locally preview your final build you can use the `Preview Build` button at the bottom of the window. This button will first perform a regular build and then start a local server in the directory with the final files so you can see what you get once you upload these files to your webserver.
+
+Nodejs is **only** required during development. The distributed website (using our default vite template) is a static page that doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
+
 
 ---
 
