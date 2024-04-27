@@ -184,7 +184,7 @@ If you click `Create new Glitch Remix` and the browser shows an error like `ther
 
 ### Deploy to Netlify  
 :::details How do I deploy to Netlify from Unity?
-Just add the `DeployToNetlify` component to your scene and follow the instructions. You can create new projects with the click of a button or deployt to existing projects.  
+Just add the `DeployToNetlify` component to your scene and follow the instructions. You can create new projects with the click of a button or by deploying to existing projects.  
 
 ![Deploy to netlify component](/deployment/deploytonetlify-2.jpg)  
 
