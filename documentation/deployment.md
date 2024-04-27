@@ -48,7 +48,7 @@ If you plan on adding your own custom glTF extensions, building for production r
 
 ### Optimization and Compression Options  
 
-#### Texture compression
+### Texture compression
 Production builds will by default compress textures using **KTX2** (either ETC1S or UASTC depending on their usage in the project)   
 but you can also select **WebP** compression and select a quality level.  
 
@@ -79,20 +79,7 @@ Select the material tab. You will see compression options for all textures that 
   ![image](/imgs/ktx-env-variable.webp)
 :::
 
-#### Progressive Texture loading
-
-You can also add the `Progressive Texture Settings` component anywhere in your scene, to make all textures in your project be progressively loaded. Progressive loading is not applied to lightmaps or skybox textures at this point.   
-
-With progressive loading textures will first be loaded using a lower resolution version. A full quality version will be loaded dynamically when the texture becomes visible. This usually reduces initial loading of your scene significantly.
-
-:::details How can I enable progressive texture loading?
-### Progressive textures can be enabled per texture<br/>or for all textures in your project:  
-![image](/imgs/unity-texture-compression.jpg)    
-### Enable for all textures in the project that don't have any other specific setting:  
-![image](/imgs/unity-progressive-textures.jpg)   
-:::
-
-#### Mesh compression and simplification
+### Mesh compression
 
 By default, a production build will compress meshes using Draco compression. Use the `MeshCompression` component to select between draco and mesh-opt per exported glTF.     
 Additionally you can setup mesh simplification to reduce the polycount for production builds in the mesh import settings (Unity). When viewing your application in the browser, you can append `?wireframe` to your URL to preview the meshes.       
@@ -118,6 +105,35 @@ Add the MeshCompression component to select which compression should be applied 
 Select a Mesh and open the Needle importer options to see available options for the selected mesh:  
 ![image](/imgs/unity-mesh-simplification.jpg)
 :::
+
+
+### Progressive Textures
+
+You can also add the `Progressive Texture Settings` component anywhere in your scene, to make all textures in your project be progressively loaded. Progressive loading is not applied to lightmaps or skybox textures at this point.   
+
+With progressive loading textures will first be loaded using a lower resolution version. A full quality version will be loaded dynamically when the texture becomes visible. This usually reduces initial loading of your scene significantly.
+
+:::details How can I enable progressive texture loading?
+### Progressive textures can be enabled per texture<br/>or for all textures in your project:  
+![image](/imgs/unity-texture-compression.jpg)    
+### Enable for all textures in the project that don't have any other specific setting:  
+![image](/imgs/unity-progressive-textures.jpg)   
+:::
+
+### Automatic Mesh LODs (Level of Detail)
+
+Since Needle Engine 3.36 we automatically generate LOD meshes and switch between them at runtime. LODs are loaded on demand and only when needed so so this feature both reduces your loading time as well as performance.
+
+**Key Beneftis**
+- Faster initial loading time
+- Faster rendering time due to less vertices on screen on average
+- Faster raycasting due to the use of LOD meshes
+
+You can either disable LOD generation for your whole project in the `Progressive Loading Settings` component or in the Mesh Importer settings.
+
+![image](/imgs/unity-lods-settings-1.jpg)
+
+![image](/imgs/unity-lods-settings-2.jpg)
 
 
 ## Deployment Options  
