@@ -16,7 +16,7 @@ Deployment is the process of making your application available to the public on 
   Often used for games.
 - [GitHub Pages](#deploy-to-github-pages)
   Free static page hosting.
-- [Vercel](#deploy-to-github-pages)
+- [Vercel](#deploy-to-vercel)
   Platform for frontend developers
 - [Facebook Instant Games](#deploy-to-facebook-instant-games)
   Games platform on Facebook and Facebook Messenger
