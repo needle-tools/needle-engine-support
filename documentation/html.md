@@ -106,6 +106,10 @@ export default defineConfig(async ({ command }) => {
         // the rest of your vite config...
 ```
 
+:::tip All assets are cached by default
+Note that by default, all assets in your build folder are added the PWA precache – for large applications with many dynamic assets, this may not be what you want (imagine the YouTube PWA caching all videos once a user opens the app!). See [More PWA Options](#more-pwa-options) for how to customize this behavior.  
+:::
+
 ### Testing PWAs
 
 To test your PWA, deploy the page, for example using the `DeployToFTP` component.  
@@ -120,6 +124,8 @@ You can enable PWA support for development by adding the following to the option
 
 ```js
 const PWAOptions = {
+  // Note: PWAs behave different in dev mode. 
+  // Make sure to verify the behaviour in production builds!
   devOptions: {
     enabled: true,
   }
@@ -150,7 +156,21 @@ See the [Vite PWA plugin documentation](https://vite-pwa-org.netlify.app/guide/p
 
 ### More PWA options
 
-Since Needle uses the [Vite PWA plugin](https://vite-pwa-org.netlify.app/) under the hood, you can use all the options and hooks provided by that. You can also remove the `{ pwaOptions: PWAOptions }` option from `needlePlugins` and add PWA functionality directly through the Vite PWA plugin.  
+Since Needle uses the [Vite PWA plugin](https://vite-pwa-org.netlify.app/) under the hood, you can use all options and hooks provided by that.  
+For example, you can provide a partial manifest with a custom app title or theme color:
+
+```js
+const PWAOptions = {
+  // manifest options provided here will override the defaults 
+  manifest: {
+    name: "My App",
+    short_name: "My App",
+    theme_color: "#B2D464",
+  }
+};
+```
+
+For complex requirements like partial caching, custom service workers or different update strategies, you can remove the `{ pwaOptions: PWAOptions }` option from `needlePlugins` and add PWA functionality directly through the Vite PWA plugin.
 
 ## Accessing Needle Engine and Components from external javascript
     
