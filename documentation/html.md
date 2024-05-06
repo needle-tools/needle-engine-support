@@ -83,25 +83,25 @@ PWAs are web applications that load like regular web pages or websites but can o
 By default, PWAs created with Needle have offline support, and can optionally refresh automatically when you publish a new version of your app. 
 
 1) Install the [Vite PWA plugin](https://vite-pwa-org.netlify.app/) in your web project: `npm install vite-plugin-pwa --save-dev`
-2) Modify `vite.config.js` as seen below. Make sure to pass the PWAOptions object to both the `needlePlugins` as well as the `VitePWA` methods.
+2) Modify `vite.config.js` as seen below. Make sure to pass the same `pwaOptions` object to both `needlePlugins` and `VitePWA`.
 
 ```js
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(async ({ command }) => {
 
-    // create the PWAOptions object. 
+    // Create the pwaOptions object. 
     // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
-    const PWAOptions = {};
+    const pwaOptions = {};
   
     const { needlePlugins } = await import("@needle-tools/engine/plugins/vite/index.js");
 
     return {
         plugins: [
-            // pass the PWAOptions object to the needlePlugins and the VitePWA function
-            needlePlugins(command, needleConfig, { pwaOptions: PWAOptions }),
-            VitePWA(PWAOptions),
+            // pass the pwaOptions object to the needlePlugins and the VitePWA function
+            needlePlugins(command, needleConfig, { pwa: pwaOptions }),
+            VitePWA(pwaOptions),
         ],
         // the rest of your vite config...
 ```
@@ -123,7 +123,7 @@ PWAs use Service Workers to cache resources and provide offline support. Service
 You can enable PWA support for development by adding the following to the options object in your `vite.config.js`. 
 
 ```js
-const PWAOptions = {
+const pwaOptions = {
   // Note: PWAs behave different in dev mode. 
   // Make sure to verify the behaviour in production builds!
   devOptions: {
@@ -141,10 +141,10 @@ Websites typically show new or updated content on page refresh.
 In some situations, you may want the page to refresh and reload automatically when a new version has been published – 
 such as in a museum, trade show, public display, or other long-running scenarios.  
 
-To enable automatic updates, set the `updateInterval` property in the PWAOptions object to a duration (in milliseconds) in which the app should check for updates. If an update is detected, the page will reload automatically.
+To enable automatic updates, set the `updateInterval` property in the pwaOptions object to a duration (in milliseconds) in which the app should check for updates. If an update is detected, the page will reload automatically.
 
 ```js
-const PWAOptions = {
+const pwaOptions = {
   updateInterval: 15 * 60 * 1000, // 15 minutes, in milliseconds
 };
 ```
@@ -160,7 +160,7 @@ Since Needle uses the [Vite PWA plugin](https://vite-pwa-org.netlify.app/) under
 For example, you can provide a partial manifest with a custom app title or theme color:
 
 ```js
-const PWAOptions = {
+const pwaOptions = {
   // manifest options provided here will override the defaults 
   manifest: {
     name: "My App",
@@ -170,7 +170,7 @@ const PWAOptions = {
 };
 ```
 
-For complex requirements like partial caching, custom service workers or different update strategies, you can remove the `{ pwaOptions: PWAOptions }` option from `needlePlugins` and add PWA functionality directly through the Vite PWA plugin.
+For complex requirements like partial caching, custom service workers or different update strategies, you can remove the `{ pwa: pwaOptions }` option from `needlePlugins` and add PWA functionality directly through the Vite PWA plugin.
 
 ## Accessing Needle Engine and Components from external javascript
     
