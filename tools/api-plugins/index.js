@@ -39,11 +39,17 @@ const urls = [
     "Object3D: https://threejs.org/docs/index.html#api/en/core/Object3D",
     "Group: https://threejs.org/docs/index.html#api/en/objects/Group",
     "AnimationClip: https://threejs.org/docs/index.html#api/en/animation/AnimationClip",
+    "PropertyMixer: https://threejs.org/docs/index.html#api/en/animation/PropertyMixer",
+    "AnimationMixer: https://threejs.org/docs/index.html#api/en/animation/AnimationMixer",
     "Geometry: https://threejs.org/docs/index.html#api/en/core/Geometry",
     "BufferGeometry: https://threejs.org/docs/index.html#api/en/core/BufferGeometry",
     "Light: https://threejs.org/docs/index.html#api/en/lights/Light",
     "LightShadow: https://threejs.org/docs/index.html#api/en/lights/shadows/LightShadow",
     "SpotLight: https://threejs.org/docs/index.html#api/en/lights/SpotLight",
+    "OrbitControls: https://threejs.org/docs/index.html#examples/en/controls/OrbitControls",
+    "PerspectiveCamera: https://threejs.org/docs/index.html#api/en/cameras/PerspectiveCamera",
+    "WebGLRenderer: https://threejs.org/docs/index.html#api/en/renderers/WebGLRenderer",
+    "Raycaster: https://threejs.org/docs/index.html#api/en/core/Raycaster",
 ];
 
 function tryGetThreejsDocsLink(dottedName) {
