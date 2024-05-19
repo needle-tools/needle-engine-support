@@ -18,14 +18,15 @@ dotenv.config();
 // const cmd = "typedoc --plugin typedoc-plugin-markdown --out documentation/api node_modules/@needle-tools/engine/src/needle-engine.ts";
 // execSync(cmd);
 
+const isDev = process.argv.includes("--dev");
+console.log("Dev mode: " + isDev);
+
 async function main() {
     console.log("Cleaning up previous API documentation");
     const baseDownloadDirectory = process.cwd() + "/.temp";
     if (fs.existsSync(baseDownloadDirectory))
         fs.rmSync(baseDownloadDirectory, { recursive: true });
 
-    const isDev = process.argv.includes("--dev");
-    console.log("Dev mode: " + isDev);
 
     // download and unzip latest needle-engine package
     const npmEndpoint = "https://registry.npmjs.org/@needle-tools/engine";
@@ -47,18 +48,31 @@ async function main() {
 
     for (let i = 0; i < versions.length; i++) {
         const version = versions[i];
+        const prevVersion = versions[i + 1];
 
         if (!version.startsWith("3")) continue;
 
+        /**
+         * @type {{name:string, version:string}}
+         */
         const versionInfo = content.versions[version];
+        const remotePath = versionInfo.name + "/" + versionInfo.version;
+        const outputDirectory = "api/" + versionInfo.name + "/" + versionInfo.version;
+        const outputDirectoryFull = process.cwd() + "/" + outputDirectory;
 
         // in dev mode we don't want to check if the documentation already exists because we only build one version
         if (!isDev) {
-            const url = needleEngineApiBaseUrl + "/" + versionInfo.name + "/" + versionInfo.version + "/" + versionFile;
+            const baseUrl = `${needleEngineApiBaseUrl}/${versionInfo.name}/${versionInfo.version}/`;
+            const url = baseUrl + versionFile;
             console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
             const response = await fetch(url, { method: "HEAD" });
             if (response.status === 200 && !response.redirected) {
                 console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
+
+                // check if diff exists
+                if (prevVersion)
+                    await createApiDiff(outputDirectoryFull, remotePath, baseUrl, version, prevVersion);
+
                 continue;
             }
         }
@@ -69,21 +83,19 @@ async function main() {
         const packageDir = tarballDir + "/package";
         const packageJsonPath = packageDir + "/package.json";
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
-        const packageName = packageJson.name;
         const packageVersion = packageJson.version;
-        const outputDirectory = "api/" + packageName + "/" + packageVersion;
-        const outputDirectoryFull = process.cwd() + "/" + outputDirectory;
+        const packageName = packageJson.name;
+
+        if (prevVersion)
+            await createApiDiff(outputDirectoryFull, remotePath, version, prevVersion);
+
         // delete output directory if it exists
         if (fs.existsSync(outputDirectoryFull))
             fs.rmSync(outputDirectoryFull, { recursive: true });
         fs.mkdirSync(outputDirectoryFull, { recursive: true });
 
-        const output = await produceDocs(packageDir, outputDirectoryFull);
+        await produceDocs(packageDir, outputDirectoryFull);
         console.log("API documentation generated at " + output);
-
-        const prevVersion = versions[i + 1];
-        if (prevVersion)
-            await createApiDiff(outputDirectoryFull, version, prevVersion);
 
         // create version file
         fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
@@ -93,7 +105,7 @@ async function main() {
             break;
         }
 
-        await upload(output, packageName + "/" + packageVersion);
+        await upload(outputDirectoryFull, remotePath);
         console.log("API documentation uploaded to " + packageName + "/" + packageVersion);
         uploaded.push(packageName + "/" + packageVersion);
         await delay(1000);
@@ -229,8 +241,19 @@ async function produceDocs(packageDir, outputDirectory) {
  * @param {string} outputDirectory The output directory of the current API documentation
  * @param {string} previousApiFileUrl The URL of the previous API documentation
  */
-async function createApiDiff(outputDirectory, currentVersion, previousVersion) {
+async function createApiDiff(outputDirectory, remotePath, baseUrl, currentVersion, previousVersion) {
     try {
+        const url = baseUrl + "diff.html";
+        const res = await fetch(url, { method: "HEAD" }).catch(console.error);
+        if (res && res.status === 200 && !res.redirected) {
+            console.log("API diff already exists at " + url);
+            return;
+        }
+
+        if (fs.existsSync(outputDirectory))
+            fs.rmSync(outputDirectory, { recursive: true });
+        fs.mkdirSync(outputDirectory, { recursive: true });
+
         console.log("Generate API diff for " + currentVersion + " and " + previousVersion);
 
         const result = execSync("npm diff diff-ignore-all-space --diff=@needle-tools/engine@" + previousVersion + " --diff=@needle-tools/engine@" + currentVersion + " ./src ./plugins");
@@ -238,7 +261,7 @@ async function createApiDiff(outputDirectory, currentVersion, previousVersion) {
         const outputFile = outputDirectory + "/diff.txt";
         writeFileSync(outputFile, str);
 
-        const res = await html(str, {
+        const htmlResult = await html(str, {
             inputFormat: 'diff',
             outputFormat: 'line-by-line',
             colorScheme: 'light',
@@ -288,7 +311,7 @@ async function createApiDiff(outputDirectory, currentVersion, previousVersion) {
                 </div>
             </div>
             <div>
-                ${res}
+                ${htmlResult}
             </div>
         </body>
         
@@ -297,6 +320,13 @@ async function createApiDiff(outputDirectory, currentVersion, previousVersion) {
 
         writeFileSync(outputDirectory + "/diff.html", final);
         console.log("API diff generated at " + outputFile);
+
+        if (isDev) return;
+
+        console.log("Uploading API diff to " + remotePath);
+        await upload(outputDirectory, remotePath);
+        await delay(2000);
+
     }
     catch (err) {
         console.error(err);
@@ -327,7 +357,7 @@ async function upload(directory, remotepath) {
         // upload everything except dot files
         include: ["*", "**/*"],
         // delete ALL existing files at destination before uploading, if true
-        deleteRemote: true,
+        deleteRemote: false,
         // Passive mode is forced (EPSV command is not sent)
         forcePasv: true,
         // use sftp or ftp
