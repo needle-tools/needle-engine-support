@@ -79,7 +79,7 @@ export class Rotate extends Behaviour
 }
 ```
 
-Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the new Unity component to a Cube that is exported as part of a glTF file (it needs a ``GltfObject`` component in its parent) and save the scene.   
+Now inside Unity a new script called ``Rotate.cs`` will be automatically generated. Add the new Unity component to a Cube and save the scene.   
 The cube is now rotating inside the browser.   
 Open the chrome developer console by `F12` to inspect the log from the ``Rotate.start`` method. This is a helpful practice to learn and debug what fields are exported and currently assigned. In general all public and serializable fields and all public properties are exported.  
 
