@@ -1,9 +1,12 @@
-import { execSync } from 'child_process';
+import { execSync, spawn } from 'child_process';
 import TypeDoc from 'typedoc';
-import fs, { WriteStream, mkdir, mkdirSync, rmSync } from 'fs';
+import fs, { WriteStream, mkdir, mkdirSync, rmSync, writeFileSync } from 'fs';
 import fetch from 'node-fetch';
+import { diffString, diff } from 'json-diff';
+import { Parser, fromURL, fromFile } from '@asyncapi/parser';
 import FtpDeploy from 'ftp-deploy';
 import dotenv from 'dotenv';
+import { html } from 'diff2html';
 
 dotenv.config();
 
@@ -40,18 +43,10 @@ async function main() {
 
     const startTime = new Date().getTime();
 
-    const versions = Object.keys(content.versions);
-    // sort versions by major.minor (latest first)
-    versions.sort((a, b) => {
-        const majorMinorSum = (version) => {
-            const parts = version.split(".");
-            const sum = parseInt(parts[0]) * 1000 + parseInt(parts[1]);
-            return sum;
-        };
-        return majorMinorSum(b) - majorMinorSum(a);
-    });
+    const versions = Object.keys(content.versions).reverse();
 
-    for (const version of versions) {
+    for (let i = 0; i < versions.length; i++) {
+        const version = versions[i];
 
         if (!version.startsWith("3")) continue;
 
@@ -81,9 +76,14 @@ async function main() {
         // delete output directory if it exists
         if (fs.existsSync(outputDirectoryFull))
             fs.rmSync(outputDirectoryFull, { recursive: true });
+        fs.mkdirSync(outputDirectoryFull, { recursive: true });
 
         const output = await produceDocs(packageDir, outputDirectoryFull);
         console.log("API documentation generated at " + output);
+
+        const prevVersion = versions[i + 1];
+        if (prevVersion)
+            await createApiDiff(outputDirectoryFull, version, prevVersion);
 
         // create version file
         fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
@@ -92,6 +92,7 @@ async function main() {
         if (isDev) {
             break;
         }
+
         await upload(output, packageName + "/" + packageVersion);
         console.log("API documentation uploaded to " + packageName + "/" + packageVersion);
         uploaded.push(packageName + "/" + packageVersion);
@@ -222,6 +223,86 @@ async function produceDocs(packageDir, outputDirectory) {
 
     return null;
 }
+
+/**
+ * Create a diff between the current and previous API documentation
+ * @param {string} outputDirectory The output directory of the current API documentation
+ * @param {string} previousApiFileUrl The URL of the previous API documentation
+ */
+async function createApiDiff(outputDirectory, currentVersion, previousVersion) {
+    try {
+        console.log("Generate API diff for " + currentVersion + " and " + previousVersion);
+
+        const result = execSync("npm diff diff-ignore-all-space --diff=@needle-tools/engine@" + previousVersion + " --diff=@needle-tools/engine@" + currentVersion + " ./src ./plugins");
+        const str = result.toString();
+        const outputFile = outputDirectory + "/diff.txt";
+        writeFileSync(outputFile, str);
+
+        const res = await html(str, {
+            inputFormat: 'diff',
+            outputFormat: 'line-by-line',
+            colorScheme: 'light',
+        });
+
+        const final = `<!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+            <meta name="description" content="Needle Engine API diff">
+            <meta name="author" content="Needle Tools">
+            <link rel="icon" type="image/png" href="https://engine.needle.tools/branding/needle-favicon.ico">            <title>Needle Engine ${currentVersion}</title>
+            <style>
+                body {
+                    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+                    margin: 0;
+                    padding: 1rem;
+                    font-size: 16px;
+                }
+                h1 {
+                    font-size: 2rem;
+                    margin: 0;
+                }
+                .header {
+                    display: flex;
+                    flex-direction: column;
+                    margin-bottom: 1rem;
+                    gap: .3rem;
+                }
+                .d2h-file-list-title {
+                    font-size: 1.5rem;
+                }
+            </style>
+            <link rel="stylesheet" type="text/css"
+                href="https://cdn.jsdelivr.net/npm/diff2html/bundles/css/diff2html.min.css" />
+            <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/diff2html/bundles/js/diff2html.min.js"></script>
+        </head>
+        
+        <body>
+            <div class="header">
+                <h1>
+                    Needle Engine
+                </h1>
+                <div>
+                    Changes between version ${previousVersion} and ${currentVersion}
+                </div>
+            </div>
+            <div>
+                ${res}
+            </div>
+        </body>
+        
+        </html>   
+`
+
+        writeFileSync(outputDirectory + "/diff.html", final);
+        console.log("API diff generated at " + outputFile);
+    }
+    catch (err) {
+        console.error(err);
+    }
+}
+
 
 async function upload(directory, remotepath) {
     console.log("Uploading to " + remotepath);

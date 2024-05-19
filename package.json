@@ -15,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "diff2html": "^3.4.48",
     "dotenv": "^16.0.3",
     "vue-github-button": "^3.1.0",
     "vuepress": "2.0.0-beta.60"
