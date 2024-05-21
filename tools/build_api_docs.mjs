@@ -1,9 +1,7 @@
-import { execSync, spawn } from 'child_process';
+import { execSync } from 'child_process';
 import TypeDoc from 'typedoc';
-import fs, { WriteStream, mkdir, mkdirSync, rmSync, writeFileSync } from 'fs';
+import fs, { WriteStream, rmSync, writeFileSync } from 'fs';
 import fetch from 'node-fetch';
-import { diffString, diff } from 'json-diff';
-import { Parser, fromURL, fromFile } from '@asyncapi/parser';
 import FtpDeploy from 'ftp-deploy';
 import dotenv from 'dotenv';
 import { html } from 'diff2html';
