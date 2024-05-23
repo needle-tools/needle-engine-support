@@ -273,6 +273,15 @@ Option 2: You can turn gzip compression off in the build settings at File/Build 
 
 :::
 
+#### Enabling gzip using a .htaccess file
+To enable gzip compression on your FTP server you can create a file named `.htaccess` in the directory you want to upload to (or a parent directory).  
+Insert the following code into your `.htaccess` file and save/upload it to your server:   
+```
+<IfModule mod_mime.c>
+RemoveType .gz
+AddEncoding gzip .gz
+AddType application/javascript .js.gz
+``` 
 
 
 ### Deploy to Github Pages
