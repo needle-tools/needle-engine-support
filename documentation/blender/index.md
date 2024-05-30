@@ -85,12 +85,25 @@ To fix this go to the Blender Render category and in the ColorManagement panel s
 ![Correct color management settings](/blender/settings-color-management.webp)
 
 
+## Environment Lighting
+
+You can change the environment lighting and skybox using the Viewport shading options.   
+Assign a cubemap to use for lighting or the background skybox. You can adjust the strength or blur to modify the appearance to your liking.   
+
+![Environment](/blender/environment.webp)
+
+If you don't want to see the cubemap as a background add a Camera component to your Blender Camera and change `clearFlags: SolidColor` - note that the Camera `backgroundBlurriness` and `backgroundIntensity` settings override the Viewport shading settings.
+
+![Environment Camera](/blender/environment-camera.webp)
+
+
 
 ## Export
 
 To exclude an object from being exported you can disable the Viewport and the Render display (see image below)
 
 ![Exclude from export](/blender/dont-export.webp)
+
 
 ## Animation 🏇
 
