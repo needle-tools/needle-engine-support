@@ -88,11 +88,15 @@ To fix this go to the Blender Render category and in the ColorManagement panel s
 ## Environment Lighting
 
 You can change the environment lighting and skybox using the Viewport shading options.   
-Assign a cubemap to use for lighting or the background skybox. You can adjust the strength or blur to modify the appearance to your liking.   
+Assign a cubemap to use for lighting or the background skybox. You can adjust the strength or blur to modify the appearance to your liking.      
+
+Note: To also see the skybox cubemap in the browser increase the `World Opacity` to 1.
 
 ![Environment](/blender/environment.webp)
 
-If you don't want to see the cubemap as a background add a Camera component to your Blender Camera and change `clearFlags: SolidColor` - note that the Camera `backgroundBlurriness` and `backgroundIntensity` settings override the Viewport shading settings.
+<video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
+
+Alternatively if you don't want to see the cubemap as a background add a Camera component to your Blender Camera and change `clearFlags: SolidColor` - note that the Camera `backgroundBlurriness` and `backgroundIntensity` settings override the Viewport shading settings.
 
 ![Environment Camera](/blender/environment-camera.webp)
 
