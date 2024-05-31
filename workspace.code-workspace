@@ -11,6 +11,7 @@
 			"**/.vuepress/.cache": true,
 			"**/.vuepress/.temp": true,
 			"**/.vuepress/*.mjs": true,
-		}
+		},
+		"js/ts.implicitProjectConfig.checkJs": true,
 	}
 }
