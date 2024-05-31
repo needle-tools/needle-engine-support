@@ -28,6 +28,10 @@ async function main() {
 
     // download and unzip latest needle-engine package
     const npmEndpoint = "https://registry.npmjs.org/@needle-tools/engine";
+
+    /**
+     * @type {object}
+     */
     const content = await fetch(npmEndpoint).then(res => res.json());
 
     const needleEngineApiBaseUrl = "https://engine.needle.tools/docs/api";
@@ -51,16 +55,16 @@ async function main() {
         if (!version.startsWith("3")) continue;
 
         /**
-         * @type {{name:string, version:string}}
+         * @type {{name:string, version:string, dist:{tarball:string}}}
          */
         const versionInfo = content.versions[version];
         const remotePath = versionInfo.name + "/" + versionInfo.version;
         const outputDirectory = "api/" + versionInfo.name + "/" + versionInfo.version;
         const outputDirectoryFull = process.cwd() + "/" + outputDirectory;
+        const baseUrl = `${needleEngineApiBaseUrl}/${versionInfo.name}/${versionInfo.version}/`;
 
         // in dev mode we don't want to check if the documentation already exists because we only build one version
         if (!isDev) {
-            const baseUrl = `${needleEngineApiBaseUrl}/${versionInfo.name}/${versionInfo.version}/`;
             const url = baseUrl + versionFile;
             console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
             const response = await fetch(url, { method: "HEAD" });
@@ -85,7 +89,7 @@ async function main() {
         const packageName = packageJson.name;
 
         if (prevVersion)
-            await createApiDiff(outputDirectoryFull, remotePath, version, prevVersion);
+            await createApiDiff(outputDirectoryFull, remotePath, baseUrl, version, prevVersion);
 
         // delete output directory if it exists
         if (fs.existsSync(outputDirectoryFull))
@@ -93,7 +97,7 @@ async function main() {
         fs.mkdirSync(outputDirectoryFull, { recursive: true });
 
         await produceDocs(packageDir, outputDirectoryFull);
-        console.log("API documentation generated at " + output);
+        console.log("API documentation generated at " + outputDirectoryFull);
 
         // create version file
         fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
@@ -237,7 +241,10 @@ async function produceDocs(packageDir, outputDirectory) {
 /**
  * Create a diff between the current and previous API documentation
  * @param {string} outputDirectory The output directory of the current API documentation
- * @param {string} previousApiFileUrl The URL of the previous API documentation
+ * @param {string} remotePath The remote path to upload the diff to
+ * @param {string} baseUrl The base URL of the API documentation    
+ * @param {string} currentVersion The current version of the API documentation
+ * @param {string} previousVersion The previous version of the API documentation
  */
 async function createApiDiff(outputDirectory, remotePath, baseUrl, currentVersion, previousVersion) {
     try {
