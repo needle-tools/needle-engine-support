@@ -226,7 +226,7 @@ Please also have a look at [our FAQ](../faq.md) if your question is not answered
 
 - [Exporting 3D objects and content](../export.md)
 - [Project Structure](../project-structure.md)
-- [Deploy your website to the web](../deployment)
+- [Deploy your website to the web](../deployment.html)
 - [Typescript Essentials](./typescript-essentials.md) 
 - [Needle Engine for Unity Developers](./for-unity-developers.md) 
 - [Scripting Reference](../scripting.md) 
