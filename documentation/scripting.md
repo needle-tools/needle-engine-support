@@ -213,21 +213,35 @@ Needle Engine also exposes a few lifecycle hooks that you can use to hook into t
 Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component)  
 | Method name | Description |
 | -- | --
-| `onInitialized()` | Called when a new context is initialized (before the first frame)
-| `onStart()` | Called directly after components `start` at the beginning of a frame (once per context)
-| `onUpdate()` | Called directly after components `update`
-| `onBeforeRender()` | called before calling render
+| `onInitialized(cb, options)` | Called when a new context is initialized (before the first frame)
+| `onClear(cb, options)` | Register a callback before the engine context is cleared
+| `onDestroy(cb, options)` |  Register a callback in the engine before the context is destroyed
+| `onStart(cb, options)` | Called directly after components `start` at the beginning of a frame
+| `onUpdate(cb, options)` | Called directly after components `update`
+| `onBeforeRender(cb, options)` | called before calling render
+| `onAfterRender(cb, options)` | called before calling render
 
 For example:
 ```ts
 // this can be put into e.g. main.ts or a svelte component (similar to onMount)
-import { onUpdate } from "@needle-tools/engine"
-onUpdate((context:Context) => {
-    // do something... e.g. access the scene via context.scene
-}
+import { onUpdate, onBeforeRender } from "@needle-tools/engine"
+onUpdate((ctx: Context) => {
+    // do something... e.g. access the scene via ctx.scene
+    console.log("UPDATE", ctx.time.frame);
+});
+
+onBeforeRender((ctx: Context) => {
+    // this event is only called once because of the { once: true } argument
+    console.log("ON BEFORE RENDER", ctx.time.frame);
+}, { once: true } );
+
+// Every event hook returns a method to unsubscribe from the event
+const unsubscribe = onAfterRender((ctx: Context) => {
+    console.log("ON AFTER RENDER", ctx.time.frame);
+});
+// Unsubscribe from the event at any time
+setTimeout(()=> unsubscribe(), 1000);
 ```
-
-
 
 ## Finding, adding and removing components
 
