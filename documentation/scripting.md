@@ -221,7 +221,7 @@ Those hooks can be inserted at any point in your web application (for example in
 | `onBeforeRender(cb, options)` | called before calling render
 | `onAfterRender(cb, options)` | called before calling render
 
-For example:
+For example ([See example on stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts
 // this can be put into e.g. main.ts or a svelte component (similar to onMount)
 import { onUpdate, onBeforeRender } from "@needle-tools/engine"
