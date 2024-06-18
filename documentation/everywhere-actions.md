@@ -116,3 +116,11 @@ Often, getting the right behaviour will involve composing _higher-level actions_
 | `GroupAction.makeRepeat` | |
 
 To see the implementation of our built-in Everywhere Actions, please take look at `src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`.
+
+
+## Further reading 
+
+The following pages provide more examples and samples that you can test and explore right now:
+
+- Visit our [AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) that has many interactive AR examples with a focus on iOS AR & Quicklook
+- [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions) 
