@@ -37,6 +37,10 @@ Theoretically all WebXR-capable devices and browsers should be supported. That b
 <sup>2</sup>: Requires enabling a toggle in the Developer settings    
 <sup>3</sup>: Uses [Everywhere Actions](everywhere-actions.md) or [other approaches](#augmented-reality-and-webxr-on-ios)
 
+## Examples
+
+Visit our [Needle Engine XR Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr) to try many interactive examples right now!
+
 ## Adding VR and AR capabilities to a scene
 
 AR, VR and networking capabilites in Needle Engine are designed to be modular. You can choose to not support any of them, or add only specific features. 
