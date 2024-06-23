@@ -13,8 +13,8 @@ The table below shows a list of the most important ones:
 | `dracoDecoderType` | draco decoder type. Options are `wasm` or `js`. See [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
 | `ktx2DecoderPath` | URL to the KTX2 decoder |
 | **Rendering** | |
-| `skybox-image` | URL to a skybox image (background image) | 
-| `environment-image` | optional, URL to a environment image (environment light) |
+| `skybox-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` | 
+| `environment-image` | optional, URL to a environment image (environment light) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
 | **Interaction** | |
 | `autoplay` | add or set to `true` to auto play animations e.g. `<needle-engine autoplay` | 
 | `camera-controls` | add or set to `true` to automatically add OrbitControls if no camera controls are found in the scene |
