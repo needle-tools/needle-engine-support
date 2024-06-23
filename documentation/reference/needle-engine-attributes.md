@@ -15,6 +15,7 @@ The table below shows a list of the most important ones:
 | **Rendering** | |
 | `skybox-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` | 
 | `environment-image` | optional, URL to a environment image (environment light) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
+| `contactshadows` | optional, render contact shadows |
 | **Interaction** | |
 | `autoplay` | add or set to `true` to auto play animations e.g. `<needle-engine autoplay` | 
 | `camera-controls` | add or set to `true` to automatically add OrbitControls if no camera controls are found in the scene |
