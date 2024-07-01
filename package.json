@@ -31,10 +31,10 @@
     "ftp-deploy": "^2.4.7",
     "linkinator": "^6.0.4",
     "node-fetch": "^3.3.1",
-    "typedoc": "^0.25.12",
-    "typedoc-plugin-extras": "^3.0.0",
-    "typedoc-plugin-inline-sources": "^1.0.2",
-    "typedoc-plugin-keywords": "^1.6.0",
-    "typedoc-plugin-mdn-links": "^3.1.18"
+    "typedoc": "0.25.12",
+    "typedoc-plugin-extras": "3.0.0",
+    "typedoc-plugin-inline-sources": "1.0.2",
+    "typedoc-plugin-keywords": "1.6.0",
+    "typedoc-plugin-mdn-links": "3.1.18"
   }
 }
