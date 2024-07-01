@@ -16,6 +16,8 @@ The table below shows a list of the most important ones:
 | `skybox-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` | 
 | `environment-image` | optional, URL to a environment image (environment light) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
 | `contactshadows` | optional, render contact shadows |
+| `tone-mapping` | optional, supported values are `none`, `linear`, `neutral`, `agx` |
+| `tone-mapping-exposure` | optional number e.g. increase exposure with `tone-mapping-exposure="1.5"`, requires `tone-mapping` to be set |
 | **Interaction** | |
 | `autoplay` | add or set to `true` to auto play animations e.g. `<needle-engine autoplay` | 
 | `camera-controls` | add or set to `true` to automatically add OrbitControls if no camera controls are found in the scene |
