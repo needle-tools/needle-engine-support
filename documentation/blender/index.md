@@ -43,10 +43,14 @@ The Blender addon is downloaded as a zip file.
 In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
 Then select the downloaded zip to install it.
 
+- Optional: [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples)
+
+
 ![Settings](/blender/settings.webp)
 
 ## Getting Started 🚩
 
+- [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples)
 
 First create or open a new blend file that you want to be exported to the web.   
 Open the Properties window open the scene category. Select a `Project Path` in the Needle Engine panel. Then click `Generate Project`. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.
