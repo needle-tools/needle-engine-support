@@ -58,7 +58,9 @@ Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs
 | Screenspace Ambient Occlusion | |
 | Tilt Shift Effect | |
 | Vignette | *via Volume asset* |
-| *Your custom effect* | Create a new class that extends from Needle Engine's `PostProcessingEffect` class. Then call `registerCustomEffectType` with your effect name and class type. |
+| SharpeningEffect | |
+| ToneMappingEffect | *via Volume asset or separate component* |
+| *Your custom effect* | [See example on stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect) |
 
 ## Networking
 | Name  | Description |
