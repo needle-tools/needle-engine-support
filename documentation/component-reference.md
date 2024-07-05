@@ -42,9 +42,7 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 
 Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs.com/package/postprocessing) under the hood. This means you can also easily add your own custom effects and get an automatically optimized postprocessing pass.
 
-- **Unity only**: *Note that Postprocessing effect export in Unity is only supported with URP.*
-
-- **Unity only**: *extra Component* means that the effect component is an extra component that has to be added next to the Volume component. For example for Antialiasing add a `Volume` component and an `Antialiasing` component to the same GameObject. 
+- **Unity only**: *Note that Postprocessing effects using a Volume in Unity is only supported with URP*
 
 | Effect Name | |
 | --- | --- | 
@@ -53,13 +51,13 @@ Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs
 | Chromatic Aberration | *via Volume asset* |
 | Color Adjustments / Color Correction | *via Volume asset* | 
 | Depth Of Field | *via Volume asset* |
+| Vignette | *via Volume asset* |
+| ToneMappingEffect | *via Volume asset or separate component* |
 | Pixelation | |
 | Screenspace Ambient Occlusion N8 | |
 | Screenspace Ambient Occlusion | |
 | Tilt Shift Effect | |
-| Vignette | *via Volume asset* |
 | SharpeningEffect | |
-| ToneMappingEffect | *via Volume asset or separate component* |
 | *Your custom effect* | [See example on stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect) |
 
 ## Networking
