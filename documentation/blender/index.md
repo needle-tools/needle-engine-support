@@ -31,7 +31,7 @@ If you find bugs or see errors please [open an issue](https://github.com/needle-
 
 ## Download and Installation 💿
 
-### Step 1 • Install Blender 3.6 or 4.0
+### Step 1 • Install Blender 3.6, 4.0, 4.1 or 4.2
 
 ### Step 2 • Install Node.js (optional but recommended)
 
