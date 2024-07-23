@@ -52,3 +52,8 @@ We just gotta say WOW 🤩
 <testimonial name="Matthew Pieri" src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571">
 Spent the last 2.5 months building this game, never built a game/never used unity before, but absolutely loving the whole process with needle tools. So rapid!  Would love to make a career building AR experiences! 
 </testimonial>
+
+<testimonial name="Yuzu" src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240">
+My workflow has been optimized 10X ever since i started using needle
+</testimonial>
+
