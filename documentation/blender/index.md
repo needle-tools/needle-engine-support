@@ -96,6 +96,8 @@ Assign a cubemap to use for lighting or the background skybox. You can adjust th
 
 Note: To also see the skybox cubemap in the browser increase the `World Opacity` to 1.
 
+Note: Alternatively you can enable the `Scene World` setting in the Viewport Shading tab to use the environment texture assigned in the blender world settings.
+
 ![Environment](/blender/environment.webp)
 
 <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
@@ -104,6 +106,9 @@ Alternatively if you don't want to see the cubemap as a background add a Camera 
 
 ![Environment Camera](/blender/environment-camera.webp)
 
+### Add your custom HDRi / EXR environment lighting and skybox
+
+<video-embed limit_height src="/docs/blender/custom_hdri.mp4" /> 
 
 
 ## Export
