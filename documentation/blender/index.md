@@ -1,13 +1,13 @@
 ---
 title: Needle Engine for Blender
-editLink: false
+editLink: true
 ---
 <br/>
 <img src="/blender/logo.png" style="max-height:70px;" />
 
 # Needle Engine for Blender
 
-Thank you for using Needle Engine for Blender Alpha.   
+Thank you for using Needle Engine for Blender.   
 With this addon you can create highly interactive and optimized WebGL and WebXR experiences inside Blender that run using Needle Engine and three.js.  
 You'll be able to sequence animations, easily lightmap your scenes, add interactivity or create your own scripts written in Typescript or Javascript that run on the web. You own your content! 
 
@@ -15,35 +15,26 @@ You'll be able to sequence animations, easily lightmap your scenes, add interact
 <video-embed src="/docs/blender/environment-light.mp4" />
 *Automatically export HDRI environment lights directly from blender. Save to reload your local server*
 
-<video-embed src="/docs/blender/animatorcontroller-web.mp4" />
-*Create and export [animator statemachines](#animatorcontroller) for controlling complex character animations*
-
 
 # Content Overview
 [[toc]]
 
 ## Preface
 
-Please note: The current state of the exporter for Blender is in the alpha phase - which means that some features you may know from the Needle Engine Unity Integration may not yet be implemented. **Your feedback is invaluable** when it comes to deciding which of those features should be prioritizes.   
-If you have feedback for us please let us know in [discussions](https://github.com/needle-tools/needle-engine-support/discussions) or in our [discord community](https://discord.needle.tools)!
-
-If you find bugs or see errors please [open an issue](https://github.com/needle-tools/needle-engine-support/issues) or ask on discord.
+**Your feedback is invaluable** when it comes to deciding which of those features should be prioritizes.   
+If you have feedback for us please let us know in [our forum](https://forum.needle.tools)!
 
 ## Download and Installation 💿
 
-### Step 1 • Install Blender 3.6, 4.0, 4.1 or 4.2
+### Step 1 • <a target="_blank" href="https://www.blender.org/download/">Install Blender</a> 3.6, 4.0, 4.1 or 4.2
 
-### Step 2 • Install Node.js (optional but recommended)
+### Step 2 • <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Install Nodejs ⭐</os-link>
 
-### Step 3 • Download and Install the addon
-<br/> 
-<needle-button href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>
+### Step 3 • <a target="_blank" href="https://engine.needle.tools/downloads/blender">Download Needle Engine for Blender</a>
 
-The Blender addon is downloaded as a zip file.   
+*The Blender addon is downloaded as a zip file.   
 In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
-Then select the downloaded zip to install it.
-
-- Optional: [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples)
+Then select the downloaded zip to install it.*
 
 
 ![Settings](/blender/settings.webp)
@@ -126,7 +117,12 @@ By default it will only playback the first clip assigned when `playAutomatically
 <video-embed limit_height src="/docs/blender/animation.mp4" />   
 
 ### AnimatorController
+
 The animator controller can be created for more complex scenarios. It works as a statemachine which allows you to create multiple animation states in a graph and configure conditions and interpolation settings for transitioning between those. 
+
+<video-embed src="/docs/blender/animatorcontroller-web.mp4" />
+*Create and export [animator statemachines](#animatorcontroller) for controlling complex character animations*
+
 
 #### Creating an AnimatorController
 
@@ -150,7 +146,8 @@ To use an AnimatorController add an Animator component to the root object of you
 
 ![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)  
 
-You can set the Animator parameters from typescript or by e.g. using the event of a Button component:
+You can set the Animator parameters from typescript or by e.g. using the event of a Button component
+
 
 ### Timeline — nla tracks export 🎬
 
