@@ -28,7 +28,9 @@ If you have feedback for us please let us know in [our forum](https://forum.need
 
 ### Step 1 • <a target="_blank" href="https://www.blender.org/download/">Install Blender</a> 3.6, 4.0, 4.1 or 4.2
 
+<ClientOnly>
 ### Step 2 • <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Install Nodejs ⭐</os-link>
+</ClientOnly>
 
 ### Step 3 • <a target="_blank" href="https://engine.needle.tools/downloads/blender">Download Needle Engine for Blender</a>
 
