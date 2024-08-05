@@ -1,0 +1,1 @@
+import{_ as e,p as a,q as n,R as t,t as o}from"./framework-e1b34df3.js";const r={},s=t("p",null,[o("Moved to "),t("a",{href:"./getting-started"},"Getting Started")],-1),c=[s];function _(d,i){return a(),n("div",null,c)}const f=e(r,[["render",_],["__file","getting-started.html.vue"]]);export{f as default};
