@@ -141,10 +141,11 @@ UI can be animated.
 | Name  | Description |
 | ------------- | ------------- |
 | `Canvas` | Unity's UI system. Needs to be in World Space mode right now. |
-| `Text` | Render Text using Unity's UI Text component. Custom fonts are supported, a font atlas will be automatically generated on export. Use the font settings to control which characters are included in the atlas. Note: Make sure to use the `Text (Legacy)` component (TextMeshPro is not supported at the moment) |
-| `Button` | Receives click events - use the onClick event to react to it. It can be added too 3D scene objects as well |
+| `Text (Legacy)` | Render Text using Unity's UI Text component. Custom fonts are supported, a font atlas will be automatically generated on export. Use the font settings to control which characters are included in the atlas.<br/>**Note**: Make sure to use the `Legacy/Text` component (TextMeshPro is not supported at the moment) |
+| `Button` | Receives click events - use the onClick event to react to it. It can be added too 3D scene objects as well. |
 | `Image` | Renders a sprite image |
 | `RawImage` | Renders a texture |
+| `InputField` | Allows text input |
 
 **Note**: Depending on your project, often a mix of spatial and 2D UI makes sense for cross-platform projects where VR, AR, and screens are supported. Typically, you'd build the 2D parts with HTML for best accessibility, and the 3D parts with geometric UIs that also support depth offsets (e.g. button hover states and the like).  
 
