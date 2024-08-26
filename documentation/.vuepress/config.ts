@@ -100,6 +100,8 @@ export default defineUserConfig({
         lastUpdated: true, // useful for locally testing / seeing which pages are outdated
         contributors: false,
         editLink: true,
+        editLinkText: "Suggest changes",
+        externalLinkIcon: false,
         notFound: [
             "Oh no — this page does not exist!",
             "Gosh! You found a 🌵 glitch",

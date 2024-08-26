@@ -22,7 +22,8 @@ a {
 
 <template>
     <div class="footer">
-        Copyright © 2024 Needle Tools GmbH — <a target="_blank"
-            href="https://needle.tools/contact#privacy-policy">Privacy Policy</a>
+        ©2024 Needle Tools GmbH •
+        <a target="_blank" href="https://needle.tools/contact">About • </a>
+        <a target="_blank" href="https://needle.tools/contact#privacy-policy">Privacy Policy</a>
     </div>
 </template>

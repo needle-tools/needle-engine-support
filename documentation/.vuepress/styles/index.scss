@@ -225,3 +225,15 @@ td {
   width: calc(100% - .6em);
   padding-left: .6em;
 }
+
+.navbar {
+  border-radius: 30px;
+  box-shadow: 0 0 10px #0000001a;
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  background-color: rgba(255, 255, 255, 0.7);
+  margin: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 0.5em;
+}
