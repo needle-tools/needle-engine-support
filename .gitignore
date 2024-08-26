@@ -21,12 +21,10 @@ dist
 src/docs/.vuepress/config.ts.*.mjs
 src/docs/.vuepress/dist
 documentation/.vuepress/*.ts.*.mjs
-package-lock.json
 documentation/.vuepress/public/meta
 .env
 documentation/community/contributions.json
 .DS_Store
 documentation/.vuepress/public/.preview
 documentation/api
-api
 api
