@@ -23,7 +23,7 @@ dotenv.config()
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
 
-const _title = "Needle Engine Documentation";
+const _title = "Documentation";
 const _description = "Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally. Needle Exporter for Unity bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.";
 const _previewImg = "preview.jpeg";
 
@@ -95,9 +95,9 @@ export default defineUserConfig({
         docsRepo: "needle-tools/needle-engine-support",
         docsBranch: "main",
         docsDir: "documentation",
-        logo: "/logo.png",
-        colorModeSwitch: true,
-        lastUpdated: false,
+        logo: "/needle-logo-black.svg",
+        colorModeSwitch: false,
+        lastUpdated: true, // useful for locally testing / seeing which pages are outdated
         contributors: false,
         editLink: true,
         notFound: [

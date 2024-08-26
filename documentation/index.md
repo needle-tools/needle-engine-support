@@ -4,7 +4,7 @@ next: ./getting-started/index.md
 sidebar: false
 editLink: false
 lastUpdated: false
-footer: "Copyright © 2022 Needle Tools GmbH"
+footer: "Copyright © 2024 Needle Tools GmbH"
 ---
 
 ![](/imgs/banner.webp)
