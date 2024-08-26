@@ -32,7 +32,11 @@ export default {
           url.searchParams.append("room", `needle_docs_${id}`);
         }
 
+        const currentUrl = typeof window !== "undefined" ? new URL(window.location.href) : null;
+
         url.searchParams.append("hideClose", "");
+        url.searchParams.append("utm_source", "needle_docs");
+        url.searchParams.append("utm_content", currentUrl?.toString() || "");
         this.sanitizedUrl = url.toString();
       }
     }
