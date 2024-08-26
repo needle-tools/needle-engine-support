@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap');
+
 // https://v2.vuepress.vuejs.org/reference/default-theme/styles.html#style-file
 :root {
   // brand colors
@@ -21,6 +23,9 @@
   // --c-bg-light: rgba(125,125,125,.12);
   
   // --c-bg-navbar: rgba(245, 245, 245, 1);
+
+  --font-family: 'Nunito Sans', sans-serif;
+  --navbar-padding-h: 0.7rem;
 
   .navbar-dropdown {
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
@@ -233,7 +238,55 @@ td {
   -webkit-backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.7);
   margin: 10px;
-  overflow-x: auto;
-  overflow-y: hidden;
-  font-size: 0.5em;
+  left: initial;
+  right: initial;
+  display: flex;
+  padding-left: 1.3rem;
 }
+
+@media screen and (max-width: 719px) {
+  .navbar {
+    padding-left: 4rem;
+  }
+}
+
+.navbar .site-name {
+  font-size: 1.5rem;
+  margin-right: 20px;
+  opacity: 0.5;
+  color: black;
+}
+
+.sidebar {
+  scrollbar-color: var(--c-brand) transparent;
+}
+
+/*
+.navbar .navbar-items-wrapper {
+  font-size: 1rem;
+}
+*/
+
+.navbar .navbar-items-wrapper {
+  position: initial;
+}
+
+.navbar span a {
+  white-space: nowrap;
+}
+
+.navbar-dropdown-wrapper:not(.mobile) .navbar-dropdown {
+  border-radius: 12px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-brand) transparent;
+  max-height: calc(100vh - 4rem);
+}
+
+:root .navbar-dropdown {
+  box-shadow: 0 25px rgba(20, 20, 20, 0.1);
+}
+
+.theme-container {
+  font-size: 1rem;
+}
+
