@@ -43,7 +43,7 @@ a {
 
 <template>
     <a :href="href" :target="same_tab ? '_self' : '_blank'" :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
-        <button>
+        <button :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
             <slot></slot>
         </button>
     </a>
