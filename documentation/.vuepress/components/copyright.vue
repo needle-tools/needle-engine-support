@@ -22,8 +22,8 @@ a {
 
 <template>
     <div class="footer">
-        ©2024 Needle Tools GmbH •
-        <a target="_blank" href="https://needle.tools/contact">About • </a>
+        ©2024 Needle Tools GmbH ·
+        <a target="_blank" href="https://needle.tools/contact">About · </a>
         <a target="_blank" href="https://needle.tools/contact#privacy-policy">Privacy Policy</a>
     </div>
 </template>

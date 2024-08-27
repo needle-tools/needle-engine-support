@@ -4,41 +4,19 @@ title: Getting Started & Installation
 next: ../project-structure.md
 ---
 
-## Required
-
-<ClientOnly>
-
-<!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
-
-<br/>
-<os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Download Nodejs ⭐</os-link><br/> 
-Node.js is used to preview and build the website that you are creating on your computer.     
-It is also used for uploading (deploy) your website to the internet.    
-Just download and run the installer above!  
-<br/>
-<br/>
 <br/>
 
----
-### Optional - *but recommended*
+With **Needle Engine**, you can create fully interactive 3D websites.
+They can be deployed anywhere on web and get optimized automatically by the **Needle Engine Build Pipeline**.  
+ 
+Needle Engine is available as a download for Unity, for Blender, and for web projects without an editor integration.  
 
-<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download Toktx 🗜</os-link>   
-We use Toktx in production builds (optimized builds) for texture compression (KTX2). You can read more about production builds [here](../deployment.md#production-builds) in our docs
+<div>
+  <a href="#needle-engine-for-unity">Needle Engine for Unity</a> · 
+  <a href="#needle-engine-for-blender">Needle Engine for Blender</a> · 
+  <a href="#needle-engine-without-editor-integration">Needle Engine without Editor Integration</a>
+</div>
 
-<br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download VSCode 📑</os-link>   
-When you plan to edit or write code (js or HTML) then we *recommend* that you use VSCode as your code editor.
-
-<br/>
-</ClientOnly>
-
-
-Next continue at
-- [Needle Engine for Unity](#needle-engine-with-unity) 
-- [Needle Engine for Blender](#needle-engine-with-blender)
-- [Needle Engine without Editor](#needle-engine-without-editor)
-
-<br/>
-<br/>
 
 <!-- | Tool |  |  |
 | -- | -- | -- | 
@@ -64,31 +42,23 @@ Next continue at
 
 <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
 
-## Needle Engine with Unity 
+## Needle Engine for Unity 
 
-*We support Unity 2021 LTS and 2022 LTS*
+*Supported Unity versions: 2021.3 LTS, 2022.3 LTS*
 
 <needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Unity</strong></needle-button> 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
-    
-- Drop the downloaded .unitypackage file into a Unity project (or double click to open) and confirm that you want to import it.
-- Wait for the installation and import to finish.  
-- A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry where packages are downloaded from. You can safely close that window and continue with the next step below.  
+ :::details Next Steps
+- Drop the downloaded .unitypackage file into a Unity project and confirm that you want to import it.
 
-- Continue....
-  - **Option 1: Explore Samples**  
-  Select _Needle Engine > Explore Samples_ to view, open and modify all available [sample scenes](https://engine.needle.tools/samples).  
+- Wait a moment for the installation and import to finish. A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry. You can safely close that window.  
+- **Explore Samples** – Select the menu option _Needle Engine > Explore Samples_ to view, open and modify all available [sample scenes](https://engine.needle.tools/samples).  
+:::
 
-
-  - **Option 2: Create a new scene from a template**  
-  Select _File > New Scene_ and choose from one of the Needle templates.  
-  We recommend the [Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox) template which is a great way to get started with interactivity, multiplayer,and adding assets.  
-
-
-:::details Video: Starting from a fresh Unity project  
+:::details Video Tutorial: Starting from a fresh Unity project  
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />  
 
-<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 :::
 
 ---
@@ -99,7 +69,9 @@ We provide a number of Scene Templates for quickly starting new projects.
 These allow you to go from idea to prototype in a few clicks.  
 
 1. Click on `File > New Scene`
-2. Select one of the templates with (needle) in their name and click `Create`.
+
+2. Select one of the templates with (needle) in their name and click `Create`.   
+   We recommend the [Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox) template which is a great way to get started with interactivity, multiplayer, and adding assets.  
 3. Click Play to install and startup your new web project.
 
 ![20220822-140539-wqvW-Unity_oC0z-needle](https://user-images.githubusercontent.com/2693840/185917275-a147cd90-d515-4086-950d-78358185b1ef.png)
@@ -138,21 +110,18 @@ By default, the project name matches the name of your scene. If you want to chan
 
 <img src="/blender/logo.png" style="max-height:70px;" />
 
-## Needle Engine with Blender 
-*We support Blender 4.0 and Blender 4.1+*
+## Needle Engine for Blender 
+*Supported Blender versions: 4.0+*
 
 <needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Blender</strong></needle-button>  
  
-
-*With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
-They can easily deployed to the web and get optimized automatically by the Needle Engine Build Pipeline (needs Node.js installed)*
 <br/> 
 
-- The Blender addon is downloaded as a zip file.
-- In Blender go to `File / Settings / Add-ons` and click the `Install` button.
+- The Blender add-on is downloaded as a zip file.
+- In Blender, go to `File > Settings > Add-ons` and click the `Install` button.
 - Then select the downloaded zip to install it.
 
-**Continue reading [Needle Engine for Blender](../blender/index.md)** for a full feature list and instructions
+**See [Needle Engine for Blender](../blender/index.md)** for a full list of features and instructions on getting started.
 
 <br/>
 <br/>
@@ -162,25 +131,52 @@ They can easily deployed to the web and get optimized automatically by the Needl
 
 <img src="/imgs/threejs-logo.webp" style="max-height:70px;" />
 
-## Needle Engine without Editor
+## Needle Engine without Editor Integration
 
-Needle Engine is built ontop of three.js. If you just want to work with the Needle Engine runtime and don't want to use any Editor integration just yet then go ahead and install it from npm by running:   
+You can work directly with Needle Engine without using any Integration. Needle Engine uses [three.js](https://threejs.org/) as scene graph and rendering backend, so all functionality from three.js is available in Needle as well.  
+
+You can install Needle Engine from `npm` by running:   
 <br/>
 `npm i @needle-tools/engine`  
 
 
-To quickly test Needle Engine in the browser use [engine.needle.tools/new](https://engine.needle.tools/new)   
-*It creates a new project on StackBlitz*
+For quick experiments, we provide a convenient link to create a new project ready to start, powered by [StackBlitz](https://stackblitz.com/):   
+[engine.needle.tools/new](https://engine.needle.tools/new)
 
-Alternatively you can add a prebundled version of Needle Engine to your website: 
+If you're not using npm or a bundler, you can instead add a prebundled version of Needle Engine to your website: 
 
-`https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js`  
-`https://unpkg.com/@needle-tools/engine/dist/needle-engine.light.min.js` *no physics module*
+`https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js` or  
+`https://unpkg.com/@needle-tools/engine/dist/needle-engine.light.min.js` *(no physics module, smaller)*
 
 
 <br/>
 <br/>
 <br/>
+
+
+
+## Third-Party Dependencies
+
+Needle Engine uses Node.js to manage, preview and build the web app that you are creating locally on your computer.     
+It is also used for uploading (deploying) your website to the internet. Please download it from the official website:
+
+<ClientOnly>
+<!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
+
+<os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Download: Node.js 18+ ⭐</os-link><br/> 
+<br/>
+
+---
+### Recommended Dependencies
+
+<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download: toktx texture tools 🗜</os-link>  
+We use toktx to locally optimize your files. Learn more about production builds [in the docs](../deployment.md#production-builds).
+
+<br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download: Visual Studio Code 📑</os-link>   
+When you plan to edit or write code (js or HTML) then we *recommend* that you use VSCode as your code editor.
+
+<br/>
+</ClientOnly>
 
 ## Questions?
   
