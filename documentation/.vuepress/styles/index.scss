@@ -244,6 +244,10 @@ td {
   margin: 5px auto;
 }
 
+.navbar-dropdown-wrapper .navbar-dropdown .navbar-dropdown-item .navbar-dropdown-subitem-wrapper .navbar-dropdown-subitem {
+  font-size: inherit;
+}
+
 @media screen and (max-width: 719px) {
   .navbar {
     padding-left: 4rem;
