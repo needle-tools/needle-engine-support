@@ -77,7 +77,7 @@ export default defineUserConfig({
 
         // stackblitz
         ['script', { src: 'https://unpkg.com/@stackblitz/sdk/bundles/sdk.umd.js' }],
-        ['script', { src: 'https://analytics.needle.tools/js/script.outbound-links.js', defer: "", "data-domain": "docs.needle.tools" } ]
+        ['script', { src: 'https://analytics.needle.tools/js/script.tagged-events.outbound-links.js', defer: "", "data-domain": "docs.needle.tools" } ]
 
     ],
     markdown: {
