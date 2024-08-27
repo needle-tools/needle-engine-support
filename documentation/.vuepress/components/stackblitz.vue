@@ -141,7 +141,7 @@ export default {
 
 <template>
     <div>
-        <button @click="openProject">
+        <button @click="openProject" class="plausible-event-name=Click+Create+Stackblitz+Project">
             Open in StackBlitz (Experimental)
         </button>
         <div class="code">
