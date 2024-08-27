@@ -40,10 +40,10 @@ footer: "Copyright © 2024 Needle Tools GmbH"
     <action href="features-overview">
     Features 🎨
     </action>
-    <action href="https://engine.needle.tools/samples">
+    <action href="https://engine.needle.tools/samples?utm_source=needle_docs">
     Samples 🎏
     </action>
-    <action href="https://forum.needle.tools">
+    <action href="https://forum.needle.tools?utm_source=needle_docs">
     Forum 💬
     </action>
 </actiongroup>

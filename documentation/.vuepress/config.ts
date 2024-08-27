@@ -125,7 +125,7 @@ export default defineUserConfig({
                     },
                     {
                         text: 'Pricing & Plans',
-                        link: "https://needle.tools/pricing"
+                        link: "https://needle.tools/pricing?utm_source=needle_docs"
                     },
                     {
                         text: "Releases and Changelog",
