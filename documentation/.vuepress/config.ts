@@ -125,7 +125,7 @@ export default defineUserConfig({
                     },
                     {
                         text: 'Pricing & Plans',
-                        link: "https://needle.tools/pricing?utm_source=needle_docs"
+                        link: "https://needle.tools/pricing?utm_source=needle_docs&utm_content=headersubnav"
                     },
                     {
                         text: "Releases and Changelog",
@@ -222,7 +222,7 @@ export default defineUserConfig({
                         children: [
                             {
                                 text: "Samples for Download",
-                                link: "https://engine.needle.tools/samples",
+                                link: "https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav",
                             },
                             "/modules",
                             {
@@ -235,18 +235,18 @@ export default defineUserConfig({
             },
             {
                 text: 'Samples',
-                link: 'https://engine.needle.tools/samples',
+                link: 'https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav',
             },
             {
                 text: 'Pricing',
-                link: "https://needle.tools/pricing"
+                link: "https://needle.tools/pricing?utm_source=needle_docs&utm_content=headernav"
             },
             {
                 text: 'Contact',
                 children: [
                     {
                         text: 'Needle Website',
-                        link: 'https://needle.tools'
+                        link: 'https://needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
                     {
                         text: 'Github',
@@ -254,7 +254,7 @@ export default defineUserConfig({
                     },
                     {
                         text: 'Support Community',
-                        link: 'https://forum.needle.tools'
+                        link: 'https://forum.needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
                     {
                         text: 'Discord Server',

@@ -19,7 +19,7 @@ footer: "Copyright © 2024 Needle Tools GmbH"
 
 <div>Spent the last 2.5 months building this game, never built a game or used Unity before<br/>but absolutely loving the whole process. So rapid! — Matthew Pieri</div>
 
-<div><a href="https://needle.tools">needle.tools</a> is a wonderful showcase of what Needle contributes to 3D via the web. I just love it. — Kevin Curry</div>
+<div><a href="https://needle.tools?utm_source=needle_docs&utm_content=quote">needle.tools</a> is a wonderful showcase of what Needle contributes to 3D via the web. I just love it. — Kevin Curry</div>
 
 <div>Played with this a bit this morning 🤯🤯 pretty magical — Brit Gardner</div>
 
@@ -40,10 +40,10 @@ footer: "Copyright © 2024 Needle Tools GmbH"
     <action href="features-overview">
     Features 🎨
     </action>
-    <action href="https://engine.needle.tools/samples?utm_source=needle_docs">
+    <action href="https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=actionbutton">
     Samples 🎏
     </action>
-    <action href="https://forum.needle.tools?utm_source=needle_docs">
+    <action href="https://forum.needle.tools?utm_source=needle_docs&utm_content=actionbutton">
     Forum 💬
     </action>
 </actiongroup>

@@ -36,7 +36,7 @@ export default {
 
         url.searchParams.append("hideClose", "");
         url.searchParams.append("utm_source", "needle_docs");
-        url.searchParams.append("utm_content", currentUrl?.pathname || "");
+        url.searchParams.append("utm_content", "sample_embed");
         this.sanitizedUrl = url.toString();
       }
     }

@@ -26,7 +26,7 @@ Be aware that this is preferred over disabling objects as disabled will still ge
 
 ### Lazy loading and multiple levels / scenes
 
-If you want to split up your application into multiple levels or scenes then you can simply use the `SceneSwitcher` component. You can then structure your application into multiple scenes or prefabs and add them to the SceneSwitcher array to be loaded and unloaded at runtime. This is a great way to avoid having to load all your content upfront and to keep loading times small (for example it is what we did on [needle.tools](https://needle.tools) by separating each section of your website into its own scene and only loading them when necessary)
+If you want to split up your application into multiple levels or scenes then you can simply use the `SceneSwitcher` component. You can then structure your application into multiple scenes or prefabs and add them to the SceneSwitcher array to be loaded and unloaded at runtime. This is a great way to avoid having to load all your content upfront and to keep loading times small (for example it is what we did on [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes) by separating each section of your website into its own scene and only loading them when necessary)
 
 ### Recommended Complexity per glTF
 
@@ -50,7 +50,7 @@ To get started, create a component in Unity with a ``UnityEditor.SceneAsset`` fi
 
 You can keep working inside a referenced scene and still update your main exporter scene/website. On scene save or play mode change we will detect if the current scene is being used by your currently running server and then trigger a re-export for only that glb. (This check is done by name - if a glb inside your ``<web_project>/assets/`` folder exists, it is exported again and the main scene reloads it.)
 
-As an example on [our website](https://needle.tools) each section is setup as a separate scene and on export packed into multiple glb files that we load on demand:
+As an example on [our website](https://needle.tools?utm_source=needle_docs&utm_content=export_sceneassets) each section is setup as a separate scene and on export packed into multiple glb files that we load on demand:
 
 ![2022-08-22-172605_Needle_Website_-_Website_-_Windows,_Mac,_Linux_-_U](https://user-images.githubusercontent.com/5083203/185958983-71913c97-5eec-4cfd-99f5-76798582373e.png)
 

@@ -88,7 +88,7 @@ If loading time itself is an issue you can **try to split up your content into m
 
 ## My lightmaps look different / too bright
 
-Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps) and read about [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects)
+Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps?utm_source=needle_docs) and read about [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects)
 
 ## My scene is too bright / lighting looks different than in Unity
 Make sure that your lights are set to "Baked" or "Realtime". "Mixed" is currently not supported.  
