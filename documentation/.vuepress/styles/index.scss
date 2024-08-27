@@ -232,16 +232,15 @@ td {
 }
 
 .navbar {
-  border-radius: 30px;
   box-shadow: 0 0 10px #0000001a;
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   background-color: rgba(255, 255, 255, 0.7);
-  margin: 10px;
-  left: initial;
-  right: initial;
+  margin: 10px auto;
   display: flex;
   padding-left: 1.3rem;
+  width: fit-content;
+  border-radius: 3rem;
 }
 
 @media screen and (max-width: 719px) {
