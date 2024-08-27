@@ -7,8 +7,11 @@ export default {
         secondary: Boolean,
         same_tab: Boolean,
         large: Boolean,
-    }
+        event_goal: String,
+        event_position: String,
+    },
 }
+
 
 </script>
 
@@ -39,7 +42,7 @@ a {
 </style>
 
 <template>
-    <a :href="href" :target="same_tab ? '_self' : '_blank'">
+    <a :href="href" :target="same_tab ? '_self' : '_blank'" :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
         <button>
             <slot></slot>
         </button>

@@ -32,7 +32,7 @@ If you have feedback for us please let us know in [our forum](https://forum.need
 ### Step 2 • <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Install Nodejs ⭐</os-link>
 </ClientOnly>
 
-### Step 3 • <a target="_blank" href="https://engine.needle.tools/downloads/blender">Download Needle Engine for Blender</a>
+### Step 3 • <a class="plausible-event-name=download_blender plausible-event-position=blender_download" target="_blank" href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=blender">Download Needle Engine for Blender</a>
 
 *The Blender addon is downloaded as a zip file.   
 In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
@@ -43,7 +43,7 @@ Then select the downloaded zip to install it.*
 
 ## Getting Started 🚩
 
-- [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples)
+- [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)
 
 First create or open a new blend file that you want to be exported to the web.   
 Open the Properties window open the scene category. Select a `Project Path` in the Needle Engine panel. Then click `Generate Project`. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.

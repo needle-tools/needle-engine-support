@@ -68,7 +68,7 @@ Next continue at
 
 *We support Unity 2021 LTS and 2022 LTS*
 
-<needle-button large href="https://engine.needle.tools/downloads/unity"><strong>Download Needle Engine for Unity</strong></needle-button> 
+<needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Unity</strong></needle-button> 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
     
 - Drop the downloaded .unitypackage file into a Unity project (or double click to open) and confirm that you want to import it.
@@ -141,7 +141,7 @@ By default, the project name matches the name of your scene. If you want to chan
 ## Needle Engine with Blender 
 *We support Blender 4.0 and Blender 4.1+*
 
-<needle-button large href="https://engine.needle.tools/downloads/blender"><strong>Download Needle Engine for Blender</strong></needle-button>  
+<needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Blender</strong></needle-button>  
  
 
 *With Needle Engine for Blender you can build fully interactive 3D websites running on three.js.   
