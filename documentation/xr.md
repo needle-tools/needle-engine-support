@@ -91,7 +91,7 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
 
 Needle Engine supports the [`sessiongranted`](https://github.com/immersive-web/navigation) state. This allows users to seamlessly traverse between WebXR applications without leaving an immersive session – they stay in VR or AR.  
 
-Currently, this is only supported on Oculus Quest 1 and 2 in the Oculus Browser. On other platforms, users will be kicked out of their current immersive session and have to enter VR again on the new page.  
+Currently, this is only supported on Oculus Quest 1, 2 and 3 in the Oculus Browser. On other platforms, users will be kicked out of their current immersive session and have to enter VR again on the new page.  
 Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`  
 
 - **Click on objects to open links**  
