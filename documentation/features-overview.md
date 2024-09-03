@@ -1,5 +1,7 @@
 # Feature Overview
 
+Needle Engine is a fully fledged 3D engine that runs in the browser. It comes with all the features you'd expect from a modern 3D engine, and more.  If you haven't yet, take a look at our [Homepage](https://needle.tools) and our [Samples and Showcase](https://engine.needle.tools/samples).
+
 [[toc]]
 
 ## Shaders and Materials

@@ -2,7 +2,7 @@
 next: getting-started
 ---
 
-# Testimonials 💬 
+# Testimonials
 
 <p></p>
 

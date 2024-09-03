@@ -1,5 +1,5 @@
 ---
-title: Needle Engine Attributes
+title: <needle-engine> Configuration
 ---
 
 The `<needle-engine>` web-component comes with a nice collection of built-in attributes that can be used to modify the look and feel of the loaded scene without the need to add or edit the three.js scene directly.   

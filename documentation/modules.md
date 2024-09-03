@@ -1,5 +1,5 @@
 ---
-title: Modules and Packages
+title: Additional Modules
 ---
 
 Projects can be composed of re-usable pieces that we call [**NpmDef**](./project-structure.md#npm-definition-files) (which stands for Npm Defintion File). 

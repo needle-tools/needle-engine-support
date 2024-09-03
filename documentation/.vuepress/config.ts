@@ -43,7 +43,8 @@ export default defineUserConfig({
         docsearchPlugin({
             appId: "2LT25GG3KX",
             apiKey: "389be16f732f82c611e1b0f22c031dff",
-            indexName: "engine-needle"
+            indexName: "engine-needle",
+            injectStyles: true,
         }),
         //@ts-ignore
         // pwaPlugin(),
@@ -109,32 +110,47 @@ export default defineUserConfig({
         ],
         navbar: [
             {
-                text: 'Needle Engine',
+                text: 'Overview',
                 link: '/',
                 children: [
                     {
-                        text: 'Needle Engine',
+                        text: 'What is Needle Engine?',
                         link: '/',
                     },
-                    "/vision",
-                    "/features-overview",
-                    "/technical-overview",
+                    '/testimonials',
                     {
-                        text: 'Testimonials 💬',
-                        link: '/testimonials',
+                        text: "Get an overview",
+                        children: [
+                            {
+                                text: "Samples and Showcase",
+                                link: "https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav"
+                            },
+                            "/vision",
+                            "/features-overview",
+                            "/technical-overview",
+                        ],
                     },
                     {
-                        text: 'Pricing & Plans',
-                        link: "https://needle.tools/pricing?utm_source=needle_docs&utm_content=headersubnav"
-                    },
-                    {
-                        text: "Releases and Changelog",
-                        link: "https://github.com/needle-tools/needle-engine-support/releases"
+                        text: "Resources",
+                        children: [
+                            {
+                                text: 'Pricing and Plans',
+                                link: "https://needle.tools/pricing/?utm_source=needle_docs&utm_content=headersubnav"
+                            },
+                            {
+                                text: "Changelog",
+                                link: "https://github.com/needle-tools/needle-engine-support/releases"
+                            },
+                            {
+                                text: "API Documentation",
+                                link: "https://engine.needle.tools/docs/api/latest",
+                            },
+                        ],
                     },
                 ]
             },
             {
-                text: 'Getting Started',
+                text: 'Downloads',
                 link: '/getting-started',
             },
             {
@@ -147,28 +163,11 @@ export default defineUserConfig({
                     "/testing",
                     "/deployment",
                     {
-                        text: "Scripting",
-                        children: [
-                            "/getting-started/typescript-essentials",
-                            "/getting-started/for-unity-developers",
-                            "/scripting",
-                            "/component-compiler",
-                            "/scripting-examples",
-                            {
-                                text: "Community Contributions",
-                                link: "/community/contributions"
-                            },
-                            {
-                                text: "Needle Engine API",
-                                link: "https://engine.needle.tools/docs/api",
-                            },
-                        ]
-                    },
-                    {
                         text: "Advanced",
                         children: [
                             "/networking",
                             "/xr",
+                            "/vanilla-js",
                         ]
                     },
                     {
@@ -199,35 +198,40 @@ export default defineUserConfig({
                 text: 'Reference',
                 children: [
                     {
-                        text: "Scripting",
+                        text: "Scripting Overview",
                         children: [
+                            "/getting-started/typescript-essentials",
+                            "/getting-started/for-unity-developers",
                             "/component-reference",
-                            "/reference/needle-engine-attributes",
-                            "/reference/needle-config-json",
+                            "/everywhere-actions",
+                        ]
+                    },
+                    {
+                        text: "Components and Lifecycle",
+                        children: [
+                            "/scripting",
                             "/reference/typescript-decorators",
+                            "/component-compiler",
                             "/scripting-examples",
-                            {
-                                text: "Needle Engine API",
-                                link: "https://engine.needle.tools/docs/api",
-                            },
-                            "/vanilla-js",
                             {
                                 text: "Community Contributions",
                                 link: "/community/contributions"
                             },
+                            "/modules", 
                         ]
                     },
                     {
-                        text: "Download and Learn",
+                        text: "Settings and APIs",
                         children: [
+                            "/reference/needle-engine-attributes",
+                            "/reference/needle-config-json",
                             {
-                                text: "Samples for Download",
-                                link: "https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav",
+                                text: "Needle Engine API",
+                                link: "https://engine.needle.tools/docs/api/latest",
                             },
-                            "/modules",
                             {
-                                text: "Tutorials on Youtube",
-                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
+                                text: "three.js API",
+                                link: "https://threejs.org/docs/index.html",
                             },
                         ]
                     },
@@ -239,7 +243,7 @@ export default defineUserConfig({
             },
             {
                 text: 'Pricing',
-                link: "https://needle.tools/pricing?utm_source=needle_docs&utm_content=headernav"
+                link: "https://needle.tools/pricing/?utm_source=needle_docs&utm_content=headernav"
             },
             {
                 text: 'Contact',
@@ -323,6 +327,7 @@ export default defineUserConfig({
                     children: [
                         "/xr",
                         "/networking",
+                        "/vanilla-js",
                     ]
                 },
                 {
@@ -339,10 +344,7 @@ export default defineUserConfig({
                 {
                     text: "Blender",
                     children: [
-                        {
-                            text: "Needle Engine for Blender",
-                            link: "/blender"
-                        }
+                        "/blender",
                     ]
                 },
             ]

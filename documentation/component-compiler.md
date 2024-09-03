@@ -1,5 +1,5 @@
 ---
-title: Editor Component Generator
+title: Automatic Component Generation
 ---
 
 ### Automatically generating Editor components :tags codegen

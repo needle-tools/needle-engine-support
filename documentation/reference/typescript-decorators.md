@@ -1,5 +1,5 @@
 ---
-title: Typescript Decorators
+title: "@serializable and other decorators"
 ---
 
 The following table contains available Typescript decorators that Needle Engine provides.  

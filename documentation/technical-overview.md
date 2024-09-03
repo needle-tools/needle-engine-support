@@ -7,10 +7,9 @@ Needle Engine roughly consists of three parts:
 - an **exporter** that turns scene and component data into glTF.
 - a **web runtime** that loads and runs the produced glTF files and their extensions.
 
-The editor extensions currently support the Unity Editor, with some promising experiments for Blender on the horizon (but no ETA).  
 The web runtime uses three.js for rendering, adds a component system on top of the three scene graph and hooks up extension loaders for our custom glTF extensions.  
 
-Effectively, this turns the Unity Editor into a full member of a regular web development toolchain – "just" one more piece that gets added to the regular HTML, JavaScript, CSS and bundling workflow.  
+Effectively, this turns tools like Unity or Blender into spatial web development powerhouses – adding glTF assets to the typical HTML, CSS, JavaScript and bundling workflow.  
 
 
 ## glTF Assets

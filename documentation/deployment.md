@@ -1,5 +1,5 @@
 ---
-title: Deployment & Compression
+title: Deployment and Optimization
 ---
 
 ## What does deployment mean?

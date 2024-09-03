@@ -1,10 +1,10 @@
 ---
-title: Core Components
+title: Built-in Components
 ---
 
-Here is a overview of some of the components that we provide. Some of them map directly to Unity components, while others are core components from Needle Engine.   
+Here is a overview of some of the components that we provide. Many of them map to components and functionality in Unity, Blender or other integrations.
 
-For a complete list please have a look at the components inside the folders ``node_modules/@needle-tools/engine/engine-components`` and ``engine-components-experimental``.  
+For a complete list please have a look at our [API docs](https://engine.needle.tools/docs/api/latest).
 
 You can always add your own components or add wrappers for Unity components we haven't provided yet.  
 

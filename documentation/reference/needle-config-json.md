@@ -1,5 +1,5 @@
 ---
-title: Needle Config
+title: needle.config.json
 ---
 
 The `needle.config.json` is used to provide configuration for the Needle Editor integrations and for the Needle Engine build pipeline plugins.

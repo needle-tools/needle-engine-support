@@ -1,6 +1,11 @@
-# Script Examples
+---
+title: Scripting Examples
+description: A collection of useful script snippets and examples.
+---
 
-[Here is a video for writing custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
+# Scripting Examples
+
+[Video tutorial: How to write custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
 
 Below you will find a few basic scripts as a quick reference. 
 

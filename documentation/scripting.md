@@ -1,5 +1,5 @@
 ---
-title: Needle Engine Scripting
+title: Creating and using Components
 ---
 
 If you are new to scripting we recommend reading the following guides first:
@@ -7,7 +7,7 @@ If you are new to scripting we recommend reading the following guides first:
 - [Typescript Essentials](./getting-started/typescript-essentials.md)
 - [Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
 
-Sometimes it can also be helpful to dive into the [Needle Engine Api documentation](https://engine.needle.tools/docs/api).
+If you know what you're doing, feel free to jump right into the [Needle Engine API documentation](https://engine.needle.tools/docs/api/latest).
 
 ---
 

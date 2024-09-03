@@ -1,5 +1,6 @@
 ---
-title: Typescript Essentials
+title: Scripting in Needle Engine
+description: Differences, similarities and key concepts of Typescript, Javascript and C#.
 sidebarDepth: 2
 ---
 
