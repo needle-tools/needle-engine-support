@@ -172,8 +172,9 @@ It's worth noting that the overlay element [will be always displayed fullscreen 
 
 ## Image Tracking
 
-WebXR ImageTracking is still in "draft" phase: [Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)   
-But you can still use WebXR ImageTracking with Needle Engine today:
+Needle Engine supports **WebXR ImageTracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr))  
+*Note*: WebXR ImageTracking is still in "draft" phase: [Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)   
+Follow these steps to enable WebXR ImageTracking:
 
 - Enable `WebXR Incubations` in chrome
 - Add the `WebXRImageTracking` component
