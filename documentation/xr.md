@@ -172,9 +172,9 @@ It's worth noting that the overlay element [will be always displayed fullscreen 
 
 ## Image Tracking
 
-Needle Engine supports **WebXR ImageTracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr))  
-*Note*: WebXR ImageTracking is still in "draft" phase: [Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)   
-Follow these steps to enable WebXR ImageTracking:
+Needle Engine supports **WebXR ImageTracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr))   
+*Note*: While WebXR ImageTracking is still in "draft" phase ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md))   
+you need to follow these steps to enable WebXR ImageTracking on Android devices:
 
 - Enable `WebXR Incubations` in chrome
 - Add the `WebXRImageTracking` component
@@ -184,8 +184,9 @@ You can find additional documentation in the [Everywhere Actions](everywhere-act
 Without that spec, one can still request camera image access and run custom algorithms to determine device pose.  
 Libraries to add image tracking:  
    - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
-     - [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
+   - [Experimental AR.js integration with Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
+
 
 
 ## Augmented Reality and WebXR on iOS
