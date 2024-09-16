@@ -8,7 +8,11 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 // import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
+import { shikiPlugin } from '@vuepress/plugin-shiki'
 
+import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
+import {fromMarkdown} from 'mdast-util-from-markdown'
+import {toHast} from 'mdast-util-to-hast'
 
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
@@ -19,6 +23,7 @@ import * as dotenv from 'dotenv'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { modifyHtmlMeta } from './plugins/html-meta/index'
 
+import { Behaviour } from '@needle-tools/engine';
 
 dotenv.config()
 
@@ -63,7 +68,61 @@ export default defineUserConfig({
         googleAnalyticsPlugin({
             id: "G-V2Q445L3XQ",
             debug: false,
-        })
+        }),
+        shikiPlugin({
+            langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs'],
+            themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
+            lineNumbers: true,
+            highlightLines: true,
+            transformers: [
+                {
+                    name: 'add-lines',
+                    // prepend lines
+                    preprocess: (code: string, options) => {
+                        if (options.lang !== "ts") return code;
+                        if (code.includes("@needle-tools/engine")) return code;
+                        return `/******/
+                        import { Behaviour, serializable } from '@needle-tools/engine';
+                        /******/` + code;
+                    },
+                },
+                // https://twoslash.netlify.app/refs/options#compiler-options
+                // complex example: https://github.com/shikijs/shiki/blob/644a244aad3513f68c9037d9c46ae6a6a04068ca/packages/vitepress-twoslash/src/renderer-floating-vue.ts#L50
+                transformerTwoslash({
+                    renderer: rendererRich({
+                        jsdoc: true,
+                        renderMarkdown: (c) => {
+                            const mdast = fromMarkdown(c);
+                            const hast = toHast(mdast);
+
+                            const convertFromHastNodesToElementContent = (hast: any): any => {
+                                if (hast.type === "element") {
+                                    if (hast.tagName === "pre") {
+                                        return {
+                                            type: "code",
+                                            lang: hast.properties?.language,
+                                            value: hast.children?.[0]?.value,
+                                        };
+                                    }
+                                }
+                                if (hast.children) {
+                                    hast.children = hast.children.map(convertFromHastNodesToElementContent);
+                                }
+                                return hast;
+                            }
+
+                            const convert = convertFromHastNodesToElementContent(hast);
+                            console.log("HAST", hast, convertFromHastNodesToElementContent(hast));
+                            return convert;
+                        }
+                    }),
+                    explicitTrigger: true,
+                    onTwoslashError: (e, code) => {
+                        console.warn("Twoslash error", e);
+                    },
+                }),
+            ]
+        }) as any,
     ],
     head: [
         ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
@@ -112,6 +171,12 @@ export default defineUserConfig({
             "Oh no — this page does not exist!",
             "Gosh! You found a 🌵 glitch",
         ],
+        themePlugins: {
+            backToTop: false,
+            prismjs: false, /*{
+                theme: 'coy',
+            },*/
+        },
         navbar: [
             {
                 text: 'Overview',

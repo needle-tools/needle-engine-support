@@ -23,16 +23,21 @@ You can use the following comments in your typescript code to control C# code ge
 #### Examples
 
 Force the component compiler to generate a C# AudioClip field named `myAudioClip`
-```ts
+```ts twoslash
+import { Behaviour, serializable } from "@needle-tools/engine";
+
 export class MyComponent extends Behaviour {
 	//@type UnityEngine.AudioClip
 	@serializable()
-	myAudioClip?:string;
+	myAudioClip?: string;
 }
+
 ```
 
 Force the component compiler to derive from a specific subclass
-```ts
+```ts twoslash
+export class MyCustomBaseClass extends Behaviour { /* ... */ }
+// ---cut-before---
 //@type MyNamespace.MyCustomBaseClass
 export class MyComponent extends MyCustomBaseClass {
 }
@@ -49,13 +54,14 @@ For C# fields to be correctly generated it is currently important that you expli
 You can switch between **Typescript** input and generated **C#** stub components using the tabs below
 :::: code-group
 ::: code-group-item Typescript
-```ts
+```ts twoslash
+// @errors: 2322
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
 
 export class MyCustomComponent extends Behaviour {
     @serializable()
-    myFloatValue: number = 42;
+    myFloatValue: number = "42";
 
     @serializable(Object3D)
     myOtherObject?: Object3D;
