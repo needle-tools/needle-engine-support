@@ -297,6 +297,7 @@ export default defineUserConfig({
                             text: 'Installation',
                             link: "/getting-started/",
                         },
+                        /*
                         {
                             text: 'Getting started with Unity',
                             stub: true,
@@ -313,6 +314,7 @@ export default defineUserConfig({
                             text: 'Custom integrations',
                             stub: true,
                         }
+                        */
                     ]
                 },
                 {
