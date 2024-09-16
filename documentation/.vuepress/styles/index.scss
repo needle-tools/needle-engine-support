@@ -431,3 +431,36 @@ div[class*=language-] > pre code {
 .twoslash-popup-container pre {
   white-space: pre-wrap;
 }
+
+.twoslash-popup-container .twoslash-popup-docs code {
+  display: inline;
+  display: inline;
+  color: rgb(45, 45, 101);
+  margin: 0;
+  padding: 0;
+}
+
+
+.twoslash-popup-docs-tag {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  color: initial;
+}
+
+.twoslash-popup-docs.twoslash-popup-docs-tags .twoslash-popup-docs-tag-name,
+.twoslash-popup-docs.twoslash-popup-docs-tags .twoslash-popup-docs-tag-value {
+  color: black;
+}
+
+.twoslash-popup-docs.twoslash-popup-docs-tags .twoslash-popup-docs-tag-name {
+  font-weight: bold;
+  margin-right: 0.5em;
+  color: rgb(0, 70, 131);
+}
+
+.twoslash-popup-docs-tag-value p { 
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+}

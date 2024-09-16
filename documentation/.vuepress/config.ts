@@ -11,8 +11,8 @@ import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
-import {fromMarkdown} from 'mdast-util-from-markdown'
-import {toHast} from 'mdast-util-to-hast'
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { defaultHandlers, toHast } from 'mdast-util-to-hast';
 
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
@@ -24,6 +24,7 @@ import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { modifyHtmlMeta } from './plugins/html-meta/index'
 
 import { Behaviour } from '@needle-tools/engine';
+import { Element } from 'hast'
 
 dotenv.config()
 
@@ -36,6 +37,63 @@ const _previewImg = "preview.jpeg";
 
 // https://css-tricks.com/essential-meta-tags-social-media/
 // https://ogp.me/
+
+function renderMarkdown(content) {
+    try {
+        content = content.replace(/\{@link\s+([^ ]+)(?:\s+([^\}]*))?\}/g, function(match, p1, p2) {
+            if (!p1 && !p2) return match;
+
+            // console.log("MATCH", content, match, p1, p2);
+            p1 = p1.replace(/^\s+|\s+$/g, '');
+
+            if (p2) {
+                // remove newlines and whitespaces at the beginning and end
+                p2 = p2.replace(/^\s+|\s+$/g, '');
+                return `[${p2.trim()}](${p1.trim()})`;
+            }
+
+            return `[${p1.trim()}](${p1.trim()})`;
+        });
+
+        // TODO support inline better, right now becomes a paragraph
+        
+        const processed = fromMarkdown(content);
+        const hast = toHast(processed,
+            // Could turn the code samples into nice formatted code again here... inception
+            // from https://github.com/shikijs/shiki/blob/644a244aad3513f68c9037d9c46ae6a6a04068ca/packages/vitepress-twoslash/src/renderer-floating-vue.ts#L136
+            /*
+            {
+                handlers: {
+                  code: (state, node) => {
+                    const lang = node.lang || ''
+                    if (lang) {
+                      return <Element>{
+                        type: 'element',
+                        tagName: 'code',
+                        properties: {},
+                        children: codeToHast(
+                          node.value,
+                          {
+                            ...this.options,
+                            transformers: [],
+                            lang,
+                            structure: node.value.trim().includes('\n') ? 'classic' : 'inline',
+                          },
+                        ).children,
+                      }
+                    }
+                    return defaultHandlers.code(state, node)
+                  },
+                },
+              },
+              */
+        );
+        return (hast as Element).children;
+    } catch (e) {
+        console.warn("Error in markdown rendering", e);
+        return content;
+    }
+}
 
 export default defineUserConfig({
     base: _base,
@@ -72,18 +130,19 @@ export default defineUserConfig({
         shikiPlugin({
             langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs'],
             themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
-            lineNumbers: true,
-            highlightLines: true,
+            lineNumbers: false,
+            highlightLines: false,
             transformers: [
+                // HACK to add the import statement to the code
                 {
                     name: 'add-lines',
                     // prepend lines
                     preprocess: (code: string, options) => {
                         if (options.lang !== "ts") return code;
                         if (code.includes("@needle-tools/engine")) return code;
-                        return `/******/
-                        import { Behaviour, serializable } from '@needle-tools/engine';
-                        /******/` + code;
+                        return `import { Behaviour, serializable } from '@needle-tools/engine';
+                        // ---cut---
+` + code;
                     },
                 },
                 // https://twoslash.netlify.app/refs/options#compiler-options
@@ -91,32 +150,12 @@ export default defineUserConfig({
                 transformerTwoslash({
                     renderer: rendererRich({
                         jsdoc: true,
-                        renderMarkdown: (c) => {
-                            const mdast = fromMarkdown(c);
-                            const hast = toHast(mdast);
-
-                            const convertFromHastNodesToElementContent = (hast: any): any => {
-                                if (hast.type === "element") {
-                                    if (hast.tagName === "pre") {
-                                        return {
-                                            type: "code",
-                                            lang: hast.properties?.language,
-                                            value: hast.children?.[0]?.value,
-                                        };
-                                    }
-                                }
-                                if (hast.children) {
-                                    hast.children = hast.children.map(convertFromHastNodesToElementContent);
-                                }
-                                return hast;
-                            }
-
-                            const convert = convertFromHastNodesToElementContent(hast);
-                            console.log("HAST", hast, convertFromHastNodesToElementContent(hast));
-                            return convert;
-                        }
+                        renderMarkdown: renderMarkdown,
+                        renderMarkdownInline(markdown, context) {
+                            return renderMarkdown(markdown);
+                        },
                     }),
-                    explicitTrigger: true,
+                    explicitTrigger: false, // set to true to debug individual code snippets
                     onTwoslashError: (e, code) => {
                         console.warn("Twoslash error", e);
                     },

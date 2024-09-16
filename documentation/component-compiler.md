@@ -55,13 +55,12 @@ You can switch between **Typescript** input and generated **C#** stub components
 :::: code-group
 ::: code-group-item Typescript
 ```ts twoslash
-// @errors: 2322
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
 
 export class MyCustomComponent extends Behaviour {
     @serializable()
-    myFloatValue: number = "42";
+    myFloatValue: number = 42;
 
     @serializable(Object3D)
     myOtherObject?: Object3D;
