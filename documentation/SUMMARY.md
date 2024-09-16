@@ -1,7 +1,7 @@
 
 
 # Get Started
-* [Getting Started ⭐](./getting-started.md)
+* [Getting Started ⭐](./getting-started/)
     * [Feature Overview](./features-overview.md)
     * [Export](./export.md)
     * [Project Structure](./project-structure.md)

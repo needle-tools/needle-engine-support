@@ -16,7 +16,7 @@
 
 <div align="center">
   
-[Getting Started](https://docs.needle.tools/getting-started) — [Samples](https://engine.needle.tools/samples) — [Documentation](https://engine.needle.tools/docs)
+[Getting Started](https://docs.needle.tools/getting-started/) — [Samples](https://engine.needle.tools/samples) — [Documentation](https://engine.needle.tools/docs)
 
 </div>
 

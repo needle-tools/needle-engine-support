@@ -1,4 +1,6 @@
-import { defineUserConfig, defaultTheme } from 'vuepress'
+import { defineUserConfig } from 'vuepress'
+import { defaultTheme } from '@vuepress/theme-default'
+import { viteBundler } from '@vuepress/bundler-vite'
 import { path } from '@vuepress/utils'
 // import { searchPlugin } from '@vuepress/plugin-search'
 // import * as mermaidPlugin from "vuepress-plugin-mermaidjs";
@@ -92,13 +94,15 @@ export default defineUserConfig({
             format: (link) => cleanHeader(link),
         },
     },
+    bundler: viteBundler(),
     theme: defaultTheme({
         // repo: "needle-tools/needle-engine-support", // this only adds the github link
         docsRepo: "needle-tools/needle-engine-support",
         docsBranch: "main",
         docsDir: "documentation",
         logo: "/needle-logo-black.svg",
-        colorModeSwitch: false,
+        logoDark: "/needle-logo-white.svg",
+        colorModeSwitch: true,
         lastUpdated: true, // useful for locally testing / seeing which pages are outdated
         contributors: false,
         editLink: true,
@@ -151,7 +155,7 @@ export default defineUserConfig({
             },
             {
                 text: 'Downloads',
-                link: '/getting-started',
+                link: '/getting-started/',
             },
             {
                 text: 'Guides',
@@ -291,7 +295,23 @@ export default defineUserConfig({
                     children: [
                         {
                             text: 'Installation',
-                            link: "/getting-started",
+                            link: "/getting-started/",
+                        },
+                        {
+                            text: 'Getting started with Unity',
+                            stub: true,
+                        },
+                        {
+                            text: 'Getting started with Blender',
+                            stub: true,
+                        },
+                        {
+                            text: 'Getting started with three.js',
+                            stub: true,
+                        },
+                        {
+                            text: 'Custom integrations',
+                            stub: true,
                         }
                     ]
                 },
@@ -378,7 +398,15 @@ export default defineUserConfig({
             // '/': [
             //     '', /* fallback, generate by header by default */
             // ]
-        }
+        },
     }),
-
+    alias: {
+        '@theme/SidebarItem.vue': path.resolve(__dirname, 'components/theme/SidebarItem.vue'),
+    },
 })
+
+/*
+{
+    '@theme/SidebarItem': path.resolve(__dirname, 'components/theme/SiderbarItem.vue'),
+}
+*/
