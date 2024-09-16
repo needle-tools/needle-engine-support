@@ -155,15 +155,23 @@ If you're not using npm or a bundler, you can instead add a prebundled version o
 
 
 
-## Other tools
-
-::: tip
-You don't need to manually install these when you're using the Unity or Blender integration – we'll guide you through the setup process.
-:::
+## Installation Checklist
 
 <ClientOnly>
 <!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
 
+<br/>
+<os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Visual Studio Code 📑</os-link>
+
+When you plan to edit or write code (JavaScript, HTML, CSS, ...) then we recommend that you use Visual Studio Code as your code editor. We nicely integrate with it.
+
+<br/>
+
+::: tip
+You don't need to manually install Node.js and toktx when you're using the Unity or Blender integration – we'll guide you through the setup process.
+:::
+
+<br/>
 <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Node.js 18+ ⭐</os-link>
 
 Needle Engine uses Node.js to manage, preview and build the web app that you are creating locally on your computer.     
@@ -172,9 +180,6 @@ It is also used for uploading (deploying) your website to the internet.
 
 <br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">toktx texture tools 🗜</os-link>  
 We use toktx to locally optimize your files. Learn more about production builds [in the docs](../deployment.md#production-builds).
-
-<br/><os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Visual Studio Code 📑</os-link>   
-When you plan to edit or write code (js or HTML) then we *recommend* that you use VSCode as your code editor.
 
 <br/>
 </ClientOnly>

@@ -107,7 +107,7 @@ export default defineUserConfig({
         contributors: false,
         editLink: true,
         editLinkText: "Suggest changes",
-        externalLinkIcon: false,
+        externalLinkIcon: true,
         notFound: [
             "Oh no — this page does not exist!",
             "Gosh! You found a 🌵 glitch",
@@ -340,7 +340,7 @@ export default defineUserConfig({
                         "/scripting-examples",
                         {
                             text: "Community Contributions",
-                            link: "/community/contributions"
+                            link: "/community/contributions/"
                         },
                     ]
                 },
@@ -402,9 +402,11 @@ export default defineUserConfig({
             // ]
         },
     }),
+    /*
     alias: {
-        '@theme/SidebarItem.vue': path.resolve(__dirname, 'components/theme/SidebarItem.vue'),
+        '@theme/VPSidebarItem.vue': path.resolve(__dirname, 'components/theme/SidebarItem.vue'),
     },
+    */
 })
 
 /*

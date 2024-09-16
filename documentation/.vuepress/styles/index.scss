@@ -79,6 +79,7 @@ p, ul, ol {
   line-height: 1.5em;
 }
 
+/*
 code {
   border-radius: .4rem;
   background-color: rgba(180,180,180,.1) !important;
@@ -98,6 +99,7 @@ pre code {
 a code {
   color: var(--c-text-accent) !important;
 }
+*/
 
 ::selection {
   color: #000;
@@ -378,4 +380,54 @@ footer.page-meta {
 
 .vp-page-nav .route-link {
   border: none;
+}
+
+.route-link-active + ul {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.route-link-active + ul::before {
+  content:"on this page";
+  opacity: 0.5;
+  text-transform: uppercase;
+  padding-left: 2.7em;
+  font-weight: bold;
+  font-size: 0.8em;
+}
+
+.vp-sidebar-children .vp-sidebar-children .vp-sidebar-item:not(.vp-sidebar-heading).active {
+  font-weight: bold; 
+}
+
+div[class*=language-] > pre {
+  scrollbar-color: var(--vp-c-accent-bg) transparent;
+  scrollbar-width: thin;
+}
+
+div[class*=language-] > pre code {
+  font-size: 1em;
+  color: wheat;
+}
+
+.twoslash-popup-container {
+  font-size: 0.8em;
+}
+.twoslash .twoslash-popup-docs {
+  font-size: 14px !important;
+}
+
+.twoslash .twoslash-popup-code pre.shiki {
+  margin-left: 0;
+  white-space: pre-wrap;
+}
+
+.twoslash-popup-container {
+  max-width: 700px;
+  white-space: initial;
+  min-width: 700px;
+}
+
+.twoslash-popup-container pre {
+  white-space: pre-wrap;
 }

@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import AutoLink from '@vuepress/theme-default'
+import AutoLink from '@vuepress/theme-default';
 import DropdownTransition from '@vuepress/theme-default'
 import { useToggle } from '@vueuse/core'
 import { computed, nextTick, onBeforeUnmount, toRefs } from 'vue'
 import type { PropType } from 'vue'
 import { useRoute, useRouter } from 'vue-router'
 import type { ResolvedSidebarItem } from '@vuepress/theme-default'
+import { isActiveSidebarItem } from '@vuepress/theme-default'
 
 const props = defineProps({
   item: {
@@ -23,7 +24,7 @@ const { item, depth } = toRefs(props)
 const route = useRoute()
 const router = useRouter()
 
-const isActive = computed(() => false)//isActiveSidebarItem(item.value, route))
+const isActive = computed(() => isActiveSidebarItem(item.value, route))
 const itemClass = computed(() => ({
   'sidebar-item': true,
   'sidebar-heading': depth.value === 0,
