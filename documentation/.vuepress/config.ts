@@ -134,6 +134,7 @@ export default defineUserConfig({
             highlightLines: false,
             transformers: [
                 // HACK to add the import statement to the code
+                /*
                 {
                     name: 'add-lines',
                     // prepend lines
@@ -145,6 +146,7 @@ export default defineUserConfig({
 ` + code;
                     },
                 },
+                */
                 // https://twoslash.netlify.app/refs/options#compiler-options
                 // complex example: https://github.com/shikijs/shiki/blob/644a244aad3513f68c9037d9c46ae6a6a04068ca/packages/vitepress-twoslash/src/renderer-floating-vue.ts#L50
                 transformerTwoslash({

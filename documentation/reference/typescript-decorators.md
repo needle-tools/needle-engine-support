@@ -24,6 +24,10 @@ You can think of them as Attributes on steroids (if you are familiar with C#) - 
 ### Serializable
 
 ```ts
+import { Behaviour, serializable, EventList } from "@needle-tools/engine";
+import { Object3D } from "three";
+export class SomeComponentType extends Behaviour {}
+
 export class ButtonObject extends Behaviour {
     // you can omit the type if it's a primitive 
     // e.g. Number, String or Bool
@@ -35,11 +39,11 @@ export class ButtonObject extends Behaviour {
     onClick?: EventList;
 
     @serializable(SomeComponentType)
-    myComponent: SomeComponentType;
+    myComponent?: SomeComponentType;
 
     // Note that for arrays you still add the concrete type (not the array)
     @serializable(Object3D)
-    myObjects: Object3D[];
+    myObjects?: Object3D[];
 }
 ```
 
@@ -52,13 +56,15 @@ The `@syncField` decorator can be used to automatically network properties of yo
 - The callback function can *not* be an arrow function (e.g. `MyScript.prototype.onNumberChanged` works for `onNumberChanged() { ... }` but it does not for `myNumberChanged = () => { ... }`)
 
 ```ts
+import { Behaviour, serializable, syncField } from "@needle-tools/engine";
+
 export class MyScript extends Behaviour {
 
     @syncField(MyScript.prototype.onNumberChanged)
     @serializable()
     myNumber: number = 42;
 
-    private onNumberChanged(newValue : number, oldValue : number){
+    private onNumberChanged(newValue: number, oldValue: number){
         console.log("Number changed from ", oldValue, "to", newValue)
     }
 }
@@ -67,6 +73,8 @@ export class MyScript extends Behaviour {
 
 ### Validate
 ```ts
+import { Behaviour, serializable, validate } from "@needle-tools/engine";
+
 export class MyScript extends Behaviour {
 
     @validate()
@@ -85,7 +93,7 @@ export class MyScript extends Behaviour {
 ### Prefix
 [Live example](https://stackblitz.com/edit/needle-engine-prefix-example?file=src%2Fmain.ts)
 ```ts
-import { Camera } from "@needle-tools/engine";
+import { Camera, prefix } from "@needle-tools/engine";
 class YourClass {
     @prefix(Camera) // < this is type that has the method you want to change
     awake() { // < this is the method name you want to change

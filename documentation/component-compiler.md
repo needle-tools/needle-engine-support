@@ -36,6 +36,7 @@ export class MyComponent extends Behaviour {
 
 Force the component compiler to derive from a specific subclass
 ```ts twoslash
+import { Behaviour } from "@needle-tools/engine";
 export class MyCustomBaseClass extends Behaviour { /* ... */ }
 // ---cut-before---
 //@type MyNamespace.MyCustomBaseClass

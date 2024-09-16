@@ -90,6 +90,8 @@ or to just traverse visible objects use [`traverseVisible`](https://threejs.org/
 
 Another option that is quite useful when you just want to iterate objects being renderable you can query all renderer components and iterate over them like so:   
 ```ts
+import { Renderer } from "@needle-tools/engine";
+
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
     console.log(renderer);
 ```
@@ -180,7 +182,7 @@ export class MyScript extends Behaviour
 
 You can also subscribe to events in the ``InputEvents`` enum like so:
 ```ts
-import { Behaviour, InputEvents } from "@needle-tools/engine";
+import { Behaviour, InputEvents, PointerEventData } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
 {
@@ -192,7 +194,7 @@ export class MyScript extends Behaviour
         this.context.input.removeEventListener(InputEvents.PointerDown, this.onPointerDown);
     }
 
-    private onPointerDown = (evt) => { console.log(evt); }
+    onPointerDown = (evt: PointerEventData) => { console.log(evt); }
 }
 ```
 
@@ -231,6 +233,10 @@ All have a `PointerEventData` argument describing the event.
 ## Debug.Log
 The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.  
 ```ts
+import { GameObject, Renderer } from "@needle-tools/engine";
+const someVariable = 42;
+// ---cut-before---
+
 console.log("Hello web");
 // You can pass in as many arguments as you want like so:
 console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
@@ -241,6 +247,10 @@ In Unity you normally have to use special methods to draw Gizmos like `OnDrawGiz
 
 Here is an example to draw a red wire sphere for one second for e.g. visualizing a point in worldspace
 ```ts
+import { Vector3 } from "three";
+const hit = { point: new Vector3(0, 0, 0) };
+// ---cut-before---
+import { Gizmos } from "@needle-tools/engine";
 Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
 ```
 Here are some of the available gizmo methods:  

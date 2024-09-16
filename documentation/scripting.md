@@ -224,7 +224,7 @@ Those hooks can be inserted at any point in your web application (for example in
 For example ([See example on stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts
 // this can be put into e.g. main.ts or a svelte component (similar to onMount)
-import { onUpdate, onBeforeRender } from "@needle-tools/engine"
+import { Context, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
 onUpdate((ctx: Context) => {
     // do something... e.g. access the scene via ctx.scene
     console.log("UPDATE", ctx.time.frame);
@@ -307,7 +307,8 @@ for(const child of this.gameObject.children) {
 ```
 You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
 ```ts
-this.gameObject.traverse(obj => console.log(obj))
+import { Object3D } from "three";
+this.gameObject.traverse(obj: Object3D => console.log(obj))
 ```
 or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
 
@@ -344,19 +345,20 @@ export class MyScript extends Behaviour
 
 You can also subscribe to events in the ``InputEvents`` enum like so:
 ```ts
-import { Behaviour, InputEvents } from "@needle-tools/engine";
+import { Behaviour, InputEvents, PointerEventData } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
 {
-    onEnable(){
+    onEnable() {
         this.context.input.addEventListener(InputEvents.PointerDown, this.onPointerDown);
     }
+
     onDisable() {
         // it is recommended to also unsubscribe from events when your component becomes inactive
         this.context.input.removeEventListener(InputEvents.PointerDown, this.onPointerDown);
     }
 
-    private onPointerDown = (evt) => { console.log(evt); }
+    onPointerDown = (evt: PointerEventData) => { console.log(evt); }
 }
 ```
 

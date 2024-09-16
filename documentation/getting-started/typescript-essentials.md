@@ -47,11 +47,16 @@ For a variable that you do not want to be able to re-assign use `const`, for exa
 Please note that you *can* still assign values to variables declared with const if they are (for example) a custom type. Consider the following example:  
 
 ```ts
+import { Vector3 } from "three";
+// ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
 myPosition.x = 100; // Assigning x is perfectly fine
 ```
 The above is perfectly fine Typescript code because you don't re-assign `myPosition` but only the `x` member of `myPosition`. On the other hand the following example would **not**  be allowed and cause a runtime or typescript error:  
 ```ts
+// @errors: 2588
+import { Vector3 } from "three";
+// ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
 myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
 ```
@@ -68,13 +73,13 @@ using MonoBehaviour = UnityEngine.MonoBehaviour;
 
 This is how you do the same in Typescript to import specific types from a package:
 ```ts
-import { Vector3 } from `three`
-import { Behaviour } from `@needle-tools/engine`
+import { Vector3 } from `three`;
+import { Behaviour } from `@needle-tools/engine`;
 ```
 
 You *can* also import all the types from a specific package by giving it a name which you might see here and there:
 ```ts
-import * as THREE from `three`
+import * as THREE from `three`;
 const myVector : THREE.Vector3 = new THREE.Vector3(1, 2, 3);
 ```
 
@@ -100,8 +105,9 @@ The same is not true for Javascript/Typescript. Here we don't have custom value 
 Consider the following example in typescript:  
 ```ts
 import { Vector3 } from "three"
+
 function myCallerMethod() : void {
-    const position = new Vector(0,0,0);
+    const position = new Vector3(0,0,0);
     myExampleVectorMethod(position);
     console.log("Position.x is " + position.x); // Here x will be 42
 }
@@ -122,6 +128,8 @@ UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x);
 ``` 
 If you do the same in Typescript you will **not** create a copy but get a reference to the same `myVector` instance instead:
 ```ts
+import { Vector3 } from "three"
+
 const myVector = new Vector3(1,1,1);
 const myOtherVector = myVector;
 myOtherVector.x = 42;
@@ -143,6 +151,8 @@ myFirstVector *= myFactor;
 you have to use a method on the Vector3 type to archieve the same result (just with a little more boilerplate code)
 
 ```ts
+import { Vector3 } from "three"
+
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
 const myFactor = 100f;
 myFirstVector.multiplyScalar(myFactor);
@@ -158,6 +168,8 @@ var playerIsNull = myPlayer == null;
 ```
 in Javascript/Typescript there is a difference between `==` and `===` where `===` is more strictly checking for the type:
 ```ts
+const myPlayer: any = null;
+// ---cut-before---
 const playerIsNull = myPlayer === null;
 const playerIsNullOrUndefined = myPlayer == null;
 ```
@@ -185,31 +197,49 @@ Please note that we are using the type `EventList` here which is a Needle Engine
 The short and **recommended** syntax for doing this is to use [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).  
 
 ```ts
-myEvent?: EventList;
-void onEnable() {
-    this.myEvent.addEventListener(this.onMyEvent);
+import { EventList, Behaviour, serializable } from "@needle-tools/engine";
+
+export class MyComponent extends Behaviour {
+
+    @serializable(EventList)
+    myEvent!: EventList;
+
+    onEnable() {
+        this.myEvent.addEventListener(this.onMyEvent);
+    }
+
+    onDisable() {
+        this.myEvent.removeEventListener(this.onMyEvent);
+    }
+
+    // Declaring the function as an arrow method
+    // to automatically bind this:
+    private onMyEvent = () => {
+        console.log(this !== undefined, this)
+    }
 }
-void onDisable() {
-    this.myEvent.removeEventListener(this.onMyEvent);
-}
-// Declaring the function as an arrow method
-// to automatically bind this:
-private onMyEvent = () => {
-    console.log(this !== undefined, this)
- }
 ```
 There is also the more verbose "classical" way to archieve the same thing by manually binding this (and saving the method in a variable to later remove it again from the event list):
 ```ts
-myEvent?: EventList;
-private _onMyEventFn?: Function;
-void onEnable() {
-    // bind this
-    this._onMyEventFn = this.onMyEvent.bind(this);
-    // add the bound method to the event
-    this.myEvent?.addEventListener(this._onMyEventFn);
-} 
-void onDisable() {
-    this.myEvent?.removeEventListener(this._onMyEventFn);
+import { EventList, Behaviour } from "@needle-tools/engine";
+
+export class MyComponent extends Behaviour {
+
+    @serializable(EventList)
+    myEvent?: EventList;
+    
+    private _onMyEventFn?: Function;
+
+    onEnable() {
+        // bind this
+        this._onMyEventFn = this.onMyEvent.bind(this);
+        // add the bound method to the event
+        this.myEvent?.addEventListener(this._onMyEventFn);
+    } 
+    
+    onDisable() {
+        this.myEvent?.removeEventListener(this._onMyEventFn);
+    }
 }
 ```
 
