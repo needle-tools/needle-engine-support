@@ -464,3 +464,17 @@ div[class*=language-] > pre code {
   margin: 0;
   padding: 0;
 }
+
+.vp-navbar button:hover {
+  cursor: pointer;
+  background: none;
+}
+
+.vp-navbar-item > div > button:hover {
+  margin-bottom: -2px;
+  border-bottom: 2px solid var(--vp-c-accent);
+}
+
+.vp-navbar-item > a:hover, .vp-navbar-item a.route-link-active {
+  color: var(--vp-c-text);
+}

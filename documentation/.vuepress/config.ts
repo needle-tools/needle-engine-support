@@ -234,6 +234,7 @@ export default defineUserConfig({
         logo: "/needle-logo-black.svg",
         logoDark: "/needle-logo-white.svg",
         colorModeSwitch: true,
+        colorMode: "light",
         lastUpdated: true, // useful for locally testing / seeing which pages are outdated
         contributors: false,
         editLink: true,
