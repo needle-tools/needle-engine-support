@@ -65,7 +65,7 @@ You can also export an array of clips.
 @[code ts twoslash](@code/component-unityevent.ts)
 ::: tip
 EventList events are also invoked on the component level. This means you can also subscribe to the event declared above using ``myComponent.addEventListener("my-event", evt => {...})`` as well.   
-This is an experimental feature: please provide feedback in our [discord](https://discord.needle.tools)
+This is an experimental feature. Please provide feedback in our [forum](https://forum.needle.tools)
 :::
 
 

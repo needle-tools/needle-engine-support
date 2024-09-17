@@ -315,7 +315,7 @@ export default defineUserConfig({
                     {
                         text: "Blender",
                         children: [
-                            "/blender"
+                            "/blender/"
                         ]
                     },
                     {
@@ -456,7 +456,7 @@ export default defineUserConfig({
                     ]
                 },
                 {
-                    text: "Creating your Project",
+                    text: "Core Concepts",
                     children: [
                         "/project-structure",
                         "/everywhere-actions",
@@ -504,7 +504,7 @@ export default defineUserConfig({
                 {
                     text: "Blender",
                     children: [
-                        "/blender",
+                        "/blender/",
                     ]
                 },
             ]

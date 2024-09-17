@@ -26,13 +26,16 @@ If you have feedback for us please let us know in [our forum](https://forum.need
 
 ## Download and Installation 💿
 
-### Step 1 • <a target="_blank" href="https://www.blender.org/download/">Install Blender</a> 3.6, 4.0, 4.1 or 4.2
+### Step 1
+<a target="_blank" href="https://www.blender.org/download/">Install Blender</a> 3.6, 4.0, 4.1 or 4.2
 
+### Step 2
 <ClientOnly>
-### Step 2 • <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Install Nodejs ⭐</os-link>
+ <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Install Nodejs ⭐</os-link>
 </ClientOnly>
 
-### Step 3 • <a class="plausible-event-name=download_blender plausible-event-position=blender_download" target="_blank" href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=blender">Download Needle Engine for Blender</a>
+### Step 3
+<a class="plausible-event-name=download_blender plausible-event-position=blender_download" target="_blank" href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=blender">Download Needle Engine for Blender</a>
 
 *The Blender addon is downloaded as a zip file.   
 In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
@@ -99,7 +102,7 @@ Alternatively if you don't want to see the cubemap as a background add a Camera 
 
 ![Environment Camera](/blender/environment-camera.webp)
 
-### Add your custom HDRi / EXR environment lighting and skybox
+### Add your custom HDRI / EXR environment lighting and skybox
 
 <video-embed limit_height src="/docs/blender/custom_hdri.mp4" /> 
 
@@ -151,16 +154,17 @@ To use an AnimatorController add an Animator component to the root object of you
 You can set the Animator parameters from typescript or by e.g. using the event of a Button component
 
 
-### Timeline — nla tracks export 🎬
+### Timeline — NLA Tracks export 🎬
 
-Exporting Blender nla tracks to threejs.  
-Add a PlayableDirector component (via `Add Component`) to a any blender object. Assign the objects in the ``animation tracks`` list in the component for which you want the nla tracks to be exported.
+You can export Blender NLA tracks directly to the web.  
+Add a PlayableDirector component (via `Add Component`) to a any blender object. Assign the objects in the ``animation tracks`` list in the component for which you want the NLA tracks to be exported.
 
 ![](/blender/timeline_setup.webp)  
 ![](/blender/timeline.webp)  
 
 ::: details Code example for interactive timeline playback
 Add this script to `src/scripts` (see custom components section) and add it to any object in Blender to make a timeline's time be controlled by scrolling in the browsers
+
 ```ts twoslash
 import { Behaviour, PlayableDirector, serializable, Mathf } from "@needle-tools/engine";
 
@@ -226,16 +230,14 @@ Make sure ``@needle-tools/needle-component-compiler`` 2.x is installed in your w
 
 ## Lightmapping 💡
 
-Needle Lightmapping will automatically generate lightmap UVs for all models marked to be lightmapped. For lightmapping to work you need at least one light and one object with `Lightmapped` turned on.
-
-::: danger Please keep in mind:
-You are using an early preview of these features - we recommend creating a backup of your blend file when using Lightmapping at this point in time. Please report problems or errors you encounter in [our discord](https://discord.needle.tools) 🙏
-::: 
+Needle includes a lightmapping plugin that makes it very easy to bake beautiful lights to textures and bring them to the web. The plugin will automatically generate lightmap UVs for all models marked to be lightmapped, there is no need to make a manual texture atlas. It also supports lightmapping of multiple instances with their own lightmap data. 
+For lightmapping to work, you need at least one light and one object with `Lightmapped` turned on in the `Needle Object` panel.
 
 <video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" /> 
 
-> You can download the original blend file from the video [here](https://engine.needle.tools/downloads/blender/lightmaps.blend).
-
+::: tip
+You can download the .blend file from the video [here](https://engine.needle.tools/downloads/blender/lightmaps.blend).
+:::
 Use the Needle Object panel to enable lightmapping for a mesh object or light: 
 
 ![Lightmapping object](/blender/lightmapping-object.webp)
@@ -248,6 +250,9 @@ Alternatively you can also use the Lightmapping panel in the `Render Properties`
 
 ![Lightmapping object](/blender/lightmapping-panel.webp)
 
+::: danger Experimental Feature
+The lightmapping plugin is experimental. We recommend creating a backup of your .blend file when using it. Please report problems or errors you encounter in [our forum](https://forum.needle.tools) 🙏
+::: 
 
 ## Texture Compression  
 
