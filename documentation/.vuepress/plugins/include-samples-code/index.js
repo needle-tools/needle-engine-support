@@ -169,6 +169,8 @@ function parseCode(branchName, codeFiles, samples) {
                 const key = entry.key;
                 const indentationToRemove = entry.indentationToRemove;
                 if (startIndex >= 0 && startIndex < i) {
+                    const startLines = lines.slice(0, startIndex);
+                    const endLines = lines.slice(i + 1);
                     const relevantLines = lines.slice(startIndex, i);
                     for (let j = relevantLines.length - 1; j >= 0; j--) {
                         let line = relevantLines[j];
@@ -180,6 +182,8 @@ function parseCode(branchName, codeFiles, samples) {
                         }
                         relevantLines[j] = line;
                     }
+                    // Test: we keep the surrounding code but let twoslash cut it out, this way it still compiles
+                    // const sampleCode = [...startLines, "// ---cut-before---", ...relevantLines, "// ---cut-after---", ...endLines].join("\n");
                     const sampleCode = relevantLines.join("\n");
                     const githubUrl = getGithubUrl(branchName, file.path, startIndex + 1);
                     const sample = {

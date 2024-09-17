@@ -131,7 +131,7 @@ export default defineUserConfig({
             themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
             lineNumbers: false,
             highlightLines: false,
-            transformers: [
+            __disabled__transformers: [
                 // HACK to add the import statement to the code
                 /*
                 {
