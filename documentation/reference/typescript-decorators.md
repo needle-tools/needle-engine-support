@@ -48,8 +48,8 @@ export class ButtonObject extends Behaviour {
 
 The `@syncField` decorator can be used to automatically network properties of your components for all users (visitors of your website) connected to the same networking room. It can optionally take a callback function that will be invoked whenever the value changes.     
 
-*NOTE:* To notify the system that a reference value (like an object or an array) has changed you need to re-assign the field. E.g. like this: `myField = myField`   
-*NOTE:* The callback function can *not* be an arrow function (e.g. `MyScript.prototype.onNumberChanged` works for `onNumberChanged() { ... }` but it does not for `myNumberChanged = () => { ... }`)
+- To notify the system that a reference value (like an object or an array) has changed you need to re-assign the field. E.g. like this: `myField = myField`   
+- The callback function can *not* be an arrow function (e.g. `MyScript.prototype.onNumberChanged` works for `onNumberChanged() { ... }` but it does not for `myNumberChanged = () => { ... }`)
 
 ```ts
 export class MyScript extends Behaviour {
