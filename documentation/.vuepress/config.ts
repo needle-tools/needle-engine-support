@@ -12,7 +12,7 @@ import { shikiPlugin } from '@vuepress/plugin-shiki'
 
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
 import { fromMarkdown } from 'mdast-util-from-markdown';
-import { defaultHandlers, toHast } from 'mdast-util-to-hast';
+import { toHast } from 'mdast-util-to-hast';
 
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
@@ -23,7 +23,6 @@ import * as dotenv from 'dotenv'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { modifyHtmlMeta } from './plugins/html-meta/index'
 
-import { Behaviour } from '@needle-tools/engine';
 import { Element } from 'hast'
 
 dotenv.config()
@@ -156,10 +155,42 @@ export default defineUserConfig({
                         renderMarkdownInline(markdown, context) {
                             return renderMarkdown(markdown);
                         },
+                        /*
+                        hast: {
+                            hoverCompose: (parts) => {
+                                console.log("hoverCompose", parts);
+                                parts.popup.properties["popover"] = "true";
+                                let token = parts.token;
+                                if (token.type === "text") {
+                                    token = {
+                                        type: "element",
+                                        tagName: "span",
+                                        children: [parts.token],
+                                        properties: {},
+                                    }
+                                }
+                                if (!token.properties) parts.token.properties = {};
+                                token.properties["onmouseover"] = "() => this.querySelector('[popover]'.showPopover()";
+                                return [ token, parts.popup ];
+                            }
+                        }
+                        */
                     }),
-                    explicitTrigger: false, // set to true to debug individual code snippets
+                    twoslashOptions: {
+                        handbookOptions: {
+                            noErrorsCutted: true,
+                            noErrors: [
+                                2532, // Object is possibly 'undefined'
+                                2304, // cannot find name
+                            ],
+                        },
+                        compilerOptions: {
+                            experimentalDecorators: true,
+                        }
+                    },
+                    explicitTrigger: true, // set to true to debug individual code snippets
                     onTwoslashError: (e, code) => {
-                        console.warn("Twoslash error", e);
+                        console.warn("\n-----------\n", "Twoslash error\n", e, "in:\n", code, "\n-----------\n");
                     },
                 }),
             ]

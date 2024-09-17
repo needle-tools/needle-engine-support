@@ -26,6 +26,7 @@ You can think of them as Attributes on steroids (if you are familiar with C#) - 
 ```ts
 import { Behaviour, serializable, EventList } from "@needle-tools/engine";
 import { Object3D } from "three";
+
 export class SomeComponentType extends Behaviour {}
 
 export class ButtonObject extends Behaviour {

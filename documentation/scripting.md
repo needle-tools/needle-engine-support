@@ -297,7 +297,7 @@ To traverse the hierarchy from a component you can either iterate over the child
 with a for loop:  
 ```ts
 for(let i = 0; i < this.gameObject.children; i++) 
-    const ch = this.gameObject.children[i];
+    console.log(this.gameObject.children[i]);
 ```
 or you can iterate using the `foreach` equivalent:
 ```ts
@@ -308,12 +308,13 @@ for(const child of this.gameObject.children) {
 You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
 ```ts
 import { Object3D } from "three";
-this.gameObject.traverse(obj: Object3D => console.log(obj))
+this.gameObject.traverse((obj: Object3D) => console.log(obj));
 ```
 or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
 
 Another option that is quite useful when you just want to iterate objects being renderable you can query all renderer components and iterate over them like so:   
 ```ts
+import { Renderer } from "@needle-tools/engine";
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
     console.log(renderer);
 ```
@@ -329,42 +330,67 @@ Use `this.context.time` to get access to time data:
 It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
 
 ### Input
-Use ``this.context.input`` to poll input state:
+Receive input data for the object the component is on:
+```ts
+import { Behaviour } from "@needle-tools/engine";
+export class MyScript extends Behaviour
+{
+    onPointerDown() {
+        console.log("POINTER DOWN on " + this.gameObject.name);
+    }
+}
+```
+
+You can also subscribe to global events in the ``InputEvents`` enum like so:
+```ts
+import { Behaviour, InputEvents, NEPointerEvent } from "@needle-tools/engine";
+
+export class MyScript extends Behaviour
+{
+    onEnable() {
+        this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
+    }
+
+    onDisable() {
+        // it is recommended to also unsubscribe from events when your component becomes inactive
+        this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
+    }
+
+    // @nonSerialized
+    inputPointerDown = (evt: NEPointerEvent) => { console.log("POINTER DOWN anywhere on the <needle-engine> element"); }
+}
+```
+
+Or use ``this.context.input`` if you want to poll input state every frame:
 
 ```ts
 import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
-    update(){
+    update() {
         if(this.context.input.getPointerDown(0)){
-            console.log("POINTER DOWN")
+            console.log("POINTER DOWN anywhere")
         }
     }
 }
 ```
 
-You can also subscribe to events in the ``InputEvents`` enum like so:
+If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
 ```ts
-import { Behaviour, InputEvents, PointerEventData } from "@needle-tools/engine";
-
+import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
     onEnable() {
-        this.context.input.addEventListener(InputEvents.PointerDown, this.onPointerDown);
+        window.addEventListener("click", this.windowClick);
     }
 
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
-        this.context.input.removeEventListener(InputEvents.PointerDown, this.onPointerDown);
+        // unsubscribe again when the component is disabled
+        window.removeEventListener("click", this.windowClick);
     }
 
-    onPointerDown = (evt: PointerEventData) => { console.log(evt); }
+    windowClick = () => { console.log("CLICK anywhere on the page, not just on <needle-engine>"); }
 }
-```
-
-If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
-```ts
-window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ```
 Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down). 
 
@@ -405,7 +431,10 @@ function loadingFinished() { console.log("FINISHED!") }
 
 You can also subscribe to the globale `NeedleEngine` (sometimes also referred to as *ContextRegistry*) to receive a callback when a Needle Engine context has been created or to access all available contexts:
 ```ts
-import { NeedleEngine } from "@needle-tools/engine";
+class YourComponentType extends Behaviour {}
+//---cut---
+import { NeedleEngine, GameObject, Behaviour } from "@needle-tools/engine";
+
 NeedleEngine.addContextCreatedCallback((args) => {
   const context = args.context;
   const scene = context.scene;

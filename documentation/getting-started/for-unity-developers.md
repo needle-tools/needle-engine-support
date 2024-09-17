@@ -43,27 +43,38 @@ export class MyComponent extends Behaviour {
 If you have seen some Needle Engine scripts then you might have noticed that some variables are annotated with `@serializable` above their declaration. This is a Decorator in Typescript and can be used to modify or annotate code. In Needle Engine this is used for example to let the core serialization know which types we expect in our script when it converts from the raw component information stored in the glTF to a Component instance.   
 Consider the following example: 
 ```ts
-@serializable(Behaviour)
-myOtherComponent?: Behaviour;
-@serializable(Object3D)
-someOtherObject?: Object3D;
+import { Behaviour, serializable } from "@needle-tools/engine";
+import { Object3D } from "three";
+
+class SomeClass extends Behaviour{
+    @serializable(Behaviour)
+    myOtherComponent?: Behaviour;
+    @serializable(Object3D)
+    someOtherObject?: Object3D;
+}
 ```
 This tells Needle Engine that `myOtherComponent` should be of type `Behaviour`. It will then automatically assign the correct reference to the field when your scene is loaded. The same is true for `someOtherObject` where we want to deserialize to an `Object3D` reference.  
 
 Note that in some cases the type can be ommitted. This can be done for all [primitive types in Javascript](https://developer.mozilla.org/en-US/docs/Glossary/Primitive). These are `boolean`, `number`, `bigint`, `string`, `null` and `undefined`.
 ```ts
-@serializable() // < no type is needed here because the field type is a primitive
-myString?: string;
+import { Behaviour, serializable } from "@needle-tools/engine";
+class SomeClass {
+    @serializable() // < no type is needed here because the field type is a primitive
+    myString?: string;
+}
 ```
 
 ### public vs private
 Field without any accessor modified like `private`, `public` or `protected` will by default be `public` in javascript  
 ```ts
-/// no accessor means it is public:
-myNumber?: number;
-// explicitly making it private:
-private myPrivateNumber?: number;
-protected myProtectedNumber?: number;
+import { Behaviour, serializable } from "@needle-tools/engine";
+class SomeClass {
+    /// no accessor means it is public:
+    myNumber?: number;
+    // explicitly making it private:
+    private myPrivateNumber?: number;
+    protected myProtectedNumber?: number;
+}
 ```
 The same is true for methods as well.
 
@@ -73,18 +84,21 @@ To access the current scene from a component you use `this.scene` which is equiv
 To traverse the hierarchy from a component you can either iterate over the children of an object   
 with a for loop:  
 ```ts
-for(let i = 0; i < this.gameObject.children; i++) 
-    const ch = this.gameObject.children[i];
+for (let i = 0; i < this.gameObject.children; i++) {
+    console.log(this.gameObject.children[i]);
+}
 ```
 or you can iterate using the `foreach` equivalent:
 ```ts
-for(const child of this.gameObject.children) {
+for (const child of this.gameObject.children) {
     console.log(child);
 }
 ```
 You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
 ```ts
-this.gameObject.traverse(obj => console.log(obj))
+import { GameObject } from "@needle-tools/engine";
+//---cut-before---
+this.gameObject.traverse((obj: GameObject) => console.log(obj))
 ```
 or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
 
@@ -182,19 +196,19 @@ export class MyScript extends Behaviour
 
 You can also subscribe to events in the ``InputEvents`` enum like so:
 ```ts
-import { Behaviour, InputEvents, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, InputEvents, NEPointerEvent } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
 {
     onEnable(){
-        this.context.input.addEventListener(InputEvents.PointerDown, this.onPointerDown);
+        this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
     onDisable() {
         // it is recommended to also unsubscribe from events when your component becomes inactive
-        this.context.input.removeEventListener(InputEvents.PointerDown, this.onPointerDown);
+        this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
-    onPointerDown = (evt: PointerEventData) => { console.log(evt); }
+    inputPointerDown = (evt: NEPointerEvent) => { console.log(evt); }
 }
 ```
 

@@ -73,13 +73,13 @@ using MonoBehaviour = UnityEngine.MonoBehaviour;
 
 This is how you do the same in Typescript to import specific types from a package:
 ```ts
-import { Vector3 } from `three`;
-import { Behaviour } from `@needle-tools/engine`;
+import { Vector3 } from 'three';
+import { Behaviour } from '@needle-tools/engine';
 ```
 
 You *can* also import all the types from a specific package by giving it a name which you might see here and there:
 ```ts
-import * as THREE from `three`;
+import * as THREE from 'three';
 const myVector : THREE.Vector3 = new THREE.Vector3(1, 2, 3);
 ```
 
@@ -104,7 +104,7 @@ A method is called with a Vector3 named position. Inside the method the passed i
 The same is not true for Javascript/Typescript. Here we don't have custom value types, meaning if you come across a Vector in Needle Engine or three.js you will always have a reference type.   
 Consider the following example in typescript:  
 ```ts
-import { Vector3 } from "three"
+import { Vector3 } from 'three'
 
 function myCallerMethod() : void {
     const position = new Vector3(0,0,0);
@@ -128,7 +128,7 @@ UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x);
 ``` 
 If you do the same in Typescript you will **not** create a copy but get a reference to the same `myVector` instance instead:
 ```ts
-import { Vector3 } from "three"
+import { Vector3 } from 'three'
 
 const myVector = new Vector3(1,1,1);
 const myOtherVector = myVector;
@@ -154,7 +154,7 @@ you have to use a method on the Vector3 type to archieve the same result (just w
 import { Vector3 } from "three"
 
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
-const myFactor = 100f;
+const myFactor = 100;
 myFirstVector.multiplyScalar(myFactor);
 // → myFirstVector is now 100, 100, 100
 ```
@@ -212,8 +212,7 @@ export class MyComponent extends Behaviour {
         this.myEvent.removeEventListener(this.onMyEvent);
     }
 
-    // Declaring the function as an arrow method
-    // to automatically bind this:
+    // Declaring the function as an arrow function to automatically bind `this`
     private onMyEvent = () => {
         console.log(this !== undefined, this)
     }
@@ -221,7 +220,7 @@ export class MyComponent extends Behaviour {
 ```
 There is also the more verbose "classical" way to archieve the same thing by manually binding this (and saving the method in a variable to later remove it again from the event list):
 ```ts
-import { EventList, Behaviour } from "@needle-tools/engine";
+import { EventList, Behaviour, serializable } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
 
@@ -240,6 +239,9 @@ export class MyComponent extends Behaviour {
     onDisable() {
         this.myEvent?.removeEventListener(this._onMyEventFn);
     }
+    
+    // Declaring the function as an arrow function to automatically bind `this`
+    private onMyEvent = () => { }
 }
 ```
 

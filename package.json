@@ -20,12 +20,11 @@
     "vue-github-button": "^3.1.0"
   },
   "devDependencies": {
-    "vuepress": "2.0.0-rc.15",
     "@needle-tools/engine": "^3.47.8",
-    "@types/hast": "^3.0.4",
-    "@vuepress/theme-default": "2.0.0-rc.43",
     "@needle-tools/helper": "^0.11.0",
     "@shikijs/twoslash": "^1.17.7",
+    "@tweenjs/tween.js": "^25.0.0",
+    "@types/hast": "^3.0.4",
     "@types/three": "^0.168.0",
     "@vuepress/bundler-vite": "2.0.0-rc.15",
     "@vuepress/plugin-docsearch": "2.0.0-rc.43",
@@ -35,6 +34,7 @@
     "@vuepress/plugin-register-components": "2.0.0-rc.42",
     "@vuepress/plugin-search": "2.0.0-rc.43",
     "@vuepress/plugin-shiki": "2.0.0-rc.43",
+    "@vuepress/theme-default": "2.0.0-rc.43",
     "ftp-deploy": "^2.4.7",
     "linkinator": "^6.0.4",
     "markdown-it": "^14.1.0",
@@ -47,6 +47,7 @@
     "typedoc-plugin-extras": "3.0.0",
     "typedoc-plugin-inline-sources": "1.0.2",
     "typedoc-plugin-keywords": "1.6.0",
-    "typedoc-plugin-mdn-links": "3.1.18"
+    "typedoc-plugin-mdn-links": "3.1.18",
+    "vuepress": "2.0.0-rc.15"
   }
 }
