@@ -161,7 +161,7 @@ Add a PlayableDirector component (via `Add Component`) to a any blender object. 
 
 ::: details Code example for interactive timeline playback
 Add this script to `src/scripts` (see custom components section) and add it to any object in Blender to make a timeline's time be controlled by scrolling in the browsers
-```ts
+```ts twoslash
 import { Behaviour, PlayableDirector, serializable, Mathf } from "@needle-tools/engine";
 
 export class ScrollTimeline extends Behaviour {

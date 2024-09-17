@@ -17,22 +17,22 @@ We also offer a lot of sample scenes and complete projects that you can download
 
 ## Basic component 
 <stackblitz file="@code/basic-component.ts"></stackblitz> 
-@[code](@code/basic-component.ts)
+@[code ts twoslash](@code/basic-component.ts)
 
 see [scripting](scripting#lifecycle-methods) for all component events
 
 ## Reference an Object from Unity
-@[code](@code/component-object-reference.ts)  
+@[code ts twoslash](@code/component-object-reference.ts)  
 
 ## Reference and load an asset from Unity (Prefab or SceneAsset)
-@[code](@code/component-prefab.ts)
+@[code ts twoslash](@code/component-prefab.ts)
 
 ## Reference and load scenes from Unity
 ::: tip
 Find a [working example in our samples](https://engine.needle.tools/samples/multi-scenes-(dynamic-loading)) to download and try
 :::
 
-@[code](@code/component-scene.ts)
+@[code ts twoslash](@code/component-scene.ts)
 
 ## Receive Clicks on Objects
 Add this script to any object in your scene that you want to be clickable. Make sure to also have an `ObjectRaycaster` component in the parent hierarchy of that object.  
@@ -41,7 +41,7 @@ Add this script to any object in your scene that you want to be clickable. Make 
 test
 </stackblitz> 
 
-@[code](@code/component-click.ts)
+@[code ts twoslash](@code/component-click.ts)
 
 
 ## Networking Clicks on Objects
@@ -49,20 +49,20 @@ test
 Add this script to any object in your scene that you want to be clickable. Make sure to also have an `ObjectRaycaster` component in the parent hierarchy of that object.   
 The component will send the received click to all connected clients and will raise an event that you can then react to in your app. If you are using Unity or Blender you can simply assign functions to call to the `onClick` event to e.g. play an animation or hide objects.
 
-@[code](@code/component-click-networking.ts)
+@[code ts twoslash](@code/component-click-networking.ts)
 
 ### Play Animation on click
-@[code](@code/component-animation-onclick.ts)
+@[code ts twoslash](@code/component-animation-onclick.ts)
 
 ## Reference an Animation Clip
 This can be useful if you want to run your custom animation logic.   
 You can also export an array of clips.
-@[code](@code/component-animationclip.ts)
+@[code ts twoslash](@code/component-animationclip.ts)
 
 
 ## Create and invoke a UnityEvent
 
-@[code](@code/component-unityevent.ts)
+@[code ts twoslash](@code/component-unityevent.ts)
 ::: tip
 EventList events are also invoked on the component level. This means you can also subscribe to the event declared above using ``myComponent.addEventListener("my-event", evt => {...})`` as well.   
 This is an experimental feature: please provide feedback in our [discord](https://discord.needle.tools)
@@ -71,7 +71,7 @@ This is an experimental feature: please provide feedback in our [discord](https:
 
 ### Declare a custom event type
 This is useful for when you want to expose an event to Unity or Blender with some custom arguments (like a string)
-@[code](@code/component-customevent.ts)
+@[code ts twoslash](@code/component-customevent.ts)
 
 _Example use:_  
 ![20221128-210735_Unity-needle](https://user-images.githubusercontent.com/2693840/204370950-4c89b877-90d7-4e6f-8266-3352e6da16f4.png)
@@ -81,7 +81,7 @@ _Example use:_
 You can nest objects and their data. With properly matching `@serializable(SomeType)` decorators, the data will be serialized and deserialized into the correct types automatically.  
 
 In your typescript component:  
-@[code](@code/component-nested-serialization.ts)
+@[code ts twoslash](@code/component-nested-serialization.ts)
 
 In C# in any script:  
 @[code](@code/component-nested-serialization-cs.cs)
@@ -97,10 +97,10 @@ That's the beauty of Needle Engine if we're allowed to say this here 😊
 :::
 
 ### Display current location
-@[code](@code/component-location.ts) 
+@[code ts twoslash](@code/component-location.ts) 
 
 ### Display current time using a Coroutine
-@[code](@code/component-time.ts) 
+@[code ts twoslash](@code/component-time.ts) 
 
 <video-embed src="./videos/component-time.mp4" limit_height />
 
@@ -132,7 +132,7 @@ Here is an example that wraps the [Outline postprocessing effect](https://pmndrs
 ## Custom ParticleSystem Behaviour
 
 
-@[code](@code/custom-particle-system-behaviour.ts) 
+@[code ts twoslash](@code/custom-particle-system-behaviour.ts) 
 
 
 ## Custom 2D Audio Component
@@ -140,13 +140,13 @@ Here is an example that wraps the [Outline postprocessing effect](https://pmndrs
 This is an example how you could create your own audio component.   
 For most usecases however you can use the core AudioSource component and don't have to write code.
 
-@[code](@code/component-2d-audio.ts)
+@[code ts twoslash](@code/component-2d-audio.ts)
 
 
 ## Arbitrary external files
 
 Use the FileReference type to load external files (e.g. a json file)
-@[code](@code/component-filereference.ts)
+@[code ts twoslash](@code/component-filereference.ts)
 
 <!-- SAMPLE receive click from HTML button
 ## Receiving html element click in component

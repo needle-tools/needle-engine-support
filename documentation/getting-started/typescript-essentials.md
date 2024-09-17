@@ -46,14 +46,14 @@ For a variable that you do not want to be able to re-assign use `const`, for exa
 
 Please note that you *can* still assign values to variables declared with const if they are (for example) a custom type. Consider the following example:  
 
-```ts
+```ts twoslash
 import { Vector3 } from "three";
 // ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
 myPosition.x = 100; // Assigning x is perfectly fine
 ```
 The above is perfectly fine Typescript code because you don't re-assign `myPosition` but only the `x` member of `myPosition`. On the other hand the following example would **not**  be allowed and cause a runtime or typescript error:  
-```ts
+```ts twoslash
 // @errors: 2588
 import { Vector3 } from "three";
 // ---cut-before---
@@ -72,13 +72,13 @@ using MonoBehaviour = UnityEngine.MonoBehaviour;
 ```
 
 This is how you do the same in Typescript to import specific types from a package:
-```ts
+```ts twoslash
 import { Vector3 } from 'three';
 import { Behaviour } from '@needle-tools/engine';
 ```
 
 You *can* also import all the types from a specific package by giving it a name which you might see here and there:
-```ts
+```ts twoslash
 import * as THREE from 'three';
 const myVector : THREE.Vector3 = new THREE.Vector3(1, 2, 3);
 ```
@@ -103,7 +103,7 @@ A method is called with a Vector3 named position. Inside the method the passed i
 
 The same is not true for Javascript/Typescript. Here we don't have custom value types, meaning if you come across a Vector in Needle Engine or three.js you will always have a reference type.   
 Consider the following example in typescript:  
-```ts
+```ts twoslash
 import { Vector3 } from 'three'
 
 function myCallerMethod() : void {
@@ -127,7 +127,7 @@ myOtherVector.x = 42;
 UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x); 
 ``` 
 If you do the same in Typescript you will **not** create a copy but get a reference to the same `myVector` instance instead:
-```ts
+```ts twoslash
 import { Vector3 } from 'three'
 
 const myVector = new Vector3(1,1,1);
@@ -150,7 +150,7 @@ myFirstVector *= myFactor;
 
 you have to use a method on the Vector3 type to archieve the same result (just with a little more boilerplate code)
 
-```ts
+```ts twoslash
 import { Vector3 } from "three"
 
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
@@ -167,7 +167,7 @@ In C# when you want to check if two variables are the same you can write it as f
 var playerIsNull = myPlayer == null;
 ```
 in Javascript/Typescript there is a difference between `==` and `===` where `===` is more strictly checking for the type:
-```ts
+```ts twoslash
 const myPlayer: any = null;
 // ---cut-before---
 const playerIsNull = myPlayer === null;
@@ -196,7 +196,7 @@ Please note that we are using the type `EventList` here which is a Needle Engine
 
 The short and **recommended** syntax for doing this is to use [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).  
 
-```ts
+```ts twoslash
 import { EventList, Behaviour, serializable } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
@@ -219,7 +219,7 @@ export class MyComponent extends Behaviour {
 }
 ```
 There is also the more verbose "classical" way to archieve the same thing by manually binding this (and saving the method in a variable to later remove it again from the event list):
-```ts
+```ts twoslash
 import { EventList, Behaviour, serializable } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {

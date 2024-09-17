@@ -72,7 +72,7 @@ The scene right now is static since nothing moves. We can negate that by adding 
 With a simple component called Rotator, we define an axis and speed along it.
 
 ![Rotator](/showcase-mercedes/9_Rotator.png)
-```ts
+```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 
 export enum RotationAxis {

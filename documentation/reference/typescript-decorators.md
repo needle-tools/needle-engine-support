@@ -23,7 +23,7 @@ You can think of them as Attributes on steroids (if you are familiar with C#) - 
 
 ### Serializable
 
-```ts
+```ts twoslash
 import { Behaviour, serializable, EventList } from "@needle-tools/engine";
 import { Object3D } from "three";
 
@@ -56,7 +56,7 @@ The `@syncField` decorator can be used to automatically network properties of yo
 - To notify the system that a reference value (like an object or an array) has changed you need to re-assign the field. E.g. like this: `myField = myField`   
 - The callback function can *not* be an arrow function (e.g. `MyScript.prototype.onNumberChanged` works for `onNumberChanged() { ... }` but it does not for `myNumberChanged = () => { ... }`)
 
-```ts
+```ts twoslash
 import { Behaviour, serializable, syncField } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour {
@@ -73,7 +73,7 @@ export class MyScript extends Behaviour {
 
 
 ### Validate
-```ts
+```ts twoslash
 import { Behaviour, serializable, validate } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour {
@@ -93,7 +93,7 @@ export class MyScript extends Behaviour {
 
 ### Prefix
 [Live example](https://stackblitz.com/edit/needle-engine-prefix-example?file=src%2Fmain.ts)
-```ts
+```ts twoslash
 import { Camera, prefix } from "@needle-tools/engine";
 class YourClass {
     @prefix(Camera) // < this is type that has the method you want to change

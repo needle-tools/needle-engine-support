@@ -58,7 +58,7 @@ If you are new to writing Javascript or Typescript we recommend reading the [Typ
 
 - **Create a component that rotates an object**  
   Create ``src/scripts/Rotate.ts`` and add the following code:  
-```ts
+```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 
 export class Rotate extends Behaviour
@@ -88,7 +88,7 @@ Now add a new field ``public float speed = 5`` to your Unity component and save 
 
 :::details Create component with a custom function
 Refer to the [Typescript Essentials Guide](./getting-started/typescript-essentials.md) to learn more about the syntax and language.
-```ts
+```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 
 export class PrintNumberComponent extends Behaviour
@@ -179,7 +179,7 @@ Coroutines can be declared using the [JavaScript Generator Syntax](https://devel
 To start a coroutine, call ``this.startCoroutine(this.myRoutineName());``  
 
 **Example**
-```ts
+```ts twoslash
 import { Behaviour, FrameEvent } from "@needle-tools/engine";
 
 export class Rotate extends Behaviour {
@@ -222,7 +222,7 @@ Those hooks can be inserted at any point in your web application (for example in
 | `onAfterRender(cb, options)` | called before calling render
 
 For example ([See example on stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
-```ts
+```ts twoslash
 // this can be put into e.g. main.ts or a svelte component (similar to onMount)
 import { Context, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
 onUpdate((ctx: Context) => {
@@ -248,7 +248,7 @@ setTimeout(()=> unsubscribe(), 1000);
 To access other components, use the static methods on ``GameObject`` or ``this.gameObject`` methods. For example, to access a `Renderer` component in the parent use ``GameObject.getComponentInParent(this.gameObject, Renderer)`` or ``this.gameObject.getComponentInParent(Renderer)``.  
 
 **Example:**
-```ts
+```ts twoslash
 import { Behaviour, GameObject, Renderer } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
@@ -295,25 +295,25 @@ To access the current scene from a component you use `this.scene` which is equiv
 
 To traverse the hierarchy from a component you can either iterate over the children of an object   
 with a for loop:  
-```ts
+```ts twoslash
 for(let i = 0; i < this.gameObject.children; i++) 
     console.log(this.gameObject.children[i]);
 ```
 or you can iterate using the `foreach` equivalent:
-```ts
+```ts twoslash
 for(const child of this.gameObject.children) {
     console.log(child);
 }
 ```
 You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
-```ts
+```ts twoslash
 import { Object3D } from "three";
 this.gameObject.traverse((obj: Object3D) => console.log(obj));
 ```
 or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
 
 Another option that is quite useful when you just want to iterate objects being renderable you can query all renderer components and iterate over them like so:   
-```ts
+```ts twoslash
 import { Renderer } from "@needle-tools/engine";
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
     console.log(renderer);
@@ -331,7 +331,7 @@ It is also possible to use `this.context.time.timeScale` to deliberately slow do
 
 ### Input
 Receive input data for the object the component is on:
-```ts
+```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
@@ -342,7 +342,7 @@ export class MyScript extends Behaviour
 ```
 
 You can also subscribe to global events in the ``InputEvents`` enum like so:
-```ts
+```ts twoslash
 import { Behaviour, InputEvents, NEPointerEvent } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
@@ -363,7 +363,7 @@ export class MyScript extends Behaviour
 
 Or use ``this.context.input`` if you want to poll input state every frame:
 
-```ts
+```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
@@ -376,7 +376,7 @@ export class MyScript extends Behaviour
 ```
 
 If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
-```ts
+```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
@@ -403,7 +403,7 @@ Note that the calls above are by default raycasting against visible scene object
 
 Another option is to use the physics raycast methods which will only return hits with colliders in the scene. 
 
-```ts
+```ts twoslash
 const hit = this.context.physics.engine?.raycast();
 ```
 
@@ -430,7 +430,7 @@ function loadingFinished() { console.log("FINISHED!") }
 ```  
 
 You can also subscribe to the globale `NeedleEngine` (sometimes also referred to as *ContextRegistry*) to receive a callback when a Needle Engine context has been created or to access all available contexts:
-```ts
+```ts twoslash
 class YourComponentType extends Behaviour {}
 //---cut---
 import { NeedleEngine, GameObject, Behaviour } from "@needle-tools/engine";
@@ -482,7 +482,7 @@ All gizmos function have multiple options for e.g. colors or for how long they s
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
 
 **Example:**
-@[code](@code/component-object-reference.ts)
+@[code ts twoslash](@code/component-object-reference.ts)
 
 To serialize from and to custom formats, it is possible to extend from the ``TypeSerializer`` class and create an instance. Use ``super()`` in the constructor to register supported types.  
 
@@ -494,6 +494,6 @@ Referenced Prefabs, SceneAssets and [``AssetReferences``](https://docs.unity3d.c
 These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components, we added the concept of ``AssetReference`` types. They can be loaded at runtime and thus allow to defer loading parts of your app or loading external content.
 
 **Example:**
-@[code](@code/component-prefab.ts)
+@[code ts twoslash](@code/component-prefab.ts)
 
 AssetReferences are cached by URI, so if you reference the same exported glTF/Prefab in multiple components/scripts it will only be loaded once and then re-used.  

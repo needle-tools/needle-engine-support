@@ -32,7 +32,7 @@ public class MyComponent : MonoBehaviour {
 ```
 
 A custom component in Needle Engine on the other hand is written as follows:
-```ts
+```ts twoslash
 import { Behaviour } from "@needle-tools/engine"
 export class MyComponent extends Behaviour { 
 }
@@ -42,7 +42,7 @@ export class MyComponent extends Behaviour {
 ### serializable
 If you have seen some Needle Engine scripts then you might have noticed that some variables are annotated with `@serializable` above their declaration. This is a Decorator in Typescript and can be used to modify or annotate code. In Needle Engine this is used for example to let the core serialization know which types we expect in our script when it converts from the raw component information stored in the glTF to a Component instance.   
 Consider the following example: 
-```ts
+```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
 
@@ -56,7 +56,7 @@ class SomeClass extends Behaviour{
 This tells Needle Engine that `myOtherComponent` should be of type `Behaviour`. It will then automatically assign the correct reference to the field when your scene is loaded. The same is true for `someOtherObject` where we want to deserialize to an `Object3D` reference.  
 
 Note that in some cases the type can be ommitted. This can be done for all [primitive types in Javascript](https://developer.mozilla.org/en-US/docs/Glossary/Primitive). These are `boolean`, `number`, `bigint`, `string`, `null` and `undefined`.
-```ts
+```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
     @serializable() // < no type is needed here because the field type is a primitive
@@ -66,7 +66,7 @@ class SomeClass {
 
 ### public vs private
 Field without any accessor modified like `private`, `public` or `protected` will by default be `public` in javascript  
-```ts
+```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
     /// no accessor means it is public:
@@ -83,19 +83,19 @@ To access the current scene from a component you use `this.scene` which is equiv
 
 To traverse the hierarchy from a component you can either iterate over the children of an object   
 with a for loop:  
-```ts
+```ts twoslash
 for (let i = 0; i < this.gameObject.children; i++) {
     console.log(this.gameObject.children[i]);
 }
 ```
 or you can iterate using the `foreach` equivalent:
-```ts
+```ts twoslash
 for (const child of this.gameObject.children) {
     console.log(child);
 }
 ```
 You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
-```ts
+```ts twoslash
 import { GameObject } from "@needle-tools/engine";
 //---cut-before---
 this.gameObject.traverse((obj: GameObject) => console.log(obj))
@@ -103,7 +103,7 @@ this.gameObject.traverse((obj: GameObject) => console.log(obj))
 or to just traverse visible objects use [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) instead.
 
 Another option that is quite useful when you just want to iterate objects being renderable you can query all renderer components and iterate over them like so:   
-```ts
+```ts twoslash
 import { Renderer } from "@needle-tools/engine";
 
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
@@ -173,7 +173,7 @@ Note that the calls above are by default raycasting against visible scene object
 
 Another option is to use the physics raycast methods which will only return hits with colliders in the scene. 
 
-```ts
+```ts twoslash
 const hit = this.context.physics.engine?.raycast();
 ```
 
@@ -182,7 +182,7 @@ Here is a editable [example for physics raycast](https://stackblitz.com/edit/nee
 ## Input
 Use ``this.context.input`` to poll input state:
 
-```ts
+```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
@@ -195,7 +195,7 @@ export class MyScript extends Behaviour
 ```
 
 You can also subscribe to events in the ``InputEvents`` enum like so:
-```ts
+```ts twoslash
 import { Behaviour, InputEvents, NEPointerEvent } from "@needle-tools/engine";
 
 export class MyScript extends Behaviour
@@ -213,7 +213,7 @@ export class MyScript extends Behaviour
 ```
 
 If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
-```ts
+```ts twoslash
 window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ```
 Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down).
@@ -224,7 +224,7 @@ Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/P
 
 To make this work make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy.
 
-```ts
+```ts twoslash
 import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
 
 export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
@@ -246,7 +246,7 @@ All have a `PointerEventData` argument describing the event.
 
 ## Debug.Log
 The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.  
-```ts
+```ts twoslash
 import { GameObject, Renderer } from "@needle-tools/engine";
 const someVariable = 42;
 // ---cut-before---
@@ -260,7 +260,7 @@ console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.c
 In Unity you normally have to use special methods to draw Gizmos like `OnDrawGizmos` or `OnDrawGizmosSelected`. In Needle Engine on the other hand such methods dont exist and you are free to draw gizmos from anywhere in your script. Note that it is also your responsibility then to *not* draw them in e.g. your deployed web application (you can just filter them by `if(isDevEnvironment))`).  
 
 Here is an example to draw a red wire sphere for one second for e.g. visualizing a point in worldspace
-```ts
+```ts twoslash
 import { Vector3 } from "three";
 const hit = { point: new Vector3(0, 0, 0) };
 // ---cut-before---
@@ -294,12 +294,12 @@ Import from `@needle-tools/engine` e.g. `import { getParam } from "@needle-tools
 | `isiOS` | |
 | `isSafari` | |
 
-```ts
+```ts twoslash
 import { isMobileDevice } from "@needle-tools/engine"
 if( isMobileDevice() )
 ```
 
-```ts
+```ts twoslash
 import { getParam } from "@needle-tools/engine"
 // returns true 
 const myFlag = getParam("some_flag")
@@ -366,7 +366,7 @@ First run `npm install @tweenjs/tween.js` in the terminal and wait for the insta
 ```    
 
 Then open one of your script files in which you want to use tweening and import at the top of the file:   
-```ts
+```ts twoslash
 import * as TWEEN from '@tweenjs/tween.js';
 ```
 Note that we do here import all types in the library by writing `* as TWEEN`. We could also just import specific types like `import { Tween } from @tweenjs/tween.js`.   
@@ -374,15 +374,19 @@ Note that we do here import all types in the library by writing `* as TWEEN`. We
 Now we can use it in our script. It is always recommended to refer to the documentation of the library that you want to use. In the case of tween.js they provide a [user guide](https://github.com/tweenjs/tween.js/blob/HEAD/docs/user_guide.md) that we can follow. Usually the Readme page of the package on npm contains information on how to install and use the package.   
 
 To rotate a cube we create a new component type called `TweenRotation`, we then go ahead and create our tween instance for the object rotation, how often it should repeat, which easing to use, the tween we want to perform and then we start it. We then only have to call `update` every frame to update the tween animation. The final script looks like this:
-```ts
+```ts twoslash
+import { Behaviour } from "@needle-tools/engine";
+import * as TWEEN from '@tweenjs/tween.js';
+
 export class TweenRotation extends Behaviour {
 
     // save the instance of our tweener
     private _tween?: TWEEN.Tween<any>; 
 
     start() {
+        const rotation = this.gameObject.rotation;
         // create the tween instance
-        this._tween = new TWEEN.Tween(this.gameObject.rotation);
+        this._tween = new TWEEN.Tween(rotation);
         // set it to repeat forever
         this._tween.repeat(Infinity);
         // set the easing to use

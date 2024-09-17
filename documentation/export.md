@@ -58,7 +58,7 @@ As an example on [our website](https://needle.tools?utm_source=needle_docs&utm_c
 If you want to reference and load a prefab from one of your scripts you can declare a `AssetReference` type.  
 Here is a minimal example: 
 
-@[code](@code/component-prefab.ts)
+@[code ts twoslash](@code/component-prefab.ts)
 
 ## 🏇 Exporting Animations 
 Needle Engine supports a considerable and powerful subset of Unity's animation features:

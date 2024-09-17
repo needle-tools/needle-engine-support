@@ -82,7 +82,7 @@ Triggers and Actions for QuickLook are based on [Apple's Preliminary Interactive
 ### Code Example
 
 Here's the implementation for `HideOnStart` as an example for how to create an Everywhere Action with implementations for both the browser and QuickLook:  
-@[code](@code/component-everywhere-action-hideonstart.ts)
+@[code ts twoslash](@code/component-everywhere-action-hideonstart.ts)
 
 ::: tip
 Often, getting the right behaviour will involve composing _higher-level actions_ from the available _lower-level actions_. For example, our "Change Material on Click" action is composed of a number of `fadeActions` and internally duplicates objects with different sets of materials each. By carefully constructing these actions, complex behaviours can be achieved.  

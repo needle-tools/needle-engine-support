@@ -79,7 +79,7 @@ To automatically network fields in a component you can just decorate a field wit
 
 
 *Simple networking of a number*
-```ts
+```ts twoslash
 import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine"
 
 export class AutoFieldSync extends Behaviour implements IPointerClickHandler {
