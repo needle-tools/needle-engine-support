@@ -506,12 +506,6 @@ export default defineUserConfig({
                         "/reference/typescript-decorators",
                     ]
                 },
-                {
-                    text: "Blender",
-                    children: [
-                        "/blender/",
-                    ]
-                },
             ]
             // '/getting-started/': [
             //     "/getting-started/typescript-essentials",
