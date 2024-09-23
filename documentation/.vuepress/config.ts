@@ -13,6 +13,7 @@ import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
 import { fromMarkdown } from 'mdast-util-from-markdown';
 import { toHast } from 'mdast-util-to-hast';
+import { sitemapPlugin } from '@vuepress/plugin-sitemap';
 
 // import { mermaidPlugin } from "@renovamen/vuepress-plugin-mermaid";
 //@ts-ignore
@@ -109,6 +110,10 @@ export default defineUserConfig({
             apiKey: "389be16f732f82c611e1b0f22c031dff",
             indexName: "engine-needle",
             injectStyles: true,
+        }),
+        sitemapPlugin({
+            hostname: _url,
+            devServer: true,
         }),
         //@ts-ignore
         // pwaPlugin(),
@@ -310,6 +315,7 @@ export default defineUserConfig({
                             "/networking",
                             "/xr",
                             "/vanilla-js",
+                            "/unity/editor-sync",
                         ]
                     },
                     {
@@ -435,24 +441,22 @@ export default defineUserConfig({
                             text: 'Installation',
                             link: "/getting-started/",
                         },
-                        /*
                         {
                             text: 'Getting started with Unity',
-                            stub: true,
+                            link: '/unity/',
                         },
                         {
                             text: 'Getting started with Blender',
-                            stub: true,
+                            link: '/blender/',
                         },
                         {
                             text: 'Getting started with three.js',
-                            stub: true,
+                            link: '/threejs/',
                         },
                         {
                             text: 'Custom integrations',
-                            stub: true,
+                            link: '/custom-integrations/',
                         }
-                        */
                     ]
                 },
                 {
@@ -488,6 +492,7 @@ export default defineUserConfig({
                         "/xr",
                         "/networking",
                         "/vanilla-js",
+                        "/unity/editor-sync",
                     ]
                 },
                 {

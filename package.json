@@ -34,6 +34,7 @@
     "@vuepress/plugin-register-components": "2.0.0-rc.42",
     "@vuepress/plugin-search": "2.0.0-rc.43",
     "@vuepress/plugin-shiki": "2.0.0-rc.43",
+    "@vuepress/plugin-sitemap": "^2.0.0-rc.47",
     "@vuepress/theme-default": "2.0.0-rc.43",
     "ftp-deploy": "^2.4.7",
     "linkinator": "^6.0.4",

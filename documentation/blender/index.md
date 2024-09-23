@@ -69,7 +69,7 @@ click the blue `Run Project` button to start the local server:
 3) `Directory` open the directory of your web project (the `Project Path`)
 4) This button re-exports the current scene as a glb to your local web project. This also happens by default when saving your blend file.
 5) `Code Editor` tries to open the vscode workspace in your web project
-6) If you work with multiple scenes in one blend file you can configure which scene is your "main" scene and should be exported to the web. If any of your components references another scene they will also be exported as separate glb files.
+6) If you work with multiple scenes in one blend file, you can configure which scene is your Main scene and should be exported to the web. If any of your components references another scene they will also be exported as separate glb files. When clicking the "Export" button, your Main scene will be the one that's loaded in the browser.
 7) Use the `Build: Development` or `Build: Production` buttons when you want to upload your web project to a server. This will bundle your web project and produce the files that you can upload. When clicking `Build: Production` it will also apply optimization to your textures (they will be compressed for the web)
 8) Open the documentation
 

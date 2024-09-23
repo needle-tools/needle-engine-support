@@ -26,9 +26,18 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 
 ## There's a SSL error when opening the local website
 
-This is expected. We're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box, but that means some browsers complain that the SSL connection (between your local development server and the local website) can't be verified. It also prevents Automatic Reload from working on iOS and MacOS.  
+You might see a warning in your browser about SSL Security depending on your local configuration.  
+
+This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.
+If that happens: click `Advanced` and `Proceed to Site`. In Safari, you might need to refresh the page afterwards, because it does not automatically proceed. Now you should see your scene in the browser!  
+
+The dialogue should only show up once for the same local server.
+
+::: tip
+Connections are secured, because we're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box. Some browsers will still complain that the SSL connection (between your local development server and the local website) can't be automatically trusted, and that you need to manually verify you trust that page. Automatic Page Reload and Websocket connections may also be affected depending on the browser and system settings.  
 
 See [the Testing docs](./testing.md) for information on how to set up a self-signed certificate for a smoother development experience.
+:::
   
   
 ## My local website stays black
