@@ -195,7 +195,7 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 ## Toktx can not be found / toktx is not installed
 
-- Make sure to [download and install toktx](http://localhost:8080/docs/getting-started.html#install-these-tools-for-production-builds)
+- Make sure to [download and install toktx](http://localhost:8080/docs/getting-started/.html#install-these-tools-for-production-builds)
 
 - On Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``   
 

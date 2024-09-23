@@ -438,7 +438,7 @@ export default defineUserConfig({
                     text: "Getting Started",
                     children: [
                         {
-                            text: 'Installation',
+                            text: 'Downloads',
                             link: "/getting-started/",
                         },
                         {
@@ -451,7 +451,7 @@ export default defineUserConfig({
                         },
                         {
                             text: 'Getting started with three.js',
-                            link: '/threejs/',
+                            link: '/three/',
                         },
                         {
                             text: 'Custom integrations',
@@ -523,7 +523,7 @@ export default defineUserConfig({
             //     "/deployment",
             //     "/debugging",
             // ],
-            // '/getting-started': [
+            // '/getting-started/': [
             //     '',
             //     {
             //         text: "Typescript Essentials",

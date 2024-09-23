@@ -1,1 +1,1 @@
-Moved to [Getting Started](./getting-started)
+Moved to [Getting Started](./getting-started/)

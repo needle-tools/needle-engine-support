@@ -6,18 +6,20 @@ next: ../project-structure.md
 
 <br/>
 
-# Download Needle Engine
+# Downloads
 
 With **Needle Engine**, you can create fully interactive 3D websites.
 They can be deployed anywhere on the web and get optimized automatically by the **Needle Engine Build Pipeline**.  
- 
+
+## Needle Integrations
+
 Needle Engine is available as a download for Unity, for Blender, and for web projects without an editor integration.  
 
 | Unity | Blender | three.js | Custom Integrations |
 | --- | --- | --- | --- |
 | 2021.3, 2022.3, 6.0 | 4.0, 4.1, 4.2+ | r162 | Integrating with other tools |
 | <img src="/imgs/unity-logo.webp" style="max-height:70px;" /> | <img src="/blender/logo.png" style="max-height:70px;" /> | <img src="/imgs/threejs-logo.webp" style="max-height:70px;" /> |  | 
-| <needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download</strong><br/>for Unity</needle-button> | <needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download</strong><br/>for Blender</needle-button> | <needle-button event_goal="download_threejs" event_position="getting_started" large href="https://engine.needle.tools/downloads/threejs?utm_source=needle_docs&utm_content=getting_started"><strong>Get Started</strong></needle-button> | <needle-button event_goal="download_custom" event_position="getting_started" large href="https://engine.needle.tools/downloads/custom?utm_source=needle_docs&utm_content=getting_started"><strong>Learn More</strong></needle-button> |
+| <needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started" next_url="./../unity/"><strong>Download</strong> for&nbsp;Unity</needle-button> | <needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download</strong> for&nbsp;Blender</needle-button> | <needle-button event_goal="download_threejs" event_position="getting_started" large href="https://engine.needle.tools/downloads/threejs?utm_source=needle_docs&utm_content=getting_started"><strong>Get Started</strong></needle-button> | <needle-button event_goal="download_custom" event_position="getting_started" large href="https://engine.needle.tools/downloads/custom?utm_source=needle_docs&utm_content=getting_started"><strong>Learn More</strong></needle-button> |
 | [Get started with Needle and Unity](../unity/index.md) | [Get started with Needle and Blender](../blender/index.md) | [Get started with Needle and three.js](../threejs/index.md) | [Learn more about Custom Integrations](../custom/index.md) |
 
 <!-- | Tool |  |  |
@@ -42,14 +44,17 @@ Needle Engine is available as a download for Unity, for Blender, and for web pro
 <br/>
 <br/>
 
+
+
+<!--
 <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
+
 
 ## Needle Engine for Unity 
 
 *Supported Unity versions: 2021.3 LTS, 2022.3 LTS*
 
 <needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Unity</strong></needle-button> 
-<!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
 
 - Drop the downloaded .unitypackage file into a Unity project and confirm that you want to import it.
 - Wait a moment for the installation and import to finish. A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry. You can safely close that window.  
@@ -83,33 +88,13 @@ Needle Engine is available as a download for Unity, for Blender, and for web pro
 
 
 
-<img src="/imgs/threejs-logo.webp" style="max-height:70px;" />
-
-## Needle Engine for three.js
-
-You can work directly with Needle Engine without using any Integration. Needle Engine uses [three.js](https://threejs.org/) as scene graph and rendering library, so all functionality from three.js is available in Needle as well.  
-
-You can install Needle Engine from `npm` by running:   
-<br/>
-`npm i @needle-tools/engine`  
-
-
-For quick experiments, we provide a convenient link to create a new project ready to start, powered by [StackBlitz](https://stackblitz.com/):   
-[engine.needle.tools/new](https://engine.needle.tools/new)
-
-If you're not using npm or a bundler, you can instead add a prebundled version of Needle Engine to your website: 
-
-`https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js` or  
-`https://unpkg.com/@needle-tools/engine/dist/needle-engine.light.min.js` *(no physics module, smaller)*
-
-
 <br/>
 <br/>
 <br/>
 
+-->
 
-
-## Installation Checklist
+## Code Editor and Tools
 
 ### Install a code editor
 
@@ -166,7 +151,9 @@ It is also used for uploading (deploying) your website to the internet.
   You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 -->
 
-## What's next?
+
+
+## Next Steps
 
 Now that you've installed Needle Engine, you're ready to dive deeper into project creation, component workflows, scripting, deployment and more. 
 
@@ -180,3 +167,4 @@ Now that you've installed Needle Engine, you're ready to dive deeper into projec
 
 In case you need troubleshooting help, please see the [Questions and Answers – FAQ](../faq.md) section.  
 We welcome you to join our [Forum](https://forum.needle.tools) and [Discord Community](https://discord.needle.tools).
+

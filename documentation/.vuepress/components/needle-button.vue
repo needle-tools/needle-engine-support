@@ -9,11 +9,51 @@ export default {
         large: Boolean,
         event_goal: String,
         event_position: String,
+        next_url: String || undefined,
     },
+    methods: {
+        get_next_url,
+    }
+}
+
+// declare method that returns the next_url relative to where we're at
+// this is used to pass the next_url to the button component
+function get_next_url() {
+    let nextUrl = window.location.origin + window.location.pathname;
+    let target = new URL(this.href);
+    // get propUrl relative to nextUrl
+    if (this.next_url) {
+        console.log(this.next_url, nextUrl);
+        nextUrl = new URL(this.next_url, nextUrl).href;
+        // URL encode
+        nextUrl = encodeURIComponent(nextUrl);
+        // also append the current UTC time to the URL to prevent caching
+        nextUrl += '?t=' + Date.now();
+        // append query parameters to target via proper URL object
+        target = new URL(target);
+        target.searchParams.append('next', nextUrl);
+        target.searchParams.append('t', Date.now().toString());
+    }
+    return target.href;
 }
 
 
 </script>
+
+<template>
+    <a 
+        :href="get_next_url()" 
+        :target="same_tab ? '_self' : '_blank'" 
+        class="no-external-link-icon" 
+        :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''"
+    >
+        <button :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
+            <slot></slot>
+            <p v-if="false">{{ get_next_url() }}</p>
+        </button>
+    </a>
+</template>
+
 
 <style scoped>
 button {
@@ -40,11 +80,3 @@ a {
     text-shadow: none !important;
 }
 </style>
-
-<template>
-    <a :href="href" :target="same_tab ? '_self' : '_blank'" class="no-external-link-icon" :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
-        <button :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
-            <slot></slot>
-        </button>
-    </a>
-</template>

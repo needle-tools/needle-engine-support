@@ -1,5 +1,5 @@
 ---
-next: getting-started
+next: getting-started/
 ---
 
 # Testimonials

@@ -2,6 +2,8 @@
 title: Needle Engine for Unity
 editLink: true
 ---
+<br/>
+<img src="/imgs/unity-logo.webp" style="max-height:70px;" />
 
 # Needle Engine for Unity
 

@@ -109,5 +109,5 @@ Needle Engine uses as [component based workflow](scripting.md#component-architec
 ---
 # Where to go next
 
-See our [Getting Started Guide](getting-started) to learn about how to download and set up Needle Engine.   
+See our [Getting Started Guide](getting-started/) to learn about how to download and set up Needle Engine.   
 Learn about [our vision](vision) or dive deeper into some of the [technical background and glTF](technical-overview) powering it all.  

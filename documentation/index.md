@@ -38,7 +38,7 @@ Our powerful **compression and optimization pipeline for the web** make sure you
 
 
 <actiongroup>
-    <action href="getting-started">
+    <action href="getting-started/">
     Get started ⭐
     </action>
     <action href="features-overview">
