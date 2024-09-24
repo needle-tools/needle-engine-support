@@ -4,7 +4,7 @@
 :root {
   // brand colors
   --vp-c-accent: #826aed; 
-  --vp-c-accent-bg: #99CC33;
+  --vp-c-accent-bg: #d5ebaa;
 
 
   // BELOW ARE ALL DEPRECATED...
@@ -40,6 +40,14 @@
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
     border-radius: .7em;
   }
+}
+
+:root[data-theme='dark'] {
+  --c-border: #4b4b4b;
+  --c-border-dark: #525252;
+  
+  --vp-c-accent: #b7aaf0; 
+  --c-text-accent: #b7aaf0;
 }
 
 html.dark a {

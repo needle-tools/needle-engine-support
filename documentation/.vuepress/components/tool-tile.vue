@@ -49,7 +49,8 @@ function getClass() {
         background: var(--b811b9c2);
         border: var(--e2940f36) solid var(--7e5aa0ea);
         border-radius: 1em;
-        box-shadow: 0 -.5px 3px 1px #0000001a;
+        box-shadow: 0 0px 5px 1px #0000001a;
+        outline: 1px solid var(--c-border);
         display: flex;
         flex-direction: column;
         max-width: 230px;
