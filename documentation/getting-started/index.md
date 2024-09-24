@@ -9,7 +9,7 @@ next: ../project-structure.md
 # Downloads
 
 With **Needle Engine**, you can create fully interactive 3D websites.
-They can be deployed anywhere on the web and get optimized automatically by the **Needle Engine Build Pipeline**.   
+They can be deployed anywhere on the web and get optimized automatically by the **Needle Engine Build Pipeline** reducing asset size by up x100 without compromising quality.   
 
 Needle Engine is available as a package for Unity, add-on for Blender, as a ready-to-go Web Component, and as npm package for projects without an editor integration. Each of these comes with the same components and building blocks – the choice is yours.
 

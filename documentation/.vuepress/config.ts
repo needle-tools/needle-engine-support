@@ -292,6 +292,11 @@ export default defineUserConfig({
                                 text: "API Documentation",
                                 link: "https://engine.needle.tools/docs/api/latest",
                             },
+                            {
+                                text: "Get Help",
+                                target: "_blank",
+                                link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
+                            },
                         ],
                     },
                 ]
@@ -329,6 +334,7 @@ export default defineUserConfig({
                         children: [
                             {
                                 text: "Tutorials on Youtube",
+                                target: "_blank",
                                 link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
                             },
                         ]
@@ -338,6 +344,11 @@ export default defineUserConfig({
                         children: [
                             "/debugging",
                             "/faq",
+                            {
+                                text: "Get Help",
+                                target: "_blank",
+                                link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
+                            },
                         ]
                     }
                 ]
@@ -387,11 +398,18 @@ export default defineUserConfig({
             },
             {
                 text: 'Samples',
+                target: "_blank",
                 link: 'https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav',
             },
             {
                 text: 'Pricing',
+                target: "_blank",
                 link: "https://needle.tools/pricing/?utm_source=needle_docs&utm_content=headernav"
+            },
+            {
+                text: "Get Help",
+                target: "_blank",
+                link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
             },
             {
                 text: 'Contact',

@@ -34,7 +34,11 @@ function getClass() {
 
 <style scoped>
     img {
+        height: 110px;
         max-height: 70px;
+        aspect-ratio: 1/1;
+        object-fit: contain;
+        pointer-events: none;
     }
 
     img.hidden {
@@ -55,11 +59,11 @@ function getClass() {
         max-width: 230px;
         min-width: 200px;
         padding: 1em;
-        position: relative;
-        align-items: center;
-        justify-content: flex-start;
         margin-right: 1em;
         margin-top: 1em;
+        position: relative;
+        align-items: center;
+        justify-content: space-between;
         flex-wrap: nowrap;
     }
 
@@ -68,7 +72,7 @@ function getClass() {
     }
 
     div.small .description {
-        height: initial;
+        /* height: initial; */
         margin-bottom: 0.5em;
     }
 

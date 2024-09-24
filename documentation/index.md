@@ -45,10 +45,10 @@ Our powerful **compression and optimization pipeline for the web** make sure you
     Features 🎨
     </action>
     <action href="https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=actionbutton">
-    Samples 🎏
+    Samples 👓
     </action>
-    <action href="https://forum.needle.tools?utm_source=needle_docs&utm_content=actionbutton">
-    Forum 💬
+    <action subtitle="with AI support" href="https://forum.needle.tools?utm_source=needle_docs&utm_content=actionbutton">
+    Get Help 💬
     </action>
 </actiongroup>
 
@@ -61,12 +61,12 @@ Our powerful **compression and optimization pipeline for the web** make sure you
 <actiongroup>
 
   
-<a href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=000000&colorB=000000"/></a>
+<a class="no-external-link-icon" href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=000000&colorB=000000"/></a>
 
-<a href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=000000&colorB=000000"/></a>
+<a class="no-external-link-icon" href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=000000&colorB=000000"/></a>
 
 
-<a href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=000000&colorB=000000&label=discord&logo=discord&logoColor=ffffff"></a>
+<a class="no-external-link-icon" href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=000000&colorB=000000&label=discord&logo=discord&logoColor=ffffff"></a>
   
 
 </actiongroup>
