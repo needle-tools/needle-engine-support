@@ -8,10 +8,10 @@
 
 <div align="center">
   
-[![Version](https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@needle-tools/engine)
-[![Downloads](https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=000000&colorB=000000)](https://www.npmjs.com/package/@needle-tools/engine)
-[![Discord Shield](https://img.shields.io/discord/717429793926283276?style=flat&colorA=000000&colorB=000000&label=discord&logo=discord&logoColor=ffffff)](https://discord.needle.tools)
-[![Forum Shield](https://img.shields.io/badge/forum-forum.needle.tools-blue?style=flat&colorA=009900&colorB=000000)](https://forum.needle.tools)
+[![Version](https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=999&colorB=999)](https://www.npmjs.com/package/@needle-tools/engine)
+[![Downloads](https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=999&colorB=999)](https://www.npmjs.com/package/@needle-tools/engine)
+[![Discord Shield](https://img.shields.io/discord/717429793926283276?style=flat&colorA=999&colorB=999&label=discord&logo=discord&logoColor=ffffff)](https://discord.needle.tools)
+[![Forum Shield](https://img.shields.io/badge/forum-forum.needle.tools-blue?style=flat&colorA=999&colorB=999)](https://forum.needle.tools)
 </div>
 
 <div align="center">
