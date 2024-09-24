@@ -37,7 +37,7 @@ For complex 3D scenes and fast iteration, we recommend using Needle Engine with 
     ></iframe>
 :::
 ::::
-
+[Open this example on Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 
 
@@ -78,6 +78,9 @@ For quick experiments, we provide a convenient link to create a new project read
 [engine.needle.tools/new](https://engine.needle.tools/new)
 
 ## Rapid Prototyping on Glitch
+
+::: warning Under construction
+:::
 
 ## Local Development with VS Code
 
