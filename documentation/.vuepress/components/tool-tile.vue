@@ -21,7 +21,7 @@ function getClass() {
 </script>
 
 <template>
-    <div :class='getClass()'>
+    <div class="tile" :class='getClass()'>
         <img :src="image" alt="Tool Image" :class='image ? "": "hidden"'/>
         <h3><slot name="tool-name"></slot></h3>
         <p class="description"><slot name="tool-description"></slot></p>
@@ -45,7 +45,7 @@ function getClass() {
         visibility: hidden;
     }
 
-    div {
+    div.tile {
         /* adapted from Pricing cards */
         --b811b9c2: linear-gradient(180deg, #fff 50%, #ddd 350%);
         --7e5aa0ea: white;
