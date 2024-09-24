@@ -1,6 +1,8 @@
 ---
-title: Built-in Components
+title: Needle Core Components
 ---
+
+# Needle Core Components
 
 Here is a overview of some of the components that we provide. Many of them map to components and functionality in Unity, Blender or other integrations.
 

@@ -1,0 +1,96 @@
+<script lang="ts">
+
+export default {
+    props: {
+        image: String,
+        docs_url: String,
+    },
+    methods: {
+        getClass,
+    }
+}
+
+function getClass() {
+    if (!this.$slots['video-tutorial']) {
+        return "small";
+    } else {
+        return "";
+    }
+}
+
+</script>
+
+<template>
+    <div :class='getClass()'>
+        <img :src="image" alt="Tool Image" :class='image ? "": "hidden"'/>
+        <h3><slot name="tool-name"></slot></h3>
+        <p class="description"><slot name="tool-description"></slot></p>
+        <slot name="download-button"></slot>
+        <p><slot name="video-tutorial"></slot></p>
+        <a v-if="docs_url":href="docs_url">Next Steps</a>
+    </div>
+</template>
+
+
+<style scoped>
+    img {
+        max-height: 70px;
+    }
+
+    img.hidden {
+        visibility: hidden;
+    }
+
+    div {
+        /* adapted from Pricing cards */
+        --b811b9c2: linear-gradient(180deg, #fff 50%, #ddd 350%);
+        --7e5aa0ea: white;
+        --e2940f36: 1px;
+        background: var(--b811b9c2);
+        border: var(--e2940f36) solid var(--7e5aa0ea);
+        border-radius: 1em;
+        box-shadow: 0 -.5px 3px 1px #0000001a;
+        display: flex;
+        flex-direction: column;
+        max-width: 230px;
+        min-width: 200px;
+        padding: 1em;
+        position: relative;
+        align-items: center;
+        justify-content: flex-start;
+        margin-right: 1em;
+        margin-top: 1em;
+        flex-wrap: nowrap;
+    }
+
+    div.small {
+        height: 220px;
+    }
+
+    div.small .description {
+        height: initial;
+        margin-bottom: 0.5em;
+    }
+
+    div:last-child:not(.small) {
+        margin-right: 0;
+    }
+
+    h3 {
+        font-weight: bold;
+        margin-top: 0.5em;
+        padding-top: 0;
+    }
+
+    p {
+        margin: 0;
+        padding: 0;
+    }
+
+    p.description {
+        font-size: 0.8em;
+        height: 75px;
+        margin-top: 0.5em;
+        text-align: center;
+    }
+</style>

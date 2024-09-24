@@ -7,44 +7,53 @@ editLink: true
 
 # Needle Engine for Blender
 
-Thank you for using Needle Engine for Blender.   
-With this addon you can create highly interactive and optimized WebGL and WebXR experiences inside Blender that run using Needle Engine and three.js.  
-You'll be able to sequence animations, easily lightmap your scenes, add interactivity or create your own scripts written in Typescript or Javascript that run on the web. You own your content! 
 
+## Install the Blender Add-on
 
-<video-embed src="/docs/blender/environment-light.mp4" />
-*Automatically export HDRI environment lights directly from blender. Save to reload your local server*
-
-
-# Content Overview
-[[toc]]
-
-## Preface
-
-**Your feedback is invaluable** when it comes to deciding which of those features should be prioritizes.   
-If you have feedback for us please let us know in [our forum](https://forum.needle.tools)!
-
-## Download and Installation 💿
-
-### Step 1
-<a target="_blank" href="https://www.blender.org/download/">Install Blender</a> 3.6, 4.0, 4.1 or 4.2
-
-### Step 2
 <ClientOnly>
- <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Install Nodejs ⭐</os-link>
+
+Make sure you have installed <a target="_blank" href="https://www.blender.org/download/"><strong>Blender</strong> 4.0, 4.1 or 4.2</a> and <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg"><strong>node.js</strong></os-link>. 
 </ClientOnly>
 
-### Step 3
-<a class="plausible-event-name=download_blender plausible-event-position=blender_download" target="_blank" href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=blender">Download Needle Engine for Blender</a>
+<NoDownloadYet>
+    <needle-button 
+        event_goal="download_blender" 
+        event_position="getting_started" 
+        large 
+        href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"
+        same_tab
+        next_url="/docs/blender/"
+        >
+        <strong>Download Needle Engine for Blender</strong>
+    </needle-button>
+</NoDownloadYet>
 
-*The Blender addon is downloaded as a zip file.   
-In Blender go to `File / Settings / Add-ons` and click the `Install` button.   
-Then select the downloaded zip to install it.*
+1. In Blender, go to `File > Settings > Add-ons` and click the `Install` button. 
+
+2. Select the downloaded zip file (named `needle-blender-plugin-*.zip`) to install it.
+
+3. Search for "Needle" in the Add-ons search bar and make sure `Needle Engine.
 
 
 ![Settings](/blender/settings.webp)
 
-## Getting Started 🚩
+## Getting Started
+
+Thank you for using Needle Engine for Blender. 
+
+With this add-on you can create highly interactive and optimized WebGL and WebXR experiences inside Blender, that run using Needle Engine and three.js.  
+
+You'll be able to sequence animations, easily lightmap your scenes, add interactivity or create your own scripts written in Typescript or Javascript that run on the web.
+
+<video-embed src="/docs/blender/environment-light.mp4" />
+*Matching lighting and environment settings between Blender and Needle Engine. HDRI environment lights are automatically exported, directly from Blender. Once you save, the page is automatically reloaded.*
+
+:::tip Providing Feedback
+
+**Your feedback is invaluable** when it comes to deciding which features and workflows we should prioritize. If you have feedback for us (good or bad), please [let us know in the forum](https://forum.needle.tools)!
+:::
+
+## Samples for Blender
 
 - [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)
 
@@ -250,7 +259,7 @@ Alternatively you can also use the Lightmapping panel in the `Render Properties`
 
 ![Lightmapping object](/blender/lightmapping-panel.webp)
 
-::: danger Experimental Feature
+::: warning Experimental Feature
 The lightmapping plugin is experimental. We recommend creating a backup of your .blend file when using it. Please report problems or errors you encounter in [our forum](https://forum.needle.tools) 🙏
 ::: 
 
@@ -268,12 +277,18 @@ The lightbulb in the Needle Project panel informs you when a new version of the 
 Simply click the icon to download the new version.    
 ![Update notification](/blender/updates.webp)
 
-## Debugging / Reporting a problem
+## Reporting an issue
 
 If you run into any problems we're more than happy to help! Please join [our discord](https://discord.needle.tools) for fast support.  
 
 Please also check the logs in Blender. You can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.    
 
-### Integrated Bugreporter
-![Needle Blender bugreporter panel](/blender/bugreporter.webp)  
-You can also automatically create and upload a bugreport directly from Blender (this currently requires a node.js web project being setup). Uploaded bugreports will solely used for debugging, they are encrypted on our backend and will deleted after 30 days.   
+### Integrated Bug Reporter
+![Needle Blender Bug Reporter panel](/blender/bugreporter.webp)  
+You can also automatically create and upload a bugreport directly from Blender. Uploaded bugreports will solely be used for debugging. They are encrypted on our backend and will be deleted after 30 days.
+
+If needed, in certain cases we're also able to set up custom NDAs for your projects. Please contact us for more information.
+
+:::tip Using the Bug Reporter requires a web project
+Make sure you've set up a web project before sending a bug report – it will allow us to understand more about your system and setup and make it easier to reproduce the issue.
+:::

@@ -442,20 +442,24 @@ export default defineUserConfig({
                             link: "/getting-started/",
                         },
                         {
-                            text: 'Getting started with Unity',
+                            text: 'Needle Engine for Unity',
                             link: '/unity/',
                         },
                         {
-                            text: 'Getting started with Blender',
+                            text: 'Needle Engine for Blender',
                             link: '/blender/',
                         },
                         {
-                            text: 'Getting started with three.js',
+                            text: 'Needle Engine as Web Component',
                             link: '/three/',
                         },
                         {
                             text: 'Custom integrations',
                             link: '/custom-integrations/',
+                        },
+                        {
+                            text: 'Support and Community',
+                            link: '/support',
                         }
                     ]
                 },

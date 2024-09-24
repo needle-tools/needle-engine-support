@@ -7,10 +7,23 @@ editLink: true
 
 # Needle Engine for Unity
 
-## Installation
+## Install the Unity Package
 
-<br/>
-<needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Unity</strong></needle-button> 
+
+<NoDownloadYet>
+  <br/>
+  <needle-button 
+    event_goal="download_unity" 
+    event_position="getting_started" 
+    large 
+    href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"
+    same_tab
+    next_url="/docs/unity/"
+    >
+    <strong>Download Needle Engine for Unity</strong>
+  </needle-button> 
+</NoDownloadYet>
+
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
 
 1. **Drop the downloaded .unitypackage file** into a Unity project and confirm that you want to import it.
@@ -63,12 +76,60 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
   In this component you create and quickly access your exported runtime project.  
   It also warns you if any of our packages and modules are outdated or not locally installed in your web project.  
 
-::: tip Note
-By default, the project name matches the name of your scene. If you want to change that, you can enter a ``Directory Name`` where you want to create your new runtime project. The path is relative to your Unity project.  
-:::
+    ::: tip Project Name and Scene Name
+    By default, the project name matches the name of your scene. If you want to change that, you can pick or enter a ``Directory Name`` where you want to create your new web project. The path is relative to your Unity project.  
+    :::
  
 3. **Choose a web project template**
   Now, select a web project template for your project. The default template is based on [Vite](https://vitejs.dev/), a fast web app bundler.  
+  <br/>
+    ![Unity ExportInfo local templates](/imgs/unity-project-local-template.jpg)
+
 
 4. Click Play to install and start your new web project
+
+
+:::tip Define your own templates
+If you find yourself creating many similar projects, you can create your own local or remote templates using the Project View context menu under `Create/Needle Engine/Project Template`. Templates can either be local on disk (a folder being copied) or remote repositories (a git repository being cloned).
+:::
+
+## Project Folders and Files
+
+
+| Folder | |
+| --- | --- |
+| **Unity** | |
+| `Assets` | This is where project specific/exclusive assets live. |
+| `Packages` | This is where packages installed for this project live. A package can contain any asset type. The main difference is that it can be added to multiple Unity projects. It therefor is a great method to share code or assets. To learn more about packages see [the Unity documentation about packages](https://docs.unity3d.com/Manual/PackagesList.html).
+| **Needle Engine Unity Package** | |
+| ``Core/Runtime/Components`` | Contains all Needle Engine built-in components. Learn more about them in the [Components Reference](./../component-reference.md). |
+
+-----
+
+When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a vite based web template). 
+
+You can also reference remote templates by entering a repository URL in the ExportInfo project path (this can be saved with your scene for example). When creating a new web project the repository will be either cloned or downloaded (depending on if you have git installed) and searched for a `needle.config.json` file. If none can be found in the cloned repository the root directory will be used. Examples of remote template projects can be found on [github.com/needle-engine](https://github.com/needle-engine)
+
+![Unity ExportInfo local templates](/imgs/unity-project-remote-template.jpg)
+
+### Temporary Projects
+
+If you're planning to only add custom files via NpmDefs and not change the project config (e.g. for a quick fullscreen test), you can prefix the project path with `Library`. The project will be generated in the Unity Project Library and does not need to be added to source control (the Library folder should be excluded from source control). We call these projects _temporary projects_. They're great for quickly testing out ideas!
+
+
+## Typescript in Unity
+
+**NPM Definition** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor which makes it easily possible to share scripts with multiple web- or even Unity projects.    
+
+C# component stubs for typescript files will also be automatically generated for scripts inside npmdef packages.
+
+#### Creating and installing a npmdef
+To create a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
+You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
+
+![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
+
+Don't forget to install the newly added package by e.g. clicking Install on the ExportInfo component and also restart the server if it is already running
+
+To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser and it will open the vscode workspace that comes with each npmdef.
 

@@ -19,6 +19,11 @@ export default {
 // declare method that returns the next_url relative to where we're at
 // this is used to pass the next_url to the button component
 function get_next_url() {
+    if (typeof window === 'undefined') {
+        return this.href;
+    }
+    if (!this.next_url) return this.href;
+    
     let nextUrl = window.location.origin + window.location.pathname;
     let target = new URL(this.href);
     // get propUrl relative to nextUrl

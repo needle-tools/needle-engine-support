@@ -526,3 +526,20 @@ div[class*=language-] > pre code {
 .vp-page ol li > p {
   display: inline;
 }
+
+.vp-sidebar-items ul {
+  line-height: 1.85em;
+}
+
+.vp-sidebar-children .vp-sidebar-children .vp-sidebar-item:not(.vp-sidebar-heading) {
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+.vp-sidebar-item:not(.vp-sidebar-heading) + .vp-sidebar-children {
+  line-height: 1.65em;
+}
+
+div.code-group-item.active:has(iframe) {
+  margin-top: 30px;
+}

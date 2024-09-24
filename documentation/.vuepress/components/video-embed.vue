@@ -17,8 +17,12 @@ export default props;
 <style scoped>
 .container {
   max-width: 100%;
+  /*
   height: v-bind('limit_height ? "400px" : "initial"');
   max-height: v-bind('limit_height ? max_height : "initial"');
+  */
+  aspect-ratio: 16/9;
+  max-height: 300px;
 }
 
 video,
@@ -31,6 +35,7 @@ video,
   max-height: 100%;
   margin: .75em 0;
   max-height: v-bind('limit_height ? max_height : "100%"');
+  aspect-ratio: 16/9;
 }
 
 #ytplayer {

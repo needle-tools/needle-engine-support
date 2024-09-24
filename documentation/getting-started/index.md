@@ -9,18 +9,13 @@ next: ../project-structure.md
 # Downloads
 
 With **Needle Engine**, you can create fully interactive 3D websites.
-They can be deployed anywhere on the web and get optimized automatically by the **Needle Engine Build Pipeline**.  
+They can be deployed anywhere on the web and get optimized automatically by the **Needle Engine Build Pipeline**.   
 
-## Needle Integrations
+Needle Engine is available as a package for Unity, add-on for Blender, as a ready-to-go Web Component, and as npm package for projects without an editor integration. Each of these comes with the same components and building blocks – the choice is yours.
 
-Needle Engine is available as a download for Unity, for Blender, and for web projects without an editor integration.  
+## Choose your Workflow
 
-| Unity | Blender | three.js | Custom Integrations |
-| --- | --- | --- | --- |
-| 2021.3, 2022.3, 6.0 | 4.0, 4.1, 4.2+ | r162 | Integrating with other tools |
-| <img src="/imgs/unity-logo.webp" style="max-height:70px;" /> | <img src="/blender/logo.png" style="max-height:70px;" /> | <img src="/imgs/threejs-logo.webp" style="max-height:70px;" /> |  | 
-| <needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started" next_url="./../unity/"><strong>Download</strong> for&nbsp;Unity</needle-button> | <needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download</strong> for&nbsp;Blender</needle-button> | <needle-button event_goal="download_threejs" event_position="getting_started" large href="https://engine.needle.tools/downloads/threejs?utm_source=needle_docs&utm_content=getting_started"><strong>Get Started</strong></needle-button> | <needle-button event_goal="download_custom" event_position="getting_started" large href="https://engine.needle.tools/downloads/custom?utm_source=needle_docs&utm_content=getting_started"><strong>Learn More</strong></needle-button> |
-| [Get started with Needle and Unity](../unity/index.md) | [Get started with Needle and Blender](../blender/index.md) | [Get started with Needle and three.js](../threejs/index.md) | [Learn more about Custom Integrations](../custom/index.md) |
+<tool-tiles></tool-tiles>
 
 <!-- | Tool |  |  |
 | -- | -- | -- | 
