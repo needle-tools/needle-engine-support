@@ -46,10 +46,6 @@ function getClass() {
     }
 
     div.tile {
-        /* adapted from Pricing cards */
-        --b811b9c2: linear-gradient(180deg, #fff 50%, #ddd 350%);
-        --7e5aa0ea: white;
-        --e2940f36: 1px;
         background: var(--b811b9c2);
         border: var(--e2940f36) solid var(--7e5aa0ea);
         border-radius: 1em;
