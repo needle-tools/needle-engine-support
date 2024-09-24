@@ -513,7 +513,6 @@ export default defineUserConfig({
                     children: [
                         "/xr",
                         "/networking",
-                        "/vanilla-js",
                         "/unity/editor-sync",
                     ]
                 },
