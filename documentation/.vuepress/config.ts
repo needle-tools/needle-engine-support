@@ -202,7 +202,7 @@ export default defineUserConfig({
         }) as any,
     ],
     head: [
-        ['link', { rel: 'icon', href: 'icons/favicon.ico' }],
+        ['link', { rel: 'icon', href: _url + '/icons/favicon.ico' }],
         ['link', { rel: 'manifest', href: 'manifest.webmanifest' }],
         ['meta', { name: 'theme-color', content: '#3eaf7c' }],
 
