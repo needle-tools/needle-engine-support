@@ -26,5 +26,5 @@ Watch some of our [user interviews on youtube](https://www.youtube.com/playlist?
 
 
 ::: info You made a cool project?
-Don't hestitate to [reach out](mailto:hi@needle.tools) – we always love hearing from our users! 💚 
+Don't hestitate to [reach out](mailto:hi@needle.tools) – we always love seeing what you built 💚 
 :::
