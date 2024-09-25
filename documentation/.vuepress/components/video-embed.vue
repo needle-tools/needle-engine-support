@@ -60,7 +60,7 @@ video,
 <template>
   <div v-if='src.includes("youtube.com")' class="container">
     <iframe id="ytplayer" class="video"
-      :src='src.replace("watch?v=", "embed/") + "?autoplay=0&origin=http://docs.needle.tools&controls=1&loop=1&modestbranding=1&showinfo=0&color=white"' frameborder="0"
+      :src='src.replace("watch?v=", "embed/") + "?autoplay=0&origin=http://docs.needle.tools&controls=1&loop=1&modestbranding=1&showinfo=0&color=white&rel=0"' frameborder="0"
       allowfullscreen />
   </div>
   <div v-else class="container">
