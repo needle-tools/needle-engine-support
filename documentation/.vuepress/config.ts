@@ -337,6 +337,11 @@ export default defineUserConfig({
                                 target: "_blank",
                                 link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
                             },
+                            {
+                                text: "Interviews on Youtube",
+                                target: "_blank",
+                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw"
+                            },
                         ]
                     },
                     {
@@ -419,10 +424,6 @@ export default defineUserConfig({
                         link: 'https://needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
                     {
-                        text: 'Github',
-                        link: 'https://github.com/needle-tools/needle-engine-support'
-                    },
-                    {
                         text: 'Support Community',
                         link: 'https://forum.needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
@@ -435,6 +436,10 @@ export default defineUserConfig({
                         link: 'https://twitter.com/needletools'
                     },
                     {
+                        text: 'Youtube',
+                        link: 'https://www.youtube.com/@needle-tools'
+                    },
+                    {
                         text: 'Newsletter',
                         link: "https://fwd.needle.tools/needle-engine/newsletter"
                     },
@@ -445,6 +450,10 @@ export default defineUserConfig({
                     {
                         text: 'Feedback',
                         link: 'https://fwd.needle.tools/needle-engine/feedback'
+                    },
+                    {
+                        text: 'Github',
+                        link: 'https://github.com/needle-tools'
                     },
                 ]
             },
