@@ -40,7 +40,8 @@
                     event_goal="download_blender" 
                     event_position="getting_started" 
                     large 
-                    href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started">
+                    href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"
+                    next_url="./../blender/">
                     <strong>Download</strong>
                 </needle-button>
             </template>
