@@ -1,5 +1,5 @@
 ---
-title: Project Structure
+title: Web Project Structure
 ---
 
 # Needle Engine Project Structure
