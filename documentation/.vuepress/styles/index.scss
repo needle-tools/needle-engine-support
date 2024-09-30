@@ -551,3 +551,7 @@ div[class*=language-] > pre code {
 div.code-group-item.active:has(iframe) {
   margin-top: 30px;
 }
+
+.hint-container p {
+  padding-right: 2rem;
+}
