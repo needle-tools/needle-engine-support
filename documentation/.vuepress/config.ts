@@ -308,12 +308,26 @@ export default defineUserConfig({
             {
                 text: 'Guides',
                 children: [
-                    "/project-structure",
-                    "/everywhere-actions",
-                    "/export",
-                    "/html",
-                    "/testing",
-                    "/deployment",
+                    {
+                        text: "Integrations",
+                        children: [
+                            "/unity/",
+                            "/blender/",
+                            "/three/",
+                            // "/custom-integrations/",
+                        ]
+                    },
+                    {
+                        text: "Topics",
+                        children: [
+                            "/project-structure",
+                            "/everywhere-actions",
+                            "/export",
+                            "/html",
+                            "/testing",
+                            "/deployment",
+                        ]
+                    },
                     {
                         text: "Advanced",
                         children: [
@@ -321,27 +335,6 @@ export default defineUserConfig({
                             "/xr",
                             "/vanilla-js",
                             "/unity/editor-sync",
-                        ]
-                    },
-                    {
-                        text: "Blender",
-                        children: [
-                            "/blender/"
-                        ]
-                    },
-                    {
-                        text: "Tutorials",
-                        children: [
-                            {
-                                text: "Tutorials on Youtube",
-                                target: "_blank",
-                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
-                            },
-                            {
-                                text: "Interviews on Youtube",
-                                target: "_blank",
-                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw"
-                            },
                         ]
                     },
                     {
@@ -355,7 +348,22 @@ export default defineUserConfig({
                                 link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
                             },
                         ]
-                    }
+                    },
+                    {
+                        text: "Videos",
+                        children: [
+                            {
+                                text: "Tutorials on Youtube",
+                                target: "_blank",
+                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
+                            },
+                            {
+                                text: "Interviews on Youtube",
+                                target: "_blank",
+                                link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw"
+                            },
+                        ]
+                    },
                 ]
             },
             {
