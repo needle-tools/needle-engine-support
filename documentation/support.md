@@ -11,7 +11,7 @@ Ask any question about Needle Engine, web development or our editor integrations
 
 ## Discord
 
-Chat with the community and see user projects in [Needle Discord](https://discord.needle.tools)
+Chat with the community and share your projects in [Needle Discord](https://discord.needle.tools)
 
 
 ## Get Inspired
