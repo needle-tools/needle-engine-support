@@ -17,7 +17,7 @@ Needle Engine provides an easy-to-use web component that can be used to display 
 Once you outgrow the configuration options of the web component, you can extend it with custom scripts and components, and full programmatic scene graph access.
 
 :::tip Use the integrations!
-For complex 3D scenes and fast iteration, we recommend using Needle Engine with one of our integrations. They provide a more powerful creation environment, including a live preview, hot reloading, and a more advanced build pipeline.
+For complex 3D scenes and fast iteration, we recommend using Needle Engine with one of our integrations. They provide a powerful creation workflow, including a live preview, hot reloading, and an advanced build pipeline with 3D optimizations.
 :::
 
 ### Quick Start

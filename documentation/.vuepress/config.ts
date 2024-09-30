@@ -314,6 +314,7 @@ export default defineUserConfig({
                             "/unity/",
                             "/blender/",
                             "/three/",
+                            "/embedding/",
                             // "/custom-integrations/",
                         ]
                     },
@@ -487,6 +488,10 @@ export default defineUserConfig({
                         {
                             text: 'Needle Engine as Web Component',
                             link: '/three/',
+                        },
+                        {
+                            text: 'Needle Engine on your Website',
+                            link: '/embedding',
                         },
                         {
                             text: 'Custom integrations',

@@ -506,14 +506,14 @@ div[class*=language-] > pre code {
   border-radius: 10px;
 }
 
-.vp-page ol li {
+.vp-page ol > li {
   list-style-type: none;
   position: relative;
   margin-bottom: 1.5em;
   margin-left: 0;
 }
 
-.vp-page ol li:before {
+.vp-page ol > li:before {
   counter-increment: myOrderedListItemsCounter;
   content: counter(myOrderedListItemsCounter) "";
   margin-right: 0.5em;
@@ -531,7 +531,7 @@ div[class*=language-] > pre code {
   border: 4px solid var(--vp-c-bg);
 }
 
-.vp-page ol li > p {
+.vp-page ol > li > p {
   display: inline;
 }
 
@@ -554,4 +554,8 @@ div.code-group-item.active:has(iframe) {
 
 .hint-container p {
   padding-right: 2rem;
+}
+
+.vp-site-name {
+  display: none;
 }

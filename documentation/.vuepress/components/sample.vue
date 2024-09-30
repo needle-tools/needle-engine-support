@@ -67,9 +67,9 @@ export default {
 <template>
   <div>
     <iframe :src="sanitizedUrl" ref="frame1"
-      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
+      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
     <iframe v-if="split === true" :src="sanitizedUrl" ref="frame2"
-      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen;display-capture"></iframe>
+      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
   </div>
 </template>
 
