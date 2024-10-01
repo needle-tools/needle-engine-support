@@ -124,4 +124,10 @@ div.vertical {
     justify-content: space-around;
     align-items: center;
 }
+
+@media screen and (max-width: 720px) {
+    div {
+        justify-content: center;
+    }
+}
 </style>

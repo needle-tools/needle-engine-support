@@ -381,10 +381,12 @@ footer.page-meta {
   text-decoration: none;
 }
 
+/*
 .vp-sidebar-item:not(.vp-sidebar-heading) {
   padding-top: 0;
   padding-bottom: 0;
 }
+*/
 
 .vp-sidebar {
   scrollbar-color: var(--vp-c-accent-bg) transparent;
@@ -557,9 +559,11 @@ div[class*=language-] > pre code {
   padding-bottom: 0;
 }
 
+/*
 .vp-sidebar-item:not(.vp-sidebar-heading) + .vp-sidebar-children {
   line-height: 1.65em;
 }
+  */
 
 div.code-group-item.active:has(iframe) {
   margin-top: 30px;

@@ -73,10 +73,6 @@ function getClass() {
         margin-bottom: 0.5em;
     }
 
-    div:last-child:not(.small) {
-        margin-right: 0;
-    }
-
     h3 {
         font-weight: bold;
         margin-top: 0.5em;
@@ -93,5 +89,13 @@ function getClass() {
         height: 75px;
         margin-top: 0.5em;
         text-align: center;
+    }
+
+    @media screen and (max-width: 720px) {
+        div.tile {
+            min-width: initial;
+            max-width: initial;
+            width: 70%;
+        }
     }
 </style>
