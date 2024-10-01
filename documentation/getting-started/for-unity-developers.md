@@ -16,7 +16,7 @@ Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.or
 This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. If you are already using certain libraries then you will be able to also use them in a Needle Engine based environment.
 
 Note: **Needle Engine's Exporter does _NOT_ compile your existing C# code to Web Assembly**.   
-While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./vision.md) and [technical overview](./technical-overview). 
+While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./../vision.md) and [technical overview](./technical-overview). 
 
 
 :::details How to create a new Unity project with Needle Engine? (Video)

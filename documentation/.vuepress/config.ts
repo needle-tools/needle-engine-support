@@ -314,7 +314,7 @@ export default defineUserConfig({
                             "/unity/",
                             "/blender/",
                             "/three/",
-                            "/embedding/",
+                            "/embedding",
                             // "/custom-integrations/",
                         ]
                     },
