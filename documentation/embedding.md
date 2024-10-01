@@ -4,36 +4,36 @@ Needle Engine can be used to create new web apps, and can also be integrated int
 
 There are several ways to integrate Needle Engine with your website. Which one is better depends on a number of factors, like complexity of your project, if you're using custom scripts or only core components, how much control you have over the target website, what the "trust level" is between you and the target website, and so on.
 
-
-The two most common workflows are:
-1. [Using the "Deploy to ..." components](#using-the-deploy-to-...-components)
-2. [Embedding a Needle project into an existing website](#embedding-a-needle-project-into-an-existing-website)
-
-## Quickstart
-::: tip Try it out now!
+## Try it out
 
 If you want to quickly try out how projects made with Needle will look on your website, just add these two lines anywhere on your page for testing: 
-::: 
 
 :::: code-group
-::: code-group-item Embedding Needle
+::: code-group-item Option 1: Embedding Needle
 ```html
 <script type="module" src="https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js"></script>
 <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
 ```
 :::
-::: code-group-item Using an iframe
+::: code-group-item Option 2: Using an iframe
 ```html
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
 </iframe>
 ```
 :::
-::: code-group-item Result
+::: code-group-item Resulting Website
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
 ::::
+
+# Ways to embed Needle
+
+The most common workflows to bring Needle Engine to your website are:
+1. [Using the "Deploy to ..." components](#using-the-deploy-to-...-components)
+2. [Uploading your web app to a folder](#uploading-your-web-app-to-a-folder)
+3. [Embedding a Needle project into an existing website](#embedding-a-needle-project-into-an-existing-website)
 
 ## Using the "Deploy to ..." components
 
@@ -49,7 +49,7 @@ See the [Deployment](./deployment.md) section for more information on each of th
 This is the easiest option, and recommended for most workflows – it's very fast! You can iteratively work on your project on your computer, and then upload a new version to the web in seconds.
 :::
 
-## Uploading a production build as web app
+## Uploading your web app to a folder
 
 If you don't want to use our "Deploy to..." components, or there's no component for your particlar workflow, you can do the same process manually. The resulting web app will be identical to what you see in your local server while working on the project. 
 

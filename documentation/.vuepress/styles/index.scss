@@ -36,6 +36,12 @@
   --c-border-dark: #dfe2e5;
   --vp-c-gutter: var(--c-border-dark);
   
+  --vp-copy-code-c-text: #fff;
+  --vp-copy-code-c-bg: #fff;
+  --copy-code-c-hover: #fff;
+  --code-c-text: #000;
+  --copy-code-c-text: #000;
+
   .navbar-dropdown {
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
     border-radius: .7em;
@@ -48,6 +54,13 @@
   
   --vp-c-accent: #b7aaf0; 
   --c-text-accent: #b7aaf0;
+
+
+  --vp-copy-code-c-text: #000;
+  --vp-copy-code-c-bg: #000;
+  --copy-code-c-hover: #000;
+  --code-c-text: #fff;
+  --copy-code-c-text: #fff;
 }
 
 html.dark a {
@@ -562,4 +575,15 @@ div.code-group-item.active:has(iframe) {
 
 .vp-navbar-item>div>button:hover {
   border-radius: 0;
+}
+
+
+div[class*=language-]::before {
+  padding: 5px;
+  border-radius: 0.5rem;
+  background: var(--vp-copy-code-c-bg);
+}
+
+.vp-copy-code-button {
+  background: var(--vp-copy-code-c-bg);
 }
