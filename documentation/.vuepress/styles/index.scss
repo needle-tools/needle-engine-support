@@ -497,11 +497,11 @@ div[class*=language-] > pre code {
 
 .vp-page ol::before {
   position: absolute;
-  left: -6px;
+  left: -4.5px;
   bottom: 0;
-  width: 10px;
-  height: 10px;
-  background: var(--vp-c-accent);
+  width: 8px;
+  height: 8px;
+  background: #d9d9d9;
   content: "";
   border-radius: 10px;
 }
@@ -558,4 +558,8 @@ div.code-group-item.active:has(iframe) {
 
 .vp-site-name {
   display: none;
+}
+
+.vp-navbar-item>div>button:hover {
+  border-radius: 0;
 }

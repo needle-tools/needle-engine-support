@@ -1,8 +1,39 @@
 # Needle Engine on your Website
 
-Needle Engine can be used to create new web apps, and can also be integrated into existing websites. In both cases, you'll want to _upload_ your files to a web hoster to make them accessibl to the world. 
+Needle Engine can be used to create new web apps, and can also be integrated into existing websites. In both cases, you'll want to _upload_ your project's distribution folder to a web hoster to make them accessible to the world. 
 
 There are several ways to integrate Needle Engine with your website. Which one is better depends on a number of factors, like complexity of your project, if you're using custom scripts or only core components, how much control you have over the target website, what the "trust level" is between you and the target website, and so on.
+
+
+The two most common workflows are:
+1. [Using the "Deploy to ..." components](#using-the-deploy-to-...-components)
+2. [Embedding a Needle project into an existing website](#embedding-a-needle-project-into-an-existing-website)
+
+## Quickstart
+::: tip Try it out now!
+
+If you want to quickly try out how projects made with Needle will look on your website, just add these two lines anywhere on your page for testing: 
+::: 
+
+:::: code-group
+::: code-group-item Embedding Needle
+```html
+<script type="module" src="https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+```
+:::
+::: code-group-item Using an iframe
+```html
+<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+    allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
+</iframe>
+```
+:::
+::: code-group-item Result
+<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+    allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
+</iframe>
+::::
 
 ## Using the "Deploy to ..." components
 
@@ -15,7 +46,7 @@ See the [Deployment](./deployment.md) section for more information on each of th
 3. That's it! Your project is now live.
 
 :::tip Recommended Workflow
-This is the easiest option, and recommended for most workflows – it's very fast!
+This is the easiest option, and recommended for most workflows – it's very fast! You can iteratively work on your project on your computer, and then upload a new version to the web in seconds.
 :::
 
 ## Uploading a production build as web app
@@ -36,7 +67,7 @@ Depending on your hoster's settings, the folder location and name determine what
 - The URL of your web app is now `https://your-website.com/my-app/`.
 :::
 
-## Embedding a production build
+## Embedding a Needle project into an existing website
 
 In some cases, you want a Needle Engine project to be part of an existing web site, for example as a part of a blog post, a product page, or a portfolio. The process is very similar, but instead of uploading the files to the root of your web space, you _embed_ the project into an existing website with a few lines of code.
 
@@ -71,7 +102,7 @@ In some cases, you want a Needle Engine project to be part of an existing web si
 
 5. That's it! The scene should now be displayed on your website.
 
-## Embedding a production build as iframe
+## Embedding a Needle project as iframe
 
 When you have limited access to a website, for example when you're using a CMS like WordPress, you can use an iframe to embed a Needle Engine scene into your website. You may know this workflow from embedding YouTube videos or Sketchfab models.
 
@@ -99,7 +130,7 @@ When you have limited access to a website, for example when you're using a CMS l
 
 4. That's it! The scene should now be displayed on your website.
 
-## Embedding 3D models with Core Components only
+## Embedding scenes that use no custom scripts
 
 When your project uses only core components and no custom scripts, you can directly use Needle Engine from a CDN (content-delivery network).
 
@@ -123,13 +154,29 @@ If you deployed your project to Needle Cloud, you can easily display it on your 
 
 # Web Hoster Integrations
 
-::: warning <b>Under construction.</b> All of these are working, but need to be documented.
-:::
-
 ## Wordpress
+
+1. Decide on the method you want to use to embed your Needle Engine project. You can either use the "Embedding a Needle project into an existing website" method, or the "Embedding a Needle project as iframe" method.
+
+2. Upload the content of the `dist/` folder from your Web Project to your web hoster. Usually, the Wordpress uploads directory is located at `wp-content/uploads/`. 
+
+    ::: tip Wordpress Backups
+    You can decide if your new project should be at `wp-content/uploads/my-project/`, or at a different location like `my-projects/my-project`. This affects if and how your project will be contained in Wordpress backups.
+    :::
+
+3. In the page you want to add Needle Engine to, add a `HTML` block and paste the code snippet as outlined above – either as script embed, or as iframe.
 
 ## Shopify
 
+::: warning <b>Under construction.</b> Needs to be documented.
+:::
+
 ## Wix
 
+::: warning <b>Under construction.</b> Needs to be documented.
+:::
+
 ## Webflow
+
+::: warning <b>Under construction.</b> Needs to be documented.
+:::
