@@ -143,7 +143,7 @@ UI can be animated.
 | Name  | Description |
 | ------------- | ------------- |
 | `Canvas` | Unity's UI system. Needs to be in World Space mode right now. |
-| `Text (Legacy)` | Render Text using Unity's UI Text component. Custom fonts are supported, a font atlas will be automatically generated on export. Use the font settings to control which characters are included in the atlas.<br/>**Note**: In Unity make sure to use the `Legacy/Text` component (*TextMeshPro* is not supported at the moment) |
+| `Text (Legacy)` | Render Text using Unity's UI Text component. Custom fonts are supported, a font atlas will be automatically generated on export. Use the font settings or the `FontAdditionalCharacters` component to control which characters are included in the atlas.<br/>**Note**: In Unity make sure to use the `Legacy/Text` component (*TextMeshPro* is not supported at the moment) |
 | `Button` | Receives click events - use the onClick event to react to it. It can be added too 3D scene objects as well.<br/>**Note**: Make sure to use the `Legacy/Text` component in the Button (or create the Button via the `UI/Legacy/Button` Unity context menu since *TextMeshPro* is not supported at the moment) |
 | `Image` | Renders a sprite image |
 | `RawImage` | Renders a texture |
