@@ -28,7 +28,7 @@ If you want to quickly try out how projects made with Needle will look on your w
 </iframe>
 ::::
 
-# Ways to embed Needle
+# Ways to create web apps with Needle
 
 The most common workflows to bring Needle Engine to your website are:
 1. [Using the "Deploy to ..." components](#using-the-deploy-to-...-components)

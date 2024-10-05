@@ -96,7 +96,10 @@ By default, materials are converted into glTF materials on export. glTF supports
 For full control over what gets exported, it's highly recommended to use the glTF materials provided by UnityGltf:
 - PBRGraph
 - UnlitGraph
-> These materials are exported as-is, with no conversion necessary. They allow for using advanced material properties such as refractive transmission and iridescence, which can be exported as well. 
+
+::: tip When in doubt, use the PBRGraph shader
+The PBRGraph material has a lot of features, way more than Standard or URP/Lit. These include advanced features like refraction, iridescence, sheen, and more. Additionally, materials using PBRGraph and UnlitGraph are exported as-is, with no conversion necessary. 
+:::
 
 Materials that can be converted out-of-the-box:
 - BiRP/Standard
@@ -108,25 +111,22 @@ Materials that can be converted out-of-the-box:
 Other materials are converted using a propery name heuristic. That means that depending on what property names your materials and shaders use, you might want to either refactor your custom shader's properties to use the property names of either URP/Lit or PBRGraph, or export the material as [Custom Shader](#custom-shaders).
 
 ### Custom Shaders
-To export custom shaders (e.g. ShaderGraph shaders), add an ``ExportShader`` Asset Label (see bottom of the inspector) to the shader you want to export.
-
-::: warning
-Please see limitations listed below
-:::
+To export custom unlit shaders (for example made with ShaderGraph), add an ``ExportShader`` Asset Label to the shader you want to export. Asset Labels can be seen at the bottom of the Inspector window.
 
 ![2022-08-22-172029_Needle_Website_-_CustomShaders_-_Windows,_Mac,_Lin](https://user-images.githubusercontent.com/5083203/185957781-9fae18c5-09ff-490f-8958-57e138aa0003.png)
 
-Note that **Custom Shaders** aren't part of the ratified glTF material model. The resulting GLB files will not display correctly in other viewers (the materials will most likely display white).
-
-#### Current limitations
+#### Limitations
 - We currently only support custom **Unlit** shaders — Lit shader conversion is not officially supported.
 - Custom Lit Shaders are currently experimental. Not all rendering modes are supported. 
 - Shadow receiving on custom shaders is not supported
 - Skinned meshes with custom shaders are not supported
 - As there's multiple coordinate system changes when going from Unity to three.js and glTF, there might be some changes necessary to get advanced effects to work. We try to convert data on export but may not catch all cases where conversions are necessary.  
-These coordinate changes are
   - UV coordinates in Unity start at the bottom left; in glTF they start at the top left.
-  - X axis values are flipped in glTF compared to Unity (a variant of a left-handed to right-handed coordinate system change).  
+  - X axis values are flipped in glTF compared to Unity. This is a variant of a left-handed to right-handed coordinate system change. Data used in shaders may need to be flipped on X to display correctly.  
+
+::: note Not part of the glTF specification
+Note that **Custom Shaders** aren't officially part of the glTF specification. Our implementation of custom shaders uses an extension called KHR_techniques_webgl, that stores the WebGL shader code directly in the glTF file. The resulting assets will work in viewers based on Needle Engine, but may not display correctly in other viewers.
+:::
 
 ## 💡 Exporting Lightmaps 
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
