@@ -10,12 +10,16 @@ Open `Edit/Project Settings/Needle` to get the Needle Engine plugin settings. At
 - `Email` - Enter the email you purchased the license with
 - `Invoice ID` - Enter one of the invoice ids that you received by email
 
+Note: You might need to restart the local webserver to apply the license.
+
 ![unity license window](/imgs/unity-needle-engine-license.jpg)
 
 ### Activating the license in Blender
 Open `Addon Preferences/Needle Engine` to get to the Needle Engine addon settings 
 - `Email` - Enter the email you purchased the license with
 - `Invoice ID` - Enter one of the invoice ids that you received by email
+
+Note: You might need to restart the local webserver to apply the license.
 
 
 ## My objects are white after export
