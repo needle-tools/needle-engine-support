@@ -4,7 +4,6 @@ const optionSiteName = "plausibleSiteDomain";
 const optionSiteOrigin = "plausibleSiteOrigin";
 
 /** 
- * This plugin is used to load a plugin that throws an error
  * @param {import("typedoc").Application} app
  */
 export function load(app) {

@@ -237,7 +237,7 @@ async function produceDocs(packageDir, outputDirectory) {
         footerDate: true,
 
         customCss: "./tools/api-plugins/api-docs.css",
-        // customFooterHtml: "<p>Hello World</p>",
+        customFooterHtml: "Made with 💚 by <a href='https://needle.tools'>Needle</a>",
         inlineTags: [...TypeDoc.OptionDefaults.inlineTags, "@type"],
         blockTags: [...TypeDoc.OptionDefaults.blockTags, "@link", "@obsolete", "@validate"],
         validation: {
