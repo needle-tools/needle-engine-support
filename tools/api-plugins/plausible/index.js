@@ -66,6 +66,8 @@ export function load(app) {
         return subParts.length === 3 && !isNaN(subParts[0]) && !isNaN(subParts[1]);
     });
     const interestingPart = parts.slice(versionIndex + 1).join("/");
+    if (interestingPart.startsWith("/")) 
+        interestingPart = interestingPart.slice(1);
     const engineVersion = parts[versionIndex];
     console.log("Plausible PageView", interestingPart, engineVersion);
     plausible('pageview', {
