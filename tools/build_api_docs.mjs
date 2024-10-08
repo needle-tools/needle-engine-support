@@ -232,6 +232,7 @@ async function produceDocs(packageDir, outputDirectory) {
             "./tools/api-plugins/index.js",
             "./tools/api-plugins/keywords/index.js",
             "./tools/api-plugins/plausible/index.js",
+            "./tools/api-plugins/component-lookup/index.js",
         ],
         keywords: ["typescript", "library", "threejs", "webgl", "engine", "browser", "webxr", "api"],
         footerDate: true,

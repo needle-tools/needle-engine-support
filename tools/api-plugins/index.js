@@ -60,7 +60,7 @@ function tryGetThreejsDocsLink(dottedName) {
     for (const test of urls) {
         const [testName, url] = test.split(": ");
         if (testName === name) {
-            console.log("Found", name, url);
+            // console.log("Found", name, url); // for debugging
             threejsDocsLinkCache.set(dottedName, url);
             return url;
         }
