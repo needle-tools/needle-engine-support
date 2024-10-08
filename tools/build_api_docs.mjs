@@ -185,7 +185,6 @@ async function produceDocs(packageDir, outputDirectory) {
             packageDir + "/src/engine-components",
             packageDir + "/src/engine-components-experimental",
             packageDir + "/src/engine-schemes",
-            packageDir + "/src/needle-engine.ts",
         ],
         tsconfig: "./tools/api-plugins/tsconfig.json",
         // don't include references multiple times
@@ -231,6 +230,8 @@ async function produceDocs(packageDir, outputDirectory) {
             // "typedoc-plugin-keywords",
             "typedoc-plugin-extras",
             "./tools/api-plugins/index.js",
+            "./tools/api-plugins/keywords/index.js",
+            "./tools/api-plugins/plausible/index.js",
         ],
         keywords: ["typescript", "library", "threejs", "webgl", "engine", "browser", "webxr", "api"],
         footerDate: true,
@@ -241,7 +242,11 @@ async function produceDocs(packageDir, outputDirectory) {
         blockTags: [...TypeDoc.OptionDefaults.blockTags, "@link", "@obsolete", "@validate"],
         validation: {
             invalidLink: true,
-        }
+        },
+
+        // analytics
+        plausibleSiteDomain: "api.needle.tools",
+        plausibleSiteOrigin: "analytics.needle.tools/js/",
     });
 
     // inline sources plugin
