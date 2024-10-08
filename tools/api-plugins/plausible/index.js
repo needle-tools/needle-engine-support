@@ -65,7 +65,7 @@ export function load(app) {
         const subParts = part.split(".");
         return subParts.length === 3 && !isNaN(subParts[0]) && !isNaN(subParts[1]);
     });
-    const interestingPart = parts.slice(versionIndex + 1).join("/");
+    let interestingPart = parts.slice(versionIndex + 1).join("/");
     if (interestingPart.startsWith("/")) 
         interestingPart = interestingPart.slice(1);
     const engineVersion = parts[versionIndex];
