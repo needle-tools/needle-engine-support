@@ -1,4 +1,7 @@
+import { Application, JSX, ParameterType, ReflectionKind } from "typedoc";
 
+const optionSiteName = "plausibleSiteDomain";
+const optionSiteOrigin = "plausibleSiteOrigin";
 
 /** 
  * This plugin is used to load a plugin that throws an error
@@ -18,8 +21,68 @@ export function load(app) {
             }
         }
     });
-}
 
+    // Keywords support
+    // from https://github.com/matteobruni/typedoc-plugins/blob/main/plugins/keywords/src/index.tsx
+    app.options.addDeclaration({
+        name: "keywords",
+        type: ParameterType.Array,
+        help: "Website keywords",
+    });
+    
+    app.renderer.hooks.on("head.begin", (ctx) => {
+        /** @type string[] */
+        const keywords = ctx.options.getValue("keywords");
+
+        // convert to JSX.createElement:
+        return JSX.createElement("meta", {
+            name: "keywords",
+            content: keywords.join(", "),
+        });
+    });
+
+    // Plausible support
+    // from https://gitlab.com/8hobbies/typedoc-plugin-plausible/-/blob/master/index.ts?ref_type=heads
+
+    app.options.addDeclaration({
+        name: optionSiteName,
+        type: ParameterType.String,
+        help: `Domain name used by Plausible Analytics.`,
+    });
+    app.options.addDeclaration({
+        name: optionSiteOrigin,
+        type: ParameterType.String,
+        help: `Base URL to get Plausible Analytics script from and report to. Should be everything but 'script.js'`,
+        defaultValue: "plausible.io/js/",
+    });
+    app.renderer.hooks.on("head.end", (ctx) => {
+        const plausibleSiteDomain = ctx.options.getValue(optionSiteName);
+        if (typeof plausibleSiteDomain !== "string") {
+            throw TypeError(
+            `Unexpected ${optionSiteName} type: ${JSON.stringify(plausibleSiteDomain)}`,
+            );
+        }
+        const plausibleSiteOrigin = ctx.options.getValue(optionSiteOrigin);
+        if (typeof plausibleSiteOrigin !== "string") {
+            throw TypeError(
+            `Unexpected ${optionSiteOrigin} type: ${JSON.stringify(plausibleSiteOrigin)}`,
+            );
+        }
+        const plausibleSrc = !plausibleSiteOrigin.endsWith("/")
+            ? `${plausibleSiteOrigin}/`
+            : plausibleSiteOrigin;
+        if (plausibleSiteDomain === "") {
+            // No site specified.
+            return JSX.createElement(JSX.Fragment, {});
+        }
+
+        return JSX.createElement("script", {
+            defer: true,
+            "data-domain": plausibleSiteDomain,
+            src: `https://${plausibleSrc}script.js`,
+        });
+    });   
+}
 
 const threejsDocsLinkCache = new Map();
 const urls = [

@@ -173,6 +173,7 @@ async function produceDocs(packageDir, outputDirectory) {
             packageDir + "/src/engine-schemes/api.ts",
             packageDir + "/src/needle-engine.ts",
         ],
+        tsconfig: "./tools/api-plugins/tsconfig.json",
         // don't include references multiple times
         excludeReferences: true,
         // entryPointStrategy: "Packages",
@@ -187,7 +188,7 @@ async function produceDocs(packageDir, outputDirectory) {
         excludePrivate: true,
 
         excludeNotDocumented: true,
-        excludeNotDocumentedKinds: ["Property", "Interface", "TypeAlias", "Enum", "Variable", "Function",],
+        excludeNotDocumentedKinds: ["Property", "TypeAlias", "Enum", "Variable", "Function",],
         // exclude: "**/dist/**|**/_Ignore*.ts",
         // externalPattern: "**/node_modules/**",
         githubPages: false,
@@ -213,7 +214,7 @@ async function produceDocs(packageDir, outputDirectory) {
         plugin: [
             "typedoc-plugin-inline-sources",
             "typedoc-plugin-mdn-links",
-            "typedoc-plugin-keywords",
+            // "typedoc-plugin-keywords",
             "typedoc-plugin-extras",
             "./tools/api-plugins/index.js",
         ],

@@ -1,0 +1,34 @@
+{
+    "compilerOptions": {   
+      "target": "ESNext", 
+      "module": "ESNext",
+      "outDir": "dist",
+      "useDefineForClassFields": true,
+      "lib": ["ESNext", "DOM"],
+      "moduleResolution": "Node",
+      "strict": true,
+      "sourceMap": true,
+      "resolveJsonModule": true,
+      "esModuleInterop": true,
+      "noEmit": true,
+      "noUnusedLocals": false,
+      "noUnusedParameters": true,
+      "noImplicitReturns": true,
+      "noImplicitAny": false,
+      "isolatedModules": true,
+      "jsx": "preserve",
+      "incremental": true,
+      "experimentalDecorators": true,
+      "skipLibCheck": true,
+      "allowJs": true,
+      "types": [
+        "three",
+        "vite/client"
+      ]
+    },
+    "include": [
+      "../../.temp/**/src/**/*.ts"
+    ],
+    "exclude": ["node_modules", "dist", "lib", "vite.config.ts", "tests"]
+  }
+  
