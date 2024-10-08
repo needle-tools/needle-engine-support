@@ -165,12 +165,26 @@ async function produceDocs(packageDir, outputDirectory) {
 
     const readmePath = packageDir + "/README.md";
 
+    // copy the /api.ts files to /index.ts so that we get nicer paths
+    const files = [
+        packageDir + "/src/engine/api.ts",
+        packageDir + "/src/engine-components/api.ts",
+        packageDir + "/src/engine-components-experimental/api.ts",
+        packageDir + "/src/engine-schemes/api.ts",
+    ]
+
+    for (const file of files) {
+        const indexFile = file.replace(/\/([^/]+)\.ts$/, "/index.ts");
+        fs.copyFileSync(file, indexFile);
+    }
+
     const app = await TypeDoc.Application.bootstrapWithPlugins({
+        lang: "en",
         entryPoints: [
-            packageDir + "/src/engine/api.ts",
-            packageDir + "/src/engine-components/api.ts",
-            packageDir + "/src/engine-components-experimental/api.ts",
-            packageDir + "/src/engine-schemes/api.ts",
+            packageDir + "/src/engine",
+            packageDir + "/src/engine-components",
+            packageDir + "/src/engine-components-experimental",
+            packageDir + "/src/engine-schemes",
             packageDir + "/src/needle-engine.ts",
         ],
         tsconfig: "./tools/api-plugins/tsconfig.json",
