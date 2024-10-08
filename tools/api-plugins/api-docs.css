@@ -22,6 +22,7 @@ body, a, button, input, select, textarea {
     border: none;
     top: 8px;
     height: 54px;
+    margin-bottom: 15px;
 }
 
 .tsd-page-toolbar .table-cell {
@@ -65,4 +66,23 @@ html[data-theme="light"] a.title {
 
 #tsd-search.has-focus {
     background-color: transparent;
+}
+
+@media screen and (max-width: 769px) {
+    .tsd-page-toolbar .tsd-toolbar-contents {
+    }
+    
+    #tsd-widgets {
+        line-height: initial;
+    }
+}
+
+#tsd-search .field label {
+    z-index: 1;
+}
+
+@media screen and (max-width: 440px) {
+    a.title::after {
+        content: none;
+    }
 }
