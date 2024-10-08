@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:opsz,wght@6..12,300..900&display=swap');
+
+body, a, button, input, select, textarea {
+    font-family: 'Nunito Sans', sans-serif;
+}
+
+.tsd-page-toolbar .tsd-toolbar-contents {
+    width: min(500px, 80%);
+    height: 52px;
+    border-radius: 4em;
+    background-color: #0d0d0da6;
+    outline: 1px solid rgba(0, 0, 0, .9);
+    position: relative;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 2px 15px #02022b33;
+    border-bottom: 1px solid rgb(62, 76, 90);
+}
+
+.tsd-page-toolbar {
+    background: none;
+    border: none;
+    top: 8px;
+    height: 54px;
+}
+
+.tsd-page-toolbar .table-cell {
+    line-height: 52px;
+}
+
+.tsd-page-toolbar .tsd-toolbar-icon {
+    padding: 18px 0;
+}
+
+a.title {
+    background-image: url("https://engine.needle.tools/docs/needle-logo-white.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    color: transparent;
+    font-size: 24px;
+}
+
+a.title::after {
+    content: "API Reference";
+    color: initial;
+    opacity: 0.6;
+    font-weight: 100;
+    font-size: 20px;
+    margin-left: -37px;
+    bottom: 1px;
+    position: relative;
+}
+
+html[data-theme="light"] .tsd-toolbar-contents {
+    border-bottom: 1px solid rgb(215, 217, 218);
+    
+    background-color: #fffc;
+    outline: 1px solid rgba(255, 255, 255, .1);
+    box-shadow: 0 2px 15px #02022b33;
+}
+
+html[data-theme="light"] a.title {
+    background-image: url("https://engine.needle.tools/docs/needle-logo-black.svg")
+}
+
+#tsd-search.has-focus {
+    background-color: transparent;
+}

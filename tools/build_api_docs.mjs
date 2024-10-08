@@ -179,7 +179,7 @@ async function produceDocs(packageDir, outputDirectory) {
         // tsConfigPath: tsConfigPath,
         // commentStyle: "all",
 
-        readme: "none",
+        // readme: "none",
         excludeExternals: true,
         skipErrorChecking: true,
         excludeInternal: true,
@@ -194,6 +194,7 @@ async function produceDocs(packageDir, outputDirectory) {
         includeVersion: false,
         // don't print the local path (defined in .temp/...)
         disableSources: true,
+        useTsLinkResolution: true,
 
         name: "Needle Engine",
 
@@ -218,6 +219,14 @@ async function produceDocs(packageDir, outputDirectory) {
         ],
         keywords: ["typescript", "library", "threejs", "webgl", "engine", "browser", "webxr", "api"],
         footerDate: true,
+
+        customCss: "./tools/api-plugins/api-docs.css",
+        // customFooterHtml: "<p>Hello World</p>",
+        inlineTags: [...TypeDoc.OptionDefaults.inlineTags, "@type"],
+        blockTags: [...TypeDoc.OptionDefaults.blockTags, "@link", "@obsolete", "@validate"],
+        validation: {
+            invalidLink: true,
+        }
     });
 
     // inline sources plugin
