@@ -1,4 +1,6 @@
 ---
 title: Using Needle Engine directly from HTML
 ---
-Moved to [](./getting-started/)
+
+
+This page has been moved into the [getting started](./getting-started/) guide
