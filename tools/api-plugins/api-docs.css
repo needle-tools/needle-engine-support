@@ -41,8 +41,8 @@ a.title {
 a.title::after {
     content: "API Reference";
     color: initial;
-    opacity: 0.6;
-    font-weight: 100;
+    opacity: 0.8;
+    font-weight: 300;
     font-size: 20px;
     margin-left: -37px;
     bottom: 1px;
@@ -103,17 +103,28 @@ html[data-theme="dark"] a.title {
 }
 
 @media screen and (max-width: 769px) {
+    .tsd-page-toolbar .tsd-toolbar-contents {
+    }
+    
     #tsd-widgets {
         line-height: initial;
     }
 }
 
-#tsd-search .field label {
-    z-index: 1;
+#tsd-search .field label {    
+    z-index: 10;
+    overflow: visible;
+    padding-left: calc(min(500px, 80%) - 40px);
+    margin-right: 40px;
 }
 
 @media screen and (max-width: 440px) {
     a.title::after {
         content: none;
+    }
+
+    #tsd-search .field label {
+        padding-left: calc(80% - 80px);
+        margin-right: 20px;
     }
 }
