@@ -179,26 +179,13 @@ async function produceDocs(packageDir, outputDirectory) {
 
     const readmePath = packageDir + "/README.md";
 
-    // copy the /api.ts files to /index.ts so that we get nicer paths
-    const files = [
-        packageDir + "/src/engine/api.ts",
-        packageDir + "/src/engine-components/api.ts",
-        packageDir + "/src/engine-components-experimental/api.ts",
-        packageDir + "/src/engine-schemes/api.ts",
-    ]
-
-    for (const file of files) {
-        const indexFile = file.replace(/\/([^/]+)\.ts$/, "/index.ts");
-        fs.copyFileSync(file, indexFile);
-    }
-
     const app = await TypeDoc.Application.bootstrapWithPlugins({
         lang: "en",
         entryPoints: [
-            packageDir + "/src/engine",
-            packageDir + "/src/engine-components",
-            packageDir + "/src/engine-components-experimental",
-            packageDir + "/src/engine-schemes",
+            packageDir + "/src/engine/api.ts",
+            packageDir + "/src/engine-components/api.ts",
+            packageDir + "/src/engine-components-experimental/api.ts",
+            packageDir + "/src/engine-schemes/api.ts",
         ],
         tsconfig: "./tools/api-plugins/tsconfig.json",
         // don't include references multiple times
@@ -209,6 +196,20 @@ async function produceDocs(packageDir, outputDirectory) {
 
         // readme: "none",
         excludeExternals: true,
+        navigation: {
+            includeFolders: false,
+            includeCategories: true,
+            includeGroups: false,
+        },
+        categorizeByGroup: false,
+        categoryOrder: ["*", "Other"],
+        navigationLinks: {
+            "API": "/",
+            "Docs": "https://engine.needle.tools/docs/",
+            "Samples": "https://engine.needle.tools/samples/",
+            "Pricing": "https://needle.tools/pricing/",
+        },
+
         skipErrorChecking: true,
         excludeInternal: true,
         excludeProtected: false,
@@ -227,7 +228,6 @@ async function produceDocs(packageDir, outputDirectory) {
         name: "Needle Engine",
 
         readme: readmePath,
-        categorizeByGroup: true,
 
         "visibilityFilters": {
             "protected": false,
@@ -235,13 +235,10 @@ async function produceDocs(packageDir, outputDirectory) {
             "@deprecated": false,
         },
 
-        // plugin: "typedoc-neo-theme",
-        // theme: "./node_modules/typedoc-neo-theme/bin/default",
-
         plugin: [
             "typedoc-plugin-inline-sources",
             "typedoc-plugin-mdn-links",
-            // "typedoc-plugin-keywords",
+            "typedoc-plugin-coverage",
             "typedoc-plugin-extras",
             "./tools/api-plugins/index.js",
             "./tools/api-plugins/keywords/index.js",

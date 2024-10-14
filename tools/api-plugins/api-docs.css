@@ -38,6 +38,7 @@ a.title {
     background-image: url("https://engine.needle.tools/docs/needle-logo-white.svg");
 }
 
+/*
 a.title::after {
     content: "API Reference";
     color: initial;
@@ -48,6 +49,7 @@ a.title::after {
     bottom: 1px;
     position: relative;
 }
+*/
 
 #tsd-search.has-focus {
     background-color: transparent;
@@ -111,20 +113,26 @@ html[data-theme="dark"] a.title {
     }
 }
 
+/*
 #tsd-search .field label {    
     z-index: 10;
     overflow: visible;
     padding-left: calc(min(500px, 80%) - 40px);
     margin-right: 40px;
 }
+*/
 
 @media screen and (max-width: 440px) {
+    /*
     a.title::after {
         content: none;
     }
+    */
 
+    /*
     #tsd-search .field label {
         padding-left: calc(80% - 80px);
         margin-right: 20px;
     }
+    */
 }

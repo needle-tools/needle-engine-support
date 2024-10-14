@@ -6,6 +6,13 @@ import { Application, JSX, ParameterType, ReflectionKind } from "typedoc";
  */
 export function load(app) {
 
+    app.converter.on("createDeclaration", (context, refl) => {  
+        if (refl.name.endsWith("/api")) {
+            console.log(refl.name + " - " + refl.getFullName());
+            refl.name = refl.name.replace("/api", "");
+        }
+    });
+
     app.converter.addUnknownSymbolResolver((declaration) => {
         const names = declaration.symbolReference?.path;
         if (!names) return;
