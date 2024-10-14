@@ -80,9 +80,23 @@ async function main() {
         }
 
         const targetDirectory = baseDownloadDirectory + "/" + versionInfo.name + "/" + versionInfo.version;
-        const tarballDir = await downloadPackage(versionInfo, targetDirectory);
+        let tarballDir = "";
+        let packageDir = "";
+
+        // in dev mode, we just run on the local version
+        const localPath = "/Users/herbst/git/needle-engine-dev/modules/needle-engine/js/package~";
+        if (isDev && fs.existsSync(localPath)) {
+            // copy localPath to targetDirectory, using node fs
+            console.log("Copying local package to " + targetDirectory);
+            fs.cpSync(localPath, targetDirectory, { recursive: true });
+            tarballDir = targetDirectory;
+            packageDir = tarballDir;
+        }
+        else {
+            tarballDir = await downloadPackage(versionInfo, targetDirectory);
+            packageDir = tarballDir + "/package";
+        }
         console.log("Generating API documentation")
-        const packageDir = tarballDir + "/package";
         const packageJsonPath = packageDir + "/package.json";
         const packageJson = JSON.parse(fs.readFileSync(packageJsonPath, 'utf8'));
         const packageVersion = packageJson.version;
@@ -142,7 +156,7 @@ async function downloadPackage(version, targetDirectory) {
     const tarballStream = new WriteStream(tarballPath);
     const response = await fetch(tarball);
     response.body.pipe(tarballStream);
-    console.log("Downloading tarball to " + tarballPath);
+    console.log("Downloading tarball to " + tarballPath + " from " + tarball);
     await new Promise((resolve, reject) => {
         tarballStream.on('finish', resolve);
         tarballStream.on('error', reject);

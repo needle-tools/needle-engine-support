@@ -2,6 +2,10 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"name": "🌵 Needle Engine", 
+			"path": "/Users/herbst/git/needle-engine-dev/modules/needle-engine/js/package~"
 		}
 	],
 	"settings": {
