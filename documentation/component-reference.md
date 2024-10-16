@@ -101,6 +101,8 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 | `SphereCollider` | *See BoxCollider* |
 | `CapsuleCollider` | *See BoxCollider* |
 | `MeshCollider` | *See BoxCollider* |
+| `HingeJoint` | A hinge which can rotate only on one axis in a allowed angle range (used for doors, chains or pendulums) |
+| `FixedJoint` | A hinge that is used to mimic a fixed connection e.g. this can be used when you can't parent objects under one another |
 | Physics Materials | Physics materials can be used to define e.g. the bouncyness of a collider |
 
 ## XR / WebXR  
