@@ -76,11 +76,6 @@ Many examples can be found on [StackBlitz](https://stackblitz.com/@marwie/collec
 
 For quick experiments, we provide a convenient link to create a new project ready to start: [engine.needle.tools/new](https://engine.needle.tools/new)
 
-## Rapid Prototyping on Glitch
-
-::: warning Under construction
-:::
-
 ## Local Development with VS Code
 
 If you want to work with Needle Engine without any integration, then you'll likely want to run a local server for your website. Here's how you can do that with Visual Studio Code:
