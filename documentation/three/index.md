@@ -74,8 +74,7 @@ Many examples can be found on [StackBlitz](https://stackblitz.com/@marwie/collec
 
 ## Rapid Prototyping on StackBlitz
 
-For quick experiments, we provide a convenient link to create a new project ready to start, powered by [StackBlitz](https://stackblitz.com/):   
-[engine.needle.tools/new](https://engine.needle.tools/new)
+For quick experiments, we provide a convenient link to create a new project ready to start: [engine.needle.tools/new](https://engine.needle.tools/new)
 
 ## Rapid Prototyping on Glitch
 
