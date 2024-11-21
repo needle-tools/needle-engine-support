@@ -263,7 +263,7 @@ Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if yo
 - Lenovo Thinkpad - T495  
 
 ## Still have questions? 😱
-[Ask in our friendly discord community](https://discord.needle.tools) 
+[Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
 
