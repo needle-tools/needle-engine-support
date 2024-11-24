@@ -1,5 +1,7 @@
 
 import fetch from 'node-fetch';
+import fs from 'fs';
+import path from 'path';
 
 // show more logs in production (when building on github)
 const debugLog = process.env.NODE_ENV === "production";
@@ -235,7 +237,27 @@ const injectCodeSamples = async (md, options) => {
         while (match = sampleMarkerRegex.exec(code)) {
             if (match && parsedCode) {
                 const id = match.groups.id?.trim();
-                if (parsedCode.has(id)) {
+
+                // Check if this is a file, then embed that file's content
+                const absPath = path.resolve(id);
+                if (id && fs.existsSync(id)) {
+                    const startIndex = match.index;
+                    const endIndex = match.index + match[0].length;
+                    const before = code.substring(0, startIndex);
+                    const after = code.substring(endIndex);
+                    let insert = fs.readFileSync(id, 'utf8').trim();
+                    // remove all lines that start with comments
+                    const lines = insert.split("\n").filter(l => !l.trim().startsWith("//"));
+                    // remove multiple empty lines
+                    for (let i = lines.length - 1; i >= 0; i--) {
+                        if (lines[i].trim() === "" && (i === 0 || lines[i - 1].trim() === "")) {
+                            lines.splice(i, 1);
+                        }
+                    }
+                    insert = lines.join("\n");
+                    code = before + insert + after;
+                }
+                else if (parsedCode.has(id)) {
                     if (debugLog)
                         console.log(">>> INJECT SAMPLE CODE: \"" + id + "\"")
                     const startIndex = match.index;
