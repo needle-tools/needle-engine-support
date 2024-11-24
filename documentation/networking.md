@@ -38,6 +38,8 @@ When a user leaves a room, objects owned by that user will either be deleted or 
 1. Add a `SyncedRoom` component to your scene. By default, this will use networking infrastructure provided by Needle.
 2. Add a `SyncedTransform` component to a object whose movement you want to synchronize across the network.
 3. Add a `DragControls` component to the same object.
+4. Run the project. In the browser, click on "Join Room" and copy the URL.
+5. Open a new browser window and paste the URL. You should now see the same object in both windows. Try dragging the object in one window and see it move in the other window.
 
 The `DragControls` component, like many other Needle components, has built-in networking support. 
 Ownership will be transferred to whoever starts dragging the object. 
@@ -50,11 +52,13 @@ Ownership will be transferred to whoever starts dragging the object.
 | `SyncedTransform` | Handles synchronizing transforms. |
 | `SyncedCamera` | Spawns a prefab for any user connected to the room which will follow their position. |
 | `VoIP` | Handles voice-over-IP audio connections, microphone access etc. between users. |
+| `ScreenCapture` | Handles screensharing via web APIs. |
 | `Networking` | Use to customize the server backend URL. Also allows setting a local server for development. |
 | `DragControls` | Handles dragging objects. Ownership will automatically be passed to the last user dragging an object. |
-| `ScreenCapture` | Handles screensharing via web APIs. |
 | `Duplicatable` | Handles duplicating objects. Duplicated objects are instantiated for everyone in the room. |
 | `Deletable` | Handles deleting objects. Deletions are synchronized across the network. |
+| `DeleteBox` | Handles deleting objects that have a "Deletable" component when they are dragged into a box volume. |
+| `PlayerSync` | Helper component for synchronizing player-specific data. |
 | `PlayerColor` | Each user gets assigned a random color upon joining a room. This component assigns that color to the object's main material. |
 | `WebXR` | Handles synchronizing user avatars (hands and heads). |
 
@@ -177,16 +181,19 @@ The following events are available to listen to in your components. They describ
 
 ```ts
 // Listen to the event when *you* have joined a networked room
-`this.context.beginListen(RoomEvents.JoinedRoom, () => { })`
+this.context.beginListen(RoomEvents.JoinedRoom, ({room, viewId, allowEditing, inRoom}) => { ... });
 
 // Listen to the event when *you* have left a networked room
-`this.context.beginListen(RoomEvents.LeftRoom, () => { })`
+this.context.beginListen(RoomEvents.LeftRoom, ({room}) => { ... });
 
 // Listen to the event when *another user* has joined your networked room
-`this.context.beginListen(RoomEvents.UserJoinedRoom, () => { })`
+this.context.beginListen(RoomEvents.UserJoinedRoom, ({userId}) => { ... });
 
 // Listen to the event when *another user* has left your networked room
-`this.context.beginListen(RoomEvents.UserLeftRoom, () => { })`
+this.context.beginListen(RoomEvents.UserLeftRoom, ({userId}) => { ... });
+
+// This event is received after all current room state has been sent to the client
+this.context.beginListen(RoomEvents.RoomStateSent, () => { ... });
 ```
 
 - [See all Room Events in the API docs](https://engine.needle.tools/docs/api/latest/RoomEvents)
@@ -350,6 +357,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 :::code-group-item JoinedRoom
 ```json
 // Sent to the client when the local user has joined a room.
+// Type: JoinedRoomResponse
 {
     "key": "joined-room",
     "data": {
@@ -364,6 +372,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 :::code-group-item LeftRoom
 ```json
 // Sent to the client when the local user has left a room.
+// Type: LeftRoomResponse
 {
     "key": "left-room",
     "data": {
@@ -375,6 +384,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 :::code-group-item UserJoinedRoom
 ```json
 // Sent to the client when any user has joined a room.
+// Type: UserJoinedOrLeftRoomModel
 {
     "key": "user-joined-room",
     "data": {
@@ -386,6 +396,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 :::code-group-item UserLeftRoom
 ```json
 // Sent to the client when any user has left a room.
+// Type: UserJoinedOrLeftRoomModel
 {
     "key": "user-left-room",
     "data": {
@@ -422,6 +433,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 :::code-group-item syncInstantiate
 ```json
 // Used by the syncInstantiate() API to create a new instance of an asset.
+// Type: NewInstanceModel
 {
     "key": "new-instance-created",
     "data": {
@@ -443,6 +455,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 :::code-group-item syncDestroy
 ```json
 // Used by the syncDestroy() API to destroy an instance of an asset.
+// Type: DestroyInstanceModel
 {
     "key": "instance-destroyed",
     "data": {
@@ -490,6 +503,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 ```
 :::
 :::code-group-item OwnershipResponse
+// Type: OwnershipResponse
 ```json
 {
     "key": 
