@@ -29,10 +29,6 @@ There may be no ownership required, ownership may be allowed to be transferred t
 
 When a user leaves a room, objects owned by that user will either be deleted or have ownership reset, depending on how the object was created.
 
-### Dynamic objects: `syncInstantiate()` and `syncDestroy()`
-
-> 🏗️ Under Construction
-
 ## Enable Networking for your project
 
 1. Add a `SyncedRoom` component to your scene. By default, this will use networking infrastructure provided by Needle.
@@ -58,11 +54,12 @@ Ownership will be transferred to whoever starts dragging the object.
 | `Duplicatable` | Handles duplicating objects. Duplicated objects are instantiated for everyone in the room. |
 | `Deletable` | Handles deleting objects. Deletions are synchronized across the network. |
 | `DeleteBox` | Handles deleting objects that have a "Deletable" component when they are dragged into a box volume. |
-| `PlayerSync` | Helper component for synchronizing player-specific data. |
-| `PlayerColor` | Each user gets assigned a random color upon joining a room. This component assigns that color to the object's main material. |
+| `PlayerSync` | Powerful component that instantiates a specific object for each connected player. |
+| `PlayerState` | Add this component to objects that are assigned to `PlayerSync`. |
+| `PlayerColor` | Simple component for player-specific colors. Each user gets assigned a random color upon joining a room. This component assigns that color to the object's main material. |
 | `WebXR` | Handles synchronizing user avatars (hands and heads). |
 
-## Automatic Networking for Components
+## Automatic Networking for custom Components
 
 Fields in your own components can be networked very easily. Changes to the field will automatically be detected and sent to all users in the room. The changes are also persisted as part of the Room State, so users that join the room later will receive the current state of the field as well, ensuring everyone sees the same data.
 
@@ -100,6 +97,19 @@ Note that syncField has an optional parameter to specify a method that should be
 ::: tip Custom Project Setup
 If you're using a custom project setup, you need to have ``experimentalDecorators: true`` in your ``tsconfig.json`` file for syncField decorators to work. Projects created with Needle Starters have this enabled by default.
 :::
+
+## Creating and destroying objects
+
+Often, you want to create and destroy objects at runtime, and of course these changes should be synchronized across the network. 
+
+The `PlayerSync` component simplifies this process by automatically instantiating a specific object for each connected player. 
+When a player leaves the room, the object is destroyed for all users.
+
+Additionally, Needle Engine provides two high-level methods:
+- [`syncInstantiate()`](https://engine.needle.tools/docs/api/latest/syncInstantiate) to duplicate objects across the network. 
+- [`syncDestroy()`](https://engine.needle.tools/docs/api/latest/syncDestroy) to destroy objects across the network.
+
+> 🏗️ Code Samples Under Construction
 
 ## Manual Networking
 
