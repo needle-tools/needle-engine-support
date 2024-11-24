@@ -210,24 +210,23 @@ this.context.beginListen(RoomEvents.RoomStateSent, () => { ... });
 - [See all Ownership Events in the API docs](https://engine.needle.tools/docs/api/latest/OwnershipEvent)
 - [See all Connection Events in the API docs](https://engine.needle.tools/docs/api/latest/ConnectionEvents)
 
-## Networking on Glitch
+## Using Needle Networking Servers
 
-When deploying your app to Glitch, we include a simple networking backend that is great for prototyping and small deployments (~15-20 people at the same time). You can later update to a bigger/better/stronger networking solution if required. 
+By default, networked Needle scenes connect to cloud infrastructure managed and provided by Needle. There is no additional setup needed, and currently no additional cost for using this service.  
 
-::: tip Max. 15-20 people on a default Glitch project
-:::
+Typically, this will work fine for around 15-20 users in the same room. Once your project matures, you can upgrade to a bigger/better/stronger networking solution, by hosting your own networking server. 
+
+## Hosting your own Networking Server
+
+You might want to host your own networking server for larger deployments or to have more control over the networking infrastructure and implementation. 
+
+Our networking server is available on NPM [own networking package](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) as node.js package. The package contains pre-configured integrations for the popular web frameworks [Fastify](https://www.npmjs.com/package/fastify) and [Express](https://www.npmjs.com/package/express), and can be integrated into other Node.js server frameworks as well.
 
 ::: tip For quick experiments: Remix on Glitch
 You can remix a simple networking server running on Glitch from this page: [needle-networking.glitch.me](https://needle-networking.glitch.me/) by clicking the button in the bottom right corner.
 
 The default Glitch server instance is small and can only handle a limited amount of users. If you expect more than 15-20 people to be in your scene at the same time, you should consider hosting your networking server elsewhere (like on Google Cloud or AWS).
 :::
-
-## Hosting your own Networking Server
-
-By default, networked Needle scenes connect to cloud infrastructure managed and provided by Needle. This is great for prototyping and small deployments, but you might want to host your own networking server for larger deployments or to have more control over the networking infrastructure and implementation.
-
-Our networking server is available on NPM [own networking package](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) as node.js package. The package contains pre-configured integrations for the popular web frameworks [Fastify](https://www.npmjs.com/package/fastify) and [Express](https://www.npmjs.com/package/express), and can be integrated into other Node.js server frameworks as well.
 
 ::::code-group
 :::code-group-item Fastify
@@ -472,6 +471,24 @@ Messages are sent in JSON format. They always have a `key` field that describes 
         "guid": string,
         "dontSave": boolean | undefined
     }
+}
+```
+:::
+:::code-group-item Ping
+```json
+// Sent to the server every few seconds to keep the connection alive.
+{
+    "key": "ping",
+    "data": {}
+}
+```
+:::
+:::code-group-item Pong
+```json
+// Sent by the server in response to a ping.
+{
+    "key": "pong",
+    "data": {}
 }
 ```
 :::
