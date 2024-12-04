@@ -28,11 +28,11 @@ Make sure you have installed <a target="_blank" href="https://www.blender.org/do
     </needle-button>
 </NoDownloadYet>
 
-1. In Blender, go to `File > Settings > Add-ons` and click the `Install` button. 
+1. In Blender, go to `Edit > Preferences > Add-ons` and click the drop down arrow to find the `Install from Disk` button. 
 
 2. Select the downloaded zip file (named `needle-blender-plugin-*.zip`) to install it.
 
-3. Search for "Needle" in the Add-ons search bar and make sure `Needle Engine.
+3. Search for "Needle" in the Add-ons search bar and make sure `Needle Engine Exporter for Blender` is enabled.
 
 
 ![Settings](/blender/settings.webp)
