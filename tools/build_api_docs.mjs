@@ -29,6 +29,8 @@ async function main() {
     // download and unzip latest needle-engine package
     const npmEndpoint = "https://registry.npmjs.org/@needle-tools/engine";
 
+    console.log("FETCH neelde engine versions from " + npmEndpoint);
+
     /**
      * @type {object}
      */
@@ -52,7 +54,7 @@ async function main() {
         const version = versions[i];
         const prevVersion = versions[i + 1];
 
-        if (!version.startsWith("3")) continue;
+        if (!version.startsWith("3") && !version.startsWith("4")) continue;
 
         /**
          * @type {{name:string, version:string, dist:{tarball:string}}}
