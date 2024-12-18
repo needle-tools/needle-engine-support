@@ -72,7 +72,7 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 1. **Create a new empty scene**  
 
 2. **Set up your scene for exporting**   
-  Add an empty GameObject, name it "Exporter" and add an `ExportInfo` component to it.  
+  Add an empty GameObject, name it "Exporter" and add the `Needle Engine` component to it (formerly named `Export Info`).  
   In this component you create and quickly access your exported runtime project.  
   It also warns you if any of our packages and modules are outdated or not locally installed in your web project.  
 
