@@ -250,7 +250,7 @@ To fix this you can:
 - Remove the `GltfObject` in the referenced Prefab or Scene
 - Rename the GameObject with the component that loads the referenced scenes
 
-If this doesn't fix the problem please ask [in our discord](https://discord.needle.tools).
+If this doesn't fix the problem please ask [in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content).
 
 ## My scene is not loading and the console contains a warning with 'circular references' or 'failed to update active state'
 Please see the [circular reference error](#circular-reference-error) section.

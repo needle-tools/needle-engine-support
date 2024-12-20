@@ -3,7 +3,14 @@ title: Needle Engine for Unity
 editLink: true
 ---
 <br/>
-<img src="/imgs/unity-logo.webp" style="max-height:70px;" />
+<div class="centered" style="display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 2em;
+    font-weight: 100;">
+    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+  <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
+</div>
 
 # Needle Engine for Unity
 

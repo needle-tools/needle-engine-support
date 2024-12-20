@@ -3,7 +3,14 @@ title: Needle Engine for Blender
 editLink: true
 ---
 <br/>
-<img src="/blender/logo.png" style="max-height:70px;" />
+<div class="centered" style="display: flex;
+    align-items: center;
+    gap: 20px;
+    font-size: 2em;
+    font-weight: 100;">
+    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/blender/logo.png" style="max-height:70px;" />
+</div>
 
 # Needle Engine for Blender
 
@@ -50,7 +57,7 @@ You'll be able to sequence animations, easily lightmap your scenes, add interact
 
 :::tip Providing Feedback
 
-**Your feedback is invaluable** when it comes to deciding which features and workflows we should prioritize. If you have feedback for us (good or bad), please [let us know in the forum](https://forum.needle.tools)!
+**Your feedback is invaluable** when it comes to deciding which features and workflows we should prioritize. If you have feedback for us (good or bad), please [let us know in the forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)!
 :::
 
 ## Samples for Blender
@@ -260,7 +267,7 @@ Alternatively you can also use the Lightmapping panel in the `Render Properties`
 ![Lightmapping object](/blender/lightmapping-panel.webp)
 
 ::: warning Experimental Feature
-The lightmapping plugin is experimental. We recommend creating a backup of your .blend file when using it. Please report problems or errors you encounter in [our forum](https://forum.needle.tools) 🙏
+The lightmapping plugin is experimental. We recommend creating a backup of your .blend file when using it. Please report problems or errors you encounter in [our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 🙏
 ::: 
 
 ## Texture Compression  
@@ -279,7 +286,7 @@ Simply click the icon to download the new version.
 
 ## Reporting an issue
 
-If you run into any problems we're more than happy to help! Please join [our discord](https://discord.needle.tools) for fast support.  
+If you run into any problems we're more than happy to help! Please join [our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) for fast support.  
 
 Please also check the logs in Blender. You can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.    
 

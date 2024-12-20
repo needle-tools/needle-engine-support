@@ -8,8 +8,11 @@ Deployment is the process of making your application available to the public on 
 
 ## Available Deployment Targets 
 
+- [Needle Cloud](./cloud/)  
+  Great for spatial web apps and sharing assets.
 - [Glitch](#deploy-to-glitch)
-  No login required, great for experimentation. 
+  Great for experimentation and hacking on server-side code.  
+
 - [Netlify](#deploy-to-netlify)
   Great for hosting your own website and custom domain names.
 - [itch.io](#deploy-to-itch.io)
@@ -18,15 +21,15 @@ Deployment is the process of making your application available to the public on 
   Free static page hosting.
 - [Vercel](#deploy-to-vercel)
   Platform for frontend developers
-- [Facebook Instant Games](#deploy-to-facebook-instant-games)
-  Games platform on Facebook and Facebook Messenger
 - [FTP Upload](#deploy-to-ftp)
-  Deploy directly to any server with FTP support.
+  Deploy directly to any server with FTP support. Both FTP and SFTP are supported.
 - [Build to folder](#build-to-folder)
-  Bring your project anywhere!
+  When building to a folder, you can upload the files to any web server or other hosting service.
+- [Facebook Instant Games](#deploy-to-facebook-instant-games)
+  Games platform on Facebook and Facebook Messenger.
   
 ::: tip Feel something is missing? 
-Please let us know in our [discord](https://discord.needle.tools)!
+Please let us know in our [forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)!
 :::
 
 ## Development Builds

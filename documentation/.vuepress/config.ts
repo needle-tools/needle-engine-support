@@ -136,7 +136,7 @@ export default defineUserConfig({
             themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
             lineNumbers: false,
             highlightLines: false,
-            __disabled__transformers: [
+            transformers: [
                 // HACK to add the import statement to the code
                 /*
                 {
@@ -315,6 +315,7 @@ export default defineUserConfig({
                             "/blender/",
                             "/three/",
                             "/embedding",
+                            "/cloud/",
                             // "/custom-integrations/",
                         ]
                     },
@@ -496,6 +497,10 @@ export default defineUserConfig({
                         {
                             text: 'Custom integrations',
                             link: '/custom-integrations/',
+                        },
+                        {
+                            text: 'Needle Cloud',
+                            link: '/cloud/',
                         },
                         {
                             text: 'Support and Community',

@@ -161,5 +161,5 @@ Now that you've installed Needle Engine, you're ready to dive deeper into projec
 - [Scripting Reference](../scripting.md) 
 
 In case you need troubleshooting help, please see the [Questions and Answers – FAQ](../faq.md) section.  
-We welcome you to join our [Forum](https://forum.needle.tools) and [Discord Community](https://discord.needle.tools).
+We welcome you to join our [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) and [Discord Community](https://discord.needle.tools).
 
