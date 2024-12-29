@@ -71,7 +71,6 @@ if (typeof window !== "undefined") {
     color: rgb(0, 0, 0);
 
     @media screen and (max-width: 800px) {
-        width: calc(100%);
         margin-left: 0;
     }
 
