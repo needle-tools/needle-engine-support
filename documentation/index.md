@@ -7,7 +7,7 @@ lastUpdated: false
 footer: "Copyright © 2024 Needle Tools GmbH"
 ---
 
-<discountbanner /> 
+<discountbanner fallback_image="/docs/imgs/banner.webp" /> 
 
 <quoteslides>
 <div>Unbelievable Unity editor integration by an order of magnitude,<br/>and as straightforward as the docs claim. Wow. — Chris Mahoney</div>

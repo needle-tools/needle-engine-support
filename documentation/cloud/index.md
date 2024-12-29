@@ -1,11 +1,12 @@
+---
+title: Needle Cloud
+description: 'Needle Cloud is an online service. It helps you store, manage, and share 3D assets and apps on the web.
+A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed to the cloud directly from the Unity integration (Blender integration support is coming at a later point).'
+---
+
 <br/>
-<div class="centered" style="display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 2em;
-    font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/>
-</div>
+<discountbanner/>
+
 
 # Needle Cloud
 

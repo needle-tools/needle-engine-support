@@ -1,5 +1,9 @@
 <script setup lang="ts">
 
+defineProps({
+    fallback_image: String,
+})
+
 import { ref } from 'vue';
 
 type Discount = {
@@ -18,7 +22,7 @@ if (typeof window !== "undefined") {
         .then(response => response.json())
         .then(data => {
             const value: Discount = data.current_discounts?.[0];
-            discount.value = value;
+            // discount.value = value;
             console.log(value);
         });
 }
@@ -39,12 +43,16 @@ if (typeof window !== "undefined") {
             </a>
         </div>
     </div>
-    <div v-else class="banner">
-        <img src="/imgs/banner.webp" alt="Needle Engine banner" />
+    <div v-else-if="fallback_image" class="banner">
+        <img :src="fallback_image" alt="Needle Engine banner" />
     </div>
 </template>
 
 <style scoped>
+
+.banner {
+    margin: 1rem 0;
+}
 
 .discount_banner {
     margin: 1rem 0;
