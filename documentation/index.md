@@ -7,14 +7,7 @@ lastUpdated: false
 footer: "Copyright © 2024 Needle Tools GmbH"
 ---
 
-![](/imgs/banner.webp)
-
-**Needle Engine** is a web engine for complex and simple 3D applications alike. Work on your machine and deploy anywhere. Needle Engine is flexible, extensible and has built-in support for **collaboration and XR**. It is built around the **glTF standard** for 3D assets. 
-
-Powerful integrations for **Unity** and **Blender** allow artists and developers to collaborate and manage web applications inside battle-tested 3d editors. These **Integrations** allow you to use editor features for creating models, authoring materials, animating and sequencing animations, baking lightmaps and more with ease. 
-
-Our powerful **compression and optimization pipeline for the web** make sure your files are ready, small and load fast.
-
+<discountbanner /> 
 
 <quoteslides>
 <div>Unbelievable Unity editor integration by an order of magnitude,<br/>and as straightforward as the docs claim. Wow. — Chris Mahoney</div>
@@ -32,9 +25,8 @@ Our powerful **compression and optimization pipeline for the web** make sure you
 <div>This is amazing and if you are curious about WebXR with Unity this will help us get there — Dilmer Valecillos</div>
 
 <div>We just gotta say WOW 🤩 — Unity for Digital Twins</div>
-
-
 </quoteslides>
+
 
 
 <actiongroup>
@@ -50,7 +42,19 @@ Our powerful **compression and optimization pipeline for the web** make sure you
     <action subtitle="with AI support" href="https://forum.needle.tools?utm_source=needle_docs&utm_content=actionbutton">
     Get Help 💬
     </action>
+    <action href="https://cloud.needle.tools">
+    Cloud ⛅️
+    </action>
 </actiongroup>
+
+
+
+
+**Needle Engine** is a web engine for complex and simple 3D applications alike. Work on your machine and deploy anywhere. Needle Engine is flexible, extensible and has built-in support for **collaboration and XR**. It is built around the **glTF standard** for 3D assets. 
+
+Powerful integrations for **Unity** and **Blender** allow artists and developers to collaborate and manage web applications inside battle-tested 3d editors. These **Integrations** allow you to use editor features for creating models, authoring materials, animating and sequencing animations, baking lightmaps and more with ease. 
+
+Our powerful **compression and optimization pipeline for the web** makes sure your files are ready, small and load fast.
 
 
 <!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
