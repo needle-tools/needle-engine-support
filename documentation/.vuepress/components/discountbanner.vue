@@ -22,8 +22,7 @@ if (typeof window !== "undefined") {
         .then(response => response.json())
         .then(data => {
             const value: Discount = data.current_discounts?.[0];
-            // discount.value = value;
-            console.log(value);
+            discount.value = value;
         });
 }
 
