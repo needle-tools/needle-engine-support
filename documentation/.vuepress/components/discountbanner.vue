@@ -11,19 +11,26 @@ type Discount = {
         title: string,
         subtitle: string,
         cta?: string,
+        css?: string,
     }
     url: string,
 }
 
 const discount = ref<Discount | null>(null);
+let style = ref("");
 
 if (typeof window !== "undefined") {
-    const url = "https://cloud.needle.tools/api/v1/get/discounts";
+    const url = window.location.hostname === "localhost"
+        ? "http://localhost:8081/v1/get/discounts"
+        : "https://cloud.needle.tools/api/v1/get/discounts";
     fetch(url)
         .then(response => response.json())
         .then(data => {
             const value: Discount = data.current_discounts?.[0];
             discount.value = value;
+            if(value.banner?.css) {
+                style.value = value.banner.css;
+            }
         });
 }
 
@@ -31,7 +38,7 @@ if (typeof window !== "undefined") {
 </script>
 
 <template>
-    <div v-if="discount" class="discount_banner">
+    <div v-if="discount" class="discount_banner" :style="style">
         <div class="content">
             <h2 class="main_text">{{ discount.banner.title }}</h2>
             <div class="text">{{ discount.banner.subtitle }}</div>
@@ -49,7 +56,6 @@ if (typeof window !== "undefined") {
 </template>
 
 <style scoped>
-
 .banner {
     margin: 1rem 0;
 }
@@ -107,7 +113,7 @@ if (typeof window !== "undefined") {
         max-width: 60ch;
         user-select: none;
 
-        & > * {
+        &>* {
             text-decoration: none;
             border: none;
         }
@@ -144,6 +150,10 @@ if (typeof window !== "undefined") {
             font-size: 1.2rem;
             border-radius: 1rem;
             padding: .3rem 1rem;
+
+            &:after {
+                background-color: white !important;
+            }
         }
     }
 }
