@@ -10,6 +10,7 @@ type Discount = {
     banner: {
         title: string,
         subtitle: string,
+        cta?: string,
     }
     url: string,
 }
@@ -36,9 +37,9 @@ if (typeof window !== "undefined") {
             <div class="text">{{ discount.banner.subtitle }}</div>
         </div>
 
-        <div class="action">
+        <div class="action" v-if="discount.url && discount.banner.cta">
             <a target="_blank" tabindex="-1" :href="discount.url">
-                Claim now
+                {{ discount.banner.cta }}
             </a>
         </div>
     </div>
