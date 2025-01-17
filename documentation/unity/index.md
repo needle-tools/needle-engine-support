@@ -50,7 +50,7 @@ For a quick overview, take a look at our [Samples page](https://engine.needle.to
 
 All of these samples are available directly in Unity:
 1. Go to `Needle Engine > Explore Samples` to browse for samples
-2. Click "Install Samples" to install the samples package right inside your editor.
+2. Click "Install Samples" to install the samples package right inside your editor (or [download the samples unitypackage](http://engine.needle.tools/downloads/unity/samples) to manually install the package)
 3. Choose any sample and click on `Open Scene`. 
 
 :::tip The Samples are read-only – that makes them easy to update.
