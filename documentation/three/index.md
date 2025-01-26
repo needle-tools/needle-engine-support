@@ -45,7 +45,7 @@ For complex 3D scenes and fast iteration, we recommend using Needle Engine with 
 
 You can work directly with Needle Engine without using any Integration. Needle Engine uses [three.js](https://threejs.org/) as scene graph and rendering library, so all functionality from three.js is available in Needle as well.  
 
-You can install Needle Engine from `npm` by running:   
+You can install Needle Engine from [`npm`](https://www.npmjs.com/package/@needle-tools/engine) by running:   
 <br/>
 `npm i @needle-tools/engine`  
 
