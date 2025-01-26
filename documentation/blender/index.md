@@ -19,7 +19,7 @@ editLink: true
 
 <ClientOnly>
 
-Make sure you have installed <a target="_blank" href="https://www.blender.org/download/"><strong>Blender</strong> 4.0, 4.1 or 4.2</a> and <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg"><strong>node.js</strong></os-link>. 
+Make sure you have installed <a target="_blank" href="https://www.blender.org/download/"><strong>Blender</strong> 4.1 or 4.2</a> and <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg"><strong>node.js</strong></os-link>. 
 </ClientOnly>
 
 <NoDownloadYet>
