@@ -31,7 +31,6 @@
                 Needle × Blender
             </template>
             <template v-slot:tool-description>
-                Blender 4.0<br/>
                 Blender 4.1<br/>
                 Blender 4.2+
             </template>
