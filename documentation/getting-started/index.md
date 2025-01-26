@@ -68,7 +68,7 @@ Needle Engine is available as a package for Unity, add-on for Blender, as a read
 <img src="/blender/logo.png" style="max-height:70px;" />
 
 ## Needle Engine for Blender 
-*Supported Blender versions: 4.0+*
+*Supported Blender versions: 4.1+*
 
 <needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Blender</strong></needle-button>  
  
