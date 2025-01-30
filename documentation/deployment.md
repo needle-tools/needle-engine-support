@@ -299,6 +299,13 @@ Add the DeployToGithubPages component to your scene and copy-paste the github re
 
 :::
 
+#### Troubleshooting github pages
+- **I deployed to github pages but no action is running / the website is not live**    
+   - If you deployed for the first time it can take a few minutes until your website becomes available. You can check the **Actions** tab on github (`/actions`) to see the deployment process. 
+   - If your website is not live after a few minutes or you don't see any workflow run in the **Actions** tab on github then go to the **Github Pages** settings page (`/settings/pages`) and make sure the **Branch** is set to *gh-pages*
+
+
+
 ### Deploy to Facebook Instant Games
 
 With Needle Engine you can build to Facebook Instant Games automatically  
