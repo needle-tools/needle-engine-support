@@ -22,11 +22,6 @@ Open `Addon Preferences/Needle Engine` to get to the Needle Engine addon setting
 Note: You might need to restart the local webserver to apply the license.
 
 
-## My objects are white after export
-This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.  
-You can either make sure you're using glTF-compatible materials and shaders, or mark shaders as "custom" to export them directly.  
-- Read more about recommended glTF workflows: <link>
-- Read more about custom shaders: <link>
 
 ## My local website shows an SSL error e.g. 'Your connection is not private'
 
@@ -46,13 +41,22 @@ See [the Testing docs](./testing.md) for information on how to set up a self-sig
 ![SLL warning on chrome](/videos/ssl-warning.gif)
   
   
+
 ## My local website stays black
 
 If that happens there's usually an exception either in engine code or your code. Open the dev tools (<kbd>Ctrl + Shift + I</kbd> or <kbd>F12</kbd> in Chrome) and check the Console for errors.  
 In some cases, especially when you just updated the Needle Engine package version, this can be fixed by stopping and restarting the local dev server.  
 For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
 
-## How to fix Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
+
+## My objects are white after export
+This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.  
+You can either make sure you're using glTF-compatible materials and shaders, or mark shaders as "custom" to export them directly.  
+- Read more about recommended glTF workflows: <link>
+- Read more about custom shaders: <link>
+
+
+## Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
 
 If you are using vite or next.js make sure to add the Needle Engine plugins to your config.
 Example for vite:
