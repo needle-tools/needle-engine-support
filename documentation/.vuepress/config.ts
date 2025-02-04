@@ -1,4 +1,4 @@
-import { defineUserConfig } from 'vuepress'
+import { App, defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { path } from '@vuepress/utils'
@@ -131,6 +131,32 @@ export default defineUserConfig({
             id: "G-V2Q445L3XQ",
             debug: false,
         }),
+        (args, ctx) => {
+            return {
+                name: "kill-broken-pages",
+                onInitialized: async (app) => {
+                    for (const page of app.pages) {
+                        if (!page.filePathRelative) {
+                            console.error("Broken page", page.path);
+                        }
+                        const nonBrokenPages = app.pages.filter(x => x.filePathRelative);
+                        const nonBrokenLinks = nonBrokenPages.map(x => x.filePathRelative);
+                        let allLinks = app.pages.flatMap(x => x.links).map(x => x.relative);
+                        allLinks = allLinks.map(x => x.endsWith("/") ? x + "index.md" : x);
+                        const missingLinks = allLinks.filter(x => !nonBrokenLinks.includes(x));
+                        console.log("Missing", missingLinks); //, allLinks, nonBrokenLinks);
+                    }
+                    /*
+                    console.log("app", app.pages.map(x => {
+                        if (!x.filePathRelative) {
+                            console.error("Broken page", x.path);
+                        }return { path: x.path, data: { ...x, content: undefined, contentRendered: undefined, ...x.routeMeta }, eData: { ...x.data } }}));
+                    */
+                },
+                onPrepared: async (app: App) => {
+                },
+            }
+        },
         shikiPlugin({
             langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs'],
             themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
@@ -254,6 +280,14 @@ export default defineUserConfig({
             prismjs: false, /*{
                 theme: 'coy',
             },*/
+            linksCheck: {
+                dev: true,
+                build: 'error',
+                exclude: (link, isDev) => {
+                    console.log("checking link", link, isDev);
+                    return false;
+                }
+            }
         },
         navbar: [
             {
