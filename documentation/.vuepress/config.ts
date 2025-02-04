@@ -162,7 +162,7 @@ export default defineUserConfig({
             }
         },
         shikiPlugin({
-            langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs'],
+            langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs', 'bash'],
             themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
             lineNumbers: false,
             highlightLines: false,
