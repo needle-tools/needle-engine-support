@@ -21,11 +21,11 @@ export const generateSharedCode = (config) => {
     // console.log(ctx);
     return {
         name: 'generate-shared-code',
-        extendsMarkdownOptions: (_config) => {
-            return getSharedCode();
-        },
         async onInitialized(app) {
+            await getSharedCode();
+            console.log("Adding contribution pages");
             await generateContributionPages(app, config);
+            console.log("Done adding contribution pages");
         },
     }
 };
@@ -41,6 +41,8 @@ async function getSharedCode() {
     }
 };
 
+/** @param {import("vuepress").App} app */
+/** @param {import("vuepress").AppConfig} config */
 const generateContributionPages = async (app, config) => {
     const baseContributionUrl = "/community/contributions";
     /** @type {Map<string, { profileUrl:string, profileImage:string, contributions: Contribution[]}>} */
@@ -129,10 +131,19 @@ const generateContributionPages = async (app, config) => {
 
     indexContent += "</contributions-overview>\n"
 
-    app.pages.push(await createPage(app, {
-        path: baseContributionUrl,
+    const newPage = await createPage(app, {
+        path: baseContributionUrl + ".html",
         content: indexContent,
-    }))
+    });
+    newPage.filePathRelative = "community/contributions.html";
+
+    // Looks like in some cases, the page has already been added because of some link that references it and then a 404 page is generated
+    // So we remove the existing page and add the new one...
+    const existing = app.pages.find((p) => p.path === newPage.path);
+    if (existing) app.pages.splice(app.pages.indexOf(existing), 1);
+    app.pages.push(newPage);
+
+    // console.log("new page", newPage.path, "existing pages", app.pages.map((p) => p.path));
 };
 
 
@@ -196,20 +207,27 @@ async function collectContributionData() {
             `
         })
     });
-    const discussionsJSON = await discussions.json();
+    /** @type {any} */
+    const discussionsJSON = await discussions.json().catch((err) => {
+        console.error("Error fetching discussions", err);
+    });
 
     if (discussionsJSON.errors) {
         throw new Error(JSON.stringify(discussionsJSON.errors));
     }
+    else if (discussionsJSON.status === '401') {
+        console.error("GitHub GraphQL access to fetch discussions; unauthorized: " + JSON.stringify(discussionsJSON));
+        // throw new Error("GitHub GraphQL access to fetch discussions; unauthorized: " + JSON.stringify(discussionsJSON));
+    }
     else {
-        console.log("Discussions fetched", discussionsJSON?.data?.repository?.discussions?.nodes?.length);
+        console.log("Discussions fetched", discussionsJSON?.data?.repository?.discussions?.nodes?.length, discussionsJSON);
 
         const validCategories = ["Share"];
         const needsThumpsUpFromUser = ["marwie", "hybridherbst"];
 
         if (!discussionsJSON?.data?.repository?.discussions?.nodes) {
             console.log("No discussions found");
-            return;
+            return [];
         }
         discussionsJSON.data.repository.discussions.nodes.forEach((discussion) => {
             if (validCategories.includes(discussion.category.name)) {
