@@ -166,21 +166,13 @@ export default defineUserConfig({
             themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
             lineNumbers: false,
             highlightLines: false,
-            transformers: [
-                // HACK to add the import statement to the code
-                /*
-                {
-                    name: 'add-lines',
-                    // prepend lines
-                    preprocess: (code: string, options) => {
-                        if (options.lang !== "ts") return code;
-                        if (code.includes("@needle-tools/engine")) return code;
-                        return `import { Behaviour, serializable } from '@needle-tools/engine';
-                        // ---cut---
-` + code;
-                    },
-                },
-                */
+            // Disabled because Shiki for vuepress is deprecated:
+            // https://github.com/shikijs/shiki/blob/9cd269d9b3358680413ca0f5cc8d2b5636a86eae/docs/guide/migrate.md?plain=1#L50
+            // > `vuepress-plugin-shiki` is deprecated as [VuePress](https://github.com/vuejs/vuepress#status) 
+            // > is no longer recommended. Its successor [VitePress](https://vitepress.dev/) has a built-in 
+            // > Shiki integration.
+            // We should look into bringing Shiki back after the migration to vitepress.
+            __transformers: [
                 // https://twoslash.netlify.app/refs/options#compiler-options
                 // complex example: https://github.com/shikijs/shiki/blob/644a244aad3513f68c9037d9c46ae6a6a04068ca/packages/vitepress-twoslash/src/renderer-floating-vue.ts#L50
                 transformerTwoslash({
@@ -190,26 +182,6 @@ export default defineUserConfig({
                         renderMarkdownInline(markdown, context) {
                             return renderMarkdown(markdown);
                         },
-                        /*
-                        hast: {
-                            hoverCompose: (parts) => {
-                                console.log("hoverCompose", parts);
-                                parts.popup.properties["popover"] = "true";
-                                let token = parts.token;
-                                if (token.type === "text") {
-                                    token = {
-                                        type: "element",
-                                        tagName: "span",
-                                        children: [parts.token],
-                                        properties: {},
-                                    }
-                                }
-                                if (!token.properties) parts.token.properties = {};
-                                token.properties["onmouseover"] = "() => this.querySelector('[popover]'.showPopover()";
-                                return [ token, parts.popup ];
-                            }
-                        }
-                        */
                     }),
                     twoslashOptions: {
                         handbookOptions: {
@@ -281,16 +253,10 @@ export default defineUserConfig({
         ],
         themePlugins: {
             backToTop: false,
-            prismjs: false, /*{
-                theme: 'coy',
-            },*/
+            prismjs: false,
             linksCheck: {
                 dev: true,
                 build: 'error',
-                exclude: (link, isDev) => {
-                    console.log("checking link", link, isDev);
-                    return false;
-                }
             }
         },
         navbar: [
