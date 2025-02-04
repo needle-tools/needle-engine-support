@@ -28,7 +28,7 @@ Here's some example tech stacks that are possible and that we use Needle Engine 
 - **Vite + React** — There's an experimental template shipped with the Unity integration for this that you can pick when generating a project!
 - **react-three-fiber** — There's an experimental template shipped with the Unity integration for this that you can pick when generating a project!
 - **Vercel & Nextjs** — Find a [example nextjs project here](https://github.com/needle-engine/nextjs-sample)
-- **CDN without any bundler** — Find a code example [here](./vanilla-js.html)
+- **CDN without any bundler** — Find a code example [here](./vanilla-js.md)
 
 In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
 Let us know what and how you build, and how we can improve the experience for your usecase or provide an example!

@@ -28,7 +28,7 @@ if (typeof window !== "undefined") {
         .then(data => {
             const value: Discount = data.current_discounts?.[0];
             discount.value = value;
-            if(value.banner?.css) {
+            if(value?.banner?.css) {
                 style.value = value.banner.css;
             }
         });

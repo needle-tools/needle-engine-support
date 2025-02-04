@@ -158,7 +158,7 @@ Now that you've installed Needle Engine, you're ready to dive deeper into projec
 - [Needle Engine Samples](https://engine.needle.tools/samples)
 - [Exporting 3D objects and content](../export.md)
 - [Project Structure](../project-structure.md)
-- [Deploy your website to the web](../deployment.html)
+- [Deploy your website to the web](../deployment.md)
 - [Typescript Essentials](./typescript-essentials.md) 
 - [Needle Engine for Unity Developers](./for-unity-developers.md) 
 - [Scripting Reference](../scripting.md) 

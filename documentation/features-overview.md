@@ -74,7 +74,7 @@ Use Rigidbodies, Mesh Colliders, Box Colliders and SphereColliders to add some j
 ## UI
 Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons.  
 
-See the [ui component reference](component-reference.html#ui) for supported component.
+See the [ui component reference](component-reference.md#ui) for supported component.
 
 <sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
 
