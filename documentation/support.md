@@ -18,6 +18,8 @@ Chat with the community and share your projects in [Needle Discord](https://disc
 
 Watch some of our [user interviews on youtube](https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw) to get inspired.
 
+<video-embed src="https://www.youtube.com/watch?v=naPlw5aDJHs" />
+
 <video-embed src="https://www.youtube.com/watch?v=1KKfct3Zpcw" />
 
 

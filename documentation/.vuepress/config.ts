@@ -298,8 +298,7 @@ export default defineUserConfig({
                             },
                             {
                                 text: "Get Help",
-                                target: "_blank",
-                                link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
+                                link: "/support",
                             },
                         ],
                     },
@@ -350,8 +349,7 @@ export default defineUserConfig({
                             "/faq",
                             {
                                 text: "Get Help",
-                                target: "_blank",
-                                link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
+                                link: "/support",
                             },
                         ]
                     },
@@ -427,15 +425,18 @@ export default defineUserConfig({
             },
             {
                 text: "Get Help",
-                target: "_blank",
-                link: "https://forum.needle.tools/?utm_source=needle_docs&utm_content=headersubnav",
+                link: "/support",
             },
             {
-                text: 'Contact',
+                text: 'Needle',
                 children: [
                     {
                         text: 'Needle Website',
                         link: 'https://needle.tools?utm_source=needle_docs&utm_content=headernav'
+                    },
+                    {
+                        text: 'Needle Website',
+                        link: 'https://cloud.needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
                     {
                         text: 'Support Community',
