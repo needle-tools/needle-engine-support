@@ -1,8 +1,16 @@
 ---
 title: Automatic Component Generation
+tags:
+  - codegen
+  - components
+  - unity
+  - blender
+  - editor
+  - typescript
+  - csharp
 ---
 
-### Automatically generating Editor components :tags codegen
+### Automatically generating Editor components
 
 When working in Unity or Blender then you will notice that when you create a new Needle Engine component in Typescript or Javascript it will automatically generate a Unity C# stub component OR a Blender panel for you.
 
@@ -10,7 +18,7 @@ This is thanks to the magic of the [Needle component compiler](https://www.npmjs
 
 
 
-### Controlling component generation :tags codegen
+### Controlling component generation
 You can use the following comments in your typescript code to control C# code generation behavior:  
 | Attribute | Result |
 | -- | -- |

@@ -3,7 +3,7 @@
 Explore some real world applications, websites and demos made with Needle Engine.
 
 <p align="left">
-<a href="./getting-started/">Get started now</a> • <a href="./vision.md">Learn more about our vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="https://docs.needle.tools/samples?utm_source=needle_docs">Samples to download</a>
+<a href="./getting-started/">Get started now</a> • <a href="./vision">Learn more about our vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Features Overview</a> • <a href="https://docs.needle.tools/samples?utm_source=needle_docs">Samples to download</a>
 </p>
 
 

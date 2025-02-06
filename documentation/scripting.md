@@ -1,5 +1,12 @@
 ---
 title: Creating and using Components
+tags:
+    - scripting
+    - serialization
+    - csharp
+    - typescript
+    - javascript
+    - components
 ---
 
 # Creating custom components
@@ -480,7 +487,7 @@ All gizmos function have multiple options for e.g. colors or for how long they s
 | `Gizmos.DrawArrow` | Draws an arrow taking two points in worldspace |
 
 
-## Serialization / Components in glTF files :tags serialization
+## Serialization / Components in glTF files
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
 
 **Example:**
