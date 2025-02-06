@@ -101,6 +101,14 @@ export default defineUserConfig({
     title: _title,
     dest: "dist",
     description: _description,
+    pagePatterns: [
+        // default patterns
+        '**/*.md',
+        '!.vuepress',
+        '!node_modules',
+        // exclude pages that start with _ and end with .md
+        '!**/_*.md',
+    ],
     plugins: [
         // searchPlugin({
         // }),
@@ -114,6 +122,11 @@ export default defineUserConfig({
         sitemapPlugin({
             hostname: _url,
             devServer: true,
+            excludePaths: [
+                "/meta-test.html",
+                "/backlog.html",
+                "/backlog-mermaid.html",
+            ],
         }),
         //@ts-ignore
         // pwaPlugin(),
