@@ -90,7 +90,7 @@ const generateContributionPages = async (app, config) => {
             contributionPage += `<contribution-header
             url="${entry.profileUrl}"
             author="${author}"
-            page="${baseUrl}${baseContributionUrl}/${cleanLink(author)}"
+            page="${baseUrl}${baseContributionUrl}/${cleanLink(author)}/"
             profileImage="${entry.profileImage}"
             githubUrl="${cont.url}"
             title="${cont.title}"
@@ -100,14 +100,14 @@ const generateContributionPages = async (app, config) => {
             contributionPage += "\n\n";
             const pageName = cleanLink(cont.title);
             app.pages.push(await createPage(app, {
-                path: authorPage + "/" + pageName,
+                path: authorPage + "/" + pageName + "/",
                 content: contributionPage,
             }));
 
             // Create author page content
             authorPageContent += `<contribution-preview 
             title="${cont.title}"
-            pageUrl="${baseUrl}${authorPage}/${pageName}"
+            pageUrl="${baseUrl}${authorPage}/${pageName}/"
             >\n\n`;
             authorPageContent += cont.body;
             authorPageContent += `\n\n</contribution-preview>\n\n`;
@@ -115,13 +115,13 @@ const generateContributionPages = async (app, config) => {
             // Add to overview
             indexContent += `<contribution-listentry
                 title="${cont.title}"
-                url="${baseUrl}${authorPage}/${pageName}"
+                url="${baseUrl}${authorPage}/${pageName}/"
             ></contribution-listentry>\n\n`;
         }
 
         authorPageContent += `\n</contributions-author>\n\n`;
         app.pages.push(await createPage(app, {
-            path: authorPage,
+            path: authorPage + "/",
             content: authorPageContent,
         }))
 
