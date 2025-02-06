@@ -1,0 +1,1 @@
+import{_ as t}from"./app-BDYT5qhf.js";console.log("ServiceWorker:",navigator.serviceWorker);var o;(o=navigator.serviceWorker)==null||o.getRegistrations().then(r=>{for(const e of r)console.log("ServiceWorker unregistered:",e),e.unregister()});const s={};function n(r,e,i,c,a,v){return null}const f=t(s,[["render",n],["__file","removeserviceworker.vue"]]);export{f as default};

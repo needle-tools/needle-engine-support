@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Made with Needle</title>
+
+    <!-- importmap -->
+    <script type="importmap">
+        {
+          "imports": {
+            "three":  "https://unpkg.com/three/build/three.module.js",
+            "three/": "https://unpkg.com/three/"
+          }
+        }
+    </script>
+    <!-- parcel require must currently defined somewhere for peerjs -->
+    <script> var parcelRequire; </script>
+    
+    <!-- the .light version does not include dependencies like Rapier.js (so no physics) to reduce the bundle size, if your project needs physics then just change it to needle-engine.min.js -->
+    <script type="module" src="https://unpkg.com/@needle-tools/engine@3.5.6-alpha/dist/needle-engine.light.min.js"></script>
+
+    <style>
+        body { margin: 0; }
+        needle-engine {
+            position: absolute;
+            display: block;
+            width: 100%;
+            height: 100%;
+            background: grey;
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- load a gltf or glb here as your scene and listen to the finished event to start interacting with it -->
+    <needle-engine src="myScene.glb" loadfinished="onLoaded"></needle-engine>
+
+</body>
+
+<script>
+    function onLoaded(ctx) {
+        console.log("Loading a glb file finished 😎");
+        console.log("This is the scene: ", ctx.scene);
+    }
+</script>
+
+</html>
