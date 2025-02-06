@@ -14,6 +14,7 @@ editLink: true
 
 # Needle Engine for Blender
 
+Needle Engine for Blender allows you to create highly interactive, flexible and lightweight web applications right inside Blender. Use the powerful tools of Blender to visually setup your 3D scenes, animate and design.
 
 ## Install the Blender Add-on
 
@@ -299,3 +300,12 @@ If needed, in certain cases we're also able to set up custom NDAs for your proje
 :::tip Using the Bug Reporter requires a web project
 Make sure you've set up a web project before sending a bug report – it will allow us to understand more about your system and setup and make it easier to reproduce the issue.
 :::
+
+# Next Steps
+
+- [Concept: Web Projects](../project-structure.md)
+- [Concept: Exporting Assets](../export.md)
+- [Concept: Deployment (Share you website)](../deployment.md)
+- [Components: Learn about Everywhere Actions](../everywhere-actions.md)
+- [Beginner Scripting: Typescript essentials](../getting-started/typescript-essentials.md)
+- [Beginner Scripting: How to write custom components](../scripting.md)

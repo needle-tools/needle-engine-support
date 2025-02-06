@@ -11,10 +11,12 @@ next: ../project-structure.md
 
 # Downloads
 
-With **Needle Engine**, you can create fully interactive 3D websites.
-They can be deployed anywhere on the web and get optimized automatically by the **Needle Engine Build Pipeline** reducing asset size by up x100 without compromising quality.   
+With **Needle Engine**, you can create fully interactive 3D websites using your favorite framework.
 
-Needle Engine is available as a package for Unity, add-on for Blender, as a ready-to-go Web Component, and as npm package for projects without an editor integration. Each of these comes with the same components and building blocks – the choice is yours.
+Projects created with Needle Engine can be deployed anywhere on the web and get optimized automatically by our state of the art optimization pipeline with automatic LOD support – reducing asset size by up x100 without compromising quality.   
+
+Needle Engine is available as a **package for Unity, add-on for Blender, a ready-to-go Web Component**, or as a npm package for projects without an editor integration.    
+Each of these comes with the same components our building blocks and to power to create more – the choice is yours.
 
 ## Choose your Workflow
 
@@ -114,7 +116,7 @@ Needle Engine uses the following tools to create your web app, but you don't nee
 :::
 
 <br/>
-<os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg">Node.js 18 LTS or 20 LTS.</os-link>
+<os-link windows_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1-x64.msi" osx_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1.pkg">Node.js 20 LTS or 22 LTS.</os-link>
 Needle Engine uses Node.js to manage, preview and build the web app that you are creating locally on your computer.     
 It is also used for uploading (deploying) your website to the internet.
 
@@ -151,17 +153,19 @@ It is also used for uploading (deploying) your website to the internet.
 
 
 
-## Next Steps
+# Next Steps
 
 Now that you've installed Needle Engine, you're ready to dive deeper into project creation, component workflows, scripting, deployment and more. 
 
-- [Needle Engine Samples](https://engine.needle.tools/samples)
-- [Exporting 3D objects and content](../export.md)
-- [Project Structure](../project-structure.md)
-- [Deploy your website to the web](../deployment.md)
-- [Typescript Essentials](./typescript-essentials.md) 
-- [Needle Engine for Unity Developers](./for-unity-developers.md) 
-- [Scripting Reference](../scripting.md) 
+- [Getting Started: Unity](../unity/index.md)
+- [Getting Started: Blender](../blender/index.md)  
+- [Concept: Exporting 3D objects and content](../export.md)
+- [Concept: Project Structure](../project-structure.md)
+- [Concept: Deploy your website to the web](../deployment.md)
+- [Beginner Guide: Typescript Essentials](./typescript-essentials.md) 
+- [Beginner Guide: Needle Engine for Unity Developers](./for-unity-developers.md) 
+- [Beginner Guide: Scripting Reference](../scripting.md) 
+- [Live Examples: Needle Engine Samples](https://engine.needle.tools/samples)
 
 In case you need troubleshooting help, please see the [Questions and Answers – FAQ](../faq.md) section.  
 We welcome you to join our [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) and [Discord Community](https://discord.needle.tools).

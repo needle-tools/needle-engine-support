@@ -14,6 +14,9 @@ editLink: true
 
 # Needle Engine for Unity
 
+Needle Engine for Unity allows you to create highly interactive, flexible and lightweight web applications right inside Unity. Use the powerful tools of the Unity editor to visually setup your 3D scenes, animate and design. Needle Engine for Unity takes care of exporting your scene to glTF and integrates easily with any web frontend framework.
+
+
 ## Install the Unity Package
 
 
@@ -140,3 +143,12 @@ Don't forget to install the newly added package by e.g. clicking Install on the 
 
 To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser and it will open the vscode workspace that comes with each npmdef.
 
+
+# Next Steps
+
+- [Concept: Web Projects](../project-structure.md)
+- [Concept: Exporting Assets](../export.md)
+- [Concept: Deployment (Share you website)](../deployment.md)
+- [Components: Learn about Everywhere Actions](../everywhere-actions.md)
+- [Beginner Scripting: Typescript essentials](../getting-started/typescript-essentials.md)
+- [Beginner Scripting: How to write custom components](../scripting.md)

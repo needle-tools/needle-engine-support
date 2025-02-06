@@ -2,7 +2,9 @@
 title: Creating and using Components
 ---
 
-If you are new to scripting we recommend reading the following guides first:
+# Creating custom components
+
+If you are new to scripting we **highly recommend** reading the following guides first:
 
 - [Typescript Essentials](./getting-started/typescript-essentials.md)
 - [Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
@@ -489,7 +491,7 @@ To serialize from and to custom formats, it is possible to extend from the ``Typ
 > **Note**: In addition to matching fields, matching properties will also be exported when they match to fields in the typescript file. 
 
 ## Loading Scenes
-Referenced Prefabs, SceneAssets and [``AssetReferences``](https://docs.unity3d.com/Packages/com.unity.addressables@latest/manual/AddressableAssetsGettingStarted.html) in Unity will automatically be exported as glTF files (please refer to the [Export Prefabs](export.md) documentation).  
+In Unity referenced Prefabs, SceneAssets and AssetReferences (Unity's Addressable System) will automatically be exported as glTF files (please refer to the [Export Prefabs](export.md) documentation).  
 
 These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components, we added the concept of ``AssetReference`` types. They can be loaded at runtime and thus allow to defer loading parts of your app or loading external content.
 
@@ -497,3 +499,5 @@ These exported gltf files will be serialized as plain string URIs. To simplify l
 @[code ts twoslash](@code/component-prefab.ts)
 
 AssetReferences are cached by URI, so if you reference the same exported glTF/Prefab in multiple components/scripts it will only be loaded once and then re-used.  
+
+# Next Steps

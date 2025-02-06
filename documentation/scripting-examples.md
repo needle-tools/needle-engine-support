@@ -5,7 +5,11 @@ description: A collection of useful script snippets and examples.
 
 # Scripting Examples
 
-[Video tutorial: How to write custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
+If you are new to scripting we **highly recommend** reading the following guides first:
+
+- [Beginner Guide: Typescript Essentials](./getting-started/typescript-essentials.md)
+- [Beginner Guide: Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
+- [Video tutorial: How to write custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
 
 Below you will find a few basic scripts as a quick reference. 
 

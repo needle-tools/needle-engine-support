@@ -3,9 +3,17 @@ title: Questions and Answers (FAQ) 💡
 ---
 
 
-## I purchased a license - how can I activate my Needle Engine License?
+## How can I activate my Needle Engine License?
 
 ### Activating the license in Unity
+
+#### Needle Engine 4.x
+
+Go to Project Settings/Needle and click on the login button. Follow the steps and log in to your Needle account.   
+After that you'll see your account information in the Unity project settings window. Select the licensed team from the dropdown.   
+
+#### Needle Engine 3.x
+
 Open `Edit/Project Settings/Needle` to get the Needle Engine plugin settings. At the top of the window you'll find fields for entering your license information.
 - `Email` - Enter the email you purchased the license with
 - `Invoice ID` - Enter one of the invoice ids that you received by email
@@ -189,7 +197,9 @@ If these warnings/errors didn't help, try the following steps in order. Give the
   While generating C# components does technically run with vanilla javascript too we don't recommend it and fully support it since it is more guesswork or simply impossible for the generator to know which C# type to create for your javascript class. Below you find a minimal example on how to generate a Unity Component from javascript if you really want to tho.    
   
 ```js
-class MyScript extends Behaviour
+import { Behaviour } from "@needle-tools/engine";
+
+export class MyScript extends Behaviour
 {
     //@type float
     myField = 5;
@@ -268,7 +278,7 @@ Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if yo
 #### Known devices to cause issues:
 - Lenovo Thinkpad - T495  
 
-## Still have questions? 😱
+## Still have questions? 
 [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
