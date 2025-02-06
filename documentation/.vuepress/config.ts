@@ -448,7 +448,7 @@ export default defineUserConfig({
                         link: 'https://needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
                     {
-                        text: 'Needle Website',
+                        text: 'Needle Cloud',
                         link: 'https://cloud.needle.tools?utm_source=needle_docs&utm_content=headernav'
                     },
                     {
@@ -460,11 +460,11 @@ export default defineUserConfig({
                         link: 'https://discord.needle.tools'
                     },
                     {
-                        text: 'Twitter',
+                        text: 'X/Twitter',
                         link: 'https://twitter.com/needletools'
                     },
                     {
-                        text: 'Youtube',
+                        text: 'YouTube',
                         link: 'https://www.youtube.com/@needle-tools'
                     },
                     {
