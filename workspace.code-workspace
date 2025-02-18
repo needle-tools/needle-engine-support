@@ -10,7 +10,7 @@
 	],
 	"settings": {
 		"files.exclude": {
-			"node_modules": true,
+			"node_modules": false,
 			"**/dist": false,
 			"**/.vuepress/.cache": true,
 			"**/.vuepress/.temp": true,

@@ -1,5 +1,5 @@
 import { execSync } from 'child_process';
-import TypeDoc from 'typedoc';
+import * as td from 'typedoc';
 import fs, { WriteStream, rmSync, writeFileSync } from 'fs';
 import fetch from 'node-fetch';
 import FtpDeploy from 'ftp-deploy';
@@ -181,7 +181,7 @@ async function produceDocs(packageDir, outputDirectory) {
 
     const readmePath = packageDir + "/README.md";
 
-    const app = await TypeDoc.Application.bootstrapWithPlugins({
+    const app = await td.Application.bootstrapWithPlugins({
         lang: "en",
         entryPoints: [
             packageDir + "/src/engine/api.ts",
@@ -252,8 +252,8 @@ async function produceDocs(packageDir, outputDirectory) {
 
         customCss: "./tools/api-plugins/api-docs.css",
         customFooterHtml: "Made with 💚 by <a href='https://needle.tools'>Needle</a>",
-        inlineTags: [...TypeDoc.OptionDefaults.inlineTags, "@type"],
-        blockTags: [...TypeDoc.OptionDefaults.blockTags, "@link", "@obsolete", "@validate"],
+        inlineTags: [...td.OptionDefaults.inlineTags, "@type"],
+        blockTags: [...td.OptionDefaults.blockTags, "@link", "@obsolete", "@validate"],
         validation: {
             invalidLink: true,
         },
@@ -266,7 +266,7 @@ async function produceDocs(packageDir, outputDirectory) {
     // inline sources plugin
 
     // If you want TypeDoc to load tsconfig.json / typedoc.json files
-    app.options.addReader(new TypeDoc.TSConfigReader());
+    app.options.addReader(new td.TSConfigReader());
 
     console.log("Converting project");
     const project = await app.convert();
@@ -302,13 +302,16 @@ async function createApiDiff(outputDirectory, remotePath, baseUrl, currentVersio
             fs.rmSync(outputDirectory, { recursive: true });
         fs.mkdirSync(outputDirectory, { recursive: true });
 
-        console.log("Generate API diff for " + currentVersion + " and " + previousVersion);
+        const cmd = `npm diff diff-ignore-all-space --diff=@needle-tools/engine@${previousVersion} --diff=@needle-tools/engine@${currentVersion} ./src ./plugins`;
+        console.log(`Generate API diff for ${currentVersion} and ${previousVersion} with command: '${cmd}'`);
 
-        const result = execSync("npm diff diff-ignore-all-space --diff=@needle-tools/engine@" + previousVersion + " --diff=@needle-tools/engine@" + currentVersion + " ./src ./plugins");
+        const result = execSync(cmd);
         const str = result.toString();
         const outputFile = outputDirectory + "/diff.txt";
+        console.log(`Writing API diff to ${outputFile}`);
         writeFileSync(outputFile, str);
 
+        console.log("Converting diff to HTML");
         const htmlResult = await html(str, {
             inputFormat: 'diff',
             outputFormat: 'line-by-line',

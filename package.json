@@ -36,7 +36,7 @@
     "@vuepress/plugin-register-components": "2.0.0-rc.42",
     "@vuepress/plugin-search": "2.0.0-rc.43",
     "@vuepress/plugin-shiki": "2.0.0-rc.43",
-    "@vuepress/plugin-sitemap": "^2.0.0-rc.47",
+    "@vuepress/plugin-sitemap": "2.0.0-rc.47",
     "@vuepress/theme-default": "2.0.0-rc.43",
     "ftp-deploy": "^2.4.7",
     "linkinator": "^6.0.4",
@@ -46,11 +46,14 @@
     "node-fetch": "^3.3.1",
     "sass-embedded": "^1.78.0",
     "three": "npm:@needle-tools/three@^0.162.10",
-    "typedoc": "0.26.8",
-    "typedoc-plugin-coverage": "^3.3.0",
-    "typedoc-plugin-extras": "3.1.0",
-    "typedoc-plugin-inline-sources": "1.1.0",
+    "typedoc": "0.27.7",
+    "typedoc-plugin-coverage": "3.4.1",
+    "typedoc-plugin-extras": "4.0.0",
+    "typedoc-plugin-inline-sources": "1.2.0",
     "typedoc-plugin-mdn-links": "3.3.2",
     "vuepress": "2.0.0-rc.15"
+  },
+  "overrides": {
+    "typedoc": "0.27.7"
   }
 }
