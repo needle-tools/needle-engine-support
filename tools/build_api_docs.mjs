@@ -104,9 +104,6 @@ async function main() {
         const packageVersion = packageJson.version;
         const packageName = packageJson.name;
 
-        if (prevVersion)
-            await createApiDiff(outputDirectoryFull, remotePath, baseUrl, version, prevVersion);
-
         // delete output directory if it exists
         if (fs.existsSync(outputDirectoryFull))
             fs.rmSync(outputDirectoryFull, { recursive: true });
@@ -114,6 +111,9 @@ async function main() {
 
         await produceDocs(packageDir, outputDirectoryFull);
         console.log("API documentation generated at " + outputDirectoryFull);
+
+        if (prevVersion)
+            await createApiDiff(outputDirectoryFull, remotePath, baseUrl, version, prevVersion);
 
         // create version file
         fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
@@ -297,9 +297,6 @@ async function createApiDiff(outputDirectory, remotePath, baseUrl, currentVersio
             console.log("API diff already exists at " + url);
             return;
         }
-
-        if (fs.existsSync(outputDirectory))
-            fs.rmSync(outputDirectory, { recursive: true });
         fs.mkdirSync(outputDirectory, { recursive: true });
 
         const cmd = `npm diff diff-ignore-all-space --diff=@needle-tools/engine@${previousVersion} --diff=@needle-tools/engine@${currentVersion} ./src ./plugins`;
@@ -374,9 +371,9 @@ async function createApiDiff(outputDirectory, remotePath, baseUrl, currentVersio
 
         if (isDev) return;
 
-        console.log("Uploading API diff to " + remotePath);
-        await upload(outputDirectory, remotePath);
-        await delay(2000);
+        // console.log("Uploading API diff to " + remotePath);
+        // await upload(outputDirectory, remotePath);
+        // await delay(2000);
 
     }
     catch (err) {
