@@ -1,0 +1,1 @@
+import{_ as e,c as t,o as s,f as c}from"./app-BHtv7NlD.js";const r={},a={class:"actiongroup"};function n(o,_,p,i,f,l){return s(),t("div",a,[c(o.$slots,"default")])}const d=e(r,[["render",n],["__file","actiongroup.vue"]]);export{d as default};
