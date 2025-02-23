@@ -233,19 +233,22 @@ Those hooks can be inserted at any point in your web application (for example in
 For example ([See example on stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts twoslash
 // this can be put into e.g. main.ts or a svelte component (similar to onMount)
-import { Context, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
-onUpdate((ctx: Context) => {
-    // do something... e.g. access the scene via ctx.scene
+import { onStart, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
+
+onStart(ctx => console.log("Hello Scene", ctx.scene));
+
+onUpdate(ctx => {
+    // do something... e.g. access the frame # or deltatime via ctx.time
     console.log("UPDATE", ctx.time.frame);
 });
 
-onBeforeRender((ctx: Context) => {
+onBeforeRender(ctx => {
     // this event is only called once because of the { once: true } argument
     console.log("ON BEFORE RENDER", ctx.time.frame);
 }, { once: true } );
 
 // Every event hook returns a method to unsubscribe from the event
-const unsubscribe = onAfterRender((ctx: Context) => {
+const unsubscribe = onAfterRender(ctx => {
     console.log("ON AFTER RENDER", ctx.time.frame);
 });
 // Unsubscribe from the event at any time
