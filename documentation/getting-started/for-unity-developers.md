@@ -139,10 +139,14 @@ Some Unity-specific types are mapped to different type names in our engine. See 
 
 ## Transform
 Transform data can be accessed on the `GameObject` / `Object3D` directly. Unlike to Unity there is no extra transform component that holds this data.  
-- ``this.gameObject.position`` is the [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) in local space
-- ``this.gameObject.rotation`` is the [rotation in euler angles](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation) in local space
-- ``this.gameObject.quaternion`` - is the [quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion) in local space
-- ``this.gameObject.scale`` - is the [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale) in local space
+- ``this.gameObject.position`` is the vector3 [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) in local space
+- ``this.gameObject.worldPosition`` is the vector3 position in world space
+- ``this.gameObject.rotation`` is the [euler rotation](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation) in local space
+- ``this.gameObject.worldRotation`` is the euler rotation in euler angles in world space
+- ``this.gameObject.quaternion`` - is the [quaternion rotation](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion) in local space
+- ``this.gameObject.worldQuaternion`` is the quaternion rotation in world space
+- ``this.gameObject.scale`` - is the vector3 [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale) in local space
+- ``this.gameObject.worldScale`` is the vector3 scale in world space
 
 The major difference here to keep in mind is that `position` in three.js is by default a localspace position whereas in Unity `position` would be worldspace. The next section will explain how to get the worldspace position in three.js.
 
