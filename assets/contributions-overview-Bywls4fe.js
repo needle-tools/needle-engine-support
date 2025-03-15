@@ -1,0 +1,1 @@
+import{_ as o,c as t,o as s,f as r}from"./app-B4mNEM2Z.js";const c={},n={class:"list"};function i(e,_){return s(),t("div",n,[r(e.$slots,"default")])}const l=o(c,[["render",i],["__file","contributions-overview.vue"]]);export{l as default};

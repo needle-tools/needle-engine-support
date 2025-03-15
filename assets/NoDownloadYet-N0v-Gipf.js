@@ -1,0 +1,1 @@
+import{_ as a,f as o,g as t}from"./app-B4mNEM2Z.js";const n={methods:{checkQueryParams:s}};function s(){return typeof window>"u"?!1:new URLSearchParams(window.location.search).has("dl")}function c(e,d,u,f,l,r){return r.checkQueryParams()?t("",!0):o(e.$slots,"default",{key:0})}const i=a(n,[["render",c],["__file","NoDownloadYet.vue"]]);export{i as default};
