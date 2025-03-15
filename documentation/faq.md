@@ -278,6 +278,14 @@ Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if yo
 #### Known devices to cause issues:
 - Lenovo Thinkpad - T495  
 
+## I want to use Needle AI with my local AI model
+
+If you want (or have to) run your AI locally you can use the Needle llms.txt files as context for your local AI (e.g. Ollama):
+
+- [llms.txt](https://cloud.needle.tools/llms.txt)
+- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
+
+
 ## Still have questions? 
 [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 
 

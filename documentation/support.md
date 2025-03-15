@@ -1,17 +1,26 @@
 # Support and Community
 
-## Forum
+## Community Forum
 
-Ask questions and provide feedback in [Needle Forum](https://forum.needle.tools)  
+Ask questions and get help in [Needle Forum](https://forum.needle.tools)  
 
 ::: info Get instant help with Needle AI
 Ask any question about Needle Engine, web development or our editor integrations and get instant help from the Needle AI that has access to the latest code, documentation and our integrations.
 :::
 
 
-## Discord
+## Needle Discord
 
 Chat with the community and share your projects in [Needle Discord](https://discord.needle.tools/?utm_source=needle_docs&utm_content=content)
+
+
+## Local AI
+
+Needle Engine documentation is also available via the llms.txt standard.    
+Download the files below to use as context for your local AI:
+
+- [llms.txt](https://cloud.needle.tools/llms.txt)
+- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
 
 ## Get Inspired
