@@ -310,7 +310,7 @@ export default defineUserConfig({
                                 link: "https://engine.needle.tools/docs/api/latest",
                             },
                             {
-                                text: "Get Help",
+                                text: "Support & Community",
                                 link: "/support",
                             },
                         ],
