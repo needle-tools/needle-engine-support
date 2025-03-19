@@ -1,7 +1,7 @@
 ---
 title: Needle Cloud
 description: 'Needle Cloud is an online service. It helps you store, manage, and share 3D assets and apps on the web.
-A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed to the cloud directly from the Unity integration (Blender integration support is coming at a later point).'
+ A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed to the cloud directly from the Unity integration, and via command line (CLI).'
 ---
 
 <br/>
@@ -13,46 +13,101 @@ A variety of file formats are supported, including glTF, USD, FBX, VRM, and more
 ## Overview
 
 Needle Cloud is an online service. It helps you store, manage, and share 3D assets and apps on the web.
-A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed to the cloud directly from the Unity integration (Blender integration support is coming at a later point).
+A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed to the cloud directly from the Unity integration, and via command line (CLI). The Blender integration is coming at a later point; you can use the CLI in the meantime.
 
 Visit [Needle Cloud](https://cloud.needle.tools) to get started.
 
 ## Features
 
-1. **Spatial Web Hosting**  
-   Apps made with Needle can be deployed to the cloud directly from our engine integrations. This allows you to host your apps publicly, without having to set up your own server.
+1. **Host spatial web apps**  
+   Apps made with Needle can be deployed to the cloud directly from our engine integrations. This allows you to give your team and customers public access to apps easily, without having to set up your own server. If needed, you can protect apps with a password.
 
-1. **Asset Management**  
-   Easily upload and organize your 3D files. Thanks to our fast CDN, your files are stored securely and can be accessed quickly from anywhere in the world. Links to your files can be shared with others and used directly in your projects.
+2. **Manage 3D assets privately and securely**  
+   Easily upload and organize your 3D files. Thanks to our fast CDN (content delivery network), your files are stored securely and can be accessed quickly from anywhere in the world.
+   Needle Cloud is not a marketplace, and not a social network. It is designed for agencies, studios and creators to manage their assets privately and securely.
 
-1. **3D Asset Optimization**  
-   Automatically compress your files to reduce their size while maintaining visual quality. This makes your files load faster and saves bandwidth and graphics memory.
+3. **Optimize 3D assets from a variety of formats**  
+   Automatically compress your files to reduce their size while maintaining visual quality. This makes your files load faster, and saves bandwidth and memory on user's devices.
 
-1. **Version Control**  
-   Keep track of all the changes made to your files. Versions can be tagged, which allows for flexible review workflows – for example, you can tag a version as "main" or "experimental".
+4. **Sharing and Version Control**  
+   Links to your files can be shared with others and used directly in your projects. You can upload new versions of assets and apps. Individual versions can be labelled, which allows for flexible review workflows: for example, you can label a version as `main` or `experimental`. You can also revert labels back to a previous version if needed.
 
-1. **Collaboration Tools**  
-   Share your files with others and work together on projects.
+5. **Automation and Pipeline Tools via CLI**  
+   The `needle-cloud` CLI (command line interface) makes it easy to automate uploading and optimizing files. This is useful for integrating Needle Cloud into your existing pipeline, or for automating the upload of large numbers of files.
 
-1. **License Management**  
-   Licenses for Needle Engine for invidiuals and teams are managed through Needle Cloud. 
+6. **License Management**  
+   Licenses for Needle Engine for solo creators and teams are managed through Needle Cloud. This ensures only authorized users can access your files and projects. Contact us for Enterprise and Edu licenses.
+
+## Deploy from Unity
+
+Needle Cloud is integrated into the Unity Editor. This allows you to deploy your apps directly from Unity to Needle Cloud. You can also upload and download assets from Needle Cloud directly in Unity.
+
+1. **Install the Unity integration, if you haven't already**  
+
+2. **Add the `Export Info` component to your scene**   
+   This component is used to configure the export settings for your app.  
+   You can use the menu item `GameObject > Needle Engine > Add Export Info` or create a new scene from a Needle template via the menu item `File > New Scene`.
+
+3. **Click on `Upload to Needle Cloud`**
+   This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project.  
+   The upload name of the project, visible next to the button, is saved in the scene. Future uploads will use the same project name, and versions will be grouped together on the Needle Cloud website.   
+
+   ![Needle Cloud Unity Integration](/docs/cloud/cloud-deploy-v1.webp)
+
+
+
+:::tip Example – Collaborative Sandbox on Needle Cloud
+https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/
+https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/
+https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/
+https://collaborativesandbox-zubcks1qdkhy.needle.run/
+:::
+
+## Deploy from the CLI
+
+Needle Cloud provides a command line interface (CLI) that allows you to manage your assets and deploy your applications efficiently. You can use the CLI to automate tasks and integrate Needle Cloud into your existing workflows.
+The CLI is available as an npm package.
+
+You can either install it globally, or use it via `npx`:
+
+1. **Global installation**
+   ```bash
+   npm install -g needle-cloud
+   ```
+   Now, you can use the `needle-cloud` command in your terminal:
+
+   ```bash
+   needle-cloud login
+   needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
+   ```
+
+2. **Without installation**
+   ```bash
+   npx needle-cloud login
+   npx needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
+   ```
 
 ## Supported 3D Formats
 
-1. **glTF** and **glb**  
-   The glTF format is the most widely supported format for 3D on the web. It is a lightweight format that can store 3D models, animations, and textures. glTF supports advanced compression techniques like Draco and KTX2, which are fully leveraged by Needle Cloud and Needle Engine.
+1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Example</a>   
+   The glTF format is the most widely supported format for 3D on the web. It is a lightweight format that can store 3D models, animations, and textures. GLB files are binary versions of glTF files, where all data is stored in a single file.
+   glTF supports advanced compression techniques like Draco, KTX2, and Meshopt, which are fully supported by Needle Cloud and Needle Engine.
 
 2. **OpenUSD**   
-   USD is a powerful format for 3D data interchange. It is known for its use in the film and VFX industry, and is gaining popularity in the game industry. Needle Cloud supports USDZ and USD files natively through our work on USD-WASM.  
+   USD is a powerful format for 3D data interchange. It is known for its use in the film and VFX industry, and is gaining popularity in the game industry. Needle Cloud supports USDZ and USD files natively through our work on USD-WASM, and also converts USD files to glTF for further processing and optimization.
 
 3. **FBX**  
-   FBX has been a popular format for 3D data interchange for many years, but is lacking a number of modern features like PBR materials and extensions. Needle Cloud converts FBX files to glTF for further processing.  
+   FBX has been a popular format for 3D data interchange for many years, but is lacking a number of modern features like PBR materials and extensions. Needle Cloud converts FBX files to glTF for further processing and optimization.  
 
 4. **VRM**  
    VRM is a format for humanoid avatars. It is based on glTF with additional constraints through the use of glTF extensions. Needle Cloud supports VRM files natively, and can optimize them like other glTF files, including complex VRM extensions like phonemes, toon shading and dynamic bones.
 
 5. **OBJ**  
-   OBJ is a simple text-based format for 3D models. Needle Cloud converts OBJ files to glTF for further processing and supports MTL materials. 
+   OBJ is a simple text-based format for 3D models. It supports basic materials through MTL files, animations, and hierarchies of objects. Needle Cloud converts OBJ files to glTF for further processing and optimization. 
+
+:::tip Use glTF or USD when possible
+We recommend glTF and USD as the primary formats for 3D data interchange. They are widely supported, have modern features and a good material model.
+:::
 
 ## Cloud Assets
 
@@ -95,7 +150,7 @@ The following embed options are available:
    Use the `iframe` code snippet to embed the Needle Cloud viewer on your website.
 
 1. **Needle Engine**  
-  Use the provided code snippet to embed the Needle Engine on your website.
+  Use the provided code snippet to embed Needle Engine on your website as [web component](./../three/).
 
 1. **model-viewer**  
   The [model-viewer](https://modelviewer.dev) project provides a web component for rendering simple, non-interactive 3D models in the browser.
@@ -106,6 +161,8 @@ The following embed options are available:
 1. **React-Three-Fiber**  
   If you're using React-Three-Fiber, you can use the provided code snippet as a starting point for a project that supports Needle Progressive Loading and efficiently loads files from Needle Cloud.
 
+1. **Unity**  
+  If you're using Unity, you can integrate Needle Cloud assets directly into your projects using the Needle Cloud Asset component for seamless loading and optimization.
 
 ### Using Cloud Assets with other engines like Unity or Unreal
 
@@ -135,27 +192,25 @@ The Command Line Interface (CLI) allows automating file uploads and compression.
 
 See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more information.
 
-### API (Application Programming Interface)
-
-::: warning <b>Under construction.</b> This section is not yet complete.
-:::
-
 ## FAQ
 
 1. **What is Needle Cloud?**   
-   It’s a service to upload, compress and share your 3D files online.
+   It’s an online service to upload, compress and share 3D assets and scenes.
 
-1. **How do I upload assets to Needle Cloud?**   
+2. **How do I upload assets to Needle Cloud?**   
    You can upload files by dragging them onto the website, or by uploading them directly from supported integrations. If you have many files, you can use the CLI (command line interface) or the API (application programming interface).
 
-1. **Can I share my files with others?**   
+3. **How do I download optimized files from Needle Cloud?**   
+   You can download files from the website. Click on `Share` and then `Download`. You can also use the CLI to download files.
+
+4. **Can I share my files with others?**   
    Yes, you can create links to share your files. Links can either be direct download links, or links to the Needle Cloud viewer.
 
-1. **Is there a limit to file sizes?**   
+5. **Is there a limit to file sizes?**   
    Upload limits depend on your plan. Check your account details for more info.
 
-1. **Can Needle Cloud files be used with other tools?**   
+6. **Can Needle Cloud files be used with other tools?**   
    Yes, you can use your files in other programs by exporting them as glTF. USD export is coming at a later point.
 
-1. **What happens if I run out of storage space?**   
+7. **What happens if I run out of storage space?**   
    You might need to upgrade your plan or delete old files to make room.
