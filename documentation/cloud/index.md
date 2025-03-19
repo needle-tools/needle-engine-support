@@ -17,7 +17,7 @@ A variety of file formats are supported, including glTF, USD, FBX, VRM, and more
 
 Visit [Needle Cloud](https://cloud.needle.tools) to get started.
 
-[![Needle Cloud Overview](/docs/cloud/cloud-overview-page.webp)](https://cloud.needle.tools)
+[![Needle Cloud Overview](/cloud/cloud-overview-page.webp)](https://cloud.needle.tools)
 
 ## Features
 
@@ -54,7 +54,7 @@ Needle Cloud is integrated into the Unity Editor. This allows you to deploy your
 3. **Click on `Upload to Needle Cloud`.**   
    This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project. The _upload name_ of the project, visible next to the button, is saved in the scene. Future uploads will use the same upload name, and all uploaded versions will be grouped together on the Needle Cloud website.   
    
-   ![Needle Cloud Unity Integration](/docs/cloud/cloud-deploy-v1.webp)
+   ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
 
 ## Deploy from the CLI
 
@@ -102,7 +102,7 @@ The _main_ deployment is useful for sharing with clients, as it always points to
 
 The Needle Cloud website shows all deployed versions of the app, including the latest and main versions. Labels can be moved by clicking on <kbd>⋮</kbd> and selecting <kbd>Set main label</kbd> or <kbd>Remove main label</kbd>.  
 
-![Needle Cloud Version List](/docs/cloud/cloud-edit-page.webp)
+![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
 
 ## Supported 3D Formats
 
