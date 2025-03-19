@@ -513,12 +513,12 @@ export default defineUserConfig({
                             link: '/embedding',
                         },
                         {
-                            text: 'Custom integrations',
-                            link: '/custom-integrations/',
-                        },
-                        {
                             text: 'Needle Cloud',
                             link: '/cloud/',
+                        },
+                        {
+                            text: 'Custom integrations',
+                            link: '/custom-integrations/',
                         },
                         {
                             text: 'Support and Community',

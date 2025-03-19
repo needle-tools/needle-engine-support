@@ -17,6 +17,8 @@ A variety of file formats are supported, including glTF, USD, FBX, VRM, and more
 
 Visit [Needle Cloud](https://cloud.needle.tools) to get started.
 
+[![Needle Cloud Overview](/docs/cloud/cloud-overview-page.webp)](https://cloud.needle.tools)
+
 ## Features
 
 1. **Host spatial web apps**  
@@ -42,35 +44,38 @@ Visit [Needle Cloud](https://cloud.needle.tools) to get started.
 
 Needle Cloud is integrated into the Unity Editor. This allows you to deploy your apps directly from Unity to Needle Cloud. You can also upload and download assets from Needle Cloud directly in Unity.
 
-1. **Install the Unity integration, if you haven't already**  
+1. **Install the Unity integration, if you haven't already.**   
+   See [this page](./../unity/) for more info.
 
-2. **Add the `Export Info` component to your scene**   
+2. **Add the `Export Info` component to your scene.**   
    This component is used to configure the export settings for your app.  
    You can use the menu item `GameObject > Needle Engine > Add Export Info` or create a new scene from a Needle template via the menu item `File > New Scene`.
 
-3. **Click on `Upload to Needle Cloud`**
-   This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project.  
-   The upload name of the project, visible next to the button, is saved in the scene. Future uploads will use the same project name, and versions will be grouped together on the Needle Cloud website.   
-
+3. **Click on `Upload to Needle Cloud`.**   
+   This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project. The _upload name_ of the project, visible next to the button, is saved in the scene. Future uploads will use the same upload name, and all uploaded versions will be grouped together on the Needle Cloud website.   
+   
    ![Needle Cloud Unity Integration](/docs/cloud/cloud-deploy-v1.webp)
-
-
-
-:::tip Example – Collaborative Sandbox on Needle Cloud
-https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/
-https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/
-https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/
-https://collaborativesandbox-zubcks1qdkhy.needle.run/
-:::
 
 ## Deploy from the CLI
 
 Needle Cloud provides a command line interface (CLI) that allows you to manage your assets and deploy your applications efficiently. You can use the CLI to automate tasks and integrate Needle Cloud into your existing workflows.
-The CLI is available as an npm package.
 
-You can either install it globally, or use it via `npx`:
+The CLI is available as an npm package, which means that you need to have Node.js installed on your machine. You can check if you have Node.js installed by running the following command in your terminal:
 
-1. **Global installation**
+```bash
+node -v
+```
+If you don't have Node.js installed, you can download it from the [Node.js website](https://nodejs.org/).  
+
+You can install the `needle-cloud` CLI package globally or use it via `npx`. This allows you to run the CLI commands without having to install it globally.
+
+1. **Using npx (always the latest version)**
+   ```bash
+   npx needle-cloud login
+   npx needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
+   ```
+2. **Global installation**  
+   A global installation allows use to use the CLI from anywhere on your system. To install the CLI globally, run the following command in your terminal: 
    ```bash
    npm install -g needle-cloud
    ```
@@ -81,11 +86,23 @@ You can either install it globally, or use it via `npx`:
    needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
    ```
 
-2. **Without installation**
-   ```bash
-   npx needle-cloud login
-   npx needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
-   ```
+## Deployment URLs
+
+When deploying to Needle Cloud, each upload gets a unique URL. You can either share a link to a _specific_ version, or to a _labeled_ version with your team or clients.
+
+As an example, this app has been deployed twice. Each deployment gets a specific URL:
+- [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)
+- [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)
+
+The _latest_ deployment is always available at the following URL. This URL is useful for sharing with your team, as it always points to the most recent version of the app. Another common name for this version is _dev_ or _canary_.
+- [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)
+
+The _main_ deployment is useful for sharing with clients, as it always points to the most recent version of the app that you promoted. Typically, you upload a new version, review it, and then decide whether you want to promote it to _main_. Other common names for this version are _production_, _stable_, or _live_.
+- [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)
+
+The Needle Cloud website shows all deployed versions of the app, including the latest and main versions. Labels can be moved by clicking on <kbd>⋮</kbd> and selecting <kbd>Set main label</kbd> or <kbd>Remove main label</kbd>.  
+
+![Needle Cloud Version List](/docs/cloud/cloud-edit-page.webp)
 
 ## Supported 3D Formats
 
@@ -184,13 +201,11 @@ There are several ways to use assets stored on Needle Cloud in other engines lik
 3. **Needle Cloud Asset Component**   
    If you are using Needle Engine, you can use the `Needle Cloud Asset` component to load assets at runtime. It will automatically choose the best link for your platform and load the asset with Progressive Loading. This is also supported at runtime in Unity Builds.
 
-## Programmatic Usage
+## CLI for Assets
 
-### CLI (Command Line Interface)
+The command line interface (CLI) for Needle Cloud allows automating file uploads and compression. The CLI can be used as part of a build step (replacing an asset with an optimized version), or as a standalone tool (for batch processing of files).
 
-The Command Line Interface (CLI) allows automating file uploads and compression. The CLI can be used as part of a build step, or as standalone tool.
-
-See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more information.
+See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more information about the CLI and how to use it.
 
 ## FAQ
 
