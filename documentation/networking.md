@@ -369,12 +369,10 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 // Type: JoinedRoomResponse
 {
     "key": "joined-room",
-    "data": {
-        "room": string,
-        "viewId": string,
-        "allowEditing": boolean,
-        "inRoom": string[] // connection IDs
-    }
+    "room": string,
+    "viewId": string,
+    "allowEditing": boolean,
+    "inRoom": string[] // connection IDs
 }
 ```
 :::
@@ -384,9 +382,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 // Type: LeftRoomResponse
 {
     "key": "left-room",
-    "data": {
-        "room": string
-    }
+    "room": string
 }
 ```
 :::
@@ -419,7 +415,7 @@ Messages are sent in JSON format. They always have a `key` field that describes 
 // Sent to the client after the complete room state has been sent.
 {
     "key": "room-state-sent",
-    "data": {}
+    "room": string // room name 
 }
 ```
 :::
