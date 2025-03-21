@@ -153,7 +153,7 @@ It is also used for uploading (deploying) your website to the internet.
 
 
 
-# Next Steps
+## Next Steps
 
 Now that you've installed Needle Engine, you're ready to dive deeper into project creation, component workflows, scripting, deployment and more. 
 

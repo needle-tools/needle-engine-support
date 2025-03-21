@@ -274,6 +274,10 @@ export default defineUserConfig({
         },
         navbar: [
             {
+                text: 'Downloads',
+                link: '/getting-started/',
+            },
+            {
                 text: 'Overview',
                 link: '/',
                 children: [
@@ -316,10 +320,6 @@ export default defineUserConfig({
                         ],
                     },
                 ]
-            },
-            {
-                text: 'Downloads',
-                link: '/getting-started/',
             },
             {
                 text: 'Guides',

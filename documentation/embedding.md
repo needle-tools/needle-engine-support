@@ -163,18 +163,24 @@ If you deployed your project to Needle Cloud, you can easily display it on your 
 2. **Understand which URL the web app should be accessible from.**  
   This could either be 
 
-    - A **Page** on the client's website  
-      `https://my-page.com/app/`
+    - A page on **[Needle Cloud](./cloud/)**  
+      `collaborativesandbox-zubcks1qdkhy.needle.run`  
+
+    - A **Subpage** on the client's website   
+      `my-page.com/app`
   
     - A new **Subdomain**  
-      `https://app.my-page.com`
-    - A new **Domain**  
-      `https://my-app.com` 
+      `app.my-page.com`
+    - A new or existing **Domain**  
+      `my-app.com` 
+
     ::: tip There's no "good" or "bad" here.
-    The choice mostly depends on the client's requirements regarding branding, SEO, and technical setup. Often, you'll have to discuss this with the client's IT department or webmaster.
+    A typical approach is to start on [Needle Cloud](./cloud/) for initial prototypes and during development, and move to the client's webspace and domain for the final version.  
+
+    The choice mostly depends on the client's requirements regarding branding, SEO, and technical setup. Often, you'll have to discuss this with the client's IT department or webmaster. 
     :::
 
-3. **Understand how the web app will be deployed and maintained.**  
+1. **Understand how the web app will be deployed and maintained.**  
     - Will you have access to a folder on the client's web server so you can upload the latest version, or do they want to manage the deployment themselves?
       ::: tip A simple approach: FTP access
       Often, you can ask for FTP or SFTP access to a folder on the client's web server. You'll get a URL, username, and password, and then you can upload your files to that folder. We provide a "Deploy to FTP" component that makes this particularly easy. The client's IT department will set up which URL the folder is accessible from.
@@ -189,10 +195,10 @@ If you deployed your project to Needle Cloud, you can easily display it on your 
         While Needle Engine works on all modern devices and browsers, it's always a good idea to test your app on the devices and browsers your target audience is using to make sure everything works as expected. For example, when creating an AR app for phones, you'll want to test across Android and iOS devices.
         :::
 
-4. **Set up the project, a test deployment, and client deployment.**   
+2. **Set up the project, a test deployment, and client deployment.**   
    It's often a good idea to test the deployment process early on, to make sure you understand how it works and what the requirements are. For example, when you've decided on using FTP, then you could set up a test folder on your own web server and test the deployment process there. Once changes are approved by the client, you can then deploy to the client's server. 
 
-5. **Start creating!**  
+3. **Start creating!**  
    With requirements and deployment in place, go ahead and start making your project! You'll usually iterate locally, then deploy to your test server for approval, and then to the client's server.  
 
 ## Wordpress

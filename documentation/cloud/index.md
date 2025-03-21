@@ -17,7 +17,7 @@ A variety of file formats are supported, including glTF, USD, FBX, VRM, and more
 
 Visit [Needle Cloud](https://cloud.needle.tools) to get started.
 
-[![Needle Cloud Overview](/cloud/cloud-overview-page.webp)](https://cloud.needle.tools)
+![Needle Cloud Overview](/cloud/cloud-overview-page.webp)
 
 ## Features
 
@@ -69,12 +69,12 @@ If you don't have Node.js installed, you can download it from the [Node.js websi
 
 You can install the `needle-cloud` CLI package globally or use it via `npx`. This allows you to run the CLI commands without having to install it globally.
 
-1. **Using npx (always the latest version)**
+1. **Use the npx command (always the latest version)**
    ```bash
    npx needle-cloud login
    npx needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
    ```
-2. **Global installation**  
+2. **Or install needle-cloud globally**  
    A global installation allows use to use the CLI from anywhere on your system. To install the CLI globally, run the following command in your terminal: 
    ```bash
    npm install -g needle-cloud
@@ -90,15 +90,25 @@ You can install the `needle-cloud` CLI package globally or use it via `npx`. Thi
 
 When deploying to Needle Cloud, each upload gets a unique URL. You can either share a link to a _specific_ version, or to a _labeled_ version with your team or clients.
 
-As an example, this app has been deployed twice. Each deployment gets a specific URL:
-- [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)
-- [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)
+-----
+
+In the following example, we have an app that has so far been deployed twice. Each deployment gets a specific URL, also known as a _pinned_ URL since it's pinned to a specific version.
+1. [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)  
+   This is the first version that was uploaded.
+2. [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)  
+   This is the second version that was uploaded.
 
 The _latest_ deployment is always available at the following URL. This URL is useful for sharing with your team, as it always points to the most recent version of the app. Another common name for this version is _dev_ or _canary_.
-- [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)
+- [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)  
+  This URL automatically shows the new version when you upload a new version of the app.
 
-The _main_ deployment is useful for sharing with clients, as it always points to the most recent version of the app that you promoted. Typically, you upload a new version, review it, and then decide whether you want to promote it to _main_. Other common names for this version are _production_, _stable_, or _live_.
-- [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)
+The _main_ deployment is useful for sharing with clients, as it always points to the most recent version of the app that you promoted. Other common names for this version are _production_, _stable_, or _live_.
+- [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)  
+  This URL does not change when you upload a new version. It will only change when you explicitly promote a new version to _main_.
+
+Typically, you upload a new version, review it, and then decide whether you want to promote it to _main_.
+
+-----
 
 The Needle Cloud website shows all deployed versions of the app, including the latest and main versions. Labels can be moved by clicking on <kbd>⋮</kbd> and selecting <kbd>Set main label</kbd> or <kbd>Remove main label</kbd>.  
 

@@ -3,43 +3,61 @@ title: VR & AR (WebXR)
 ---
 
 ## Supported Devices
-Theoretically all WebXR-capable devices and browsers should be supported. That being said, we've tested the following configurations:  
 
-| Tested VR Device | Browser | Notes |
+Needle Engine supports the full [WebXR specification](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API), including AR and VR. WebXR is an official web standard that brings immersive experiences to the web, with all the benefits of the web: no installation, no app store, no SDKs required.
+
+All devices with a browser can run apps made with Needle. If the browser supports WebXR, your apps will automatically work in XR as well, using our built-in components. This includes desktop browsers, mobile browsers, many browsers on AR/VR headsets, but also other emerging technologies like Looking Glass displays, smart glasses, and more.
+
+:::tip App-free iOS AR support via USDZ/QuickLook
+While iOS devices don't yet have official WebXR support, Needle supports creating AR experiences on iOS using [Everywhere Actions](everywhere-actions.md). See the [iOS section](#augmented-reality-and-webxr-on-ios) for more details. You can create rich, interactive experiences that work seamlessly in AR on iOS devices, even with the limitations that Apple has in place.   
+
+When you enter AR mode on iOS, Needle will automatically convert your scene to an USDZ file, which is then displayed in AR using Apple's QuickLook. Objects, materials, audio, animation and Everywhere Actions will be preserved. 
+:::
+
+The following table lists some of the devices that we verified to work with Needle Engine.
+When a new device comes out that supports WebXR, it will work with your apps out of the box. This is one of the big advantages of building with the browser as a platform – compatibility is not limited to a specific set of devices or SDKs.
+
+
+| Headset Device | Browser | Notes |
 | -- | -- | -- |
-| Apple Vision Pro | ✔️ Safari Browser | hand tracking, support for transient pointer |
-| Meta Quest 1 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup> |
-| Meta Quest 2 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough (black and white) |
+| Apple Vision Pro | ✔️ Safari | hand tracking, support for transient pointer |
 | Meta Quest 3 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
+| Meta Quest 3S | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
+| Meta Quest 2 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough (black and white) |
+| Meta Quest 1 | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup> |
 | Meta Quest Pro | ✔️ Meta Browser | hand tracking, support for sessiongranted<sup>1</sup>, passthrough |
-| Pico Neo 3 | ✔️ Pico Browser | no hand tracking, inverted controller thumbsticks |
 | Pico Neo 4 | ✔️ Pico Browser | passthrough, hand tracking<sup>2</sup> |
+| Pico Neo 3 | ✔️ Pico Browser | no hand tracking, inverted controller thumbsticks |
 | Oculus Rift 1/2 | ✔️ Chrome |  |
+| Valve Index | ✔️ Chrome |  |
+| HTC Vive | ✔️ Chrome |  |
 | Hololens 2 | ✔️ Edge | hand tracking, support for AR and VR (in VR mode, background is rendered as well) |
-| Looking Glass Portrait | ✔️ Chrome | requires shim, see samples | 
 
-| Tested AR Device | Browser | Notes |
+| Mobile Device | Browser | Notes |
 | -- | -- | -- |
 | Android 10+ | ✔️ Chrome | |
 | Android 10+ | ✔️ Firefox | |
-| iOS 15+ | ✔️ WebXR Viewer | does not fully implement standards, but supported |
-| iOS 15+ | (✔️)<sup>3</sup> Safari | No full code support, but Needle [Everywhere Actions](everywhere-actions.md) are supported for creating dynamic, interactive USDZ files. |
+| iOS 15+ | (✔️)<sup>3</sup> Safari<br/>(✔️)<sup>3</sup> Chrome | No full code support, but Needle [Everywhere Actions](everywhere-actions.md) are supported for creating dynamic, interactive USDZ files. |
+| iOS 15+ | ✔️ WebXR Viewer | browser is somewhat dated by now |
 | Hololens 2 | ✔️ Edge | |
 | Hololens 1 | ❌ | no WebXR support |
 | Magic Leap 2 | ✔️ | |
+| Magic Leap 1 | ✔️ | deprecated device |
 
-| Not Tested but Should Work™️ | Browser | Notes |
+| Other Devices | Browser | Notes |
 | -- | -- | -- |
-| Magic Leap 1 | | please let us know if you tried! |
-
+| Looking Glass Holographic Display | ✔️ Chrome | requires Looking Glass bridge and some custom code, [see our sample](https://engine.needle.tools/samples/looking-glass/) |
+| Logitech MX Ink | ✔️ Meta Browser | officially supported, see [docs](https://logitech.github.io/mxink/WebXR/WebXrIntegration.html#using-needle-tools) |
 
 <sup>1</sup>: Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`   
 <sup>2</sup>: Requires enabling a toggle in the Developer settings    
 <sup>3</sup>: Uses [Everywhere Actions](everywhere-actions.md) or [other approaches](#augmented-reality-and-webxr-on-ios)
 
-## Examples
+## VR, AR and QuickLook Examples
 
-Visit our [Needle Engine XR Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr) to try many interactive examples right now!
+Visit our [Needle Engine Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr) to try many interactive examples right now. Or, try it live on your device by clicking the <kbd>QR Code</kbd> (for phones) or <kbd>Open on Quest</kbd> (for Meta Quest headsets) buttons below.
+
+<sample src="https://engine.needle.tools/samples/collaborative-sandbox/"/>
 
 ## Adding VR and AR capabilities to a scene
 
@@ -47,45 +65,48 @@ AR, VR and networking capabilites in Needle Engine are designed to be modular. Y
 
 ### Basic capabilities
 
-- **Enable AR and VR**  
+1. **Enable AR and VR**  
   Add a `WebXR` component.  
   *Optional:* you can set a custom avatar by referencing an [Avatar Prefab](#avatars).   
-  By default a very basic `DefaultAvatar` is assigned.
+  By default, a basic `DefaultAvatar` is assigned.
   
-- **Enable Teleportation**  
+2. **Enable Teleportation**  
   Add a `TeleportTarget` component to object hierarchies that can be teleported on.  
   To exclude specific objects, set their layer to `IgnoreRaycasting`.  
 
 ### Multiplayer
 
-- **Enable Networking**  
+1. **Enable Networking**  
   Add a `SyncedRoom` component.
 
-- **Enable Desktop Viewer Sync**  
+2. **Enable Desktop Viewer Sync**  
   Add a `SyncedCamera` component.
   
-- **Enable Voice Chat**  
+3. **Enable Voice Chat**  
   Add a `VoIP` component.
 
-> **Note**: these components can be anywhere inside your `GltfObject` hierarchy. They can also all be on the same GameObject.
+:::tip Scene structure
+These components can be anywhere inside your hierarchy. They can also all be on the same GameObject, which is a common pattern.
+:::
 
  > **[Castle Builder](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
  > — #madebyneedle 💚  
    
 ### Special AR Components
 
-- **Define the AR Session Root and Scale**  
-  Add a `WebARSessionRoot` component to your root object.  
-  Here you can define the user scale to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
+1. **Define the AR Session root and scale**  
+  Add a `WebARSessionRoot` component to your root object. For AR experiences, often you want to scale the scene to fit the real world.  
+2. Define the **user scale** to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
 
 ### Controlling object display for XR
 
-- **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**  
-  Add a `XR Flag` component to the object you want to control. Change options on the dropdown as needed.  
-  
-  Common usecases are
-  - hiding floors when entering AR
-  - hiding Avatar parts in First or Third Person views (e.g. first-person head shouldn't be visible).
+1. **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**  
+  Add a `XR Flag` component to the object you want to control.
+
+2. **Change options on the dropdown** as needed.   
+    Common usecases are
+    - hiding floors when entering AR
+    - hiding Avatar parts in First or Third Person views. For example, in first-person view a person shouldn't be able to see their own head model.
 
 ### Travelling between VR worlds
 
@@ -170,30 +191,16 @@ It's worth noting that the overlay element [will be always displayed fullscreen 
 
 <sample src="https://engine.needle.tools/samples-uploads/ar-overlay/"/>
 
-## Image Tracking
-
-Needle Engine supports **WebXR ImageTracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr))   
-*Note*: While WebXR ImageTracking is still in "draft" phase ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md))   
-you need to follow these steps to enable WebXR ImageTracking on Android devices:
-
-- Enable `WebXR Incubations` in chrome
-- Add the `WebXRImageTracking` component
-
-You can find additional documentation in the [Everywhere Actions](everywhere-actions.md#image-tracking) section
-
-Without that spec, one can still request camera image access and run custom algorithms to determine device pose.  
-Libraries to add image tracking:  
-   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
-   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
-   - [Experimental AR.js integration with Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
-
-
 
 ## Augmented Reality and WebXR on iOS
 
 Augmented Reality experiences on iOS are somewhat limited, due to Apple currently not supporting WebXR on iOS devices.  
 
 Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill that gap, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information. 
+
+:::tip Limited custom code support in QuickLook
+Apple has strong limitations in place what kind of content can be used in QuickLook. Thus, custom script components can not automatically be converted for use in AR on iOS. You can add support for some sorts of custom code using our Everywhere Actions API.
+:::
 
 ### Musical Instrument – WebXR and QuickLook support
 
@@ -222,6 +229,29 @@ There's also other options for guiding iOS users to even more capable interactiv
      - [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
    - [8th Wall](https://www.8thwall.com/) (commercial)
+
+## Image Tracking
+
+Needle Engine supports **WebXR Image Tracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) on Android and **QuickLook Image Tracking** on iOS.
+
+You can find additional documentation in the [Everywhere Actions](everywhere-actions.md#image-tracking) section.
+
+:::warning WebXR Image Tracking is still in a "draft" phase and not generally available
+So far, browser vendors haven't been able to agree on the final image tracking API for WebXR. As long as the specification is in "draft" phase ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
+you and your app's users need to follow these steps to enable WebXR ImageTracking on Android devices:
+1. Visit ``chrome://flags`` on your Android Chrome browser
+2. Find and enable the `WebXR Incubations` option
+:::
+
+
+Without that spec, one can still request camera image access and run custom algorithms to determine device pose. The downside is that users will have to accept additional permissions like camera access, and the tracking will not be as accurate as with the native capabilities of the device.
+
+Here are some libraries to add image tracking based on camera access and local computer vision algorithms:  
+   - [Experimental AR.js integration with Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
+   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
+
+
 
 ## References
 

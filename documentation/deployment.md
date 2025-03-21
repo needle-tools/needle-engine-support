@@ -8,7 +8,7 @@ Deployment is the process of making your application available to the public on 
 
 ## Available Deployment Targets 
 
-- [Needle Cloud](./cloud/)  
+- [Needle Cloud](./cloud/#deploy-from-unity) 
   Great for spatial web apps and sharing assets.
 - [Glitch](#deploy-to-glitch)
   Great for experimentation and hacking on server-side code.  

@@ -403,6 +403,18 @@ footer.page-meta {
   */
 }
 
+.theme-default-content kbd {
+  color: var(--vp-c-text);
+  padding: 0.2em 0.4em;
+  border-radius: 1em;
+  font-family: inherit;
+  letter-spacing: initial;
+  font-size: initial;
+  white-space: nowrap;
+  font-weight: 600;
+  border-style: dashed;
+}
+
 .vp-navbar-dropdown-subitem {
   font-size: 1em;
   line-height: 1.8em;

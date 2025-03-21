@@ -9,6 +9,7 @@
 		}
 	],
 	"settings": {
+		"window.title": "Needle Docs",
 		"files.exclude": {
 			"node_modules": false,
 			"**/dist": false,
