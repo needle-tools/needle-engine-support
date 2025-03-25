@@ -22,7 +22,9 @@
   --content-width: 850px;
   --homepage-width: 100%;
 
-  --c-text-quote: rgb(130, 122, 165);
+  --c-quote-background: rgba(255, 255, 255, 1.0);
+  --c-quote-text: rgb(45, 55, 55);
+  --c-quote-light: rgba(50, 50, 50, 0.2);
   --c-tip: #b5d935 !important;
   --c-details-bg: rgba(125,125,125,.05);
   // --c-bg-light: rgba(125,125,125,.12);
@@ -55,12 +57,15 @@
   --vp-c-accent: #b7aaf0; 
   --c-text-accent: #b7aaf0;
 
-
   --vp-copy-code-c-text: #000;
   --vp-copy-code-c-bg: #000;
   --copy-code-c-hover: #000;
   --code-c-text: #fff;
   --copy-code-c-text: #fff;
+
+  --c-quote-background: rgb(56, 56, 56);
+  --c-quote-text: rgb(229, 229, 229);
+  --c-quote-light: rgba(255, 255, 255, 0.2);
 }
 
 html.dark a {

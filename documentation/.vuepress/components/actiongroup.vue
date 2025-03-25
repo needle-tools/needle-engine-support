@@ -10,8 +10,8 @@ export default {}
     flex-wrap: wrap;
 }
 
-.actiongroup>* {
-    margin: .0em .5em;
+.actiongroup > * {
+    margin: .5em .5em;
 }
 </style>
 
