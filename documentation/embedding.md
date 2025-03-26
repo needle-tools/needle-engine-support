@@ -11,7 +11,7 @@ If you want to quickly try out how projects made with Needle will look on your w
 :::: code-group
 ::: code-group-item Option 1: Embedding Needle
 ```html
-<script type="module" src="https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
 <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
 ```
 :::
@@ -136,7 +136,7 @@ When your project uses only core components and no custom scripts, you can direc
 
 1. Add the following snippet to your website, for example as "HTML Block" in your CMS:
     ```html
-    <script type="module" src="https://unpkg.com/@needle-tools/engine/dist/needle-engine.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
     <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb" background-blurriness="0.8"></needle-engine>
     ```
 2. Upload the `assets/` folder from your Web Project to your web hoster. Depending on your project settings, this folder contains one or more `.glb` files and any number of other files like audio, video, skybox and more. 
