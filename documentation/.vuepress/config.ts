@@ -2,7 +2,6 @@ import { App, defineUserConfig } from 'vuepress'
 import { defaultTheme } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { path } from '@vuepress/utils'
-// import { searchPlugin } from '@vuepress/plugin-search'
 // import * as mermaidPlugin from "vuepress-plugin-mermaidjs";
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
@@ -118,6 +117,7 @@ export default defineUserConfig({
             apiKey: "389be16f732f82c611e1b0f22c031dff",
             indexName: "engine-needle",
             injectStyles: true,
+            // initialQuery: "scripting",
         }),
         sitemapPlugin({
             hostname: _url,
