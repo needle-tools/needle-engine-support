@@ -85,6 +85,7 @@ jobs:
           username: f0152dc5
           password: ${{ secrets.FTP_PASSWORD }}
           log-level: verbose
+          protocol: ftps
 
 
 
