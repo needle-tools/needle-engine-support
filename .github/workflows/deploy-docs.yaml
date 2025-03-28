@@ -8,6 +8,8 @@ on:
     types: [updated_docs]
   discussion:
     types: [created, edited, deleted, labeled, unlabeled, category_changed]
+  schedule:
+    - cron: '0 22 * * *' # every day at 10 PM UTC
 
 jobs: 
 
