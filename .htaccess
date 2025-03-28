@@ -1,0 +1,13 @@
+<IfModule mod_headers.c>
+# Caching
+
+# 1 week for images, videos
+<FilesMatch "\.(ico|jpg|jpeg|gif|png|pdf|mp3|mp4)$">
+Header set Cache-Control "public, max-age=604800, no-transform"
+</FilesMatch>
+
+<FilesMatch "\.(html|htm|xml|txt|xsl)$">
+Header set Cache-Control "public, max-age=120, must-revalidate"
+</FilesMatch>
+
+</IfModule> 

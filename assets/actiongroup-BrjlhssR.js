@@ -1,0 +1,1 @@
+import{_ as t,c as e,o as s,f as c}from"./app-CKrP31eK.js";const r={},a={class:"actiongroup"};function n(o,p,_,d,f,i){return s(),e("div",a,[c(o.$slots,"default")])}const u=t(r,[["render",n]]);export{u as default};
