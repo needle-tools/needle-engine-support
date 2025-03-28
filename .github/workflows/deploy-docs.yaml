@@ -9,7 +9,7 @@ on:
   discussion:
     types: [created, edited, deleted, labeled, unlabeled, category_changed]
   schedule:
-    - cron: '0 22 * * *' # every day at 10 PM UTC
+    - cron: '0 0 * * 0' # every Sunday at midnight UTC
 
 jobs: 
 
@@ -24,6 +24,7 @@ jobs:
       (github.event_name == 'discussion' && github.event.discussion.category.name == 'Share')
 
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v2
@@ -67,6 +68,7 @@ jobs:
   upload:
     needs: docs
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - uses: actions/checkout@v3
