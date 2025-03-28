@@ -60,19 +60,19 @@ Needle Cloud is integrated into the Unity Editor. This allows you to deploy your
 
 Needle Cloud provides a command line interface (CLI) that allows you to manage your assets and deploy your applications efficiently. You can use the CLI to automate tasks and integrate Needle Cloud into your existing workflows.
 
-The CLI is available as an npm package, which means that you need to have Node.js installed on your machine. You can check if you have Node.js installed by running the following command in your terminal:
+The CLI is available as an [npm package](https://www.npmjs.com/package/needle-cloud), which means that you need to have Node.js installed on your machine. You can check if you have Node.js installed by running the following command in your terminal:
 
 ```bash
 node -v
 ```
 If you don't have Node.js installed, you can download it from the [Node.js website](https://nodejs.org/).  
 
-You can install the `needle-cloud` CLI package globally or use it via `npx`. This allows you to run the CLI commands without having to install it globally.
+You can install the `needle-cloud` CLI package globally or use it via `npx`. This allows you to run the CLI commands without having to install it globally. 
 
-1. **Use the npx command (always the latest version)**
+
+1. **Use the npx command (recommended)**
    ```bash
-   npx needle-cloud login
-   npx needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
+   npx needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
    ```
 2. **Or install needle-cloud globally**  
    A global installation allows use to use the CLI from anywhere on your system. To install the CLI globally, run the following command in your terminal: 
@@ -82,9 +82,21 @@ You can install the `needle-cloud` CLI package globally or use it via `npx`. Thi
    Now, you can use the `needle-cloud` command in your terminal:
 
    ```bash
-   needle-cloud login
-   needle-cloud deploy '/dist' --team 'My team' --project 'some-project-id'
+   needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
    ```
+
+### Automated Deployments
+To deploy from **Github Actions** or **Stackblitz** you can provide an access token as `--token <access_token>`. Access tokens can be created on [your team page](https://cloud.needle.tools/team) on Needle Cloud.
+
+### CLI Help
+Use `help` to see all available commandline options and help to individual commands.
+```bash
+# see all available options
+npx needle-cloud help
+# get help for a specific command e.g. deploy
+npx needle-cloud help deploy
+```
+
 
 ## Deployment URLs
 
