@@ -206,7 +206,7 @@ async function produceDocs(packageDir, outputDirectory) {
         categorizeByGroup: false,
         categoryOrder: ["*", "Other"],
         navigationLinks: {
-            "API": "/",
+            "API": "https://engine.needle.tools/docs/api/",
             "Docs": "https://engine.needle.tools/docs/",
             "Samples": "https://engine.needle.tools/samples/",
             "Pricing": "https://needle.tools/pricing/",
