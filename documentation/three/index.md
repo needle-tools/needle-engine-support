@@ -74,7 +74,8 @@ Many examples can be found on [StackBlitz](https://stackblitz.com/@marwie/collec
 
 ## Rapid Prototyping on StackBlitz
 
-For quick experiments, we provide a convenient link to create a new project ready to start: [engine.needle.tools/new](https://engine.needle.tools/new)
+For quick experiments, we provide a convenient link to create a new project ready to start: [engine.needle.tools/new](https://engine.needle.tools/new)  
+A large collection of examples are also available in our [Needle Engine Stackblitz Collection](https://stackblitz.com/@marwie/collections/needle-engine) 
 
 ## Local Development with VS Code
 
