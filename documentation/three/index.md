@@ -21,11 +21,12 @@ For complex 3D scenes and fast iteration, we recommend using Needle Engine with 
 :::
 
 ### Quick Start
-:::: code-group
-::: code-group-item index.html
+::: code-tabs
+@tab index.html
 @[code html](@code/basic-webcomponent.html)
-:::
-::: code-group-item Result
+
+@tab Result
+```html
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
     width: 100%; 
     aspect-ratio: 16/9; 
@@ -35,8 +36,8 @@ For complex 3D scenes and fast iteration, we recommend using Needle Engine with 
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
+```
 :::
-::::
 [Open this example on Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 

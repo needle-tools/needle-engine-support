@@ -61,8 +61,8 @@ If you want to add scripts to any NpmDef file you can just create them - each Np
 For C# fields to be correctly generated it is currently important that you explictly declare a Typescript type. For example ``myField : number = 5``
 
 You can switch between **Typescript** input and generated **C#** stub components using the tabs below
-:::: code-group
-::: code-group-item Typescript
+::: code-tabs
+@tab Typescript
 ```ts twoslash
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
@@ -86,8 +86,7 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-:::
-::: code-group-item Generated C#
+@tab Generated C#
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -108,8 +107,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-:::
-::: code-group-item Extending Generated C#
+@tab Extending Generated C#
 ```csharp
 using UnityEditor;
 
@@ -164,7 +162,6 @@ namespace Needle.Typescript.GeneratedComponents
 
 ```
 :::
-::::
 
 
 ### Extending generated components

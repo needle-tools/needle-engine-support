@@ -8,25 +8,23 @@ There are several ways to integrate Needle Engine with your website. Which one i
 
 If you want to quickly try out how projects made with Needle will look on your website, just add these two lines anywhere on your page for testing: 
 
-:::: code-group
-::: code-group-item Option 1: Embedding Needle
+::: code-tabs
+@tab Option 1: Embedding Needle
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
 <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
 ```
-:::
-::: code-group-item Option 2: Using an iframe
+@tab Option 2: Using an iframe
 ```html
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
 </iframe>
 ```
-:::
-::: code-group-item Resulting Website
+@tab Resulting Website
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
-::::
+:::
 
 # Ways to create web apps with Needle
 
