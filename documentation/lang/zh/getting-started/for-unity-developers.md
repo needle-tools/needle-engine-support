@@ -155,7 +155,7 @@ Transform 数据可以直接在 `GameObject` / `Object3D` 上访问。与 Unity 
 
 如果您想在 Needle Engine 中访问世界坐标，我们提供了实用方法，您可以用于您的对象。调用 `getWorldPosition(yourObject)` 来计算世界位置。旋转/四元数和缩放也存在类似的方法。要访问这些方法，只需像这样从 Needle Engine 导入它们 `import { getWorldPosition } from "@needle.tools/engine"`
 
-请注意，像 `getWorldPosition`、`getWorldRotation`、`getWorldScale` 这些实用方法内部有一个 Vector3 实例缓冲区，并且仅供本地使用。这意味着您不应该在组件中缓存它们，否则您的缓存值最终会被覆盖。但在您的函数中多次调用 `getWorldPosition` 来进行计算是安全的，无需担心重复使用同一实例。如果您不确定这意味着什么，应该查看 [Typescript Essentials 指南](./typescript-esscriptsial.md#primitive-types) 中的**原始类型**部分。
+请注意，像 `getWorldPosition`、`getWorldRotation`、`getWorldScale` 这些实用方法内部有一个 Vector3 实例缓冲区，并且仅供本地使用。这意味着您不应该在组件中缓存它们，否则您的缓存值最终会被覆盖。但在您的函数中多次调用 `getWorldPosition` 来进行计算是安全的，无需担心重复使用同一实例。如果您不确定这意味着什么，应该查看 [Typescript Essentials 指南](./typescript-essentials.md#primitive-types) 中的**原始类型**部分。
 
 ## 时间
 使用 `this.context.time` 来获取时间数据：
@@ -410,7 +410,7 @@ export class TweenRotation extends Behaviour {
 # 学习更多
 
 - [Needle Engine 中的脚本编写](../scripting)
-- [Typescript Essentials](./typescript-esscriptsial.md)
+- [Typescript Essentials](./typescript-essentials.md)
 - [组件参考](../component-reference.md)
 
 页面自动翻译使用 AI

@@ -1,4 +1,4 @@
-import { App, defineUserConfig, SiteLocaleConfig } from 'vuepress'
+import { App, defineUserConfig, LocaleConfig, SiteLocaleConfig } from 'vuepress'
 import { defaultTheme, DefaultThemeOptions, NavbarGroupOptions, NavbarLinkOptions, NavItemOptions } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { path } from '@vuepress/utils'
@@ -25,6 +25,7 @@ import { modifyHtmlMeta } from './plugins/html-meta/index'
 import { existsSync } from 'fs'
 
 import { Element } from 'hast'
+import { SiteLocaleData } from 'vuepress/shared'
 
 dotenv.config()
 
@@ -458,24 +459,29 @@ const defaultThemeOpts: DefaultThemeOptions = {
     },
 };
 
-const siteLocaleOptions: SiteLocaleConfig = {
+const siteLocaleOptions: SiteLocaleConfig & LocaleConfig<{ selectLanguageName: string }> = {
     '/': {
         lang: 'en-US',
+        selectLanguageName: 'English',
     },
     "/lang/de/": {
-        lang: 'Deutsch',
+        lang: 'de-DE',
+        selectLanguageName: "Deutsch",
         title: "Needle Engine Dokumentation",
     },
     "/lang/vn/": {
-        lang: 'Vietnamese',
+        lang: 'vn-VN',
+        selectLanguageName: "Tiếng Việt",
         title: "Tài liệu Needle Engine",
     },
     "/lang/zh/": {
-        lang: 'Chinese',
+        lang: 'zh-CN',
+        selectLanguageName: "简体中文",
         title: "Needle Engine 文档",
     },
     "/lang/es/": {
-        lang: 'Spanish',
+        lang: 'es-ES',
+        selectLanguageName: "Español",
         title: "Documentación de Needle Engine",
     },
 };
@@ -485,7 +491,9 @@ const rootLanguageDirectory = path.resolve(process.cwd(), "./documentation");
 if (existsSync(rootLanguageDirectory)) {
     for (const key of Object.keys(siteLocaleOptions)) {
         if (!defaultThemeOpts.locales) defaultThemeOpts.locales = {};
-        if (!defaultThemeOpts.locales[key]) defaultThemeOpts.locales[key] = {};
+        if (!defaultThemeOpts.locales[key]) defaultThemeOpts.locales[key] = {
+            selectLanguageName: siteLocaleOptions[key].selectLanguageName,
+        };
         const baseUrl = key.endsWith("/") ? key.substring(0, key.length - 1) : key;
         const navigation = defaultThemeOpts.navbar;
         if (navigation) {
@@ -631,20 +639,20 @@ export default defineUserConfig({
             return {
                 name: "kill-broken-pages",
                 onInitialized: async (app) => {
-                    for (const page of app.pages) {
-                        if (!page.filePathRelative) {
-                            // This one is allowed – only one that is expected to come from a virtual page
-                            if (page.path === "/404.html") continue;
-                            console.error("Broken page", page.path);
-                        }
-                        const nonBrokenPages = app.pages.filter(x => x.filePathRelative);
-                        const nonBrokenLinks = nonBrokenPages.map(x => x.filePathRelative);
-                        let allLinks = app.pages.flatMap(x => x.links).map(x => x.relative);
-                        allLinks = allLinks.map(x => x.endsWith("/") ? x + "index.md" : x);
-                        const missingLinks = allLinks.filter(x => !nonBrokenLinks.includes(x));
-                        if (missingLinks.length > 0) {
-                            console.error("Missing Links!", missingLinks); //, allLinks, nonBrokenLinks);
-                        }
+                    // for (const page of app.pages) {
+                    //     if (!page.filePathRelative) {
+                    //         // This one is allowed – only one that is expected to come from a virtual page
+                    //         if (page.path === "/404.html") continue;
+                    //         console.error("Broken page", page.path);
+                    //     }
+                    // }
+                    const nonBrokenPages = app.pages.filter(x => x.filePathRelative);
+                    const nonBrokenLinks = nonBrokenPages.map(x => x.filePathRelative);
+                    let allLinks = app.pages.flatMap(x => x.links).map(x => x.relative);
+                    allLinks = allLinks.map(x => x.endsWith("/") ? x + "index.md" : x);
+                    const missingLinks = allLinks.filter(x => !nonBrokenLinks.includes(x));
+                    if (missingLinks.length > 0) {
+                        console.error("Missing Links found:", missingLinks); //, allLinks, nonBrokenLinks);
                     }
                     /*
                     console.log("app", app.pages.map(x => {
