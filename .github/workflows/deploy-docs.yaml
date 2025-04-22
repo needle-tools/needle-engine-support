@@ -114,15 +114,14 @@ jobs:
     needs: upload
     runs-on: ubuntu-latest
     if: |
-      github.event_name == 'push' ||
-      github.event_name == 'repository_dispatch'
-      && failure()
+      failure() &&
+      (github.event_name == 'push' || github.event_name == 'repository_dispatch')
     steps:
       - uses: tsickert/discord-webhook@v5.3.0
         with:
           webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
           username: "Deploy Docs (Error) 🤖"
-          content: "Docs have failed to update → <https://engine.needle.tools/docs/>\n`${{ github.event.head_commit.message }}${{github.event.client_payload.reason}}`"
+          content: "Docs have **failed** to update:\n<https://github.com/needle-tools/needle-engine-support/actions/runs/${{ github.run_id }}>\n`${{ github.event.head_commit.message }}${{github.event.client_payload.reason}}`"
 
 
   notify_discord_by_contribution:
