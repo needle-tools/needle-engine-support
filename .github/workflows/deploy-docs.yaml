@@ -50,28 +50,7 @@ jobs:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # please check out the docs of the workflow for more details
-      # @see https://github.com/crazy-max/ghaction-github-pages
-      # - name: Deploy github pages
-      #   uses: crazy-max/ghaction-github-pages@v2
-      #   with:
-      #     # deploy to gh-pages branch
-      #     target_branch: gh_pages
-      #     # deploy the default output dir of VuePress
-      #     build_dir: dist
-      #   env:
-      #     # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
-      #     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      # for Testing, can be removed
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: docs
-          path: dist
-          retention-days: 3
-          overwrite: true
-
+      # deploy to FTP
       - name: Deploy to FTP
         run: npm run docs:deploy
         env:
@@ -82,38 +61,6 @@ jobs:
           FTP_SERVER_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
     
-
-  # upload:
-  #   needs: docs
-  #   runs-on: ubuntu-latest
-  #   timeout-minutes: 15
-
-  #   steps:
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         # fetch all commits to get last updated time or other git log info
-  #         fetch-depth: 0
-
-  #     # checkout branch
-  #     - uses: actions/checkout@v3
-  #       with:
-  #         ref: gh_pages
-
-  #     - name: Use Node.js 22
-  #       uses: actions/setup-node@v4
-  #       with:
-  #         node-version: '22'
-      
-  #     # deploy to ftp
-  #     - name: 📂 Deploy to ftp
-  #       uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-  #       with:
-  #         server: ${{ secrets.FTP_SERVER }}
-  #         username: f0152dc5
-  #         password: ${{ secrets.FTP_PASSWORD }}
-  #         protocol: ftps
-
-
   notify_discord:
     needs: docs
     runs-on: ubuntu-latest
