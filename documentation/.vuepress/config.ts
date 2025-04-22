@@ -464,6 +464,21 @@ const siteLocaleOptions: SiteLocaleConfig & LocaleConfig<{ selectLanguageName: s
         lang: 'en-US',
         selectLanguageName: 'English',
     },
+    "/lang/zh/": {
+        lang: 'zh-CN',
+        selectLanguageName: "简体中文",
+        title: "Needle Engine 文档",
+    },
+    "/lang/es/": {
+        lang: 'es-ES',
+        selectLanguageName: "Español",
+        title: "Documentación de Needle Engine",
+    },
+    "/lang/fr/": {
+        lang: 'fr-FR',
+        selectLanguageName: "Français",
+        title: "Documentation de Needle Engine",
+    },
     "/lang/de/": {
         lang: 'de-DE',
         selectLanguageName: "Deutsch",
@@ -474,15 +489,10 @@ const siteLocaleOptions: SiteLocaleConfig & LocaleConfig<{ selectLanguageName: s
         selectLanguageName: "Tiếng Việt",
         title: "Tài liệu Needle Engine",
     },
-    "/lang/zh/": {
-        lang: 'zh-CN',
-        selectLanguageName: "简体中文",
-        title: "Needle Engine 文档",
-    },
-    "/lang/es/": {
-        lang: 'es-ES',
-        selectLanguageName: "Español",
-        title: "Documentación de Needle Engine",
+    "/lang/hi/": {
+        lang: 'hi-IN',
+        selectLanguageName: "हिन्दी",
+        title: "Needle Engine दस्तावेज़",
     },
 };
 
@@ -736,6 +746,7 @@ export default defineUserConfig({
             // https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers
             format: (link) => cleanHeader(link),
         },
+        
     },
     bundler: viteBundler(),
     theme: defaultTheme(defaultThemeOpts),
