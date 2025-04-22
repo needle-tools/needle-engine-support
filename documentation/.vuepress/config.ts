@@ -475,10 +475,25 @@ const siteLocaleOptions: SiteLocaleConfig & LocaleConfig<{ selectLanguageName: s
         selectLanguageName: "Español",
         title: "Documentación de Needle Engine",
     },
+    "/lang/pt/": {
+        lang: 'pt-BR',
+        selectLanguageName: "Português",
+        title: "Documentação do Needle Engine",
+    },
     "/lang/fr/": {
         lang: 'fr-FR',
         selectLanguageName: "Français",
         title: "Documentation de Needle Engine",
+    },
+    "/lang/hi/": {
+        lang: 'hi-IN',
+        selectLanguageName: "हिन्दी",
+        title: "Needle Engine दस्तावेज़",
+    },
+    "/lang/ja/": {
+        lang: 'ja-JP',
+        selectLanguageName: "日本語",
+        title: "Needle Engine ドキュメント",
     },
     "/lang/de/": {
         lang: 'de-DE',
@@ -489,11 +504,6 @@ const siteLocaleOptions: SiteLocaleConfig & LocaleConfig<{ selectLanguageName: s
         lang: 'vn-VN',
         selectLanguageName: "Tiếng Việt",
         title: "Tài liệu Needle Engine",
-    },
-    "/lang/hi/": {
-        lang: 'hi-IN',
-        selectLanguageName: "हिन्दी",
-        title: "Needle Engine दस्तावेज़",
     },
 };
 
