@@ -117,7 +117,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     // console.log("INSERT META", description);
                     frontmatter.head.push(['meta', { name: 'og:description', content: description }]);
                 }
-                
+
                 if (process.env.CI) {
                     await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.dataFilePath);
                 }
@@ -231,13 +231,14 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
         description = " ";
     }
 
+    let cmd = "";
     try {
         const urlBase = "https://engine.needle.tools/docs";
         const targetPathRel = ".preview/" + title.toLowerCase() + ".png";
         const targetPath = process.cwd() + "/documentation/.vuepress/public/" + targetPathRel;
         const fullUrl = urlBase + "/" + targetPathRel;
         const gradientFilePath = process.cwd() + "/assets/gradient.png";
-        const cmd = "npm run tool:generate-unfurl-image -- --title \"" + title + "\" --description \"" + description + "\" --backgroundImage \"" + gradientFilePath + "\" --targetPath \"" + targetPath + "\"";
+        cmd = "npm run tool:generate-unfurl-image -- --title \"" + title + "\" --description \"" + description + "\" --backgroundImage \"" + gradientFilePath + "\" --targetPath \"" + targetPath + "\"";
         console.log("RUN", cmd, "\nat", toolPath);
         execSync(cmd, { cwd: toolPath, stdio: 'inherit' });
         ogImage.content = fullUrl;
@@ -245,6 +246,6 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
         return fullUrl;
     }
     catch (e) {
-        console.error("Could not generate og image", e, cmd);
+        console.error("Could not generate og image with command " + cmd, e);
     }
 }
