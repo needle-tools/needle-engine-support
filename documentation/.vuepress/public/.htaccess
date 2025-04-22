@@ -6,8 +6,16 @@
 Header set Cache-Control "public, max-age=604800, no-transform"
 </FilesMatch>
 
-<FilesMatch "\.(html|htm|xml|txt|xsl)$">
+<FilesMatch "\.(html|htm|xml|txt|xsl|md)$">
 Header set Cache-Control "public, max-age=120, must-revalidate"
+</FilesMatch>
+
+<FilesMatch "\.(html|html)">
+Header set Content-Type "text/html; charset=UTF-8"
+</FilesMatch>
+
+<FilesMatch "\.(md)$">
+Header set Content-Type "text/markdown; charset=UTF-8"
 </FilesMatch>
 
 </IfModule> 
