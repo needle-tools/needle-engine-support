@@ -12,7 +12,7 @@ dotenv.config();
  */
 
 /** 
- * @typedef {{filepath:string, relpath:string}} LocalFile
+ * @typedef {{filename:string, filepath:string, relpath:string}} LocalFile
  */
 
 translateDocumentation();
@@ -33,6 +33,8 @@ export async function translateDocumentation() {
         "es-ES": "es", // Spanish
         "fr-FR": "fr", // French
         "hi-IN": "hi", // Hindi
+        "ja-JP": "ja", // Japanese
+        "po-PT": "pt", // Portuguese
     }
 
     if (!process.env.GOOGLE_GEMINI_API_KEY) {
@@ -52,7 +54,7 @@ export async function translateDocumentation() {
         const content = readFileSync(sourceFile.filepath, "utf-8");
         const contentMd5 = createHash("md5").update(content).digest("hex");
 
-        console.log(`Translating (${content.length} bytes)`);
+        console.log(`Translating ${sourceFile.filename} (${content.length} bytes)`);
 
         /** @type {Array<Promise<void>>} */
         const currentTranslationJobs = [];
@@ -73,7 +75,7 @@ export async function translateDocumentation() {
                 console.log("File has changed: translating again:", targetPath);
             }
             const langCode = /** @type {Language} */ (kvp[0]);
-            console.log(`Translating to ${langCode}`);
+            console.log(`Translating ${sourceFile.filename} to ${langCode}`);
             const previousTranslation = didTranslateBefore ? readFileSync(targetPath, "utf-8") : null;
             const job = getTranslation(model, content, previousTranslation, langCode)
                 .catch(err => {
@@ -131,7 +133,7 @@ async function getMarkdownFiles(dir, res, currentRelPath) {
                 continue;
             }
             if (item.endsWith(".md")) {
-                res.push({ filepath: itemPath, relpath: relpath });
+                res.push({ filename: item, filepath: itemPath, relpath: relpath });
             }
         }
     }
