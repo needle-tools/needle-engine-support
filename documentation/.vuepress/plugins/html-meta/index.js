@@ -119,7 +119,8 @@ export const modifyHtmlMeta = (args, ctx) => {
                 }
 
                 if (process.env.CI) {
-                    await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.path);
+                    ogImageValue.content = "https://cdn.needle.tools/static/branding/logo_needle.png";
+                    // await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.path);
                 }
             }
 
