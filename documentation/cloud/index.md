@@ -86,7 +86,7 @@ You can install the `needle-cloud` CLI package globally or use it via `npx`. Thi
    ```
 
 ### Automated Deployments
-To deploy from **Github Actions** or **Stackblitz** you can provide an access token as `--token <access_token>`. Access tokens can be created on [your team page](https://cloud.needle.tools/team) on Needle Cloud. Make sure to create your token with `read/write` permissions.     
+To deploy from **Github Actions** or **Stackblitz** you can provide an access token as `--token <access_token>`. Access tokens can be created on [your team page](https://cloud.needle.tools/team) on Needle Cloud. Make sure to create your token with `read/write` permissions.      
 
 Use the [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud) to deploy an update from Github (e.g. every time when you push to the repository)
 
