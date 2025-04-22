@@ -17,7 +17,7 @@ async function runUpload() {
     const user = process.env.FTP_SERVER_USERNAME;
     const password = process.env.FTP_SERVER_PASSWORD;
     if (!server || !user || !password) {
-        console.error(`Missing FTP server credentials. Please set FTP_SERVER_NAME, FTP_SERVER_USERNAME, and FTP_SERVER_PASSWORD in .env file. Variables: SERVER? ${!!server}, USER? ${!!user}, PASSWORD? ${!!password}`);
+        throw new Error(`Missing FTP server credentials. Please set FTP_SERVER_NAME, FTP_SERVER_USERNAME, and FTP_SERVER_PASSWORD in .env file. Variables: SERVER? ${!!server}, USER? ${!!user}, PASSWORD? ${!!password}`);
         return;
     }
 
