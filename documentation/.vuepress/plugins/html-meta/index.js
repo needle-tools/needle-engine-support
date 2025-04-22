@@ -119,7 +119,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                 }
 
                 if (process.env.CI) {
-                    await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.dataFilePath);
+                    await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.path);
                 }
             }
 
@@ -234,7 +234,19 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
     let cmd = "";
     try {
         const urlBase = "https://engine.needle.tools/docs";
-        const targetPathRel = ".preview/" + title.toLowerCase() + ".png";
+
+
+        let lang = "";
+        const separator = "lang/";
+        const languageCodeIndex = pageFilePath.indexOf(separator);
+        if (languageCodeIndex > 0) {
+            const languageCodeEndIndex = pageFilePath.indexOf("/", languageCodeIndex + separator.length);
+            const languageCode = pageFilePath.substring(languageCodeIndex + separator.length, languageCodeEndIndex);
+            lang = "_" + languageCode;
+        }
+
+        const targetPathRel = `.preview/${title.toLowerCase()}${lang}.png`;
+        // console.log(targetPathRel);
         const targetPath = process.cwd() + "/documentation/.vuepress/public/" + targetPathRel;
         const fullUrl = urlBase + "/" + targetPathRel;
         const gradientFilePath = process.cwd() + "/assets/gradient.png";
@@ -246,6 +258,6 @@ async function generateOgImageUrl(ogImage, title, description, pageFilePath) {
         return fullUrl;
     }
     catch (e) {
-        console.error("Could not generate og image with command " + cmd, e);
+        console.error("Could not generate og image with command " + cmd, e.message);
     }
 }
