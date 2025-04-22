@@ -641,7 +641,7 @@ export default defineUserConfig({
         includeSampleCode,
         generateSharedCode,
         modifyHtmlMeta,
-        copyMarkdown,
+        // copyMarkdown,
         //@ts-ignore
         googleAnalyticsPlugin({
             id: "G-V2Q445L3XQ",
