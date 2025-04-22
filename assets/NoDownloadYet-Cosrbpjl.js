@@ -1,0 +1,1 @@
+import{_ as a,f as t,g as o}from"./app-9T6lAodh.js";const s={methods:{checkQueryParams:n}};function n(){return typeof window>"u"?!1:new URLSearchParams(window.location.search).has("dl")}function c(e,d,u,f,m,r){return r.checkQueryParams()?o("",!0):t(e.$slots,"default",{key:0})}const i=a(s,[["render",c]]);export{i as default};

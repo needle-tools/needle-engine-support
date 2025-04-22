@@ -1,0 +1,1 @@
+import{_ as t}from"./app-9T6lAodh.js";console.log("ServiceWorker:",navigator.serviceWorker);var o;(o=navigator.serviceWorker)==null||o.getRegistrations().then(r=>{for(const e of r)console.log("ServiceWorker unregistered:",e),e.unregister()});const s={};function n(r,e,c,i,a,g){return null}const f=t(s,[["render",n]]);export{f as default};

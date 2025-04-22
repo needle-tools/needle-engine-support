@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <!-- Optional import map if you want to add additional JS modules and let's use use `import { Behaviour } from "@needle-tools/engine"` -->
+    <script type="importmap">
+        {
+          "imports": {
+            "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
+          }
+        }
+    </script>
+    <!-- Import the Needle Engine module -->
+    <script 
+        type="module" 
+        src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
+    </script>
+</head>
+<body style="margin:0; padding:0;">
+    <!-- 
+    Add the <needle-engine> HTML component to your page, and specify a source file.
+    This .glb file contains interactions, sounds, a skybox, and animations,
+    because it was exported from our Unity integration.
+    -->
+    <needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-Q0gIz/file" background-blurriness="0.8"></needle-engine>
+</body>
+</html>
