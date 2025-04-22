@@ -39,7 +39,7 @@ const _previewImg = "preview.jpeg";
 
 function renderMarkdown(content) {
     try {
-        content = content.replace(/\{@link\s+([^ ]+)(?:\s+([^\}]*))?\}/g, function(match, p1, p2) {
+        content = content.replace(/\{@link\s+([^ ]+)(?:\s+([^\}]*))?\}/g, function (match, p1, p2) {
             if (!p1 && !p2) return match;
 
             // console.log("MATCH", content, match, p1, p2);
@@ -55,7 +55,7 @@ function renderMarkdown(content) {
         });
 
         // TODO support inline better, right now becomes a paragraph
-        
+
         const processed = fromMarkdown(content);
         const hast = toHast(processed,
             // Could turn the code samples into nice formatted code again here... inception
@@ -108,6 +108,11 @@ export default defineUserConfig({
         // exclude pages that start with _ and end with .md
         '!**/_*.md',
     ],
+    locales: {
+        '/': {
+            lang: 'en-US',
+        },
+    },
     plugins: [
         // searchPlugin({
         // }),
@@ -122,6 +127,7 @@ export default defineUserConfig({
         sitemapPlugin({
             hostname: _url,
             devServer: true,
+            changefreq: "weekly",
             excludePaths: [
                 "/meta-test.html",
                 "/backlog.html",
@@ -231,7 +237,7 @@ export default defineUserConfig({
 
         // stackblitz
         ['script', { src: 'https://unpkg.com/@stackblitz/sdk/bundles/sdk.umd.js' }],
-        ['script', { src: 'https://analytics.needle.tools/js/script.tagged-events.outbound-links.js', defer: "", "data-domain": "docs.needle.tools" } ]
+        ['script', { src: 'https://analytics.needle.tools/js/script.tagged-events.outbound-links.js', defer: "", "data-domain": "docs.needle.tools" }]
 
     ],
     markdown: {
@@ -406,7 +412,7 @@ export default defineUserConfig({
                                 text: "Community Contributions",
                                 link: "/community/contributions"
                             },
-                            "/modules", 
+                            "/modules",
                         ]
                     },
                     {
@@ -427,6 +433,10 @@ export default defineUserConfig({
                 ]
             },
             {
+                text: "Help",
+                link: "/support",
+            },
+            {
                 text: 'Samples',
                 target: "_blank",
                 link: 'https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav',
@@ -435,10 +445,6 @@ export default defineUserConfig({
                 text: 'Pricing',
                 target: "_blank",
                 link: "https://needle.tools/pricing/?utm_source=needle_docs&utm_content=headernav"
-            },
-            {
-                text: "Get Help",
-                link: "/support",
             },
             {
                 text: 'Needle',
