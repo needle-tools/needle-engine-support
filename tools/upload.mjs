@@ -14,15 +14,15 @@ runUpload();
 async function runUpload() {
 
     const server = process.env.FTP_SERVER_NAME;
-    const user = process.env.FTP_SERVER_USER;
+    const user = process.env.FTP_SERVER_USERNAME;
     const password = process.env.FTP_SERVER_PASSWORD;
     if (!server || !user || !password) {
-        console.error("FTP_SERVER_NAME, FTP_SERVER_USER, FTP_SERVER_PASSWORD must be set");
+        console.error(`Missing FTP server credentials. Please set FTP_SERVER_NAME, FTP_SERVER_USERNAME, and FTP_SERVER_PASSWORD in .env file. Variables: SERVER? ${!!server}, USER? ${!!user}, PASSWORD? ${!!password}`);
         return;
     }
+
     // Maximum number of connections is 10 - so we use 8 to be safe
     const parallelUploads = parseInt(process.env.FTP_PARALLEL_UPLOADS || "8");
-
 
     const directory = path.resolve("dist");
     if (!existsSync(directory)) {
