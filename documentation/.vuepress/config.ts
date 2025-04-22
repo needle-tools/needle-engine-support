@@ -26,6 +26,7 @@ import { existsSync } from 'fs'
 
 import { Element } from 'hast'
 import { SiteLocaleData } from 'vuepress/shared'
+import copyMarkdown from './plugins/copy-markdown'
 
 dotenv.config()
 
@@ -640,6 +641,7 @@ export default defineUserConfig({
         includeSampleCode,
         generateSharedCode,
         modifyHtmlMeta,
+        copyMarkdown,
         //@ts-ignore
         googleAnalyticsPlugin({
             id: "G-V2Q445L3XQ",
