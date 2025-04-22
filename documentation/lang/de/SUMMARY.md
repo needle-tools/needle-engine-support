@@ -9,10 +9,10 @@
     * [Bereitstellung](./deployment.md)
 
 # Beispiele
-* [Beispiele](./samples-and-modules.md)
+* [Beispiele und Beispiele](./samples-and-modules.md)
     * [Tipps für Unity-Entwickler](./for-unity-developers.md)
     * [Showcase](./examples.md)
-    * [Projektbeispiele und Module](./samples-and-modules.md)
+    * [Projektbeispiele, Beispiele und Module](./samples-and-modules.md)
     * [FAQ](./faq.md)
 
 # Tiefer eintauchen 🐠
@@ -20,5 +20,6 @@
     * [Technische Übersicht](./technical-overview.md)
     * [Komponentenreferenz](./component-reference.md)
     * [Debugging](./debugging.md)
+
 
 Seite automatisch von KI übersetzt

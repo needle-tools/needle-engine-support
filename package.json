@@ -9,6 +9,7 @@
     "docs:build": "vuepress build documentation",
     "docs:build-api": "node tools/build_api_docs.mjs",
     "docs:deploy": "node tools/upload.mjs",
+    "docs:translate": "node tools/translate.mjs",
     "docs:dev-build-api": "node tools/build_api_docs.mjs -- --dev",
     "docs:dev-api": "npm run docs:dev-build-api && npx serve api/@needle-tools/engine",
     "docs:build-examples": "node tools/build_examples.mjs",
@@ -17,6 +18,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.24.0",
     "basic-ftp": "^5.0.5",
     "diff2html": "^3.4.48",
     "dotenv": "^16.0.3",

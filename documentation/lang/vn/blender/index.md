@@ -8,7 +8,7 @@ editLink: true
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Logo Needle"/> +
     <img src="/blender/logo.png" style="max-height:70px;" />
 </div>
 
@@ -84,7 +84,7 @@ nhấp vào nút màu xanh lam `Run Project` để khởi động máy chủ c�
 3) `Directory` mở thư mục dự án web của bạn (là `Project Path`)
 4) Nút này xuất lại cảnh hiện tại dưới dạng glb vào dự án web cục bộ của bạn. Điều này cũng xảy ra theo mặc định khi lưu tệp blend của bạn.
 5) `Code Editor` cố gắng mở vscode workspace trong dự án web của bạn
-6) Nếu bạn làm việc với nhiều cảnh trong một tệp blend, bạn có thể cấu hình cảnh nào là cảnh Main của bạn và nên được xuất ra web. Nếu bất kỳ thành phần nào của bạn tham chiếu đến một cảnh khác, chúng cũng sẽ được xuất dưới dạng các tệp glb riêng biệt. Khi nhấp vào nút "Export", cảnh Main của bạn sẽ là cảnh được tải trong trình duyệt.
+6) Nếu bạn làm việc với nhiều cảnh trong một tệp blend, bạn có thể cấu hình cảnh nào là cảnh Main của bạn và nên được xuất ra web. Nếu bất kỳ component nào của bạn tham chiếu đến một cảnh khác, chúng cũng sẽ được xuất dưới dạng các tệp glb riêng biệt. Khi nhấp vào nút "Export", cảnh Main của bạn sẽ là cảnh được tải trong trình duyệt.
 7) Sử dụng các nút `Build: Development` hoặc `Build: Production` khi bạn muốn tải dự án web của mình lên máy chủ. Điều này sẽ đóng gói dự án web của bạn và tạo ra các tệp mà bạn có thể tải lên. Khi nhấp vào `Build: Production`, nó cũng sẽ áp dụng tối ưu hóa cho texture của bạn (chúng sẽ được nén cho web)
 8) Mở tài liệu
 
@@ -301,4 +301,5 @@ Nếu cần, trong một số trường hợp nhất định, chúng tôi cũng 
 - [Scripting cho người mới bắt đầu: Các yếu tố cần thiết của Typescript](../getting-started/typescript-essentials.md)
 - [Scripting cho người mới bắt đầu: Cách viết custom components](../scripting.md)
 
-Page automatically translated using AI
+
+Trang được dịch tự động bằng AI

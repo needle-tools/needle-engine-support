@@ -86,7 +86,7 @@ klicken Sie auf die blaue Schaltfläche `Run Project`, um den lokalen Server zu 
 3) `Directory` öffnet das Verzeichnis Ihres Webprojekts (den `Project Path`).
 4) Diese Schaltfläche exportiert die aktuelle Szene erneut als glb in Ihr lokales Webprojekt. Dies geschieht standardmäßig auch beim Speichern Ihrer Blend-Datei.
 5) `Code Editor` versucht, den vscode Workspace in Ihrem Webprojekt zu öffnen.
-6) Wenn Sie mit mehreren Szenen in einer Blend-Datei arbeiten, können Sie konfigurieren, welche Szene Ihre Hauptszene ist und ins Web exportiert werden soll. Wenn eine Ihrer Komponenten auf eine andere Szene verweist, werden diese ebenfalls als separate glb-Dateien exportiert. Wenn Sie auf die Schaltfläche "Export" klicken, wird Ihre Hauptszene diejenige sein, die im Browser geladen wird.
+6) Wenn Sie mit mehreren Szenen in einer Blend-Datei arbeiten, können Sie konfigurieren, welche Szene Ihre Main scene ist und ins Web exportiert werden soll. Wenn eine Ihrer Komponenten auf eine andere Szene verweist, werden diese ebenfalls als separate glb-Dateien exportiert. Wenn Sie auf die Schaltfläche "Export" klicken, wird Ihre Main scene diejenige sein, die im Browser geladen wird.
 7) Verwenden Sie die Schaltflächen `Build: Development` oder `Build: Production`, wenn Sie Ihr Webprojekt auf einen Server hochladen möchten. Dies bündelt Ihr Webprojekt und erzeugt die Dateien, die Sie hochladen können. Beim Klicken auf `Build: Production` werden auch Optimierungen auf Ihre Texturen angewendet (sie werden für das Web komprimiert).
 8) Dokumentation öffnen
 

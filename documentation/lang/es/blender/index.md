@@ -8,7 +8,7 @@ editLink: true
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/logo.png" style="max-height:70px;" title="Logotipo de Needle" alt="Logotipo de Needle"/> +
     <img src="/blender/logo.png" style="max-height:70px;" />
 </div>
 
@@ -127,7 +127,7 @@ Para casos de uso sencillos, puedes usar el componente Animation para la reprodu
 
 ### AnimatorController
 
-El animator controller se puede crear para escenarios más complejos. Funciona como una statemachine que te permite crear múltiples estados de animación en un gráfico y configurar condiciones y ajustes de interpolación para las transiciones entre ellos.
+El animator controller se puede crear para escenarios más complejos. Funciona como una máquina de estados que te permite crear múltiples estados de animación en un gráfico y configurar condiciones y ajustes de interpolación para las transiciones entre ellos.
 
 <video-embed src="/docs/blender/animatorcontroller-web.mp4" />
 *Crea y exporta [máquinas de estados de animador](#animatorcontroller) para controlar animaciones de personajes complejas.*
@@ -232,14 +232,14 @@ Asegúrate de que `@needle-tools/needle-component-compiler` 2.x esté instalado 
 
 ## Lightmapping 💡
 
-Needle incluye un plugin de lightmapping que hace que sea muy fácil hornear luces hermosas en texturas y llevarlas a la web. El plugin generará automáticamente UVs de lightmap para todos los modelos marcados para lightmapping, no es necesario crear un atlas de texturas manual. También soporta lightmapping de múltiples instancias con sus propios datos de lightmap. Para que el lightmapping funcione, necesitas al menos una luz y un objeto con `Lightmapped` activado en el panel `Needle Object`.
+Needle incluye un plugin de lightmapping que hace que sea muy fácil hornear luces hermosas en texturas y llevarlas a la web. El plugin generará automáticamente UVs de lightmap para todas las mallas marcadas para lightmapping, no es necesario crear un atlas de texturas manual. También soporta lightmapping de múltiples instancias con sus propios datos de lightmap. Para que el lightmapping funcione, necesitas al menos una luz y un objeto con `Lightmapped` activado en el panel `Needle Object`.
 
 <video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" />
 
 ::: tip
 Puedes descargar el archivo .blend del video [aquí](https://engine.needle.tools/downloads/blender/lightmaps.blend).
 :::
-Utiliza el panel Needle Object para habilitar lightmapping para un objeto mesh o luz:
+Utiliza el panel Needle Object para habilitar lightmapping para un objeto malla o luz:
 
 ![Lightmapping object](/blender/lightmapping-object.webp)
 

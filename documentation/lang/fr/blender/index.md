@@ -8,7 +8,7 @@ editLink: true
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/logo.png" style="max-height:70px;" title="Logo Needle" alt="Logo Needle"/> +
     <img src="/blender/logo.png" style="max-height:70px;" />
 </div>
 
@@ -43,7 +43,7 @@ Assurez-vous d'avoir installé <a target="_blank" href="https://www.blender.org/
 3. Recherchez "Needle" dans la barre de recherche des Add-ons et assurez-vous que `Needle Engine Exporter for Blender` est activé.
 
 
-![Settings](/blender/settings.webp)
+![Paramètres](/blender/settings.webp)
 
 ## Démarrer
 
@@ -68,7 +68,7 @@ Vous pourrez séquencer des animations, facilement appliquer des lightmaps à vo
 Commencez par créer ou ouvrir un nouveau fichier blend que vous souhaitez exporter vers le web.
 Ouvrez la fenêtre Properties et ouvrez la catégorie scene. Sélectionnez un `Project Path` dans le panneau Needle Engine. Cliquez ensuite sur `Generate Project`. Cela installera et démarrera automatiquement le serveur - une fois terminé, votre navigateur devrait s'ouvrir et la scène three.js se chargera.
 
-![Project panel](/blender/project-panel.webp)
+![Panneau Projet](/blender/project-panel.webp)
 
 Par défaut, votre scène sera automatiquement réexportée lorsque vous enregistrez le fichier blend.
 Si le serveur local est en cours d'exécution (par exemple en cliquant sur `Run Project`), le site web se rafraîchira automatiquement avec votre modèle modifié.
@@ -76,10 +76,10 @@ Si le serveur local est en cours d'exécution (par exemple en cliquant sur `Run 
 
 Lorsque votre projet web existe déjà et que vous souhaitez simplement continuer à travailler sur le site web
 cliquez sur le bouton bleu `Run Project` pour démarrer le serveur local :
-![Project panel](/blender/project-panel-2.webp)
+![Panneau Projet](/blender/project-panel-2.webp)
 
 ### Vue d'ensemble du panneau Projet
-![Project panel](/blender/project-panel-3.webp)
+![Panneau Projet](/blender/project-panel-3.webp)
 
 1) Le chemin vers votre projet web. Vous pouvez utiliser le petit bouton dossier sur la droite pour sélectionner un chemin différent.
 2) Le bouton `Run Project` apparaît lorsque le chemin du Projet pointe vers un projet web valide. Un projet web est valide s'il contient un `package.json`.
@@ -99,7 +99,7 @@ cliquez sur le bouton bleu `Run Project` pour démarrer le serveur local :
 Par défaut, la fenêtre de Blender est réglée sur `Filmic` - avec ce paramètre, vos couleurs dans Blender et dans three.js ne correspondront pas.
 Pour corriger cela, allez dans la catégorie Render de Blender et dans le panneau ColorManagement sélectionnez `View Transform` : `Standard`.
 
-![Correct color management settings](/blender/settings-color-management.webp)
+![Paramètres corrects de gestion des couleurs](/blender/settings-color-management.webp)
 
 
 ## Éclairage d'environnement
@@ -111,13 +111,13 @@ Note : Pour voir également la cubemap du skybox dans le navigateur, augmentez l
 
 Note : Alternativement, vous pouvez activer le paramètre `Scene World` dans l'onglet Viewport Shading pour utiliser la texture d'environnement attribuée dans les paramètres du monde de Blender.
 
-![Environment](/blender/environment.webp)
+![Environnement](/blender/environment.webp)
 
 <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
 
 Alternativement, si vous ne souhaitez pas voir la cubemap comme arrière-plan, ajoutez un composant Camera à votre caméra Blender et changez `clearFlags: SolidColor` - notez que les paramètres `backgroundBlurriness` et `backgroundIntensity` de la caméra annulent les paramètres de Viewport shading.
 
-![Environment Camera](/blender/environment-camera.webp)
+![Caméra Environnement](/blender/environment-camera.webp)
 
 ### Ajouter votre éclairage et skybox d'environnement HDRI / EXR personnalisés
 
@@ -128,7 +128,7 @@ Alternativement, si vous ne souhaitez pas voir la cubemap comme arrière-plan, a
 
 Pour exclure un objet de l'exportation, vous pouvez désactiver l'affichage Viewport et Render (voir l'image ci-dessous).
 
-![Exclude from export](/blender/dont-export.webp)
+![Exclure de l'exportation](/blender/dont-export.webp)
 
 
 ## Animation 🏇
@@ -150,13 +150,13 @@ L'AnimatorController peut être créé pour des scénarios plus complexes. Il fo
 
 L'éditeur AnimatorController peut être ouvert à l'aide de la liste déroulante EditorType dans le coin supérieur gauche de chaque panneau :
 
-![AnimatorController open window](/blender/animatorcontroller-open.webp)
+![Fenêtre d'ouverture de l'AnimatorController](/blender/animatorcontroller-open.webp)
 
 <video-embed limit_height max_height="188px" src="/docs/blender/animatorcontroller-create.mp4" />
 *Créer un nouvel asset d'animateur-contrôleur ☝ ou en sélectionner un parmi vos assets précédemment créés.*
 
 ##### Vue d'ensemble du graphique
-![AnimatorController overview](/blender/animatorcontroller-overview.webp)
+![Vue d'ensemble de l'AnimatorController](/blender/animatorcontroller-overview.webp)
 1) Utilisez `Shift+A` pour créer un nouvel AnimatorState.
 2) Le nœud `Parameters` sera créé une fois que vous aurez ajouté un premier nœud. Sélectionnez-le pour configurer les paramètres à utiliser dans les transitions (via le panneau Node sur le bord droit).
 3) Ceci est un AnimatorState. L'état orange est l'état de départ (il peut être modifié à l'aide du bouton `Set default state` dans le panneau Node/Properties).
@@ -166,7 +166,7 @@ L'éditeur AnimatorController peut être ouvert à l'aide de la liste déroulant
 
 Pour utiliser un AnimatorController, ajoutez un composant Animator à l'objet racine de vos animations et sélectionnez l'asset AnimatorController que vous souhaitez utiliser pour cet objet.
 
-![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)
+![Attribuer l'AnimatorController à l'animateur](/blender/animatorcontroller-assigning.webp)
 
 Vous pouvez définir les paramètres de l'Animator à partir de typescript ou, par exemple, en utilisant l'événement d'un composant Button.
 
@@ -225,16 +225,16 @@ export class ScrollTimeline extends Behaviour {
 
 Vous pouvez ajouter ou supprimer des composants aux objets de votre hiérarchie en utilisant le panneau Needle Components :
 
-![Component panel](/blender/components-panel.webp)
+![Panneau Composants](/blender/components-panel.webp)
 
-![Component panel](/blender/components-panel-select.webp)
+![Panneau Composants](/blender/components-panel-select.webp)
 *Par exemple, en ajoutant un composant `OrbitControls` à l'objet caméra*
 *vous obtenez des contrôles de caméra de base pour les appareils mobiles et de bureau.*
 *Ajustez les paramètres de chaque composant dans leurs panneaux respectifs.*
 
 Les composants peuvent être supprimés en utilisant le bouton X en bas à droite :
 
-![Remove component](/blender/remove-component.webp)
+![Supprimer un composant](/blender/remove-component.webp)
 
 ### Composants personnalisés
 Des composants personnalisés peuvent également être facilement ajoutés en écrivant simplement des classes Typescript. Elles compileront et s'afficheront automatiquement dans Blender une fois enregistrées.
@@ -257,15 +257,15 @@ Vous pouvez télécharger le fichier .blend de la vidéo [ici](https://engine.ne
 :::
 Utilisez le panneau Needle Object pour activer le lightmapping pour un objet mesh ou une lumière :
 
-![Lightmapping object](/blender/lightmapping-object.webp)
+![Objet Lightmapping](/blender/lightmapping-object.webp)
 
 Pour un accès rapide aux paramètres de lightmap et aux options de cuisson, vous pouvez utiliser le panneau de vue de scène dans l'onglet `Needle` :
 
-![Lightmapping scene panel](/blender/lightmapping-scene-panel.webp)
+![Panneau de scène Lightmapping](/blender/lightmapping-scene-panel.webp)
 
 Alternativement, vous pouvez également utiliser le panneau Lightmapping dans l'onglet `Render Properties` :
 
-![Lightmapping object](/blender/lightmapping-panel.webp)
+![Objet Lightmapping](/blender/lightmapping-panel.webp)
 
 ::: warning Fonctionnalité expérimentale
 Le plugin de lightmapping est expérimental. Nous vous recommandons de créer une sauvegarde de votre fichier .blend lorsque vous l'utilisez. Veuillez signaler les problèmes ou erreurs que vous rencontrez dans [notre forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 🙏
@@ -277,13 +277,13 @@ Le Pipeline de construction de Needle Engine compresse automatiquement les textu
 
 Vous pouvez modifier la compression appliquée par texture. Pour remplacer les paramètres de compression par défaut, allez dans l'onglet `Material` et ouvrez les `Needle Material Settings`. Vous y trouverez un interrupteur pour remplacer les paramètres de texture par texture utilisée dans votre matériau. Consultez le [tableau de compression de texture](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression) pour un bref aperçu des différences entre chaque algorithme de compression.
 
-![Texture Compression options in Blender](/blender/texture-compression.webp)
+![Options de compression de texture dans Blender](/blender/texture-compression.webp)
 
 ## Mise à jour
 
 L'ampoule dans le panneau Needle Project vous informe lorsqu'une nouvelle version de l'addon est disponible.
 Cliquez simplement sur l'icône pour télécharger la nouvelle version.
-![Update notification](/blender/updates.webp)
+![Notification de mise à jour](/blender/updates.webp)
 
 ## Signaler un problème
 
@@ -292,7 +292,7 @@ Si vous rencontrez des problèmes, nous serons plus qu'heureux de vous aider ! V
 Veuillez également vérifier les journaux dans Blender. Vous pouvez trouver des journaux spécifiques à l'Addon Needle Engine via `Help/Needle` dans Blender.
 
 ### Bug Reporter intégré
-![Needle Blender Bug Reporter panel](/blender/bugreporter.webp)
+![Panneau Bug Reporter de Needle Blender](/blender/bugreporter.webp)
 Vous pouvez également créer et télécharger automatiquement un rapport de bogue directement depuis Blender. Les rapports de bogue téléchargés seront uniquement utilisés pour le débogage. Ils sont cryptés sur notre backend et seront supprimés après 30 jours.
 
 Si nécessaire, dans certains cas, nous pouvons également mettre en place des NDA personnalisés pour vos projets. Veuillez nous contacter pour plus d'informations.
