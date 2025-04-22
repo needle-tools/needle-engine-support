@@ -252,7 +252,7 @@ Use o painel Objeto do Needle para ativar o lightmapping para um objeto de malha
 
 Para acesso rápido às definições de lightmap e opções de 'cozedura' (baking), pode usar o painel de vista da cena no separador `Needle`:
 
-![Lightmapping scene panel](/blzer/lightmapping-scene-panel.webp)
+![Lightmapping scene panel](/blender/lightmapping-scene-panel.webp)
 
 Alternativamente, também pode usar o painel Lightmapping no separador `Render Properties`:
 

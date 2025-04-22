@@ -89,11 +89,10 @@ Stackblitzでこの例を開く
 Needle Engineはシーングラフおよびレンダリングライブラリとして[three.js](https://threejs.org/)を使用しているため、three.jsのすべての機能がNeedleでも利用可能であり、コンポーネントスクリプトから使用できます。私たちはthree.jsのフォークを使用しており、特にWebXR、アニメーション、USDZエクスポートに関連する追加機能と改善が含まれています。
 
 ::: tip
-\`\`<needle-engine src="myScene.glb">\`\` のパスが既存のglbファイルを指しているか確認してください。または、[このサンプルglbをダウンロード](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb)して、index.htmlと同じフォルダに置き、\`\`myScene.glb\`\`という名前にするか、srcパスを更新してください。
+``<needle-engine src="myScene.glb">`` のパスが既存のglbファイルを指しているか確認してください。または、[このサンプルglbをダウンロード](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb)して、index.htmlと同じフォルダに置き、\`\`myScene.glb\`\`という名前にするか、srcパスを更新してください。
 :::
 
 @[code](@code/basic-html.html)
 
-githubで見る
 
 AIによる自動翻訳ページ
