@@ -10,10 +10,6 @@ Header set Cache-Control "public, max-age=604800, no-transform"
 Header set Cache-Control "public, max-age=120, must-revalidate"
 </FilesMatch>
 
-<FilesMatch "\.(html|html)">
-Header set Content-Type "text/html; charset=UTF-8"
-</FilesMatch>
-
 <FilesMatch "\.(md)$">
 Header set Content-Type "text/markdown; charset=UTF-8"
 </FilesMatch>
