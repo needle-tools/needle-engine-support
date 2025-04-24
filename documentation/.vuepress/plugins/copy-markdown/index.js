@@ -8,6 +8,7 @@ export default (options = {}) => {
   // Use a Map to store processed markdown content keyed by absolute source file path
   const processedMarkdownMap = new Map();
 
+  /** @returns {import("vuepress").Plugin} */
   return {
     name: 'vuepress-plugin-copy-markdown',
 
@@ -28,8 +29,8 @@ export default (options = {}) => {
           //   console.log(`[copy-markdown] Captured markdown for: ${env.filePath}`);
           // }
         } else {
-           // This might happen for non-page renders, e.g., excerpts. Ignore them.
-           // console.warn(`[copy-markdown] md.render called without env.filePath`);
+          // This might happen for non-page renders, e.g., excerpts. Ignore them.
+          // console.warn(`[copy-markdown] md.render called without env.filePath`);
         }
 
         // Call the original render function to proceed with HTML generation
@@ -41,6 +42,10 @@ export default (options = {}) => {
     onGenerated: async (app) => {
       console.log('[copy-markdown] Starting to copy processed markdown files...');
 
+      const rootDir = app.dir.source(); // Root directory of the source files
+
+      let fullTextEN = "";
+
       let count = 0;
       for (const page of app.pages) {
         // Ensure the page has a source file path (e.g., not a virtual page without one)
@@ -48,6 +53,12 @@ export default (options = {}) => {
         if (page.filePath && processedMarkdownMap.has(page.filePath)) {
           const processedMarkdown = processedMarkdownMap.get(page.filePath);
           const htmlFilePath = page.htmlFilePath; // Absolute path to the generated HTML file
+
+          if (page.filePath.includes("/lang") === false) {
+            // const pageTitle = page.title || path.basename(page.filePath, path.extname(page.filePath));
+            const pageUrl = `https://engine.needle.tools/docs/${page.htmlFilePathRelative}`;
+            fullTextEN += `${processedMarkdown}\nSource: ${pageUrl}\n\n`;
+          }
 
           if (htmlFilePath) {
             const targetDir = path.dirname(htmlFilePath);
@@ -68,20 +79,30 @@ export default (options = {}) => {
               console.error(`[copy-markdown] Error writing file ${targetPath}:`, error);
             }
           } else {
-             if (app.env.isDebug) {
-                console.warn(`[copy-markdown] Page ${page.path} has no htmlFilePath.`);
-             }
+            if (app.env.isDebug) {
+              console.warn(`[copy-markdown] Page ${page.path} has no htmlFilePath.`);
+            }
           }
         } else {
-           // Log if we expected markdown but didn't find it (useful for debugging)
-           if (app.env.isDebug && page.filePath) {
-             console.warn(`[copy-markdown] No processed markdown found in map for: ${page.filePathRelative || page.filePath}`);
-           }
+          // Log if we expected markdown but didn't find it (useful for debugging)
+          if (app.env.isDebug && page.filePath) {
+            console.warn(`[copy-markdown] No processed markdown found in map for: ${page.filePathRelative || page.filePath}`);
+          }
         }
       }
 
       // Optional: Clear the map after use (good practice, though process exits anyway)
       processedMarkdownMap.clear();
+
+      // Write the full text to a single file if needed
+      const outpath = path.join(app.dir.dest(), 'llms.txt');
+      try {
+        await fs.ensureDir(app.dir.dest());
+        await fs.writeFile(outpath, fullTextEN, 'utf-8');
+        console.log(`[copy-markdown] Saved full text to: ${path.relative(app.dir.dest(), outpath)}`);
+      } catch (error) {
+        console.error(`[copy-markdown] Error writing full text file ${outpath}:`, error);
+      }
 
       console.log(`[copy-markdown] Successfully copied ${count} processed markdown files.`);
     },
