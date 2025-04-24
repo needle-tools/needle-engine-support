@@ -1,4 +1,4 @@
-# Support and Community
+# Support, Community & AI
 
 ## Community Forum
 
