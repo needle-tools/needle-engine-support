@@ -42,9 +42,12 @@ export default (options = {}) => {
     onGenerated: async (app) => {
       console.log('[copy-markdown] Starting to copy processed markdown files...');
 
-      const rootDir = app.dir.source(); // Root directory of the source files
-
-      let fullTextEN = "";
+      let fullTextEN = `<SYSTEM>
+This is the developer documentation for Needle.      
+Documentation: https://engine.needle.tools/docs/
+Last Updated on ${new Date().toLocaleString('en-US')}
+</SYSTEM>
+`;
 
       let count = 0;
       for (const page of app.pages) {
