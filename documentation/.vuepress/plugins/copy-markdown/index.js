@@ -51,16 +51,19 @@ Last Updated on ${new Date().toLocaleString('en-US')}
 
       let count = 0;
       for (const page of app.pages) {
-        // Ensure the page has a source file path (e.g., not a virtual page without one)
+        // Ensure the page has a source file path (e.g. not a virtual page without one)
         // and that we captured markdown for it.
         if (page.filePath && processedMarkdownMap.has(page.filePath)) {
           const processedMarkdown = processedMarkdownMap.get(page.filePath);
           const htmlFilePath = page.htmlFilePath; // Absolute path to the generated HTML file
 
           if (page.filePath.includes("/lang") === false) {
-            // const pageTitle = page.title || path.basename(page.filePath, path.extname(page.filePath));
-            const pageUrl = `https://engine.needle.tools/docs/${page.htmlFilePathRelative}`;
-            fullTextEN += `${processedMarkdown}\nSource: ${pageUrl}\n\n`;
+            const pageFilename = path.basename(page.filePath);
+            if (!pageFilename.startsWith("_")) {
+              // const pageTitle = page.title || path.basename(page.filePath, path.extname(page.filePath));
+              const pageUrl = `https://engine.needle.tools/docs/${page.htmlFilePathRelative}`;
+              fullTextEN += `${processedMarkdown}\nSource: ${pageUrl}\n\n`;
+            }
           }
 
           if (htmlFilePath) {
@@ -103,6 +106,11 @@ Last Updated on ${new Date().toLocaleString('en-US')}
         await fs.ensureDir(app.dir.dest());
         await fs.writeFile(outpath, fullTextEN, 'utf-8');
         console.log(`[copy-markdown] Saved full text to: ${path.relative(app.dir.dest(), outpath)}`);
+
+        // also copy the file to the root directory
+        const rootOutpath = path.join(process.cwd(), 'llms.txt');
+        await fs.copyFile(outpath, rootOutpath);
+
       } catch (error) {
         console.error(`[copy-markdown] Error writing full text file ${outpath}:`, error);
       }
