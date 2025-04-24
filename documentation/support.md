@@ -22,6 +22,7 @@ Download the files below to use as context for your local AI:
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
+Additionally you can replace `.html` with `.md` on our documentation website to get the markdown version of the page.
 
 ## Get Inspired
 
