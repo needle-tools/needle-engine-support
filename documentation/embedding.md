@@ -12,7 +12,7 @@ If you want to quickly try out how projects made with Needle will look on your w
 @tab Option 1: Embedding Needle
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
 @tab Option 2: Using an iframe
 ```html
@@ -21,7 +21,7 @@ If you want to quickly try out how projects made with Needle will look on your w
 </iframe>
 ```
 @tab Resulting Website
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
 :::
