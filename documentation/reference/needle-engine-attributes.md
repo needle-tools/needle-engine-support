@@ -29,16 +29,14 @@ The table below shows a list of the most important ones:
 | `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }`   |
 | `loadfinished` | Name of the function to call when loading finishes | 
 | **Loading Display** | *Available options to change how the Needle Engine loading display looks. Use `?debugloadingrendering` for easier editing* |
-| `loading-style` | Options are `light` or `dark` |
-| `loading-background-color` | **PRO** — Change the loading background color (e.g. `=#dd5500`) |
-| `loading-text-color` | **PRO** — Change the loading text color |
-| `loading-logo-src` | **PRO** — Change the loading logo image |
-| `primary-color` | **PRO** — Change the primary loading color |
-| `secondary-color` | **PRO** — Change the secondary loading color |
-| `hide-loading-overlay` | **PRO** — Do not show the loading overlay, added in Needle Engine > 3.17.1
+| `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
+| `loading-logo-src` | **PRO** — Change the loading logo image (e.g. `https://yourdomain.com/logo.png` or `/logo.png`) |
+| `hide-loading-overlay` | **PRO** — Do not show the loading overlay
 | **Internal** | |
 | `hash` | Used internally, is appended to the files being loaded to force an update (e.g. when the browser has cached a glb file). Should not be edited manually. |
 
+**Upgrade notice**:   
+- Removed attributes in Needle Engine 4.5.0 `loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
 
 # Examples
 
