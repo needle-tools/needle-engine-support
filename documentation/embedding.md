@@ -123,7 +123,7 @@ When you have limited access to a website, for example when you're using a CMS l
     ::: tip Permissions inside iframes
     The list inside `allow=` depends on the features your web app uses. For example, XR applications require `xr` and `xr-spatial-tracking` to work inside iframes. 
 
-    There may be additional features needed, for example `camera; microphone; display-capture; geolocation`. See [the full list of iframe Permissions Policy directives on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
+    There may be additional features needed, for example `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. See [the full list of iframe Permissions Policy directives on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
     :::
 
 4. That's it! The scene should now be displayed on your website.
