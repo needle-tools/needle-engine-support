@@ -220,6 +220,37 @@ If you deployed your project to Needle Cloud, you can easily display it on your 
 
 ::: warning <b>Under construction.</b> Needs to be documented.
 :::
+# Tutorial: How to Integrate Needle into Wix
+
+## Prerequisites
+- A Wix account with access to HTML code editing
+- Your exported Needle project files hosted on a web server
+
+## Step 1: Export Your Needle Project
+1. In Needle Engine, export your project using `File > Export`
+2. Upload the exported files to your web server or hosting service
+3. Note the URL of the `index.html` file (e.g., `https://yoursite.com/needle-export/dist/index.html`)
+
+## Step 2: Add an iframe in Wix
+
+1. Enter the Wix editor and select your site
+2. Click on "+ Add" > "More" > "HTML iframe"
+3. Drag the HTML element to your desired location
+4. Click on "Custom Code" in the settings panel
+
+## Step 3: Insert the iframe Code
+
+Replace the content with this code, modifying the URL:
+
+```html
+<iframe 
+    src="https://yoursite.com/needle-export/dist/index.html"
+    allow="xr; xr-spatial-tracking; fullscreen;"
+    width="100%" 
+    height="500px"
+    style="border: none;">
+</iframe>
+```
 
 ## Webflow
 
