@@ -109,7 +109,7 @@ async function main() {
             fs.rmSync(outputDirectoryFull, { recursive: true });
         fs.mkdirSync(outputDirectoryFull, { recursive: true });
 
-        await produceDocs(packageDir, outputDirectoryFull);
+        await produceDocs(packageDir, outputDirectoryFull, baseUrl);
         console.log("API documentation generated at " + outputDirectoryFull);
 
         if (prevVersion)
@@ -175,13 +175,15 @@ async function downloadPackage(version, targetDirectory) {
  * Generate the API documentation for the given package directory
  * @param {string} packageDir The directory of the package
  * @param {string} outputDirectory The output directory for the documentation
+ * @param {string} hostedBaseUrl
  * @returns {Promise<string | null>} The output directory
  */
-async function produceDocs(packageDir, outputDirectory) {
+async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
 
     const readmePath = packageDir + "/README.md";
 
     const app = await td.Application.bootstrapWithPlugins({
+        hostedBaseUrl: hostedBaseUrl,
         lang: "en",
         entryPoints: [
             packageDir + "/src/engine/api.ts",
@@ -257,6 +259,7 @@ async function produceDocs(packageDir, outputDirectory) {
         validation: {
             invalidLink: true,
         },
+        useFirstParagraphOfCommentAsSummary: true,
 
         // analytics
         plausibleSiteDomain: "api.needle.tools",
