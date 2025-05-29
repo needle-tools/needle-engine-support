@@ -204,7 +204,11 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
             // remove everything before the first changelog header
             changelogContent = changelogContent.substring(changelogHeaderIndex);
         }
-        const readmeContentWithChangelog = readmeContent + "\n<br/>\n\n----\n\n# Changelog\n" + changelogContent;
+        // we only collect the first 3 changelog entries (because algolia record indexing is limited)
+        const changelogEntries = changelogContent.split("## [").slice(0, 5).join("\n## [");
+        changelogContent = changelogEntries + "\n\n## For all changes visit [Github Releases](https://github.com/needle-tools/needle-engine-support/releases)";
+
+        const readmeContentWithChangelog = readmeContent + "\n<br/>\n\n----\n\n# Recent Changes\n" + changelogContent;
         writeFileSync(readmePath, readmeContentWithChangelog.trim());
     }
 
