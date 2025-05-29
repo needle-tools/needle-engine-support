@@ -69,7 +69,7 @@ export function load(app) {
     if (interestingPart.startsWith("/")) 
         interestingPart = interestingPart.slice(1);
     const engineVersion = parts[versionIndex];
-    console.log("Plausible PageView", interestingPart, engineVersion);
+    console.debug("Plausible PageView", {interestingPart, engineVersion});
     plausible('pageview', {
         u: "https://api.needle.tools/" + interestingPart + window.location.search,
         props: { version: engineVersion },
