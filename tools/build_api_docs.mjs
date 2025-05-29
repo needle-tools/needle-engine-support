@@ -1,6 +1,6 @@
 import { execSync } from 'child_process';
 import * as td from 'typedoc';
-import fs, { WriteStream, rmSync, writeFileSync } from 'fs';
+import fs, { WriteStream, existsSync, rmSync, writeFileSync } from 'fs';
 import fetch from 'node-fetch';
 import FtpDeploy from 'ftp-deploy';
 import dotenv from 'dotenv';
@@ -181,6 +181,27 @@ async function downloadPackage(version, targetDirectory) {
 async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
 
     const readmePath = packageDir + "/README.md";
+    const changelogPath = packageDir + "/CHANGELOG.md";
+    if (existsSync(changelogPath) && existsSync(readmePath)) {
+        // append changelog to readme
+        let readmeContent = fs.readFileSync(readmePath, 'utf8');
+        // remove first "# Needle Engine" line
+        const firstHeaderIndex = readmeContent.indexOf("# Needle Engine");
+        if (firstHeaderIndex !== -1) {
+            readmeContent = readmeContent.substring(readmeContent.indexOf("\n", firstHeaderIndex) + 1);
+        }
+
+        let changelogContent = fs.readFileSync(changelogPath, 'utf8');
+        // find index of ## [...
+        const changelogHeaderChars = "## [";
+        const changelogHeaderIndex = changelogContent.indexOf(changelogHeaderChars);
+        if (changelogHeaderIndex !== -1) {
+            // remove everything before the first changelog header
+            changelogContent = changelogContent.substring(changelogHeaderIndex);
+        }
+        const readmeContentWithChangelog = readmeContent + "\n<br/>\n\n----\n\n# Changelog\n" + changelogContent;
+        writeFileSync(readmePath, readmeContentWithChangelog.trim());
+    }
 
     const app = await td.Application.bootstrapWithPlugins({
         hostedBaseUrl: hostedBaseUrl,
