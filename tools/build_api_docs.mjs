@@ -67,10 +67,15 @@ async function main() {
 
         // in dev mode we don't want to check if the documentation already exists because we only build one version
         if (!isDev) {
-            const url = baseUrl + versionFile;
-            console.log("Checking if API documentation already exists for " + versionInfo.name + " " + versionInfo.version + " at " + url);
-            const response = await fetch(url, { method: "HEAD" });
-            if (response.status === 200 && !response.redirected) {
+            const versionFileUrl = baseUrl + versionFile;
+            const htmlFileUrl = baseUrl + "index.html";
+            console.log(`Checking if API documentation already exists for ${versionInfo.name} ${versionInfo.version} at ${versionFileUrl} & ${htmlFileUrl}`);
+            const responses = await Promise.all([
+                fetch(versionFileUrl, { method: "HEAD" }),
+                fetch(htmlFileUrl, { method: "HEAD" }),
+            ]);
+            const versionExists = responses.every(response => response.status === 200 && !response.redirected);
+            if (versionExists) {
                 console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
 
                 // check if diff exists
