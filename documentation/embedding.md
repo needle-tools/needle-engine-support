@@ -145,27 +145,26 @@ cript>
 
 ## Embedding a Needle project as iframe
 
-When you have limited access to a website, for example when you're using a CMS l
-ike WordPress, you can use an iframe to embed a Needle Engine scene into your we
-bsite. You may know this workflow from embedding YouTube videos or Sketchfab mod
-els.
+When you have limited access to a website (e.g., using a CMS) or want a simple way to integrate, using an iframe is a common approach. This section outlines the general method. **If your project is deployed to Needle Cloud (recommended), the `src` attribute of your iframe will simply be your Needle Cloud project URL.**
+
+The following steps assume a scenario where you might be self-hosting the build output. For Needle Cloud hosting, skip to step 3 and use your Needle Cloud URL as the iframe `src`.
 
 1. Make a production build of your web project. This will create a `dist/` folde
 r with all necessary files, ready for distribution.
 
-2. Upload the `dist/` folder from your Web Project to your web hoster.
+2. Upload the `dist/` folder from your Web Project to your web hoster if you are self-hosting.
     ::: tip The folder can be hosted anywhere!
     If you don't have access to your web hoster's file system, or no way to uplo
 ad files there, you can upload the folder to any other webspace and  use the pub
-lic URL of that in the next step.
+lic URL of that in the next step. (This step is not necessary if using Needle Cloud).
     :::
 
-3. Add an iframe to your website, pointing to the `index.html` file in the `dist
-/` folder.
+3. Add an iframe to your website. If self-hosting, point the `src` to the `index.html` file in the `dist/` folder. **If using Needle Cloud, point the `src` to your Needle Cloud project URL.**
     ```html
     <iframe
-        src="https://your-website.com/needle-files/dist/index.html"
-        allow="xr; xr-spatial-tracking; fullscreen;">
+        src="YOUR_NEEDLE_CLOUD_URL_OR_SELF_HOSTED_URL"
+        style="width: 100%; height: 600px; border: none;"
+        allow="xr-spatial-tracking; fullscreen; camera; microphone">
     </iframe>
     ```
 
@@ -208,11 +207,15 @@ r-website.com/assets/MyScene.glb`.
 
 ## Embedding a Needle Cloud web app as iframe
 
-If you deployed your project to Needle Cloud, you can easily display it on your
-own website with an iframe.
+Embedding your Needle Engine project via an iframe, with your application hosted on Needle Cloud, is the recommended and most straightforward method for many platforms and custom websites. This approach ensures your project benefits from Needle Cloud's optimized hosting and delivery.
 
-::: warning <b>Under construction.</b> This section is not yet complete.
-:::
+For detailed, platform-specific instructions on how to do this, please see the following sections:
+- [WordPress](#wordpress)
+- [Shopify](#shopify)
+- [Wix](#wix)
+- [Webflow](#webflow)
+
+For other platforms or if you are building a custom website, you can adapt the general principles outlined in the "[Embedding a Needle project as iframe](#embedding-a-needle-project-as-iframe)" section. The key difference when using Needle Cloud is that the `src` attribute of your iframe will be the public URL of your project on Needle Cloud.
 
 # Common Workflows
 
@@ -289,27 +292,89 @@ al, and then to the client's server.
 
 ## Wordpress
 
-1. Decide on the method you want to use to embed your Needle Engine project. You
- can either use the "Embedding a Needle project into an existing website" method
-, or the "Embedding a Needle project as iframe" method.
+The recommended way to embed a Needle Engine project into your WordPress site is by using an HTML iframe with your project hosted on Needle Cloud.
 
-2. Upload the content of the `dist/` folder from your Web Project to your web ho
-ster. Usually, the Wordpress uploads directory is located at `wp-content/uploads
-/`.
+1.  **Deploy to Needle Cloud**:
+    *   In your Needle Engine project (e.g., in Unity), right-click your `*.needle` scene asset and select `Build for Publishing`.
+    *   This process builds your project and uploads it to Needle Cloud.
+    *   Once completed, your browser will open the Needle Cloud URL for your project. Copy this URL. You can also find all your deployments at [https://needle.tools/cloud](https://needle.tools/cloud).
 
-    ::: tip Wordpress Backups
-    You can decide if your new project should be at `wp-content/uploads/my-proje
-ct/`, or at a different location like `my-projects/my-project`. This affects if
-and how your project will be contained in Wordpress backups.
-    :::
+2.  **Get your public project URL**:
+    *   From Needle Cloud, ensure you have the public URL for your deployed project (e.g., `https://your-project-name.needle.run`).
 
-3. In the page you want to add Needle Engine to, add a `HTML` block and paste th
-e code snippet as outlined above – either as script embed, or as iframe.
+3.  **Embed in WordPress**:
+    *   In your WordPress editor (whether using the Gutenberg block editor or the Classic Editor), open the page or post where you want to embed your project.
+    *   **Gutenberg Editor**: Click the `+` icon to add a new block, then search for and select the "Custom HTML" block.
+    *   **Classic Editor**: Switch to the "Text" mode of the editor.
+    *   Paste the following HTML iframe code into the Custom HTML block or Text mode, replacing `YOUR_NEEDLE_CLOUD_URL` with the URL you copied in step 2:
+        ```html
+        <div style="width: 100%; max-width: 800px; height: 600px; margin: 1em auto;"> <!-- Adjust max-width and height as needed -->
+          <iframe
+            src="YOUR_NEEDLE_CLOUD_URL"
+            style="width: 100%; height: 100%; border: none;"
+            allowfullscreen="true"
+            allow="xr-spatial-tracking; fullscreen; camera; microphone">
+          </iframe>
+        </div>
+        ```
+
+4.  **Adjust iframe size and permissions**:
+    *   You can adjust the `max-width` and `height` values in the `style` attribute of the outer `div` in the HTML snippet to control the size of the embedded project on your page.
+    *   The `allow` attribute (`xr-spatial-tracking; fullscreen; camera; microphone`) includes common permissions for interactive and XR experiences. Modify these based on your project's specific requirements. For simple 3D viewers, `allow="fullscreen"` might be sufficient.
+    *   Preview or update your WordPress page to see the embedded project.
+
+This method ensures your project is served from Needle Cloud's optimized infrastructure while being neatly displayed on your WordPress site.
 
 ## Shopify
 
-::: warning <b>Under construction.</b> Needs to be documented.
-:::
+Embedding a Needle Engine project hosted on Needle Cloud into your Shopify store typically involves adding a custom HTML section or editing your theme code to include an iframe.
+
+1.  **Deploy to Needle Cloud**:
+    *   In your Needle Engine project (e.g., in Unity), right-click your `*.needle` scene asset and select `Build for Publishing`.
+    *   This builds your project and uploads it to Needle Cloud.
+    *   After completion, your browser opens the Needle Cloud URL for your project. Copy this URL. Find all deployments at [https://needle.tools/cloud](https://needle.tools/cloud).
+
+2.  **Get your public project URL**:
+    *   From Needle Cloud, copy the public URL for your deployed project (e.g., `https://your-project-name.needle.run`).
+
+3.  **Embed in Shopify**:
+    There are a couple of ways to add custom HTML/iframe to Shopify:
+
+    *   **Using a "Custom HTML" section (Recommended for supported themes)**:
+        1.  In your Shopify Admin, go to `Online Store > Themes`.
+        2.  Find your theme and click `Customize`.
+        3.  Navigate to the page or section where you want to add the project.
+        4.  Click `+ Add section` in the sidebar (if available) and look for a "Custom HTML", "HTML", or similar section type.
+        5.  Add the section, then paste your iframe code (see step 4 below) into the HTML content field.
+        6.  Save your changes.
+
+    *   **Editing theme code (Advanced)**:
+        1.  In your Shopify Admin, go to `Online Store > Themes`.
+        2.  Find the theme you want to edit, click `Actions > Edit code`.
+        3.  Choose a relevant Liquid theme file where you want your project to appear (e.g., `product.liquid` for product pages, or create a new section snippet under the `sections` folder and include it in a template).
+        4.  Paste your iframe code (see step 4 below) into the file.
+        5.  Save your changes.
+
+4.  **HTML iframe Code**:
+    Use the following HTML snippet, replacing `YOUR_NEEDLE_CLOUD_URL` with the URL from step 2:
+    ```html
+    <div style="width: 100%; height: 600px; margin: 0 auto;"> <!-- Adjust height as needed -->
+      <iframe
+        src="YOUR_NEEDLE_CLOUD_URL"
+        style="width: 100%; height: 100%; border: none;"
+        allowfullscreen="true"
+        allow="xr-spatial-tracking; fullscreen; camera; microphone">
+      </iframe>
+    </div>
+    ```
+    *   The outer `div` helps in managing the iframe's dimensions and centering. Adjust `height: 600px;` as needed.
+
+5.  **Adjust iframe size and permissions**:
+    *   Modify the `width` and `height` attributes of the iframe or the surrounding `div` in the HTML snippet to fit your page layout.
+    *   The `allow` attribute (`xr-spatial-tracking; fullscreen; camera; microphone`) includes common permissions. Adjust these based on your project's needs. For non-XR projects, `allow="fullscreen"` might be sufficient.
+    *   Ensure your Shopify theme's CSS doesn't conflict with the iframe display.
+
+Test your Shopify page to see the embedded Needle Engine project.
 
 ## Wix
 
@@ -347,5 +412,42 @@ That's it! Your Needle Engine project should now be embedded in your Wix site.
 
 ## Webflow
 
-::: warning <b>Under construction.</b> Needs to be documented.
-:::
+To embed your Needle Engine project in a Webflow site, you'll deploy it to Needle Cloud and then use Webflow's "Embed" element with an iframe.
+
+1.  **Deploy to Needle Cloud**:
+    *   In your Needle Engine project (e.g., within Unity), right-click your `*.needle` scene asset.
+    *   Select `Build for Publishing`. This action builds your project and uploads it directly to Needle Cloud.
+    *   Upon completion, your default web browser will open the Needle Cloud URL for your project. Copy this URL. You can manage all your deployments at [https://needle.tools/cloud](https://needle.tools/cloud).
+
+2.  **Get your public project URL**:
+    *   From Needle Cloud, ensure you have the correct public URL for the project version you wish to embed (e.g., `https://your-project-name.needle.run`).
+
+3.  **Add Embed Element in Webflow**:
+    *   Open your Webflow project in the Designer.
+    *   From the `Add` panel (usually on the left, shortcut `A`), find the `Embed` element under the "Components" section.
+    *   Drag and drop the `Embed` element onto your page where you want the project to appear.
+
+4.  **Paste iframe Code**:
+    *   With the Embed element selected, a modal dialog titled "HTML Embed Code Editor" will appear.
+    *   Paste the following HTML iframe code into the editor, replacing `YOUR_NEEDLE_CLOUD_URL` with the URL you copied in step 2:
+        ```html
+        <iframe
+          src="YOUR_NEEDLE_CLOUD_URL"
+          style="width: 100%; height: 100%; border: none;"
+          allowfullscreen="true"
+          allow="xr-spatial-tracking; fullscreen; camera; microphone"
+          loading="lazy">
+        </iframe>
+        ```
+    *   Click `Save & Close`.
+
+5.  **Style the Embed Element**:
+    *   The Embed element itself is a div. You need to style it to define the size of your iframe.
+    *   Select the Embed element on the canvas.
+    *   In the `Style` panel (usually on the right), set the `Width` and `Height` properties (e.g., `Width: 100%`, `Height: 600px`). Ensure the iframe inside takes up 100% of these dimensions as per the `style` attribute in the iframe code.
+
+6.  **Adjust iframe Permissions**:
+    *   The `allow` attribute in the iframe code (`xr-spatial-tracking; fullscreen; camera; microphone`) includes common permissions for interactive and XR experiences. Adjust these based on your project's needs. For simple 3D viewers, `allow="fullscreen"` might be sufficient.
+    *   The `loading="lazy"` attribute can help with page load performance if the embed is below the fold.
+
+Publish your Webflow site to see the embedded Needle Engine project live.
