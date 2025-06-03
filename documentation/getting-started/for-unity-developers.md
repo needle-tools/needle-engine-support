@@ -226,19 +226,17 @@ Note that in this case you have to handle all cases yourself. For example you ma
 ## InputSystem Callbacks
 Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events on the component itself.
 
-To make this work make sure your object has a ``ObjectRaycaster`` or ``GraphicRaycaster`` component in the parent hierarchy.
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-Note: `IPointerEventHandler` subscribes the object to all possible pointer events. The handlers for them are:
+Available pointer events for all components:
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
