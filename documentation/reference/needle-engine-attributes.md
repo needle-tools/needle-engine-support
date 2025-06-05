@@ -9,9 +9,9 @@ The table below shows a list of the most important ones:
 | --- | --- |
 | **Loading** | |
 | `src` | Path to one or multiple glTF or glb files.<br/>Supported types are `string`, `string[]` or a stringified array (`,` separated) |
-| `dracoDecoderPath` | URL to the draco decoder |
+| `dracoDecoderPath` | URL to the draco decoder e.g. `./include/draco/` to use the local Draco decoder |
 | `dracoDecoderType` | draco decoder type. Options are `wasm` or `js`. See [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
-| `ktx2DecoderPath` | URL to the KTX2 decoder |
+| `ktx2DecoderPath` | URL to the KTX2 decoder e.g. `./include/ktx2/` to use the local KTX2 decoder |
 | **Rendering** | |
 | `background-color` | optional, hex color to be used as a background color. Examples: `rgb(255, 200, 100)`, `#dddd00` | 
 | `background-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` | 
