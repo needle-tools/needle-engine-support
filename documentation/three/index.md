@@ -59,14 +59,7 @@ This includes our core components, physics, particles, networking, XR, and more.
 
 ```js
 <script type="module" 
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
-</script>
-```
-
-If you know your project doesn't require physics features, you can also use a smaller version of Needle Engine, without the physics engine. This will reduce the total downloaded size. 
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 
