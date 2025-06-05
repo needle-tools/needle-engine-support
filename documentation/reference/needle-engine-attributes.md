@@ -47,7 +47,7 @@ The table below shows a list of the most important ones:
 
 ```html
 <!-- Overriding where the draco decoder is located -->
-<needle-engine src="path/to/your.glb" dracoDecoderPath="./path/to/draco/folder/"></needle-engine>
+<needle-engine src="path/to/your.glb" dracoDecoderPath="./include/draco/"></needle-engine>
 ```
 
 Setting environment images, playing animation and automatic camera controls. [See it live on stackblitz](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)
