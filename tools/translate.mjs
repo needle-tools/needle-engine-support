@@ -1,6 +1,6 @@
 import { GenerativeModel, GoogleGenerativeAI } from "@google/generative-ai";
 import { existsSync, mkdirSync, readdirSync, readFileSync, statSync, writeFileSync } from "fs";
-import path, { basename } from "path";
+import path, { basename, dirname } from "path";
 import { createHash } from "crypto";
 import dotenv from 'dotenv';
 dotenv.config();
@@ -87,7 +87,7 @@ export async function translateDocumentation() {
                         console.error("No translated content found for file:", sourceFile.filepath);
                         return;
                     }
-                    const localDir = targetPath.substring(0, targetPath.lastIndexOf("/"));
+                    const localDir = dirname(targetPath);
                     console.log(`Saving translation (${langCode}) to ${localDir}`);
                     mkdirSync(localDir, { recursive: true });
                     writeFileSync(targetPath, translatedContent);
