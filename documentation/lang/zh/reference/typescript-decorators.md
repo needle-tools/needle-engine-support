@@ -1,5 +1,5 @@
 ---
-title: "@serializable" 和其他装饰器
+title: "@serializable 和其他装饰器"
 ---
 
 下表包含 Needle Engine 提供的可用 Typescript 装饰器。
