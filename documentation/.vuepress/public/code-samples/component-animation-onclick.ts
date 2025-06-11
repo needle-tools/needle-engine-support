@@ -1,6 +1,6 @@
-import { Behaviour, serializable, Animation, IPointerClickHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, serializable, Animation, PointerEventData } from "@needle-tools/engine";
 
-export class PlayAnimationOnClick extends Behaviour implements IPointerClickHandler {
+export class PlayAnimationOnClick extends Behaviour {
 
     @serializable(Animation)
     animation?: Animation;

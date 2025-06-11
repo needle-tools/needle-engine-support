@@ -1,6 +1,6 @@
-import { Behaviour, EventList, IPointerClickHandler, PointerEventData, serializable } from "@needle-tools/engine";
+import { Behaviour, EventList, PointerEventData, serializable } from "@needle-tools/engine";
 
-export class SyncedClick extends Behaviour implements IPointerClickHandler {
+export class SyncedClick extends Behaviour {
 
     @serializable(EventList)
     onClick!: EventList;

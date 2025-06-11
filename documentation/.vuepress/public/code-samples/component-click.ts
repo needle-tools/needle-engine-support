@@ -1,6 +1,6 @@
-import { Behaviour, IPointerClickHandler, PointerEventData, showBalloonMessage } from "@needle-tools/engine";
+import { Behaviour, PointerEventData, showBalloonMessage } from "@needle-tools/engine";
 
-export class ClickExample extends Behaviour implements IPointerClickHandler {
+export class ClickExample extends Behaviour {
 
     // Make sure to have an ObjectRaycaster component in the parent hierarchy
     onPointerClick(_args: PointerEventData) {

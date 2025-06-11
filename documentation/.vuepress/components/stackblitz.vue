@@ -74,8 +74,6 @@ NeedleEngine.addContextCreatedCallback((args) => {
   cube.position.y += 0.5;
   scene.add(cube);
   GameObject.addComponent(cube, new ${componentName}());
-  ${scriptContent.includes("IPointerClickHandler") ? "GameObject.addNewComponent(cube, ObjectRaycaster)" : ""}
-
   const remoteSkybox = new RemoteSkybox();
   remoteSkybox.background = false;
   remoteSkybox.url =
