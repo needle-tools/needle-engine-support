@@ -261,7 +261,7 @@ Needle Object パネルを使用して、メッシュオブジェクトまたは
 
 あるいは、`Render Properties` タブの Lightmapping パネルを使用することもできます。
 
-![Lightmapping object](/bller/lightmapping-panel.webp)
+![Lightmapping object](/blender/lightmapping-panel.webp)
 
 ::: warning 実験的な機能
 ライトマッピングプラグインは実験的な機能です。使用する際は .blend ファイルのバックアップを作成することをおすすめします。問題やエラーが発生した場合は、[私たちのフォーラム](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)にご報告ください 🙏
