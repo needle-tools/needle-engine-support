@@ -6,34 +6,32 @@ Es gibt mehrere Möglichkeiten, Needle Engine in Ihre Website zu integrieren. We
 
 ## Ausprobieren
 
-Wenn Sie schnell ausprobieren möchten, wie mit Needle erstellte Projekte auf Ihrer Website aussehen werden, fügen Sie einfach diese beiden Zeilen zum Testen irgendwo auf Ihrer Seite hinzu:
+Wenn Sie schnell ausprobieren möchten, wie mit Needle erstellte Projekte auf Ihrer Website aussehen werden, fügen Sie einfach diese zwei Zeilen zum Testen irgendwo auf Ihrer Seite hinzu:
 
-:::: code-group
-::: code-group-item Option 1: Embedding Needle
+::: code-tabs
+@tab Option 1: Embedding Needle
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
-:::
-::: code-group-item Option 2: Using an iframe
+@tab Option 2: Using an iframe
 ```html
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
 </iframe>
 ```
-:::
-::: code-group-item Resulting Website
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+@tab Resulting Website
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
-::::
+:::
 
 # Möglichkeiten zur Erstellung von Web-Apps mit Needle
 
 Die häufigsten Workflows, um Needle Engine auf Ihre Website zu bringen, sind:
-1. [Verwenden der "Deploy to ..." Komponenten](#verwendung-der-deploy-to-...-komponenten)
-2. [Hochladen Ihrer Web-App in einen Ordner](#hochladen-ihrer-web-app-in-einen-ordner)
-3. [Einbetten eines Needle-Projekts in eine bestehende Website](#einbetten-eines-needle-projekts-in-eine-bestehende-website)
+1. [Verwenden der "Deploy to ..." Komponenten](#using-the-deploy-to-...-components)
+2. [Hochladen Ihrer Web-App in einen Ordner](#uploading-your-web-app-to-a-folder)
+3. [Einbetten eines Needle-Projekts in eine bestehende Website](#embedding-a-needle-project-into-an-existing-website)
 
 ## Verwendung der "Deploy to ..." Komponenten
 
@@ -45,7 +43,7 @@ Weitere Informationen zu jeder dieser Optionen finden Sie im Abschnitt [Deployme
 2. Konfigurieren Sie die notwendigen Optionen und klicken Sie auf "Deploy".
 3. Das ist alles! Ihr Projekt ist jetzt live.
 
-:::tip Empfohlener Workflow
+:::tip Recommended Workflow
 Dies ist die einfachste Option und für die meisten Workflows empfohlen – es ist sehr schnell! Sie können iterativ an Ihrem Projekt auf Ihrem Computer arbeiten und dann in Sekundenschnelle eine neue Version ins Web hochladen.
 :::
 
@@ -225,5 +223,6 @@ Wenn Sie Ihr Projekt auf Needle Cloud deployt haben, können Sie es ganz einfach
 
 ::: warning <b>In Bearbeitung.</b> Muss noch dokumentiert werden.
 :::
+
 
 Seite automatisch mit AI übersetzt

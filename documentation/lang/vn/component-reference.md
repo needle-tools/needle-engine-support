@@ -13,32 +13,32 @@ Bạn luôn có thể thêm các component của riêng mình hoặc thêm các 
 Tìm hiểu thêm trong phần [Scripting](./scripting.md) của tài liệu của chúng tôi.
 
 ## Audio
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `AudioListener` |  |
 | `AudioSource` | Sử dụng để phát âm thanh |
 
 ## Animation
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
-| `Animator` với `AnimatorController` | Xuất với animation state machine, điều kiện, chuyển đổi |
+| `Animator` with `AnimatorController` | Xuất với animation state machine, điều kiện, chuyển đổi  |
 | `Animation` | Component animation cơ bản nhất. Chỉ clip đầu tiên được xuất |
-| `PlayableDirector` với `TimelineAsset` | Xuất các chuỗi mạnh mẽ để kiểm soát animation, âm thanh, trạng thái và nhiều hơn nữa |
+| `PlayableDirector` with `TimelineAsset` | Xuất các chuỗi mạnh mẽ để kiểm soát animation, âm thanh, trạng thái và nhiều hơn nữa |
 
 ## Rendering
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `Camera` |  |
 | `Light` | DirectionalLight, PointLight, Spotlight. Lưu ý rằng bạn cũng có thể sử dụng nó để bake light (ví dụ: hình dạng Rectangular Light) |
-| `XRFlag` | Kiểm soát khi nào đối tượng hiển thị. Ví dụ: chỉ bật đối tượng khi ở chế độ AR |
-| `DeviceFlag` | Kiểm soát trên thiết bị nào đối tượng sẽ hiển thị |
+| `XRFlag` | Kiểm soát khi nào đối tượng hiển thị. Ví dụ: chỉ bật đối tượng khi ở chế độ AR  |
+| `DeviceFlag` | Kiểm soát trên thiết bị nào đối tượng sẽ hiển thị  |
 | `LODGroup` |  |
 | `ParticleSystem` | Thử nghiệm và hiện tại chưa được hỗ trợ đầy đủ |
 | `VideoPlayer` | Phát video từ url hoặc tệp video được tham chiếu (sẽ được sao chép vào đầu ra khi xuất). VideoPlayer cũng hỗ trợ phát trực tiếp từ các đối tượng MediaStream hoặc URL livestream `M3U8` |
 | `MeshRenderer` | Được sử dụng để xử lý render đối tượng bao gồm lightmapping và instancing |
 | `SkinnedMeshRenderer` | *Xem MeshRenderer* |
 | `SpriteRenderer` | Được sử dụng để render Sprites và Spriteanimations |
-| `Volume` với tài sản `PostProcessing` | Xem [bảng dưới đây](#postprocessing) |
+| `Volume` with `PostProcessing` asset | Xem [bảng dưới đây](#postprocessing) |
 
 ### Postprocessing
 
@@ -46,15 +46,15 @@ Các hiệu ứng postprocessing sử dụng [thư viện pmndrs postprocessing]
 
 - **Chỉ Unity**: *Lưu ý rằng các hiệu ứng Postprocessing sử dụng Volume trong Unity chỉ được hỗ trợ với URP*
 
-| Tên hiệu ứng | |
+| Effect Name | |
 | --- | --- |
 | Antialiasing | *Component Unity bổ sung* |
-| Bloom | *qua tài sản Volume* |
-| Chromatic Aberration | *qua tài sản Volume* |
-| Color Adjustments / Color Correction | *qua tài sản Volume* |
-| Depth Of Field | *qua tài sản Volume* |
-| Vignette | *qua tài sản Volume* |
-| ToneMappingEffect | *qua tài sản Volume hoặc component riêng biệt* |
+| Bloom | *qua asset Volume* |
+| Chromatic Aberration | *qua asset Volume* |
+| Color Adjustments / Color Correction | *qua asset Volume* |
+| Depth Of Field | *qua asset Volume* |
+| Vignette | *qua asset Volume* |
+| ToneMappingEffect | *qua asset Volume hoặc component riêng biệt* |
 | Pixelation | |
 | Screenspace Ambient Occlusion N8 | |
 | Screenspace Ambient Occlusion | |
@@ -63,7 +63,7 @@ Các hiệu ứng postprocessing sử dụng [thư viện pmndrs postprocessing]
 | *Hiệu ứng tùy chỉnh của bạn* | [Xem ví dụ trên stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect) |
 
 ## Networking
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `SyncedRoom` | Component mạng chính. Đặt vào scene của bạn để bật mạng |
 | `Networking` | Được sử dụng để thiết lập máy chủ backend cho mạng. |
@@ -74,7 +74,7 @@ Các hiệu ứng postprocessing sử dụng [thư viện pmndrs postprocessing]
 | `Screensharing` | Bật tính năng chia sẻ màn hình |
 
 ## Interaction
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `EventSystem` | Xử lý việc kích hoạt các sự kiện con trỏ và sự kiện UI trên các đối tượng trong scene |
 | `ObjectRaycater` | Bắt buộc đối với DragControls và Duplicatable |
@@ -94,7 +94,7 @@ Các hiệu ứng postprocessing sử dụng [thư viện pmndrs postprocessing]
 
 Physics được triển khai bằng cách sử dụng [Rapier](https://rapier.rs/).
 
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `Rigidbody` | Thêm vào để làm cho đối tượng phản ứng với trọng lực (hoặc là kinematic và static) |
 | `BoxCollider` | Hình dạng collider Box mà các đối tượng có thể va chạm hoặc kích hoạt sự kiện trigger khi được đặt thành `trigger` |
@@ -107,7 +107,7 @@ Physics được triển khai bằng cách sử dụng [Rapier](https://rapier.r
 
 [Đọc tài liệu XR](xr.md)
 
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `WebXR` | Thêm vào scene để hỗ trợ VR, AR và Passthrough cũng như render các mô hình Avatar |
 | [`USDZExporter`](./everywhere-actions.md) | Thêm vào để bật hỗ trợ USD và Quicklook |
@@ -121,7 +121,7 @@ Physics được triển khai bằng cách sử dụng [Rapier](https://rapier.r
 | `XRControllerFollow` | Có thể thêm vào bất kỳ đối tượng nào trong scene và cấu hình để theo dõi tay trái hoặc phải hoặc bộ điều khiển |
 
 ## Debugging
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `GridHelper` | Vẽ một lưới |
 | `BoxGizmo` | Vẽ một hộp |
@@ -129,7 +129,7 @@ Physics được triển khai bằng cách sử dụng [Rapier](https://rapier.r
 | | Lưu ý: Khi bạn viết mã tùy chỉnh, bạn có thể sử dụng các phương thức `Gizmos` tĩnh để vẽ các đường và hình dạng debugging | |
 
 ## Runtime File Input/Output
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `GltfExport` | Thử nghiệm! Sử dụng để xuất gltf từ runtime web. |
 | `DropListener` | Nhận các sự kiện kéo thả tệp để upload và mạng hóa |
@@ -139,7 +139,7 @@ Physics được triển khai bằng cách sử dụng [Rapier](https://rapier.r
 Các component Spatial UI được ánh xạ từ Unity UI (Canvas, không phải UI Toolkit) sang [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui).
 UI có thể được hoạt ảnh.
 
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `Canvas` | Hệ thống UI của Unity. Hiện tại cần ở chế độ World Space. |
 | `Text (Legacy)` | Render Text sử dụng component UI Text của Unity. Các font tùy chỉnh được hỗ trợ, một font atlas sẽ được tự động tạo khi xuất. Sử dụng cài đặt font hoặc component `FontAdditionalCharacters` để kiểm soát những ký tự nào được bao gồm trong atlas.<br/>**Lưu ý**: Trong Unity hãy đảm bảo sử dụng component `Legacy/Text` (*TextMeshPro* hiện tại chưa được hỗ trợ) |
@@ -150,16 +150,17 @@ UI có thể được hoạt ảnh.
 
 **Lưu ý**: Tùy thuộc vào dự án của bạn, thường thì việc kết hợp giữa spatial UI và 2D UI là hợp lý cho các dự án đa nền tảng hỗ trợ VR, AR và màn hình. Thông thường, bạn sẽ xây dựng các phần 2D bằng HTML để có khả năng truy cập tốt nhất, và các phần 3D bằng UI hình học cũng hỗ trợ bù độ sâu (ví dụ: trạng thái hover của nút và những thứ tương tự).
 
-## Khác
+## Other
 
-| Tên  | Mô tả |
+| Name  | Description |
 | ------------- | ------------- |
 | `SceneSwitcher` | Xử lý việc tải và giải phóng các scene khác hoặc các tệp prefabs / glTF. Có các tính năng để preload, thay đổi scene thông qua vuốt, sự kiện bàn phím hoặc điều hướng URL |
 
-## Chỉ dành cho Editor
-| Tên  | Mô tả |
+## Editor Only
+| Name  | Description |
 | --- | --- |
 | `ExportInfo` | Component chính để quản lý (các) dự án web, ví dụ: cài đặt hoặc khởi động ứng dụng web |
 | `EditorSync` | Thêm vào để bật mạng hóa các thay đổi giá trị vật liệu hoặc component cho ứng dụng three.js đang chạy trực tiếp từ Unity Editor mà không cần tải lại |
 
-Page automatically translated using AI
+
+Trang được tự động dịch bằng AI

@@ -68,9 +68,9 @@ Um ein Feld in einer Komponente automatisch zu vernetzen, versehen Sie es mit de
 ::::code-group
 :::code-group-item Synchronisieren einer Zahl
 ```ts twoslash
-import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine"
+import { Behaviour, syncField } from "@needle-tools/engine"
 
-export class SyncedNumber extends Behaviour implements IPointerClickHandler {
+export class SyncedNumber extends Behaviour {
 
     // Verwenden Sie `@syncField`, um ein Feld automatisch zu vernetzen.
     // Optional können Sie eine Methode oder einen Methodennamen zuweisen, die/der aufgerufen wird, wenn sich der Wert ändert.
@@ -88,11 +88,11 @@ export class SyncedNumber extends Behaviour implements IPointerClickHandler {
 ```
 :::
 :::code-group-item Synchronisieren der Farbe eines Objekts
-<!-- BEISPIEL Netzwerk-Farbänderung -->
+<!-- SAMPLE network color change -->
 :::
 ::::
 
-Beachten Sie, dass `syncField` einen optionalen Parameter hat, um eine Methode anzugeben, die aufgerufen werden soll, wenn sich der Wert ändert. Diese Methode sollte in derselben Klasse definiert sein.
+Beachten Sie, dass syncField einen optionalen Parameter hat, um eine Methode anzugeben, die aufgerufen werden soll, wenn sich der Wert ändert. Diese Methode sollte in derselben Klasse definiert sein.
 
 ::: tip Benutzerdefiniertes Projekt-Setup
 Wenn Sie ein benutzerdefiniertes Projekt-Setup verwenden, müssen Sie ``experimentalDecorators: true`` in Ihrer ``tsconfig.json``-Datei aktivieren, damit ``syncField``-Decoratoren funktionieren. Projekte, die mit Needle Starters erstellt wurden, haben dies standardmäßig aktiviert.
@@ -561,17 +561,17 @@ Flatbuffer-Nachrichten werden direkt als Binärnachrichten gesendet.
 ::::code-group
 :::code-group-item SyncedTransform ('STRS')
 ```cs
-<!-- SAMPLE node_modules/@needle-tools/engine/src/engine-schemes/transforms.fbs -->
+<!-- BEISPIEL node_modules/@needle-tools/engine/src/engine-schemes/transforms.fbs -->
 ```
 :::
 :::code-group-item SyncedCamera ('SCAM')
 ```cs
-<!-- SAMPLE node_modules/@needle-tools/engine/src/engine-schemes/syncedCamera.fbs -->
+<!-- BEISPIEL node_modules/@needle-tools/engine/src/engine-schemes/syncedCamera.fbs -->
 ```
 :::
 :::code-group-item Vec2|3|4
 ```cs
-<!-- SAMPLE node_modules/@needle-tools/engine/src/engine-schemes/vec.fbs -->
+<!-- BEISPIEL node_modules/@needle-tools/engine/src/engine-schemes/vec.fbs -->
 ```
 :::
 ::::
@@ -666,5 +666,6 @@ Derzeit können benutzerdefinierte Binärnachrichten nicht auf dem Netzwerkserve
 ## Zusammenfassung
 
 Needle Engine macht das komplexe Thema der Vernetzung zugänglich und einfach zu bedienen. Sie können mit der automatischen Vernetzung Ihrer Komponenten mit nur wenigen Codezeilen beginnen und tiefer in die manuelle Vernetzung eintauchen, wenn Sie mehr Kontrolle benötigen.
+
 
 Seite automatisch mit KI übersetzt

@@ -421,7 +421,7 @@ Os métodos de Networking podem ser acedidos via ``this.context.connection``. Po
 ## Aceder ao Needle Engine e a componentes a partir de qualquer lugar
 É possível aceder a toda a funcionalidade descrita acima usando código JavaScript regular que não está dentro de componentes e vive noutro lugar. Todos os componentes e funcionalidade do runtime do needle são acessíveis via o namespace global ``Needle`` (pode escrever ``console.log(Needle)`` para obter uma visão geral)
 
-Pode encontrar componentes usando ``Needle.findObjectOfType(Needle.AudioSource)``, por exemplo. É recomendado guardar essas referências em cache, pois pesquisar repetidamente toda a cena é caro. Veja a lista para [encontrar, adicionar e remover componentes](#finding-adding-and-removing-components) acima.
+Pode encontrar componentes usando ``Needle.findObjectOfType(Needle.AudioSource)``, por exemplo. É recomendado guardar essas referências em cache, pois pesquisar repetidamente toda a cena é caro. Veja a lista para [encontrar, adicionar e remover componentes](#finding-addding-and-removing-components) acima.
 
 Para obter callbacks para o carregamento inicial da cena, veja o exemplo seguinte:
 ```js

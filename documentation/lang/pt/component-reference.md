@@ -13,20 +13,20 @@ Pode sempre adicionar os seus próprios componentes ou adicionar wrappers para c
 Saiba mais na secção [Scripting](./scripting.md) da nossa documentação.
 
 ## Audio
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `AudioListener` |  |
 | `AudioSource` | Usar para reproduzir áudio |
 
 ## Animation
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `Animator` com `AnimatorController` | Exporta com máquina de estado de animação, condições, transições  |
 | `Animation` | Componente de animação mais básico. Apenas o primeiro clip é exportado |
 | `PlayableDirector` com `TimelineAsset` | Exporta sequências poderosas para controlar animação, áudio, estado e mais |
 
 ## Rendering
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `Camera` |  |
 | `Light` | DirectionalLight, PointLight, Spotlight. Note que pode usá-lo para fazer bake de luz (e.g. formas Rectangular Light) também |
@@ -46,7 +46,7 @@ Os efeitos de postprocessing usam a [biblioteca pmndrs postprocessing](https://w
 
 - **Unity only**: *Note que efeitos de Postprocessing usando um Volume em Unity só são suportados com URP*
 
-| Nome do Efeito | |
+| Effect Name | |
 | --- | --- |
 | Antialiasing | *componente Unity extra* |
 | Bloom | *via asset Volume* |
@@ -63,7 +63,7 @@ Os efeitos de postprocessing usam a [biblioteca pmndrs postprocessing](https://w
 | *O seu efeito personalizado* | [Ver exemplo no stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect) |
 
 ## Networking
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `SyncedRoom` | Componente principal de networking. Coloque na sua cena para habilitar networking |
 | `Networking` | Usado para configurar o servidor backend para networking. |
@@ -74,12 +74,12 @@ Os efeitos de postprocessing usam a [biblioteca pmndrs postprocessing](https://w
 | `Screensharing` | Habilita capacidades de partilha de ecrã |
 
 ## Interaction
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `EventSystem` | Lida com a emissão de eventos de ponteiro e eventos de UI em objetos na cena |
 | `ObjectRaycater` | Necessário para DragControls e Duplicatable |
 | `GraphicsRaycaster` | O mesmo que ObjectRaycaster mas para elementos de UI |
-| `DragControls` | Permite que objetos sejam arrastados na cena. Requer raycaster na hierarquia pai, e.g. ObjectRaycaster |
+| `DragControls` | Permite que objetos sejam arrastados na cena. Requer raycaster na hierarquia pai, e.g. ObjectRaycater |
 | `Duplicatable` | Pode duplicar objetos atribuídos por arrasto. Requer DragControls |
 | `Interactable` | Componente básico para marcar um objeto como interativo. |
 | `OrbitControls` | Adicione à câmara para adicionar funcionalidade de controlo de órbita da câmara |
@@ -94,7 +94,7 @@ Os efeitos de postprocessing usam a [biblioteca pmndrs postprocessing](https://w
 
 Physics é implementado usando [Rapier](https://rapier.rs/).
 
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `Rigidbody` | Adicione para fazer um objeto reagir à gravidade (ou ser cinemático e estático) |
 | `BoxCollider` | Uma forma de colisor Box com a qual os objetos podem colidir ou emitir eventos de gatilho quando definido como `trigger` |
@@ -107,7 +107,7 @@ Physics é implementado usando [Rapier](https://rapier.rs/).
 
 [Leia a documentação XR](xr.md)
 
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `WebXR` | Adicione à cena para suporte VR, AR e Passthrough, bem como para renderizar modelos de Avatar |
 | [`USDZExporter`](./everywhere-actions.md) | Adicione para habilitar suporte USD e Quicklook
@@ -122,7 +122,7 @@ Physics é implementado usando [Rapier](https://rapier.rs/).
 
 
 ## Debugging
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `GridHelper` | Desenha uma grelha |
 | `BoxGizmo` | Desenha uma caixa |
@@ -130,7 +130,7 @@ Physics é implementado usando [Rapier](https://rapier.rs/).
 | | Nota: Quando estiver a escrever código personalizado, pode usar os métodos estáticos `Gizmos` para desenhar linhas e formas de depuração | |
 
 ## Runtime File Input/Output
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `GltfExport` | Experimental! Use para exportar gltf do runtime web. |
 | `DropListener` | Receber eventos de arrasto de ficheiros para upload e networking |
@@ -140,7 +140,7 @@ Physics é implementado usando [Rapier](https://rapier.rs/).
 Os componentes Spatial UI são mapeados de Unity UI (Canvas, não UI Toolkit) para [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui).
 A UI pode ser animada.
 
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `Canvas` | Sistema de UI do Unity. Necessita de estar no modo World Space neste momento. |
 | `Text (Legacy)` | Renderiza Texto usando o componente UI Text do Unity. Fontes personalizadas são suportadas, um atlas de fontes será gerado automaticamente na exportação. Use as configurações de fonte ou o componente `FontAdditionalCharacters` para controlar quais caracteres estão incluídos no atlas.<br/>**Nota**: No Unity, certifique-se de usar o componente `Legacy/Text` (*TextMeshPro* não é suportado no momento) |
@@ -149,20 +149,19 @@ A UI pode ser animada.
 | `RawImage` | Renderiza uma textura |
 | `InputField` | Permite input de texto |
 
-**Nota**: Dependendo do seu projeto, muitas vezes faz sentido uma mistura de UI espacial e 2D para projetos cross-platform onde VR, AR e ecrãs são suportados. Tipicamente, construiria as partes 2D com HTML para melhor acessibilidade, e as partes 3D com UIs geométricas que também suportam offsets de profundidade (e.g. estados de hover de botão e similares).
+**Nota**: Dependendo do seu projeto, muitas vezes faz sentido uma mistura de UI espacial e 2D para projetos cross-platform onde VR, AR, e ecrãs são suportados. Tipicamente, construiria as partes 2D com HTML para melhor acessibilidade, e as partes 3D com UIs geométricas que também suportam offsets de profundidade (e.g. estados de hover de botão e similares).
 
 ## Other
 
-| Nome  | Descrição |
+| Name  | Description |
 | ------------- | ------------- |
 | `SceneSwitcher` | Lida com o carregamento e descarregamento de outras cenas ou prefabs / ficheiros glTF. Tem funcionalidades para precarregar, mudar de cena via swipe, eventos de teclado ou navegação por URL |
 
 ## Editor Only
-| Nome  | Descrição |
+| Name  | Description |
 | --- | --- |
 | `ExportInfo` | Componente principal para gerir o(s) projeto(s) web, e.g. para instalar ou iniciar a aplicação web
 | `EditorSync` | Adicione para habilitar a rede de alterações de valor de material ou componente para a aplicação three.js em execução diretamente do Unity Editor sem ter que recarregar |
-
 
 ---
 Página traduzida automaticamente usando IA

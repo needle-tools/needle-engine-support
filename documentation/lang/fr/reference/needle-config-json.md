@@ -5,7 +5,7 @@ title: needle.config.json
 Le `needle.config.json` est utilisé pour fournir la configuration des intégrations de l'éditeur Needle et des plugins du pipeline de build de Needle Engine.
 
 | | |
-| --- | --- |
+| --- | --- | 
 | **Chemins** | |
 | `buildDirectory` | C'est là que les fichiers du projet construits sont copiés |
 | `assetsDirectory` | C'est là que les assets de l'intégration de l'éditeur seront copiés ou créés (par exemple, les fichiers `.glb` exportés depuis Unity ou Blender) |

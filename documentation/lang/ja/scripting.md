@@ -20,7 +20,7 @@ tags:
 
 ---
 
-Needle Engineのランタイムコードは、[TypeScript](https://typescriptlang.org)（推奨）または[JavaScript](https://javascript.info/)で記述されています。これらからC#スタブコンポーネントが自動生成され、エディタでGameObjectsに追加できます。C#コンポーネントとそのデータは、ランタイムによって同じデータを持つJavaScriptコンポーネントとして再作成され、three.jsオブジェクトにアタッチされます。
+Needle Engineのランタイムコードは、[TypeScript](https://typescriptlang.org)（推奨）または[JavaScript](https://javascript.info/)で記述されます。これらからC#スタブコンポーネントが自動生成され、エディタでGameObjectsに追加できます。C#コンポーネントとそのデータは、ランタイムによって同じデータを持つJavaScriptコンポーネントとして再作成され、three.jsオブジェクトにアタッチされます。
 
 カスタムコンポーネントと組み込みのUnityコンポーネントの両方を、この方法でJavaScriptコンポーネントにマッピングできます。たとえば、アニメーション、レンダリング、物理学に関連する多くの組み込みコンポーネントのマッピングは、Needle Engineに[すでに含まれています](./component-reference.md#unity-components)。
 
@@ -310,7 +310,7 @@ this.gameObject.traverse((obj: Object3D) => console.log(obj));
 ```
 または、表示可能なオブジェクトのみをたどる場合は、[`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible)を使用してください。
 
-もう1つの便利なオプションは、レンダリング可能なオブジェクトのみを反復処理したい場合に、すべてのrendererコンポーネメントをクエリして以下のように反復処理することです。
+もう1つの便利なオプションは、レンダリング可能なオブジェクトのみを反復処理したい場合に、すべてのrendererコンポーネントをクエリして以下のように反復処理することです。
 ```ts twoslash
 import { Renderer } from "@needle-tools/engine";
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
@@ -448,7 +448,7 @@ NeedleEngine.addContextCreatedCallback((args) => {
 
 もう1つのオプションは、`onInitialized(ctx => {})` [ライフサイクルフック](#special-lifecycle-hooks)を使用することです。
 
-また、`NeedleEngine.Registered`経由で利用可能なすべてのコンテキストにアクセスすることも可能です。これは内部配列を返します。（ただし、この配列は変更されるべきではなく、すべての aktif コンテキストを反復処理して設定を変更するために使用できます。例：すべてのコンテキストを`context.isPaused = true`に設定するなど）
+また、`NeedleEngine.Registered`経由で利用可能なすべてのコンテキストにアクセスすることも可能です。これは内部配列を返します。（ただし、この配列は変更されるべきではなく、すべてのアクティブなコンテキストを反復処理して設定を変更するために使用できます。例：すべてのコンテキストを`context.isPaused = true`に設定するなど）
 
 以下に、静的`NeedleEngine`タイプで利用可能なイベントのリストを示します。
 `NeedleEngine.registerCallback(ContextEvent.ContextCreated, (args) => {})`経由でこれらのイベントを購読できます。
@@ -501,5 +501,5 @@ Unityで参照されているPrefabs、SceneAssets、およびAssetReferences（
 AssetReferenceはURIごとにキャッシュされるため、複数のコンポーネント/スクリプトで同じエクスポートされたglTF/Prefabを参照しても、一度だけロードされて再利用されます。
 
 # 次のステップ
----
+
 AIによって自動翻訳されたページ

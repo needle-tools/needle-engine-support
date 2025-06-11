@@ -58,7 +58,7 @@ Ten en cuenta que en algunos casos el tipo puede omitirse. Esto se puede hacer p
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    @serializable() // < no se necesita tipo aquí porque el tipo de campo es primitivo
+    @serializable() // < no type is needed here because the field type is a primitive
     myString?: string;
 }
 ```
@@ -68,9 +68,9 @@ Los campos sin ningún modificador de acceso como `private`, `public` o `protect
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    /// no hay modificador de acceso, lo que significa que es público:
+    /// no accessor means it is public:
     myNumber?: number;
-    // haciéndolo explícitamente privado:
+    // explicitly making it private:
     private myPrivateNumber?: number;
     protected myProtectedNumber?: number;
 }
@@ -206,7 +206,7 @@ export class MyScript extends Behaviour
         this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
     onDisable() {
-        // se recomienda también desuscribirse de los eventos cuando tu componente se vuelve inactivo
+        // it is recommended to also unsubscribe from events when your component becomes inactive
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -223,19 +223,17 @@ Ten en cuenta que en este caso tienes que manejar todos los casos tú mismo. Por
 ## Callbacks del Sistema de Entrada
 Similar a Unity (consulta [IPointerClickHandler en Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)), también puedes registrarte para recibir eventos de entrada en el propio componente.
 
-Para que esto funcione, asegúrate de que tu objeto tenga un componente ``ObjectRaycaster`` o ``GraphicRaycaster`` en la jerarquía de padres.
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-Nota: `IPointerEventHandler` suscribe el objeto a todos los posibles eventos de puntero. Los manejadores para ellos son:
+Eventos de puntero disponibles para todos los componentes:
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -253,7 +251,7 @@ const someVariable = 42;
 // ---cut-before---
 
 console.log("Hello web");
-// Puedes pasar tantos argumentos como quieras así:
+// You can pass in as many arguments as you want like so:
 console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
 ```
 
@@ -302,7 +300,7 @@ if( isMobileDevice() )
 
 ```ts twoslash
 import { getParam } from "@needle-tools/engine"
-// devuelve true
+// returns true
 const myFlag = getParam("some_flag")
 console.log(myFlag)
 ```
@@ -380,26 +378,26 @@ import * as TWEEN from '@tweenjs/tween.js';
 
 export class TweenRotation extends Behaviour {
 
-    // guardar la instancia de nuestro tweener
+    // save the instance of our tweener
     private _tween?: TWEEN.Tween<any>;
 
     start() {
         const rotation = this.gameObject.rotation;
-        // crear la instancia de tween
+        // create the tween instance
         this._tween = new TWEEN.Tween(rotation);
-        // configurarlo para que se repita indefinidamente
+        // set it to repeat forever
         this._tween.repeat(Infinity);
-        // configurar el easing a usar
+        // set the easing to use
         this._tween.easing(TWEEN.Easing.Quintic.InOut);
-        // configurar los valores para el tween
+        // set the values to tween
         this._tween.to({ y: Math.PI * 0.5 }, 1000);
-        // iniciarlo
+        // start it
         this._tween.start();
     }
 
     update() {
-        // actualizar el tweening en cada fotograma
-        // el '?' es una abreviatura para comprobar si _tween ha sido creado
+        // update the tweening every frame
+        // the '?' is a shorthand for checking if _tween has been created
         this._tween?.update();
     }
 }
@@ -414,5 +412,5 @@ Puedes ver el script final en acción [aquí](https://stackblitz.com/edit/needle
 - [Fundamentos de Typescript](./typescript-essentials.md)
 - [Referencia de Componentes](../component-reference.md)
 
----
+
 Página traducida automáticamente usando IA

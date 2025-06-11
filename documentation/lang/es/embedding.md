@@ -8,25 +8,23 @@ Hay varias formas de integrar Needle Engine con tu sitio web. Cuál es mejor dep
 
 Si quieres probar rápidamente cómo se verán los proyectos hechos con Needle en tu sitio web, simplemente añade estas dos líneas en cualquier parte de tu página para probar:
 
-:::: code-group
-::: code-group-item Option 1: Embedding Needle
+::: code-tabs
+@tab Opción 1: Incrustando Needle
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
-:::
-::: code-group-item Option 2: Using an iframe
+@tab Opción 2: Usando un iframe
 ```html
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
 </iframe>
 ```
-:::
-::: code-group-item Resulting Website
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+@tab Sitio web resultante
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
-::::
+:::
 
 # Formas de crear aplicaciones web con Needle
 
@@ -53,9 +51,12 @@ Esta es la opción más sencilla, y recomendada para la mayoría de los flujos d
 
 Si no quieres usar nuestros componentes "Deploy to...", o no hay un componente para tu flujo de trabajo particular, puedes hacer el mismo proceso manualmente. La aplicación web resultante será idéntica a lo que ves en tu servidor local mientras trabajas en el proyecto.
 
-1. Realiza una build de producción de tu proyecto web. Esto creará una carpeta `dist/` con todos los archivos necesarios, lista para la distribución. Contiene todos los archivos necesarios, incluyendo el bundle JavaScript, el archivo HTML y cualquier otro asset como texturas, audio o archivos de vídeo.
+1. Realiza una build de producción de tu proyecto web. Esto creará una carpeta `dist/` con todos los archivos necesarios, lista para la distribución. Contiene todos los archivos necesarios, incluyendo el JavaScript bundle, el archivo HTML y cualquier otro asset como texturas, audio o archivos de vídeo.
+
 2. Sube el contenido de la carpeta `dist/` de tu Proyecto Web a tu alojamiento web. Puedes hacerlo a través de FTP, SFTP o cualquier otro método de transferencia de archivos que tu alojamiento proporcione. Consulta la documentación de tu alojamiento web para más detalles.
+
 3. ¡Eso es todo! Tu aplicación web ya está activa.
+
 
 ::: tip La ubicación de la carpeta influye en la URL de tu aplicación web.
 Dependiendo de la configuración de tu alojamiento, la ubicación y el nombre de la carpeta determinan cuál es la URL de tu aplicación web. Aquí tienes un ejemplo:
@@ -68,11 +69,13 @@ Dependiendo de la configuración de tu alojamiento, la ubicación y el nombre de
 
 En algunos casos, quieres que un proyecto de Needle Engine forme parte de un sitio web existente, por ejemplo, como parte de una publicación de blog, una página de producto o un portfolio. El proceso es muy similar, pero en lugar de subir los archivos a la raíz de tu espacio web, _incrustas_ el proyecto en un sitio web existente con unas pocas líneas de código.
 
-1. Realiza una build de producción de tu proyecto web. Esto creará una carpeta `dist/` con todos los archivos necesarios, lista para la distribución. Contiene todos los archivos necesarios, incluyendo el bundle JavaScript, el archivo HTML y cualquier otro asset como texturas, audio o archivos de vídeo.
+1. Realiza una build de producción de tu proyecto web. Esto creará una carpeta `dist/` con todos los archivos necesarios, lista para la distribución. Contiene todos los archivos necesarios, incluyendo el JavaScript bundle, el archivo HTML y cualquier otro asset como texturas, audio o archivos de vídeo.
+
 2. Sube la carpeta `dist/` de tu Proyecto Web a tu alojamiento web.
     ::: tip ¡La carpeta se puede alojar en cualquier lugar!
     Si no tienes acceso al sistema de archivos de tu alojamiento web, o no tienes forma de subir archivos allí, puedes subir la carpeta a cualquier otro espacio web y usar su URL pública en el siguiente paso.
     :::
+
 3. Dentro de tu carpeta `dist`, encontrarás un archivo `index.html`. Queremos copiar algunas líneas de esta carpeta, así que abre el archivo en un editor de texto. Típicamente, tiene este aspecto:
     ```html
     <head>
@@ -84,14 +87,17 @@ En algunos casos, quieres que un proyecto de Needle Engine forme parte de un sit
         <needle-engine src="assets/scene.glb"></needle-engine>
     </body>
     ```
+
     Hay dos líneas importantes aquí:
-    - el bundle JavaScript dentro de `<script>`,
+    - el JavaScript bundle dentro de `<script>`,
     - la etiqueta HTML `<needle-engine>`.
+
 4. En el sitio web de destino, añade también las etiquetas `<script...>` y `<needle-engine...>`. Asegúrate de que las rutas apunten a la ubicación donde has subido los archivos.
     ```html
     <script type="module" src="/your-upload-folder/assets/index-732f0764.js"></script>
     <needle-engine src="/your-upload-folder/assets/scene.glb"></needle-engine>
     ```
+
 5. ¡Eso es todo! La escena debería mostrarse ahora en tu sitio web.
 
 ## Incrustar un proyecto Needle como iframe
@@ -99,10 +105,12 @@ En algunos casos, quieres que un proyecto de Needle Engine forme parte de un sit
 Cuando tienes acceso limitado a un sitio web, por ejemplo, cuando utilizas un CMS como WordPress, puedes usar un iframe para incrustar una escena de Needle Engine en tu sitio web. Puede que conozcas este flujo de trabajo por incrustar vídeos de YouTube o modelos de Sketchfab.
 
 1. Realiza una build de producción de tu proyecto web. Esto creará una carpeta `dist/` con todos los archivos necesarios, lista para la distribución.
+
 2. Sube la carpeta `dist/` de tu Proyecto Web a tu alojamiento web.
     ::: tip ¡La carpeta se puede alojar en cualquier lugar!
     Si no tienes acceso al sistema de archivos de tu alojamiento web, o no tienes forma de subir archivos allí, puedes subir la carpeta a cualquier otro espacio web y usar su URL pública en el siguiente paso.
     :::
+
 3. Añade un iframe a tu sitio web, apuntando al archivo `index.html` en la carpeta `dist/`.
     ```html
     <iframe
@@ -110,11 +118,14 @@ Cuando tienes acceso limitado a un sitio web, por ejemplo, cuando utilizas un CM
         allow="xr; xr-spatial-tracking; fullscreen;">
     </iframe>
     ```
+
+
     ::: tip Permisos dentro de iframes
     La lista dentro de `allow=` depende de las características que utilice tu aplicación web. Por ejemplo, las aplicaciones XR requieren `xr` y `xr-spatial-tracking` para funcionar dentro de iframes.
 
-    Puede que se necesiten características adicionales, por ejemplo `camera; microphone; display-capture; geolocation`. Consulta [la lista completa de directivas de iframe Permissions Policy en MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
+    Puede que se necesiten características adicionales, por ejemplo `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. Consulta [la lista completa de directivas de iframe Permissions Policy en MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
     :::
+
 4. ¡Eso es todo! La escena debería mostrarse ahora en tu sitio web.
 
 ## Incrustar escenas que no utilizan scripts personalizados
@@ -127,7 +138,9 @@ Cuando tu proyecto utiliza solo componentes principales y no scripts personaliza
     <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb" background-blurriness="0.8"></needle-engine>
     ```
 2. Sube la carpeta `assets/` de tu Proyecto Web a tu alojamiento web. Dependiendo de la configuración de tu proyecto, esta carpeta contiene uno o más archivos `.glb` y cualquier número de otros archivos como audio, vídeo, skybox y más.
+
 3. Cambia el atributo `src=` de la etiqueta `needle-engine` a la URL del archivo `.glb` que quieras mostrar. Típicamente, esto será una ruta como `https://your-website.com/assets/MyScene.glb`.
+
 4. ¡Eso es todo! La escena debería mostrarse ahora en tu sitio web.
 
 ## Incrustar una aplicación web de Needle Cloud como iframe
@@ -189,11 +202,13 @@ Si has desplegado tu proyecto en Needle Cloud, puedes mostrarlo fácilmente en t
 ## Wordpress
 
 1. Decide el método que quieres usar para incrustar tu proyecto de Needle Engine. Puedes usar el método "Incrustar un proyecto Needle en un sitio web existente", o el método "Incrustar un proyecto Needle como iframe".
+
 2. Sube el contenido de la carpeta `dist/` de tu Proyecto Web a tu alojamiento web. Normalmente, el directorio de subidas de Wordpress se encuentra en `wp-content/uploads/`.
 
     ::: tip Copias de seguridad de Wordpress
     Puedes decidir si tu nuevo proyecto debe estar en `wp-content/uploads/my-project/`, o en una ubicación diferente como `my-projects/my-project`. Esto afecta si y cómo tu proyecto se incluirá en las copias de seguridad de Wordpress.
     :::
+
 3. En la página donde quieras añadir Needle Engine, añade un bloque `HTML` y pega el fragmento de código como se indica arriba – ya sea como script incrustado, o como iframe.
 
 ## Shopify
@@ -210,6 +225,5 @@ Si has desplegado tu proyecto en Needle Cloud, puedes mostrarlo fácilmente en t
 
 ::: warning <b>En construcción.</b> Pendiente de documentar.
 :::
-
 
 Página traducida automáticamente usando IA

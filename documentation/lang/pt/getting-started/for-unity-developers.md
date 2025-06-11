@@ -2,7 +2,7 @@
 title: Introdução à Scripting para Developers Unity
 ---
 
-O Needle Engine oferece uma integração estreita com o Unity Editor. Isto permite que developers e designers trabalhem juntos num ambiente familiar e entreguem experiências web rápidas, performáticas e leves.
+Needle Engine oferece uma integração estreita com o Unity Editor. Isto permite que developers e designers trabalhem juntos num ambiente familiar e entreguem experiências web rápidas, performáticas e leves.
 
 Este guia destina-se principalmente a developers com background em Unity3D, mas também pode ser útil para developers com background em web ou three.js. Abrange tópicos sobre como as coisas são feitas no Unity vs no three.js ou Needle Engine.
 
@@ -36,7 +36,7 @@ import { Behaviour } from "@needle-tools/engine"
 export class MyComponent extends Behaviour {
 }
 ```
-## Campos de Script
+## Script Fields
 
 ### serializable
 Se viu alguns scripts do Needle Engine, deve ter notado que algumas variáveis são anotadas com `@serializable` acima da sua declaração. Este é um Decorator em Typescript e pode ser usado para modificar ou anotar código. No Needle Engine, é usado, por exemplo, para permitir que a serialização principal saiba quais os tipos que esperamos no nosso script quando converte da informação raw do componente armazenada no glTF para uma instância de Componente.
@@ -58,7 +58,7 @@ Note que em alguns casos o tipo pode ser omitido. Isso pode ser feito para todos
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    @serializable() // < não é necessário tipo aqui porque o tipo do campo é primitivo
+    @serializable() // < no type is needed here because the field type is a primitive
     myString?: string;
 }
 ```
@@ -68,9 +68,9 @@ Campos sem qualquer modificador de acesso como `private`, `public` ou `protected
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    /// nenhum modificador de acesso significa que é público:
+    /// no accessor means it is public:
     myNumber?: number;
-    // tornando-o explicitamente privado:
+    // explicitly making it private:
     private myPrivateNumber?: number;
     protected myProtectedNumber?: number;
 }
@@ -223,19 +223,17 @@ Note que neste caso, tem que lidar com todos os casos sozinho. Por exemplo, pode
 ## Callbacks do InputSystem
 Semelhante ao Unity (veja [IPointerClickHandler no Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)), também pode registar-se para receber eventos de input no próprio componente.
 
-Para que isto funcione, certifique-se de que o seu objeto tem um componente ``ObjectRaycaster`` ou ``GraphicRaycaster`` na hierarquia pai.
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-Nota: `IPointerEventHandler` subscreve o objeto a todos os eventos de ponteiro possíveis. Os manipuladores para eles são:
+Available pointer events for all components:
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -243,7 +241,7 @@ Nota: `IPointerEventHandler` subscreve o objeto a todos os eventos de ponteiro p
 - `onPointerExit`
 - `onPointerClick`
 
-Todos têm um argumento `PointerEventData` que descreve o evento.
+All have a `PointerEventData` argument describing the event.
 
 ## Debug.Log
 O equivalente a `Debug.Log()` em javascript é `console.log()`. Pode também usar `console.warn()` ou `console.error()`.

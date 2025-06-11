@@ -4,7 +4,7 @@ title: Needle-Kernkomponenten
 
 # Needle-Kernkomponenten
 
-Hier ist eine Übersicht über einige der von uns bereitgestellten Komponenten. Viele davon bilden Komponenten und Funktionen in Unity, Blender oder anderen Integrationen ab.
+Hier finden Sie eine Übersicht über einige der von uns bereitgestellten Komponenten. Viele davon bilden Komponenten und Funktionen in Unity, Blender oder anderen Integrationen ab.
 
 Eine vollständige Liste finden Sie in unserer [API-Dokumentation](https://engine.needle.tools/docs/api/latest).
 
@@ -160,4 +160,6 @@ Räumliche UI-Komponenten werden von Unity UI (Canvas, nicht UI Toolkit) auf [th
 | --- | --- |
 | `ExportInfo` | Hauptkomponente zur Verwaltung des/der Webprojekts/e, z. B. zum Installieren oder Starten der Web-App |
 | `EditorSync` | Hinzufügen, um die Netzwerk-Synchronisierung von Material- oder Komponentenwertänderungen direkt vom Unity Editor zur laufenden three.js-App zu ermöglichen, ohne neu laden zu müssen |
+
+
 Seite automatisch mit AI übersetzt

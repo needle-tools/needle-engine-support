@@ -17,7 +17,7 @@ Se soporta una variedad de formatos de archivo, incluyendo glTF, USD, FBX, VRM, 
 
 Visita [Needle Cloud](https://cloud.needle.tools) para empezar.
 
-![Needle Cloud Overview](/cloud/cloud-overview-page.webp)
+![Resumen de Needle Cloud](/cloud/cloud-overview-page.webp)
 
 ## Características
 
@@ -54,7 +54,7 @@ Needle Cloud está integrado en el Editor de Unity. Esto te permite desplegar tu
 3. **Haz clic en `Upload to Needle Cloud`.**   
    Esto compilará tu aplicación y la subirá a Needle Cloud. También puedes elegir desplegar en un equipo y proyecto específicos. El _upload name_ del proyecto, visible junto al botón, se guarda en la escena. Las futuras cargas usarán el mismo upload name, y todas las versiones cargadas se agruparán en el sitio web de Needle Cloud.   
    
-   ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
+   ![Integración de Needle Cloud con Unity](/cloud/cloud-deploy-v1.webp)
 
 ## Desplegar desde la CLI
 
@@ -93,7 +93,7 @@ Usa la [Needle Cloud Github Action](https://github.com/marketplace/actions/deplo
 #### Ejemplo: Needle Cloud Github Action
 ```yml
       - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1.0.2
+        uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
@@ -144,7 +144,7 @@ Típicamente, subes una nueva versión, la revisas y luego decides si quieres pr
 
 El sitio web de Needle Cloud muestra todas las versiones desplegadas de la aplicación, incluyendo las versiones latest y main. Las etiquetas se pueden mover haciendo clic en <kbd>⋮</kbd> y seleccionando <kbd>Set main label</kbd> o <kbd>Remove main label</kbd>.  
 
-![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
+![Lista de versiones de Needle Cloud](/cloud/cloud-edit-page.webp)
 
 ## Formatos 3D soportados
 
@@ -271,5 +271,6 @@ Consulta [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) para má
 
 7. **¿Qué pasa si me quedo sin espacio de almacenamiento?**   
    Es posible que necesites actualizar tu plan o eliminar archivos antiguos para liberar espacio.
+
 
 Página traducida automáticamente con IA

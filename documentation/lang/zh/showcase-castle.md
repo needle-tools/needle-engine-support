@@ -1,5 +1,6 @@
+```markdown
 ---
-lang: en-US
+lang: zh-CN
 title: 城堡建造者 🏰
 sidebar: false
 editLink: false
@@ -24,5 +25,6 @@ editLink: false
 此页面使用 Unity 创作，并使用 🌵 needle 的工具和技术导出到 three.js。
 
 其中涉及许多开放技术：3D 模型采用 glTF 格式，渲染引擎是 three.js，VR 和 AR 使用 WebXR。网络服务器运行在 Glitch 上，音频通过 WebRTC 使用 PeerJS 发送。
+```
 
 页面由 AI 自动翻译

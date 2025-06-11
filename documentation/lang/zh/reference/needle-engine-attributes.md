@@ -2,16 +2,16 @@
 title: <needle-engine> 配置
 ---
 
-`<needle-engine>` Web 组件内置了一系列属性，可用于修改加载场景的外观和感觉，而无需直接添加或编辑 three.js 场景。
+`<needle-engine>` web 组件内置了一系列属性，可用于修改加载场景的外观和感觉，而无需直接添加或编辑 three.js 场景。
 下表列出了其中最重要的属性：
 
 | 属性 | 描述 |
 | --- | --- |
 | **加载** | |
 | `src` | 一个或多个 glTF 或 glb 文件的路径。<br/>支持的类型包括 `string`、`string[]` 或字符串化数组（以 `,` 分隔） |
-| `dracoDecoderPath` | Draco 解码器的 URL |
+| `dracoDecoderPath` | Draco 解码器的 URL，例如 `./include/draco/` 以使用本地的 Draco 解码器 |
 | `dracoDecoderType` | Draco 解码器类型。选项包括 `wasm` 或 `js`。参见 [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
-| `ktx2DecoderPath` | KTX2 解码器的 URL |
+| `ktx2DecoderPath` | KTX2 解码器的 URL，例如 `./include/ktx2/` 以使用本地的 KTX2 解码器 |
 | **渲染** | |
 | `background-color` | 可选，用作背景颜色的 hex 颜色值。示例：`rgb(255, 200, 100)`，`#dddd00` |
 | `background-image` | 可选，天空盒图像（背景图像）的 URL 或预设字符串：`studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
@@ -29,16 +29,14 @@ title: <needle-engine> 配置
 | `progress` | 加载更新时要调用的函数名称。`onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }` |
 | `loadfinished` | 加载完成时要调用的函数名称 |
 | **加载显示** | *更改 Needle Engine 加载显示外观的可用选项。使用 `?debugloadingrendering` 可更轻松地编辑* |
-| `loading-style` | 选项包括 `light` 或 `dark` |
-| `loading-background-color` | **PRO** — 更改加载背景颜色（例如 `=#dd5500`） |
-| `loading-text-color` | **PRO** — 更改加载文本颜色 |
-| `loading-logo-src` | **PRO** — 更改加载标志图像 |
-| `primary-color` | **PRO** — 更改主要加载颜色 |
-| `secondary-color` | **PRO** — 更改次要加载颜色 |
-| `hide-loading-overlay` | **PRO** — 不显示加载叠加层，在 Needle Engine > 3.17.1 中添加
+| `loading-background` | **PRO** — 默认值：`transparent`。更改加载背景颜色（例如 `#dd5500`） |
+| `loading-logo-src` | **PRO** — 更改加载标志图像（例如 `https://yourdomain.com/logo.png` 或 `/logo.png`） |
+| `hide-loading-overlay` | **PRO** — 不显示加载叠加层 |
 | **内部** | |
 | `hash` | 内部使用，附加到正在加载的文件以强制更新（例如，当浏览器缓存了 glb 文件时）。不应手动编辑。 |
 
+**升级通知**:
+- 在 Needle Engine 4.5.0 中移除的属性：`loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
 
 # 示例
 
@@ -49,7 +47,7 @@ title: <needle-engine> 配置
 
 ```html
 <!-- 覆盖 draco 解码器的位置 -->
-<needle-engine src="path/to/your.glb" dracoDecoderPath="path/to/draco/folder"></needle-engine>
+<needle-engine src="path/to/your.glb" dracoDecoderPath="./include/draco/"></needle-engine>
 ```
 
 设置环境图像、播放动画和自动相机控制。[在 stackblitz 上查看实时示例](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)

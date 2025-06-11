@@ -1,5 +1,5 @@
 ---
-title: Testing on local devices
+title: 在本地设备上测试
 ---
 
 ## 在本地设备上测试
@@ -102,6 +102,7 @@ _使用 [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert) npm
 2. 在左侧边栏中，选择“受信任的根证书颁发机构”。
 3. 右键单击“证书”，然后选择“所有任务 > 导入”。
 4. 选择 `rootCA.pem` 文件（您可能需要将文件类型更改为“所有文件”）并按照说明操作。
+
 
 ---
 此页面由AI自动翻译

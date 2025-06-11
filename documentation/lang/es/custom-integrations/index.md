@@ -4,47 +4,47 @@
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <span style="font-size: 50px;">✨</span> 
+    <img src="/logo.png" style="max-height:70px;" title="Logo de Needle" alt="Logo de Needle"/> +
+    <span style="font-size: 50px;">✨</span>
 </div>
 
-# Integración con otras herramientas
+# Integrar con otras herramientas
 
-Needle Engine está diseñado para ser flexible y extensible. Puede integrarse con otras herramientas y servicios para mejorar tu flujo de trabajo y llevar 3D rico e interactivo a la web desde cualquier software.
+Needle Engine está diseñado para ser flexible y extensible. Puede integrarse con otras herramientas y servicios para mejorar tu workflow y llevar 3D rico e interactivo a la web desde cualquier software.
 
-En el núcleo de una integración personalizada con Needle Engine se encuentra el formato 3D glTF. Este es el formato más ampliamente soportado para 3D en la web y el más versátil. Este formato ligero puede almacenar modelos 3D, animaciones, texturas y todo tipo de datos adicionales. glTF es extensible, que es exactamente por lo que lo elegimos como base para Needle Engine. Nos permite añadir características ricas y capacidades interactivas a los archivos 3D, incluyendo mejor renderizado, físicas, interacciones, XR, redes y más.
+En el núcleo de una integración personalizada con Needle Engine se encuentra el formato 3D glTF. Este es el formato más ampliamente soportado para 3D en la web, y el más versátil. Este formato lightweight puede almacenar modelos 3D, animaciones, texturas, y todo tipo de extra data. glTF es extensible, que es exactamente por lo que lo elegimos como base para Needle Engine. Nos permite añadir rich features y interactive capabilities a los archivos 3D, incluyendo mejor rendering, physics, interactions, XR, networking, y más.
 
-Como resultado de usar el formato glTF estandarizado para el intercambio, crear una integración básica en cualquier software es fácil: simplemente exporta tus assets 3D como archivos glTF e impórtalos en Needle Engine. A partir de ahí, puedes añadir más características a tu integración para soportar nuestras extensiones de scripting. Usualmente, esto se hace a través de un plugin, extensión o hook de exportación en tu software 3D.
+Como resultado de usar el formato glTF estandarizado para el intercambio, crear una integración básica en cualquier software es fácil – simplemente exporta tus assets 3D como archivos glTF e impórtalos en Needle Engine. A partir de ahí, puedes añadir más features a tu integración, para soportar nuestras scripting extensions. Usualmente, esto se hace via un plugin, extension o export hook en tu software 3D.
 
 ## Estructura de una integración personalizada
 La estructura de una integración personalizada se ve así:
 
-1.  Exporta tus assets 3D como archivos glTF. En este punto, tu integración es probablemente tan simple como hacer clic en el botón de exportar en tu software 3D.
-2.  Usa el archivo glTF en un proyecto web usando Needle Engine.
-    -   Puede ser un proyecto web creado con otra integración, descargado de una muestra, o un nuevo proyecto web hecho con `npx needle-create`.
-    -   Exporta el archivo glTF a la carpeta `assets`. Tu aplicación web debería actualizarse automáticamente cada vez que reexportes el archivo glTF.
-3.  En este punto, tienes una integración básica funcional y ya podrías añadir funcionalidad personalizada a través de TypeScript en el proyecto web.
-4.  El siguiente paso es añadir una forma de crear y ajustar componentes en tu software. Dependiendo del software, esto puede hacerse a través de una interfaz de usuario personalizada, un script o un plugin.
-    -   Para empezar, prueba con un componente como `DragControls`. Tiene algunas opciones, pero los valores por defecto son suficientes para empezar.
-    -   Luego, pasa a componentes que requieren configuración. Un buen punto de partida son nuestras `Everywhere Actions`, porque permiten a los creadores construir una amplia gama de experiencias interactivas sin necesidad de escribir código.
-5.  Exporta esos componentes como parte de la extensión glTF `NEEDLE_components` para cada nodo. Usualmente, esto se hace añadiendo una extensión o hook de glTF personalizado al exportador de glTF existente en tu software.
-6.  Integra con un proyecto web para que se pueda generar una interfaz de usuario para los componentes personalizados. Para Unity y Blender, llamamos a esto `Component Compiler`; crea automáticamente una interfaz de usuario para los componentes en tu proyecto y sirve como puente entre los componentes TypeScript y tu software 3D.
+1. Exporta tus assets 3D como archivos glTF. At this point, tu integración es likely as simple as clicking the export button en tu software 3D.
+2. Usa el archivo glTF en un web project using Needle Engine.
+   - This can be a web project created with another integration, downloaded from a sample, or a new web project made with `npx needle-create`.
+   - Export the glTF file into the `assets` folder. Your web app should automatically refresh whenever you re-export the glTF file.
+3. At this point, you have a basic functional integration, y you could already add custom functionality via TypeScript in the web project.
+4. The next step is to add a way to create and adjust components in your software. Depending on the software, this can be done through a custom UI, a script, or a plugin.
+   - To start, try with a component like `DragControls`. It has a few options, but the defaults are good enough to get started.
+   - Then, move onto components that require configuration. A good starting point are our `Everywhere Actions`, because they allow creators to build a wide range of interactive experiences without needing to write any code.
+5. Export those components as part of the `NEEDLE_components` glTF extension for each node. Usually, this is done by adding a custom glTF extension or hook to the existing glTF exporter in your software.
+6. Integrate with a web project so that UI can be generated for custom components. For Unity y Blender, we call this `Component Compiler` – it automatically creates a UI for the components in your project, y serves as a bridge between TypeScript components y your 3D software.
 
-## Integrar el flujo de trabajo del proyecto web
+## Integrar el workflow del proyecto web
 
-Una integración completa también podría gestionar más del flujo de trabajo del proyecto web. Todas estas operaciones pueden hacerse desde la command line, pero para facilitar su uso, pueden envolverse perfectamente en una GUI o un menú personalizado en tu software 3D. Esto incluye:
+Una fully-flegded integration might also manage more of the web project workflow. All of these operations can be done from the command line, but for ease of use, they can be neatly wrapped in a GUI or a custom menu in your 3D software. This includes:
 
-1.  Crear un nuevo proyecto o cambiar la ubicación del proyecto web.
-2.  Ejecutar el proyecto web desde tu software 3D.
-    -   Nuestra [integración de Unity](./../unity/) sobrescribe el botón "Play" para ejecutar el proyecto web.
-    -   La [integración de Blender](./../blender/) tiene un botón "Play" personalizado que ejecuta el proyecto web.
-3.  Construir el proyecto web en una carpeta.
-4.  Subir el proyecto construido a Needle Cloud u otra plataforma, y recordar el Project ID y el Team ID.
-    -   Nuestra integración de Unity además muestra las últimas subidas para tu equipo y te permite saltar al último despliegue de un proyecto.
-5.  Subir/descargar assets individuales a Needle Cloud u otra plataforma.
+1. Creating a new project or changing the location of the web project
+2. Running the web project from within your 3D software
+   - Our [Unity integration](./../unity/) overrides the "Play" button to run the web project.
+   - The [Blender integration](./../blender/) has a custom "Play" button that runs the web project.
+3. Building the web project to a folder
+4. Uploading the built project to Needle Cloud or another platform, y remembering the Project ID y Team ID
+   - Our Unity integration additionally shows the last uploads for your team, y allows you to jump to the last deployment of a project.
+5. Uploading/downloading individual assets to Needle Cloud or another platform
 
 :::tip ¡Ponte en contacto si planeas construir una integración personalizada!
-Por favor, ponte en contacto con nosotros si estás interesado en construir una integración personalizada. Estaremos encantados de ayudarte con el proceso y explicar más detalles. Para los clientes Enterprise, también ofrecemos integraciones personalizadas como servicio.
+Please reach out to us si estás interested in building a custom integration. We are happy to help you with the process, y explain more of the details. For Enterprise customers, we also provide custom integrations as a service.
 :::
 
 Página traducida automáticamente usando IA

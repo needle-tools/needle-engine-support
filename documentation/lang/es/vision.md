@@ -4,7 +4,7 @@ next: features-overview
 
 # Nuestra Visión 🔮
 
-## El futuro de la Web 3D
+## El Futuro de la Web 3D
 
 Creemos que el uso de 3D en la web se expandirá considerablemente en los próximos años. Mientras que hoy las aplicaciones nativas son la norma, cada vez más contenido está disponible como una aplicación web o [PWA](https://web.dev/progressive-web-apps/). Los nuevos dispositivos de VR y AR se [extenderán a la web](https://immersive-web.github.io/webxr-samples/), creando un problema interesante: "responsive" de repente no solo significa "pantalla pequeña" o "pantalla grande", ¡también estás lidiando con espacios, 3D, colocación espacial y potencialmente gafas y mandos!
 
@@ -14,7 +14,7 @@ En Needle, creemos que idear y crear en este espacio debería ser fácil. Nos pr
 
 ## ¿Por qué otra plataforma para 3D en la web? ¿No hay suficientes opciones ya?
 
-Hay numerosas opciones, ¡es cierto! Descubrimos que los sistemas actuales<sup>1</sup> se pueden clasificar a grandes rasgos en dos categorías: algunos tienen un excelente manejo de assets, herramientas y flujos de trabajo amigables para artistas, pero generan una especie de blob binario, y otros están más enfocados en el código, son amigables para desarrolladores y permiten una excelente integración en los flujos de trabajo web modernos<sup>2</sup>.
+Hay numerosas opciones, ¡es cierto! Descubrimos que los sistemas actuales<sup>1</sup> se pueden clasificar a grandes rasgos en dos categorías: algunos tienen un excelente manejo de assets, herramientas y flujos de trabajo amigables para artistas, pero generan una especie de binary blob, y otros están más enfocados en el código, son amigables para desarrolladores y permiten una excelente integración en los flujos de trabajo web modernos<sup>2</sup>.
 
 Queremos unir estos mundos y combinar lo mejor de ambos: flujos de trabajo amigables para artistas y tecnologías web modernas. Combinado con formatos modernos y un flujo de trabajo ágil, creemos que esto permitirá a muchos más creadores llevar su contenido a la web. También vimos una oportunidad para hacer bien AR, VR y la colaboración desde el principio.
 
@@ -31,7 +31,7 @@ Nuestro objetivo es permitir que las personas lleven datos a la web desde _sus_ 
 
 En el núcleo de Needle Engine se encuentra el formato [glTF](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) y su capacidad para ser extendido con extensiones personalizadas. El objetivo es: un solo archivo `.glb` puede contener los datos de toda tu aplicación.
 
-Vale la pena señalar que no es un objetivo enviar código real dentro de glTF; enviar y ejecutar código es trabajo de los runtimes web modernos y el bundling. Ciertamente podemos imaginar que las representaciones abstractas de la lógica (por ejemplo, gráficos, máquinas de estado, etc.) puedan estandarizarse hasta cierto punto y permitir mundos interoperables, pero aún no estamos ahí.
+Vale la pena señalar que no es un objetivo enviar código real dentro de glTF; enviar y ejecutar código es trabajo de los runtimes web modernos y el bundling. Ciertamente podemos imaginar que las representaciones abstractas de la lógica (por ejemplo, gráficos, máquinas de estado, y así sucesivamente) puedan estandarizarse hasta cierto punto y permitir mundos interoperables, pero aún no estamos ahí.
 
 [Lee más sobre nuestro uso de glTF y extensiones](./technical-overview.md)
 
@@ -45,22 +45,23 @@ Vale la pena señalar que no es un objetivo enviar código real dentro de glTF; 
 - Queremos contribuir a proyectos de código abierto.
 - Discusión abierta sobre 3D y estándares web.
 - Capacidad para traer y llevar tus datos en formatos abiertos.
-- Capacidad para elegir qué web framework usar, sin dependencia de frameworks y proveedores particulares.
+- Capacidad para elegir qué web framework usar, sin lock-in a frameworks y proveedores particulares.
 - Los casos de uso comunes funcionan sin o con experiencia de codificación limitada.
 
 ## No Objetivos
-- No es un objetivo tener una cobertura del 100% de todas las combinaciones de versiones de Editor, conjuntos de características, pipelines de renderizado.
-- No es un objetivo proporcionar un entorno completo sin código.
-- No es un objetivo igualar el conjunto de características, capacidades o rendimiento en tiempo de ejecución de otros motores.
+- No es un objetivo tener una cobertura del 100% de todas las combinaciones de versiones de Editor, feature sets, render pipelines.
+- No es un objetivo proporcionar un entorno completo no-code.
+- No es un objetivo igualar el feature set, capabilities, o runtime performance de otros engines.
 
 # Relación con otros motores y frameworks
 
 ## Needle Engine y Unity WebGL
 
-Tras trabajar con Unity durante muchos años, hemos descubierto que si bien el motor y el editor progresan a un gran ritmo, la salida WebGL se ha quedado un poco atrás. La integración de los players de Unity en sistemas basados en web es bastante difícil, "hablar" con el sitio web circundante requiere una serie de soluciones alternativas, y lo más importante, los tiempos de iteración son muy lentos debido a la forma en que Unity empaqueta todo el código en WebAssembly a través de IL2CPP. Estas tecnologías son asombrosas y resultan en un gran rendimiento en tiempo de ejecución y mucha flexibilidad. Pero son mucho más lentas y cerradas en comparación con los flujos de trabajo de desarrollo web modernos, por lo que decidimos tomar el asunto en nuestras propias manos.
+Tras trabajar con Unity durante muchos años, hemos descubierto que si bien el engine y el editor progresan a un gran ritmo, la salida WebGL se ha quedado un poco atrás. La integración de los players de Unity en sistemas basados en web es bastante difícil, "hablar" con el sitio web circundante requiere una serie de workarounds, y lo más importante, los tiempos de iteración son muy lentos debido a la forma en que Unity empaqueta todo el código en WebAssembly vía IL2CPP. Estas tecnologías son asombrosas y resultan en un gran runtime performance y mucha flexibilidad. Pero son mucho más lentas y walled off comparado con los flujos de trabajo de desarrollo web modernos, por lo que decidimos tomar el asunto en nuestras propias manos.
 
 ## Needle Engine y three.js
 
-Needle Engine se basa en three.js. Todo el renderizado pasa por él, los archivos glTF se cargan a través de las interfaces de extensión de three, y nuestro sistema de componentes gira en torno a Object3D y el grafo de escena de three. Estamos comprometidos a subir algunos de nuestros cambios y mejoras, creando pull requests e informando de problemas a lo largo del camino.
+Needle Engine se basa en three.js. Todo el rendering pasa por él, los archivos glTF se cargan a través de las extension interfaces de three, y nuestro sistema de components gira en torno a Object3D y scene graph de three. Estamos comprometidos a upstreaming algunos de nuestros cambios y improvements, creando pull requests e informando de issues a lo largo del camino.
+
 
 Página traducida automáticamente usando IA

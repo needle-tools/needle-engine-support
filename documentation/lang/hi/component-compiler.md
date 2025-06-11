@@ -1,5 +1,5 @@
 ---
-title: कंपोनेंट का स्वतः जनरेशन
+title: कंपोनेंट का स्वचालित जनरेशन
 tags:
   - codegen
   - components
@@ -10,17 +10,17 @@ tags:
   - csharp
 ---
 
-### एडिटर कंपोनेंट का स्वतः जनरेशन
+### एडिटर कंपोनेंट का स्वचालित जनरेशन
 
 जब आप Unity या Blender में काम करते हैं, तो आप देखेंगे कि जब आप Typescript या Javascript में एक नया Needle Engine कंपोनेंट बनाते हैं, तो यह स्वचालित रूप से आपके लिए एक Unity C# स्टब कंपोनेंट या एक Blender पैनल जनरेट करेगा।
 
-यह [Needle कंपोनेंट कंपाइलर](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) के जादू के कारण होता है जो एक एडिटर वातावरण में पर्दे के पीछे चलता है और आपकी स्क्रिप्ट फ़ाइलों में बदलावों को देखता है। जब यह नोटिस करता है कि आपने एक नया Needle Engine कंपोनेंट बनाया है, तो यह सही Unity कंपोनेंट या Blender पैनल जनरेट करेगा, जिसमें पब्लिक वेरिएबल्स या प्रॉपर्टीज़ शामिल होंगी जिन्हें आप एडिटर के भीतर से सेट या लिंक कर सकते हैं।
+यह [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) के जादू के कारण होता है जो एक एडिटर वातावरण में पर्दे के पीछे चलता है और आपकी स्क्रिप्ट फ़ाइलों में बदलावों को देखता है। जब यह नोटिस करता है कि आपने एक नया Needle Engine कंपोनेंट बनाया है, तो यह सही Unity कंपोनेंट या Blender पैनल जनरेट करेगा, जिसमें पब्लिक वेरिएबल्स या प्रॉपर्टीज़ शामिल होंगी जिन्हें आप एडिटर के भीतर से सेट या लिंक कर सकते हैं।
 
-
+**Note**: द कंपोनेंट कंपाइलर वर्तमान में **केवल कंपोनेंट जनरेट करता है**। इसलिए यदि आपको Unity में एक Typescript Enum को एक्सपोज़ करने की आवश्यकता है, तो आप इसे मैन्युअल रूप से अपने C# में एक नई C# फ़ाइल में या जनरेट किए गए कोड के बाहर जोड़ सकते हैं (नीचे उदाहरण देखें)।
 
 ### कंपोनेंट जनरेशन को नियंत्रित करना
 C# कोड जनरेशन के व्यवहार को नियंत्रित करने के लिए आप अपने Typescript कोड में निम्नलिखित टिप्पणियों (comments) का उपयोग कर सकते हैं:
-| एट्रीब्यूट (Attribute) | परिणाम (Result) |
+| Attribute | Result |
 | -- | -- |
 | `// @generate-component` | अगली क्लास का जनरेशन फोर्स करें|
 | `// @dont-generate-component` | अगली क्लास का जनरेशन डिसेबल करें, यह उन मामलों में उपयोगी है जहाँ आपके प्रोजेक्ट में पहले से ही एक मौजूदा C# स्क्रिप्ट है |
@@ -52,7 +52,6 @@ export class MyComponent extends MyCustomBaseClass {
 }
 ```
 
-
 ### Unity में कंपोनेंट कंपाइलर
 यदि आप अपने प्रोजेक्ट में ``src/scripts`` फ़ोल्डर के अंदर स्क्रिप्ट जोड़ना चाहते हैं, तो आपको अपने ``ExportInfo`` कंपोनेंट वाले GameObject पर एक ``Component Generator`` रखना होगा।
 अब जब आप ``your/threejs/project/src/scripts`` में नए कंपोनेंट जोड़ेंगे, तो यह `Assets/Needle/Components.codegen` में स्वचालित रूप से Unity स्क्रिप्ट जनरेट करेगा।
@@ -61,8 +60,8 @@ export class MyComponent extends MyCustomBaseClass {
 C# फ़ील्ड को सही ढंग से जनरेट करने के लिए, वर्तमान में यह महत्वपूर्ण है कि आप स्पष्ट रूप से एक Typescript टाइप घोषित करें। उदाहरण के लिए ``myField : number = 5``
 
 आप नीचे दिए गए टैब का उपयोग करके **Typescript** इनपुट और जनरेट किए गए **C#** स्टब कंपोनेंट के बीच स्विच कर सकते हैं
-:::: code-group
-::: code-group-item Typescript
+::: code-tabs
+@tab Typescript
 ```ts twoslash
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
@@ -86,8 +85,7 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-:::
-::: code-group-item जनरेटेड C#
+@tab जनरेटेड C#
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -108,12 +106,11 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-:::
-::: code-group-item जनरेटेड C# का विस्तार करना
+@tab जनरेटेड C# का विस्तार करना
 ```csharp
 using UnityEditor;
 
-// you can add code above or below the NEEDLE_CODEGEN_ blocks
+// आप NEEDLE_CODEGEN_ ब्लॉक के ऊपर या नीचे कोड जोड़ सकते हैं
 
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -136,10 +133,10 @@ namespace Needle.Typescript.GeneratedComponents
 
 namespace Needle.Typescript.GeneratedComponents
 {
-    // This is how you extend the generated component (namespace and class name must match!)
+    // जनरेट किए गए कंपोनेंट का विस्तार इस तरह करें (namespace और class का नाम मेल खाना चाहिए!)
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{
-		
+
 		public void MyAdditionalMethod()
 		{
 		}
@@ -150,7 +147,7 @@ namespace Needle.Typescript.GeneratedComponents
 		}
 	}
 
-    // of course you can also add custom editors
+    // निश्चित रूप से आप कस्टम एडिटर भी जोड़ सकते हैं
 	[CustomEditor(typeof(MyCustomComponent))]
 	public class MyCustomComponentEditor : Editor
 	{
@@ -164,16 +161,12 @@ namespace Needle.Typescript.GeneratedComponents
 
 ```
 :::
-::::
-
 
 ### जनरेट किए गए कंपोनेंट का विस्तार करना
 कंपोनेंट C# क्लास [`partial`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) फ़्लैग के साथ जनरेट किए जाते हैं ताकि उन्हें फंक्शनैलिटी के साथ आसानी से बढ़ाया जा सके। यह गिज़्मो बनाने, संदर्भ मेनू जोड़ने या अतिरिक्त फ़ील्ड या मेथड जोड़ने में सहायक होता है जो बिल्ट-इन कंपोनेंट का हिस्सा नहीं हैं।
 
-
 :::tip मेंबर केसिंग
 एक्सपोर्ट किए गए सदस्य छोटे अक्षर से शुरू होंगे। उदाहरण के लिए, यदि आपके C# सदस्य का नाम ``MyString`` है, तो उसे ``myString`` असाइन किया जाएगा।
 :::
-
 
 यह पृष्ठ AI का उपयोग करके स्वचालित रूप से अनुवादित किया गया है।

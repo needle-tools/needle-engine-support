@@ -1,5 +1,5 @@
 ---
-title: Scripting in Needle Engine
+title: Scripting en Needle Engine
 description: Diferencias, similitudes y conceptos clave de Typescript, Javascript y C#.
 sidebarDepth: 2
 ---
@@ -49,7 +49,7 @@ Ten en cuenta que *todavía puedes* asignar valores a variables declaradas con c
 import { Vector3 } from "three";
 // ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
-myPosition.x = 100; // Assigning x is perfectly fine
+myPosition.x = 100; // Asignar x está perfectamente bien
 ```
 Lo anterior es código Typescript perfectamente válido porque no reasignas `myPosition`, sino solo el miembro `x` de `myPosition`. Por otro lado, el siguiente ejemplo **no** estaría permitido y causaría un error en tiempo de ejecución o de Typescript:
 ```ts twoslash
@@ -57,7 +57,7 @@ Lo anterior es código Typescript perfectamente válido porque no reasignas `myP
 import { Vector3 } from "three";
 // ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
-myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
+myPosition = new Vector3(100, 0, 0); // ⚠ ASIGNAR A CONST NO ESTÁ PERMITIDO
 ```
 
 ### Uso o Importación de Tipos
@@ -66,7 +66,7 @@ En Unity, normalmente añades declaraciones `using` al principio de tu código p
 Consulta el siguiente ejemplo:
 ```csharp
 using UnityEngine;
-// importing just a specific type and giving it a name
+// importando solo un tipo específico y dándole un nombre
 using MonoBehaviour = UnityEngine.MonoBehaviour;
 ```
 
@@ -91,7 +91,7 @@ Considera el siguiente ejemplo en C#:
 void MyCallerMethod(){
     var position = new Vector3(0,0,0);
     MyExampleVectorMethod(position);
-    UnityEngine.Debug.Log("Position.x is " + position.x); // Here x will be 0
+    UnityEngine.Debug.Log("Position.x is " + position.x); // Aquí x será 0
 }
 void MyExampleVectorMethod(Vector3 position){
     position.x = 42;
@@ -108,7 +108,7 @@ import { Vector3 } from 'three'
 function myCallerMethod() : void {
     const position = new Vector3(0,0,0);
     myExampleVectorMethod(position);
-    console.log("Position.x is " + position.x); // Here x will be 42
+    console.log("Position.x is " + position.x); // Aquí x será 42
 }
 function myExampleVectorMethod(position: Vector3) : void {
     position.x = 42;
@@ -122,7 +122,7 @@ En C#, el siguiente código producirá dos instancias de Vector3 y cambiar una n
 var myVector = new Vector3(1,1,1);
 var myOtherVector = myVector;
 myOtherVector.x = 42;
-// will log: 1, 42
+// registrará: 1, 42
 UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x);
 ```
 Si haces lo mismo en Typescript, **no** crearás una copia, sino que obtendrás una referencia a la misma instancia `myVector` en su lugar:
@@ -132,7 +132,7 @@ import { Vector3 } from 'three'
 const myVector = new Vector3(1,1,1);
 const myOtherVector = myVector;
 myOtherVector.x = 42;
-// will log: 42, 42
+// registrará: 42, 42
 console.log(myVector.x, myOtherVector.x);
 ```
 
@@ -144,7 +144,7 @@ Mientras que en C# puedes usar la sobrecarga de operadores, lamentablemente esto
 var myFirstVector = new Vector3(1,1,1);
 var myFactor = 100f;
 myFirstVector *= myFactor;
-// → myFirstVector is now 100, 100, 100
+// → myFirstVector ahora es 100, 100, 100
 ```
 
 tienes que usar un método del tipo Vector3 para lograr el mismo resultado (solo con un poco más de código repetitivo)
@@ -155,7 +155,7 @@ import { Vector3 } from "three"
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
 const myFactor = 100;
 myFirstVector.multiplyScalar(myFactor);
-// → myFirstVector is now 100, 100, 100
+// → myFirstVector ahora es 100, 100, 100
 ```
 
 ### Comprobaciones de Igualdad
@@ -178,9 +178,9 @@ Observa que la segunda variable `playerIsNullOrUndefined` usa `==`, que realiza 
 
 Cuando te suscribes a un Evento en C#, lo haces así:
 ```csharp
-// this is how an event is declared
+// así es como se declara un evento
 event Action MyEvent;
-// you subscribe by adding to (or removing from)
+// te suscribes añadiendo a (o eliminando de)
 void OnEnable() {
     MyEvent += OnMyEvent;
 }
@@ -211,7 +211,7 @@ export class MyComponent extends Behaviour {
         this.myEvent.removeEventListener(this.onMyEvent);
     }
 
-    // Declaring the function as an arrow function to automatically bind `this`
+    // Declarando la función como una función de flecha para hacer "bind" automáticamente de `this`
     private onMyEvent = () => {
         console.log(this !== undefined, this)
     }
@@ -231,7 +231,7 @@ export class MyComponent extends Behaviour {
     onEnable() {
         // bind this
         this._onMyEventFn = this.onMyEvent.bind(this);
-        // add the bound method to the event
+        // añade el método "bound" al evento
         this.myEvent?.addEventListener(this._onMyEventFn);
     }
 
@@ -239,7 +239,7 @@ export class MyComponent extends Behaviour {
         this.myEvent?.removeEventListener(this._onMyEventFn);
     }
 
-    // Declaring the function as an arrow function to automatically bind `this`
+    // Declarando la función como una función de flecha para hacer "bind" automáticamente de `this`
     private onMyEvent = () => { }
 }
 ```
@@ -247,5 +247,6 @@ export class MyComponent extends Behaviour {
 ## ¿Qué sigue?
 
 - [Scripting en Needle Engine](/scripting.md)
+
 
 Página traducida automáticamente por IA

@@ -68,9 +68,9 @@ Para conectar automáticamente en red un campo en un componente, decóralo con e
 ::::code-group
 :::code-group-item Sincronizar un número
 ```ts twoslash
-import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine"
+import { Behaviour, syncField } from "@needle-tools/engine"
 
-export class SyncedNumber extends Behaviour implements IPointerClickHandler {
+export class SyncedNumber extends Behaviour {
 
     // Use `@syncField` to automatically network a field. 
     // You can optionally assign a method or method name to be called when the value changes.
@@ -190,19 +190,19 @@ Estas se pueden añadir a la URL de la página, como `https://localhost:3000/?de
 Los siguientes eventos están disponibles para escuchar en tus componentes. Describen eventos de red comunes a los que podrías querer reaccionar en tus componentes, como tú mismo u otro usuario uniéndose o saliendo de una sala.
 
 ```ts
-// Escucha el evento cuando *tú* te has unido a una sala en red
+// Listen to the event when *you* have joined a networked room
 this.context.beginListen(RoomEvents.JoinedRoom, ({room, viewId, allowEditing, inRoom}) => { ... });
 
-// Escucha el evento cuando *tú* has salido de una sala en red
+// Listen to the event when *you* have left a networked room
 this.context.beginListen(RoomEvents.LeftRoom, ({room}) => { ... });
 
-// Escucha el evento cuando *otro usuario* se ha unido a tu sala en red
+// Listen to the event when *another user* has joined your networked room
 this.context.beginListen(RoomEvents.UserJoinedRoom, ({userId}) => { ... });
 
-// Escucha el evento cuando *otro usuario* ha salido de tu sala en red
+// Listen to the event when *another user* has left your networked room
 this.context.beginListen(RoomEvents.UserLeftRoom, ({userId}) => { ... });
 
-// Este evento se recibe después de que se haya enviado todo el estado actual de la sala al cliente
+// This event is received after all current room state has been sent to the client
 this.context.beginListen(RoomEvents.RoomStateSent, () => { ... });
 ```
 
@@ -296,7 +296,7 @@ Si estás trabajando en código de red personalizado, puede que quieras usar dif
 
 #### Almacenamiento de Estado
 
-El estado de red se almacena por defecto en disco en el servidor como archivos JSON en el directorio `/.data`.
+El estado de red se almacena por defecto en disco en el servidor como archivos JSON en el directorio `/.data` directory.
 Cada sala tiene su propio archivo, y el estado se envía a los clientes que se conectan cuando se unen a una sala.
 
 Opcionalmente, el estado de red se puede almacenar con un proveedor de almacenamiento compatible con S3. Utiliza las siguientes variables de entorno para habilitar el almacenamiento S3:
@@ -307,7 +307,7 @@ NEEDLE_NETWORKING_S3_REGION=
 NEEDLE_NETWORKING_S3_BUCKET=
 NEEDLE_NETWORKING_S3_ACCESS_KEY_ID=
 NEEDLE_NETWORKING_S3_ACCESS_KEY=
-NEEDLE_NETWORKING_S3_PREFIX= # todo el estado guardado en el bucket se prefijará con esta cadena. Puede ser una ruta, por ejemplo `my_state/`, o una ID única `server_123_`
+NEEDLE_NETWORKING_S3_PREFIX= # all state saved in the bucket will be prefixed with this string. This can be a path e.g. `my_state/` or a unique id `server_123_`
 ```
 
 ## Servidor de Redes Local
@@ -562,17 +562,17 @@ Los mensajes Flatbuffer se envían directamente como mensajes binarios.
 ::::code-group
 :::code-group-item SyncedTransform ('STRS')
 ```cs
-<!-- EJEMPLO node_modules/@needle-tools/engine/src/engine-schemes/transforms.fbs -->
+<!-- SAMPLE node_modules/@needle-tools/engine/src/engine-schemes/transforms.fbs -->
 ```
 :::
 :::code-group-item SyncedCamera ('SCAM')
 ```cs
-<!-- EJEMPLO node_modules/@needle-tools/engine/src/engine-schemes/syncedCamera.fbs -->
+<!-- SAMPLE node_modules/@needle-tools/engine/src/engine-schemes/syncedCamera.fbs -->
 ```
 :::
 :::code-group-item Vec2|3|4
 ```cs
-<!-- EJEMPLO node_modules/@needle-tools/engine/src/engine-schemes/vec.fbs -->
+<!-- SAMPLE node_modules/@needle-tools/engine/src/engine-schemes/vec.fbs -->
 ```
 :::
 ::::

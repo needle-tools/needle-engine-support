@@ -5,9 +5,9 @@
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="ニードルロゴ" alt="ニードルロゴ"/> +
-    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Componentsロゴ" alt="Web Componentsロゴ"/> +
-    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.jsロゴ" alt="three.jsロゴ"/>
+    <img src="/logo.png" style="max-height:70px;" title="Needle ロゴ" alt="Needle ロゴ"/> +
+    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components ロゴ" alt="Web Components ロゴ"/> +
+    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js ロゴ" alt="three.js ロゴ"/>
 </div>
 
 # Web ComponentとしてのNeedle Engine
@@ -17,7 +17,7 @@ Needle Engineは、数行のコードでリッチでインタラクティブな3
 Web Componentの設定オプションだけでは物足りなくなった場合は、カスタムスクリプトやコンポーネント、そして完全なプログラムによるシーングラフアクセスで拡張できます。
 
 :::tip 統合を活用しましょう！
-複雑な3Dシーンや迅速な反復開発には、いずれかの統合を使用してNeedle Engineを利用することをお勧めします。これらは、ライブプレビュー、ホットリロード、3D最適化を含む高度なビルドパイプラインなど、強力な制作ワークフローを提供します。
+複雑な3Dシーンや迅速な反復開発には、いずれかの統合を使用してNeedle Engineを利用することをお勧めします。これらは、ライブプレビュー、ホットリロード、3D最適化を含む高度な制作ワークフローを提供します。
 :::
 
 ### クイックスタート
@@ -38,7 +38,9 @@ Web Componentの設定オプションだけでは物足りなくなった場合�
     ></iframe>
 ```
 :::
-Stackblitzでこの例を開く
+[Stackblitzでこの例を開く](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
+
+
 
 ## npmからインストール
 
@@ -57,16 +59,10 @@ Stackblitzでこの例を開く
 
 ```js
 <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 
-プロジェクトで物理機能が必要ないことがわかっている場合は、物理エンジンを含まないより小さなバージョンのNeedle Engineを使用することもできます。これにより、ダウンロードサイズ全体が削減されます。
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
-</script>
-```
 
 多くの例は[StackBlitz](https://stackblitz.com/@marwie/collections/needle-engine)で見つけることができます。
 
@@ -82,17 +78,20 @@ Stackblitzでこの例を開く
 1.  Visual Studio CodeでHTMLファイルのあるフォルダを開きます。
 2.  [LiveServer拡張機能](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)をインストールします。
 3.  Live Serverを起動します（VSCodeのフッターに「Go Live」ボタンがあります）。
-4.  自動的に開かない場合は、Webブラウザで\`http://localhost:5500/index.html\`を開きます。
+4.  自動的に開かない場合は、Webブラウザで``http://localhost:5500/index.html``を開きます。
 
 ## three.jsとNeedle Engine
 
 Needle Engineはシーングラフおよびレンダリングライブラリとして[three.js](https://threejs.org/)を使用しているため、three.jsのすべての機能がNeedleでも利用可能であり、コンポーネントスクリプトから使用できます。私たちはthree.jsのフォークを使用しており、特にWebXR、アニメーション、USDZエクスポートに関連する追加機能と改善が含まれています。
 
+
 ::: tip
-``<needle-engine src="myScene.glb">`` のパスが既存のglbファイルを指しているか確認してください。または、[このサンプルglbをダウンロード](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb)して、index.htmlと同じフォルダに置き、\`\`myScene.glb\`\`という名前にするか、srcパスを更新してください。
+``<needle-engine src="myScene.glb">`` のパスが既存のglbファイルを指しているか確認してください。または、[このサンプルglbをダウンロード](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb)して、index.htmlと同じフォルダに置き、``myScene.glb``という名前にするか、srcパスを更新してください。
 :::
 
 @[code](@code/basic-html.html)
 
+
+[githubで表示](https://github.com/needle-tools/needle-engine-samples/tree/main/vanilla)
 
 AIによる自動翻訳ページ

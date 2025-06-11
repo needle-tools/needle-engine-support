@@ -1,3 +1,4 @@
+```markdown
 ---
 home: false
 next: ./getting-started/index.md
@@ -14,7 +15,7 @@ footer: "Copyright © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Fundador, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
 >
 Integração do editor Unity incrível por uma ordem de magnitude,  
   e tão simples quanto os documentos afirmam. Uau.
@@ -107,7 +108,7 @@ Só temos de dizer WOW 🤩
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-Passei os últimos 2.5 meses a construir este jogo, nunca construí um jogo/nunca usei unity antes, mas estou a adorar completamente todo o processo com as needle tools. Tão rápido! Adoraria fazer carreira a construir experiências de AR!
+Passei os últimos 2.5 meses a construir este jogo, nunca construí um jogo/nunca usei unity antes, mas estou a adorar completamente todo o processo com as needle tools. Tão rápido! Adoraria fazer carreira a construir experiências de AR! 
 </testimonial>
 
 <testimonial 
@@ -143,7 +144,7 @@ O meu fluxo de trabalho foi otimizado 10X desde que comecei a usar needle.
 
 
 
-**Needle Engine** é um motor web para aplicações 3D complexas e simples. Trabalhe na sua máquina e implemente em qualquer lugar. O Needle Engine é flexível, extensível e tem suporte incorporado para **colaboração e XR**. É construído em torno do **padrão glTF** para assets 3D. 
+**Needle Engine** é um motor web para aplicações 3D complexas e simples. Trabalhe na sua máquina e implemente em qualquer lugar. O **Needle Engine** é flexível, extensível e tem suporte incorporado para **colaboração e XR**. É construído em torno do **padrão glTF** para assets 3D. 
 
 Poderosas integrações para **Unity** e **Blender** permitem que artistas e programadores colaborem e gerenciem aplicações web dentro de editores 3D testados em combate. Estas **Integrações** permitem usar recursos do editor para criar modelos, authoring de materiais, animação e sequenciação de animações, baking de lightmaps e muito mais com facilidade. 
 
@@ -178,5 +179,5 @@ O nosso poderoso **pipeline de compressão e otimização para a web** garante q
 <removeserviceworker/>
 </ClientOnly>
 
-
 Página traduzida automaticamente usando IA
+```

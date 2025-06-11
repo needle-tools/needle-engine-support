@@ -14,7 +14,7 @@ Dưới đây cũng là một số tài nguyên hữu ích để học cách vi�
 
 ### Sự khác biệt chính giữa C#, Javascript hoặc Typescript
 
-**CSharp** hay **C#** là một ngôn ngữ strongly typed & compiled. Điều đó có nghĩa là **trước khi** mã của bạn có thể chạy (hoặc được thực thi), nó phải được compiled - dịch - thành IL hoặc CIL, một ngôn ngữ trung gian (intermediate language) gần hơn một chút với *mã máy*. Điều quan trọng cần hiểu ở đây là mã của bạn được phân tích và phải vượt qua các kiểm tra và quy tắc nhất định được **thực thi** bởi compiler. Bạn sẽ gặp các lỗi compiler **trong Unity** và ứng dụng của bạn thậm chí sẽ không bắt đầu chạy nếu bạn viết mã vi phạm bất kỳ quy tắc nào của ngôn ngữ C#. Bạn sẽ không thể vào Play-Mode nếu có lỗi compiler.
+**CSharp** hay **C#** là một ngôn ngữ statically typed & compiled. Điều đó có nghĩa là **trước khi** mã của bạn có thể chạy (hoặc được thực thi), nó phải được compiled - dịch - thành IL hoặc CIL, một ngôn ngữ trung gian (intermediate language) gần hơn một chút với *mã máy*. Điều quan trọng cần hiểu ở đây là mã của bạn được phân tích và phải vượt qua các kiểm tra và quy tắc nhất định được **thực thi** bởi compiler. Bạn sẽ gặp các lỗi compiler **trong Unity** và ứng dụng của bạn thậm chí sẽ không bắt đầu chạy nếu bạn viết mã vi phạm bất kỳ quy tắc nào của ngôn ngữ C#. Bạn sẽ không thể vào Play-Mode nếu có lỗi compiler.
 
 **Javascript** mặt khác được interpreted tại runtime. Điều đó có nghĩa là bạn có thể viết mã không hợp lệ và gây ra lỗi - nhưng bạn sẽ không thấy những lỗi đó *cho đến khi chương trình của bạn chạy* hoặc cố gắng **thực thi** chính xác dòng mã đó có lỗi. Ví dụ: bạn có thể viết `var points = 100; points += "hello world";` và sẽ không ai phàn nàn *cho đến khi* bạn chạy mã trong trình duyệt.
 
@@ -66,7 +66,7 @@ Trong Unity, bạn thường thêm các câu lệnh `using` ở đầu mã để
 Xem ví dụ sau:
 ```csharp
 using UnityEngine;
-// import chỉ một kiểu cụ thể và đặt tên cho nó
+// importing just a specific type and giving it a name
 using MonoBehaviour = UnityEngine.MonoBehaviour;
 ```
 
@@ -122,7 +122,7 @@ Trong C#, mã sau đây sẽ tạo ra hai instance của Vector3 và thay đổi
 var myVector = new Vector3(1,1,1);
 var myOtherVector = myVector;
 myOtherVector.x = 42;
-// sẽ ghi log: 1, 42
+// will log: 1, 42
 UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x);
 ```
 Nếu bạn làm tương tự trong Typescript, bạn sẽ **không** tạo ra một bản sao mà thay vào đó sẽ nhận được một tham chiếu đến cùng một instance `myVector`:
@@ -132,7 +132,7 @@ import { Vector3 } from 'three'
 const myVector = new Vector3(1,1,1);
 const myOtherVector = myVector;
 myOtherVector.x = 42;
-// sẽ ghi log: 42, 42
+// will log: 42, 42
 console.log(myVector.x, myOtherVector.x);
 ```
 
@@ -144,7 +144,7 @@ Trong khi ở C#, bạn có thể sử dụng operator overloading, điều này
 var myFirstVector = new Vector3(1,1,1);
 var myFactor = 100f;
 myFirstVector *= myFactor;
-// → myFirstVector bây giờ là 100, 100, 100
+// → myFirstVector is now 100, 100, 100
 ```
 
 bạn phải sử dụng một phương thức trên kiểu Vector3 để đạt được kết quả tương tự (chỉ với một ít mã lặp lại hơn)
@@ -155,7 +155,7 @@ import { Vector3 } from "three"
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
 const myFactor = 100;
 myFirstVector.multiplyScalar(myFactor);
-// → myFirstVector bây giờ là 100, 100, 100
+// → myFirstVector is now 100, 100, 100
 ```
 
 ### Kiểm tra bằng (Equality Checks)
@@ -239,7 +239,7 @@ export class MyComponent extends Behaviour {
         this.myEvent?.removeEventListener(this._onMyEventFn);
     }
 
-    // Khai báo hàm là một arrow function để tự động bind `this`
+    // Declaring the function as an arrow function to automatically bind `this`
     private onMyEvent = () => { }
 }
 ```
@@ -247,5 +247,6 @@ export class MyComponent extends Behaviour {
 ## Tiếp theo là gì?
 
 - [Scripting trong Needle Engine](/scripting.md)
+
 
 Trang được dịch tự động bằng AI

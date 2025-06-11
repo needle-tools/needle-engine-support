@@ -1,5 +1,5 @@
 ---
-title: Automatic Component Generation
+title: Geração Automática de Componentes
 tags:
   - codegen
   - components
@@ -10,23 +10,25 @@ tags:
   - csharp
 ---
 
-### Geração automática de componentes do Editor
+### Gerar componentes do Editor automaticamente
 
 Ao trabalhar no Unity ou Blender, notará que, ao criar um novo componente Needle Engine em Typescript ou Javascript, ele gerará automaticamente um componente C# stub do Unity OU um painel do Blender para si.
 
 Isto é graças à magia do [compilador de componentes Needle](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) que é executado em segundo plano num ambiente de editor e monitoriza as alterações nos seus ficheiros de script. Quando este deteta que criou um novo componente Needle Engine, gerará então o componente Unity ou painel Blender correto, incluindo variáveis públicas ou propriedades que pode definir ou ligar a partir do Editor.
 
 
+**Nota**: O compilador de componentes atualmente **apenas gera componentes**. Portanto, se precisar de expor um Enum Typescript no Unity, pode adicioná-lo ao seu C# manualmente, quer num novo ficheiro C#, quer fora do código gerado (veja os exemplos abaixo)
+
 
 ### Controlar a geração de componentes
-Pode usar os seguintes comentários no seu código typescript para controlar o comportamento da geração de código C#:`
+Pode usar os seguintes comentários no seu código Typescript para controlar o comportamento da geração de código C#:
 | Attribute | Result |
 | -- | -- |
-| `// @generate-component` | Forçar a geração da próxima classe|
-| `// @dont-generate-component` | Desativar a geração da próxima classe, isto é útil em casos em que já tem um script C# existente no seu projeto |
-| `// @serializeField` | Decorar campo gerado com `[SerializeField]` |
-| `// @type UnityEngine.Camera` | Especificar o tipo de campo C# gerado |
-| `// @nonSerialized` | Ignorar a geração do próximo campo ou método |
+| `// @generate-component` | Força a geração da próxima classe|
+| `// @dont-generate-component` | Desativa a geração da próxima classe, isto é útil em casos em que já tem um script C# existente no seu projeto |
+| `// @serializeField` | Decora o campo gerado com `[SerializeField]` |
+| `// @type UnityEngine.Camera` | Especifica o tipo de campo C# gerado |
+| `// @nonSerialized` | Ignora a geração do próximo campo ou método |
 
 #### Exemplos
 
@@ -89,7 +91,7 @@ export class MyCustomComponent extends Behaviour {
 @tab Generated C#
 ```csharp
 // NEEDLE_CODEGEN_START
-// auto generated code - do not edit directly
+// código auto gerado - não editar diretamente
 
 #pragma warning disable
 
@@ -114,7 +116,7 @@ using UnityEditor;
 // pode adicionar código acima ou abaixo dos blocos NEEDLE_CODEGEN_
 
 // NEEDLE_CODEGEN_START
-// auto generated code - do not edit directly
+// código auto gerado - não editar diretamente
 
 #pragma warning disable
 
@@ -122,18 +124,17 @@ namespace Needle.Typescript.GeneratedComponents
 {
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{
-		public float @myFloatValue = 42f;
-		public UnityEngine.Transform @myOtherObject;
-		public UnityEngine.Transform[] @prefabs = new UnityEngine.Transform[]{ };
-		public void start(){}
-		public void update(){}
+		
+		public void MyAdditionalMethod()
+		{
+		}
+
+		private void OnValidate()
+		{
+			myFloatValue = 42;
+		}
 	}
-}
 
-// NEEDLE_CODEGEN_END
-
-namespace Needle.Typescript.GeneratedComponents
-{
     // É assim que estende o componente gerado (namespace e nome da classe devem corresponder!)
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{

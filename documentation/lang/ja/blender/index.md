@@ -8,7 +8,7 @@ editLink: true
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/logo.png" style="max-height:70px;" title="Needle ロゴ" alt="Needle ロゴ"/> +
     <img src="/blender/logo.png" style="max-height:70px;" />
 </div>
 
@@ -86,7 +86,7 @@ Web プロジェクトがすでに存在し、Web サイトでの作業を続け
 3) `Directory` は Web プロジェクトのディレクトリ (`Project Path`) を開きます。
 4) このボタンは、現在のシーンを glb としてローカル Web プロジェクトに再エクスポートします。これは、ブレンドファイルを保存するときにもデフォルトで発生します。
 5) `Code Editor` は、Web プロジェクト内の vscode ワークスペースを開こうとします。
-6) 1 つのブレンドファイルで複数のシーンを操作する場合、どのシーンがメインシーンであり、Web にエクスポートされるべきかを設定できます。コンポーネントが別のシーンを参照している場合は、それらも個別の glb ファイルとしてエクスポートされます。エクスポートボタンをクリックすると、メインシーンがブラウザにロードされるシーンになります。
+6) 1 つのブレンドファイルで複数のシーンを操作する場合、どのシーンがメインシーンであり、Web にエクスポートされるべきかを設定できます。コンポーネントが別のシーンを参照している場合は、それらも個別の glb ファイルとしてエクスポートされます。「Export」ボタンをクリックすると、メインシーンがブラウザにロードされるシーンになります。
 7) Web プロジェクトをサーバーにアップロードしたい場合は、`Build: Development` または `Build: Production` ボタンを使用します。これにより、Web プロジェクトがバンドルされ、アップロードできるファイルが生成されます。`Build: Production` をクリックすると、テクスチャに最適化も適用されます（Web 用に圧縮されます）。
 8) ドキュメントを開く
 
@@ -226,7 +226,7 @@ Needle Components パネルを使用して、階層内のオブジェクトに�
 ![Component panel](/blender/components-panel-select.webp)
 *例えば、カメラオブジェクトに `OrbitControls` コンポーネントを追加することで、*
 *モバイルデバイスおよびデスクトップデバイス用の基本的なカメラコントロールが得られます*
-*各コンポーネメントの設定は、それぞれのパネルで調整してください*
+*各コンポーネントの設定は、それぞれのパネルで調整してください*
 
 コンポーネントは、右下隅にある X ボタンを使用して削除できます。
 
@@ -261,7 +261,7 @@ Needle Object パネルを使用して、メッシュオブジェクトまたは
 
 あるいは、`Render Properties` タブの Lightmapping パネルを使用することもできます。
 
-![Lightmapping object](/blender/lightmapping-panel.webp)
+![Lightmapping object](/bller/lightmapping-panel.webp)
 
 ::: warning 実験的な機能
 ライトマッピングプラグインは実験的な機能です。使用する際は .blend ファイルのバックアップを作成することをおすすめします。問題やエラーが発生した場合は、[私たちのフォーラム](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)にご報告ください 🙏

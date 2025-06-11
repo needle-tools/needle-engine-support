@@ -87,7 +87,7 @@ Senden Sie die Datei an sich selbst (z. B. per E-Mail, AirDrop, iCloud, USB, Sla
 2. Sie werden aufgefordert, das Profil zu Ihrem Gerät _hinzuzufügen_. Bestätigen Sie.
 3. Gehen Sie zu den Einstellungen.
 4. Es gibt einen neuen Eintrag "Profil". Wählen Sie ihn aus und erlauben Sie, dass das Profil für dieses Gerät _aktiv_ ist.
-5. Unter iOS / iPadOS müssen Sie auch "Root Certificate Trust" erlauben. Suchen Sie dazu nach `Vertrauen` oder gehen Sie zu `Einstellungen > Allgemein > Info > Zertifikatvertrauenseinstellungen` und aktivieren Sie volles Vertrauen für das Root-Zertifikat.
+5. Unter iOS / iPadOS müssen Sie auch "Root Certificate Trust" erlauben. Suchen Sie dazu nach `Trust` oder gehen Sie zu `Settings > General > About > Info > Certificate Trust Settings` und aktivieren Sie volles Vertrauen für das Root-Zertifikat.
 
 ::: tip
 Das Zertifikat wird automatisch auf der Maschine installiert, auf der Sie es generiert haben. Für andere Maschinen im lokalen Netzwerk folgen Sie den Schritten unten, um ebenfalls eine vertrauenswürdige Verbindung herzustellen.
@@ -95,12 +95,13 @@ Das Zertifikat wird automatisch auf der Maschine installiert, auf der Sie es gen
 
 ### Installieren des Zertifikats auf einer anderen MacOS-Maschine
 1. Öffnen Sie die Datei. Keychain Access öffnet sich und ermöglicht Ihnen die Installation des Zertifikats.
-2. Möglicherweise müssen Sie "Vertrauen" auf "Immer erlauben" setzen.
+2. Möglicherweise müssen Sie "Trust" auf "Always allow" setzen.
 
 ### Installieren des Zertifikats auf einer anderen Windows-Maschine
 1. Öffnen Sie `certmgr` ("Benutzerzertifikate verwalten"), indem Sie <kbd>Windows-Taste</kbd> + `certmgr` eingeben.
 2. Wählen Sie in der linken Seitenleiste "Vertrauenswürdige Stammzertifizierungsstellen" aus.
 3. Klicken Sie mit der rechten Maustaste auf "Zertifikate" und wählen Sie "Alle Aufgaben > Importieren".
 4. Wählen Sie die Datei `rootCA.pem` aus (möglicherweise müssen Sie den Dateityp auf "Alle" ändern) und folgen Sie den Anweisungen.
+
 
 Seite automatisch mit KI übersetzt

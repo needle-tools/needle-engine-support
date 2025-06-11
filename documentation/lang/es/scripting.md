@@ -1,5 +1,5 @@
 ---
-title: Crear y usar Components
+title: Crear y usar Componentes
 tags:
     - scripting
     - serialization
@@ -51,15 +51,15 @@ Hay dos formas de añadir scripts personalizados a tu proyecto:
 - Simplemente añade un archivo con extensión `.ts` o `.js` dentro de `src/scripts/` en el directorio de tu proyecto generado, por ejemplo `src/scripts/MyFirstScript.ts`
 
 - Específico de Unity:
-Organiza tu código en NPM Definition Files (paquetes npm). Estos te ayudan a modularizar y reutilizar código entre proyectos y, si estás familiarizado con el desarrollo web, de hecho son paquetes npm regulares que se instalan localmente.
-En Unity puedes crear archivos NpmDef a través de `Create > NPM Definition` y luego añadir archivos TypeScript haciendo clic derecho en un archivo NpmDef y seleccionando `Create > TypeScript`. Consulta [este capítulo](./project-structure.md#npm-definition-files) para más información.
+  Organiza tu código en NPM Definition Files (paquetes npm). Estos te ayudan a modularizar y reutilizar código entre proyectos y, si estás familiarizado con el desarrollo web, de hecho son paquetes npm regulares que se instalan localmente.
+  En Unity puedes crear archivos NpmDef a través de `Create > NPM Definition` y luego añadir archivos TypeScript haciendo clic derecho en un archivo NpmDef y seleccionando `Create > TypeScript`. Consulta [este capítulo](./project-structure.md#npm-definition-files) para más información.
 
 En ambos enfoques, los directorios de origen son vigilados para detectar cambios y los componentes stub C# o paneles de Blender se regeneran cada vez que se detecta un cambio.
 Los cambios en los archivos de origen también resultan en una recarga en caliente del sitio web en ejecución – no tienes que esperar a que Unity recompile los componentes C#. Esto hace que iterar sobre el código sea prácticamente instantáneo.
 
 Incluso puedes tener múltiples tipos de componentes dentro de un mismo archivo (por ejemplo, puedes declarar `export class MyComponent1` y `export class MyOtherComponent` en el mismo archivo Typescript).
 
-Si eres nuevo escribiendo Javascript o Typescript, te recomendamos leer primero la guía [Tipscript Essentials Guide](./getting-started/typescript-essentials.md) antes de continuar con esta guía.
+Si eres nuevo escribiendo Javascript o Typescript, te recomendamos leer primero la guía [Typescript Essentials Guide](./getting-started/typescript-essentials.md) antes de continuar con esta guía.
 
 :::details Ejemplo: Crear un Componente que rota un objeto
 
@@ -189,16 +189,16 @@ import { Behaviour, FrameEvent } from "@needle-tools/engine";
 export class Rotate extends Behaviour {
 
     start() {
-        // the second argument is optional and allows you to specifiy
-        // when it should be called in the current frame loop
-        // coroutine events are called after regular component events of the same name
-        // for example: Update coroutine events are called after component.update() functions
+        // el segundo argumento es opcional y permite especificar
+        // cuándo debe llamarse en el bucle de frame actual
+        // los eventos de coroutine se llaman después de los eventos de componente regulares del mismo nombre
+        // por ejemplo: los eventos de coroutine Update se llaman después de las funciones component.update()
         this.startCoroutine(this.rotate(), FrameEvent.Update);
     }
 
-    // this method is called every frame until the component is disabled
+    // este método se llama en cada frame hasta que el componente se deshabilita
     *rotate() {
-        // keep looping forever
+        // seguir en bucle para siempre
         while (true) {
             yield;
         }
@@ -224,26 +224,26 @@ Estos hooks pueden insertarse en cualquier punto de tu aplicación web (por ejem
 
 Por ejemplo ([Ver ejemplo en stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts twoslash
-// this can be put into e.g. main.ts or a svelte component (similar to onMount)
+// esto puede ponerse, por ejemplo, en main.ts o en un componente svelte (similar a onMount)
 import { onStart, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
 
 onStart(ctx => console.log("Hello Scene", ctx.scene));
 
 onUpdate(ctx => {
-    // do something... e.g. access the frame # or deltatime via ctx.time
+    // hacer algo... por ejemplo, acceder al frame # o deltatime a través de ctx.time
     console.log("UPDATE", ctx.time.frame);
 });
 
 onBeforeRender(ctx => {
-    // this event is only called once because of the { once: true } argument
+    // este evento solo se llama una vez debido al argumento { once: true }
     console.log("ON BEFORE RENDER", ctx.time.frame);
 }, { once: true } );
 
-// Every event hook returns a method to unsubscribe from the event
+// Cada hook de evento devuelve un método para desuscribirse del evento
 const unsubscribe = onAfterRender(ctx => {
     console.log("ON AFTER RENDER", ctx.time.frame);
 });
-// Unsubscribe from the event at any time
+// Desuscribirse del evento en cualquier momento
 setTimeout(()=> unsubscribe(), 1000);
 ```
 
@@ -351,7 +351,7 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
+        // se recomienda también desuscribirse de los eventos cuando el componente se vuelve inactivo
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -384,7 +384,7 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // unsubscribe again when the component is disabled
+        // desuscribirse de nuevo cuando el componente está deshabilitado
         window.removeEventListener("click", this.windowClick);
     }
 
@@ -502,5 +502,6 @@ Estos archivos glTF exportados se serializarán como URIs de cadena plana. Para 
 Los AssetReferences se almacenan en caché por URI, por lo que si referencias el mismo glTF/Prefab exportado en múltiples componentes/scripts, solo se cargará una vez y luego se reutilizará.
 
 # Próximos pasos
+
 
 Página traducida automáticamente usando IA

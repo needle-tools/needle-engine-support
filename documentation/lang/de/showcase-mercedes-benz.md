@@ -28,15 +28,15 @@ Wir verwenden diese Skybox:
 
 Was auf der Lackierung so aussieht:
 
-![Paintjob](/showcase-mercedes/2_paintjob_simple.jpg)
+![Lackierung](/showcase-mercedes/2_paintjob_simple.jpg)
 
 Um dann ein leichtes Detail hinzuzufügen, habe ich 2 Directional Lights mit einer unwesentlichen Intensität (0.04) hinzugefügt, um Specular Highlights zu erzeugen. Zuvor sah es so aus:
 
-![Specular off](/showcase-mercedes/3_SpecularHighlights_off.jpg)
+![Specular ausgeschaltet](/showcase-mercedes/3_SpecularHighlights_off.jpg)
 
 Aber mit den hinzugefügten Directional Lights wurde eine bessere Dynamik hinzugefügt. Der Effekt könnte mit höherer Intensität vertieft werden:
 
-![Specular on](/showcase-mercedes/4_SpecularHighlights_on.jpg)
+![Specular eingeschaltet](/showcase-mercedes/4_SpecularHighlights_on.jpg)
 
 
 
@@ -44,25 +44,25 @@ Aber mit den hinzugefügten Directional Lights wurde eine bessere Dynamik hinzug
 
 Die Szene sieht jetzt so aus:
 
-![No background](/showcase-mercedes/5_NoBackground.jpg)
+![Kein Hintergrund](/showcase-mercedes/5_NoBackground.jpg)
 
 Der schwarze Hintergrund ist nicht sehr schön. Um zwischen visuellen und beleuchteten Skyboxes zu unterscheiden, habe ich eine inverse Kugel hinzugefügt, die die gesamte Karte umschließt.
 
-![With background](/showcase-mercedes/6_MapBackground.png)
+![Mit Hintergrund](/showcase-mercedes/6_MapBackground.png)
 
-Der Gradient verläuft von einem leichten Grau zu einem Weißton.
+Der Gradient verläuft von einem leichten Grau zu einem Weißton..
 
 Dieser Effekt könnte leicht mit einer einfachen UV mapping und einer ein Pixel hohen Textur erzielt werden, die den Gradienten definieren würde.
 
 Ich habe einen unlit shader im Shader Graph erstellt:
 
-![Evironemnt shader](/showcase-mercedes/7_EnvShaderGraph.jpg)
+![Umgebungs-Shader](/showcase-mercedes/7_EnvShaderGraph.jpg)
 
 Ich habe ein Farbbanding-Problem festgestellt, also habe ich versucht, Dithering zu implementieren. Ehrlich gesagt, hat es die Artefakte nicht behoben, aber ich wette, es gibt eine einfache Lösung für dieses Problem. Der obere Teil des Shaders samplet den Gradienten basierend auf der Y-Achse im object space. Und der untere Teil versucht, das Farbbanding zu negieren.
 
 Durch die Verwendung von Shadern ist die Verwendung und Iteration des Gradienten einfacher. Durch die Verwendung von Needles Shadergraph markdown Asset ist es noch einfacher! 🌵
 
-![Gradiant](/showcase-mercedes/8_Gradiant.png)
+![Gradient](/showcase-mercedes/8_Gradiant.png)
 
 
 ## Fake-Bewegung des Autos
@@ -107,11 +107,11 @@ export class Rotator extends Behaviour {
 
 Der Benutzer sieht jetzt ein Auto, das in der tiefsten Leere fährt, die Farbe ähnelt nichts und das Erlebnis ist langweilig. Wir wollen das Modell erden, und das geschieht, indem wir ein Raster hinzufügen und es dann verschieben, so dass es scheint, als ob sich das Auto bewegt. Das wollen wir erreichen:
 
-![Motion](/showcase-mercedes/10_WheelsAndGrid.png)
+![Bewegung](/showcase-mercedes/10_WheelsAndGrid.png)
 
 Der Shader für das Raster bestand aus zwei Teilen. Eine einfache gekachelte Textur des Rasters, die mit einem kreisförmigen Gradienten multipliziert wird, um die Kanten ausblenden zu lassen.
 
-![Grid](/showcase-mercedes/11_GridShader.jpg)
+![Raster](/showcase-mercedes/11_GridShader.jpg)
 
 
 ## Zusätzliche Elemente
@@ -120,15 +120,15 @@ Diese Tech-Demo hat das Ziel, die Fähigkeiten des Autos zu präsentieren.
 
 Beginnen wir damit, die Räder hervorzuheben.
 
-![Wheel highlight](/showcase-mercedes/12_WheelWithText.png)
+![Rad-Highlight](/showcase-mercedes/12_WheelWithText.png)
 
 Das Hinzufügen dieses Shaders zu einer Ebene führt zu einem gestrichelten Kreis, der sich mit einer definierten Geschwindigkeit dreht. In Kombination mit World Space UI mit einer normalen Text-Komponente kann dies einige interessante Fähigkeiten oder Parameter des gegebenen Produkts hervorheben.
 
-![Wheel shader](/showcase-mercedes/13_WheelShader.jpg)
+![Rad-Shader](/showcase-mercedes/13_WheelShader.jpg)
 
 Nachdem wir die Räder gezeigt haben, wollen wir mit einer umfassenden Information über das Produkt abschließen. In diesem Fall wäre das der vollständige Name des Autos und vielleicht einige verfügbare Konfigurationen.
 
-![Rear UI](/showcase-mercedes/14_RearUI.jpg)
+![UI hinten](/showcase-mercedes/14_RearUI.jpg)
 
 
 
@@ -146,5 +146,6 @@ Es gibt ein paar Features, die uns fehlen.
 Das wäre zum Beispiel die richtige Unterstützung für die Lit Shader Graphs. Aber nichts hindert uns daran, Shader auf three.js-Basis zu erstellen und ähnliche Shader in Unity zu erstellen, damit unser Content-Team die Materialien anpassen kann.
 
 Die Verwendung von Needle hat Spaß gemacht! 🌵
+
 
 Seite automatisch mit KI übersetzt

@@ -143,43 +143,44 @@ Sử dụng kiểu FileReference để tải các tệp bên ngoài (ví dụ: t
 @[code ts twoslash](@code/component-filereference.ts)
 
 <!-- SAMPLE receive click from HTML button
-## Receiving html element click in component
+## Nhận click từ phần tử html trong component
 -->
 
 <!-- SAMPLE disable environment light
-## Disable environment light
+## Vô hiệu hóa ánh sáng môi trường
 -->
 
 <!-- SAMPLE using mediapipe with hands
-## Use mediapipe package to control the 3D scene with hands
-Make sure to install the mediapipe package. Visit the github link below to see the complete project setup.
-Try it [live here](https://engine.needle.tools/samples/mediapipe-hands/) - requires a webcam/camera
+## Sử dụng gói mediapipe để điều khiển cảnh 3D bằng tay
+Đảm bảo cài đặt gói mediapipe. Truy cập liên kết github dưới đây để xem thiết lập dự án hoàn chỉnh.
+Thử nghiệm trực tiếp tại đây [live here](https://engine.needle.tools/samples/mediapipe-hands/) - yêu cầu webcam/camera
 -->
 
 <!-- SAMPLE Change Color On Collision
-## Change Color On Collision
+## Thay đổi màu khi va chạm
 -->
 
 <!-- SAMPLE Physics Trigger Relay
-## Physics Trigger Relay
-Invoke events using an objects physics trigger methods
+## Chuyển tiếp kích hoạt vật lý
+Gọi các sự kiện bằng cách sử dụng các phương thức kích hoạt vật lý của object
 -->
 
 <!-- SAMPLE Auto Reset
-## Auto Reset
-Reset an object's position automatically when it's leaving a physics trigger
+## Tự động đặt lại
+Tự động đặt lại vị trí của object khi nó rời khỏi kích hoạt vật lý
 -->
 
 <!-- SAMPLE Play Audio On Collision
-## Play Audio On Collision
+## Phát âm thanh khi va chạm
 -->
 
 <!-- SAMPLE Set Random Color
-## Set Random Color
-Randomize the color of an object on start. Note that the materials are cloned in the `start` method
+## Đặt màu ngẫu nhiên
+Ngẫu nhiên hóa màu của object khi bắt đầu. Lưu ý rằng các vật liệu được sao chép trong phương thức start
 -->
 
 <!-- SAMPLE Timed Spawn
-## Spawn Objects Over Time
+## Sinh object theo thời gian
 -->
+
 Trang được dịch tự động bằng AI

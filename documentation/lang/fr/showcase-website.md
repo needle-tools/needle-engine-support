@@ -1,3 +1,4 @@
+```markdown
 ---
 lang: fr-FR
 title: Constructeur de château 🏰
@@ -10,6 +11,7 @@ editLink: false
 <sample src="https://needle.tools" />
 
 [Visiter le site web](https://needle.tools)
+```
 
 
 Page automatiquement traduite à l'aide de l'IA

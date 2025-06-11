@@ -14,7 +14,7 @@ title: Web-Projektstruktur
 | `package.json` | Projektkonfiguration mit Name, Version, Abhängigkeiten und Skripten |
 | `tsconfig.json` | Typescript Compiler-Konfiguration |
 | `.gitignore` | Dateien und Ordner, die in git ignoriert werden sollen |
-| `vite.config.js` | Enthält spezifische Konfigurationen für vite.<br/>Fügt auch die Needle Engine vite Plugins hinzu. |
+| `vite.config.js` | Enthält spezifische Konfiguration für vite.<br/>Fügt auch die Needle Engine vite Plugins hinzu. |
 
 
 ### Standardmäßige Vite Projektstruktur

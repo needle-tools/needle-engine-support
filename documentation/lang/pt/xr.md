@@ -255,4 +255,5 @@ Aqui estão algumas bibliotecas para adicionar rastreamento de imagem baseado no
 [caniuse: WebXR](https://caniuse.com/webxr)
 [Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
 
+
 Página traduzida automaticamente usando IA

@@ -114,8 +114,7 @@ Windows：确保您已将 toktx 添加到您的系统环境变量中。添加后
 通过渐进式加载，纹理将首先以较低分辨率版本加载。当纹理可见时，全质量版本将动态加载。这通常会显着减少场景的初始加载时间。
 
 :::details 如何启用渐进式纹理加载？
-### 可以为每个纹理启用渐进式纹理加载
-### 或者为项目中的所有纹理启用：
+### 可以为每个纹理启用渐进式纹理加载<br/>或者为项目中的所有纹理启用：
 ![image](/imgs/unity-texture-compression.jpg)
 ### 为项目中没有其他特定设置的所有纹理启用：
 ![image](/imgs/unity-progressive-textures.jpg)
@@ -157,14 +156,14 @@ Windows：确保您已将 toktx 添加到您的系统环境变量中。添加后
 4) 再次打开 Unity，并将 URL 粘贴到 ``Deploy To Glitch`` 组件的 ``Project Name`` 字段中
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) 等待几秒钟，直到 Unity 从 glitch 收到您的部署密钥（此密钥安全地存储在 glitch 的 `.env` 文件中。不要与他人共享，拥有此密钥的任何人都可以上传到您的 glitch 网站）
-  ![waiting for the key](/deployment/deploytoglitch-2.jpg)
+  ![等待密钥](/deployment/deploytoglitch-2.jpg)
 6) 收到部署密钥后，您可以点击 `Build & Deploy` 按钮上传到 glitch。
 
 :::
 
 :::details 如何从 Blender 部署到 Glitch？
 
-![Deploy To Glitch from Blender component](/blender/deploy_to_glitch.webp)
+![Blender 中的 Deploy To Glitch 组件](/blender/deploy_to_glitch.webp)
 
 1) 在 Scene 标签页中找到 Deploy To Glitch 面板
 2) 点击组件上的 ``Remix on glitch`` 按钮
@@ -184,9 +183,9 @@ Windows：确保您已将 toktx 添加到您的系统环境变量中。添加后
 :::details 如何从 Unity 部署到 Netlify？
 只需将 `DeployToNetlify` 组件添加到您的场景中并按照说明进行操作。您可以通过点击按钮或部署到现有项目来创建新项目。
 
-![Deploy to netlify component](/deployment/deploytonetlify-2.jpg)
+![Netlify 部署组件](/deployment/deploytonetlify-2.jpg)
 
-![Deploy to netlify component](/deployment/deploytonetlify.jpg)
+![Netlify 部署组件](/deployment/deploytonetlify.jpg)
 :::
 
 ### 部署到 Vercel
@@ -235,13 +234,13 @@ Windows：确保您已将 toktx 添加到您的系统环境变量中。添加后
   *此资产包含您 FTP 服务器的访问信息 - 您在托管服务提供商处创建新的 FTP 帐户时会获得这些信息*
 3) 点击 ``DeployToFTP`` 组件上的 <kbd>Build & Deploy</kbd> 按钮，构建您的项目并将其上传到您的 FTP 帐户
 
-![Deploy to FTP component in Unity](/deployment/deploytoftp.jpg)
+![Unity 中的 Deploy To FTP 组件](/deployment/deploytoftp.jpg)
 *¹ Deploy to FTP 组件*
 
-![Deploy to FTP server asset](/deployment/deploytoftp2.jpg)
+![FTP 服务器资产](/deployment/deploytoftp2.jpg)
 *² 包含您 FTP 用户帐户访问信息的 FTP Server 资产*
 
-![Deploy to FTP component in Unity with server asset assigned](/deployment/deploytoftp3.jpg)
+![分配服务器资产后的 Unity 中的 Deploy To FTP 组件](/deployment/deploytoftp3.jpg)
 *分配服务器资产后的 Deploy To FTP 组件。您可以使用路径字段直接部署到服务器的子文件夹*
 :::
 
@@ -261,7 +260,7 @@ Windows：确保您已将 toktx 添加到您的系统环境变量中。添加后
 
 > **注意**: 如果在压缩过程中出现错误，请告知我们并报告 bug！如果您的项目在本地工作，但仅在进行生产版本构建时失败，您可以通过进行开发版本构建立即解决问题。只需在 Build Settings 中切换 `Development Build` 即可。
 
-![Unity build window showing Needle Engine platform](/deployment/buildoptions_gzip.jpg)
+![Unity 构建窗口显示 Needle Engine 平台](/deployment/buildoptions_gzip.jpg)
 
 :::
 
@@ -281,7 +280,7 @@ AddType application/javascript .js.gz
 :::details 如何从 Unity 部署到 Github Pages？
 
 将 DeployToGithubPages 组件添加到您的场景中，并复制粘贴您想要部署到的 github 仓库（或 github pages url）。
-![Deploy To github pages component](/deployment/deploytogithubpages.jpg)
+![Github Pages 部署组件](/deployment/deploytogithubpages.jpg)
 
 <video-embed src="https://www.youtube.com/watch?v=Vyk3cWB6u-c" />
 
@@ -299,13 +298,13 @@ AddType application/javascript .js.gz
 
 :::details 如何从 Unity 部署到 Facebook Instant Games？
 - 将 `Deploy To Facebook Instant Games` 组件添加到您的场景中：
-  ![Deploy to facebook instant games component](/deployment/deploytofacebookinstantgames.jpg)
+  ![Facebook Instant Games 部署组件](/deployment/deploytofacebookinstantgames.jpg)
 - 点击 `Build For Instant Games` 按钮
 - 构建完成后，您将获得一个 ZIP 文件，您可以将其上传到您的 facebook 应用。
 - 在 Facebook 上添加 `Instant Games` 模块，并转到 `Instant Games/Web hosting`
-  ![Hosting a facebook instant games](/deployment/deploytofacebookinstantgames-hosting.jpg)
+  ![托管 Facebook Instant Games](/deployment/deploytofacebookinstantgames-hosting.jpg)
 - 您可以使用 `Upload version` 按钮 (1) 上传您的 zip。上传完成并处理完 zip 后，点击 `Stage for testing` 按钮测试您的应用（2，此处为蓝色按钮）或 `Push to production`（带星号的按钮）
-  ![Upload the zip to facebook instant games](/deployment/deploytofacebookinstantgames-upload.jpg)
+  ![上传 zip 到 Facebook Instant Games](/deployment/deploytofacebookinstantgames-upload.jpg)
 - 就这样 - 然后您可以点击每个版本旁边的 `Play` 按钮在 facebook 上测试您的游戏。
 
 :::
@@ -313,13 +312,13 @@ AddType application/javascript .js.gz
 :::details 如何在 Facebook 上创建应用（具有 Instant Games 功能）
 
 1) [创建一个新应用](https://developers.facebook.com/apps/creation/)，选择 `Other`。然后点击 `Next`
-  ![Create facebook instant games app](/deployment/facebookinstantgames-1.jpg)
+  ![创建 Facebook Instant Games 应用](/deployment/facebookinstantgames-1.jpg)
 
 2) 选择类型 `Instant Games`
-  ![Create facebook instant games app](/deployment/facebookinstantgames-2.jpg)
+  ![创建 Facebook Instant Games 应用](/deployment/facebookinstantgames-2.jpg)
 
 3) 创建应用后，添加 `Instant Games` 产品
-  ![Add instant games product](/deployment/facebookinstantgames-3.jpg)
+  ![添加 Instant Games 产品](/deployment/facebookinstantgames-3.jpg)
 
 您可以在此处找到 [官方 instant games 文档](https://developers.facebook.com/docs/games/build/instant-games)。
 **注意**：您只需创建一个具有 instant games 功能的应用即可。
@@ -336,7 +335,7 @@ AddType application/javascript .js.gz
 
 要构建您的 web 项目以便上传到任何网络服务器，您可以点击 Unity Editor Build Settings Window 中的 **Build** 按钮。您可以启用 ``Development Build`` 复选框以忽略压缩（见下文），这需要您的机器上安装 toktx。
 
-要本地预览最终构建，您可以使用窗口底部的 `Preview Build` 按钮。此按钮将首先执行常规构建，然后在包含最终文件的目录中启动本地服务器，以便您可以看到将这些文件上传到网络服务器后得到的结果。
+要本地预览最终构建，您可以使用窗口底部的 ``Preview Build`` 按钮。此按钮将首先执行常规构建，然后在包含最终文件的目录中启动本地服务器，以便您可以看到将这些文件上传到网络服务器后得到的结果。
 
 Nodejs **仅**在开发期间需要。发布的网站（使用我们默认的 vite 模板）是一个静态页面，不依赖于 Nodejs，可以放在任何常规网络服务器上。如果您想在同一个网络服务器上运行我们的极简网络服务器（自动包含在 Glitch 部署过程中），则需要 Nodejs。
 
@@ -347,7 +346,7 @@ Nodejs **仅**在开发期间需要。发布的网站（使用我们默认的 vi
 可以创建常规的 Unity 项目，您可以同时构建到 Needle Engine 和常规的 Unity 平台，例如 Desktop 甚至 WebGL。我们的“组件映射”方法意味着在 Unity 内部不会修改运行时逻辑 - 如果您愿意，您可以常规地使用 Play Mode 并构建到其他目标平台。在某些情况下，这意味着您将有重复的代码（C# 代码和匹配的 TypeScript 逻辑）。由此产生的额外工作量取决于您的项目。
 
 **在 Unity 中进入 Play Mode**
-在 `Project Settings > Needle Engine` 中，您可以关闭 `Override Play Mode` 和 `Override Build settings` 来在 Needle 的构建过程和 Unity 的构建过程之间切换：
+在 ``Project Settings > Needle Engine`` 中，您可以关闭 ``Override Play Mode`` 和 ``Override Build settings`` 来在 Needle 的构建过程和 Unity 的构建过程之间切换：
 ![image](https://user-images.githubusercontent.com/2693840/187308490-5acb9016-ffff-4113-be62-4de450a42b08.png)
 
 ## Unity 的 Needle Engine 命令行参数
@@ -365,4 +364,5 @@ Unity 的 Needle Engine 支持各种命令行参数，用于导出单个资产�
 | `-debug` | 打开控制台窗口进行调试 |
 
 ---
+
 本页面由 AI 自动翻译

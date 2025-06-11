@@ -4,7 +4,7 @@ Needle は、Unity とブラウザの間で、非常に高速で反復的なワ�
 
 ## Editor Syncの使用方法
 
-シーンに `EditorSync` コンポーネントを追加することで、Editor Syncを有効にできます。このコンポーネントは、Unity エディターをブラウザプロジェクトに接続し、その間で適用可能な変更を自動的に同期します。
+シーンに `EditorSync` コンポーネントを追加することで、Editor Syncを有効にできます。このコンポーネントは、Unity Editorをブラウザプロジェクトに接続し、その間で適用可能な変更を自動的に同期します。
 
 :::tip
 **Editor Sync**は現在、試験的な機能です。ぜひご使用経験をお聞かせください！皆様からのフィードバックをお待ちしております。
@@ -15,5 +15,6 @@ Needle は、Unity とブラウザの間で、非常に高速で反復的なワ�
 このチュートリアルでは、Editor Syncのワークフローが実際に動作している様子を紹介します。
 
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
+
 
 このページはAIによって自動的に翻訳されました

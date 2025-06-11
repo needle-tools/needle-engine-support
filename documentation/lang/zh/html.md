@@ -4,8 +4,8 @@ title: 框架、打包器、HTML
 
 ## 打包和 Web 前端
 
-Needle Engine 是作为 Web Component 构建的。
-这意味着只需在你的项目中安装 `@needle-tools/engine`，然后在你的 Web 项目中的任何位置包含 `<needle-engine src="path/to/your.glb">` 即可。
+Needle Engine 构建为 Web Component。
+这意味着只需在你的项目中安装 `@needle-tools/engine`，并在你的 Web 项目的任何位置包含 `<needle-engine src="path/to/your.glb">`。
 
 - 使用 npm 安装：
   `npm i @needle-tools/engine`
@@ -90,8 +90,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(async ({ command }) => {
 
-    // Create the pwaOptions object.
-    // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
+    // 创建 pwaOptions 对象。
+    // 你可以在这里编辑或输入 PWA 设置（例如更改 PWA 名称或添加图标）。
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
     const pwaOptions = {};
 
@@ -99,11 +99,11 @@ export default defineConfig(async ({ command }) => {
 
     return {
         plugins: [
-            // pass the pwaOptions object to the needlePlugins and the VitePWA function
+            // 将 pwaOptions 对象传递给 needlePlugins 和 VitePWA 函数
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
+        // vite 配置的其余部分...
 ```
 
 :::tip 所有资源默认会被缓存
@@ -124,8 +124,8 @@ PWA 使用 Service Workers 缓存资源并提供离线支持。Service Workers �
 
 ```js
 const pwaOptions = {
-  // Note: PWAs behave different in dev mode.
-  // Make sure to verify the behaviour in production builds!
+  // 注意：PWA 在开发模式下的行为不同。
+  // 请确保在生产构建中验证其行为！
   devOptions: {
     enabled: true,
   }
@@ -145,7 +145,7 @@ const pwaOptions = {
 
 ```js
 const pwaOptions = {
-  updateInterval: 15 * 60 * 1000, // 15 minutes, in milliseconds
+  updateInterval: 15 * 60 * 1000, // 15 分钟，单位毫秒
 };
 ```
 
@@ -161,7 +161,7 @@ const pwaOptions = {
 
 ```js
 const pwaOptions = {
-  // manifest options provided here will override the defaults
+  // 此处提供的 manifest 选项将覆盖默认值
   manifest: {
     name: "My App",
     short_name: "My App",

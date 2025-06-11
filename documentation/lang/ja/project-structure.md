@@ -10,7 +10,7 @@ title: Webプロジェクトの構造
 | --- | --- |
 | **Needle Engine** | |
 | [`needle.config.json`](./reference/needle-config-json.md) | Needle Engineのビルドと統合のための設定 |
-| **エコシステム** | |
+| **Ecosystem** | |
 | `package.json` | 名前、バージョン、依存関係、スクリプトを含むプロジェクト設定 |
 | `tsconfig.json` | Typescriptコンパイラ設定 |
 | `.gitignore` | gitで無視されるファイルとフォルダー |

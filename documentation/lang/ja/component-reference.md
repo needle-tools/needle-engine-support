@@ -4,7 +4,7 @@ title: Needleコアコンポーネント
 
 # Needleコアコンポーネント
 
-ここでは、私たちが提供するいくつかのコンポーネントの概要を説明します。その多くは、Unity、Blender、または他の統合機能のコンポーネントや機能に対応しています。
+ここでは、私たちが提供するコンポーネントの一部概要を説明します。その多くは、Unity、Blender、またはその他の統合機能のコンポーネントや機能に対応しています。
 
 完全なリストについては、[APIドキュメント](https://engine.needle.tools/docs/api/latest)をご覧ください。
 
@@ -13,20 +13,20 @@ title: Needleコアコンポーネント
 詳細については、ドキュメントの[スクリプティング](./scripting.md)セクションをご覧ください。
 
 ## オーディオ
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `AudioListener` |  |
 | `AudioSource` | オーディオ再生に使用 |
 
 ## アニメーション
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `Animator` と `AnimatorController` | アニメーションステートマシン、条件、トランジションと共にエクスポート  |
 | `Animation` | 最も基本的なアニメーションコンポーネント。最初のクリップのみエクスポートされます |
 | `PlayableDirector` と `TimelineAsset` | アニメーション、オーディオ、状態などを制御するための強力なシーケンスをエクスポート |
 
 ## レンダリング
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `Camera` |  |
 | `Light` | DirectionalLight、PointLight、Spotlight。ライトベイク（例: Rectangular Light形状）にも使用できることに注意してください |
@@ -46,7 +46,7 @@ title: Needleコアコンポーネント
 
 - **Unityのみ**: *UnityでVolumeを使用したポストプロセス効果はURPでのみサポートされていることに注意してください*
 
-| エフェクト名 | |
+| Effect Name | |
 | --- | --- | 
 | Antialiasing | *追加のUnityコンポーネント* |
 | Bloom | *Volumeアセット経由* |
@@ -63,7 +63,7 @@ title: Needleコアコンポーネント
 | *あなたのカスタムエフェクト* | [stackblitzの例を参照](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect) |
 
 ## ネットワーキング
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `SyncedRoom` | 主要なネットワーキングコンポーネント。シーンに配置するとネットワーキングが有効になります |
 | `Networking` | ネットワーキング用のバックエンドサーバーを設定するために使用されます。 |
@@ -74,7 +74,7 @@ title: Needleコアコンポーネント
 | `Screensharing` | 画面共有機能を有効にします |
 
 ## インタラクション
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `EventSystem` | シーン内のオブジェクトに対するポインターイベントとUIイベントの発生を処理します |
 | `ObjectRaycater` | DragControlsとDuplicatableに必要 |
@@ -94,7 +94,7 @@ title: Needleコアコンポーネント
 
 物理演算は[Rapier](https://rapier.rs/)を使用して実装されています。
 
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `Rigidbody` | 重力に反応するようにオブジェクトに追加します（またはキネマティックおよびスタティックにする） |
 | `BoxCollider` | オブジェクトが衝突したり、`trigger`に設定されている場合にトリガーイベントを発生させたりできるBoxコライダーの形状 |
@@ -107,7 +107,7 @@ title: Needleコアコンポーネント
 
 [XRドキュメントを読む](xr.md)
 
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `WebXR` | VR、AR、パススルーのサポート、およびアバターモデルのレンダリングのためにシーンに追加します |
 | [`USDZExporter`](./everywhere-actions.md) | USDとQuicklookのサポートを有効にするために追加
@@ -121,7 +121,7 @@ title: Needleコアコンポーネント
 | `XRControllerFollow` | シーン内の任意のオブジェクトに追加でき、左または右の手またはコントローラーを追跡するように構成できます |
 
 ## デバッグ
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `GridHelper` | グリッドを描画します |
 | `BoxGizmo` | ボックスを描画します |
@@ -129,7 +129,7 @@ title: Needleコアコンポーネント
 | | 注意: カスタムコードを書く際には、Gizmosの静的メソッドを使用してデバッグラインや形状を描画できます | |
 
 ## ランタイムファイル入出力
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `GltfExport` | 実験的！Webランタイムからgltfをエクスポートするために使用します。 |
 | `DropListener` | アップロードとネットワーキングのためのファイルドロップイベントを受け取ります |
@@ -139,7 +139,7 @@ title: Needleコアコンポーネント
 空間UIコンポーネントは、Unity UI（Canvas、UI Toolkitではない）から[three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui)にマッピングされます。
 UIはアニメーション化できます。
 
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `Canvas` | UnityのUIシステム。現在はワールドスペースモードである必要があります。 |
 | `Text (Legacy)` | UnityのUI Textコンポーネントを使用してTextをレンダリングします。カスタムフォントがサポートされており、エクスポート時にフォントアトラスが自動的に生成されます。フォント設定または`FontAdditionalCharacters`コンポーネントを使用して、アトラスに含まれる文字を制御します。<br/>**注意**: Unityでは`Legacy/Text`コンポーネントを使用していることを確認してください（*TextMeshPro*は現在サポートされていません） |
@@ -152,14 +152,15 @@ UIはアニメーション化できます。
 
 ## その他
 
-| 名前  | 説明 |
+| Name  | Description |
 | ------------- | ------------- |
 | `SceneSwitcher` | 他のシーンまたはプレハブ/glTFファイルのロードとアンロードを処理します。プリロード、スワイプ、キーボードイベント、またはURLナビゲーションによるシーン変更の機能があります |
 
 ## エディターのみ
-| 名前  | 説明 |
+| Name  | Description |
 | --- | --- |
 | `ExportInfo` | Webプロジェクトを管理するための主要なコンポーネント。例: Webアプリをインストールまたは開始する
 | `EditorSync` | Unity Editorから直接、実行中のthree.jsアプリへのマテリアルまたはコンポーネントの値変更をネットワーク化するために追加します。リロードする必要はありません。 |
+
 
 このページはAIによって自動的に翻訳されました。

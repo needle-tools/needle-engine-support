@@ -22,7 +22,7 @@ Note : Vous pourriez avoir besoin de redémarrer le serveur web local pour appli
 
 ![unity license window](/imgs/unity-needle-engine-license.jpg)
 
-### Activation de la licence dans Blender
+### Activating the license in Blender
 Ouvrez `Addon Preferences/Needle Engine` pour accéder aux paramètres de l'addon Needle Engine
 - `Email` - Saisissez l'adresse e-mail avec laquelle vous avez acheté la licence
 - `Invoice ID` - Saisissez l'un des identifiants de facture que vous avez reçus par e-mail
@@ -36,7 +36,7 @@ Note : Vous pourriez avoir besoin de redémarrer le serveur web local pour appli
 Vous pourriez voir un avertissement dans votre navigateur concernant la sécurité SSL en fonction de votre configuration locale.
 
 Cela est dû au fait que bien que la connexion soit chiffrée, par défaut, il n'y a pas de certificat SSL que le navigateur puisse valider.
-Si cela se produit : cliquez sur `Avancé` puis sur `Continuer vers le site`. Dans Safari, vous pourriez avoir besoin d'actualiser la page après, car il ne continue pas automatiquement. Maintenant, vous devriez voir votre scène dans le navigateur !
+Si cela se produit : cliquez sur `Advanced` puis sur `Proceed to Site`. Dans Safari, vous pourriez avoir besoin d'actualiser la page après, car il ne continue pas automatiquement. Maintenant, vous devriez voir votre scène dans le navigateur !
 
 Le dialogue ne devrait s'afficher qu'une seule fois pour le même serveur local.
 
@@ -209,7 +209,7 @@ Veuillez vérifier que vous n'êtes pas accidentellement dans le mode `Debug` de
 ![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
 
 
-## Toktx est introuvable / toktx n'est pas installé
+## Toktx can not be found / toktx is not installed
 
 - Assurez-vous de [télécharger et installer toktx](http://localhost:8080/docs/getting-started/.html#install-these-tools-for-production-builds).
 
@@ -290,6 +290,4 @@ Si vous voulez (ou devez) exécuter votre AI localement, vous pouvez utiliser le
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
 
 
-```
-```
 Page automatiquement traduite par IA.

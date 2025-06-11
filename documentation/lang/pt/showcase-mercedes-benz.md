@@ -54,7 +54,7 @@ Quanto ao gradiente, ele vai de um cinzento leve a uma cor branca.
 
 Este efeito poderia ser facilmente feito apenas com um mapeamento UV adequado e uma textura com um único pixel de altura que definiria o gradiente.
 
-Criei um shader sem iluminação no shader graph:
+Criei um unlit shader no shader graph:
 
 ![Evironemnt shader](/showcase-mercedes/7_EnvShaderGraph.jpg)
 
@@ -134,7 +134,7 @@ Depois de mostrar as rodas, queremos terminar com uma informação ampla sobre o
 
 ## Resumo
 
-Usando a linha do tempo do Unity, podemos controlar quando os traços das rodas e o texto serão mostrados. Isto é complementado pela animação da câmara.
+Usando a timeline do Unity, podemos controlar quando os traços das rodas e o texto serão mostrados. Isto é complementado pela animação da câmara.
 
 
 ## Conclusão

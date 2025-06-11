@@ -7,7 +7,7 @@ Needle Engine về cơ bản bao gồm ba phần:
 - Một **exporter** chuyển đổi dữ liệu scene và component thành glTF.
 - Một **web runtime** tải và chạy các tệp glTF được tạo cùng với các extension của chúng.
 
-Web runtime sử dụng three.js để render, bổ sung hệ thống component lên trên scene graph của three và kết nối các extension loader cho các glTF extension tùy chỉnh của chúng tôi.
+Web runtime sử dụng three.js để rendering, bổ sung hệ thống component lên trên scene graph của three và kết nối các extension loader cho các glTF extension tùy chỉnh của chúng tôi.
 
 Thực tế, điều này biến các công cụ như Unity hoặc Blender thành những công cụ phát triển web không gian mạnh mẽ – bổ sung các asset glTF vào quy trình làm việc điển hình của HTML, CSS, JavaScript và bundling.
 
@@ -192,7 +192,7 @@ Extension này chứa dữ liệu bổ sung trên mỗi node liên quan đến s
 | Loại Texture | Giá trị |
 | -- | -- |
 | Lightmap | 0 |
-| Environment Map | 1 |
+| Environment Map  | 1 |
 | Reflection Map | 2 |
 
 Cách lightmap được áp dụng được định nghĩa trong component `MeshRenderer` bên trong extension [`NEEDLE_components`](#needle_components) cho mỗi node:
@@ -223,9 +223,9 @@ Cách lightmap được áp dụng được định nghĩa trong component `Mesh
 Các component trong `NEEDLE_components` có thể tham chiếu dữ liệu thông qua JSON Pointer. Dữ liệu trong `NEEDLE_persistent_assets` thường được tham chiếu nhiều lần bởi các component khác nhau và do đó được lưu trữ riêng trong một root extension. Theo thiết kế, chúng luôn được thứ gì đó khác tham chiếu (hoặc có tham chiếu bên trong chúng), và do đó không lưu trữ thông tin kiểu dữ liệu nào cả: chúng chỉ đơn giản là các phần dữ liệu JSON và các component tham chiếu chúng hiện tại cần phải biết chúng mong đợi điều gì.
 
 Ví dụ về asset/dữ liệu được lưu trữ ở đây là:
-- AnimatorController, layer và state của chúng
-- PlayableAsset (timeline), track và clip nhúng của chúng
-- SignalAsset
+- AnimatorControllers, layer và state của chúng
+- PlayableAssets (timeline), track và clip nhúng của chúng
+- SignalAssets
 - ...
 
 Dữ liệu trong `persistent_assets` có thể tham chiếu các `persistent_assets` khác thông qua JSON Pointer, nhưng theo thiết kế không thể tham chiếu `NEEDLE_components`. Điều này tương tự như sự tách biệt giữa "Scene data" và "AssetDatabase content" trong Unity.
@@ -419,4 +419,4 @@ Chúng tôi tin rằng đối với quy trình lặp lại và kiểm thử ch�
 
 > **Lưu ý**: Một tác dụng phụ thực sự tốt là tránh được toàn bộ bước "domain reload" chậm chạp thường tốn 15-60 giây mỗi khi bạn vào Play Mode. Bạn chỉ cần "live" trong trình duyệt ngay khi nhấn Play.
 
-Page automatically translated using AI
+Trang được dịch tự động bằng AI

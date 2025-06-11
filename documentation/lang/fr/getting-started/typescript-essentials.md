@@ -1,6 +1,6 @@
 ---
-title: Scripting in Needle Engine
-description: Differences, similarities and key concepts of Typescript, Javascript and C#.
+title: Scripting dans Needle Engine
+description: Différences, similarités et concepts clés de Typescript, Javascript et C#.
 sidebarDepth: 2
 ---
 
@@ -67,7 +67,7 @@ Dans Unity, vous ajoutez généralement des instructions `using` en haut de votr
 Voir l'exemple suivant :
 ```csharp
 using UnityEngine;
-// importation d'un type spécifique et lui donner un nom
+// importing just a specific type and giving it a name
 using MonoBehaviour = UnityEngine.MonoBehaviour;
 ```
 
@@ -179,7 +179,7 @@ Vous remarquez que la deuxième variable `playerIsNullOrUndefined` utilise `==`,
 
 Lorsque vous vous abonnez à un événement en C#, vous le faites comme suit :
 ```csharp
-// voici comment un événement est déclaré
+// ceci est la manière dont un événement est déclaré
 event Action MyEvent;
 // vous vous abonnez en ajoutant (ou supprimant)
 void OnEnable() {

@@ -3,25 +3,25 @@ home: false
 next: ./getting-started/index.md
 editLink: false
 lastUpdated: false
-footer: "Copyright © 2025 Needle Tools GmbH"
+footer: "版权所有 © 2025 Needle Tools GmbH"
 ---
 
-<discountbanner fallback_image="/docs/imgs/banner.webp" /> 
+<discountbanner fallback_image="/docs/imgs/banner.webp" />
 
 <quoteslides>
 
 <testimonial
   name="Chris Mahoney"
-  role="创始人，Our Computer Company。前 Unity，前 Lamina1"
+  role="创始人，我们的计算机公司。前 Unity，前 Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
 >
-令人难以置信的 Unity 编辑器集成，超出了一个数量级，  
+令人难以置信的 Unity 编辑器集成，超出了一个数量级，
 而且就像文档声称的那样简单。哇。
 </testimonial>
 
-<testimonial 
-  name="Kevin Curry" 
+<testimonial
+  name="Kevin Curry"
   role="创始人，Intangible.ai。前 Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
   img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
@@ -45,13 +45,13 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
   img="https://pbs.twimg.com/profile_images/1106863126958493697/tlgb3EyM_x96.jpg"
 >
 这对 WebXR 和共享式沉浸式 3D 体验来说太重要了！非常感谢 @NeedleTools 团队为此付出的努力！希望 @Apple
- 尽快解决他们的 WebXR 问题。AR 部分在我的 @SamsungMobile S21 上完美运行。
+尽快解决他们的 WebXR 问题。AR 部分在我的 @SamsungMobile S21 上完美运行。
 </testimonial>
 
 <testimonial
   name="Rinesh Thomas"
   role="游戏开发者，Assassin's Creed VR"
-  src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRrTTKqCQ&s=19"
+  src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
     这是我在 Unity 中看到过的 Cinemachine 之后最棒的东西。Unity 应该收购它
@@ -67,7 +67,7 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 </testimonial>
 
 <testimonial
-  name="Pete Patterson" 
+  name="Pete Patterson"
   role="空间计算专家"
   src="https://x.com/VRSpatialist/status/1572300394285383680"
   img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
@@ -75,8 +75,8 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 终于试了试 @NeedleTools 和 Unity。使用他们的集成功能在云端快速启动并运行非常容易
 </testimonial>
 
-<testimonial 
-  name="Dilmer Valecillos" 
+<testimonial
+  name="Dilmer Valecillos"
   role="@Meta 混合现实开发者倡导者，教程创作者"
   src="https://x.com/Dilmerv/status/1562209049856188420"
   img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
@@ -84,8 +84,8 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
  这太棒了，如果你对使用 Unity 开发 #WebXR 感兴趣，这将帮助我们实现它
 </testimonial>
 
-<testimonial 
-  name="VRSpatialist" 
+<testimonial
+  name="VRSpatialist"
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
@@ -102,22 +102,22 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 </testimonial>
 
 <testimonial
-  name="Matthew Pieri" 
+  name="Matthew Pieri"
   role="游戏开发者"
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-过去 2.5 个月都在开发这个游戏，我以前从未开发过游戏/从未用过 Unity，但使用 Needle Tools 的整个过程非常愉快。太迅速了！很想以开发 AR 体验为职业！ 
+过去 2.5 个月都在开发这个游戏，我以前从未开发过游戏/从未用过 Unity，但使用 Needle Tools 的整个过程非常愉快。太迅速了！很想以开发 AR 体验为职业！
 </testimonial>
 
-<testimonial 
-  name="Yuzu" 
+<testimonial
+  name="Yuzu"
   role="Web 游戏开发者"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
 >
 自从开始使用 Needle，我的工作流程优化了 10 倍
-</testimonial>  
+</testimonial>
 
 </quoteslides>
 
@@ -151,27 +151,27 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 
 
 <!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
- 
- <br/>
- <br/>
+
+<br/>
+<br/>
 
 <actiongroup>
 
-  
+
 <a class="no-external-link-icon" href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=ddd&colorB=ddd"/></a>
 
 <a class="no-external-link-icon" href="https://engine.needle.tools/docs/getting-started/"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=ddd&colorB=ddd"/></a>
 
 
 <a class="no-external-link-icon" href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=ddd&colorB=ddd&label=discord&logo=discord&logoColor=ffffff"></a>
-  
+
 
 </actiongroup>
 
 
 
 
-<p></p> 
+<p></p>
 <copyright></copyright>
 
 <ClientOnly>
@@ -180,4 +180,3 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 
 ---
 页面由 AI 自动翻译
-Page automatically translated using AI

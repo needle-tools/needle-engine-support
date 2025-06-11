@@ -1,5 +1,5 @@
 ---
-title: Needle Engine for Blender
+title: 适用于 Blender 的 Needle Engine
 editLink: true
 ---
 <br/>
@@ -40,7 +40,7 @@ editLink: true
 
 2. 选择下载的 zip 文件（命名为 `needle-blender-plugin-*.zip`）进行安装。
 
-3. 在“插件”搜索栏中搜索“Needle”并确保 `Needle Engine Exporter for Blender` 已启用。
+3. 在插件搜索栏中搜索“Needle”并确保 `Needle Engine Exporter for Blender` 已启用。
 
 
 ![Settings](/blender/settings.webp)
@@ -66,7 +66,7 @@ editLink: true
 - [下载 Blender 示例](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)
 
 首先创建或打开一个新的 blend 文件，您希望将其导出到 Web。
-打开“属性”窗口，然后打开“场景”类别。在 Needle Engine 面板中选择一个 `Project Path`。然后点击 `Generate Project`。它将自动安装并启动服务器 - 完成后，您的浏览器应该会打开并加载 threejs 场景。
+打开属性窗口，然后打开场景类别。在 Needle Engine 面板中选择一个 `Project Path`。然后点击 `Generate Project`。它将自动安装并启动服务器 - 完成后，您的浏览器应该会打开并加载 threejs 场景。
 
 ![Project panel](/blender/project-panel.webp)
 
@@ -87,7 +87,7 @@ editLink: true
 4) 此按钮将当前场景作为 glb 重新导出到您的本地 Web 项目中。当您保存 blend 文件时，默认情况下也会发生这种情况。
 5) `Code Editor` 尝试在您的 Web 项目中打开 vscode 工作区
 6) 如果您在一个 blend 文件中处理多个场景，您可以配置哪个场景是您的主场景，并应导出到 Web。如果您的任何组件引用了另一个场景，它们也将作为单独的 glb 文件导出。点击“导出”按钮时，您的主场景将是浏览器中加载的场景。
-7) 当您想将 Web 项目上传到服务器时，使用 `Build: Development` 或 `Build: Production` 按钮。这将捆绑您的 Web 项目并生成您可以上传的文件。点击 `Build: Production` 时，它还将对您的纹理应用优化（它们将针对 Web 进行压缩）
+7) 当您想将 Web 项目上传到服务器时，使用 `Build: Development` 或 `Build: Production` 按钮。这将打包您的 Web 项目并生成您可以上传的文件。点击 `Build: Production` 时，它还将对您的纹理应用优化（它们将针对 Web 进行压缩）
 8) 打开文档
 
 
@@ -97,7 +97,7 @@ editLink: true
 ### 颜色管理
 
 默认情况下，Blender 视口设置为 `Filmic` - 使用此设置，Blender 和 three.js 中的颜色将不匹配。
-要解决此问题，请转到 Blender 渲染类别，并在“颜色管理”面板中选择 `View Transform`: `Standard`
+要解决此问题，请转到 Blender 渲染类别，并在颜色管理面板中选择 `View Transform`: `Standard`
 
 ![Correct color management settings](/blender/settings-color-management.webp)
 
@@ -105,17 +105,15 @@ editLink: true
 ## 环境光照
 
 您可以使用视口着色选项更改环境光照和 skybox。
-指定一个 cubemap 用于照明或背景 skybox。您可以调整强度或模糊来修改外观，使其符合您的喜好。
+指定一个 cubemap 用于光照或背景 skybox。您可以调整强度或模糊来修改外观，使其符合您的喜好。
 
 注意：要在浏览器中也看到 skybox cubemap，将 `World Opacity` 增加到 1。
 
-注意：另外，您也可以在“视口着色”标签中启用 `Scene World` 设置，以使用 Blender 世界设置中指定的环境纹理。
+注意：另外，您也可以在视口着色选项卡中启用 `Scene World` 设置，以使用 Blender 世界设置中指定的环境纹理。
 
 ![Environment](/blender/environment.webp)
 
 <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
-
-*在 Blender 和 Needle Engine 之间匹配灯光和环境设置。HDRI 环境光会自动从 Blender 直接导出。保存后，页面会自动重新加载。*
 
 另外，如果您不想将 cubemap 作为背景显示，请将 Camera 组件添加到您的 Blender 相机，并将 `clearFlags` 更改为 `SolidColor` - 请注意，相机 `backgroundBlurriness` 和 `backgroundIntensity` 设置会覆盖视口着色设置。
 
@@ -159,9 +157,9 @@ Animator 控制器可用于更复杂的场景。它作为状态机工作，允�
 ##### 图表概览
 ![AnimatorController overview](/blender/animatorcontroller-overview.webp)
 1) 使用 `Shift+A` 创建新的 AnimatorState
-2) 该 `Parameters` 节点在您添加第一个节点后创建。选择它以设置用于转换的参数（通过右侧边缘的“节点”面板）
-3) 这是一个 AnimatorState。橙色状态是开始状态（可以使用“节点/属性”面板中的 `Set default state` 按钮更改）
-4) AnimatorState 的“属性”可用于设置一个或多个到其他状态的转换。使用 `Conditions` 数组选择必须与转换条件匹配的参数。
+2) 该 `Parameters` 节点在您添加第一个节点后创建。选择它以设置用于转换的参数（通过右侧边缘的节点面板）
+3) 这是一个 AnimatorState。橙色状态是开始状态（可以使用节点/属性面板中的 `Set default state` 按钮更改）
+4) AnimatorState 的属性可用于设置一个或多个到其他状态的转换。使用 `Conditions` 数组选择必须与转换条件匹配的参数。
 
 #### 使用 AnimatorController
 
@@ -273,7 +271,7 @@ Needle 包含一个光照烘焙插件，使您可以非常轻松地将漂亮的�
 
 ## 纹理压缩
 
-Needle Engine 构建管线在进行生产构建时会自动使用 ECT1S 和 UASTC 压缩纹理（取决于它们在材质中的使用方式）（**需要 [toktx](../getting-started/index.md#install-these-tools-for-production-builds) 安装**）。但您可以在“材质”面板中覆盖或更改每张纹理的压缩类型。
+Needle Engine 构建管线在进行生产构建时会自动使用 ECT1S 和 UASTC 压缩纹理（取决于它们在材质中的使用方式）（**需要安装 [toktx](../getting-started/index.md#install-these-tools-for-production-builds)**）。但您可以在材质面板中覆盖或更改每张纹理的压缩类型。
 
 您可以修改每张纹理应用的压缩。要覆盖默认压缩设置，请前往 `Material` 选项卡并打开 `Needle Material Settings`。在那里您会找到一个开关，用于覆盖您材质中使用的每张纹理的纹理设置。请参阅[纹理压缩表](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression)以简要了解各种压缩算法之间的差异。
 
@@ -281,7 +279,7 @@ Needle Engine 构建管线在进行生产构建时会自动使用 ECT1S 和 UAST
 
 ## 更新
 
-Needle Project 面板中的灯泡会通知您当插件有新版本可用时。
+Needle Project 面板中的灯泡图标会通知您当插件有新版本可用时。
 只需点击该图标下载新版本。
 ![Update notification](/blender/updates.webp)
 
@@ -309,6 +307,5 @@ Needle Project 面板中的灯泡会通知您当插件有新版本可用时。
 - [组件：了解 Everywhere Actions](../everywhere-actions.md)
 - [初学者脚本：Typescript 要点](../getting-started/typescript-essentials.md)
 - [初学者脚本：如何编写自定义组件](../scripting.md)
-
 
 页面由 AI 自动翻译

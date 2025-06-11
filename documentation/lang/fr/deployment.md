@@ -4,7 +4,7 @@ title: Déploiement et Optimisation
 
 ## Qu'est-ce que le déploiement ?
 
-Le déploiement est le processus qui consiste à rendre votre application disponible au public sur un site web. Needle Engine garantit que votre projet est aussi petit et rapide que possible en utilisant les dernières techniques de compression telles que **KTX2**, **Draco** et **Meshopt**.
+Le déploiement est le processus qui consiste à rendre votre application disponible au public sur un site web. Needle Engine garantit que votre projet est aussi petit et rapide que possible en utilisant les dernières techniques de compression telles que **KTX2**, **Draco**, et **Meshopt**.
 
 ## Cibles de déploiement disponibles
 
@@ -36,7 +36,7 @@ N'hésitez pas à nous le faire savoir sur notre [forum](https://forum.needle.to
 
 Consultez les guides ci-dessus pour savoir comment accéder aux options depuis votre Éditeur (par exemple Unity ou Blender).
 
-La principale différence avec une compilation de production est qu'elle ne réalise pas de compression [ktx2](https://registry.khronos.org/KTX/specs/2.0/ktxspec.v2.html) et [draco](https://google.github.io/draco/) (pour la réduction de la taille des fichiers et la vitesse de chargement), et qu'elle offre la possibilité de charger progressivement les textures de haute qualité.
+La principale différence avec une compilation de production est qu'elle ne réalise pas de compression [ktx2](https://registry.khronos.org/KTX/specs/2.0/ktxspec.v2.html) et [draco](https://google.github.io/draco/) (pour la réduction de la taille des fichiers et la vitesse de chargement), ainsi que l'option de charger progressivement les textures de haute qualité.
 
 Nous recommandons généralement de réaliser des compilations de production pour une taille de fichier et une vitesse de chargement optimisées (voir plus d'informations ci-dessous).
 
@@ -107,7 +107,6 @@ Sélectionnez un maillage et ouvrez les options de l'importer Needle pour voir l
 ![image](/imgs/unity-mesh-simplification.jpg)
 :::
 
-
 ### Textures progressives (Progressive Textures)
 
 Vous pouvez également ajouter le composant `Progressive Texture Settings` n'importe où dans votre scène, pour que toutes les textures de votre projet soient chargées progressivement. Le chargement progressif n'est pas appliqué aux lightmaps ni aux textures de skybox pour le moment.
@@ -135,7 +134,6 @@ Vous pouvez soit désactiver la génération de LOD pour l'ensemble de votre pro
 ![image](/imgs/unity-lods-settings-1.jpg)
 
 ![image](/imgs/unity-lods-settings-2.jpg)
-
 
 ## Options de déploiement
 
@@ -235,7 +233,6 @@ Vous pouvez désactiver la compression gzip dans ``vite.config.js`` dans le doss
 2) Attribuez un asset de serveur FTP et remplissez les champs serveur, nom d'utilisateur et mot de passe si vous ne l'avez pas déjà fait ²
   *Cet asset contient les informations d'accès à votre serveur FTP - vous les obtenez lorsque vous créez un nouveau compte FTP chez votre fournisseur d'hébergement*
 3) Cliquez sur le bouton <kbd>Build & Deploy</kbd> sur le composant ``DeployToFTP`` pour compiler votre projet et le téléverser sur votre compte FTP.
-
 
 ![Deploy to FTP component in Unity](/deployment/deploytoftp.jpg)
 *¹ Composant Deploy to FTP*
@@ -364,5 +361,5 @@ La liste suivante présente un tableau des options disponibles :
 | `-buildDevelopment` | exécute une compilation de développement |
 | `-debug` | ouvre une fenêtre de console pour le débogage |
 
-***
+---
 Page automatiquement traduite à l'aide de l'IA

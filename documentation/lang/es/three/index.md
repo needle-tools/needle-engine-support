@@ -5,9 +5,9 @@
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> +
-    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/>
+    <img src="/logo.png" style="max-height:70px;" title="Logo de Needle" alt="Logo de Needle"/> +
+    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Logo de Web Components" alt="Logo de Web Components"/> +
+    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="Logo de three.js" alt="Logo de three.js"/>
 </div>
 
 # Needle Engine como Web Component
@@ -21,22 +21,23 @@ Para escenas 3D complejas e iteración rápida, recomendamos usar Needle Engine 
 :::
 
 ### Inicio Rápido
-:::: code-group
-::: code-group-item index.html
+::: code-tabs
+@tab index.html
 @[code html](@code/basic-webcomponent.html)
-:::
-::: code-group-item Resultado
+
+@tab Resultado
+```html
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
-    width: 100%; 
-    aspect-ratio: 16/9; 
-    outline: none; 
+    width: 100%;
+    aspect-ratio: 16/9;
+    outline: none;
     border: none;
     "
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
+```
 :::
-::::
 [Abrir este ejemplo en Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 
@@ -51,21 +52,14 @@ Puedes instalar Needle Engine desde [`npm`](https://www.npmjs.com/package/@needl
 
 ## Instalar needle-engine desde un CDN
 
-Aunque nuestra plantilla predeterminada usa [vite](https://vitejs.dev), Needle Engine también se puede usar directamente con Javascript puro, sin usar ningún bundler.
+Aunque nuestra plantilla predeterminada usa [vite](https://vitejs.dev), Needle Engine también se puede usar directamente con Javascript puro – sin usar ningún bundler.
 
 Puedes añadir una versión completa y preempaquetada de Needle Engine a tu sitio web con solo una línea de código.
-Esto incluye nuestros componentes principales, física, partículas, redes, XR y más. ¡Usa esto si no estás seguro!
+Esto incluye nuestros componentes principales, física, partículas, redes, XR, y más. ¡Usa esto si no estás seguro!
 
 ```js
 <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
-</script>
-```
-
-Si sabes que tu proyecto no requiere características de física, también puedes usar una versión más pequeña de Needle Engine, sin el motor de física. Esto reducirá el tamaño total descargado.
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 
@@ -81,10 +75,10 @@ También hay disponible una gran colección de ejemplos en nuestra [Needle Engin
 
 Si quieres trabajar con Needle Engine sin ninguna integración, entonces probablemente querrás ejecutar un servidor local para tu sitio web. Aquí te mostramos cómo puedes hacerlo con Visual Studio Code:
 
-1.  Abre la carpeta con tu archivo HTML en Visual Studio Code.
-2.  Instala la extensión [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
-3.  Activa live-server (hay un botón "Go Live" en el pie de página de VSCode)
-4.  Abre ``http://localhost:5500/index.html`` en tu navegador web, si no se abre automáticamente.
+1. Abre la carpeta con tu archivo HTML en Visual Studio Code.
+2. Instala la extensión [LiveServer](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).
+3. Activa live-server (hay un botón "Go Live" en el pie de página de VSCode)
+4. Abre ``http://localhost:5500/index.html`` en tu navegador web, si no se abre automáticamente.
 
 
 ## three.js y Needle Engine

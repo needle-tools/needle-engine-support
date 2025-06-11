@@ -56,5 +56,5 @@ Los archivos se exportan a `static/assets` pero el framework los sirve desde `/a
 #### Enlaces relacionados
 - [Estructura del Proyecto](../project-structure.md)
 
----
+
 Página traducida automáticamente usando IA

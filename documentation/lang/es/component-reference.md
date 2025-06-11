@@ -35,7 +35,7 @@ Obtén más información en la sección de [Scripting](./scripting.md) de nuestr
 | `LODGroup` | |
 | `ParticleSystem` | Experimental y actualmente no totalmente compatible |
 | `VideoPlayer` | Reproducción de videos desde url o archivo de video referenciado (se copiará a la salida al exportar). El VideoPlayer también admite streaming desde objetos MediaStream o URLs de transmisión en vivo `M3U8` |
-| `MeshRenderer` | Se usa para manejar el renderizado de objetos, incluyendo lightmapping e instanciación |
+| `MeshRenderer` | Se usa para manejar el renderizado de objetos, incluyendo mapeado de luz e instanciación |
 | `SkinnedMeshRenderer` | *Ver MeshRenderer* |
 | `SpriteRenderer` | Se usa para renderizar Sprites y Spriteanimations |
 | `Volume` con asset `PostProcessing` | Ver [tabla a continuación](#postprocessing) |
@@ -163,6 +163,5 @@ La UI se puede animar.
 | --- | --- |
 | `ExportInfo` | Componente principal para gestionar el(los) proyecto(s) web, por ejemplo, para instalar o iniciar la aplicación web |
 | `EditorSync` | Añade para habilitar la sincronización de cambios de valor de materiales o componentes en la aplicación three.js en ejecución directamente desde el Editor de Unity sin tener que recargar |
-
 
 Página traducida automáticamente usando IA

@@ -1,6 +1,6 @@
 ---
 lang: en-US
-title: Mercedes-Benz Showcase
+title: Showcase Mercedes-Benz
 editLink: false
 ---
 

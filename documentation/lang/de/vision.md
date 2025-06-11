@@ -63,4 +63,5 @@ Aus langjähriger Arbeit mit Unity haben wir festgestellt, dass die WebGL-Ausgab
 
 Needle Engine baut auf three.js auf. Das gesamte Rendering läuft darüber, glTF-Dateien werden über die Erweiterungsschnittstellen von three geladen, und unser Component System dreht sich um three's Object3D und Scene Graph. Wir sind bestrebt, einige unserer Änderungen und Verbesserungen upstream einzubringen, Pull Requests zu erstellen und Probleme auf dem Weg zu melden.
 
+
 Seite automatisch mit KI übersetzt

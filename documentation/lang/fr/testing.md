@@ -58,7 +58,7 @@ _Utilise le package npm [vite-plugin-mkcert](https://github.com/liuweiGL/vite-pl
   - supprimez la ligne avec `"@vitejs/plugin-basic-ssl"` de `devDependencies`
   - ouvrez un Terminal dans VS Code et exécutez `npm install vite-plugin-mkcert --save-dev` qui ajoutera la dernière version
   - ouvrez `vite.config.ts` et remplacez `import basicSsl from '@vitejs/plugin-basic-ssl'` par `import mkcert from'vite-plugin-mkcert'`
-  - dans `plugins:` `[`, remplacez `basicSsl(),` par `mkcert(),`
+  - dans `plugins: [`, remplacez `basicSsl(),` par `mkcert(),`
   - package.json ressemble à ceci maintenant :
   ![](/testing/switch-to-mkcert.webp)
 - exécutez `npm run start` une fois depuis le terminal de VS Code
@@ -76,7 +76,7 @@ Sur vos appareils de développement, vous devez _installer_ le certificat géné
 **Sous Windows :** trouvez le certificat dans `Users/<your-user>/.vite-plugin-mkcert/rootCA.pem`
 **Sous MacOS :** trouvez le certificat dans `Users/<your-user>/.vite-plugin-mkcert/rootCA.pem`
 
-Envoyez le certificat à vous-même (par ex. via E-Mail, AirDrop, iCloud, USB, Slack, ...) afin de pouvoir y accéder sur vos appareils de développement.
+Envoyez le périphérique à vous-même (par ex. via E-Mail, AirDrop, iCloud, USB, Slack, ...) afin de pouvoir y accéder sur vos appareils de développement.
 
 ### Installer le certificat sous Android
 
@@ -95,13 +95,12 @@ Le certificat est automatiquement installé sur la machine sur laquelle vous l'a
 
 ### Installer le certificat sur une autre machine MacOS
 1. Ouvrez le fichier. Trousseau d'accès s'ouvrira et vous permettra d'installer le certificat.
-2. Vous devrez peut-être définir la "Confiance" sur "Toujours faire confiance".
+2. Vous devrez peut-être définir la "Confiance" sur "Toujours autoriser".
 
 ### Installer le certificat sur une autre machine Windows
 1. Ouvrez `certmgr` ("Gérer les certificats utilisateur") en tapant <kbd>touche Windows</kbd> + `certmgr`.
 2. Dans la barre latérale gauche, sélectionnez "Autorités de certification racines de confiance".
 3. Faites un clic droit sur "Certificats" et sélectionnez "Toutes les tâches > Importer".
 4. Sélectionnez le fichier `rootCA.pem` (vous devrez peut-être changer le type de fichier en "tous") et suivez les instructions.
-
 
 Page automatiquement traduite à l'aide de l'IA

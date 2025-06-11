@@ -1,6 +1,6 @@
 # Tổng quan tính năng
 
-Needle Engine là một công cụ 3D đầy đủ tính năng chạy trên trình duyệt. Nó đi kèm với tất cả các tính năng mà bạn mong đợi từ một công cụ 3D hiện đại, và nhiều hơn nữa. Nếu bạn chưa xem qua, hãy truy cập [Homepage](https://needle.tools) và [Samples and Showcase](https://engine.needle.tools/samples) của chúng tôi.
+Needle Engine là một công cụ 3D đầy đủ tính năng chạy trong trình duyệt. Nó đi kèm với tất cả các tính năng mà bạn mong đợi từ một công cụ 3D hiện đại, và nhiều hơn nữa. Nếu bạn chưa xem, hãy truy cập [Trang chủ](https://needle.tools) và [Mẫu và Trưng bày](https://engine.needle.tools/samples) của chúng tôi.
 
 [[toc]]
 
@@ -62,7 +62,7 @@ Các tracks được hỗ trợ bao gồm: AnimationTrack, AudioTrack, Activatio
 - Đọc thêm về [Animation Components](./component-reference.md#animation)
 
 ## Physics
-Sử dụng Rigidbodies, Mesh Colliders, Box Colliders và SphereColliders để thêm một số physics thú vị vào thế giới của bạn.
+Sử dụng Rigidbodies, Mesh Colliders, Box Colliders và SphereColliders để thêm physics vào thế giới của bạn.
 
 - Đọc thêm về [Physics Components](./component-reference.md#physics)
 
@@ -107,5 +107,6 @@ Needle Engine sử dụng [workflow dựa trên component](scripting.md#componen
 
 Xem [Hướng dẫn Bắt đầu](getting-started/) của chúng tôi để tìm hiểu cách tải xuống và thiết lập Needle Engine.
 Tìm hiểu về [tầm nhìn của chúng tôi](vision) hoặc đi sâu hơn vào [nền tảng kỹ thuật và glTF](technical-overview) cung cấp năng lượng cho tất cả.
+
 
 Trang được dịch tự động bằng AI

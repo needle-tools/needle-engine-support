@@ -117,10 +117,10 @@ next: ../project-structure.md
 
 <br/>
 <os-link windows_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1-x64.msi" osx_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1.pkg">Node.js 20 LTS या 22 LTS।</os-link>
-नीडल इंजन Node.js का उपयोग आपके कंप्यूटर पर स्थानीय रूप से बनाए जा रहे वेब ऐप को प्रबंधित करने, पूर्वावलोकन करने और बनाने के लिए करता है।
+नीडल इंजन Node.js का उपयोग आपके कंप्यूटर पर स्थानीय रूप से बनाए जा रहे वेब ऐप को प्रबंधित करने, पूर्वावलोकन करने और बनाने के लिए करता है।     
 इसका उपयोग आपकी वेबसाइट को इंटरनेट पर अपलोड (डिप्लॉय) करने के लिए भी किया जाता है।
 
-<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">KTX Software – toktx टेक्सचर टूल्स।</os-link> हम आपके 3D फ़ाइलों को स्थानीय रूप से ऑप्टिमाइज़ और कंप्रेस करने के लिए Khronos Group द्वारा toktx का उपयोग करते हैं। प्रोडक्शन बिल्ड के बारे में अधिक जानकारी [यहां डॉक्स में](../deployment.md#production-builds) प्राप्त करें।
+<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">KTX Software – toktx texture tools।</os-link> हम आपके 3D फ़ाइलों को स्थानीय रूप से ऑप्टिमाइज़ और कंप्रेस करने के लिए Khronos Group द्वारा toktx का उपयोग करते हैं। प्रोडक्शन बिल्ड के बारे में अधिक जानकारी [यहां डॉक्स में](../deployment.md#production-builds) प्राप्त करें।
 
 <br/>
 </ClientOnly>
@@ -162,12 +162,12 @@ next: ../project-structure.md
 - [अवधारणा: 3D ऑब्जेक्ट और कंटेंट एक्सपोर्ट करना](../export.md)
 - [अवधारणा: प्रोजेक्ट संरचना](../project-structure.md)
 - [अवधारणा: अपनी वेबसाइट को वेब पर डिप्लॉय करें](../deployment.md)
-- [शुरुआती गाइड: Typescript की मूल बातें](./typescript-essentials.md)
+- [शुरुआती गाइड: Typescript Essentials](./typescript-essentials.md)
 - [शुरुआती गाइड: Unity डेवलपर्स के लिए Needle Engine](./for-unity-developers.md)
 - [शुरुआती गाइड: स्क्रिप्टिंग संदर्भ](../scripting.md)
 - [लाइव उदाहरण: Needle Engine सैंपल्स](https://engine.needle.tools/samples)
 
-यदि आपको समस्या निवारण में सहायता की आवश्यकता है, तो कृपया [प्रश्न और उत्तर – FAQ](../faq.md) अनुभाग देखें।
+यदि आपको समस्या निवारण में सहायता की आवश्यकता है, तो कृपया [प्रश्न और उत्तर – FAQ](../faq.md) अनुभाग देखें।  
 हम आपका हमारे [फोरम](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) और [Discord समुदाय](https://discord.needle.tools) में शामिल होने के लिए स्वागत करते हैं।
 
 

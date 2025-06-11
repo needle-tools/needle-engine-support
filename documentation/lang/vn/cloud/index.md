@@ -49,7 +49,7 @@ Needle Cloud được tích hợp vào Unity Editor. Điều này cho phép bạ
 
 2. **Thêm component `Export Info` vào scene của bạn.**
    Component này được sử dụng để cấu hình cài đặt export cho ứng dụng của bạn.
-   Bạn có thể sử dụng menu `GameObject > Needle Engine > Add Export Info` hoặc tạo scene mới từ template Needle thông qua menu `File > New Scene`.
+   Bạn có thể sử dụng menu item `GameObject > Needle Engine > Add Export Info` hoặc tạo scene mới từ template Needle thông qua menu item `File > New Scene`.
 
 3. **Nhấp vào `Upload to Needle Cloud`.**
    Thao tác này sẽ build ứng dụng của bạn và tải nó lên Needle Cloud. Bạn cũng có thể chọn triển khai tới một nhóm và dự án cụ thể. _upload name_ của dự án, hiển thị bên cạnh nút, được lưu trong scene. Các lần tải lên sau sẽ sử dụng cùng _upload name_, và tất cả các phiên bản đã tải lên sẽ được nhóm lại trên trang web Needle Cloud.
@@ -67,14 +67,14 @@ node -v
 ```
 Nếu bạn chưa cài đặt Node.js, bạn có thể tải nó từ [trang web Node.js](https://nodejs.org/).
 
-Bạn có thể cài đặt gói CLI `needle-cloud` trên toàn hệ thống hoặc sử dụng nó thông qua `npx`. Điều này cho phép bạn chạy các lệnh CLI mà không cần cài đặt nó trên toàn hệ thống.
+Bạn có thể cài đặt gói CLI `needle-cloud` globally hoặc sử dụng nó thông qua `npx`. Điều này cho phép bạn chạy các lệnh CLI mà không cần cài đặt nó globally.
 
 1. **Sử dụng lệnh npx (được khuyến nghị)**
    ```bash
    npx needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
    ```
-2. **Hoặc cài đặt needle-cloud trên toàn hệ thống**
-   Cài đặt trên toàn hệ thống cho phép sử dụng CLI từ bất kỳ đâu trên hệ thống của bạn. Để cài đặt CLI trên toàn hệ thống, chạy lệnh sau trong terminal:
+2. **Hoặc cài đặt needle-cloud globally**
+   Cài đặt globally cho phép sử dụng CLI từ bất kỳ đâu trên hệ thống của bạn. Để cài đặt CLI globally, chạy lệnh sau trong terminal:
    ```bash
    npm install -g needle-cloud
    ```
@@ -92,7 +92,7 @@ Sử dụng [Needle Cloud Github Action](https://github.com/marketplace/actions/
 #### Ví dụ: Needle Cloud Github Action
 ```yml
       - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1.0.2
+        uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
@@ -270,5 +270,6 @@ Xem [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) để biết 
 
 7. **Điều gì xảy ra nếu tôi hết dung lượng lưu trữ?**
    Bạn có thể cần nâng cấp gói của mình hoặc xóa các tệp cũ để tạo không gian.
+
 
 Trang tự động dịch bằng AI

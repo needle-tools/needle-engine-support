@@ -93,6 +93,5 @@ Needle Engine 还有一些非常强大和有用的调试方法，它们是静态
 
 Quest 只是一个 Android 设备 - 请参阅[Android 调试](#android-debugging)部分了解步骤。
 
-
-Page automatically translated using AI
+---
 页面由 AI 自动翻译

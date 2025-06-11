@@ -164,6 +164,5 @@ Si vous n'avez aucun objet cuit dans votre scène, les paramètres suivants devr
 Environment Lighting: Color
 Ambient Color: any
 ```
-
 ---
 Page automatiquement traduite utilisant l'IA

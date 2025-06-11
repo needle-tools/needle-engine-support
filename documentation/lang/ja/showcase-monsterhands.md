@@ -11,5 +11,5 @@ editLink: false
 
 [ウェブサイトを訪れる](https://monster-hands.needle.tools/)
 
----
+
 このページはAIによって自動的に翻訳されました

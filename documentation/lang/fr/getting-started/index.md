@@ -120,7 +120,7 @@ Needle Engine utilise les outils suivants pour créer votre application web, mai
 Needle Engine utilise Node.js pour gérer, prévisualiser et construire l'application web que vous créez localement sur votre ordinateur.
 Il est également utilisé pour télécharger (déployer) votre site web sur internet.
 
-<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">KTX Software – toktx texture tools.</os-link> Nous utilisons toktx du Khronos Group pour optimiser et compresser localement vos fichiers 3D. Apprenez-en plus sur les builds de production [dans les docs](../deployment.md#production-builds).
+<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">KTX Software – toktx texture tools.</os-link> Nous utilisons toktx par le Khronos Group pour optimiser et compresser localement vos fichiers 3D. Apprenez-en plus sur les builds de production [dans les docs](../deployment.md#production-builds).
 
 <br/>
 </ClientOnly>

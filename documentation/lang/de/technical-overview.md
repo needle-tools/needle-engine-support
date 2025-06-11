@@ -415,4 +415,6 @@ Beim Betrachten moderner Web-Workflows stellten wir fest, dass die Code-Reload-Z
 Wir glauben, dass es für Iterations- und straffe Test-Workflows vorteilhaft ist, so schnell und so oft wie möglich auf dem Gerät und auf der Zielplattform (in diesem Fall dem Browser) testen zu können – weshalb wir den gesamten Play Mode von Unity überspringen und effektiv immer im Browser laufen.
 
 > **Hinweis**: Ein wirklich schöner Nebeneffekt ist die Vermeidung des gesamten langsamen "Domain Reload"-Schritts, der normalerweise 15-60 Sekunden kostet, jedes Mal, wenn Sie den Play Mode betreten. Sie sind einfach "live" im Browser, sobald Sie auf Play drücken.
+
+
 Seite automatisch mit KI übersetzt

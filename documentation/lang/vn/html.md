@@ -2,7 +2,7 @@
 title: Frameworks, Bundlers, HTML
 ---
 
-## Bundling và giao diện web
+## Bundlers và frontend web
 
 Needle Engine được xây dựng dưới dạng web component.
 Điều này có nghĩa là chỉ cần cài đặt `@needle-tools/engine` trong dự án của bạn và bao gồm `<needle-engine src="path/to/your.glb">` ở bất cứ đâu trong dự án web của bạn.
@@ -174,7 +174,7 @@ const pwaOptions = {
 ## Truy cập Needle Engine và Components từ javascript bên ngoài
 
 Code mà bạn expose có thể được truy cập từ JavaScript sau khi đóng gói. Điều này cho phép xây dựng các trình xem (viewer) và các ứng dụng khác nơi có sự phân tách giữa dữ liệu đã biết khi chỉnh sửa và dữ liệu chỉ biết khi chạy (ví dụ: các file được tải động, nội dung do người dùng tạo).
-Để truy cập các component từ javascript thông thường bên ngoài engine, vui lòng tham khảo phần [tương tác với javascript thông thường](./scripting.md#accessing-needle-engine-and-components-from-anywhere)
+Để truy cập các component từ javascript thông thường bên ngoài engine, vui lòng tham khảo phần [interop với javascript thông thường](./scripting.md#accessing-needle-engine-and-components-from-anywhere)
 
 ## Tùy chỉnh giao diện loading
 
@@ -193,4 +193,5 @@ Các tùy chọn là `light` (sáng) và `dark` (tối) (mặc định):
 Vui lòng xem phần *Loading Display* trong [tham khảo component needle engine](./reference/needle-engine-attributes.md)
 
 ![custom loading](/imgs/custom-loading-style.webp)
+
 Trang được dịch tự động bằng AI

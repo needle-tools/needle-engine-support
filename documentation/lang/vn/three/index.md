@@ -5,9 +5,9 @@
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> +
-    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/>
+    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Logo Needle"/> +
+    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Logo Web Components"/> +
+    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="Logo three.js"/>
 </div>
 
 # Needle Engine dưới dạng Web Component
@@ -21,11 +21,12 @@ Một khi bạn vượt quá các tùy chọn cấu hình của web component, b
 :::
 
 ### Bắt đầu nhanh
-:::: code-group
-::: code-group-item index.html
+::: code-tabs
+@tab index.html
 @[code html](@code/basic-webcomponent.html)
-:::
-::: code-group-item Kết quả
+
+@tab Kết quả
+```html
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
     width: 100%;
     aspect-ratio: 16/9;
@@ -35,8 +36,8 @@ Một khi bạn vượt quá các tùy chọn cấu hình của web component, b
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
+```
 :::
-::::
 [Mở ví dụ này trên Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 
@@ -58,14 +59,7 @@ Bạn có thể thêm phiên bản hoàn chỉnh, được đóng gói sẵn c�
 
 ```js
 <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
-</script>
-```
-
-Nếu bạn biết dự án của mình không yêu cầu các tính năng vật lý (physics), bạn cũng có thể sử dụng phiên bản nhỏ hơn của Needle Engine, không có physics engine. Điều này sẽ làm giảm tổng kích thước tải về.
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 
@@ -101,5 +95,6 @@ hoặc [tải xuống file glb mẫu này](https://github.com/needle-tools/needl
 
 
 [Xem trên github](https://github.com/needle-tools/needle-engine-samples/tree/main/vanilla)
+
 
 Trang được dịch tự động bằng AI

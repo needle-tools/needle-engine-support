@@ -7,7 +7,7 @@ A tabela a seguir contém os decorators de Typescript disponíveis que o Needle 
 Pode pensar neles como Atributos em esteróides (se estiver familiarizado com C#) - podem ser adicionados a classes, campos ou métodos em Typescript para fornecer funcionalidade adicional. 
 
 |  |  | 
-| --- | ---
+| --- | --- |
 | **Decoradores de Campos e Propriedades** | |
 | `@serializable()` | Adicionar a campos expostos / serializados. É usado ao carregar ficheiros glTF que foram exportados com componentes do Unity ou Blender. |
 | `@syncField()` | Adicionar a um campo para sincronizar o valor na rede quando muda. Pode passar um método a ser chamado quando o campo muda. |

@@ -54,7 +54,7 @@ Consulte a [documentação de Testes](./testing.md) para obter informações sob
 
 Se isso acontecer, geralmente há uma exceção no código do motor ou no seu código. Abra as ferramentas de desenvolvimento (<kbd>Ctrl + Shift + I</kbd> ou <kbd>F12</kbd> no Chrome) e verifique a Consola para erros.
 Em alguns casos, especialmente quando acabou de atualizar a versão do pacote Needle Engine, isto pode ser corrigido parando e reiniciando o servidor de desenvolvimento local.
-Para isso, clique na barra de progresso em execução no canto inferior direito do Editor e clique no pequeno <kbd>X</kbd> para cancelar a tarefa em execução. Depois, simplesmente carregue novamente em Play.
+Para isso, clique na barra de progresso em execução no canto inferior direito do Editor, e clique no pequeno <kbd>X</kbd> para cancelar a tarefa em execução. Depois, simplesmente carregue novamente em Play.
 
 
 ## Os meus objetos ficam brancos após a exportação
@@ -243,7 +243,7 @@ Para verificar o formato das suas drives, pode:
 
 ## Estou a receber erros com "Unexpected token `@`. Expected identifier, string literal, numeric literal or ..."
 
-O Needle Engine usa decorators de typescript para serialização.
+O Needle Engine usa typescript decorators para serialização.
 Para corrigir este erro, certifique-se de que ativa `experimentalDecorators` no seu tsconfig.json.
 
 ## Estou a receber um erro 'failed to load config ... vite.config.js' ao executar comandos npm no Mac OS

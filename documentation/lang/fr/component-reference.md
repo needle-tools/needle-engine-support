@@ -79,7 +79,7 @@ Les effets de post-traitement utilisent la [bibliothèque postprocessing de pmnd
 | `EventSystem` | Gère le déclenchement des pointer events et des UI events sur les objets de la scène |
 | `ObjectRaycater` | Requis pour DragControls et Duplicatable |
 | `GraphicsRaycaster` | Identique à ObjectRaycaster mais pour les UI elements |
-| `DragControls` | Permet de glisser des objets dans la scène. Nécessite un raycaster dans la hierarchy parent, par exemple ObjectRaycaster |
+| `DragControls` | Permet de glisser des objets dans la scène. Nécessite un raycaster dans la hierarchy parent, par exemple ObjectRaycater |
 | `Duplicatable` | Permet de dupliquer les objets assignés par glisser-déposer. Nécessite DragControls |
 | `Interactable` | Composant basique pour marquer un objet comme interactable. |
 | `OrbitControls` | Ajouter à la caméra pour ajouter une fonctionnalité de contrôle d'orbite de caméra |
@@ -147,7 +147,7 @@ Les composants d'UI spatiale sont mappés du système UI de Unity (Canvas, pas U
 | `RawImage` | Rend une texture |
 | `InputField` | Permet la text input |
 
-**Note** : Selon votre projet, un mélange d'UI spatiales et 2D a souvent du sens pour les projets multiplateformes où la VR, l'AR et les écrans sont pris en charge. Généralement, vous construisez les parties 2D avec HTML pour une meilleure accessibilité, et les parties 3D avec des UIs géométriques qui supportent également les depth offsets (par exemple, les button hover states et similaires).
+**Note** : Selon votre projet, souvent un mélange d'UI spatiales et 2D a souvent du sens pour les projets multiplateformes où la VR, l'AR, et les écrans sont pris en charge. Généralement, vous construisez les parties 2D avec HTML pour une meilleure accessibilité, et les parties 3D avec des UIs géométriques qui supportent également les depth offsets (par exemple, les button hover states et similaires).
 
 ## Autre
 
@@ -160,6 +160,5 @@ Les composants d'UI spatiale sont mappés du système UI de Unity (Canvas, pas U
 | --- | --- |
 | `ExportInfo` | Composant principal pour gérer le(s) web project(s), par exemple pour installer ou démarrer l'application web |
 | `EditorSync` | Ajouter pour activer la mise en réseau des material ou des component value changes vers l'application three.js en cours d'exécution directement depuis le Unity Editor sans avoir à recharger |
-
 
 Page automatiquement traduite à l'aide de l'IA

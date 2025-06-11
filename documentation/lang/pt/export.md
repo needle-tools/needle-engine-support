@@ -111,7 +111,7 @@ Materiais que podem ser convertidos out-of-the-box:
 Outros materiais são convertidos usando uma heurística de nomes de propriedades. Isso significa que, dependendo dos nomes de propriedades que os seus materiais e shaders usam, pode querer refatorar as propriedades do seu shader personalizado para usar os nomes de propriedades de URP/Lit ou PBRGraph, ou exportar o material como [Custom Shader](#custom-shaders).
 
 ### Custom Shaders
-Para exportar custom unlit shaders (por exemplo, feitos com ShaderGraph), adicione um Asset Label ``ExportShader`` ao shader que quer exportar. Asset Labels podem ser vistos na parte inferior da janela Inspector.
+Para exportar custom Unlit shaders (por exemplo, feitos com ShaderGraph), adicione um Asset Label ``ExportShader`` ao shader que quer exportar. Asset Labels podem ser vistos na parte inferior da janela Inspector.
 
 ![2022-08-22-172029_Needle_Website_-_CustomShaders_-_Windows,_Mac,_Lin](https://user-images.githubusercontent.com/5083203/185957781-9fae18c5-09ff-490f-8958-57e138aa0003.png)
 

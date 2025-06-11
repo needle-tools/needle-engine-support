@@ -42,7 +42,7 @@ Encuentra un [ejemplo funcional en nuestros ejemplos](https://engine.needle.tool
 Añade este script a cualquier objeto en tu escena que quieras que sea clickeable. Asegúrate de tener también un componente `ObjectRaycaster` en la jerarquía padre de ese objeto.
 
 <stackblitz file="@code/component-click.ts">
-test
+prueba
 </stackblitz>
 
 @[code ts twoslash](@code/component-click.ts)
@@ -68,7 +68,7 @@ También puedes exportar un array de clips.
 
 @[code ts twoslash](@code/component-unityevent.ts)
 ::: tip
-Los eventos de EventList también se invocan a nivel de componente. Esto significa que también puedes suscribirte al evento declarado anteriormente usando ``myComponent.addEventListener("my-event", evt => {...})``.
+Los eventos de EventList también se invocan a nivel de componente. Esto significa que también puedes suscribirte al evento declarado anteriormente usando ``myComponent.addEventListener("my-event", evt => {...})`` también.
 Esta es una característica experimental. Por favor, proporciona feedback en nuestro [forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
 :::
 

@@ -290,7 +290,7 @@ Needle NetworkingをExpressサーバーと統合する方法の例について�
 ::: tip ローカル開発とホストされた開発で異なるサーバーの場所を使用する
 カスタムネットワーキングコードを開発している場合は、ローカル開発とホストされたアプリで異なるサーバーの場所を使用したい場合があります。`Networking`コンポーネントで個別のサーバーURLを設定できます：
 
-![Needle Engine Networking component with networking server hosted elswhere](/imgs/networking_absolute.webp)
+![外部でホストされているネットワーキングサーバーを含むNeedle Engineネットワーキングコンポーネント](/imgs/networking_absolute.webp)
 :::
 
 #### 状態の保存
@@ -667,5 +667,5 @@ this.context.connection.beginListenBinary(MySchemaIdentifier, (data) => {
 
 Needle Engineは、ネットワーキングの複雑なトピックを分かりやすく使いやすくします。わずか数行のコードでコンポーネントの自動ネットワーキングを開始でき、より細かく制御が必要な場合は手動ネットワーキングをさらに深く掘り下げることができます。
 
----
+
 ページはAIによって自動的に翻訳されました。

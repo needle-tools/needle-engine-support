@@ -7,26 +7,26 @@ next: getting-started/
 <p></p>
 
 <testimonial
-  name="克里斯·马奥尼"
-  role="Our Computer Company 创始人。前 Unity、前 Lamina1"
+  name="Chris Mahoney"
+  role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
   img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
 >
-Unity 编辑器集成度令人难以置信，提升了一个数量级，而且就像文档所说的那样简单直观。哇。
+难以置信的 Unity 编辑器集成度，提升了一个数量级，而且就像文档所说的那样简单直观。哇。
 </testimonial>
 
 <testimonial
-  name="凯文·库里"
-  role="Intangible.ai 创始人。前 Unity"
+  name="Kevin Curry"
+  role="Founder, Intangible.ai. Ex-Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
   img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
 >
-needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。我太喜欢了。
+needle.tools 是 @NeedleTools 为 Web 3D 领域所做贡献的绝佳展示。我就是喜欢它。
 </testimonial>
 
 <testimonial
-  name="布里特·加德纳"
-  role="Coherence 高级软件工程师。前 Blizzard"
+  name="Brit Gardner"
+  role="Senior Software Engineer, Coherence. Ex-Blizzard"
   src="https://x.com/britg/status/1562443905580163072"
   img="https://pbs.twimg.com/profile_images/1360002897048727553/0gscFjvt_x96.jpg"
 >
@@ -34,8 +34,8 @@ needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。
 </testimonial>
 
 <testimonial
-  name="马克·韦克菲尔德"
-  role="增强现实专家"
+  name="Marc Wakefield"
+  role="Augmented Reality Expert"
   src="https://x.com/mrm_design/status/1567391880169545729"
   img="https://pbs.twimg.com/profile_images/1106863126958493697/tlgb3EyM_x96.jpg"
 >
@@ -43,26 +43,26 @@ needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。
 </testimonial>
 
 <testimonial
-  name="雷内什·托马斯"
-  role="游戏开发者，《刺客信条 VR》"
+  name="Rinesh Thomas"
+  role="Game Developer, Assassin's Creed VR"
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
-这是我在 Unity 中看到 cinemachine 之后最好的东西。Unity 应该收购它。
+    这是我在 Unity 中看到 cinemachine 之后最好的东西。Unity 应该收购它。
 </testimonial>
 
 <testimonial
-  name="斯特拉·坎尼法克斯"
-  role="Dora 首席技术官，游戏开发者"
+  name="Stella Cannefax"
+  role="CTO Dora, Game Developer"
   src="https://x.com/0xstella/status/1574853012585172993"
   img="https://pbs.twimg.com/profile_images/1657086025661833237/Yyo56hVY_x96.jpg"
 >
-感谢 @NeedleTools，我看到了很多关于基于 Web 的实时 3D 工具的解决方案——可以从 Unity 中导出场景，利用其庞大的 3D 编辑器生态系统和内容，然后在你自己的基于 Web 的引擎中渲染它们。
+感谢 @NeedleTools，看到了很多关于基于 Web 的实时 3D 工具的解决方案——可以从 Unity 中导出场景，利用其庞大的 3D 编辑器生态系统和内容，然后在你自己的基于 Web 的引擎中渲染它们。
 </testimonial>
 
 <testimonial
-  name="皮特·帕特森"
-  role="空间计算专家"
+  name="Pete Patterson"
+  role="Spatial Computing Specialist"
   src="https://x.com/VRSpatialist/status/1572300394285383680"
   img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
 >
@@ -70,12 +70,12 @@ needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。
 </testimonial>
 
 <testimonial
-  name="迪尔默·瓦伦西奥斯"
-  role="@Meta 混合现实开发者倡导者，教程创作者"
+  name="Dilmer Valecillos"
+  role="Developer Advocate for Mixed Reality @Meta, Tutorial Creator"
   src="https://x.com/Dilmerv/status/1562209049856188420"
   img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
 >
-这太棒了，如果你对使用 Unity 进行 #WebXR 开发感兴趣，这将帮助我们实现目标。
+ 这太棒了，如果你对使用 Unity 进行 #WebXR 开发感兴趣，这将帮助我们实现目标。
 </testimonial>
 
 <testimonial
@@ -83,12 +83,12 @@ needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
-我是一名资深的 Unity dev，最近开始使用 Needle Tools，我非常喜欢它！对于想学习 WebXR 和 three.js 的 Unity devs 来说，这是一个很好的入门途径。它的 runtime engine 非常棒，而且创建自己的 custom component 也相当容易。
+ 我是一名资深的 Unity dev，最近开始使用 Needle Tools，我非常喜欢它！对于想学习 WebXR 和 three.js 的 Unity devs 来说，这是一个很好的入门途径。runtime engine 非常棒，而且创建自己的 custom component 也相当容易。
 </testimonial>
 
 <testimonial
   name="Unity for Digital Twins"
-  role="赋能企业元宇宙"
+  role="Powering the enterprise metaverse"
   src="https://x.com/DigitalTwin/status/1576934958681055233"
   img="https://pbs.twimg.com/profile_images/1659581582657863681/xl4kQKA__x96.jpg"
 >
@@ -96,8 +96,8 @@ needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。
 </testimonial>
 
 <testimonial
-  name="马修·皮耶里"
-  role="游戏开发者"
+  name="Matthew Pieri"
+  role="Game Developer"
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
@@ -106,7 +106,7 @@ needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。
 
 <testimonial
   name="Yuzu"
-  role="Web 游戏开发者"
+  role="Web Game Developer"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
 >

@@ -1,4 +1,4 @@
-# 支持与社区
+# 支持、社区与 AI
 
 ## 社区论坛
 
@@ -17,11 +17,12 @@
 ## 本地 AI
 
 Needle Engine 文档也可通过 llms.txt standard 获取。
-下载以下文件作为您的本地 AI 的 context：
+下载以下文件作为您的本地 AI 的上下文：
 
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
+此外，您可以在我们的文档网站上将 `.html` 替换为 `.md` 以获取页面的 markdown 版本。
 
 ## 获取灵感
 
@@ -31,11 +32,11 @@ Needle Engine 文档也可通过 llms.txt standard 获取。
 
 <video-embed src="https://www.youtube.com/watch?v=1KKfct3Zpcw" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=gZuC40Alr88" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=F6_buCHZhWk" />
+
+<video-embed src="https://www.youtube.com/watch?v=3oHyrx8e20g" />
 
 
 

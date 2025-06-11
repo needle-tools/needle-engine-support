@@ -1,5 +1,5 @@
 ---
-title: Scripting Examples
+title: स्क्रिप्टिंग उदाहरण
 description: उपयोगी स्क्रिप्ट स्निपेट्स और उदाहरणों का संग्रह।
 ---
 
@@ -7,17 +7,17 @@ description: उपयोगी स्क्रिप्ट स्निपे�
 
 यदि आप स्क्रिप्टिंग के लिए नए हैं तो हम सबसे पहले निम्नलिखित गाइड पढ़ने की **अत्यधिक अनुशंसा** करते हैं:
 
-- [Beginner Guide: Typescript Essentials](./getting-started/typescript-essentials.md) (शुरुआती गाइड: Typescript की अनिवार्य बातें)
-- [Beginner Guide: Needle Engine for Unity Developers](./getting-started/for-unity-developers.md) (शुरुआती गाइड: Unity डेवलपर्स के लिए Needle Engine)
-- [Video tutorial: How to write custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ) (वीडियो ट्यूटोरियल: कस्टम कंपोनेंट्स कैसे लिखें)
+- [Beginner Guide: Typescript Essentials](./getting-started/typescript-essentials.md)
+- [Beginner Guide: Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
+- [Video tutorial: How to write custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
 
 नीचे आपको त्वरित संदर्भ के रूप में कुछ बुनियादी स्क्रिप्ट मिलेंगी।
 
 हम बहुत सारे सैंपल सीन और पूर्ण प्रोजेक्ट भी प्रदान करते हैं जिन्हें आप डाउनलोड कर सकते हैं और शुरुआती बिंदु के रूप में उपयोग कर सकते हैं:
-- [Visit Samples Website](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=scripting_examples) (सैंपल वेबसाइट पर जाएँ)
-- [Download Samples Package](https://engine.needle.tools/downloads/unity/samples) (सैंपल पैकेज डाउनलोड करें)
-- [Needle Engine Stackblitz Collection](https://stackblitz.com/@marwie/collections/needle-engine) (Needle Engine Stackblitz संग्रह)
-- [Needle Engine API](https://engine.needle.tools/api) (Needle Engine API)
+- [Visit Samples Website](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=scripting_examples)
+- [Download Samples Package](https://engine.needle.tools/downloads/unity/samples)
+- [Needle Engine Stackblitz Collection](https://stackblitz.com/@marwie/collections/needle-engine)
+- [Needle Engine API](https://engine.needle.tools/api)
 
 ## Basic component
 <stackblitz file="@code/basic-component.ts"></stackblitz>

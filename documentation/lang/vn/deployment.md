@@ -156,7 +156,7 @@ Lưu ý rằng các dự án miễn phí được lưu trữ trên Glitch không
 4) Mở lại Unity và dán URL vào trường ``Project Name`` của thành phần ``Deploy To Glitch`` của bạn
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) Chờ vài giây cho đến khi Unity nhận được khóa triển khai của bạn từ glitch (khóa này được lưu trữ an toàn trong file `.env` trên glitch. Không chia sẻ nó với người khác, bất kỳ ai có khóa này sẽ có thể tải lên trang web glitch của bạn)
-  ![waiting for the key](/deployment/deploytoglitch-2.jpg)
+  ![đang chờ khóa](/deployment/deploytoglitch-2.jpg)
 6) Sau khi Khóa Triển khai đã được nhận, bạn có thể nhấp vào nút `Build & Deploy` để tải lên glitch.
 
 :::
@@ -190,11 +190,13 @@ Chỉ cần thêm thành phần `DeployToNetlify` vào scene của bạn và là
 
 ### Triển khai đến Vercel
 
-1) Tạo một dự án mới trên vercel
-2) Thêm dự án web của bạn vào kho lưu trữ github
-3) Thêm kho lưu trữ vào dự án của bạn trên vercel
+1) Create a new project on vercel
+2) Add your web project to a github repository
+3) Add the repository to your project on vercel
 
-Xem [dự án mẫu](https://github.com/needle-engine/nextjs-sample) của chúng tôi để biết cấu hình dự án
+
+See our [sample project](https://github.com/needle-engine/nextjs-sample) for the project configuration
+
 
 ### Triển khai đến itch.io
 
@@ -287,7 +289,7 @@ Thêm thành phần DeployToGithubPages vào scene của bạn và sao chép-dá
 #### Khắc phục sự cố github pages
 - **Tôi đã triển khai đến github pages nhưng không có action nào chạy / trang web không trực tuyến**
    - Nếu bạn triển khai lần đầu, có thể mất vài phút để trang web của bạn hoạt động. Bạn có thể kiểm tra tab **Actions** trên github (`/actions`) để xem quá trình triển khai.
-   - Nếu trang web của bạn không trực tuyến sau vài phút hoặc bạn không thấy bất kỳ workflow nào chạy trong tab **Actions** trên github, thì hãy vào trang cài đặt **Github Pages** (`/settings/pages`) và đảm bảo **Branch** được đặt thành *gh-pages*.
+   - If your website is not live after a few minutes or you don't see any workflow run in the **Actions** tab on github then go to the **Github Pages** settings page (`/settings/pages`) and make sure the **Branch** is set to *gh-pages*
 
 ### Triển khai đến Facebook Instant Games
 
@@ -355,10 +357,11 @@ Danh sách sau đây đưa ra một bảng các tùy chọn có sẵn:
 
 | | |
 | -- | -- |
-| `-scene` | đường dẫn đến một scene hoặc một asset để xuất, ví dụ: `Assets/path/to/myObject.prefab` hoặc `Assets/path/to/myScene.unity` |
-| `-outputPath <path/to/output.glb>` | đặt đường dẫn đầu ra cho bản build (chỉ hợp lệ khi build một scene) |
-| `-buildProduction` | chạy bản dựng sản xuất |
-| `-buildDevelopment` | chạy bản dựng phát triển |
-| `-debug` | mở cửa sổ console để gỡ lỗi |
+| `-scene` | path to a scene or a asset to be exported e.g. `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
+| `-outputPath <path/to/output.glb>` | set the output path for the build (only valid when building a scene) |
+| `-buildProduction` | run a production build |
+| `-buildDevelopment` | run a development build |
+| `-debug` | open a console window for debugging |
 
-Page automatically translated using AI
+
+Trang được dịch tự động bằng AI

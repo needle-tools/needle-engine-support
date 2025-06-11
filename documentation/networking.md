@@ -68,9 +68,9 @@ To automatically network a field in a component, decorate it with the ``@syncFie
 ::::code-group
 :::code-group-item Sync a number
 ```ts twoslash
-import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine"
+import { Behaviour, syncField } from "@needle-tools/engine"
 
-export class SyncedNumber extends Behaviour implements IPointerClickHandler {
+export class SyncedNumber extends Behaviour {
 
     // Use `@syncField` to automatically network a field. 
     // You can optionally assign a method or method name to be called when the value changes.

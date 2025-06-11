@@ -23,7 +23,7 @@ Use ``?help`` para obter uma lista de TODOS os parâmetros disponíveis.
 
 Aqui estão alguns dos mais usados:
 
-- ``help`` imprime todos os parâmetros URL disponíveis na consola
+- ``help`` imprime todos os parâmetros url disponíveis na consola
 - ``console`` abre uma consola de desenvolvimento no ecrã, útil para depuração móvel
 - ``printGltf`` regista os ficheiros gltf carregados na consola
 - ``stats`` mostra o módulo FPS e regista estatísticas do threejs renderer a cada poucos segundos

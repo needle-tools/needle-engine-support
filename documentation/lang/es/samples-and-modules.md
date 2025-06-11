@@ -8,11 +8,11 @@ title: Proyectos de ejemplo
 Ver todos los ejemplos en [engine.needle.tools/samples](https://engine.needle.tools/samples) con una vista previa en vivo y enlaces para descargar e instalar.
   
 <!-- - [Brune Simons 20k](https://engine.needle.tools/samples/buno-simon-20k)  
-  *Física*
+  *Physics*
 - [Stencil Portals](https://engine.needle.tools/samples/stencil-portals)  
-  *URP RenderObject stencil a threejs*
+  *URP RenderObject stencil to threejs*
 - [Custom Shaders](https://engine.needle.tools/samples/custom-shaders)  
-  *Unity ShaderGraph a threejs*
+  *Unity ShaderGraph to threejs*
 - [Sandbox](https://needle-tiny-starter.glitch.me/)  
   *Constructor de sandbox multiusuario*
 - [VideoPlayer](https://needle-videoplayer-sample.glitch.me/)  
@@ -41,7 +41,6 @@ Ver todos los ejemplos en [engine.needle.tools/samples](https://engine.needle.to
 <!-- <actiongroup>
 <action href="https://github.com/needle-tools/needle-engine-samples">Consigue los ejemplos en github</action>
 </actiongroup> -->
-
 
 
 Página traducida automáticamente por IA

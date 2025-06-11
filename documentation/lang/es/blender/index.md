@@ -42,7 +42,7 @@ Asegúrate de tener instalado <a target="_blank" href="https://www.blender.org/d
 
 3.  Busca "Needle" en la barra de búsqueda de Add-ons y asegúrate de que `Needle Engine Exporter for Blender` esté activado.
 
-![Settings](/blender/settings.webp)
+![Configuración](/blender/settings.webp)
 
 ## Empezando
 
@@ -66,49 +66,49 @@ Podrás secuenciar animaciones, mapear luces fácilmente en tus escenas, añadir
 
 Primero crea o abre un nuevo archivo .blend que quieras exportar a la web. Abre la ventana Properties, abre la categoría scene. Selecciona un `Project Path` en el panel Needle Engine. Luego haz clic en `Generate Project`. Automáticamente instalará e iniciará el servidor - una vez que haya terminado, tu navegador debería abrirse y la escena three.js se cargará.
 
-![Project panel](/blender/project-panel.webp)
+![Panel de proyecto](/blender/project-panel.webp)
 
 Por defecto, tu escena se re-exportará automáticamente cuando guardes el archivo .blend. Si el servidor local está en ejecución (por ejemplo, haciendo clic en `Run Project`), el sitio web se refrescará automáticamente con tu modelo modificado.
 
 Cuando tu proyecto web ya existe y solo quieres seguir trabajando en el sitio web, haz clic en el botón azul `Run Project` para iniciar el servidor local:
-![Project panel](/blender/project-panel-2.webp)
+![Panel de proyecto](/blender/project-panel-2.webp)
 
 ### Descripción general del panel Project
-![Project panel](/blender/project-panel-3.webp)
+![Panel de proyecto](/blender/project-panel-3.webp)
 
 1) La ruta a tu proyecto web. Puedes usar el pequeño botón de carpeta a la derecha para seleccionar una ruta diferente.
-2) El botón `Run Project` aparece cuando la ruta del proyecto apunta a un proyecto web válido. Un proyecto web es válido cuando contiene un archivo `package.json`.
+2) El botón `Run Project` aparece cuando la ruta del Project apunta a un proyecto web válido. Un proyecto web es válido cuando contiene un archivo `package.json`.
 3) `Directory` abre el directorio de tu proyecto web (`Project Path`).
 4) Este botón re-exporta la escena actual como un archivo glb a tu proyecto web local. Esto también ocurre por defecto al guardar tu archivo .blend.
 5) `Code Editor` intenta abrir el espacio de trabajo de vscode en tu proyecto web.
-6) Si trabajas con múltiples escenas en un archivo .blend, puedes configurar qué escena es tu escena principal (`Main scene`) y debe ser exportada a la web. Si alguno de tus componentes referencia otra escena, también se exportarán como archivos glb separados. Al hacer clic en el botón "Export", tu escena principal será la que se cargue en el navegador.
+6) Si trabajas con múltiples escenas en un archivo .blend, puedes configurar qué escena es tu Main scene y debe ser exportada a la web. Si alguno de tus components referencia otra escena, también se exportarán como archivos glb separados. Al hacer clic en el botón "Export", tu Main scene será la que se cargue en el navegador.
 7) Utiliza los botones `Build: Development` o `Build: Production` cuando quieras subir tu proyecto web a un servidor. Esto agrupará tu proyecto web y producirá los archivos que puedes subir. Al hacer clic en `Build: Production`, también aplicará optimizaciones a tus texturas (se comprimirán para la web).
 8) Abrir la documentación.
 
 ## Configuración de Blender
 
-### Gestión de color
+### Gestión de Color
 
 Por defecto, el viewport de Blender está configurado en `Filmic` - con esta configuración, tus colores en Blender y en three.js no coincidirán.
 Para solucionar esto, ve a la categoría Render de Blender y en el panel ColorManagement selecciona `View Transform`: `Standard`.
 
-![Correct color management settings](/blender/settings-color-management.webp)
+![Configuración correcta de gestión de color](/blender/settings-color-management.webp)
 
 ## Iluminación de Entorno
 
-Puedes cambiar la iluminación de entorno y el skybox utilizando las opciones de Viewport shading. Asigna un cubemap para usarlo como iluminación o como skybox de fondo. Puedes ajustar la intensidad o el desenfoque para modificar la apariencia a tu gusto.
+Puedes cambiar la iluminación de entorno y el skybox utilizando las opciones de Viewport shading. Asigna un cubemap para usarlo como iluminación o como skybox de fondo. Puedes ajustar la intensidad o el blur para modificar la apariencia a tu gusto.
 
-Nota: Para ver también el cubemap del skybox en el navegador, aumenta la `World Opacity` a 1.
+Nota: Para ver también el skybox cubemap en el navegador, aumenta la `World Opacity` a 1.
 
 Nota: Alternativamente, puedes habilitar la configuración `Scene World` en la pestaña Viewport Shading para usar la textura de entorno asignada en la configuración de mundo de Blender.
 
-![Environment](/blender/environment.webp)
+![Entorno](/blender/environment.webp)
 
 <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
 
-Alternativamente, si no quieres ver el cubemap como fondo, añade un componente Camera a tu Camera de Blender y cambia `clearFlags: SolidColor`. Ten en cuenta que la configuración de `backgroundBlurriness` y `backgroundIntensity` de la Camera anulan la configuración de Viewport shading.
+Alternativamente, si no quieres ver el cubemap como fondo, añade un Camera component a tu Camera de Blender y cambia `clearFlags: SolidColor`. Ten en cuenta que la configuración de `backgroundBlurriness` y `backgroundIntensity` de la Camera anulan la configuración de Viewport shading.
 
-![Environment Camera](/blender/environment-camera.webp)
+![Cámara de entorno](/blender/environment-camera.webp)
 
 ### Añade tu propia iluminación de entorno HDRI / EXR y skybox
 
@@ -118,54 +118,54 @@ Alternativamente, si no quieres ver el cubemap como fondo, añade un componente 
 
 Para excluir un objeto de ser exportado, puedes desactivar la visualización de Viewport y Render (ver imagen abajo).
 
-![Exclude from export](/blender/dont-export.webp)
+![Excluir de la exportación](/blender/dont-export.webp)
 
 ## Animación 🏇
 
-Para casos de uso sencillos, puedes usar el componente Animation para la reproducción de uno o múltiples animationclips. Simplemente selecciona tu objeto, añade un componente Animation y asigna el clip (puedes añadir clips adicionales para ser exportados al array de clips). Por defecto, solo reproducirá el primer clip asignado cuando `playAutomatically` esté activado. Puedes activar los otros clips usando un simple componente Typescript personalizado.
+Para casos de uso sencillos, puedes usar el Animation component para la reproducción de uno o múltiples animationclips. Simplemente selecciona tu objeto, añade un Animation component y asigna el clip (puedes añadir clips adicionales para ser exportados al array de clips). Por defecto, solo reproducirá el primer clip asignado cuando `playAutomatically` esté activado. Puedes activar los otros clips usando un simple custom typescript component.
 <video-embed limit_height src="/docs/blender/animation.mp4" />
 
 ### AnimatorController
 
-El animator controller se puede crear para escenarios más complejos. Funciona como una máquina de estados que te permite crear múltiples estados de animación en un gráfico y configurar condiciones y ajustes de interpolación para las transiciones entre ellos.
+El animator controller se puede crear para escenarios más complejos. Funciona como una statemachine que te permite crear múltiples animation states en un graph y configurar conditions y interpolation settings para las transiciones entre ellos.
 
 <video-embed src="/docs/blender/animatorcontroller-web.mp4" />
-*Crea y exporta [máquinas de estados de animador](#animatorcontroller) para controlar animaciones de personajes complejas.*
+*Crea y exporta [animator statemachines](#animatorcontroller) para controlar complex character animations.*
 
 #### Crear un AnimatorController
 
-El editor de AnimatorController se puede abrir usando el desplegable EditorType en la esquina superior izquierda de cada panel:
+El editor de AnimatorController se puede abrir usando el EditorType dropdown en la esquina superior izquierda de cada panel:
 
-![AnimatorController open window](/blender/animatorcontroller-open.webp)
+![Abrir ventana de AnimatorController](/blender/animatorcontroller-open.webp)
 
 <video-embed limit_height max_height="188px" src="/docs/blender/animatorcontroller-create.mp4" />
 *Creando un nuevo asset de animator-controller ☝ o seleccionando uno de tus assets creados previamente*
 
-##### Descripción general del gráfico
-![AnimatorController overview](/blender/animatorcontroller-overview.webp)
+##### Descripción general del Graph
+![Descripción general de AnimatorController](/blender/animatorcontroller-overview.webp)
 1) Usa `Shift+A` para crear un nuevo AnimatorState.
-2) El nodo `Parameters` se creará una vez que añadas el primer nodo. Selecciónalo para configurar los parámetros a usar en las transiciones (a través del panel Node en el borde derecho).
-3) Esto es un AnimatorState. El estado naranja es el estado inicial (se puede cambiar usando el botón `Set default state` en el panel Node/Properties).
-4) Las Propiedades de un AnimatorState se pueden usar para configurar una o múltiples transiciones a otros estados. Usa el array `Conditions` para seleccionar parámetros que deben coincidir con la condición para realizar la transición.
+2) El node `Parameters` se creará una vez que añadas el primer node. Selecciónalo para configurar parameters a usar en las transitions (a través del Node panel en el borde derecho).
+3) Esto es un AnimatorState. el state naranja es el start state (se puede cambiar usando el botón `Set default state` en el Node/Properties panel)
+4) Las Properties para un AnimatorState se pueden usar para configurar una o múltiples transitions a otros states. Usa el array `Conditions` para seleccionar parameters que deben coincidir con la condition para realizar la transition.
 
 #### Usar un AnimatorController
 
-Para usar un AnimatorController, añade un componente Animator al objeto raíz de tus animaciones y selecciona el asset de AnimatorController que quieres usar para este objeto.
+Para usar un AnimatorController, añade un Animator component al root object de tus animations y selecciona el AnimatorController asset que quieres usar para este object.
 
-![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)
+![Asignar AnimatorController a animator](/blender/animatorcontroller-assigning.webp)
 
-Puedes establecer los parámetros del Animator desde Typescript o, por ejemplo, usando el evento de un componente Button.
+Puedes establecer los Animator parameters desde typescript o, por ejemplo, usando el event de un Button component.
 
 ### Timeline — Exportación de NLA Tracks 🎬
 
-Puedes exportar NLA tracks de Blender directamente a la web.
-Añade un componente PlayableDirector (a través de `Add Component`) a cualquier objeto de Blender. Asigna los objetos en la lista `animation tracks` del componente para los cuales quieres que se exporten las NLA tracks.
+Puedes exportar Blender NLA tracks directamente a la web.
+Añade un PlayableDirector component (a través de `Add Component`) a cualquier objeto de Blender. Asigna los objetos en la lista ``animation tracks`` del component para los cuales quieres que se exporten las NLA tracks.
 
 ![](/blender/timeline_setup.webp)
 ![](/blender/timeline.webp)
 
 ::: details Ejemplo de código para reproducción interactiva de timeline
-Añade este script a `src/scripts` (ver sección de componentes personalizados) y añádelo a cualquier objeto en Blender para que el tiempo de un timeline sea controlado por el desplazamiento en el navegador.
+Añade este script a `src/scripts` (ver sección de custom components) y añádelo a cualquier objeto en Blender para que el tiempo de un timeline sea controlado por el scrolling en los browsers.
 
 ```ts twoslash
 import { Behaviour, PlayableDirector, serializable, Mathf } from "@needle-tools/engine";
@@ -208,80 +208,80 @@ export class ScrollTimeline extends Behaviour {
 
 ## Interactividad 😎
 
-Puedes añadir o quitar componentes a objetos en tu jerarquía usando el panel Needle Components:
+Puedes añadir o quitar components a objetos en tu hierarchy usando el panel Needle Components:
 
-![Component panel](/blender/components-panel.webp)
+![Panel de componentes](/blender/components-panel.webp)
 
-![Component panel](/blender/components-panel-select.webp)
-*Por ejemplo, añadiendo un componente `OrbitControls` al objeto cámara*
-*obtienes controles de cámara básicos para dispositivos móviles y de escritorio*
-*Ajusta la configuración de cada componente en sus respectivos paneles*
+![Selección del panel de componentes](/blender/components-panel-select.webp)
+*Por ejemplo, añadiendo un component `OrbitControls` al objeto camera*
+*obtienes controles de camera básicos para mobile y desktop devices*
+*Ajusta settings para cada component en sus respectivos panels*
 
-Los componentes se pueden eliminar usando el botón X en la parte inferior derecha:
+Los components se pueden eliminar usando el botón X en la parte inferior derecha:
 
-![Remove component](/blender/remove-component.webp)
+![Eliminar componente](/blender/remove-component.webp)
 
-### Componentes Personalizados
-Los componentes personalizados también se pueden añadir fácilmente simplemente escribiendo clases de Typescript. Se compilarán automáticamente y aparecerán en Blender cuando se guarden.
+### Custom Components
+Los custom components también se pueden añadir fácilmente simplemente escribiendo Typescript classes. Se compilarán automáticamente y aparecerán en Blender cuando se guarden.
 
-Para crear componentes personalizados, abre el espacio de trabajo a través del panel Needle Project y añade un archivo de script `.ts` en `src/scripts` dentro de tu proyecto web. Por favor, consulta la [documentación de scripting](http://docs.needle.tools/scripting) para aprender cómo escribir componentes personalizados para Needle Engine.
+Para crear custom components, abre el workspace a través del panel Needle Project y añade un archivo de script `.ts` en `src/scripts` dentro de tu web project. Por favor, consulta la [documentación de scripting](http://docs.needle.tools/scripting) para aprender cómo escribir custom components para Needle Engine.
 
 ::: warning Nota
-Asegúrate de que `@needle-tools/needle-component-compiler` 2.x esté instalado en tu proyecto web (package.json devDependencies).
+Asegúrate de que `@needle-tools/needle-component-compiler` 2.x esté instalado en tu web project (package.json devDependencies)
 :::
 
 ## Lightmapping 💡
 
-Needle incluye un plugin de lightmapping que hace que sea muy fácil hornear luces hermosas en texturas y llevarlas a la web. El plugin generará automáticamente UVs de lightmap para todas las mallas marcadas para lightmapping, no es necesario crear un atlas de texturas manual. También soporta lightmapping de múltiples instancias con sus propios datos de lightmap. Para que el lightmapping funcione, necesitas al menos una luz y un objeto con `Lightmapped` activado en el panel `Needle Object`.
+Needle incluye un lightmapping plugin que hace que sea muy fácil bake beautiful lights a textures y llevarlas a la web. El plugin generará automáticamente lightmap UVs para todos los models marcados para ser lightmapped, there is no need to make a manual texture atlas. It also supports lightmapping of multiple instances with their own lightmap data. Para que el lightmapping funcione, necesitas al menos una light y un object con `Lightmapped` activado en el panel `Needle Object`.
 
 <video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" />
 
 ::: tip
 Puedes descargar el archivo .blend del video [aquí](https://engine.needle.tools/downloads/blender/lightmaps.blend).
 :::
-Utiliza el panel Needle Object para habilitar lightmapping para un objeto malla o luz:
+Utiliza el panel Needle Object para habilitar lightmapping para un mesh object o light:
 
-![Lightmapping object](/blender/lightmapping-object.webp)
+![Objeto Lightmapping](/blender/lightmapping-object.webp)
 
-Para un acceso rápido a la configuración de lightmap y opciones de horneado, puedes usar el panel de vista de escena en la pestaña `Needle`:
+Para un acceso rápido a lightmap settings y baking options puedes usar el scene view panel en la pestaña `Needle`:
 
-![Lightmapping scene panel](/blender/lightmapping-scene-panel.webp)
+![Panel de escena Lightmapping](/blender/lightmapping-scene-panel.webp)
 
-Alternativamente, también puedes usar el panel Lightmapping en la pestaña `Render Properties`:
+Alternativamente, también puedes usar el Lightmapping panel en la pestaña `Render Properties`:
 
-![Lightmapping object](/blender/lightmapping-panel.webp)
+![Objeto Lightmapping](/blender/lightmapping-panel.webp)
 
 ::: warning Característica Experimental
-El plugin de lightmapping es experimental. Recomendamos crear una copia de seguridad de tu archivo .blend al usarlo. Por favor, informa de los problemas o errores que encuentres en [nuestro foro](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 🙏
+El lightmapping plugin es experimental. Recomendamos crear una backup de tu archivo .blend cuando lo uses. Por favor, reporta problems o errors que encuentres en [nuestro foro](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 🙏
 :::
 
 ## Compresión de Texturas
 
-El Build Pipeline de Needle Engine comprime automáticamente las texturas utilizando ECT1S y UASTC (dependiendo de su uso en los materiales) al realizar un build de producción (**requiere tener [toktx](../getting-started/index.md#install-these-tools-for-production-builds) instalado**). Pero puedes anular o cambiar el tipo de compresión por textura en el panel Material.
+El Needle Engine Build Pipeline comprime automáticamente las textures utilizando ECT1S y UASTC (depending on their usage in materials) al realizar un production build (**requiere tener [toktx](../getting-started/index.md#install-these-tools-for-production-builds) instalado**). Pero puedes override o change el compression type por texture en el Material panel.
 
-Puedes modificar la compresión que se aplica por textura. Para anular la configuración de compresión predeterminada, ve a la pestaña `Material` y abre `Needle Material Settings`. Allí encontrarás un interruptor para anular la configuración de textura por cada textura utilizada en tu material. Consulta la [tabla de compresión de texturas](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression) para una breve descripción de las diferencias entre cada algoritmo de compresión.
+Puedes modificar la compression que se está aplicando por texture. Para override the default compression settings go to the `Material` tab and open the `Needle Material Settings`. There you will find a toggle to override the texture settings per texture used in your material. See the [texture compression table](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression) for a brief overview over the differences between each compression algorithm.
 
-![Texture Compression options in Blender](/blender/texture-compression.webp)
+![Opciones de compresión de texturas en Blender](/blender/texture-compression.webp)
 
 ## Actualización
 
-La bombilla en el panel Needle Project te informa cuando hay una nueva versión del add-on disponible. Simplemente haz clic en el icono para descargar la nueva versión.
-![Update notification](/blender/updates.webp)
+La bombilla en el panel Needle Project te informa cuando hay una nueva version del addon disponible. Simplemente haz clic en el icon para descargar la nueva version.
+![Notificación de actualización](/blender/updates.webp)
 
-## Reportar un problema
+## Reportar un issue
 
-Si encuentras algún problema, estaremos encantados de ayudarte. Por favor, únete a [nuestro foro](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) para obtener soporte rápido.
+Si encuentras algún problem estamos más que happy to help! Please join [our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) for fast support.
 
-Por favor, revisa también los logs en Blender. Puedes encontrar logs específicos del Addon de Needle Engine a través de `Help/Needle` en Blender.
+Please also check the logs in Blender. You can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.
 
-### Bug Reporter Integrado
-![Needle Blender Bug Reporter panel](/blender/bugreporter.webp)
-También puedes crear y subir automáticamente un reporte de bug directamente desde Blender. Los reportes de bug subidos se usarán únicamente para depuración. Están encriptados en nuestro backend y se eliminarán después de 30 días.
+### Integrated Bug Reporter
+![Panel de Needle Blender Bug Reporter](/blender/bugreporter.webp)
+También puedes automatically create and upload a bugreport directly from Blender. Uploaded bugreports will solely be used for debugging. They are encrypted on our backend and will be deleted after 30 days.
 
-Si es necesario, en ciertos casos también podemos establecer NDAs personalizadas para tus proyectos. Por favor, contáctanos para más información.
+If needed, in certain cases we're also able to set up custom NDAs for your projects. Please contact us for more information.
 
-:::tip Usar el Bug Reporter requiere un proyecto web
-Asegúrate de haber configurado un proyecto web antes de enviar un reporte de bug – nos permitirá entender más sobre tu sistema y configuración y hará más fácil reproducir el problema.
+:::tip Usar el Bug Reporter requiere un web project
+Asegúrate de haber configurado un web project antes de sending un bug report – nos permitirá understand more about your system and setup and make it easier to reproduce the issue.
 :::
 
 # Próximos Pasos

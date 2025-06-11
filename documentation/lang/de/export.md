@@ -168,4 +168,5 @@ Wenn Sie keine gebackenen Objekte in Ihrer Szene haben, sollten auch die folgend
 Environment Lighting: Color
 Ambient Color: any
 ```
+
 Seite automatisch übersetzt mit AI

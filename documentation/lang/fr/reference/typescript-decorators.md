@@ -15,7 +15,7 @@ Vous pouvez les considérer comme des Attributs sous stéroïdes (si vous êtes 
 | **Décorateurs de méthodes** | |
 | `@prefix(<type>)` (expérimental) | Peut être utilisé pour injecter facilement du code personnalisé dans d'autres composants. Optionnellement, renvoyez `false` pour empêcher l'exécution de la méthode originale. Voir l'[exemple ci-dessous](#prefix). |
 | **Décorateurs de classes** | |
-| `@registerType` | Aucun argument. Peut être ajouté à une classe de composant personnalisée pour être enregistrée dans les types de Needle Engine et pour activer le support du rechargement à chaud (hot reloading). |
+| `@registerType` | Aucun argument. Peut être ajouté à une classe de composant personnalisée pour être enregistrée dans les types de Needle Engine et pour activer le support du rechargement à chaud. |
 
 ## Exemples
 

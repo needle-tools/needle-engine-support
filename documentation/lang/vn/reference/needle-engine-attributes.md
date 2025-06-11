@@ -1,3 +1,4 @@
+```markdown
 ---
 title: Cấu hình <needle-engine>
 ---
@@ -8,9 +9,9 @@ Thành phần web `<needle-engine>` đi kèm với bộ sưu tập các thuộc 
 | --- | --- |
 | **Tải** | |
 | `src` | Đường dẫn đến một hoặc nhiều tệp glTF hoặc glb.<br/>Các loại được hỗ trợ là `string`, `string[]` hoặc một mảng dạng chuỗi (phân tách bằng `,`) |
-| `dracoDecoderPath` | URL đến draco decoder |
+| `dracoDecoderPath` | URL đến draco decoder ví dụ: `./include/draco/` để sử dụng Draco decoder cục bộ |
 | `dracoDecoderType` | Loại draco decoder. Các tùy chọn là `wasm` hoặc `js`. Xem [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
-| `ktx2DecoderPath` | URL đến KTX2 decoder |
+| `ktx2DecoderPath` | URL đến KTX2 decoder ví dụ: `./include/ktx2/` để sử dụng KTX2 decoder cục bộ |
 | **Kết xuất** | |
 | `background-color` | tùy chọn, mã màu hex được sử dụng làm màu nền. Ví dụ: `rgb(255, 200, 100)`, `#dddd00` |
 | `background-image` | tùy chọn, URL đến hình ảnh skybox (hình ảnh nền) hoặc một chuỗi cài sẵn: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
@@ -28,15 +29,14 @@ Thành phần web `<needle-engine>` đi kèm với bộ sưu tập các thuộc 
 | `progress` | Tên của hàm cần gọi khi quá trình tải cập nhật. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }` |
 | `loadfinished` | Tên của hàm cần gọi khi quá trình tải kết thúc |
 | **Hiển thị Tải** | *Các tùy chọn có sẵn để thay đổi giao diện hiển thị tải của Needle Engine. Sử dụng `?debugloadingrendering` để chỉnh sửa dễ dàng hơn* |
-| `loading-style` | Các tùy chọn là `light` hoặc `dark` |
-| `loading-background-color` | **PRO** — Thay đổi màu nền khi tải (ví dụ: `=#dd5500`) |
-| `loading-text-color` | **PRO** — Thay đổi màu văn bản khi tải |
-| `loading-logo-src` | **PRO** — Thay đổi hình ảnh logo khi tải |
-| `primary-color` | **PRO** — Thay đổi màu chính khi tải |
-| `secondary-color` | **PRO** — Thay đổi màu phụ khi tải |
-| `hide-loading-overlay` | **PRO** — Không hiển thị lớp phủ tải, được thêm vào trong Needle Engine > 3.17.1 |
+| `loading-background` | **PRO** — Mặc định: `transparent`. Thay đổi màu nền khi tải (ví dụ: `#dd5500`) |
+| `loading-logo-src` | **PRO** — Thay đổi hình ảnh logo khi tải (ví dụ: `https://yourdomain.com/logo.png` hoặc `/logo.png`) |
+| `hide-loading-overlay` | **PRO** — Không hiển thị lớp phủ tải |
 | **Nội bộ** | |
 | `hash` | Được sử dụng nội bộ, được thêm vào các tệp đang tải để buộc cập nhật (ví dụ: khi trình duyệt đã lưu trữ tệp glb). Không nên chỉnh sửa thủ công. |
+
+**Thông báo nâng cấp**:
+- Các thuộc tính đã xóa trong Needle Engine 4.5.0 `loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
 
 # Ví dụ
 
@@ -47,7 +47,7 @@ Thành phần web `<needle-engine>` đi kèm với bộ sưu tập các thuộc 
 
 ```html
 <!-- Ghi đè vị trí của draco decoder -->
-<needle-engine src="path/to/your.glb" dracoDecoderPath="path/to/draco/folder"></needle-engine>
+<needle-engine src="path/to/your.glb" dracoDecoderPath="./include/draco/"></needle-engine>
 ```
 
 Đặt hình ảnh môi trường, phát hoạt ảnh và điều khiển camera tự động. [Xem trực tiếp trên stackblitz](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)
@@ -79,4 +79,6 @@ Bạn có thể dễ dàng sửa đổi giao diện của Needle Engine bằng c
 
 ![tải tùy chỉnh](/imgs/custom-loading-style.webp)
 [Xem mã trên github](https://github.com/needle-engine/vite-template/blob/loading-style/custom/index.html)
+
 Trang được dịch tự động bằng AI
+```

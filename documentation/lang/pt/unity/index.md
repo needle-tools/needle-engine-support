@@ -22,25 +22,25 @@ O Needle Engine para Unity permite criar aplicações web altamente interativas,
 
 <NoDownloadYet>
   <br/>
-  <needle-button 
-    event_goal="download_unity" 
-    event_position="getting_started" 
-    large 
+  <needle-button
+    event_goal="download_unity"
+    event_position="getting_started"
+    large
     href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"
     same_tab
     next_url="/docs/unity/"
     >
     <strong>Descarregar Needle Engine para Unity</strong>
-  </needle-button> 
+  </needle-button>
 </NoDownloadYet>
 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
 
 1. **Arraste e largue o ficheiro .unitypackage descarregado** para um projeto Unity e confirme que o pretende importar.
 
-2. **Aguarde um momento** para que a instalação e importação terminem. Uma janela pode abrir indicando que "Um novo registo com escopo está agora disponível no Package Manager.". Este é o nosso registo de Pacotes Needle. Pode fechar essa janela em segurança.  
-3. **Explorar Exemplos**.  
-  Selecione a opção de menu `Needle Engine > Explorar Exemplos` para ver, abrir e modificar todas as [cenas de exemplo](https://engine.needle.tools/samples) disponíveis.  
+2. **Aguarde um momento** para que a instalação e importação terminem. Uma janela pode abrir indicando que "A new scoped registry is now available in the Package Manager.". Este é o nosso registo de Pacotes Needle. Pode fechar essa janela em segurança.
+3. **Explore Exemplos**.
+  Selecione a opção de menu `Needle Engine > Explore Samples` para ver, abrir e modificar todas as [cenas de exemplo](https://engine.needle.tools/samples) disponíveis.
 
 ## Tutorial em Vídeo de Início Rápido
 
@@ -48,27 +48,27 @@ O Needle Engine para Unity permite criar aplicações web altamente interativas,
 
 ## Comece por um Exemplo
 
-Existem mais de 100 exemplos que abrangem uma vasta gama de tópicos, casos de uso e indústrias.  
-Para uma visão geral rápida, veja a nossa [página de Exemplos](https://engine.needle.tools/samples/). 
+Existem mais de 100 exemplos que abrangem uma vasta gama de tópicos, casos de uso e indústrias.
+Para uma visão geral rápida, veja a nossa [página de Exemplos](https://engine.needle.tools/samples/).
 
 Todos estes exemplos estão disponíveis diretamente no Unity:
-1. Vá para `Needle Engine > Explorar Exemplos` para procurar exemplos
+1. Vá para `Needle Engine > Explore Samples` para procurar exemplos
 2. Clique em "Instalar Exemplos" para instalar o pacote de exemplos diretamente no seu editor (ou [descarregue o unitypackage de exemplos](http://engine.needle.tools/downloads/unity/samples) para instalar o pacote manualmente)
-3. Escolha qualquer exemplo e clique em `Abrir Cena`. 
+3. Escolha qualquer exemplo e clique em `Open Scene`.
 
 :::tip Os Exemplos são só de leitura – o que os torna fáceis de atualizar.
 As nossas cenas de exemplo fazem parte de um pacote UPM no Unity. Isto significa que não pode editar os assets e scripts diretamente neles – são só de leitura. Para editar um asset do pacote de exemplos, copie-o para a pasta `Assets` do seu projeto. Para editar um script do pacote de exemplos, copie-o para a pasta `src` do seu projeto web.
-::: 
+:::
 
 ## Comece por um template
 
-Fornecemos vários Scene Templates para iniciar rapidamente novos projetos.  
-Estes permitem que vá de uma ideia a um protótipo em poucos cliques.  
+Fornecemos vários Scene Templates para iniciar rapidamente novos projetos.
+Estes permitem que vá de uma ideia a um protótipo em poucos cliques.
 
-1. Clique em `Ficheiro > Nova Cena`
+1. Clique em `File > New Scene`
 
-2. Selecione um dos templates com (needle) no nome e clique em `Criar`.   
-   Recomendamos o template [Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox) que é uma ótima maneira de começar com interatividade, multiplayer e adição de assets.  
+2. Selecione um dos templates com (needle) no nome e clique em `Create`.
+   Recomendamos o template [Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox) que é uma ótima maneira de começar com interatividade, multiplayer e adição de assets.
 3. Clique em Play para instalar e iniciar o seu novo projeto web.
 
 ![20220822-140539-wqvW-Unity_oC0z-needle](https://user-images.githubusercontent.com/2693840/185917275-a147cd90-d515-4086-950d-78358185b1ef.png)
@@ -76,22 +76,22 @@ Estes permitem que vá de uma ideia a um protótipo em poucos cliques.
 
 ## Comece do zero
 
-Se não quiser começar de um scene template, pode seguir estes passos.  
-Efetivamente, vamos recriar o template "Minimal (Needle)" que vem com o pacote.  
+Se não quiser começar de um scene template, pode seguir estes passos.
+Efetivamente, vamos recriar o template "Minimal (Needle)" que vem com o pacote.
 
-1. **Crie uma nova cena vazia**  
+1. **Crie uma nova cena vazia**
 
-2. **Configure a sua cena para exportação**   
-  Adicione um GameObject vazio, dê-lhe o nome "Exporter" e adicione o component `Needle Engine` (anteriormente chamado `Export Info`).  
-  Neste component, cria e acede rapidamente ao seu projeto runtime exportado.  
-  Também o avisa se algum dos nossos pacotes e módulos estiver desatualizado ou não estiver instalado localmente no seu projeto web.  
+2. **Configure a sua cena para exportação**
+  Adicione um GameObject vazio, dê-lhe o nome "Exporter" e adicione o component `Needle Engine` a ele (anteriormente chamado `Export Info`).
+  Neste component, cria e acede rapidamente ao seu projeto runtime exportado.
+  Também o avisa se algum dos nossos pacotes e módulos estiver desatualizado ou não estiver instalado localmente no seu projeto web.
 
     ::: tip Nome do Projeto e Nome da Cena
-    Por predefinição, o nome do projeto corresponde ao nome da sua cena. Se quiser alterar isso, pode escolher ou inserir um ``Nome de Diretório`` onde pretende criar o seu novo projeto web. O caminho é relativo ao seu projeto Unity.  
+    Por predefinição, o nome do projeto corresponde ao nome da sua cena. Se quiser alterar isso, pode escolher ou inserir um ``Directory Name`` onde pretende criar o seu novo projeto web. O caminho é relativo ao seu projeto Unity.
     :::
- 
+
 3. **Escolha um template de projeto web**
-  Agora, selecione um template de projeto web para o seu projeto. O template predefinido é baseado em [Vite](https://vitejs.dev/), um bundler rápido de aplicações web.  
+  Agora, selecione um template de projeto web para o seu projeto. O template predefinido é baseado em [Vite](https://vitejs.dev/), um bundler rápido de aplicações web.
   <br/>
     ![Unity ExportInfo local templates](/imgs/unity-project-local-template.jpg)
 
@@ -100,13 +100,13 @@ Efetivamente, vamos recriar o template "Minimal (Needle)" que vem com o pacote.
 
 
 :::tip Defina os seus próprios templates
-Se se encontrar a criar muitos projetos semelhantes, pode criar os seus próprios templates locais ou remotos usando o menu de contexto do Project View em `Criar/Needle Engine/Project Template`. Templates podem ser locais no disco (uma pasta a ser copiada) ou repositórios remotos (um repositório git a ser clonado).
+Se se encontrar a criar muitos projetos semelhantes, pode criar os seus próprios templates locais ou remotos usando o menu de contexto do Project View em `Create/Needle Engine/Project Template`. Templates podem ser locais no disco (uma pasta a ser copiada) ou repositórios remotos (um repositório git a ser clonado).
 :::
 
 ## Pastas e Ficheiros do Projeto
 
 
-| Pasta | |
+| Folder | |
 | --- | --- |
 | **Unity** | |
 | `Assets` | É aqui que residem os assets específicos/exclusivos do projeto. |
@@ -116,7 +116,7 @@ Se se encontrar a criar muitos projetos semelhantes, pode criar os seus próprio
 
 -----
 
-Ao criar um novo projeto web no Unity, pode optar por criá-lo a partir de um template local (por predefinição, fornecemos um template web baseado em vite). 
+Ao criar um novo projeto web no Unity, pode optar por criá-lo a partir de um template local (por predefinição, fornecemos um template web baseado em vite).
 
 Também pode referenciar templates remotos introduzindo um URL de repositório no caminho do projeto ExportInfo (isto pode ser guardado com a sua cena, por exemplo). Ao criar um novo projeto web, o repositório será clonado ou descarregado (dependendo se tem o git instalado) e procurado um ficheiro `needle.config.json`. Se nenhum for encontrado no repositório clonado, o diretório raiz será usado. Exemplos de projetos de template remotos podem ser encontrados em [github.com/needle-engine](https://github.com/needle-engine)
 
@@ -129,19 +129,19 @@ Se estiver a planear adicionar apenas ficheiros personalizados via NpmDefs e nã
 
 ## Typescript no Unity
 
-**NPM Definition** são [pacotes npm](https://docs.npmjs.com/about-packages-and-modules) firmemente integrados no Editor Unity, o que torna fácil partilhar scripts com múltiplos projetos web ou até mesmo Unity.    
+**NPM Definition** são [pacotes npm](https://docs.npmjs.com/about-packages-and-modules) firmemente integrados no Editor Unity, o que torna fácil partilhar scripts com múltiplos projetos web ou até mesmo Unity.
 
 Stubs de component C# para ficheiros typescript também serão gerados automaticamente para scripts dentro de pacotes npmdef.
 
 #### Criar e instalar um npmdef
-Para criar um *NPM Definition* clique com o botão direito no navegador de Projeto Unity e selecione ``Criar/NPM Definition``.   
+Para criar um *NPM Definition* clique com o botão direito no navegador de Projeto Unity e selecione ``Create/NPM Definition``.
 Pode **instalar um pacote *NPM Definition*** para o seu projeto runtime, por exemplo, selecionando o seu component ``Export Info`` e adicionando-o à lista de ``dependencies`` (internamente, isto apenas adicionará o pacote npm subjacente ao seu package.json).
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
 Não se esqueça de instalar o pacote recém-adicionado, por exemplo, clicando em Install no component ExportInfo, e também reiniciar o servidor se já estiver a correr.
 
-Para editar o código dentro de um pacote *NPM Definition*, basta fazer duplo clique no asset *NPM Definition* no seu navegador de projeto e abrirá o workspace do vscode que acompanha cada npmdef.
+Para editar o código dentro de um pacote *NPM Definition*, basta fazer duplo clique no asset *NPM Definition* no seu navegador de projeto e abrirá o vscode workspace que acompanha cada npmdef.
 
 
 # Próximos Passos

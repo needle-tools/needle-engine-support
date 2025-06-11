@@ -267,7 +267,6 @@ you seem to have objects with the same name referencing each other.
 これで問題が解決しない場合は、[フォーラム](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)でお問い合わせください。
 
 ## シーンがロードされず、コンソールに「circular references」または「failed to update active state」という警告が表示されます
-
 [circular reference error](#circular-reference-error)セクションを参照してください。
 
 ## 自分のマシンはWebGL 2をサポートしていますか？
@@ -290,5 +289,5 @@ AIをローカルで実行したい（または実行する必要がある）場
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
 
----
+
 このページはAIによって自動的に翻訳されました

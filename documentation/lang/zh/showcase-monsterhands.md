@@ -1,3 +1,4 @@
+```markdown
 ---
 lang: zh-CN
 title: 怪物之手 💀
@@ -10,6 +11,7 @@ editLink: false
 <sample src="https://monster-hands.needle.tools/" />
 
 [访问网站](https://monster-hands.needle.tools/)
+```
 
 
 页面使用 AI 自动翻译

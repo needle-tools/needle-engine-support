@@ -3,7 +3,7 @@
 Entdecken Sie einige reale Anwendungen, Websites und Demos, die mit Needle Engine erstellt wurden.
 
 <p align="left">
-<a href="./getting-started/">Jetzt starten</a> • <a href="./vision">Erfahren Sie mehr über unsere Vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Übersicht der Funktionen</a> • <a href="https://docs.needle.tools/samples?utm_source=needle_docs">Samples zum Herunterladen</a>
+<a href="./getting-started/">Jetzt starten</a> • <a href="./vision">Erfahren Sie mehr über unsere Vision</a> • <a href="https://fwd.needle.tools/needle-engine/docs/features-overview">Übersicht der Funktionen</a> • <a href="https://docs.needle.tools/samples?utm_source=needle_docs">Beispiele zum Herunterladen</a>
 </p>
 
 
@@ -39,7 +39,7 @@ Entdecken Sie einige reale Anwendungen, Websites und Demos, die mit Needle Engin
 <video-embed src="https://user-images.githubusercontent.com/5083203/186147814-159a33f9-f1a6-47d4-804f-5f8f5a63125d.mp4"/>
 
 ## Pokémon Card
-[Pokémon Card](https://fwd.needle.tools/needle-engine/projects/pokemon-card) — Szene von Alex Ameye • [Original Blogbeitrag von Alex](https://alexanderameye.github.io/notes/holographic-card-shader/)  
+[Pokémon Card](https://fwd.needle.tools/needle-engine/projects/pokemon-card) — Szene von Alex Ameye • [Originaler Blogbeitrag von Alex](https://alexanderameye.github.io/notes/holographic-card-shader/)  
 
 <video-embed src="https://user-images.githubusercontent.com/5083203/186149736-49a697b3-4282-4b71-ab13-a6b176955c13.mp4"/>
 
@@ -53,5 +53,6 @@ Entdecken Sie einige reale Anwendungen, Websites und Demos, die mit Needle Engin
 [Physics Playground](https://bruno-simon-20k-needle.glitch.me/) — Szene von Bruno Simon  
 
 <video-embed src="https://user-images.githubusercontent.com/5083203/186149536-987ee796-3fe0-42bc-bd80-4c25aaf174aa.mp4"/>
+
 
 Seite automatisch übersetzt mit AI

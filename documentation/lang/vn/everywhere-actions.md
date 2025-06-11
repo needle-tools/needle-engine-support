@@ -28,15 +28,15 @@ chọn đối tượng đó và sau đó nhấp vào `Add Component > Needle > E
 
 | Hành động (Action) | Mô tả (Description) | Các trường hợp sử dụng ví dụ (Example Use Cases) |
 | --- | --- | --- |
-| Phát Animation khi Nhấp (Play Animation on Click) | Phát một trạng thái animation được chọn từ một Animator. Sau khi phát, tùy chọn có thể chuyển sang một animation khác. | Trình bày sản phẩm, hướng dẫn tương tác, chuyển động nhân vật |
-| Thay đổi Material khi Nhấp (Change Material on Click) | Chuyển đổi một material này sang material khác. Tất cả các đối tượng sử dụng material đó sẽ được chuyển đổi cùng lúc. | Cấu hình sản phẩm, nhân vật |
-| Nhìn vào (Look At) | Làm cho một đối tượng nhìn vào camera. | Các phần tử UI, sprite, đồ họa thông tin, hiệu ứng billboard, điểm nóng có thể nhấp |
-| Phát Âm thanh khi Nhấp (Play Audio on Click) | Phát một đoạn âm thanh được chọn. | Hiệu ứng âm thanh, tường thuật, triển lãm bảo tàng |
-| Ẩn khi Bắt đầu (Hide on Start) | Ẩn một đối tượng khi scene bắt đầu để tiết lộ sau này. | |
-| Đặt Trạng thái Kích hoạt khi Nhấp (Set Active on Click) | Hiển thị hoặc ẩn các đối tượng. | |
-| Thay đổi Transform khi Nhấp (Change Transform on Click) | Di chuyển, xoay hoặc thay đổi tỷ lệ một đối tượng. Cho phép di chuyển tuyệt đối hoặc tương đối. | Nhân vật, sản phẩm, animation UI (sử dụng animation cho các chuyển động phức tạp hơn) |
-| Nguồn Âm thanh (Audio Source) | Phát âm thanh khi bắt đầu và lặp lại liên tục. Không gian hoặc không gian. | Nhạc nền, âm thanh môi trường |
-| Theo dõi Hình ảnh WebXR (WebXR Image Tracking) | Theo dõi một mục tiêu hình ảnh và hiển thị hoặc ẩn các đối tượng. | Trải nghiệm AR, trình bày sản phẩm |
+| Play Animation on Click | Phát một trạng thái animation được chọn từ một Animator. Sau khi phát, tùy chọn có thể chuyển sang một animation khác. | Trình bày sản phẩm, hướng dẫn tương tác, chuyển động nhân vật |
+| Change Material on Click | Chuyển đổi một material này sang material khác. Tất cả các đối tượng sử dụng material đó sẽ được chuyển đổi cùng lúc. | Cấu hình sản phẩm, nhân vật |
+| Look At | Làm cho một đối tượng nhìn vào camera. | Các phần tử UI, sprite, đồ họa thông tin, hiệu ứng billboard, điểm nóng có thể nhấp |
+| Play Audio on Click | Phát một đoạn âm thanh được chọn. | Hiệu ứng âm thanh, tường thuật, triển lãm bảo tàng |
+| Hide on Start | Ẩn một đối tượng khi scene bắt đầu để tiết lộ sau này. | |
+| Set Active on Click | Hiển thị hoặc ẩn các đối tượng. | |
+| Change Transform on Click | Di chuyển, xoay hoặc thay đổi tỷ lệ một đối tượng. Cho phép di chuyển tuyệt đối hoặc tương đối. | Nhân vật, sản phẩm, animation UI (sử dụng animation cho các chuyển động phức tạp hơn) |
+| Audio Source | Phát âm thanh khi bắt đầu và lặp lại liên tục. Không gian hoặc không gian. | Nhạc nền, âm thanh môi trường |
+| WebXR Image Tracking | Theo dõi một mục tiêu hình ảnh và hiển thị hoặc ẩn các đối tượng. | Trải nghiệm AR, trình bày sản phẩm |
 
 ## Mẫu (Samples)
 
@@ -56,9 +56,9 @@ Minh họa cách kết hợp animation, nhìn vào và di chuyển.
 
 Minh họa cách gắn nội dung 3D vào một điểm đánh dấu hình ảnh tùy chỉnh. Bắt đầu scene bên dưới trong AR và hướng camera điện thoại của bạn vào điểm đánh dấu hình ảnh trên màn hình hoặc in nó ra.
 
-<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />
+<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Điểm đánh dấu hình ảnh" width=300 />
 
-<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Tải xuống Điểm đánh dấu hình ảnh mẫu (Download Sample Image Marker)</a>
+<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Tải xuống Điểm đánh dấu hình ảnh mẫu</a>
 
 **Trên Android:** vui lòng bật "WebXR Incubations" trong Chrome Flags. Bạn có thể tìm thấy chúng bằng cách dán [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) vào thanh địa chỉ trình duyệt Chrome trên điện thoại Android của bạn.
 
@@ -73,7 +73,7 @@ Minh họa cách gắn nội dung 3D vào một điểm đánh dấu hình ảnh
 Tạo Hành động ở mọi nơi mới liên quan đến việc viết mã cho hành động của bạn bằng TypeScript, sẽ được sử dụng trong trình duyệt và cho WebXR, và sử dụng API TriggerBuilder và ActionBuilder của chúng tôi để tạo thiết lập phù hợp cho Thực tế tăng cường trên iOS qua QuickLook. Khi tạo các hành động tùy chỉnh, hãy lưu ý rằng QuickLook có một tập hợp tính năng hạn chế. Bạn vẫn có thể sử dụng bất kỳ mã nào bạn muốn cho trình duyệt và WebXR, nhưng hành vi cho QuickLook có thể cần phải là một xấp xỉ được xây dựng từ các trigger và action có sẵn.
 
 :::tip
-Thông thường, để có được hành vi phù hợp, bạn cần suy nghĩ sáng tạo và áp dụng một cách khéo léo các hành động cấp thấp có sẵn. Một ví dụ là hành động "Chạm để Đặt" (Tap to Place) – không có raycasting hoặc hit testing trong QuickLook, nhưng bạn có thể phủ khu vực đặt mong muốn bằng một số đối tượng vô hình và sử dụng trigger "Chạm" (Tap) để di chuyển đối tượng cần đặt đến vị trí của đối tượng vô hình được chạm.
+Thông thường, để có được hành vi phù hợp, bạn cần suy nghĩ sáng tạo và áp dụng một cách khéo léo các hành động cấp thấp có sẵn. Một ví dụ là hành động "Tap to Place" – không có raycasting hoặc hit testing trong QuickLook, nhưng bạn có thể phủ khu vực đặt mong muốn bằng một số đối tượng vô hình và sử dụng trigger "Tap" để di chuyển đối tượng cần đặt đến vị trí của đối tượng vô hình được chạm.
 :::
 
 Các Trigger và Action cho QuickLook dựa trên [Apple's Preliminary Interactive USD Schemas](https://developer.apple.com/documentation/arkit/usdz_schemas_for_ar/actions_and_triggers)
@@ -84,7 +84,7 @@ Các Trigger và Action cho QuickLook dựa trên [Apple's Preliminary Interacti
 @[code ts twoslash](@code/component-everywhere-action-hideonstart.ts)
 
 ::: tip
-Thông thường, để có được hành vi phù hợp sẽ liên quan đến việc kết hợp các _hành động cấp cao hơn_ từ các _hành động cấp thấp hơn_ có sẵn. Ví dụ, hành động "Thay đổi Material khi Nhấp" (Change Material on Click) của chúng tôi được kết hợp từ một số `fadeActions` và bên trong nó nhân bản các đối tượng với các bộ material khác nhau. Bằng cách xây dựng cẩn thận các hành động này, các hành vi phức tạp có thể được đạt được.
+Thông thường, để có được hành vi phù hợp sẽ liên quan đến việc kết hợp các _higher-level actions_ từ các _lower-level actions_ có sẵn. Ví dụ, hành động "Change Material on Click" của chúng tôi được kết hợp từ một số `fadeActions` và bên trong nó nhân bản các đối tượng với các bộ material khác nhau. Bằng cách xây dựng cẩn thận các hành động này, các hành vi phức tạp có thể được đạt được.
 :::
 
 ### Các phương thức cấp thấp để xây dựng hành động của riêng bạn
@@ -120,7 +120,7 @@ Thông thường, để có được hành vi phù hợp sẽ liên quan đến 
 
 Các trang sau đây cung cấp thêm ví dụ và mẫu mà bạn có thể thử nghiệm và khám phá ngay bây giờ:
 
-- Truy cập [Trang web Trưng bày AR](https://engine.needle.tools/projects/ar-showcase/) của chúng tôi có nhiều ví dụ AR tương tác tập trung vào iOS AR & Quicklook
-- [Mẫu Hành động ở mọi nơi của Needle Engine](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- Truy cập [Trang web Trưng bày AR Showcase](https://engine.needle.tools/projects/ar-showcase/) của chúng tôi có nhiều ví dụ AR tương tác tập trung vào iOS AR & Quicklook
+- [Mẫu Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
 
-Page automatically translated using AI
+Trang được dịch tự động bằng AI

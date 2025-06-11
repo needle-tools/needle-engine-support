@@ -4,7 +4,7 @@ Needle Engine 是一个功能齐全的 3D 引擎，可在浏览器中运行。�
 
 [[toc]]
 
-## 着色器和材质 (Shaders and Materials)
+## 着色器和材质
 
 使用 Shader Graph 或其他系统创建的 PBR 材质和自定义着色器都可以导出。
 
@@ -20,7 +20,7 @@ Needle Engine 可以在任何 Web 技术运行的地方运行：在桌面、移�
 
 使用 [Everywhere Actions](./everywhere-actions.md) 实现 **Android 和 iOS 上的交互式 AR**。
 
-## 光照贴图 (Lightmaps)
+## 光照贴图
 
 ![lightmaps](https://user-images.githubusercontent.com/5083203/186163693-093c7ae2-96eb-4d75-b98f-bf19f78032ff.gif)
 
@@ -30,16 +30,15 @@ Needle Engine 可以在任何 Web 技术运行的地方运行：在桌面、移�
 
 - 阅读更多关于 [Exporting Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps) 的信息
 
-## 多人游戏和网络 (Multiplayer and Networking)
+## 多人游戏和网络
 
 联网功能内置于核心运行时中。Needle Engine 部署到 Glitch 后，会附带一个微型服务器，让您可以在几秒钟内部署一个多人 3D 环境。内置的联网组件让您轻松入门，您也可以创建自己的同步组件。同步变量和状态非常容易！
 
 - 阅读更多关于 [Networking](https://fwd.needle.tools/needle-engine/docs/networking) • [Scripting](https://fwd.needle.tools/needle-engine/docs/scripting) 的信息
 
-## 动画和序列 (Animations and Sequencing)
+## 动画和序列
 
-Needle Engine 为 Web 带来了强大的动画、状态控制和序列功能——从播放单个动画到编排和混合复杂的动画和角色控制器。导出器可以将 Unity 组件（如 Animator 和 Timeline）转换为 Web 兼容的格式。
-我们甚至将此功能添加到我们的 Blender 插件中，这样您也可以在 Blender 中制作兼容的动画状态机，并将 nla 轨道作为 timeline 导出到 Web。
+Needle Engine 为 Web 带来了强大的动画、状态控制和序列功能——从播放单个动画到编排和混合复杂的动画和角色控制器。导出器可以将 Unity 组件（如 Animator 和 Timeline）转换为 Web 兼容的格式。我们甚至将此功能添加到我们的 Blender 插件中，这样您也可以在 Blender 中制作兼容的动画状态机，并将 nla 轨道作为 timeline 导出到 Web。
 
 - 阅读更多关于 [Animation Components](./component-reference.md#animation) 的信息
 
@@ -47,7 +46,7 @@ Needle Engine 为 Web 带来了强大的动画、状态控制和序列功能—�
 
 <img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" />
 
-Unity 中的 [Animator 和 AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) 组件允许您设置动画并定义何时以及如何混合它们。我们支持导出状态机、StateMachineBehaviours、过渡和层。StateMachineBehaviours 也支持 `OnStateEnter`、`OnStateUpdate` 和 `OnStateExit` 事件。
+Unity 中的 [Animator 和 AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) 组件允许您设置动画并定义何时以及如何混合它们。我们支持导出状态机、StateMachineBehaviours、过渡和层。StateMachineBehaviours 也支持 ``OnStateEnter``、``OnStateUpdate`` 和 ``OnStateExit`` 事件。
 
 > **注意**：不支持 Sub-states 和 Blend Trees。
 
@@ -64,9 +63,9 @@ Unity 中的 [Animator 和 AnimatorController](https://docs.unity3d.com/Manual/c
 
 - 阅读更多关于 [Animation Components](./component-reference.md#animation) 的信息
 
-## 物理 (Physics)
+## 物理
 
-使用 Rigidbodies、Mesh Colliders、Box Colliders 和 SphereColliders 为您的世界添加有趣的物理效果。
+使用 Rigidbodies、Mesh Colliders、Box Colliders 或 SphereColliders 为您的世界添加物理效果。
 
 - 阅读更多关于 [Physics Components](./component-reference.md#physics) 的信息
 
@@ -80,25 +79,25 @@ Unity 中的 [Animator 和 AnimatorController](https://docs.unity3d.com/Manual/c
 
 <sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
 
-## 粒子 (Particles)
+## 粒子
 
 导出 Unity ParticleSystem (Shuriken) 正在开发中。目前的功能包括世界/局部空间模拟、箱形和球形发射器形状、随时间发射以及爆发发射、随时间变化的速度和颜色、随速度发射、纹理表动画、基本拖尾。
 请参阅下面的[实时示例](https://engine.needle.tools/samples/particles)，了解支持的功能：
 
 <sample src="https://engine.needle.tools/samples-uploads/particles/" />
 
-## 后处理 (PostProcessing)
+## 后处理
 
-内置效果包括 Bloom、屏幕空间环境光遮蔽 (Screenspace Ambient Occlusion)、景深 (Depth of Field)、颜色校正 (Color Correction)。您也可以创建自己的自定义效果。请参阅[组件参考](./component-reference.md#postprocessing) 获取完整列表。
+内置效果包括 Bloom、Screenspace Ambient Occlusion、Depth of Field、Color Correction。您也可以创建自己的自定义效果。请参阅[组件参考](./component-reference.md#postprocessing) 获取完整列表。
 
 <sample src="https://engine.needle.tools/samples-uploads/postprocessing/" />
 
-## 编辑器集成 (Editor Integrations)
+## 编辑器集成
 
 Needle Engine 与 Unity Editor 和 Blender 有强大的集成。
 它允许您以可视化的方式设置和导出复杂场景，为艺术家和开发者提供了简单灵活的协作。
 
-## 脚本 (Scripting)
+## 脚本
 
 Needle Engine 使用[基于组件的工作流程](scripting.md#component-architecture)。使用 TypeScript 或 JavaScript 创建自定义脚本。使用我们集成到 Unity 中的[基于 npm 的模块化包工作流程](https://fwd.needle.tools/needle-engine/docs/npmdef)。一个 [TypeScript 到 C# 组件编译器](https://fwd.needle.tools/needle-engine/docs/component-compiler) 会神奇地即时生成 Unity 组件。
 
@@ -106,7 +105,7 @@ Needle Engine 使用[基于组件的工作流程](scripting.md#component-archite
 
 ## 还有更多
 
-- 后处理 (PostProcessing) → Bloom、屏幕空间环境光遮蔽 (Screenspace Ambient Occlusion)、景深 (Depth of Field)、颜色校正 (Color Correction)...
+- 后处理 → Bloom、Screenspace Ambient Occlusion、Depth of Field、Color Correction...
 - EditorSync → 在 Unity 中编辑时实时同步到运行中的 three.js 应用程序，用于本地开发
 - iOS 和 Android 上的交互式 AR → 使用我们的 [Everywhere Actions](./everywhere-actions.md) 功能集或构建您自己的功能
 

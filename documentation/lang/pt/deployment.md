@@ -72,7 +72,7 @@ Tem a opção de selecionar a compressão de textura e opções de carregamento 
 
 :::details Blender: Como posso definir configurações de compressão por textura?
 Selecione o separador Material. Verá opções de compressão para todas as texturas usadas por esse material.
-![Componente Deploy To Glitch no Blender](/blender/deploy_to_glitch.webp)
+![Opções de compressão de textura no Blender](/blender/texture-compression.webp)
 :::
 
 :::details Toktx não pode ser encontrado
@@ -95,7 +95,7 @@ Adicionalmente, pode configurar a simplificação de malha para reduzir a contag
 :::details Como posso definir configurações de compressão draco e meshopt?
 Adicione o componente MeshCompression para selecionar qual compressão deve ser aplicada por glTF exportado.
 
-![Componente Deploy to Netlify](/deployment/deploytonetlify-2.jpg)
+![Componente de compressão de malha no Unity](/imgs/unity-mesh-compression-component.jpg)
 - Para alterar a compressão da **cena atual**, basta adicioná-lo em qualquer lugar na sua cena raiz.
 - Para alterar a compressão de um **prefab ou NestedGltf**, adicione-o a um `GltfObject` ou ao prefab que é referenciado/exportado por qualquer um dos seus componentes.
 - Para alterar a compressão de uma **cena referenciada**, basta adicioná-lo à cena referenciada que é exportada
@@ -103,7 +103,7 @@ Adicione o componente MeshCompression para selecionar qual compressão deve ser 
 
 :::details Onde encontrar opções de simplificação de malha para reduzir a contagem de vértices ao compilar para produção?
 Selecione uma Malha e abra as opções do importador Needle para ver as opções disponíveis para a malha selecionada:
-![Componente Deploy to Netlify](/deployment/deploytonetlify.jpg)
+![Opções de simplificação de malha no Unity](/imgs/unity-mesh-simplification.jpg)
 :::
 
 ### Texturas Progressivas
@@ -130,9 +130,9 @@ Desde o Needle Engine 3.36, geramos automaticamente malhas LOD e alternamos entr
 
 Pode desativar a geração de LODs para todo o seu projeto no componente `Progressive Loading Settings` ou nas configurações do Mesh Importer.
 
-![image](/imgs/unity-lods-settings-1.jpg)
+![Configurações de LOD no Unity (1)](/imgs/unity-lods-settings-1.jpg)
 
-![image](/imgs/unity-lods-settings-2.jpg)
+![Configurações de LOD no Unity (2)](/imgs/unity-lods-settings-2.jpg)
 
 ## Opções de Implementação
 
@@ -182,9 +182,9 @@ Se clicar em `Create new Glitch Remix` e o navegador mostrar um erro como `there
 :::details Como implemento para Netlify a partir do Unity?
 Basta adicionar o componente `DeployToNetlify` à sua cena e seguir as instruções. Pode criar novos projetos com o clique de um botão ou implementando para projetos existentes.
 
-![Componente Deploy to Netlify](/deployment/deploytonetlify-2.jpg)
+![Componente Deploy to netlify](/deployment/deploytonetlify-2.jpg)
 
-![Componente Deploy to Netlify](/deployment/deploytonetlify.jpg)
+![Componente Deploy to netlify](/deployment/deploytonetlify.jpg)
 :::
 
 ### Implementar para Vercel
@@ -246,7 +246,7 @@ Pode desativar a compressão gzip em ``vite.config.js`` na pasta do seu projeto 
 
 :::details Como implemento para o meu servidor FTP manualmente?
 
-1) Abra `File > Build Settings`, selecione `Needle Engine` e clique em <kbd>Build</kbd>
+1) Abra `File > Build Settings`, selecione `Needle Engine`, e clique em <kbd>Build</kbd>
 2) Espere que a compilação termine - a pasta `dist` resultante abrirá automaticamente após a execução de todos os passos de compilação e compressão.
 3) Copie os ficheiros da pasta `dist` para o seu armazenamento FTP.
 
@@ -272,6 +272,7 @@ Insira o seguinte código no seu ficheiro `.htaccess` e guarde/faça upload para
 RemoveType .gz
 AddEncoding gzip .gz
 AddType application/javascript .js.gz
+</IfModule>
 ```
 
 ### Implementar para Github Pages

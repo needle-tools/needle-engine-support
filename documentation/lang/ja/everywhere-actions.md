@@ -27,17 +27,17 @@ iOSをサポートするには、シーンに`USDZExporter`コンポーネント
 
 ## Everywhere Actionsリスト
 
-| アクション | 説明 | 使用例 |
-| --- | --- | --- |
-| Play Animation on Click | Animatorから選択したアニメーションステートを再生します。再生後、必要に応じて別のアニメーションに遷移できます。 | 製品プレゼンテーション、インタラクティブチュートリアル、キャラクターの動き |
-| Change Material on Click | マテリアルを別のものに切り替えます。そのマテリアルを持つすべてのオブジェクトが一緒に切り替わります。 | 製品コンフィギュレーター、キャラクター |
-| Look At | オブジェクトをカメラの方に向けます。 | UI要素、スプライト、インフォグラフィック、ビルボードエフェクト、クリック可能なホットスポット |
-| Play Audio on Click | 選択したオーディオクリップを再生します。 | 効果音、ナレーション、美術館の展示 |
-| Hide on Start | 後で表示するために、シーン開始時にオブジェクトを非表示にします。 | |
-| Set Active on Click | オブジェクトを表示または非表示にします。 | |
-| Change Transform on Click | オブジェクトを移動、回転、またはスケールします。絶対的または相対的な移動が可能です。 | キャラクター、製品、UIアニメーション（より複雑な動きにはアニメーションを使用） |
-| Audio Source | 開始時にオーディオを再生し、ループを続けます。空間的または非空間的 | BGM、環境音 |
-| WebXR Image Tracking | 画像ターゲットをトラッキングし、オブジェクトを表示または非表示にします。 | AR体験、製品プレゼンテーション |
+| アクション                     | 説明                                                                  | 使用例                                                           |
+| :----------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| Play Animation on Click        | Animatorから選択したアニメーションステートを再生します。再生後、必要に応じて別のアニメーションに遷移できます。 | 製品プレゼンテーション、インタラクティブチュートリアル、キャラクターの動き           |
+| Change Material on Click       | マテリアルを別のものに切り替えます。そのマテリアルを持つすべてのオブジェクトが一緒に切り替わります。               | 製品コンフィギュレーター、キャラクター                                           |
+| Look At                        | オブジェクトをカメラの方に向けます。                                                      | UI要素、スプライト、インフォグラフィック、ビルボードエフェクト、クリック可能なホットスポット |
+| Play Audio on Click            | 選択したオーディオクリップを再生します。                                                  | 効果音、ナレーション、美術館の展示                                                 |
+| Hide on Start                  | 後で表示するために、シーン開始時にオブジェクトを非表示にします。                                        |                                                                  |
+| Set Active on Click            | オブジェクトを表示または非表示にします。                                                  |                                                                  |
+| Change Transform on Click      | オブジェクトを移動、回転、またはスケールします。絶対的または相対的な移動が可能です。                           | キャラクター、製品、UIアニメーション（より複雑な動きにはアニメーションを使用）                 |
+| Audio Source                   | 開始時にオーディオを再生し、ループを続けます。空間的または非空間的                                    | BGM、環境音                                                        |
+| WebXR Image Tracking           | 画像ターゲットをトラッキングし、オブジェクトを表示または非表示にします。                                   | AR体験、製品プレゼンテーション                                                 |
 
 ## サンプル
 
@@ -90,30 +90,30 @@ QuickLookのトリガーとアクションは、[AppleのPreliminary Interactive
 
 ### 独自のAction構築のための低レベルメソッド
 
-| トリガー | |
-| --- | --- |
-| `TriggerBuilder.sceneStartTrigger` | |
-| `TriggerBuilder.tapTrigger` | |
+| トリガー                       |   |
+| :----------------------------- | :- |
+| `TriggerBuilder.sceneStartTrigger` |   |
+| `TriggerBuilder.tapTrigger`    |   |
 
-| アクション | |
-| --- | --- |
-| `ActionBuilder.fadeAction` | |
-| `ActionBuilder.startAnimationAction` | |
-| `ActionBuilder.waitAction` | |
-| `ActionBuilder.lookAtCameraAction` | |
-| `ActionBuilder.emphasize` | |
-| `ActionBuilder.transformAction` | |
-| `ActionBuilder.playAudioAction` | |
+| アクション                       |   |
+| :------------------------------- | :- |
+| `ActionBuilder.fadeAction`       |   |
+| `ActionBuilder.startAnimationAction` |   |
+| `ActionBuilder.waitAction`       |   |
+| `ActionBuilder.lookAtCameraAction` |   |
+| `ActionBuilder.emphasize`        |   |
+| `ActionBuilder.transformAction`  |   |
+| `ActionBuilder.playAudioAction`  |   |
 
-| グループアクション | |
-| --- | --- |
-| `ActionBuilder.sequence` | |
-| `ActionBuilder.parallel` | |
-| `GroupAction.addAction` | |
-| `GroupAction.makeParallel` | |
-| `GroupAction.makeSequence` | |
-| `GroupAction.makeLooping` | |
-| `GroupAction.makeRepeat` | |
+| グループアクション              |   |
+| :---------------------------- | :- |
+| `ActionBuilder.sequence`      |   |
+| `ActionBuilder.parallel`      |   |
+| `GroupAction.addAction`       |   |
+| `GroupAction.makeParallel`    |   |
+| `GroupAction.makeSequence`    |   |
+| `GroupAction.makeLooping`     |   |
+| `GroupAction.makeRepeat`      |   |
 
 組み込みのEverywhere Actionsの実装を見るには、`src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`を参照してください。
 

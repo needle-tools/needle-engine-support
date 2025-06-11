@@ -15,4 +15,6 @@ Sie können Editor Synchronisierung aktivieren, indem Sie die Komponente `Editor
 Dieses Tutorial zeigt den Editor Synchronisierung Workflow in Aktion:
 
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
+
+
 Seite automatisch übersetzt mit KI

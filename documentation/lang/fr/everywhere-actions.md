@@ -31,7 +31,7 @@ sélectionnez-le, puis cliquez sur `Add Component > Needle > Everywhere Actions 
 | --- | --- | --- |
 | Play Animation on Click | Joue un état d'animation sélectionné à partir d'un Animator. Après avoir joué, il peut éventuellement passer à une autre animation. | Présentations de produits, tutoriels interactifs, mouvement de personnage |
 | Change Material on Click | Échange un material contre d'autres. Tous les objets utilisant ce material seront changés ensemble. | Configurateurs de produits, personnages |
-| Look At | Fait regarder un objet vers la caméra. | Éléments d'interface utilisateur, sprites, infographies, effets de billboard, zones cliquables (hotspots) |
+| Look At | Fait regarder un objet vers la caméra. | Éléments d'interface utilisateur (UI), sprites, infographies, effets de billboard, zones cliquables (hotspots) |
 | Play Audio on Click | Joue un clip audio sélectionné. | Effets sonores, narration, expositions de musée |
 | Hide on Start | Cache un objet au démarrage de la scène pour le révéler ultérieurement. |
 | Set Active on Click | Montre ou cache des objets. |  |
@@ -57,7 +57,7 @@ Démontre la combinaison d'animations, de look at et de mouvement.
 
 Démontre comment attacher du contenu 3D à un marqueur d'image personnalisé. Lancez la scène ci-dessous en AR et pointez la caméra de votre téléphone vers le marqueur d'image sur un écran, ou imprimez-le.
 
-<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />
+<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Marqueur d'image" width=300 />
 
 <a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Télécharger l'exemple de marqueur d'image</a>
 

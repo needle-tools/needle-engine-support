@@ -12,7 +12,7 @@ Needleで作成したプロジェクトがあなたのウェブサイト上で�
 @tab オプション1：Needleを埋め込む
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
 @tab オプション2：iframeを使用する
 ```html
@@ -21,7 +21,7 @@ Needleで作成したプロジェクトがあなたのウェブサイト上で�
 </iframe>
 ```
 @tab 結果のウェブサイト
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
 :::
@@ -123,7 +123,7 @@ WordPressのようなCMSを使用しているなど、ウェブサイトへの�
     ::: tip iframe内の権限
     `allow=`内のリストは、ウェブアプリが使用する機能によって異なります。例えば、XRアプリケーションはiframe内で動作するために`xr`と`xr-spatial-tracking`が必要です。
 
-    他にも`camera; microphone; display-capture; geolocation`などの機能が必要になる場合があります。[MDNのiframe Permissions Policy directivesの全リスト](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives)を参照してください。
+    他にも`camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`などの機能が必要になる場合があります。[MDNのiframe Permissions Policy directivesの全リスト](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives)を参照してください。
     :::
 
 4. これで完了です！シーンがウェブサイトに表示されるはずです。

@@ -1,3 +1,4 @@
+```markdown
 ---
 title: needle.config.json
 ---
@@ -8,7 +9,7 @@ title: needle.config.json
 | --- | --- |
 | **パス** | |
 | `buildDirectory` | ビルドされたプロジェクトファイルがコピーされる場所です |
-| `assetsDirectory` | Editor インテグレーションのアセットがコピーまたは作成される場所です（例：UnityまたはBlenderからエクスポートされた.glbファイル） |
+| `assetsDirectory` | Editor インテグレーションのアセットがコピーまたは作成される場所です（例：UnityまたはBlenderからエクスポートされた`.glb`ファイル） |
 | `scriptsDirectory` | Editor インテグレーションがコンポーネントを再生成するためにコードの変更を監視するディレクトリです |
 | `codegenDirectory` | Editor インテグレーションが生成されたファイルを出力する場所です。 |
 | `baseUrl` | 例えば next.js や SvelteKit インテグレーションに必要です。baseUrlが設定されている場合、codegenおよびファイル内の相対パスは、assetsDirectoryではなくbaseUrlを使用します。これは、assetDirectoryがサーバーのURLと一致しない場合に便利です。<br/>例えば、ディスク上のパスが `"assetsDirectory": "public/assets"` であっても、フレームワークは `"baseUrl": "assets"` からファイルを配信する場合があります。 |
@@ -58,5 +59,5 @@ title: needle.config.json
 - [プロジェクト構造](../project-structure.md)
 
 ---
-Page automatically translated using AI
 ページの自動翻訳: AIを使用
+```

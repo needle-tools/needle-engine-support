@@ -1,6 +1,6 @@
 # Funktionsübersicht
 
-Needle Engine ist eine vollwertige 3D-Engine, die im Browser läuft. Sie bietet alle Funktionen, die man von einer modernen 3D-Engine erwarten würde, und mehr. Wenn Sie es noch nicht getan haben, werfen Sie einen Blick auf unsere [Homepage](https://needle.tools) und unsere [Samples und Showcase](https://engine.needle.tools/samples).
+Needle Engine ist eine vollwertige 3D-Engine, die im Browser läuft. Sie kommt mit allen Funktionen, die Sie von einer modernen 3D-Engine erwarten würden, und mehr. Wenn Sie es noch nicht getan haben, werfen Sie einen Blick auf unsere [Homepage](https://needle.tools) und unsere [Samples und Showcase](https://engine.needle.tools/samples).
 
 [[toc]]
 
@@ -24,7 +24,7 @@ Verwenden Sie [Everywhere Actions](./everywhere-actions.md) für **Interactive A
 
 ![lightmaps](https://user-images.githubusercontent.com/5083203/186163693-093c7ae2-96eb-4d75-b98f-bf19f78032ff.gif)
 
-Lightmaps können in Unity oder Blender gebacken werden, um Ihren 3D-Inhalten auf einfache Weise schönes statisches Licht hinzuzufügen. Lightbaking für das Web war noch nie so einfach. Markieren Sie einfach Objekte, die Sie als statisch in Unity lightmappen möchten, fügen Sie ein oder viele Lichter zu Ihrer Szene hinzu (oder verwenden Sie emissive materials) und klicken Sie auf bake. Needle Engine exportiert Ihre Lightmaps pro Szene und lädt und zeigt sie automatisch an, genau so, wie Sie es im Editor sehen!
+Lightmaps können in Unity oder Blender gebacken werden, um Ihren 3D-Inhalten auf einfache Weise schönes statisches Licht hinzuzufügen. Lightbaking für das Web war noch nie so einfach. Markieren Sie einfach Objekte, die Sie als static in Unity lightmappen möchten, fügen Sie ein oder viele Lights zu Ihrer Szene hinzu (oder verwenden Sie emissive materials) und klicken Sie auf bake. Needle Engine exportiert Ihre Lightmaps pro Szene und lädt und zeigt sie automatisch an, genau so, wie Sie es im Editor sehen!
 
 > **Hinweis**: Es gibt keine technische Einschränkung, welchen Lightmapper Sie verwenden, solange sie in Unitys Lightmapping-Datenstrukturen landen. Lightmapper von Drittanbietern wie [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218) werden daher ebenfalls unterstützt.
 
@@ -62,36 +62,36 @@ Unterstützte tracks umfassen: AnimationTrack, AudioTrack, ActivationTrack, Cont
 - Lesen Sie mehr über [Animation Components](./component-reference.md#animation)
 
 ## Physik
-Verwenden Sie Rigidbodies, Mesh Colliders, Box Colliders und SphereColliders, um Ihrer Welt etwas saftige Physik hinzuzufügen.
+Verwenden Sie Rigidbodies, Mesh Colliders, Box Colliders oder SphereColliders, um Ihrer Welt Physik hinzuzufügen.
 
 - Lesen Sie mehr über [Physics Components](./component-reference.md#physics)
 
 <sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
 
 ## UI
-Das Erstellen von UI mit Unitys UI Canvas System ist in Entwicklung. Aktuelle Funktionen umfassen den Export von Text (einschließlich Schriftarten), Bildern, Buttons.
+Das Erstellen von UI mit Unitys UI canvas system ist in Entwicklung. Aktuelle Funktionen umfassen den Export von Text (einschließlich Fonts), Images, Buttons.
 
 Siehe die [ui component reference](component-reference.md#ui) für unterstützte Komponenten.
 
 <sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
 
 ## Partikel
-Der Export des Unity ParticleSystem (Shuriken) ist in Entwicklung. Aktuelle Funktionen umfassen Welt-/Lokalraumsimulation, Box- und Kugel-Emitterformen, Emission über Zeit sowie Burst-Emission, Geschwindigkeit und Farbe über Zeit, Emission nach Geschwindigkeit, Texturblatt-Animation, einfache Trails.
+Der Export des Unity ParticleSystem (Shuriken) ist in Entwicklung. Aktuelle Funktionen umfassen world/local space Simulation, box und sphere emitter shapes, emission over time sowie burst emission, velocity- und color over time, emission by velocity, texturesheet animation, basic trails.
 Siehe ein [live sample](https://engine.needle.tools/samples/particles) der unterstützten Funktionen unten:
 
 <sample src="https://engine.needle.tools/samples-uploads/particles/" />
 
 ## PostProcessing
 
-Integrierte Effekte umfassen Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction. Sie können auch Ihre eigenen benutzerdefinierten Effekte erstellen. Siehe [die component reference](./component-reference.md#postprocessing) für eine vollständige Liste.
+Builtin effects umfassen Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction. Sie können auch Ihre eigenen custom effects erstellen. Siehe [die component reference](./component-reference.md#postprocessing) für eine vollständige Liste.
 
 <sample src="https://engine.needle.tools/samples-uploads/postprocessing/" />
 
 ## Editor-Integrationen
-Needle Engine wird mit leistungsstarken Integrationen in den Unity Editor und Blender geliefert. Sie ermöglicht es Ihnen, komplexe Szenen visuell einzurichten und zu exportieren, was eine einfache und flexible Zusammenarbeit zwischen Künstlern und Entwicklern ermöglicht.
+Needle Engine kommt mit leistungsstarken Integrationen in den Unity Editor und Blender geliefert. Sie ermöglicht es Ihnen, komplexe Szenen visuell einzurichten und zu exportieren, was eine einfache und flexible Zusammenarbeit zwischen Künstlern und Entwicklern ermöglicht.
 
 ## Scripting
-Needle Engine verwendet einen [component based workflow](scripting.md#component-architecture). Erstellen Sie benutzerdefinierte Skripte in typescript oder javascript. Verwenden Sie unseren [modularen npm-basierten package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef), der in Unity integriert ist. Ein [typescript zu C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) erzeugt Unity-Komponenten magisch on the fly.
+Needle Engine verwendet einen [component based workflow](scripting.md#component-architecture). Erstellen Sie custom scripts in typescript oder javascript. Verwenden Sie unseren [modularen npm-basierten package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef), der in Unity integriert ist. Ein [typescript zu C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) erzeugt Unity-Komponenten magisch on the fly.
 
 - Lesen Sie mehr über [Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
 
@@ -108,4 +108,5 @@ Needle Engine verwendet einen [component based workflow](scripting.md#component-
 Siehe unseren [Getting Started Guide](getting-started/), um zu erfahren, wie Sie Needle Engine herunterladen und einrichten.
 Erfahren Sie mehr über [unsere Vision](vision) oder tauchen Sie tiefer in einige der [technischen Hintergründe und glTF](technical-overview) ein, die all dies antreiben.
 
-Seite automatisch mit AI übersetzt
+
+Seite automatisch mit KI übersetzt

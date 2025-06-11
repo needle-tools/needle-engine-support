@@ -12,7 +12,7 @@ Se quiser experimentar rapidamente como os projetos feitos com Needle ficarão n
 @tab Option 1: Embedding Needle
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
 @tab Option 2: Using an iframe
 ```html
@@ -21,7 +21,7 @@ Se quiser experimentar rapidamente como os projetos feitos com Needle ficarão n
 </iframe>
 ```
 @tab Resulting Website
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
 :::
@@ -108,7 +108,7 @@ Quando tem acesso limitado a um website, por exemplo, quando está a usar um CMS
 
 2. Carregue a pasta `dist/` do seu Projeto Web para o seu web hoster.
     ::: tip A pasta pode ser alojada em qualquer lugar!
-    Se não tiver acesso ao sistema de ficheiros do seu web hoster, ou nenhuma forma de carregar ficheiros para lá, pode carregar a pasta para qualquer outro espaço web e usar o URL público desse no próximo passo.
+    If you don't have access to your web hoster's file system, or no way to upload files there, you can upload the folder to any other webspace and  use the public URL of that in the next step.
     :::
 
 3. Adicione um iframe ao seu website, apontando para o ficheiro `index.html` na pasta `dist/`.
@@ -121,109 +121,109 @@ Quando tem acesso limitado a um website, por exemplo, quando está a usar um CMS
 
 
     ::: tip Permissões dentro de iframes
-    A lista dentro de `allow=` depende das funcionalidades que a sua aplicação web usa. Por exemplo, as aplicações XR requerem `xr` e `xr-spatial-tracking` para funcionar dentro de iframes.
+    A lista dentro de `allow=` depends on the features your web app uses. For example, XR applications require `xr` and `xr-spatial-tracking` to work inside iframes.
 
-    Podem ser necessárias funcionalidades adicionais, por exemplo `camera; microphone; display-capture; geolocation`. Consulte [a lista completa de diretivas de iframe Permissions Policy no MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
+    There may be additional features needed, for example `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. See [the full list of iframe Permissions Policy directives on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
     :::
 
-4. É isso! A cena deverá agora ser exibida no seu website.
+4. É isso! The scene should now be displayed on your website.
 
 ## Incorporar cenas que não usam scripts personalizados
 
 Quando o seu projeto usa apenas componentes principais e nenhum script personalizado, pode usar diretamente o Needle Engine a partir de um CDN (content-delivery network).
 
-1. Adicione o seguinte snippet ao seu website, por exemplo como "HTML Block" no seu CMS:
+1. Adicione o seguinte snippet ao seu website, for example as "HTML Block" in your CMS:
     ```html
     <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
     <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb" background-blurriness="0.8"></needle-engine>
     ```
-2. Carregue a pasta `assets/` do seu Projeto Web para o seu web hoster. Dependendo das configurações do seu projeto, esta pasta contém um ou mais ficheiros `.glb` e um número qualquer de outros ficheiros como áudio, vídeo, skybox e mais.
+2. Carregue a pasta `assets/` do seu Projeto Web para o seu web hoster. Depending on your project settings, this folder contains one or more `.glb` files and any number of other files like audio, video, skybox and more.
 
-3. Altere o atributo `src=` da tag `needle-engine` para o URL do ficheiro `.glb` que pretende exibir. Tipicamente, este será um caminho como `https://your-website.com/assets/MyScene.glb`.
+3. Change the `src=` attribute of the `needle-engine` tag to the URL of the `.glb` file you want to display. Typically, this will be some path like `https://your-website.com/assets/MyScene.glb`.
 
-4. É isso! A cena deverá agora ser exibida no seu website.
+4. É isso! The scene should now be displayed on your website.
 
 ## Incorporar uma aplicação web Needle Cloud como iframe
 
-Se implementou o seu projeto no Needle Cloud, pode exibi-lo facilmente no seu próprio website com um iframe.
+If you deployed your project to Needle Cloud, you can easily display it on your own website with an iframe.
 
-::: warning <b>Em construção.</b> Esta secção ainda não está completa.
+::: warning <b>Em construção.</b> This section is not yet complete.
 :::
 
 # Fluxos de trabalho comuns
 
-## Criar uma aplicação web para o website de um cliente
+## Creating a web app for a client's website
 
-1. **Compreenda que tipo de aplicação está a construir**, e se e como ela se liga a um website existente.
-   Frequentemente, está a construir uma aplicação autónoma que é acessível a partir de um link no domínio do cliente.
-   Mas também podem estar envolvidos outros componentes do lado do servidor e do lado do cliente.
+1. **Understand what type of app you're building**, and if and how it connects to an existing website.
+   Often, you're building a standalone app that is accessible from a link on the client's domain.
+   But there might also be other server-side and client-side components involved.
 
-2. **Compreenda de qual URL a aplicação web deverá ser acessível.**
-  Isto pode ser
+2. **Understand which URL the web app should be accessible from.**
+  This could either be
 
-    - Uma página no **[Needle Cloud](./cloud/)**
+    - A page on **[Needle Cloud](./cloud/)**
       `collaborativesandbox-zubcks1qdkhy.needle.run`
 
-    - Uma **Subpágina** no website do cliente
+    - A **Subpage** on the client's website
       `my-page.com/app`
 
-    - Um novo **Subdomínio**
+    - A new **Subdomain**
       `app.my-page.com`
-    - Um **Domínio** novo ou existente
+    - A new or existing **Domain**
       `my-app.com`
 
-    ::: tip Não há "bom" ou "mau" aqui.
-    Uma abordagem típica é começar no [Needle Cloud](./cloud/) para protótipos iniciais e durante o desenvolvimento, e passar para o espaço web e domínio do cliente para a versão final.
+    ::: tip There's no "good" or "bad" here.
+    A typical approach is to start on [Needle Cloud](./cloud/) for initial prototypes and during development, and move to the client's webspace and domain for the final version.
 
-    A escolha depende principalmente dos requisitos do cliente relativamente a branding, SEO e configuração técnica. Frequentemente, terá de discutir isto com o departamento de TI do cliente ou com o webmaster.
+    The choice mostly depends on the client's requirements regarding branding, SEO, and technical setup. Often, you'll have to discuss this with the client's IT department or webmaster.
     :::
 
-1. **Compreenda como a aplicação web será implementada e mantida.**
-    - Terá acesso a uma pasta no servidor web do cliente para poder carregar a versão mais recente, ou eles querem gerir a implementação eles próprios?
-      ::: tip Uma abordagem simples: acesso FTP
-      Frequentemente, pode pedir acesso FTP ou SFTP a uma pasta no servidor web do cliente. Obterá um URL, nome de utilizador e palavra-passe, e depois poderá carregar os seus ficheiros para essa pasta. Fornecemos um componente "Deploy to FTP" que torna isto particularmente fácil. O departamento de TI do cliente configurará qual URL torna a pasta acessível.
+1. **Understand how the web app will be deployed and maintained.**
+    - Will you have access to a folder on the client's web server so you can upload the latest version, or do they want to manage the deployment themselves?
+      ::: tip A simple approach: FTP access
+      Often, you can ask for FTP or SFTP access to a folder on the client's web server. You'll get a URL, username, and password, and then you can upload your files to that folder. We provide a "Deploy to FTP" component that makes this particularly easy. The client's IT department will set up which URL the folder is accessible from.
         :::
 
-    - Há muito conteúdo que precisa ser atualizado regularmente, ou a aplicação é maioritariamente estática?
-        ::: tip Conteúdo estático vs. dinâmico
-        Para conteúdo maioritariamente estático, muitas vezes basta carregar uma nova compilação de tempos a tempos. Para conteúdo dinâmico, pode precisar de um CMS (sistema de gestão de conteúdo) ou uma ligação à base de dados.
+    - Is there a lot of content that needs to be updated regularly, or is the app mostly static?
+        ::: tip Static vs. dynamic content
+        For mostly static content, it's often enough to upload a new build from time to time. For dynamic content, you might need a CMS (content management system) or a database connection.
         :::
-    - Quais dispositivos e navegadores o público-alvo está a usar?
-        ::: tip Compatibilidade de navegadores e testes
-        Embora o Needle Engine funcione em todos os dispositivos e navegadores modernos, é sempre uma boa ideia testar a sua aplicação nos dispositivos e navegadores que o seu público-alvo está a usar para garantir que tudo funciona como esperado. Por exemplo, ao criar uma aplicação AR para telemóveis, irá querer testar em dispositivos Android e iOS.
+    - Which devices and browsers are the target audience using?
+        ::: tip Browser compatibility and testing
+        While Needle Engine works on all modern devices and browsers, it's always a good idea to test your app on the devices and browsers your target audience is using to make sure everything works as expected. For example, when creating an AR app for phones, you'll want to test across Android and iOS devices.
         :::
 
-2. **Configure o projeto, uma implementação de teste e a implementação para o cliente.**
-   É frequentemente uma boa ideia testar o processo de implementação cedo, para garantir que compreende como funciona e quais são os requisitos. Por exemplo, se decidiu usar FTP, então pode configurar uma pasta de teste no seu próprio servidor web e testar o processo de implementação lá. Assim que as alterações forem aprovadas pelo cliente, pode então implementar no servidor do cliente.
+2. **Set up the project, a test deployment, and client deployment.**
+   It's often a good idea to test the deployment process early on, to make sure you understand how it works and what the requirements are. For example, when you've decided on using FTP, then you could set up a test folder on your own web server and test the deployment process there. Once changes are approved by the client, you can then deploy to the client's server.
 
-3. **Comece a criar!**
-   Com os requisitos e a implementação definidos, avance e comece a fazer o seu projeto! Normalmente, irá iterar localmente, depois implementar no seu servidor de teste para aprovação, e depois no servidor do cliente.
+3. **Start creating!**
+   With requirements and deployment in place, go ahead and start making your project! You'll usually iterate locally, then deploy to your test server for approval, and then to the client's server.
 
 ## Wordpress
 
-1. Decida o método que pretende usar para incorporar o seu projeto Needle Engine. Pode usar o método "Embedding a Needle project into an existing website" ou o método "Embedding a Needle project as iframe".
+1. Decide on the method you want to use to embed your Needle Engine project. You can either use the "Embedding a Needle project into an existing website" method, or the "Embedding a Needle project as iframe" method.
 
-2. Carregue o conteúdo da pasta `dist/` do seu Projeto Web para o seu web hoster. Geralmente, o diretório de uploads do Wordpress está localizado em `wp-content/uploads/`.
+2. Upload the content of the `dist/` folder from your Web Project to your web hoster. Usually, the Wordpress uploads directory is located at `wp-content/uploads/`.
 
-    ::: tip Backups do Wordpress
-    Pode decidir se o seu novo projeto deverá estar em `wp-content/uploads/my-project/` ou noutra localização como `my-projects/my-project`. Isto afeta se e como o seu projeto será incluído nos backups do Wordpress.
+    ::: tip Wordpress Backups
+    You can decide if your new project should be at `wp-content/uploads/my-project/`, or at a different location like `my-projects/my-project`. This affects if and how your project will be contained in Wordpress backups.
     :::
 
-3. Na página onde pretende adicionar o Needle Engine, adicione um bloco `HTML` e cole o snippet de código conforme descrito acima – seja como script embed, ou como iframe.
+3. In the page you want to add Needle Engine to, add a `HTML` block and paste the code snippet as outlined above – either as script embed, or as iframe.
 
 ## Shopify
 
-::: warning <b>Em construção.</b> Precisa ser documentado.
+::: warning <b>Em construção.</b> Needs to be documented.
 :::
 
 ## Wix
 
-::: warning <b>Em construção.</b> Precisa ser documentado.
+::: warning <b>Em construção.</b> Needs to be documented.
 :::
 
 ## Webflow
 
-::: warning <b>Em construção.</b> Precisa ser documentado.
+::: warning <b>Em construção.</b> Needs to be documented.
 :::
 
 

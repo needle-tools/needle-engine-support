@@ -84,7 +84,7 @@ QuickLook 的触发器和操作基于 [Apple 的 Preliminary Interactive USD Sch
 @[code ts twoslash](@code/component-everywhere-action-hideonstart.ts)
 
 ::: tip
-通常，获得正确的行为将涉及从可用的_低级动作_组合_更高级别的动作_。例如，我们的“点击更改材质”动作由多个 `fadeActions` 组成，并在内部复制具有不同材质集的对象。通过精心构建这些动作，可以实现复杂的行为。
+通常，获得正确的行为将涉及从可用的_低级动作_组合_更高级别的动作_。例如，我们的“点击更改材质”动作由多个 `fadeActions` 组成，并在内部复制具有不同材质集的对象。通过精心构建这些动作，可以实现复杂行为。
 :::
 
 ### 构建您自己动作的低级方法
@@ -122,5 +122,6 @@ QuickLook 的触发器和操作基于 [Apple 的 Preliminary Interactive USD Sch
 
 - 访问我们的 [AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/)，其中有许多交互式 AR 示例，重点关注 iOS AR 和 Quicklook
 - [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+
 
 页面由 AI 自动翻译

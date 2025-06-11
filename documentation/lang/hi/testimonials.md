@@ -83,7 +83,7 @@ Unity में Cinemachine के बाद यह सबसे अच्छी
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
-मैं लंबे समय से Unity डेवलपर हूँ और हाल ही में Needle Tools के साथ खेलना शुरू किया है और मुझे यह बहुत पसंद है! यह उन Unity डेवलपर्स के लिए एक शानदार ऑन रैंप है जो WebXR और three.js सीखना चाहते हैं। runtime engine शानदार है और अपना खुद का custom component बनाना काफी आसान था।
+मैं लंबे समय से Unity डेवलपर हूँ और हाल ही में Needle Tools के साथ खेलना शुरू किया है और मुझे यह बहुत पसंद है! यह उन Unity डेवलपर्स के लिए एक शानदार ऑन रैंप है जो WebXR और three.js सीखना चाहते हैं। The runtime engine शानदार है और अपना खुद का custom component बनाना काफी आसान था।
 </testimonial>
 
 <testimonial
@@ -110,7 +110,7 @@ Unity में Cinemachine के बाद यह सबसे अच्छी
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
 >
-जब से मैंने needle का उपयोग करना शुरू किया है, तब से मेरा workflow 10 गुना ऑप्टिमाइज़ हो गया है।
+जब से मैंने Needle का उपयोग करना शुरू किया है, तब से मेरा workflow 10 गुना ऑप्टिमाइज़ हो गया है।
 </testimonial>
 
 

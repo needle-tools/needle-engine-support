@@ -14,6 +14,7 @@ Unityシーンに``ExportInfo``コンポーネントを追加すると、テン�
 
 エクスポートされるのは、これらのルートオブジェクト上および内部のスクリプトとデータのみです。それらの外部にあるスクリプトとデータはエクスポートされません。
 
+
 ルートオブジェクトの子としてCubeを追加し、シーンを保存します。出力の``assets/``フォルダ([プロジェクト構造](#vite-project-structure)を参照)に、ルートGameObjectと同じ名前の新しい``.glb``ファイルが含まれていることに注意してください。
 
 ``Smart Export``設定（`Edit/Project Settings/Needle`から）を有効にすると、このオブジェクトのHierarchyで変更が検出された場合にのみエクスポートが行われます。
@@ -81,6 +82,7 @@ Skyboxの解像度を変更するには、シーンに``SkyboxExportSettings``�
 
 ![image](https://user-images.githubusercontent.com/5083203/196030839-170a9496-9ed9-4ebc-bc1d-2df6c746f8c8.png)
 
+
 glbファイルでSkyboxを全くエクスポートしたくない場合は、``GltfObject``コンポーネントの``Embed Skybox``オプションのチェックを外すことができます。
 
 ![image](https://user-images.githubusercontent.com/5083203/196030825-8a05037f-5acc-4795-9128-2bdacedd0d49.png)
@@ -128,6 +130,7 @@ PBRGraphマテリアルには、StandardまたはURP/Litよりもはるかに多
 ## 💡 ライトマップのエクスポート
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
 
+
 ライトマップをエクスポートするには、Unityで[ライトマップを生成する](https://docs.unity3d.com/Manual/Lightmapping.html)だけです。ライトマップは自動的にエクスポートされます。
 
 複数のシーンで作業する場合は、「Auto Generate」を無効にして、ライトマップを明示的にベイクしてください。そうしないと、Unityはシーン変更時に一時的なライトマップを破棄します。
@@ -165,5 +168,4 @@ Environment Lighting: Color
 Ambient Color: any
 ```
 
-
-ページはAIによって自動翻訳されました
+このページはAIによって自動翻訳されました

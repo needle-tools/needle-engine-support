@@ -14,7 +14,7 @@ footer: "Copyright © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
 >
 Tích hợp Unity editor đáng kinh ngạc, vượt trội một bậc,
   và đơn giản như tài liệu hướng dẫn. Wow.
@@ -54,7 +54,7 @@ Chơi thử cái này một chút sáng nay 🤯🤯 khá kỳ diệu
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
-    Đây là điều tốt nhất tôi từng thấy sau cinemachine trong unity. Unity nên mua lại cái này.
+    Đây là điều tốt nhất tôi từng thấy sau cinemachine trong unity. Unity nên mua lại cái này
 </testimonial>
 
 <testimonial
@@ -73,7 +73,7 @@ Nhờ @NeedleTools, đã thấy khá nhiều giải pháp này cho các công c�
   img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
 >
 Cuối cùng cũng dùng thử @NeedleTools với Unity. Cực kỳ dễ dàng để chạy cái gì đó trên cloud bằng cách sử dụng các
- tích hợp của họ.
+ tích hợp của họ
 </testimonial>
 
 <testimonial
@@ -82,7 +82,7 @@ Cuối cùng cũng dùng thử @NeedleTools với Unity. Cực kỳ dễ dàng �
   src="https://x.com/Dilmerv/status/1562209049856188420"
   img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
 >
- Điều này thật tuyệt vời và nếu bạn tò mò về #WebXR với Unity, điều này sẽ giúp chúng ta đạt được điều đó.
+ Điều này thật tuyệt vời và nếu bạn tò mò về #WebXR với Unity, điều này sẽ giúp chúng ta đạt được điều đó
 </testimonial>
 
 <testimonial
@@ -90,7 +90,7 @@ Cuối cùng cũng dùng thử @NeedleTools với Unity. Cực kỳ dễ dàng �
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
- Tôi là một dev Unity lâu năm và gần đây bắt đầu thử dùng Needle Tools và tôi rất thích! Nó là một điểm khởi đầu tuyệt vời cho các dev Unity muốn học WebXR và three.js. Runtime engine rất tuyệt vời và việc tạo component tùy chỉnh của riêng tôi khá dễ dàng.
+ Tôi là một dev Unity lâu năm và gần đây bắt đầu thử dùng Needle Tools và tôi rất thích! Nó là một điểm khởi đầu tuyệt vời cho các dev Unity muốn học WebXR và three.js. Runtime engine rất tuyệt vời và việc tạo component tùy chỉnh của riêng tôi khá dễ dàng
 </testimonial>
 
 <testimonial

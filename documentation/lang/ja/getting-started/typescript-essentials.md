@@ -15,7 +15,7 @@ Typescriptの書き方を学ぶための便利なリソースもいくつかあ�
 ### C#、Javascript、またはTypescript間の主な違い
 
 
-**CSharp**または**C#**は静的型付けされたコンパイル言語です。これは、コードが実行される**前**に、コンパイル（翻訳）されてILまたはCILという中間言語になる必要があることを意味します。この中間言語は、*機械語*に少し近いです。ここで理解すべき重要な点は、コードが分析され、コンパイラによって**強制される**特定のチェックとルールに合格しなければならないということです。C#言語のいずれかのルールに違反するコードを書いた場合、**Unityで**コンパイラエラーが発生し、アプリケーションは実行すら開始しません。コンパイラエラーがあると、Playモードに入ることはできません。
+**CSharp**または**C#**は静的型付けされたコンパイル言語です。これは、コードが実行される**前**に、コンパイル（翻訳）されてILまたはCILという中間言語になる必要があることを意味します。この中間言語は、*機械語*に少し近いです。ここで理解すべき重要な点は、コードが分析され、コンパイラによって**強制される**特定のチェックとルールに合格しなければならないということです。C#言語のいずれかのルールに違反するコードを書いた場合、**Unityで**コンパイラエラーが発生し、アプリケーションは実行すら開始しません。コンパイラエラーがあると、Play-Modeに入ることはできません。
 
 一方、**Javascript**はランタイムで解釈されます。つまり、無効なコードを書いてエラーを引き起こす可能性がありますが、それらのエラーは*プログラムが実行されるまで*、またはエラーのある正確な行を**実行しようとするまで**表示されません。たとえば、`var points = 100; points += "hello world";`と書いても、ブラウザでコードを*実行するまで*誰も文句を言いません。
 
@@ -58,7 +58,7 @@ myPosition.x = 100; // Assigning x is perfectly fine
 import { Vector3 } from "three";
 // ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
-myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
+myPosition = new Vector3(100, 0, 0); // ⚠ constへの代入は許可されていません
 ```
 
 ### 型の使用またはインポート
@@ -67,7 +67,7 @@ Unityでは、通常、コードの先頭に`using`ステートメントを追�
 以下の例を見てください。
 ```csharp
 using UnityEngine;
-// importing just a specific type and giving it a name
+// 特定の型だけをインポートして名前を付ける
 using MonoBehaviour = UnityEngine.MonoBehaviour;
 ```
 
@@ -92,7 +92,7 @@ C#の以下の例を考えてみてください。
 void MyCallerMethod(){
     var position = new Vector3(0,0,0);
     MyExampleVectorMethod(position);
-    UnityEngine.Debug.Log("Position.x is " + position.x); // Here x will be 0
+    UnityEngine.Debug.Log("Position.x is " + position.x); // ここでxは0になります
 }
 void MyExampleVectorMethod(Vector3 position){
     position.x = 42;
@@ -109,7 +109,7 @@ import { Vector3 } from 'three'
 function myCallerMethod() : void {
     const position = new Vector3(0,0,0);
     myExampleVectorMethod(position);
-    console.log("Position.x is " + position.x); // Here x will be 42
+    console.log("Position.x is " + position.x); // ここでxは42になります
 }
 function myExampleVectorMethod(position: Vector3) : void {
     position.x = 42;
@@ -123,7 +123,7 @@ C#では、以下のコードはVector3の2つのインスタンスを生成し�
 var myVector = new Vector3(1,1,1);
 var myOtherVector = myVector;
 myOtherVector.x = 42;
-// will log: 1, 42
+// ログ出力: 1, 42
 UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x);
 ```
 Typescriptで同じことを行うと、コピーは**作成されず**、代わりに同じ`myVector`インスタンスへの参照が得られます。
@@ -133,7 +133,7 @@ import { Vector3 } from 'three'
 const myVector = new Vector3(1,1,1);
 const myOtherVector = myVector;
 myOtherVector.x = 42;
-// will log: 42, 42
+// ログ出力: 42, 42
 console.log(myVector.x, myOtherVector.x);
 ```
 
@@ -145,7 +145,7 @@ C#では演算子オーバーロードを使用できますが、残念ながら
 var myFirstVector = new Vector3(1,1,1);
 var myFactor = 100f;
 myFirstVector *= myFactor;
-// → myFirstVector is now 100, 100, 100
+// → myFirstVector は現在 100, 100, 100 です
 ```
 
 同じ結果を得るためには、Vector3型のメソッドを使用する必要があります（少しボイラープレートコードが増えます）。
@@ -156,7 +156,7 @@ import { Vector3 } from "three"
 const myFirstVector : Vector3 = new Vector3(1, 1, 1)
 const myFactor = 100;
 myFirstVector.multiplyScalar(myFactor);
-// → myFirstVector is now 100, 100, 100
+// → myFirstVector は現在 100, 100, 100 です
 ```
 
 ### 等価性チェック
@@ -179,9 +179,9 @@ const playerIsNullOrUndefined = myPlayer == null;
 
 C#でイベントを購読（サブスクライブ）する場合、次のように行います。
 ```csharp
-// this is how an event is declared
+// イベントはこのように宣言されます
 event Action MyEvent;
-// you subscribe by adding to (or removing from)
+// 追加（または削除）して購読します
 void OnEnable() {
     MyEvent += OnMyEvent;
 }
@@ -212,7 +212,7 @@ export class MyComponent extends Behaviour {
         this.myEvent.removeEventListener(this.onMyEvent);
     }
 
-    // Declaring the function as an arrow function to automatically bind `this`
+    // 関数をアロー関数として宣言して`this`を自動的にバインドします
     private onMyEvent = () => {
         console.log(this !== undefined, this)
     }
@@ -230,9 +230,9 @@ export class MyComponent extends Behaviour {
     private _onMyEventFn?: Function;
 
     onEnable() {
-        // bind this
+        // thisをバインドする
         this._onMyEventFn = this.onMyEvent.bind(this);
-        // add the bound method to the event
+        // バインドされたメソッドをイベントに追加する
         this.myEvent?.addEventListener(this._onMyEventFn);
     }
 
@@ -240,7 +240,7 @@ export class MyComponent extends Behaviour {
         this.myEvent?.removeEventListener(this._onMyEventFn);
     }
 
-    // Declaring the function as an arrow function to automatically bind `this`
+    // 関数をアロー関数として宣言して`this`を自動的にバインドします
     private onMyEvent = () => { }
 }
 ```

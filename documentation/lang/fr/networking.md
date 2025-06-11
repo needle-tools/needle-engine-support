@@ -72,15 +72,17 @@ import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine
 
 export class SyncedNumber extends Behaviour implements IPointerClickHandler {
 
-    // Use `@syncField` to automatically network a field. 
+    // Use `@syncField` to automatically network a field.
     // You can optionally assign a method or method name to be called when the value changes.
+    // Utilisez `@syncField` pour mettre automatiquement en réseau un champ.
+    // Vous pouvez éventuellement assigner une méthode ou un nom de méthode à appeler lorsque la valeur change.
     @syncField("myValueChanged")
     mySyncedValue?: number = 1;
-    
+
     private myValueChanged() {
        console.log("My value changed", this.mySyncedValue);
     }
-    
+
     onPointerClick() {
        this.mySyncedValue = Math.random();
     }
@@ -244,7 +246,7 @@ networking.startServerExpress(expressApp, { endpoint: "/socket" });
 ```js
 import { init, onConnection } from "@needle-tools/networking";
 
-// Add your framework-specific websocket implementation here. 
+// Add your framework-specific websocket implementation here.
 // You can view the fastify and express implementations in server.js for reference.
 // Ajoutez votre implémentation de websocket spécifique au framework ici.
 // Vous pouvez voir les implémentations fastify et express dans server.js pour référence.
@@ -296,7 +298,7 @@ Les serveurs réseau personnalisés peuvent être déployés n'importe où, par 
 ::: tip Différents emplacements de serveur pour le développement local et hébergé
 Si vous travaillez sur du code réseau personnalisé, vous pourriez vouloir utiliser différents emplacements de serveur pour le développement local et l'application hébergée. Vous pouvez définir des URL de serveur individuelles dans le composant `Networking` :
 
-![Needle Engine Networking component with networking server hosted elswhere](/imgs/networking_absolute.webp)
+<img src="/imgs/networking_absolute.webp" alt="Composant Networking de Needle Engine avec serveur réseau hébergé ailleurs">
 :::
 
 #### Stockage d'état
@@ -707,5 +709,5 @@ Actuellement, les messages binaires personnalisés ne peuvent pas être persist�
 
 Needle Engine rend le sujet complexe de la mise en réseau accessible et facile à utiliser. Vous pouvez commencer avec la mise en réseau automatique pour vos composants avec seulement quelques lignes de code, et vous pouvez approfondir la mise en réseau manuelle lorsque vous avez besoin de plus de contrôle.
 
-Page automatically translated using AI
+
 Page traduite automatiquement à l'aide de l'IA

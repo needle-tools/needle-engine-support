@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: es-ES
 title: Manos de monstruo 💀
 sidebar: false
 editLink: false

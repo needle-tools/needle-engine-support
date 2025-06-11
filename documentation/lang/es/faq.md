@@ -22,7 +22,7 @@ Nota: Es posible que necesites reiniciar el servidor web local para aplicar la l
 
 ![unity license window](/imgs/unity-needle-engine-license.jpg)
 
-### Activando la licencia en Blender
+### Activating the license in Blender
 Abre `Addon Preferences/Needle Engine` para acceder a la configuración del addon Needle Engine
 - `Email` - Introduce el email con el que compraste la licencia
 - `Invoice ID` - Introduce uno de los ids de factura que recibiste por email
@@ -115,7 +115,7 @@ Si el tiempo de carga en sí es un problema, puedes **intentar dividir tu conten
 
 ## Mis lightmaps se ven diferentes / demasiado brillantes
 
-Asegúrate de seguir las [mejores prácticas para lightmaps](https://docs.needle.tools/lightmaps?utm_source=needle_docs) y lee sobre [mezclar objetos baked y no baked](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects)
+Asegúrate de seguir las [best practices for lightmaps](https://docs.needle.tools/lightmaps?utm_source=needle_docs) y lee sobre [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects)
 
 ## Mi escena es demasiado brillante / la iluminación se ve diferente que en Unity
 Asegúrate de que tus luces estén configuradas en "Baked" o "Realtime". "Mixed" no es compatible actualmente.
@@ -125,17 +125,17 @@ Asegúrate de que tus luces estén configuradas en "Baked" o "Realtime". "Mixed"
   ![image](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
 - La intensidad de la sombra de la luz no se puede cambiar actualmente debido a una limitación de three.js.
 
-Consulta también la documentación sobre [mezclar objetos baked y no baked](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects).
+Consulta también la documentación sobre [mezclar objetos baked y non-baked](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects).
 
 
 ## ¿La resolución de mi skybox es baja? Cómo cambiar la resolución de mi skybox
 
-- **Si usas un cubemap personalizado**: Puedes anular la configuración de importación de textura de la textura del skybox (asignada a tu cubemap).
+- **Si usas un custom cubemap**: Puedes anular la configuración de importación de textura de la textura del skybox (asignada a tu cubemap).
 
   ![image](https://user-images.githubusercontent.com/5083203/188179104-1e078cda-3397-4ebe-aaf9-7faa23ee4904.png)
 
 
-- **Si usas el skybox por defecto**: Añade un componente ``SkyboxExportSettings`` en cualquier parte de tu escena para anular la resolución por defecto.
+- **Si usas el default skybox**: Añade un componente ``SkyboxExportSettings`` en cualquier parte de tu escena para anular la resolución por defecto.
 
   ![image](https://user-images.githubusercontent.com/5083203/188171443-578380ab-2036-4d70-a8a7-f8cd9da9f603.png)
 
@@ -145,9 +145,9 @@ Consulta también la documentación sobre [mezclar objetos baked y no baked](htt
 
 Por favor, comprueba los siguientes puntos:
 
-- Tu luz tiene sombras habilitadas (Soft Shadow o Hard Shadow).
-- Tus objetos están configurados en "Cast Shadows: On" (consulta el componente MeshRenderer).
-- Para las luces direccionales, la posición de la luz es actualmente importante ya que la cámara de sombra se colocará donde se encuentra la luz en la escena.
+- Tu luz tiene sombras habilitadas (either Soft Shadow or Hard Shadow).
+- Tus objetos están configurados en "Cast Shadows: On" (see MeshRenderer component).
+- For directional lights the position of the light is currently important since the shadow camera will be placed where the light is located in the scene.
 
 
 
@@ -162,19 +162,19 @@ Asegúrate de que tu proyecto esté configurado en espacio de color Linear color
 ## Estoy usando networking y Glitch y no funciona si más de 30 personas visitan la página de Glitch al mismo tiempo
 
 - Desplegar en Glitch es una forma rápida de prototipar e incluso puede funcionar para algunas producciones pequeñas. El pequeño servidor allí no tiene la potencia ni el ancho de banda para albergar a mucha gente en una sesión persistente.
-- Estamos trabajando en otras ideas de networking, pero mientras tanto puedes alojar el sitio web en otro lugar (con soporte node.js) o simplemente remezclarlo para distribuir la carga entre varios servidores. También puedes alojar el [paquete de backend de networking](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) en otro lugar donde pueda escalar, por ejemplo, Google Cloud.
+- Estamos trabajando en otras ideas de networking, pero mientras tanto puedes alojar el sitio web en otro lugar (con soporte node.js) o simplemente remezclarlo para distribuir la carga entre varios servidores. También puedes alojar el [networking backend package](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) itself somewhere else where it can scale e.g. Google Cloud.
 
 
 
 ## Mi sitio web no tiene botones AR/VR
 
 - Asegúrate de añadir el componente `WebXR` en algún lugar dentro de tu `GltfObject` raíz.
-- Opcionalmente añade un componente `AR Session Root` en tu `GltfObject` raíz o dentro de la jerarquía de hijos para especificar la ubicación, escala y orientación para WebXR.
+- Opcionalmente añade un componente `AR Session Root` en tu `GltfObject` raíz o dentro de la child hierarchy para especificar la ubicación, scale y orientation para WebXR.
 - Opcionalmente añade un componente `XR Rig` para controlar dónde empiezan los usuarios en VR.
 
 
 ## Creé un nuevo script en una sub-escena pero no funciona
-Al crear nuevos scripts en npmdefs en sub-escenas (es decir, una escena que se exporta como referencia desde un script en tu escena de exportación raíz), actualmente tienes que volver a exportar la escena raíz de nuevo. Esto se debe a que el code-gen responsable de registrar nuevos scripts actualmente solo se ejecuta para escenas con un componente ``ExportInfo``. Esto se solucionará en el futuro.
+Al crear nuevos scripts en npmdefs en sub-scenes (that is a scene that is exported as a reference from a script in your root export scene) you currently have to re-export the root scene again. Esto se debe a que el code-gen that is responsible for registering new scripts currently only runs for scenes with a ``ExportInfo`` component. This will be fixed in the future.
 
 
 ## Mi servidor local no se inicia / no veo un sitio web
@@ -182,19 +182,19 @@ Al crear nuevos scripts en npmdefs en sub-escenas (es decir, una escena que se e
 La razón más probable es una instalación incorrecta.
 Comprueba la consola y el componente `ExportInfo` en busca de errores o advertencias.
 
-Si estas advertencias/errores no ayudaron, prueba los siguientes pasos en orden. Dales algo de tiempo para completarse. Detente una vez que tu problema se haya resuelto. Comprueba la consola en busca de advertencias y errores.
+Si estas advertencias/errores no ayudaron, try the following steps in order. Dale algo de tiempo para completarse. Stop once your problem has been resolved. Check the console for warnings and errors.
 
-- Asegúrate de seguir los [Prerrequisitos](./getting-started/#prerequisites).
-- Instala tu proyecto seleccionando tu componente `ExportInfo` y haciendo clic en `Install`.
-- Ejecuta una instalación limpia seleccionando tu componente `ExportInfo`, manteniendo pulsado Alt y haciendo clic en `Clean Install`.
-- Intenta abrir el directorio de tu proyecto web en una herramienta de línea de comandos y sigue estos pasos:
-  - ejecuta ``npm install`` y luego ``npm run dev-host``
-  - Asegúrate de que tanto el paquete de tiempo de ejecución local (``node_modules/@needle-tools/engine``) como three.js (``node_modules/three``) se hayan instalado.
+- Asegúrate de seguir los [Prerequisites](./getting-started/#prerequisites).
+- Instala tu project by selecting your `ExportInfo` component and clicking `Install`.
+- Ejecuta una clean installation by selecting your `ExportInfo` component, holding Alt and clicking `Clean Install`.
+- Intenta opening your web project directory in a command line tool and follow these steps:
+  - ejecuta ``npm install`` and then ``npm run dev-host``
+  - Asegúrate de que tanto el local runtime package (``node_modules/@needle-tools/engine``) as well as three.js (``node_modules/three``) did install.
   - Puedes ejecutar ``npm install`` también en ambos directorios.
 
 
 ## ¿La generación de componentes C# también funciona solo con javascript?
-Aunque la generación de componentes C# técnicamente funciona también con javascript plano, no lo recomendamos y no lo soportamos completamente, ya que para el generador es más una suposición o simplemente imposible saber qué tipo C# crear para tu clase javascript. Abajo encontrarás un ejemplo mínimo sobre cómo generar un Componente de Unity desde javascript si realmente quieres hacerlo.
+Although generating C# components does technically run with vanilla javascript too we don't recommend it and fully support it since it is more guesswork or simply impossible for the generator to know which C# type to create for your javascript class. Below you find a minimal example on how to generate a Unity Component from javascript if you really want to tho.
 
 ```js
 import { Behaviour } from "@needle-tools/engine";
@@ -209,7 +209,7 @@ export class MyScript extends Behaviour
 
 ## No tengo ningún botón como "Generate Project" en mis componentes/inspector
 
-Por favor, comprueba que no estás accidentalmente en el modo `Debug` del Inspector – vuelve a `Normal`:
+Por favor, comprueba que no estás accidentally in the Inspector's `Debug` mode – switch back to `Normal`:
 ![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
 
 
@@ -217,70 +217,70 @@ Por favor, comprueba que no estás accidentalmente en el modo `Debug` del Inspec
 
 - Asegúrate de [descargar e instalar toktx](http://localhost:8080/docs/getting-started/.html#install-these-tools-for-production-builds).
 
-- En Windows: Asegúrate de haber añadido toktx a las variables de entorno de tu sistema. Es posible que necesites reiniciar tu ordenador después de añadirlo para actualizar las variables de entorno. La ubicación de instalación por defecto es ``C:\Program Files\KTX-Software\bin``.
+- En Windows: Asegúrate de haber añadido toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. La ubicación de default install location is ``C:\Program Files\KTX-Software\bin``.
 
 ![image](/imgs/ktx-env-variable.webp)
 
 
 ## La instalación del proyecto web tarda una eternidad / nunca termina / EONET: no such file or directory
-- **Asegúrate de no crear un proyecto en una unidad formateada como exFAT** porque exFAT no soporta symlinks, lo cual es requerido para Needle Engine para Unity antes de la versión 3.x.
-Puedes comprobar el formato de tus unidades siguiendo estos pasos:
-1. Abre "System Information" (Información del Sistema) (con la tecla de Windows y escribiendo eso o introduciendo "msinfo32" en cmd).
-2. Selecciona Componentes > Almacenamiento > Unidades.
-3. Selecciona todo (<kbd>Ctrl + A</kbd>) en el lado derecho de la pantalla, copia eso (<kbd>Ctrl + C</kbd>) y pégalo aquí (<kbd>Ctrl + V</kbd>).
+- **Asegúrate de no crear un project on a drive formatted as exFAT** because exFAT does not support symlinks, which is required for Needle Engine for Unity prior to version 3.x.
+Puedes comprobar el formato de tus unidades usando the following steps:
+1. Abrir "System Information" (Información del Sistema) (either windows key and type that or enter "msinfo32" in cmd).
+2. Select Components > Storage > Drives.
+3. Select all (<kbd>Ctrl + A</kbd>) on the right side of the screen and copy that (<kbd>Ctrl + C</kbd>) and paste here (<kbd>Ctrl + V</kbd>).
 
-## NPM install falla y hay errores sobre disco duro / E/S (IO)
-Asegúrate de que tu proyecto esté en un disco que se sepa que funciona con node.js. La razón principal de los fallos es que el disco no soporta symlinks (enlaces simbólicos / softlinks), lo cual es un requisito para el correcto funcionamiento de node.js.
-El formato <kbd>NTFS</kbd> siempre debería funcionar. Los formatos de sistema de archivos problemáticos conocidos son <kbd>exFAT</kbd> y <kbd>FAT32</kbd>.
+## NPM install fails and there are errors about hard drive / IO
+Asegúrate de que tu proyecto esté en un disk that is known to work with node.js. Main reason for failures is that the disk doesn't support symlinks (symbolic links / softlinks), which is a requirement for proper functioning of node.js.
+El formato <kbd>NTFS</kbd> should always work. Known problematic file system formattings are <kbd>exFAT</kbd> and <kbd>FAT32</kbd>.
 
-Para comprobar el formato de tus unidades, puedes:
-1. Abrir "System Information" (Información del Sistema) (con la tecla <kbd>Windows</kbd> y escribiendo "System Information" o introduciendo `msinfo32` en cmd <kbd>Windows + R</kbd>).
+Para comprobar el format of your drives, you can:
+1. Abrir "System Information" (Información del Sistema) (either <kbd>Windows key</kbd> and type "System Information" or enter `msinfo32` in cmd <kbd>Windows + R</kbd>).
 2. Seleccionar "Components > Storage > Drives" (Componentes > Almacenamiento > Unidades).
-3. Ahí, puedes ver todas las unidades y su formato listado. Pon tus proyectos en una unidad con formato NTFS.
+3. Ahí, puedes ver todas las drives and their formatting listed. Put your projects on a drive that is NTFS formatted.
 
 
 ## Estoy recibiendo errores con "Unexpected token `@`. Expected identifier, string literal, numeric literal or ..."
 
-Needle Engine usa decoradores de typescript para la serialización.
-Para solucionar este error, asegúrate de habilitar `experimentalDecorators` en tu tsconfig.json.
+Needle Engine usa typescript decorators for serialization.
+Para solucionar this error make sure to enable `experimentalDecorators` in your tsconfig.json.
 
 ## Estoy recibiendo un error 'failed to load config ... vite.config.js' al ejecutar comandos npm en Mac OS
 
-Es probable que estés usando una versión x86_64 de Unity en un procesador (ARM) Apple Silicon. Unity 2020.3 solo está disponible para x86_64, las versiones posteriores también tienen versiones para Apple Silicon.
-Nuestra integración de Unity llamando a npm lo hará desde un proceso x86_64, resultando en que se use la versión x86_64 de node y vite/esbuild. Cuando después intentes ejecutar comandos npm en el mismo proyecto desde una aplicación Apple Silicon (por ejemplo, VS Code), npm se quejará de arquitecturas incompatibles con un largo mensaje de error.
+Es probable que estés usando una x86_64 version of Unity on an (ARM) Apple Silicon processor. Unity 2020.3 is only available for x86_64, later versions also have Apple Silicon versions.
+Nuestra Unity integration calling npm will thus do so from an x86_64 process, resulting in the x86_64 version of node and vite/esbuild being used. When you afterwards try to run npm commands in the same project from an Apple Silicon app (e.g. VS Code), npm will complain about mismatching architectures with a long error message.
 
-Para solucionar esto, usa una versión de Unity para Apple Silicon (2021.1 o posterior).
+Para solucionar esto, use an Apple Silicon version of Unity (2021.1 or later).
 
-También puedes solucionarlo temporalmente en 2020.3 eliminando la carpeta `node_modules` y ejecutando `npm install` de nuevo desde VS Code. Tendrás que eliminar `node_modules` de nuevo cuando vuelvas a Unity.
+También puedes solucionarlo temporarily fix it on 2020.3 by deleting the `node_modules` folder and running `npm install` again from VS Code. Tendrás que delete `node_modules` again when you switch back to Unity.
 
 ## Error de referencia circular
 
-Esto puede ocurrir cuando tienes, por ejemplo, un `SceneSwitcher` (o cualquier otro componente que cargue una escena o asset) y el Asset referenciado en Unity contiene un `GltfObject` que tiene el mismo nombre que tu escena original con el `SceneSwitcher`. Puedes verificar esto en Unity si recibes un error que diga algo como:
+Esto puede ocurrir cuando tienes e.g. a `SceneSwitcher` (or any other component that loads a scene or asset) and the referenced Asset in Unity contains a `GltfObject` that has the same name as your original scene with the `SceneSwitcher`. You can double check this in Unity if you get an error that says something like:
 
 ```
 Failed to export ↑ YourSceneName.glb
 you seem to have objects with the same name referencing each other.
 ```
 
-Para solucionar esto puedes:
-- Eliminar el `GltfObject` en el Prefab o Escena referenciado.
-- Renombrar el GameObject con el componente que carga las escenas referenciadas.
+Para solucionar this you can:
+- Eliminar el `GltfObject` in the referenced Prefab or Scene.
+- Renombrar el GameObject with the component that loads the referenced scenes.
 
 Si esto no soluciona el problema, por favor, pregunta [en nuestro foro](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content).
 
-## Mi escena no carga y la consola contiene una advertencia con 'referencias circulares' o 'failed to update active state'
-Consulta la sección [error de referencia circular](#circular-reference-error).
+## Mi escena no carga y la consola contiene una advertencia con 'circular references' o 'failed to update active state'
+Por favor, consulta la sección [error de referencia circular](#circular-reference-error).
 
 ## ¿Mi máquina soporta WebGL 2?
 
-Usa un detector [como este](https://get.webgl.org/webgl2/) para determinar si tu dispositivo soporta WebGL 2, también sugiere cuál podría ser la causa de tu problema, pero generalmente asegúrate de haber actualizado tu navegador y drivers. WebGL 1 no es compatible.
+Usa un detector [como este](https://get.webgl.org/webgl2/) para determinar si tu device supports WebGL 2, it also hints at what could be the cause of your problem, but generally make sure you have updated your browser and drivers. WebGL 1 is not supported.
 
 #### Dispositivos conocidos que causan problemas:
 - Lenovo Thinkpad - T495
 
 ## Quiero usar Needle AI con mi modelo de IA local
 
-Si quieres (o tienes que) ejecutar tu IA localmente, puedes usar los archivos Needle llms.txt como contexto para tu IA local (por ejemplo, Ollama):
+Si quieres (o tienes que) ejecutar tu IA localmente, you can use the Needle llms.txt files as context for your local AI (e.g. Ollama):
 
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)

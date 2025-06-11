@@ -16,4 +16,5 @@ Este tutorial mostra o fluxo de trabalho da Sincronização do Editor em ação:
 
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
 
+
 Página traduzida automaticamente usando IA

@@ -79,7 +79,7 @@ title: Needle 核心组件
 | `EventSystem` | 处理在场景对象上触发指针事件和 UI 事件 |
 | `ObjectRaycater` | DragControls 和 Duplicatable 所需 |
 | `GraphicsRaycaster` | 与 ObjectRaycaster 相同，但用于 UI 元素 |
-| `DragControls` | 允许在场景中拖动对象。需要在父级层级中存在 raycaster，例如 ObjectRaycaster |
+| `DragControls` | 允许在场景中拖动对象。需要在父级层级中存在 raycaster，例如 ObjectRaycater |
 | `Duplicatable` | 可以通过拖动复制指定的对象。需要 DragControls |
 | `Interactable` | 将对象标记为可交互的基本组件 |
 | `OrbitControls` | 添加到摄像头以添加摄像头轨道控制功能 |

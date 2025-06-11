@@ -253,9 +253,7 @@ Puedes deshabilitar la compresión gzip en ``vite.config.js`` en la carpeta de t
 
 ![20220830-003602_explorer-needle](https://user-images.githubusercontent.com/2693840/187311461-e6afb2d7-5761-48cf-bacb-1c1733bb768b.png)
 
-> **Nota**: Si el resultado no funciona al subirlo, puede que tu servidor web no soporte servir archivos gzipped. Tienes dos opciones para solucionar el problema:
-Opción 1: ¡Puedes intentar habilitar la compresión gzip en tu servidor usando un archivo htaccess!
-Opción 2: Puedes desactivar la compresión gzip en los ajustes de build en File/Build Window y seleccionando la plataforma Needle Engine.
+> **Nota**: Si el resultado no funciona al subirlo, puede que tu servidor web no soporte servir archivos gzipped. Tienes dos opciones para solucionar el problema: Opción 1: ¡Puedes intentar habilitar la compresión gzip en tu servidor usando un archivo htaccess! Opción 2: Puedes desactivar la compresión gzip en los ajustes de build en File/Build Window y seleccionando la plataforma Needle Engine.
 
 > **Nota**: Si estás teniendo errores durante la compresión, ¡por favor, háznoslo saber y reporta un bug! Si tu proyecto funciona localmente y solo falla al hacer builds de producción, puedes salir del apuro de inmediato haciendo un Development Build. Para ello, simplemente activa la casilla `Development Build` en Build Settings.
 

@@ -51,5 +51,6 @@ Nuestro exportador se puede utilizar también con otras estructuras de proyecto;
 - [Escribir scripts personalizados](./scripting.md)
 - [Everywhere Actions](./everywhere-actions.md)
 
+
 ---
 Página traducida automáticamente con IA

@@ -63,5 +63,4 @@ En travaillant avec Unity pendant de nombreuses années, nous avons constaté qu
 
 Needle Engine s'appuie sur three.js. Tout le rendu passe par lui, les fichiers glTF sont chargés via les interfaces d'extension de three, et notre système de composants s'articule autour de Object3D et du graphe de scène de three. Nous nous engageons à intégrer certaines de nos modifications et améliorations en amont, en créant des "pull requests" et en signalant des problèmes en cours de route.
 
-
 Page automatiquement traduite utilisant l'IA

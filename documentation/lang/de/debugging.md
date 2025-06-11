@@ -92,4 +92,5 @@ Die Verwendung und das Debugging von WebXR unter iOS erfordern die Verwendung ei
 
 Quest ist lediglich ein Android-Gerät – Schritte finden Sie im Abschnitt [Android Debugging](#android-debugging).
 
+
 Seite automatisch mit KI übersetzt

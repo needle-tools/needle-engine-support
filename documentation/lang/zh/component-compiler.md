@@ -12,11 +12,11 @@ tags:
 
 ### 自动生成 Editor 组件
 
-在使用 Unity 或 Blender 时，你会注意到当你用 Typescript 或 Javascript 创建一个新的 Needle Engine 组件时，它会自动为你生成一个 Unity C# stub 组件或者一个 Blender 面板。
+在使用 Unity 或 Blender 时，你会注意到当你用 Typescript 或 Javascript 创建一个新的 Needle Engine 组件时，它会自动为你生成一个 Unity C# 桩组件或者一个 Blender 面板。
 
 这要归功于 [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) 的魔力，它在 editor 环境中在后台运行，并监视你的脚本文件的变化。当它检测到你创建了一个新的 Needle Engine 组件时，它就会生成正确的 Unity 组件或 Blender 面板，包括你可以从 Editor 中设置或链接的公共变量或属性。
 
-
+**Note**: component compiler 目前**仅生成组件**。所以如果你需要在 Unity 中暴露一个 Typescript Enum，你可以手动将其添加到 C# 中，可以在一个新的 C# 文件中或在生成的代码之外（参见下面的示例）
 
 ### 控制组件生成
 你可以在你的 typescript 代码中使用以下注释来控制 C# 代码生成行为：
@@ -60,9 +60,9 @@ export class MyComponent extends MyCustomBaseClass {
 
 对于 C# 字段的正确生成，目前重要的是你要明确声明 Typescript 类型。例如 ``myField : number = 5``
 
-你可以使用下面的选项卡在 **Typescript** 输入和生成的 **C#** stub 组件之间切换
-:::: code-group
-::: code-group-item Typescript
+你可以使用下面的选项卡在 **Typescript** 输入和生成的 **C#** 桩组件之间切换
+::: code-tabs
+@tab Typescript
 ```ts twoslash
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
@@ -86,8 +86,7 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-:::
-::: code-group-item Generated C#
+@tab 生成的 C#
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -108,12 +107,11 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-:::
-::: code-group-item Extending Generated C#
+@tab 扩展生成的 C#
 ```csharp
 using UnityEditor;
 
-// you can add code above or below the NEEDLE_CODEGEN_ blocks
+// 你可以在 NEEDLE_CODEGEN_ 块上方或下方添加代码
 
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -136,7 +134,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 namespace Needle.Typescript.GeneratedComponents
 {
-    // This is how you extend the generated component (namespace and class name must match!)
+    // 你可以通过这种方式扩展生成的组件（命名空间和类名必须匹配！）
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{
 		
@@ -150,7 +148,7 @@ namespace Needle.Typescript.GeneratedComponents
 		}
 	}
 
-    // of course you can also add custom editors
+    // 当然，你也可以添加自定义编辑器
 	[CustomEditor(typeof(MyCustomComponent))]
 	public class MyCustomComponentEditor : Editor
 	{
@@ -164,14 +162,13 @@ namespace Needle.Typescript.GeneratedComponents
 
 ```
 :::
-::::
 
 
 ### 扩展生成的组件
 组件的 C# 类是使用 [`partial`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) 标志生成的，这样可以方便地扩展其功能。这对于绘制 gizmos、添加上下文菜单或添加不属于内置组件的其他字段或方法很有帮助。
 
 
-:::tip 成员命名
+:::tip 成员大小写
 导出的成员将以小写字母开头。例如，如果你的 C# 成员命名为 ``MyString``，它将被赋值给 ``myString``。
 :::
 

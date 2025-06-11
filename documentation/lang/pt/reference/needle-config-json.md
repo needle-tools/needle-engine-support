@@ -10,8 +10,8 @@ O `needle.config.json` é usado para fornecer configuração para as integraçõ
 | `buildDirectory` | É aqui que os ficheiros do projeto compilado são copiados |
 | `assetsDirectory` | É aqui que os assets de integração do Editor serão copiados ou criados (por exemplo, os ficheiros `.glb` exportados do Unity ou Blender) |
 | `scriptsDirectory` | Este é o diretório que a integração do Editor está a observar para alterações de código para regenerar componentes |
-| `codegenDirectory` | É para aqui que a integração do Editor está a gerar ficheiros. |
-| `baseUrl` | Necessário para, por exemplo, a integração com next.js ou SvelteKit. Quando o baseUrl é definido, os caminhos relativos para codegen e dentro dos ficheiros usam o baseUrl, não o assetsDirectory. Isto é útil em casos onde o assetDirectory não corresponde ao URL do servidor.<br/>Por exemplo, o caminho no disco poderia ser `"assetsDirectory": "public/assets"`, mas o framework serve ficheiros de `"baseUrl": "assets"`. |
+| `codegenDirectory` | É para onde a integração do Editor está a gerar ficheiros. |
+| `baseUrl` | Necessário para, por exemplo, a integração com next.js ou SvelteKit. Quando o baseUrl é definido, os caminhos relativos para codegen e dentro de ficheiros usam o baseUrl, não o assetsDirectory. Isto é útil em casos onde o assetDirectory não corresponde ao URL do servidor.<br/>Por exemplo, o caminho em disco poderia ser `"assetsDirectory": "public/assets"`, mas o framework serve ficheiros de `"baseUrl": "assets"`. |
 | **Ferramentas** | |
 | `build : { copy: ["myFileOrDirectory"] }` | Array de caminhos de string para copiar ficheiros ou pastas adicionais para o `buildDirectory`. Podem ser absolutos ou relativos. |
 
@@ -56,5 +56,5 @@ Os ficheiros são exportados para `static/assets` mas o framework serve-os a par
 #### Links Relacionados
 - [Estrutura do Projeto](../project-structure.md)
 
----
+
 Página traduzida automaticamente usando IA

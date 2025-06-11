@@ -2,16 +2,16 @@
 title: <needle-engine> 設定
 ---
 
-`<needle-engine>` ウェブコンポーネントには、組み込み属性の優れたコレクションが付属しており、three.js シーンを直接追加または編集することなく、ロードされたシーンの見た目と操作感を変更するために使用できます。
+`<needle-engine>` ウェブコンポーネントには、ロードされたシーンの見た目と操作感を変更するために使用できる、組み込み属性の優れたコレクションが付属しています。three.js シーンを直接追加または編集する必要はありません。
 以下の表は、最も重要な属性のリストを示しています。
 
 | 属性 | 説明 |
 | --- | --- |
 | **ローディング** | |
 | `src` | 1つ以上の glTF または glb ファイルへのパス。<br/>サポートされているタイプは `string`、`string[]`、または文字列化された配列 (`,` 区切り) です |
-| `dracoDecoderPath` | Draco デコーダーへの URL |
+| `dracoDecoderPath` | Draco デコーダーへの URL (例: `./include/draco/` でローカル Draco デコーダーを使用) |
 | `dracoDecoderType` | Draco デコーダーのタイプ。オプションは `wasm` または `js` です。[three.js ドキュメント](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) を参照してください |
-| `ktx2DecoderPath` | KTX2 デコーダーへの URL |
+| `ktx2DecoderPath` | KTX2 デコーダーへの URL (例: `./include/ktx2/` でローカル KTX2 デコーダーを使用) |
 | **レンダリング** | |
 | `background-color` | オプション。背景色として使用する16進数カラー。例: `rgb(255, 200, 100)`、`#dddd00` |
 | `background-image` | オプション。スカイボックス画像 (背景画像) またはプリセット文字列への URL: `studio`、`blurred-skybox`、`quicklook`、`quicklook-ar` |
@@ -29,16 +29,14 @@ title: <needle-engine> 設定
 | `progress` | ローディングが更新されたときに呼び出す関数の名前。`onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }` |
 | `loadfinished` | ローディングが完了したときに呼び出す関数の名前 |
 | **ローディング表示** | *Needle Engine のローディング表示の外観を変更するために利用可能なオプションです。簡単に編集するには `?debugloadingrendering` を使用してください* |
-| `loading-style` | オプションは `light` または `dark` です |
-| `loading-background-color` | **PRO** — ローディング背景色を変更します (例: `=#dd5500`) |
-| `loading-text-color` | **PRO** — ローディングテキスト色を変更します |
-| `loading-logo-src` | **PRO** — ローディングロゴ画像を変更します |
-| `primary-color` | **PRO** — プライマリーローディング色を変更します |
-| `secondary-color` | **PRO** — セカンダリーローディング色を変更します |
-| `hide-loading-overlay` | **PRO** — ローディングオーバーレイを表示しません。Needle Engine > 3.17.1 に追加されました
+| `loading-background` | **PRO** — デフォルト: `transparent`。ローディング背景色を変更します (例: `#dd5500`) |
+| `loading-logo-src` | **PRO** — ローディングロゴ画像を変更します (例: `https://yourdomain.com/logo.png` または `/logo.png`) |
+| `hide-loading-overlay` | **PRO** — ローディングオーバーレイを表示しません |
 | **内部** | |
 | `hash` | 内部で使用されます。ロードされるファイルに付加され、更新を強制します (例: ブラウザが glb ファイルをキャッシュしている場合)。手動で編集しないでください。 |
 
+**アップグレード通知**:
+- Needle Engine 4.5.0 で削除された属性: `loading-style`、`loading-background-color`、`loading-text-color`、`primary-color`、`secondary-color`
 
 # 例
 
@@ -49,7 +47,7 @@ title: <needle-engine> 設定
 
 ```html
 <!-- Draco デコーダーの場所をオーバーライドする -->
-<needle-engine src="path/to/your.glb" dracoDecoderPath="path/to/draco/folder"></needle-engine>
+<needle-engine src="path/to/your.glb" dracoDecoderPath="./include/draco/"></needle-engine>
 ```
 
 環境画像の設定、アニメーションの再生、自動カメラコントロール。[stackblitz でライブを見る](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)

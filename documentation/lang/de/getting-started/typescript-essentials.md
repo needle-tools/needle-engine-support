@@ -1,10 +1,10 @@
 ---
-title: Scripting in Needle Engine
+title: Skripting in Needle Engine
 description: Unterschiede, Gemeinsamkeiten und Schlüsselkonzepte von Typescript, Javascript und C#.
 sidebarDepth: 2
 ---
 
-Der folgende Leitfaden versucht, einige der wichtigsten Unterschiede zwischen C#, Javascript und Typescript hervorzuheben. Dies ist besonders nützlich für Entwickler, die neu im Web-Ökosystem sind.
+Der folgende Leitfaden beleuchtet einige der wichtigsten Unterschiede zwischen C#, Javascript und Typescript. Dies ist besonders nützlich für Entwickler, die neu im Web-Ökosystem sind.
 
 Hier sind auch einige nützliche Ressourcen, um Typescript zu lernen:
 
@@ -16,9 +16,9 @@ Hier sind auch einige nützliche Ressourcen, um Typescript zu lernen:
 
 **CSharp** oder **C#** ist eine statically typed & compiled language. Das bedeutet, dass **bevor** Ihr Code laufen (oder ausgeführt werden) kann, er kompiliert – übersetzt – werden muss in IL oder CIL, eine intermediate language, die etwas näher am *machine code* ist. Wichtig ist hier zu verstehen, dass Ihr Code analysiert wird und bestimmte Prüfungen und Regeln bestehen muss, die vom Compiler **durchgesetzt** werden. Sie erhalten compiler errors **in Unity**, und Ihre Anwendung startet nicht einmal, wenn Sie Code schreiben, der gegen eine der Regeln der C#-Sprache verstößt. Sie können den Play-Mode nicht mit compiler errors starten.
 
-**Javascript** hingegen wird zur runtime interpretiert. Das bedeutet, Sie können Code schreiben, der nicht gültig ist und Fehler verursacht – aber Sie werden diese Fehler erst *sehen*, wenn Ihr Programm läuft oder versucht, genau die Zeile mit dem Fehler zu **auszuführen**. Zum Beispiel können Sie `var points = 100; points += "hello world";` schreiben, und niemand wird sich beschweren, *bis* Sie den Code in einem Browser ausführen.
+**Javascript** hingegen wird zur runtime interpretiert. Das bedeutet, Sie können Code schreiben, der nicht gültig ist und Fehler verursacht – aber Sie werden diese Fehler erst *sehen*, wenn Ihr Programm läuft oder versucht, genau die Zeile mit dem Fehler zu **ausführen**. Zum Beispiel können Sie `var points = 100; points += "hello world";` schreiben, und niemand wird sich beschweren, *bis* Sie den Code in einem Browser ausführen.
 
-**Typescript** ist eine von Microsoft entwickelte Sprache, die zu **Javascript kompiliert**. Sie fügt viele Funktionen hinzu, wie zum Beispiel **type-safety**. Das bedeutet, wenn Sie Code in Typescript schreiben, können Sie Typen deklarieren und erhalten somit Fehler zur *Compile-Zeit*, wenn Sie zum Beispiel ungültige Zuweisungen vornehmen oder Methoden mit unerwarteten Typen aufrufen. Lesen Sie weiter unten mehr über Typen in Javascript und Typescript.
+**Typescript** ist eine von Microsoft entwickelte Sprache, die zu **Javascript kompiliert**. Sie fügt viele Funktionen hinzu, wie zum Beispiel **type-safety**. Das bedeutet, wenn Sie Code in Typescript schreiben, können Sie Typen deklarieren und erhalten somit Fehler zur *compile-time*, wenn Sie zum Beispiel ungültige Zuweisungen vornehmen oder Methoden mit unerwarteten Typen aufrufen. Lesen Sie weiter unten mehr über Typen in Javascript und Typescript.
 
 ### Typen – oder deren Fehlen
 
@@ -26,7 +26,7 @@ Hier sind auch einige nützliche Ressourcen, um Typescript zu lernen:
 
 Wie oben erwähnt, wurde **Typescript** entwickelt, um dieses Problem zu beheben, indem Syntax zur Definition von Typen hinzugefügt wurde.
 
-Es ist wichtig zu verstehen, dass Sie *im Grunde* immer noch Javascript schreiben, wenn Sie Typescript schreiben, und obwohl es *möglich* ist, alle Typprüfungen und Sicherheitsprüfungen zu umgehen, indem Sie z. B. ``//@ts-ignore`` über eine fehlerhafte Zeile hinzufügen oder alle Typen als ``any`` definieren, ist dies **definitiv nicht empfohlen**. Typen sind dazu da, Ihnen zu helfen, Fehler zu finden, bevor sie tatsächlich auftreten. Sie möchten Ihre Website wirklich nicht auf Ihrem Server bereitstellen, nur um später Berichte von Benutzern oder Besuchern zu erhalten, die Ihnen mitteilen, dass Ihre App abgestürzt ist, während sie lief.
+Es ist wichtig zu verstehen, dass Sie *im Grunde* immer noch Javascript schreiben, wenn Sie Typescript schreiben, und obwohl es *möglich* ist, alle type checking und safety checks zu umgehen, indem Sie z. B. ``//@ts-ignore`` über eine fehlerhafte Zeile hinzufügen oder alle Typen als ``any`` definieren, ist dies **definitiv nicht empfohlen**. Typen sind dazu da, Ihnen zu helfen, Fehler zu finden, bevor sie tatsächlich auftreten. Sie möchten Ihre Website wirklich nicht auf Ihrem Server bereitstellen, nur um später Berichte von Benutzern oder Besuchern zu erhalten, die Ihnen mitteilen, dass Ihre App abgestürzt ist, während sie lief.
 
 Während *vanilla Javascript* keine Typen anbietet, können Sie Ihren Javascript-Variablen, Klassen und Methoden dennoch type-annotations hinzufügen, indem Sie **[JSDoc](https://jsdoc.app/)** verwenden.
 
@@ -42,7 +42,7 @@ Für eine Variable, die Sie nicht neu zuweisen möchten, verwenden Sie `const`, 
 > *Achtung bei var*
 Möglicherweise stoßen Sie auch in Javascript auf das `var` keyword, aber es wird nicht empfohlen, es zu verwenden, und der moderne Ersatz dafür ist `let`. Erfahren Sie mehr über [var vs let](https://stackoverflow.com/a/11444416).
 
-Bitte beachten Sie, dass Sie Variablen, die mit const deklariert wurden, *dennoch* Werte zuweisen *können*, wenn sie (zum Beispiel) ein benutzerdefinierter Typ sind. Betrachten Sie das folgende Beispiel:
+Bitte beachten Sie, dass Sie Variablen, die mit const deklariert wurden, *dennoch* Werte zuweisen *können*, wenn sie (zum Beispiel) ein custom type sind. Betrachten Sie das folgende Beispiel:
 
 ```ts twoslash
 import { Vector3 } from "three";
@@ -99,7 +99,7 @@ void MyExampleVectorMethod(Vector3 position){
 
 Eine Methode wird mit einem Vector3 namens position aufgerufen. Innerhalb der Methode wird der übergebene Vektor `position` geändert: x wird auf 42 gesetzt. Aber in C# wird der ursprüngliche Vektor, der an diese Methode übergeben wird (siehe Zeile 2), **nicht** geändert, und x wird **immer noch** 0 sein (Zeile 4).
 
-Dasselbe gilt nicht für Javascript/Typescript. Hier haben wir keine benutzerdefinierten value types, was bedeutet, dass Sie, wenn Sie in Needle Engine oder three.js auf einen Vektor stoßen, immer einen reference type haben werden.
+Dasselbe gilt nicht für Javascript/Typescript. Hier haben wir keine custom value types, was bedeutet, dass Sie, wenn Sie in Needle Engine oder three.js auf einen Vektor stoßen, immer einen reference type haben werden.
 Betrachten Sie das folgende Beispiel in Typescript:
 ```ts twoslash
 import { Vector3 } from 'three'
@@ -113,7 +113,7 @@ function myExampleVectorMethod(position: Vector3) : void {
     position.x = 42;
 }
 ```
-Sehen Sie den Unterschied? Da Vektoren und alle benutzerdefinierten Objekte tatsächlich reference types *sind*, haben wir die ursprüngliche Variable `position` (Zeile 3) geändert, und x ist nun 42.
+Sehen Sie den Unterschied? Da Vektoren und alle custom objects tatsächlich reference types *sind*, haben wir die ursprüngliche Variable `position` (Zeile 3) geändert, und x ist nun 42.
 
 Dies ist nicht nur wichtig für Methoden, sondern auch beim Arbeiten mit Variablen.
 In C# erzeugt der folgende Code zwei Instanzen von Vector3, und das Ändern einer hat keinen Einfluss auf die andere:
@@ -246,5 +246,6 @@ export class MyComponent extends Behaviour {
 ## Was kommt als Nächstes?
 
 - [Needle Engine Scripting](/scripting.md)
+
 
 Seite automatisch mit AI übersetzt

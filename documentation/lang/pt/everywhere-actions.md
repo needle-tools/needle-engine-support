@@ -29,14 +29,14 @@ selecione-o e depois clique em `Add Component > Needle > Everywhere Actions > [A
 
 | Action | Descrição | Casos de Uso de Exemplo |
 | --- | --- | --- |
-| Tocar Animação ao Clicar | Toca um estado de animação selecionado de um Animator. Após tocar, pode opcionalmente fazer a transição para outra animação. | Apresentações de produtos, tutoriais interativos, movimento de personagens |
-| Mudar Material ao Clicar | Troca um material por outros. Todos os objetos com esse material serão trocados em conjunto. | Configuradores de produtos, personagens |
-| Olhar Para | Faz um objeto olhar para a câmara. | Elementos de UI, sprites, infográficos, efeitos de billboard, hotspots clicáveis |
-| Tocar Áudio ao Clicar | Toca um clipe de áudio selecionado. | Efeitos sonoros, Narração, Exposições de museus |
-| Ocultar ao Iniciar | Oculta um objeto no início da cena para revelação posterior. |
-| Definir Ativo ao Clicar | Mostra ou oculta objetos. |  |
-| Mudar Transform ao Clicar | Move, roda ou escala um objeto. Permite movimento absoluto ou relativo. | Personagens, produtos, animação de UI (use animação para movimentos mais complexos) |
-| Fonte de Áudio | Toca áudio ao iniciar e continua em loop. Espacial ou não espacial. | Música de fundo, sons ambiente |
+| Play Animation on Click | Toca um estado de animação selecionado de um Animator. Após tocar, pode opcionalmente fazer a transição para outra animação. | Apresentações de produtos, tutoriais interativos, movimento de personagens |
+| Change Material on Click | Troca um material por outros. Todos os objetos com esse material serão trocados em conjunto. | Configuradores de produtos, personagens |
+| Look At | Faz um objeto olhar para a câmara. | Elementos de UI, sprites, infográficos, efeitos de billboard, hotspots clicáveis |
+| Play Audio on Click | Toca um clipe de áudio selecionado. | Efeitos sonoros, Narração, Exposições de museus |
+| Hide on Start | Oculta um objeto no início da cena para revelação posterior. |
+| Set Active on Click | Mostra ou oculta objetos. |  |
+| Change Transform on Click | Move, roda ou escala um objeto. Permite movimento absoluto ou relativo. | Personagens, produtos, animação de UI (use animação para movimentos mais complexos) |
+| Audio Source | Toca áudio ao iniciar e continua em loop. Espacial ou não espacial. | Música de fundo, sons ambiente |
 | WebXR Image Tracking | Rastreia um alvo de imagem e mostra ou oculta objetos. | Experiências AR, apresentações de produtos |
 
 ## Exemplos
@@ -105,7 +105,7 @@ Frequentemente, obter o comportamento certo envolverá compor _actions de nível
 | `ActionBuilder.transformAction` | |
 | `ActionBuilder.playAudioAction` | |
 
-| Group Actions | |
+|  Group Actions | |
 | --- | --- |
 | `ActionBuilder.sequence` | |
 | `ActionBuilder.parallel` | |
@@ -119,9 +119,10 @@ Para ver a implementação das nossas Everywhere Actions integradas, por favor, 
 
 ## Leitura adicional
 
-As seguintes páginas fornecem mais exemplos que pode testar e explorar agora mesmo:
+As seguintes páginas fornecem mais exemplos e samples que pode testar e explorar agora mesmo:
 
 - Visite o nosso [Website AR Showcase](https://engine.needle.tools/projects/ar-showcase/) que tem muitos exemplos de AR interativos com foco em iOS AR & Quicklook
 - [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+
 
 Página traduzida automaticamente usando IA

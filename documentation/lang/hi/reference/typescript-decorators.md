@@ -1,25 +1,25 @@
 ---
-title: "@serializable and other decorators"
+title: "@serializable और अन्य डेकोरेटर्स"
 ---
 
-निम्न तालिका में उपलब्ध Typescript Decorators शामिल हैं जो Needle Engine प्रदान करता है।
+निम्न तालिका में उपलब्ध Typescript डेकोरेटर्स शामिल हैं जो Needle Engine प्रदान करता है।
 
 आप उन्हें Attributes on steroids (यदि आप C# से परिचित हैं) के रूप में सोच सकते हैं - अतिरिक्त कार्यक्षमता प्रदान करने के लिए उन्हें Typescript में क्लासेस, फ़ील्ड्स या मेथड्स में जोड़ा जा सकता है।
 
 |  |  |
-| --- | --- |
-| **Field & Property Decorators** | |
+| --- | ---
+| **फ़ील्ड और प्रॉपर्टी डेकोरेटर्स** | |
 | `@serializable()` | एक्सपोज़्ड / सीरियलाइज़्ड फ़ील्ड्स में जोड़ें। इसका उपयोग तब किया जाता है जब Unity या Blender से कॉम्पोनेंट्स के साथ एक्सपोर्ट की गई glTF फ़ाइलें लोड की जाती हैं। |
 | `@syncField()` | वैल्यू के बदलने पर उसे नेटवर्क करने के लिए किसी फ़ील्ड में जोड़ें। जब फ़ील्ड बदलता है तो कॉल करने के लिए आप एक मेथड पास कर सकते हैं। |
 | `@validate()` | जब भी वैल्यू बदलती है तो कॉम्पोनेंट इवेंट मेथड `onValidate` में कॉलबैक प्राप्त करने के लिए जोड़ें। यह Unity के onValidate के समान व्यवहार करता है। |
-| **Method Decorators** | |
+| **मेथड डेकोरेटर्स** | |
 | `@prefix(<type>)` (experimental) | अन्य कॉम्पोनेंट्स में आसानी से कस्टम कोड इंजेक्ट करने के लिए उपयोग किया जा सकता है। वैकल्पिक रूप से, मूल मेथड को एग्जीक्यूट होने से रोकने के लिए `false` वापस करें। नीचे [उदाहरण देखें](#prefix) |
-| **Class Decorators** | |
+| **क्लास डेकोरेटर्स** | |
 | `@registerType` | कोई आर्गुमेंट नहीं। Needle Engine टाइप्स पर रजिस्टर होने और हॉट रीलोडिंग सपोर्ट सक्षम करने के लिए किसी कस्टम कॉम्पोनेंट क्लास में जोड़ा जा सकता है। |
 
-## Examples
+## उदाहरण
 
-### Serializable
+### सीरियलाइज़ेबल
 
 ```ts twoslash
 import { Behaviour, serializable, EventList } from "@needle-tools/engine";
@@ -46,7 +46,7 @@ export class ButtonObject extends Behaviour {
 }
 ```
 
-### SyncField
+### सिंकफ़ील्ड
 
 `@syncField` डेकोरेटर का उपयोग एक ही नेटवर्किंग रूम से कनेक्टेड सभी उपयोगकर्ताओं (आपकी वेबसाइट के विज़िटर) के लिए आपके कॉम्पोनेंट्स की प्रॉपर्टीज़ को स्वचालित रूप से नेटवर्क करने के लिए किया जा सकता है। यह वैकल्पिक रूप से एक कॉलबैक फ़ंक्शन ले सकता है जिसे वैल्यू बदलने पर इन्वोक किया जाएगा।
 
@@ -68,7 +68,7 @@ export class MyScript extends Behaviour {
 }
 ```
 
-### Validate
+### वैलिडेट
 ```ts twoslash
 import { Behaviour, serializable, validate } from "@needle-tools/engine";
 
@@ -86,7 +86,7 @@ export class MyScript extends Behaviour {
 }
 ```
 
-### Prefix
+### प्रीफ़िक्स
 [लाइव उदाहरण](https://stackblitz.com/edit/needle-engine-prefix-example?file=src%2Fmain.ts)
 ```ts twoslash
 import { Camera, prefix } from "@needle-tools/engine";

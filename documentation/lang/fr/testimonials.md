@@ -40,7 +40,8 @@ J'ai joué un peu avec ça ce matin 🤯🤯 assez magique
   src="https://x.com/mrm_design/status/1567391880169545729"
   img="https://pbs.twimg.com/profile_images/1106863126958493697/tlgb3EyM_x96.jpg"
 >
-C'est énorme pour WebXR et les expériences 3D partagées et immersives ! Merci beaucoup à l'équipe @NeedleTools pour le travail accompli ! J'espère que @Apple réglera sa situation WebXR le plus tôt possible. La partie RA a fonctionné parfaitement sur mon @SamsungMobile S21.
+C'est énorme pour WebXR et les expériences 3D partagées et immersives ! Merci beaucoup à l'équipe @NeedleTools pour le travail accompli ! J'espère que @Apple
+ réglera sa situation WebXR le plus tôt possible. La partie RA a fonctionné parfaitement sur mon @SamsungMobile S21.
 </testimonial>
 
 <testimonial
@@ -67,7 +68,8 @@ Grâce à @NeedleTools, je vois beaucoup cette solution pour les outils 3D temps
   src="https://x.com/VRSpatialist/status/1572300394285383680"
   img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
 >
-Je découvre enfin @NeedleTools avec Unity. Super facile de mettre quelque chose en place et de le faire fonctionner dans le cloud grâce à leurs intégrations.
+Je découvre enfin @NeedleTools avec Unity. Super facile de mettre quelque chose en place et de le faire fonctionner dans le cloud grâce à leurs
+ intégrations.
 </testimonial>
 
 <testimonial
@@ -113,6 +115,5 @@ J'ai passé les 2,5 derniers mois à construire ce jeu, je n'avais jamais constr
 >
 Mon flux de travail a été optimisé 10 fois depuis que j'utilise Needle.
 </testimonial>
-
 
 Page automatiquement traduite par IA

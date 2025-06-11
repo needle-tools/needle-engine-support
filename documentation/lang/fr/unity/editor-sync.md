@@ -4,7 +4,7 @@ Needle permet un flux de travail très rapide et itératif entre Unity et le nav
 
 ## Comment utiliser l'Editor Sync
 
-Vous pouvez activer l'Editor Sync en ajoutant le composant `EditorSync` à votre scène. Ce composant connectera votre Unity Editor à votre projet navigateur et synchronisera automatiquement les modifications applicables entre les deux.
+Vous pouvez activer l'Editor Sync en ajoutant le composant `EditorSync` à votre scène. Ce composant connectera votre Unity Editor avec votre projet navigateur et synchronisera automatiquement les modifications applicables entre les deux.
 
 :::tip
 L'**Editor Sync** est actuellement une fonctionnalité expérimentale. N'hésitez pas à nous faire part de votre expérience ! Nous sommes impatients de connaître votre avis.
@@ -15,5 +15,6 @@ L'**Editor Sync** est actuellement une fonctionnalité expérimentale. N'hésite
 Ce tutoriel montre le flux de travail de l'Editor Sync en action :
 
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
+
 
 Page traduite automatiquement à l'aide de l'IA

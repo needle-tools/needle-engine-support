@@ -17,7 +17,7 @@ Une variété de formats de fichiers sont pris en charge, y compris glTF, USD, F
 
 Visitez [Needle Cloud](https://cloud.needle.tools) pour commencer.
 
-![Needle Cloud Overview](/cloud/cloud-overview-page.webp)
+![Vue d'ensemble de Needle Cloud](/cloud/cloud-overview-page.webp)
 
 ## Fonctionnalités
 
@@ -54,7 +54,7 @@ Needle Cloud est intégré à l'éditeur Unity. Cela vous permet de déployer vo
 3. **Cliquez sur `Upload to Needle Cloud`.**
    Cela construira votre application et la téléchargera sur Needle Cloud. Vous pouvez également choisir de déployer sur une équipe et un projet spécifiques. Le _upload name_ du projet, visible à côté du bouton, est enregistré dans la scène. Les futurs téléchargements utiliseront le même nom de téléchargement, et toutes les versions téléchargées seront regroupées sur le site web de Needle Cloud.
 
-   ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
+   ![Intégration Unity de Needle Cloud](/cloud/cloud-deploy-v1.webp)
 
 ## Déployer depuis la CLI
 
@@ -93,18 +93,18 @@ Utilisez l'[Action Github Needle Cloud](https://github.com/marketplace/actions/d
 #### Exemple : Action Github Needle Cloud
 ```yml
       - name: Déployer vers Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1.0.2
+        uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
             dir: ./dist
-            name: vite-template # facultatif
+            name: vite-template # optional
 ```
 
 #### Exemple : Déployer en utilisant une commande CLI
 
 ```bash
-# Déployer vers Needle Cloud depuis par exemple une action github
+# Deploy to Needle Cloud from e.g. a github action
 npx needle-cloud deploy '/path/to/output' --team 'My team' --name 'some name or id' --token '<access_token>'
 ```
 
@@ -144,7 +144,7 @@ Typiquement, vous téléchargez une nouvelle version, la révisez, puis décidez
 
 Le site web de Needle Cloud affiche toutes les versions déployées de l'application, y compris les versions latest et main. Les étiquettes peuvent être déplacées en cliquant sur <kbd>⋮</kbd> et en sélectionnant <kbd>Set main label</kbd> ou <kbd>Remove main label</kbd>.
 
-![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
+![Liste des versions de Needle Cloud](/cloud/cloud-edit-page.webp)
 
 ## Formats 3D pris en charge
 

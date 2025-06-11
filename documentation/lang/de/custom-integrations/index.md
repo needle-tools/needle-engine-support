@@ -26,7 +26,7 @@ Die Struktur einer benutzerdefinierten Integration sieht wie folgt aus:
 3. An dieser Stelle haben Sie eine grundlegende funktionierende Integration und könnten bereits benutzerdefinierte Funktionalität über TypeScript im Webprojekt hinzufügen.
 4. Der nächste Schritt ist das Hinzufügen einer Möglichkeit, Komponenten in Ihrer Software zu erstellen und anzupassen. Je nach Software kann dies über eine benutzerdefinierte UI, ein Skript oder ein Plugin geschehen.
    - Versuchen Sie zunächst eine Komponente wie `DragControls`. Sie hat einige Optionen, aber die Standardeinstellungen sind gut genug für den Anfang.
-   - Gehen Sie dann zu Komponenten über, die eine Konfiguration erfordern. Ein guter Ausgangspunkt sind unsere `Everywhere Actions`, da sie es Entwicklern ermöglichen, eine breite Palette interaktiver Erlebnisse zu erstellen, ohne Code schreiben zu müssen.
+   - Gehen Sie dann zu Komponenten über, die eine Konfiguration erfordern. Ein guter Ausgangspunkt sind unsere `Everywhere Actions`, da sie es Erstellern ermöglichen, eine breite Palette interaktiver Erlebnisse zu erstellen, ohne Code schreiben zu müssen.
 5. Exportieren Sie diese Komponenten als Teil der `NEEDLE_components` glTF-Erweiterung für jeden Node. Dies geschieht üblicherweise durch Hinzufügen einer benutzerdefinierten glTF-Erweiterung oder eines Hooks zum bestehenden glTF-Exporter in Ihrer Software.
 6. Integrieren Sie sich in ein Webprojekt, damit eine UI für benutzerdefinierte Komponenten generiert werden kann. Für Unity und Blender nennen wir dies `Component Compiler` – er erstellt automatisch eine UI für die Komponenten in Ihrem Projekt und dient als Brücke zwischen TypeScript-Komponenten und Ihrer 3D-Software.
 
@@ -39,11 +39,12 @@ Eine vollwertige Integration könnte auch mehr vom Webprojekt-Workflow verwalten
    - Unsere [Unity Integration](./../unity/) überschreibt den "Play"-Button, um das Webprojekt auszuführen.
    - Die [Blender Integration](./../blender/) hat einen benutzerdefinierten "Play"-Button, der das Webprojekt ausführt.
 3. Erstellen (Building) des Webprojekts in einen Ordner
-4. Hochladen des gebuildeten Projekts zu Needle Cloud oder einer anderen Plattform und Speichern der Project ID und Team ID
-   - Unsere Unity Integration zeigt zusätzlich die letzten Uploads für Ihr Team an und ermöglicht Ihnen, zum letzten Deployment eines Projekts zu springen.
+4. Hochladen des erstellten Projekts zu Needle Cloud oder einer anderen Plattform und Speichern der Project ID und Team ID
+   - Unsere Unity Integration zeigt zusätzlich die letzten Uploads für Ihr Team an und ermöglicht Ihnen, zur letzten Bereitstellung eines Projekts zu springen.
 5. Hochladen/Herunterladen einzelner Assets zu Needle Cloud oder einer anderen Plattform
 
 :::tip Kontaktieren Sie uns, wenn Sie planen, eine benutzerdefinierte Integration zu erstellen!
 Bitte kontaktieren Sie uns, wenn Sie daran interessiert sind, eine benutzerdefinierte Integration zu erstellen. Wir helfen Ihnen gerne bei dem Prozess und erklären Ihnen weitere Details. Für Enterprise Kunden bieten wir auch benutzerdefinierte Integrationen als Service an.
 :::
+
 Seite automatisch mit AI übersetzt

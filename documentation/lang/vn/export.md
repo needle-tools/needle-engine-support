@@ -2,6 +2,8 @@
 title: Exporting Assets to glTF
 ---
 
+
+
 # Xuất Tài sản, Hoạt ảnh, Prefab, Vật liệu, Lightmap...
 Thêm một component ``ExportInfo`` vào scene Unity của bạn để tạo một web project mới từ một template, liên kết đến một web project hiện có mà bạn muốn xuất tới, thiết lập các dependencies đến các thư viện và package khác, và để triển khai project của bạn.
 
@@ -11,6 +13,7 @@ Theo mặc định, scene của bạn sẽ được xuất khi lưu. Cài đặt
 Để xuất meshes, materials, animations, textures (...) tạo một GameObject mới trong hierarchy của bạn và thêm một component ``GltfObject`` vào đó. Đây là gốc của một file glTF mới. Nó sẽ được xuất bất cứ khi nào bạn thực hiện thay đổi trong scene và lưu lại.
 
 Chỉ các script và dữ liệu trên và bên trong các đối tượng gốc này mới được xuất. Script và dữ liệu bên ngoài chúng sẽ không được xuất.
+
 
 Thêm một cube làm con của đối tượng gốc của bạn và lưu scene. Lưu ý rằng thư mục ``assets/`` đầu ra (xem [project structure](#vite-project-structure)) hiện chứa một file ``.glb`` mới cùng tên với GameObject gốc của bạn.
 
@@ -162,4 +165,6 @@ Nếu scene của bạn không có đối tượng nào đã bake, thì các cà
 Environment Lighting: Color
 Ambient Color: any
 ```
+
+
 Trang tự động dịch bằng AI

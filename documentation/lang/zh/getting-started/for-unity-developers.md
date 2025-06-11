@@ -1,12 +1,12 @@
 ---
-title: Scripting Introduction for Unity Developers
+title: 面向 Unity 开发者的脚本编写简介
 ---
 
-Needle Engine 提供与 Unity Editor 的紧密集成。这使得开发者和设计师都能在熟悉的环境中协同工作，交付快速、高性能且轻量级的 Web 体验。
+Needle Engine 提供了与 Unity Editor 的紧密集成。这使得开发者和设计师都能在熟悉的环境中协同工作，交付快速、高性能且轻量级的 Web 体验。
 
 以下指南主要面向具有 Unity3D 背景的开发者，但也可能对具有 Web 或 three.js 背景的开发者有所帮助。它涵盖了 Unity 与 three.js 或 Needle Engine 中如何完成任务的话题。
 
-如果您完全不熟悉 Typescript 和 Javascript，并且想深入了解如何为 Needle Engine 编写脚本，那么我们还建议阅读 [Typescript Essentials 指南](./typescript-esscriptsial) 以基本了解 C# 和 Javascript/Typescript 之间的区别。
+如果您完全不熟悉 Typescript 和 Javascript，并且想深入了解如何为 Needle Engine 编写脚本，那么我们还建议阅读 [Typescript Essentials 指南](./typescript-essentials) 以基本了解 C# 和 Javascript/Typescript 之间的区别。
 
 如果您想跟着编写代码，可以[打开 engine.needle.tools/new](https://engine.needle.tools/new) 来创建一个可以在浏览器中编辑的小项目 ⚡
 
@@ -39,7 +39,7 @@ export class MyComponent extends Behaviour {
 ## 脚本字段
 
 ### serializable
-如果您见过一些 Needle Engine 脚本，您可能注意到有些变量的声明上方带有 `@serializable` 注解。这是 Typescript 中的一个 Decorator（装饰器），可用于修改或注解代码。在 Needle Engine 中，它例如用于让核心序列化了解在从存储在 glTF 中的原始组件信息转换为 Component 实例时，我们期望在脚本中出现哪些类型。
+如果您见过一些 Needle Engine 脚本，您可能注意到有些变量的声明上方带有 `@serializable` 注解。这是 Typescript 中的一个 Decorator，可用于修改或注解代码。在 Needle Engine 中，它例如用于让核心序列化了解在从存储在 glTF 中的原始组件信息转换为 Component 实例时，我们期望在脚本中出现哪些类型。
 考虑以下示例：
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
@@ -58,19 +58,19 @@ class SomeClass extends Behaviour{
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    @serializable() // < 这里不需要类型，因为字段类型是原始类型
+    @serializable() // < no type is needed here because the field type is a primitive
     myString?: string;
 }
 ```
 
-### public 与 private
+### public vs private
 没有 `private`、`public` 或 `protected` 等访问修饰符的字段，在 javascript 中默认是 `public`
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    /// 没有访问修饰符意味着它是 public:
+    /// no accessor means it is public:
     myNumber?: number;
-    // 显式地将其设为 private:
+    // explicitly making it private:
     private myPrivateNumber?: number;
     protected myProtectedNumber?: number;
 }
@@ -206,7 +206,7 @@ export class MyScript extends Behaviour
         this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
     onDisable() {
-        // 建议在组件不再活动时也取消订阅事件
+        // it is recommended to also unsubscribe from events when your component becomes inactive
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -223,19 +223,17 @@ window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ## InputSystem 回调
 类似于 Unity（参见 [Unity 中的 IPointerClickHandler](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)），您也可以注册以在组件自身上接收输入事件。
 
-为了使此功能正常工作，请确保您的对象在父级层级结构中具有 ``ObjectRaycaster`` 或 ``GraphicRaycaster`` 组件。
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-注意：`IPointerEventHandler` 使对象订阅所有可能的指针事件。对应的处理程序有：
+所有组件可用的 pointer 事件：
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -243,7 +241,7 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
 - `onPointerExit`
 - `onPointerClick`
 
-所有处理程序都有一个 `PointerEventData` 参数来描述事件。
+所有事件都有一个 `PointerEventData` 参数来描述事件。
 
 ## Debug.Log
 javascript 中的 `Debug.Log()` 等效写法是 `console.log()`。您也可以使用 `console.warn()` 或 `console.error()`。
@@ -336,12 +334,12 @@ console.log(myFlag)
 }
 ```
 
-我们的默认模板使用 Vite 作为其打包器，并且没有预装任何前端框架。Needle Engine 对使用哪个框架没有偏好，因此您可以自由选择任何喜欢的框架。我们为 Vue.js、Svelte、Next.js、React 或 React Three Fiber 等流行框架提供了示例。
+我们的默认模板使用 Vite 作为其打包器，并且没有预装任何前端框架。Needle Engine 对使用哪个前端框架没有偏好，因此您可以自由选择任何喜欢的框架。我们为 Vue.js、Svelte、Next.js、React 或 React Three Fiber 等流行框架提供了示例。
 
 ## 安装包和依赖项
-要从 npm 安装依赖项，您可以在命令行（或终端）中打开您的 Web 项目，然后运行 `npm i <包名>`（`npm install` 的缩写）。
+要从 npm 安装依赖项，您可以在命令行（或终端）中打开您的 Web 项目，然后运行 `npm i <the/package_name>`（`npm install` 的缩写）。
 例如，运行 `npm i @needle-tools/engine` 来安装 [Needle Engine](https://www.npmjs.com/package/@needle-tools/engine)。这将把该包添加到您的 `package.json` 的 `dependencies` 数组中。
-要仅将包作为 devDependency 安装，可以运行 `npm i --save-dev <包名>`。下面将详细介绍 dependencies 和 devDependencies 的区别。
+要仅将包作为 devDependency 安装，可以运行 `npm i --save-dev <package_name>`。下面将详细介绍 dependencies 和 devDependencies 的区别。
 
 ### 'dependencies' 和 'devDependencies' 有什么区别？
 您可能注意到有两个包含 *dependency* 的条目 - `dependencies` 和 `devDependencies`。
@@ -351,7 +349,7 @@ console.log(myFlag)
 `devDependencies` **仅**在开发项目时安装（意味着当您直接在特定目录中运行 `install` 时），否则它们**不会**包含在您的项目中。
 
 ### 如何安装其他包或依赖项以及如何使用它？
-“安装”部分告诉我们，您可以通过在项目目录中运行 `npm i <包名>` 来安装依赖项，其中 `包名` 可以是您在 [npm.js](https://npmjs.js.org) 上找到的任何包。
+[安装](#installing-packages--dependencies)部分告诉我们，您可以通过在项目目录中运行 `npm i <package_name>` 来安装依赖项，其中 `package_name` 可以是您在 [npm.js](https://npmjs.org) 上找到的任何包。
 
 假设您想向项目中添加一个 tweening 库。我们将使用 [`@tweenjs/tween.js`](https://www.npmjs.com/package/@tweenjs/tween.js) 作为示例。[这里](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts) 是最终项目，如果您想跳到前面只看结果的话。
 
@@ -379,26 +377,26 @@ import * as TWEEN from '@tweenjs/tween.js';
 
 export class TweenRotation extends Behaviour {
 
-    // 保存 tweener 实例
+    // save the instance of our tweener
     private _tween?: TWEEN.Tween<any>;
 
     start() {
         const rotation = this.gameObject.rotation;
-        // 创建 tween 实例
+        // create the tween instance
         this._tween = new TWEEN.Tween(rotation);
-        // 设置为永远重复
+        // set it to repeat forever
         this._tween.repeat(Infinity);
-        // 设置要使用的缓动函数
+        // set the easing to use
         this._tween.easing(TWEEN.Easing.Quintic.InOut);
-        // 设置要进行 tween 的值
+        // set the values to tween
         this._tween.to({ y: Math.PI * 0.5 }, 1000);
-        // 启动它
+        // start it
         this._tween.start();
     }
 
     update() {
-        // 每帧更新 tweening
-        // '?' 是检查 _tween 是否已创建的简写
+        // update the tweening every frame
+        // the '?' is a shorthand for checking if _tween has been created
         this._tween?.update();
     }
 }

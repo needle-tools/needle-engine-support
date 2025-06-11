@@ -42,6 +42,7 @@ Needle Engine cho Blender cho phép bạn tạo các ứng dụng web có tính 
 
 3. Tìm kiếm "Needle" trong thanh tìm kiếm Add-ons và đảm bảo `Needle Engine Exporter for Blender` đã được bật.
 
+
 ![Settings](/blender/settings.webp)
 
 ## Bắt đầu
@@ -72,6 +73,7 @@ Mở cửa sổ Properties, mở danh mục scene. Chọn một `Project Path` t
 Theo mặc định, cảnh của bạn sẽ tự động được xuất lại khi bạn lưu tệp blend.
 Nếu máy chủ cục bộ đang chạy (ví dụ: bằng cách nhấp vào `Run Project`), trang web sẽ tự động làm mới với mô hình đã thay đổi của bạn.
 
+
 Khi dự án web của bạn đã tồn tại và bạn chỉ muốn tiếp tục làm việc trên trang web
 nhấp vào nút màu xanh lam `Run Project` để khởi động máy chủ cục bộ:
 ![Project panel](/blender/project-panel-2.webp)
@@ -97,6 +99,7 @@ Theo mặc định, viewport của blender được đặt thành `Filmic` - v�
 
 ![Correct color management settings](/blender/settings-color-management.webp)
 
+
 ## Ánh sáng Môi trường
 
 Bạn có thể thay đổi ánh sáng môi trường và skybox bằng cách sử dụng các tùy chọn Viewport shading.
@@ -118,11 +121,13 @@ Ngoài ra, nếu bạn không muốn thấy cubemap làm nền, hãy thêm một
 
 <video-embed limit_height src="/docs/blender/custom_hdri.mp4" />
 
+
 ## Xuất
 
 Để loại trừ một đối tượng khỏi việc xuất, bạn có thể tắt hiển thị Viewport và Render (xem hình bên dưới)
 
 ![Exclude from export](/blender/dont-export.webp)
+
 
 ## Hoạt ảnh 🏇
 
@@ -161,6 +166,7 @@ Trình chỉnh sửa AnimatorController có thể được mở bằng cách s�
 ![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)
 
 Bạn có thể thiết lập các thông số Animator từ typescript hoặc ví dụ bằng cách sử dụng sự kiện của một Button component
+
 
 ### Timeline — Xuất NLA Tracks 🎬
 

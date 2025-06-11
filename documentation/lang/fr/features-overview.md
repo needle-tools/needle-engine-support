@@ -23,7 +23,7 @@ Utilisez les [Everywhere Actions](./everywhere-actions.md) pour l'**AR interacti
 
 ![lightmaps](https://user-images.githubusercontent.com/5083203/186163693-093c7ae2-96eb-4d75-b98f-bf19f78032ff.gif)
 
-Les lightmaps peuvent être cuites dans Unity ou Blender pour ajouter facilement de magnifiques lumières statiques à votre contenu 3D. La cuisson des lightmaps pour le web n'a jamais été aussi facile. Marquez simplement les objets que vous souhaitez lightmapper comme statiques dans Unity, ajoutez une ou plusieurs lumières à votre scène (ou utilisez des matériaux émissifs) et cliquez sur cuire. Needle Engine exportera vos lightmaps par scène et les chargera et les affichera automatiquement exactement comme vous le voyez dans l'Editor !
+Les lightmaps peuvent être cuites dans Unity ou Blender pour ajouter facilement de magnifiques lumières statiques à votre contenu 3D. La cuisson des lightmaps pour le web n'a jamais été aussi facile. Marquez simplement les objets que vous souhaitez lightmapper comme static dans Unity, ajoutez une ou plusieurs lumières à votre scène (ou utilisez des matériaux emissive) et cliquez sur bake. Needle Engine exportera vos lightmaps par scène et les chargera et les affichera automatiquement exactement comme vous le voyez dans l'Editor !
 
 > **Note** : Il n'y a aucune limitation technique quant au lightmapper à utiliser, tant qu'ils aboutissent dans les structures de données de lightmapping de Unity. Les lightmappers tiers tels que [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218) sont donc également pris en charge.
 
@@ -44,9 +44,9 @@ Nous avons même ajouté cette fonctionnalité à notre addon Blender afin que v
 
 <img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" />
 
-Les composants [Animator et AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) dans Unity vous permettent de configurer des animations et de définir des conditions pour quand et comment faire le blending entre elles. Nous prenons en charge l'exportation de machines d'état, StateMachineBehaviours, transitions et layers. Les StateMachineBehaviours sont également pris en charge avec les événements ``OnStateEnter``, ``OnStateUpdate`` et ``OnStateExit``.
+Les composants [Animator et AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) dans Unity vous permettent de configurer des animations et de définir des conditions pour quand et comment faire le blending entre elles. Nous prenons en charge l'exportation de state machines, StateMachineBehaviours, transitions et layers. Les StateMachineBehaviours sont également pris en charge avec les événements ``OnStateEnter``, ``OnStateUpdate`` et ``OnStateExit``.
 
-> **Note** : Les sous-états et les Blend Trees ne sont pas pris en charge.
+> **Note** : Les sub-states et les Blend Trees ne sont pas pris en charge.
 
 ### Timeline
 
@@ -55,28 +55,28 @@ Les composants [Animator et AnimatorController](https://docs.unity3d.com/Manual/
 Nous traduisons également la configuration et les pistes de [Unity's Timeline](https://unity.com/features/timeline) dans un format prêt pour le web.
 Les pistes prises en charge comprennent : AnimationTrack, AudioTrack, ActivationTrack, ControlTrack, SignalTrack.
 
-> **Note** : Les sous-Timelines ne sont pas prises en charge actuellement.
+> **Note** : Les Sub-Timelines ne sont pas prises en charge actuellement.
 
 > **Note** : Il est possible d'[exporter des pistes timeline personnalisées](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).
 
 - En savoir plus sur les [Composants d'animation](./component-reference.md#animation)
 
 ## Physique
-Utilisez des Rigidbodies, Mesh Colliders, Box Colliders et SphereColliders pour ajouter de la physique juteuse à votre monde.
+Utilisez des Rigidbodies, Mesh Colliders, Box Colliders ou SphereColliders pour ajouter de la physique à votre monde.
 
 - En savoir plus sur les [Composants de physique](./component-reference.md#physics)
 
 <sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
 
 ## UI
-La construction d'UI en utilisant le système de canvas UI de Unity est en cours de développement. Les fonctionnalités actuelles incluent l'exportation de Texte (y compris les polices), Images, Boutons.
+La construction d'UI en utilisant le système de canvas UI de Unity est en cours de développement. Les fonctionnalités actuelles incluent l'exportation de Text (y compris les polices), Images, Buttons.
 
 Voir la [référence des composants ui](component-reference.md#ui) pour les composants pris en charge.
 
 <sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
 
 ## Particules
-L'exportation de Unity ParticleSystem (Shuriken) est en cours de développement. Les fonctionnalités actuelles incluent la simulation en espace monde/local, les formes d'émetteurs boîte et sphère, l'émission au fil du temps ainsi que l'émission en rafale, la vitesse et la couleur au fil du temps, l'émission par vitesse, l'animation de texture sheet, les traînées de base.
+L'exportation de Unity ParticleSystem (Shuriken) est en cours de développement. Les fonctionnalités actuelles incluent la simulation en espace monde/local, les formes d'émetteurs box et sphere, l'émission over time ainsi que burst emission, velocity- and color over time, emission by velocity, texturesheet animation, basic trails.
 Voir un [exemple live](https://engine.needle.tools/samples/particles) des fonctionnalités prises en charge ci-dessous :
 
 <sample src="https://engine.needle.tools/samples-uploads/particles/" />
@@ -107,5 +107,6 @@ Needle Engine utilise un [workflow basé sur les composants](scripting.md#compon
 
 Consultez notre [Guide de démarrage](getting-started/) pour apprendre comment télécharger et configurer Needle Engine.
 Découvrez [notre vision](vision) ou plongez plus profondément dans les [détails techniques et glTF](technical-overview) qui alimentent tout cela.
+
 
 Page automatiquement traduite à l'aide de l'IA

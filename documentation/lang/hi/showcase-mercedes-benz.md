@@ -1,12 +1,12 @@
 ---
-lang: hi-IN
-title: मर्सिडीज-बेंज शोकेस
+lang: en-US
+title: मर्सिडीस-बेंज़ शोकेस
 editLink: false
 ---
 
 ## परिचय
 
-नमस्ते, मेरा नाम Kryštof है और मैंने Needle पर एक रिसर्च प्रोजेक्ट किया है। [हमारी कंपनी](https://www.ishowroom.cz/home/) में, हम यह निर्धारित करना चाहते थे कि Needle हमारे कार्यप्रवाह में कैसे मदद कर सकता है। हमारे पास एक स्थानीय ग्राहक है जो लक्जरी कारों के पुनर्विक्रय पर ध्यान केंद्रित करता है। हमने पहले ही Unity का उपयोग करके एक मोबाइल ऐप और VR अनुभव प्रदान किया है। हमारे पास इंजन में लगभग 30 अद्वितीय कारें तैयार हैं। हम ग्राहक की वेबसाइट को अधिक कॉन्फ़िगरेशन विकल्पों के साथ आकर्षक डिजिटल क्लोन के साथ विस्तारित करने की योजना बना रहे हैं। Needle, Unity और वेब विज़ुअल के बीच एक पूर्ण 1:1 रूपांतरण प्राप्त कर सकता है। यह हमारे कार्यप्रवाह के लिए एक बहुत बड़ा लाभ होगा। इसलिए यहीं से हमारे शोध की शुरुआत हुई।
+नमस्ते, मेरा नाम Kryštof है और मैंने Needle के बारे में एक research project किया है। [हमारी company](https://www.ishowroom.cz/home/) में, हम यह determine करना चाहते थे कि Needle हमारे workflow में कैसे मदद कर सकता है। हमारे पास एक local client है जो luxury cars के reselling पर ध्यान केंद्रित करता है। हमने already एक mobile app और VR experience using Unity deliver किया है। हमारे पास engine में around 30 unique cars ready हैं। हम client की website को visually pleasing digital clones with more configuration options के साथ expand करने की plan कर रहे हैं। Needle एक perfect 1:1 conversion between Unity और web visuals achieve कर सकता है। यह हमारे workflow के लिए एक massive benefit होगा। So that's what sparked our research।
 
 
 <sample src="https://engine.needle.tools/demos/mercedes-benz-demo/" />
@@ -14,27 +14,27 @@ editLink: false
 
 ## संदर्भ
 
-मुझे javascript, typescript या three.js का बहुत अधिक अनुभव नहीं है, इसलिए मेरा दृष्टिकोण एक अर्ध-अनुभवी Unity डेवलपर का है जो वेब अनुभव बनाने का सबसे सरल तरीका आज़मा रहा है। जो लोग Unity WebGL सुझाएंगे, वह दुर्भाग्य से काम नहीं करता है और मोबाइल ब्राउज़र पर लचीला नहीं है। Needle 💚 है
+मुझे javascript, typescript या three.js का very well experience नहीं है, so my point of view is as a semi-experienced Unity developer trying out the simplest way how to create a web experience। For those who would suggest Unity WebGL, that sadly doesn't work and isn't flexible on mobile browsers। Needle is 💚
 
 
 ## लाइटिंग
 
-हमारा लाइटिंग मॉडल Unity में reflection probes पर आधारित है। हमें किसी भी directional या point lights की आवश्यकता नहीं है, केवल ambient lighting की आवश्यकता है।
+हमारा lighting model Unity में reflection probes पर based है। हमें किसी भी directional या point lights की need नहीं है, only ambient lighting की need है।
 
 
-हम इस skybox का उपयोग कर रहे हैं:
+हम यह skybox use कर रहे हैं:
 
  ![Skybox](/showcase-mercedes/1_skybox.png)
 
-जो paint job पर ऐसा दिखता है:
+Which looks like this on the paint job:
 
 ![Paintjob](/showcase-mercedes/2_paintjob_simple.jpg)
 
-फिर थोड़ा विवरण जोड़ने के लिए, मैंने specular highlights बनाने के लिए नगण्य तीव्रता (0.04) वाले 2 directional lights जोड़े हैं। तो पहले यह ऐसा दिखता था:
+Then to add a slight detail, i've added 2 directional lights with an insignificant intensity (0.04) to create specular highlights। So before it looked like this:
 
 ![Specular off](/showcase-mercedes/3_SpecularHighlights_off.jpg)
 
-लेकिन जोड़े गए directional lights के साथ इसने एक बेहतर dynamic जोड़ा। उच्च तीव्रता के साथ प्रभाव को गहरा किया जा सकता है:
+But with the added directional lights it added a better dynamic। The effect could be deepened with higher intensity:
 
 ![Specular on](/showcase-mercedes/4_SpecularHighlights_on.jpg)
 
@@ -42,34 +42,34 @@ editLink: false
 
 ## बैकग्राउंड
 
-दृश्य अब ऐसा दिखता है:
+The scene now looks like this:
 
 ![No background](/showcase-mercedes/5_NoBackground.jpg)
 
-काला बैकग्राउंड बहुत सुंदर नहीं है। इसलिए visual और lighting skyboxes के बीच अंतर करने के लिए मैंने एक inverse sphere जोड़ा है जो पूरे मैप को लपेटता है।
+The black background isn't very pretty। So to differentiate between visual और lighting skyboxes i've added an inverse sphere which wraps the whole map।
 
 ![With background](/showcase-mercedes/6_MapBackground.png)
 
-gradient हल्के ग्रे से सफेद रंग तक जाता है..
+Regarding the gradiant goes from a slight gray to a white color..
 
-यह प्रभाव केवल एक उचित UV mapping और एक single pixel high texture के साथ आसानी से बनाया जा सकता है जो gradient को परिभाषित करेगा।
+This effect could be easily made with just a proper UV mapping and a single pixel high texture which would define the gradiant।
 
-मैंने shader graph में एक unlit shader बनाया है:
+I've made an unlit shader in the shader graph:
 
 ![Evironemnt shader](/showcase-mercedes/7_EnvShaderGraph.jpg)
 
-मैंने एक color banding समस्या देखी है, इसलिए मैंने dithering लागू करने का प्रयास किया है। सच कहूं तो, इसने artefacts में मदद नहीं की, लेकिन मुझे यकीन है कि उस समस्या का एक सरल समाधान है। तो shader का ऊपरी हिस्सा object space में Y अक्ष के आधार पर gradient का sample लेता है। और निचला हिस्सा color banding को negate करने की कोशिश करता है।
+I've noticed a color banding issue, so i've tried to implement dithering। Frankly, it didn't help the artefacts but i bet there's a simple solution to that issue। So the upper part of the shader does sample the gradiant based on the Y axis in object space। And the lower part tries to negate the color banding।
 
-shaders का उपयोग करके gradient का उपयोग करना और उसे iterate करना आसान हो जाता है। Needle के Shadergraph markdown asset का उपयोग करके, यह और भी सरल है! 🌵
+By using shaders it's simpler to use and iterate the gradiant। By using Needle's Shadergraph markdown asset, it's even simpler! 🌵
 
 ![Gradiant](/showcase-mercedes/8_Gradiant.png)
 
 
 ## कार की नकली गति
 
-दृश्य अभी static है क्योंकि कुछ भी हिलता नहीं है। हम गति की नकली भावना जोड़कर इसे negate कर सकते हैं। पहियों में गति जोड़कर शुरुआत करते हैं।
+The scene right now is static since nothing moves। We can negate that by adding a fake feeling of motion। Let's start by adding motion to the wheels।
 
-Rotator नामक एक सरल component के साथ, हम एक axis और उस पर गति परिभाषित करते हैं।
+With a simple component called Rotator, we define an axis and speed along it।
 
 ![Rotator](/showcase-mercedes/9_Rotator.png)
 ```ts twoslash
@@ -105,47 +105,47 @@ export class Rotator extends Behaviour {
 ```
 
 
-उपयोगकर्ता अब एक कार को गहरी शून्यता में चलाते हुए देखता है, रंग किसी भी चीज़ जैसा नहीं दिखता है और अनुभव नीरस है। हम मॉडल को ground करना चाहते हैं और यह एक grid जोड़कर और फिर उसे shift करके किया जाता है ताकि ऐसा लगे कि कार चल रही है। हम यही हासिल करना चाहते हैं:
+The user now sees a car driving in deep nothingness, the color doesn't resemble anything and the experience is dull। We want to ground the model and that's done by adding a grid and then shifting it so it seems the car is moving। This is what we want to achieve:
 
-![Motion](/showcase-mercedes/10_WheelsAndGrid.png)
+![गति](/showcase-mercedes/10_WheelsAndGrid.png)
 
-grid के लिए shader दो भागों से बना था। grid का एक सरल tiled texture जिसे circular gradient द्वारा multiply किया जा रहा है ताकि किनारे fade off हो जाएं।
+The shader for the grid was comprised of two parts। A simple tiled texture of the grid that's being multipled by a circular gradient to make the edges fade off।
 
 ![Grid](/showcase-mercedes/11_GridShader.jpg)
 
 
 ## अतिरिक्त तत्व
 
-इस tech demo का लक्ष्य कार की क्षमताओं को प्रदर्शित करना है।
+This tech demo takes it's goal to showcase the car's capabilities।
 
-आइए पहियों को उजागर करके शुरुआत करते हैं।
+Let's start by highlighting the wheels।
 
-![Wheel highlight](/showcase-mercedes/12_WheelWithText.png)
+![पहिए को उजागर करना](/showcase-mercedes/12_WheelWithText.png)
 
-इस shader को एक plane में जोड़ने से एक dashed circle बनेगा जो परिभाषित गति से घूम रहा है। world space UI के साथ एक सामान्य Text component के संयोजन से यह दिए गए उत्पाद की कुछ रोचक क्षमताओं या parameters को उजागर कर सकता है।
+Adding this shader to a plane will result in a dashed circle which is rotating by a defined speed। Combined with world space UI with a normal Text component this can highlight some interesting capabilities or parameters of the given product।
 
-![Wheel shader](/showcase-mercedes/13_WheelShader.jpg)
+![पहिए का shader](/showcase-mercedes/13_WheelShader.jpg)
 
-पहियों को प्रदर्शित करने के बाद हम उत्पाद के बारे में विस्तृत जानकारी के साथ समाप्त करना चाहते हैं। इस मामले में, वह कार का पूरा नाम और शायद कुछ उपलब्ध कॉन्फ़िगरेशन होंगे।
+After showcasing the wheels we want to finish with a broad information about the product। In this case, that would be the car's full name and perhaps some available configurations।
 
-![Rear UI](/showcase-mercedes/14_RearUI.jpg)
+![पीछे का UI](/showcase-mercedes/14_RearUI.jpg)
 
 
 
 ## सारांश
 
-Unity के timeline का उपयोग करके हम नियंत्रित कर सकते हैं कि wheel dashes और text कब दिखाए जाएंगे। यह camera animation द्वारा पूरक है।
+By using the Unity's timeline we can control when the wheel dashes and text will be shown। This is complemented by the camera animation।
 
 
 ## निष्कर्ष
 
-Needle Engine हमारे लिए एक बहुत अच्छा उम्मीदवार लगता है!
+Needle Engine seems to be a very good candidate for us!
 
-कुछ विशेषताएं हैं जो हमें याद आती हैं।
+There are a few features which we miss।
 
-उदाहरण के लिए, Lit Shader Graphs के लिए उचित समर्थन होगा। लेकिन तीन.js तरीके से shaders बनाने और हमारी सामग्री टीम के लिए सामग्री को tweak करने के लिए Unity में समान shaders बनाने से हमें कुछ भी नहीं रोकता है।
+That would be for example proper support for the Lit Shader Graphs। But nothing stops us to create shaders the three.js way and create simmilar shaders in Unity for our content team to tweak the materials।
 
-Needle का उपयोग करना शानदार था! 🌵
+Using Needle was a blast! 🌵
 
 
-पेज का अनुवाद AI द्वारा स्वतः किया गया है
+पेज का अनुवाद AI द्वारा स्वतः किया गया है।

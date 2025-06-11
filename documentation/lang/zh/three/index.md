@@ -14,18 +14,19 @@
 
 Needle Engine 提供一个易于使用的 Web Component，只需几行代码即可直接在 HTML 中显示丰富、交互式的 3D 场景。它是支持我们集成的同一个 Web Component。
 
-一旦你超越了 Web Component 的配置选项限制，你可以通过自定义脚本和组件以及完全的程序化 scene graph 访问来扩展它。
+一旦你超越了 Web Component 的配置选项，你可以通过自定义脚本和组件以及完全的程序化 scene graph 访问来扩展它。
 
 :::tip 使用集成！
 对于复杂的 3D 场景和快速迭代，我们建议将 Needle Engine 与我们的一种集成配合使用。它们提供了强大的创建工作流程，包括实时预览、hot reloading 和包含 3D 优化的先进 build pipeline。
 :::
 
 ### 快速开始
-:::: code-group
-::: code-group-item index.html
+::: code-tabs
+@tab index.html
 @[code html](@code/basic-webcomponent.html)
-:::
-::: code-group-item Result
+
+@tab Result
+```html
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
     width: 100%;
     aspect-ratio: 16/9;
@@ -35,8 +36,8 @@ Needle Engine 提供一个易于使用的 Web Component，只需几行代码即�
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
+```
 :::
-::::
 [在 Stackblitz 上打开此示例](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 
@@ -58,14 +59,7 @@ Needle Engine 提供一个易于使用的 Web Component，只需几行代码即�
 
 ```js
 <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
-</script>
-```
-
-如果你知道你的项目不需要 physics 功能，你也可以使用一个更小的 Needle Engine 版本，不包含 physics engine。这将减少总下载大小。
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 
@@ -89,7 +83,7 @@ Needle Engine 提供一个易于使用的 Web Component，只需几行代码即�
 
 ## three.js 和 Needle Engine
 
-由于 Needle Engine 使用 [three.js](https://threejs.org/) 作为 scene graph 和渲染库，因此 three.js 的所有功能在 Needle 中也可用，并且可以从组件脚本中使用。我们正在使用 three.js 的一个 fork，其中包含额外的功能和改进，特别是在 WebXR、Animation 和 USDZ export 方面。
+由于 Needle Engine 使用 [three.js](https://threejs.org/) 作为 scene graph 和渲染库，因此 three.js 的所有功能在 Needle 中也可用，并且可以从 component scripts 中使用。我们正在使用 three.js 的一个 fork，其中包含额外的功能和改进，特别是在 WebXR、Animation 和 USDZ export 方面。
 
 
 ::: tip

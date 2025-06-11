@@ -1,7 +1,7 @@
-# Redes
+# Rede
 
-O Needle Engine inclui uma solução de rede completa para experiências multiplayer.
-Um estado de mundo partilhado, chat de voz, persistência de sessão e muito mais podem ser alcançados com os nossos componentes e APIs de rede. Pode configurar a rede dos seus próprios componentes com uma escolha de rede automática ou manual.
+O Needle Engine inclui uma solução de rede completa para experiências multiplayer.  
+Um estado de mundo partilhado, chat de voz, persistência de sessão e muito mais podem ser alcançados com os nossos componentes e APIs de rede. Pode configurar a rede dos seus próprios componentes com uma escolha de rede automática ou manual.  
 
 As redes no Needle Engine são baseadas em [Websockets](https://github.com/jjxxs/websocket-ts). A rede automática usa dados JSON para facilidade de uso. Para casos de uso complexos e requisitos de alto desempenho, usamos [Flatbuffers](https://google.github.io/flatbuffers/).
 
@@ -11,8 +11,8 @@ O acesso à funcionalidade principal de rede pode ser obtido usando ``this.conte
 
 ### Salas e Estado
 
-No centro das redes no Needle Engine está o conceito de salas sincronizadas. Cada sala tem um ID, e os utilizadores conectam-se a uma sala fornecendo este ID. As salas são armazenadas num servidor, e os utilizadores podem entrar e sair de salas a qualquer momento.
-Quando um utilizador entra numa sala, ele recebe o estado atual da sala, aplica esse estado atual à sua cena e, em seguida, escuta as alterações ao estado da sala.
+No centro das redes no Needle Engine está o conceito de salas sincronizadas. Cada sala tem um ID, e os utilizadores conectam-se a uma sala fornecendo este ID. As salas são armazenadas num servidor, e os utilizadores podem entrar e sair de salas a qualquer momento.  
+Quando um utilizador entra numa sala, ele recebe o estado atual da sala, aplica esse estado atual à sua cena e, em seguida, escuta as alterações ao estado da sala.  
 Quando um utilizador sai de uma sala, ele para de escutar as alterações ao estado da sala.
 
 O estado da sala é armazenado como dados JSON no servidor, então todas as alterações são persistentes. Isso significa que o estado da sala não é apenas útil para redes, mas também para persistir ações de um único utilizador.
@@ -29,7 +29,7 @@ Pode não ser necessária propriedade, a propriedade pode ser permitida a ser tr
 
 Quando um utilizador sai de uma sala, os objetos de propriedade desse utilizador serão eliminados ou terão a propriedade redefinida, dependendo de como o objeto foi criado.
 
-## Ativar Redes para o seu projeto
+## Ativar Rede para o seu projeto
 
 1. Adicione um componente `SyncedRoom` à sua cena. Por padrão, isso usará a infraestrutura de rede fornecida pelo Needle.
 2. Adicione um componente `SyncedTransform` a um objeto cujo movimento deseja sincronizar pela rede.
@@ -72,8 +72,8 @@ import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine
 
 export class SyncedNumber extends Behaviour implements IPointerClickHandler {
 
-    // Use `@syncField` to automatically network a field. 
-    // You can optionally assign a method or method name to be called when the value changes.
+    // Use `@syncField` para configurar automaticamente um campo em rede. 
+    // Opcionalmente, pode atribuir um método ou nome de método para ser chamado quando o valor muda.
     @syncField("myValueChanged")
     mySyncedValue?: number = 1;
     
@@ -244,18 +244,18 @@ networking.startServerExpress(expressApp, { endpoint: "/socket" });
 ```js
 import { init, onConnection } from "@needle-tools/networking";
 
-// Add your framework-specific websocket implementation here. 
-// You can view the fastify and express implementations in server.js for reference.
+// Adicione a sua implementação websocket específica do framework aqui. 
+// Pode ver as implementações fastify e express em server.js para referência.
 class WebsocketConnector {
     constructor(frameworkWebsocket) {
-        // Your implementation.
+        // Sua implementação.
     }
     on(event, callback) {
-        // Your implementation. When receiving a message in the websocket connection, call the callback.
-        // 'event' can be 'message' or 'close'.
+        // Sua implementação. Ao receber uma mensagem na conexão websocket, chame a callback.
+        // 'event' pode ser 'message' ou 'close'.
     }
     send(key, value) {
-        // Your implementation. Pass the message along to the websocket connection.
+        // Sua implementação. Passe a mensagem para a conexão websocket.
     }
 }
 const options = { endpoint: "/socket" };
@@ -609,7 +609,7 @@ Antes de poder enviar e receber mensagens Flatbuffer, precisa definir um esquema
 ::::code-group
 :::code-group-item Registrar um esquema
 ```ts
-// Register a new Flatbuffer schema with the networking system
+// Registrar um novo esquema Flatbuffer com o sistema de rede
 import { registerBinaryType } from '@needle-tools/engine';
 import { MyDataModel } from 'my-data-model.js';
 
@@ -620,13 +620,13 @@ registerBinaryType(MySchemaIdentifier, MyDataModel.getRootAsSyncedTransformModel
 :::
 :::code-group-item Enviar Mensagens
 ```ts
-// Prepare data for sending by creating a Flatbuffer message:
+// Preparar dados para envio criando uma mensagem Flatbuffer:
 import { MyDataModel } from 'my-data-model.js';
 
 const MySchemaIdentifier = "MYSC";
 const builder = new flatbuffers.Builder();
 
-// Construct a Flatbuffer message
+// Construir uma mensagem Flatbuffer
 function createMyCustomModel(somePayload: string): Uint8Array {
     builder.clear();
     MyDataModel.startMyDataModel(builder);    
@@ -637,7 +637,7 @@ function createMyCustomModel(somePayload: string): Uint8Array {
     return builder.asUint8Array();
 }
 
-// Send the data
+// Enviar os dados
 function sendData() {
     const data = createMyCustomModel("your-payload", this, true);
     this.context.connection.sendBinary(data);
@@ -646,14 +646,14 @@ function sendData() {
 :::
 :::code-group-item Receber Mensagens
 ```ts
-// Subscribe to receive this specific message type:
+// Subscrever para receber este tipo de mensagem específico:
 import { MyDataModel } from 'my-data-model.js';
 
 const MySchemaIdentifier = "MYSC";
 
 this.context.connection.beginListenBinary(MySchemaIdentifier, (data) => {
     const model = MyDataModel.getRootAsMyDataModel(data);
-    console.log("Received binary message", model, model.somePayload());
+    console.log("Mensagem binária recebida", model, model.somePayload());
 });
 ```
 :::

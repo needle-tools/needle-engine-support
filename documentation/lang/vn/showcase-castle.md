@@ -24,4 +24,5 @@ Hiện tại có giới hạn tối đa cho "số người dùng trực tuyến 
 Trang này được tạo trong Unity và xuất sang three.js bằng các công cụ và công nghệ của 🌵 needle.
 
 Có rất nhiều công nghệ mở được sử dụng: các mô hình 3D ở định dạng glTF, công cụ kết xuất là three.js, VR và AR sử dụng WebXR. Máy chủ mạng chạy trên Glitch, và âm thanh được gửi qua WebRTC sử dụng PeerJS.
+
 Trang được dịch tự động bằng AI

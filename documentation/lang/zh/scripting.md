@@ -514,7 +514,5 @@ AssetReferences 按 URI 缓存，因此如果您在多个组件/脚本中引用�
 
 # 下一步
 
-```
 Page automatically translated using AI
 页面由 AI 自动翻译
-```

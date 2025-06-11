@@ -248,12 +248,10 @@ Aquí tienes algunas bibliotecas para añadir image tracking basado en el acceso
    - [AR.js](https://github.com/AR-js-org/AR.js) (código abierto)
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (código abierto)
 
-
 ## Referencias
 
 [WebXR Device API](https://www.w3.org/TR/webxr/)
 [caniuse: WebXR](https://caniuse.com/webxr)
 [Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
-
 
 Página traducida automáticamente con IA

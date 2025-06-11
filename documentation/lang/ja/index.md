@@ -14,7 +14,7 @@ footer: "著作権 © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="創設者, Our Computer Company. 元Unity, 元Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
 >
 桁違いの信じられないUnityエディタ統合、
 そしてドキュメントが主張するとおりの分かりやすさ。すごい。
@@ -178,5 +178,4 @@ needleを使い始めて以来、私のワークフローは10倍最適化され
 <removeserviceworker/>
 </ClientOnly>
 
-
-AIによって自動翻訳されたページ
+このページはAIによって自動的に翻訳されました。

@@ -10,4 +10,6 @@ editLink: false
 <sample src="https://zenrepublic.space/?realm=3" />
 
 [Truy cập trang web](https://zenrepublic.space/?realm=3)
-Page automatically translated using AI
+
+
+Trang được dịch tự động bằng AI

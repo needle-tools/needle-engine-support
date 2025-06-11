@@ -48,7 +48,7 @@ test
 @[code ts twoslash](@code/component-click.ts)
 
 
-## Cliques em Objetos em Rede (Networking)
+## Cliques em Objetos em Rede
 
 Adicione este script a qualquer objeto na sua cena que deseja que seja clicável. Certifique-se de ter também um componente `ObjectRaycaster` na hierarquia pai desse objeto.
 O componente enviará o clique recebido para todos os clientes conectados e levantará um evento ao qual pode reagir na sua aplicação. Se estiver a usar Unity ou Blender, pode simplesmente atribuir funções para chamar ao evento `onClick` para, por exemplo, reproduzir uma animação ou ocultar objetos.
@@ -128,7 +128,7 @@ Certifique-se de instalar [`npm i postprocessing`](https://github.com/pmndrs/pos
 
 Para usar o efeito, adicione-o ao mesmo objeto que o seu componente `Volume`.
 
-Aqui está um exemplo que envolve o [efeito de postprocessing Outline](https://pmndrs.github.io/postprocessing/public/demo/#outline). Pode expor variáveis e configurações como de costume, pois qualquer efeito é também apenas um componente na sua cena three.js.
+Aqui está um exemplo que envolve o [efei de postprocessing Outline](https://pmndrs.github.io/postprocessing/public/demo/#outline). Pode expor variáveis e configurações como de costume, pois qualquer efeito é também apenas um componente na sua cena three.js.
 
 @[code](@code/custom-post-effect.ts)
 

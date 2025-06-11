@@ -16,4 +16,5 @@ Este tutorial muestra el flujo de trabajo de Editor Sync en acción:
 
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
 
+
 Página traducida automáticamente por IA

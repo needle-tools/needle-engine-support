@@ -1,5 +1,5 @@
 ---
-lang: en-US
+lang: es-ES
 title: Muestra de Mercedes-Benz
 editLink: false
 ---

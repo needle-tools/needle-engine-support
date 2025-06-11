@@ -49,7 +49,7 @@ Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an 
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
-    Das ist das Beste, was ich nach Cinemachine in Unity gesehen habe. Unity sollte das kaufen
+    Das ist das Beste, was ich nach cinemachine in unity gesehen habe. Unity sollte das kaufen
 </testimonial>
 
 <testimonial
@@ -103,7 +103,7 @@ Wir müssen einfach WOW sagen 🤩
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-Habe die letzten 2,5 Monate damit verbracht, dieses Spiel zu entwickeln. Ich habe noch nie ein Spiel entwickelt/Unity benutzt, aber der ganze Prozess mit Needle Tools macht mir absolut Spaß. So schnell! Würde gerne eine Karriere im Bereich der Entwicklung von AR-Erlebnissen machen!
+Habe die letzten 2,5 Monate damit verbracht, dieses Spiel zu entwickeln. Ich habe noch nie ein Spiel entwickelt/Unity benutzt, aber der ganze Prozess mit needle tools macht mir absolut Spaß. So schnell! Würde gerne eine Karriere im Bereich der Entwicklung von AR-Erlebnissen machen!
 </testimonial>
 
 <testimonial
@@ -112,7 +112,8 @@ Habe die letzten 2,5 Monate damit verbracht, dieses Spiel zu entwickeln. Ich hab
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
 >
-Mein Workflow hat sich verzehnfacht, seit ich Needle benutze
+Mein Workflow hat sich verzehnfacht, seit ich needle benutze
 </testimonial>
+
 
 Seite automatisch übersetzt durch KI

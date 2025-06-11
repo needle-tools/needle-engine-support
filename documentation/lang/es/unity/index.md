@@ -8,7 +8,7 @@ editLink: true
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
+    <img src="/logo.png" style="max-height:70px;" title="Logo de Needle" alt="Logo de Needle"/> +
   <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
 </div>
 
@@ -40,7 +40,7 @@ Needle Engine para Unity te permite crear aplicaciones web altamente interactiva
 
 2. **Espera un momento** a que finalice la instalación e importación. Puede abrirse una ventana indicando que "A new scoped registry is now available in the Package Manager.". Este es nuestro registro de paquetes de Needle. Puedes cerrar esa ventana sin problemas.
 3. **Explora las muestras**.
-  Selecciona la opción de menú `Needle Engine > Explore Samples` (Explorar muestras) para ver, abrir y modificar todas las [escenas de muestra](https://engine.needle.tools/samples) disponibles.
+  Selecciona la opción de menú `Needle Engine > Explore Samples` para ver, abrir y modificar todas las [escenas de muestra](https://engine.needle.tools/samples) disponibles.
 
 ## Tutorial en video rápido
 
@@ -52,9 +52,9 @@ Hay más de 100 muestras que cubren una amplia gama de temas, casos de uso e ind
 Para una descripción general rápida, echa un vistazo a nuestra [página de Muestras](https://engine.needle.tools/samples/).
 
 Todas estas muestras están disponibles directamente en Unity:
-1. Ve a `Needle Engine > Explore Samples` (Explorar muestras) para buscar muestras.
-2. Haz clic en "Install Samples" (Instalar muestras) para instalar el paquete de muestras directamente en tu editor (o [descarga el unitypackage de muestras](http://engine.needle.tools/downloads/unity/samples) para instalar el paquete manualmente).
-3. Elige cualquier muestra y haz clic en `Open Scene` (Abrir escena).
+1. Ve a `Needle Engine > Explore Samples` para buscar muestras.
+2. Haz clic en "Install Samples" para instalar el paquete de muestras directamente en tu editor (o [descarga el unitypackage de muestras](http://engine.needle.tools/downloads/unity/samples) para instalar el paquete manualmente).
+3. Elige cualquier muestra y haz clic en `Open Scene`.
 
 :::tip Las muestras son de solo lectura – eso facilita su actualización.
 Nuestras escenas de muestra forman parte de un paquete UPM en Unity. Esto significa que no puedes editar directamente los assets y scripts en ellas – son de solo lectura. Para editar un asset del paquete de muestras, cópialo en la carpeta `Assets` de tu proyecto. Para editar un script del paquete de muestras, cópialo en la carpeta `src` de tu proyecto web.
@@ -65,9 +65,9 @@ Nuestras escenas de muestra forman parte de un paquete UPM en Unity. Esto signif
 Proporcionamos una serie de plantillas de escena para iniciar rápidamente nuevos proyectos.
 Estas te permiten pasar de una idea a un prototipo en pocos clics.
 
-1. Haz clic en `File > New Scene` (Archivo > Nueva escena).
+1. Haz clic en `File > New Scene`
 
-2. Selecciona una de las plantillas con (needle) en su nombre y haz clic en `Create` (Crear).
+2. Selecciona una de las plantillas con (needle) en su nombre y haz clic en `Create`.
    Recomendamos la plantilla [Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox), que es una excelente manera de empezar con la interactividad, el multijugador y la adición de assets.
 3. Haz clic en Play para instalar e iniciar tu nuevo proyecto web.
 
@@ -87,7 +87,7 @@ En esencia, vamos a recrear la plantilla "Minimal (Needle)" que viene con el paq
   También te advierte si alguno de nuestros paquetes y módulos está desactualizado o no está instalado localmente en tu proyecto web.
 
     ::: tip Nombre del proyecto y nombre de la escena
-    Por defecto, el nombre del proyecto coincide con el nombre de tu escena. Si quieres cambiarlo, puedes elegir o introducir un ``Directory Name`` (Nombre del directorio) donde quieras crear tu nuevo proyecto web. La ruta es relativa a tu proyecto de Unity.
+    Por defecto, el nombre del proyecto coincide con el nombre de tu escena. Si quieres cambiarlo, puedes elegir o introducir un ``Directory Name`` donde quieras crear tu nuevo proyecto web. La ruta es relativa a tu proyecto de Unity.
     :::
 
 3. **Elige una plantilla de proyecto web**
@@ -100,7 +100,7 @@ En esencia, vamos a recrear la plantilla "Minimal (Needle)" que viene con el paq
 
 
 :::tip Define tus propias plantillas
-Si te encuentras creando muchos proyectos similares, puedes crear tus propias plantillas locales o remotas utilizando el menú contextual de la vista Proyecto en `Create/Needle Engine/Project Template` (Crear/Needle Engine/Plantilla de proyecto). Las plantillas pueden ser locales en disco (se copia una carpeta) o repositorios remotos (se clona un repositorio git).
+Si te encuentras creando muchos proyectos similares, puedes crear tus propias plantillas locales o remotas utilizando el menú contextual de la vista Proyecto en `Create/Needle Engine/Project Template`. Las plantillas pueden ser locales en disco (se copia una carpeta) o repositorios remotos (se clona un repositorio git).
 :::
 
 ## Carpetas y archivos del proyecto
@@ -120,7 +120,7 @@ Al crear un nuevo proyecto web en Unity, puedes elegir crearlo a partir de una p
 
 También puedes hacer referencia a plantillas remotas introduciendo una URL de repositorio en la ruta del proyecto ExportInfo (esto se puede guardar con tu escena, por ejemplo). Al crear un nuevo proyecto web, el repositorio será clonado o descargado (dependiendo de si tienes git instalado) y se buscará un archivo `needle.config.json`. Si no se encuentra ninguno en el repositorio clonado, se usará el directorio raíz. Se pueden encontrar ejemplos de proyectos de plantilla remota en [github.com/needle-engine](https://github.com/needle-engine)
 
-![Unity ExportInfo local templates](/imgs/unity-project-remote-template.jpg)
+![Plantillas remotas de Unity ExportInfo](/imgs/unity-project-remote-template.jpg)
 
 ### Proyectos Temporales
 
@@ -152,6 +152,5 @@ Para editar el código dentro de un paquete *NPM Definition*, simplemente haz do
 - [Componentes: Aprende sobre las Everywhere Actions](../everywhere-actions.md)
 - [Scripting para principiantes: Aspectos esenciales de Typescript](../getting-started/typescript-essentials.md)
 - [Scripting para principiantes: Cómo escribir componentes personalizados](../scripting.md)
-
 
 Página traducida automáticamente por IA

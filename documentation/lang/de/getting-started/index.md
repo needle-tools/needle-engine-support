@@ -15,7 +15,7 @@ Mit **Needle Engine** können Sie vollständig interaktive 3D-Websites mit Ihrem
 
 Mit Needle Engine erstellte Projekte können überall im Web bereitgestellt und von unserer hochmodernen Optimierungs-Pipeline mit automatischer LOD-Unterstützung automatisch optimiert werden – wodurch die Asset-Größe um das bis zu 100-fache reduziert wird, ohne die Qualität zu beeinträchtigen.
 
-Needle Engine ist als **Paket für Unity, Add-on für Blender, als vorgefertigte Web Component** oder als npm-Paket für Projekte ohne Editor-Integration erhältlich.
+Needle Engine ist als **Paket für Unity, Add-on für Blender, als vorgefertigte Web Component** oder als npm package für Projekte ohne Editor-Integration erhältlich.
 Jede dieser Optionen enthält dieselben Komponenten als unsere Bausteine und die Möglichkeit, mehr zu erstellen – Sie haben die Wahl.
 
 ## Wählen Sie Ihren Workflow
@@ -116,7 +116,7 @@ Needle Engine verwendet die folgenden Tools, um Ihre Web-App zu erstellen, aber 
 :::
 
 <br/>
-<os-link windows_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1-x64.msi" osx_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1.pkg">Node.js 20 LTS oder 22 LTS.</os-link>
+<os-link windows_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1-x64.msi" osx_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1.pkg">Node.js 20 LTS or 22 LTS.</os-link>
 Needle Engine verwendet Node.js, um die Web-App, die Sie lokal auf Ihrem Computer erstellen, zu verwalten, in der Vorschau anzuzeigen und zu erstellen.
 Es wird auch zum Hochladen (Deployment) Ihrer Website ins Internet verwendet.
 

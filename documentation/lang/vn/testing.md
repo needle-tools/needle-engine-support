@@ -1,5 +1,5 @@
 ---
-title: Testing on local devices
+title: Kiểm thử trên thiết bị cục bộ
 ---
 
 ## Kiểm thử trên thiết bị cục bộ
@@ -28,7 +28,7 @@ _Sử dụng npm package [vite-plugin-basic-ssl](https://github.com/vitejs/vite-
 
 Chúng tôi sử dụng kết nối websocket để giao tiếp giữa trình duyệt và máy chủ phát triển cục bộ. Websocket yêu cầu kết nối bảo mật (HTTPS) để hoạt động. Tùy thuộc vào nền tảng, bạn có thể cần thiết lập chứng chỉ tùy chỉnh cho việc phát triển cục bộ. Android và Windows không cần chứng chỉ tùy chỉnh, nhưng iOS và MacOS thì cần.
 
-| Hệ điều hành | Xem trong trình duyệt<br/>(với cảnh báo bảo mật) | Tự động tải lại |
+| OS | Xem trong trình duyệt<br/>(với cảnh báo bảo mật) | Tự động tải lại |
 | --- | --- | --- |
 | Windows | (✓) | ✓ |
 | Linux | (✓) | ✓ |
@@ -41,7 +41,7 @@ Chúng tôi sử dụng kết nối websocket để giao tiếp giữa trình du
 _Không hiển thị cảnh báo bảo mật. Bạn cần cài đặt chứng chỉ được tạo trên thiết bị của mình._
 _Sử dụng npm package [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert)._
 
-| Hệ điều hành | Xem trong trình duyệt | Tự động tải lại |
+| OS | Xem trong trình duyệt | Tự động tải lại |
 | --- | --- | --- |
 | Windows | ✓ | ✓ |
 | Linux | ✓ | ✓ |
@@ -103,4 +103,4 @@ Chứng chỉ được tự động cài đặt trên máy mà bạn tạo nó t
 3. Nhấp chuột phải vào "Certificates" và chọn "All Tasks > Import".
 4. Chọn file `rootCA.pem` (bạn có thể phải thay đổi loại file thành "all" - tất cả) và làm theo hướng dẫn.
 
-Page automatically translated using AI
+Trang được dịch tự động bằng AI

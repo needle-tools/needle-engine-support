@@ -1,4 +1,4 @@
-# Support und Community
+# Support, Community & AI
 
 ## Community-Forum
 
@@ -16,12 +16,13 @@ Chatten Sie mit der Community und teilen Sie Ihre Projekte in [Needle Discord](h
 
 ## Lokale AI
 
-Die Dokumentation von Needle Engine ist auch über den llms.txt Standard verfügbar.    
+Die Needle Engine Dokumentation ist auch über den llms.txt Standard verfügbar.    
 Laden Sie die folgenden Dateien herunter, um sie als Kontext für Ihre lokale AI zu verwenden:
 
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
+Zusätzlich können Sie auf unserer Dokumentations-Website `.html` durch `.md` ersetzen, um die Markdown-Version der Seite zu erhalten.
 
 ## Lassen Sie sich inspirieren
 
@@ -31,15 +32,17 @@ Sehen Sie sich einige unserer [Benutzerinterviews auf youtube](https://www.youtu
 
 <video-embed src="https://www.youtube.com/watch?v=1KKfct3Zpcw" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=gZuC40Alr88" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=F6_buCHZhWk" />
+
+<video-embed src="https://www.youtube.com/watch?v=3oHyrx8e20g" />
 
 
 
 ::: info Sie haben ein cooles Projekt erstellt?
 Zögern Sie nicht, uns zu [kontaktieren](mailto:hi@needle.tools) – wir sehen immer gerne, was Sie gebaut haben 💚 
 :::
+
+
 Seite automatisch übersetzt durch AI

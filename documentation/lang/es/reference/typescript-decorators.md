@@ -10,8 +10,8 @@ Puedes pensar en ellos como Atributos con esteroides (si estás familiarizado co
 | --- | --- |
 | **Decoradores de Campo y Propiedad** | |
 | `@serializable()` | Añadir a campos expuestos / serializados. Se utiliza al cargar archivos glTF que han sido exportados con componentes desde Unity o Blender. |
-| `@syncField()` | Añadir a un campo para sincronizar su valor en red cuando cambie. Puedes pasar un método que se llamará cuando el campo cambie. |
-| `@validate()` | Añadir para recibir callbacks en el método de evento del componente `onValidate` siempre que el valor cambie. Esto se comporta de forma similar al `onValidate` de Unity. |
+| `@syncField()` | Añadir a un campo para sincronizar el valor en red cuando cambie. Puedes pasar un método que se llamará cuando el campo cambie. |
+| `@validate()` | Añadir para recibir callbacks en el método de evento del componente `onValidate` siempre que el valor cambie. Esto se comporta de forma similar al onValidate de Unity. |
 | **Decoradores de Método** | |
 | `@prefix(<type>)` (experimental) | Puede utilizarse para inyectar fácilmente código personalizado en otros componentes. Opcionalmente, devuelve `false` para evitar que se ejecute el método original. Consulta el [ejemplo siguiente](#prefix). |
 | **Decoradores de Clase** | |
@@ -111,6 +111,5 @@ class YourClass {
     }
 }
 ```
-
 
 Página traducida automáticamente con IA

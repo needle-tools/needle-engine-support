@@ -3,22 +3,23 @@
 ## Comment ça marche
 
 Needle Engine se compose en gros de trois parties :
-- un certain nombre de **composants et d'outils** qui vous permettent de configurer des scènes pour Needle Engine à partir, par exemple, de l'éditeur Unity.
+- un certain nombre de **composants et d'outils** qui vous permettent de configurer des scènes pour Needle Engine à partir, par exemple, de l'éditeur Unity.  
 - un **exportateur** qui transforme les données de scène et de composant en glTF.
 - un **runtime web** qui charge et exécute les fichiers glTF produits et leurs extensions.
 
-Le runtime web utilise three.js pour le rendu, ajoute un système de composants au-dessus du graphe de scène three.js et connecte des chargeurs d'extensions pour nos extensions glTF personnalisées.
+Le runtime web utilise three.js pour le rendu, ajoute un système de composants au-dessus du graphe de scène three.js et connecte des chargeurs d'extensions pour nos extensions glTF personnalisées.  
 
-En substance, cela transforme des outils comme Unity ou Blender en puissances de développement web spatial – ajoutant des assets glTF au workflow typique HTML, CSS, JavaScript et de bundling.
+En substance, cela transforme des outils comme Unity ou Blender en puissances de développement web spatial – ajoutant des assets glTF au workflow typique HTML, CSS, JavaScript et de bundling.  
+
 
 ## Assets glTF
 
-Les modèles, les textures, les animations, les lumières, les caméras et bien plus encore sont stockés sous forme de [fichiers glTF 2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) dans Needle Engine.
-Les données personnalisées sont stockées dans des [extensions de fournisseur](#vendor-specific-gltf-extensions-needle_). Celles-ci couvrent tout, des composants interactifs à la physique, au séquençage et aux lightmaps.
+Les modèles, les textures, les animations, les lumières, les caméras et bien plus encore sont stockés sous forme de [fichiers glTF 2.0](https://registry.khronos.org/glTF/specs/2.0/glTF-2.0.html) dans Needle Engine.  
+Les données personnalisées sont stockées dans des [extensions de fournisseur](#vendor-specific-gltf-extensions-needle_). Celles-ci couvrent tout, des composants interactifs à la physique, au séquençage et aux lightmaps.  
 
 ### Extensions glTF prises en charge
 
-Un glTF de production typique créé par Needle Engine utilise les extensions suivantes :
+Un glTF de production typique créé par Needle Engine utilise les extensions suivantes :  
 ```
 KHR_lights_punctual
 KHR_materials_unlit
@@ -40,7 +41,7 @@ EXT_meshopt_compression
 EXT_mesh_gpu_instancing (import and export)
 ```
 
-Extensions de matériaux prises en charge :
+Extensions de matériaux prises en charge :  
 
 ```
 KHR_materials_clearcoat
@@ -52,9 +53,9 @@ KHR_materials_unlit
 KHR_materials_volume
 ```
 
-D'autres extensions et extensions personnalisées peuvent être ajoutées en utilisant les callbacks d'exportation de UnityGLTF (pas encore documentées) et les [extensions d'importation glTF](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) de three.js.
+D'autres extensions et extensions personnalisées peuvent être ajoutées en utilisant les callbacks d'exportation de UnityGLTF (pas encore documentées) et les [extensions d'importation glTF](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) de three.js.  
 
-> **Note**: Les matériaux utilisant ces extensions peuvent être exportés depuis Unity via le matériau `PBRGraph` de UnityGLTF.
+> **Note**: Les matériaux utilisant ces extensions peuvent être exportés depuis Unity via le matériau `PBRGraph` de UnityGLTF.  
 
 > **Note**: L'audio et les variantes sont déjà pris en charge dans Needle Engine via `NEEDLE_components` et `NEEDLE_persistent_assets`, mais il existe des options pour mieux s'aligner sur les propositions existantes telles que `KHR_audio` et `KHR_materials_variants`.
 
@@ -62,24 +63,25 @@ D'autres extensions et extensions personnalisées peuvent être ajoutées en uti
 
 ### Compression
 
-Pour la production, nous compressons les assets glTF avec [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Les textures utilisent soit `etc1s`, `uastc`, `webp`, soit aucune compression, en fonction du type de texture. Les maillages utilisent `draco` par défaut mais peuvent être configurés pour utiliser `meshtopt` (par fichier glTF). Les extensions personnalisées sont transmises de manière opaque.
+Pour la production, nous compressons les assets glTF avec [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Les textures utilisent soit `etc1s`, `uastc`, `webp`, soit aucune compression, en fonction du type de texture. Les maillages utilisent `draco` par défaut mais peuvent être configurés pour utiliser `meshtopt` (par fichier glTF). Les extensions personnalisées sont transmises de manière opaque.  
 
 Consultez la page [deployment & compression](./deployment.md#optimization-and-compression-options) pour plus d'informations
 
+
 ## Extensions glTF spécifiques au fournisseur (NEEDLE_*)
 
-Needle Engine stocke des données personnalisées dans les fichiers glTF via nos extensions de fournisseur. Ces extensions sont conçues pour être flexibles et permettre d'y insérer des données relativement arbitraires. Il est à noter qu'aucun code n'est stocké dans ces fichiers. Les composants interactifs sont restaurés à partir des données au runtime. Cela présente certaines similitudes avec le fonctionnement des AssetBundles dans Unity – la partie réceptrice d'un asset doit avoir le code correspondant aux composants stockés dans le fichier.
+Needle Engine stocke des données personnalisées dans les fichiers glTF via nos extensions de fournisseur. Ces extensions sont conçues pour être flexibles et permettre d'y insérer des données relativement arbitraires. Il est à noter qu'aucun code n'est stocké dans ces fichiers. Les composants interactifs sont restaurés à partir des données au runtime. Cela présente certaines similitudes avec le fonctionnement des AssetBundles dans Unity – la partie réceptrice d'un asset doit avoir le code correspondant aux composants stockés dans le fichier.  
 
-> Nous ne fournissons pas actuellement de schémas pour ces extensions car elles sont encore en développement. Les extraits JSON ci-dessous démontrent l'utilisation des extensions par exemple et incluent des notes sur les choix architecturaux et ce que nous pourrions modifier dans les futures versions.
+> Nous ne fournissons pas actuellement de schémas pour ces extensions car elles sont encore en développement. Les extraits JSON ci-dessous démontrent l'utilisation des extensions par exemple et incluent des notes sur les choix architecturaux et ce que nous pourrions modifier dans les futures versions.  
 
-> Les références entre les éléments de données sont actuellement construites via un mélange d'indices vers d'autres parties du fichier glTF et de pointeurs JSON. Nous pourrions consolider ces approches dans une future version. Nous stockons également des GUID basés sur des chaînes pour les cas où l'ordonnancement est autrement difficile à résoudre (par exemple, deux composants se référençant mutuellement) que nous pourrions supprimer à l'avenir.
+> Les références entre les éléments de données sont actuellement construites via un mélange d'indices vers d'autres parties du fichier glTF et de pointeurs JSON. Nous pourrions consolider ces approches dans une future version. Nous stockons également des GUID basés sur des chaînes pour les cas où l'ordonnancement est autrement difficile à résoudre (par exemple, deux composants se référençant mutuellement) que nous pourrions supprimer à l'avenir.  
 
 ### NEEDLE_components
 
-Cette extension contient les données des composants par nœud. Les noms des composants correspondent aux noms de type côté JavaScript et côté C#.
-Plusieurs composants ayant le même nom peuvent être ajoutés au même nœud.
+Cette extension contient les données des composants par nœud. Les noms des composants correspondent aux noms de type côté JavaScript et côté C#.  
+Plusieurs composants ayant le même nom peuvent être ajoutés au même nœud.  
 
-Les données dans `NEEDLE_components` peuvent être animées via l'extension `KHR_animation_pointer` (actuellement non ratifiée) : https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer.
+Les données dans `NEEDLE_components` peuvent être animées via l'extension `KHR_animation_pointer` (actuellement non ratifiée) : https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer.  
 
 ```json
 "NEEDLE_components": {
@@ -128,15 +130,15 @@ Les données dans `NEEDLE_components` peuvent être animées via l'extension `KH
 }
 ```
 
-> **Note**: Le fait de stocker uniquement le nom du type de composant signifie que les noms de type doivent actuellement être uniques par projet. Nous prévoyons d'inclure les noms de package dans une future version pour assouplir cette contrainte à des noms de type de composant uniques par package plutôt que globalement.
+> **Note**: Le fait de stocker uniquement le nom du type de composant signifie que les noms de type doivent actuellement être uniques par projet. Nous prévoyons d'inclure les noms de package dans une future version pour assouplir cette contrainte à des noms de type de composant uniques par package plutôt que globalement.  
 
-> **Note**: Actuellement, il n'y a pas d'informations de version dans l'extension (à quel package npm appartient un composant, contre quelle version de ce package a-t-il été exporté). Nous prévoyons d'inclure des informations de version dans une future version.
+> **Note**: Actuellement, il n'y a pas d'informations de version dans l'extension (à quel package npm appartient un composant, contre quelle version de ce package a-t-il été exporté). Nous prévoyons d'inclure des informations de version dans une future version.  
 
-> **Note**: Actuellement, tous les composants se trouvent dans le tableau `builtin_components`. Nous pourrions renommer cela simplement en `components` dans une future version.
+> **Note**: Actuellement, tous les composants se trouvent dans le tableau `builtin_components`. Nous pourrions renommer cela simplement en `components` dans une future version.  
 
 ### NEEDLE_gameobject_data
 
-Cette extension contient des données supplémentaires par nœud liées à l'état, aux couches (layers) et aux tags. Les couches sont utilisées à la fois pour le rendu et la physique, de manière similaire à la façon dont [three.js](https://threejs.org/docs/#api/en/core/Layers) et [Unity](https://docs.unity3d.com/Manual/Layers.html) les traitent.
+Cette extension contient des données supplémentaires par nœud liées à l'état, aux couches (layers) et aux tags. Les couches sont utilisées à la fois pour le rendu et la physique, de manière similaire à la façon dont [three.js](https://threejs.org/docs/#api/en/core/Layers) et [Unity](https://docs.unity3d.com/Manual/Layers.html) les traitent.  
 
 ```json
 "NEEDLE_gameobject_data": {
@@ -149,11 +151,11 @@ Cette extension contient des données supplémentaires par nœud liées à l'ét
 }
 ```
 
-> **Note**: Nous devrons peut-être mieux expliquer pourquoi cela n'est pas une autre entrée dans [`NEEDLE_components`](#needle_components).
+> **Note**: Nous devrons peut-être mieux expliquer pourquoi cela n'est pas une autre entrée dans [`NEEDLE_components`](#needle_components). 
 
 ### NEEDLE_lighting_settings
 
-Il s'agit d'une extension racine définissant les propriétés d'éclairage ambiant par fichier glTF.
+Il s'agit d'une extension racine définissant les propriétés d'éclairage ambiant par fichier glTF.   
 
 ```json
 "NEEDLE_lighting_settings": {
@@ -187,7 +189,7 @@ Il s'agit d'une extension racine définissant un ensemble de lightmaps pour le f
 }
 ```
 
-> **Note**: Actuellement, cette extension contient également des références de textures d'environnement. Nous prévoyons de modifier cela dans une future version.
+> **Note**: Actuellement, cette extension contient également des références de textures d'environnement. Nous prévoyons de modifier cela dans une future version. 
 
 | Type de texture | Valeur |
 | -- | -- |
@@ -195,7 +197,7 @@ Il s'agit d'une extension racine définissant un ensemble de lightmaps pour le f
 | Environment Map  | 1 |
 | Reflection Map | 2 |
 
-La façon dont les lightmaps sont appliquées est définie dans le composant `MeshRenderer` à l'intérieur de l'extension [`NEEDLE_components`](#needle_components) par nœud :
+La façon dont les lightmaps sont appliquées est définie dans le composant `MeshRenderer` à l'intérieur de l'extension [`NEEDLE_components`](#needle_components) par nœud :  
 
 ```json
 "NEEDLE_components": {
@@ -216,19 +218,19 @@ La façon dont les lightmaps sont appliquées est définie dans le composant `Me
 }
 ```
 
-> **Note**: Nous pourrions modifier cela dans une future version et déplacer les données liées aux lightmaps vers une entrée d'extension `NEEDLE_lightmap` par nœud.
+> **Note**: Nous pourrions modifier cela dans une future version et déplacer les données liées aux lightmaps vers une entrée d'extension `NEEDLE_lightmap` par nœud. 
 
 ### NEEDLE_persistent_assets
 
-Les composants dans `NEEDLE_components` peuvent référencer des données via des JSON Pointers. Les données dans `NEEDLE_persistent_assets` sont souvent référencées plusieurs fois par différents composants et sont donc stockées séparément dans une extension racine. Par conception, elles sont toujours référencées par autre chose (ou ont des références entre elles), et ne stockent donc aucune information de type : ce sont simplement des morceaux de données JSON et les composants qui les référencent doivent actuellement savoir à quoi s'attendre.
+Les composants dans `NEEDLE_components` peuvent référencer des données via des JSON Pointers. Les données dans `NEEDLE_persistent_assets` sont souvent référencées plusieurs fois par différents composants et sont donc stockées séparément dans une extension racine. Par conception, elles sont toujours référencées par autre chose (ou ont des références entre elles), et ne stockent donc aucune information de type : ce sont simplement des morceaux de données JSON et les composants qui les référencent doivent actuellement savoir à quoi s'attendre. 
 
-Exemples d'assets/données stockés ici :
+Exemples d'assets/données stockés ici :  
 - AnimatorControllers, leurs couches et états
 - PlayableAssets (timelines), leurs pistes et clips intégrés
 - SignalAssets
 - ...
 
-Les données dans `persistent_assets` peuvent référencer d'autres `persistent_assets` via JSON Pointer, mais par conception ne peuvent pas référencer `NEEDLE_components`. Cela est similaire à la séparation entre les "données de scène" et le "contenu de la base d'assets" dans Unity.
+Les données dans `persistent_assets` peuvent référencer d'autres `persistent_assets` via JSON Pointer, but par conception ne peuvent pas référencer `NEEDLE_components`. Cela est similaire à la séparation entre les "données de scène" et le "contenu de la base d'assets" dans Unity. 
 
 ```json
 {
@@ -334,18 +336,18 @@ Les données dans `persistent_assets` peuvent référencer d'autres `persistent_
           "preExtrapolationMode": 1,
           "postExtrapolationMode": 1
         },
-        ...
+        ... 
       ]
     }
   ]
 }
 ```
 
-> **Note**: Nous pourrions inclure plus d'informations de type et de versioning à l'avenir.
+> **Note**: Nous pourrions inclure plus d'informations de type et de versioning à l'avenir. 
 
 ### NEEDLE_techniques_webgl
 
-Cette extension s'appuie sur l'extension archivée [`KHR_techniques_webgl`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) et l'étend à quelques endroits cruciaux. Alors que l'extension originale était spécifiée pour WebGL 1.0, nous l'utilisons ici avec WebGL 2.0 et avons ajouté un certain nombre de types d'uniformes.
+Cette extension s'appuie sur l'extension archivée [`KHR_techniques_webgl`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) et l'étend à quelques endroits cruciaux. Alors que l'extension originale était spécifiée pour WebGL 1.0, nous l'utilisons ici avec WebGL 2.0 et avons ajouté un certain nombre de types d'uniformes.  
 
 ```json
 "KHR_techniques_webgl": {
@@ -393,12 +395,12 @@ Cette extension s'appuie sur l'extension archivée [`KHR_techniques_webgl`](http
       "defines": []
     }
   ]
-}
+}     
 ```
 
-> **Note**: Actuellement, les shaders de vertex et de fragment sont toujours intégrés en tant qu'URI ; nous prévoyons de déplacer ces données vers des bufferViews plus raisonnables à l'avenir.
+> **Note**: Actuellement, les shaders de vertex et de fragment sont toujours intégrés en tant qu'URI ; nous prévoyons de déplacer ces données vers des bufferViews plus raisonnables à l'avenir.  
 
-> **Note**: Il y a des propriétés redondantes ici que nous prévoyons de nettoyer.
+> **Note**: Il y a des propriétés redondantes ici que nous prévoyons de nettoyer.  
 
 ## TypeScript et mappage de données
 
@@ -410,13 +412,14 @@ Cette extension s'appuie sur l'extension archivée [`KHR_techniques_webgl`](http
 
 ## Pourquoi ne compilez-vous pas vers WebAssembly ?
 
-Bien que le processus de compilation de Unity de C# vers IL vers C++ (via IL2CPP) vers WASM (via emscripten) soit ingénieux, il est également relativement lent. Construire même un projet simple vers WASM prend de nombreuses minutes, et ce processus est pratiquement répété à chaque changement de code. Une partie de cela peut être évitée grâce à une mise en cache intelligente et en s'assurant que les builds de développement n'essaient pas de striper autant de code, mais cela reste lent.
-> Nous avons un prototype pour certaines traductions WASM, mais il est loin d'être complet et la vitesse d'itération reste lente, nous n'étudions donc pas activement cette voie pour le moment.
+Bien que le processus de compilation de Unity de C# vers IL vers C++ (via IL2CPP) vers WASM (via emscripten) soit ingénieux, il est également relativement lent. Construire même un projet simple vers WASM prend de nombreuses minutes, et ce processus est pratiquement répété à chaque changement de code. Une partie de cela peut être évitée grâce à une mise en cache intelligente et en s'assurant que les builds de développement n'essaient pas de striper autant de code, mais cela reste lent.  
+> Nous avons un prototype pour certaines traductions WASM, but il est loin d'être complet et la vitesse d'itération reste lente, nous n'étudions donc pas activement cette voie pour le moment. 
 
-En examinant les workflows web modernes, nous avons constaté que les temps de rechargement du code pendant le développement sont négligeables, généralement de l'ordre de la sous-seconde. Cela échange bien sûr certaines performances (interprétation de JavaScript à la volée au lieu de l'optimisation par le compilateur au moment de la construction) contre de la flexibilité, mais les navigateurs sont devenus très performants pour tirer le meilleur parti de JavaScript.
+En examinant les workflows web modernes, nous avons constaté que les temps de rechargement du code pendant le développement sont négligeables, généralement de l'ordre de la sous-seconde. Cela échange bien sûr certaines performances (interprétation de JavaScript à la volée au lieu de l'optimisation par le compilateur au moment de la construction) contre de la flexibilité, mais les navigateurs sont devenus très performants pour tirer le meilleur parti de JavaScript.  
 
-Nous pensons que pour l'itération et les workflows de test serrés, il est bénéfique de pouvoir tester sur l'appareil et sur la plate-forme cible (le navigateur, dans ce cas) aussi rapidement et aussi souvent que possible - c'est pourquoi nous sautons tout le mode de lecture de Unity, fonctionnant effectivement toujours dans le navigateur.
+Nous pensons que pour l'itération et les workflows de test serrés, il est bénéfique de pouvoir tester sur l'appareil et sur la plate-forme cible (le navigateur, dans ce cas) aussi rapidement et aussi souvent que possible - c'est pourquoi nous sautons tout le mode de lecture de Unity, fonctionnant effectivement toujours dans le navigateur. 
 
 > **Note**: Un effet secondaire très agréable est d'éviter toute l'étape lente de "rechargement de domaine" qui coûte généralement 15 à 60 secondes à chaque entrée en mode de lecture. Vous êtes simplement "en direct" dans le navigateur dès que vous appuyez sur Lecture.
+
 
 Page automatiquement traduite à l'aide de l'IA

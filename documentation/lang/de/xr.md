@@ -6,18 +6,18 @@ title: VR & AR (WebXR)
 
 Needle Engine unterstützt die vollständige [WebXR-Spezifikation](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API), einschließlich AR und VR. WebXR ist ein offizieller Webstandard, der immersive Erlebnisse ins Web bringt, mit allen Vorteilen des Webs: keine Installation, kein App Store, keine SDKs erforderlich.
 
-Alle Geräte mit einem Browser können mit Needle erstellte Apps ausführen. Wenn der Browser WebXR unterstützt, funktionieren Ihre Apps automatisch auch in XR, indem sie unsere integrierten Komponenten verwenden. Dazu gehören Desktop-Browser, mobile Browser, viele Browser auf AR/VR-Headsets, aber auch andere aufkommende Technologien wie Looking Glass-Displays, Smart Glasses und mehr.
+Alle Geräte mit einem Browser können mit Needle erstellte Apps ausführen. Wenn der Browser WebXR unterstützt, funktionieren Ihre Apps automatisch auch in XR, indem sie unsere integrierten Komponenten verwenden. Dazu gehören Desktop-Browser, mobile Browser, viele Browser auf AR/VR-Headsets, aber auch andere aufkommende Technologien wie Looking Glass Displays, Smart Glasses und mehr.
 
 :::tip App-freie iOS AR-Unterstützung über USDZ/QuickLook
 Während iOS-Geräte noch keine offizielle WebXR-Unterstützung bieten, unterstützt Needle die Erstellung von AR-Erlebnissen auf iOS mithilfe von [Everywhere Actions](everywhere-actions.md). Weitere Details finden Sie im [iOS-Abschnitt](#augmented-reality-and-webxr-on-ios). Sie können reichhaltige, interaktive Erlebnisse erstellen, die nahtlos in AR auf iOS-Geräten funktionieren, selbst mit den Einschränkungen, die Apple festgelegt hat.
 
-Wenn Sie den AR-Modus auf iOS aufrufen, konvertiert Needle Ihre Szene automatisch in eine USDZ-Datei, die dann in AR mithilfe von Apples QuickLook angezeigt wird. Objekte, Materialien, Audio, Animationen und Everywhere Actions bleiben erhalten.
+Wenn Sie den AR-Modus auf iOS aufrufen, konvertiert Needle Ihre Szene automatisch in eine USDZ-Datei, die dann in AR mithilfe von Apples QuickLook angezeigt wird. Objekte, Materialien, Audio, Animation und Everywhere Actions bleiben erhalten.
 :::
 
 Die folgende Tabelle listet einige der Geräte auf, die wir erfolgreich mit Needle Engine getestet haben.
 Wenn ein neues Gerät auf den Markt kommt, das WebXR unterstützt, funktioniert es ohne weiteres mit Ihren Apps. Dies ist einer der großen Vorteile der Entwicklung mit dem Browser als Plattform – die Kompatibilität ist nicht auf eine bestimmte Gruppe von Geräten oder SDKs beschränkt.
 
-| Headset-Gerät | Browser | Hinweise |
+| Headset Device | Browser | Notes |
 | -- | -- | -- |
 | Apple Vision Pro | ✔️ Safari | Hand-Tracking, Unterstützung für transienten Pointer |
 | Meta Quest 3 | ✔️ Meta Browser | Hand-Tracking, Unterstützung für sessiongranted<sup>1</sup>, Passthrough, Tiefenmessung, Mesh-Tracking |
@@ -32,7 +32,7 @@ Wenn ein neues Gerät auf den Markt kommt, das WebXR unterstützt, funktioniert 
 | HTC Vive | ✔️ Chrome |  |
 | Hololens 2 | ✔️ Edge | Hand-Tracking, Unterstützung für AR und VR (im VR-Modus wird der Hintergrund ebenfalls gerendert) |
 
-| Mobilgerät | Browser | Hinweise |
+| Mobile Device | Browser | Notes |
 | -- | -- | -- |
 | Android 10+ | ✔️ Chrome | |
 | Android 10+ | ✔️ Firefox | |
@@ -43,9 +43,9 @@ Wenn ein neues Gerät auf den Markt kommt, das WebXR unterstützt, funktioniert 
 | Magic Leap 2 | ✔️ | |
 | Magic Leap 1 | ✔️ | veraltetes Gerät |
 
-| Andere Geräte | Browser | Hinweise |
+| Other Devices | Browser | Notes |
 | -- | -- | -- |
-| Looking Glass Holographic Display | ✔️ Chrome | erfordert Looking Glass Bridge und etwas eigenen Code, [siehe unser Beispiel](https://engine.needle.tools/samples/looking-glass/) |
+| Looking Glass Holographic Display | ✔️ Chrome | erfordert Looking Glass bridge und etwas eigenen Code, [siehe unser Beispiel](https://engine.needle.tools/samples/looking-glass/) |
 | Logitech MX Ink | ✔️ Meta Browser | offiziell unterstützt, siehe [Dokumentation](https://logitech.github.io/mxink/WebXR/WebXrIntegration.html#using-needle-tools) |
 
 <sup>1</sup>: Erfordert die Aktivierung eines Browser-Flags: `chrome://flags/#webxr-navigation-permission`
@@ -54,7 +54,7 @@ Wenn ein neues Gerät auf den Markt kommt, das WebXR unterstützt, funktioniert 
 
 ## VR-, AR- und QuickLook-Beispiele
 
-Besuchen Sie unsere [Needle Engine Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr), um viele interaktive Beispiele sofort auszuprobieren. Oder testen Sie es live auf Ihrem Gerät, indem Sie auf die Schaltflächen <kbd>QR-Code</kbd> (für Telefone) oder <kbd>Auf Quest öffnen</kbd> (für Meta Quest-Headsets) unten klicken.
+Besuchen Sie unsere [Needle Engine Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr), um viele interaktive Beispiele sofort auszuprobieren. Oder testen Sie es live auf Ihrem Gerät, indem Sie auf die Schaltflächen <kbd>QR Code</kbd> (für Telefone) oder <kbd>Open on Quest</kbd> (für Meta Quest-Headsets) unten klicken.
 
 <sample src="https://engine.needle.tools/samples/collaborative-sandbox/"/>
 
@@ -99,7 +99,7 @@ Diese Komponenten können sich überall in Ihrer Hierarchie befinden. Sie könne
 
 ### Steuerung der Objektanzeige für XR
 
-1.  **Definieren Sie, ob ein Objekt im Browser, in AR, in VR, in der First Person oder in der Third Person sichtbar ist**
+1.  **Definieren Sie, ob ein Objekt im Browser, in AR, in VR, in der First Person, in der Third Person sichtbar ist**
     Fügen Sie dem Objekt, das Sie steuern möchten, eine `XR Flag`-Komponente hinzu.
 
 2.  **Ändern Sie die Optionen im Dropdown** nach Bedarf.
@@ -231,11 +231,11 @@ Es gibt auch andere Optionen, um iOS-Benutzer zu noch leistungsfähigeren intera
 
 ## Bild-Tracking
 
-Needle Engine unterstützt **WebXR Bild-Tracking** ([Live-Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) auf Android und **QuickLook Bild-Tracking** auf iOS.
+Needle Engine unterstützt **WebXR Image Tracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) auf Android und **QuickLook Image Tracking** auf iOS.
 
 Zusätzliche Dokumentation finden Sie im Abschnitt [Everywhere Actions](everywhere-actions.md#image-tracking).
 
-:::warning WebXR Bild-Tracking befindet sich noch in einer "Draft"-Phase und ist nicht allgemein verfügbar
+:::warning WebXR Image Tracking befindet sich noch in einer "Draft"-Phase und ist nicht allgemein verfügbar
 Bislang konnten sich die Browser-Anbieter noch nicht auf die endgültige Image Tracking API für WebXR einigen. Solange die Spezifikation in der "Draft"-Phase ist ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
 müssen Sie und die Benutzer Ihrer App die folgenden Schritte ausführen, um WebXR ImageTracking auf Android-Geräten zu aktivieren:
 1. Besuchen Sie ``chrome://flags`` in Ihrem Android Chrome-Browser
@@ -254,4 +254,5 @@ Hier sind einige Bibliotheken, um Bild-Tracking basierend auf Kamerazugriff und 
 [WebXR Device API](https://www.w3.org/TR/webxr/)
 [caniuse: WebXR](https://caniuse.com/webxr)
 [Apples vorläufige USD-Verhaltensweisen](https://developer.apple.com/augmented-reality/quick-look/)
+
 Seite automatisch mit KI übersetzt

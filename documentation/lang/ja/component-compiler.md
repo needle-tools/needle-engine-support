@@ -16,6 +16,8 @@ UnityやBlenderで作業していると、TypescriptやJavascriptで新しいNee
 
 これは、エディター環境でバックグラウンドで実行され、スクリプトファイルの変更を監視する[Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler)の魔法のおかげです。新しいNeedle Engineコンポーネントを作成したことが検出されると、公開変数やプロパティを含む正しいUnityコンポーネントまたはBlenderパネルが生成され、エディター内でそれらを設定またはリンクできるようになります。
 
+**Note**: コンポーネントコンパイラは現在、**コンポーネントのみを生成します**。そのため、UnityでTypescript Enumを公開する必要がある場合は、新しいC#ファイルまたは生成されたコードの外で手動でC#に追加できます（以下の例を参照）。
+
 ### コンポーネント生成の制御
 Typescriptコードで以下のコメントを使用して、C#コード生成の動作を制御できます。
 | 属性 | 結果 |
@@ -108,7 +110,7 @@ namespace Needle.Typescript.GeneratedComponents
 ```csharp
 using UnityEditor;
 
-// you can add code above or below the NEEDLE_CODEGEN_ blocks
+// NEEDLE_CODEGEN_ ブロックの上または下にコードを追加できます
 
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -131,7 +133,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 namespace Needle.Typescript.GeneratedComponents
 {
-    // This is how you extend the generated component (namespace and class name must match!)
+    // これは生成されたコンポーネントを拡張する方法です（名前空間とクラス名は一致させる必要があります！）
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{
 		
@@ -145,7 +147,7 @@ namespace Needle.Typescript.GeneratedComponents
 		}
 	}
 
-    // of course you can also add custom editors
+    // もちろんカスタムエディターを追加することもできます
 	[CustomEditor(typeof(MyCustomComponent))]
 	public class MyCustomComponentEditor : Editor
 	{
@@ -167,5 +169,4 @@ namespace Needle.Typescript.GeneratedComponents
 エクスポートされたメンバーは小文字で始まります。たとえば、C#メンバーの名前が``MyString``の場合、それは``myString``に割り当てられます。
 :::
 
-Page automatically translated using AI
 本ページはAIにより自動的に翻訳されています

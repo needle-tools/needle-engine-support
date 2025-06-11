@@ -92,8 +92,6 @@ export default defineConfig(async ({ command }) => {
 
     // Create the pwaOptions object.
     // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
-    // Créez l'objet pwaOptions.
-    // Vous pouvez modifier ou saisir les paramètres PWA ici (par exemple, changer le nom de la PWA ou ajouter des icônes).
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
     const pwaOptions = {};
 
@@ -102,12 +100,12 @@ export default defineConfig(async ({ command }) => {
     return {
         plugins: [
             // pass the pwaOptions object to the needlePlugins and the VitePWA function
-            // passez l'objet pwaOptions aux fonctions needlePlugins et VitePWA
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
         // the rest of your vite config...
-        // le reste de votre configuration vite...
+    }
+});
 ```
 
 :::tip Tous les assets sont mis en cache par défaut
@@ -130,8 +128,6 @@ Vous pouvez activer le support PWA pour le développement en ajoutant ce qui sui
 const pwaOptions = {
   // Note: PWAs behave different in dev mode.
   // Make sure to verify the behaviour in production builds!
-  // Note : Les PWAs se comportent différemment en mode développement.
-  // Assurez-vous de vérifier le comportement dans les builds de production !
   devOptions: {
     enabled: true,
   }
@@ -151,7 +147,7 @@ Pour activer les mises à jour automatiques, définissez la propriété `updateI
 
 ```js
 const pwaOptions = {
-  updateInterval: 15 * 60 * 1000, // 15 minutes, en millisecondes
+  updateInterval: 15 * 60 * 1000, // 15 minutes, in milliseconds
 };
 ```
 
@@ -168,7 +164,6 @@ Par exemple, vous pouvez fournir un manifeste partiel avec un titre d'applicatio
 ```js
 const pwaOptions = {
   // manifest options provided here will override the defaults
-  // les options du manifeste fournies ici remplaceront les valeurs par défaut
   manifest: {
     name: "My App",
     short_name: "My App",

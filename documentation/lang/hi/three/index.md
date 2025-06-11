@@ -21,11 +21,12 @@ Needle Engine एक उपयोग में आसान वेब कंप�
 :::
 
 ### त्वरित शुरुआत
-:::: code-group
-::: code-group-item index.html
+::: code-tabs
+@tab index.html
 @[code html](@code/basic-webcomponent.html)
-:::
-::: code-group-item परिणाम
+
+@tab परिणाम
+```html
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
     width: 100%; 
     aspect-ratio: 16/9; 
@@ -35,8 +36,8 @@ Needle Engine एक उपयोग में आसान वेब कंप�
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
+```
 :::
-::::
 [Stackblitz पर इस उदाहरण को खोलें](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 
@@ -57,15 +58,8 @@ Needle Engine एक उपयोग में आसान वेब कंप�
 इसमें हमारे मुख्य कंपोनेंट, फिजिक्स, पार्टिकल्स, नेटवर्किंग, XR, और बहुत कुछ शामिल है। यदि आप सुनिश्चित नहीं हैं तो इसका उपयोग करें!
 
 ```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
-</script>
-```
-
-यदि आप जानते हैं कि आपके प्रोजेक्ट को फिजिक्स सुविधाओं की आवश्यकता नहीं है, तो आप Needle Engine का एक छोटा संस्करण भी उपयोग कर सकते हैं, बिना फिजिक्स इंजन के। इससे कुल डाउनलोड का आकार कम हो जाएगा।
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
+<script type="module" 
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 

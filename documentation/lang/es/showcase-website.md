@@ -1,3 +1,4 @@
+```markdown
 ---
 lang: es-ES
 title: Creador de Castillos 🏰
@@ -10,6 +11,6 @@ editLink: false
 <sample src="https://needle.tools" />
 
 [Visitar sitio web](https://needle.tools)
-
+```
 
 Página traducida automáticamente con IA

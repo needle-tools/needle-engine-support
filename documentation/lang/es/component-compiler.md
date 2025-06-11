@@ -16,6 +16,7 @@ Cuando trabajas en Unity o Blender, notarás que al crear un nuevo componente de
 
 Esto es gracias a la magia del [compilador de componentes de Needle](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) que se ejecuta en segundo plano en un entorno de editor y observa los cambios en tus archivos de script. Cuando nota que has creado un nuevo componente de Needle Engine, generará el componente de Unity o el panel de Blender correctos, incluyendo variables o propiedades públicas que luego podrás configurar o enlazar desde dentro del Editor.
 
+**Nota**: El compilador de componentes actualmente **solo genera componentes**. Por lo tanto, si necesitas exponer un Typescript Enum en Unity, puedes añadirlo a tu C# manualmente, ya sea en un nuevo archivo C# o fuera del código generado (consulta los ejemplos a continuación)
 
 
 ### Control de la generación de componentes
@@ -23,7 +24,7 @@ Puedes usar los siguientes comentarios en tu código typescript para controlar e
 | Atributo | Resultado |
 | -- | -- |
 | `// @generate-component` | Forzar la generación de la siguiente clase|
-| `// @dont-generate-component` | Deshabilitar la generación de la siguiente clase, útil en casos donde ya tienes un script C# existente en tu proyecto |
+| `// @dont-generate-component` | Deshabilitar la generación de la siguiente clase, esto es útil en casos donde ya tienes un script C# existente en tu proyecto |
 | `// @serializeField` | Decorar el campo generado con `[SerializeField]` |
 | `// @type UnityEngine.Camera` | Especificar el tipo del campo C# generado |
 | `// @nonSerialized` | Omitir la generación del siguiente campo o método |
@@ -61,8 +62,8 @@ Si quieres añadir scripts a cualquier archivo NpmDef, simplemente puedes crearl
 Para que los campos C# se generen correctamente, actualmente es importante que declares explícitamente un tipo Typescript. Por ejemplo ``myField : number = 5``
 
 Puedes cambiar entre la entrada **Typescript** y los componentes **C#** stub generados usando las pestañas de abajo
-:::: code-group
-::: code-group-item Typescript
+::: code-tabs
+@tab Typescript
 ```ts twoslash
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
@@ -86,8 +87,7 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-:::
-::: code-group-item C# generado
+@tab C# Generado
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -108,8 +108,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-:::
-::: code-group-item Extensión del C# generado
+@tab Extensión del C# Generado
 ```csharp
 using UnityEditor;
 
@@ -164,7 +163,6 @@ namespace Needle.Typescript.GeneratedComponents
 
 ```
 :::
-::::
 
 
 ### Extensión de componentes generados

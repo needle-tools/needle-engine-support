@@ -21,7 +21,7 @@
   *Minimal UI button event sample*
 - [Spatial Trigger](https://needle-spatial-trigger-sample.glitch.me/)  
   *Define areas in your world and hookup events from Unity*
-- and [more](https://engine.needle.tools/samples/)
+- और [अधिक](https://engine.needle.tools/samples/)
 
 ---
 
@@ -39,7 +39,7 @@
 
 
 <!-- <actiongroup>
-<action href="https://github.com/needle-tools/needle-engine-samples">Get the samples on github</action>
+<action href="https://github.com/needle-tools/needle-engine-samples">github पर नमूने प्राप्त करें</action>
 </actiongroup> -->
 
 

@@ -58,7 +58,7 @@ Needle Engine में नेटवर्किंग के केंद्र
 किसी कंपोनेंट में किसी फील्ड को स्वचालित रूप से नेटवर्क करने के लिए, इसे `@syncField()` डेकोरेटर से सजाएँ:
 
 ::::code-group
-:::code-group-item Sync a number
+:::code-group-item संख्या सिंक करें
 ```ts twoslash
 import { Behaviour, syncField, IPointerClickHandler } from "@needle-tools/engine"
 
@@ -79,14 +79,14 @@ export class SyncedNumber extends Behaviour implements IPointerClickHandler {
 }
 ```
 :::
-:::code-group-item Sync an object's color
+:::code-group-item किसी ऑब्जेक्ट का रंग सिंक करें
 <!-- SAMPLE network color change -->
 :::
 ::::
 
 ध्यान दें कि syncField में एक वैकल्पिक पैरामीटर होता है जो उस मेथड को निर्दिष्ट करता है जिसे वैल्यू बदलने पर कॉल किया जाना चाहिए। इस मेथड को उसी क्लास में परिभाषित किया जाना चाहिए।
 
-::: tip Custom Project Setup
+::: tip कस्टम प्रोजेक्ट सेटअप
 यदि आप एक कस्टम प्रोजेक्ट सेटअप का उपयोग कर रहे हैं, तो syncField डेकोरेटर के काम करने के लिए आपको अपनी ``tsconfig.json`` फ़ाइल में ``experimentalDecorators: true`` होना आवश्यक है। Needle Starters के साथ बनाए गए प्रोजेक्ट में यह डिफ़ॉल्ट रूप से सक्षम होता है।
 :::
 
@@ -136,7 +136,7 @@ this.context.connection.stopListen(key:string)
 
 नेटवर्क मैसेज भेजते समय, लो-लेवल API आपको यह तय करने की अनुमति देता है कि मैसेज को पर्सिस्ट किया जाना चाहिए (रूम स्टेट में सहेजा जाना चाहिए) या नहीं (केवल वर्तमान में रूम में उपयोगकर्ताओं को भेजा जाना चाहिए)। किसी मैसेज को पर्सिस्ट करने के लिए, सुनिश्चित करें कि उसमें `guid` फ़ील्ड है। इस फ़ील्ड का उपयोग आमतौर पर मैसेज डेटा को किसी विशिष्ट ऑब्जेक्ट पर लागू करने के लिए किया जाता है, उस ऑब्जेक्ट का guid प्रदान करके। यदि आप किसी विशिष्ट ऑब्जेक्ट को लक्षित करना चाहते हैं (और इस प्रकार, एक `guid` फ़ील्ड शामिल करें) लेकिन डेटा को पर्सिस्ट नहीं करना चाहते हैं, तो अपने मैसेज में `dontSave` फ़ील्ड को `true` पर सेट करें।
 
-सभी पर्सिस्टेंट मैसेज रूम स्टेट में सहेजे जाते हैं और बाद में कनेक्ट होने वाले उपयोगकर्ताओं को भेजे जाएंगे। गैर-पर्सिस्टेंट मैसेज केवल वर्तमान में रूम में उपयोगकर्ताओं को भेजे जाते हैं, जो उन इफ़ेक्ट्स (जैसे साउंड इफ़ेक्ट चलाना) के लिए उपयोगी है जो वर्तमान में रूम में नहीं हैं, उन उपयोगकर्ताओं के लिए चलाना समझ में नहीं आता है। वैकल्पिक रूप से, आप डिस्कनेक्ट होने पर इस विशेष मैसेज को हटाने के लिए अपने मैसेज में `deleteOnDisconnect` फ़ील्ड शामिल कर सकते हैं।
+सभी पर्सिस्टेंट मैसेज रूम स्टेट में सहेजे जाते हैं और बाद में कनेक्ट होने वाले उपयोगकर्ताओं को भेजे जाएंगे। गैर- पर्सिस्टेंट मैसेज केवल वर्तमान में रूम में उपयोगकर्ताओं को भेजे जाते हैं, जो उन इफ़ेक्ट्स (जैसे साउंड इफ़ेक्ट चलाना) के लिए उपयोगी है जो वर्तमान में रूम में नहीं हैं, उन उपयोगकर्ताओं के लिए चलाना समझ में नहीं आता है। वैकल्पिक रूप से, आप डिस्कनेक्ट होने पर इस विशेष मैसेज को हटाने के लिए अपने मैसेज में `deleteOnDisconnect` फ़ील्ड शामिल कर सकते हैं।
 
 ```ts
 // यह मैसेज वर्तमान में रूम में सभी उपयोगकर्ताओं को भेजा जाएगा,
@@ -279,7 +279,7 @@ yourFramework.createWebsocketRoute(options.endpoint, frameworkWebsocket => {
 ::: tip Different server locations for local and hosted development
 यदि आप कस्टम नेटवर्किंग कोड पर काम कर रहे हैं, तो आप लोकल डेवलपमेंट और होस्टेड ऐप के लिए अलग-अलग सर्वर स्थानों का उपयोग करना चाह सकते हैं। आप `Networking` कंपोनेंट में अलग-अलग सर्वर URL सेट कर सकते हैं:
 
-![Needle Engine Networking component with networking server hosted elswhere](/imgs/networking_absolute.webp)
+![नेटवर्किंग सर्वर कहीं और होस्ट किए गए Needle Engine नेटवर्किंग कंपोनेंट](/imgs/networking_absolute.webp)
 :::
 
 #### स्टेट स्टोरेज
@@ -327,7 +327,7 @@ setPeerOptions(opts: PeerjsOptions);
 ### बिल्ट-इन रूम इवेंट्स
 
 ::::code-group
-:::code-group-item Join
+:::code-group-item शामिल हों
 ```json
 // Sent to the server to attempt joining a room.
 {
@@ -339,7 +339,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item Leave
+:::code-group-item छोड़ें
 ```json
 // Sent to the server to leave a room.
 {
@@ -350,7 +350,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item JoinedRoom
+:::code-group-item रूम में शामिल हुए
 ```json
 // Sent to the client when the local user has joined a room.
 // Type: JoinedRoomResponse
@@ -363,7 +363,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item LeftRoom
+:::code-group-item रूम छोड़ा
 ```json
 // Sent to the client when the local user has left a room.
 // Type: LeftRoomResponse
@@ -373,7 +373,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item UserJoinedRoom
+:::code-group-item उपयोगकर्ता रूम में शामिल हुआ
 ```json
 // Sent to the client when any user has joined a room.
 // Type: UserJoinedOrLeftRoomModel
@@ -385,7 +385,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item UserLeftRoom
+:::code-group-item उपयोगकर्ता रूम छोड़ा
 ```json
 // Sent to the client when any user has left a room.
 // Type: UserJoinedOrLeftRoomModel
@@ -397,12 +397,12 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ````
 :::
-:::code-group-item RoomStateSent
+:::code-group-item रूम स्टेट भेजी गई
 ```json
 // Sent to the client after the complete room state has been sent.
 {
     "key": "room-state-sent",
-    "room": string // room name 
+    "room": string // room name
 }
 ```
 :::
@@ -411,7 +411,7 @@ setPeerOptions(opts: PeerjsOptions);
 ### बिल्ट-इन यूटिलिटी इवेंट्स
 
 ::::code-group
-:::code-group-item ConnectionInfo
+:::code-group-item कनेक्शन जानकारी
 ```json
 // Sent to the client when the connection is established.
 {
@@ -422,7 +422,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item syncInstantiate
+:::code-group-item इंस्टेंशिएट सिंक करें
 ```json
 // Used by the syncInstantiate() API to create a new instance of an asset.
 // Type: NewInstanceModel
@@ -444,7 +444,7 @@ setPeerOptions(opts: PeerjsOptions);
     }
 ```
 :::
-:::code-group-item syncDestroy
+:::code-group-item नष्ट सिंक करें
 ```json
 // Used by the syncDestroy() API to destroy an instance of an asset.
 // Type: DestroyInstanceModel
@@ -457,7 +457,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item Ping
+:::code-group-item पिंग
 ```json
 // Sent to the server every few seconds to keep the connection alive.
 {
@@ -466,7 +466,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item Pong
+:::code-group-item पोंग
 ```json
 // Sent by the server in response to a ping.
 {
@@ -475,7 +475,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item DeleteState
+:::code-group-item स्टेट हटाएँ
 ```json
 // Sent to the server to delete state for a specific guid.
 {
@@ -486,7 +486,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item DeleteAllState
+:::code-group-item सभी स्टेट हटाएँ
 ```json
 // Sent to the server to delete ALL current room state.
 {
@@ -499,7 +499,7 @@ setPeerOptions(opts: PeerjsOptions);
 ### बिल्ट-इन ओनरशिप इवेंट्स
 
 ::::code-group
-:::code-group-item OwnershipRequest
+:::code-group-item ओनरशिप अनुरोध
 ```json
 {
     "key":
@@ -512,7 +512,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-:::code-group-item OwnershipResponse
+:::code-group-item ओनरशिप प्रतिक्रिया
 // Type: OwnershipResponse
 ```json
 {
@@ -525,7 +525,7 @@ setPeerOptions(opts: PeerjsOptions);
 }
 ```
 :::
-::: code-group-item OwnershipBroadcastResponse
+::: code-group-item ओनरशिप ब्रॉडकास्ट प्रतिक्रिया
 ```json
 {
     "key":
@@ -595,7 +595,7 @@ this.context.connection.stopListenBinary(identifier:string);
 - [Typescript में फ्लैटबफ़र](https://google.github.io/flatbuffers/flatbuffers_guide_use_typescript.html)
 
 ::::code-group
-:::code-group-item Register a schema
+:::code-group-item स्कीमा रजिस्टर करें
 ```ts
 // Register a new Flatbuffer schema with the networking system
 import { registerBinaryType } from '@needle-tools/engine';
@@ -606,7 +606,7 @@ const MySchemaIdentifier = "MYSC";
 registerBinaryType(MySchemaIdentifier, MyDataModel.getRootAsSyncedTransformModel);
 ```
 :::
-:::code-group-item Send Messages
+:::code-group-item मैसेज भेजें
 ```ts
 // Prepare data for sending by creating a Flatbuffer message:
 import { MyDataModel } from 'my-data-model.js';
@@ -632,7 +632,7 @@ function sendData() {
 }
 ```
 :::
-:::code-group-item Receive Messages
+:::code-group-item मैसेज प्राप्त करें
 ```ts
 // Subscribe to receive this specific message type:
 import { MyDataModel } from 'my-data-model.js';

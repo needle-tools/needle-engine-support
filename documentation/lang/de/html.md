@@ -2,16 +2,16 @@
 title: Frameworks, Bundler, HTML
 ---
 
-## Bundling und Web Frontends
+## Bundling und Web-Frontends
 
-Needle Engine ist als Web Component aufgebaut. Das bedeutet, installiere einfach `@needle-tools/engine` in deinem Projekt und füge `<needle-engine src="path/to/your.glb">` überall in deinem Webprojekt ein.
+Needle Engine ist als Web Component aufgebaut. Das bedeutet, installiere einfach `@needle-tools/engine` in deinem Projekt und füge `<needle-engine src="path/to/your.glb">` überall in deinem Web-Projekt ein.
 
-- Installation via npm:
+- Installation mit npm:
   `npm i @needle-tools/engine`
 
-Mit unserer Standard-Vite-basierten Projektvorlage wird Needle Engine bei der Bereitstellung zu einer Web-App gebündelt. Dies sorgt für kleinere Dateien, Tree-Shaking (ähnlich dem Code-Stripping in Unity) und optimiert die Ladezeiten. Anstatt zahlreiche kleine Skripte und Komponenten herunterzuladen, wird nur eines oder wenige heruntergeladen, die den minimal benötigten Code enthalten.
+Mit unserer Standard-Vite-basierten Projektvorlage wird Needle Engine bei der Bereitstellung zu einer Web-App gebündelt. Dies sorgt für kleinere Dateien, Tree-shaking (ähnlich dem Code-Stripping in Unity) und optimiert die Ladezeiten. Anstatt zahlreiche kleine Skripte und Komponenten herunterzuladen, wird nur eines oder wenige heruntergeladen, die den minimal benötigten Code enthalten.
 
-Vite (unser Standard-Bundler) erklärt gut, warum Web-Apps für die Produktion gebündelt werden sollten: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+Vite (unser Standard-Bundler) erklärt gut, warum Web-Apps gebündelt werden sollten: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
 
 ### Vite, Vue, React, Svelte, React Three Fiber...
 
@@ -26,10 +26,10 @@ Hier sind einige Beispiel-Tech-Stacks, die möglich sind und mit denen wir Needl
 - **Vite + SvelteKit**
 - **Vite + React** – Es gibt eine experimentelle Vorlage, die mit der Unity-Integration geliefert wird und die du bei der Projekterstellung auswählen kannst!
 - **react-three-fiber** – Es gibt eine experimentelle Vorlage, die mit der Unity-Integration geliefert wird und die du bei der Projekterstellung auswählen kannst!
-- **Vercel & Nextjs** – Ein [Beispielprojekt für Nextjs findest du hier](https://github.com/needle-engine/nextjs-sample).
+- **Vercel & Nextjs** – Ein [Beispiel-Nextjs-Projekt findest du hier](https://github.com/needle-engine/nextjs-sample).
 - **CDN ohne Bundler** – Ein Codebeispiel findest du [hier](./vanilla-js.md).
 
-Kurz gesagt: Wir stellen derzeit eine minimale Vite-Vorlage bereit, aber du kannst sie erweitern oder zu anderen Frameworks wechseln – Sag uns, was und wie du baust, und wie wir die Erfahrung für deinen Anwendungsfall verbessern oder ein Beispiel bereitstellen können!
+Kurz gesagt: Wir stellen derzeit eine minimale Vite-Vorlage bereit, aber du kannst sie erweitern oder zu anderen Frameworks wechseln – Lass uns wissen, was und wie du baust, und wie wir das Erlebnis für deinen Anwendungsfall verbessern oder ein Beispiel bereitstellen können!
 
 :::tip
 Einige Frameworks erfordern benutzerdefinierte Einstellungen in `needle.config.json`. Erfahre mehr [hier](./reference/needle-config-json.md). Typischerweise muss die `baseUrl` festgelegt werden.
@@ -39,8 +39,8 @@ Einige Frameworks erfordern benutzerdefinierte Einstellungen in `needle.config.j
 
 Du kannst deine eigenen Webprojektvorlagen erstellen und teilen, um andere Bundler, Build-Systeme oder gar keine zu verwenden.
 
-**Neue Vorlage erstellen**
-1. Wähle `Create/Needle Engine/Project Template`, um eine ProjectTemplate in den Ordner einzufügen, den du als Vorlage verwenden möchtest.
+**Eine neue Vorlage erstellen**
+1. Wähle `Create/Needle Engine/Project Template`, um ein ProjectTemplate in den Ordner einzufügen, den du als Vorlage verwenden möchtest.
 2. Fertig! So einfach ist das.
 
 Die Abhängigkeiten kommen von Unity, wenn es ein NpmDef im Projekt gibt (also wenn dein Projekt lokale Referenzen verwendet). Du könntest deine Pakete auch bei npm veröffentlichen und sie über die Versionsnummer referenzieren.
@@ -48,12 +48,12 @@ Die Abhängigkeiten kommen von Unity, wenn es ein NpmDef im Projekt gibt (also w
 
 ### Tree-shaking zur Reduzierung der Bundle-Größe
 
-Tree-shaking bezieht sich auf eine gängige Praxis beim Bundling von Webanwendungen ([siehe MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). Es bedeutet, dass Codepfade und Features, die in deinem Code nicht verwendet werden, aus der endgültigen gebündelten Javascript-Datei(en) entfernt werden, um die Dateigröße zu reduzieren. Siehe unten zu Features, die Needle Engine enthält und wie du sie entfernen kannst:
+Tree shaking bezeichnet eine gängige Praxis beim Bundling von Webanwendungen ([siehe MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). Das bedeutet, dass Codepfade und Features, die in deinem Code nicht verwendet werden, aus der endgültigen gebündelten Javascript-Datei(en) entfernt werden, um die Dateigröße zu reduzieren. Siehe unten zu Features, die Needle Engine enthält und wie du sie entfernen kannst:
 
 :::details Wie entferne ich die Rapier Physics Engine? (Reduziert die gesamte Bundle-Größe um ca. 2MB (~600KB bei Gzipping))
 
 - **Option 1**: über die needlePlugins-Konfiguration:
-  Setze `useRapier` in deiner vite.config auf `false`: `needlePlugins(command, needleConfig, { useRapier: false }),`
+  Setze `useRapier` auf `false` in deiner vite.config: `needlePlugins(command, needleConfig, { useRapier: false }),`
 
 - **Option 2**: über die vite.define-Konfiguration:
   Deklariere das `NEEDLE_USE_RAPIER`-Define mit `false`
@@ -66,13 +66,13 @@ Tree-shaking bezieht sich auf eine gängige Praxis beim Bundling von Webanwendun
 - **Option 3**: über .env
   Erstelle eine `.env`-Datei in deinem Webprojekt und füge `VITE_NEEDLE_USE_RAPIER=false` hinzu.
 
-- **Option 4**: über die Unity-Komponente
+- **Option 4**: über die Unity-Komponente:
   Füge die `Needle Engine Modules`-Komponente zu deiner Szene hinzu und setze `Physics Engine` auf `None`.
   ![](/imgs/unity-needle-engine-modules-physics.jpg)
 
 :::
 
-## Erstellen einer PWA
+## Eine PWA erstellen
 
 Wir unterstützen die einfache Erstellung einer Progressive Web App (PWA) direkt aus unserer Vite-Vorlage. PWAs sind Webanwendungen, die wie normale Webseiten oder Websites laden, aber Benutzerfunktionen wie Offline-Arbeit, Push-Benachrichtigungen und Zugriff auf Geräte-Hardware bieten können, die traditionell nur für native mobile Anwendungen verfügbar sind. Standardmäßig verfügen mit Needle erstellte PWAs über Offline-Unterstützung und können optional automatisch aktualisiert werden, wenn du eine neue Version deiner App veröffentlichst.
 
@@ -84,8 +84,8 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(async ({ command }) => {
 
-    // Create the pwaOptions object.
-    // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
+    // Erstelle das pwaOptions-Objekt.
+    // Hier kannst du PWA-Einstellungen bearbeiten oder eingeben (z.B. den PWA-Namen ändern oder Icons hinzufügen).
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
     const pwaOptions = {};
 
@@ -93,23 +93,23 @@ export default defineConfig(async ({ command }) => {
 
     return {
         plugins: [
-            // pass the pwaOptions object to the needlePlugins and the VitePWA function
+            // übergib das pwaOptions-Objekt an die needlePlugins- und die VitePWA-Funktion
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
+        // der Rest deiner vite config...
 ```
 
 :::tip Alle Assets werden standardmäßig gecacht
-Beachte, dass standardmäßig alle Assets in deinem Build-Ordner dem PWA-Precache hinzugefügt werden – für große Anwendungen mit vielen dynamischen Assets ist dies möglicherweise nicht das, was du willst (stell dir vor, die YouTube PWA cached alle Videos, sobald ein Benutzer die App öffnet!). Unter [Weitere PWA-Optionen](#more-pwa-options) erfährst du, wie du dieses Verhalten anpassen kannst.
+Beachte, dass standardmäßig alle Assets in deinem Build-Ordner dem PWA Precache hinzugefügt werden – für große Anwendungen mit vielen dynamischen Assets ist dies möglicherweise nicht das, was du willst (stell dir vor, die YouTube PWA cached alle Videos, sobald ein Benutzer die App öffnet!). Unter [Weitere PWA-Optionen](#more-pwa-options) erfährst du, wie du dieses Verhalten anpassen kannst.
 :::
 
 ### PWAs testen
 
-Um deine PWA zu testen, deploye die Seite, zum Beispiel mit der `DeployToFTP`-Komponente. Öffne dann die deployed Seite in einem Browser und prüfe, ob die PWA-Features wie erwartet funktionieren:
+Um deine PWA zu testen, deploye die Seite, zum Beispiel mit der `DeployToFTP`-Komponente. Öffne dann die deployed Seite in einem Browser und prüfe, ob die PWA Features wie erwartet funktionieren:
 - die App wird als installierbar angezeigt
 - die App funktioniert offline
-- die App wird von [pwabuilder.com](https://pwabuilder.com/) als offline-fähige PWA erkannt
+- die App wird von [pwabuilder.com](https://pwabuilder.com/) als offline-fähige PWA erkannt.
 
 PWAs verwenden Service Worker, um Ressourcen zu cachen und Offline-Unterstützung bereitzustellen. Service Worker sind während der Entwicklung etwas schwieriger zu verwenden und werden typischerweise nur für Builds aktiviert (z. B. wenn du eine `DeployTo...`-Komponente verwendest).
 
@@ -117,8 +117,8 @@ Du kannst die PWA-Unterstützung für die Entwicklung aktivieren, indem du Folge
 
 ```js
 const pwaOptions = {
-  // Note: PWAs behave different in dev mode.
-  // Make sure to verify the behaviour in production builds!
+  // Hinweis: PWAs verhalten sich im Entwicklungsmodus anders.
+  // Stelle sicher, dass du das Verhalten in Produktions-Builds überprüfst!
   devOptions: {
     enabled: true,
   }
@@ -137,7 +137,7 @@ Um automatische Updates zu aktivieren, setze die `updateInterval`-Eigenschaft im
 
 ```js
 const pwaOptions = {
-  updateInterval: 15 * 60 * 1000, // 15 minutes, in milliseconds
+  updateInterval: 15 * 60 * 1000, // 15 Minuten, in Millisekunden
 };
 ```
 
@@ -151,7 +151,7 @@ Da Needle unter der Haube das [Vite PWA plugin](https://vite-pwa-org.netlify.app
 
 ```js
 const pwaOptions = {
-  // manifest options provided here will override the defaults
+  // Hier bereitgestellte Manifest-Optionen überschreiben die Standardeinstellungen
   manifest: {
     name: "My App",
     short_name: "My App",
@@ -172,7 +172,7 @@ Siehe den Abschnitt *Loading Display* in der [Needle Engine Komponentenreferenz]
 
 ### Eingebaute Stile
 
-Die Lade-Optik von needle-engine kann einen hellen oder dunklen Skin verwenden. Um die Optik zu ändern, verwende das `loading-style`-Attribut auf der `<needle-engine>` Webkomponente. Optionen sind `light` und `dark` (Standard):
+Die Lade-Optik von Needle Engine kann einen hellen oder dunklen Skin verwenden. Um die Optik zu ändern, verwende das `loading-style`-Attribut auf der `<needle-engine>` Webkomponente. Optionen sind `light` und `dark` (Standard):
 
 ``<needle-engine loading-style="light"></needle-engine>``
 
@@ -180,5 +180,7 @@ Die Lade-Optik von needle-engine kann einen hellen oder dunklen Skin verwenden. 
 
 Bitte siehe den Abschnitt *Loading Display* in der [Needle Engine Komponentenreferenz](./reference/needle-engine-attributes.md).
 
-![custom loading](/imgs/custom-loading-style.webp)
-Page automatically translated using AI
+![Benutzerdefiniertes Laden](/imgs/custom-loading-style.webp)
+
+
+Seite automatisch mit KI übersetzt

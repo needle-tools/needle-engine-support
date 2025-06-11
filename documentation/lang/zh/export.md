@@ -10,7 +10,7 @@ title: Exporting Assets to glTF
 默认情况下，您的场景将在保存时导出。可以通过禁用 ``ExportInfo`` 组件中的 ``Auto Export`` 来更改此设置。
 
 ## 📦 导出 glTF 文件
-要导出网格、材质、动画、纹理等，请在您的层级视图中创建一个新的 GameObject 并向其添加一个 ``GltfObject`` 组件。这是新的 glTF 文件的根对象。每当您更改场景并保存时，它都会被导出。
+要导出网格、材质、动画、纹理 (...)，请在您的层级视图中创建一个新的 GameObject 并向其添加一个 ``GltfObject`` 组件。这是新的 glTF 文件的根对象。每当您更改场景并保存时，它都会被导出。
 
 只有位于这些根对象上和内部的脚本和数据会被导出。位于它们之外的脚本和数据不会被导出。
 
@@ -25,7 +25,7 @@ title: Exporting Assets to glTF
 
 ### 懒加载和多关卡/场景
 
-如果您想将应用程序拆分为多个关卡或场景，只需使用 `SceneSwitcher` 组件即可。然后，您可以将应用程序构建成多个场景或预制体，并将它们添加到 SceneSwitcher 数组中以便在运行时加载和卸载。这是避免预加载所有内容并保持加载时间较短的绝佳方法（例如，我们在 [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes) 上就是这样做的，将网站的每个部分拆分为独立的场景，并在需要时才加载它们）。
+如果您想将应用程序拆分为多个关卡或场景，只需使用 `SceneSwitcher` 组件即可。然后，您可以将应用程序构建成多个场景或预制体，并将它们添加到 SceneSwitcher 数组中以便在运行时加载和卸载。这是避免预加载所有内容并保持加载时间较短的绝佳方法（例如，我们在 [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes) 上就是这样做的，将网站的每个部分拆分为独立的场景，并在需要时才加载它们）
 
 ### 每个 glTF 的推荐复杂度
 

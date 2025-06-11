@@ -230,7 +230,7 @@ export class MyComponent extends Behaviour {
 
     onEnable() {
         // bind this
-        this._onMyEventFn = this.onMyEvent.bind(this);
+        this._onMyEventFn = this.myEvent.bind(this);
         // add the bound method to the event
         this.myEvent?.addEventListener(this._onMyEventFn);
     }
@@ -247,6 +247,7 @@ export class MyComponent extends Behaviour {
 ## 接下来做什么？
 
 - [Needle Engine Scripting](/scripting.md)
+
 
 ___
 页面由人工智能自动翻译

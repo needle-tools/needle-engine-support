@@ -1,5 +1,5 @@
 ---
-title: Deployment and Optimization
+title: Deployment और Optimization
 ---
 
 ## Deployment का क्या मतलब है?
@@ -62,7 +62,7 @@ Production builds textures को डिफ़ॉल्ट रूप से **KT
 | **GPU Memory Usage** | कम | कम | उच्च (uncompressed) |
 | **File Size** | कम | उच्च | बहुत कम |
 | **Quality** | मध्यम | बहुत उच्च | गुणवत्ता सेटिंग पर निर्भर करता है |
-| **Typical usage** | सभी चीज़ों के लिए काम करता है, लेकिन रंग textures के लिए सबसे अच्छा है | उच्च-विवरण डेटा textures: normal maps, roughness, metallic, आदि। | ऐसी फाइलें जहां ETC1S गुणवत्ता पर्याप्त नहीं है लेकिन UASTC बहुत बड़ी है |
+| **Typical usage** | सभी चीज़ों के लिए काम करता है, लेकिन रंग textures के लिए सबसे अच्छा है | उच्च-विवरण डेटा textures: normal maps, roughness, metallic, etc. | ऐसी फाइलें जहां ETC1S गुणवत्ता पर्याप्त नहीं है लेकिन UASTC बहुत बड़ी है |
 
 आप Unity में Needle Texture Importer का उपयोग करके या Blender में Material टैब में प्रति Texture texture कम्प्रेशन और प्रगतिशील लोडिंग विकल्प चुनने का विकल्प रखते हैं।
 

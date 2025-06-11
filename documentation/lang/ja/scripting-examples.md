@@ -42,7 +42,7 @@ description: 役立つスクリプトスニペットと例のコレクション�
 このスクリプトをクリック可能にしたいシーン内の任意のオブジェクトに追加します。また、そのオブジェクトの親階層に`ObjectRaycaster`コンポーネントがあることを確認してください。
 
 <stackblitz file="@code/component-click.ts">
-test
+テスト
 </stackblitz>
 
 @[code ts twoslash](@code/component-click.ts)
@@ -126,7 +126,7 @@ Webプロジェクトで[`npm i postprocessing`](https://github.com/pmndrs/postp
 
 @[code](@code/custom-post-effect.ts)
 
-## カスタムParticleSystemビヘイビア
+## カスタムParticleSystem Behaviour
 
 @[code ts twoslash](@code/custom-particle-system-behaviour.ts)
 

@@ -9,10 +9,10 @@
     * [Implementação](./deployment.md)
 
 # Exemplos
-* [Exemplos](./samples-and-modules.md)
+* [Amostras e Exemplos](./samples-and-modules.md)
     * [Dicas para Desenvolvedores Unity](./for-unity-developers.md)
     * [Vitrine](./examples.md)
-    * [Exemplos de Projetos e Módulos](./samples-and-modules.md)
+    * [Exemplos de Projetos, Amostras e Módulos](./samples-and-modules.md)
     * [FAQ](./faq.md)
 
 # Aprofundar 🐠

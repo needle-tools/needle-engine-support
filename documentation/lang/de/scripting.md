@@ -501,5 +501,6 @@ Diese exportierten glTF-Dateien werden als einfache String-URIs serialisiert. Um
 AssetReferences werden nach URI gecacht. Wenn Sie also dasselbe exportierte glTF/Prefab in mehreren Komponenten/Skripten referenzieren, wird es nur einmal geladen und dann wiederverwendet.
 
 # Nächste Schritte
----
+
+
 Seite automatisch mit KI übersetzt

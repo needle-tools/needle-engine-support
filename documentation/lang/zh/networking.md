@@ -1,7 +1,7 @@
 # 网络
 
-Needle Engine 包含一个用于多人体验的完整网络解决方案。
-使用我们的网络组件和 API 可以实现共享世界状态、语音聊天、会话持久化等功能。您可以通过选择自动或手动联网来对自己的组件进行联网。
+Needle Engine 包含一个用于多人体验的完整网络解决方案。  
+使用我们的网络组件和 API 可以实现共享世界状态、语音聊天、会话持久化等功能。您可以通过选择自动或手动联网来对自己的组件进行联网。  
 
 Needle Engine 中的网络基于 [Websockets](https://github.com/jjxxs/websocket-ts)。自动联网使用 JSON 数据，易于使用。对于复杂的用例和高性能要求，我们使用 [Flatbuffers](https://google.github.io/flatbuffers/)。
 
@@ -11,8 +11,8 @@ Needle Engine 中的网络基于 [Websockets](https://github.com/jjxxs/websocket
 
 ### 房间和状态
 
-Needle Engine 网络的核心是同步房间的概念。每个房间都有一个 ID，用户通过提供此 ID 连接到房间。房间存储在服务器上，用户可以随时加入和离开房间。
-当用户加入房间时，他们会接收房间的当前状态，将该当前状态应用到他们的场景，然后监听房间状态的变化。
+Needle Engine 网络的核心是同步房间的概念。每个房间都有一个 ID，用户通过提供此 ID 连接到房间。房间存储在服务器上，用户可以随时加入和离开房间。  
+当用户加入房间时，他们会接收房间的当前状态，将该当前状态应用到他们的场景，然后监听房间状态的变化。  
 当用户离开房间时，他们停止监听房间状态的变化。
 
 房间状态以 JSON 数据形式存储在服务器上，因此所有更改都是持久化的。这意味着房间状态不仅对联网有用，也对持久化单个用户的操作有用。
@@ -21,10 +21,10 @@ Needle 可以为房间提供*只读 ID*。使用只读 ID 访问房间时，用�
 
 ### 所有权
 
-房间中的对象可以由用户*拥有*。这意味着只有对象的拥有者才能更改其状态。
+房间中的对象可以由用户*拥有*。这意味着只有对象的拥有者才能更改其状态。  
 默认情况下，对象没有拥有者。
 像 `DragControls` 这样的组件在实际移动对象之前会请求对象的所有权。
-在自定义组件中，您可以控制如何处理所有权。
+在自定义组件中，您可以控制如何处理所有权。  
 可能不需要所有权，所有权可以自动转移给另一个用户，或者所有权只能通过特定操作转移。
 
 当用户离开房间时，由该用户拥有的对象将根据其创建方式被删除或重置所有权。
@@ -37,7 +37,7 @@ Needle 可以为房间提供*只读 ID*。使用只读 ID 访问房间时，用�
 4.  运行项目。在浏览器中，点击“Join Room”并复制 URL。
 5.  打开一个新的浏览器窗口并粘贴 URL。您现在应该在两个窗口中看到同一个对象。尝试在一个窗口中拖动对象，观察它在另一个窗口中移动。
 
-`DragControls` 组件与其他许多 Needle 组件一样，具有内置的网络支持。
+`DragControls` 组件与其他许多 Needle 组件一样，具有内置的网络支持。  
 所有权将转移给开始拖动对象的人。
 
 ## 具有网络支持的内置组件
@@ -102,11 +102,11 @@ export class SyncedNumber extends Behaviour implements IPointerClickHandler {
 
 通常，您希望在运行时创建和销毁对象，当然这些更改也应该在网络中同步。
 
-`PlayerSync` 组件通过为每个连接的玩家自动实例化一个特定对象来简化此过程。
+`PlayerSync` 组件通过为每个连接的玩家自动实例化一个特定对象来简化此过程。  
 当玩家离开房间时，该对象会为所有用户销毁。
 
 此外，Needle Engine 提供了两个高层级方法：
-- [`syncInstantiate()`](https://engine.needle.tools/docs/api/latest/syncInstantiate) 用于在网络中复制对象。
+- [`syncInstantiate()`](https://engine.needle.tools/docs/api/latest/syncInstantiate) 用于在网络中复制对象。  
 - [`syncDestroy()`](https://engine.needle.tools/docs/api/latest/syncDestroy) 用于在网络中销毁对象。
 
 > 🏗️ 示例代码正在建设中
@@ -125,17 +125,17 @@ this.context.connection.send(key: string, data: IModel | object | boolean | stri
 ### 接收消息
 
 您可以使用特定的 key 订阅房间中的事件。
-通常，您会希望与取消订阅配对：
+通常，您会希望与取消订阅配对：  
 
-- 在 `onEnable` 中订阅，在 `onDisable` 中取消订阅
+- 在 `onEnable` 中订阅，在 `onDisable` 中取消订阅  
   通过这种方法，当对象被禁用时，将不会接收到消息。
 
-- 或者在 `start` 中订阅，在 `onDestroy` 中取消订阅
+- 或者在 `start` 中订阅，在 `onDestroy` 中取消订阅  
   通过这种方法，即使对象被禁用，消息仍会接收到。
 
 ```ts
 this.context.connection.beginListen(key:string, callback:(data) => void)
-```
+```   
 
 取消订阅事件：
 ```ts
@@ -175,7 +175,7 @@ this.context.connection.send("delete-state", { guid: "guid_to_delete" });
 
 ### 使用调试标志理解网络消息
 
-有几个调试标志可用于深入了解网络消息。
+有几个调试标志可用于深入了解网络消息。  
 可以将它们附加到页面 URL，例如 `https://localhost:3000/?debugnet`。
 
 | Flag          | Description                                      |
@@ -183,6 +183,7 @@ this.context.connection.send("delete-state", { guid: "guid_to_delete" });
 | `?debugnet`   | 将所有传入和传出网络消息记录到控制台       |
 | `?debugowner` | 将所有所有权请求和更改记录到控制台         |
 | `?debugnetbin`| 记录传入和传出二进制消息的附加信息     |
+
 
 ## 网络生命周期事件
 
@@ -211,7 +212,7 @@ this.context.beginListen(RoomEvents.RoomStateSent, () => { ... });
 
 ## 使用 Needle Networking 服务器
 
-默认情况下，联网的 Needle 场景连接到由 Needle 管理和提供的云基础设施。无需额外设置，目前使用此服务也无需额外费用。
+默认情况下，联网的 Needle 场景连接到由 Needle 管理和提供的云基础设施。无需额外设置，目前使用此服务也无需额外费用。  
 
 通常，这对于同一房间中的大约 15-20 个用户来说工作正常。一旦您的项目成熟，您可以通过托管自己的网络服务器来升级到更大/更好/更强的网络解决方案。
 
@@ -295,7 +296,7 @@ yourFramework.createWebsocketRoute(options.endpoint, frameworkWebsocket => {
 
 #### 状态存储
 
-网络状态默认以 JSON 文件形式存储在服务器磁盘的 `/.data` 目录中。
+网络状态默认以 JSON 文件形式存储在服务器磁盘的 `/.data` 目录中。  
 每个房间都有自己的文件，状态会在客户端连接加入房间时发送给他们。
 
 或者，网络状态可以使用兼容 S3 的存储提供商存储。使用以下环境变量启用 S3 存储：
@@ -341,7 +342,7 @@ setPeerOptions(opts: PeerjsOptions);
 ::::code-group
 :::code-group-item Join
 ```json
-// 发送到服务器以尝试加入房间。
+// Sent to the server to attempt joining a room.
 {
     "key": "join-room",
     "data": {
@@ -353,7 +354,7 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item Leave
 ```json
-// 发送到服务器以离开房间。
+// Sent to the server to leave a room.
 {
     "key": "leave-room",
     "data": {
@@ -364,21 +365,21 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item JoinedRoom
 ```json
-// 当本地用户加入房间时发送到客户端。
-// 类型：JoinedRoomResponse
+// Sent to the client when the local user has joined a room.
+// Type: JoinedRoomResponse
 {
     "key": "joined-room",
     "room": string,
     "viewId": string,
     "allowEditing": boolean,
-    "inRoom": string[] // 连接 ID
+    "inRoom": string[] // connection IDs
 }
 ```
 :::
 :::code-group-item LeftRoom
 ```json
-// 当本地用户离开房间时发送到客户端。
-// 类型：LeftRoomResponse
+// Sent to the client when the local user has left a room.
+// Type: LeftRoomResponse
 {
     "key": "left-room",
     "room": string
@@ -387,34 +388,34 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item UserJoinedRoom
 ```json
-// 当任何用户加入房间时发送到客户端。
-// 类型：UserJoinedOrLeftRoomModel
+// Sent to the client when any user has joined a room.
+// Type: UserJoinedOrLeftRoomModel
 {
     "key": "user-joined-room",
     "data": {
-        "userId": string // 连接 ID
+        "userId": string // connection ID
     }
 }
 ```
 :::
 :::code-group-item UserLeftRoom
 ```json
-// 当任何用户离开房间时发送到客户端。
-// 类型：UserJoinedOrLeftRoomModel
+// Sent to the client when any user has left a room.
+// Type: UserJoinedOrLeftRoomModel
 {
     "key": "user-left-room",
     "data": {
-        "userId": string // 连接 ID
+        "userId": string // connection ID
     }
 }
 ````
 :::
 :::code-group-item RoomStateSent
 ```json
-// 在完整的房间状态发送后发送到客户端。
+// Sent to the client after the complete room state has been sent.
 {
     "key": "room-state-sent",
-    "room": string // 房间名称 
+    "room": string // room name 
 }
 ```
 :::
@@ -425,19 +426,19 @@ setPeerOptions(opts: PeerjsOptions);
 ::::code-group
 :::code-group-item ConnectionInfo
 ```json
-// 连接建立时发送到客户端。
+// Connection established when sent to client.
 {
     "key": "connection-start-info",
     "data": {
-        "id": string // 连接 ID
+        "id": string // connection ID
     }
 }
 ```
 :::
 :::code-group-item syncInstantiate
 ```json
-// 由 syncInstantiate() API 用于创建资产的新实例。
-// 类型：NewInstanceModel
+// Used by the syncInstantiate() API to create a new instance of an asset.
+// Type: NewInstanceModel
 {
     "key": "new-instance-created",
     "data": {
@@ -458,8 +459,8 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item syncDestroy
 ```json
-// 由 syncDestroy() API 用于销毁资产实例。
-// 类型：DestroyInstanceModel
+// Used by the syncDestroy() API to destroy an instance of an asset.
+// Type: DestroyInstanceModel
 {
     "key": "instance-destroyed",
     "data": {
@@ -471,7 +472,7 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item Ping
 ```json
-// 每隔几秒发送到服务器以保持连接活跃。
+// Sent to the server every few seconds to keep the connection alive.
 {
     "key": "ping",
     "data": {}
@@ -480,7 +481,7 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item Pong
 ```json
-// 服务器响应 ping 时发送。
+// Sent by the server in response to a ping.
 {
     "key": "pong",
     "data": {}
@@ -489,7 +490,7 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item DeleteState
 ```json
-// 发送到服务器以删除特定 guid 的状态。
+// Sent to the server to delete state for a specific guid.
 {
     "key": "delete-state",
     "data": {
@@ -500,7 +501,7 @@ setPeerOptions(opts: PeerjsOptions);
 :::
 :::code-group-item DeleteAllState
 ```json
-// 发送到服务器以删除所有当前房间状态。
+// Sent to the server to delete ALL current room state.
 {
     "key": "delete-all-state",
     "data": {}
@@ -525,7 +526,7 @@ setPeerOptions(opts: PeerjsOptions);
 ```
 :::
 :::code-group-item OwnershipResponse
-// 类型：OwnershipResponse
+// Type: OwnershipResponse
 ```json
 {
     "key": 
@@ -580,14 +581,14 @@ Flatbuffer 消息直接以二进制消息形式发送。
 
 JSON 消息易于使用和理解，但通常在内存和带宽方面更大。对于大量数据或需要快速更新时，二进制消息更快、更高效。您可以在 Needle Engine 中使用 Flatbuffers 消息来满足此需求。使用 Flatbuffers 需要额外的设置步骤，例如定义和编译消息 schema，并且由于您处理的是二进制消息，因此更难调试。
 
-请注意，发送和接收 Flatbuffer 消息时没有 `key` 字段——消息类型是 Flatbuffer schema 的一部分。您通过 Websocket 连接发送和接收的是单个二进制 buffer。
+请注意，发送和接收 Flatbuffer 消息时没有 `key` 字段——消息类型是 Flatbuffer schema 的一部分。您通过 Websocket 连接发送和接收的是单个二进制 buffer。  
 
 向同一房间中的所有用户发送二进制消息：
 ```ts
 this.context.connection.sendBinary(byteArray: Uint8Array);
 ```
 
-以 Flatbuffer 格式订阅二进制消息：
+以 Flatbuffer 格式订阅二进制消息：  
 ```ts
 this.context.connection.beginListenBinary(identifier:string, callback:(data : ByteBuffer) => void);
 ```
@@ -606,8 +607,9 @@ this.context.connection.stopListenBinary(identifier:string);
 - [使用 schema 编译器](https://google.github.io/flatbuffers/flatbuffers_guide_using_schema_compiler.html)
 - [TypeScript 中的 Flatbuffers](https://google.github.io/flatbuffers/flatbuffers_guide_use_typescript.html)
 
+
 ::::code-group
-:::code-group-item 注册 schema
+:::code-group-item Register a schema
 ```ts
 // Register a new Flatbuffer schema with the networking system
 import { registerBinaryType } from '@needle-tools/engine';
@@ -618,7 +620,7 @@ const MySchemaIdentifier = "MYSC";
 registerBinaryType(MySchemaIdentifier, MyDataModel.getRootAsSyncedTransformModel);
 ```
 :::
-:::code-group-item 发送消息
+:::code-group-item Send Messages
 ```ts
 // Prepare data for sending by creating a Flatbuffer message:
 import { MyDataModel } from 'my-data-model.js';
@@ -644,7 +646,7 @@ function sendData() {
 }
 ```
 :::
-:::code-group-item 接收消息
+:::code-group-item Receive Messages
 ```ts
 // Subscribe to receive this specific message type:
 import { MyDataModel } from 'my-data-model.js';
@@ -659,8 +661,8 @@ this.context.connection.beginListenBinary(MySchemaIdentifier, (data) => {
 :::
 ::::
 
-::: tip 自定义 Flatbuffer 消息和持久性
-目前，自定义二进制消息无法在网络服务器上持久化。修改网络服务器并添加您的自定义 flatbuffer schema，以确保 guid 属性可以被处理。
+::: tip Custom Flatbuffer messages and persistence
+Currently, custom binary messages can't be persisted on the networking server. Modify the networking server and add your custom flatbuffer schemas to ensure the guid property can be processed.
 :::
 
 ## 总结

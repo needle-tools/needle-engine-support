@@ -21,40 +21,40 @@ Besuchen Sie [Needle Cloud](https://cloud.needle.tools), um zu beginnen.
 
 ## Funktionen
 
-1. **Räumliche Web-Apps hosten**
-   Mit Needle erstellte Apps können direkt aus unseren Engine-Integrationen in die Cloud bereitgestellt werden. Dies ermöglicht es Ihnen, Ihrem Team und Ihren Kunden einfach öffentlichen Zugriff auf Apps zu ermöglichen, ohne einen eigenen Server einrichten zu müssen. Bei Bedarf können Sie Apps mit einem Passwort schützen.
+1.  **Räumliche Web-Apps hosten**
+    Mit Needle erstellte Apps können direkt aus unseren Engine-Integrationen in die Cloud bereitgestellt werden. Dies ermöglicht es Ihnen, Ihrem Team und Ihren Kunden einfach öffentlichen Zugriff auf Apps zu ermöglichen, ohne einen eigenen Server einrichten zu müssen. Bei Bedarf können Sie Apps mit einem Passwort schützen.
 
-2. **3D-Assets privat und sicher verwalten**
-   Laden und organisieren Sie Ihre 3D-Dateien ganz einfach. Dank unseres schnellen CDN (Content Delivery Network) werden Ihre Dateien sicher gespeichert und können von überall auf der Welt schnell abgerufen werden.
-   Needle Cloud ist kein Marktplatz und kein soziales Netzwerk. Es wurde für Agenturen, Studios und Kreative entwickelt, um ihre Assets privat und sicher zu verwalten.
+2.  **3D-Assets privat und sicher verwalten**
+    Laden und organisieren Sie Ihre 3D-Dateien ganz einfach. Dank unseres schnellen CDN (Content Delivery Network) werden Ihre Dateien sicher gespeichert und können von überall auf der Welt schnell abgerufen werden.
+    Needle Cloud ist kein Marktplatz und kein soziales Netzwerk. Es wurde für Agenturen, Studios und Kreative entwickelt, um ihre Assets privat und sicher zu verwalten.
 
-3. **3D-Assets aus verschiedenen Formaten optimieren**
-   Komprimieren Sie Ihre Dateien automatisch, um deren Größe zu reduzieren und gleichzeitig die visuelle Qualität zu erhalten. Dadurch laden Ihre Dateien schneller und sparen Bandbreite und Speicher auf den Geräten der Nutzer.
+3.  **3D-Assets aus verschiedenen Formaten optimieren**
+    Komprimieren Sie Ihre Dateien automatisch, um deren Größe zu reduzieren und gleichzeitig die visuelle Qualität zu erhalten. Dadurch laden Ihre Dateien schneller und sparen Bandbreite und Speicher auf den Geräten der Nutzer.
 
-4. **Freigabe und Versionskontrolle**
-   Links zu Ihren Dateien können mit anderen geteilt und direkt in Ihren Projekten verwendet werden. Sie können neue Versionen von Assets und Apps hochladen. Einzelne Versionen können gekennzeichnet werden, was flexible Überprüfungs-Workflows ermöglicht: Sie können beispielsweise eine Version als `main` oder `experimental` kennzeichnen. Sie können Kennzeichnungen bei Bedarf auch auf eine frühere Version zurücksetzen.
+4.  **Freigabe und Versionskontrolle**
+    Links zu Ihren Dateien können mit anderen geteilt und direkt in Ihren Projekten verwendet werden. Sie können neue Versionen von Assets und Apps hochladen. Einzelne Versionen können gekennzeichnet werden, was flexible Überprüfungs-Workflows ermöglicht: Sie können beispielsweise eine Version als `main` oder `experimental` kennzeichnen. Sie können Kennzeichnungen bei Bedarf auch auf eine frühere Version zurücksetzen.
 
-5. **Automatisierung und Pipeline-Tools über CLI**
-   Die `needle-cloud` CLI (Kommandozeilenschnittstelle) erleichtert die Automatisierung des Hochladens und Optimierens von Dateien. Dies ist nützlich, um Needle Cloud in Ihre bestehende Pipeline zu integrieren oder das Hochladen großer Dateimengen zu automatisieren.
+5.  **Automatisierung und Pipeline-Tools über CLI**
+    Die `needle-cloud` CLI (Kommandozeilenschnittstelle) erleichtert die Automatisierung des Hochladens und Optimierens von Dateien. Dies ist nützlich, um Needle Cloud in Ihre bestehende Pipeline zu integrieren oder das Hochladen großer Dateimengen zu automatisieren.
 
-6. **Lizenzverwaltung**
-   Lizenzen für Needle Engine für Einzelkreative und Teams werden über Needle Cloud verwaltet. Dies stellt sicher, dass nur autorisierte Benutzer auf Ihre Dateien und Projekte zugreifen können. Kontaktieren Sie uns für Enterprise- und Edu-Lizenzen.
+6.  **Lizenzverwaltung**
+    Lizenzen für Needle Engine für Einzelkreative und Teams werden über Needle Cloud verwaltet. Dies stellt sicher, dass nur autorisierte Benutzer auf Ihre Dateien und Projekte zugreifen können. Kontaktieren Sie uns für Enterprise- und Edu-Lizenzen.
 
 ## Bereitstellen aus Unity
 
 Needle Cloud ist in den Unity Editor integriert. Dies ermöglicht es Ihnen, Ihre Apps direkt aus Unity in Needle Cloud bereitzustellen. Sie können auch Assets direkt in Unity von Needle Cloud hoch- und herunterladen.
 
-1. **Installieren Sie die Unity-Integration, falls Sie dies noch nicht getan haben.**
-   Weitere Infos finden Sie auf [dieser Seite](./../unity/).
+1.  **Installieren Sie die Unity-Integration, falls Sie dies noch nicht getan haben.**
+    Weitere Infos finden Sie auf [dieser Seite](./../unity/).
 
-2. **Fügen Sie die Komponente `Export Info` zu Ihrer Szene hinzu.**
-   Diese Komponente wird verwendet, um die Exporteinstellungen für Ihre App zu konfigurieren.
-   Sie können den Menüpunkt `GameObject > Needle Engine > Add Export Info` verwenden oder eine neue Szene aus einer Needle-Vorlage über den Menüpunkt `File > New Scene` erstellen.
+2.  **Fügen Sie die Komponente `Export Info` zu Ihrer Szene hinzu.**
+    Diese Komponente wird verwendet, um die Exporteinstellungen für Ihre App zu konfigurieren.
+    Sie können den Menüpunkt `GameObject > Needle Engine > Add Export Info` verwenden oder eine neue Szene aus einer Needle-Vorlage über den Menüpunkt `File > New Scene` erstellen.
 
-3. **Klicken Sie auf `Upload to Needle Cloud`.**
-   Dadurch wird Ihre App erstellt und in Needle Cloud hochgeladen. Sie können auch auswählen, in ein bestimmtes Team und Projekt bereitzustellen. Der _Upload-Name_ des Projekts, der neben der Schaltfläche sichtbar ist, wird in der Szene gespeichert. Zukünftige Uploads verwenden den gleichen Upload-Namen, und alle hochgeladenen Versionen werden auf der Needle Cloud-Website gruppiert.
+3.  **Klicken Sie auf `Upload to Needle Cloud`.**
+    Dadurch wird Ihre App erstellt und in Needle Cloud hochgeladen. Sie können auch auswählen, in ein bestimmtes Team und Projekt bereitzustellen. Der _Upload-Name_ des Projekts, der neben der Schaltfläche sichtbar ist, wird in der Szene gespeichert. Zukünftige Uploads verwenden den gleichen Upload-Namen, und alle hochgeladenen Versionen werden auf der Needle Cloud-Website gruppiert.
 
-   ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
+    ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
 
 ## Bereitstellen von der CLI
 
@@ -69,20 +69,20 @@ Wenn Sie Node.js nicht installiert haben, können Sie es von der [Node.js websit
 
 Sie können das `needle-cloud` CLI-Paket global installieren oder es über `npx` verwenden. Dies ermöglicht die Ausführung der CLI-Befehle, ohne diese global installieren zu müssen.
 
-1. **Verwenden Sie den npx-Befehl (empfohlen)**
-   ```bash
-   npx needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
-   ```
-2. **Oder installieren Sie needle-cloud global**
-   Eine globale Installation ermöglicht die Verwendung der CLI von überall auf Ihrem System. Um die CLI global zu installieren, führen Sie den folgenden Befehl in Ihrem Terminal aus:
-   ```bash
-   npm install -g needle-cloud
-   ```
-   Jetzt können Sie den Befehl `needle-cloud` in Ihrem Terminal verwenden:
+1.  **Verwenden Sie den npx-Befehl (empfohlen)**
+    ```bash
+    npx needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
+    ```
+2.  **Oder installieren Sie needle-cloud global**
+    Eine globale Installation ermöglicht die Verwendung der CLI von überall auf Ihrem System. Um die CLI global zu installieren, führen Sie den folgenden Befehl in Ihrem Terminal aus:
+    ```bash
+    npm install -g needle-cloud
+    ```
+    Jetzt können Sie den Befehl `needle-cloud` in Ihrem Terminal verwenden:
 
-   ```bash
-   needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
-   ```
+    ```bash
+    needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
+    ```
 
 ### Automatisierte Bereitstellungen
 Um von **Github Actions** oder **Stackblitz** bereitzustellen, können Sie einen Zugriffstoken als `--token <access_token>` bereitstellen. Zugriffstoken können auf [Ihrer Teamseite](https://cloud.needle.tools/team) auf Needle Cloud erstellt werden. Stellen Sie sicher, dass Sie Ihren Token mit `read/write`-Berechtigungen erstellen.
@@ -92,7 +92,7 @@ Verwenden Sie die [Needle Cloud Github Action](https://github.com/marketplace/ac
 #### Beispiel: Needle Cloud Github Action
 ```yml
       - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1.0.2
+        uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
@@ -124,18 +124,18 @@ Beim Bereitstellen in Needle Cloud erhält jeder Upload eine eindeutige URL. Sie
 -----
 
 Im folgenden Beispiel haben wir eine App, die bisher zweimal bereitgestellt wurde. Jede Bereitstellung erhält eine spezifische URL, auch als _gepinnte_ URL bekannt, da sie an eine spezifische Version gepinnt ist.
-1. [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)
-   Dies ist die erste Version, die hochgeladen wurde.
-2. [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)
-   Dies ist die zweite Version, die hochgeladen wurde.
+1.  [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)
+    Dies ist die erste Version, die hochgeladen wurde.
+2.  [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)
+    Dies ist die zweite Version, die hochgeladen wurde.
 
 Die _neueste_ Bereitstellung ist immer unter der folgenden URL verfügbar. Diese URL ist nützlich zum Teilen mit Ihrem Team, da sie immer auf die aktuellste Version der App verweist. Weitere gebräuchliche Namen für diese Version sind _dev_ oder _canary_.
-- [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)
-  Diese URL zeigt automatisch die neue Version an, wenn Sie eine neue Version der App hochladen.
+-   [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)
+    Diese URL zeigt automatisch die neue Version an, wenn Sie eine neue Version der App hochladen.
 
 Die _main_ Bereitstellung ist nützlich zum Teilen mit Kunden, da sie immer auf die aktuellste Version der App verweist, die Sie promotet haben. Weitere gebräuchliche Namen für diese Version sind _production_, _stable_ oder _live_.
-- [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)
-  Diese URL ändert sich nicht, wenn Sie eine neue Version hochladen. Sie ändert sich nur, wenn Sie eine neue Version explizit zu _main_ promoten.
+-   [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)
+    Diese URL ändert sich nicht, wenn Sie eine neue Version hochladen. Sie ändert sich nur, wenn Sie eine neue Version explizit zu _main_ promoten.
 
 Typischerweise laden Sie eine neue Version hoch, überprüfen sie und entscheiden dann, ob Sie sie zu _main_ promoten möchten.
 
@@ -143,25 +143,25 @@ Typischerweise laden Sie eine neue Version hoch, überprüfen sie und entscheide
 
 Die Needle Cloud-Website zeigt alle bereitgestellten Versionen der App, einschließlich der latest- und main-Versionen. Labels können verschoben werden, indem Sie auf <kbd>⋮</kbd> klicken und <kbd>Set main label</kbd> oder <kbd>Remove main label</kbd> auswählen.
 
-![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
+![Needle Cloud Versionsliste](/cloud/cloud-edit-page.webp)
 
 ## Unterstützte 3D-Formate
 
-1. **glTF und GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Beispiel</a>
-   Das glTF-Format ist das am weitesten unterstützte Format für 3D im Web. Es ist ein leichtgewichtiges Format, das 3D-Modelle, Animationen und Texturen speichern kann. GLB-Dateien sind binäre Versionen von glTF-Dateien, bei denen alle Daten in einer einzigen Datei gespeichert sind.
-   glTF unterstützt fortschrittliche Komprimierungstechniken wie Draco, KTX2 und Meshopt, die von Needle Cloud und Needle Engine voll unterstützt werden.
+1.  **glTF und GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Beispiel</a>
+    Das glTF-Format ist das am weitesten unterstützte Format für 3D im Web. Es ist ein leichtgewichtiges Format, das 3D-Modelle, Animationen und Texturen speichern kann. GLB-Dateien sind binäre Versionen von glTF-Dateien, bei denen alle Daten in einer einzigen Datei gespeichert sind.
+    glTF unterstützt fortschrittliche Komprimierungstechniken wie Draco, KTX2 und Meshopt, die von Needle Cloud und Needle Engine voll unterstützt werden.
 
-2. **OpenUSD**
-   USD ist ein leistungsstarkes Format für den 3D-Datenaustausch. Es ist bekannt für seine Verwendung in der Film- und VFX-Industrie und gewinnt in der Spieleindustrie an Popularität. Needle Cloud unterstützt USDZ- und USD-Dateien nativ durch unsere Arbeit an USD-WASM und konvertiert USD-Dateien auch in glTF zur weiteren Verarbeitung und Optimierung.
+2.  **OpenUSD**
+    USD ist ein leistungsstarkes Format für den 3D-Datenaustausch. Es ist bekannt für seine Verwendung in der Film- und VFX-Industrie und gewinnt in der Spieleindustrie an Popularität. Needle Cloud unterstützt USDZ- und USD-Dateien nativ durch unsere Arbeit an USD-WASM und konvertiert USD-Dateien auch in glTF zur weiteren Verarbeitung und Optimierung.
 
-3. **FBX**
-   FBX ist seit vielen Jahren ein beliebtes Format für den 3D-Datenaustausch, dem jedoch eine Reihe moderner Funktionen wie PBR-Materialien und Erweiterungen fehlen. Needle Cloud konvertiert FBX-Dateien in glTF zur weiteren Verarbeitung und Optimierung.
+3.  **FBX**
+    FBX ist seit vielen Jahren ein beliebtes Format für den 3D-Datenaustausch, dem jedoch eine Reihe moderner Funktionen wie PBR-Materialien und Erweiterungen fehlen. Needle Cloud konvertiert FBX-Dateien in glTF zur weiteren Verarbeitung und Optimierung.
 
-4. **VRM**
-   VRM ist ein Format für humanoide Avatare. Es basiert auf glTF mit zusätzlichen Einschränkungen durch die Verwendung von glTF-Erweiterungen. Needle Cloud unterstützt VRM-Dateien nativ und kann sie wie andere glTF-Dateien optimieren, einschließlich komplexer VRM-Erweiterungen wie Phoneme, Toon-Shading und Dynamic Bones.
+4.  **VRM**
+    VRM ist ein Format für humanoide Avatare. Es basiert auf glTF mit zusätzlichen Einschränkungen durch die Verwendung von glTF-Erweiterungen. Needle Cloud unterstützt VRM-Dateien nativ und kann sie wie andere glTF-Dateien optimieren, einschließlich komplexer VRM-Erweiterungen wie Phoneme, Toon-Shading und Dynamic Bones.
 
-5. **OBJ**
-   OBJ ist ein einfaches textbasiertes Format für 3D-Modelle. Es unterstützt grundlegende Materialien über MTL-Dateien, Animationen und Objekthierarchien. Needle Cloud konvertiert OBJ-Dateien in glTF zur weiteren Verarbeitung und Optimierung.
+5.  **OBJ**
+    OBJ ist ein einfaches textbasiertes Format für 3D-Modelle. Es unterstützt grundlegende Materialien über MTL-Dateien, Animationen und Objekthierarchien. Needle Cloud konvertiert OBJ-Dateien in glTF zur weiteren Verarbeitung und Optimierung.
 
 :::tip Verwenden Sie glTF oder USD, wenn möglich
 Wir empfehlen glTF und USD als primäre Formate für den 3D-Datenaustausch. Sie sind weit verbreitet, verfügen über moderne Funktionen und ein gutes Materialmodell.
@@ -204,43 +204,43 @@ Sie können den Viewer auch mit einem direkten Link zum Asset oder mit einem spe
 ### Einbetten in andere Frameworks
 
 Die folgenden Einbettungsoptionen sind verfügbar:
-1. **Needle Cloud Viewer**
-   Verwenden Sie das `iframe`-Codeschnipsel, um den Needle Cloud Viewer auf Ihrer Website einzubetten.
+1.  **Needle Cloud Viewer**
+    Verwenden Sie das `iframe`-Codeschnipsel, um den Needle Cloud Viewer auf Ihrer Website einzubetten.
 
-1. **Needle Engine**
-   Verwenden Sie das bereitgestellte Codeschnipsel, um Needle Engine als [Web-Komponente](./../three/) auf Ihrer Website einzubetten.
+1.  **Needle Engine**
+    Verwenden Sie das bereitgestellte Codeschnipsel, um Needle Engine als [Web-Komponente](./../three/) auf Ihrer Website einzubetten.
 
-1. **model-viewer**
-   Das [model-viewer](https://modelviewer.dev)-Projekt bietet eine Web-Komponente zum Rendern einfacher, nicht-interaktiver 3D-Modelle im Browser.
+1.  **model-viewer**
+    Das [model-viewer](https://modelviewer.dev)-Projekt bietet eine Web-Komponente zum Rendern einfacher, nicht-interaktiver 3D-Modelle im Browser.
 
-1. **three.js**
-   Wenn Sie mit three.js vertraut sind, können Sie das bereitgestellte Codeschnipsel als Ausgangspunkt für eine three.js-App verwenden, die Needle Progressive Loading unterstützt und Dateien effizient von Needle Cloud lädt.
+1.  **three.js**
+    Wenn Sie mit three.js vertraut sind, können Sie das bereitgestellte Codeschnipsel als Ausgangspunkt für eine three.js-App verwenden, die Needle Progressive Loading unterstützt und Dateien effizient von Needle Cloud lädt.
 
-1. **React-Three-Fiber**
-   Wenn Sie React-Three-Fiber verwenden, können Sie das bereitgestellte Codeschnipsel als Ausgangspunkt für ein Projekt verwenden, das Needle Progressive Loading unterstützt und Dateien effizient von Needle Cloud lädt.
+1.  **React-Three-Fiber**
+    Wenn Sie React-Three-Fiber verwenden, können Sie das bereitgestellte Codeschnipsel als Ausgangspunkt für ein Projekt verwenden, das Needle Progressive Loading unterstützt und Dateien effizient von Needle Cloud lädt.
 
-1. **Unity**
-   Wenn Sie Unity verwenden, können Sie Needle Cloud Assets direkt in Ihre Projekte integrieren, indem Sie die Needle Cloud Asset Komponente für nahtloses Laden und Optimieren verwenden.
+1.  **Unity**
+    Wenn Sie Unity verwenden, können Sie Needle Cloud Assets direkt in Ihre Projekte integrieren, indem Sie die Needle Cloud Asset Komponente für nahtloses Laden und Optimieren verwenden.
 
 ### Cloud Assets mit anderen Engines wie Unity oder Unreal verwenden
 
 Es gibt mehrere Möglichkeiten, in Needle Cloud gespeicherte Assets in anderen Engines wie Unity oder Unreal zu verwenden.
-1. **Herunterladen und Importieren**
-   Sie können das Asset herunterladen und in Ihr Projekt importieren.
+1.  **Herunterladen und Importieren**
+    Sie können das Asset herunterladen und in Ihr Projekt importieren.
 
-2. **Direkter Link**
-   Sie können den direkten Link zum Asset in Ihrem Projekt verwenden. Auf diese Weise können Sie das Asset auf Needle Cloud aktualisieren, und es wird automatisch in Ihrem Projekt aktualisiert. Welchen Link Sie verwenden, hängt von der Engine und ihren glTF-Funktionen ab:
-    - Unterstützung für **glTF mit Progressive Loading**:
-      Verwenden Sie den Link `Progressive-World` oder `Progressive-Product`.
-      Weitere Informationen zu Progressive Loading und dessen Aktivierung für Ihre Engine finden Sie unter [npm:@needle-tools/gltf-progressive](https://www.npmjs.com/package/@needle-tools/gltf-progressive).
+2.  **Direkter Link**
+    Sie können den direkten Link zum Asset in Ihrem Projekt verwenden. Auf diese Weise können Sie das Asset auf Needle Cloud aktualisieren, und es wird automatisch in Ihrem Projekt aktualisiert. Welchen Link Sie verwenden, hängt von der Engine und ihren glTF-Funktionen ab:
+    -   Unterstützung für **glTF mit Progressive Loading**:
+        Verwenden Sie den Link `Progressive-World` oder `Progressive-Product`.
+        Weitere Informationen zu Progressive Loading und dessen Aktivierung für Ihre Engine finden Sie unter [npm:@needle-tools/gltf-progressive](https://www.npmjs.com/package/@needle-tools/gltf-progressive).
 
-    - Unterstützung für **glTF mit Draco und KTX2**:
-      Verwenden Sie den Link `Optimized`.
-    - Unterstützung für glTF, aber **keine Komprimierungserweiterungen**:
-      Verwenden Sie den Link `Upload` (für gltf/glb-Uploads) oder `Converted` (für andere Uploads).
+    -   Unterstützung für **glTF mit Draco und KTX2**:
+        Verwenden Sie den Link `Optimized`.
+    -   Unterstützung für glTF, aber **keine Komprimierungserweiterungen**:
+        Verwenden Sie den Link `Upload` (für gltf/glb-Uploads) oder `Converted` (für andere Uploads).
 
-3. **Needle Cloud Asset Komponente**
-   Wenn Sie Needle Engine verwenden, können Sie die Needle Cloud Asset Komponente verwenden, um Assets zur Laufzeit zu laden. Sie wählt automatisch den besten Link für Ihre Plattform aus und lädt das Asset mit Progressive Loading. Dies wird auch zur Laufzeit in Unity Builds unterstützt.
+3.  **Needle Cloud Asset Komponente**
+    Wenn Sie Needle Engine verwenden, können Sie die Needle Cloud Asset Komponente verwenden, um Assets zur Laufzeit zu laden. Sie wählt automatisch den besten Link für Ihre Plattform aus und lädt das Asset mit Progressive Loading. Dies wird auch zur Laufzeit in Unity Builds unterstützt.
 
 ## CLI für Assets
 
@@ -250,24 +250,25 @@ Weitere Informationen zur CLI und ihrer Verwendung finden Sie unter [npm:needle-
 
 ## FAQ
 
-1. **Was ist Needle Cloud?**
-   Es ist ein Online-Dienst zum Hochladen, Komprimieren und Teilen von 3D-Assets und -Szenen.
+1.  **Was ist Needle Cloud?**
+    Es ist ein Online-Dienst zum Hochladen, Komprimieren und Teilen von 3D-Assets und -Szenen.
 
-2. **Wie lade ich Assets in Needle Cloud hoch?**
-   Sie können Dateien hochladen, indem Sie sie auf die Website ziehen oder sie direkt von unterstützten Integrationen hochladen. Wenn Sie viele Dateien haben, können Sie die CLI (Kommandozeilenschnittstelle) oder die API (Programmierschnittstelle) verwenden.
+2.  **Wie lade ich Assets in Needle Cloud hoch?**
+    Sie können Dateien hochladen, indem Sie sie auf die Website ziehen oder sie direkt von unterstützten Integrationen hochladen. Wenn Sie viele Dateien haben, können Sie die CLI (Kommandozeilenschnittstelle) oder die API (Programmierschnittstelle) verwenden.
 
-3. **Wie lade ich optimierte Dateien von Needle Cloud herunter?**
-   Sie können Dateien von der Website herunterladen. Klicken Sie auf `Share` und dann auf `Download`. Sie können auch die CLI verwenden, um Dateien herunterzuladen.
+3.  **Wie lade ich optimierte Dateien von Needle Cloud herunter?**
+    Sie können Dateien von der Website herunterladen. Klicken Sie auf `Share` und dann auf `Download`. Sie können auch die CLI verwenden, um Dateien herunterzuladen.
 
-4. **Kann ich meine Dateien mit anderen teilen?**
-   Ja, Sie können Links erstellen, um Ihre Dateien zu teilen. Links können entweder direkte Download-Links oder Links zum Needle Cloud Viewer sein.
+4.  **Kann ich meine Dateien mit anderen teilen?**
+    Ja, Sie können Links erstellen, um Ihre Dateien zu teilen. Links können entweder direkte Download-Links oder Links zum Needle Cloud Viewer sein.
 
-5. **Gibt es eine Begrenzung für Dateigrößen?**
-   Die Upload-Limits hängen von Ihrem Plan ab. Überprüfen Sie Ihre Kontodetails für weitere Informationen.
+5.  **Gibt es eine Begrenzung für Dateigrößen?**
+    Die Upload-Limits hängen von Ihrem Plan ab. Überprüfen Sie Ihre Kontodetails für weitere Informationen.
 
-6. **Können Needle Cloud-Dateien mit anderen Tools verwendet werden?**
-   Ja, Sie können Ihre Dateien in anderen Programmen verwenden, indem Sie sie als glTF exportieren. USD-Export kommt zu einem späteren Zeitpunkt.
+6.  **Können Needle Cloud-Dateien mit anderen Tools verwendet werden?**
+    Ja, Sie können Ihre Dateien in anderen Programmen verwenden, indem Sie sie als glTF exportieren. USD-Export kommt zu einem späteren Zeitpunkt.
 
-7. **Was passiert, wenn mir der Speicherplatz ausgeht?**
-   Möglicherweise müssen Sie Ihren Plan aktualisieren oder alte Dateien löschen, um Platz zu schaffen.
-Page automatically translated using AI
+7.  **Was passiert, wenn mir der Speicherplatz ausgeht?**
+    Möglicherweise müssen Sie Ihren Plan aktualisieren oder alte Dateien löschen, um Platz zu schaffen.
+
+Seite automatisch mit AI übersetzt

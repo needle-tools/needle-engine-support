@@ -19,7 +19,7 @@ title: Web 项目结构
 
 ### 默认的 Vite 项目结构
 
-我们的主要项目模板使用超快的 [vite](https://vitejs.dev/) bundler。以下显示了我们创建和交付的 Vite 模板结构（尽管可以根据您的需要进行调整）。
+我们的主要项目模板使用超快的 [vite](https://vitejs.dev/) 打包器。以下显示了我们创建和交付的 Vite 模板结构（尽管可以根据您的需要进行调整）。
 
 | | |
 | --- | |
@@ -36,9 +36,9 @@ title: Web 项目结构
 | `src/main.ts` | 从 `index.html` 包含并导入 `needle-engine` |
 | `*` | 您可以随意在此处添加任何新文件。请确保在构建时将它们 [复制](./reference/needle-config-json.md) 到输出目录（除非它们仅在开发期间使用） |
 
-我们的 exporter 也可以与其他项目结构一起使用，vite 只是我们首选的前端 bundling 工具，因为它速度快。请随意按照您喜欢的方式设置您的 JavaScript 项目。
+我们的导出器也可以与其他项目结构一起使用，vite 只是我们首选的前端打包工具，因为它速度快。请随意按照您喜欢的方式设置您的 JavaScript 项目。
 
-[在文档中了解更多关于 bundling 以及与其他框架的使用](html.md)
+[在文档中了解更多关于打包以及与其他框架的使用](html.md)
 
 ---
 

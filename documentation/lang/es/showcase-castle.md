@@ -25,5 +25,5 @@ Esta página fue creada en Unity y exportada a three.js utilizando herramientas 
 
 Hay muchas tecnologías abiertas involucradas: los modelos 3D están en formato glTF, el motor de renderizado es three.js, RV y RA utilizan WebXR. El servidor de red funciona en Glitch, y el audio se envía a través de WebRTC usando PeerJS.
 
----
+
 Página traducida automáticamente usando IA

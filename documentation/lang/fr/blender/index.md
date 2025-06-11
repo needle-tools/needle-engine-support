@@ -310,5 +310,4 @@ Assurez-vous d'avoir configuré un projet web avant d'envoyer un rapport de bogu
 - [Scripting pour débutants : L'essentiel de Typescript](../getting-started/typescript-essentials.md)
 - [Scripting pour débutants : Comment écrire des composants personnalisés](../scripting.md)
 
-
 Page automatiquement traduite à l'aide de l'IA

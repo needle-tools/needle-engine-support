@@ -11,5 +11,5 @@ editLink: false
 
 [ウェブサイトにアクセス](https://willitaugment.itch.io/tumbleweed-defender)
 
----
+
 このページはAIによる自動翻訳です。

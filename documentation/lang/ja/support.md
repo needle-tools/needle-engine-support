@@ -1,4 +1,4 @@
-# サポートとコミュニティ
+# サポート、コミュニティ、AI
 
 ## コミュニティフォーラム
 
@@ -22,6 +22,7 @@ Needle Engineのドキュメントは、llms.txt標準経由でも利用可能�
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
+さらに、ドキュメントウェブサイト上で`.html`を`.md`に置き換えることで、ページのmarkdownバージョンを取得できます。
 
 ## インスピレーションを得る
 
@@ -31,12 +32,11 @@ Needle Engineのドキュメントは、llms.txt標準経由でも利用可能�
 
 <video-embed src="https://www.youtube.com/watch?v=1KKfct3Zpcw" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=gZuC40Alr88" />
-
 
 <video-embed src="https://www.youtube.com/watch?v=F6_buCHZhWk" />
 
+<video-embed src="https://www.youtube.com/watch?v=3oHyrx8e20g" />
 
 
 ::: info クールなプロジェクトを作りましたか？

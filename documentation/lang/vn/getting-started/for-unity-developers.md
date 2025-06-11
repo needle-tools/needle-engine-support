@@ -34,7 +34,6 @@ Mặt khác, một component tùy chỉnh trong Needle Engine được viết nh
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine"
 export class MyComponent extends Behaviour {
-  // Các phương thức lifecycle như awake, start, update sẽ được gọi tự động
 }
 ```
 ## Các trường Script
@@ -224,19 +223,17 @@ Lưu ý rằng trong trường hợp này, bạn phải tự xử lý tất cả
 ## InputSystem Callbacks
 Tương tự như Unity (xem [IPointerClickHandler trong Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)), bạn cũng có thể đăng ký để nhận các sự kiện input trên chính component đó.
 
-Để điều này hoạt động, hãy đảm bảo đối tượng của bạn có component ``ObjectRaycaster`` hoặc ``GraphicRaycaster`` trong hệ thống cấp bậc parent.
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-Lưu ý: `IPointerEventHandler` đăng ký đối tượng với tất cả các sự kiện pointer có thể. Các handler cho chúng là:
+Các sự kiện pointer có sẵn cho tất cả các component:
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -312,7 +309,7 @@ console.log(myFlag)
 Trong C#, bạn thường làm việc với một solution chứa một hoặc nhiều project. Trong Unity, solution này được Unity quản lý cho bạn và khi bạn mở một script C#, nó sẽ mở project và hiển thị file cho bạn.
 Bạn thường cài đặt các Package bằng trình quản lý package tích hợp của Unity để thêm các tính năng do Unity hoặc các nhà phát triển khác cung cấp (cả trong nhóm của bạn hoặc ví dụ qua AssetStore của Unity). Unity làm rất tốt việc giúp thêm và quản lý các package dễ dàng với PackageManager của họ và bạn có thể chưa bao giờ phải chỉnh sửa thủ công một file như `manifest.json` (đây là file Unity sử dụng để theo dõi các package đã được cài đặt) hoặc chạy một lệnh từ command line để cài đặt một package.
 
-Trong môi trường web, bạn sử dụng `npm` - Node Package Manager - để quản lý các dependencies / package cho bạn. Nó về cơ bản làm điều tương tự với những gì PackageManager của Unity làm - nó cài đặt (tải xuống) các package từ *một số* máy chủ (bạn thường nghe nó được gọi là *registry* trong bối cảnh đó) và đặt chúng vào một thư mục có tên `node_modules`.
+Trong môi trường web, bạn sử dụng `npm` - Node Package Manager - để quản lý các dependencies / package cho bạn. Nó về cơ bản làm điều tương tự với những gì PackageManager của Unity làm - nó cài đặt (tải xuống) các package từ *một số* máy chủ (bạn thường nghe nó được gọi là *registry* trong ngữ cảnh đó) và đặt chúng vào một thư mục có tên `node_modules`.
 
 Khi làm việc với một dự án web, hầu hết các dependencies của bạn được cài đặt từ [npmjs.com](https://npmjs.com/). Đây là registry package phổ biến nhất hiện có cho các dự án web.
 
@@ -415,4 +412,4 @@ Bạn có thể xem script cuối cùng hoạt động [tại đây](https://sta
 - [Các yếu tố cơ bản về Typescript](./typescript-essentials.md)
 - [Tham khảo Component](../component-reference.md)
 
-Page automatically translated using AI
+Trang được dịch tự động bằng AI

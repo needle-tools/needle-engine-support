@@ -16,8 +16,12 @@ Lorsque vous travaillez dans Unity ou Blender, vous remarquerez que lorsque vous
 
 C'est grâce à la magie du [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) qui s'exécute en arrière-plan dans un environnement d'éditeur et surveille les changements apportés à vos fichiers script. Lorsqu'il remarque que vous avez créé un nouveau composant Needle Engine, il génère alors le composant Unity ou le panneau Blender approprié, y compris les variables ou propriétés publiques que vous pouvez ensuite définir ou lier depuis l'Editor.
 
+
+**Note** : Le component compiler **ne génère actuellement que des composants**. Donc, si vous avez besoin d'exposer un Enum Typescript dans Unity, vous pouvez l'ajouter à votre C# manuellement soit dans un nouveau fichier C#, soit en dehors du code généré (voir les exemples ci-dessous)
+
+
 ### Contrôler la génération de composants
-Vous pouvez utiliser les commentaires suivants dans votre code Typescript pour contrôler le comportement de génération de code C#:
+Vous pouvez utiliser les commentaires suivants dans votre code Typescript pour contrôler le comportement de génération de code C# :
 | Attribut | Résultat |
 | -- | -- |
 | `// @generate-component` | Force la génération de la classe suivante|
@@ -59,8 +63,8 @@ Si vous souhaitez ajouter des scripts à n'importe quel fichier NpmDef, vous pou
 Pour que les champs C# soient correctement générés, il est actuellement important que vous déclariez explicitement un type Typescript. Par exemple ``myField : number = 5``
 
 Vous pouvez basculer entre l'entrée **Typescript** et les composants **C#** stub générés à l'aide des onglets ci-dessous
-:::: code-group
-::: code-group-item Typescript
+::: code-tabs
+@tab Typescript
 ```ts twoslash
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
@@ -84,8 +88,7 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-:::
-::: code-group-item Generated C#
+@tab C# Généré
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -106,12 +109,11 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-:::
-::: code-group-item Extending Generated C#
+@tab Étendre le C# Généré
 ```csharp
 using UnityEditor;
 
-// you can add code above or below the NEEDLE_CODEGEN_ blocks
+// vous pouvez ajouter du code au-dessus ou en dessous des blocs NEEDLE_CODEGEN_
 
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -134,7 +136,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 namespace Needle.Typescript.GeneratedComponents
 {
-    // This is how you extend the generated component (namespace and class name must match!)
+    // Voici comment étendre le composant généré (le namespace et le nom de classe doivent correspondre !)
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{
 		
@@ -148,13 +150,13 @@ namespace Needle.Typescript.GeneratedComponents
 		}
 	}
 
-    // of course you can also add custom editors
+    // bien sûr, vous pouvez aussi ajouter des éditeurs personnalisés
 	[CustomEditor(typeof(MyCustomComponent))]
 	public class MyCustomComponentEditor : Editor
 	{
 		public override void OnInspectorGUI()
 		{
-			EditorGUILayout.HelpBox("This is my sample component", MessageType.None);
+			EditorGUILayout.HelpBox("Ceci est mon composant d'exemple", MessageType.None);
 			base.OnInspectorGUI();
 		}
 	}
@@ -162,14 +164,13 @@ namespace Needle.Typescript.GeneratedComponents
 
 ```
 :::
-::::
 
 
 ### Étendre les composants générés
 Les classes C# de composants sont générées avec le flag [`partial`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) afin qu'il soit facile de les étendre avec des fonctionnalités. Ceci est utile pour dessiner des gizmos, ajouter des menus contextuels ou ajouter des champs ou méthodes supplémentaires qui ne font pas partie d'un composant intégré.
 
 
-:::tip Member Casing
+:::tip Convention de nommage des membres
 Les membres exportés commenceront par une lettre minuscule. Par exemple, si votre membre C# est nommé ``MyString``, il sera assigné à ``myString``.
 :::
 

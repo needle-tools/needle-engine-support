@@ -1,5 +1,5 @@
 ---
-title: Exportar Assets a glTF
+title: Exportación de Assets a glTF
 ---
 
 
@@ -76,9 +76,11 @@ Para cambiar la resolución del skybox, puede añadir un componente ``SkyboxExpo
 
 ![image](https://user-images.githubusercontent.com/5083203/196030839-170a9496-9ed9-4ebc-bc1d-2df6c746f8c8.png)
 
+
 Si no desea que el skybox se exporte en absoluto en un archivo glb, puede desmarcar la opción ``Embed Skybox`` en su componente ``GltfObject``.
 
 ![image](https://user-images.githubusercontent.com/5083203/196030825-8a05037f-5acc-4795-9128-2bdacedd0d49.png)
+
 
 ## ✨ Exportar Materiales
 
@@ -135,7 +137,7 @@ Cuando trabaje en varias escenas, desactive "Auto Generate" y hornee (bake) los 
 - Máx. 4 lightmaps de 2k por escena (puede ir más alto, pero espere archivos grandes)
 - Comprimir Lightmaps DESACTIVADO (aumenta la calidad; de lo contrario, se comprimirán de nuevo al exportar)
 
-![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad13-4e6d-a14c-c8ec5c1fcfd4.png)
+![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad1c-c8ec5c1fcfd4.png)
 
 ### Mezclando Objetos Horneados (Baked) y No Horneados
 
@@ -159,5 +161,6 @@ Si no tiene objetos horneados en su escena, las siguientes configuraciones tambi
 Environment Lighting: Color
 Ambient Color: any
 ```
+
 
 Página traducida automáticamente usando IA

@@ -5,14 +5,14 @@
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Logótipo do Needle" alt="Logótipo do Needle"/> +
-    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Logótipo do Web Components" alt="Logótipo do Web Components"/> +
-    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="Logótipo do three.js" alt="Logótipo do three.js"/>
+    <img src="/logo.png" style="max-height:70px;" title="Logótipo Needle" alt="Logótipo Needle"/> +
+    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Logótipo Web Components" alt="Logótipo Web Components"/> +
+    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="Logótipo three.js" alt="Logótipo three.js"/>
 </div>
 
 # Needle Engine como Web Component
 
-O Needle Engine oferece um web component fácil de usar que pode ser utilizado para exibir cenas 3D ricas e interativas diretamente em HTML com apenas algumas linhas de código. É o mesmo web component que suporta as nossas integrações.
+O Needle Engine fornece um web component fácil de usar que pode ser utilizado para exibir cenas 3D ricas e interativas diretamente em HTML com apenas algumas linhas de código. É o mesmo web component que suporta as nossas integrações.
 
 Assim que ultrapassar as opções de configuração do web component, pode estendê-lo com scripts e componentes personalizados, e acesso programático completo ao grafo de cena.
 
@@ -59,14 +59,7 @@ Isto inclui os nossos componentes principais, física, partículas, networking, 
 
 ```js
 <script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
-</script>
-```
-
-Se sabe que o seu projeto não requer funcionalidades de física, também pode usar uma versão menor do Needle Engine, sem o motor de física. Isto reduzirá o tamanho total do download.
-```js
-<script type="module"
-    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.light.min.js">
+    src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4/dist/needle-engine.min.js">
 </script>
 ```
 

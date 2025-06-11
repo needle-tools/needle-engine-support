@@ -42,7 +42,7 @@ Certifique-se de que instalou o <a target="_blank" href="https://www.blender.org
 
 3.  Pesquise por "Needle" na barra de pesquisa de Add-ons e certifique-se de que `Needle Engine Exporter for Blender` está ativado.
 
-![Settings](/blender/settings.webp)
+![Configurações](/blender/settings.webp)
 
 ## Primeiros Passos
 
@@ -67,17 +67,17 @@ Será capaz de sequenciar animações, 'cozinhar' (lightmap) facilmente as suas 
 Primeiro crie ou abra um novo ficheiro blend que pretende exportar para a web.
 Abra a janela Propriedades e abra a categoria Cena. Selecione um `Project Path` no painel Needle Engine. Em seguida, clique em `Generate Project`. Ele irá instalar e iniciar automaticamente o servidor - assim que terminar, o seu navegador deverá abrir e a cena three.js será carregada.
 
-![Project panel](/blender/project-panel.webp)
+![Painel do Projeto](/blender/project-panel.webp)
 
 Por predefinição, a sua cena será automaticamente re-exportada quando guardar o ficheiro blend.
 Se o servidor local estiver a funcionar (por exemplo, clicando em `Run Project`), o website irá atualizar automaticamente com o seu modelo alterado.
 
 Quando o seu projeto web já existe e pretende apenas continuar a trabalhar no website
 clique no botão azul `Run Project` para iniciar o servidor local:
-![Project panel](/blender/project-panel-2.webp)
+![Painel do Projeto](/blender/project-panel-2.webp)
 
 ### Visão geral do Painel do Projeto
-![Project panel](/blender/project-panel-3.webp)
+![Painel do Projeto](/blender/project-panel-3.webp)
 
 1)  O caminho para o seu projeto web. Pode usar o pequeno botão de pasta à direita para selecionar um caminho diferente.
 2)  O botão `Run Project` aparece quando o Caminho do Projeto aponta para um projeto web válido. Um projeto web é válido quando contém um `package.json`
@@ -95,7 +95,7 @@ clique no botão azul `Run Project` para iniciar o servidor local:
 Por predefinição, a viewport do Blender está definida para `Filmic` - com esta definição, as suas cores no Blender e no three.js não corresponderão.
 Para corrigir isto, vá para a categoria Renderização do Blender e no painel Gestão de Cores selecione `View Transform`: `Standard`
 
-![Correct color management settings](/blender/settings-color-management.webp)
+![Definições corretas de gestão de cores](/blender/settings-color-management.webp)
 
 ## Iluminação de Ambiente
 
@@ -106,13 +106,13 @@ Nota: Para também ver o cubemap do skybox no navegador, aumente a `World Opacit
 
 Nota: Alternativamente, pode ativar a definição `Scene World` no separador Sombreamento da Viewport para usar a textura de ambiente atribuída nas definições do mundo do Blender.
 
-![Environment](/blender/environment.webp)
+![Ambiente](/blender/environment.webp)
 
 <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
 
 Alternativamente, se não quiser ver o cubemap como fundo, adicione um componente Câmara à sua Câmara do Blender e mude `clearFlags: SolidColor` - note que as definições `backgroundBlurriness` e `backgroundIntensity` da Câmara substituem as definições de sombreamento da Viewport.
 
-![Environment Camera](/blender/environment-camera.webp)
+![Câmara de Ambiente](/blender/environment-camera.webp)
 
 ### Adicione a sua iluminação de ambiente e skybox HDRI / EXR personalizados
 
@@ -122,7 +122,7 @@ Alternativamente, se não quiser ver o cubemap como fundo, adicione um component
 
 Para excluir um objeto de ser exportado, pode desativar a visualização na Viewport e na Renderização (veja a imagem abaixo)
 
-![Exclude from export](/blender/dont-export.webp)
+![Excluir da exportação](/blender/dont-export.webp)
 
 ## Animação 🏇
 
@@ -142,13 +142,13 @@ O controlador do animator pode ser criado para cenários mais complexos. Funcion
 
 O editor do AnimatorController pode ser aberto usando o dropdown EditorType no canto superior esquerdo de cada painel:
 
-![AnimatorController open window](/blender/animatorcontroller-open.webp)
+![Janela de abertura do AnimatorController](/blender/animatorcontroller-open.webp)
 
 <video-embed limit_height max_height="188px" src="/docs/blender/animatorcontroller-create.mp4" />
 *Criar um novo asset de animator-controller ☝ ou selecionar um dos seus assets criados anteriormente*
 
 ##### Visão geral do Gráfico
-![AnimatorController overview](/blender/animatorcontroller-overview.webp)
+![Visão geral do Gráfico do AnimatorController](/blender/animatorcontroller-overview.webp)
 1)  Use `Shift+A` para criar um novo AnimatorState
 2)  O nó `Parameters` será criado assim que adicionar o primeiro nó. Selecione-o para configurar parâmetros para serem usados em transições (através do painel Nó na borda direita)
 3)  Este é um AnimatorState. o estado laranja é o estado inicial (pode ser alterado usando o botão `Set default state` no painel Nó/Propriedades)
@@ -158,7 +158,7 @@ O editor do AnimatorController pode ser aberto usando o dropdown EditorType no c
 
 Para usar um AnimatorController, adicione um componente Animator ao objeto raiz das suas animações e selecione o asset AnimatorController que pretende usar para este objeto.
 
-![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)
+![Atribuir AnimatorController ao animator](/blender/animatorcontroller-assigning.webp)
 
 Pode definir os parâmetros do Animator a partir de typescript ou, por exemplo, usando o evento de um componente Botão.
 
@@ -216,16 +216,16 @@ export class ScrollTimeline extends Behaviour {
 
 Pode adicionar ou remover componentes a objetos na sua hierarquia usando o painel Componentes do Needle:
 
-![Component panel](/blender/components-panel.webp)
+![Painel de Componentes](/blender/components-panel.webp)
 
-![Component panel](/blender/components-panel-select.webp)
+![Painel de Componentes](/blender/components-panel-select.webp)
 *Por exemplo, adicionando um componente `OrbitControls` ao objeto câmara*
 *obtém controlos básicos da câmara para dispositivos móveis e desktop*
 *Ajuste as definições para cada componente nos respetivos painéis*
 
 Os componentes podem ser removidos usando o botão X no canto inferior direito:
 
-![Remove component](/blender/remove-component.webp)
+![Remover componente](/blender/remove-component.webp)
 
 ### Componentes Personalizados
 Componentes personalizados também podem ser facilmente adicionados simplesmente escrevendo classes Typescript. Serão automaticamente compilados e aparecerão no Blender quando guardados.
@@ -248,15 +248,15 @@ Pode descarregar o ficheiro .blend do vídeo [aqui](https://engine.needle.tools/
 :::
 Use o painel Objeto do Needle para ativar o lightmapping para um objeto de malha ou luz:
 
-![Lightmapping object](/blender/lightmapping-object.webp)
+![Objeto Lightmapping](/blender/lightmapping-object.webp)
 
 Para acesso rápido às definições de lightmap e opções de 'cozedura' (baking), pode usar o painel de vista da cena no separador `Needle`:
 
-![Lightmapping scene panel](/blender/lightmapping-scene-panel.webp)
+![Painel da cena Lightmapping](/blender/lightmapping-scene-panel.webp)
 
 Alternativamente, também pode usar o painel Lightmapping no separador `Render Properties`:
 
-![Lightmapping object](/blender/lightmapping-panel.webp)
+![Objeto Lightmapping](/blender/lightmapping-panel.webp)
 
 ::: warning Funcionalidade Experimental
 O plugin de lightmapping é experimental. Recomendamos criar uma cópia de segurança do seu ficheiro .blend ao usá-lo. Por favor, reporte problemas ou erros que encontrar no [nosso fórum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 🙏
@@ -268,13 +268,13 @@ O Pipeline de Compilação do Needle Engine comprime automaticamente texturas us
 
 Pode modificar a compressão que está a ser aplicada por textura. Para substituir as definições de compressão predefinidas, vá para o separador `Material` e abra as `Needle Material Settings`. Lá encontrará um botão de alternância para substituir as definições de textura por textura usada no seu material. Veja a [tabela de compressão de texturas](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression) para uma breve visão geral sobre as diferenças entre cada algoritmo de compressão.
 
-![Texture Compression options in Blender](/blender/texture-compression.webp)
+![Opções de Compressão de Texturas no Blender](/blender/texture-compression.webp)
 
 ## Atualização
 
 A lâmpada no painel Projeto do Needle informa-o quando uma nova versão do add-on está disponível.
 Basta clicar no ícone para descarregar a nova versão.
-![Update notification](/blender/updates.webp)
+![Notificação de atualização](/blender/updates.webp)
 
 ## Reportar um problema
 
@@ -283,7 +283,7 @@ Se encontrar quaisquer problemas, teremos todo o gosto em ajudar! Por favor, jun
 Por favor, verifique também os logs no Blender. Pode encontrar logs específicos do Add-on Needle Engine através de `Help/Needle` no Blender.
 
 ### Reportador de Bugs Integrado
-![Needle Blender Bug Reporter panel](/blender/bugreporter.webp)
+![Painel do Reportador de Bugs do Needle Blender](/blender/bugreporter.webp)
 Também pode criar e carregar automaticamente um relatório de bug diretamente do Blender. Relatórios de bug carregados serão usados unicamente para debugging. São encriptados no nosso backend e serão eliminados após 30 dias.
 
 Se necessário, em certos casos, também podemos configurar NDAs personalizados para os seus projetos. Por favor, contacte-nos para mais informações.

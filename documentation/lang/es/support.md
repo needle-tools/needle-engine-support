@@ -1,4 +1,4 @@
-# Soporte y Comunidad
+# Soporte, Comunidad e IA
 
 ## Foro de la Comunidad
 
@@ -22,6 +22,7 @@ Descarga los archivos a continuación para usarlos como contexto para tu IA loca
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
+Además, puedes reemplazar `.html` por `.md` en nuestro sitio web de documentación para obtener la versión markdown de la página.
 
 ## Inspírate
 
@@ -31,11 +32,11 @@ Mira algunas de nuestras [entrevistas de usuarios en youtube](https://www.youtub
 
 <video-embed src="https://www.youtube.com/watch?v=1KKfct3Zpcw" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=gZuC40Alr88" />
 
-
 <video-embed src="https://www.youtube.com/watch?v=F6_buCHZhWk" />
+
+<video-embed src="https://www.youtube.com/watch?v=3oHyrx8e20g" />
 
 
 

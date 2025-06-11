@@ -8,25 +8,23 @@ Needle Engine को अपनी वेबसाइट के साथ इं�
 
 यदि आप जल्दी से यह आज़माना चाहते हैं कि Needle से बने प्रोजेक्ट आपकी वेबसाइट पर कैसे दिखेंगे, तो परीक्षण के लिए अपनी पेज पर कहीं भी ये दो लाइनें जोड़ें:
 
-:::: code-group
-::: code-group-item Option 1: Embedding Needle
+::: code-tabs
+@tab विकल्प 1: Needle एम्बेड करना
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
-:::
-::: code-group-item Option 2: Using an iframe
+@tab विकल्प 2: आईफ्रेम का उपयोग करना
 ```html
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
 </iframe>
 ```
-:::
-::: code-group-item Resulting Website
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+@tab परिणामी वेबसाइट
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
-::::
+:::
 
 # Needle के साथ वेब ऐप्स बनाने के तरीके
 
@@ -123,7 +121,7 @@ Needle Engine को अपनी वेबसाइट पर लाने क�
     ::: tip आईफ्रेम के अंदर अनुमतियाँ
     `allow=` के अंदर की सूची उन सुविधाओं पर निर्भर करती है जिनका आपका वेब ऐप उपयोग करता है। उदाहरण के लिए, XR एप्लिकेशन को आईफ्रेम के अंदर काम करने के लिए `xr` और `xr-spatial-tracking` की आवश्यकता होती है।
 
-    अतिरिक्त सुविधाओं की आवश्यकता हो सकती है, उदाहरण के लिए `camera; microphone; display-capture; geolocation`। [MDN पर iframe Permissions Policy निर्देशिकाओं की पूरी सूची](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives) देखें।
+    अतिरिक्त सुविधाओं की आवश्यकता हो सकती है, उदाहरण के लिए `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`। [MDN पर iframe Permissions Policy निर्देशिकाओं की पूरी सूची](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives) देखें।
     :::
 
 4. बस हो गया! सीन अब आपकी वेबसाइट पर प्रदर्शित होना चाहिए।
@@ -227,4 +225,5 @@ Needle Engine को अपनी वेबसाइट पर लाने क�
 :::
 
 
+---
 पृष्ठ का अनुवाद AI द्वारा स्वचालित रूप से किया गया है।

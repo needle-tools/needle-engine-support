@@ -10,11 +10,12 @@ title: Cấu trúc dự án Web
 | --- | --- |
 | **Needle Engine** | |
 | [`needle.config.json`](./reference/needle-config-json.md) | Cấu hình cho các bản build và tích hợp của Needle Engine |
-| **Ecosystem** | |
-| `package.json` | Cấu hình dự án chứa tên, phiên bản, dependencies và script |
+| **Hệ sinh thái** | |
+| `package.json` | Cấu hình dự án chứa tên, phiên bản, dependencies và scripts |
 | `tsconfig.json` | Cấu hình trình biên dịch Typescript |
 | `.gitignore` | Các tệp và thư mục bị bỏ qua trong git |
 | `vite.config.js` | Chứa cấu hình dành riêng cho vite.<br/>Nó cũng thêm các plugin vite của Needle Engine. |
+
 
 ### Cấu trúc dự án Vite mặc định
 
@@ -47,5 +48,6 @@ Trình exporter của chúng tôi cũng có thể được sử dụng với cá
 - [Những điều cơ bản về Typescript](./getting-started/typescript-essentials.md)
 - [Viết script tùy chỉnh](./scripting.md)
 - [Everywhere Actions](./everywhere-actions.md)
+
 
 Trang được dịch tự động bằng AI

@@ -47,6 +47,7 @@ test
 
 @[code ts twoslash](@code/component-click.ts)
 
+
 ## Clics réseau sur les objets
 
 Ajoutez ce script à tout objet de votre scène que vous souhaitez rendre cliquable. Assurez-vous également d'avoir un composant `ObjectRaycaster` dans la hiérarchie parente de cet objet.
@@ -62,6 +63,7 @@ Cela peut être utile si vous souhaitez exécuter votre logique d'animation pers
 Vous pouvez également exporter un tableau de clips.
 @[code ts twoslash](@code/component-animationclip.ts)
 
+
 ## Créer et déclencher un UnityEvent
 
 @[code ts twoslash](@code/component-unityevent.ts)
@@ -69,6 +71,7 @@ Vous pouvez également exporter un tableau de clips.
 Les événements EventList sont également déclenchés au niveau du composant. Cela signifie que vous pouvez également vous abonner à l'événement déclaré ci-dessus en utilisant ``myComponent.addEventListener("my-event", evt => {...})`` également.
 Ceci est une fonctionnalité expérimentale. Veuillez nous faire part de vos commentaires sur notre [forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
 :::
+
 
 ### Déclarer un type d'événement personnalisé
 Ceci est utile lorsque vous souhaitez exposer un événement à Unity ou Blender avec des arguments personnalisés (comme une chaîne de caractères)
@@ -105,6 +108,7 @@ C'est la beauté de Needle Engine, si nous pouvons nous permettre de le dire ici
 
 <video-embed src="./videos/component-time.mp4" limit_height />
 
+
 ## Modifier une propriété de shader personnalisée
 
 En supposant que vous ayez un shader personnalisé avec une propriété nommée `_Speed` qui est une valeur flottante, voici comment la modifier depuis un script.
@@ -112,9 +116,11 @@ Vous pouvez trouver un [exemple fonctionnel à télécharger dans nos échantill
 
 <!-- SAMPLE modify custom shader material property -->
 
+
 ## Commutation de l'attribut src
 
 Voir l'[exemple fonctionnel](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html) sur StackBlitz
+
 
 ## Ajout de nouveaux effets de post-traitement
 
@@ -126,9 +132,12 @@ Voici un exemple qui encapsule l'[effet de post-traitement Outline](https://pmnd
 
 @[code](@code/custom-post-effect.ts)
 
+
 ## Comportement personnalisé du système de particules
 
+
 @[code ts twoslash](@code/custom-particle-system-behaviour.ts)
+
 
 ## Composant audio 2D personnalisé
 
@@ -136,6 +145,7 @@ C'est un exemple de la façon dont vous pourriez créer votre propre composant a
 Cependant, pour la plupart des cas d'utilisation, vous pouvez utiliser le composant AudioSource principal et n'avez pas besoin d'écrire de code.
 
 @[code ts twoslash](@code/component-2d-audio.ts)
+
 
 ## Fichiers externes arbitraires
 
@@ -146,15 +156,19 @@ Utilisez le type FileReference pour charger des fichiers externes (par exemple, 
 ## Receiving html element click in component
 -->
 
+
+
 <!-- SAMPLE disable environment light
 ## Disable environment light
 -->
+
 
 <!-- SAMPLE using mediapipe with hands
 ## Use mediapipe package to control the 3D scene with hands
 Make sure to install the mediapipe package. Visit the github link below to see the complete project setup.
 Try it [live here](https://engine.needle.tools/samples/mediapipe-hands/) - requires a webcam/camera
 -->
+
 
 <!-- SAMPLE Change Color On Collision
 ## Change Color On Collision

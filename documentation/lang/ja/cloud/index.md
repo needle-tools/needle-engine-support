@@ -92,7 +92,7 @@ Node.jsがインストールされていない場合は、[Node.jsウェブサ�
 #### 例: Needle Cloud Github Action
 ```yml
       - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1.0.2
+        uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
@@ -270,6 +270,7 @@ CLIとその使用方法の詳細については、[npm:needle-cloud](https://ww
 
 7. **ストレージ容量が不足した場合はどうなりますか？**
    プランをアップグレードするか、古いファイルを削除して容量を確保する必要がある場合があります。
+
 
 
 このページはAIによって自動的に翻訳されました。

@@ -12,9 +12,13 @@ tags:
 
 ### Automatische Generierung von Editor-Komponenten
 
-Beim Arbeiten in Unity oder Blender wirst du feststellen, dass, wenn du eine neue Needle Engine Komponente in Typescript oder Javascript erstellst, automatisch ein Unity C# Stub Komponente ODER ein Blender Panel für dich generiert wird.
+Beim Arbeiten in Unity oder Blender wirst du feststellen, dass, wenn du eine neue Needle Engine Komponente in Typescript oder Javascript erstellst, automatisch eine Unity C# Stub Komponente ODER ein Blender Panel für dich generiert wird.
 
 Dies ist der Magie des [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) zu verdanken, der im Hintergrund in einer Editor-Umgebung läuft und Änderungen an deinen Skriptdateien überwacht. Wenn er bemerkt, dass du eine neue Needle Engine Komponente erstellt hast, generiert er die korrekte Unity Komponente oder das Blender Panel inklusive öffentlicher Variablen oder Properties, die du dann im Editor setzen oder verknüpfen kannst.
+
+
+**Hinweis**: Der component compiler generiert derzeit **nur Komponenten**. Wenn du also ein Typescript Enum in Unity sichtbar machen musst, kannst du es manuell zu deinem C# hinzufügen, entweder in einer neuen C#-Datei oder außerhalb des generierten Codes (siehe Beispiele unten).
+
 
 ### Steuerung der Komponenten-Generierung
 Du kannst die folgenden Kommentare in deinem Typescript Code verwenden, um das Verhalten der C#-Code-Generierung zu steuern:
@@ -50,6 +54,7 @@ export class MyComponent extends MyCustomBaseClass {
 }
 ```
 
+
 ### Component Compiler in Unity
 Wenn du Skripte im Ordner ``src/scripts`` in deinem Projekt hinzufügen möchtest, benötigst du einen ``Component Generator`` auf dem GameObject mit deiner ``ExportInfo`` Komponente.
 Wenn du nun neue Komponenten in ``your/threejs/project/src/scripts`` hinzufügst, werden automatisch Unity Skripte in `Assets/Needle/Components.codegen` generiert.
@@ -58,8 +63,8 @@ Wenn du Skripte zu einer NpmDef Datei hinzufügen möchtest, kannst du sie einfa
 Damit C#-Felder korrekt generiert werden, ist es derzeit wichtig, dass du explizit einen Typescript-Typ deklarierst. Zum Beispiel ``myField : number = 5``
 
 Du kannst über die Tabs unten zwischen **Typescript** Eingabe und generierten **C#** Stub-Komponenten wechseln
-:::: code-group
-::: code-group-item Typescript
+::: code-tabs
+@tab Typescript
 ```ts twoslash
 import { AssetReference, Behaviour, serializable } from "@needle-tools/engine";
 import { Object3D } from "three";
@@ -83,11 +88,11 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-:::
-::: code-group-item Generated C#
+@tab Generated C#
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
+// automatisch generierter Code - nicht direkt bearbeiten
 
 #pragma warning disable
 
@@ -105,15 +110,16 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-:::
-::: code-group-item Extending Generated C#
+@tab Extending Generated C#
 ```csharp
 using UnityEditor;
 
 // you can add code above or below the NEEDLE_CODEGEN_ blocks
+// Du kannst Code oberhalb oder unterhalb der NEEDLE_CODEGEN_ Blöcke hinzufügen
 
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
+// automatisch generierter Code - nicht direkt bearbeiten
 
 #pragma warning disable
 
@@ -134,6 +140,7 @@ namespace Needle.Typescript.GeneratedComponents
 namespace Needle.Typescript.GeneratedComponents
 {
     // This is how you extend the generated component (namespace and class name must match!)
+    // So erweiterst du die generierte Komponente (Namespace und Klassenname müssen übereinstimmen!)
 	public partial class MyCustomComponent : UnityEngine.MonoBehaviour
 	{
 		
@@ -148,6 +155,7 @@ namespace Needle.Typescript.GeneratedComponents
 	}
 
     // of course you can also add custom editors
+    // natürlich kannst du auch benutzerdefinierte Editoren hinzufügen
 	[CustomEditor(typeof(MyCustomComponent))]
 	public class MyCustomComponentEditor : Editor
 	{
@@ -161,7 +169,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 ```
 :::
-::::
+
 
 ### Erweitern generierter Komponenten
 C#-Klassen von Komponenten werden mit dem [`partial`](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/partial-classes-and-methods) Flag generiert, um sie einfach um Funktionalität zu erweitern. Dies ist hilfreich, um Gizmos zu zeichnen, Kontextmenüs hinzuzufügen oder zusätzliche Felder oder Methoden hinzuzufügen, die nicht Teil einer integrierten Komponente sind.
@@ -170,4 +178,5 @@ C#-Klassen von Komponenten werden mit dem [`partial`](https://docs.microsoft.com
 Exportierte Member beginnen mit einem Kleinbuchstaben. Wenn dein C#-Member zum Beispiel ``MyString`` benannt ist, wird es ``myString`` zugewiesen.
 :::
 
-Page automatically translated using AI
+
+Seite automatisch mit KI übersetzt

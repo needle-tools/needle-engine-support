@@ -9,7 +9,7 @@ editLink: true
     font-size: 2em;
     font-weight: 100;">
     <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-  <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
+  <img src="/imgs/unity-logo.webp" style="max-height:70px;" alt="Unity Logo"/>
 </div>
 
 # Needle Engine für Unity
@@ -22,16 +22,16 @@ Needle Engine für Unity ermöglicht es Ihnen, hochinteraktive, flexible und lei
 
 <NoDownloadYet>
   <br/>
-  <needle-button 
-    event_goal="download_unity" 
-    event_position="getting_started" 
-    large 
+  <needle-button
+    event_goal="download_unity"
+    event_position="getting_started"
+    large
     href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"
     same_tab
     next_url="/docs/unity/"
     >
     <strong>Laden Sie Needle Engine für Unity herunter</strong>
-  </needle-button> 
+  </needle-button>
 </NoDownloadYet>
 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
@@ -53,11 +53,11 @@ Für einen schnellen Überblick werfen Sie einen Blick auf unsere [Beispielseite
 
 Alle diese Beispiele sind direkt in Unity verfügbar:
 1. Gehen Sie zu `Needle Engine > Explore Samples`, um nach Beispielen zu suchen.
-2. Klicken Sie auf "Install Samples", um das Samples package direkt in Ihrem Editor zu installieren (oder [laden Sie das samples unitypackage herunter](http://engine.needle.tools/downloads/unity/samples), um das package manuell zu installieren).
+2. Klicken Sie auf "Install Samples", um das samples package direkt in Ihrem editor zu installieren (oder [laden Sie das samples unitypackage herunter](http://engine.needle.tools/downloads/unity/samples), um das package manuell zu installieren).
 3. Wählen Sie ein beliebiges Beispiel und klicken Sie auf `Open Scene`.
 
 :::tip Die Beispiele sind schreibgeschützt – das macht sie leicht zu aktualisieren.
-Unsere Beispiel-Szenen sind Teil eines UPM package in Unity. Das bedeutet, dass Sie die assets und scripts darin nicht direkt bearbeiten können – sie sind schreibgeschützt. Um ein asset aus dem samples package zu bearbeiten, kopieren Sie es in den `Assets`-Ordner Ihres Projekts. Um ein script aus dem samples package zu bearbeiten, kopieren Sie es in den `src`-Ordner Ihres web project.
+Unsere Beispiel-Szenen sind Teil eines UPM package in Unity. Das bedeutet, dass Sie die assets und scripts darin nicht direkt bearbeiten können – sie sind read-only. Um ein asset aus dem samples package zu bearbeiten, kopieren Sie es in den `Assets`-Ordner Ihres Projekts. Um ein script aus dem samples package zu bearbeiten, kopieren Sie es in den `src`-Ordner Ihres web project.
 :::
 
 ## Aus einer Vorlage starten
@@ -100,7 +100,7 @@ Im Grunde werden wir die "Minimal (Needle)" Template, die mit dem package gelief
 
 
 :::tip Definieren Sie Ihre eigenen Templates
-Wenn Sie viele ähnliche Projekte erstellen, können Sie eigene lokale oder remote templates mit dem Project View context menu unter `Create/Needle Engine/Project Template` erstellen. Templates können entweder lokal auf der Festplatte liegen (ein Ordner wird kopiert) oder remote repositories sein (ein git repository wird geklont).
+Wenn Sie viele ähnliche Projekte erstellen, können Sie eigene lokale oder remote templates mit dem Project View context menu unter `Create/Needle Engine/Project Template` erstellen. Templates können entweder local on disk liegen (ein Ordner wird kopiert) oder remote repositories sein (ein git repository wird geklont).
 :::
 
 ## Projektordner und Dateien
@@ -124,7 +124,7 @@ Sie können auch remote templates referenzieren, indem Sie eine repository URL i
 
 ### Temporäre Projekte
 
-Wenn Sie planen, nur benutzerdefinierte Dateien über NpmDefs hinzuzufügen und die project config nicht zu ändern (z.B. für einen schnellen Fullscreen-Test), können Sie dem project path ein `Library` voranstellen. Das Projekt wird in der Unity Project Library generiert und muss nicht zur source control hinzugefügt werden (der Library-Ordner sollte von der source control ausgeschlossen werden). Wir nennen diese Projekte _temporary projects_. Sie eignen sich hervorragend, um Ideen schnell zu testen!
+Wenn Sie planen, nur custom files über NpmDefs hinzuzufügen und die project config nicht zu ändern (z.B. für einen schnellen fullscreen test), können Sie dem project path ein `Library` voranstellen. Das Projekt wird in der Unity Project Library generiert und muss nicht zur source control hinzugefügt werden (der Library-Ordner sollte von der source control ausgeschlossen werden). Wir nennen diese Projekte _temporary projects_. Sie eignen sich hervorragend, um Ideen schnell zu testen!
 
 
 ## Typescript in Unity
@@ -141,7 +141,7 @@ Sie können ein ***NPM Definition* package** zu Ihrem runtime project installier
 
 Vergessen Sie nicht, das neu hinzugefügte package zu installieren, indem Sie z.B. auf Install auf der ExportInfo component klicken und auch den server neu starten, falls er bereits läuft
 
-Um den Code innerhalb eines *NPM Definition* package zu bearbeiten, doppelklicken Sie einfach auf das asset *NPM Definition* asset in Ihrem project browser und es wird der vscode workspace geöffnet, der mit jeder npmdef geliefert wird.
+Um den code innerhalb eines *NPM Definition* package zu bearbeiten, doppelklicken Sie einfach auf das asset *NPM Definition* asset in Ihrem project browser und es wird der vscode workspace geöffnet, der mit jeder npmdef geliefert wird.
 
 
 # Nächste Schritte
@@ -153,4 +153,4 @@ Um den Code innerhalb eines *NPM Definition* package zu bearbeiten, doppelklicke
 - [Scripting für Anfänger: Typescript Essentials](../getting-started/typescript-essentials.md)
 - [Scripting für Anfänger: Wie man eigene components schreibt](../scripting.md)
 
-Page automatically translated using AI
+Seite automatisch übersetzt mit KI

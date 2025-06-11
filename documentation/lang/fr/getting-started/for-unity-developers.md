@@ -22,15 +22,15 @@ Bien que l'utilisation de Web Assembly _puisse_ entraîner de meilleures perform
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
 :::
 
-## Créer un Component
-Dans Unity, vous créez un nouveau component en dérivant de `MonoBehaviour` :
+## Créer un Composant
+Dans Unity, vous créez un nouveau composant en dérivant de `MonoBehaviour` :
 ```csharp
 using UnityEngine;
 public class MyComponent : MonoBehaviour {
 }
 ```
 
-Un component personnalisé dans Needle Engine est écrit comme suit :
+Un composant personnalisé dans Needle Engine est écrit comme suit :
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine"
 export class MyComponent extends Behaviour {
@@ -39,7 +39,7 @@ export class MyComponent extends Behaviour {
 ## Champs de Script
 
 ### serializable
-Si vous avez vu certains scripts Needle Engine, vous avez peut-être remarqué que certaines variables sont annotées avec `@serializable` au-dessus de leur déclaration. C'est un Décorateur en Typescript et il peut être utilisé pour modifier ou annoter du code. Dans Needle Engine, cela est utilisé par exemple pour indiquer à la sérialisation centrale quels types nous attendons dans notre script lors de la conversion des informations brutes du component stockées dans le glTF en une instance de Component.
+Si vous avez vu certains scripts Needle Engine, vous avez peut-être remarqué que certaines variables sont annotées avec `@serializable` au-dessus de leur déclaration. C'est un Décorateur en Typescript et il peut être utilisé pour modifier ou annoter du code. Dans Needle Engine, cela est utilisé par exemple pour indiquer à la sérialisation centrale quels types nous attendons dans notre script lors de la conversion des informations brutes du composant stockées dans le glTF en une instance de Composant.
 Considérez l'exemple suivant :
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
@@ -77,10 +77,10 @@ class SomeClass {
 ```
 Il en va de même pour les méthodes.
 
-## GameObjects et la Scene
-Pour accéder à la scène actuelle depuis un component, vous utilisez `this.scene` qui est équivalent à `this.context.scene`, ce qui vous donne l'objet racine de la scène three.js.
+## GameObjects et la Scène
+Pour accéder à la scène actuelle depuis un composant, vous utilisez `this.scene` qui est équivalent à `this.context.scene`, ce qui vous donne l'objet racine de la scène three.js.
 
-Pour parcourir la hiérarchie depuis un component, vous pouvez soit itérer sur les enfants d'un objet
+Pour parcourir la hiérarchie depuis un composant, vous pouvez soit itérer sur les enfants d'un objet
 avec une boucle for :
 ```ts twoslash
 for (let i = 0; i < this.gameObject.children; i++) {
@@ -101,30 +101,30 @@ this.gameObject.traverse((obj: GameObject) => console.log(obj))
 ```
 ou pour parcourir uniquement les objets visibles, utilisez plutôt [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible).
 
-Une autre option très utile lorsque vous souhaitez simplement itérer sur les objets rendables est de rechercher tous les components renderer et de les parcourir ainsi :
+Une autre option très utile lorsque vous souhaitez simplement itérer sur les objets rendables est de rechercher tous les composants Renderer et de les parcourir ainsi :
 ```ts twoslash
 import { Renderer } from "@needle-tools/engine";
 
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
     console.log(renderer);
 ```
-Pour plus d'informations sur la récupération de components, consultez la section suivante.
+Pour plus d'informations sur la récupération de composants, consultez la section suivante.
 
-## Components
-Needle Engine utilise intensivement un Système de Component similaire à celui d'Unity. Cela signifie que vous pouvez ajouter ou supprimer des components à tout `Object3D` / `GameObject` dans la scène. Un component sera enregistré auprès du moteur en utilisant `addNewComponent(<Object3D>, <ComponentType>)`.
-Les méthodes événementielles du component attaché seront alors automatiquement appelées par le moteur (par exemple `update` ou `onBeforeRender`). Une liste complète des méthodes événementielles peut être trouvée dans la [documentation sur le scripting](../scripting.md#lifecycle-methods).
+## Composants
+Needle Engine utilise intensivement un Système de Composants similaire à celui d'Unity. Cela signifie que vous pouvez ajouter ou supprimer des composants à tout `Object3D` / `GameObject` dans la scène. Un composant sera enregistré auprès du moteur en utilisant `addNewComponent(<Object3D>, <ComponentType>)`.
+Les méthodes événementielles du composant attaché seront alors automatiquement appelées par le moteur (par exemple `update` ou `onBeforeRender`). Une liste complète des méthodes événementielles peut être trouvée dans la [documentation sur le scripting](../scripting.md#lifecycle-methods).
 
-#### Trouver des Components dans la Scène
-Pour obtenir des components, vous pouvez utiliser les méthodes familières similaires à Unity. Notez que ce qui suit utilise le type `Animator` comme exemple, mais vous pouvez aussi bien utiliser n'importe quel type de component intégré ou créé par vous-même.
+#### Trouver des Composants dans la Scène
+Pour obtenir des composants, vous pouvez utiliser les méthodes familières similaires à Unity. Notez que ce qui suit utilise le type `Animator` comme exemple, mais vous pouvez aussi bien utiliser n'importe quel type de composant intégré ou créé par vous-même.
 | Nom de la méthode | Description |
 | --- | --- |
-| `this.gameObject.getComponent(Animator)` | Obtient le component `Animator` sur un GameObject/Object3D. Il retournera soit l'instance `Animator` si l'objet a un component Animator, soit `null` si l'objet n'a pas un tel component. |
-| `this.gameObject.getComponentInChildren(Animator)` | Obtient le premier component `Animator` sur un GameObject/Object3D ou sur l'un de ses enfants. |
-| `this.gameObject.getComponentsInParents(Animator)` | Obtient tous les components animator dans la hiérarchie parente (y compris le GameObject/Object3D actuel).
+| `this.gameObject.getComponent(Animator)` | Obtient le composant `Animator` sur un GameObject/Object3D. Il retournera soit l'instance `Animator` si l'objet a un composant Animator, soit `null` si l'objet n'a pas un tel composant. |
+| `this.gameObject.getComponentInChildren(Animator)` | Obtient le premier composant `Animator` sur un GameObject/Object3D ou sur l'un de ses enfants. |
+| `this.gameObject.getComponentsInParents(Animator)` | Obtient tous les composants animator dans la hiérarchie parente (y compris le GameObject/Object3D actuel).
 
-Ces méthodes sont également disponibles sur le type statique GameObject. Par exemple, ``GameObject.getComponent(this.gameObject, Animator)`` pour obtenir le component `Animator` sur un GameObject/Object3D passé en argument.
+Ces méthodes sont également disponibles sur le type statique GameObject. Par exemple, ``GameObject.getComponent(this.gameObject, Animator)`` pour obtenir le composant `Animator` sur un GameObject/Object3D passé en argument.
 
-Pour rechercher dans toute la scène un ou plusieurs components, vous pouvez utiliser ``GameObject.findObjectOfType(Animator)`` ou `GameObject.findObjectsOfType(Animator)`.
+Pour rechercher dans toute la scène un ou plusieurs composants, vous pouvez utiliser ``GameObject.findObjectOfType(Animator)`` ou `GameObject.findObjectsOfType(Animator)`.
 
 ## Types Unity renommés
 Certains types spécifiques à Unity sont mappés à des noms de types différents dans notre moteur. Voir la liste suivante :
@@ -133,19 +133,19 @@ Certains types spécifiques à Unity sont mappés à des noms de types différen
 | -- | -- | -- |
 | `UnityEvent` | `EventList` | Un UnityEvent sera exporté en tant que type `EventList` (utiliser `serializable(EventList)` pour désérialiser les UnityEvents) |
 | `GameObject` | `Object3D` | |
-| `Transform` | `Object3D` | Dans three.js et Needle Engine, un GameObject et un Transform sont les mêmes (il n'y a pas de component `Transform`). La seule exception à cette règle est lorsque l'on fait référence à un `RectTransform` qui est également un component dans Needle Engine. |
+| `Transform` | `Object3D` | Dans three.js et Needle Engine, un GameObject et un Transform sont les mêmes (il n'y a pas de composant `Transform`). La seule exception à cette règle est lorsque l'on fait référence à un `RectTransform` qui est également un composant dans Needle Engine. |
 | `Color` | `RGBAColor` | Le type de couleur de three.js ne possède pas de propriété alpha. Pour cette raison, tous les types Color exportés depuis Unity seront exportés en tant que `RGBAColor`, qui est un type personnalisé de Needle Engine. |
 
 ## Transform
-Les données de Transform peuvent être accédées directement sur le `GameObject` / `Object3D`. Contrairement à Unity, il n'y a pas de component de transform supplémentaire qui détient ces données.
-- ``this.gameObject.position`` est la [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) vector3 dans l'espace local
-- ``this.gameObject.worldPosition`` est la position vector3 dans l'espace monde
-- ``this.gameObject.rotation`` est la [rotation euler](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation) dans l'espace local
-- ``this.gameObject.worldRotation`` est la rotation euler en angles euler dans l'espace monde
-- ``this.gameObject.quaternion`` - est la [rotation quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion) dans l'espace local
-- ``this.gameObject.worldQuaternion`` est la rotation quaternion dans l'espace monde
-- ``this.gameObject.scale`` - est la [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale) vector3 dans l'espace local
-- ``this.gameObject.worldScale`` est la scale vector3 dans l'espace monde
+Les données de Transform peuvent être accédées directement sur le `GameObject` / `Object3D`. Contrairement à Unity, il n'y a pas de composant de transform supplémentaire qui détient ces données.
+- ``this.gameObject.position`` est la [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) Vector3 dans l'espace local
+- ``this.gameObject.worldPosition`` est la position Vector3 dans l'espace monde
+- ``this.gameObject.rotation`` est la [rotation d'Euler](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation) dans l'espace local
+- ``this.gameObject.worldRotation`` est la rotation d'Euler en angles d'Euler dans l'espace monde
+- ``this.gameObject.quaternion`` - est la [rotation par quaternion](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion) dans l'espace local
+- ``this.gameObject.worldQuaternion`` est la rotation par quaternion dans l'espace monde
+- ``this.gameObject.scale`` - est la [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale) Vector3 dans l'espace local
+- ``this.gameObject.worldScale`` est la scale Vector3 dans l'espace monde
 
 La différence majeure à garder à l'esprit ici est que `position` dans three.js est par défaut une position en espace local, tandis que dans Unity `position` serait en espace monde et utiliserait `localPosition` pour délibérément utiliser la position en espace local. La section suivante expliquera comment obtenir la position en espace monde dans three.js.
 
@@ -155,7 +155,7 @@ Dans three.js (et donc aussi dans Needle Engine) les `object.position`, `object.
 
 Si vous souhaitez accéder aux coordonnées mondiales dans Needle Engine, nous disposons de méthodes utilitaires que vous pouvez utiliser avec vos objets. Appelez `getWorldPosition(yourObject)` pour calculer la position mondiale. Des méthodes similaires existent pour la rotation/quaternion et la scale. Pour accéder à ces méthodes, importez-les simplement depuis Needle Engine comme ceci : `import { getWorldPosition } from "@needle.tools/engine"`.
 
-Notez que ces méthodes utilitaires comme `getWorldPosition`, `getWorldRotation`, `getWorldScale` ont en interne un tampon d'instances Vector3 et sont destinées à être utilisées localement uniquement. Cela signifie que vous ne devriez pas les mettre en cache dans votre component, sinon votre valeur mise en cache sera éventuellement écrasée. Mais il est sûr d'appeler `getWorldPosition` plusieurs fois dans votre fonction pour effectuer des calculs sans avoir à vous soucier de réutiliser la même instance. Si vous n'êtes pas sûr de ce que cela signifie, vous devriez jeter un œil à la section **Primitive Types** dans le [Guide des Essentiels de Typescript](./typescript-essentials.md#primitive-types).
+Notez que ces méthodes utilitaires comme `getWorldPosition`, `getWorldRotation`, `getWorldScale` ont en interne un tampon d'instances Vector3 et sont destinées à être utilisées localement uniquement. Cela signifie que vous ne devriez pas les mettre en cache dans votre composant, sinon votre valeur mise en cache sera éventuellement écrasée. Mais il est sûr d'appeler `getWorldPosition` plusieurs fois dans votre fonction pour effectuer des calculs sans avoir à vous soucier de réutiliser la même instance. Si vous n'êtes pas sûr de ce que cela signifie, vous devriez jeter un œil à la section **Primitive Types** dans le [Guide des Essentiels de Typescript](./typescript-essentials.md#primitive-types).
 
 ## Temps
 Utilisez `this.context.time` pour accéder aux données temporelles :
@@ -206,7 +206,7 @@ export class MyScript extends Behaviour
         this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
     onDisable() {
-        // il est recommandé de également se désabonner des événements lorsque votre component devient inactif
+        // il est recommandé de également se désabonner des événements lorsque votre composant devient inactif
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -221,9 +221,9 @@ window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 Notez que dans ce cas, vous devez gérer tous les cas vous-même. Par exemple, vous pourriez avoir besoin d'utiliser différents événements si votre utilisateur visite votre site web sur un ordinateur de bureau, un mobile ou un appareil VR. Ces cas sont automatiquement gérés par les événements d'input de Needle Engine (par exemple, `PointerDown` est déclenché à la fois pour le mouse down, le touch down et, dans le cas de la VR, pour le button down du contrôleur).
 
 ## Callbacks InputSystem
-De manière similaire à Unity (voir [IPointerClickHandler dans Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)), vous pouvez également vous enregistrer pour recevoir des événements d'input sur le component lui-même.
+De manière similaire à Unity (voir [IPointerClickHandler dans Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)), vous pouvez également vous enregistrer pour recevoir des événements d'input sur le composant lui-même.
 
-Pour que cela fonctionne, assurez-vous que votre objet possède un component ``ObjectRaycaster`` ou ``GraphicRaycaster`` dans la hiérarchie parente.
+Pour que cela fonctionne, assurez-vous que votre objet possède un composant ``ObjectRaycaster`` ou ``GraphicRaycaster`` dans la hiérarchie parente.
 
 ```ts twoslash
 import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
@@ -372,7 +372,7 @@ Notez que nous importons ici tous les types de la bibliothèque en écrivant `* 
 
 Maintenant, nous pouvons l'utiliser dans notre script. Il est toujours recommandé de se référer à la documentation de la bibliothèque que vous souhaitez utiliser. Dans le cas de tween.js, ils fournissent un [guide utilisateur](https://github.com/tweenjs/tween.js/blob/HEAD/docs/user_guide.md) que nous pouvons suivre. Habituellement, la page Readme du package sur npm contient des informations sur l'installation et l'utilisation du package.
 
-Pour faire tourner un cube, nous créons un nouveau type de component appelé `TweenRotation`, puis nous créons notre instance de tween pour la rotation de l'objet, le nombre de répétitions, l'easing à utiliser, le tween que nous voulons effectuer, puis nous le démarrons. Nous devons ensuite simplement appeler `update` à chaque frame pour mettre à jour l'animation de tween. Le script final ressemble à ceci :
+Pour faire tourner un cube, nous créons un nouveau type de composant appelé `TweenRotation`, puis nous créons notre instance de tween pour la rotation de l'objet, le nombre de répétitions, l'easing à utiliser, le tween que nous voulons effectuer, puis nous le démarrons. Nous devons ensuite simplement appeler `update` à chaque frame pour mettre à jour l'animation de tween. Le script final ressemble à ceci :
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 import * as TWEEN from '@tweenjs/tween.js';
@@ -410,7 +410,7 @@ Vous pouvez voir le script final en action [ici](https://stackblitz.com/edit/nee
 
 - [Scripting dans Needle Engine](../scripting)
 - [Essentiels de Typescript](./typescript-essentials.md)
-- [Référence des Components](../component-reference.md)
+- [Référence des Composants](../component-reference.md)
 
 ***
 Page automatiquement traduite à l'aide de l'IA

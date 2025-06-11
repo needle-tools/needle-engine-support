@@ -46,7 +46,7 @@ Verbindungen sind gesichert, da wir HTTPS erzwingen, um sicherzustellen, dass We
 Informationen zum Einrichten eines selbstsignierten Zertifikats für eine reibungslosere Entwicklung finden Sie in den [Testing docs](./testing.md).
 :::
 
-![SLL warning on chrome](/videos/ssl-warning.gif)
+![SLL-Warnung in Chrome](/videos/ssl-warning.gif)
 
 
 
@@ -54,7 +54,7 @@ Informationen zum Einrichten eines selbstsignierten Zertifikats für eine reibun
 
 Wenn das passiert, gibt es normalerweise eine Ausnahme entweder im Engine-Code oder in Ihrem Code. Öffnen Sie die Entwicklerwerkzeuge (<kbd>Strg + Shift + I</kbd> oder <kbd>F12</kbd> in Chrome) und prüfen Sie die Konsole auf Fehler.
 In einigen Fällen, insbesondere wenn Sie gerade die Version des Needle Engine Pakets aktualisiert haben, kann dies durch Stoppen und erneutes Starten des lokalen Entwicklungsservers behoben werden.
-Klicken Sie dazu auf die laufende Fortschrittsleiste in der unteren rechten Ecke des Editors und klicken Sie auf das kleine <kbd>X</kbd>, um die laufende Aufgabe abzubrechen. Drücken Sie dann einfach erneut auf Play.
+Klicken Sie dazu auf die laufende Fortschrittsleiste in der unteren rechten Ecke des Editors, und klicken Sie auf das kleine <kbd>X</kbd>, um die laufende Aufgabe abzubrechen. Drücken Sie dann einfach erneut auf Play.
 
 
 ## Meine Objekte sind nach dem Export weiß
@@ -160,7 +160,7 @@ Stellen Sie sicher, dass Ihr Projekt auf Linear colorspace eingestellt ist.
 ## Ich verwende Networking und Glitch und es funktioniert nicht, wenn mehr als 30 Personen gleichzeitig die Glitch-Seite besuchen
 
 - Die Bereitstellung auf Glitch ist eine schnelle Methode zum Prototyping und kann sogar für einige kleine Produktionen funktionieren. Der kleine Server dort hat nicht die Leistung und Bandbreite, um viele Personen in einer persistenten Sitzung zu hosten.
-- Wir arbeiten an anderen Networking-Ideen, aber in der Zwischenzeit können Sie die Webseite woanders hosten (mit node.js-Unterstützung) oder sie einfach remixen, um die Last auf mehrere Server zu verteilen. Sie können auch das [Networking-Backend-Paket](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) selbst woanders hosten, wo es skalieren kann, z.B. in der Google Cloud.
+- Wir arbeiten an anderen Networking-Ideen, aber in der Zwischenzeit können Sie die Webseite woanders hosten (mit node.js-Unterstützung) oder sie einfach remixen, um die Last auf mehrere Server zu verteilen. Sie können auch das [networking backend package](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) selbst woanders hosten, wo es skalieren kann, z.B. in der Google Cloud.
 
 
 
@@ -181,7 +181,7 @@ Der wahrscheinlichste Grund ist eine fehlerhafte Installation.
 Prüfen Sie die Konsole und die `ExportInfo`-Komponente auf Fehler oder Warnungen.
 
 Wenn diese Warnungen/Fehler nicht geholfen haben, versuchen Sie die folgenden Schritte der Reihe nach. Geben Sie ihnen etwas Zeit zum Abschließen. Stoppen Sie, sobald Ihr Problem behoben ist. Prüfen Sie die Konsole auf Warnungen und Fehler.
-- Stellen Sie sicher, dass Sie die [Voraussetzungen](./getting-started/#prerequisites) befolgen.
+- Stellen Sie sicher, dass Sie die [Prerequisites](./getting-started/#prerequisites) befolgen.
 - Installieren Sie Ihr Projekt, indem Sie Ihre `ExportInfo`-Komponente auswählen und auf `Install` klicken.
 - Führen Sie eine saubere Installation durch, indem Sie Ihre `ExportInfo`-Komponente auswählen, Alt gedrückt halten und auf `Clean Install` klicken.
 - Versuchen Sie, Ihr Webprojektverzeichnis in einem Befehlszeilentool zu öffnen und befolgen Sie diese Schritte:
@@ -286,5 +286,6 @@ Wenn Sie Ihre KI lokal ausführen möchten (oder müssen), können Sie die Needl
 [Fragen Sie in unserem Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
+
 
 Seite automatisch von AI übersetzt

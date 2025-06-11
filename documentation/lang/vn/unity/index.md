@@ -14,29 +14,29 @@ editLink: true
 
 # Needle Engine cho Unity
 
-Needle Engine cho Unity cho phép bạn tạo các ứng dụng web có tính tương tác cao, linh hoạt và nhẹ nhàng ngay bên trong Unity. Sử dụng các công cụ mạnh mẽ của trình chỉnh sửa Unity để thiết lập trực quan các cảnh 3D, hoạt hình và thiết kế. Needle Engine cho Unity sẽ lo việc xuất cảnh của bạn sang glTF và tích hợp dễ dàng với bất kỳ framework frontend web nào.
+Needle Engine cho Unity cho phép bạn tạo các ứng dụng web có tính tương tác cao, linh hoạt và nhẹ nhàng ngay bên trong Unity. Sử dụng các công cụ mạnh mẽ của trình chỉnh sửa Unity để thiết lập trực quan các cảnh 3D, hoạt hình và thiết kế. Needle Engine cho Unity sẽ lo việc xuất cảnh của bạn sang glTF và tích hợp dễ dàng với bất kỳ web frontend framework nào.
 
 ## Cài đặt Gói Unity
 
 <NoDownloadYet>
   <br/>
-  <needle-button 
-    event_goal="download_unity" 
-    event_position="getting_started" 
-    large 
+  <needle-button
+    event_goal="download_unity"
+    event_position="getting_started"
+    large
     href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"
     same_tab
     next_url="/docs/unity/"
     >
     <strong>Tải xuống Needle Engine cho Unity</strong>
-  </needle-button> 
+  </needle-button>
 </NoDownloadYet>
 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
 
 1. **Kéo thả tệp .unitypackage đã tải xuống** vào một dự án Unity và xác nhận bạn muốn nhập nó.
 
-2. **Đợi một chút** để quá trình cài đặt và nhập hoàn tất. Một cửa sổ có thể mở ra thông báo rằng "A new scoped registry is now available in the Package Manager." (Một registry phạm vi mới hiện đã có sẵn trong Package Manager). Đây là registry Gói Needle của chúng tôi. Bạn có thể đóng cửa sổ đó một cách an toàn.
+2. **Đợi một chút** để quá trình cài đặt và nhập hoàn tất. Một cửa sổ có thể mở ra thông báo rằng "A new scoped registry is now available in the Package Manager.". Đây là registry Gói Needle của chúng tôi. Bạn có thể đóng cửa sổ đó một cách an toàn.
 3. **Khám phá Mẫu**.
   Chọn tùy chọn menu `Needle Engine > Explore Samples` để xem, mở và chỉnh sửa tất cả các [cảnh mẫu](https://engine.needle.tools/samples) có sẵn.
 
@@ -60,7 +60,7 @@ Các cảnh mẫu của chúng tôi là một phần của gói UPM trong Unity.
 
 ## Bắt đầu từ một template
 
-Chúng tôi cung cấp một số Mẫu cảnh (Scene Templates) để nhanh chóng bắt đầu các dự án mới.
+Chúng tôi cung cấp một số Scene Templates để nhanh chóng bắt đầu các dự án mới.
 Chúng cho phép bạn chuyển từ ý tưởng đến nguyên mẫu chỉ trong vài cú nhấp chuột.
 
 1. Nhấp vào `File > New Scene`
@@ -84,7 +84,7 @@ Thực tế, chúng ta sẽ tạo lại template "Minimal (Needle)" đi kèm v�
   Nó cũng cảnh báo bạn nếu bất kỳ gói và module nào của chúng tôi đã lỗi thời hoặc không được cài đặt cục bộ trong dự án web của bạn.
 
     ::: tip Tên dự án và Tên cảnh
-    Theo mặc định, tên dự án khớp với tên cảnh của bạn. Nếu bạn muốn thay đổi điều đó, bạn có thể chọn hoặc nhập ``Directory Name`` (Tên thư mục) nơi bạn muốn tạo dự án web mới của mình. Đường dẫn này là tương đối so với dự án Unity của bạn.
+    Theo mặc định, tên dự án khớp với tên cảnh của bạn. Nếu bạn muốn thay đổi điều đó, bạn có thể chọn hoặc nhập ``Directory Name`` nơi bạn muốn tạo dự án web mới của mình. Đường dẫn này là tương đối so với dự án Unity của bạn.
     :::
 
 3. **Chọn một mẫu dự án web**
@@ -144,5 +144,6 @@ Bạn có thể **cài đặt một gói *NPM Definition*** vào dự án runtim
 - [Components: Tìm hiểu về Everywhere Actions](../everywhere-actions.md)
 - [Scripting cho người mới bắt đầu: Các khái niệm cơ bản về Typescript](../getting-started/typescript-essentials.md)
 - [Scripting cho người mới bắt đầu: Cách viết các component tùy chỉnh](../scripting.md)
+
 -----
-Page automatically translated using AI
+Trang được dịch tự động bằng AI

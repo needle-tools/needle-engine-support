@@ -36,7 +36,7 @@ Um eine Aktion zu einem beliebigen Objekt in Ihrer Szene hinzuzufügen, wählen 
 | Set Active on Click | Zeigt oder verbirgt Objekte. |  |
 | Change Transform on Click | Verschiebt, rotiert oder skaliert ein Objekt. Ermöglicht absolute oder relative Bewegung. | Charaktere, Produkte, UI-Animationen (für komplexere Bewegungen Animation verwenden) |
 | Audio Source | Spielt Audio beim Start ab und wiederholt es fortlaufend. Räumlich oder nicht-räumlich | Hintergrundmusik, Umgebungsgeräusche |
-| WebXR Image Tracking | Verfolgt ein Bildziel und zeigt oder verbirgt Objekte. | AR-Erlebnisse, Produktpräsentationen |
+| WebXR Image Tracking | Verfolgt ein Bildziel und zeigt oder verbirbt Objekte. | AR-Erlebnisse, Produktpräsentationen |
 
 ## Beispiele
 
@@ -56,7 +56,7 @@ Demonstriert die Kombination von Animationen, Blickrichtung und Bewegung.
 
 Demonstriert, wie 3D-Inhalte an einen benutzerdefinierten Bildmarker angehängt werden. Starten Sie die Szene unten in AR und richten Sie die Kamera Ihres Telefons auf den Bildmarker auf einem Bildschirm oder drucken Sie ihn aus.
 
-<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />
+<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Bildmarker" width=300 />
 
 <a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Beispiel-Bildmarker herunterladen</a>
 
@@ -89,12 +89,12 @@ Oftmals erfordert das Erreichen des gewünschten Verhaltens die Komposition von 
 
 ### Niedrigschwellige Methoden zum Erstellen eigener Aktionen
 
-| Triggers | |
+| Trigger | |
 | --- | --- |
 | `TriggerBuilder.sceneStartTrigger` | |
 | `TriggerBuilder.tapTrigger` | |
 
-| Actions | |
+| Aktionen | |
 | --- | --- |
 | `ActionBuilder.fadeAction` | |
 | `ActionBuilder.startAnimationAction` | |
@@ -104,7 +104,7 @@ Oftmals erfordert das Erreichen des gewünschten Verhaltens die Komposition von 
 | `ActionBuilder.transformAction` | |
 | `ActionBuilder.playAudioAction` | |
 
-|  Group Actions | |
+|  Gruppenaktionen | |
 | --- | --- |
 | `ActionBuilder.sequence` | |
 | `ActionBuilder.parallel` | |

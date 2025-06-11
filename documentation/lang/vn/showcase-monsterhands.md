@@ -10,4 +10,5 @@ editLink: false
 <sample src="https://monster-hands.needle.tools/" />
 
 [Truy cập trang web](https://monster-hands.needle.tools/)
+
 Trang được dịch tự động bằng AI

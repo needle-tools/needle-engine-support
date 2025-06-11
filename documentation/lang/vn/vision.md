@@ -63,4 +63,5 @@ Qua nhiều năm làm việc với Unity, chúng tôi nhận thấy rằng trong
 
 Needle Engine được xây dựng trên three.js. Tất cả rendering đều đi qua nó, các tệp glTF được tải qua các extension interfaces của three, và component system của chúng tôi xoay quanh Object3D và scene graph của three. Chúng tôi cam kết đóng góp một số thay đổi và cải tiến của mình lên upstream, tạo pull requests và báo cáo issues trong quá trình thực hiện.
 
+
 Trang được tự động dịch bằng AI

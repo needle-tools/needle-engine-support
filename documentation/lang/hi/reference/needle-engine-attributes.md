@@ -2,16 +2,16 @@
 title: <needle-engine> कॉन्फ़िगरेशन
 ---
 
-`<needle-engine>` वेब-कंपोनेंट में बिल्ट-इन एट्रीब्यूट्स का एक अच्छा संग्रह है जिसका उपयोग तीन.js दृश्य को सीधे जोड़ने या संपादित करने की आवश्यकता के बिना लोड किए गए दृश्य के रूप और अनुभव को संशोधित करने के लिए किया जा सकता है।
+`<needle-engine>` वेब-कंपोनेंट बिल्ट-इन एट्रीब्यूट्स के एक अच्छे संग्रह के साथ आता है जिनका उपयोग तीन.js दृश्य को सीधे जोड़ने या संपादित करने की आवश्यकता के बिना लोड किए गए दृश्य के लुक और फील को मॉडिफाई करने के लिए किया जा सकता है।
 नीचे दी गई तालिका सबसे महत्वपूर्ण विशेषताओं की सूची दिखाती है:
 
 | विशेषता | विवरण |
 | --- | --- |
 | **लोडिंग** | |
 | `src` | एक या एकाधिक glTF या glb फ़ाइलों का पाथ।<br/>समर्थित प्रकार `string`, `string[]` या एक स्ट्रिंगिफाइड एरे (`,` से अलग किया गया) हैं। |
-| `dracoDecoderPath` | draco डिकोडर का URL |
+| `dracoDecoderPath` | draco डिकोडर का URL जैसे `./include/draco/` लोकल Draco डिकोडर का उपयोग करने के लिए |
 | `dracoDecoderType` | draco डिकोडर प्रकार। विकल्प `wasm` या `js` हैं। [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) देखें। |
-| `ktx2DecoderPath` | KTX2 डिकोडर का URL |
+| `ktx2DecoderPath` | KTX2 डिकोडर का URL जैसे `./include/ktx2/` लोकल KTX2 डिकोडर का उपयोग करने के लिए |
 | **रेंडरिंग** | |
 | `background-color` | वैकल्पिक, बैकग्राउंड कलर के तौर पर उपयोग करने के लिए हेक्स कलर। उदाहरण: `rgb(255, 200, 100)`, `#dddd00` |
 | `background-image` | वैकल्पिक, स्काईबॉक्स इमेज (बैकग्राउंड इमेज) का URL या एक प्रीसेट स्ट्रिंग: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
@@ -29,15 +29,14 @@ title: <needle-engine> कॉन्फ़िगरेशन
 | `progress` | लोडिंग अपडेट होने पर कॉल करने के लिए फ़ंक्शन का नाम। `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }` |
 | `loadfinished` | लोडिंग समाप्त होने पर कॉल करने के लिए फ़ंक्शन का नाम |
 | **लोडिंग डिस्प्ले** | *Needle Engine लोडिंग डिस्प्ले कैसा दिखता है, इसे बदलने के लिए उपलब्ध विकल्प। आसान संपादन के लिए `?debugloadingrendering` का उपयोग करें।* |
-| `loading-style` | विकल्प `light` या `dark` हैं। |
-| `loading-background-color` | **PRO** — लोडिंग बैकग्राउंड कलर बदलें (उदा. `=#dd5500`) |
-| `loading-text-color` | **PRO** — लोडिंग टेक्स्ट कलर बदलें |
-| `loading-logo-src` | **PRO** — लोडिंग लोगो इमेज बदलें |
-| `primary-color` | **PRO** — प्राइमरी लोडिंग कलर बदलें |
-| `secondary-color` | **PRO** — सेकेंडरी लोडिंग कलर बदलें |
-| `hide-loading-overlay` | **PRO** — लोडिंग ओवरले न दिखाएं, Needle Engine > 3.17.1 में जोड़ा गया |
+| `loading-background` | **PRO** — डिफ़ॉल्ट: `transparent`। लोडिंग बैकग्राउंड कलर बदलें (उदा. `#dd5500`) |
+| `loading-logo-src` | **PRO** — लोडिंग लोगो इमेज बदलें (उदा. `https://yourdomain.com/logo.png` या `/logo.png`) |
+| `hide-loading-overlay` | **PRO** — लोडिंग ओवरले न दिखाएं |
 | **आंतरिक** | |
 | `hash` | आंतरिक रूप से उपयोग किया जाता है, अपडेट लागू करने के लिए लोड की जा रही फ़ाइलों में जोड़ा जाता है (उदा. जब ब्राउज़र ने `glb` फ़ाइल को कैश किया हो)। इसे मैन्युअल रूप से संपादित नहीं किया जाना चाहिए। |
+
+**अपग्रेड सूचना**:
+- Needle Engine 4.5.0 में हटाए गए एट्रीब्यूट्स `loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
 
 # उदाहरण
 
@@ -48,7 +47,7 @@ title: <needle-engine> कॉन्फ़िगरेशन
 
 ```html
 <!-- draco डिकोडर कहाँ स्थित है, इसे ओवरराइड करना -->
-<needle-engine src="path/to/your.glb" dracoDecoderPath="path/to/draco/folder"></needle-engine>
+<needle-engine src="path/to/your.glb" dracoDecoderPath="./include/draco/"></needle-engine>
 ```
 
 एनवायरनमेंट इमेज सेट करना, एनिमेशन चलाना और स्वचालित कैमरा नियंत्रण। इसे [stackblitz पर लाइव देखें](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)

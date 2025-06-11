@@ -1,5 +1,5 @@
 ---
-title: Scripting Introduction for Unity Developers
+title: Unity開発者向けスクリプト入門
 ---
 
 Needle EngineはUnity Editorに密接に統合されています。これにより、開発者とデザイナーの両方が慣れ親しんだ環境で協力し、高速で高性能、かつ軽量なWebエクスペリエンスを提供できます。
@@ -204,7 +204,7 @@ export class MyScript extends Behaviour
         this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
+        // コンポーネントが非アクティブになった際にもイベントの購読を解除することを推奨します
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -221,19 +221,17 @@ window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ## InputSystemコールバック
 Unityと同様に（[UnityのIPointerClickHandler](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)参照）、コンポーネント自体で入力イベントを受け取るように登録することもできます。
 
-これを機能させるには、オブジェクトの親ヒエラルキーに``ObjectRaycaster``または``GraphicRaycaster``コンポーネントがあることを確認してください。
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-注：`IPointerEventHandler`は、オブジェクトをすべての可能なポインターイベントに購読します。それらのハンドラーは以下の通りです。
+すべてのコンポーネントで利用可能なポインターイベント：
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -251,7 +249,7 @@ const someVariable = 42;
 // ---cut-before---
 
 console.log("Hello web");
-// You can pass in as many arguments as you want like so:
+// このように、好きなだけ多くの引数を渡すことができます：
 console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
 ```
 
@@ -376,26 +374,26 @@ import * as TWEEN from '@tweenjs/tween.js';
 
 export class TweenRotation extends Behaviour {
 
-    // save the instance of our tweener
+    // トゥイーナーのインスタンスを保存します
     private _tween?: TWEEN.Tween<any>;
 
     start() {
         const rotation = this.gameObject.rotation;
-        // create the tween instance
+        // トゥイーンインスタンスを作成します
         this._tween = new TWEEN.Tween(rotation);
-        // set it to repeat forever
+        // 無限に繰り返すように設定します
         this._tween.repeat(Infinity);
-        // set the easing to use
+        // 使用するイージングを設定します
         this._tween.easing(TWEEN.Easing.Quintic.InOut);
-        // set the values to tween
+        // トゥイーンする値を設定します
         this._tween.to({ y: Math.PI * 0.5 }, 1000);
-        // start it
+        // 開始します
         this._tween.start();
     }
 
     update() {
-        // update the tweening every frame
-        // the '?' is a shorthand for checking if _tween has been created
+        // 毎フレームトゥイーンを更新します
+        // '?' は_tweenが作成されたかチェックするための短縮形です
         this._tween?.update();
     }
 }
@@ -408,6 +406,5 @@ export class TweenRotation extends Behaviour {
 - [Needle Engineでのスクリプト作成](../scripting)
 - [Typescriptの基本](./typescript-essentials.md)
 - [コンポーネントリファレンス](../component-reference.md)
-
 
 このページはAIによって自動的に翻訳されました。

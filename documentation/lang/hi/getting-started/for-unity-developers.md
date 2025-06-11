@@ -58,7 +58,7 @@ class SomeClass extends Behaviour{
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 class SomeClass {
-    @serializable() // < फ़ील्ड प्रकार प्रिमिटिव होने के कारण यहाँ किसी प्रकार की आवश्यकता नहीं है
+    @serializable() // < no type is needed here because the field type is a primitive
     myString?: string;
 }
 ```
@@ -149,36 +149,41 @@ Transform डेटा को सीधे `GameObject` / `Object3D` पर ए�
 
 यहां ध्यान रखने योग्य मुख्य अंतर यह है कि three.js में `position` डिफ़ॉल्ट रूप से एक स्थानीय स्पेस स्थिति है, जबकि Unity में `position` वर्ल्ड स्पेस होगी और स्थानीय स्पेस स्थिति का जानबूझकर उपयोग करने के लिए `localPosition` का उपयोग किया जाएगा।
 
-यदि आप Needle Engine में वर्ल्ड निर्देशांक तक पहुंचना चाहते हैं तो हमारे पास यूटिलिटी विधियां हैं जिनका उपयोग आप अपनी वस्तुओं के साथ कर सकते हैं। वर्ल्ड स्थिति की गणना करने के लिए `getWorldPosition(yourObject)` कॉल करें। रोटेशन/क्वाटरनियन और स्केल के लिए समान विधियां मौजूद हैं। उन विधियों तक पहुंचने के लिए उन्हें Needle Engine से आयात करें जैसे `import { getWorldPosition } from "@needle.tools/engine"`
+### WORLD- Position, Rotation, Scale...
 
-ध्यान दें कि `getWorldPosition`, `getWorldRotation`, `getWorldScale` जैसी ये यूटिलिटी विधियां आंतरिक रूप से Vector3 इंस्टेंस का बफ़र रखती हैं और इनका उपयोग केवल स्थानीय रूप से किया जाना है। इसका मतलब है कि आपको उन्हें अपने कॉम्पोनेन्ट में कैश नहीं करना चाहिए, अन्यथा आपका कैश किया गया मान अंततः ओवरराइड हो जाएगा। लेकिन एक ही इंस्टेंस का दोबारा उपयोग करने की चिंता किए बिना गणना करने के लिए अपने फ़ंक्शन में `getWorldPosition` को कई बार कॉल करना सुरक्षित है। यदि आप निश्चित नहीं हैं कि इसका क्या मतलब है तो आपको [Typescript Essentials Guide](./typescript-essentials.md#primitive-types) में **प्रिमिटिव प्रकार** अनुभाग देखना चाहिए।
+in three.js (and thus also in Needle Engine) the `object.position`, `object.rotation`, `object.scale` are all local space coordinates. This is different to Unity where we are used to `position` being worldspace and using `localPosition` to deliberately use the local space position.
+
+If you want to access the world coordinates in Needle Engine we have utility methods that you can use with your objects. Call `getWorldPosition(yourObject)` to calculate the world position. Similar methods exist for rotation/quaternion and scale. To get access to those methods just import them from Needle Engine like so `import { getWorldPosition } from "@needle.tools/engine"`
+
+Note that these utility methods like `getWorldPosition`, `getWorldRotation`, `getWorldScale` internally have a buffer of Vector3 instances and are meant to be used locally only. This means that you should not cache them in your component, otherwise your cached value will eventually be overriden. But it is safe to call `getWorldPosition` multiple times in your function to make calculations without having to worry to re-use the same instance. If you are not sure what this means you should take a look at the **Primitive Types** section in the [Typescript Essentials Guide](./typescript-essentials.md#primitive-types)
 
 ## Time
-समय डेटा तक पहुंचने के लिए `this.context.time` का उपयोग करें:
-- `this.context.time.time` एप्लिकेशन के चलने के बाद से का समय है
-- `this.context.time.deltaTime` अंतिम फ्रेम के बाद से बीता हुआ समय है
-- `this.context.time.frameCount` एप्लिकेशन के शुरू होने के बाद से गुजरे हुए फ्रेम की संख्या है
-- `this.context.time.realtimeSinceStartup` एप्लिकेशन के शुरू होने के बाद से का अस्केल किया गया समय है
+Use `this.context.time` to get access to time data:
+- `this.context.time.time` is the time since the application started running
+- `this.context.time.deltaTime` is the time that has passed since the last frame
+- `this.context.time.frameCount` is the number of frames that have passed since the application started
+- `this.context.time.realtimeSinceStartup` is the unscaled time since the application has started running
 
-जानबूझकर समय को धीमा करने के लिए `this.context.time.timeScale` का उपयोग करना भी संभव है, जैसे स्लो मोशन प्रभाव के लिए।
+It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
+
 
 ## Raycasting
-Raycast करने और इंटरसेक्शन की सूची प्राप्त करने के लिए ``this.context.physics.raycast()`` का उपयोग करें। यदि आप कोई विकल्प पास नहीं करते हैं तो raycast स्क्रीनस्पेस में माउस स्थिति (या पहली स्पर्श स्थिति) से ​​वर्तमान में सक्रिय `mainCamera` का उपयोग करके किया जाता है। आप एक `RaycastOptions` ऑब्जेक्ट भी पास कर सकते हैं जिसमें विभिन्न सेटिंग्स होती हैं जैसे `maxDistance`, उपयोग करने के लिए कैमरा या जिस लेयर के विरुद्ध परीक्षण किया जाना है।
+Use ``this.context.physics.raycast()`` to perform a raycast and get a list of intersections. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
 
-[three.js ray](https://threejs.org/docs/#api/en/math/Ray) का उपयोग करके raycast करने के लिए ``this.context.physics.raycastFromRay(your_ray)`` का उपयोग करें
+Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
 
-ध्यान दें कि उपरोक्त कॉल डिफ़ॉल्ट रूप से दृश्यमान दृश्य ऑब्जेक्ट के विरुद्ध raycast कर रहे हैं। यह Unity से अलग है जहाँ आपको ऑब्जेक्ट को हिट करने के लिए हमेशा कोलाइडर की आवश्यकता होती है। डिफ़ॉल्ट three.js समाधान के दोनों फायदे और नुकसान हैं, जिसमें एक बड़ा नुकसान यह है कि यह आपके दृश्य ज्यामिति के आधार पर काफी धीमी गति से प्रदर्शन कर सकता है। यह विशेष रूप से स्किन्ड जाल के विरुद्ध raycasting करते समय धीमा हो सकता है। इसलिए आमतौर पर Unity में SkinnedMeshRenderers वाले ऑब्जेक्ट को `Ignore Raycast` लेयर पर सेट करने की सलाह दी जाती है जिसे Needle Engine द्वारा भी डिफ़ॉल्ट रूप से अनदेखा किया जाएगा।
+Note that the calls above are by default raycasting against visible scene objects. That is different to Unity where you always need colliders to hit objects. The default three.js solution has both pros and cons where one major con is that it can perform quite slow depending on your scene geometry. It may be especially slow when raycasting against skinned meshes. It is therefor recommended to usually set objects with SkinnedMeshRenderers in Unity to the `Ignore Raycast` layer which will then be ignored by default by Needle Engine as well.
 
-एक और विकल्प फिजिक्स रेकास्ट विधियों का उपयोग करना है जो केवल दृश्य में कोलाइडर के साथ हिट लौटाएगा।
+Another option is to use the physics raycast methods which will only return hits with colliders in the scene.
 
 ```ts twoslash
 const hit = this.context.physics.engine?.raycast();
 ```
 
-यहाँ फिजिक्स रेकास्ट के लिए एक संपादन योग्य [उदाहरण](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore) है
+Here is a editable [example for physics raycast](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore)
 
 ## Input
-इनपुट स्थिति को पोल ​​करने के लिए ``this.context.input`` का उपयोग करें:
+Use ``this.context.input`` to poll input state:
 
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
@@ -192,7 +197,7 @@ export class MyScript extends Behaviour
 }
 ```
 
-आप ``InputEvents`` एनम में इवेंट्स की सदस्यता भी ले सकते हैं:
+You can also subscribe to events in the ``InputEvents`` enum like so:
 ```ts twoslash
 import { Behaviour, InputEvents, NEPointerEvent } from "@needle-tools/engine";
 
@@ -202,7 +207,7 @@ export class MyScript extends Behaviour
         this.context.input.addEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
     onDisable() {
-        // यह अनुशंसा की जाती है कि आपका कॉम्पोनेन्ट निष्क्रिय होने पर इवेंट से सदस्यता समाप्त कर लें
+        // it is recommended to also unsubscribe from events when your component becomes inactive
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -210,28 +215,27 @@ export class MyScript extends Behaviour
 }
 ```
 
-यदि आप स्वयं इनपुट संभालना चाहते हैं तो आप [ब्राउज़र द्वारा प्रदान किए जाने वाले सभी इवेंट्स](https://developer.mozilla.org/en-US/docs/Web/Events) (वहाँ बहुत सारे हैं) की सदस्यता भी ले सकते हैं। उदाहरण के लिए ब्राउज़र के क्लिक इवेंट की सदस्यता लेने के लिए आप लिख सकते हैं:
+If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
 ```ts twoslash
 window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ```
-ध्यान दें कि इस मामले में आपको सभी मामलों को स्वयं संभालना होगा। उदाहरण के लिए यदि आपका उपयोगकर्ता डेस्कटॉप, मोबाइल या VR डिवाइस पर आपकी वेबसाइट पर आ रहा है तो आपको अलग-अलग इवेंट्स का उपयोग करने की आवश्यकता हो सकती है। इन मामलों को Needle Engine इनपुट इवेंट्स द्वारा स्वचालित रूप से संभाला जाता है (उदाहरण के लिए `PointerDown` माउस डाउन, टच डाउन और VR के मामले में कंट्रोलर बटन डाउन के लिए उठाया जाता है)।
+Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down).
+
 
 ## InputSystem Callbacks
-Unity के समान (Unity में [IPointerClickHandler](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html) देखें) आप कॉम्पोनेन्ट पर इनपुट इवेंट प्राप्त करने के लिए भी पंजीकरण कर सकते हैं।
-
-इसे काम करने के लिए सुनिश्चित करें कि आपकी वस्तु में पैरेंट पदानुक्रम में ``ObjectRaycaster`` या ``GraphicRaycaster`` कॉम्पोनेन्ट है।
+Similar to Unity (see [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) you can also register to receive input events on the component itself.
 
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-नोट: `IPointerEventHandler` ऑब्जेक्ट को सभी संभावित पॉइंटर इवेंट्स की सदस्यता देता है। उनके हैंडलर हैं:
+Available pointer events for all components:
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -239,24 +243,24 @@ export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler
 - `onPointerExit`
 - `onPointerClick`
 
-सभी में इवेंट का वर्णन करने वाला एक `PointerEventData` आर्गुमेंट होता है।
+All have a `PointerEventData` argument describing the event.
 
 ## Debug.Log
-जावास्क्रिप्ट में `Debug.Log()` के बराबर `console.log()` है। आप `console.warn()` या `console.error()` का भी उपयोग कर सकते हैं।
+The `Debug.Log()` equivalent in javascript is `console.log()`. You can also use `console.warn()` or `console.error()`.
 ```ts twoslash
 import { GameObject, Renderer } from "@needle-tools/engine";
 const someVariable = 42;
 // ---cut-before---
 
 console.log("Hello web");
-// आप जितने चाहें उतने आर्गुमेंट पास कर सकते हैं जैसे:
+// You can pass in as many arguments as you want like so:
 console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
 ```
 
 ## Gizmos
-Unity में आपको आम तौर पर Gizmos जैसे `OnDrawGizmos` या `OnDrawGizmosSelected` खींचने के लिए विशेष विधियों का उपयोग करना पड़ता है। दूसरी ओर Needle Engine में ऐसी विधियां मौजूद नहीं हैं और आप अपनी स्क्रिप्ट में कहीं से भी gizmos खींचने के लिए स्वतंत्र हैं। ध्यान दें कि फिर उन्हें e.g. आपके परिनियोजित वेब एप्लिकेशन में *नहीं* खींचने की जिम्मेदारी भी आपकी है (आप उन्हें `if(isDevEnvironment)) के द्वारा फ़िल्टर कर सकते हैं)।
+In Unity you normally have to use special methods to draw Gizmos like `OnDrawGizmos` or `OnDrawGizmosSelected`. In Needle Engine on the other hand such methods dont exist and you are free to draw gizmos from anywhere in your script. Note that it is also your responsibility then to *not* draw them in e.g. your deployed web application (you can just filter them by `if(isDevEnvironment))`).
 
-यहाँ एक सेकंड के लिए लाल वायर स्फेयर खींचने का एक उदाहरण दिया गया है, उदाहरण के लिए वर्ल्ड स्पेस में एक बिंदु का विज़ुअलाइज़ेशन
+Here is an example to draw a red wire sphere for one second for e.g. visualizing a point in worldspace
 ```ts twoslash
 import { Vector3 } from "three";
 const hit = { point: new Vector3(0, 0, 0) };
@@ -264,8 +268,8 @@ const hit = { point: new Vector3(0, 0, 0) };
 import { Gizmos } from "@needle-tools/engine";
 Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
 ```
-यहाँ कुछ उपलब्ध gizmo विधियाँ दी गई हैं:
-| विधि का नाम |  |
+Here are some of the available gizmo methods:
+| Method name |  |
 | --- | --- |
 | `Gizmos.DrawArrow` | |
 | `Gizmos.DrawBox` | |
@@ -277,15 +281,16 @@ Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
 | `Gizmos.DrawSphere` | |
 | `Gizmos.DrawWireSphere` | |
 
-## उपयोगी यूटिलिटी विधियाँ
 
-`@needle-tools/engine` से आयात करें, उदाहरण के लिए `import { getParam } from "@needle-tools/engine"`
+## Useful Utility Methods
 
-| विधि का नाम | विवरण |
+Import from `@needle-tools/engine` e.g. `import { getParam } from "@needle-tools/engine"`
+
+| Method name | Description |
 | --- | --- |
-| `getParam()` | जाँचता है कि url पैरामीटर मौजूद है या नहीं। यदि यह मौजूद है लेकिन इसका कोई मान नहीं है (जैसे `?help`), तो true लौटाता है, यदि यह url में नहीं पाया जाता है या 0 पर सेट है (जैसे `?help=0`), तो false लौटाता है, अन्यथा यह मान लौटाता है (जैसे `?message=test`) |
-| `isMobileDevice()` | यदि ऐप को मोबाइल डिवाइस से एक्सेस किया जा रहा है तो true लौटाता है |
-| `isDevEnvironment()` | यदि वर्तमान ऐप स्थानीय सर्वर पर चल रहा है तो true लौटाता है |
+| `getParam()` | Checks if a url parameter exists. Returns true if it exists but has no value (e.g. `?help`), false if it is not found in the url or is set to 0 (e.g. `?help=0`), otherwise it returns the value (e.g. `?message=test`) |
+| `isMobileDevice()` | Returns true if the app is accessed from a mobile device |
+| `isDevEnvironment()` | Returns true if the current app is running on a local server |
 | `isMozillaXR()` | |
 | `isiOS` | |
 | `isSafari` | |
@@ -297,20 +302,20 @@ if( isMobileDevice() )
 
 ```ts twoslash
 import { getParam } from "@needle-tools/engine"
-// true लौटाता है
+// returns true
 const myFlag = getParam("some_flag")
 console.log(myFlag)
 ```
 
-## वेब प्रोजेक्ट
-C# में आप आमतौर पर एक समाधान के साथ काम करते हैं जिसमें एक या कई प्रोजेक्ट होते हैं। Unity में यह समाधान आपके लिए Unity द्वारा प्रबंधित किया जाता है और जब आप C# स्क्रिप्ट खोलते हैं तो यह प्रोजेक्ट खोलता है और आपको फ़ाइल दिखाता है।
-आप आमतौर पर Unity के बिल्ट-इन पैकेज मैनेजर का उपयोग करके पैकेज इंस्टॉल करते हैं ताकि Unity या अन्य डेवलपर्स (या तो आपकी टीम में या उदाहरण के लिए Unity के AssetStore के माध्यम से) द्वारा प्रदान की जाने वाली सुविधाओं को जोड़ा जा सके। Unity अपने PackageManager के साथ पैकेज जोड़ना और प्रबंधित करना आसान बनाने का शानदार काम करता है और आपको `manifest.json` जैसी फ़ाइल को मैन्युअल रूप से संपादित करने (यह वह है जिसका उपयोग Unity यह ट्रैक करने के लिए करता है कि कौन से पैकेज स्थापित हैं) या पैकेज स्थापित करने के लिए कमांड लाइन से एक कमांड चलाने की आवश्यकता कभी नहीं पड़ी होगी।
+## The Web project
+In C# you usually work with a solution containing one or many projects. In Unity this solution is managed by Unity for you and when you open a C# script it opens the project and shows you the file.
+You usually install Packages using Unity's built-in package manager to add features provided by either Unity or other developers (either on your team or e.g. via Unity's AssetStore). Unity does a great job of making adding and managing packages easy with their PackageManager and you might never have had to manually edit a file like the `manifest.json` (this is what Unity uses to track which packages are installed) or run a command from the command line to install a package.
 
-वेब वातावरण में आप अपने लिए निर्भरताओं / पैकेजों को प्रबंधित करने के लिए `npm` - Node Package Manager - का उपयोग करते हैं। यह मूल रूप से वही करता है जो Unity का PackageManager करता है - यह *कुछ* सर्वर से पैकेज स्थापित (डाउनलोड) करता है (आप आमतौर पर उस संदर्भ में इसे *रजिस्ट्री* कहते हैं) और उन्हें `node_modules` नामक फ़ोल्डर के अंदर रखता है।
+In a web environment you use `npm` - the Node Package Manager - to manage dependencies / packages for you. It does basically the same to what Unity's PackageManager does - it installs (downloads) packages from *some* server (you hear it usually called a *registry* in that context) and puts them inside a folder named `node_modules`.
 
-वेब प्रोजेक्ट के साथ काम करते समय आपकी अधिकांश निर्भरताएं [npmjs.com](https://npmjs.com/) से स्थापित की जाती हैं। यह वेब प्रोजेक्ट के लिए सबसे लोकप्रिय पैकेज रजिस्ट्री है।
+When working with a web project most of you dependencies are installed from [npmjs.com](https://npmjs.com/). It is the most popular package registry out there for web projects.
 
-यहां एक उदाहरण दिया गया है कि package.json कैसा दिख सकता है:
+Here is an example of how a package.json might look like:
 ```json
 {
   "name": "@optional_org/package_name",
@@ -332,26 +337,27 @@ C# में आप आमतौर पर एक समाधान के स�
 }
 ```
 
-हमारा डिफ़ॉल्ट टेम्पलेट Vite को इसके बंडलर के रूप में उपयोग करता है और कोई फ्रंटएंड फ्रेमवर्क पूर्व-स्थापित नहीं है। Needle Engine इस बारे में किसी भी ढांचे का विरोध नहीं करता है, इसलिए आप अपनी पसंद के किसी भी ढांचे के साथ काम करने के लिए स्वतंत्र हैं। हमारे पास Vue.js, Svelte, Next.js, React या React Three Fiber जैसे लोकप्रिय ढांचों के लिए नमूने हैं।
+Our default template uses Vite as its bundler and has no frontend framework pre-installed. Needle Engine is unoppionated about which framework to use so you are free to work with whatever framework you like. We have samples for popular frameworks like Vue.js, Svelte, Next.js, React or React Three Fiber.
 
-## पैकेज और निर्भरताएं स्थापित करना
-npm से एक निर्भरता स्थापित करने के लिए आप कमांडलाइन (या टर्मिनल) में अपना वेब प्रोजेक्ट खोल सकते हैं और `npm i <the/package_name>` (जो `npm install` का संक्षिप्त रूप है) चला सकते हैं
-उदाहरण के लिए [Needle Engine](https://www.npmjs.com/package/@needle-tools/engine) स्थापित करने के लिए `npm i @needle-tools/engine` चलाएँ। यह तब आपके `package.json` में `dependencies` ऐरे में पैकेज जोड़ देगा।
-केवल devDependency के रूप में एक पैकेज स्थापित करने के लिए आप `npm i --save-dev <package_name>` चला सकते हैं। नीचे dependencies और devDependencies के बीच अंतर के बारे में अधिक।
+## Installing packages & dependencies
+To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i <the/package_name>` (shorthand for `npm install`)
+For example run `npm i @needle-tools/engine` to install [Needle Engine](https://www.npmjs.com/package/@needle-tools/engine). This will then add the package to your `package.json` to the `dependencies` array.
+To install a package as a devDependency only you can run `npm i --save-dev <package_name>`. More about the difference between dependencies and devDependencies below.
 
-### 'dependencies' और 'devDependencies' में क्या अंतर है?
-आपने देखा होगा कि *डिपेंडेंसी* - `dependencies` और `devDependencies` वाले दो एंट्री हैं।
+### What's the difference between 'dependencies' and 'devDependencies'
+You may have noticed that there are two entries containing *dependency* - `dependencies` and `devDependencies`.
 
-`dependencies` **हमेशा इंस्टॉल** (या बंडल) की जाती हैं जब या तो आपका वेब प्रोजेक्ट इंस्टॉल होता है या उन मामलों में जहां आप एक लाइब्रेरी विकसित करते हैं और आपका पैकेज किसी अन्य प्रोजेक्ट की निर्भरता के रूप में इंस्टॉल होता है।
+`dependencies` are **always installed** (or bundled) when either your web project is installed or in cases where you develop a library and your package is installed as a dependency of another project.
 
-`devDependencies` प्रोजेक्ट विकसित करते समय **ही** इंस्टॉल की जाती हैं (जिसका अर्थ है कि जब आप सीधे विशिष्ट निर्देशिका में `install` चलाते हैं) और वे अन्यथा आपके प्रोजेक्ट में **शामिल नहीं** होती हैं।
+`devDependencies` are **only** installed when developing the project (meaning that when you directly run `install` in the specific directory) and they are otherwise **not** included in your project.
 
-### मैं दूसरा पैकेज या निर्भरता कैसे स्थापित करूं और इसका उपयोग कैसे करूं?
-[स्थापित करना](#स्थापित करना) अनुभाग ने हमें सिखाया कि आप अपनी प्रोजेक्ट निर्देशिका में `npm i <package_name>` चलाकर निर्भरताएं स्थापित कर सकते हैं जहाँ `package_name` [npm.js](https://npmjs.org) पर पाए जाने वाले कोई भी पैकेज हो सकता है।
 
-मान लीजिए कि आप अपने प्रोजेक्ट में एक ट्वीनिंग लाइब्रेरी जोड़ना चाहते हैं। हम इस उदाहरण के लिए [`@tweenjs/tween.js`](https://www.npmjs.com/package/@tweenjs/tween.js) का उपयोग करेंगे। यदि आप आगे बढ़ना चाहते हैं और केवल परिणाम देखना चाहते हैं तो [यहाँ](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts) अंतिम प्रोजेक्ट है।
+### How do I install another package or dependency and how to use it?
+The [Installing](#installing) section taught us that you can install dependencies by running `npm i <package_name>` in your project directory where the `package_name` can be any package that you find on [npm.js](https://npmjs.org).
 
-पहले टर्मिनल में `npm install @tweenjs/tween.js` चलाएँ और इंस्टॉलेशन पूरा होने तक प्रतीक्षा करें। यह हमारे package.json में एक नई एंट्री जोड़ देगा:
+Let's assume you want to add a tweening library to your project. We will use [`@tweenjs/tween.js`](https://www.npmjs.com/package/@tweenjs/tween.js) for this example. [Here](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts) is the final project if you want to jump ahead and just see the result.
+
+First run `npm install @tweenjs/tween.js` in the terminal and wait for the installation to finish. This will add a new entry to our package.json:
 ```json
 "dependencies": {
     "@needle-tools/engine": "^3.5.11-beta",
@@ -360,49 +366,50 @@ npm से एक निर्भरता स्थापित करने �
 }
 ```
 
-फिर अपनी स्क्रिप्ट फ़ाइलों में से एक खोलें जिसमें आप ट्वीनिंग का उपयोग करना चाहते हैं और फ़ाइल के शीर्ष पर आयात करें:
+Then open one of your script files in which you want to use tweening and import at the top of the file:
 ```ts twoslash
 import * as TWEEN from '@tweenjs/tween.js';
 ```
-ध्यान दें कि हम यहाँ `* as TWEEN` लिखकर लाइब्रेरी में सभी प्रकारों को आयात कर रहे हैं। हम विशिष्ट प्रकारों को भी आयात कर सकते हैं जैसे `import { Tween } from @tweenjs/tween.js`।
+Note that we do here import all types in the library by writing `* as TWEEN`. We could also just import specific types like `import { Tween } from @tweenjs/tween.js`.
 
-अब हम अपनी स्क्रिप्ट में इसका उपयोग कर सकते हैं। यह हमेशा सलाह दी जाती है कि आप जिस लाइब्रेरी का उपयोग करना चाहते हैं उसके दस्तावेज़ देखें। tween.js के मामले में वे एक [उपयोगकर्ता गाइड](https://github.com/tweenjs/tween.js/blob/HEAD/docs/user_guide.md) प्रदान करते हैं जिसका हम पालन कर सकते हैं। आमतौर पर npm पर पैकेज के Readme पृष्ठ में पैकेज को कैसे स्थापित और उपयोग किया जाए इसकी जानकारी होती है।
+Now we can use it in our script. It is always recommended to refer to the documentation of the library that you want to use. In the case of tween.js they provide a [user guide](https://github.com/tweenjs/tween.js/blob/HEAD/docs/user_guide.md) that we can follow. Usually the Readme page of the package on npm contains information on how to install and use the package.
 
-एक क्यूब को घुमाने के लिए हम `TweenRotation` नामक एक नया कॉम्पोनेन्ट प्रकार बनाते हैं, फिर हम ऑब्जेक्ट रोटेशन के लिए अपना ट्विन इंस्टेंस बनाते हैं, यह कितनी बार दोहराना चाहिए, किस ईजिंग का उपयोग करना चाहिए, जो ट्विन हम प्रदर्शन करना चाहते हैं और फिर हम इसे शुरू करते हैं। फिर हमें ट्विन एनीमेशन को अपडेट करने के लिए हर फ्रेम में केवल `update` कॉल करना होगा। अंतिम स्क्रिप्ट इस तरह दिखती है:
+To rotate a cube we create a new component type called `TweenRotation`, we then go ahead and create our tween instance for the object rotation, how often it should repeat, which easing to use, the tween we want to perform and then we start it. We then only have to call `update` every frame to update the tween animation. The final script looks like this:
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 import * as TWEEN from '@tweenjs/tween.js';
 
 export class TweenRotation extends Behaviour {
 
-    // हमारे ट्वीनर का इंस्टेंस सेव करें
+    // save the instance of our tweener
     private _tween?: TWEEN.Tween<any>;
 
     start() {
         const rotation = this.gameObject.rotation;
-        // ट्विन इंस्टेंस बनाएं
+        // create the tween instance
         this._tween = new TWEEN.Tween(rotation);
-        // इसे हमेशा के लिए दोहराने के लिए सेट करें
+        // set it to repeat forever
         this._tween.repeat(Infinity);
-        // उपयोग करने के लिए ईजिंग सेट करें
+        // set the easing to use
         this._tween.easing(TWEEN.Easing.Quintic.InOut);
-        // ट्विन करने के लिए मान सेट करें
+        // set the values to tween
         this._tween.to({ y: Math.PI * 0.5 }, 1000);
-        // इसे शुरू करें
+        // start it
         this._tween.start();
     }
 
     update() {
-        // हर फ्रेम में ट्वीनिंग अपडेट करें
-        // '_'tween बनाया गया है या नहीं इसकी जाँच करने के लिए '?' एक संक्षिप्त रूप है
+        // update the tweening every frame
+        // the '?' is a shorthand for checking if _tween has been created
         this._tween?.update();
     }
 }
 ```
-अब हमें उन्हें हमेशा के लिए घुमाने के लिए अपने सीन में किसी भी वस्तु में जोड़ना होगा।
-आप [यहाँ](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts) अंतिम स्क्रिप्ट को क्रियान्वित होते हुए देख सकते हैं।
+Now we only have to add it to any of the objects in our scene to rotate them forever.
+You can see the final script in action [here](https://stackblitz.com/edit/needle-engine-tweenjs-example?file=src%2Fmain.ts).
 
-# और जानें
+
+# Learning more
 
 - [Needle Engine में स्क्रिप्टिंग](../scripting)
 - [Typescript Essentials](./typescript-essentials.md)

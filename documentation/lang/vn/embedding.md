@@ -8,25 +8,23 @@ Có một số cách để tích hợp Needle Engine với trang web của bạn
 
 Nếu bạn muốn nhanh chóng thử xem các dự án được tạo bằng Needle sẽ trông như thế nào trên trang web của mình, chỉ cần thêm hai dòng này vào bất kỳ đâu trên trang của bạn để thử nghiệm:
 
-:::: code-group
-::: code-group-item Option 1: Embedding Needle
+::: code-tabs
+@tab Option 1: Embedding Needle
 ```html
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb"></needle-engine>
+<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
 ```
-:::
-::: code-group-item Option 2: Using an iframe
+@tab Option 2: Using an iframe
 ```html
 <iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
 </iframe>
 ```
-:::
-::: code-group-item Resulting Website
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
+@tab Resulting Website
+<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
     allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
 </iframe>
-::::
+:::
 
 # Các cách tạo ứng dụng web với Needle
 
@@ -123,7 +121,7 @@ Khi bạn có quyền truy cập hạn chế vào một trang web, ví dụ khi 
     ::: tip Quyền bên trong iframes
     Danh sách bên trong `allow=` phụ thuộc vào các tính năng mà ứng dụng web của bạn sử dụng. Ví dụ, các ứng dụng XR yêu cầu `xr` và `xr-spatial-tracking` để hoạt động bên trong iframes.
 
-    Có thể cần thêm các tính năng bổ sung, ví dụ như `camera; microphone; display-capture; geolocation`. Xem [danh sách đầy đủ các chỉ thị Permissions Policy của iframe trên MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
+    Có thể cần thêm các tính năng bổ sung, ví dụ như `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. Xem [danh sách đầy đủ các chỉ thị Permissions Policy của iframe trên MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
     :::
 
 4. Xong! Scene hiện đã hiển thị trên trang web của bạn.
@@ -173,7 +171,7 @@ Nếu bạn đã triển khai dự án của mình lên Needle Cloud, bạn có 
       `my-app.com`
 
     ::: tip Không có gì là "tốt" hay "xấu" ở đây.
-    Một phương pháp điển hình là bắt đầu trên [Needle Cloud](./cloud/) cho các prototype ban đầu và trong quá trình phát triển, sau đó chuyển sang webspace và domain của khách hàng cho phiên bản cuối cùng.
+    Một phương pháp điển hình là bắt đầu trên [Needle Cloud](./cloud/) cho các prototype ban đầu và trong quá trình development, sau đó chuyển sang webspace và domain của khách hàng cho phiên bản cuối cùng.
 
     Sự lựa chọn chủ yếu phụ thuộc vào yêu cầu của khách hàng về branding, SEO và thiết lập kỹ thuật. Thông thường, bạn sẽ phải thảo luận vấn đề này với bộ phận IT hoặc webmaster của khách hàng.
     :::
@@ -197,7 +195,7 @@ Nếu bạn đã triển khai dự án của mình lên Needle Cloud, bạn có 
    Thường là một ý tưởng hay khi thử nghiệm quy trình triển khai sớm, để đảm bảo bạn hiểu cách nó hoạt động và các yêu cầu là gì. Ví dụ, khi bạn đã quyết định sử dụng FTP, thì bạn có thể thiết lập một thư mục thử nghiệm trên web server của riêng mình và thử nghiệm quy trình triển khai ở đó. Khi các thay đổi được khách hàng chấp thuận, bạn có thể triển khai lên server của khách hàng.
 
 5. **Bắt đầu tạo!**
-   Với các yêu cầu và việc triển khai đã sẵn sàng, hãy tiếp tục và bắt đầu tạo dự án của bạn! Bạn thường sẽ lặp đi lặp lại local, sau đó triển khai lên server thử nghiệm để được chấp thuận, và sau đó là server của khách hàng.
+   Với các yêu cầu và việc triển khai đã sẵn sàng, hãy tiếp tục và bắt đầu tạo dự án của bạn! Bạn thường sẽ lặp đi lặp lại local, sau đó triển khai lên server thử nghiệm để được approval, và sau đó là server của khách hàng.
 
 ## Wordpress
 
@@ -226,4 +224,4 @@ Nếu bạn đã triển khai dự án của mình lên Needle Cloud, bạn có 
 ::: warning <b>Đang xây dựng.</b> Cần được ghi lại.
 :::
 
-Page automatically translated using AI
+Trang được dịch tự động bằng AI

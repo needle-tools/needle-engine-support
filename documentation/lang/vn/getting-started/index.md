@@ -1,6 +1,6 @@
 ---
-lang: en-US
-title: Getting Started & Installation
+lang: vn-VN
+title: Bắt đầu & Cài đặt
 next: ../project-structure.md
 ---
 
@@ -9,7 +9,7 @@ next: ../project-structure.md
 <discountbanner />
 
 
-# Downloads
+# Tải về
 
 Với **Needle Engine**, bạn có thể tạo các trang web 3D tương tác đầy đủ bằng framework yêu thích của mình.
 
@@ -18,7 +18,7 @@ Các dự án được tạo bằng Needle Engine có thể được triển kha
 Needle Engine có sẵn dưới dạng **package cho Unity, add-on cho Blender, Web Component sẵn sàng sử dụng**, hoặc dưới dạng npm package cho các dự án không tích hợp với editor.
 Mỗi lựa chọn này đều đi kèm với các component giống nhau, các khối xây dựng của chúng tôi và khả năng tạo ra nhiều hơn – lựa chọn là của bạn.
 
-## Choose your Workflow
+## Chọn quy trình làm việc của bạn
 
 <tool-tiles></tool-tiles>
 
@@ -54,14 +54,14 @@ Mỗi lựa chọn này đều đi kèm với các component giống nhau, các 
 
 *Supported Unity versions: 2021.3 LTS, 2022.3 LTS*
 
-<needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Unity</strong></needle-button>
+<needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Tải về Needle Engine cho Unity</strong></needle-button>
 
 - Drop the downloaded .unitypackage file into a Unity project and confirm that you want to import it.
 - Wait a moment for the installation and import to finish. A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry. You can safely close that window.
 - **Explore Samples** – Select the menu option _Needle Engine > Explore Samples_ to view, open and modify all available [sample scenes](https://engine.needle.tools/samples).
 
 
-**See [Needle Engine for Unity](../unity/index.md)** for a full list of features and instructions on getting started.
+**Xem [Needle Engine cho Unity](../unity/index.md)** để biết danh sách đầy đủ các tính năng và hướng dẫn bắt đầu.
 
 
 ---
@@ -72,7 +72,7 @@ Mỗi lựa chọn này đều đi kèm với các component giống nhau, các 
 ## Needle Engine for Blender
 *Supported Blender versions: 4.1+*
 
-<needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Blender</strong></needle-button>
+<needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Tải về Needle Engine cho Blender</strong></needle-button>
 
 <br/>
 
@@ -80,7 +80,7 @@ Mỗi lựa chọn này đều đi kèm với các component giống nhau, các 
 - In Blender, go to `File > Settings > Add-ons` and click the `Install` button.
 - Then select the downloaded zip to install it.
 
-**See [Needle Engine for Blender](../blender/index.md)** for a full list of features and instructions on getting started.
+**Xem [Needle Engine cho Blender](../blender/index.md)** để biết danh sách đầy đủ các tính năng và hướng dẫn bắt đầu.
 
 <br/>
 <br/>
@@ -94,7 +94,7 @@ Mỗi lựa chọn này đều đi kèm với các component giống nhau, các 
 
 -->
 
-## Code Editor and Tools
+## Trình chỉnh sửa code và Công cụ
 
 ### Cài đặt trình chỉnh sửa code
 

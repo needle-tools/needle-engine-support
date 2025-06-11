@@ -8,10 +8,10 @@ La siguiente tabla muestra una lista de los más importantes:
 | Atributo | Descripción |
 | --- | --- |
 | **Carga** | |
-| `src` | Ruta a uno o varios archivos glTF o glb. Los tipos compatibles son `string`, `string[]` o un array convertido a cadena (separado por `,`) |
-| `dracoDecoderPath` | URL al decodificador draco |
-| `dracoDecoderType` | Tipo de decodificador draco. Las opciones son `wasm` o `js`. Consulte la [documentación de three.js](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
-| `ktx2DecoderPath` | URL al decodificador KTX2 |
+| `src` | Ruta a uno o varios archivos glTF o glb.<br/>Los tipos compatibles son `string`, `string[]` o un array convertido a cadena (separado por `,`) |
+| `dracoDecoderPath` | URL al decodificador draco, p. ej. `./include/draco/` para usar el decodificador Draco local |
+| `dracoDecoderType` | Tipo de decodificador draco. Las opciones son `wasm` o `js`. Consulta la [documentación de three.js](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
+| `ktx2DecoderPath` | URL al decodificador KTX2, p. ej. `./include/ktx2/` para usar el decodificador KTX2 local |
 | **Renderizado** | |
 | `background-color` | opcional, color hexadecimal que se usará como color de fondo. Ejemplos: `rgb(255, 200, 100)`, `#dddd00` |
 | `background-image` | opcional, URL a una imagen de skybox (imagen de fondo) o una cadena predefinida: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
@@ -29,16 +29,14 @@ La siguiente tabla muestra una lista de los más importantes:
 | `progress` | Nombre de la función a llamar cuando la carga se actualiza. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }` |
 | `loadfinished` | Nombre de la función a llamar cuando finaliza la carga |
 | **Visualización de Carga** | *Opciones disponibles para cambiar la apariencia de la visualización de carga de Needle Engine. Utiliza `?debugloadingrendering` para facilitar la edición* |
-| `loading-style` | Las opciones son `light` o `dark` |
-| `loading-background-color` | **PRO** — Cambia el color de fondo de la carga (p. ej. `=#dd5500`) |
-| `loading-text-color` | **PRO** — Cambia el color del texto de la carga |
-| `loading-logo-src` | **PRO** — Cambia la imagen del logo de la carga |
-| `primary-color` | **PRO** — Cambia el color primario de la carga |
-| `secondary-color` | **PRO** — Cambia el color secundario de la carga |
-| `hide-loading-overlay` | **PRO** — No muestra la superposición de carga, añadido en Needle Engine > 3.17.1 |
+| `loading-background` | **PRO** — Predeterminado: `transparent`. Cambia el color de fondo de la carga (p. ej. `#dd5500`) |
+| `loading-logo-src` | **PRO** — Cambia la imagen del logo de la carga (p. ej. `https://yourdomain.com/logo.png` o `/logo.png`) |
+| `hide-loading-overlay` | **PRO** — No mostrar la superposición de carga |
 | **Interno** | |
 | `hash` | Se usa internamente, se añade a los archivos que se cargan para forzar una actualización (p. ej., cuando el navegador ha almacenado en caché un archivo glb). No debe editarse manualmente. |
 
+**Aviso de actualización**:
+- Atributos eliminados en Needle Engine 4.5.0: `loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
 
 # Ejemplos
 
@@ -49,7 +47,7 @@ La siguiente tabla muestra una lista de los más importantes:
 
 ```html
 <!-- Sobrescribiendo la ubicación del decodificador draco -->
-<needle-engine src="path/to/your.glb" dracoDecoderPath="path/to/draco/folder"></needle-engine>
+<needle-engine src="path/to/your.glb" dracoDecoderPath="./include/draco/"></needle-engine>
 ```
 
 Configurando imágenes de entorno, reproduciendo animación y controles de cámara automáticos. [Ver en vivo en stackblitz](https://stackblitz.com/edit/needle-engine-cycle-src?file=index.html)
@@ -81,5 +79,6 @@ Puedes modificar fácilmente la apariencia de Needle Engine configurando los atr
 
 ![custom loading](/imgs/custom-loading-style.webp)
 [Ver código en github](https://github.com/needle-engine/vite-template/blob/loading-style/custom/index.html)
+
 
 Página traducida automáticamente usando IA.

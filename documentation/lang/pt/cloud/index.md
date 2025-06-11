@@ -86,14 +86,14 @@ Pode instalar o pacote `needle-cloud` CLI globalmente ou usá-lo via `npx`. Isto
    ```
 
 ### Implementações Automatizadas
-Para implementar a partir de **Github Actions** ou **Stackblitz**, pode fornecer um token de acesso como `--token <access_token>`. Os tokens de acesso podem ser criados na [sua página de equipa](https://cloud.needle.tools/team) no Needle Cloud. Certifique-se de criar o seu token com permissões de `read/write`.
+Para implementar a partir de **Github Actions** ou **Stackblitz**, pode fornecer um access token como `--token <access_token>`. Os access tokens podem ser criados na [sua página de equipa](https://cloud.needle.tools/team) no Needle Cloud. Certifique-se de criar o seu token com permissões de `read/write`.
 
 Use a [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud) para implementar uma atualização a partir do Github (por exemplo, sempre que fizer um push para o repositório)
 
 #### Exemplo: Needle Cloud Github Action
 ```yml
       - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1.0.2
+        uses: needle-tools/deploy-to-needle-cloud-action@v1
         id: deploy
         with:
             token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
@@ -104,7 +104,7 @@ Use a [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy
 #### Exemplo: Implementar usando um comando CLI
 
 ```bash
-# Implementar para Needle Cloud a partir, por exemplo, de uma github action
+# Deploy to Needle Cloud from e.g. a github action
 npx needle-cloud deploy '/path/to/output' --team 'My team' --name 'some name or id' --token '<access_token>'
 ```
 
@@ -168,7 +168,7 @@ O website Needle Cloud mostra todas as versões implementadas da aplicação, in
 Recomendamos glTF e USD como formatos primários para intercâmbio de dados 3D. São amplamente suportados, têm funcionalidades modernas e um bom modelo de material.
 :::
 
-## Ativos na Cloud
+## Cloud Assets
 
 ### Carregar Ativos
 
@@ -177,36 +177,36 @@ Os ficheiros não glTF são automaticamente convertidos para glTF para processam
 
 ### Versões de Ativos
 
-Ao visitar a Página de Edição de um ativo, pode ver todas as versões que foram carregadas até agora por si ou pela sua equipa. Também pode etiquetar versões para as marcar como "main" ou "experimental". "Latest" é a etiqueta padrão para a versão mais recente.
+Ao visitar a Página de Edição de um asset, pode ver todas as versões que foram carregadas até agora por si ou pela sua equipa. Também pode etiquetar versões para as marcar como "main" ou "experimental". "Latest" é a etiqueta padrão para a versão mais recente.
 
 ### Partilhar Ligações para Ativos
 
 Pode criar ligações para partilhar ficheiros específicos ou ficheiros etiquetados com a sua equipa ou clientes. As ligações etiquetadas atualizarão automaticamente quando mover a etiqueta – assim, pode partilhar uma ligação "main" uma vez e continuar a atualizar o ficheiro sem ter de enviar uma nova ligação.
 
-### Utilizar Ativos da Cloud no Needle Engine
+### Utilizar Cloud Assets no Needle Engine
 
-Os ficheiros armazenados em Needle Cloud podem ser facilmente levados diretamente para projetos Needle Engine. O componente `Needle Cloud Asset` aceita uma ligação para um ativo e carrega-o em tempo de execução. Isto permite manter o tamanho do seu projeto pequeno e carregar ativos sob demanda que ainda podem ser atualizados na cloud.
+Os ficheiros armazenados em Needle Cloud podem ser facilmente levados diretamente para projetos Needle Engine. O componente `Needle Cloud Asset` aceita uma ligação para um asset e carrega-o em runtime. Isto permite manter o tamanho do seu projeto pequeno e carregar assets sob demanda que ainda podem ser atualizados na cloud.
 
-::: tip Utilize Carregamento Progressivo sempre que possível
-Os ativos armazenados em Needle Cloud são otimizados automaticamente para uso ideal em tempo de execução usando a nossa tecnologia de Carregamento Progressivo. Para cada malha e textura, são geradas múltiplas versões de nível de detalhe, e apenas as partes do ativo que são necessárias são carregadas em tempo de execução.
+::: tip Utilize Progressive Loading sempre que possível
+Os assets armazenados em Needle Cloud são otimizados automaticamente para uso ideal em runtime usando a nossa tecnologia de Progressive Loading. Para cada malha e textura, são geradas múltiplas versões de level-of-detail, e apenas as partes do asset que são necessárias são carregadas em runtime.
 
-Isto poupa muita largura de banda e memória (tipicamente 90% ou mais em comparação com o carregamento do ativo completo).
+Isto poupa muita largura de banda e memória (tipicamente 90% ou mais em comparação com o carregamento do asset completo).
 :::
 
-### Incorporar o Visualizador da Cloud no Seu Website
+### Incorporar o Cloud Viewer no Seu Website
 
-Uma maneira rápida de trazer 3D para o seu próprio website é **incorporar** o visualizador Needle Cloud.
-Para fazê-lo, vá à Página de Edição de um ativo e clique em <kbd>Embed</kbd>. Pode então copiar o snippet de código `iframe` e colá-lo no seu website.
+Uma maneira rápida de trazer 3D para o seu próprio website é **incorporar** o Needle Cloud viewer.
+Para fazê-lo, vá à Página de Edição de um asset e clique em <kbd>Embed</kbd>. Pode então copiar o snippet de código `iframe` e colá-lo no seu website.
 
 ::: tip Incorporar versões específicas
-Também pode incorporar o visualizador com uma ligação direta para o ativo, ou com uma etiqueta específica. Isto permite-lhe atualizar o ativo em Needle Cloud sem ter de atualizar o código de incorporação no seu website.
+Também pode incorporar o viewer com uma ligação direta para o asset, ou com uma etiqueta específica. Isto permite-lhe atualizar o asset em Needle Cloud sem ter de atualizar o código de incorporação no seu website.
 :::
 
 ### Incorporar noutros frameworks
 
 As seguintes opções de incorporação estão disponíveis:
 1. **Needle Cloud Viewer**  
-   Use o snippet de código `iframe` para incorporar o visualizador Needle Cloud no seu website.
+   Use o snippet de código `iframe` para incorporar o Needle Cloud viewer no seu website.
 
 1. **Needle Engine**  
   Use o snippet de código fornecido para incorporar Needle Engine no seu website como [web component](./../three/).
@@ -221,19 +221,19 @@ As seguintes opções de incorporação estão disponíveis:
   Se estiver a usar React-Three-Fiber, pode usar o snippet de código fornecido como ponto de partida para um projeto que suporta Needle Progressive Loading e carrega ficheiros eficientemente a partir de Needle Cloud.
 
 1. **Unity**  
-  Se estiver a usar Unity, pode integrar ativos Needle Cloud diretamente nos seus projetos usando o componente Needle Cloud Asset para carregamento e otimização contínuos.
+  Se estiver a usar Unity, pode integrar Needle Cloud assets diretamente nos seus projetos usando o componente Needle Cloud Asset para carregamento e otimização contínuos.
 
-### Utilizar Ativos da Cloud com outros motores como Unity ou Unreal
+### Utilizar Cloud Assets com outros engines como Unity ou Unreal
 
-Existem várias maneiras de usar ativos armazenados em Needle Cloud noutros motores como Unity ou Unreal.
+Existem várias maneiras de usar assets armazenados em Needle Cloud noutros engines como Unity ou Unreal.
 1. **Transferir e Importar**  
-   Pode transferir o ativo e importá-lo para o seu projeto.
+   Pode transferir o asset e importá-lo para o seu projeto.
 
 2. **Ligação Direta**  
-   Pode usar a ligação direta para o ativo no seu projeto. Desta forma, pode atualizar o ativo em Needle Cloud e este atualizará automaticamente no seu projeto. Que ligação usar depende do motor e das suas capacidades glTF:
+   Pode usar a ligação direta para o asset no seu projeto. Desta forma, pode atualizar o asset em Needle Cloud e este atualizará automaticamente no seu projeto. Que ligação usar depende do engine e das suas capacidades glTF:
     - Suporte para **glTF com Progressive Loading**:  
       Use a ligação `Progressive-World` ou `Progressive-Product`.
-      Consulte [npm:@needle-tools/gltf-progressive](https://www.npmjs.com/package/@needle-tools/gltf-progressive) para mais informações sobre carregamento progressivo e como ativá-lo para o seu motor.
+      Consulte [npm:@needle-tools/gltf-progressive](https://www.npmjs.com/package/@needle-tools/gltf-progressive) para mais informações sobre carregamento progressivo e como ativá-lo para o seu engine.
 
     - Suporte para **glTF com Draco e KTX2**:
       Use a ligação `Optimized`.
@@ -241,27 +241,27 @@ Existem várias maneiras de usar ativos armazenados em Needle Cloud noutros moto
       Use a ligação `Upload` (para carregamentos gltf/glb) ou `Converted` (para outros carregamentos).
 
 3. **Componente Needle Cloud Asset**  
-   Se estiver a usar Needle Engine, pode usar o componente `Needle Cloud Asset` para carregar ativos em tempo de execução. Ele escolherá automaticamente a melhor ligação para a sua plataforma e carregará o ativo com Progressive Loading. Isto também é suportado em tempo de execução em Unity Builds.
+   Se estiver a usar Needle Engine, pode usar o componente `Needle Cloud Asset` para carregar assets em runtime. Ele escolherá automaticamente a melhor ligação para a sua plataforma e carregará o asset com Progressive Loading. Isto também é suportado em runtime em Unity Builds.
 
-## CLI para Ativos
+## CLI para Assets
 
-A interface de linha de comando (CLI) para Needle Cloud permite automatizar o carregamento e a compressão de ficheiros. O CLI pode ser usado como parte de um passo de construção (substituindo um ativo por uma versão otimizada), ou como uma ferramenta autónoma (para processamento em lote de ficheiros).
+A interface de linha de comando (CLI) para Needle Cloud permite automatizar o carregamento e a compressão de ficheiros. O CLI pode ser usado como parte de um passo de build (substituindo um asset por uma versão otimizada), ou como uma ferramenta autónoma (para processamento em batch de ficheiros).
 
 Consulte [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) para mais informações sobre o CLI e como usá-lo.
 
 ## Perguntas Frequentes
 
 1. **O que é Needle Cloud?**  
-   É um serviço online para carregar, comprimir e partilhar ativos e cenas 3D.
+   É um serviço online para carregar, comprimir e partilhar assets e cenas 3D.
 
-2. **Como carrego ativos para Needle Cloud?**  
+2. **Como carrego assets para Needle Cloud?**  
    Pode carregar ficheiros arrastando-os para o website, ou carregando-os diretamente de integrações suportadas. Se tiver muitos ficheiros, pode usar o CLI (command line interface) ou a API (application programming interface).
 
 3. **Como transfiro ficheiros otimizados de Needle Cloud?**  
    Pode transferir ficheiros do website. Clique em `Share` e depois em `Download`. Também pode usar o CLI para transferir ficheiros.
 
 4. **Posso partilhar os meus ficheiros com outros?**  
-   Sim, pode criar ligações para partilhar os seus ficheiros. As ligações podem ser ligações de transferência direta ou ligações para o visualizador Needle Cloud.
+   Sim, pode criar ligações para partilhar os seus ficheiros. As ligações podem ser ligações de transferência direta ou ligações para o Needle Cloud viewer.
 
 5. **Existe um limite para o tamanho dos ficheiros?**  
    Os limites de carregamento dependem do seu plano. Verifique os detalhes da sua conta para mais informações.

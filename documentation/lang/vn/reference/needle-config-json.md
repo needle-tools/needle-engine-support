@@ -37,7 +37,6 @@ title: needle.config.json
       "cards"
     ]
   }
-}
 ```
 
 #### Ví dụ với baseUrl khác (ví dụ: SvelteKit, Next.js)
@@ -55,5 +54,6 @@ Các tệp được xuất sang `static/assets` nhưng framework phục vụ ch�
 
 #### Các liên kết liên quan
 - [Project Structure](../project-structure.md)
+
 
 Trang được dịch tự động bằng AI

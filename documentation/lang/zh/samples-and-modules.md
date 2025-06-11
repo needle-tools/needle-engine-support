@@ -8,20 +8,20 @@ title: 示例项目
 在 [engine.needle.tools/samples](https://engine.needle.tools/samples) 查看所有示例，包含实时预览以及下载和安装链接。
   
 <!-- - [Brune Simons 20k](https://engine.needle.tools/samples/buno-simon-20k)  
-  *物理*
+  *Physics*
 - [Stencil Portals](https://engine.needle.tools/samples/stencil-portals)  
-  *URP RenderObject 模板到 threejs*
+  *URP RenderObject stencil to threejs*
 - [Custom Shaders](https://engine.needle.tools/samples/custom-shaders)  
-  *Unity ShaderGraph 到 threejs*
+  *Unity ShaderGraph to threejs*
 - [Sandbox](https://needle-tiny-starter.glitch.me/)  
-  *多用户沙盒构建器*
+  *Multi-user sandbox builder*
 - [VideoPlayer](https://needle-videoplayer-sample.glitch.me/)  
-  *最小化的 Unity VideoPlayer 示例*  
+  *Minimal Unity VideoPlayer sample*  
 - [UI Button](https://engine.needle.tools/samples/ui-button)   
-  *最小化的 UI 按钮事件示例*
+  *Minimal UI button event sample*
 - [Spatial Trigger](https://needle-spatial-trigger-sample.glitch.me/)  
-  *在你的世界中定义区域并连接来自 Unity 的事件*
-- 以及[更多](https://engine.needle.tools/samples/)
+  *Define areas in your world and hookup events from Unity*
+- and [more](https://engine.needle.tools/samples/)
 
 ---
 
@@ -41,7 +41,6 @@ title: 示例项目
 <!-- <actiongroup>
 <action href="https://github.com/needle-tools/needle-engine-samples">在 github 获取示例</action>
 </actiongroup> -->
-
 
 ---
 页面由 AI 自动翻译

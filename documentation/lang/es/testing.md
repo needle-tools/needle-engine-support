@@ -105,5 +105,4 @@ El certificado se instala automáticamente en la máquina en la que lo generó. 
 4. Seleccione el archivo `rootCA.pem` (es posible que deba cambiar el tipo de archivo a "todos") y siga las instrucciones.
 
 
----
 Página traducida automáticamente con IA

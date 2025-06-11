@@ -8,11 +8,12 @@ O seguinte guia tenta destacar algumas das principais diferenças entre C#, Java
 
 Aqui ficam também alguns recursos úteis para aprender a escrever Typescript:
 
-- [Tutorial de Typescript](https://www.typescripttutorial.net/)
-- [Aprender Typescript](https://www.tutorialsteacher.com/typescript)
-- [Documentação de Typescript](https://www.typescriptlang.org/docs/)
+- [Typescript Tutorial](https://www.typescripttutorial.net/)
+- [Learn Typescript](https://www.tutorialsteacher.com/typescript)
+- [Typescript Documentation](https://www.typescriptlang.org/docs/)
 
 ### Principais diferenças entre C#, Javascript ou Typescript
+
 
 **CSharp** ou **C#** é uma linguagem de tipo estático e compilada. Significa que **antes** do seu código poder correr (ou ser executado), tem de ser compilado - traduzido - para IL ou CIL, uma linguagem intermédia que está um pouco mais perto do *código de máquina*. A parte importante a entender aqui é que o seu código é analisado e tem de passar certas verificações e regras que são **aplicadas** pelo compilador. Obterá erros de compilação **no Unity** e a sua aplicação nem sequer começará a correr se escrever código que viole alguma das regras da linguagem C#. Não conseguirá entrar no Play-Mode com erros de compilação.
 
@@ -27,7 +28,7 @@ O **Vanilla Javascript** (até hoje) **não** tem qualquer conceito de *tipos*: 
 
 Como mencionado acima, o **Typescript** foi criado para ajudar a corrigir esse problema, adicionando sintaxe para definir tipos.
 
-É importante entender que *basicamente* ainda escreve Javascript quando escreve Typescript e, embora *seja* possível contornar todas as verificações de tipo e segurança, por exemplo, adicionando `//@ts-ignore` acima de uma linha errada ou definindo todos os tipos como `any`, isto **não é de todo recomendado**. Os tipos estão aqui para o ajudar a encontrar erros antes que realmente aconteçam. Não quer realmente implementar o seu site no seu servidor apenas para mais tarde receber relatórios de utilizadores ou visitantes a dizer que a sua aplicação falhou enquanto estava a correr.
+É importante entender que *basicamente* ainda escreve Javascript quando escreve Typescript e, embora *seja* possível contornar todas as verificações de tipo e segurança, por exemplo, adicionando ``//@ts-ignore`` acima de uma linha errada ou definindo todos os tipos como ``any``, isto **não é de todo recomendado**. Os tipos estão aqui para o ajudar a encontrar erros antes que realmente aconteçam. Não quer realmente implementar o seu site no seu servidor apenas para mais tarde receber relatórios de utilizadores ou visitantes a dizer que a sua aplicação falhou enquanto estava a correr.
 
 Embora o *Vanilla Javascript* não ofereça tipos, ainda pode adicionar anotações de tipo às suas variáveis, classes e métodos javascript usando **[JSDoc](https://jsdoc.app/)**.
 
@@ -49,7 +50,7 @@ Por favor, note que *ainda pode* atribuir valores a variáveis declaradas com co
 import { Vector3 } from "three";
 // ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
-myPosition.x = 100; // Atribuir x é perfeitamente válido
+myPosition.x = 100; // Assigning x is perfectly fine
 ```
 O acima é código Typescript perfeitamente válido porque não reatribui `myPosition`, mas apenas o membro `x` de `myPosition`. Por outro lado, o seguinte exemplo **não** seria permitido e causaria um erro de execução ou typescript:
 ```ts twoslash
@@ -57,7 +58,7 @@ O acima é código Typescript perfeitamente válido porque não reatribui `myPos
 import { Vector3 } from "three";
 // ---cut-before---
 const myPosition : Vector3 = new Vector3(0, 0, 0);
-myPosition = new Vector3(100, 0, 0); // ⚠ ATRIBUIR A CONST NÃO É PERMITIDO
+myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
 ```
 
 ### Usando ou Importando Tipos

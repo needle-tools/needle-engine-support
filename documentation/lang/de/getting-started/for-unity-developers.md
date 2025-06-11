@@ -96,7 +96,6 @@ for (const child of this.gameObject.children) {
 Sie können auch spezifische three.js-Methoden verwenden, um alle Objekte rekursiv schnell zu durchlaufen, indem Sie die [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse)-Methode verwenden:
 ```ts twoslash
 import { GameObject } from "@needle-tools/engine";
-//---cut-before---
 this.gameObject.traverse((obj: GameObject) => console.log(obj))
 ```
 oder um nur sichtbare Objekte zu durchlaufen, verwenden Sie stattdessen [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible).
@@ -223,19 +222,17 @@ Beachten Sie, dass Sie in diesem Fall alle Fälle selbst behandeln müssen. Zum 
 ## InputSystem Callbacks
 Ähnlich wie in Unity (siehe [IPointerClickHandler in Unity](https://docs.unity3d.com/Packages/com.unity.ugui@1.0/api/UnityEngine.EventSystems.IPointerClickHandler.html)) können Sie sich auch registrieren, um Input-Events auf der Komponente selbst zu empfangen.
 
-Stellen Sie sicher, dass Ihr Objekt eine ``ObjectRaycaster``- oder ``GraphicRaycaster``-Komponente in der übergeordneten Hierarchie hat, damit dies funktioniert.
-
 ```ts twoslash
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, PointerEventData } from "@needle-tools/engine";
 
-export class ReceiveClickEvent extends Behaviour implements IPointerEventHandler {
+export class ReceiveClickEvent extends Behaviour {
     onPointerClick(args: PointerEventData) {
         console.log("Click", args);
     }
 }
 ```
 
-Hinweis: `IPointerEventHandler` abonniert das Objekt für alle möglichen Pointer-Events. Die Handler dafür sind:
+Verfügbare Pointer-Events für alle Komponenten:
 - `onPointerDown`
 - `onPointerUp`
 - `onPointerEnter`
@@ -250,8 +247,6 @@ Das Äquivalent zu `Debug.Log()` in Javascript ist `console.log()`. Sie können 
 ```ts twoslash
 import { GameObject, Renderer } from "@needle-tools/engine";
 const someVariable = 42;
-// ---cut-before---
-
 console.log("Hello web");
 // Sie können beliebig viele Argumente wie folgt übergeben:
 console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
@@ -264,7 +259,6 @@ Hier ist ein Beispiel, um eine rote Drahtkugel für eine Sekunde zu zeichnen, z.
 ```ts twoslash
 import { Vector3 } from "three";
 const hit = { point: new Vector3(0, 0, 0) };
-// ---cut-before---
 import { Gizmos } from "@needle-tools/engine";
 Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
 ```
@@ -411,5 +405,6 @@ Sie können das fertige Skript in Aktion [hier](https://stackblitz.com/edit/need
 - [Scripting in Needle Engine](../scripting)
 - [Typescript Essentials](./typescript-essentials.md)
 - [Component Reference](../component-reference.md)
+
 
 Seite automatisch mit KI übersetzt

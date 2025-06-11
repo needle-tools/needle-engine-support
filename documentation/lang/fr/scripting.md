@@ -494,11 +494,11 @@ Pour sérialiser vers et depuis des formats personnalisés, il est possible d'é
 > **Note** : En plus des champs correspondants, les propriétés correspondantes seront également exportées si elles correspondent à des champs dans le fichier typescript.
 
 ## Chargement de scènes
-Dans Unity, les Prefabs référencés, les SceneAssets et les AssetReferences (système Addressable de Unity) seront automatiquement exportés sous forme de fichiers glTF (veuillez vous référer à la documentation [Exporter les Prefabs](export.md)).
+In Unity referenced Prefabs, SceneAssets and AssetReferences (Unity's Addressable System) will automatically be exported as glTF files (please refer to the [Export Prefabs](export.md) documentation).
 
-Ces fichiers gltf exportés seront sérialisés sous forme d'URIs de chaîne de caractères simples. Pour simplifier leur chargement à partir de composants TypeScript, nous avons ajouté le concept de types ``AssetReference``. Ils peuvent être chargés au runtime et permettent ainsi de différer le chargement de parties de votre application ou le chargement de contenu externe.
+These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components, we added the concept of ``AssetReference`` types. They can be loaded at runtime and thus allow to defer loading parts of your app or loading external content.
 
-**Exemple :**
+**Example:**
 @[code ts twoslash](@code/component-prefab.ts)
 
 Les AssetReferences sont mis en cache par URI, donc si vous référencez le même glTF/Prefab exporté dans plusieurs composants/scripts, il ne sera chargé qu'une seule fois et ensuite réutilisé.
