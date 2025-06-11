@@ -124,5 +124,6 @@ jobs:
 
       - name: Test Links
         run: npm run test:links
+        timeout-minutes: 10
         env:
           DEPLOY_DISCORD_WEBHOOK: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
