@@ -23,4 +23,4 @@ There's currently a max limit for "users online at the same time" - if you don't
 
 This page was authored in Unity and exported to three.js using tools and technologies by 🌵 needle.
 
-There are a lot of open technologies involved: 3D models are in glTF format, the render engine is three.js, VR and AR are using WebXR. The networking server runs on Glitch, and audio is sent over WebRTC using PeerJS.
+There are a lot of open technologies involved: 3D models are in glTF format, the render engine is three.js, VR and AR are using WebXR. The networking server runs on Needle infrastructure, and audio is sent over WebRTC using PeerJS.

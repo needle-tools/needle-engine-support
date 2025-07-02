@@ -222,11 +222,6 @@ You might want to host your own networking server for larger deployments or to h
 
 Our networking server is available on NPM [own networking package](https://fwd.needle.tools/needle-engine/packages/needle-engine-networking) as node.js package. The package contains pre-configured integrations for the popular web frameworks [Fastify](https://www.npmjs.com/package/fastify) and [Express](https://www.npmjs.com/package/express), and can be integrated into other Node.js server frameworks as well.
 
-::: tip For quick experiments: Remix on Glitch
-You can remix a simple networking server running on Glitch from this page: [needle-networking.glitch.me](https://needle-networking.glitch.me/) by clicking the button in the bottom right corner.
-
-The default Glitch server instance is small and can only handle a limited amount of users. If you expect more than 15-20 people to be in your scene at the same time, you should consider hosting your networking server elsewhere (like on Google Cloud or AWS).
-:::
 
 ::::code-group
 :::code-group-item Fastify
@@ -268,9 +263,6 @@ yourFramework.createWebsocketRoute(options.endpoint, frameworkWebsocket => {
 :::
 ::::
 
-::: tip Example on Glitch.com
-See the code on [glitch.com/edit/#!/needle-networking](https://glitch.com/edit/#!/needle-networking?path=server.js) for an example of how to integrate Needle Networking with an Express server.
-:::
 
 ### Configuration
 

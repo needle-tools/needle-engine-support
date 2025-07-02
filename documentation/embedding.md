@@ -35,7 +35,7 @@ The most common workflows to bring Needle Engine to your website are:
 
 ## Using the "Deploy to ..." components
 
-Our Needle Engine integrations ship with built-in deployment options. You can deploy your project to Needle Cloud, FTP servers, Glitch, Itch.io, GitHub Pages, and more with just a few clicks. 
+Our Needle Engine integrations ship with built-in deployment options. You can deploy your project to Needle Cloud, FTP servers, Itch.io, GitHub Pages, and more with just a few clicks. 
 
 See the [Deployment](./deployment.md) section for more information on each of these options.
 

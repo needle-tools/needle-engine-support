@@ -78,7 +78,7 @@ body:
     id: reproduction-steps
     attributes:
       label: Steps to reproduce 🔢
-      description: Please provide any reproduction steps that may need to be described. E.g. if it happens only when deploying to glitch or doing something specific in the editor or when making production or development builds make sure this is clear
+      description: Please provide any reproduction steps that may need to be described. E.g. if it happens only doing something specific in the editor or when making production or development builds make sure this is clear
       placeholder: Create a new minimal template, add _this_ script and start the server
       value: |
         1.

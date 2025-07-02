@@ -212,17 +212,14 @@ It uses spatial audio, animation, and tap interactions.
 
 There's also other options for guiding iOS users to even more capable interactive AR experiences:
 
-3. **Exporting content on-the-fly as USDZ files.**  
+1. **Exporting content on-the-fly as USDZ files.**  
    These files can be displayed on iOS devices in AR. When exported from scenes with Everywhere Actions the interactivity is the same, more than sufficient for product configurators, narrative experiences and similar.
    An example is [Castle Builder](https://castle.needle.tools) where creations (not the live session) can be viewed in AR.  
 
- > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** uses this approach. Players can collaboratively place text into the scene on their screens and then view the results in AR on iOS. On Android, they can also interact right in WebXR.   
- > — #madewithneedle by Katja Rempel 💚  
-
-1. **Guiding users towards WebXR-compatible browsers on iOS.**
+2. **Guiding users towards WebXR-compatible browsers on iOS.**
    Depending on your target audience, you can guide users on iOS towards for example Mozilla's [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.  
    
-2. **Using camera access and custom algorithms on iOS devices.**  
+3. **Using camera access and custom algorithms on iOS devices.**  
    One can request camera image access and run custom algorithms to determine device pose.  
    While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:  
    - [AR.js](https://github.com/AR-js-org/AR.js) (open source)

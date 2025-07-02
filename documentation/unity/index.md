@@ -34,7 +34,6 @@ Needle Engine for Unity allows you to create highly interactive, flexible and li
   </needle-button> 
 </NoDownloadYet>
 
-<!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
 
 1. **Drop the downloaded .unitypackage file** into a Unity project and confirm that you want to import it.
 

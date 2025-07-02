@@ -31,7 +31,7 @@ Lightmaps can be baked in Unity or Blender to easily add beautiful static light 
 - Read more about [Exporting Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps)
 
 ## Multiplayer and Networking
-Networking is built into the core runtime. Needle Engine deployments to Glitch come with a tiny server that allows you to deploy a multiplayer 3D environment in seconds. The built-in networked components make it easy to get started, and you can create your own synchronized components. Synchronizing variables and state is super easy!  
+Networking is built into the core runtime. The built-in networked components make it easy to get started, and you can create your own synchronized components. Synchronizing variables and state is super easy!  
 
 - Read more about [Networking](https://fwd.needle.tools/needle-engine/docs/networking) • [Scripting](https://fwd.needle.tools/needle-engine/docs/scripting)
 

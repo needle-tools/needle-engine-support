@@ -148,7 +148,6 @@ It is also used for uploading (deploying) your website to the internet.
 
 4. **Make it your own**  
   Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
-  You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
 -->
 
 
