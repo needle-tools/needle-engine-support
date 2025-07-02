@@ -838,7 +838,7 @@ To build your web project for uploading to any web server you can click **Build*
 
 To locally preview your final build you can use the `Preview Build` button at the bottom of the window. This button will first perform a regular build and then start a local server in the directory with the final files so you can see what you get once you upload these files to your webserver.
 
-Nodejs is **only** required during development. The distributed website (using our default vite template) is a static page that doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
+Nodejs is **only** required during development. The distributed website (using our default Vite template) is a static page that doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
 
 
 ---
@@ -1530,8 +1530,8 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 
 ## Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
 
-If you are using vite or next.js make sure to add the Needle Engine plugins to your config.
-Example for vite:
+If you are using Vite or next.js make sure to add the Needle Engine plugins to your config.
+Example for Vite:
 ```js
 const { needlePlugins } = await import('@needle-tools/engine/plugins/vite/index.js');
 plugins: [needlePlugins(command, needleConfig)]
@@ -1918,7 +1918,7 @@ Here's some example tech stacks that are possible and that we use Needle Engine 
 - **Vercel & Nextjs** — Find a [example nextjs project here](https://github.com/needle-engine/nextjs-sample)
 - **CDN without any bundler** — Find a code example [here](./vanilla-js.md)
 
-In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
+In short: we're currently providing a minimal Vite template, but you can extend it or switch to other frameworks –  
 Let us know what and how you build, and how we can improve the experience for your usecase or provide an example!
 
 :::tip
@@ -1965,7 +1965,7 @@ Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleCo
 
 ## Creating a PWA
 
-We support easily creating a Progressive Web App (PWA) directly from our vite template.  
+We support easily creating a Progressive Web App (PWA) directly from our Vite template.  
 PWAs are web applications that load like regular web pages or websites but can offer user functionality such as working offline, push notifications, and device hardware access traditionally available only to native mobile applications.   
 
 By default, PWAs created with Needle have offline support, and can optionally refresh automatically when you publish a new version of your app. 
@@ -1991,7 +1991,7 @@ export default defineConfig(async ({ command }) => {
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
+        // the rest of your Vite config...
 ```
 
 :::tip All assets are cached by default
@@ -7070,7 +7070,7 @@ If you find yourself creating many similar projects, you can create your own loc
 
 -----
 
-When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a vite based web template). 
+When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a Vite based web template). 
 
 You can also reference remote templates by entering a repository URL in the ExportInfo project path (this can be saved with your scene for example). When creating a new web project the repository will be either cloned or downloaded (depending on if you have git installed) and searched for a `needle.config.json` file. If none can be found in the cloned repository the root directory will be used. Examples of remote template projects can be found on [github.com/needle-engine](https://github.com/needle-engine)
 

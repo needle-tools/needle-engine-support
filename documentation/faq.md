@@ -66,8 +66,8 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 
 ## Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
 
-If you are using vite or next.js make sure to add the Needle Engine plugins to your config.
-Example for vite:
+If you are using Vite or next.js make sure to add the Needle Engine plugins to your config.
+Example for Vite:
 ```js
 const { needlePlugins } = await import('@needle-tools/engine/plugins/vite/index.js');
 plugins: [needlePlugins(command, needleConfig)]

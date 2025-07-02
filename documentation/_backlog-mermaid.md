@@ -13,7 +13,7 @@ flowchart LR
 flowchart LR
     Editor([Unity Editor]) --> EditorExt([Components + Tools])
     EditorExt -- export data --> glTF([glTF + Extensions])
-    glTF --> Bundler([Bundler - vite])
+    glTF --> Bundler([Bundler - Vite])
     Runtime([Needle Runtime]) --> Bundler
     Three([Three.js]) --> Bundler
     YourWebsite([Classic web files - HTML, CSS, JS]) --> Bundler

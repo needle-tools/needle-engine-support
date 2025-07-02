@@ -116,7 +116,7 @@ If you find yourself creating many similar projects, you can create your own loc
 
 -----
 
-When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a vite based web template). 
+When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a Vite based web template). 
 
 You can also reference remote templates by entering a repository URL in the ExportInfo project path (this can be saved with your scene for example). When creating a new web project the repository will be either cloned or downloaded (depending on if you have git installed) and searched for a `needle.config.json` file. If none can be found in the cloned repository the root directory will be used. Examples of remote template projects can be found on [github.com/needle-engine](https://github.com/needle-engine)
 
