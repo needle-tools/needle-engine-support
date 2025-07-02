@@ -30,7 +30,7 @@ Here's some example tech stacks that are possible and that we use Needle Engine 
 - **Vercel & Nextjs** — Find a [example nextjs project here](https://github.com/needle-engine/nextjs-sample)
 - **CDN without any bundler** — Find a code example [here](./vanilla-js.md)
 
-In short: we're currently providing a minimal vite template, but you can extend it or switch to other frameworks –  
+In short: we're currently providing a minimal Vite template, but you can extend it or switch to other frameworks –  
 Let us know what and how you build, and how we can improve the experience for your usecase or provide an example!
 
 :::tip
@@ -77,7 +77,7 @@ Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleCo
 
 ## Creating a PWA
 
-We support easily creating a Progressive Web App (PWA) directly from our vite template.  
+We support easily creating a Progressive Web App (PWA) directly from our Vite template.  
 PWAs are web applications that load like regular web pages or websites but can offer user functionality such as working offline, push notifications, and device hardware access traditionally available only to native mobile applications.   
 
 By default, PWAs created with Needle have offline support, and can optionally refresh automatically when you publish a new version of your app. 
@@ -103,7 +103,7 @@ export default defineConfig(async ({ command }) => {
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
+        // the rest of your Vite config...
 ```
 
 :::tip All assets are cached by default
