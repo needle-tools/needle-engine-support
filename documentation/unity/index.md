@@ -135,7 +135,7 @@ C# component stubs for typescript files will also be automatically generated for
 
 #### Creating and installing a npmdef
 To create a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
-You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Export Info`` component and adding it to the ``dependencies`` list (internally this will just add the underlying npm package to your package.json).
+You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Needle Engine`` component (formerly ``Export Info``) and adding it to the ``dependencies`` list (this effectively adds the npmdef package to your web project's package.json in the `dependencies` array just like you would do it manually or by running `npm i <path/to/package>`).
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
