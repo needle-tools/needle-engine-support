@@ -13,9 +13,9 @@ description: 'Needle Cloud is an online service. It helps you store, manage, and
 ## Overview
 
 Needle Cloud is an online service. It helps you store, manage, and share 3D assets and apps on the web.
-A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed to the cloud directly from the Unity integration, and via command line (CLI). The Blender integration is coming at a later point; you can use the CLI in the meantime.
+A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed directly from the [Unity integration](#deploy-from-unity) or our Needle Cloud [command line interface](#deploy-from-the-cli) (CLI).
 
-Visit [Needle Cloud](https://cloud.needle.tools) to get started.
+Visit [Needle Cloud](https://cloud.needle.tools) to create an account for free.
 
 ![Needle Cloud Overview](/cloud/cloud-overview-page.webp)
 
@@ -39,6 +39,7 @@ Visit [Needle Cloud](https://cloud.needle.tools) to get started.
 
 6. **License Management**  
    Licenses for Needle Engine for solo creators and teams are managed through Needle Cloud. This ensures only authorized users can access your files and projects. Contact us for Enterprise and Edu licenses.
+
 
 ## Deploy from Unity
 
@@ -249,6 +250,20 @@ The command line interface (CLI) for Needle Cloud allows automating file uploads
 
 See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more information about the CLI and how to use it.
 
+
+## RBAC (role-based access control)
+
+Teams consist of members, and each member of a team can get assigned a role. These roles define what you can and cannot do within a team on Needle Cloud.
+
+As your project scales and you add more team members, you can assign them roles to ensure that they have the right permissions to work on your projects.
+
+| | |
+| -- | -- |
+| **Owner** | Highest level of authority. The owner role can manage the whole team (including billing and member roles), see all projects, uploads and deployments  |
+| **Manager** | The manager role can manage the whole team (including billing and member roles), see all projects, uploads and deployments |
+| **Billing** | The billing role is specialized for financial operations, can oversee the team's billing information, review and manage project cost and handle payment options. <br/>The billing role has view-only access to deployments and assets and can not perform deployments or upload assets. <br/>The billing role can be assigned at no extra cost. The role is limited to one member per team. |
+| **Member** | The member role (developer role) can create deployments, upload/download assets for optimization or use AI features. |
+
 ## FAQ
 
 1. **What is Needle Cloud?**   
@@ -271,3 +286,6 @@ See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more info
 
 7. **What happens if I run out of storage space?**   
    You might need to upgrade your plan or delete old files to make room.
+
+8. **More answers**   
+   Visit the [Needle Cloud FAQ](https://cloud.needle.tools/faq)
