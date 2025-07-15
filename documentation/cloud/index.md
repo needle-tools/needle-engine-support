@@ -47,7 +47,7 @@ Needle Cloud is integrated into the Unity Editor. This allows you to deploy your
 1. **Install the Unity integration, if you haven't already.**   
    See [this page](./../unity/) for more info.
 
-2. **Add the `Export Info` component to your scene.**   
+2. **Add the `Needle Engine` component (formerly ExportInfo) to your scene.**   
    This component is used to configure the export settings for your app.  
    You can use the menu item `GameObject > Needle Engine > Add Export Info` or create a new scene from a Needle template via the menu item `File > New Scene`.
 
