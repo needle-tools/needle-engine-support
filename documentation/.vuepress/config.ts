@@ -603,6 +603,21 @@ if (existsSync(rootLanguageDirectory)) {
     }
 }
 
+const patterns: string[] = [
+    // default patterns
+    '**/*.md',
+    '!.vuepress',
+    '!node_modules',
+    // exclude pages that start with _ and end with .md
+    '!**/_*.md',
+];
+
+if (process.env.NODE_ENV === "development") {
+    console.log("Development mode: Excluding all language files");
+    // in development, we want to include all language files
+    patterns.push('!**/lang/**/*.md');
+}
+
 
 export default defineUserConfig({
     base: _base,
@@ -610,14 +625,7 @@ export default defineUserConfig({
     title: _title,
     dest: "dist",
     description: _description,
-    pagePatterns: [
-        // default patterns
-        '**/*.md',
-        '!.vuepress',
-        '!node_modules',
-        // exclude pages that start with _ and end with .md
-        '!**/_*.md',
-    ],
+    pagePatterns: patterns,
     locales: siteLocaleOptions,
     plugins: [
         // searchPlugin({

@@ -22,6 +22,7 @@ export const generateSharedCode = (config) => {
     return {
         name: 'generate-shared-code',
         async onInitialized(app) {
+            console.log("Generating shared code contributions");
             await getSharedCode();
             console.log("Adding contribution pages");
             await generateContributionPages(app, config);
