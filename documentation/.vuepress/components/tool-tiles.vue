@@ -9,7 +9,7 @@
             <template v-slot:tool-description>
                 Unity 2021.3 LTS<br/>
                 Unity 2022.3 LTS<br/>
-                Unity 6
+                Unity 6 LTS
             </template>
             <template v-slot:download-button>
                 <needle-button 
