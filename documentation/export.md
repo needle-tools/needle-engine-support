@@ -93,22 +93,22 @@ If you don't want to skybox to be exported at all in a glb file you can untick t
 ### Physically Based Materials (PBR)
 By default, materials are converted into glTF materials on export. glTF supports a physically based material model and has a number of extensions that help to represent complex materials.  
 
-For full control over what gets exported, it's highly recommended to use the glTF materials provided by UnityGltf:
-- PBRGraph
-- UnlitGraph
+For full control over what gets exported, it's **highly recommended** to use the glTF materials provided by UnityGltf:
+- UnityGLTF/PBRGraph
+- UnityGLTF/UnlitGraph
 
-::: tip When in doubt, use the PBRGraph shader
-The PBRGraph material has a lot of features, way more than Standard or URP/Lit. These include advanced features like refraction, iridescence, sheen, and more. Additionally, materials using PBRGraph and UnlitGraph are exported as-is, with no conversion necessary. 
+::: tip When in doubt, use the PBRGraph shader.
+The PBRGraph material has a lot of features, way more than the "Standard" or "Lit" shaders provided by Unity. These features include surface effects like clearcoat, sheen, iridescence, and volumetric effects like transmission, refraction and dispersion.
 :::
 
-Materials that can be converted out-of-the-box:
-- BiRP/Standard
-- BiRP/Autodesk Interactive
-- BiRP/Unlit
-- URP/Lit
-- URP/Unlit
+Other shaders that can be exported directly (with conversion):
+- Universal Render Pipeline/Lit
+- Universal Render Pipeline/Unlit
+- Standard (Built-in Render Pipeline)
+- Autodesk Interactive (Built-in Render Pipeline)
+- Unlit (Built-in Render Pipeline)
 
-Other materials are converted using a propery name heuristic. That means that depending on what property names your materials and shaders use, you might want to either refactor your custom shader's properties to use the property names of either URP/Lit or PBRGraph, or export the material as [Custom Shader](#custom-shaders).
+Other materials are converted using a propery name heuristic. That means that depending on what property names your materials and shaders use, you might want to either refactor your custom shader's properties to use the property names of either Universal Render Pipeline/Lit or PBRGraph, or export the material as [Custom Shader](#custom-shaders).
 
 ### Custom Shaders
 To export custom unlit shaders (for example made with ShaderGraph), add an ``ExportShader`` Asset Label to the shader you want to export. Asset Labels can be seen at the bottom of the Inspector window.
@@ -125,7 +125,7 @@ To export custom unlit shaders (for example made with ShaderGraph), add an ``Exp
   - X axis values are flipped in glTF compared to Unity. This is a variant of a left-handed to right-handed coordinate system change. Data used in shaders may need to be flipped on X to display correctly.  
 
 ::: note Not part of the glTF specification
-Note that **Custom Shaders** aren't officially part of the glTF specification. Our implementation of custom shaders uses an extension called KHR_techniques_webgl, that stores the WebGL shader code directly in the glTF file. The resulting assets will work in viewers based on Needle Engine, but may not display correctly in other viewers.
+Note that **Custom Shaders** aren't officially part of the glTF specification. Our implementation of custom shaders uses an extension called KHR_techniques_webgl, that stores the WebGL shader code directly in the glTF file. The resulting assets will work in viewers based on Needle Engine.
 :::
 
 ## 💡 Exporting Lightmaps 

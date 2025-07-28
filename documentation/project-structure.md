@@ -65,24 +65,24 @@ Needle Engine is very flexible. You can modify the existing web project or use y
 
 ## Opening the web project in a code editor
 
-We recommend Visual Studio Code as code editor, because it has great support for web development in general, and TypeScript in particular. When you generate a web project, we automatically create a `.code-workspace` file that you can open in Visual Studio Code. This file contains the configuration for the workspace, including the folders to include and the settings for the editor.
+We recommend [Visual Studio Code](https://code.visualstudio.com/) as code editor, because it has great support for web development in general, and TypeScript in particular. When you generate a web project, we automatically create a `.code-workspace` file that you can open in Visual Studio Code. This file contains the configuration for the workspace, including the folders to include and the settings for the editor.
 
 ::: tabs
 @tab Unity
 
-Click on <kbd>Open Code Editor</kbd> on the Needle Engine component. This will open the web project in Visual Studio Code, with all the folders and files included.
+Click on <kbd>Open Code Editor</kbd> on the **Needle Engine** component. This will open the web project in Visual Studio Code, with all the folders and files included.
 
 <img src="/imgs/unity-open-code-editor.png" alt="Opening the Code Editor from Unity" srcset="/imgs/unity-open-code-editor.png 2x" />
 
 @tab Blender
 
-Click on <kbd>Open Code Editor</kbd> on the `Scene > Needle Engine` panel. This will open the web project in Visual Studio Code, with all the folders and files included.
+Click on <kbd>Open Code Editor</kbd> on the **Scene > Needle Engine** panel. This will open the web project in Visual Studio Code, with all the folders and files included.
 
 <img src="/imgs/blender-open-code-editor.png" alt="Opening the Code Editor from Finder" srcset="/imgs/blender-open-code-editor.png 2x" />
 
 @tab Find it in Explorer or Finder
 
-Open the `.code-workspace` file in Visual Studio Code. This will open the web project in a new workspace, with all the folders and files included. You can of course also open the web project folder in other code editors if you prefer.
+Double-click the `.code-workspace` file. This will open the web project in Visual Studio Code, with all the folders and files included. You can of course also open the web project folder in other code editors if you prefer.
 
 <img src="/imgs/finder-open-code-editor.png" alt="Opening the Code Editor from Finder" srcset="/imgs/finder-open-code-editor.png 2x" />
 
@@ -92,34 +92,96 @@ Open the `.code-workspace` file in Visual Studio Code. This will open the web pr
 
 The default web project is based on a standard structure that follows modern web development practices. It uses the excellent [Vite](https://vitejs.dev/) as development environment, bundler, and build tool. The following sections describe the structure of a typical Needle Engine web project. 
 
-:::tip  Click on any file or folder to learn more about it!
+
+
+:::tip The place you'll most commonly interact with is `src/scripts/`.
+This is where you add your own components, written in TypeScript.
+:::
+
+:::: file-tree name="Web Project File"
+
+::: file index.html
+The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder.
 
 :::
 
-::: file-tree
-| File | Description |
-| --- | --- |
-| index.html | The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder. |
-| assets/ | The asset folder contains 3D and other files exported by the integration. This includes  `.glb` files, audio or video files. The folder is managed by the integration, so if you want to add additional assets, put them into `include/`instead.
-| assets/MyScene.glb | The exported 3D scene from Unity or Blender is automatically placed here. The filename depends on how your Unity or Blender scene is named. There may be more files in this directory, depending on how your project is set up. For example, if you have multiple scenes, or reference audio/video files, they will be in here as well. |
-| src/ | The source code of your web project. This is where you write your scripts, styles, and other code that makes up your web app. Needle places some generated files here, and you can add your own code as well. |
-| src/main.ts | This script is included from `index.html` and runs at startup. It imports `@needle-tools/engine` and loads the main engine code. You can add plugins for Needle Engine here. |
-| src/scripts/ | Add your custom scripts in this directory. Our [component compiler](./component-compiler.md) will automatically generate stub components for Unity and Blender from them. |
-| src/scripts/MyComponent.ts | An example of a custom script that will be compiled into a Unity C# component or Blender panel. You can add your own scripts here, and they will be automatically picked up by the component compiler. |
-| src/styles/ | The styles directory contains the stylesheets for your web project. You can add additional stylesheets here and import them in `index.html`. |
-| src/styles/main.css | The default stylesheet for your web project. You can add additional stylesheets here and import them in `main.ts`. |
-| src/generated/ | The files in this folder are **generated and managed** by the Needle integration. Do not edit them manually – they will be overwritten on export. |
-| src/generated/gen.js | **This file is generated**. It tells the `<needle-engine>` web component which file to load initially. |
-| src/generated/meta.json | **This file is generated**. It contains metadata about the project, such as the name of the main scene, the version of Needle Engine used, and other information. |
-| src/generated/register_types.ts | **This file is generated**. It automatically imports custom components that your project uses, both from your code and from dependency packages. |
-| include/ | If you have custom assets that you want to load at runtime, add them to the include directory. On build this directory will be copied to the output folder. |
-| dist/ | The output directory where the built web project is placed. This is where the final web app is generated. It contains the bundled and minified files that are ready to be published to a server. |
-| needle.config.json | The [Needle config](./reference/needle-config-json.md). Needle integrations and build tools use this file. It contains information on where to export assets to, and where the build directory is. |
-| vite.config.js | The [vite config](https://vitejs.dev/config/). Settings for building the distribution and hosting the development server are made here. Usually, you don't need to change this file, but you can add additional plugins or modify the build process if needed.
-| package.json | Project configuration containing name, version, dependencies and development scripts. You can add additional npm packages as dependencies here. |
-| tsconfig.json | This is the Typescript compiler configuration. It tells TypeScript that we're using modern scripting features.  |
-| .gitignore | This file specifies which files and folders should be ignored by the git version control system. The default web project excludes the `/dist`, `node_modules`, and `.vite` folders. If you're using some other version control system than git, you should exclude these folders. |
+::: file assets/
+The asset folder contains 3D and other files exported by the integration. This includes  `.glb` files, audio or video files. The folder is managed by the integration, so if you want to add additional assets, put them into `include/`instead.
+:::
+
+::: file assets/MyScene.glb
+The exported 3D scene from Unity or Blender is automatically placed here. The filename depends on how your Unity or Blender scene is named. There may be more files in this directory, depending on how your project is set up. For example, if you have multiple scenes, or reference audio/video files, they will be in here as well.
+:::
+
+::: file src/
+The source code of your web project. This is where you write your scripts, styles, and other code that makes up your web app. Needle places some generated files here, and you can add your own code as well.
+:::
+
+::: file src/main.ts
+This script is included from `index.html` and runs at startup. It imports `@needle-tools/engine` and loads the main engine code. You can add plugins for Needle Engine here.
+:::
+
+::: file src/scripts/
+Add your custom scripts in this directory. Our [component compiler](./component-compiler.md) will automatically generate stub components for Unity and Blender from them.
+:::
+
+::: file src/scripts/MyComponent.ts
+An example of a custom script that will be compiled into a Unity C# component or Blender panel. You can add your own scripts here, and they will be automatically picked up by the component compiler.
+:::
+
+::: file src/styles/
+The styles directory contains the stylesheets for your web project. You can add additional stylesheets here and import them in `index.html`.
+:::
+
+::: file src/styles/main.css
+The default stylesheet for your web project. Add your own styles here, or create additional stylesheets in the `src/styles/` directory. You can import them in `index.html`.
+:::
+
+::: file src/generated/
+The files in this folder are **generated and managed** by the Needle integration. Do not edit them manually – they will be overwritten on export.
+:::
+
+::: file src/generated/gen.js
+**This file is generated**. It tells the `<needle-engine>` web component which file to load initially.
+:::
+
+::: file src/generated/meta.json
+**This file is generated**. It contains metadata about the project, such as the name of the main scene, the version of Needle Engine used, and other information.
+:::
+
+::: file src/generated/register_types.ts
+**This file is generated**. It automatically imports custom components that your project uses, both from your code and from dependency packages.
+:::
+
+::: file include/
+If you have custom assets that you want to load at runtime, add them to the include directory. On build this directory will be copied to the output folder.
+:::
+
+::: file dist/
+The output directory where the built web project is placed. This is where the final web app is generated. It contains the bundled and minified files that are ready to be published to a server.
+:::
+
+::: file needle.config.json
+The [Needle config](./reference/needle-config-json.md). Needle integrations and build tools use this file. It contains information on where to export assets to, and where the build directory is.
+:::
+
+::: file vite.config.js
+The [vite config](https://vitejs.dev/config/). Settings for building the distribution and hosting the development server are made here. Usually, you don't need to change this file, but you can add additional plugins or modify the build process if needed.
+:::
+
+::: file package.json
+Project configuration containing name, version, dependencies and development scripts. You can add additional npm packages as dependencies here.
+:::
+
+::: file tsconfig.json
+This is the Typescript compiler configuration. It tells TypeScript that we're using modern scripting features.
+:::
+
+::: file .gitignore
+This file specifies which files and folders should be ignored by the git version control system. The default web project excludes the `/dist`, `node_modules`, and `.vite` folders. If you're using some other version control system than git, you should exclude these folders.
 ::: 
+
+::::
 
 Our exporter can be used with other project structures as well. We chose Vite as bundler because of its speed and flexibility. Feel free to set up your own project structure, or use a different bundler like Webpack. Needle Engine is designed to be flexible and can usually be adapted to your needs. [Learn more about bundling and other frameworks](html.md).
 

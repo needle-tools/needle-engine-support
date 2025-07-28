@@ -105,16 +105,24 @@ If you find yourself creating many similar projects, you can create your own loc
 
 ## Project Folders and Files
 
-
-| Folder | |
-| --- | --- |
-| **Unity** | |
-| `Assets` | This is where project specific/exclusive assets live. |
-| `Packages` | This is where packages installed for this project live. A package can contain any asset type. The main difference is that it can be added to multiple Unity projects. It therefor is a great method to share code or assets. To learn more about packages see [the Unity documentation about packages](https://docs.unity3d.com/Manual/PackagesList.html).
-| **Needle Engine Unity Package** | |
-| ``Core/Runtime/Components`` | Contains all Needle Engine built-in components. Learn more about them in the [Components Reference](./../component-reference.md). |
-
------
+:::: file-tree name="Unity Project" showall="true"
+::: file Assets/
+This is where project specific/exclusive assets live.
+::: 
+::: file Packages/
+This is where packages installed for this project live. A package can contain any asset type, and can be added to multiple Unity projects. It therefore is a great method to share code or assets. To learn more about packages, see [the Unity documentation about packages](https://docs.unity3d.com/Manual/PackagesList.html).
+::: 
+::: file Packages/Needle Engine/
+Needle Engine for Unity is a package that contains all the necessary files to export your Unity scene to a web project. It also contains the built-in components and tools for creating interactive web projects. You can update the package via the Unity Package Manager.
+:::
+::: file Packages/Needle Engine/Core/
+:::
+::: file Packages/Needle Engine/Core/Runtime/
+:::
+::: file Packages/Needle Engine/Core/Runtime/Components/
+Contains all built-in components for Needle Engine. You can learn more about them in the [Components Reference](./../component-reference.md). Looking at samples and going through this folder are great ways to see what components are available and how they can be used in your projects.
+:::
+:::: 
 
 When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a Vite based web template). 
 
@@ -129,13 +137,13 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 
 ## Typescript in Unity
 
-**NPM Definition** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor which makes it easily possible to share scripts with multiple web- or even Unity projects.    
+**NPM Definitions** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor, which makes it easily easy to share scripts between multiple web projects or Unity projects.    
 
-C# component stubs for typescript files will also be automatically generated for scripts inside npmdef packages.
+C# component stubs for TypeScript files will also be automatically generated for scripts inside NpmDef packages.
 
-#### Creating and installing a npmdef
-To create a *NPM Definition* right click in the Unity Project browser and select ``Create/NPM Definition``.   
-You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Needle Engine`` component (formerly ``Export Info``) and adding it to the ``dependencies`` list (this effectively adds the npmdef package to your web project's package.json in the `dependencies` array just like you would do it manually or by running `npm i <path/to/package>`).
+#### Creating and installing an NpmDef
+To create a **NPM Definition**, right click in the Unity Project browser and select ``Create/NPM Definition``.   
+You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Needle Engine`` component (formerly ``Export Info``) and adding it to the ``dependencies`` list (this effectively adds the NpmDef package to your web project's package.json in the `dependencies` array just like you would do it manually or by running `npm i <path/to/package>`).
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 

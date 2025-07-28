@@ -191,7 +191,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     ]
                 },
                 {
-                    text: "Topics",
+                    text: "Core Concepts",
                     children: [
                         "/project-structure",
                         "/everywhere-actions",
@@ -204,9 +204,8 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 {
                     text: "Advanced",
                     children: [
-                        "/networking",
                         "/xr",
-                        "/vanilla-js",
+                        "/networking",
                         "/unity/editor-sync",
                     ]
                 },
@@ -216,7 +215,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         "/debugging",
                         "/faq",
                         {
-                            text: "Get Help",
+                            text: "Support and Community",
                             link: "/support",
                         },
                     ]
@@ -390,8 +389,6 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     "/html",
                     "/testing",
                     "/deployment",
-                    "/debugging",
-                    "/faq",
                 ]
             },
             {
@@ -414,6 +411,17 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     "/xr",
                     "/networking",
                     "/unity/editor-sync",
+                ]
+            },
+            {
+                text: "Troubleshooting",
+                children: [
+                    "/debugging",
+                    "/faq",
+                    {
+                        text: "Support and Community",
+                        link: "/support",
+                    },
                 ]
             },
             {
@@ -743,8 +751,14 @@ export default defineUserConfig({
             mermaid: true,
         }),
         markdownContainerPlugin({
+            type: 'file',
+            before: (info) => `<div class="file"><dt>${info}</dt><dd>`,
+            after: () => '</dd></div>',
+        }),
+        markdownContainerPlugin(
+        {
             type: 'file-tree',
-            before: (info) => `<filetree info="${info}">`,
+            before: (info) => `<filetree ${info}>`,
             after: () => '</filetree>',
         }),
     ],

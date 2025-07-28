@@ -1,87 +1,106 @@
 <template>
-    <slot></slot>
+    <dl>
+        <div class="header">
+            <span class="header">{{ props.name }}</span>
+            <span class="header">Description</span>
+        </div>
+        <slot></slot>
+    </dl>
 </template>
 
 <script setup lang="ts">
 import { onMounted } from 'vue';
 
+const props = defineProps<{
+    name: string;
+    showall?: boolean;
+}>();
+
 let selectedItem: TreeItem | null = null;
 
-// Each TR is either a folder or a file
-// The second TD is the description/content of the file or folder
-// The first TD is clickable
-// If it's a folder, clicking it will show/hide the TRs below that are inside that folder
-// If it's a file, clicking it will show/hide the content in the second TD
+// Each div.file is either a folder or a file
+// The DD element is the description/content of the file or folder
+// The DT element is clickable
+// If it's a folder, clicking it will show/hide the divs below that are inside that folder
+// If it's a file, clicking it will show/hide the content in the DD element
 
 const canToggleFolders = false;
 
 class TreeItem {
-    element: HTMLTableCellElement; // The first TD
-    contentElement: HTMLTableCellElement; // The second TD
+    element: HTMLElement; // The DT element
+    contentElement: HTMLElement; // The DD element
     isFolder: boolean; // Whether this item is a folder or a file
     isExpanded: boolean = true; // Whether the folder is expanded or not
-    children: TableTree; // Children of this item, if it's a folder
+    children: FileTree; // Children of this item, if it's a folder
 
     toggleChildren(state: boolean | undefined) {
         if (state === undefined) state = !this.isExpanded;
         this.isExpanded = state;
-        this.children.items.forEach((childData, childTr) => {
-            childTr.classList.toggle('hidden', state);
+        this.children.items.forEach((childData, childDiv) => {
+            childDiv.classList.toggle('hidden', !state);
             childData.toggleChildren(state);
         });
+        this.element.classList.toggle('closed', !state);
     }
 }
 
-class TableTree {
-    items: Map<HTMLTableRowElement, TreeItem> = new Map();
+class FileTree {
+    items: Map<HTMLDivElement, TreeItem> = new Map();
     pathToItem: Map<string, TreeItem> = new Map();
 }
 
-let tableTree = new TableTree();
+let fileTree = new FileTree();
 
 onMounted(() => {
-    // find all second TDs and add a class to them
-    const tds = document.querySelectorAll('td:nth-child(2)');
-    tds.forEach(td => {
-        td.classList.add('hidden');
+    // find all DD elements and add a class to them
+    const dds = document.querySelectorAll('dd');
+    dds.forEach(dd => {
+        if (!props.showall)
+            dd.classList.add('hidden');
     });
 
     let firstItem: TreeItem | null = null;
 
-    // make all first TDs clickable
-    const firstTds = document.querySelectorAll('td:first-child') as NodeListOf<HTMLTableCellElement>;
-    firstTds.forEach(td => {
+    // make all DT elements clickable
+    const dts = document.querySelectorAll('dt') as NodeListOf<HTMLElement>;
+    dts.forEach(dt => {
 
         // If the text content looks like a path, split it by / and only keep the last part,
         // with a few tabs in front
         // If the last part is empty, it means this is a folder, show it with a folder icon
-        let content = td.textContent?.trim() || '';
+        let content = dt.textContent?.trim() || '';
         let isFolder = content.endsWith('/');
 
-        const parts = td.textContent?.split('/') || [];
+        const parts = dt.textContent?.split('/') || [];
         const lastPartIndex = isFolder ? parts.length - 2 : parts.length - 1;
         const lastPart = parts[lastPartIndex] || ''; // Get the last part, or the second last if it's a folder
 
-        if (isFolder)
-            td.classList.add('folder');
-        else
-            td.classList.add('file');
+        if (isFolder) {
+            dt.classList.add('folder');
+        }
+        else {
+            dt.classList.add('file');
+            const extension = lastPart.split('.').pop()?.toLowerCase() || '';
+            dt.classList.add(extension);
+        }
 
-        td.style.setProperty('--depth', `${lastPartIndex}`); // Set a custom property for depth
-        td.textContent = lastPart; // Set the text content to the last part
+
+        dt.style.setProperty('--depth', `${lastPartIndex}`); // Set a custom property for depth
+        dt.textContent = lastPart; // Set the text content to the last part
 
         const path = parts.slice(0, lastPartIndex + 1).join('/');
-        td.addEventListener('click', () => {
-            const item = tableTree.pathToItem.get(path);
+        if (!props.showall)
+        dt.addEventListener('click', () => {
+            const item = fileTree.pathToItem.get(path);
             if (isFolder && canToggleFolders) {
                 if (item) {
                     item.toggleChildren(!item.isExpanded);
                 }
             }
             else {
-                const nextTd = td.nextElementSibling as HTMLTableCellElement;
-                const isOn = nextTd.classList.contains('hidden');
-                nextTd.classList.toggle('hidden', !isOn);
+                const nextDd = dt.nextElementSibling as HTMLElement;
+                const isOn = nextDd.classList.contains('hidden');
+                nextDd.classList.toggle('hidden', !isOn);
                 if (selectedItem && selectedItem !== item) {
                     selectedItem.contentElement.classList.toggle('hidden', isOn);
                     selectedItem.element.classList.remove('selected');
@@ -91,44 +110,49 @@ onMounted(() => {
             }
         });
 
-        // Add the item to the table tree
-        const tr = td.parentElement as HTMLTableRowElement;
-        const contentTd = td.nextElementSibling as HTMLTableCellElement;
+        // Add the item to the file tree
+        const fileDiv = dt.parentElement as HTMLDivElement;
+        const contentDd = dt.nextElementSibling as HTMLElement;
 
         let newItem = new TreeItem();
-        newItem.element = td;
-        newItem.contentElement = contentTd;
+        newItem.element = dt;
+        newItem.contentElement = contentDd;
         newItem.isFolder = isFolder;
-        newItem.children = new TableTree();
-
+        newItem.children = new FileTree();
+        
         if (firstItem === null)
             firstItem = newItem;
 
         if (lastPartIndex == 0) {
-            tableTree.items.set(tr, newItem);
+            fileTree.items.set(fileDiv, newItem);
         }
         else {
             // Find the parent item based on the path
             const parentPath = parts.slice(0, lastPartIndex).join('/');
             // Add the item to the parent's children
-            const parentData = tableTree.pathToItem.get(parentPath);
+            const parentData = fileTree.pathToItem.get(parentPath);
             if (parentData) {
-                parentData.children.items.set(tr, newItem);
+                parentData.children.items.set(fileDiv, newItem);
+            }
+            else {
+                // Traverse from the start and create the missing parents
+                // TODO
+                console.warn(`Parent not found for path: ${parentPath}. Creating implicit parents is not implemented yet.`);
             }
         }
         // Update the path to item map
-        tableTree.pathToItem.set(path, newItem);
+        fileTree.pathToItem.set(path, newItem);
     });
 
-    // The very first TD should be visible by default
-    if (firstItem) {
+    // The very first DT should be visible by default
+    if (!props.showall && firstItem) {
         let item = firstItem as TreeItem;
         item.element.classList.remove('hidden');
         item.element.classList.add('selected'); // Highlight the first item
-        const nextTd = item.contentElement;
-        if (nextTd) {
-            nextTd.classList.remove('hidden');
-            selectedItem = item; // Set the selected TD to the first one
+        const nextDd = item.contentElement;
+        if (nextDd) {
+            nextDd.classList.remove('hidden');
+            selectedItem = item; // Set the selected DD to the first one
         }
     }
 });
@@ -136,33 +160,55 @@ onMounted(() => {
 
 <style>
 
-table {
+.file {
     position: relative;
+    display: flex;
+    align-items: stretch;
 }
 
-tr {
-    border: none !important;
-    width: 100%;
+div.header {
+    border-bottom: 1px solid #eee;
 }
 
-tr:hover {
+span.header {
+    width: 250px;
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 0.5em;
+    margin-left: 0.1em;
+}
+
+dt:hover {
     background-color: rgb(241, 241, 241) !important;
 }
 
-html[data-theme='dark'] tr:hover {
+html[data-theme='dark'] dt:hover {
     background-color: rgb(50, 50, 50) !important;
 }
 
-tr.hidden, td.hidden {
+.file.hidden, dt.hidden, dd.hidden {
     display: none;
 }
 
-td {
-    padding-bottom: 0.3em !important;
-    padding-top: 0.3em !important;
+dl {
+    overflow-x: auto;
 }
 
-td:first-child {
+dd {
+    min-width: 250px;
+}
+
+dt, dd {
+    padding-bottom: 0.3em !important;
+    padding-top: 0.3em !important;
+    margin: 0;
+}
+
+dd > p {
+    margin: 0;
+}
+
+dt {
     --depth: 0;
     cursor: pointer;
     font-family: monospace;
@@ -171,24 +217,51 @@ td:first-child {
     padding-left: calc(var(--depth) * 1.5em) !important;
     width: calc(250px - var(--depth) * 1.5em);
     border-right: 1px solid #eee !important;
+    flex-shrink: 0;
 
     &.selected {
         font-weight: bold;
     }
 }
 
-td.folder::before {
-    content: '📁';
-    margin-right: 1em;
+dt.folder {
+    &::before {
+        content: 'folder_open';
+        font-family: 'Material Symbols Outlined';
+        margin-right: 1em;
+    }
+
+    &.closed::before {
+        content: 'folder';
+    }
 }
 
-td.file::before {
-    content: '📄';
-    margin-right: 1em;
+dt.file {
+    &::before {
+        content: 'draft';
+        font-family: 'Material Symbols Outlined';
+        margin-right: 1em;
+    }
+
+    &.js::before, &.ts::before, &.json::before {
+        content: 'code';
+    }
+
+    &.html::before {
+        content: 'draft';
+    }
+
+    &.css::before {
+        content: 'code';
+    }
+
+    &.glb::before {
+        content: 'deployed_code';
+    }
 }
 
-td:nth-child(2) {
+dd {
     padding-left: 1em !important;
-    width: initial;
+    flex: 1;
 }
 </style>
