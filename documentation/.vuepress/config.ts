@@ -2,12 +2,12 @@ import { App, defineUserConfig, LocaleConfig, SiteLocaleConfig } from 'vuepress'
 import { defaultTheme, DefaultThemeOptions, NavbarGroupOptions, NavbarLinkOptions, NavItemOptions } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { path } from '@vuepress/utils'
-// import * as mermaidPlugin from "vuepress-plugin-mermaidjs";
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 // import { pwaPlugin } from '@vuepress/plugin-pwa'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
+import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
 import { fromMarkdown } from 'mdast-util-from-markdown';
@@ -27,6 +27,7 @@ import { existsSync } from 'fs'
 import { Element } from 'hast'
 import { SiteLocaleData } from 'vuepress/shared'
 import copyMarkdown from './plugins/copy-markdown'
+import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 dotenv.config()
 
@@ -737,6 +738,15 @@ export default defineUserConfig({
                 }),
             ]
         }) as any,
+        markdownChartPlugin({
+            // Enable Mermaid
+            mermaid: true,
+        }),
+        markdownContainerPlugin({
+            type: 'file-tree',
+            before: (info) => `<filetree info="${info}">`,
+            after: () => '</filetree>',
+        }),
     ],
     head: [
         ['link', { rel: 'icon', href: _url + '/icons/favicon.ico' }],

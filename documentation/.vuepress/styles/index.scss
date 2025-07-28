@@ -578,10 +578,12 @@ div[class*=language-] > pre code {
   line-height: 1.85em;
 }
 
+/*
 .vp-sidebar-children .vp-sidebar-children .vp-sidebar-item:not(.vp-sidebar-heading) {
   padding-top: 0;
   padding-bottom: 0;
 }
+*/
 
 /*
 .vp-sidebar-item:not(.vp-sidebar-heading) + .vp-sidebar-children {
@@ -614,4 +616,24 @@ div[class*=language-]::before {
 
 .vp-copy-code-button {
   background: var(--vp-copy-code-c-bg);
+}
+
+/* For Mermaid integration */
+.mermaid-actions {
+  display: none;
+}
+
+.mermaid-wrapper {
+  & .edgeLabel {
+    background-color: transparent !important;
+
+    & p {
+      border-radius: 0.4em;
+      background-color: var(--vp-c-bg) !important;
+    }
+  }
+
+  & .labelBkg {
+    background-color: transparent !important;
+  }
 }
