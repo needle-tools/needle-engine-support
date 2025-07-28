@@ -88,7 +88,7 @@ export class MyCustomComponent extends Behaviour {
     }
 }
 ```
-@tab Generated C#
+@tab Generated CSharp
 ```csharp
 // NEEDLE_CODEGEN_START
 // auto generated code - do not edit directly
@@ -110,7 +110,7 @@ namespace Needle.Typescript.GeneratedComponents
 
 // NEEDLE_CODEGEN_END
 ```
-@tab Extending Generated C#
+@tab Extending Generated CSharp
 ```csharp
 using UnityEditor;
 

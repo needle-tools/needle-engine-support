@@ -4,15 +4,30 @@ title: Frameworks, Bundlers, HTML
 
 ## Bundling and web frontends
 
-Needle Engine is build as a web component.   
-This means just install `@needle-tools/engine` in your project and include `<needle-engine src="path/to/your.glb">` anywhere in your web-project.  
+Needle Engine is built as a web component.   
+This means you can just install `@needle-tools/engine` in your project:
 
-- Install using npm:   
-  `npm i @needle-tools/engine`
+```bash
+npm i @needle-tools/engine
+```
 
-With our default Vite based project template Needle Engine gets bundled into a web app on deployment. This ensures smaller files, tree-shaking (similar to code stripping in Unity) and optimizes load times. Instead of downloading numerous small scripts and components, only one or a few are downloaded that contain the minimal code needed.  
+and then use it from HTML like this:
 
-Vite (our default bundler) has a good explanation why web apps should be bundled: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+```html
+<script type="module">
+  import '@needle-tools/engine';
+</script>
+<needle-engine src="path/to/your.glb"></needle-engine>
+```
+
+With our default Vite based project template, Needle Engine gets bundled into your web app on deployment. This ensures smaller files and optimizes loading times.
+
+::: tip Bundling and tree shaking
+
+**Bundling** means that all the css, js and other files making up your project are combined into less, and smaller, files at build time. This ensures that instead of downloading numerous small scripts and components, only one or a few are downloaded that contain the minimal code needed. The Vite docs contain a great explanation for why web apps should be bundled: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+
+**Tree shaking** is a common practice in web development where unused code is removed from the final bundle to reduce file size. This is similar to "code stripping" in Unity. [The MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) have a good explanation of tree shaking.
+:::
 
 ### Vite, Vue, React, Svelte, React Three Fiber...
 
@@ -47,32 +62,6 @@ You can create and share your own web project templates to use other bundlers, b
 
 The dependencies come from unity when there is a NpmDef in the project (so when your project uses local references).  
 You could also publish your packages to npm and reference them via version number.  
-:::
-
-### Tree-shaking to reduce bundle size
-
-Tree shaking refers to a common practice when it comes to bundling of web applications ([see MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). It means that code paths and features that are not used in your code will be removed from the final bundled javascript file(s) to reduce filesize. See below about features that Needle Engine includes and remove them: 
-
-:::details How to remove Rapier physics engine? (Reduce the overall bundle size removing ~2MB (~600KB when gzipping))
-
-- **Option 1**: via needlePlugins config:  
-Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleConfig, { useRapier: false }),`
-
-- **Option 2**: via vite.define config:  
-  Declare the `NEEDLE_USE_RAPIER` define with `false`
-  ```js
-  define: {
-    NEEDLE_USE_RAPIER: false
-  },
-  ```
-
-- **Option 3**: via .env  
-  Create a `.env` file in your web project and add `VITE_NEEDLE_USE_RAPIER=false`
-
-- **Option 4**: via Unity component   
-  Add the `Needle Engine Modules` component to your scene and set `Physics Engine` to `None`  
-  ![](/imgs/unity-needle-engine-modules-physics.jpg)
-
 :::
 
 ## Creating a PWA
