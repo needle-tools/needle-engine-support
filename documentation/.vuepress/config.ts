@@ -206,6 +206,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     children: [
                         "/xr",
                         "/networking",
+                        "/materialx",
                         "/unity/editor-sync",
                     ]
                 },
@@ -410,6 +411,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 children: [
                     "/xr",
                     "/networking",
+                    "/materialx",
                     "/unity/editor-sync",
                 ]
             },
