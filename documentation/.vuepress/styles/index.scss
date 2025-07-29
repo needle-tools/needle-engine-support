@@ -148,10 +148,7 @@ img {
 
 
 
-.tip {
-  border-left-width: .25em !important;
-  // border: 1px solid rgba(0,0,0,.5) !important;
-  padding: .2em .2em .5em 2.4em !important;
+.tip, .info, .warning, .danger, .note {
   max-width: 700px;
 }
 
@@ -684,6 +681,34 @@ div[class*=language-]::before {
       font-size: 18.4px;
     }
   }
+}
+
+.vp-code-tabs {
+    margin: 1.5rem 0;
+    border: 1px solid var(--vp-c-border);
+    border-radius: var(--tab-border-radius);
+
+    & div[class*=language-] {
+      border-radius: 0;
+    }
+
+    & .vp-code-tabs-nav, & .vp-code-tab-nav {
+        margin: 0;
+
+          background-color: var(--tab-c-bg);
+        
+        &.active {
+            background-color: var(--tab-c-bg-nav);
+        }
+
+        & button {
+          color: var(--tab-c-nav);
+        }
+
+        &.vp-code-tab-nav {
+          padding: 0.5em 1em;
+        }
+    }
 }
 
 @page {

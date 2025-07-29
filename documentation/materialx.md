@@ -19,7 +19,8 @@ This allows you to create complex, lit materials in Unity, and they're automatic
 The MaterialX support in Needle Engine uses the official [MaterialX JavaScript library](https://github.com/materialx/MaterialX), which means that materials are represented at the highest fidelity possible. This allows you to use any MaterialX file.
 
 ::: info Shader Graph to MaterialX requires a **Pro**, **Edu** or **Enterprise** plan.
-The MaterialX Exporter is available for users on the Pro, Edu and Enterprise plans. If you are on the Free plan, you won't be able to export Shader Graph materials to MaterialX.
+The MaterialX Exporter is available for users on the Pro, Edu and Enterprise plans.  
+[See plans and pricing.](https://needle.tools/pricing)
 :::
 
 ## Usecases
@@ -98,13 +99,12 @@ You can use our MaterialX package in any three.js project, even if you're not us
 
 2. Load GLB files that contain the `NEEDLE_materials_mtlx` extension. The plugin will automatically load and apply the MaterialX materials to the objects that are using them.
 
+3. You can enable preloading of the MaterialX WebAssembly module by calling `useNeedleMaterialX(gltfLoader, { preload: true })`. This will load the MaterialX WebAssembly module in advance, so that it is ready when you load a GLB file with MaterialX materials.
+
 You can find a full example of how to use MaterialX in a three.js project on StackBlitz: [MaterialX in three.js](https://stackblitz.com/edit/needle-materialx-example?file=main.js).
 
 ::: 
 ## Exporting materials with MaterialX support
-
-#### Test h4 header
-
 
 1. Create materials with Unity's Shader Graph.
 
@@ -121,6 +121,45 @@ You can find a full example of how to use MaterialX in a three.js project on Sta
 3. When you export your scene, all materials using shaders with the "MaterialX" export type will be embedded alongside your 3D content, and loaded at runtime.
 
 ## Using MaterialX files created externally
+
+The Needle MaterialX package contains experimental support for loading MaterialX files directly. Textures can be resolved via a callback function, and materials are returned as three.js `ShaderMaterial`.
+
+You can find examples for working with the Needle MaterialX package [in our MaterialX collection on StackBlitz](
+https://stackblitz.com/@marwie/collections/materialx).
+
+:::: tabs
+@tab From code
+
+```ts
+import { TextureLoader } from 'three';
+import { Experimental_API } from '@needle-tools/materialx';
+
+// Load a MaterialX file and its referenced textures from a URL
+function load(mtlx_url) {
+    const parts = mtlx_url.split('/');
+    parts.pop();
+    const dir = parts.join('/');
+
+    return fetch(mtlx_url)
+    .then((res) => res.text())
+    .then((mtlx) => {
+        const loader = new TextureLoader();
+        Experimental_API.createMaterialXMaterial(mtlx, '', {
+            getTexture: async (url) => {
+                return await loader.loadAsync(dir + url);
+            },
+        }).then((mat) => {
+            console.log("MaterialX material has been loaded:", mat);
+        });
+    });
+}
+```
+
+::: info
+The `Experimental_API.createMaterialXMaterial()` method currently doesn't support loading multiple materials, or MaterialX files with additional .mtlx references.
+:::
+
+::::
 
 ## Supported Nodes and Features
 
