@@ -376,10 +376,14 @@ onMounted(() => {
     border: 0;
 }
 
-.file {
+div.file {
     position: relative;
     display: flex;
     align-items: stretch;
+
+    @media print {
+        border-bottom: 1px solid #00000012;
+    }
 }
 
 div.header {
@@ -413,6 +417,10 @@ html[data-theme='dark'] dt.focused {
 
 .file.hidden, dt.hidden, dd.hidden {
     display: none;
+
+    @media print {
+        display: block;
+    }
 }
 
 dl {
@@ -446,6 +454,10 @@ dt {
 
     &.selected {
         font-weight: bold;
+
+        @media print {
+            font-weight: initial;
+        }
     }
 }
 
@@ -490,5 +502,6 @@ dt.file {
 dd {
     padding-left: 1em !important;
     flex: 1;
+    margin-top: -0.2em;
 }
 </style>
