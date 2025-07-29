@@ -22,6 +22,14 @@ The MaterialX support in Needle Engine uses the official [MaterialX JavaScript l
 The MaterialX Exporter is available for users on the Pro, Edu and Enterprise plans. If you are on the Free plan, you won't be able to export Shader Graph materials to MaterialX.
 :::
 
+## Usecases
+
+MaterialX is a great choice if you 
+- are using **Graph-based materials** for your projects for artistic control and flexibility.
+- need **rich and complex surface features** such as procedural textures, detail maps, or layered materials.
+- have **existing MaterialX materials** that you want to keep throughout your studio pipeline.
+- want to ensure **consistency and compatibility** for your renderings across different rendering engines.
+
 ## Enable MaterialX support in your project
 
 To enable MaterialX support in your Needle Engine project, you need to add the `@needle-tools/materialx` package to your project.
