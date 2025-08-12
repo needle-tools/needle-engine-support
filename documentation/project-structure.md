@@ -22,16 +22,28 @@ The **Web Project** is where your web app comes together. It contains the export
 
 By default, the web project is **created and managed by Needle**, which means that you don't have to worry about how to set up the package, add dependencies, or building – you can focus on creating your content. The integrations for Unity and Blender make it easy to create a web project right from your editor.
 
-::: tabs
+:::: tabs
 @tab Unity
 
-<img src="/imgs/unity-generate-project.png" alt="Opening the Code Editor from Unity" srcset="/imgs/unity-generate-project.png 2x" />
+Find the Needle Engine component in your scene or add it, then click on <kbd>Generate Project</kbd>. This will create a new web project in the directory you specify.
+
+![Creating a web project from Unity](/imgs/unity-generate-project.jpg)
 
 @tab Blender
 
-<img src="/imgs/blender-generate-project.png" alt="Opening the Code Editor from Blender" srcset="/imgs/blender-generate-project.png 2x" />
+Find the Scene panel and Needle Engine section, then click on <kbd>Generate Web Project</kbd>. This will create a new web project in the directory you specify.
+
+![Creating a web project from Blender](/imgs/blender-generate-project.jpeg)
 
 @tab From the command line
+
+Open a terminal and run the command `npx create needle` to create a new Needle Engine web project. The command will prompt you for the project name, framework, and other settings. You can also specify the directory where the project should be created.
+
+:::tip Install Node.js first
+Make sure you have [Node.js](https://nodejs.org/) installed on your system.
+You can check if you have it installed by running `node -v` in your terminal.
+If you don't have it installed, download and install it from the [Node.js website](https://nodejs.org/).
+:::
 
 ```bash
 % npm create needle
@@ -57,7 +69,7 @@ Next steps:
   4: Connect an integration (Unity, Blender, ...)
 ```
 
-:::
+::::
 
 ::: tip Bring your own project
 Needle Engine is very flexible. You can modify the existing web project or use your own. That allows you to integrate into existing projects, use a different build system, or use a different framework like React, Vue, or Angular.
@@ -72,19 +84,19 @@ We recommend [Visual Studio Code](https://code.visualstudio.com/) as code editor
 
 Click on <kbd>Open Code Editor</kbd> on the **Needle Engine** component. This will open the web project in Visual Studio Code, with all the folders and files included.
 
-<img src="/imgs/unity-open-code-editor.png" alt="Opening the Code Editor from Unity" srcset="/imgs/unity-open-code-editor.png 2x" />
+![Opening the Code Editor from Unity](/imgs/unity-open-code-editor.jpeg)
 
 @tab Blender
 
 Click on <kbd>Open Code Editor</kbd> on the **Scene > Needle Engine** panel. This will open the web project in Visual Studio Code, with all the folders and files included.
 
-<img src="/imgs/blender-open-code-editor.png" alt="Opening the Code Editor from Finder" srcset="/imgs/blender-open-code-editor.png 2x" />
+![Opening the Code Editor from Blender](/imgs/blender-open-code-editor.jpeg)
 
 @tab Find it in Explorer or Finder
 
 Double-click the `.code-workspace` file. This will open the web project in Visual Studio Code, with all the folders and files included. You can of course also open the web project folder in other code editors if you prefer.
 
-<img src="/imgs/finder-open-code-editor.png" alt="Opening the Code Editor from Finder" srcset="/imgs/finder-open-code-editor.png 2x" />
+![Opening the Code Editor from Finder](/imgs/finder-open-code-editor.jpeg)
 
 :::
 
@@ -94,12 +106,10 @@ The default web project is based on a standard structure that follows modern web
 
 
 
-:::tip The place you'll most commonly interact with is `src/scripts/`.
-This is where you add your own components, written in TypeScript.
-:::
+:::tip The places you'll most commonly interact with are `src/scripts/` and `build/`.
+Add your own components to `src/scripts/`. You write them in TypeScript.
 
-:::tip When building your web project your final files to upload are all in `dist/`.
-When running the `build` command (or clicking Build/Deploy in the editor) your final files to upload to a webserver are put into the `dist` folder.
+When building your web project, either by clicking "Build" in the editor or running `npm run build`, the final files are placed in the `dist/` folder. This is the folder you can upload to a web server to host your web app.
 :::
 
 :::: file-tree name="Web Project File"
@@ -186,6 +196,7 @@ This file specifies which files and folders should be ignored by the git version
 ::: 
 
 ::::
+
 
 Our exporter can be used with other project structures as well. We chose Vite as bundler because of its speed and flexibility. Feel free to set up your own project structure, or use a different bundler like Webpack. Needle Engine is designed to be flexible and can usually be adapted to your needs. [Learn more about bundling and other frameworks](html.md).
 
