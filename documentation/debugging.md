@@ -40,7 +40,7 @@ Needle Engine also has some very powerful and useful debugging methods that are 
 ## Local Testing of release builds
 - First, install http-server: `npm install -g http-server`
 - make a build (development or production)
-- open the *dist* directory with a commandline tool
+- open the *dist* folder with a commandline tool
 - run `http-server -g` | *`-g` enables gzip support*  
 - optional: if you want to test WebXR, generate a [self-signed SSL certificate](https://stackoverflow.com/a/35231213), then run `http-server -g -S` to enable https (required for WebXR).
 

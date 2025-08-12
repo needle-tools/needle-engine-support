@@ -2,8 +2,15 @@
 title: <needle-engine> Configuration
 ---
 
-The `<needle-engine>` web-component comes with a nice collection of built-in attributes that can be used to modify the look and feel of the loaded scene without the need to add or edit the three.js scene directly.   
-The table below shows a list of the most important ones:
+## Attributes of the Needle Engine Web Component
+
+Needle Engine is available as a web component: `<needle-engine>`. This component can be used to load and display 3D scenes, models, and more in a web browser. It comes with a set of attributes that allow you to configure its behavior, look and feel. All those settings can be overwritten by code, but the attributes are a convenient way to set them up in HTML.
+
+::: tip The web component is in `index.html`
+Whether creating a project via Unity or Blender, or directly in code, you can use and adjust the `<needle-engine>` web component. Usually, you will find it in the `index.html` file of your web project.
+:::
+
+The table below shows a list of available attributes and their descriptions.
 
 | Attribute | Description |
 | --- | --- |

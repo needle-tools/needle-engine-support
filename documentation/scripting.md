@@ -49,7 +49,7 @@ _An example of a Button Click Event that is working out-of-the-box in Needle Eng
 Scripts are written in TypeScript (recommended) or JavaScript.   
 There are two ways to add custom scripts to your project:
 
-- Simply add a file with an `.ts` or `.js` extension inside `src/scripts/` in your generated project directory, for example `src/scripts/MyFirstScript.ts`
+- Simply add a file with an `.ts` or `.js` extension inside `src/scripts/` in your web project folder, for example `src/scripts/MyFirstScript.ts`.
 
 - Unity specific:   
   Organize your code into NPM Definition Files (npm packages). These help you to modularize and re-use code between projects and if you are familiar with web development they are in fact regular npm packages that are installed locally.  

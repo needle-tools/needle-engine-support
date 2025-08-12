@@ -25,19 +25,19 @@ By default, the web project is **created and managed by Needle**, which means th
 :::: tabs
 @tab Unity
 
-Find the Needle Engine component in your scene or add it, then click on <kbd>Generate Project</kbd>. This will create a new web project in the directory you specify.
+Find the Needle Engine component in your scene or add it, then click on <kbd>Generate Project</kbd>. This will create a new web project in the folder you specify.
 
 ![Creating a web project from Unity](/imgs/unity-generate-project.jpg)
 
 @tab Blender
 
-Find the Scene panel and Needle Engine section, then click on <kbd>Generate Web Project</kbd>. This will create a new web project in the directory you specify.
+Find the Scene panel and Needle Engine section, then click on <kbd>Generate Web Project</kbd>. This will create a new web project in the folder you specify.
 
 ![Creating a web project from Blender](/imgs/blender-generate-project.jpeg)
 
 @tab From the command line
 
-Open a terminal and run the command `npx create needle` to create a new Needle Engine web project. The command will prompt you for the project name, framework, and other settings. You can also specify the directory where the project should be created.
+Open a terminal and run the command `npx create needle` to create a new Needle Engine web project. The command will prompt you for the project name, framework, and other settings. You can also specify the folder where the project should be created.
 
 :::tip Install Node.js first
 Make sure you have [Node.js](https://nodejs.org/) installed on your system.
@@ -115,7 +115,9 @@ When building your web project, either by clicking "Build" in the editor or runn
 :::: file-tree name="Web Project File"
 
 ::: file index.html
-The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder.
+The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder.  
+<br>
+You also find the `<needle-engine>` web component here, which displays your 3D content. You can modify its attributes to change the environment, loading style, contact shadows, and more. See the [Web Component Attributes Reference](./reference/needle-engine-attributes.md) for a list of available attributes.
 
 :::
 
@@ -124,7 +126,7 @@ The asset folder contains 3D and other files exported by the integration. This i
 :::
 
 ::: file assets/MyScene.glb
-The exported 3D scene from Unity or Blender is automatically placed here. The filename depends on how your Unity or Blender scene is named. There may be more files in this directory, depending on how your project is set up. For example, if you have multiple scenes, or reference audio/video files, they will be in here as well.
+The exported 3D scene from Unity or Blender is automatically placed here. The filename depends on how your Unity or Blender scene is named. There may be more files in this folder, depending on how your project is set up. For example, if you have multiple scenes, or use audio or video files, they will be here as well.
 :::
 
 ::: file src/
@@ -136,7 +138,7 @@ This script is included from `index.html` and runs at startup. It imports `@need
 :::
 
 ::: file src/scripts/
-Add your custom scripts in this directory. Our [component compiler](./component-compiler.md) will automatically generate stub components for Unity and Blender from them.
+Add your custom scripts in this folder. Our [component compiler](./component-compiler.md) will automatically generate stub components for Unity and Blender from them.
 :::
 
 ::: file src/scripts/MyComponent.ts
@@ -144,11 +146,11 @@ An example of a custom script that will be compiled into a Unity C# component or
 :::
 
 ::: file src/styles/
-The styles directory contains the stylesheets for your web project. You can add additional stylesheets here and import them in `index.html`.
+The styles folder contains the stylesheets for your web project. You can add additional stylesheets here and import them in `index.html`.
 :::
 
 ::: file src/styles/main.css
-The default stylesheet for your web project. Add your own styles here, or create additional stylesheets in the `src/styles/` directory. You can import them in `index.html`.
+The default stylesheet for your web project. Add your own styles here, or create additional stylesheets in the `src/styles/` folder. You can import them in `index.html`.
 :::
 
 ::: file src/generated/
@@ -168,15 +170,15 @@ The files in this folder are **generated and managed** by the Needle integration
 :::
 
 ::: file include/
-If you have custom assets that you want to load at runtime, add them to the include directory. On build this directory will be copied to the output folder.
+If you have custom assets that you want to load at runtime, add them to the include folder. On build this folder will be copied to the output folder.
 :::
 
 ::: file dist/
-The output directory where the built web project is placed. This is where the final web app is generated. It contains the bundled and minified files that are ready to be published to a server.
+The output folder where the built web project is placed. This is where the final web app is generated. It contains the bundled and minified files that are ready to be published to a server.
 :::
 
 ::: file needle.config.json
-The [Needle config](./reference/needle-config-json.md). Needle integrations and build tools use this file. It contains information on where to export assets to, and where the build directory is.
+The [Needle config](./reference/needle-config-json.md). Needle integrations and build tools use this file. It contains information on where to export assets to, and where the build folder is.
 :::
 
 ::: file vite.config.js
@@ -212,8 +214,8 @@ The web project uses an industry-standard structure:
 You can extend the web project by adding your own scripts, styles, and assets. You can add additional npm packages to the project as needed, and you can customize the build process by modifying the `vite.config.js` file. For some customizations, like adding PWA support to your app, Needle already provides helpers to make them easier. Generally, you can freely modify the web project as you see fit, which sets Needle Engine apart from other engines that require you to use their specific project structure.
 
 
-:::tip Copying additional files to the output directory
-You can add additional files to your project that you want to be copied to the output directory when building. Either put them into the `include/` directory, or [configure copying](./reference/needle-config-json.md) them in the `needle.config.json` file.
+:::tip Copying additional files to the output folder
+You can add additional files to your project that you want to be copied to the output folder when building. Either put them into the `include/` folder, or [configure copying](./reference/needle-config-json.md) them in the `needle.config.json` file.
 :::
 
 ## Adding HTML interfaces to your web project
