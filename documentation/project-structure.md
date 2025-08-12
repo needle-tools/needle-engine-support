@@ -98,6 +98,10 @@ The default web project is based on a standard structure that follows modern web
 This is where you add your own components, written in TypeScript.
 :::
 
+:::tip When building your web project your final files to upload are all in `dist/`.
+When running the `build` command (or clicking Build/Deploy in the editor) your final files to upload to a webserver are put into the `dist` folder.
+:::
+
 :::: file-tree name="Web Project File"
 
 ::: file index.html
