@@ -194,7 +194,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     text: "Core Concepts",
                     children: [
                         "/project-structure",
-                        "/everywhere-actions",
+                        {
+                            text: "Everywhere Actions",
+                            link: "/everywhere-actions",
+                        },
                         "/export",
                         "/html",
                         "/testing",
@@ -205,6 +208,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     text: "Advanced",
                     children: [
                         "/xr",
+                        {
+                            text: "Image Tracking (WebXR)",
+                            link: "/webxr-image-tracking",
+                        },
                         "/networking",
                         "/materialx",
                         "/unity/editor-sync",
@@ -247,7 +254,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         "/getting-started/typescript-essentials",
                         "/getting-started/for-unity-developers",
                         "/component-reference",
-                        "/everywhere-actions",
+                        {
+                            text: "Everywhere Actions",
+                            link: "/everywhere-actions",
+                        },
                     ]
                 },
                 {
@@ -385,7 +395,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 text: "Core Concepts",
                 children: [
                     "/project-structure",
-                    "/everywhere-actions",
+                    {
+                        text: "Everywhere Actions",
+                        link: "/everywhere-actions",
+                    },
                     "/export",
                     "/html",
                     "/testing",
@@ -410,6 +423,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 text: "Advanced",
                 children: [
                     "/xr",
+                    {
+                        text: "Image Tracking (WebXR)",
+                        link: "/webxr-image-tracking",
+                    },
                     "/networking",
                     "/materialx",
                     "/unity/editor-sync",
@@ -758,11 +775,11 @@ export default defineUserConfig({
             after: () => '</dd></div>',
         }),
         markdownContainerPlugin(
-        {
-            type: 'file-tree',
-            before: (info) => `<filetree ${info}>`,
-            after: () => '</filetree>',
-        }),
+            {
+                type: 'file-tree',
+                before: (info) => `<filetree ${info}>`,
+                after: () => '</filetree>',
+            }),
     ],
     head: [
         ['link', { rel: 'icon', href: _url + '/icons/favicon.ico' }],
@@ -792,7 +809,7 @@ export default defineUserConfig({
             // https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers
             format: (link) => cleanHeader(link),
         },
-        
+
     },
     bundler: viteBundler(),
     theme: defaultTheme(defaultThemeOpts),
