@@ -1,5 +1,6 @@
 ---
-title: Everywhere Actions
+title: Everywhere Actions — Interactive experiences on Desktop, Android & iOS (even AR)
+description: Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code. They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**. From low-level triggers and actions, higher-level complex interactive behaviours can be built.  
 ---
 
 ## What are Everywhere Actions?
@@ -55,15 +56,20 @@ Demonstrates combining animations, look at, and movement.
 
 ### Image Tracking
 
-Demonstrates how to attach 3D content onto a custom image marker. Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.     
+Demonstrates how to attach 3D content onto a custom image marker.   
+Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.     
+
+
+:::info WebXR Image Tracking on Android
+**On Android** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.  
+:::
+
+[Read more about Image Tracking with Needle Engine](./webxr-image-tracking.md)
 
 <img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />    
 
-<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Download Sample Image Marker</a>  
-
-**On Android:** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.  
-
 <sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
+
 
 ### Interactive Building Blocks Overview
 
@@ -117,10 +123,11 @@ Often, getting the right behaviour will involve composing _higher-level actions_
 
 To see the implementation of our built-in Everywhere Actions, please take look at `src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`.
 
+## References
+- [Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
 
 ## Further reading 
 
-The following pages provide more examples and samples that you can test and explore right now:
-
-- Visit our [AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) that has many interactive AR examples with a focus on iOS AR & Quicklook
+- [Visit our AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) that has many interactive AR examples with a focus on iOS AR & Quicklook
 - [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions) 
+- [Image Tracking with Needle Engine](./webxr-image-tracking.md)
