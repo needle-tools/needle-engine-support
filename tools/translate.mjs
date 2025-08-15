@@ -42,7 +42,7 @@ export async function translateDocumentation() {
         return;
     }
     const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GEMINI_API_KEY);
-    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash-preview-04-17" });
+    const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
 
     const startTime = Date.now();
     const files = await getMarkdownFiles(path.resolve("./documentation"), []);
