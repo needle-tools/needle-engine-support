@@ -112,5 +112,6 @@ WOW🤩と言わざるを得ません
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
 >
 needleを使い始めてからworkflowが10倍効率化されました
+</testimonial>
 
 ページはAIによって自動的に翻訳されました
