@@ -230,31 +230,9 @@ There's also other options for guiding iOS users to even more capable interactiv
    - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
    - [8th Wall](https://www.8thwall.com/) (commercial)
 
+
 ## Image Tracking
 
 Needle Engine supports **WebXR Image Tracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) on Android and **QuickLook Image Tracking** on iOS.
 
-You can find additional documentation in the [Everywhere Actions](everywhere-actions.md#image-tracking) section.
-
-:::warning WebXR Image Tracking is still in a "draft" phase and not generally available
-So far, browser vendors haven't been able to agree on the final image tracking API for WebXR. As long as the specification is in "draft" phase ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
-you and your app's users need to follow these steps to enable WebXR ImageTracking on Android devices:
-1. Visit ``chrome://flags`` on your Android Chrome browser
-2. Find and enable the `WebXR Incubations` option
-:::
-
-
-Without that spec, one can still request camera image access and run custom algorithms to determine device pose. The downside is that users will have to accept additional permissions like camera access, and the tracking will not be as accurate as with the native capabilities of the device.
-
-Here are some libraries to add image tracking based on camera access and local computer vision algorithms:  
-   - [Experimental AR.js integration with Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
-   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
-   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
-
-
-
-## References
-
-[WebXR Device API](https://www.w3.org/TR/webxr/)  
-[caniuse: WebXR](https://caniuse.com/webxr)  
-[Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
+You can find additional documentation on the [WebXR Image Tracking](./webxr-image-tracking.md) page.
