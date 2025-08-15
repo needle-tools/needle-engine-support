@@ -22,8 +22,9 @@ a {
 
 <template>
     <div class="footer">
-        ©2025 Needle Tools GmbH ·
-        <a class="no-external-link-icon" target="_blank" href="https://needle.tools/contact">About · </a>
-        <a class="no-external-link-icon" target="_blank" href="https://needle.tools/contact#privacy-policy">Privacy Policy</a>
+        ©2025 Needle Tools GmbH
+        &nbsp;– <a class="no-external-link-icon" target="_blank" href="https://needle.tools/contact">About</a>
+        &nbsp;– <a class="no-external-link-icon" target="_blank" href="https://needle.tools/contact#privacy-policy">Privacy Policy</a>
+        &nbsp;– <a class="no-external-link-icon" target="_blank" href="./sitemap.xml">Sitemap</a>
     </div>
 </template>
