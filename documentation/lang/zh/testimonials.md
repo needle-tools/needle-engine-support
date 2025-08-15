@@ -10,9 +10,9 @@ next: getting-started/
   name="Chris Mahoney"
   role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
-难以置信的 Unity 编辑器集成度，提升了一个数量级，而且就像文档所说的那样简单直观。哇。
+令人难以置信的 Unity 编辑器集成度，提升了一个数量级，而且就像文档所说的那样简单直观。哇。
 </testimonial>
 
 <testimonial
@@ -21,7 +21,7 @@ next: getting-started/
   src="https://x.com/kmcurry/status/1574333302022062080"
   img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
 >
-needle.tools 是 @NeedleTools 为 Web 3D 领域所做贡献的绝佳展示。我就是喜欢它。
+needle.tools 完美展示了 @NeedleTools 为 Web 3D 领域所做出的贡献。我就是喜欢它。
 </testimonial>
 
 <testimonial
@@ -83,7 +83,7 @@ needle.tools 是 @NeedleTools 为 Web 3D 领域所做贡献的绝佳展示。我
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
- 我是一名资深的 Unity dev，最近开始使用 Needle Tools，我非常喜欢它！对于想学习 WebXR 和 three.js 的 Unity devs 来说，这是一个很好的入门途径。runtime engine 非常棒，而且创建自己的 custom component 也相当容易。
+ 我是一名资深的 Unity 开发者，最近开始使用 Needle Tools，我非常喜欢它！对于想学习 WebXR 和 three.js 的 Unity 开发者来说，这是一个很好的入门途径。runtime engine 非常棒，而且创建自己的 custom component 也相当容易。
 </testimonial>
 
 <testimonial
@@ -101,7 +101,7 @@ needle.tools 是 @NeedleTools 为 Web 3D 领域所做贡献的绝佳展示。我
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-过去 2.5 个月我一直在构建这个游戏，之前从未构建过游戏/从未用过 unity，但我非常喜欢使用 needle tools 的整个过程。速度太快了！我很想以构建 AR 体验为职业！
+过去 2.5 个月我一直在构建这个游戏，之前从未构建过游戏/从未用过 Unity，但我非常喜欢使用 needle tools 的整个过程。速度太快了！我很想以构建 AR 体验为职业！
 </testimonial>
 
 <testimonial

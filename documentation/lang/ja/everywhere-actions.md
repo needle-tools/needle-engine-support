@@ -1,11 +1,12 @@
 ---
-title: Everywhere Actions
+title: Everywhere Actions — デスクトップ、Android、iOS (ARも含む) でのインタラクティブ体験
+description: NeedleのEverywhere Actionsは、コードを一行も書かずにUnityでインタラクティブな体験を作成できる、厳選されたコンポーネントのセットです。これらは、ウェブ、モバイル、XR、**iOSの拡張現実を含む**様々なプラットフォームでの体験のための構成要素として機能するように設計されています。低レベルのトリガーとアクションから、より高レベルの複雑なインタラクティブな振る舞いを構築できます。
 ---
 
 ## Everywhere Actionsとは？
 
-NeedleのEverywhere Actionsは、厳選されたコンポーネントセットであり、コードを一行も書かずにUnityでインタラクティブな体験を作成できます。
-これらは、Web、モバイル、XR、**iOS上の拡張現実を含む**体験のための構成要素として機能するように設計されています。
+NeedleのEverywhere Actionsは、コードを一行も書かずにUnityでインタラクティブな体験を作成できる、厳選されたコンポーネントのセットです。
+これらは、ウェブ、モバイル、XR、**iOSの拡張現実を含む**様々なプラットフォームでの体験のための構成要素として機能するように設計されています。
 
 低レベルのトリガーとアクションから、より高レベルの複雑なインタラクティブな振る舞いを構築できます。
 
@@ -28,7 +29,7 @@ iOSをサポートするには、シーンに`USDZExporter`コンポーネント
 ## Everywhere Actionsリスト
 
 | アクション                     | 説明                                                                  | 使用例                                                           |
-| :----------------------------- | :-------------------------------------------------------------------- | :--------------------------------------------------------------- |
+| --- | --- | --- |
 | Play Animation on Click        | Animatorから選択したアニメーションステートを再生します。再生後、必要に応じて別のアニメーションに遷移できます。 | 製品プレゼンテーション、インタラクティブチュートリアル、キャラクターの動き           |
 | Change Material on Click       | マテリアルを別のものに切り替えます。そのマテリアルを持つすべてのオブジェクトが一緒に切り替わります。               | 製品コンフィギュレーター、キャラクター                                           |
 | Look At                        | オブジェクトをカメラの方に向けます。                                                      | UI要素、スプライト、インフォグラフィック、ビルボードエフェクト、クリック可能なホットスポット |
@@ -57,11 +58,13 @@ iOSをサポートするには、シーンに`USDZExporter`コンポーネント
 
 カスタム画像マーカーに3Dコンテンツをアタッチする方法をデモンストレーションします。以下のシーンをARで開始し、画面上の画像マーカーにスマートフォンのカメラを向けるか、印刷してください。
 
-<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />
+:::info AndroidでのWebXR画像トラッキング
+**Androidの場合**は、Chrome Flagsで「WebXR Incubations」をオンにしてください。AndroidスマートフォンのChromeブラウザのアドレスバーに [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations)を貼り付けることで見つけることができます。
+:::
 
-<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">サンプル画像マーカーをダウンロード</a>
+[Needle Engineでの画像トラッキングの詳細はこちら](./webxr-image-tracking.md)
 
-**Androidの場合:** Chrome Flagsで「WebXR Incubations」をオンにしてください。これは、AndroidスマートフォンのChromeブラウザのアドレスバーに [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) を貼り付けることで見つけることができます。
+<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="画像マーカー" width=300 />
 
 <sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
 
@@ -71,10 +74,10 @@ iOSをサポートするには、シーンに`USDZExporter`コンポーネント
 
 ## 独自のEverywhere Actionsを作成する
 
-新しいEverywhere Actionsの作成には、ブラウザやWebXRで使用されるTypeScriptでアクションのコードを記述すること、そしてTriggerBuilderとActionBuilder APIを使用して、QuickLook経由でのiOS上の拡張現実のための対応するセットアップを作成することが含まれます。カスタムアクションを作成する際は、QuickLookでは利用できる機能セットが限られていることに留意してください。ブラウザとWebXRでは任意のコードを使用できますが、QuickLookの振る舞いは、利用可能なトリガーとアクションから構築された近似である必要がある場合があります。
+新しいEverywhere Actionsの作成には、ブラウザおよびWebXRで使用されるTypeScriptでアクションのコードを記述すること、そしてTriggerBuilderおよびActionBuilder APIを使用して、QuickLook経由でのiOSの拡張現実のための対応するセットアップを作成することが含まれます。カスタムアクションを作成する際には、QuickLookでは利用できる機能セットが限られていることに留意してください。ブラウザおよびWebXRでは任意のコードを使用できますが、QuickLookの振る舞いは、利用可能なトリガーとアクションから構築された近似である必要がある場合があります。
 
 :::tip
-多くの場合、特定の振る舞いを構築するには、既にある低レベルのアクションを既成概念にとらわれずに創造的に適用することが必要です。「Tap to Place」アクションはその一例です。QuickLookにはレイキャスティングやヒットテストの機能はありませんが、配置したい領域を複数の見えないオブジェクトで覆い、「Tap」トリガーを使用して、タップされた見えないオブジェクトの位置に配置したいオブジェクトを移動させることができます。
+多くの場合、特定の振る舞いを構築するには、既成概念にとらわれずに、利用可能な低レベルのアクションを創造的に適用することが必要になります。「Tap to Place」アクションはその一例です。QuickLookにはレイキャスティングやヒットテストの機能はありませんが、配置したい領域を複数の見えないオブジェクトで覆い、「Tap」トリガーを使用して、タップされた見えないオブジェクトの位置に配置したいオブジェクトを移動させることができます。
 :::
 
 QuickLookのトリガーとアクションは、[AppleのPreliminary Interactive USD Schemas](https://developer.apple.com/documentation/arkit/usdz_schemas_for_ar/actions_and_triggers)に基づいています。
@@ -91,12 +94,12 @@ QuickLookのトリガーとアクションは、[AppleのPreliminary Interactive
 ### 独自のAction構築のための低レベルメソッド
 
 | トリガー                       |   |
-| :----------------------------- | :- |
+| --- | --- |
 | `TriggerBuilder.sceneStartTrigger` |   |
 | `TriggerBuilder.tapTrigger`    |   |
 
 | アクション                       |   |
-| :------------------------------- | :- |
+| --- | --- |
 | `ActionBuilder.fadeAction`       |   |
 | `ActionBuilder.startAnimationAction` |   |
 | `ActionBuilder.waitAction`       |   |
@@ -106,7 +109,7 @@ QuickLookのトリガーとアクションは、[AppleのPreliminary Interactive
 | `ActionBuilder.playAudioAction`  |   |
 
 | グループアクション              |   |
-| :---------------------------- | :- |
+| --- | --- |
 | `ActionBuilder.sequence`      |   |
 | `ActionBuilder.parallel`      |   |
 | `GroupAction.addAction`       |   |
@@ -117,12 +120,14 @@ QuickLookのトリガーとアクションは、[AppleのPreliminary Interactive
 
 組み込みのEverywhere Actionsの実装を見るには、`src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`を参照してください。
 
+## 参照
+- [AppleのPreliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
+
 ## さらに読む
 
-以下のページでは、すぐにテストして探索できるより多くの例とサンプルを提供しています。
-
-- iOS AR & Quicklookに焦点を当てた多くのインタラクティブなAR例がある、[AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/)をご覧ください。
-- [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- iOS ARとQuicklookに焦点を当てた多くのインタラクティブなAR例がある、[ARショーケースウェブサイト](https://engine.needle.tools/projects/ar-showcase/)をご覧ください。
+- [Needle Engine Everywhere Action サンプル](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- [Needle Engineでの画像トラッキング](./webxr-image-tracking.md)
 
 ---
 このページはAIによって自動的に翻訳されました。

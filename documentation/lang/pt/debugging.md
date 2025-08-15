@@ -48,7 +48,7 @@ O Needle Engine também tem alguns métodos de depuração muito poderosos e út
 
 ## VSCode
 
-Pode anexar o VSCode ao servidor local em execução para definir breakpoints e depurar o seu código. Pode ler mais sobre [depuração com VSCode](https://code.visualstudio.com/docs/editor/debugging) aqui.
+Pode anexar o VSCode ao servidor local em execução para definir pontos de interrupção e depurar o seu código. Pode ler mais sobre [depuração com VSCode](https://code.visualstudio.com/docs/editor/debugging) aqui.
 
 Crie um ficheiro launch.json em `.vscode/launch.json` no seu projeto web com o seguinte conteúdo:
 ```json

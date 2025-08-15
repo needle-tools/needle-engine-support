@@ -135,7 +135,6 @@ Sie können die LOD-Generierung entweder für Ihr gesamtes Projekt in der Kompon
 
 ![image](/imgs/unity-lods-settings-2.jpg)
 
-
 ## Bereitstellungsoptionen
 
 ### Bereitstellung auf Glitch 🎏
@@ -235,7 +234,6 @@ Sie können die gzip-Komprimierung in ``vite.config.js`` in Ihrem Needle Webproj
   *Dieses Asset enthält die Zugangsdaten zu Ihrem FTP-Server - Sie erhalten diese, wenn Sie ein neues FTP-Konto bei Ihrem Hosting-Provider erstellen.*
 3) Klicken Sie auf die Schaltfläche <kbd>Build & Deploy</kbd> in der Komponente ``DeployToFTP``, um Ihr Projekt zu bauen und es auf Ihr FTP-Konto hochzuladen.
 
-
 ![Deploy to FTP Komponente in Unity](/deployment/deploytoftp.jpg)
 *¹ Deploy to FTP Komponente*
 
@@ -248,7 +246,7 @@ Sie können die gzip-Komprimierung in ``vite.config.js`` in Ihrem Needle Webproj
 
 :::details Wie stelle ich manuell auf meinen FTP-Server bereit?
 
-1) Öffnen Sie `File > Build Settings`, wählen Sie `Needle Engine` und klicken Sie auf <kbd>Build</kbd>
+1) Öffnen Sie `File > Build Settings`, wählen Sie `Needle Engine`, und klicken Sie auf <kbd>Build</kbd>
 2) Warten Sie, bis der Build abgeschlossen ist - der resultierende `dist`-Ordner wird nach Abschluss aller Build- und Komprimierungsschritte automatisch geöffnet.
 3) Kopieren Sie die Dateien aus dem `dist`-Ordner auf Ihren FTP-Speicherplatz.
 
@@ -343,7 +341,7 @@ Nodejs wird **nur** während der Entwicklung benötigt. Die verteilte Website (u
 
 ## Cross-Plattform-Bereitstellungs-Workflows
 
-Es ist möglich, reguläre Unity-Projekte zu erstellen, bei denen Sie sowohl für Needle Engine als auch für reguläre Unity-Plattformen wie Desktop oder sogar WebGL bauen können. Unser "Komponenten-Mapping"-Ansatz bedeutet, dass keine Laufzeitlogik innerhalb von Unity geändert wird – wenn Sie möchten, können Sie regelmäßig den Play Mode verwenden und für andere Zielplattformen bauen. In einigen Fällen bedeutet dies, dass Sie doppelte Code haben (C#-Code und entsprechende TypeScript-Logik). Der Mehraufwand hängt dabei von Ihrem Projekt ab.
+Es ist möglich, reguläre Unity-Projekte zu erstellen, bei denen Sie sowohl für Needle Engine als auch für reguläre Unity-Plattformen wie Desktop oder sogar WebGL bauen können. Unser "Komponenten-Mapping"-Ansatz bedeutet, dass keine Laufzeitlogik innerhalb von Unity geändert wird – wenn Sie möchten, können Sie regelmäßig den Play Mode verwenden und für andere Zielplattformen bauen. In einigen Fällen bedeutet dies, dass Sie doppelte Code haben (C#-Code und entsprechende TypeScript-Logik). Der Mehraufwand dabei hängt von Ihrem Projekt ab.
 
 **Play Mode in Unity starten**
 In den `Project Settings > Needle Engine` können Sie `Override Play Mode` und `Override Build settings` deaktivieren, um zwischen dem Build-Prozess von Needle und dem Build-Prozess von Unity zu wechseln:
@@ -362,4 +360,5 @@ Die folgende Liste gibt eine Tabelle über die verfügbaren Optionen:
 | `-buildProduction` | Führt einen Production Build aus |
 | `-buildDevelopment` | Führt einen Development Build aus |
 | `-debug` | Öffnet ein Konsolenfenster zum Debugging |
+
 Seite automatisch übersetzt durch AI

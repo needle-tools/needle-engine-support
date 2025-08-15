@@ -4,37 +4,52 @@ title: Frameworks, Bundlers, HTML
 
 ## Bundling y frontends web
 
-Needle Engine se construye como un web component.
-Esto significa que basta con instalar `@needle-tools/engine` en tu proyecto e incluir `<needle-engine src="path/to/your.glb">` en cualquier parte de tu proyecto web.
+Needle Engine está construido como un web component.
+Esto significa que solo tienes que instalar `@needle-tools/engine` en tu proyecto:
 
-- Instalar usando npm:
-  `npm i @needle-tools/engine`
+```bash
+npm i @needle-tools/engine
+```
 
-Con nuestra plantilla de proyecto por defecto basada en Vite, Needle Engine se empaqueta (bundled) en una aplicación web en el momento del despliegue. Esto asegura archivos más pequeños, tree-shaking (similar a code stripping en Unity) y optimiza los tiempos de carga. En lugar de descargar numerosos scripts y componentes pequeños, solo se descargan uno o unos pocos que contienen el código mínimo necesario.
+y luego usarlo desde HTML así:
 
-Vite (nuestro bundler por defecto) tiene una buena explicación de por qué las aplicaciones web deberían ser empaquetadas (bundled): [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+```html
+<script type="module">
+  import '@needle-tools/engine';
+</script>
+<needle-engine src="path/to/your.glb"></needle-engine>
+```
+
+Con nuestra plantilla de proyecto por defecto basada en Vite, Needle Engine se agrupa (bundles) en tu aplicación web al desplegarse. Esto asegura archivos más pequeños y optimiza los tiempos de carga.
+
+::: tip Bundling y tree shaking
+
+**Bundling** significa que todos los archivos css, js y otros que componen tu proyecto se combinan en menos y más pequeños archivos en tiempo de compilación. Esto asegura que en lugar de descargar numerosos scripts y componentes pequeños, solo se descarguen uno o unos pocos que contengan el código mínimo necesario. La documentación de Vite contiene una excelente explicación de por qué las aplicaciones web deben ser agrupadas: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+
+**Tree shaking** es una práctica común en el desarrollo web donde el código no utilizado se elimina del bundle final para reducir el tamaño del archivo. Esto es similar al "code stripping" en Unity. La [documentación de MSDN](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) tiene una buena explicación de tree shaking.
+:::
 
 ### Vite, Vue, React, Svelte, React Three Fiber...
 
-Needle Engine no tiene preferencia sobre la elección del framework. Nuestra plantilla por defecto usa el popular [vite](https://vitejs.dev) como bundler. Desde ahí, puedes añadir vue, svelte, nuxt, react, react-three-fiber u otros frameworks, y tenemos ejemplos para muchos de ellos. También puedes integrar otros bundlers, o no usar ninguno — solo HTML y Javascript planos.
+Needle Engine no tiene preferencia sobre la elección del framework. Nuestra plantilla predeterminada utiliza el popular [vite](https://vitejs.dev) como bundler. Desde ahí, puedes añadir Vue, Svelte, Nuxt, React, React Three Fiber u otros frameworks, y tenemos ejemplos para muchos de ellos. También puedes integrar otros bundlers, o no usar ninguno — solo HTML y Javascript planos.
 
 Aquí tienes algunos ejemplos de stacks tecnológicos posibles y con los que usamos Needle Engine:
 
-- **Vite + HTML** — ¡Esto es lo que usa nuestra plantilla por defecto!
+- **Vite + HTML** — ¡Esto es lo que usa nuestra plantilla predeterminada!
 
 - **Vite + Vue** — ¡Esto es lo que usa la web de [Needle Tools](https://needle.tools)! Encuentra un ejemplo para descargar [aquí](https://github.com/needle-tools/needle-engine-samples).
 - **Vite + Svelte**
 - **Vite + SvelteKit**
-- **Vite + React** — ¡Hay una plantilla experimental incluida con la integración de Unity para esto que puedes elegir al generar un proyecto!
-- **react-three-fiber** — ¡Hay una plantilla experimental incluida con la integración de Unity para esto que puedes elegir al generar un proyecto!
-- **Vercel & Nextjs** — Encuentra un [proyecto de ejemplo con nextjs aquí](https://github.com/needle-engine/nextjs-sample)
+- **Vite + React** — ¡Hay una plantilla experimental que se incluye con la integración de Unity para esto y que puedes elegir al generar un proyecto!
+- **react-three-fiber** — ¡Hay una plantilla experimental que se incluye con la integración de Unity para esto y que puedes elegir al generar un proyecto!
+- **Vercel & Nextjs** — Encuentra un [proyecto de ejemplo de nextjs aquí](https://github.com/needle-engine/nextjs-sample)
 - **CDN sin ningún bundler** — Encuentra un ejemplo de código [aquí](./vanilla-js.md)
 
-En resumen: actualmente proporcionamos una plantilla minimalista con vite, pero puedes extenderla o cambiar a otros frameworks –
-Cuéntanos qué y cómo construyes, y cómo podemos mejorar la experiencia para tu caso de uso o proporcionar un ejemplo.
+En resumen: actualmente estamos proporcionando una plantilla Vite mínima, pero puedes extenderla o cambiar a otros frameworks –
+¡Haznos saber qué y cómo construyes, y cómo podemos mejorar la experiencia para tu caso de uso o proporcionar un ejemplo!
 
 :::tip
-Algunos frameworks requieren ajustes personalizados en `needle.config.json`. Aprende más [aquí](./reference/needle-config-json.md). Típicamente, se necesita configurar el `baseUrl`.
+Algunos frameworks requieren configuraciones personalizadas en `needle.config.json`. Aprende más [aquí](./reference/needle-config-json.md). Normalmente, se necesita establecer el `baseUrl`.
 :::
 
 :::details ¿Cómo creo una plantilla de proyecto personalizada en Unity?
@@ -49,83 +64,57 @@ Las dependencias provienen de Unity cuando hay un NpmDef en el proyecto (es deci
 También podrías publicar tus paquetes en npm y referenciarlos a través del número de versión.
 :::
 
-### Tree-shaking para reducir el tamaño del bundle
-
-Tree shaking se refiere a una práctica común en el bundling de aplicaciones web ([ver docs de MSDN](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). Significa que las rutas de código y características que no se usan en tu código serán eliminadas del archivo(s) javascript final empaquetado para reducir el tamaño del archivo. Consulta a continuación las características que Needle Engine incluye y cómo eliminarlas:
-
-:::details ¿Cómo eliminar el motor de físicas Rapier? (Reduce el tamaño total del bundle eliminando ~2MB (~600KB al usar gzipping))
-
-- **Opción 1**: vía config needlePlugins:
-  Establece `useRapier` a `false` en tu vite.config: `needlePlugins(command, needleConfig, { useRapier: false }),`
-
-- **Opción 2**: vía config vite.define:
-  Declara la definición `NEEDLE_USE_RAPIER` con `false`
-  ```js
-  define: {
-    NEEDLE_USE_RAPIER: false
-  },
-  ```
-
-- **Opción 3**: vía .env
-  Crea un archivo `.env` en tu proyecto web y añade `VITE_NEEDLE_USE_RAPIER=false`
-
-- **Opción 4**: vía componente de Unity
-  Añade el componente `Needle Engine Modules` a tu escena y establece `Physics Engine` a `None`
-  ![](/imgs/unity-needle-engine-modules-physics.jpg)
-
-:::
-
 ## Creando una PWA
 
-Apoyamos la creación sencilla de una Progressive Web App (PWA) directamente desde nuestra plantilla de vite.
+Soportamos la creación sencilla de una Progressive Web App (PWA) directamente desde nuestra plantilla Vite.
 Las PWAs son aplicaciones web que se cargan como páginas web o sitios web normales, pero pueden ofrecer funcionalidades de usuario como trabajar sin conexión, notificaciones push y acceso al hardware del dispositivo, tradicionalmente solo disponibles para aplicaciones móviles nativas.
 
-Por defecto, las PWAs creadas con Needle tienen soporte sin conexión y opcionalmente pueden actualizarse automáticamente cuando publicas una nueva versión de tu aplicación.
+Por defecto, las PWAs creadas con Needle tienen soporte sin conexión, y opcionalmente pueden refrescarse automáticamente cuando publicas una nueva versión de tu aplicación.
 
 1) Instala el [plugin Vite PWA](https://vite-pwa-org.netlify.app/) en tu proyecto web: `npm install vite-plugin-pwa --save-dev`
-2) Modifica `vite.config.js` como se muestra a continuación. Asegúrate de pasar el mismo objeto `pwaOptions` tanto a `needlePlugins` como a `VitePWA`.
+2) Modifica `vite.config.js` como se ve a continuación. Asegúrate de pasar el mismo objeto `pwaOptions` tanto a `needlePlugins` como a `VitePWA`.
 
 ```js
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(async ({ command }) => {
 
-    // Create the pwaOptions object.
-    // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
+    // Crea el objeto pwaOptions. 
+    // Puedes editar o introducir configuraciones de PWA aquí (p. ej., cambiar el nombre de la PWA o añadir iconos).
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
     const pwaOptions = {};
-
+  
     const { needlePlugins } = await import("@needle-tools/engine/plugins/vite/index.js");
 
     return {
         plugins: [
-            // pass the pwaOptions object to the needlePlugins and the VitePWA function
+            // pasa el objeto pwaOptions a needlePlugins y a la función VitePWA
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
+        // el resto de tu configuración de Vite...
 ```
 
 :::tip Todos los assets se cachean por defecto
-Ten en cuenta que, por defecto, todos los assets en tu carpeta de compilación se añaden al precache de la PWA. Para aplicaciones grandes con muchos assets dinámicos, esto puede no ser lo que quieres (imagina la PWA de YouTube cacheando todos los vídeos una vez que un usuario abre la aplicación). Consulta [Más opciones de PWA](#more-pwa-options) para saber cómo personalizar este comportamiento.
+Ten en cuenta que, por defecto, todos los assets de tu carpeta de compilación se añaden al precache de la PWA – para aplicaciones grandes con muchos assets dinámicos, esto puede no ser lo que quieres (¡imagina la PWA de YouTube cacheando todos los vídeos una vez que un usuario abre la aplicación!). Consulta [Más opciones de PWA](#more-pwa-options) para saber cómo personalizar este comportamiento.
 :::
 
 ### Probando PWAs
 
-Para probar tu PWA, despliega la página, por ejemplo usando el componente `DeployToFTP`.
-Luego, abre la página desplegada en un navegador y comprueba si las funcionalidades de la PWA funcionan como se espera:
+Para probar tu PWA, despliega la página, por ejemplo, usando el componente `DeployToFTP`.
+Luego, abre la página desplegada en un navegador y comprueba si las características de la PWA funcionan como se espera:
 - la aplicación aparece como instalable
 - la aplicación funciona sin conexión
 - la aplicación es detectada como PWA capaz de funcionar sin conexión por [pwabuilder.com](https://pwabuilder.com/)
 
-Las PWAs usan Service Workers para cachear recursos y proporcionar soporte sin conexión. Los Service Workers son algo más difíciles de usar durante el desarrollo, y típicamente solo se habilitan para builds (por ejemplo, cuando usas un componente `DeployTo...`).
+Las PWAs usan Service Workers para cachear recursos y proporcionar soporte sin conexión. Los Service Workers son algo más difíciles de usar durante el desarrollo, y típicamente solo se habilitan para builds (p. ej., cuando usas un componente `DeployTo...`).
 
-Puedes habilitar el soporte para PWA en desarrollo añadiendo lo siguiente al objeto de opciones en tu `vite.config.js`.
+Puedes habilitar el soporte PWA para desarrollo añadiendo lo siguiente al objeto de opciones en tu `vite.config.js`.
 
 ```js
 const pwaOptions = {
-  // Note: PWAs behave different in dev mode.
-  // Make sure to verify the behaviour in production builds!
+  // Nota: Las PWAs se comportan diferente en modo de desarrollo. 
+  // ¡Asegúrate de verificar el comportamiento en las compilaciones de producción!
   devOptions: {
     enabled: true,
   }
@@ -136,16 +125,16 @@ Ten en cuenta que las PWAs en modo de desarrollo no soportan el uso sin conexió
 
 ### Actualizar automáticamente aplicaciones en ejecución
 
-Las webs típicamente muestran contenido nuevo o actualizado al refrescar la página.
+Los sitios web suelen mostrar contenido nuevo o actualizado al refrescar la página.
 
-En algunas situaciones, puede que desees que la página se refresque y recargue automáticamente cuando se haya publicado una nueva versión –
+En algunas situaciones, es posible que quieras que la página se refresque y recargue automáticamente cuando se haya publicado una nueva versión –
 como en un museo, feria comercial, pantalla pública u otros escenarios de larga duración.
 
 Para habilitar las actualizaciones automáticas, establece la propiedad `updateInterval` en el objeto pwaOptions a una duración (en milisegundos) en la que la aplicación debe buscar actualizaciones. Si se detecta una actualización, la página se recargará automáticamente.
 
 ```js
 const pwaOptions = {
-  updateInterval: 15 * 60 * 1000, // 15 minutes, in milliseconds
+  updateInterval: 15 * 60 * 1000, // 15 minutos, en milisegundos
 };
 ```
 
@@ -156,12 +145,12 @@ Consulta la [documentación del plugin Vite PWA](https://vite-pwa-org.netlify.ap
 
 ### Más opciones de PWA
 
-Dado que Needle usa el [plugin Vite PWA](https://vite-pwa-org.netlify.app/) internamente, puedes usar todas las opciones y hooks proporcionados por este.
+Dado que Needle utiliza el [plugin Vite PWA](https://vite-pwa-org.netlify.app/) internamente, puedes usar todas las opciones y hooks proporcionados por este.
 Por ejemplo, puedes proporcionar un manifiesto parcial con un título de aplicación o color de tema personalizado:
 
 ```js
 const pwaOptions = {
-  // manifest options provided here will override the defaults
+  // las opciones de manifiesto proporcionadas aquí anularán los valores predeterminados 
   manifest: {
     name: "My App",
     short_name: "My App",
@@ -170,11 +159,11 @@ const pwaOptions = {
 };
 ```
 
-Para requisitos complejos como cacheo parcial, Service Workers personalizados o diferentes estrategias de actualización, puedes eliminar la opción `{ pwa: pwaOptions }` de `needlePlugins` y añadir la funcionalidad PWA directamente a través del plugin Vite PWA.
+Para requisitos complejos como el cacheo parcial, Service Workers personalizados o diferentes estrategias de actualización, puedes eliminar la opción `{ pwa: pwaOptions }` de `needlePlugins` y añadir la funcionalidad PWA directamente a través del plugin Vite PWA.
 
 ## Acceso a Needle Engine y Componentes desde javascript externo
 
-El código que expones puede ser accedido desde JavaScript después del bundling. Esto permite construir viewers y otras aplicaciones donde hay una división entre los datos conocidos en tiempo de edición y los datos conocidos solo en tiempo de ejecución (por ejemplo, archivos cargados dinámicamente, contenido generado por el usuario).
+El código que expones puede ser accedido desde JavaScript después del bundling. Esto permite construir viewers y otras aplicaciones donde hay una división entre los datos conocidos en tiempo de edición y los datos conocidos solo en tiempo de ejecución (p. ej., archivos cargados dinámicamente, contenido generado por el usuario).
 Para acceder a componentes desde javascript regular fuera del motor, consulta la sección de [interoperabilidad con javascript regular](./scripting.md#accessing-needle-engine-and-components-from-anywhere)
 
 ## Personalizando la apariencia de carga
@@ -189,10 +178,10 @@ Las opciones son `light` y `dark` (por defecto):
 
 ``<needle-engine loading-style="light"></needle-engine>``
 
-### Estilo de carga personalizado — *PRO feature* #
+### Estilo de carga personalizado — *función PRO* #
 
 Consulta la sección *Loading Display* en la [referencia de componentes de needle engine](./reference/needle-engine-attributes.md)
 
-![custom loading](/imgs/custom-loading-style.webp)
+![carga personalizada](/imgs/custom-loading-style.webp)
 
 Página traducida automáticamente con IA

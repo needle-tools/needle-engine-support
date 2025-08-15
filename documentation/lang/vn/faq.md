@@ -15,8 +15,8 @@ Sau đó, bạn sẽ thấy thông tin tài khoản của mình trong cửa sổ
 #### Needle Engine 3.x
 
 Mở `Edit/Project Settings/Needle` để vào cài đặt plugin Needle Engine. Ở đầu cửa sổ, bạn sẽ tìm thấy các trường để nhập thông tin giấy phép của mình.
--   `Email` - Nhập email mà bạn đã mua giấy phép
--   `Invoice ID` - Nhập một trong các invoice ID mà bạn đã nhận qua email
+- `Email` - Nhập email mà bạn đã mua giấy phép
+- `Invoice ID` - Nhập một trong các invoice ID mà bạn đã nhận qua email
 
 Lưu ý: Bạn có thể cần khởi động lại máy chủ web cục bộ để áp dụng giấy phép.
 
@@ -24,8 +24,8 @@ Lưu ý: Bạn có thể cần khởi động lại máy chủ web cục bộ đ
 
 ### Kích hoạt giấy phép trong Blender
 Mở `Addon Preferences/Needle Engine` để vào cài đặt addon Needle Engine
--   `Email` - Nhập email mà bạn đã mua giấy phép
--   `Invoice ID` - Nhập một trong các invoice ID mà bạn đã nhận qua email
+- `Email` - Nhập email mà bạn đã mua giấy phép
+- `Invoice ID` - Nhập một trong các invoice ID mà bạn đã nhận qua email
 
 Lưu ý: Bạn có thể cần khởi động lại máy chủ web cục bộ để áp dụng giấy phép.
 
@@ -60,14 +60,14 @@ Trong một số trường hợp, đặc biệt là khi bạn vừa cập nhật
 ## Các đối tượng của tôi bị trắng sau khi xuất
 Điều này thường xảy ra khi bạn đang sử dụng custom shaders hoặc materials và các thuộc tính của chúng không được dịch rõ ràng sang các tên thuộc tính đã biết để xuất glTF.  
 Bạn có thể đảm bảo rằng bạn đang sử dụng materials và shaders tương thích với glTF, hoặc đánh dấu shaders là "custom" để xuất chúng trực tiếp.  
--   Đọc thêm về các quy trình làm việc glTF được đề xuất: <link>
--   Đọc thêm về custom shaders: <link>
+- Đọc thêm về các quy trình làm việc glTF được đề xuất: <link>
+- Đọc thêm về custom shaders: <link>
 
 
 ## Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
 
-Nếu bạn đang sử dụng vite hoặc next.js, hãy đảm bảo thêm các plugin Needle Engine vào cấu hình của bạn.
-Ví dụ cho vite:
+Nếu bạn đang sử dụng Vite hoặc next.js, hãy đảm bảo thêm các plugin Needle Engine vào cấu hình của bạn.
+Ví dụ cho Vite:
 ```js
 const { needlePlugins } = await import('@needle-tools/engine/plugins/vite/index.js');
 plugins: [needlePlugins(command, needleConfig)]
@@ -95,23 +95,23 @@ Truy cập *Edit/Project Settings/Player* để thay đổi cài đặt.
 ## Trang web của tôi trở nên quá lớn / tải chậm (quá nhiều MB)
   
 Điều này có thể có nhiều lý do, nhưng một vài lý do phổ biến là:
--   quá nhiều textures hoặc textures quá lớn
--   meshes có quá nhiều vertices
--   meshes có các vertex attributes mà bạn thực sự không cần (ví dụ: có normals và tangents nhưng bạn không sử dụng chúng)
--   các đối tượng bị vô hiệu hóa và không bị bỏ qua – các đối tượng bị vô hiệu hóa cũng được xuất trong trường hợp bạn muốn bật chúng lên khi chạy! Đặt Tag của chúng thành `EditorOnly` để bỏ qua hoàn toàn chúng khi xuất.
--   bạn có nhiều thành phần ``GltfObject`` trong cảnh của mình và tất cả chúng đều bật ``EmbedSkybox`` (bạn chỉ cần có skybox một lần cho mỗi cảnh bạn xuất)
+- quá nhiều textures hoặc textures quá lớn
+- meshes có quá nhiều vertices
+- meshes có các vertex attributes mà bạn thực sự không cần (ví dụ: có normals và tangents nhưng bạn không sử dụng chúng)
+- các đối tượng bị vô hiệu hóa và không bị bỏ qua – các đối tượng bị vô hiệu hóa cũng được xuất trong trường hợp bạn muốn bật chúng lên khi chạy! Đặt Tag của chúng thành `EditorOnly` để bỏ qua hoàn toàn chúng khi xuất.
+- bạn có nhiều thành phần ``GltfObject`` trong cảnh của mình và tất cả chúng đều bật ``EmbedSkybox`` (bạn chỉ cần có skybox một lần cho mỗi cảnh bạn xuất)
   
 Nếu thời gian tải là vấn đề, bạn có thể **thử chia nội dung của mình thành nhiều tệp glb** và tải chúng theo yêu cầu (đây là cách chúng tôi làm trên trang web của mình). Để nó hoạt động, bạn có thể đặt nội dung của mình vào Prefabs hoặc Scenes và tham chiếu chúng từ bất kỳ tập lệnh nào của bạn. Vui lòng xem [Scripting/Addressables trong tài liệu](./scripting.md#assetreference-and-addressables).
 
 ## UI của tôi không hiển thị Text
 
--   Đối với Unity: Đảm bảo rằng bạn sử dụng thành phần `UI/Legacy/Text` và **không phải** thành phần `TextMeshPro - Text`
+- Đối với Unity: Đảm bảo rằng bạn sử dụng thành phần `UI/Legacy/Text` và **không phải** thành phần `TextMeshPro - Text`
 
 ## Các tập lệnh của tôi không hoạt động sau khi xuất
   
--   Mã C# hiện có của bạn sẽ *không* được xuất nguyên trạng, bạn phải viết typescript / javascript tương ứng cho nó.  
--   Needle sử dụng typescript / javascript cho các thành phần và tạo ra các C# stubs cho chúng.  
--   Các thành phần đã có JS tương ứng sẽ hiển thị điều đó trong Inspector.  
+- Mã C# hiện có của bạn sẽ *không* được xuất nguyên trạng, bạn phải viết typescript / javascript tương ứng cho nó.  
+- Needle sử dụng typescript / javascript cho các thành phần và tạo ra các C# stubs cho chúng.  
+- Các thành phần đã có JS tương ứng sẽ hiển thị điều đó trong Inspector.  
 
 ## lightmaps của tôi trông khác / quá sáng
 
@@ -120,22 +120,22 @@ Nếu thời gian tải là vấn đề, bạn có thể **thử chia nội dung
 ## Cảnh của tôi quá sáng / ánh sáng trông khác so với trong Unity
 Đảm bảo rằng đèn của bạn được đặt thành "Baked" hoặc "Realtime". "Mixed" hiện chưa được hỗ trợ.  
   
--   Đèn được đặt thành mixed (với lightmapping) ảnh hưởng đến đối tượng hai lần trong three.js, vì hiện tại không có cách nào để loại trừ các đối tượng được lightmap khỏi hệ thống chiếu sáng.
--   Hệ số ``Intensity Multiplier`` cho Skybox trong ``Lighting/Environment`` hiện chưa được hỗ trợ và không có hiệu quả trong Needle Engine.  
+- Đèn được đặt thành mixed (với lightmapping) ảnh hưởng đến đối tượng hai lần trong three.js, vì hiện tại không có cách nào để loại trừ các đối tượng được lightmap khỏi hệ thống chiếu sáng.
+- Hệ số ``Intensity Multiplier`` cho Skybox trong ``Lighting/Environment`` hiện chưa được hỗ trợ và không có hiệu quả trong Needle Engine.  
   ![image](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
--   Độ mạnh bóng đèn hiện không thể thay đổi do hạn chế của three.js.
+- Độ mạnh bóng đèn hiện không thể thay đổi do hạn chế của three.js.
   
 Cũng xem tài liệu về [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects).
 
 
 ## Độ phân giải skybox của tôi thấp? Làm thế nào để thay đổi độ phân giải skybox của tôi
 
-  -   **Nếu bạn sử dụng custom cubemap**: Bạn có thể ghi đè cài đặt nhập texture của texture skybox (được gán cho cubemap của bạn)
+  - **Nếu bạn sử dụng custom cubemap**: Bạn có thể ghi đè cài đặt nhập texture của texture skybox (được gán cho cubemap của bạn)
   
     ![image](https://user-images.githubusercontent.com/5083203/188179104-1e078cda-3397-4ebe-aaf9-7faa23ee4904.png)   
 
  
-  -   **Nếu bạn sử dụng skybox mặc định**: Thêm một thành phần ``SkyboxExportSettings`` ở bất kỳ đâu trong cảnh của bạn để ghi đè độ phân giải mặc định   
+  - **Nếu bạn sử dụng skybox mặc định**: Thêm một thành phần ``SkyboxExportSettings`` ở bất kỳ đâu trong cảnh của bạn để ghi đè độ phân giải mặc định   
   
     ![image](https://user-images.githubusercontent.com/5083203/188171443-578380ab-2036-4d70-a8a7-f8cd9da9f603.png)
 
@@ -145,9 +145,9 @@ Cũng xem tài liệu về [mixing baked and non-baked objects](https://github.c
   
 Vui lòng kiểm tra các điểm sau:   
   
-  -   Đèn của bạn đã bật bóng (Soft Shadow hoặc Hard Shadow)
-  -   Các đối tượng của bạn được đặt thành "Cast Shadows: On" (xem thành phần MeshRenderer)
-  -   Đối với directional lights, vị trí của đèn hiện tại rất quan trọng vì shadow camera sẽ được đặt ở vị trí đèn trong cảnh.
+  - Đèn của bạn đã bật bóng (Soft Shadow hoặc Hard Shadow)
+  - Các đối tượng của bạn được đặt thành "Cast Shadows: On" (xem thành phần MeshRenderer)
+  - Đối với directional lights, vị trí của đèn hiện tại rất quan trọng vì shadow camera sẽ được đặt ở vị trí đèn trong cảnh.
 
 
 
@@ -161,16 +161,16 @@ Vui lòng kiểm tra các điểm sau:
 
 ## Tôi đang sử dụng networking và Glitch và nó không hoạt động nếu hơn 30 người truy cập trang Glitch cùng lúc
   
--   Triển khai trên Glitch là một cách nhanh chóng để tạo mẫu và thậm chí có thể hoạt động cho một số sản xuất nhỏ. Máy chủ nhỏ ở đó không có đủ năng lực và băng thông để chứa nhiều người trong một phiên liên tục.  
--   Chúng tôi đang nghiên cứu các ý tưởng networking khác, nhưng trong thời gian chờ đợi, bạn có thể lưu trữ trang web ở nơi khác (với hỗ trợ node.js) hoặc chỉ cần remix nó để phân phối tải giữa nhiều máy chủ. Bạn cũng có thể lưu trữ [gói networking backend](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) ở nơi khác nơi nó có thể mở rộng, ví dụ: Google Cloud.
+- Triển khai trên Glitch là một cách nhanh chóng để tạo mẫu và thậm chí có thể hoạt động cho một số sản xuất nhỏ. Máy chủ nhỏ ở đó không có đủ năng lực và băng thông để chứa nhiều người trong một phiên liên tục.  
+- Chúng tôi đang nghiên cứu các ý tưởng networking khác, nhưng trong thời gian chờ đợi, bạn có thể lưu trữ trang web ở nơi khác (với hỗ trợ node.js) hoặc chỉ cần remix nó để phân phối tải giữa nhiều máy chủ. Bạn cũng có thể lưu trữ [gói networking backend](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) ở nơi khác nơi nó có thể mở rộng, ví dụ: Google Cloud.
 
 
 
 ## Trang web của tôi không có nút AR/VR
   
--   Đảm bảo thêm thành phần `WebXR` ở đâu đó bên trong `GltfObject` gốc của bạn.
--   Tùy chọn thêm thành phần `AR Session Root` trên `GltfObject` gốc của bạn hoặc trong cây phân cấp con để chỉ định vị trí, tỷ lệ và hướng cho WebXR.
--   Tùy chọn thêm thành phần `XR Rig` để kiểm soát nơi người dùng bắt đầu trong VR
+- Đảm bảo thêm thành phần `WebXR` ở đâu đó bên trong `GltfObject` gốc của bạn.
+- Tùy chọn thêm thành phần `AR Session Root` trên `GltfObject` gốc của bạn hoặc trong cây phân cấp con để chỉ định vị trí, tỷ lệ và hướng cho WebXR.
+- Tùy chọn thêm thành phần `XR Rig` để kiểm soát nơi người dùng bắt đầu trong VR
 
 
 ## Tôi đã tạo một tập lệnh mới trong sub-scene nhưng nó không hoạt động
@@ -184,13 +184,13 @@ Kiểm tra console và thành phần `ExportInfo` để tìm lỗi hoặc cảnh
 
 Nếu những cảnh báo/lỗi này không giúp ích, hãy thử các bước sau theo thứ tự. Dành thời gian cho chúng hoàn thành. Dừng lại ngay khi vấn đề của bạn đã được giải quyết. Kiểm tra console để tìm cảnh báo và lỗi.  
   
--   Đảm bảo bạn tuân thủ [Prerequisites](./getting-started/#prerequisites).
--   Cài đặt dự án của bạn bằng cách chọn thành phần `ExportInfo` của bạn và nhấp vào `Install` 
--   Chạy cài đặt sạch bằng cách chọn thành phần `ExportInfo` của bạn, giữ phím Alt và nhấp vào `Clean Install`
--   Thử mở thư mục dự án web của bạn trong công cụ dòng lệnh và làm theo các bước sau:
-  -   chạy ``npm install`` và sau đó ``npm run dev-host``
-  -   Đảm bảo cả gói runtime cục bộ (``node_modules/@needle-tools/engine``) cũng như three.js (``node_modules/three``) đã cài đặt. 
-  -   Bạn cũng có thể chạy ``npm install`` trong cả hai thư mục này.
+- Đảm bảo bạn tuân thủ [Prerequisites](./getting-started/#prerequisites).
+- Cài đặt dự án của bạn bằng cách chọn thành phần `ExportInfo` của bạn và nhấp vào `Install` 
+- Chạy cài đặt sạch bằng cách chọn thành phần `ExportInfo` của bạn, giữ phím Alt và nhấp vào `Clean Install`
+- Thử mở thư mục dự án web của bạn trong công cụ dòng lệnh và làm theo các bước sau:
+  - chạy ``npm install`` và sau đó ``npm run dev-host``
+  - Đảm bảo cả gói runtime cục bộ (``node_modules/@needle-tools/engine``) cũng như three.js (``node_modules/three``) đã cài đặt. 
+  - Bạn cũng có thể chạy ``npm install`` trong cả hai thư mục này.
 
 
 ## Việc tạo thành phần C# có hoạt động chỉ với javascript không?
@@ -215,28 +215,28 @@ Vui lòng kiểm tra xem bạn có vô tình ở chế độ `Debug` của Inspe
 
 ## Toktx không thể tìm thấy / toktx chưa được cài đặt
 
--   Đảm bảo [tải xuống và cài đặt toktx](http://localhost:8080/docs/getting-started/.html#install-these-tools-for-production-builds)
+- Đảm bảo [tải xuống và cài đặt toktx](http://localhost:8080/docs/getting-started/.html#install-these-tools-for-production-builds)
 
--   Trên Windows: Đảm bảo bạn đã thêm toktx vào biến môi trường hệ thống của mình. Bạn có thể cần khởi động lại máy tính sau khi thêm để làm mới các biến môi trường. Vị trí cài đặt mặc định là ``C:\Program Files\KTX-Software\bin``   
+- Trên Windows: Đảm bảo bạn đã thêm toktx vào biến môi trường hệ thống của mình. Bạn có thể cần khởi động lại máy tính sau khi thêm để làm mới các biến môi trường. Vị trí cài đặt mặc định là ``C:\Program Files\KTX-Software\bin``   
 
 ![image](/imgs/ktx-env-variable.webp)
 
 
 ## Cài đặt dự án web mất mãi / không bao giờ kết thúc / EONET: không có tệp hoặc thư mục như vậy
--   **Đảm bảo không tạo dự án trên ổ đĩa được định dạng exFAT** vì exFAT không hỗ trợ symlinks, điều này là bắt buộc đối với Needle Engine cho Unity trước phiên bản 3.x.    
+- **Đảm bảo không tạo dự án trên ổ đĩa được định dạng exFAT** vì exFAT không hỗ trợ symlinks, điều này là bắt buộc đối với Needle Engine cho Unity trước phiên bản 3.x.    
   Bạn có thể kiểm tra định dạng ổ đĩa của mình bằng các bước sau:
-  1.  Mở "System Information" (hoặc nhấn phím windows và gõ từ đó hoặc nhập "msinfo32" vào cmd)
-  2.  Chọn Components > Storage > Drives
-  3.  Chọn tất cả (Ctrl + A) ở phía bên phải màn hình và sao chép (<kbd>Ctrl + C</kbd>) và dán vào đây (<kbd>Ctrl + V</kbd>)
+  1. Mở "System Information" (hoặc nhấn phím windows và gõ từ đó hoặc nhập "msinfo32" vào cmd)
+  2. Chọn Components > Storage > Drives
+  3. Chọn tất cả (Ctrl + A) ở phía bên phải màn hình và sao chép (<kbd>Ctrl + C</kbd>) và dán vào đây (<kbd>Ctrl + V</kbd>)
 
 ## NPM install thất bại và có lỗi về ổ cứng / IO
 Đảm bảo dự án của bạn nằm trên ổ đĩa được biết là hoạt động với node.js. Lý do chính gây ra lỗi là ổ đĩa không hỗ trợ symlinks (symbolic links / softlinks), đây là yêu cầu để node.js hoạt động đúng.  
-Định dạng <kbd>NTFS</kbd> luôn hoạt động. Các định dạng hệ thống tệp được biết là có vấn đề là <kbd>exFAT</kbd> và <kbd>FAT32</kbd>. 
+<kbd>NTFS</kbd> formatting should always work. Known problematic file system formattings are <kbd>exFAT</kbd> and <kbd>FAT32</kbd>. 
 
 Để kiểm tra định dạng ổ đĩa của bạn, bạn có thể:
-1.  Mở "System Information" (hoặc nhấn <kbd>phím Windows</kbd> và gõ "System Information" hoặc nhập `msinfo32` vào cmd <kbd>Windows + R</kbd>)
-2.  Chọn "Components > Storage > Drives"
-3.  Ở đó, bạn có thể thấy tất cả các ổ đĩa và định dạng của chúng được liệt kê. Đặt dự án của bạn trên ổ đĩa được định dạng NTFS.
+1. Mở "System Information" (hoặc nhấn <kbd>phím Windows</kbd> và gõ "System Information" hoặc nhập `msinfo32` vào cmd <kbd>Windows + R</kbd>)
+2. Chọn "Components > Storage > Drives"
+3. Ở đó, bạn có thể thấy tất cả các ổ đĩa và định dạng của chúng được liệt kê. Đặt dự án của bạn trên ổ đĩa được định dạng NTFS.
 
 
 ## Tôi gặp lỗi với "Unexpected token `@`. Expected identifier, string literal, numeric literal or ..."
@@ -263,8 +263,8 @@ you seem to have objects with the same name referencing each other.
 ```
 
 Để khắc phục điều này, bạn có thể:
--   Xóa `GltfObject` trong Prefab hoặc Scene được tham chiếu
--   Đổi tên GameObject với thành phần tải các cảnh được tham chiếu
+- Xóa `GltfObject` trong Prefab hoặc Scene được tham chiếu
+- Đổi tên GameObject với thành phần tải các cảnh được tham chiếu
 
 Nếu điều này không khắc phục được vấn đề, vui lòng hỏi [trong diễn đàn của chúng tôi](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content).
 
@@ -276,14 +276,14 @@ Vui lòng xem phần [lỗi tham chiếu vòng (circular reference error)](#circ
 Sử dụng bộ phát hiện [như thế này](https://get.webgl.org/webgl2/) để xác định xem thiết bị của bạn có hỗ trợ WebGL 2 không, nó cũng gợi ý nguyên nhân gây ra vấn đề của bạn, nhưng nói chung, hãy đảm bảo bạn đã cập nhật trình duyệt và drivers của mình. WebGL 1 không được hỗ trợ.
 
 #### Các thiết bị được biết là gây ra vấn đề:
--   Lenovo Thinkpad - T495  
+- Lenovo Thinkpad - T495  
 
 ## Tôi muốn sử dụng Needle AI với mô hình AI cục bộ của mình
 
 Nếu bạn muốn (hoặc phải) chạy AI của mình cục bộ, bạn có thể sử dụng các tệp llms.txt của Needle làm ngữ cảnh cho AI cục bộ của bạn (ví dụ: Ollama):
 
--   [llms.txt](https://cloud.needle.tools/llms.txt)
--   [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
+- [llms.txt](https://cloud.needle.tools/llms.txt)
+- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
 
 ## Vẫn còn câu hỏi? 

@@ -13,9 +13,9 @@ description: 'Needle Cloud es un servicio online. Te ayuda a almacenar, gestiona
 ## Resumen
 
 Needle Cloud es un servicio online. Te ayuda a almacenar, gestionar y compartir assets y apps 3D en la web.
-Se soporta una variedad de formatos de archivo, incluyendo glTF, USD, FBX, VRM, y más. Las aplicaciones web espaciales hechas con Needle pueden ser desplegadas a la nube directamente desde la integración de Unity, y vía línea de comandos (CLI). La integración de Blender llegará más adelante; mientras tanto, puedes usar la CLI.
+Se soporta una variedad de formatos de archivo, incluyendo glTF, USD, FBX, VRM, y más. Las aplicaciones web espaciales hechas con Needle pueden ser desplegadas directamente desde la [integración de Unity](#deploy-from-unity) o nuestra [interfaz de línea de comandos](#deploy-from-the-cli) (CLI) de Needle Cloud.
 
-Visita [Needle Cloud](https://cloud.needle.tools) para empezar.
+Visita [Needle Cloud](https://cloud.needle.tools) para crear una cuenta gratis.
 
 ![Resumen de Needle Cloud](/cloud/cloud-overview-page.webp)
 
@@ -35,10 +35,11 @@ Visita [Needle Cloud](https://cloud.needle.tools) para empezar.
    Se pueden compartir enlaces a tus archivos con otros y utilizarlos directamente en tus proyectos. Puedes subir nuevas versiones de assets y apps. Las versiones individuales pueden ser etiquetadas, lo que permite flujos de trabajo de revisión flexibles: por ejemplo, puedes etiquetar una versión como `main` o `experimental`. También puedes revertir las etiquetas a una versión anterior si es necesario.
 
 5. **Automatización y herramientas de Pipeline vía CLI**  
-   La CLI (`command line interface` o interfaz de línea de comandos) de `needle-cloud` facilita la automatización de la carga y optimización de archivos. Esto es útil para integrar Needle Cloud en tu pipeline existente, o para automatizar la carga de un gran número de archivos.
+   La interfaz de línea de comandos (CLI) de `needle-cloud` facilita la automatización de la carga y optimización de archivos. Esto es útil para integrar Needle Cloud en tu pipeline existente, o para automatizar la carga de un gran número de archivos.
 
 6. **Gestión de licencias**  
    Las licencias de Needle Engine para creadores individuales y equipos se gestionan a través de Needle Cloud. Esto garantiza que solo los usuarios autorizados puedan acceder a tus archivos y proyectos. Contáctanos para licencias Enterprise y Edu.
+
 
 ## Desplegar desde Unity
 
@@ -47,7 +48,7 @@ Needle Cloud está integrado en el Editor de Unity. Esto te permite desplegar tu
 1. **Instala la integración de Unity, si aún no lo has hecho.**   
    Consulta [esta página](./../unity/) para más información.
 
-2. **Añade el componente `Export Info` a tu escena.**   
+2. **Añade el componente `Needle Engine` (antes ExportInfo) a tu escena.**   
    Este componente se utiliza para configurar los ajustes de exportación de tu aplicación.  
    Puedes usar el elemento de menú `GameObject > Needle Engine > Add Export Info` o crear una nueva escena a partir de una plantilla de Needle a través del elemento de menú `File > New Scene`.
 
@@ -120,35 +121,35 @@ npx needle-cloud help deploy
 
 ## URLs de despliegue
 
-Al desplegar en Needle Cloud, cada carga obtiene una URL única. Puedes compartir un enlace a una versión _específica_ o a una versión _etiquetada_ con tu equipo o clientes.
+Al desplegar en Needle Cloud, cada carga obtiene una URL única. Puedes compartir un enlace a una versión *específica*, o a una versión *etiquetada* con tu equipo o clientes.
 
 -----
 
-En el siguiente ejemplo, tenemos una aplicación que hasta ahora se ha desplegado dos veces. Cada despliegue obtiene una URL específica, también conocida como URL _fijada_, ya que está fijada a una versión específica.
+En el siguiente ejemplo, tenemos una aplicación que hasta ahora se ha desplegado dos veces. Cada despliegue obtiene una URL específica, también conocida como una *URL pinned* ya que está fijada a una versión específica.
 1. [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)  
    Esta es la primera versión que se subió.
 2. [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)  
    Esta es la segunda versión que se subió.
 
-El despliegue _latest_ siempre está disponible en la siguiente URL. Esta URL es útil para compartir con tu equipo, ya que siempre apunta a la versión más reciente de la aplicación. Otro nombre común para esta versión es _dev_ o _canary_.
+El despliegue *latest* siempre está disponible en la siguiente URL. Esta URL es útil para compartir con tu equipo, ya que siempre apunta a la versión más reciente de la aplicación. Otro nombre común para esta versión es "dev" o "canary".
 - [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)  
   Esta URL muestra automáticamente la nueva versión cuando subes una nueva versión de la aplicación.
 
-El despliegue _main_ es útil para compartir con clientes, ya que siempre apunta a la versión más reciente de la aplicación que promoviste. Otros nombres comunes para esta versión son _production_, _stable_ o _live_.
+El despliegue *main* es útil para compartir con clientes, ya que siempre apunta a la versión más reciente de la aplicación que promoviste. Otros nombres comunes para esta versión son "production", "stable" o "live".
 - [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)  
-  Esta URL no cambia cuando subes una nueva versión. Solo cambiará cuando promociones explícitamente una nueva versión a _main_.
+  Esta URL no cambia cuando subes una nueva versión. Solo cambiará cuando promociones explícitamente una nueva versión a *main*.
 
-Típicamente, subes una nueva versión, la revisas y luego decides si quieres promocionarla a _main_.
+Típicamente, subes una nueva versión, la revisas y luego decides si quieres promocionarla a *main*.
 
 -----
 
-El sitio web de Needle Cloud muestra todas las versiones desplegadas de la aplicación, incluyendo las versiones latest y main. Las etiquetas se pueden mover haciendo clic en <kbd>⋮</kbd> y seleccionando <kbd>Set main label</kbd> o <kbd>Remove main label</kbd>.  
+El sitio web de Needle Cloud muestra todas las versiones desplegadas de la aplicación, incluyendo las versiones latest y main. Las etiquetas se pueden mover haciendo clic en <kbd>⋮</kbd> y seleccionando <kbd>Establecer etiqueta principal</kbd> o <kbd>Quitar etiqueta principal</kbd>.  
 
 ![Lista de versiones de Needle Cloud](/cloud/cloud-edit-page.webp)
 
 ## Formatos 3D soportados
 
-1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Ejemplo</a>   
+1. **glTF y GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Ejemplo</a>   
    El formato glTF es el formato más ampliamente soportado para 3D en la web. Es un formato ligero que puede almacenar modelos 3D, animaciones y texturas. Los archivos GLB son versiones binarias de los archivos glTF, donde todos los datos se almacenan en un único archivo.
    glTF soporta técnicas avanzadas de compresión como Draco, KTX2 y Meshopt, que son totalmente soportadas por Needle Cloud y Needle Engine.
 
@@ -185,10 +186,10 @@ Puedes crear enlaces para compartir archivos específicos o archivos etiquetados
 
 ### Usar Assets en la Nube en Needle Engine
 
-Los archivos almacenados en Needle Cloud se pueden importar directamente a proyectos de Needle Engine fácilmente. El componente `Needle Cloud Asset` toma un enlace a un asset y lo carga en tiempo de ejecución. Esto te permite mantener el tamaño de tu proyecto pequeño y cargar assets bajo demanda que aún pueden ser actualizados en la nube.
+Los archivos almacenados en Needle Cloud se pueden importar directamente a proyectos de Needle Engine fácilmente. El componente `Needle Cloud Asset` toma un enlace a un asset y lo carga en *tiempo de ejecución*. Esto te permite mantener el tamaño de tu proyecto pequeño y cargar assets bajo demanda que aún pueden ser actualizados en la nube.
 
 ::: tip Usa Progressive Loading siempre que sea posible
-Los assets almacenados en Needle Cloud se optimizan automáticamente para un uso ideal en tiempo de ejecución utilizando nuestra tecnología Progressive Loading. Para cada malla y textura, se generan múltiples versiones con diferentes niveles de detalle, y solo las partes del asset que se necesitan se cargan en tiempo de ejecución. 
+Los assets almacenados en Needle Cloud se optimizan automáticamente para un uso ideal en *tiempo de ejecución* utilizando nuestra tecnología Progressive Loading. Para cada malla y textura, se generan múltiples versiones con diferentes niveles de detalle, y solo las partes del asset que se necesitan se cargan en *tiempo de ejecución*. 
 
 Esto ahorra mucho ancho de banda y memoria (típicamente un 90% o más en comparación con la carga completa del asset).
 :::
@@ -241,7 +242,7 @@ Hay varias formas de usar assets almacenados en Needle Cloud en otros motores co
       Usa el enlace `Upload` (para cargas gltf/glb) o `Converted` (para otras cargas).
 
 3. **Componente Needle Cloud Asset**   
-   Si estás usando Needle Engine, puedes usar el componente `Needle Cloud Asset` para cargar assets en tiempo de ejecución. Elegirá automáticamente el mejor enlace para tu plataforma y cargará el asset con Progressive Loading. Esto también es compatible en tiempo de ejecución en Unity Builds.
+   Si estás usando Needle Engine, puedes usar el componente `Needle Cloud Asset` para cargar assets en *tiempo de ejecución*. Elegirá automáticamente el mejor enlace para tu plataforma y cargará el asset con Progressive Loading. Esto también es compatible en *tiempo de ejecución* en Unity Builds.
 
 ## CLI para Assets
 
@@ -249,7 +250,20 @@ La interfaz de línea de comandos (CLI) para Needle Cloud permite automatizar la
 
 Consulta [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) para más información sobre la CLI y cómo usarla.
 
-## Preguntas frecuentes
+## RBAC (control de acceso basado en roles)
+
+Los equipos constan de miembros, y a cada miembro de un equipo se le puede asignar un rol. Estos roles definen lo que puedes y no puedes hacer dentro de un equipo en Needle Cloud.
+
+A medida que tu proyecto crece y añades más miembros al equipo, puedes asignarles roles para asegurarte de que tengan los permisos adecuados para trabajar en tus proyectos.
+
+| | |
+| -- | -- |
+| **Owner** | Nivel más alto de autoridad. El rol de Owner puede gestionar todo el equipo (incluyendo la facturación y los roles de los miembros), ver todos los proyectos, cargas y despliegues. |
+| **Manager** | El rol de Manager puede gestionar todo el equipo (incluyendo la facturación y los roles de los miembros), ver todos los proyectos, cargas y despliegues. |
+| **Billing** | El rol de Billing está especializado en operaciones financieras, puede supervisar la información de facturación del equipo, revisar y gestionar los costos del proyecto y manejar las opciones de pago. <br/>El rol de Billing tiene acceso de solo lectura a los despliegues y assets y no puede realizar despliegues ni subir assets. <br/>El rol de Billing se puede asignar sin costo adicional. El rol está limitado a un miembro por equipo. |
+| **Member** | El rol de Member (rol de desarrollador) puede crear despliegues, subir/descargar assets para optimización o usar funciones de IA. |
+
+## FAQ
 
 1. **¿Qué es Needle Cloud?**   
    Es un servicio online para subir, comprimir y compartir assets y escenas 3D.
@@ -271,6 +285,9 @@ Consulta [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) para má
 
 7. **¿Qué pasa si me quedo sin espacio de almacenamiento?**   
    Es posible que necesites actualizar tu plan o eliminar archivos antiguos para liberar espacio.
+
+8. **Más respuestas**   
+   Visita las [FAQ de Needle Cloud](https://cloud.needle.tools/faq)
 
 
 Página traducida automáticamente con IA

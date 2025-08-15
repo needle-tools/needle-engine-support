@@ -5,20 +5,35 @@ title: Frameworks, Bundlers, HTML
 ## Bundling et frontends web
 
 Needle Engine est conçu comme un composant web.
-Cela signifie simplement installer `@needle-tools/engine` dans votre projet et inclure `<needle-engine src="path/to/your.glb">` n'importe où dans votre projet web.
+Cela signifie que vous pouvez simplement installer `@needle-tools/engine` dans votre projet :
 
-- Installation avec npm:
-  `npm i @needle-tools/engine`
+```bash
+npm i @needle-tools/engine
+```
 
-Avec notre modèle de projet par défaut basé sur Vite, Needle Engine est regroupé (bundled) en une application web lors du déploiement. Cela garantit des fichiers plus petits, le tree-shaking (similaire au code stripping dans Unity) et optimise les temps de chargement. Au lieu de télécharger de nombreux petits scripts et composants, seul un ou quelques-uns sont téléchargés, contenant le code minimal nécessaire.
+puis l'utiliser depuis HTML comme ceci :
 
-Vite (notre bundler par défaut) offre une bonne explication expliquant pourquoi les applications web devraient être regroupées (bundled) : [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+```html
+<script type="module">
+  import '@needle-tools/engine';
+</script>
+<needle-engine src="path/to/your.glb"></needle-engine>
+```
+
+Avec notre modèle de projet par défaut basé sur Vite, Needle Engine est regroupé (bundled) dans votre application web lors du déploiement. Cela garantit des fichiers plus petits et optimise les temps de chargement.
+
+::: tip Bundling et tree shaking
+
+**Bundling** signifie que tous les fichiers css, js et autres constituant votre projet sont combinés en moins de fichiers, et plus petits, au moment de la compilation. Cela garantit qu'au lieu de télécharger de nombreux petits scripts et composants, un seul ou quelques-uns sont téléchargés, contenant le code minimal nécessaire. La documentation de Vite contient une excellente explication des raisons pour lesquelles les applications web devraient être regroupées : [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+
+Le **Tree shaking** est une pratique courante en développement web où le code inutilisé est supprimé du bundle final pour réduire la taille des fichiers. C'est similaire au "code stripping" dans Unity. [La documentation MSDN](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) offre une bonne explication du tree shaking.
+:::
 
 ### Vite, Vue, React, Svelte, React Three Fiber...
 
-Needle Engine n'a pas de préférence quant au choix du framework. Notre modèle par défaut utilise le populaire [vite](https://vitejs.dev) comme bundler. À partir de là, vous pouvez ajouter vue, svelte, nuxt, react, react-three-fiber ou d'autres frameworks, et nous avons des exemples pour beaucoup d'entre eux. Vous pouvez également intégrer d'autres bundlers, ou n'en utiliser aucun – juste du HTML et Javascript simples.
+Needle Engine est indifférent au choix du framework. Notre modèle par défaut utilise le populaire [vite](https://vitejs.dev) comme bundler. À partir de là, vous pouvez ajouter vue, svelte, nuxt, react, react-three-fiber ou d'autres frameworks, et nous avons des exemples pour beaucoup d'entre eux. Vous pouvez également intégrer d'autres bundlers, ou n'en utiliser aucun – juste du HTML et du Javascript simples.
 
-Voici quelques exemples de piles technologiques possibles avec lesquelles nous utilisons Needle Engine :
+Voici quelques exemples de piles technologiques possibles et avec lesquelles nous utilisons Needle Engine :
 
 - **Vite + HTML** — C'est ce que notre modèle par défaut utilise !
 
@@ -28,9 +43,9 @@ Voici quelques exemples de piles technologiques possibles avec lesquelles nous u
 - **Vite + React** — Il existe un modèle expérimental inclus avec l'intégration Unity pour cela que vous pouvez choisir lors de la génération d'un projet !
 - **react-three-fiber** — Il existe un modèle expérimental inclus avec l'intégration Unity pour cela que vous pouvez choisir lors de la génération d'un projet !
 - **Vercel & Nextjs** — Trouvez un [exemple de projet nextjs ici](https://github.com/needle-engine/nextjs-sample)
-- **CDN sans aucun bundler** — Trouvez un exemple de code [ici](./vanilla-js.md)
+- **CDN without any bundler** — Trouvez un exemple de code [ici](./vanilla-js.md)
 
-En bref : nous proposons actuellement un modèle vite minimal, mais vous pouvez l'étendre ou passer à d'autres frameworks –
+En bref : nous proposons actuellement un modèle Vite minimal, mais vous pouvez l'étendre ou passer à d'autres frameworks –
 Faites-nous savoir ce que vous construisez et comment, et comment nous pouvons améliorer l'expérience pour votre cas d'utilisation ou fournir un exemple !
 
 :::tip
@@ -49,35 +64,9 @@ Les dépendances proviennent d'Unity lorsqu'il y a un NpmDef dans le projet (don
 Vous pourriez également publier vos packages sur npm et y faire référence via un numéro de version.
 :::
 
-### Tree-shaking pour réduire la taille du bundle
-
-Le Tree shaking fait référence à une pratique courante en matière de regroupement (bundling) d'applications web ([voir documentation MSDN](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)). Cela signifie que les chemins de code et les fonctionnalités qui ne sont pas utilisés dans votre code seront supprimés des fichiers javascript finaux regroupés (bundled) afin de réduire la taille des fichiers. Voir ci-dessous les fonctionnalités que Needle Engine inclut et comment les supprimer :
-
-:::details Comment supprimer le moteur physique Rapier ? (Réduit la taille globale du bundle en supprimant ~2Mo (~600Ko une fois compressé avec gzip))
-
-- **Option 1**: via la configuration needlePlugins :
-  Définissez `useRapier` sur `false` dans votre vite.config : `needlePlugins(command, needleConfig, { useRapier: false }),`
-
-- **Option 2**: via la configuration vite.define :
-  Déclarez la définition `NEEDLE_USE_RAPIER` avec `false`
-  ```js
-  define: {
-    NEEDLE_USE_RAPIER: false
-  },
-  ```
-
-- **Option 3**: via .env
-  Créez un fichier `.env` dans votre projet web et ajoutez `VITE_NEEDLE_USE_RAPIER=false`
-
-- **Option 4**: via le composant Unity
-  Ajoutez le composant `Needle Engine Modules` à votre scène et définissez `Physics Engine` sur `None`
-  ![](/imgs/unity-needle-engine-modules-physics.jpg)
-
-:::
-
 ## Créer une PWA
 
-Nous prenons en charge la création aisée d'une Progressive Web App (PWA) directement à partir de notre modèle vite.
+Nous prenons en charge la création aisée d'une Progressive Web App (PWA) directement à partir de notre modèle Vite.
 Les PWAs sont des applications web qui se chargent comme des pages web ou des sites web ordinaires, mais peuvent offrir des fonctionnalités utilisateur telles que le travail hors ligne, les notifications push et l'accès au matériel de l'appareil, traditionnellement disponibles uniquement pour les applications mobiles natives.
 
 Par défaut, les PWAs créées avec Needle prennent en charge le mode hors ligne et peuvent éventuellement se rafraîchir automatiquement lorsque vous publiez une nouvelle version de votre application.
@@ -90,11 +79,11 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(async ({ command }) => {
 
-    // Create the pwaOptions object.
+    // Create the pwaOptions object. 
     // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
     const pwaOptions = {};
-
+  
     const { needlePlugins } = await import("@needle-tools/engine/plugins/vite/index.js");
 
     return {
@@ -103,9 +92,7 @@ export default defineConfig(async ({ command }) => {
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
-    }
-});
+        // the rest of your Vite config...
 ```
 
 :::tip Tous les assets sont mis en cache par défaut
@@ -126,7 +113,7 @@ Vous pouvez activer le support PWA pour le développement en ajoutant ce qui sui
 
 ```js
 const pwaOptions = {
-  // Note: PWAs behave different in dev mode.
+  // Note: PWAs behave different in dev mode. 
   // Make sure to verify the behaviour in production builds!
   devOptions: {
     enabled: true,
@@ -163,7 +150,7 @@ Par exemple, vous pouvez fournir un manifeste partiel avec un titre d'applicatio
 
 ```js
 const pwaOptions = {
-  // manifest options provided here will override the defaults
+  // manifest options provided here will override the defaults 
   manifest: {
     name: "My App",
     short_name: "My App",
@@ -176,8 +163,7 @@ Pour des exigences complexes comme le cache partiel, les service workers personn
 
 ## Accéder à Needle Engine et aux composants depuis du javascript externe
 
-Le code que vous exposez est accessible depuis JavaScript après le bundling.
-Cela permet de créer des visualiseurs et d'autres applications où il y a une séparation entre les données connues au moment de l'édition et les données connues uniquement à l'exécution (par exemple, les fichiers chargés dynamiquement, le contenu généré par l'utilisateur).
+Le code que vous exposez peut être accessible depuis JavaScript après le bundling. Cela permet de créer des visualiseurs et d'autres applications où il y a une séparation entre les données connues au moment de l'édition et les données connues uniquement à l'exécution (par exemple, les fichiers chargés dynamiquement, le contenu généré par l'utilisateur).
 Pour accéder aux composants depuis du javascript ordinaire en dehors du moteur, veuillez vous référer à la section [interopérabilité avec du javascript ordinaire](./scripting.md#accessing-needle-engine-and-components-from-anywhere)
 
 ## Personnaliser l'apparence du chargement
@@ -190,7 +176,7 @@ L'apparence de chargement de needle-engine peut utiliser un thème clair (light)
 Pour changer l'apparence, utilisez l'attribut `loading-style` sur le composant web `<needle-engine>`.
 Les options sont `light` (clair) et `dark` (sombre) (par défaut) :
 
-```<needle-engine loading-style="light"></needle-engine>```
+``<needle-engine loading-style="light"></needle-engine>``
 
 ### Style de chargement personnalisé — *Fonctionnalité PRO* #
 
@@ -198,5 +184,4 @@ Veuillez consulter la section *Loading Display* dans la [référence des composa
 
 ![custom loading](/imgs/custom-loading-style.webp)
 
-
-Page traduite automatiquement par l'IA
+Page automatiquement traduite par l'IA

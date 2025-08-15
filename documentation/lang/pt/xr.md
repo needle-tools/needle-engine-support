@@ -232,7 +232,7 @@ Existem também outras opções para guiar utilizadores de iOS para experiência
 
 O Needle Engine suporta **WebXR Image Tracking** ([Demo ao Vivo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) no Android e **QuickLook Image Tracking** no iOS.
 
-Pode encontrar documentação adicional na secção [Everywhere Actions](everywhere-actions.md#image-tracking).
+Pode encontrar documentação adicional na página [WebXR Image Tracking](./webxr-image-tracking.md).
 
 :::warning O WebXR Image Tracking ainda está na fase de "draft" e não está geralmente disponível
 Até agora, os fornecedores de navegadores não conseguiram concordar na API final para o rastreamento de imagem no WebXR. Enquanto a especificação estiver na fase de "draft" ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),

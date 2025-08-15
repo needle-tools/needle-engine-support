@@ -58,7 +58,7 @@ As compilações de produção por padrão comprimirão texturas usando **KTX2**
 
 | Formato | ETC1S | UASTC | WebP |
 | --- | --- | --- | --- |
-| **Uso de Memória da GPU** | Baixo | Baixo | Alto (uncompressed) |
+| **Uso de Memória da GPU** | Baixo | Baixo | Alto (não comprimido) |
 | **Tamanho do Ficheiro** | Baixo | Alto | Muito baixo |
 | **Qualidade** | Médio | Muito alto | Depende da configuração de qualidade |
 | **Uso Típico** | Funciona para tudo, mas é melhor para texturas de cor | Texturas de dados de alta detalhe: mapas normais, rugosidade, metálico, etc. | Ficheiros onde a qualidade ETC1S não é suficiente, mas UASTC é demasiado grande |
@@ -146,7 +146,7 @@ Observe que projetos gratuitos alojados no glitch podem não exceder ~100 MB. Se
 
 :::details Como implemento para Glitch a partir do Unity?
 
-1) Adicione o componente ``DeployToGlitch`` ao GameObject que também tem o componente ``ExportInfo``component.
+1) Adicione o componente ``DeployToGlitch`` ao GameObject que também tem o componente ``ExportInfo``.
 
 2) Clique no botão ``Create new Glitch Remix`` no componente
    ![image](/deployment/deploytoglitch-1.jpg)
@@ -155,7 +155,7 @@ Observe que projetos gratuitos alojados no glitch podem não exceder ~100 MB. Se
 4) Abra o Unity novamente e cole o URL no campo ``Project Name`` do seu componente ``Deploy To Glitch``
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) Espere alguns segundos até que o Unity tenha recebido a sua chave de implementação do glitch (esta chave é armazenada de forma segura no ficheiro `.env` no glitch. Não a partilhe com outros, qualquer pessoa com esta chave poderá fazer upload para o seu website no glitch)
-  ![à espera da chave](/deployment/deploytoglitch-2.jpg)
+  ![waiting for the key](/deployment/deploytoglitch-2.jpg)
 6) Assim que a Chave de Implementação for recebida, pode clicar no botão `Build & Deploy` para fazer upload para o glitch.
 
 :::
@@ -361,5 +361,6 @@ A lista seguinte apresenta uma tabela das opções disponíveis:
 | `-buildProduction` | executar uma compilação de produção |
 | `-buildDevelopment` | executar uma compilação de desenvolvimento |
 | `-debug` | abrir uma janela de consola para debugging |
+
 
 Página traduzida automaticamente usando IA

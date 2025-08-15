@@ -1,5 +1,5 @@
 ---
-title: Creating and using Components
+title: コンポーネントの作成と使用
 tags:
     - scripting
     - serialization
@@ -74,12 +74,12 @@ export class Rotate extends Behaviour
     speed : number = 1;
 
     start(){
-        // logging this is useful for debugging in the browser.
-        // You can open the developer console (F12) to see what data your component contains
+        // ブラウザでのデバッグに便利です。
+        // 開発者コンソール (F12) を開いて、コンポーネントに含まれるデータを確認できます
         console.log(this);
     }
 
-    // update will be called every frame
+    // updateは毎フレーム呼び出されます
     update(){
         this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
     }
@@ -103,7 +103,7 @@ export class PrintNumberComponent extends Behaviour
     start(){
       this.printNumber(42);
     }
-
+    
     private printNumber(myNumber : number){
         console.log("My Number is: " + myNumber);
     }
@@ -113,7 +113,7 @@ export class PrintNumberComponent extends Behaviour
 
 :::details バージョン管理とUnity
 生成されたC#コンポーネントはタイプ名を使用して安定したGUIDを生成しますが、良い習慣として生成されたコンポーネントをバージョン管理でチェックインすることをお勧めします。
-:::
+::: 
 
 ## コンポーネントアーキテクチャ
 コンポーネントはthree.jsの`Object3D`に追加されます。これはUnityでコンポーネントが`GameObject`に追加される方法に似ています。したがって、three.jsのObject3Dにアクセスしたい場合は、コンポーネントがアタッチされている`Object3D`を返す``this.gameObject``としてアクセスできます。
@@ -189,16 +189,15 @@ import { Behaviour, FrameEvent } from "@needle-tools/engine";
 export class Rotate extends Behaviour {
 
     start() {
-        // the second argument is optional and allows you to specifiy
-        // when it should be called in the current frame loop
-        // coroutine events are called after regular component events of the same name
-        // for example: Update coroutine events are called after component.update() functions
+        // 2番目の引数はオプションで、現在のフレームループ内でいつ呼び出すかを指定できます
+        // コルーチンイベントは、同じ名前の通常のコンポーネントイベントの後に呼び出されます
+        // 例: Updateコルーチンイベントは、component.update() 関数の後に呼び出されます
         this.startCoroutine(this.rotate(), FrameEvent.Update);
     }
 
-    // this method is called every frame until the component is disabled
+    // このメソッドは、コンポーネントが無効になるまで毎フレーム呼び出されます
     *rotate() {
-        // keep looping forever
+        // 永久にループし続ける
         while (true) {
             yield;
         }
@@ -224,26 +223,26 @@ Needle Engineは、コンポーネント全体を記述することなく更新�
 
 例（[stackblitzの例を参照](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts)）
 ```ts twoslash
-// this can be put into e.g. main.ts or a svelte component (similar to onMount)
+// これはたとえばmain.tsやsvelteコンポーネント（onMountと同様）に記述できます
 import { onStart, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
 
 onStart(ctx => console.log("Hello Scene", ctx.scene));
 
 onUpdate(ctx => {
-    // do something... e.g. access the frame # or deltatime via ctx.time
+    // 何かをする...例えば、ctx.time経由でフレーム番号やデルタタイムにアクセスする
     console.log("UPDATE", ctx.time.frame);
 });
 
 onBeforeRender(ctx => {
-    // this event is only called once because of the { once: true } argument
+    // このイベントは{ once: true }引数により一度だけ呼び出されます
     console.log("ON BEFORE RENDER", ctx.time.frame);
 }, { once: true } );
 
-// Every event hook returns a method to unsubscribe from the event
+// すべてのイベントフックは、イベントから購読解除するメソッドを返します
 const unsubscribe = onAfterRender(ctx => {
     console.log("ON AFTER RENDER", ctx.time.frame);
 });
-// Unsubscribe from the event at any time
+// いつでもイベントから購読解除
 setTimeout(()=> unsubscribe(), 1000);
 ```
 
@@ -294,7 +293,7 @@ three.jsのシーンは、``<needle-engine>``というカスタムHTMLコンポ�
 
 コンポーネントから階層をたどるには、オブジェクトの子をforループで反復処理できます。
 ```ts twoslash
-for(let i = 0; i < this.gameObject.children; i++)
+for(let i = 0; i < this.gameObject.children; i++) 
     console.log(this.gameObject.children[i]);
 ```
 または、`foreach`と同等の方法で反復処理できます。
@@ -350,7 +349,7 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
+        // コンポーネントが非アクティブになったらイベントの購読も解除することをお勧めします
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -383,7 +382,7 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // unsubscribe again when the component is disabled
+        // コンポーネントが無効になったら再度購読解除
         window.removeEventListener("click", this.windowClick);
     }
 

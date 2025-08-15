@@ -17,7 +17,7 @@ title: 如何调试
 
 ## 内置 URL 参数
 
-调试标志可以作为 URL query parameters 附加。
+Debug Flags 可以作为 URL query parameters 附加。
 使用 ``?help`` 获取所有可用参数列表。
 
 以下是一些最常用的参数：

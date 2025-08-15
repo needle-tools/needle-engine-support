@@ -63,7 +63,7 @@ Prefabアセットと同様に、他のシーンアセットを参照できま�
 ## 🏇 アニメーションのエクスポート
 Needle Engineは、Unityのアニメーション機能のかなり強力なサブセットをサポートしています：
 
-- **Timeline** アクティベーショントラック、アニメーションラッグ、トラックオフセットを含む
+- **Timeline** アクティベーショントラック、アニメーショントラック、トラックオフセットを含む
 - **Animator** トップレベルの状態遷移を含む
   - Blend treesは現在サポートされていません。
   - サブステートマシンは現在サポートされていません。
@@ -93,21 +93,21 @@ glbファイルでSkyboxを全くエクスポートしたくない場合は、``
 デフォルトでは、マテリアルはエクスポート時にglTFマテリアルに変換されます。glTFは物理ベースのマテリアルモデルをサポートしており、複雑なマテリアルを表現するのに役立つ多くの拡張機能を持っています。
 
 エクスポートされるものを完全に制御するには、UnityGltfが提供するglTFマテリアルを使用することを強く推奨します。
-- PBRGraph
-- UnlitGraph
+- UnityGLTF/PBRGraph
+- UnityGLTF/UnlitGraph
 
-::: tip 迷ったらPBRGraphシェーダーを使用してください
-PBRGraphマテリアルには、StandardまたはURP/Litよりもはるかに多くの機能があります。これには、屈折、虹彩、光沢などの高度な機能が含まれます。さらに、PBRGraphおよびUnlitGraphを使用するマテリアルは、変換なしでそのままエクスポートされます。
+::: tip 迷ったらPBRGraphシェーダーを使用してください。
+PBRGraphマテリアルには、Unityが提供する「Standard」または「Lit」シェーダーよりもはるかに多くの機能があります。これらの機能には、クリアコート、光沢、虹彩などのサーフェスエフェクト、および透過、屈折、分散などのボリュームエフェクトが含まれます。
 :::
 
-そのまま変換可能なマテリアル：
-- BiRP/Standard
-- BiRP/Autodesk Interactive
-- BiRP/Unlit
-- URP/Lit
-- URP/Unlit
+そのまま変換可能な他のシェーダー：
+- Universal Render Pipeline/Lit
+- Universal Render Pipeline/Unlit
+- Standard (Built-in Render Pipeline)
+- Autodesk Interactive (Built-in Render Pipeline)
+- Unlit (Built-in Render Pipeline)
 
-他のマテリアルは、プロパティ名ヒューリスティクスを使用して変換されます。これは、マテリアルとシェーダーが使用するプロパティ名に応じて、カスタムシェーダーのプロパティをURP/LitまたはPBRGraphのプロパティ名を使用するようにリファクタリングするか、マテリアルを[カスタムシェーダー](#custom-shaders)としてエクスポートする必要がある場合があることを意味します。
+他のマテリアルは、プロパティ名ヒューリスティクスを使用して変換されます。これは、マテリアルとシェーダーが使用するプロパティ名に応じて、カスタムシェーダーのプロパティをUniversal Render Pipeline/LitまたはPBRGraphのプロパティ名を使用するようにリファクタリングするか、マテリアルを[カスタムシェーダー](#custom-shaders)としてエクスポートする必要がある場合があることを意味します。
 
 ### カスタムシェーダー
 カスタムのUnlitシェーダー（例えばShaderGraphで作られたもの）をエクスポートするには、エクスポートしたいシェーダーに``ExportShader`` Asset Labelを追加します。Asset LabelはInspectorウィンドウの下部で確認できます。
@@ -124,7 +124,7 @@ PBRGraphマテリアルには、StandardまたはURP/Litよりもはるかに多
   - glTFでは、X軸の値がUnityと比較して反転します。これは左手系から右手系への座標系変更の一種です。シェーダーで使用されるデータは、正しく表示するためにXで反転する必要がある場合があります。
 
 ::: note glTF仕様の一部ではありません
-**カスタムシェーダー**はglTF仕様の公式な一部ではないことに注意してください。カスタムシェーダーの当社の実装では、KHR_techniques_webglと呼ばれる拡張機能を使用しており、WebGLシェーダーコードをglTFファイルに直接保存します。結果として得られるアセットはNeedle Engineベースのビューアでは機能しますが、他のビューアでは正しく表示されない場合があります。
+**カスタムシェーダー**はglTF仕様の公式な一部ではないことに注意してください。カスタムシェーダーの当社の実装では、KHR_techniques_webglと呼ばれる拡張機能を使用しており、WebGLシェーダーコードをglTFファイルに直接保存します。結果として得られるアセットはNeedle Engineベースのビューアでは機能します。
 :::
 
 ## 💡 ライトマップのエクスポート
@@ -168,4 +168,5 @@ Environment Lighting: Color
 Ambient Color: any
 ```
 
+---
 このページはAIによって自動翻訳されました

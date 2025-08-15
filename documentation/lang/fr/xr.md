@@ -145,7 +145,7 @@ Il existe un certain nombre de composants expérimentaux pour construire des Ava
     `AvatarEyeLook_Rotation` fait pivoter les GameObjects (yeux) pour suivre d'autres avatars et une cible aléatoire. Ce composant est synchronisé entre les joueurs.
 
 -   **Clignement des yeux**
-    `AvatarBlink_Simple` cache aléatoirement des GameObjects (yeux) toutes les quelques secondes, émulant un clignement.
+    `AvatarBlink_Simple` cache aléatoirement des GameObjects (yeux) toutes les quelques secondes, emulant un clignement.
 
 ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)
 *Exemple de hiérarchie de Prefab d'Avatar*
@@ -214,15 +214,15 @@ Il existe également d'autres options pour guider les utilisateurs iOS vers des 
     Ces fichiers peuvent être affichés sur les appareils iOS en AR. Lorsqu'ils sont exportés depuis des scènes avec Everywhere Actions l'interactivité est la même, plus que suffisante pour les configurateurs de produits, les expériences narratives et similaires.
     Un exemple est [Castle Builder](https://castle.needle.tools) où les créations (pas la session en direct) peuvent être visualisées en AR.
 
-> **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** utilise cette approche. Les joueurs peuvent placer du texte en collaboration dans la scène sur leurs écrans, puis visualiser les résultats en AR sur iOS. On Android, ils peuvent également interagir right in WebXR.
-> — #madewithneedle by Katja Rempel 💚
+> **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** utilise cette approche. Les joueurs peuvent placer du texte en collaboration dans la scène sur leurs écrans, puis visualiser les résultats en AR sur iOS. Sur Android, ils peuvent également interagir directement en WebXR.
+> — #madebyneedle 💚
 
-1.  **Guider les utilisateurs vers des navigateurs compatibles WebXR on iOS.**
-    Selon votre public cible, vous pouvez guider les utilisateurs on iOS vers, par exemple, le [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) to experience AR on iOS.
+1.  **Guider les utilisateurs vers des navigateurs compatibles WebXR sur iOS.**
+    Selon votre public cible, vous pouvez guider les utilisateurs sur iOS vers par exemple le [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) pour expérimenter l'AR sur iOS.
 
-2.  **Using camera access and custom algorithms on iOS devices.**
-    One can request camera image access and run custom algorithms to determine device pose.
-    While we currently don't provide built-in components for this, here's a few references to libraries and frameworks that we want to try in the future:
+2.  **Utiliser l'accès à la caméra et des algorithmes personnalisés sur les appareils iOS.**
+    On peut demander l'accès à l'image de la caméra et exécuter des algorithmes personnalisés pour déterminer la pose de l'appareil.
+    Bien que nous ne fournissions pas actuellement de composants intégrés pour cela, voici quelques références de bibliothèques et de frameworks que nous voulons essayer à l'avenir :
     -   [AR.js](https://github.com/AR-js-org/AR.js) (open source)
     -   [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
     -   [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
@@ -230,20 +230,20 @@ Il existe également d'autres options pour guider les utilisateurs iOS vers des 
 
 ## Suivi d'image
 
-Needle Engine prend en charge le **WebXR Image Tracking** ([Démo Live](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) on Android et le **QuickLook Image Tracking** on iOS.
+Needle Engine prend en charge le **WebXR Image Tracking** ([Démo Live](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) sur Android et le **QuickLook Image Tracking** sur iOS.
 
-You can find additional documentation in the [Everywhere Actions](everywhere-actions.md#image-tracking) section.
+Vous pouvez trouver une documentation supplémentaire sur la page [WebXR Image Tracking](./webxr-image-tracking.md).
 
 :::warning Le WebXR Image Tracking est toujours en phase de "brouillon" et n'est pas généralement disponible
-So far, browser vendors haven't been able to agree on the final image tracking API for WebXR. As long as the specification is in "draft" phase ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
-you and your app's users need to follow these steps to enable WebXR ImageTracking on Android devices:
-1.  Visitez ``chrome://flags`` on your Android Chrome browser
-2.  Find and enable the `WebXR Incubations` option
+Jusqu'à présent, les fournisseurs de navigateurs n'ont pas réussi à se mettre d'accord sur l'API finale de suivi d'image pour WebXR. Tant que la spécification est en phase de "brouillon" ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
+vous et les utilisateurs de votre application devez suivre ces étapes pour activer le WebXR ImageTracking sur les appareils Android :
+1.  Visitez ``chrome://flags`` sur votre navigateur Android Chrome
+2.  Trouvez et activez l'option `WebXR Incubations`
 :::
 
-Without that spec, one can still request camera image access and run custom algorithms to determine device pose. The downside is that users will have to accept additional permissions like camera access, and the tracking will not be as accurate as with the native capabilities of the device.
+Sans cette spécification, on peut toujours demander l'accès à l'image de la caméra et exécuter des algorithmes personnalisés pour déterminer la pose de l'appareil. L'inconvénient est que les utilisateurs devront accepter des permissions supplémentaires comme l'accès à la caméra, et le suivi ne sera pas aussi précis qu'avec les capacités natives de l'appareil.
 
-Here are some libraries to add image tracking based on camera access and local computer vision algorithms:
+Voici quelques bibliothèques pour ajouter le suivi d'image basé sur l'accès à la caméra et des algorithmes de vision par ordinateur locaux :
 -   [Experimental AR.js integration with Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
 -   [AR.js](https://github.com/AR-js-org/AR.js) (open source)
 -   [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)

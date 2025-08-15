@@ -1,5 +1,5 @@
 ---
-title: Creating and using Components
+title: 创建和使用组件
 tags:
     - scripting
     - serialization
@@ -9,7 +9,7 @@ tags:
     - components
 ---
 
-# 创建和使用组件
+# 创建自定义组件
 
 如果您刚开始接触脚本，我们**强烈建议**您先阅读以下指南：
 
@@ -49,7 +49,7 @@ _Needle Engine 中一个 Button Click 事件开箱即用的示例——无需代
 脚本使用 TypeScript（推荐）或 JavaScript 编写。
 有两种方法可以将自定义脚本添加到您的项目：
 
-- 只需在您生成的项目目录的 `src/scripts/` 内部添加一个扩展名为 `.ts` 或 `.js` 的文件，例如 `src/scripts/MyFirstScript.ts`
+- 只需在您的 Web 项目文件夹的 `src/scripts/` 内部添加一个扩展名为 `.ts` 或 `.js` 的文件，例如 `src/scripts/MyFirstScript.ts`。
 
 - Unity 特有：
   将您的代码组织到 NPM 定义文件 (npm packages) 中。这有助于您在项目之间进行模块化和代码复用，如果您熟悉 Web 开发，它们实际上是本地安装的常规 npm 包。
@@ -514,5 +514,4 @@ AssetReferences 按 URI 缓存，因此如果您在多个组件/脚本中引用�
 
 # 下一步
 
-Page automatically translated using AI
 页面由 AI 自动翻译

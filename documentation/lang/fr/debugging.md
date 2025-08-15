@@ -98,4 +98,4 @@ L'utilisation et le débogage de WebXR sur iOS nécessitent l'utilisation d'un n
 Quest n'est qu'un appareil Android - voir la section [Débogage Android](#android-debugging) pour les étapes.
 
 
-Page automatiquement traduite using AI
+Page automatiquement traduite à l'aide de l'IA

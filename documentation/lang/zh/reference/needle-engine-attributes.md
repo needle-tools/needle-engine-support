@@ -2,8 +2,15 @@
 title: <needle-engine> 配置
 ---
 
-`<needle-engine>` web 组件内置了一系列属性，可用于修改加载场景的外观和感觉，而无需直接添加或编辑 three.js 场景。
-下表列出了其中最重要的属性：
+## Needle Engine Web 组件的属性
+
+Needle Engine 可作为 web 组件 `<needle-engine>` 使用。此组件可用于在网页浏览器中加载和显示 3D 场景、模型等。它附带了一组属性，可让您配置其行为、外观和感觉。所有这些设置都可以通过代码覆盖，但属性是 HTML 中设置它们的便捷方式。
+
+::: tip web 组件位于 `index.html`
+无论是通过 Unity 或 Blender 创建项目，还是直接在代码中创建，您都可以使用和调整 `<needle-engine>` web 组件。通常，您会在 web 项目的 `index.html` 文件中找到它。
+:::
+
+下表列出了可用属性及其描述。
 
 | 属性 | 描述 |
 | --- | --- |
@@ -13,19 +20,19 @@ title: <needle-engine> 配置
 | `dracoDecoderType` | Draco 解码器类型。选项包括 `wasm` 或 `js`。参见 [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
 | `ktx2DecoderPath` | KTX2 解码器的 URL，例如 `./include/ktx2/` 以使用本地的 KTX2 解码器 |
 | **渲染** | |
-| `background-color` | 可选，用作背景颜色的 hex 颜色值。示例：`rgb(255, 200, 100)`，`#dddd00` |
-| `background-image` | 可选，天空盒图像（背景图像）的 URL 或预设字符串：`studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
+| `background-color` | 可选，用作背景颜色的十六进制颜色值。示例：`rgb(255, 200, 100)`，`#dddd00` |
+| `background-image` | 可选，天空盒图像（背景图像）的 URL 或预设字符串：`studio`，`blurred-skybox`，`quicklook`，`quicklook-ar` |
 | `background-blurriness` | 可选，用于 `background-image` 的模糊度值，介于 0（不模糊）和 1（最大模糊）之间。示例：`background-blurriness="0.5"` |
-| `environment-image` | 可选，环境图像（环境光）的 URL 或预设字符串：`studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
+| `environment-image` | 可选，环境图像（环境光）的 URL 或预设字符串：`studio`，`blurred-skybox`，`quicklook`，`quicklook-ar` |
 | `contactshadows` | 可选，渲染接触阴影 |
-| `tone-mapping` | 可选，支持的值包括 `none`, `linear`, `neutral`, `agx` |
+| `tone-mapping` | 可选，支持的值包括 `none`，`linear`，`neutral`，`agx` |
 | `tone-mapping-exposure` | 可选数字，例如使用 `tone-mapping-exposure="1.5"` 增加曝光度，需要设置 `tone-mapping` |
 | **交互** | |
 | `autoplay` | 添加或设置为 `true` 以自动播放动画，例如 `<needle-engine autoplay` |
 | `camera-controls` | 添加或设置为 `true` 以在场景中未找到相机控制器时自动添加 OrbitControls |
 | `auto-rotate` | 添加此属性以启用自动旋转（仅与 `camera-controls` 一起使用） |
 | **事件** | |
-| `loadstart` | 加载开始时要调用的函数名称。注意参数是 `(ctx:Context, evt:Event)`。您可以调用 `evt.preventDefault()` 以隐藏默认加载叠加层 |
+| `loadstart` | 加载开始时要调用的函数名称。请注意，参数为 `(ctx:Context, evt:Event)`。您可以调用 `evt.preventDefault()` 来隐藏默认的加载叠加层 |
 | `progress` | 加载更新时要调用的函数名称。`onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }` |
 | `loadfinished` | 加载完成时要调用的函数名称 |
 | **加载显示** | *更改 Needle Engine 加载显示外观的可用选项。使用 `?debugloadingrendering` 可更轻松地编辑* |
@@ -36,7 +43,7 @@ title: <needle-engine> 配置
 | `hash` | 内部使用，附加到正在加载的文件以强制更新（例如，当浏览器缓存了 glb 文件时）。不应手动编辑。 |
 
 **升级通知**:
-- 在 Needle Engine 4.5.0 中移除的属性：`loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
+- Needle Engine 4.5.0 中移除的属性：`loading-style`，`loading-background-color`，`loading-text-color`，`primary-color`，`secondary-color`
 
 # 示例
 
@@ -68,7 +75,7 @@ title: <needle-engine> 配置
 <needle-engine loadfinished="onLoadFinished"> </needle-engine>
 <script>
     function onLoadFinished() {
-        console.log("Needle Engine has finished loading");
+        console.log("Needle Engine 已完成加载");
     }
 </script>
 ```
@@ -77,7 +84,7 @@ title: <needle-engine> 配置
 
 通过在 `<needle-engine>` web 组件上设置相应的属性，您可以轻松修改 Needle Engine 的外观。详细信息请参见上表。
 
-![custom loading](/imgs/custom-loading-style.webp)
+![自定义加载](/imgs/custom-loading-style.webp)
 [在 github 上查看代码](https://github.com/needle-engine/vite-template/blob/loading-style/custom/index.html)
 
 

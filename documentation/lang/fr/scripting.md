@@ -1,5 +1,5 @@
 ---
-title: Créer et utiliser des Components
+title: Créer et utiliser des Composants
 tags:
     - scripting
     - serialization
@@ -37,7 +37,7 @@ Les composants attachés aux objets three.js Object3D ont des méthodes de cycle
 
 ## Quand vous n'avez pas besoin d'écrire de code
 
-Souvent, les scènes interactives peuvent être réalisées en utilisant des Events dans Unity et en appelant des méthodes sur des composants intégrés. Un exemple typique est de jouer une animation sur un clic de bouton - vous créez un bouton, ajoutez un événement Click dans l'inspector, et le faites appeler Animator.SetTrigger ou similaire pour jouer une animation spécifique.
+Souvent, les scènes interactives peuvent être réalisées en utilisant des Événements dans Unity et en appelant des méthodes sur des composants intégrés. Un exemple typique est de jouer une animation sur un clic de bouton - vous créez un bouton, ajoutez un événement Click dans l'inspector, et le faites appeler Animator.SetTrigger ou similaire pour jouer une animation spécifique.
 
 Needle Engine traduit les Unity Events en appels de méthodes JavaScript, ce qui en fait un flux de travail très rapide et flexible - configurez vos événements comme d'habitude et lorsqu'ils sont appelés, ils fonctionneront de la même manière que dans Unity.
 
@@ -48,10 +48,10 @@ _Un exemple d'événement Button Click fonctionnant immédiatement dans Needle E
 Les scripts sont écrits en TypeScript (recommandé) ou JavaScript.
 Il existe deux façons d'ajouter des scripts personnalisés à votre projet :
 
-- Ajoutez simplement un fichier avec une extension `.ts` ou `.js` à l'intérieur de `src/scripts/` dans le répertoire de votre projet généré, par exemple `src/scripts/MyFirstScript.ts`.
+- Ajoutez simplement un fichier avec une extension `.ts` ou `.js` à l'intérieur de `src/scripts/` dans votre dossier de projet web, par exemple `src/scripts/MyFirstScript.ts`.
 
 - Spécifique à Unity :
-  Organisez votre code en fichiers de définition NPM (paquets npm). Ceux-ci vous aident à modulariser et réutiliser le code entre les projets et si vous êtes familier avec le développement web, ce sont en fait des paquets npm réguliers qui sont installés localement.
+  Organisez votre code en Fichiers de Définition NPM (paquets npm). Ceux-ci vous aident à modulariser et réutiliser le code entre les projets et si vous êtes familier avec le développement web, ce sont en fait des paquets npm réguliers qui sont installés localement.
   Dans Unity, vous pouvez créer des fichiers NpmDef via `Create > NPM Definition`, puis ajouter des fichiers TypeScript en cliquant droit sur un fichier NpmDef et en sélectionnant `Create > TypeScript`. Veuillez consulter [ce chapitre](./project-structure.md#npm-definition-files) pour plus d'informations.
 
 Dans les deux approches, les répertoires source sont surveillés pour les modifications et les composants C# stub ou les panneaux Blender sont régénérés chaque fois qu'une modification est détectée.
@@ -300,7 +300,7 @@ avec une boucle for :
 for(let i = 0; i < this.gameObject.children; i++)
     console.log(this.gameObject.children[i]);
 ```
-ou vous pouvez itérer en utilisant l'équivalent de `foreach` :
+ou vous pouvez itérer en utilisant l'équivalent de `for...of` :
 ```ts twoslash
 for(const child of this.gameObject.children) {
     console.log(child);
@@ -313,7 +313,7 @@ this.gameObject.traverse((obj: Object3D) => console.log(obj));
 ```
 ou pour parcourir uniquement les objets visibles, utilisez [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) à la place.
 
-Une autre option très utile lorsque vous souhaitez simplement itérer sur les objets pouvant être rendus est de interroger tous les composants renderer et d'itérer sur eux comme suit :
+Une autre option très utile lorsque vous souhaitez simplement itérer sur les objets pouvant être rendus est de interroger tous les composants Renderer et d'itérer sur eux comme suit :
 ```ts twoslash
 import { Renderer } from "@needle-tools/engine";
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
@@ -337,7 +337,7 @@ import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
     onPointerDown() {
-        console.log("POINTER DOWN sur " + this.gameObject.name);
+        console.log("POINTER DOWN on " + this.gameObject.name);
     }
 }
 ```
@@ -353,7 +353,7 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
+        // il est recommandé de se désabonner des événements lorsque votre composant devient inactif
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
@@ -386,18 +386,18 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // unsubscribe again when the component is disabled
+        // se désabonner à nouveau lorsque le composant est désactivé
         window.removeEventListener("click", this.windowClick);
     }
 
-    windowClick = () => { console.log("CLIC partout sur la page, pas seulement sur <needle-engine>"); }
+    windowClick = () => { console.log("CLICK partout sur la page, pas seulement sur <needle-engine>"); }
 }
 ```
 Notez que dans ce cas, vous devez gérer vous-même tous les cas. Par exemple, vous pourriez avoir besoin d'utiliser différents événements si votre utilisateur visite votre site web sur un ordinateur de bureau, sur mobile ou sur un appareil VR. Ces cas sont gérés automatiquement par les événements d'entrée de Needle Engine (par exemple, ``PointerDown`` est déclenché à la fois pour le clic de souris, le toucher tactile et, dans le cas de la VR, pour le bouton du contrôleur).
 
 ### Raycasting
 
-Utilisez ``this.context.physics.raycast()`` pour effectuer un lancer de rayon et obtenir une liste d'intersections. Si vous ne passez aucune option, le lancer de rayon est effectué depuis la position de la souris (ou la première position tactile) dans l'espace écran en utilisant la `mainCamera` actuellement active. Vous pouvez également passer un objet `RaycastOptions` qui contient diverses options comme `maxDistance`, la caméra à utiliser ou les calques à tester.
+Utilisez ``this.context.physics.raycast()`` pour effectuer un lancer de rayon et obtenir une liste d'intersections. Si vous ne passez aucune option, le lancer de rayon est effectué depuis la position de la souris (ou la première position tactile) dans l'espace écran en utilisant la `mainCamera` actuellement active. Vous pouvez également passer un objet `RaycastOptions` qui contient diverses options comme `maxDistance`, la caméra à utiliser ou les couches à tester.
 
 Utilisez ``this.context.physics.raycastFromRay(your_ray)`` pour effectuer un lancer de rayon en utilisant un [rayon three.js](https://threejs.org/docs/#api/en/math/Ray).
 
@@ -405,7 +405,7 @@ Utilisez ``this.context.physics.raycastFromRay(your_ray)`` pour effectuer un lan
 
 #### Considérations sur les performances
 
-Lors de l'utilisation des paramètres de compression par défaut de Needle, des versions simplifiées des maillages sont automatiquement créées et utilisées également pour le lancer de rayons. Néanmoins, certains types de maillages sont lents – par exemple, les maillages skinnés ou les maillages avec blendshapes nécessitent des calculs coûteux pour déterminer les coups exacts. Considérez de définir ces objets sur le calque `Ignore Raycast` dans Unity pour éviter le lancer de rayons contre eux.
+Lors de l'utilisation des paramètres de compression par défaut de Needle, des versions simplifiées des maillages sont automatiquement créées et utilisées également pour le lancer de rayons. Néanmoins, certains types de maillages sont lents – par exemple, les maillages skinnés ou les maillages avec formes de mélange nécessitent des calculs coûteux pour déterminer les coups exacts. Considérez de définir ces objets sur la couche `Ignore Raycast` dans Unity pour éviter le lancer de rayons contre eux.
 
 #### Raycasting basé sur la physique
 
@@ -449,7 +449,7 @@ NeedleEngine.addContextCreatedCallback((args) => {
 });
 ```
 
-Une autre option est d'utiliser le hook de cycle de vie `onInitialized(ctx => {})` [special](#special-lifecycle-hooks).
+Une autre option est d'utiliser le hook de cycle de vie `onInitialized(ctx => {})` [spécial](#special-lifecycle-hooks).
 
 Vous pouvez également accéder à tous les contextes disponibles via ``NeedleEngine.Registered`` qui renvoie le tableau interne. (Notez que ce tableau ne doit pas être modifié mais peut être utilisé pour itérer sur tous les contextes actifs afin de modifier les paramètres, par exemple, définir tous les contextes sur ``context.isPaused = true``).
 
@@ -504,6 +504,5 @@ These exported gltf files will be serialized as plain string URIs. To simplify l
 Les AssetReferences sont mis en cache par URI, donc si vous référencez le même glTF/Prefab exporté dans plusieurs composants/scripts, il ne sera chargé qu'une seule fois et ensuite réutilisé.
 
 # Prochaines étapes
-
 ---
 Page automatiquement traduite par IA

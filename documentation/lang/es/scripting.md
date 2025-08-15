@@ -48,7 +48,7 @@ _Un ejemplo de un Button Click Event que funciona de inmediato en Needle Engine 
 Los scripts se escriben en TypeScript (recomendado) o JavaScript.
 Hay dos formas de añadir scripts personalizados a tu proyecto:
 
-- Simplemente añade un archivo con extensión `.ts` o `.js` dentro de `src/scripts/` en el directorio de tu proyecto generado, por ejemplo `src/scripts/MyFirstScript.ts`
+- Simplemente añade un archivo con extensión `.ts` o `.js` dentro de `src/scripts/` en la carpeta de tu proyecto web, por ejemplo `src/scripts/MyFirstScript.ts`.
 
 - Específico de Unity:
   Organiza tu código en NPM Definition Files (paquetes npm). Estos te ayudan a modularizar y reutilizar código entre proyectos y, si estás familiarizado con el desarrollo web, de hecho son paquetes npm regulares que se instalan localmente.
@@ -74,12 +74,12 @@ export class Rotate extends Behaviour
     speed : number = 1;
 
     start(){
-        // logging this is useful for debugging in the browser.
-        // You can open the developer console (F12) to see what data your component contains
+        // registrar esto es útil para depurar en el navegador. 
+        // Puedes abrir la consola del desarrollador (F12) para ver qué datos contiene tu componente
         console.log(this);
     }
 
-    // update will be called every frame
+    // update se llamará en cada fotograma
     update(){
         this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
     }
@@ -103,7 +103,7 @@ export class PrintNumberComponent extends Behaviour
     start(){
       this.printNumber(42);
     }
-
+    
     private printNumber(myNumber : number){
         console.log("My Number is: " + myNumber);
     }
@@ -140,12 +140,12 @@ Ten en cuenta que los métodos del ciclo de vida solo se llaman cuando se declar
 ### Métodos de eventos de física
 | Nombre del método | Descripción |
 | -- | --
-| `onCollisionEnter(col : Collision)` |
-| `onCollisionStay(col : Collision)` |
-| `onCollisionExit(col : Collision)` |
-| `onTriggerEnter(col : Collision)` |
-| `onTriggerStay(col : Collision)` |
-| `onTriggerExit(col : Collision)` |
+| `onCollisionEnter(col : Collision)` | 
+| `onCollisionStay(col : Collision)` | 
+| `onCollisionExit(col : Collision)` | 
+| `onTriggerEnter(col : Collision)` | 
+| `onTriggerStay(col : Collision)` | 
+| `onTriggerExit(col : Collision)` | 
 
 ### Métodos de eventos de entrada
 | Nombre del método | Descripción |
@@ -153,7 +153,7 @@ Ten en cuenta que los métodos del ciclo de vida solo se llaman cuando se declar
 | `onPointerEnter(args : PointerEventData)` | Llamado cuando un cursor comienza a pasar sobre un objeto (o cualquiera de sus hijos)
 | `onPointerMove(args : PointerEventData)` | Llamado cuando un cursor se mueve sobre un objeto (o cualquiera de sus hijos)
 | `onPointerExit(args : PointerEventData)` | Llamado cuando un cursor sale (deja de pasar sobre) un objeto
-| `onPointerDown(args : PointerEventData)` | Llamado cuando se presiona un cursor sobre un objeto
+| `onPointerDown(args : PointerEventData)` | Llamado cuando se presiona un cursor sobre un objeto 
 | `onPointerUp(args : PointerEventData)` | Llamado cuando se suelta un cursor sobre un objeto
 | `onPointerClick(args : PointerEventData)` | Llamado cuando se hace clic con un cursor sobre un objeto
 
@@ -165,7 +165,7 @@ Ten en cuenta que los métodos del ciclo de vida solo se llaman cuando se declar
 | `onBeforeXR(mode: XRSessionMode, init: XRSessionInit)` | Llamado justo antes de que se solicite una XRSession y se puede usar para modificar el objeto XRSessionInit
 | `onEnterXR(args: NeedleXREventArgs)` | Callback cuando este componente se une a una sesión xr (o se activa en una sesión XR en ejecución)
 | `onUpdateXR(args: NeedleXREventArgs)` | Callback cuando una sesión xr se actualiza (mientras todavía está activa en la sesión XR)
-| `onLeaveXR(args: NeedleXREventArgs)` | Callback cuando este componente sale de una sesión xr (o cuando se vuelve inactivo en una sesión XR en ejecución)
+| `onLeaveXR(args: NeedleXREventArgs)` | Callback cuando este componente sale de una sesión xr (o cuando se vuelve inactivo en una sesión XR en ejecución) 
 | `onControllerAdded(args: NeedleXRControllerEventArgs)` | Callback cuando se conecta/añade un controlador mientras está en una sesión XR O cuando el componente se une a una sesión XR en ejecución que ya tiene controladores conectados O cuando el componente se activa durante una sesión XR en ejecución que ya tiene controladores conectados
 | `onControllerRemoved(args: NeedleXRControllerEventArgs)` | Callback cuando se elimina un controlador mientras está en una sesión XR O cuando el componente se vuelve inactivo durante una sesión XR en ejecución
 
@@ -189,7 +189,7 @@ import { Behaviour, FrameEvent } from "@needle-tools/engine";
 export class Rotate extends Behaviour {
 
     start() {
-        // el segundo argumento es opcional y permite especificar
+        // el segundo argumento es opcional y permite especificar 
         // cuándo debe llamarse en el bucle de frame actual
         // los eventos de coroutine se llaman después de los eventos de componente regulares del mismo nombre
         // por ejemplo: los eventos de coroutine Update se llaman después de las funciones component.update()
@@ -267,10 +267,10 @@ export class MyComponent extends Behaviour {
 ### Algunos de los métodos disponibles:
 
 | Método |  |
-| -- | --
-| `GameObject.instantiate(Object3D, InstantiateOptions)` | crea una nueva instancia de este objeto incluyendo nuevas instancias de todos sus componentes
-| `GameObject.destroy(Object3D \| Component)` | destruye un componente o Object3D (y sus componentes)
-| `GameObject.addNewComponent(Object3D, Type)` | añade (y crea) un nuevo componente para un tipo al objeto proporcionado. Ten en cuenta que ``awake`` y ``onEnable`` ya se llaman cuando se devuelve el componente
+| -- | -- 
+| `GameObject.instantiate(Object3D, InstantiateOptions)` | crea una nueva instancia de este objeto incluyendo nuevas instancias de todos sus componentes 
+| `GameObject.destroy(Object3D \| Component)` | destruye un componente o Object3D (y sus componentes) 
+| `GameObject.addNewComponent(Object3D, Type)` | añade (y crea) un nuevo componente para un tipo al objeto proporcionado. Ten en cuenta que ``awake`` y ``onEnable`` ya se llaman cuando se devuelve el componente 
 | `GameObject.addComponent(Object3D, Component)` | mueve una instancia de componente al objeto proporcionado. Es útil si ya tienes una instancia, por ejemplo, cuando creas un componente con ``new MyComponent()`` y luego lo adjuntas a un objeto.
 | `GameObject.removeComponent(Component)` | elimina un componente de un gameObject
 | `GameObject.getComponent(Object3D, Type)` | devuelve el primer componente que coincide con un tipo en el objeto proporcionado.
@@ -295,7 +295,7 @@ Para acceder a la escena actual desde un componente, utilizas `this.scene`, que 
 Para recorrer la jerarquía desde un componente, puedes iterar sobre los hijos de un objeto
 con un bucle for:
 ```ts twoslash
-for(let i = 0; i < this.gameObject.children; i++)
+for(let i = 0; i < this.gameObject.children; i++) 
     console.log(this.gameObject.children[i]);
 ```
 o puedes iterar usando el equivalente a `foreach`:
@@ -502,6 +502,5 @@ Estos archivos glTF exportados se serializarán como URIs de cadena plana. Para 
 Los AssetReferences se almacenan en caché por URI, por lo que si referencias el mismo glTF/Prefab exportado en múltiples componentes/scripts, solo se cargará una vez y luego se reutilizará.
 
 # Próximos pasos
-
 
 Página traducida automáticamente usando IA

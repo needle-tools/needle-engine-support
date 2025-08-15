@@ -1,20 +1,20 @@
 ---
-title: Exportación de Assets a glTF
+title: Exportación de Activos a glTF
 ---
 
 
 
-# Exportación de Assets, Animaciones, Prefabs, Materiales, Lightmaps...
+# Exportación de Activos, Animaciones, Prefabs, Materiales, Lightmaps...
 Añada un componente ``ExportInfo`` a su escena de Unity para generar un nuevo proyecto web a partir de una plantilla, enlazar a un proyecto web existente al que desee exportar, configurar dependencias a otras librerías y paquetes y desplegar su proyecto.
 
 Por defecto, su escena se exporta al guardar. Esta configuración puede cambiarse desactivando ``Auto Export`` en el componente ``ExportInfo``.
 
 ## 📦 Exportar archivos glTF
-Para exportar meshes, materiales, animaciones, texturas (...) cree un nuevo GameObject en su Hierarchy y añádale un componente ``GltfObject``. Esta es la raíz de un nuevo archivo glTF. Se exportará cada vez que realice un cambio en la escena y guarde.
+Para exportar mallas, materiales, animaciones, texturas (...) cree un nuevo GameObject en su jerarquía y añádale un componente ``GltfObject``. Esta es la raíz de un nuevo archivo glTF. Se exportará cada vez que realice un cambio en la escena y guarde.
 
 Solo los scripts y datos que están en y dentro de esos objetos raíz se exportan. Los scripts y datos fuera de ellos no se exportan.
 
-Añada un cubo como hijo de su objeto raíz y guarde su escena. Tenga en cuenta que la carpeta de salida ``assets/`` (vea [project structure](#vite-project-structure)) ahora contiene un nuevo archivo ``.glb`` con el mismo nombre que su GameObject raíz.
+Añada un cubo como hijo de su objeto raíz y guarde su escena. Tenga en cuenta que la carpeta de salida ``assets/`` (vea [estructura del proyecto](#vite-project-structure)) ahora contiene un nuevo archivo ``.glb`` con el mismo nombre que su GameObject raíz.
 
 Puede activar la configuración ``Smart Export`` (a través de `Edit/Project Settings/Needle`) para exportar solo cuando se detecte un cambio en la jerarquía de este objeto.
 
@@ -29,7 +29,7 @@ Si desea dividir su aplicación en múltiples niveles o escenas, simplemente pue
 ### Complejidad Recomendada por glTF
 
 - Tamaño máximo de exportación sin comprimir de 50 MB (generalmente termina ~10-20 MB comprimido)
-- Máx. 500k vertices (menos si también se dirige a VR móvil)
+- Máx. 500k vértices (menos si también se dirige a VR móvil)
 - Máx. 4 lightmaps de 2k
 
 Puede dividir escenas y prefabs en varios archivos glTF y luego cargarlos bajo demanda (solo cuando sea necesario). Esto mantiene la velocidad de carga rápida y el tamaño de los archivos pequeño. Vea la [sección AssetReference en la documentación de Scripting](scripting.md#assetreference-and-addressables).
@@ -63,7 +63,7 @@ Needle Engine soporta un subconjunto considerable y potente de las característi
   - Los Blend trees no son compatibles actualmente.
   - Las Sub state machines no son compatibles actualmente.
 - **AnimationClips** incl. modos de bucle
-- Las **Procedural Animations** pueden crearse mediante scripting
+- Las **Animaciones Procedurales** pueden crearse mediante scripting
 
 Needle Engine es uno de los primeros en soportar la nueva [extensión glTF KHR_ANIMATION_POINTER](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer). Esto significa que casi todas las propiedades, incluidas las variables de script, son animables.
 
@@ -87,22 +87,22 @@ Si no desea que el skybox se exporte en absoluto en un archivo glb, puede desmar
 ### Materiales Basados Físicamente (PBR)
 Por defecto, los materiales se convierten en materiales glTF al exportar. glTF soporta un modelo de material basado físicamente y tiene una serie de extensiones que ayudan a representar materiales complejos.
 
-Para tener control total sobre lo que se exporta, es muy recomendable usar los materiales glTF proporcionados por UnityGltf:
-- PBRGraph
-- UnlitGraph
+Para tener control total sobre lo que se exporta, es **muy recomendable** usar los materiales glTF proporcionados por UnityGltf:
+- UnityGLTF/PBRGraph
+- UnityGLTF/UnlitGraph
 
-::: tip En caso de duda, use el shader PBRGraph
-El material PBRGraph tiene muchas características, muchas más que Standard o URP/Lit. Estas incluyen características avanzadas como refracción, iridiscencia, brillo (sheen) y más. Además, los materiales que usan PBRGraph y UnlitGraph se exportan tal cual, sin necesidad de conversión.
+::: tip En caso de duda, use el shader PBRGraph.
+El material PBRGraph tiene muchas características, muchas más que los "Standard" o "Lit" shaders proporcionados por Unity. Estas características incluyen efectos de superficie como clearcoat, sheen, iridiscencia, y efectos volumétricos como transmission, refraction y dispersion.
 :::
 
-Materiales que se pueden convertir de forma predeterminada (out-of-the-box):
-- BiRP/Standard
-- BiRP/Autodesk Interactive
-- BiRP/Unlit
-- URP/Lit
-- URP/Unlit
+Otros shaders que se pueden exportar directamente (con conversión):
+- Universal Render Pipeline/Lit
+- Universal Render Pipeline/Unlit
+- Standard (Built-in Render Pipeline)
+- Autodesk Interactive (Built-in Render Pipeline)
+- Unlit (Built-in Render Pipeline)
 
-Otros materiales se convierten utilizando una heurística basada en el nombre de la propiedad. Esto significa que, dependiendo de los nombres de propiedad que usen sus materiales y shaders, quizás quiera refactorizar las propiedades de su shader personalizado para usar los nombres de propiedad de URP/Lit o PBRGraph, o exportar el material como [Custom Shader](#custom-shaders).
+Otros materiales se convierten utilizando una heurística basada en el nombre de la propiedad. Esto significa que, dependiendo de los nombres de propiedad que usen sus materiales y shaders, quizás quiera refactorizar las propiedades de su shader personalizado para usar los nombres de propiedad de Universal Render Pipeline/Lit o PBRGraph, o exportar el material como [Custom Shader](#custom-shaders).
 
 ### Shaders Personalizados
 Para exportar shaders unlit personalizados (por ejemplo, hechos con ShaderGraph), añada una etiqueta de Asset ``ExportShader`` al shader que desea exportar. Las etiquetas de Asset se pueden ver en la parte inferior de la ventana Inspector.
@@ -119,7 +119,7 @@ Para exportar shaders unlit personalizados (por ejemplo, hechos con ShaderGraph)
   - Los valores del eje X están invertidos en glTF en comparación con Unity. Esta es una variante de un cambio de sistema de coordenadas de zurdo a diestro. Los datos utilizados en los shaders pueden necesitar ser invertidos en el eje X para mostrarse correctamente.
 
 ::: note No forma parte de la especificación glTF
-Tenga en cuenta que los **Custom Shaders** no forman parte oficial de la especificación glTF. Nuestra implementación de shaders personalizados utiliza una extensión llamada KHR_techniques_webgl, que almacena el código del shader WebGL directamente en el archivo glTF. Los assets resultantes funcionarán en visores basados en Needle Engine, pero puede que no se muestren correctamente en otros visores.
+Tenga en cuenta que los **Custom Shaders** no forman parte oficial de la especificación glTF. Nuestra implementación de shaders personalizados utiliza una extensión llamada KHR_techniques_webgl, que almacena el código del shader WebGL directamente en el archivo glTF. Los assets resultantes funcionarán en visores basados en Needle Engine.
 :::
 
 ## 💡 Exportar Lightmaps
@@ -137,7 +137,7 @@ Cuando trabaje en varias escenas, desactive "Auto Generate" y hornee (bake) los 
 - Máx. 4 lightmaps de 2k por escena (puede ir más alto, pero espere archivos grandes)
 - Comprimir Lightmaps DESACTIVADO (aumenta la calidad; de lo contrario, se comprimirán de nuevo al exportar)
 
-![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad1c-c8ec5c1fcfd4.png)
+![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad13-4e6d-a14c-c8ec5c1fcfd4.png)
 
 ### Mezclando Objetos Horneados (Baked) y No Horneados
 

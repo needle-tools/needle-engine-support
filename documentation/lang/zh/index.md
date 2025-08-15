@@ -12,9 +12,9 @@ footer: "版权所有 © 2025 Needle Tools GmbH"
 
 <testimonial
   name="Chris Mahoney"
-  role="创始人，我们的计算机公司。前 Unity，前 Lamina1"
+  role="创始人，Our Computer Company。前 Unity，前 Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
 令人难以置信的 Unity 编辑器集成，超出了一个数量级，
 而且就像文档声称的那样简单。哇。
@@ -121,8 +121,6 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 
 </quoteslides>
 
-
-
 <actiongroup>
     <action href="getting-started/">
     开始使用 ⭐
@@ -141,14 +139,11 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
     </action>
 </actiongroup>
 
-
-
 **Needle Engine** 是一款用于复杂和简单 3D 应用的 Web 引擎。在您的机器上工作，部署到任何地方。Needle Engine 灵活、可扩展，并内置支持**协作和 XR**。它围绕 **glTF 标准**构建 3D 资产。
 
 强大的 **Unity** 和 **Blender** 集成允许艺术家和开发者在经过实战考验的 3D 编辑器中协作和管理 Web 应用。这些**集成**使您能够轻松使用编辑器功能来创建模型、创作材质、制作和排序动画、烘焙光照贴图等。
 
 我们强大的**面向 Web 的压缩和优化管道**确保您的文件准备就绪、体积小且加载速度快。
-
 
 <!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
 
@@ -157,19 +152,13 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 
 <actiongroup>
 
-
 <a class="no-external-link-icon" href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=ddd&colorB=ddd"/></a>
 
 <a class="no-external-link-icon" href="https://engine.needle.tools/docs/getting-started/"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=ddd&colorB=ddd"/></a>
 
-
 <a class="no-external-link-icon" href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=ddd&colorB=ddd&label=discord&logo=discord&logoColor=ffffff"></a>
 
-
 </actiongroup>
-
-
-
 
 <p></p>
 <copyright></copyright>
@@ -178,5 +167,4 @@ needle.tools 精彩地展示了 @NeedleTools 通过 Web 为 3D 做出的贡献�
 <removeserviceworker/>
 </ClientOnly>
 
----
 页面由 AI 自动翻译

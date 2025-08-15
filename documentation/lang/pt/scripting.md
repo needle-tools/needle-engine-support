@@ -13,7 +13,7 @@ tags:
 
 Se é novo em scripting, **altamente recomendamos** ler primeiro os seguintes guias:
 
-- [Essenciais de Typescript](./getting-started/typescript-essentials.md)
+- [Typescript Essentials](./getting-started/typescript-essentials.md)
 - [Needle Engine para Programadores Unity](./getting-started/for-unity-developers.md)
 
 Se sabe o que está a fazer, sinta-se à vontade para saltar diretamente para a [documentação da API do Needle Engine](https://engine.needle.tools/docs/api/latest).
@@ -26,7 +26,7 @@ Tanto componentes personalizados como componentes Unity incorporados podem ser m
 
 Se quiser codificar em conjunto com os exemplos seguintes sem ter de instalar nada, basta clicar no link seguinte:
 
-- [Criar espaço de trabalho virtual para codificar em conjunto](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
+- [Create virtual workspace to code along](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
 
 ----
 
@@ -42,29 +42,29 @@ Frequentemente, cenas interativas podem ser realizadas usando Eventos no Unity e
 O Needle Engine traduz Eventos Unity em chamadas de métodos JavaScript, o que torna este um fluxo de trabalho muito rápido e flexível - configure os seus eventos como de costume e quando forem chamados, funcionarão da mesma forma que no Unity.
 
 ![image](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)
-_Um exemplo de um Evento de Clique de Botão que funciona pronto a usar no Needle Engine - sem necessidade de código._
+_Um exemplo de um Evento de Clique de Botão que funciona pronto a usar no Needle Engine — sem necessidade de código._
 
 ## Criar um novo componente
 Os scripts são escritos em TypeScript (recomendado) ou JavaScript.
 Existem duas formas de adicionar scripts personalizados ao seu projeto:
 
-- Simplesmente adicione um ficheiro com uma extensão `.ts` ou `.js` dentro de `src/scripts/` no diretório do seu projeto gerado, por exemplo `src/scripts/MyFirstScript.ts`
+- Simplesmente adicione um ficheiro com uma extensão `.ts` ou `.js` dentro de `src/scripts/` no diretório do seu projeto web, por exemplo `src/scripts/MyFirstScript.ts`.
 
 - Específico do Unity:
-Organize o seu código em Ficheiros de Definição NPM (pacotes npm). Estes ajudam a modularizar e reutilizar código entre projetos e, se estiver familiarizado com desenvolvimento web, são de facto pacotes npm regulares que são instalados localmente.
-No Unity, pode criar ficheiros NpmDef através de `Create > NPM Definition` e depois adicionar ficheiros TypeScript clicando com o botão direito num ficheiro NpmDef e selecionando `Create > TypeScript`. Por favor, veja [este capítulo](./project-structure.md#npm-definition-files) para mais informações.
+  Organize o seu código em Ficheiros de Definição NPM (pacotes npm). Estes ajudam a modularizar e reutilizar código entre projetos e, se estiver familiarizado com desenvolvimento web, são de facto pacotes npm regulares que são instalados localmente.
+  No Unity, pode criar ficheiros NpmDef através de `Create > NPM Definition` e depois adicionar ficheiros TypeScript clicando com o botão direito num ficheiro NpmDef e selecionando `Create > TypeScript`. Por favor, veja [este capítulo](./project-structure.md#npm-definition-files) para mais informações.
 
 Em ambas as abordagens, os diretórios de código-fonte são observados para alterações e componentes stub C# ou painéis Blender são regenerados sempre que uma alteração é detetada.
 Alterações nos ficheiros de código-fonte também resultam num hot reload do website em execução – não tem de esperar que o Unity recompile os componentes C#. Isto torna a iteração no código praticamente instantânea.
 
 Pode até ter múltiplos tipos de componentes dentro de um único ficheiro (por exemplo, pode declarar `export class MyComponent1` e `export class MyOtherComponent` no mesmo ficheiro Typescript).
 
-Se é novo a escrever Javascript ou Typescript, recomendamos ler o guia [Essenciais de Typescript](./getting-started/typescript-essentials.md) primeiro antes de continuar com este guia.
+Se é novo a escrever Javascript ou Typescript, recomendamos ler o guia [Typescript Essentials Guide](./getting-started/typescript-essentials.md) primeiro antes de continuar com este guia.
 
 :::details Exemplo: Criar um Componente que roda um objeto
 
 - **Criar um componente que roda um objeto**
-Crie ``src/scripts/Rotate.ts`` e adicione o seguinte código:
+  Crie ``src/scripts/Rotate.ts`` e adicione o seguinte código:
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
 
@@ -94,7 +94,7 @@ Agora adicione um novo campo ``public float speed = 5`` ao seu componente Unity 
 :::
 
 :::details Criar componente com uma função personalizada
-Consulte o [Guia de Essenciais de Typescript](./getting-started/typescript-essentials.md) para saber mais sobre a sintaxe e linguagem.
+Consulte o [Typescript Essentials Guide](./getting-started/typescript-essentials.md) para saber mais sobre a sintaxe e linguagem.
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 
@@ -313,7 +313,7 @@ ou para apenas percorrer objetos visíveis, use [`traverseVisible`](https://thre
 
 Outra opção que é bastante útil quando quer apenas iterar objetos que são renderizáveis é consultar todos os componentes renderer e iterar sobre eles assim:
 ```ts twoslash
-import { Renderer } from "@needle-tools/engine";
+import { Renderer } => "@needle-tools/engine";
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
     console.log(renderer);
 ```
@@ -421,7 +421,7 @@ Os métodos de Networking podem ser acedidos via ``this.context.connection``. Po
 ## Aceder ao Needle Engine e a componentes a partir de qualquer lugar
 É possível aceder a toda a funcionalidade descrita acima usando código JavaScript regular que não está dentro de componentes e vive noutro lugar. Todos os componentes e funcionalidade do runtime do needle são acessíveis via o namespace global ``Needle`` (pode escrever ``console.log(Needle)`` para obter uma visão geral)
 
-Pode encontrar componentes usando ``Needle.findObjectOfType(Needle.AudioSource)``, por exemplo. É recomendado guardar essas referências em cache, pois pesquisar repetidamente toda a cena é caro. Veja a lista para [encontrar, adicionar e remover componentes](#finding-addding-and-removing-components) acima.
+Pode encontrar componentes usando ``Needle.findObjectOfType(Needle.AudioSource)``, por exemplo. É recomendado guardar essas referências em cache, pois pesquisar repetidamente toda a cena é caro. Veja a lista para [encontrar, adicionar e remover componentes](#finding-adding-and-removing-components) acima.
 
 Para obter callbacks para o carregamento inicial da cena, veja o exemplo seguinte:
 ```js
@@ -454,7 +454,7 @@ Também pode aceder a todos os contextos disponíveis via `NeedleEngine.Register
 Abaixo encontra uma lista de eventos disponíveis no tipo estático `NeedleEngine`.
 Pode subscrever esses eventos via `NeedleEngine.registerCallback(ContextEvent.ContextCreated, (args) => {})`
 
-| Opções de ContextEvent | |
+| ContextEvent options | |
 |---|---|
 | `ContextEvent.ContextRegistered` | Chamado quando o contexto é registado no registry. |
 | `ContextEvent.ContextCreationStart` | Chamado antes do primeiro glb ser carregado e pode ser usado para inicializar o motor de física. Pode retornar uma promise |

@@ -1,5 +1,5 @@
 ---
-title: Debugging
+title: Fehlerbehebung
 ---
 
 ## Nützliche Ressourcen für die Arbeit mit glTF

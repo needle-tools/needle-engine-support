@@ -3,7 +3,7 @@ home: false
 next: ./getting-started/index.md
 editLink: false
 lastUpdated: false
-footer: "著作権 © 2025 Needle Tools GmbH"
+footer: "Copyright © 2025 Needle Tools GmbH"
 ---
 
 <discountbanner fallback_image="/docs/imgs/banner.webp" /> 
@@ -12,17 +12,17 @@ footer: "著作権 © 2025 Needle Tools GmbH"
 
 <testimonial
   name="Chris Mahoney"
-  role="創設者, Our Computer Company. 元Unity, 元Lamina1"
+  role="創設者、Our Computer Company. 元Unity、元Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
-桁違いの信じられないUnityエディタ統合、
-そしてドキュメントが主張するとおりの分かりやすさ。すごい。
+桁違いの信じられないUnityエディタ統合、  
+  そしてドキュメントが主張するとおりの分かりやすさ。すごい。
 </testimonial>
 
 <testimonial 
   name="Kevin Curry" 
-  role="創設者, Intangible.ai. 元Unity"
+  role="創設者、Intangible.ai. 元Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
   img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
 >
@@ -31,7 +31,7 @@ needle.toolsは、@NeedleToolsがウェブ経由で3Dに貢献する素晴らし
 
 <testimonial
   name="Brit Gardner"
-  role="シニアソフトウェアエンジニア, Coherence. 元Blizzard"
+  role="シニアソフトウェアエンジニア、Coherence. 元Blizzard"
   src="https://x.com/britg/status/1562443905580163072"
   img="https://pbs.twimg.com/profile_images/1360002897048727553/0gscFjvt_x96.jpg"
 >
@@ -50,7 +50,7 @@ needle.toolsは、@NeedleToolsがウェブ経由で3Dに貢献する素晴らし
 
 <testimonial
   name="Rinesh Thomas"
-  role="ゲーム開発者, Assassin's Creed VR"
+  role="ゲーム開発者、Assassin's Creed VR"
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
@@ -59,7 +59,7 @@ needle.toolsは、@NeedleToolsがウェブ経由で3Dに貢献する素晴らし
 
 <testimonial
   name="Stella Cannefax"
-  role="Dora CTO, ゲーム開発者"
+  role="Dora CTO、ゲーム開発者"
   src="https://x.com/0xstella/status/1574853012585172993"
   img="https://pbs.twimg.com/profile_images/1657086025661833237/Yyo56hVY_x96.jpg"
 >
@@ -77,7 +77,7 @@ needle.toolsは、@NeedleToolsがウェブ経由で3Dに貢献する素晴らし
 
 <testimonial 
   name="Dilmer Valecillos" 
-  role="@MetaのMixed Reality デベロッパーアドボケート, チュートリアルクリエーター"
+  role="@MetaのMixed Reality デベロッパーアドボケート、チュートリアルクリエーター"
   src="https://x.com/Dilmerv/status/1562209049856188420"
   img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
 >
@@ -143,9 +143,9 @@ needleを使い始めて以来、私のワークフローは10倍最適化され
 
 
 
-**Needle Engine** は、複雑な3Dアプリケーションからシンプルなものまで対応するウェブエンジンです。お使いのマシンで作業し、どこにでもデプロイできます。Needle Engineは柔軟で拡張可能であり、**コラボレーションとXR**の組み込みサポートを備えています。3Dアセットのための**glTF standard**を中心に構築されています。
+**Needle Engine** は、複雑な3Dアプリケーションからシンプルなものまで対応するウェブエンジンです。お使いのマシンで作業し、どこにでもデプロイできます。Needle Engineは柔軟で拡張可能であり、**コラボレーションとXR**の組み込みサポートを備えています。3Dアセットのための**glTF standard**を中心に構築されています。 
 
-**Unity**と**Blender**向けの強力なインテグレーションにより、アーティストや開発者は実績のある3Dエディタ内でウェブアプリケーションを共同で作業し、管理できます。これらの**Integrations**により、モデル作成、マテリアル作成、アニメーションとシーケンス化、ライトマップのベイクなど、エディタの機能を簡単に使用できます。
+**Unity**と**Blender**向けの強力なインテグレーションにより、アーティストや開発者は実績のある3Dエディタ内でウェブアプリケーションを共同で作業し、管理できます。これらの**Integrations**により、モデル作成、マテリアル作成、アニメーションとシーケンス化、ライトマップのベイクなど、エディタの機能を簡単に使用できます。 
 
 当社の強力な**ウェブ向けの圧縮および最適化パイプライン**により、ファイルが準備され、小さく、高速に読み込まれることを保証します。
 

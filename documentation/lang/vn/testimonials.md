@@ -10,7 +10,7 @@ next: getting-started/
   name="Chris Mahoney"
   role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
 Tích hợp Unity editor đáng kinh ngạc theo cấp số nhân,
   và đơn giản như tài liệu mô tả. Wow.

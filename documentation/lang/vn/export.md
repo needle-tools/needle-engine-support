@@ -1,5 +1,5 @@
 ---
-title: Exporting Assets to glTF
+title: Xuất Tài sản sang glTF
 ---
 
 
@@ -92,21 +92,21 @@ Nếu bạn không muốn skybox được xuất hoàn toàn trong file glb, b�
 Theo mặc định, các vật liệu được chuyển đổi thành vật liệu glTF khi xuất. glTF hỗ trợ mô hình vật liệu dựa trên vật lý và có một số extension giúp biểu diễn các vật liệu phức tạp.
 
 Để kiểm soát hoàn toàn những gì được xuất, rất khuyến khích sử dụng các vật liệu glTF được cung cấp bởi UnityGltf:
-- PBRGraph
-- UnlitGraph
+- UnityGLTF/PBRGraph
+- UnityGLTF/UnlitGraph
 
-::: tip Khi nghi ngờ, hãy sử dụng shader PBRGraph
-Vật liệu PBRGraph có rất nhiều tính năng, nhiều hơn đáng kể so với Standard hoặc URP/Lit. Bao gồm các tính năng nâng cao như khúc xạ, ánh cầu vồng (iridescence), sheen, và nhiều hơn nữa. Ngoài ra, các vật liệu sử dụng PBRGraph và UnlitGraph được xuất nguyên trạng, không cần chuyển đổi.
+::: tip Khi nghi ngờ, hãy sử dụng shader PBRGraph.
+Vật liệu PBRGraph có rất nhiều tính năng, nhiều hơn đáng kể so với các shader "Standard" hoặc "Lit" được cung cấp bởi Unity. Các tính năng này bao gồm các hiệu ứng bề mặt như clearcoat, sheen, iridescence, và các hiệu ứng thể tích như transmission, refraction và dispersion.
 :::
 
-Các vật liệu có thể được chuyển đổi ngay lập tức:
-- BiRP/Standard
-- BiRP/Autodesk Interactive
-- BiRP/Unlit
-- URP/Lit
-- URP/Unlit
+Các shader khác có thể được xuất trực tiếp (có chuyển đổi):
+- Universal Render Pipeline/Lit
+- Universal Render Pipeline/Unlit
+- Standard (Built-in Render Pipeline)
+- Autodesk Interactive (Built-in Render Pipeline)
+- Unlit (Built-in Render Pipeline)
 
-Các vật liệu khác được chuyển đổi bằng cách sử dụng thuật toán phỏng đoán dựa trên tên thuộc tính. Điều đó có nghĩa là tùy thuộc vào tên thuộc tính mà vật liệu và shader tùy chỉnh của bạn sử dụng, bạn có thể muốn tái cấu trúc các thuộc tính của shader tùy chỉnh để sử dụng tên thuộc tính của URP/Lit hoặc PBRGraph, hoặc xuất vật liệu dưới dạng [Custom Shader](#custom-shaders).
+Các vật liệu khác được chuyển đổi bằng cách sử dụng thuật toán phỏng đoán dựa trên tên thuộc tính. Điều đó có nghĩa là tùy thuộc vào tên thuộc tính mà vật liệu và shader tùy chỉnh của bạn sử dụng, bạn có thể muốn tái cấu trúc các thuộc tính của shader tùy chỉnh để sử dụng tên thuộc tính của Universal Render Pipeline/Lit hoặc PBRGraph, hoặc xuất vật liệu dưới dạng [Custom Shader](#custom-shaders).
 
 ### Custom Shaders
 Để xuất các unlit shader tùy chỉnh (ví dụ: được tạo bằng ShaderGraph), hãy thêm Asset Label ``ExportShader`` vào shader bạn muốn xuất. Asset Label có thể được nhìn thấy ở cuối cửa sổ Inspector.
@@ -123,7 +123,7 @@ Các vật liệu khác được chuyển đổi bằng cách sử dụng thuậ
   - Các giá trị trục X bị lật trong glTF so với Unity. Đây là một biến thể của sự thay đổi hệ tọa độ từ tay trái sang tay phải. Dữ liệu được sử dụng trong shader có thể cần phải lật trên trục X để hiển thị chính xác.
 
 ::: note Không phải là một phần của đặc tả glTF
-Lưu ý rằng **Custom Shaders** không phải là một phần chính thức của đặc tả glTF. Việc triển khai custom shaders của chúng tôi sử dụng một extension gọi là KHR_techniques_webgl, extension này lưu trữ mã shader WebGL trực tiếp trong file glTF. Các asset kết quả sẽ hoạt động trong các viewer dựa trên Needle Engine, nhưng có thể không hiển thị chính xác trong các viewer khác.
+Lưu ý rằng **Custom Shaders** không phải là một phần chính thức của đặc tả glTF. Việc triển khai custom shaders của chúng tôi sử dụng một extension gọi là KHR_techniques_webgl, extension này lưu trữ mã shader WebGL trực tiếp trong file glTF. Các asset kết quả sẽ hoạt động trong các viewer dựa trên Needle Engine.
 :::
 
 ## 💡 Xuất Lightmap
@@ -165,6 +165,5 @@ Nếu scene của bạn không có đối tượng nào đã bake, thì các cà
 Environment Lighting: Color
 Ambient Color: any
 ```
-
 
 Trang tự động dịch bằng AI

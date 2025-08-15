@@ -12,9 +12,9 @@ description: 'Needle Cloud 是一项在线服务。它可以帮助您在网络�
 ## 概述
 
 Needle Cloud 是一项在线服务。它可以帮助您在网络上存储、管理和分享 3D 资产和应用。
-支持多种文件格式，包括 glTF、USD、FBX、VRM 等。使用 Needle 制作的空间 Web 应用可以直接从 Unity 集成或通过命令行 (CLI) 部署到云端。Blender 集成将在稍后推出；在此期间，您可以使用 CLI。
+支持多种文件格式，包括 glTF、USD、FBX、VRM 等。使用 Needle 制作的空间 Web 应用可以直接从 [Unity 集成](#deploy-from-unity) 或我们的 Needle Cloud [命令行界面](#deploy-from-the-cli) (CLI) 部署。
 
-访问 [Needle Cloud](https://cloud.needle.tools) 开始使用。
+访问 [Needle Cloud](https://cloud.needle.tools) 免费创建账户。
 
 ![Needle Cloud 概述](/cloud/cloud-overview-page.webp)
 
@@ -39,6 +39,7 @@ Needle Cloud 是一项在线服务。它可以帮助您在网络上存储、管�
 6.  **许可证管理**
     面向个人创作者和团队的 Needle Engine 许可证通过 Needle Cloud 进行管理。这确保只有授权用户可以访问您的文件和项目。企业版和教育版许可证请联系我们。
 
+
 ## 从 Unity 部署
 
 Needle Cloud 已集成到 Unity Editor 中。这使得您可以直接从 Unity 将您的应用部署到 Needle Cloud。您也可以直接在 Unity 中从 Needle Cloud 上传和下载资产。
@@ -46,7 +47,7 @@ Needle Cloud 已集成到 Unity Editor 中。这使得您可以直接从 Unity �
 1.  **安装 Unity 集成（如果尚未安装）。**
     有关更多信息，请参见[此页面](./../unity/)。
 
-2.  **将 `Export Info` 组件添加到您的场景中。**
+2.  **将 `Needle Engine` 组件（原 ExportInfo）添加到您的场景中。**
     该组件用于配置您的应用的导出设置。
     您可以使用菜单项 `GameObject > Needle Engine > Add Export Info`，或通过菜单项 `File > New Scene` 从 Needle 模板创建新场景。
 
@@ -87,7 +88,7 @@ node -v
 ### 自动化部署
 要从 **Github Actions** 或 **Stackblitz** 部署，您可以提供一个访问令牌作为 `--token <access_token>`。访问令牌可以在 Needle Cloud 的[您的团队页面](https://cloud.needle.tools/team)上创建。请确保您的令牌具有 `read/write` 权限。
 
-使用 [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud) 从 Github 部署更新（例如，每次推送到仓库时）。
+使用 [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud) 从 Github 部署更新（例如，每次推送到仓库时）
 
 #### 示例：Needle Cloud Github Action
 ```yml
@@ -103,16 +104,16 @@ node -v
 #### 示例：使用 CLI 命令部署
 
 ```bash
-# Deploy to Needle Cloud from e.g. a github action
+# 从 Github Action 部署到 Needle Cloud，例如
 npx needle-cloud deploy '/path/to/output' --team 'My team' --name 'some name or id' --token '<access_token>'
 ```
 
 ### CLI 帮助
 使用 `help` 查看所有可用的命令行选项和单个命令的帮助。
 ```bash
-# see all available options
+# 查看所有可用选项
 npx needle-cloud help
-# get help for a specific command e.g. deploy
+# 获取特定命令的帮助，例如 deploy
 npx needle-cloud help deploy
 ```
 
@@ -248,6 +249,19 @@ Needle Cloud 网站显示应用的所有已部署版本，包括最新版本和 
 
 有关 CLI 及其使用方法的更多信息，请参见 [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud)。
 
+## RBAC（基于角色的访问控制）
+
+团队由成员组成，团队的每个成员都可以被分配一个角色。这些角色定义了您在 Needle Cloud 团队中可以做什么和不能做什么。
+
+随着您的项目规模扩大并添加更多团队成员，您可以为他们分配角色，以确保他们拥有在项目上工作的正确权限。
+
+| | |
+| -- | --
+| **Owner** | 最高权限级别。所有者角色可以管理整个团队（包括账单和成员角色），查看所有项目、上传和部署 |
+| **Manager** | 管理员角色可以管理整个团队（包括账单和成员角色），查看所有项目、上传和部署 |
+| **Billing** | 账单管理员角色专门负责财务操作，可以监督团队的账单信息，审查和管理项目成本，并处理支付选项。<br/>账单管理员角色对部署和资产只有只读访问权限，不能执行部署或上传资产。<br/>账单管理员角色无需额外费用即可分配。每个团队该角色仅限一位成员。 |
+| **Member** | 成员角色（开发者角色）可以创建部署，上传/下载资产以进行优化，或使用 AI 功能。 |
+
 ## 常见问题
 
 1.  **What is Needle Cloud?**
@@ -271,5 +285,7 @@ Needle Cloud 网站显示应用的所有已部署版本，包括最新版本和 
 7.  **What happens if I run out of storage space?**
     您可能需要升级您的套餐或删除旧文件以腾出空间。
 
+8.  **More answers**
+    访问 [Needle Cloud FAQ](https://cloud.needle.tools/faq)
 
 页面由AI自动翻译

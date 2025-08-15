@@ -8,7 +8,7 @@ editLink: true
     gap: 20px;
     font-size: 2em;
     font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needleのロゴ" alt="Needleのロゴ"/> +
+    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
   <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
 </div>
 
@@ -22,25 +22,25 @@ Unity用Needle Engineを使用すると、Unity内で直接、非常にインタ
 
 <NoDownloadYet>
   <br/>
-  <needle-button
-    event_goal="download_unity"
-    event_position="getting_started"
-    large
+  <needle-button 
+    event_goal="download_unity" 
+    event_position="getting_started" 
+    large 
     href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"
     same_tab
     next_url="/docs/unity/"
     >
     <strong>Unity用Needle Engineをダウンロード</strong>
-  </needle-button>
+  </needle-button> 
 </NoDownloadYet>
 
 <!-- [Mirror](https://package-installer.glitch.me/v1/installer/needle/com.needle.engine-exporter?registry=https://packages.needle.tools&scope=com.needle&scope=org.khronos)    -->
 
-1. **ダウンロードした.unitypackageファイルをドロップ**し、Unityプロジェクトにインポートを確定します。
+1. **ダウンロードした.unitypackageファイルを**Unityプロジェクトに**ドロップ**し、インポートすることを確認します。
 
-2. インストールとインポートが完了するまで**しばらく待ちます**。「A new scoped registry is now available in the Package Manager.」というウィンドウが表示される場合があります。これはNeedleパッケージのレジストリです。このウィンドウは安全に閉じることができます。
-3. **サンプルを探索**。
-  メニューオプション`Needle Engine > Explore Samples`を選択して、利用可能なすべての[サンプルシーン](https://engine.needle.tools/samples)を表示、開く、変更します。
+2. インストールとインポートが完了するまで**しばらく待ちます**。「A new scoped registry is now available in the Package Manager.」というウィンドウが表示される場合があります。これはNeedle Packageレジストリです。このウィンドウは安全に閉じることができます。  
+3. **サンプルを探索**。  
+  メニューオプション`Needle Engine > Explore Samples`を選択して、利用可能なすべての[サンプルシーン](https://engine.needle.tools/samples)を表示、開く、変更します。  
 
 ## クイックスタートビデオチュートリアル
 
@@ -48,26 +48,26 @@ Unity用Needle Engineを使用すると、Unity内で直接、非常にインタ
 
 ## サンプルから開始
 
-幅広いトピック、ユースケース、業界をカバーする100以上のサンプルがあります。
-概要については、[サンプルページ](https://engine.needle.tools/samples/)をご覧ください。
+幅広いトピック、ユースケース、業界をカバーする100以上のサンプルがあります。  
+概要については、[サンプルページ](https://engine.needle.tools/samples/)をご覧ください。 
 
 これらのサンプルはすべてUnityで直接利用できます。
 1. サンプルをブラウズするには、`Needle Engine > Explore Samples`に進みます
 2. 「Install Samples」をクリックして、エディター内にサンプルパッケージをインストールします（または、パッケージを手動でインストールするには、[サンプルのunitypackageをダウンロード](http://engine.needle.tools/downloads/unity/samples)します）
-3. 任意のサンプルを選択し、`Open Scene`をクリックします。
+3. 任意のサンプルを選択し、`Open Scene`をクリックします。 
 
 :::tip サンプルは読み取り専用です – これにより簡単に更新できます。
 私たちのサンプルシーンは、UnityのUPMパッケージの一部です。これは、それらのアセットやスクリプトを直接編集できないことを意味します – それらは読み取り専用です。サンプルパッケージからアセットを編集するには、プロジェクトの`Assets`フォルダーにコピーします。サンプルパッケージからスクリプトを編集するには、Webプロジェクトの`src`フォルダーにコピーします。
-:::
+::: 
 
 ## テンプレートから開始
 
-新規プロジェクトを迅速に開始するためのシーンテンプレートを多数提供しています。
-これにより、アイデアからプロトタイプまで数クリックで進むことができます。
+新規プロジェクトを迅速に開始するためのシーンテンプレートを多数提供しています。  
+これにより、アイデアからプロトタイプまで数クリックで進むことができます。  
 
 1. `File > New Scene`をクリックします
 
-2. 名前に(needle)が含まれるテンプレートのいずれかを選択し、`Create`をクリックします。[Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox)テンプレートをお勧めします。これは、インタラクティビティ、マルチプレイヤー、アセットの追加を始めるのに最適な方法です。
+2. 名前に(needle)が含まれるテンプレートのいずれかを選択し、`Create`をクリックします。[Collaborative Sandbox](https://engine.needle.tools/samples/collaborative-sandbox)テンプレートをお勧めします。これは、インタラクティビティ、マルチプレイヤー、アセットの追加を始めるのに最適な方法です。  
 3. Playをクリックして、新しいWebプロジェクトをインストールして起動します。
 
 ![20220822-140539-wqvW-Unity_oC0z-needle](https://user-images.githubusercontent.com/2693840/185917275-a147cd90-d515-4086-950d-78358185b1ef.png)
@@ -75,22 +75,22 @@ Unity用Needle Engineを使用すると、Unity内で直接、非常にインタ
 
 ## ゼロから開始
 
-シーンテンプレートから開始したくない場合は、以下の手順に従うことができます。
-実際には、パッケージに含まれている「Minimal (Needle)」テンプレートを再作成します。
+シーンテンプレートから開始したくない場合は、以下の手順に従うことができます。  
+実際には、パッケージに含まれている「Minimal (Needle)」テンプレートを再作成します。  
 
-1. **新しい空のシーンを作成**
+1. **新しい空のシーンを作成**  
 
-2. **エクスポート用にシーンを設定**
-  空のGameObjectを追加し、名前を「Exporter」にして、`Needle Engine`コンポーネント（旧称`Export Info`）を追加します。
-  このコンポーネントでは、エクスポートされたランタイムプロジェクトを作成し、迅速にアクセスできます。
-  また、いずれかのパッケージやモジュールが古いか、Webプロジェクトにローカルにインストールされていない場合に警告が表示されます。
+2. **エクスポート用にシーンを設定**   
+  空のGameObjectを追加し、名前を「Exporter」にして、`Needle Engine`コンポーネント（旧称`Export Info`）を追加します。  
+  このコンポーネントでは、エクスポートされたランタイムプロジェクトを作成し、迅速にアクセスできます。  
+  また、いずれかのパッケージやモジュールが古いか、Webプロジェクトにローカルにインストールされていない場合に警告が表示されます。  
 
     ::: tip プロジェクト名とシーン名
-    デフォルトでは、プロジェクト名はシーンの名前に一致します。それを変更したい場合は、新しいWebプロジェクトを作成したい``Directory Name``を選択または入力できます。パスはUnityプロジェクトからの相対パスです。
+    デフォルトでは、プロジェクト名はシーンの名前に一致します。それを変更したい場合は、新しいWebプロジェクトを作成したい``Directory Name``を選択または入力できます。パスはUnityプロジェクトからの相対パスです。  
     :::
-
+ 
 3. **Webプロジェクトテンプレートを選択**
-  次に、プロジェクトのWebプロジェクトテンプレートを選択します。デフォルトのテンプレートは、高速なWebアプリバンドラーである[Vite](https://vitejs.dev/)に基づいています。
+  次に、プロジェクトのWebプロジェクトテンプレートを選択します。デフォルトのテンプレートは、高速なWebアプリバンドラーである[Vite](https://vitejs.dev/)に基づいています。  
   <br/>
     ![Unity ExportInfo local templates](/imgs/unity-project-local-template.jpg)
 
@@ -104,18 +104,26 @@ Unity用Needle Engineを使用すると、Unity内で直接、非常にインタ
 
 ## プロジェクトフォルダとファイル
 
+:::: file-tree name="Unity Project" showall="true"
+::: file Assets/
+プロジェクト固有/専用のアセットがここに配置されます。
+::: 
+::: file Packages/
+このプロジェクトにインストールされたパッケージがここに配置されます。パッケージには任意のアセットタイプを含めることができ、複数のUnityプロジェクトに追加できます。したがって、コードやアセットを共有するための優れた方法です。パッケージの詳細については、[パッケージに関するUnityドキュメント](https://docs.unity3d.com/Manual/PackagesList.html)を参照してください。
+::: 
+::: file Packages/Needle Engine/
+Unity用Needle Engineは、UnityシーンをWebプロジェクトにエクスポートするために必要なすべてのファイルを含むパッケージです。また、インタラクティブなWebプロジェクトを作成するための組み込みコンポーネントとツールも含まれています。Unity Package Manager経由でパッケージを更新できます。
+:::
+::: file Packages/Needle Engine/Core/
+:::
+::: file Packages/Needle Engine/Core/Runtime/
+:::
+::: file Packages/Needle Engine/Core/Runtime/Components/
+すべてのNeedle Engine組み込みコンポーネントが含まれています。[コンポーネントリファレンス](./../component-reference.md)で詳細を学べます。サンプルを見てこのフォルダを確認することは、利用可能なコンポーネントとそのプロジェクトでの使用方法を知るのに最適な方法です。
+:::
+:::: 
 
-| フォルダ | |
-| --- | --- |
-| **Unity** | |
-| `Assets` | ここにプロジェクト固有/専用のアセットが配置されます。 |
-| `Packages` | ここにこのプロジェクトにインストールされたパッケージが配置されます。パッケージには任意のアセットタイプを含めることができます。主な違いは、複数のUnityプロジェクトに追加できることです。したがって、コードやアセットを共有するための優れた方法です。パッケージの詳細については、[パッケージに関するUnityドキュメント](https://docs.unity3d.com/Manual/PackagesList.html)を参照してください。
-| **Needle Engine Unityパッケージ** | |
-| ``Core/Runtime/Components`` | すべてのNeedle Engine組み込みコンポーネントが含まれています。[コンポーネントリファレンス](./../component-reference.md)で詳細を学べます。 |
-
------
-
-Unityで新しいWebプロジェクトを作成する際、ローカルテンプレートから作成するかを選択できます（デフォルトでは、viteベースのWebテンプレートを出荷しています）。
+Unityで新しいWebプロジェクトを作成する際、ローカルテンプレートから作成するかを選択できます（デフォルトでは、ViteベースのWebテンプレートを出荷しています）。 
 
 ExportInfoプロジェクトパスにリポジトリURLを入力して、リモートテンプレートを参照することもできます（これはシーンと一緒に保存できます）。新しいWebプロジェクトを作成する際、リポジトリはクローンされるかダウンロードされ（gitがインストールされているかどうかによります）、`needle.config.json`ファイルが検索されます。クローンされたリポジトリに見つからない場合は、ルートディレクトリが使用されます。[github.com/needle-engine](https://github.com/needle-engine)でリモートテンプレートプロジェクトの例を見つけることができます。
 
@@ -128,13 +136,13 @@ NpmDefs経由でのみカスタムファイルを追加し、プロジェクト�
 
 ## UnityでのTypescript
 
-**NPM Definition**は[npm packages](https://docs.npmjs.com/about-packages-and-modules)であり、Unityエディターに密接に統合されており、複数のWebまたはUnityプロジェクトとスクリプトを簡単に共有できます。
+**NPM Definitions**は[npm packages](https://docs.npmjs.com/about-packages-and-modules)であり、Unityエディターに密接に統合されており、複数のWebまたはUnityプロジェクトとスクリプトを簡単に共有できます。    
 
-npmdefパッケージ内のスクリプトの場合、typescriptファイルに対するC#コンポーネントスタブも自動的に生成されます。
+NpmDefパッケージ内のスクリプトの場合、TypeScriptファイルに対するC#コンポーネントスタブも自動的に生成されます。
 
-#### npmdefの作成とインストール
-*NPM Definition*を作成するには、Unity Projectブラウザーで右クリックし、「``Create/NPM Definition``」を選択します。
-*NPM Definition*パッケージをランタイムプロジェクトに**インストール**するには、例えば``Export Info``コンポーネントを選択し、``dependencies``リストに追加します（内部的には、これは単に基になるnpmパッケージをpackage.jsonに追加するだけです）。
+#### NpmDefの作成とインストール
+**NPM Definition**を作成するには、Unity Projectブラウザーで右クリックし、「``Create/NPM Definition``」を選択します。   
+*NPM Definition*パッケージをランタイムプロジェクトに**インストール**するには、例えば``Needle Engine``コンポーネント（旧称``Export Info``）を選択し、``dependencies``リストに追加します（これは実質的に、NpmDefパッケージをWebプロジェクトのpackage.jsonの`dependencies`配列に追加するもので、手動で行うか、`npm i <path/to/package>`を実行するのと同じです）。
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
@@ -151,6 +159,5 @@ ExportInfoコンポーネントでInstallをクリックするなどして、新
 - [コンポーネント: Everywhere Actionsについて学ぶ](../everywhere-actions.md)
 - [初心者向けスクリプト: Typescriptの基本](../getting-started/typescript-essentials.md)
 - [初心者向けスクリプト: カスタムコンポーネントの書き方](../scripting.md)
-
 
 このページはAIによって自動的に翻訳されました

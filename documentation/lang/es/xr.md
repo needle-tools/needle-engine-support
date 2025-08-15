@@ -64,48 +64,48 @@ Las capacidades de AR, VR y networking en Needle Engine están diseñadas para s
 
 ### Capacidades básicas
 
-1. **Habilitar AR y VR**
-   Añade un componente `WebXR`.
-   *Opcional:* puedes establecer un avatar personalizado referenciando un [Prefab de Avatar](#avatars).
-   Por defecto, se asigna un `DefaultAvatar` básico.
+1.  **Habilitar AR y VR**
+    Añade un componente `WebXR`.
+    *Opcional:* puedes establecer un avatar personalizado referenciando un [Prefab de Avatar](#avatars).
+    Por defecto, se asigna un `DefaultAvatar` básico.
 
-2. **Habilitar Teleportation**
-   Añade un componente `TeleportTarget` a las jerarquías de objetos sobre las que se puede teletransportar.
-   Para excluir objetos específicos, establece su layer a `IgnoreRaycasting`.
+2.  **Habilitar Teleportation**
+    Añade un componente `TeleportTarget` a las jerarquías de objetos sobre las que se puede teletransportar.
+    Para excluir objetos específicos, establece su layer a `IgnoreRaycasting`.
 
 ### Multijugador
 
-1. **Habilitar Networking**
-   Añade un componente `SyncedRoom`.
+1.  **Habilitar Networking**
+    Añade un componente `SyncedRoom`.
 
-2. **Habilitar Desktop Viewer Sync**
-   Añade un componente `SyncedCamera`.
+2.  **Habilitar Desktop Viewer Sync**
+    Añade un componente `SyncedCamera`.
 
-3. **Habilitar Voice Chat**
-   Añade un componente `VoIP`.
+3.  **Habilitar Voice Chat**
+    Añade un componente `VoIP`.
 
 :::tip Estructura de escena
 Estos componentes pueden estar en cualquier lugar dentro de tu jerarquía. También pueden estar todos en el mismo GameObject, lo cual es un patrón común.
 :::
 
- > **[Castle Builder](https://castle.needle.tools/)** usa todo lo anterior para una experiencia sandbox multijugador multiplataforma.
- > — #madebyneedle 💚
+> **[Castle Builder](https://castle.needle.tools/)** usa todo lo anterior para una experiencia sandbox multijugador multiplataforma.
+> — #madebyneedle 💚
 
 ### Componentes AR especiales
 
-1. **Definir la raíz y escala de la sesión AR**
-   Añade un componente `WebARSessionRoot` a tu objeto root. Para experiencias AR, a menudo quieres escalar la escena para que se ajuste al mundo real.
-2. Define la **user scale** para encoger (< 1) o ampliar (> 1) al usuario en relación con la escena al entrar en AR.
+1.  **Definir la raíz y escala de la sesión AR**
+    Añade un componente `WebARSessionRoot` a tu objeto root. Para experiencias AR, a menudo quieres escalar la escena para que se ajuste al mundo real.
+2.  Define la **user scale** para encoger (< 1) o ampliar (> 1) al usuario en relación con la escena al entrar en AR.
 
 ### Controlar la visualización de objetos para XR
 
-1. **Definir si un objeto es visible en Browser, AR, VR, First Person, Third Person**
-   Añade un componente `XR Flag` al objeto que quieres controlar.
+1.  **Definir si un objeto es visible en Browser, AR, VR, First Person, Third Person**
+    Añade un componente `XR Flag` al objeto que quieres controlar.
 
-2. **Cambia las opciones en el desplegable** según sea necesario.
-   Los casos de uso comunes son
-   - ocultar suelos al entrar en AR
-   - ocultar partes del Avatar en vistas en Primera o Tercera Persona. Por ejemplo, en vista en primera persona, una persona no debería poder ver su propio modelo de cabeza.
+2.  **Cambia las opciones en el desplegable** según sea necesario.
+    Los casos de uso comunes son
+    -   ocultar suelos al entrar en AR
+    -   ocultar partes del Avatar en vistas en Primera o Tercera Persona. Por ejemplo, en vista en primera persona, una persona no debería poder ver su propio modelo de cabeza.
 
 ### Viajar entre mundos VR
 
@@ -114,8 +114,8 @@ Needle Engine es compatible con el estado [`sessiongranted`](https://github.com/
 Actualmente, esto solo es compatible con Oculus Quest 1, 2 y 3 en el Navegador de Oculus. En otras plataformas, los usuarios serán expulsados de su sesión inmersiva actual y tendrán que volver a entrar en VR en la nueva página.
 Requiere habilitar un flag del navegador: `chrome://flags/#webxr-navigation-permission`
 
-- **Haz clic en objetos para abrir enlaces**
-  Añade el componente `OpenURL` que facilita mucho la construcción de mundos conectados.
+-   **Haz clic en objetos para abrir enlaces**
+    Añade el componente `OpenURL` que facilita mucho la construcción de mundos conectados.
 
 ## Scripting
 Lee más sobre scripting para XR en la [documentación de scripting XR](./scripting.md#xr-event-methods)
@@ -124,11 +124,11 @@ Lee más sobre scripting para XR en la [documentación de scripting XR](./script
 
 Aunque actualmente no ofrecemos una integración lista para usar de sistemas de avatares externos, puedes crear avatares o sistemas personalizados específicos de la aplicación.
 
-- **Crear un Avatar personalizado**
-  - Crea un GameObject vacío como root del avatar
-  - Añade un objeto llamado `Head` y añade un `XRFlag` configurado en Third Person
-  - Añade objetos llamados `HandLeft` y `HandRight`
-  - Añade tus gráficos debajo de estos objetos.
+-   **Crear un Avatar personalizado**
+    -   Crea un GameObject vacío como root del avatar
+    -   Añade un objeto llamado `Head` y añade un `XRFlag` configurado en Third Person
+    -   Añade objetos llamados `HandLeft` y `HandRight`
+    -   Añade tus gráficos debajo de estos objetos.
 
 ### Componentes de Avatar Experimentales
 
@@ -137,24 +137,24 @@ Hay una serie de componentes experimentales para construir Avatares más expresi
 ![20220817-230858-87dG-Unity_PLjQ](https://user-images.githubusercontent.com/2693840/185243523-57c4b2a9-0ec7-4f88-b53b-585e879d504d.gif)
 *Ejemplo de Rig de Avatar con modelo de cuello básico y constraints de extremidades*
 
-- **Random Player Colors**
-  Como ejemplo de personalización de avatar, puedes añadir un componente `PlayerColor` a tus renderers.
-  Este color aleatorio se sincroniza entre jugadores.
+-   **Random Player Colors**
+    Como ejemplo de personalización de avatar, puedes añadir un componente `PlayerColor` a tus renderers.
+    Este color aleatorio se sincroniza entre jugadores.
 
-- **Eye Rotation**
-  `AvatarEyeLook_Rotation` rota GameObjects (ojos) para seguir a otros avatares y a un target aleatorio. Este componente se sincroniza entre jugadores.
+-   **Eye Rotation**
+    `AvatarEyeLook_Rotation` rota GameObjects (ojos) para seguir a otros avatares y a un target aleatorio. Este componente se sincroniza entre jugadores.
 
-- **Eye Blinking**
-  `AvatarBlink_Simple` oculta GameObjects (ojos) aleatoriamente cada pocos segundos, emulando un parpadeo.
+-   **Eye Blinking**
+    `AvatarBlink_Simple` oculta GameObjects (ojos) aleatoriamente cada pocos segundos, emulando un parpadeo.
 
-  ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)
-  *Ejemplo de jerarquía de Prefab de Avatar*
+    ![image](https://user-images.githubusercontent.com/2693840/185233753-e6de49f0-31c3-4851-9919-551309303ebd.png)
+    *Ejemplo de jerarquía de Prefab de Avatar*
 
-- **Offset Constraint**
-  `OffsetConstraint` permite desplazar un objeto en relación con otro en el espacio del Avatar. Esto permite, por ejemplo, que un Cuerpo siga a la Cabeza pero mantenga la rotación nivelada. También permite construir modelos de cuello simples.
+-   **Offset Constraint**
+    `OffsetConstraint` permite desplazar un objeto en relación con otro en el espacio del Avatar. Esto permite, por ejemplo, que un Cuerpo siga a la Cabeza pero mantenga la rotación nivelada. También permite construir modelos de cuello simples.
 
-- **Limb Constraint**
-  `BasicIKConstraint` es un constraint muy minimalista que toma dos transforms y un hint. Esto es útil para construir cadenas de brazos o piernas simples. Como la rotación no está implementada correctamente actualmente, los brazos y las piernas pueden necesitar ser rotacionalmente simétricos para "verse bien". ¡Se llama "Basic" por una razón!
+-   **Limb Constraint**
+    `BasicIKConstraint` es un constraint muy minimalista que toma dos transforms y un hint. Esto es útil para construir cadenas de brazos o piernas simples. Como la rotación no está implementada correctamente actualmente, los brazos y las piernas pueden necesitar ser rotacionalmente simétricos para "verse bien". ¡Se llama "Basic" por una razón!
 
 ## Superposiciones de contenido HTML en AR
 
@@ -210,43 +210,43 @@ Utiliza spatial audio, animación e interacciones de toque.
 
 También hay otras opciones para guiar a los usuarios de iOS hacia experiencias AR interactivas aún más capaces:
 
-3. **Exportar contenido sobre la marcha como archivos USDZ.**
-   Estos archivos pueden mostrarse en dispositivos iOS en AR. Cuando se exportan desde escenas con Everywhere Actions, la interactividad es la misma, más que suficiente para configuradores de productos, experiencias narrativas y similares.
-   Un ejemplo es [Castle Builder](https://castle.needle.tools) donde las creaciones (no la sesión en vivo) pueden verse en AR.
+3.  **Exportar contenido sobre la marcha como archivos USDZ.**
+    Estos archivos pueden mostrarse en dispositivos iOS en AR. Cuando se exportan desde escenas con Everywhere Actions, la interactividad es la misma, más que suficiente para configuradores de productos, experiencias narrativas y similares.
+    Un ejemplo es [Castle Builder](https://castle.needle.tools) donde las creaciones (no la sesión en vivo) pueden verse en AR.
 
- > **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** utiliza este enfoque. Los jugadores pueden colocar texto colaborativamente en la escena en sus pantallas y luego ver los resultados en AR en iOS. En Android, también pueden interactuar directamente en WebXR.
- > — #madewithneedle por Katja Rempel 💚
+> **[Encryption in Space](https://accurate-tree-observation.glitch.me/)** utiliza este enfoque. Los jugadores pueden colocar texto colaborativamente en la escena en sus pantallas y luego ver los resultados en AR en iOS. En Android, también pueden interactuar directamente en WebXR.
+> — #madewithneedle por Katja Rempel 💚
 
-1. **Guiar a los usuarios hacia navegadores compatibles con WebXR en iOS.**
-   Dependiendo de tu audiencia objetivo, puedes guiar a los usuarios en iOS hacia, por ejemplo, el [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) de Mozilla para experimentar AR en iOS.
+1.  **Guiar a los usuarios hacia navegadores compatibles con WebXR en iOS.**
+    Dependiendo de tu audiencia objetivo, puedes guiar a los usuarios en iOS hacia, por ejemplo, el [WebXR Viewer](https://apps.apple.com/de/app/webxr-viewer/id1295998056) de Mozilla para experimentar AR en iOS.
 
-2. **Usar acceso a la cámara y algoritmos personalizados en dispositivos iOS.**
-   Se puede solicitar acceso a la imagen de la cámara y ejecutar algoritmos personalizados para determinar la pose del dispositivo.
-   Aunque actualmente no proporcionamos componentes integrados para esto, aquí hay algunas referencias a bibliotecas y frameworks que queremos probar en el futuro:
-   - [AR.js](https://github.com/AR-js-org/AR.js) (código abierto)
-     - [Integración experimental de AR.js](https://github.com/FireDragonGameStudio/NeedleAndARjs) por FireDragonGameStudio
-   - [Mind AR](https://github.com/hiukim/mind-ar-js) (código abierto)
-   - [8th Wall](https://www.8thwall.com/) (comercial)
+2.  **Usar acceso a la cámara y algoritmos personalizados en dispositivos iOS.**
+    Se puede solicitar acceso a la imagen de la cámara y ejecutar algoritmos personalizados para determinar la pose del dispositivo.
+    Aunque actualmente no proporcionamos componentes integrados para esto, aquí hay algunas referencias a bibliotecas y frameworks que queremos probar en el futuro:
+    -   [AR.js](https://github.com/AR-js-org/AR.js) (código abierto)
+        -   [Integración experimental de AR.js](https://github.com/FireDragonGameStudio/NeedleAndARjs) por FireDragonGameStudio
+    -   [Mind AR](https://github.com/hiukim/mind-ar-js) (código abierto)
+    -   [8th Wall](https://www.8thwall.com/) (comercial)
 
 ## Image Tracking
 
 Needle Engine soporta **WebXR Image Tracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) en Android y **QuickLook Image Tracking** en iOS.
 
-Puedes encontrar documentación adicional en la sección [Everywhere Actions](everywhere-actions.md#image-tracking).
+Puedes encontrar documentación adicional en la página [WebXR Image Tracking](./webxr-image-tracking.md).
 
 :::warning WebXR Image Tracking todavía está en fase de "borrador" y no está generalmente disponible
 Hasta ahora, los proveedores de navegadores no han podido ponerse de acuerdo sobre la API final de image tracking para WebXR. Mientras la especificación esté en fase de "borrador" ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
 tú y los usuarios de tu app necesitaréis seguir estos pasos para habilitar WebXR ImageTracking en dispositivos Android:
-1. Visita ``chrome://flags`` en tu navegador Chrome de Android
-2. Encuentra y habilita la opción `WebXR Incubations`
+1.  Visita ``chrome://flags`` en tu navegador Chrome de Android
+2.  Encuentra y habilita la opción `WebXR Incubations`
 :::
 
 Sin esa especificación, aún se puede solicitar acceso a la imagen de la cámara y ejecutar algoritmos personalizados para determinar la pose del dispositivo. La desventaja es que los usuarios tendrán que aceptar permisos adicionales como el acceso a la cámara, y el tracking no será tan preciso como con las capacidades nativas del dispositivo.
 
 Aquí tienes algunas bibliotecas para añadir image tracking basado en el acceso a la cámara y algoritmos de visión por computadora locales:
-   - [Integración experimental de AR.js con Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) por FireDragonGameStudio
-   - [AR.js](https://github.com/AR-js-org/AR.js) (código abierto)
-   - [Mind AR](https://github.com/hiukim/mind-ar-js) (código abierto)
+-   [Integración experimental de AR.js con Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) por FireDragonGameStudio
+-   [AR.js](https://github.com/AR-js-org/AR.js) (código abierto)
+-   [Mind AR](https://github.com/hiukim/mind-ar-js) (código abierto)
 
 ## Referencias
 

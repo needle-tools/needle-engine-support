@@ -20,7 +20,7 @@ Abra `Edit/Project Settings/Needle` para aceder às definições do plugin Needl
 
 Nota: Poderá precisar de reiniciar o servidor web local para aplicar a licença.
 
-![unity license window](/imgs/unity-needle-engine-license.jpg)
+![janela de licença do Unity](/imgs/unity-needle-engine-license.jpg)
 
 ### Ativar a licença no Blender
 Abra `Addon Preferences/Needle Engine` para aceder às definições do addon Needle Engine
@@ -35,7 +35,7 @@ Nota: Poderá precisar de reiniciar o servidor web local para aplicar a licença
 
 Pode ver um aviso no seu navegador sobre Segurança SSL, dependendo da sua configuração local.
 
-Isto acontece porque, embora a ligação esteja encriptada, por defeito não há certificado SSL que o navegador possa validar.
+Isto acontece porque, embora a ligação esteja encriptada, por predefinição não há certificado SSL que o navegador possa validar.
 Se isso acontecer: clique em `Advanced` e `Proceed to Site`. No Safari, poderá precisar de atualizar a página depois, porque não prossegue automaticamente. Agora deverá ver a sua cena no navegador!
 
 O diálogo só deverá aparecer uma vez para o mesmo servidor local
@@ -46,7 +46,7 @@ As ligações são seguras, porque estamos a impor HTTPS para garantir que o Web
 Consulte a [documentação de Testes](./testing.md) para obter informações sobre como configurar um certificado autoassinado para uma experiência de desenvolvimento mais fluida.
 :::
 
-![SLL warning on chrome](/videos/ssl-warning.gif)
+![Aviso SLL no Chrome](/videos/ssl-warning.gif)
 
 
 
@@ -60,14 +60,14 @@ Para isso, clique na barra de progresso em execução no canto inferior direito 
 ## Os meus objetos ficam brancos após a exportação
 Isto geralmente acontece quando está a usar shaders ou materiais personalizados e as suas propriedades não se traduzem claramente em nomes de propriedades conhecidos para a exportação glTF.
 Pode garantir que está a usar materiais e shaders compatíveis com glTF, ou marcar shaders como "custom" para os exportar diretamente.
-- Leia mais sobre fluxos de trabalho glTF recomendados: <link>
-- Leia mais sobre shaders personalizados: <link>
+- Leia mais sobre fluxos de trabalho glTF recomendados: [ligação](#)
+- Leia mais sobre shaders personalizados: [ligação](#)
 
 
 ## Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
 
-Se estiver a usar vite ou next.js, certifique-se de que adiciona os plugins do Needle Engine à sua configuração.
-Exemplo para vite:
+Se estiver a usar Vite ou next.js, certifique-se de que adiciona os plugins do Needle Engine à sua configuração.
+Exemplo para Vite:
 ```js
 const { needlePlugins } = await import('@needle-tools/engine/plugins/vite/index.js');
 plugins: [needlePlugins(command, needleConfig)]
@@ -85,7 +85,7 @@ Pode também simplesmente declarar as variáveis em falta no seu `index.html` ra
 </script>
 ```
 
-## THREE.EXRLoader: o ficheiro fornecido não parece estar no formato OpenEXR
+## THREE.EXRLoader: provided file doesnt appear to be in OpenEXR format
 
 Por favor, certifique-se de que definiu Lightmap Encoding para **Normal Quality**.
 Vá a *Edit/Project Settings/Player* para mudar a definição.
@@ -101,7 +101,7 @@ Isto pode ter muitas razões, mas algumas comuns são:
 - objetos estão desativados e não são ignorados – objetos desativados também são exportados caso queira ligá-los em tempo de execução! Defina a sua Tag como `EditorOnly` para os ignorar completamente na exportação.
 - tem vários componentes ``GltfObject`` na sua cena e todos têm ``EmbedSkybox`` ativado (precisa de ter o skybox apenas uma vez por cena que exporta)
 
-Se o tempo de carregamento em si for um problema, pode **tentar dividir o seu conteúdo em vários ficheiros glb** e carregá-los a pedido (é isto que fazemos no nosso website). Para que funcione, pode colocar o seu conteúdo em Prefabs ou Cenas e referenciá-los a partir de qualquer um dos seus scripts. Por favor, consulte [Scripting/Addressables na documentação](./scripting.md#assetreference-and-addressables).
+Se o tempo de carregamento em si for um problema, pode **tentar dividir o seu conteúdo em vários ficheiros glb** e carregá-los a pedido (é isto que fazemos no nosso website). Para que funcione, pode colocar o seu conteúdo em Prefabs ou Scenes e referenciá-los a partir de qualquer um dos seus scripts. Por favor, consulte [Scripting/Addressables na documentação](./scripting.md#assetreference-and-addressables).
 
 ## A minha UI não está a renderizar Texto
 
@@ -122,7 +122,7 @@ Certifique-se de que as suas luzes estão definidas como "Baked" ou "Realtime". 
 
 - Luzes definidas como "mixed" (com lightmapping) afetam objetos duas vezes no three.js, uma vez que atualmente não há forma de excluir objetos lightmapped da iluminação.
 - O fator ``Intensity Multiplier`` para Skybox em ``Lighting/Environment`` não é atualmente suportado e não tem efeito no Needle Engine.
-![image](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
+![imagem](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
 - A intensidade da sombra das luzes não pode ser alterada atualmente devido a uma limitação do three.js.
 
 Consulte também a documentação sobre a [mistura de objetos baked e non-baked](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects).
@@ -132,12 +132,12 @@ Consulte também a documentação sobre a [mistura de objetos baked e non-baked]
 
 - **Se usar um cubemap personalizado**: Pode sobrepor as definições de importação de textura da textura do skybox (atribuída ao seu cubemap).
 
-![image](https://user-images.githubusercontent.com/5083203/188179104-1e078cda-3397-4ebe-aaf9-7faa23ee4904.png)
+![imagem](https://user-images.githubusercontent.com/5083203/188179104-1e078cda-3397-4ebe-aaf9-7faa23ee4904.png)
 
 
 - **Se usar o skybox predefinido**: Adicione um componente ``SkyboxExportSettings`` em qualquer lugar na sua cena para sobrepor a resolução predefinida.
 
-![image](https://github.com/needle-tools/needle-engine-docs/assets/5083203/578380ab-2036-4d70-a8a7-f8cd9da9f603)
+![imagem](https://github.com/needle-tools/needle-engine-docs/assets/5083203/578380ab-2036-4d70-a8a7-f8cd9da9f603)
 
 
 
@@ -155,7 +155,7 @@ Por favor, verifique os seguintes pontos:
 
 Certifique-se de que o seu projeto está definido para o colorspace Linear.
 
-![image](https://github.com/needle-tools/needle-engine-docs/assets/5083203/66e9feb1-0551-4549-85d3-3e5b8021f162)
+![imagem](https://user-images.githubusercontent.com/5083203/191774978-66e9feb1-0551-4549-85d3-3e5b8021f162.png)
 
 
 
@@ -189,7 +189,7 @@ Se estes avisos/erros não ajudaram, tente os seguintes passos por ordem. Dê-lh
 - Instale o seu projeto selecionando o seu componente `ExportInfo` e clicando em `Install`.
 - Execute uma instalação limpa selecionando o seu componente `ExportInfo`, mantendo Alt pressionado e clicando em `Clean Install`.
 - Tente abrir o diretório do seu projeto web numa ferramenta de linha de comandos e siga estes passos:
-  - execute ``npm install`` e depois ``npm run dev-host``
+  - execute ``npm install`` e depois ``npm run dev-host``.
   - Certifique-se de que tanto o pacote de runtime local (``node_modules/@needle-tools/engine``) quanto o three.js (``node_modules/three``) foram instalados.
   - Pode executar ``npm install`` em ambos estes diretórios também.
 
@@ -221,7 +221,7 @@ Por favor, verifique se não está acidentalmente no modo `Debug` do Inspector �
 
 - No Windows: Certifique-se de que adicionou o toktx às suas variáveis de ambiente do sistema. Poderá precisar de reiniciar o seu computador após adicioná-lo para atualizar as variáveis de ambiente. A localização de instalação predefinida é ``C:\Program Files\KTX-Software\bin``.
 
-![image](/imgs/ktx-env-variable.webp)
+![imagem](/imgs/ktx-env-variable.webp)
 
 
 ## Instalar o projeto web demora uma eternidade / nunca termina / EONET: no such file or directory
@@ -229,10 +229,10 @@ Por favor, verifique se não está acidentalmente no modo `Debug` do Inspector �
 Pode verificar a formatação das suas drives usando os seguintes passos:
 1. Abrir "Informações do Sistema" (ou tecla Windows e digite isso, ou insira "msinfo32" no cmd)
 2. Selecione Componentes > Armazenamento > Drives
-3. Selecione tudo (Ctrl + A) no lado direito do ecrã e copie (Ctrl + C) e cole aqui (Ctrl + V).
+3. Selecione tudo (Ctrl + A) no lado direito do ecrã e copie (<kbd>Ctrl + C</kbd>) e cole aqui (<kbd>Ctrl + V</kbd>).
 
 ## A instalação do NPM falha e há erros sobre disco rígido / IO
-Certifique-se de que o seu projeto está num disco que se sabe funcionar com node.js. A principal razão para falhas é que o disco não suporta symlinks (symbolic links / softlinks), o que é um requisito para o funcionamento adequado do node.js.
+Certifique-se de que o seu projeto está num disco que se sabe funcionar com node.js. A principal razão para falhas é que o disco não suporta symlinks (simbólicos links / softlinks), o que é um requisito para o funcionamento adequado do node.js.
 A formatação <kbd>NTFS</kbd> deve sempre funcionar. Formatações de sistema de ficheiros problemáticas conhecidas são <kbd>exFAT</kbd> e <kbd>FAT32</kbd>.
 
 Para verificar o formato das suas drives, pode:
@@ -265,7 +265,7 @@ you seem to have objects with the same name referencing each other.
 ```
 
 Para corrigir isto, pode:
-- Remover o `GltfObject` no Prefab ou Cena referenciada.
+- Remover o `GltfObject` no Prefab ou Scene referenciada.
 - Renomear o GameObject com o componente que carrega as cenas referenciadas.
 
 Se isto não resolver o problema, por favor, pergunte [no nosso fórum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content).

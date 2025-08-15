@@ -14,10 +14,10 @@ footer: "Copyright © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Fundador, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
 Increíble integración del editor de Unity por un orden de magnitud,
-  y tan sencillo como afirman los docs. Wow.
+  y tan sencilla como afirman los docs. Wow.
 </testimonial>
 
 <testimonial
@@ -71,7 +71,7 @@ Gracias a @NeedleTools, viendo bastante de esta solución para herramientas 3D e
   src="https://x.com/VRSpatialist/status/1572300394285383680"
   img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
 >
-Finalmente probando @NeedleTools con Unity. Súper fácil poner algo en marcha en la cloud usando sus integrations
+Finalmente probando @NeedleTools con Unity. Súper fácil poner algo en marcha en la cloud usando sus integraciones
 </testimonial>
 
 <testimonial
@@ -88,7 +88,7 @@ Finalmente probando @NeedleTools con Unity. Súper fácil poner algo en marcha e
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
- Soy desarrollador de Unity desde hace mucho tiempo y recientemente he empezado a jugar con Needle Tools ¡y me encanta! Es una excelente introducción para desarrolladores de Unity que quieren aprender WebXR y three.js. El motor runtime es genial y fue bastante fácil crear mi propio componente custom
+ Soy desarrollador de Unity desde hace mucho tiempo y recientemente he empezado a jugar con Needle Tools ¡y me encanta! Es una excelente introducción para desarrolladores de Unity que quieren aprender WebXR y three.js. El motor runtime es genial y fue bastante fácil crear mi propio componente personalizado
 </testimonial>
 
 <testimonial
@@ -120,6 +120,8 @@ Mi workflow ha sido optimizado 10 veces desde que empecé a usar needle
 
 </quoteslides>
 
+
+
 <actiongroup>
     <action href="getting-started/">
     Empezar ⭐
@@ -138,26 +140,34 @@ Mi workflow ha sido optimizado 10 veces desde que empecé a usar needle
     </action>
 </actiongroup>
 
-**Needle Engine** es un motor web tanto para aplicaciones 3D complejas como sencillas. Trabaja en tu máquina e implementa en cualquier lugar. Needle Engine es flexible, extensible y cuenta con soporte integrado para **colaboración y XR**. Está construido alrededor del **estándar glTF** para **assets 3D**.
+
+
+**Needle Engine** es un motor web tanto para aplicaciones 3D complejas como sencillas. Trabaja en tu máquina e implementa en cualquier lugar. Needle Engine es flexible, extensible y cuenta con soporte integrado para **colaboración y XR**. Está construido alrededor del **estándar glTF** para assets 3D.
 
 Potentes integraciones para **Unity** y **Blender** permiten a artistas y desarrolladores colaborar y gestionar aplicaciones web dentro de editores 3D probados. Estas **integraciones** te permiten usar funciones del editor para crear modelos, crear materiales, animar y secuenciar animaciones, renderizar lightmaps y más con facilidad.
 
 Nuestro potente **pipeline de compresión y optimización para la web** asegura que tus archivos estén listos, sean pequeños y se carguen rápido.
 
+
 <!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
 
-<br/>
-<br/>
+ <br/>
+ <br/>
 
 <actiongroup>
+
 
 <a class="no-external-link-icon" href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=ddd&colorB=ddd"/></a>
 
 <a class="no-external-link-icon" href="https://engine.needle.tools/docs/getting-started/"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=ddd&colorB=ddd"/></a>
 
+
 <a class="no-external-link-icon" href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=ddd&colorB=ddd&label=discord&logo=discord&logoColor=ffffff"></a>
 
+
 </actiongroup>
+
+
 
 <p></p>
 <copyright></copyright>

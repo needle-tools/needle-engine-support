@@ -1,5 +1,5 @@
 ---
-title: Erstellen und Verwenden von Komponenten
+title: Komponenten erstellen und verwenden
 tags:
     - scripting
     - serialization
@@ -48,7 +48,7 @@ _Ein Beispiel für ein Button Click Event, das in Needle Engine sofort funktioni
 Skripte werden in TypeScript (empfohlen) oder JavaScript geschrieben.
 Es gibt zwei Möglichkeiten, benutzerdefinierte Skripte zu Ihrem Projekt hinzuzufügen:
 
-- Fügen Sie einfach eine Datei mit der Erweiterung `.ts` oder `.js` im Verzeichnis `src/scripts/` Ihres generierten Projekts hinzu, zum Beispiel `src/scripts/MyFirstScript.ts`
+- Fügen Sie einfach eine Datei mit der Erweiterung `.ts` oder `.js` im Verzeichnis `src/scripts/` Ihres Webprojektordners hinzu, zum Beispiel `src/scripts/MyFirstScript.ts`.
 
 - Unity-spezifisch:
   Organisieren Sie Ihren Code in NPM Definition Files (npm-Pakete). Diese helfen Ihnen, Code zwischen Projekten zu modularisieren und wiederzuverwenden, und wenn Sie mit Webentwicklung vertraut sind, handelt es sich tatsächlich um reguläre npm-Pakete, die lokal installiert werden.
@@ -74,12 +74,12 @@ export class Rotate extends Behaviour
     speed : number = 1;
 
     start(){
-        // logging this is useful for debugging in the browser.
-        // You can open the developer console (F12) to see what data your component contains
+        // Das Loggen ist nützlich für das Debugging im Browser.
+        // Sie können die Entwicklerkonsole (F12) öffnen, um zu sehen, welche Daten Ihre Komponente enthält
         console.log(this);
     }
 
-    // update will be called every frame
+    // update wird jeden Frame aufgerufen
     update(){
         this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
     }
@@ -103,7 +103,7 @@ export class PrintNumberComponent extends Behaviour
     start(){
       this.printNumber(42);
     }
-
+    
     private printNumber(myNumber : number){
         console.log("My Number is: " + myNumber);
     }
@@ -189,16 +189,16 @@ import { Behaviour, FrameEvent } from "@needle-tools/engine";
 export class Rotate extends Behaviour {
 
     start() {
-        // the second argument is optional and allows you to specifiy
-        // when it should be called in the current frame loop
-        // coroutine events are called after regular component events of the same name
-        // for example: Update coroutine events are called after component.update() functions
+        // Das zweite Argument ist optional und erlaubt Ihnen anzugeben,
+        // wann es im aktuellen Frame-Loop aufgerufen werden soll
+        // Coroutine-Events werden nach den regulären Komponenten-Events gleichen Namens aufgerufen
+        // zum Beispiel: Update-Coroutine-Events werden nach den component.update()-Funktionen aufgerufen
         this.startCoroutine(this.rotate(), FrameEvent.Update);
     }
 
-    // this method is called every frame until the component is disabled
+    // Diese Methode wird jeden Frame aufgerufen, bis die Komponente deaktiviert ist
     *rotate() {
-        // keep looping forever
+        // Endlosschleife
         while (true) {
             yield;
         }
@@ -224,26 +224,26 @@ Diese Hooks können an jeder beliebigen Stelle in Ihrer Webanwendung eingefügt 
 
 Zum Beispiel ([Siehe Beispiel auf stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts twoslash
-// this can be put into e.g. main.ts or a svelte component (similar to onMount)
+// Dies kann z.B. in main.ts oder einer Svelte-Komponente platziert werden (ähnlich wie bei onMount)
 import { onStart, onUpdate, onBeforeRender, onAfterRender } from "@needle-tools/engine"
 
 onStart(ctx => console.log("Hello Scene", ctx.scene));
 
 onUpdate(ctx => {
-    // do something... e.g. access the frame # or deltatime via ctx.time
+    // Tun Sie etwas... z.B. Zugriff auf die Frame-Nummer oder Deltatime über ctx.time
     console.log("UPDATE", ctx.time.frame);
 });
 
 onBeforeRender(ctx => {
-    // this event is only called once because of the { once: true } argument
+    // Dieses Event wird nur einmal aufgerufen, aufgrund des Arguments { once: true }
     console.log("ON BEFORE RENDER", ctx.time.frame);
 }, { once: true } );
 
-// Every event hook returns a method to unsubscribe from the event
+// Jeder Event-Hook gibt eine Methode zurück, um das Abonnement des Events aufzuheben
 const unsubscribe = onAfterRender(ctx => {
     console.log("ON AFTER RENDER", ctx.time.frame);
 });
-// Unsubscribe from the event at any time
+// Jederzeit vom Event abmelden
 setTimeout(()=> unsubscribe(), 1000);
 ```
 
@@ -334,7 +334,7 @@ import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
     onPointerDown() {
-        console.log("POINTER DOWN on " + this.gameObject.name);
+        console.log("POINTER DOWN auf " + this.gameObject.name);
     }
 }
 ```
@@ -350,12 +350,12 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
+        // Es wird empfohlen, sich auch von Events abzumelden, wenn Ihre Komponente inaktiv wird
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
     // @nonSerialized
-    inputPointerDown = (evt: NEPointerEvent) => { console.log("POINTER DOWN anywhere on the <needle-engine> element"); }
+    inputPointerDown = (evt: NEPointerEvent) => { console.log("POINTER DOWN irgendwo auf dem <needle-engine> Element"); }
 }
 ```
 
@@ -367,7 +367,7 @@ export class MyScript extends Behaviour
 {
     update() {
         if(this.context.input.getPointerDown(0)){
-            console.log("POINTER DOWN anywhere")
+            console.log("POINTER DOWN irgendwo")
         }
     }
 }
@@ -383,11 +383,11 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // unsubscribe again when the component is disabled
+        // Melden Sie sich erneut ab, wenn die Komponente deaktiviert wird
         window.removeEventListener("click", this.windowClick);
     }
 
-    windowClick = () => { console.log("CLICK anywhere on the page, not just on <needle-engine>"); }
+    windowClick = () => { console.log("KLICK irgendwo auf der Seite, nicht nur auf <needle-engine>"); }
 }
 ```
 Beachten Sie, dass Sie in diesem Fall alle Fälle selbst behandeln müssen. Sie müssen beispielsweise unterschiedliche Ereignisse verwenden, wenn Ihr Benutzer Ihre Website auf dem Desktop, auf dem Handy oder auf einem VR-Gerät besucht. Diese Fälle werden automatisch von den Needle Engine Eingabeereignissen behandelt (z. B. wird `PointerDown` sowohl für Maustaste gedrückt, Touch gedrückt als auch im Falle von VR für Controller-Taste gedrückt ausgelöst).
@@ -428,8 +428,8 @@ Für Callbacks für den anfänglichen Szenen-Ladevorgang siehe folgendes Beispie
 
 <script type="text/javascript">
 function loadingStarted() { console.log("START") }
-function loadingProgress() { console.log("LOADING...") }
-function loadingFinished() { console.log("FINISHED!") }
+function loadingProgress() { console.log("LÄDT...") }
+function loadingFinished() { console.log("FERTIG!") }
 </script>
 ```
 

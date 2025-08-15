@@ -1,4 +1,3 @@
-```markdown
 ---
 home: false
 next: ./getting-started/index.md
@@ -15,10 +14,10 @@ footer: "Copyright © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Fundador, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
-Integração do editor Unity incrível por uma ordem de magnitude,  
-  e tão simples quanto os documentos afirmam. Uau.
+Integração do editor Unity inacreditável, por uma ordem de magnitude,  
+  e tão simples quanto a documentação afirma. Uau.
 </testimonial>
 
 <testimonial 
@@ -27,7 +26,7 @@ Integração do editor Unity incrível por uma ordem de magnitude,
   src="https://x.com/kmcurry/status/1574333302022062080"
   img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
 >
-needle.tools é uma maravilhosa montra do que a @NeedleTools contribui para 3D através da web. Eu adoro.
+needle.tools é uma montra maravilhosa do que a @NeedleTools contribui para 3D através da web. Eu simplesmente adoro.
 </testimonial>
 
 <testimonial
@@ -55,7 +54,7 @@ Isto é enorme para WebXR e experiências 3D partilhadas e imersivas! Muito obri
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
-    Esta é a melhor coisa que vi depois do cinemachine no unity. A Unity deveria adquirir isto.
+    Esta é a melhor coisa que vi depois do Cinemachine na Unity. A Unity deveria adquirir isto.
 </testimonial>
 
 <testimonial
@@ -64,7 +63,7 @@ Isto é enorme para WebXR e experiências 3D partilhadas e imersivas! Muito obri
   src="https://x.com/0xstella/status/1574853012585172993"
   img="https://pbs.twimg.com/profile_images/1657086025661833237/Yyo56hVY_x96.jpg"
 >
-Graças à @NeedleTools, vejo bastante desta solução para ferramentas 3D em tempo real baseadas na web - exportar cenas do Unity, onde pode alavancar o extenso ecossistema e conteúdo do editor 3D, e depois renderizá-las no seu próprio motor baseado na web.
+Graças à @NeedleTools, vejo bastante desta solução para ferramentas 3D em tempo real baseadas na web - exportar cenas do Unity, onde pode aproveitar o extenso ecossistema e conteúdo do editor 3D, e depois renderizá-las no seu próprio motor baseado na web.
 </testimonial>
 
 <testimonial
@@ -82,7 +81,7 @@ Finalmente a experimentar a @NeedleTools com o Unity. Super fácil colocar algo 
   src="https://x.com/Dilmerv/status/1562209049856188420"
   img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
 >
- Isto é incrível e se tem curiosidade sobre #WebXR com o Unity isto irá ajudar-nos a chegar lá.
+ Isto é incrível e se tem curiosidade sobre #WebXR com o Unity, isto irá ajudar-nos a chegar lá.
 </testimonial>
 
 <testimonial 
@@ -90,7 +89,7 @@ Finalmente a experimentar a @NeedleTools com o Unity. Super fácil colocar algo 
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
- Sou um Unity dev há muito tempo e recentemente comecei a brincar com as Needle Tools e adoro! É uma ótima introdução para Unity devs que querem aprender WebXR e three.js. O runtime engine é fantástico e foi muito fácil criar o meu próprio componente personalizado.
+ Sou um Unity dev há muito tempo e recentemente comecei a brincar com as Needle Tools e adoro! É uma ótima introdução para Unity devs que querem aprender WebXR e three.js. O motor de tempo de execução é fantástico e foi muito fácil criar o meu próprio componente personalizado.
 </testimonial>
 
 <testimonial
@@ -108,7 +107,7 @@ Só temos de dizer WOW 🤩
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-Passei os últimos 2.5 meses a construir este jogo, nunca construí um jogo/nunca usei unity antes, mas estou a adorar completamente todo o processo com as needle tools. Tão rápido! Adoraria fazer carreira a construir experiências de AR! 
+Passei os últimos 2.5 meses a construir este jogo, nunca construí um jogo/nunca usei Unity antes, mas estou a adorar completamente todo o processo com as Needle Tools. Tão rápido! Gostaria de fazer carreira a construir experiências de RA! 
 </testimonial>
 
 <testimonial 
@@ -117,7 +116,7 @@ Passei os últimos 2.5 meses a construir este jogo, nunca construí um jogo/nunc
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
 >
-O meu fluxo de trabalho foi otimizado 10X desde que comecei a usar needle.
+O meu fluxo de trabalho foi otimizado 10X desde que comecei a usar Needle.
 </testimonial>  
 
 </quoteslides>
@@ -144,9 +143,9 @@ O meu fluxo de trabalho foi otimizado 10X desde que comecei a usar needle.
 
 
 
-**Needle Engine** é um motor web para aplicações 3D complexas e simples. Trabalhe na sua máquina e implemente em qualquer lugar. O **Needle Engine** é flexível, extensível e tem suporte incorporado para **colaboração e XR**. É construído em torno do **padrão glTF** para assets 3D. 
+**Needle Engine** é um motor web para aplicações 3D complexas e simples. Trabalhe na sua máquina e implemente em qualquer lugar. O **Needle Engine** é flexível, extensível e tem suporte integrado para **colaboração e XR**. É construído em torno do **padrão glTF** para assets 3D. 
 
-Poderosas integrações para **Unity** e **Blender** permitem que artistas e programadores colaborem e gerenciem aplicações web dentro de editores 3D testados em combate. Estas **Integrações** permitem usar recursos do editor para criar modelos, authoring de materiais, animação e sequenciação de animações, baking de lightmaps e muito mais com facilidade. 
+Poderosas integrações para **Unity** e **Blender** permitem que artistas e programadores colaborem e gerenciem aplicações web dentro de editores 3D testados em combate. Estas **Integrações** permitem-lhe usar recursos do editor para criar modelos, criar materiais, animar e sequenciar animações, realizar *baking* de *lightmaps* e muito mais com facilidade. 
 
 O nosso poderoso **pipeline de compressão e otimização para a web** garante que os seus ficheiros estão prontos, pequenos e carregam rapidamente.
 
@@ -180,4 +179,3 @@ O nosso poderoso **pipeline de compressão e otimização para a web** garante q
 </ClientOnly>
 
 Página traduzida automaticamente usando IA
-```

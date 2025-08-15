@@ -4,7 +4,7 @@ title: Déploiement et Optimisation
 
 ## Qu'est-ce que le déploiement ?
 
-Le déploiement est le processus qui consiste à rendre votre application disponible au public sur un site web. Needle Engine garantit que votre projet est aussi petit et rapide que possible en utilisant les dernières techniques de compression telles que **KTX2**, **Draco**, et **Meshopt**.
+Le déploiement est le processus qui consiste à rendre votre application disponible au public sur un site web. Needle Engine garantit que votre projet est aussi petit et rapide que possible en utilisant les dernières techniques de compression telles que **KTX2**, **Draco** et **Meshopt**.
 
 ## Cibles de déploiement disponibles
 
@@ -73,7 +73,7 @@ Vous avez la possibilité de sélectionner les options de compression de texture
 
 :::details Blender : Comment définir les paramètres de compression par texture ?
 Sélectionnez l'onglet material. Vous verrez les options de compression pour toutes les textures utilisées par ce material.
-![Texture Compression options in Blender](/blender/texture-compression.webp)
+![Options de compression de texture dans Blender](/blender/texture-compression.webp)
 :::
 
 :::details Toktx introuvable
@@ -156,14 +156,14 @@ Notez que les projets gratuits hébergés sur Glitch ne doivent pas dépasser en
 4) Ouvrez à nouveau Unity et collez l'URL dans le champ ``Project Name`` de votre composant ``Deploy To Glitch``
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) Attendez quelques secondes que Unity reçoive votre clé de déploiement depuis Glitch (cette clé est stockée en toute sécurité dans le fichier `.env` sur Glitch. Ne la partagez pas avec d'autres, toute personne disposant de cette clé pourra téléverser sur votre site Glitch)
-  ![waiting for the key](/deployment/deploytoglitch-2.jpg)
+  ![en attente de la clé](/deployment/deploytoglitch-2.jpg)
 6) Une fois la clé de déploiement reçue, vous pouvez cliquer sur le bouton `Build & Deploy` pour téléverser sur Glitch.
 
 :::
 
 :::details Comment déployer sur Glitch depuis Blender ?
 
-![Deploy To Glitch from Blender component](/blender/deploy_to_glitch.webp)
+![Composant Déployer sur Glitch depuis Blender](/blender/deploy_to_glitch.webp)
 
 1) Trouvez le panneau Deploy To Glitch dans l'onglet Scene
 2) Cliquez sur le bouton ``Remix on glitch`` sur le composant
@@ -183,9 +183,9 @@ Si vous cliquez sur `Create new Glitch Remix` et que le navigateur affiche une e
 :::details Comment déployer sur Netlify depuis Unity ?
 Ajoutez simplement le composant `DeployToNetlify` à votre scène et suivez les instructions. Vous pouvez créer de nouveaux projets en un clic ou en déployant sur des projets existants.
 
-![Deploy to netlify component](/deployment/deploytonetlify-2.jpg)
+![Composant Déployer sur Netlify](/deployment/deploytonetlify-2.jpg)
 
-![Deploy to netlify component](/deployment/deploytonetlify.jpg)
+![Composant Déployer sur Netlify](/deployment/deploytonetlify.jpg)
 :::
 
 ### Déployer sur Vercel
@@ -234,13 +234,13 @@ Vous pouvez désactiver la compression gzip dans ``vite.config.js`` dans le doss
   *Cet asset contient les informations d'accès à votre serveur FTP - vous les obtenez lorsque vous créez un nouveau compte FTP chez votre fournisseur d'hébergement*
 3) Cliquez sur le bouton <kbd>Build & Deploy</kbd> sur le composant ``DeployToFTP`` pour compiler votre projet et le téléverser sur votre compte FTP.
 
-![Deploy to FTP component in Unity](/deployment/deploytoftp.jpg)
+![Composant Déployer sur FTP dans Unity](/deployment/deploytoftp.jpg)
 *¹ Composant Deploy to FTP*
 
-![Deploy to FTP server asset](/deployment/deploytoftp2.jpg)
+![Asset de serveur FTP](/deployment/deploytoftp2.jpg)
 *² Asset de serveur FTP contenant les informations d'accès de votre compte utilisateur FTP*
 
-![Deploy to FTP component in Unity with server asset assigned](/deployment/deploytoftp3.jpg)
+![Composant Deploy To FTP dans Unity avec l'asset serveur attribué](/deployment/deploytoftp3.jpg)
 *Composant Deploy To FTP après l'affectation de l'asset serveur. Vous pouvez déployer directement dans un sous-dossier sur votre serveur en utilisant le champ de chemin.*
 :::
 
@@ -260,7 +260,7 @@ Option 2 : Vous pouvez désactiver la compression gzip dans les paramètres de c
 
 > **Note** : Si vous rencontrez des erreurs pendant la compression, veuillez nous en informer et signaler un bug ! Si votre projet fonctionne localement et échoue uniquement lors des compilations de production, vous pouvez vous débloquer immédiatement en effectuant une compilation de développement (Development Build). Pour cela, activez simplement l'option `Development Build` dans les Build Settings.
 
-![Unity build window showing Needle Engine platform](/deployment/buildoptions_gzip.jpg)
+![Fenêtre de compilation Unity affichant la plateforme Needle Engine](/deployment/buildoptions_gzip.jpg)
 
 :::
 
@@ -278,7 +278,7 @@ AddType application/javascript .js.gz
 :::details Comment déployer sur Github Pages depuis Unity ?
 
 Ajoutez le composant DeployToGithubPages à votre scène et copiez-collez le dépôt github (ou l'url github pages) vers lequel vous souhaitez déployer.
-![Deploy To github pages component](/deployment/deploytogithubpages.jpg)
+![Composant Déployer sur Github Pages](/deployment/deploytogithubpages.jpg)
 
 <video-embed src="https://www.youtube.com/watch?v=Vyk3cWB6u-c" />
 
@@ -296,13 +296,13 @@ Aucun ajustement manuel de votre application ou jeu web n'est requis.
 
 :::details Comment déployer sur Facebook Instant Games depuis Unity ?
 - Ajoutez le composant `Deploy To Facebook Instant Games` à votre scène :
-  ![Deploy to facebook instant games component](/deployment/deploytofacebookinstantgames.jpg)
+  ![Composant Déployer sur Facebook Instant Games](/deployment/deploytofacebookinstantgames.jpg)
 - Cliquez sur le bouton `Build For Instant Games`
 - Une fois la compilation terminée, vous obtiendrez un fichier ZIP que vous pourrez télécharger sur votre application Facebook.
 - Sur Facebook, ajoutez le module `Instant Games` et allez dans `Instant Games/Web hosting`
-  ![Hosting a facebook instant games](/deployment/deploytofacebookinstantgames-hosting.jpg)
+  ![Hébergement d'un jeu instantané Facebook](/deployment/deploytofacebookinstantgames-hosting.jpg)
 - Vous pouvez télécharger votre zip en utilisant le bouton `Upload version` (1). Une fois le téléchargement terminé et le zip traité, cliquez sur le bouton `Stage for testing` pour tester votre application (2, ici le bouton bleu) ou `Push to production` (le bouton avec l'icône étoile)
-  ![Upload the zip to facebook instant games](/deployment/deploytofacebookinstantgames-upload.jpg)
+  ![Télécharger le zip sur Facebook Instant Games](/deployment/deploytofacebookinstantgames-upload.jpg)
 - C'est tout - vous pouvez ensuite cliquer sur le bouton `Play` à côté de chaque version pour tester votre jeu sur Facebook.
 
 :::
@@ -310,13 +310,13 @@ Aucun ajustement manuel de votre application ou jeu web n'est requis.
 :::details Comment créer une application sur Facebook (avec les capacités Instant Games)
 
 1) [Créez une nouvelle application](https://developers.facebook.com/apps/creation/) et sélectionnez `Other`. Puis cliquez sur `Next`.
-  ![Create facebook instant games app](/deployment/facebookinstantgames-1.jpg)
+  ![Créer une application de jeux instantanés Facebook](/deployment/facebookinstantgames-1.jpg)
 
 2) Sélectionnez le type `Instant Games`
-  ![Create facebook instant games app](/deployment/facebookinstantgames-2.jpg)
+  ![Créer une application de jeux instantanés Facebook](/deployment/facebookinstantgames-2.jpg)
 
 3) Après avoir créé l'application, ajoutez le produit `Instant Games`.
-  ![Add instant games product](/deployment/facebookinstantgames-3.jpg)
+  ![Ajouter un produit de jeux instantanés](/deployment/facebookinstantgames-3.jpg)
 
 Vous trouverez ici [la documentation officielle d'Instant Games](https://developers.facebook.com/docs/games/build/instant-games) sur Facebook.
 **Notez** que tout ce que vous avez à faire est de créer une application avec les capacités Instant Games.
@@ -362,4 +362,5 @@ La liste suivante présente un tableau des options disponibles :
 | `-debug` | ouvre une fenêtre de console pour le débogage |
 
 ---
+
 Page automatiquement traduite à l'aide de l'IA

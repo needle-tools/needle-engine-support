@@ -10,7 +10,7 @@ next: getting-started/
   name="Chris Mahoney"
   role="Fundador, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
 Integração inacreditável do editor Unity, por uma ordem de magnitude,
 e tão direta quanto a documentação afirma. Uau.
@@ -115,5 +115,6 @@ Passei os últimos 2,5 meses a construir este jogo, nunca tinha construído um j
 >
 O meu fluxo de trabalho foi otimizado 10X desde que comecei a usar o needle
 </testimonial>
+
 
 Página traduzida automaticamente usando IA

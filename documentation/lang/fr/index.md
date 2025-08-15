@@ -14,7 +14,7 @@ footer: "Droit d'auteur © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Fondateur, Our Computer Company. Ancien de Unity, Ancien de Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
 Intégration incroyable de l'éditeur Unity par ordre de grandeur,  
   et aussi simple que le prétend la documentation. Wow.
@@ -90,7 +90,7 @@ Je découvre enfin @NeedleTools avec Unity. Super facile de mettre quelque chose
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
- Je suis développeur Unity de longue date et j'ai récemment commencé à jouer avec Needle Tools et j'adore ça ! C'est une excellente passerelle pour les développeurs Unity qui veulent apprendre WebXR et three.js. Le moteur runtime est génial et c'était assez facile de créer mon propre composant personnalisé
+ Je suis développeur Unity de longue date et j'ai récemment commencé à jouer avec Needle Tools et j'adore ça ! C'est une excellente passerelle pour les développeurs Unity qui veulent apprendre WebXR et three.js. Le moteur d'exécution est génial et c'était assez facile de créer mon propre composant personnalisé
 </testimonial>
 
 <testimonial
@@ -146,7 +146,7 @@ Mon flux de travail a été optimisé 10X depuis que j'ai commencé à utiliser 
 
 **Needle Engine** est un moteur web pour les applications 3D complexes et simples. Travaillez sur votre machine et déployez n'importe où. Needle Engine est flexible, extensible et dispose d'un support intégré pour la **collaboration et le XR**. Il est construit autour du **standard glTF** pour les actifs 3D. 
 
-De puissantes integrations pour **Unity** et **Blender** permettent aux artistes et développeurs de collaborer et de gérer des applications web à l'intérieur d'éditeurs 3D éprouvés. Ces **Integrations** vous permettent d'utiliser les fonctionnalités de l'éditeur pour créer facilement des modèles, créer des matériaux, animer et séquencer des animations, cuire des lightmaps et bien plus encore. 
+De puissantes intégrations pour **Unity** et **Blender** permettent aux artistes et développeurs de collaborer et de gérer des applications web à l'intérieur d'éditeurs 3D éprouvés. Ces **Intégrations** vous permettent d'utiliser les fonctionnalités de l'éditeur pour créer des modèles, créer des matériaux, animer et séquencer des animations, cuire des lightmaps et bien plus encore avec aisance. 
 
 Notre puissant **pipeline de compression et d'optimisation pour le web** garantit que vos fichiers sont prêts, petits et se chargent rapidement.
 

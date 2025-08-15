@@ -5,18 +5,33 @@ title: フレームワーク、バンドラー、HTML
 ## バンドルとウェブフロントエンド
 
 Needle Engineはウェブコンポーネントとして構築されています。
-これは、プロジェクトに`@needle-tools/engine`をインストールし、`<needle-engine src="path/to/your.glb">`をウェブプロジェクト内のどこにでも含めるだけでよいことを意味します。
+これは、プロジェクトに`@needle-tools/engine`をインストールするだけでよいことを意味します。
 
-- npmを使用してインストール:
-  `npm i @needle-tools/engine`
+```bash
+npm i @needle-tools/engine
+```
 
-デフォルトのViteベースのプロジェクトテンプレートを使用すると、Needle Engineはデプロイ時にウェブアプリにバンドルされます。これにより、ファイルサイズの削減、Tree-shaking (Unityでのコードストリッピングに似ています)、ロード時間の最適化が保証されます。多数の小さなスクリプトやコンポーネントをダウンロードする代わりに、必要最小限のコードを含む1つまたは少数のファイルのみがダウンロードされます。
+そしてHTMLからこのように使用します。
 
-Vite (デフォルトのバンドラー) には、ウェブアプリをバンドルすべき理由の良い説明があります: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+```html
+<script type="module">
+  import '@needle-tools/engine';
+</script>
+<needle-engine src="path/to/your.glb"></needle-engine>
+```
 
-### Vite, Vue, React, Svelte, React Three Fiber...
+デフォルトのViteベースのプロジェクトテンプレートを使用すると、Needle Engineはデプロイ時にウェブアプリにバンドルされます。これにより、ファイルサイズの削減と読み込み時間の最適化が保証されます。
 
-Needle Engineは、使用するフレームワークの選択に偏りがありません。デフォルトのテンプレートは、一般的な[vite](https://vitejs.dev) をバンドラーとして使用しています。そこから、vue、svelte、nuxt、react、react-three-fiber、その他のフレームワークを追加でき、それらの多くに対するサンプルを用意しています。他のバンドラーを統合したり、全く使用しない（プレーンなHTMLとJavascriptのみを使用する）ことも可能です。
+::: tip バンドルとツリーシェイキング
+
+**バンドル**とは、プロジェクトを構成するすべてのCSS、JS、その他のファイルが、ビルド時に少ない、より小さなファイルに結合されることを意味します。これにより、多数の小さなスクリプトやコンポーネントをダウンロードする代わりに、必要最小限のコードを含む1つまたは少数のファイルのみがダウンロードされるようになります。Viteのドキュメントには、ウェブアプリをバンドルすべき理由について素晴らしい説明があります: [Why Bundle for Production](https://vitejs.dev/guide/why.html)
+
+**ツリーシェイキング**は、ウェブ開発における一般的な手法で、最終的なバンドルから未使用のコードを削除してファイルサイズを削減します。これはUnityにおける「コードストリッピング」に似ています。[MSDNドキュメント](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)には、ツリーシェイキングの良い説明があります。
+:::
+
+### Vite、Vue、React、Svelte、React Three Fiber...
+
+Needle Engineは、フレームワークの選択に偏りがありません。デフォルトのテンプレートは、一般的な[vite](https://vitejs.dev) をバンドラーとして使用しています。そこから、Vue、Svelte、Nuxt、React、React Three Fiber、その他のフレームワークを追加でき、それらの多くに対するサンプルを用意しています。他のバンドラーを統合したり、全く使用しない（プレーンなHTMLとJavaScriptのみを使用する）ことも可能です。
 
 Needle Engineと共に使用できる、以下のような技術スタックの例をいくつか紹介します。
 
@@ -30,7 +45,7 @@ Needle Engineと共に使用できる、以下のような技術スタックの�
 - **Vercel & Nextjs** — [Nextjsプロジェクトの例はこちら](https://github.com/needle-engine/nextjs-sample)で見つけられます。
 - **CDN without any bundler** — コードの例は[こちら](./vanilla-js.md)で見つけられます。
 
-要するに、現在提供しているのは最小限のviteテンプレートですが、これを拡張したり、他のフレームワークに切り替えたりすることができます。
+要するに、現在提供しているのは最小限のViteテンプレートですが、これを拡張したり、他のフレームワークに切り替えたりすることができます。
 どのような方法で構築しているか、あなたのユースケースにおけるエクスペリエンスをどのように改善できるか、または例を提供できるか、ぜひお知らせください！
 
 :::tip
@@ -43,41 +58,15 @@ Needle Engineと共に使用できる、以下のような技術スタックの�
 
 **新しいテンプレートの作成**
 1. `Create/Needle Engine/Project Template`を選択して、テンプレートとして使用したいフォルダにProjectTemplateを追加します。
-2. 完了です！ これほどシンプルです。
+2. 完了です！これほどシンプルです。
 
-プロジェクトにNpmDefがある場合 (ローカル参照を使用している場合)、依存関係はunityから提供されます。
+プロジェクトにNpmDefがある場合（つまり、プロジェクトがローカル参照を使用している場合）、依存関係はUnityから提供されます。
 パッケージをnpmに公開し、バージョン番号で参照することも可能です。
-:::
-
-### Tree-shakingによるバンドルサイズの削減
-
-Tree shakingとは、ウェブアプリケーションのバンドルに関する一般的なプラクティスです([MSDN docsを参照](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking))。これは、最終的なバンドルされたjavascriptファイルから、コードで使用されていないコードパスや機能が削除され、ファイルサイズを削減することを意味します。以下に、Needle Engineに含まれる機能で、それらを削除する方法について説明します。
-
-:::details Rapier physics engineを削除するには？ (全体的なバンドルサイズを削減し、約2MB (~600KB gzipping時)を削減)
-
-- **オプション1**: needlePlugins configを使用
-  vite.configの`needlePlugins`で`useRapier`を`false`に設定します: `needlePlugins(command, needleConfig, { useRapier: false }),`
-
-- **オプション2**: vite.define configを使用
-  `NEEDLE_USE_RAPIER`定義を`false`で宣言します。
-  ```js
-  define: {
-    NEEDLE_USE_RAPIER: false
-  },
-  ```
-
-- **オプション3**: .envを使用
-  ウェブプロジェクトに`.env`ファイルを作成し、`VITE_NEEDLE_USE_RAPIER=false`を追加します。
-
-- **オプション4**: Unityコンポーネントを使用
-  シーンに`Needle Engine Modules`コンポーネントを追加し、`Physics Engine`を`None`に設定します。
-  ![](/imgs/unity-needle-engine-modules-physics.jpg)
-
 :::
 
 ## PWAの作成
 
-私たちのviteテンプレートから、Progressive Web App (PWA) を簡単に作成することをサポートしています。
+私たちのViteテンプレートから、Progressive Web App (PWA) を簡単に作成することをサポートしています。
 PWAは、通常のウェブページやウェブサイトのようにロードされるウェブアプリケーションですが、オフラインでの動作、プッシュ通知、デバイスハードウェアへのアクセスなど、従来ネイティブモバイルアプリケーションでのみ利用可能だったユーザー機能を提供できます。
 
 デフォルトでは、Needleで作成されたPWAはオフラインサポートを備えており、アプリの新しいバージョンを公開したときにオプションで自動的にリフレッシュできます。
@@ -90,11 +79,11 @@ import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig(async ({ command }) => {
 
-    // Create the pwaOptions object.
+    // Create the pwaOptions object. 
     // You can edit or enter PWA settings here (e.g. change the PWA name or add icons).
     /** @type {import("vite-plugin-pwa").VitePWAOptions} */
     const pwaOptions = {};
-
+  
     const { needlePlugins } = await import("@needle-tools/engine/plugins/vite/index.js");
 
     return {
@@ -103,11 +92,11 @@ export default defineConfig(async ({ command }) => {
             needlePlugins(command, needleConfig, { pwa: pwaOptions }),
             VitePWA(pwaOptions),
         ],
-        // the rest of your vite config...
+        // the rest of your Vite config...
 ```
 
 :::tip デフォルトですべてのアセットはキャッシュされます
-デフォルトでは、ビルドフォルダ内のすべてのアセットがPWAプリキャッシュに追加されることに注意してください。多くの動的なアセットを持つ大規模なアプリケーションの場合、これは望ましい動作ではないかもしれません（YouTube PWAがユーザーがアプリを開くたびにすべてのビデオをキャッシュすることを想像してください！）。この動作をカスタマイズする方法については、[More PWA Options](#more-pwa-options)を参照してください。
+デフォルトでは、ビルドフォルダ内のすべてのアセットがPWAプリキャッシュに追加されることに注意してください。多くの動的なアセットを持つ大規模なアプリケーションの場合、これは望ましい動作ではないかもしれません（YouTube PWAがユーザーがアプリを開くたびにすべてのビデオをキャッシュすることを想像してください！）。この動作をカスタマイズする方法については、[その他のPWAオプション](#more-pwa-options)を参照してください。
 :::
 
 ### PWAのテスト
@@ -124,7 +113,7 @@ PWAはService Workerを使用してリソースをキャッシュし、オフラ
 
 ```js
 const pwaOptions = {
-  // Note: PWAs behave different in dev mode.
+  // Note: PWAs behave different in dev mode. 
   // Make sure to verify the behaviour in production builds!
   devOptions: {
     enabled: true,
@@ -160,7 +149,7 @@ Needleは内部で[Vite PWA plugin](https://vite-pwa-org.netlify.app/)を使用�
 
 ```js
 const pwaOptions = {
-  // manifest options provided here will override the defaults
+  // manifest options provided here will override the defaults 
   manifest: {
     name: "My App",
     short_name: "My App",
@@ -171,26 +160,26 @@ const pwaOptions = {
 
 部分的なキャッシング、カスタムService Worker、または異なる更新戦略のような複雑な要件の場合、`needlePlugins`から`{ pwa: pwaOptions }`オプションを削除し、Vite PWA pluginを介して直接PWA機能を追加できます。
 
-## 外部javascriptからのNeedle Engineとコンポーネントへのアクセス
+## 外部JavaScriptからのNeedle Engineとコンポーネントへのアクセス
 
 公開したコードは、バンドル後にJavaScriptからアクセスできます。これにより、編集中に既知のデータと実行時にのみ既知のデータ（動的にロードされるファイル、ユーザー生成コンテンツなど）が分離されているビューアやその他のアプリケーションを構築できます。
-エンジンの外部の通常のjavascriptからコンポーネントにアクセスする方法については、[interop with regular javascript section](./scripting.md#accessing-needle-engine-and-components-from-anywhere)を参照してください。
+エンジンの外部の通常のJavaScriptからコンポーネントにアクセスする方法については、[通常のJavaScriptとの相互運用セクション](./scripting.md#accessing-needle-engine-and-components-from-anywhere)を参照してください。
 
 ## ローディング表示のカスタマイズ
 
-[needle engine component reference](./reference/needle-engine-attributes.md)の*Loading Display*セクションを参照してください。
+[needle engine component reference](./reference/needle-engine-attributes.md)の*ローディング表示*セクションを参照してください。
 
 ### ビルトインスタイル
 
-needle-engineのローディング表示は、ライトまたはダークのスキンを使用できます。
+Needle Engineのローディング表示は、ライトまたはダークのスキンを使用できます。
 表示を変更するには、`<needle-engine>`ウェブコンポーネントの`loading-style`属性を使用します。
 オプションは`light`と`dark`（デフォルト）です。
 
 ``<needle-engine loading-style="light"></needle-engine>``
 
-### カスタムローディングスタイル — *PRO feature* #
+### カスタムローディングスタイル — *PRO機能* #
 
-[needle engine component reference](./reference/needle-engine-attributes.md)の*Loading Display*セクションを参照してください。
+[needle engine component reference](./reference/needle-engine-attributes.md)の*ローディング表示*セクションを参照してください。
 
 ![custom loading](/imgs/custom-loading-style.webp)
 

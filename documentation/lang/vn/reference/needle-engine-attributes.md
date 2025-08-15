@@ -1,9 +1,16 @@
-```markdown
 ---
 title: Cấu hình <needle-engine>
 ---
 
-Thành phần web `<needle-engine>` đi kèm với bộ sưu tập các thuộc tính tích hợp sẵn tuyệt vời có thể được sử dụng để sửa đổi giao diện của cảnh được tải mà không cần thêm hoặc chỉnh sửa trực tiếp cảnh three.js. Bảng dưới đây hiển thị danh sách những thuộc tính quan trọng nhất:
+## Các thuộc tính của Web Component Needle Engine
+
+Needle Engine có sẵn dưới dạng một web component: `<needle-engine>`. Web component này có thể được sử dụng để tải và hiển thị các cảnh 3D, mô hình, v.v. trong trình duyệt web. Nó đi kèm với một bộ thuộc tính cho phép bạn cấu hình hành vi, giao diện và cảm nhận của nó. Tất cả các cài đặt này có thể bị ghi đè bởi mã, nhưng các thuộc tính là một cách thuận tiện để thiết lập chúng trong HTML.
+
+::: tip Web component nằm trong `index.html`
+Cho dù tạo một dự án thông qua Unity hoặc Blender, hoặc trực tiếp bằng mã, bạn đều có thể sử dụng và điều chỉnh web component `<needle-engine>`. Thông thường, bạn sẽ tìm thấy nó trong tệp `index.html` của dự án web của mình.
+:::
+
+Bảng dưới đây hiển thị danh sách các thuộc tính có sẵn và mô tả của chúng.
 
 | Thuộc tính | Mô tả |
 | --- | --- |
@@ -81,4 +88,3 @@ Bạn có thể dễ dàng sửa đổi giao diện của Needle Engine bằng c
 [Xem mã trên github](https://github.com/needle-engine/vite-template/blob/loading-style/custom/index.html)
 
 Trang được dịch tự động bằng AI
-```

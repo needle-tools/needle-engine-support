@@ -10,14 +10,14 @@ next: getting-started/
   name="Chris Mahoney"
   role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1872967967404642304/kOGAWAzd_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
-Unglaubliche Unity Editor-Integration um Größenordnungen besser,
-und so unkompliziert, wie die Dokumentation verspricht. Wow.
+Unglaubliche Unity Editor-Integration um Größenordnungen besser,  
+  und so unkompliziert, wie die Dokumentation verspricht. Wow.
 </testimonial>
 
-<testimonial
-  name="Kevin Curry"
+<testimonial 
+  name="Kevin Curry" 
   role="Founder, Intangible.ai. Ex-Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
   img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
@@ -40,7 +40,8 @@ Habe heute Morgen ein bisschen damit gespielt 🤯🤯 ziemlich magisch
   src="https://x.com/mrm_design/status/1567391880169545729"
   img="https://pbs.twimg.com/profile_images/1106863126958493697/tlgb3EyM_x96.jpg"
 >
-Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an das @NeedleTools-Team für die Arbeit, die ihr hier reingesteckt habt! Ich hoffe, @Apple bekommt seine WebXR-Situation eher früher als später in den Griff. Der AR-Teil funktionierte auf meinem @SamsungMobile S21 einwandfrei.
+Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an das @NeedleTools-Team für die Arbeit, die ihr hier reingesteckt habt! Ich hoffe, @Apple
+ bekommt seine WebXR-Situation eher früher als später in den Griff. Der AR-Teil funktionierte auf meinem @SamsungMobile S21 einwandfrei.
 </testimonial>
 
 <testimonial
@@ -62,7 +63,7 @@ Dank @NeedleTools sehe ich ziemlich oft diese Lösung für webbasierte Echtzeit-
 </testimonial>
 
 <testimonial
-  name="Pete Patterson"
+  name="Pete Patterson" 
   role="Spatial Computing Specialist"
   src="https://x.com/VRSpatialist/status/1572300394285383680"
   img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
@@ -71,8 +72,8 @@ Teste endlich @NeedleTools mit Unity. Super einfach, etwas mit ihren
  Integrationen in der Cloud zum Laufen zu bringen
 </testimonial>
 
-<testimonial
-  name="Dilmer Valecillos"
+<testimonial 
+  name="Dilmer Valecillos" 
   role="Developer Advocate for Mixed Reality @Meta, Tutorial Creator"
   src="https://x.com/Dilmerv/status/1562209049856188420"
   img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
@@ -80,8 +81,8 @@ Teste endlich @NeedleTools mit Unity. Super einfach, etwas mit ihren
  Das ist fantastisch und wenn du neugierig auf #WebXR mit Unity bist, wird dir das helfen, dorthin zu gelangen
 </testimonial>
 
-<testimonial
-  name="VRSpatialist"
+<testimonial 
+  name="VRSpatialist" 
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
   img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
 >
@@ -98,16 +99,16 @@ Wir müssen einfach WOW sagen 🤩
 </testimonial>
 
 <testimonial
-  name="Matthew Pieri"
+  name="Matthew Pieri" 
   role="Game Developer"
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-Habe die letzten 2,5 Monate damit verbracht, dieses Spiel zu entwickeln. Ich habe noch nie ein Spiel entwickelt/Unity benutzt, aber der ganze Prozess mit needle tools macht mir absolut Spaß. So schnell! Würde gerne eine Karriere im Bereich der Entwicklung von AR-Erlebnissen machen!
+Habe die letzten 2,5 Monate damit verbracht, dieses Spiel zu entwickeln. Ich habe noch nie ein Spiel entwickelt/Unity benutzt, aber der ganze Prozess mit needle tools macht mir absolut Spaß. So schnell! Würde gerne eine Karriere im Bereich der Entwicklung von AR-Erlebnissen machen! 
 </testimonial>
 
-<testimonial
-  name="Yuzu"
+<testimonial 
+  name="Yuzu" 
   role="Web Game Developer"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"

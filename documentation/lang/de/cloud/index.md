@@ -13,9 +13,9 @@ description: 'Needle Cloud ist ein Online-Dienst. Er hilft Ihnen, 3D-Assets und 
 ## Überblick
 
 Needle Cloud ist ein Online-Dienst. Er hilft Ihnen, 3D-Assets und Apps im Web zu speichern, zu verwalten und zu teilen.
-Es werden verschiedene Dateiformate unterstützt, darunter glTF, USD, FBX, VRM und weitere. Räumliche Web-Apps, die mit Needle erstellt wurden, können direkt aus der Unity-Integration sowie über die Kommandozeile (CLI) in die Cloud bereitgestellt werden. Die Blender-Integration kommt zu einem späteren Zeitpunkt; in der Zwischenzeit können Sie die CLI verwenden.
+Es werden verschiedene Dateiformate unterstützt, darunter glTF, USD, FBX, VRM und weitere. Räumliche Web-Apps, die mit Needle erstellt wurden, können direkt aus der [Unity-Integration](#deploy-from-unity) oder unserer Needle Cloud [Kommandozeilenschnittstelle](#deploy-from-the-cli) (CLI) bereitgestellt werden.
 
-Besuchen Sie [Needle Cloud](https://cloud.needle.tools), um zu beginnen.
+Besuchen Sie [Needle Cloud](https://cloud.needle.tools), um ein kostenloses Konto zu erstellen.
 
 ![Needle Cloud Überblick](/cloud/cloud-overview-page.webp)
 
@@ -40,6 +40,7 @@ Besuchen Sie [Needle Cloud](https://cloud.needle.tools), um zu beginnen.
 6.  **Lizenzverwaltung**
     Lizenzen für Needle Engine für Einzelkreative und Teams werden über Needle Cloud verwaltet. Dies stellt sicher, dass nur autorisierte Benutzer auf Ihre Dateien und Projekte zugreifen können. Kontaktieren Sie uns für Enterprise- und Edu-Lizenzen.
 
+
 ## Bereitstellen aus Unity
 
 Needle Cloud ist in den Unity Editor integriert. Dies ermöglicht es Ihnen, Ihre Apps direkt aus Unity in Needle Cloud bereitzustellen. Sie können auch Assets direkt in Unity von Needle Cloud hoch- und herunterladen.
@@ -47,7 +48,7 @@ Needle Cloud ist in den Unity Editor integriert. Dies ermöglicht es Ihnen, Ihre
 1.  **Installieren Sie die Unity-Integration, falls Sie dies noch nicht getan haben.**
     Weitere Infos finden Sie auf [dieser Seite](./../unity/).
 
-2.  **Fügen Sie die Komponente `Export Info` zu Ihrer Szene hinzu.**
+2.  **Fügen Sie die Komponente `Needle Engine` (ehemals ExportInfo) zu Ihrer Szene hinzu.**
     Diese Komponente wird verwendet, um die Exporteinstellungen für Ihre App zu konfigurieren.
     Sie können den Menüpunkt `GameObject > Needle Engine > Add Export Info` verwenden oder eine neue Szene aus einer Needle-Vorlage über den Menüpunkt `File > New Scene` erstellen.
 
@@ -87,7 +88,7 @@ Sie können das `needle-cloud` CLI-Paket global installieren oder es über `npx`
 ### Automatisierte Bereitstellungen
 Um von **Github Actions** oder **Stackblitz** bereitzustellen, können Sie einen Zugriffstoken als `--token <access_token>` bereitstellen. Zugriffstoken können auf [Ihrer Teamseite](https://cloud.needle.tools/team) auf Needle Cloud erstellt werden. Stellen Sie sicher, dass Sie Ihren Token mit `read/write`-Berechtigungen erstellen.
 
-Verwenden Sie die [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud), um ein Update von Github bereitzustellen (z. B. bei jedem Push ins Repository).
+Verwenden Sie die [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud), um ein Update von Github bereitzustellen (z. B. jedes Mal, wenn Sie in das Repository pushen).
 
 #### Beispiel: Needle Cloud Github Action
 ```yml
@@ -184,7 +185,7 @@ Sie können Links erstellen, um spezifische Dateien oder getaggte Dateien mit Ih
 
 ### Cloud Assets in Needle Engine verwenden
 
-In Needle Cloud gespeicherte Dateien können einfach direkt in Needle Engine-Projekte übernommen werden. Die Needle Cloud Asset Komponente nimmt einen Link zu einem Asset entgegen und lädt es zur Laufzeit. Dies ermöglicht es Ihnen, die Größe Ihres Projekts klein zu halten und Assets bei Bedarf zu laden, die weiterhin in der Cloud aktualisiert werden können.
+In Needle Cloud gespeicherte Dateien können einfach direkt in Needle Engine-Projekte übernommen werden. Die `Needle Cloud Asset`-Komponente nimmt einen Link zu einem Asset entgegen und lädt es zur Laufzeit. Dies ermöglicht es Ihnen, die Größe Ihres Projekts klein zu halten und Assets bei Bedarf zu laden, die weiterhin in der Cloud aktualisiert werden können.
 
 ::: tip Verwenden Sie nach Möglichkeit Progressive Loading
 In Needle Cloud gespeicherte Assets werden mithilfe unserer Progressive Loading Technologie automatisch für die ideale Laufzeitnutzung optimiert. Für jedes Mesh und jede Textur werden mehrere Level-of-Detail-Versionen generiert, und nur die benötigten Teile des Assets werden zur Laufzeit geladen.
@@ -220,7 +221,7 @@ Die folgenden Einbettungsoptionen sind verfügbar:
     Wenn Sie React-Three-Fiber verwenden, können Sie das bereitgestellte Codeschnipsel als Ausgangspunkt für ein Projekt verwenden, das Needle Progressive Loading unterstützt und Dateien effizient von Needle Cloud lädt.
 
 1.  **Unity**
-    Wenn Sie Unity verwenden, können Sie Needle Cloud Assets direkt in Ihre Projekte integrieren, indem Sie die Needle Cloud Asset Komponente für nahtloses Laden und Optimieren verwenden.
+    Wenn Sie Unity verwenden, können Sie Needle Cloud Assets direkt in Ihre Projekte integrieren, indem Sie die `Needle Cloud Asset`-Komponente für nahtloses Laden und Optimieren verwenden.
 
 ### Cloud Assets mit anderen Engines wie Unity oder Unreal verwenden
 
@@ -240,13 +241,27 @@ Es gibt mehrere Möglichkeiten, in Needle Cloud gespeicherte Assets in anderen E
         Verwenden Sie den Link `Upload` (für gltf/glb-Uploads) oder `Converted` (für andere Uploads).
 
 3.  **Needle Cloud Asset Komponente**
-    Wenn Sie Needle Engine verwenden, können Sie die Needle Cloud Asset Komponente verwenden, um Assets zur Laufzeit zu laden. Sie wählt automatisch den besten Link für Ihre Plattform aus und lädt das Asset mit Progressive Loading. Dies wird auch zur Laufzeit in Unity Builds unterstützt.
+    Wenn Sie Needle Engine verwenden, können Sie die `Needle Cloud Asset`-Komponente verwenden, um Assets zur Laufzeit zu laden. Sie wählt automatisch den besten Link für Ihre Plattform aus und lädt das Asset mit Progressive Loading. Dies wird auch zur Laufzeit in Unity Builds unterstützt.
 
 ## CLI für Assets
 
 Die Kommandozeilenschnittstelle (CLI) für Needle Cloud ermöglicht die Automatisierung von Datei-Uploads und Komprimierung. Die CLI kann als Teil eines Build-Schritts verwendet werden (Ersetzen eines Assets durch eine optimierte Version) oder als eigenständiges Tool (für die Stapelverarbeitung von Dateien).
 
 Weitere Informationen zur CLI und ihrer Verwendung finden Sie unter [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud).
+
+
+## RBAC (Rollenbasierte Zugriffskontrolle)
+
+Teams bestehen aus Mitgliedern, und jedem Mitglied eines Teams kann eine Rolle zugewiesen werden. Diese Rollen definieren, was Sie innerhalb eines Teams auf Needle Cloud tun können und was nicht.
+
+Wenn Ihr Projekt wächst und Sie weitere Teammitglieder hinzufügen, können Sie ihnen Rollen zuweisen, um sicherzustellen, dass sie die richtigen Berechtigungen zur Bearbeitung Ihrer Projekte haben.
+
+| | |
+| -- | -- |
+| **Owner** | Höchste Berechtigungsstufe. Die Owner-Rolle kann das gesamte Team (einschließlich Abrechnung und Mitgliederrollen) verwalten, alle Projekte, Uploads und Bereitstellungen einsehen. |
+| **Manager** | Die Manager-Rolle kann das gesamte Team (einschließlich Abrechnung und Mitgliederrollen) verwalten, alle Projekte, Uploads und Bereitstellungen einsehen. |
+| **Billing** | Die Billing-Rolle ist auf Finanzoperationen spezialisiert, kann die Abrechnungsinformationen des Teams überwachen, Projektkosten überprüfen und verwalten sowie Zahlungsoptionen handhaben. <br/>Die Billing-Rolle hat nur Lesezugriff auf Bereitstellungen und Assets und kann keine Bereitstellungen durchführen oder Assets hochladen. <br/>Die Billing-Rolle kann ohne zusätzliche Kosten zugewiesen werden. Die Rolle ist auf ein Mitglied pro Team begrenzt. |
+| **Member** | Die Member-Rolle (Entwicklerrolle) kann Bereitstellungen erstellen, Assets zur Optimierung hoch-/herunterladen oder KI-Funktionen nutzen. |
 
 ## FAQ
 
@@ -271,4 +286,7 @@ Weitere Informationen zur CLI und ihrer Verwendung finden Sie unter [npm:needle-
 7.  **Was passiert, wenn mir der Speicherplatz ausgeht?**
     Möglicherweise müssen Sie Ihren Plan aktualisieren oder alte Dateien löschen, um Platz zu schaffen.
 
-Seite automatisch mit AI übersetzt
+8.  **Weitere Antworten**
+    Besuchen Sie die [Needle Cloud FAQ](https://cloud.needle.tools/faq)
+
+Seite automatisch mit KI übersetzt

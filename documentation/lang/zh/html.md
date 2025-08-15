@@ -4,19 +4,34 @@ title: 框架、打包器、HTML
 
 ## 打包和 Web 前端
 
-Needle Engine 构建为 Web Component。
-这意味着只需在你的项目中安装 `@needle-tools/engine`，并在你的 Web 项目的任何位置包含 `<needle-engine src="path/to/your.glb">`。
+Needle Engine 被构建为一个 web component。
+这意味着你可以直接在你的项目中安装 `@needle-tools/engine`：
 
-- 使用 npm 安装：
-  `npm i @needle-tools/engine`
+```bash
+npm i @needle-tools/engine
+```
 
-使用我们基于默认 Vite 的项目模板，Needle Engine 在部署时会被打包成一个 Web 应用。这确保了更小的文件、Tree-shaking（类似于 Unity 中的代码剥离）并优化了加载时间。与其下载大量小型脚本和组件，不如只下载包含所需最少代码的一两个文件。
+然后像这样从 HTML 中使用它：
 
-Vite（我们的默认打包器）很好地解释了为什么 Web 应用应该打包：[Why Bundle for Production](https://vitejs.dev/guide/why.html)
+```html
+<script type="module">
+  import '@needle-tools/engine';
+</script>
+<needle-engine src="path/to/your.glb"></needle-engine>
+```
+
+通过我们默认的基于 Vite 的项目模板，Needle Engine 在部署时会被打包到你的 Web 应用中。这确保了文件更小并优化了加载时间。
+
+::: tip 打包和 Tree shaking
+
+**打包 (Bundling)** 意味着组成你项目的所有 css、js 和其他文件在构建时会被合并成更少、更小的文件。这确保了只下载一个或少数几个包含所需最少代码的文件，而不是下载大量小型脚本和组件。Vite 文档包含一个很好的解释，说明为什么 Web 应用应该被打包：[Why Bundle for Production](https://vitejs.dev/guide/why.html)
+
+**Tree shaking** 是 Web 开发中一种常见的做法，其中未使用的代码会从最终的 bundle 中移除以减小文件大小。这类似于 Unity 中的“code stripping”。[MSDN 文档](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) 对 tree shaking 做了很好的解释。
+:::
 
 ### Vite, Vue, React, Svelte, React Three Fiber...
 
-Needle Engine 对框架的选择持开放态度。我们的默认模板使用流行的 [vite](https://vitejs.dev) 作为打包器。在此基础上，你可以添加 vue、svelte、nuxt、react、react-three-fiber 或其他框架，我们提供了许多示例。你还可以集成其他打包器，或者完全不使用——只使用纯粹的 HTML 和 Javascript。
+Needle Engine 对框架的选择不持特定立场。我们的默认模板使用流行的 [vite](https://vitejs.dev) 作为打包器。在此基础上，你可以添加 vue、svelte、nuxt、react、react-three-fiber 或其他框架，我们提供了许多示例。你还可以集成其他打包器，或者完全不使用——只使用纯粹的 HTML 和 Javascript。
 
 以下是一些可能的、我们用于 Needle Engine 的技术栈示例：
 
@@ -30,8 +45,8 @@ Needle Engine 对框架的选择持开放态度。我们的默认模板使用流
 - **Vercel & Nextjs** — 在[这里](https://github.com/needle-engine/nextjs-sample)找到一个 nextjs 项目示例
 - **不使用任何打包器的 CDN** — 在[这里](./vanilla-js.md)找到代码示例
 
-简而言之：我们目前提供一个最小化的 vite 模板，但你可以扩展它或切换到其他框架——
-请告诉我们你构建了什么以及如何构建，以及我们如何改进你的使用体验或提供示例！
+简而言之：我们目前提供一个最小化的 Vite 模板，但你可以扩展它或切换到其他框架——
+请告诉我们你构建了什么以及如何构建，以及我们如何改进你的用例体验或提供示例！
 
 :::tip
 一些框架需要在 `needle.config.json` 中进行自定义设置。更多信息请参见[此处](./reference/needle-config-json.md)。通常需要设置 `baseUrl`。
@@ -45,39 +60,13 @@ Needle Engine 对框架的选择持开放态度。我们的默认模板使用流
 1. 选择 `Create/Needle Engine/Project Template` 将 ProjectTemplate 添加到你想用作模板的文件夹中
 2. 完成！就是这么简单。
 
-当项目中有 NpmDef 时（即当你的项目使用本地引用时），依赖项来自 unity。
+当项目中存在 NpmDef 时（即当你的项目使用本地引用时），依赖项会从 unity 中获取。
 你也可以将你的包发布到 npm 并通过版本号引用它们。
-:::
-
-### Tree-shaking 以减小打包大小
-
-Tree shaking 是 Web 应用打包中的一种常见实践（[参见 MSDN 文档](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking)）。这意味着代码中未使用的代码路径和功能将从最终打包的 javascript 文件中移除，以减小文件大小。请参见下文，了解 Needle Engine 包含的功能以及如何移除它们：
-
-:::details 如何移除 Rapier 物理引擎？(通过移除约 2MB (gzip 后约 600KB) 来减小总体打包大小)
-
-- **选项 1**：通过 needlePlugins 配置：
-Set `useRapier` to `false` in your vite.config: `needlePlugins(command, needleConfig, { useRapier: false }),`
-
-- **选项 2**：通过 vite.define 配置：
-  Declare the `NEEDLE_USE_RAPIER` define with `false`
-  ```js
-  define: {
-    NEEDLE_USE_RAPIER: false
-  },
-  ```
-
-- **选项 3**：通过 .env
-  Create a `.env` file in your web project and add `VITE_NEEDLE_USE_RAPIER=false`
-
-- **选项 4**：通过 Unity 组件
-  Add the `Needle Engine Modules` component to your scene and set `Physics Engine` to `None`
-  ![](/imgs/unity-needle-engine-modules-physics.jpg)
-
 :::
 
 ## 创建 PWA
 
-我们支持直接从我们的 vite 模板轻松创建渐进式 Web 应用（PWA）。
+我们支持直接从我们的 Vite 模板轻松创建渐进式 Web 应用 (PWA)。
 PWA 是一种 Web 应用，加载方式与普通网页或网站相同，但可以提供用户功能，如离线工作、推送通知以及通常只有原生移动应用才能访问的设备硬件。
 
 默认情况下，使用 Needle 创建的 PWA 支持离线功能，并且在你发布新版本的应用时，可以选择自动刷新。
@@ -189,10 +178,10 @@ needle-engine 加载外观可以使用浅色或深色皮肤。
 
 ``<needle-engine loading-style="light"></needle-engine>``
 
-### 自定义加载样式 — *专业版功能* #
+### 自定义加载样式 — *PRO feature* #
 
 请参见 [needle engine 组件参考](./reference/needle-engine-attributes.md) 中的 *加载显示* 部分
 
-![自定义加载](/imgs/custom-loading-style.webp)
+![custom loading](/imgs/custom-loading-style.webp)
 
 页面由 AI 自动翻译

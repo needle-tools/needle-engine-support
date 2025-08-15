@@ -72,7 +72,7 @@ Tienes la opción de seleccionar las opciones de compresión de texturas y carga
 
 :::details Blender: ¿Cómo puedo configurar los ajustes de compresión por textura?
 Selecciona la pestaña material. Verás las opciones de compresión para todas las texturas que esté utilizando ese material.
-![Texture Compression options in Blender](/blender/texture-compression.webp)
+![Opciones de compresión de texturas en Blender](/blender/texture-compression.webp)
 :::
 
 :::details No se encuentra Toktx
@@ -155,14 +155,14 @@ Ten en cuenta que los proyectos gratuitos alojados en glitch no pueden exceder ~
 4) Abre Unity de nuevo y pega la URL en el campo ``Project Name`` de tu componente ``Deploy To Glitch``.
   ![image](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
 5) Espera unos segundos hasta que Unity reciba tu deployment key de glitch (esta clave se guarda de forma segura en el archivo `.env` de glitch. No la compartas con otros, cualquiera con esta clave podrá subir a tu sitio web de glitch).
-  ![waiting for the key](/deployment/deploytoglitch-2.jpg)
+  ![Esperando la clave](/deployment/deploytoglitch-2.jpg)
 6) Una vez recibida la Deploy Key, puedes hacer clic en el botón `Build & Deploy` para subir a glitch.
 
 :::
 
 :::details ¿Cómo despliego a Glitch desde Blender?
 
-![Deploy To Glitch from Blender component](/blender/deploy_to_glitch.webp)
+![Desplegar a Glitch desde el componente Blender](/blender/deploy_to_glitch.webp)
 
 1) Encuentra el panel Deploy To Glitch en la pestaña Scene
 2) Haz clic en el botón ``Remix on glitch`` del componente
@@ -351,11 +351,12 @@ Needle Engine para Unity soporta varios argumentos de línea de comandos para ex
 La siguiente lista presenta una tabla con las opciones disponibles:
 
 | | |
-| -- | -- |
+| --- | --- |
 | `-scene` | ruta a una escena o un asset a exportar, ej. `Assets/path/to/myObject.prefab` o `Assets/path/to/myScene.unity` |
 | `-outputPath <path/to/output.glb>` | establece la ruta de salida para el build (solo válido al construir una escena) |
 | `-buildProduction` | ejecuta un build de producción |
 | `-buildDevelopment` | ejecuta un build de desarrollo |
 | `-debug` | abre una ventana de consola para debugging |
+
 
 Página traducida automáticamente por IA

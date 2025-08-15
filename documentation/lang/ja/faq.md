@@ -41,9 +41,9 @@ Project Settings/Needleに進み、ログインボタンをクリックします
 このダイアログは、同じローカルサーバーに対して一度だけ表示されるはずです。
 
 ::: tip
-Connections are secured, because we're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box. Some browsers will still complain that the SSL connection (between your local development server and the local website) can't be automatically trusted, and that you need to manually verify you trust that page. Automatic Page Reload and Websocket connections may also be affected depending on the browser and system settings.
+接続は保護されています。これは、WebXRやその他の最新のWeb APIがすぐに機能するようにHTTPSを強制しているためです。一部のブラウザは、SSL接続（ローカル開発サーバーとローカルWebサイト間）が自動的に信頼できないこと、およびそのページを信頼することを手動で確認する必要があることについて文句を言う場合があります。自動ページリロードとWebSocket接続も、ブラウザとシステム設定によっては影響を受ける可能性があります。
 
-See [the Testing docs](./testing.md) for information on how to set up a self-signed certificate for a smoother development experience.
+よりスムーズな開発体験のために自己署名証明書を設定する方法については、[テストドキュメント](./testing.md)を参照してください。
 :::
 
 ![SLL warning on chrome](/videos/ssl-warning.gif)
@@ -288,6 +288,5 @@ AIをローカルで実行したい（または実行する必要がある）場
 [フォーラムでお問い合わせください](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
-
 
 このページはAIによって自動的に翻訳されました

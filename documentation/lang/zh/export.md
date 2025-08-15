@@ -1,5 +1,5 @@
 ---
-title: Exporting Assets to glTF
+title: 导出资源到 glTF
 ---
 
 
@@ -91,21 +91,21 @@ Unity 天空盒和自定义反射（如果有）在导出时会被烘焙成纹�
 默认情况下，材质在导出时会被转换为 glTF 材质。glTF 支持基于物理的材质模型，并有一些扩展有助于表示复杂材质。
 
 为了完全控制导出内容，强烈建议使用 UnityGltf 提供的 glTF 材质：
-- PBRGraph
-- UnlitGraph
+- UnityGLTF/PBRGraph
+- UnityGLTF/UnlitGraph
 
-::: tip 拿不准的时候，使用 PBRGraph 着色器
-PBRGraph 材质具有很多功能，比 Standard 或 URP/Lit 多得多。其中包括折射、虹彩、光泽等高级功能。此外，使用 PBRGraph 和 UnlitGraph 的材质会按原样导出，无需转换。
+::: tip 拿不准的时候，使用 PBRGraph 着色器。
+PBRGraph 材质具有许多功能，远超 Unity 提供的“Standard”或“Lit”着色器。这些功能包括清漆、光泽、虹彩等表面效果，以及透射、折射和色散等体积效果。
 :::
 
-可以开箱即用转换的材质：
-- BiRP/Standard
-- BiRP/Autodesk Interactive
-- BiRP/Unlit
-- URP/Lit
-- URP/Unlit
+其他可以直接导出（带转换）的着色器：
+- Universal Render Pipeline/Lit
+- Universal Render Pipeline/Unlit
+- Standard (Built-in Render Pipeline)
+- Autodesk Interactive (Built-in Render Pipeline)
+- Unlit (Built-in Render Pipeline)
 
-其他材质使用属性名称启发式进行转换。这意味着根据您的材质和着色器使用的属性名称，您可能需要重构您的自定义着色器的属性以使用 URP/Lit 或 PBRGraph 的属性名称，或者将材质导出为[自定义着色器](#custom-shaders)。
+其他材质使用属性名称启发式进行转换。这意味着根据您的材质和着色器使用的属性名称，您可能需要重构您的自定义着色器的属性以使用 Universal Render Pipeline/Lit 或 PBRGraph 的属性名称，或者将材质导出为[自定义着色器](#custom-shaders)。
 
 ### 自定义着色器
 要导出自定义的无光照着色器（例如使用 ShaderGraph 创建的），请将 ``ExportShader`` 资源标签添加到您要导出的着色器上。资源标签可在 Inspector 窗口底部看到。
@@ -122,7 +122,7 @@ PBRGraph 材质具有很多功能，比 Standard 或 URP/Lit 多得多。其中�
   - glTF 中的 X 轴值与 Unity 中的相反。这是左手坐标系到右手坐标系更改的一种变体。着色器中使用的数据可能需要在 X 轴上进行翻转才能正确显示。
 
 ::: note 非 glTF 规范的一部分
-请注意，**自定义着色器**并非 glTF 规范的官方部分。我们实现的自定义着色器使用一个称为 KHR_techniques_webgl 的扩展，该扩展将 WebGL 着色器代码直接存储在 glTF 文件中。生成的资源将在基于 Needle Engine 的查看器中工作，但在其他查看器中可能无法正确显示。
+请注意，**自定义着色器**并非 glTF 规范的官方部分。我们实现的自定义着色器使用一个称为 KHR_techniques_webgl 的扩展，该扩展将 WebGL 着色器代码直接存储在 glTF 文件中。生成的资源将在基于 Needle Engine 的查看器中工作。
 :::
 
 ## 💡 导出光照贴图
@@ -148,9 +148,9 @@ Unity 处理灯光和环境的方式与 three.js 处理方式之间没有 100% �
 
 这意味着为了获得最佳结果，如果您在场景中混合烘焙和非烘焙对象，我们目前推荐特定设置：
 ```
-环境照明：Skybox
-环境强度：1
-环境颜色：黑色
+Environment Lighting: Skybox
+Ambient Intensity: 1
+Ambient Color: black
 ```
 
 **2021.3+**
@@ -161,8 +161,8 @@ Unity 处理灯光和环境的方式与 three.js 处理方式之间没有 100% �
 
 如果您的场景中没有烘焙对象，则以下设置也应产生正确结果：
 ```
-环境照明：Color
-环境颜色：任意
+Environment Lighting: Color
+Ambient Color: any
 ```
 
 

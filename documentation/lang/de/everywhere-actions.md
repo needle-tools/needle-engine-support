@@ -1,5 +1,6 @@
 ---
-title: Everywhere Actions
+title: Everywhere Actions — Interaktive Erlebnisse auf Desktop, Android & iOS (sogar AR)
+description: Die Everywhere Actions von Needle sind eine Reihe sorgfältig ausgewählter Komponenten, mit denen Sie in Unity interaktive Erlebnisse erstellen können, ohne eine einzige Codezeile schreiben zu müssen. Sie sind als Bausteine für Erlebnisse im Web, auf Mobilgeräten und in XR konzipiert, **einschließlich Augmented Reality auf iOS**. Aus niedrigschwelligen Triggern und Aktionen können komplexere interaktive Verhaltensweisen aufgebaut werden.
 ---
 
 ## Was sind Everywhere Actions?
@@ -36,7 +37,7 @@ Um eine Aktion zu einem beliebigen Objekt in Ihrer Szene hinzuzufügen, wählen 
 | Set Active on Click | Zeigt oder verbirgt Objekte. |  |
 | Change Transform on Click | Verschiebt, rotiert oder skaliert ein Objekt. Ermöglicht absolute oder relative Bewegung. | Charaktere, Produkte, UI-Animationen (für komplexere Bewegungen Animation verwenden) |
 | Audio Source | Spielt Audio beim Start ab und wiederholt es fortlaufend. Räumlich oder nicht-räumlich | Hintergrundmusik, Umgebungsgeräusche |
-| WebXR Image Tracking | Verfolgt ein Bildziel und zeigt oder verbirbt Objekte. | AR-Erlebnisse, Produktpräsentationen |
+| WebXR Image Tracking | Verfolgt ein Bildziel und zeigt oder verbirgt Objekte. | AR-Erlebnisse, Produktpräsentationen |
 
 ## Beispiele
 
@@ -56,11 +57,13 @@ Demonstriert die Kombination von Animationen, Blickrichtung und Bewegung.
 
 Demonstriert, wie 3D-Inhalte an einen benutzerdefinierten Bildmarker angehängt werden. Starten Sie die Szene unten in AR und richten Sie die Kamera Ihres Telefons auf den Bildmarker auf einem Bildschirm oder drucken Sie ihn aus.
 
+:::info WebXR Image Tracking auf Android
+**Auf Android** bitte aktivieren Sie "WebXR Incubations" in den Chrome Flags. Sie finden diese, indem Sie [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) in die Adressleiste des Chrome-Browsers Ihres Android-Telefons einfügen.
+:::
+
+[Lesen Sie mehr über Bildverfolgung mit Needle Engine](./webxr-image-tracking.md)
+
 <img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Bildmarker" width=300 />
-
-<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Beispiel-Bildmarker herunterladen</a>
-
-**Auf Android:** Bitte aktivieren Sie "WebXR Incubations" in den Chrome Flags. Sie finden diese, indem Sie [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) in die Adressleiste des Chrome-Browsers Ihres Android-Telefons einfügen.
 
 <sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
 
@@ -84,7 +87,7 @@ Hier ist die Implementierung für `HideOnStart` als Beispiel dafür, wie man ein
 @[code ts twoslash](@code/component-everywhere-action-hideonstart.ts)
 
 ::: tip
-Oftmals erfordert das Erreichen des gewünschten Verhaltens die Komposition von _höheren Aktionen_ aus den verfügbaren _niedrigeren Aktionen_. Zum Beispiel setzt sich unsere Aktion "Material bei Klick ändern" aus einer Reihe von `fadeActions` zusammen und dupliziert intern Objekte mit jeweils unterschiedlichen Materialsätzen. Durch sorgfältigen Aufbau dieser Aktionen können komplexe Verhaltensweisen erreicht werden.
+Oftmals erfordert das Erreichen des gewünschten Verhaltens die Komposition von _höheren Aktionen_ aus den verfügbaren _niedrigeren Aktionen_. Zum Beispiel setzt sich unsere Aktion "Change Material on Click" aus einer Reihe von `fadeActions` zusammen und dupliziert intern Objekte mit jeweils unterschiedlichen Materialsätzen. Durch sorgfältigen Aufbau dieser Aktionen können komplexe Verhaltensweisen erreicht werden.
 :::
 
 ### Niedrigschwellige Methoden zum Erstellen eigener Aktionen
@@ -116,11 +119,13 @@ Oftmals erfordert das Erreichen des gewünschten Verhaltens die Komposition von 
 
 Um die Implementierung unserer integrierten Everywhere Actions zu sehen, werfen Sie bitte einen Blick auf `src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`.
 
+## Referenzen
+- [Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
+
 ## Weiterführendes Lesen
 
-Die folgenden Seiten bieten weitere Beispiele und Samples, die Sie sofort testen und erkunden können:
-
-- Besuchen Sie unsere [AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/), die viele interaktive AR-Beispiele mit Fokus auf iOS AR & Quicklook enthält
+- [Besuchen Sie unsere AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/), die viele interaktive AR-Beispiele mit Fokus auf iOS AR & Quicklook enthält
 - [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- [Bildverfolgung mit Needle Engine](./webxr-image-tracking.md)
 
 Seite automatisch mit KI übersetzt

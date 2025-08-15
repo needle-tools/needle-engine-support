@@ -14,7 +14,7 @@ footer: "Copyright © 2025 Needle Tools GmbH"
   name="Chris Mahoney"
   role="Gründer, Our Computer Company. Ex-Unity, Ex-Lamina1"
   src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
-  img="https://pbs.twimg.com/profile_images/1923968125189455872/MPrYfalT_x96.jpg"
+  img="https://pbs.twimg.com/profile_images/1955137026459611136/-9Uo_14i_x96.jpg"
 >
 Unglaubliche Unity-Editor-Integration, um eine Größenordnung besser,
   und so unkompliziert, wie die Dokumentation verspricht. Wow.
@@ -31,7 +31,7 @@ needle.tools ist ein wunderbares Beispiel dafür, was @NeedleTools zu 3D im Web 
 
 <testimonial
   name="Brit Gardner"
-  role="Senior Softwareentwickler, Coherence. Ex-Blizzard"
+  role="Senior Software Engineer, Coherence. Ex-Blizzard"
   src="https://x.com/britg/status/1562443905580163072"
   img="https://pbs.twimg.com/profile_images/1360002897048727553/0gscFjvt_x96.jpg"
 >
@@ -51,10 +51,10 @@ Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an 
 <testimonial
   name="Rinesh Thomas"
   role="Spieleentwickler, Assassin's Creed VR"
-  src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
+  src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRTTKqCQ&s=19"
   img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
 >
-    Das ist das Beste, was ich nach cinemachine in unity gesehen habe. Unity sollte das übernehmen
+    Das ist das Beste, was ich nach cinemachine in Unity gesehen habe. Unity sollte das übernehmen
 </testimonial>
 
 <testimonial
@@ -108,7 +108,7 @@ Wir müssen einfach WOW sagen 🤩
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
   img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
 >
-Ich habe die letzten 2,5 Monate mit dem Bau dieses Spiels verbracht, noch nie ein Spiel gebaut/noch nie Unity benutzt, aber ich liebe den ganzen Prozess mit needle tools absolut. So schnell! Würde gerne eine Karriere als AR-Erlebnisse-Entwickler machen!
+Ich habe die letzten 2,5 Monate mit dem Bau dieses Spiels verbracht, noch nie ein Spiel gebaut/noch nie Unity benutzt, aber ich liebe den ganzen Prozess mit Needle Tools absolut. So schnell! Würde gerne eine Karriere als AR-Erlebnisse-Entwickler machen!
 </testimonial>
 
 <testimonial
@@ -178,6 +178,5 @@ Unsere leistungsstarke **Kompressions- und Optimierungspipeline für das Web** s
 <ClientOnly>
 <removeserviceworker/>
 </ClientOnly>
-
 
 Seite automatisch mit KI übersetzt

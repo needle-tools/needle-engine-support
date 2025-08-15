@@ -1,5 +1,5 @@
 ---
-title: Tạo và sử dụng Component
+title: Creating and using Components
 tags:
     - scripting
     - serialization
@@ -9,20 +9,20 @@ tags:
     - components
 ---
 
-# Tạo component tùy chỉnh
+# Tạo custom components
 
-Nếu bạn mới làm quen với lập trình script, chúng tôi **rất khuyến khích** bạn đọc các hướng dẫn sau trước:
+Nếu bạn mới làm quen với scripting, chúng tôi **rất khuyến khích** bạn đọc các hướng dẫn sau trước:
 
-- [Kiến thức TypeScript cơ bản](./getting-started/typescript-essentials.md)
-- [Needle Engine cho nhà phát triển Unity](./getting-started/for-unity-developers.md)
+- [Typescript Essentials](./getting-started/typescript-essentials.md)
+- [Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
 
-Nếu bạn đã biết mình đang làm gì, cứ thoải mái truy cập trực tiếp vào [tài liệu API của Needle Engine](https://engine.needle.tools/docs/api/latest).
+Nếu bạn đã biết mình đang làm gì, cứ thoải mái truy cập trực tiếp vào [Needle Engine API documentation](https://engine.needle.tools/docs/api/latest).
 
 ---
 
-Mã runtime cho Needle Engine được viết bằng [TypeScript](https://typescriptlang.org) (được khuyến khích) hoặc [JavaScript](https://javascript.info/). Chúng tôi tự động tạo các C# stub component từ đó, bạn có thể thêm chúng vào các GameObject trong trình chỉnh sửa. Các C# component và dữ liệu của chúng được runtime tạo lại dưới dạng JavaScript component với dữ liệu tương tự và được đính kèm vào các đối tượng three.js.
+Mã runtime cho Needle Engine được viết bằng [TypeScript](https://typescriptlang.org) (được khuyến khích) hoặc [JavaScript](https://javascript.info/). Chúng tôi tự động tạo các C# stub components từ đó, bạn có thể thêm chúng vào các GameObjects trong trình chỉnh sửa. Các C# components và dữ liệu của chúng được runtime tạo lại dưới dạng JavaScript components với dữ liệu tương tự và được đính kèm vào các đối tượng three.js.
 
-Cả custom component lẫn built-in Unity component đều có thể được ánh xạ tới JavaScript component theo cách này. Ví dụ, ánh xạ cho nhiều built-in component liên quan đến hoạt hình, kết xuất hoặc vật lý đã [được bao gồm trong Needle Engine](./component-reference.md#unity-components).
+Cả custom components lẫn built-in Unity components đều có thể được ánh xạ tới JavaScript components theo cách này. Ví dụ, ánh xạ cho nhiều built-in components liên quan đến hoạt hình, kết xuất hoặc vật lý đã [được bao gồm trong Needle Engine](./component-reference.md#unity-components).
 
 Nếu bạn muốn thực hành theo các ví dụ sau mà không cần cài đặt bất cứ thứ gì, bạn chỉ cần nhấp vào liên kết sau:
 
@@ -31,15 +31,15 @@ Nếu bạn muốn thực hành theo các ví dụ sau mà không cần cài đ�
 ----
 
 Engine runtime trên web của chúng tôi áp dụng mô hình component tương tự như Unity và do đó cung cấp nhiều chức năng quen thuộc.
-Component được đính kèm vào đối tượng Object3D của three có các phương thức vòng đời như ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` và ``lateUpdate`` mà bạn có thể implement. Bạn cũng có thể sử dụng [Coroutines](#coroutines).
+Components được đính kèm vào đối tượng Object3D của three có các phương thức vòng đời như ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` và ``lateUpdate`` mà bạn có thể implement. Bạn cũng có thể sử dụng [Coroutines](#coroutines).
 
 ----
 
 ## Khi bạn không cần viết mã
 
-Thông thường, các cảnh tương tác có thể được thực hiện bằng cách sử dụng Event trong Unity và gọi các phương thức trên built-in component. Một ví dụ điển hình là phát hoạt hình khi nhấn nút - bạn tạo một nút, thêm sự kiện Click trong inspector và gọi Animator.SetTrigger hoặc tương tự để phát hoạt hình cụ thể.
+Thông thường, các cảnh tương tác có thể được thực hiện bằng cách sử dụng Events trong Unity và gọi các phương thức trên built-in components. Một ví dụ điển hình là phát hoạt hình khi nhấn nút - bạn tạo một nút, thêm sự kiện Click trong inspector và gọi Animator.SetTrigger hoặc tương tự để phát hoạt hình cụ thể.
 
-Needle Engine dịch các Unity Event thành các lệnh gọi phương thức JavaScript, điều này làm cho quy trình làm việc này rất nhanh và linh hoạt - bạn thiết lập các sự kiện như thường lệ và khi chúng được gọi, chúng sẽ hoạt động giống như trong Unity.
+Needle Engine dịch các Unity Events thành các lệnh gọi phương thức JavaScript, điều này làm cho quy trình làm việc này rất nhanh và linh hoạt - bạn thiết lập các sự kiện như thường lệ và khi chúng được gọi, chúng sẽ hoạt động giống như trong Unity.
 
 ![image](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)
 _Ví dụ về một Button Click Event hoạt động sẵn sàng trong Needle Engine — không cần mã._
@@ -48,18 +48,18 @@ _Ví dụ về một Button Click Event hoạt động sẵn sàng trong Needle 
 Script được viết bằng TypeScript (được khuyến nghị) hoặc JavaScript.
 Có hai cách để thêm script tùy chỉnh vào dự án của bạn:
 
-- Chỉ cần thêm một tệp với đuôi `.ts` hoặc `.js` bên trong thư mục `src/scripts/` trong thư mục dự án được tạo của bạn, ví dụ: `src/scripts/MyFirstScript.ts`
+- Chỉ cần thêm một tệp với đuôi `.ts` hoặc `.js` bên trong thư mục `src/scripts/` trong thư mục dự án web của bạn, ví dụ: `src/scripts/MyFirstScript.ts`.
 
 - Cụ thể cho Unity:
   Tổ chức mã của bạn thành NPM Definition Files (npm packages). Điều này giúp bạn mô-đun hóa và tái sử dụng mã giữa các dự án và nếu bạn quen thuộc với phát triển web thì chúng thực chất là các npm package thông thường được cài đặt cục bộ.
   Trong Unity, bạn có thể tạo tệp NpmDef thông qua `Create > NPM Definition` và sau đó thêm các tệp TypeScript bằng cách nhấp chuột phải vào tệp NpmDef và chọn `Create > TypeScript`. Vui lòng xem [chương này](./project-structure.md#npm-definition-files) để biết thêm thông tin.
 
-Trong cả hai cách tiếp cận, các thư mục nguồn được theo dõi sự thay đổi và C# stub component hoặc Blender panels được tạo lại bất cứ khi nào phát hiện sự thay đổi.
-Các thay đổi đối với tệp nguồn cũng dẫn đến tải lại nóng (hot reload) trang web đang chạy – bạn không cần chờ Unity biên dịch lại các C# component. Điều này giúp việc lặp lại mã diễn ra gần như tức thời.
+Trong cả hai cách tiếp cận, các thư mục nguồn được theo dõi sự thay đổi và C# stub components hoặc Blender panels được tạo lại bất cứ khi nào phát hiện sự thay đổi.
+Các thay đổi đối với tệp nguồn cũng dẫn đến tải lại nóng (hot reload) trang web đang chạy – bạn không cần chờ Unity biên dịch lại các C# components. Điều này giúp việc lặp lại mã diễn ra gần như tức thời.
 
 Bạn thậm chí có thể có nhiều loại component trong một tệp (ví dụ: bạn có thể khai báo ``export class MyComponent1`` và ``export class MyOtherComponent`` trong cùng một tệp Typescript).
 
-Nếu bạn mới bắt đầu viết Javascript hoặc Typescript, chúng tôi khuyên bạn nên đọc [Hướng dẫn TypeScript Essentials](./getting-started/typescript-essentials.md) trước khi tiếp tục với hướng dẫn này.
+Nếu bạn mới bắt đầu viết Javascript hoặc Typescript, chúng tôi khuyên bạn nên đọc [Typescript Essentials Guide](./getting-started/typescript-essentials.md) trước khi tiếp tục với hướng dẫn này.
 
 :::details Ví dụ: Tạo một Component làm quay một đối tượng
 
@@ -94,7 +94,7 @@ Bây giờ thêm một trường dữ liệu mới ``public float speed = 5`` v�
 :::
 
 :::details Tạo component với hàm tùy chỉnh
-Tham khảo [Hướng dẫn TypeScript Essentials](./getting-started/typescript-essentials.md) để tìm hiểu thêm về cú pháp và ngôn ngữ.
+Tham khảo [Typescript Essentials Guide](./getting-started/typescript-essentials.md) để tìm hiểu thêm về cú pháp và ngôn ngữ.
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 
@@ -112,71 +112,71 @@ export class PrintNumberComponent extends Behaviour
 :::
 
 :::details Version Control & Unity
-Mặc dù các C# component được tạo sử dụng tên kiểu để tạo GUID ổn định, chúng tôi khuyên nên đưa (check in) các component được tạo vào hệ thống kiểm soát phiên bản như một thực hành tốt.
+Mặc dù các C# components được tạo sử dụng tên kiểu để tạo GUID ổn định, chúng tôi khuyên nên đưa (check in) các components được tạo vào hệ thống kiểm soát phiên bản như một thực hành tốt.
 :::
 
 ## Kiến trúc component
-Component được thêm vào Object3D của three.js. Điều này tương tự như cách Component trong Unity được thêm vào GameObject. Do đó, khi chúng ta muốn truy cập một Object3D của three.js, chúng ta có thể truy cập nó dưới dạng ``this.gameObject``, trả về Object3D mà component được đính kèm vào.
+Components được thêm vào Object3D của three.js. Điều này tương tự như cách Components trong Unity được thêm vào GameObjects. Do đó, khi chúng ta muốn truy cập một Object3D của three.js, chúng ta có thể truy cập nó dưới dạng ``this.gameObject``, trả về Object3D mà component được đính kèm vào.
 
-***Lưu ý**: Đặt ``visible`` thành false trên một Object3D sẽ hoạt động giống như ``SetActive(false)`` trong Unity - nghĩa là nó cũng sẽ vô hiệu hóa tất cả các component hiện tại trên đối tượng này và các đối tượng con của nó. Sự kiện Update cho các component không hoạt động sẽ không được gọi cho đến khi ``visible`` được đặt lại thành true.* Nếu bạn muốn ẩn một đối tượng mà không ảnh hưởng đến các component, bạn chỉ cần vô hiệu hóa component Needle Engine ``Renderer``.
+***Lưu ý**: Đặt ``visible`` thành false trên một Object3D sẽ hoạt động giống như ``SetActive(false)`` trong Unity - nghĩa là nó cũng sẽ vô hiệu hóa tất cả các current components trên đối tượng này và các đối tượng con của nó. Update events cho inactive components sẽ không được gọi cho đến khi ``visible`` được đặt lại thành true.* Nếu bạn muốn ẩn một đối tượng mà không ảnh hưởng đến các components, bạn chỉ cần vô hiệu hóa component Needle Engine ``Renderer``.
 
 ### Các phương thức vòng đời
 
-Lưu ý rằng các phương thức vòng đời chỉ được gọi khi chúng được khai báo. Vì vậy, chỉ khai báo các phương thức vòng đời `update` khi thực sự cần thiết, nếu không có thể ảnh hưởng đến hiệu suất nếu bạn có nhiều component với vòng lặp update không làm gì cả.
+Lưu ý rằng các phương thức vòng đời chỉ được gọi khi chúng được khai báo. Vì vậy, chỉ khai báo các phương thức vòng đời `update` khi thực sự cần thiết, nếu không có thể ảnh hưởng đến hiệu suất nếu bạn có nhiều components với vòng lặp update không làm gì cả.
 
 | Tên phương thức | Mô tả |
 | -- | --
-| ``awake()`` | Phương thức đầu tiên được gọi khi một component mới được tạo
-| ``onEnable()`` | Được gọi khi một component được bật (ví dụ: khi ``enabled`` thay đổi từ false sang true)
-| ``onDisable()`` | Được gọi khi một component bị vô hiệu hóa (ví dụ: khi ``enabled`` thay đổi từ true sang false)
-| ``onDestroy()`` | Được gọi khi Object3D hoặc component đang bị hủy
-| ``start()`` | Được gọi khi bắt đầu khung hình đầu tiên sau khi component được tạo
-| ``earlyUpdate()`` | Sự kiện update đầu tiên
-| ``update()`` | Sự kiện update mặc định
-| ``lateUpdate()`` | Được gọi sau update
-| ``onBeforeRender()`` | Sự kiện update cuối cùng trước khi gọi render
-| ``onAfterRender()`` | Được gọi sau sự kiện render
+| `awake()` | Phương thức đầu tiên được gọi khi một component mới được tạo
+| `onEnable()` | Được gọi khi một component được bật (ví dụ: khi ``enabled`` thay đổi từ false sang true)
+| `onDisable()` | Được gọi khi một component bị vô hiệu hóa (ví dụ: khi ``enabled`` thay đổi từ true sang false)
+| `onDestroy()` | Được gọi khi Object3D hoặc component đang bị hủy
+| `start()` | Được gọi khi bắt đầu khung hình đầu tiên sau khi component được tạo
+| `earlyUpdate()` | Sự kiện update đầu tiên
+| `update()` | Sự kiện update mặc định
+| `lateUpdate()` | Được gọi sau update
+| `onBeforeRender()` | Sự kiện update cuối cùng trước khi gọi render
+| `onAfterRender()` | Được gọi sau sự kiện render
 
 ### Các phương thức sự kiện vật lý
 | Tên phương thức | Mô tả |
 | -- | --
-| ``onCollisionEnter(col : Collision)`` |
-| ``onCollisionStay(col : Collision)`` |
-| ``onCollisionExit(col : Collision)`` |
-| ``onTriggerEnter(col : Collision)`` |
-| ``onTriggerStay(col : Collision)`` |
-| ``onTriggerExit(col : Collision)`` |
+| `onCollisionEnter(col : Collision)` |
+| `onCollisionStay(col : Collision)` |
+| `onCollisionExit(col : Collision)` |
+| `onTriggerEnter(col : Collision)` |
+| `onTriggerStay(col : Collision)` |
+| `onTriggerExit(col : Collision)` |
 
 ### Các phương thức sự kiện đầu vào
 | Tên phương thức | Mô tả |
 | -- | --
-| ``onPointerEnter(args : PointerEventData)`` | Được gọi khi con trỏ bắt đầu di chuột qua một đối tượng (hoặc bất kỳ đối tượng con nào của nó)
-| ``onPointerMove(args : PointerEventData)`` | Được gọi khi con trỏ di chuyển qua một đối tượng (hoặc bất kỳ đối tượng con nào của nó)
-| ``onPointerExit(args : PointerEventData)`` | Được gọi khi con trỏ rời khỏi (dừng di chuột) một đối tượng
-| ``onPointerDown(args : PointerEventData)`` | Được gọi khi con trỏ được nhấn trên một đối tượng
-| ``onPointerUp(args : PointerEventData)`` | Được gọi khi con trỏ được nhả ra trên một đối tượng
-| ``onPointerClick(args : PointerEventData)`` | Được gọi khi con trỏ được nhấp trên một đối tượng
+| `onPointerEnter(args : PointerEventData)` | Được gọi khi con trỏ bắt đầu di chuột qua một đối tượng (hoặc bất kỳ đối tượng con nào của nó)
+| `onPointerMove(args : PointerEventData)` | Được gọi khi con trỏ di chuyển qua một đối tượng (hoặc bất kỳ đối tượng con nào của nó)
+| `onPointerExit(args : PointerEventData)` | Được gọi khi con trỏ rời khỏi (dừng di chuột) một đối tượng
+| `onPointerDown(args : PointerEventData)` | Được gọi khi con trỏ được nhấn trên một đối tượng
+| `onPointerUp(args : PointerEventData)` | Được gọi khi con trỏ được nhả ra trên một đối tượng
+| `onPointerClick(args : PointerEventData)` | Được gọi khi con trỏ được nhấp trên một đối tượng
 
 
 ### Các phương thức sự kiện XR
 *yêu cầu Needle Engine >= 3.32.0*
 | Tên phương thức | Mô tả |
 | -- | --
-| ``supportsXR(mode: XRSessionMode)`` | Tùy chọn implement nếu bạn chỉ muốn nhận các callback XR cho các chế độ XR cụ thể như ``immersive-vr`` hoặc ``immersive-ar``. Trả về ``true`` để thông báo cho hệ thống rằng bạn muốn nhận callback cho chế độ được truyền vào
-| ``onBeforeXR(mode: XRSessionMode, init: XRSessionInit)`` | Được gọi ngay trước khi XRSession được yêu cầu và có thể được sử dụng để sửa đổi đối tượng XRSessionInit
-| ``onEnterXR(args: NeedleXREventArgs)`` | Callback khi component này tham gia một xr session (hoặc trở nên hoạt động trong một XR session đang chạy)
-| ``onUpdateXR(args: NeedleXREventArgs)`` | Callback khi một xr session cập nhật (trong khi nó vẫn đang hoạt động trong XR session)
-| ``onLeaveXR(args: NeedleXREventArgs)`` | Callback khi component này thoát khỏi một xr session (hoặc khi nó trở nên không hoạt động trong một XR session đang chạy)
-| ``onControllerAdded(args: NeedleXRControllerEventArgs)`` | Callback khi một controller được kết nối/thêm trong khi đang trong một XR session HOẶC khi component tham gia một XR session đang chạy đã có controller được kết nối HOẶC khi component trở nên hoạt động trong một XR session đang chạy đã có controller được kết nối
-| ``onControllerRemoved(args: NeedleXRControllerEventArgs)`` | Callback khi một controller bị gỡ bỏ trong khi đang trong một XR session HOẶC khi component trở nên không hoạt động trong một XR session đang chạy
+| `supportsXR(mode: XRSessionMode)` | Tùy chọn implement nếu bạn chỉ muốn nhận các callback XR cho các chế độ XR cụ thể như ``immersive-vr`` hoặc ``immersive-ar``. Trả về ``true`` để thông báo cho hệ thống rằng bạn muốn nhận callback cho chế độ được truyền vào
+| `onBeforeXR(mode: XRSessionMode, init: XRSessionInit)` | Được gọi ngay trước khi XRSession được yêu cầu và có thể được sử dụng để sửa đổi đối tượng XRSessionInit
+| `onEnterXR(args: NeedleXREventArgs)` | Callback khi component này tham gia một xr session (hoặc trở nên hoạt động trong một XR session đang chạy)
+| `onUpdateXR(args: NeedleXREventArgs)` | Callback khi một xr session cập nhật (trong khi nó vẫn đang hoạt động trong XR session)
+| `onLeaveXR(args: NeedleXREventArgs)` | Callback khi component này thoát khỏi một xr session (hoặc khi nó trở nên không hoạt động trong một XR session đang chạy)
+| `onControllerAdded(args: NeedleXRControllerEventArgs)` | Callback khi một controller được kết nối/thêm trong khi đang trong một XR session HOẶC khi component tham gia một XR session đang chạy đã có controller được kết nối HOẶC khi component trở nên hoạt động trong một XR session đang chạy đã có controller được kết nối
+| `onControllerRemoved(args: NeedleXRControllerEventArgs)` | Callback khi một controller bị gỡ bỏ trong khi đang trong một XR session HOẶC khi component trở nên không hoạt động trong một XR session đang chạy
 
 #### Các sự kiện XR bổ sung
 
 | Tên phương thức | Mô tả |
 | -- | --
-| ``window.addEventListener("needle-xrsession-start")`` | CustomEvent được gọi khi XRSession bắt đầu. ``details`` chứa ``NeedleXRSession``
-| ``window.addEventListener("needle-xrsession-end")`` | CustomEvent được gọi khi XRSession bắt đầu. ``details`` chứa ``NeedleXRSession``
-| ``onXRSessionStart(args: { session:NeedleXRSession } )`` | Hook sự kiện toàn cục. Để hủy đăng ký sử dụng ``offXRSessionStart``
+| `window.addEventListener("needle-xrsession-start")` | CustomEvent được gọi khi XRSession bắt đầu. ``details`` chứa ``NeedleXRSession``
+| `window.addEventListener("needle-xrsession-end")` | CustomEvent được gọi khi XRSession bắt đầu. ``details`` chứa ``NeedleXRSession``
+| `onXRSessionStart(args: { session:NeedleXRSession } )` | Hook sự kiện toàn cục. Để hủy đăng ký sử dụng ``offXRSessionStart``
 
 
 ### Coroutines
@@ -216,13 +216,13 @@ Needle Engine cũng cung cấp một vài hook vòng đời mà bạn có thể 
 Các hook này có thể được chèn vào bất kỳ điểm nào trong ứng dụng web của bạn (ví dụ: trong phạm vi cấp cao nhất hoặc trong một svelte component)
 | Tên phương thức | Mô tả |
 | -- | --
-| ``onInitialized(cb, options)`` | Được gọi khi một ngữ cảnh mới được khởi tạo (trước khung hình đầu tiên)
-| ``onClear(cb, options)`` | Đăng ký một callback trước khi ngữ cảnh engine bị xóa
-| ``onDestroy(cb, options)`` | Đăng ký một callback trong engine trước khi ngữ cảnh bị hủy
-| ``onStart(cb, options)`` | Được gọi ngay sau khi component ``start`` ở đầu một khung hình
-| ``onUpdate(cb, options)`` | Được gọi ngay sau khi component ``update``
-| ``onBeforeRender(cb, options)`` | Được gọi trước khi gọi render
-| ``onAfterRender(cb, options)`` | Được gọi trước khi gọi render
+| `onInitialized(cb, options)` | Được gọi khi một ngữ cảnh mới được khởi tạo (trước khung hình đầu tiên)
+| `onClear(cb, options)` | Đăng ký một callback trước khi ngữ cảnh engine bị xóa
+| `onDestroy(cb, options)` | Đăng ký một callback trong engine trước khi ngữ cảnh bị hủy
+| `onStart(cb, options)` | Được gọi ngay sau khi components `start` ở đầu một khung hình
+| `onUpdate(cb, options)` | Được gọi ngay sau khi components `update`
+| `onBeforeRender(cb, options)` | Được gọi trước khi gọi render
+| `onAfterRender(cb, options)` | Được gọi sau khi gọi render
 
 Ví dụ ([Xem ví dụ trên stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts twoslash
@@ -251,7 +251,7 @@ setTimeout(()=> unsubscribe(), 1000);
 
 ## Tìm kiếm, thêm và xóa component
 
-Để truy cập các component khác, sử dụng các phương thức static trên ``GameObject`` hoặc các phương thức của ``this.gameObject``. Ví dụ, để truy cập một component ``Renderer`` trong đối tượng cha, sử dụng ``GameObject.getComponentInParent(this.gameObject, Renderer)`` hoặc ``this.gameObject.getComponentInParent(Renderer)``.
+Để truy cập các components khác, sử dụng các phương thức static trên ``GameObject`` hoặc các phương thức của ``this.gameObject``. Ví dụ, để truy cập một component ``Renderer`` trong đối tượng cha, sử dụng ``GameObject.getComponentInParent(this.gameObject, Renderer)`` hoặc ``this.gameObject.getComponentInParent(Renderer)``.
 
 **Ví dụ:**
 ```ts twoslash
@@ -270,13 +270,13 @@ export class MyComponent extends Behaviour {
 
 | Phương thức |  |
 | -- | --
-| ``GameObject.instantiate(Object3D, InstantiateOptions)`` | Tạo một instance mới của đối tượng này bao gồm các instance mới của tất cả các component của nó
-| ``GameObject.destroy(Object3D \| Component)`` | Hủy một component hoặc Object3D (và các component của nó)
+| ``GameObject.instantiate(Object3D, InstantiateOptions)`` | Tạo một instance mới của đối tượng này bao gồm các instance mới của tất cả các components của nó
+| ``GameObject.destroy(Object3D \| Component)`` | Hủy một component hoặc Object3D (và các components của nó)
 | ``GameObject.addNewComponent(Object3D, Type)`` | Thêm (và tạo) một component mới cho một loại vào đối tượng được cung cấp. Lưu ý rằng ``awake`` và ``onEnable`` đã được gọi khi component được trả về
-| ``GameObject.addComponent(Object3D, Component)`` | Di chuyển một instance component đến đối tượng được cung cấp. Hữu ích nếu bạn đã có một instance, ví dụ khi bạn tạo một component bằng ``new MyComponent()`` và sau đó đính kèm nó vào một đối tượng
+| ``GameObject.addComponent(Object3D, Component)`` | Di chuyển một component instance đến đối tượng được cung cấp. Hữu ích nếu bạn đã có một instance, ví dụ khi bạn tạo một component bằng ``new MyComponent()`` và sau đó đính kèm nó vào một đối tượng
 | ``GameObject.removeComponent(Component)`` | Xóa một component khỏi một gameObject
 | ``GameObject.getComponent(Object3D, Type)`` | Trả về component đầu tiên khớp với một loại trên đối tượng được cung cấp.
-| ``GameObject.getComponents(Object3D, Type)`` | Trả về tất cả các component khớp với một loại trên đối tượng được cung cấp.
+| ``GameObject.getComponents(Object3D, Type)`` | Trả về tất cả các components khớp với một loại trên đối tượng được cung cấp.
 | ``GameObject.getComponentInChildren`` | Tương tự như ``getComponent`` nhưng cũng tìm kiếm trong các đối tượng con.
 | ``GameObject.getComponentsInChildren`` | Tương tự như ``getComponents`` nhưng cũng tìm kiếm trong các đối tượng con.
 | ``GameObject.getComponentInParent`` | Tương tự như ``getComponent`` nhưng cũng tìm kiếm trong các đối tượng cha.
@@ -289,10 +289,10 @@ export class MyComponent extends Behaviour {
 Ngữ cảnh đề cập đến runtime bên trong một [web component](https://developer.mozilla.org/en-US/docs/Web/Web_Components).
 Cảnh three.js nằm bên trong một custom HTML component có tên ``<needle-engine>`` (xem *index.html* trong dự án của bạn). Bạn có thể truy cập web component ``<needle-engine>`` bằng cách sử dụng ``this.context.domElement``.
 
-Kiến trúc này cho phép có khả năng có nhiều cảnh WebGL của needle trên cùng một trang web, có thể chạy độc lập hoặc giao tiếp với nhau như các phần của trang web của bạn.
+Kiến trúc này cho phép có khả năng có nhiều Needle WebGL scenes trên cùng một trang web, có thể chạy độc lập hoặc giao tiếp với nhau như các phần của trang web của bạn.
 
 ### Truy cập cảnh
-Để truy cập cảnh hiện tại từ một component, bạn sử dụng ``this.scene``, tương đương với ``this.context.scene``, điều này cung cấp cho bạn đối tượng scene root của three.js.
+Để truy cập cảnh hiện tại từ một component, bạn sử dụng ``this.scene``, tương đương với ``this.context.scene``, điều này cung cấp cho bạn đối tượng scene root three.js.
 
 Để duyệt qua hệ thống phân cấp từ một component, bạn có thể lặp qua các đối tượng con của một đối tượng
 bằng vòng lặp for:
@@ -313,13 +313,13 @@ this.gameObject.traverse((obj: Object3D) => console.log(obj));
 ```
 hoặc để chỉ duyệt qua các đối tượng hiển thị, sử dụng [`traverseVisible`](https://threejs.org/docs/#api/en/core/Object3D.traverseVisible) thay thế.
 
-Một tùy chọn khác khá hữu ích khi bạn chỉ muốn lặp qua các đối tượng có thể kết xuất (renderable), bạn có thể truy vấn tất cả các component renderer và lặp qua chúng như sau:
+Một tùy chọn khác khá hữu ích khi bạn chỉ muốn lặp qua các đối tượng có thể kết xuất (renderable), bạn có thể truy vấn tất cả các components Renderer và lặp qua chúng như sau:
 ```ts twoslash
 import { Renderer } from "@needle-tools/engine";
 for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
     console.log(renderer);
 ```
-Để biết thêm thông tin về việc lấy component, xem phần tiếp theo.
+Để biết thêm thông tin về việc lấy components, xem phần tiếp theo.
 
 ### Thời gian
 Sử dụng ``this.context.time`` để truy cập dữ liệu thời gian:
@@ -328,7 +328,7 @@ Sử dụng ``this.context.time`` để truy cập dữ liệu thời gian:
 - ``this.context.time.frameCount`` là số lượng khung hình đã trôi qua kể từ khi ứng dụng bắt đầu
 - ``this.context.time.realtimeSinceStartup`` là thời gian không được chia tỷ lệ kể từ khi ứng dụng bắt đầu chạy
 
-Cũng có thể sử dụng ``this.context.time.timeScale`` để cố ý làm chậm thời gian cho các hiệu ứng chuyển động chậm (slow motion).
+Cũng có thể sử dụng ``this.context.time.timeScale`` để cố ý làm chậm thời gian cho các hiệu ứng slow motion.
 
 ### Đầu vào
 Nhận dữ liệu đầu vào cho đối tượng mà component đang ở trên:
@@ -365,7 +365,7 @@ export class MyScript extends Behaviour
 Hoặc sử dụng ``this.context.input`` nếu bạn muốn kiểm tra trạng thái đầu vào (poll input state) mỗi khung hình:
 
 ```ts twoslash
-import { Behaviour } from "@needle-tools/engine";
+import { Behaviour } => "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
     update() {
@@ -393,23 +393,23 @@ export class MyScript extends Behaviour
     windowClick = () => { console.log("CLICK anywhere on the page, not just on <needle-engine>"); }
 }
 ```
-Lưu ý rằng trong trường hợp này, bạn phải tự xử lý tất cả các trường hợp. Ví dụ, bạn có thể cần sử dụng các sự kiện khác nhau nếu người dùng truy cập trang web của bạn trên máy tính để bàn so với thiết bị di động so với thiết bị VR. Các trường hợp này được tự động xử lý bởi các sự kiện đầu vào của Needle Engine (ví dụ: ``PointerDown`` được kích hoạt cho cả chuột nhấn, chạm màn hình và trong trường hợp VR là nút controller nhấn).
+Lưu ý rằng trong trường hợp này, bạn phải tự xử lý tất cả các trường hợp. Ví dụ, bạn có thể cần sử dụng các sự kiện khác nhau nếu người dùng truy cập trang web của bạn trên desktop so với mobile so với một VR device. Các trường hợp này được tự động xử lý bởi các sự kiện đầu vào của Needle Engine (ví dụ: ``PointerDown`` được kích hoạt cho cả mouse down, touch down và trong trường hợp VR là controller button down).
 
 ### Raycasting
 
-Sử dụng ``this.context.physics.raycast()`` để thực hiện một raycast và nhận danh sách các giao điểm. Nếu bạn không truyền bất kỳ tùy chọn nào, raycast được thực hiện từ vị trí chuột (hoặc vị trí chạm đầu tiên) trong không gian màn hình (screenspace) bằng cách sử dụng ``mainCamera`` đang hoạt động. Bạn cũng có thể truyền vào một đối tượng ``RaycastOptions`` có nhiều cài đặt khác nhau như ``maxDistance``, camera được sử dụng hoặc các lớp (layers) để kiểm tra.
+Sử dụng ``this.context.physics.raycast()`` để thực hiện một raycast và nhận danh sách các giao điểm. Nếu bạn không truyền bất kỳ tùy chọn nào, raycast được thực hiện từ vị trí chuột (hoặc vị trí chạm đầu tiên) trong screenspace bằng cách sử dụng ``mainCamera`` đang hoạt động. Bạn cũng có thể truyền vào một đối tượng ``RaycastOptions`` có nhiều cài đặt khác nhau như ``maxDistance``, camera được sử dụng hoặc các layers để kiểm tra.
 
 Sử dụng ``this.context.physics.raycastFromRay(your_ray)`` để thực hiện một raycast bằng cách sử dụng một [three.js ray](https://threejs.org/docs/#api/en/math/Ray).
 
-> **Lưu ý**: Loại raycast này chiếu một tia (ray) vào tất cả các đối tượng hiển thị trong cảnh. Không cần physics engine, điều này khác với hành vi trong Unity, nơi bạn luôn cần collider để va chạm với đối tượng. Nếu bạn muốn chiếu chỉ vào các physics collider, sử dụng các phương thức ``physics.engine.raycast`` được mô tả dưới đây.
+> **Lưu ý**: Loại raycast này chiếu một tia (ray) vào tất cả các đối tượng hiển thị trong cảnh. Không cần physics engine, điều này khác với hành vi trong Unity, nơi bạn luôn cần colliders để va chạm với đối tượng. Nếu bạn muốn chiếu chỉ vào các physics colliders, sử dụng các phương thức ``physics.engine.raycast`` được mô tả dưới đây.
 
 #### Cân nhắc hiệu suất
 
-Khi sử dụng cài đặt nén mặc định của Needle, các phiên bản lưới (mesh) được đơn giản hóa sẽ được tự động tạo và cũng được sử dụng cho raycasting. Tuy nhiên, một số loại lưới vẫn chậm – ví dụ, skinned mesh hoặc mesh có blendshape yêu cầu các phép tính tốn kém để xác định va chạm chính xác. Cân nhắc đặt các đối tượng đó vào lớp ``Ignore Raycast`` trong Unity để tránh raycasting vào chúng.
+Khi sử dụng cài đặt nén mặc định của Needle, các phiên bản mesh được đơn giản hóa sẽ được tự động tạo và cũng được sử dụng cho raycasting. Tuy nhiên, một số loại mesh vẫn chậm – ví dụ, skinned meshes hoặc meshes có blendshapes yêu cầu các phép tính tốn kém để xác định va chạm chính xác. Cân nhắc đặt các đối tượng đó vào lớp ``Ignore Raycast`` trong Unity để tránh raycasting vào chúng.
 
 #### Raycasting dựa trên vật lý
 
-Một tùy chọn khác là sử dụng các phương thức raycast vật lý sẽ chỉ trả về các va chạm với collider trong cảnh.
+Một tùy chọn khác là sử dụng các phương thức raycast vật lý sẽ chỉ trả về các va chạm với colliders trong cảnh.
 
 ```ts twoslash
 const hit = this.context.physics.engine?.raycast();
@@ -418,13 +418,13 @@ const hit = this.context.physics.engine?.raycast();
 Dưới đây là một [ví dụ có thể chỉnh sửa cho physics raycast](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore)
 
 ### Mạng
-Các phương thức mạng có thể được truy cập thông qua ``this.context.connection``. Vui lòng tham khảo [tài liệu mạng](./networking.md) để biết thêm thông tin.
+Các phương thức mạng có thể được truy cập thông qua ``this.context.connection``. Vui lòng tham khảo các [networking docs](./networking.md) để biết thêm thông tin.
 
 
-## Truy cập Needle Engine và component từ bất cứ đâu
-Có thể truy cập tất cả chức năng được mô tả ở trên bằng cách sử dụng mã JavaScript thông thường không nằm bên trong các component và nằm ở nơi khác. Tất cả các component và chức năng của runtime của needle đều có thể truy cập thông qua namespace toàn cục ``Needle`` (bạn có thể viết ``console.log(Needle)`` để có cái nhìn tổng quan).
+## Truy cập Needle Engine và components từ bất cứ đâu
+Có thể truy cập tất cả chức năng được mô tả ở trên bằng cách sử dụng mã JavaScript thông thường không nằm bên trong các components và nằm ở nơi khác. Tất cả các components và chức năng của runtime của needle đều có thể truy cập thông qua namespace toàn cục ``Needle`` (bạn có thể viết ``console.log(Needle)`` để có cái nhìn tổng quan).
 
-Bạn có thể tìm component bằng cách sử dụng ``Needle.findObjectOfType(Needle.AudioSource)`` chẳng hạn. Nên lưu trữ các tham chiếu này vào bộ nhớ cache, vì việc tìm kiếm toàn bộ cảnh lặp đi lặp lại tốn kém. Xem danh sách về [tìm kiếm, thêm và xóa component](#finding-adding-and-removing-components) ở trên.
+Bạn có thể tìm components bằng cách sử dụng ``Needle.findObjectOfType(Needle.AudioSource)`` chẳng hạn. Nên lưu trữ các tham chiếu này vào bộ nhớ cache, vì việc tìm kiếm toàn bộ cảnh lặp đi lặp lại tốn kém. Xem danh sách về [tìm kiếm, thêm và xóa components](#finding-adding-and-removing-components) ở trên.
 
 Để nhận các callback khi tải cảnh ban đầu, xem ví dụ sau:
 ```js
@@ -457,7 +457,7 @@ Bạn cũng có thể truy cập tất cả các ngữ cảnh có sẵn thông q
 Dưới đây là danh sách các sự kiện khả dụng trên kiểu ``NeedleEngine`` static.
 Bạn có thể đăng ký các sự kiện này thông qua ``NeedleEngine.registerCallback(ContextEvent.ContextCreated, (args) => {})``.
 
-| Các tùy chọn ContextEvent | |
+| ContextEvent options | |
 |---|---|
 | ``ContextEvent.ContextRegistered`` | Được gọi khi ngữ cảnh được đăng ký vào registry. |
 | ``ContextEvent.ContextCreationStart`` | Được gọi trước khi glb đầu tiên được tải và có thể được sử dụng để khởi tạo physics engine. Có thể trả về một promise |
@@ -474,38 +474,38 @@ Tất cả các hàm gizmos đều có nhiều tùy chọn, ví dụ: màu sắc
 
 | Gizmos | |
 | -- | -- |
-| ``Gizmos.DrawLabel`` | Vẽ một nhãn tùy chọn có nền. Có thể đính kèm vào một đối tượng. Trả về một handle Label có thể được sử dụng để cập nhật văn bản. |
+| ``Gizmos.DrawLabel`` | Vẽ một Label với nền tùy chọn. Có thể đính kèm vào một đối tượng. Trả về một Label handle có thể được sử dụng để cập nhật văn bản. |
 | ``Gizmos.DrawRay`` | Nhận một điểm gốc và hướng trong worldspace để vẽ một đường ray vô hạn |
 | ``Gizmos.DrawDirection`` | Nhận một điểm gốc và hướng để vẽ một hướng trong worldspace |
-| ``Gizmos.DrawLine`` | Nhận hai điểm vec3 trong worldspace để vẽ một đường thẳng |
-| ``Gizmos.DrawWireSphere`` | Vẽ một quả cầu khung dây (wireframe) trong worldspace |
-| ``Gizmos.DrawSphere`` | Vẽ một quả cầu đặc trong worldspace |
-| ``Gizmos.DrawWireBox`` | Vẽ một hộp khung dây (wireframe) trong worldspace |
-| ``Gizmos.DrawWireBox3`` | Vẽ một hộp wireframe box3 |
-| ``Gizmos.DrawArrow`` | Vẽ một mũi tên nhận hai điểm trong worldspace |
+| ``Gizmos.DrawLine`` | Nhận hai điểm vec3 worldspace để vẽ một đường thẳng |
+| ``Gizmos.DrawWireSphere`` | Vẽ một wireframe sphere trong worldspace |
+| ``Gizmos.DrawSphere`` | Vẽ một solid sphere trong worldspace |
+| ``Gizmos.DrawWireBox`` | Vẽ một wireframe box trong worldspace |
+| ``Gizmos.DrawWireBox3`` | Vẽ một wireframe box3 |
+| ``Gizmos.DrawArrow`` | Vẽ một arrow nhận hai điểm trong worldspace |
 
 
-## Tuần tự hóa (Serialization) / Component trong tệp glTF
-Để nhúng component và tạo lại component với các kiểu chính xác trong glTF, chúng ta cũng cần lưu các kiểu không nguyên thủy (mọi thứ không phải là ``Number``, ``Boolean`` hoặc ``String``). Bạn có thể làm điều đó bằng cách thêm decorator ``@serializable(<type>)`` phía trên trường dữ liệu hoặc thuộc tính của bạn.
+## Serialization / Components trong tệp glTF
+Để nhúng components và tạo lại components với các kiểu chính xác trong glTF, chúng ta cũng cần lưu các kiểu không nguyên thủy (mọi thứ không phải là ``Number``, ``Boolean`` hoặc ``String``). Bạn có thể làm điều đó bằng cách thêm decorator ``@serializable(<type>)`` phía trên trường dữ liệu hoặc thuộc tính của bạn.
 
 **Ví dụ:**
 @[code ts twoslash](@code/component-object-reference.ts)
 
-Để tuần tự hóa từ và sang các định dạng tùy chỉnh, có thể mở rộng từ lớp ``TypeSerializer`` và tạo một instance. Sử dụng ``super()`` trong hàm tạo (constructor) để đăng ký các kiểu được hỗ trợ.
+Để serialize từ và sang các định dạng tùy chỉnh, có thể mở rộng từ lớp ``TypeSerializer`` và tạo một instance. Sử dụng ``super()`` trong constructor để đăng ký các kiểu được hỗ trợ.
 
 > **Lưu ý**: Ngoài các trường dữ liệu khớp, các thuộc tính khớp cũng sẽ được xuất khi chúng khớp với các trường dữ liệu trong tệp typescript.
 
 ## Tải cảnh
-Trong Unity, các Prefab, SceneAsset và AssetReference (Unity's Addressable System) được tham chiếu sẽ tự động được xuất dưới dạng tệp glTF (vui lòng tham khảo tài liệu [Export Prefabs](export.md)).
+Trong Unity, các Prefabs, SceneAssets và AssetReferences (Unity's Addressable System) được tham chiếu sẽ tự động được xuất dưới dạng tệp glTF (vui lòng tham khảo tài liệu [Export Prefabs](export.md)).
 
-Các tệp gltf đã xuất này sẽ được tuần tự hóa dưới dạng URI chuỗi đơn giản. Để đơn giản hóa việc tải chúng từ các component TypeScript, chúng tôi đã thêm khái niệm về các kiểu ``AssetReference``. Chúng có thể được tải ở runtime và do đó cho phép hoãn việc tải các phần của ứng dụng hoặc tải nội dung bên ngoài.
+Các tệp glTF đã xuất này sẽ được serialize dưới dạng plain string URIs. Để đơn giản hóa việc tải chúng từ các components TypeScript, chúng tôi đã thêm khái niệm về các kiểu ``AssetReference``. Chúng có thể được tải ở runtime và do đó cho phép hoãn việc tải các phần của ứng dụng hoặc tải nội dung bên ngoài.
 
 **Ví dụ:**
 @[code ts twoslash](@code/component-prefab.ts)
 
-AssetReference được lưu vào bộ nhớ cache bằng URI, vì vậy nếu bạn tham chiếu cùng một tệp glTF/Prefab đã xuất trong nhiều component/script, nó sẽ chỉ được tải một lần và sau đó được tái sử dụng.
+AssetReferences được lưu vào bộ nhớ cache bằng URI, vì vậy nếu bạn tham chiếu cùng một tệp glTF/Prefab đã xuất trong nhiều components/scripts, nó sẽ chỉ được tải một lần và sau đó được tái sử dụng.
 
 # Các bước tiếp theo
 
-
+---
 Trang được dịch tự động bằng AI

@@ -1,11 +1,12 @@
 ---
-title: Everywhere Actions
+title: Everywhere Actions — Experiências interativas em Desktop, Android e iOS (mesmo em AR)
+description: As Everywhere Actions da Needle são um conjunto de componentes cuidadosamente selecionados que permitem criar experiências interativas no Unity sem escrever uma única linha de código. Foram concebidas para servir como blocos de construção para experiências na web, mobile e XR, **incluindo Realidade Aumentada no iOS**. A partir de triggers e actions de baixo nível, podem ser construídos comportamentos interativos complexos de nível superior.
 ---
 
 ## O que são Everywhere Actions?
 
-As Everywhere Actions da Needle são um conjunto de componentes cuidadosamente selecionados que permitem criar experiências interativas em Unity sem escrever uma única linha de código.
-São desenhadas para servir como blocos de construção para experiências na web, mobile e XR, **incluindo Realidade Aumentada em iOS**.
+As Everywhere Actions da Needle são um conjunto de componentes cuidadosamente selecionados que permitem criar experiências interativas no Unity sem escrever uma única linha de código.
+Foram concebidas para servir como blocos de construção para experiências na web, mobile e XR, **incluindo Realidade Aumentada no iOS**.
 
 A partir de triggers e actions de baixo nível, podem ser construídos comportamentos interativos complexos de nível superior.
 
@@ -20,7 +21,7 @@ A partir de triggers e actions de baixo nível, podem ser construídos comportam
 
 Para suporte iOS, adicione o componente `USDZExporter` à sua cena. É uma boa prática adicioná-lo ao mesmo objeto que o componente `WebXR` (mas não é obrigatório).
 
-Para adicionar uma action a qualquer objeto na sua cena
+Para adicionar uma action a qualquer objeto na sua cena,
 selecione-o e depois clique em `Add Component > Needle > Everywhere Actions > [Action]`.
 
 ![](/imgs/everywhere-actions-component-menu.gif)
@@ -55,13 +56,16 @@ Demonstra a combinação de animações, "olhar para" e movimento.
 
 ### Rastreamento de Imagem
 
-Demonstra como anexar conteúdo 3D a um marcador de imagem personalizado. Inicie a cena abaixo em AR e aponte a câmara do seu telemóvel para o marcador de imagem num ecrã, ou imprima-o.
+Demonstra como anexar conteúdo 3D a um marcador de imagem personalizado.
+Inicie a cena abaixo em AR e aponte a câmara do seu telemóvel para o marcador de imagem num ecrã, ou imprima-o.
+
+:::info Rastreamento de Imagem WebXR no Android
+**No Android**, por favor, ative "WebXR Incubations" nas Chrome Flags. Pode encontrá-las colando [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) na barra de endereço do navegador Chrome do seu telemóvel Android.
+:::
+
+[Leia mais sobre Rastreamento de Imagem com Needle Engine](./webxr-image-tracking.md)
 
 <img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Marcador de Imagem" width=300 />
-
-<a href="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" target="_blank">Descarregar Marcador de Imagem de Exemplo</a>
-
-**Em Android:** por favor, ative "WebXR Incubations" nos Chrome Flags. Pode encontrá-los colando [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) na barra de endereço do navegador Chrome do seu telemóvel Android.
 
 <sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
 
@@ -69,22 +73,22 @@ Demonstra como anexar conteúdo 3D a um marcador de imagem personalizado. Inicie
 
 <sample src="https://engine.needle.tools/samples-uploads/usdz-interactivity" />
 
-## Criar as suas próprias Everywhere Actions
+## Crie as suas próprias Everywhere Actions
 
-Criar novas Everywhere Actions envolve escrever código para a sua action em TypeScript, que será usado no navegador e para WebXR, e usar a nossa API TriggerBuilder e ActionBuilder para criar uma configuração correspondente para Realidade Aumentada em iOS via QuickLook. Ao criar actions personalizadas, tenha em mente que o QuickLook tem um conjunto limitado de funcionalidades disponíveis. Ainda pode usar qualquer código que queira para o navegador e WebXR, mas o comportamento para QuickLook pode precisar ser uma aproximação construída a partir dos triggers e actions disponíveis.
+A criação de novas Everywhere Actions envolve escrever código para a sua action em TypeScript, que será usado no navegador e para WebXR, e usar a nossa API TriggerBuilder e ActionBuilder para criar uma configuração correspondente para Realidade Aumentada no iOS via QuickLook. Ao criar actions personalizadas, tenha em mente que o QuickLook tem um conjunto limitado de funcionalidades disponíveis. Pode ainda usar qualquer código que queira para o navegador e WebXR, mas o comportamento para o QuickLook pode precisar de ser uma aproximação construída a partir dos triggers e actions disponíveis.
 
 :::tip
-Muitas vezes, construir comportamentos específicos requer pensar de forma criativa e aplicar as actions de baixo nível disponíveis. Um exemplo seria uma action "Tocar para Colocar" – não há raycasting ou hit testing disponível no QuickLook, mas pode cobrir a área de colocação esperada com vários objetos invisíveis e usar um trigger "Tap" para mover o objeto a ser colocado para a posição do objeto invisível tocado.
+Muitas vezes, construir comportamentos específicos requer pensar fora da caixa e aplicar criativamente as actions de baixo nível disponíveis. Um exemplo seria uma action "Tocar para Colocar" – não há raycasting ou hit testing disponível no QuickLook, mas pode cobrir a área de colocação esperada com vários objetos invisíveis e usar um trigger "Tap" para mover o objeto a ser colocado para a posição do objeto invisível tocado.
 :::
 
-Triggers e Actions para QuickLook são baseados nos [Apple's Preliminary Interactive USD Schemas](https://developer.apple.com/documentation/arkit/usdz_schemas_for_ar/actions_and_triggers)
+Triggers e Actions para QuickLook são baseados nos [Esquemas USD Interativos Preliminares da Apple](https://developer.apple.com/documentation/arkit/usdz_schemas_for_ar/actions_and_triggers)
 
 ### Exemplo de Código
 
 Aqui está a implementação para `HideOnStart` como exemplo de como criar uma Everywhere Action com implementações para o navegador e para QuickLook:
 @[code ts twoslash](@code/component-everywhere-action-hideonstart.ts)
 
-::: tip
+:::tip
 Frequentemente, obter o comportamento certo envolverá compor _actions de nível superior_ a partir das _actions de nível inferior_ disponíveis. Por exemplo, a nossa action "Change Material on Click" é composta por várias `fadeActions` e internamente duplica objetos com diferentes conjuntos de materiais cada. Ao construir cuidadosamente estas actions, podem ser alcançados comportamentos complexos.
 :::
 
@@ -115,14 +119,16 @@ Frequentemente, obter o comportamento certo envolverá compor _actions de nível
 | `GroupAction.makeLooping` | |
 | `GroupAction.makeRepeat` | |
 
-Para ver a implementação das nossas Everywhere Actions integradas, por favor, consulte `src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`.
+Para ver a implementação das nossas Everywhere Actions incorporadas, por favor, consulte `src/engine-components/export/usdz/extensions/behavior/BehaviourComponents.ts`.
 
-## Leitura adicional
+## Referências
+- [Comportamentos USD Preliminares da Apple](https://developer.apple.com/augmented-reality/quick-look/)
 
-As seguintes páginas fornecem mais exemplos e samples que pode testar e explorar agora mesmo:
+## Leitura Adicional
 
-- Visite o nosso [Website AR Showcase](https://engine.needle.tools/projects/ar-showcase/) que tem muitos exemplos de AR interativos com foco em iOS AR & Quicklook
-- [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- [Visite o nosso Website de Demonstração de AR](https://engine.needle.tools/projects/ar-showcase/) que tem muitos exemplos de AR interativos com foco em iOS AR & Quicklook
+- [Exemplos de Everywhere Actions do Needle Engine](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- [Rastreamento de Imagem com Needle Engine](./webxr-image-tracking.md)
 
 
 Página traduzida automaticamente usando IA

@@ -2,8 +2,15 @@
 title: Configuración de <needle-engine>
 ---
 
-El componente web `<needle-engine>` viene con una buena colección de atributos incorporados que se pueden usar para modificar la apariencia de la escena cargada sin necesidad de añadir o editar la escena three.js directamente.
-La siguiente tabla muestra una lista de los más importantes:
+## Atributos del componente web de Needle Engine
+
+Needle Engine está disponible como un componente web: `<needle-engine>`. Este componente se puede usar para cargar y mostrar escenas 3D, modelos y más en un navegador web. Viene con un conjunto de atributos que permiten configurar su comportamiento, aspecto y sensación. Todas estas configuraciones pueden ser sobrescritas por código, pero los atributos son una forma conveniente de configurarlas en HTML.
+
+::: tip El componente web está en `index.html`
+Ya sea creando un proyecto a través de Unity o Blender, o directamente en código, puedes usar y ajustar el componente web `<needle-engine>`. Normalmente, lo encontrarás en el archivo `index.html` de tu proyecto web.
+:::
+
+La tabla a continuación muestra una lista de los atributos disponibles y sus descripciones.
 
 | Atributo | Descripción |
 | --- | --- |
