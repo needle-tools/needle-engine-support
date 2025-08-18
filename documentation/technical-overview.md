@@ -61,12 +61,6 @@ More extensions and custom extensions can be added using the export callbacks of
 
 [Learn more about GLTF loading in three.js](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
 
-### Compression
-
-For production, we compress glTF assets with [`glTF-transform`](https://gltf-transform.donmccurdy.com/). Textures use either `etc1s`, `uastc`, `webp` or no compression, depending on texture type. Meshes use `draco` by default but can be configured to use `meshtopt` (per glTF file). Custom extensions are passed through in an opaque way.  
-
-See the [deployment & compression](./deployment.md#optimization-and-compression-options) page for more information
-
 
 ## Vendor-specific glTF Extensions (NEEDLE_*)
 
