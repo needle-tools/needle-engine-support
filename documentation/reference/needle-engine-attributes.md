@@ -33,7 +33,7 @@ The table below shows a list of available attributes and their descriptions.
 | `auto-rotate` | add to enable auto-rotate (only used with `camera-controls`) |
 | **Events** | |
 | `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
-| `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number}) { ... }`   |
+| `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number, progress:ProgressEvent}) { ... }`   |
 | `loadfinished` | Name of the function to call when loading finishes | 
 | **Loading Display** | *Available options to change how the Needle Engine loading display looks. Use `?debugloadingrendering` for easier editing* |
 | `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
@@ -70,10 +70,15 @@ Setting environment images, playing animation and automatic camera controls. [Se
       </needle-engine>
 ```
 
-Receiving an event when the needle-engine context has finished loading:
+Receiving loading events:
 ```html
-<needle-engine loadfinished="onLoadFinished"> </needle-engine>
+<needle-engine progress="onProgress" loadfinished="onLoadFinished"> </needle-engine>
 <script>
+    function onProgress(ctx, event) {
+        const progress01 = evt.detail.totalProgress01;
+        console.log(progress01);
+    }
+
     function onLoadFinished() {
         console.log("Needle Engine has finished loading");
     }
