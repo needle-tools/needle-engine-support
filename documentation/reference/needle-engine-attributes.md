@@ -20,6 +20,10 @@ The table below shows a list of available attributes and their descriptions.
 | `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
 | `loading-logo-src` | **PRO** — Change the loading logo image (e.g. `https://yourdomain.com/logo.png` or `/logo.png`) |
 | `hide-loading-overlay` | **PRO** — Do not show the loading overlay
+| **Events** | |
+| `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
+| `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number, progress:ProgressEvent}) { ... }`   |
+| `loadfinished` | Name of the function to call when loading finishes | 
 | **Rendering** | |
 | `background-color` | optional, hex color to be used as a background color. Examples: `rgb(255, 200, 100)`, `#dddd00` | 
 | `background-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` | 
@@ -32,10 +36,6 @@ The table below shows a list of available attributes and their descriptions.
 | `autoplay` | add or set to `true` to auto play animations e.g. `<needle-engine autoplay` | 
 | `camera-controls` | add or set to `true` to automatically add OrbitControls if no camera controls are found in the scene |
 | `auto-rotate` | add to enable auto-rotate (only used with `camera-controls`) |
-| **Events** | |
-| `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
-| `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number, progress:ProgressEvent}) { ... }`   |
-| `loadfinished` | Name of the function to call when loading finishes | 
 | **Advanced** | *Available options to change how the Needle Engine loading display looks. Use `?debugloadingrendering` for easier editing* |
 | `dracoDecoderPath` | URL to the draco decoder e.g. `./include/draco/` to use the local Draco decoder |
 | `dracoDecoderType` | draco decoder type. Options are `wasm` or `js`. See [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
