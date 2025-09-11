@@ -6,7 +6,7 @@ title: Needle Core Components
 
 Here is a overview of some of the components that we provide. Many of them map to components and functionality in Unity, Blender or other integrations.
 
-For a complete list please have a look at our [API docs](https://engine.needle.tools/docs/api/latest).
+For a complete list please have a look at our [API docs](https://engine.needle.tools/docs/api).
 
 You can always add your own components or add wrappers for Unity components we haven't provided yet.  
 
@@ -15,39 +15,43 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 ## Audio
 | Name  | Description |
 | ------------- | ------------- |
-| `AudioListener` |  |
-| `AudioSource` | Use to play audio |
+| [`AudioListener`](https://engine.needle.tools/docs/api/AudioListener) |  |
+| [`AudioSource`](https://engine.needle.tools/docs/api/AudioSource) | Use to play audio |
 
 ## Animation
 | Name  | Description |
 | ------------- | ------------- |
-| `Animator` with `AnimatorController` | Export with animation state machine, conditions, transitions  |
-| `Animation` | Most basic animation component. Only first clip is exported |
-| `PlayableDirector` with `TimelineAsset` | Export powerful sequences to control animation, audio, state and more |
+| [`Animator`](https://engine.needle.tools/docs/api/Animator) with `AnimatorController` | Export with animation state machine, conditions, transitions  |
+| [`Animation`](https://engine.needle.tools/docs/api/Animation) | Most basic animation component. Only first clip is exported |
+| [`PlayableDirector`](https://engine.needle.tools/docs/api/PlayableDirector) with `TimelineAsset` | Export powerful sequences to control animation, audio, state and more |
 
 ## Rendering
 | Name  | Description |
 | ------------- | ------------- |
-| `Camera` |  |
-| `Light` | DirectionalLight, PointLight, Spotlight. Note that you can use it to bake light (e.g. Rectangular Light shapes) as well |
-| `XRFlag` | Control when objects will be visible. E.g. only enable object when in AR  |
-| `DeviceFlag` | Control on which device objects will be visible  |
-| `LODGroup` |  |
-| `ParticleSystem` | Experimental and currently not fully supported |
-| `VideoPlayer` | Playback videos from url or referenced video file (will be copied to output on export). The VideoPlayer also supports streaming from MediaStream objects or `M3U8` livestream URLs |
-| `MeshRenderer` | Used to handle rendering of objects including lightmapping and instancing |
-| `SkinnedMeshRenderer` | *See MeshRenderer* |
-| `SpriteRenderer` | Used to render Sprites and Spriteanimations |
-| `Volume` with `PostProcessing` asset | See [table below](#postprocessing) |
+| [`Camera`](https://engine.needle.tools/docs/api/Camera) |  |
+| [`Light`](https://engine.needle.tools/docs/api/Light) | DirectionalLight, PointLight, Spotlight. Note that you can use it to bake light (e.g. Rectangular Light shapes) as well |
+| [`XRFlag`](https://engine.needle.tools/docs/api/XRFlag) | Control when objects will be visible. E.g. only enable object when in AR  |
+| [`DeviceFlag`](https://engine.needle.tools/docs/api/DeviceFlag) | Control on which device objects will be visible  |
+| [`ParticleSystem`](https://engine.needle.tools/docs/api/ParticleSystem) | Experimental and currently not fully supported |
+| [`VideoPlayer`](https://engine.needle.tools/docs/api/VideoPlayer) | Playback videos from url or referenced video file (will be copied to output on export). The VideoPlayer also supports streaming from MediaStream objects or `M3U8` livestream URLs |
+| [`MeshRenderer`](https://engine.needle.tools/docs/api/MeshRenderer) | Used to handle rendering of objects including lightmapping and instancing |
+| [`SkinnedMeshRenderer`](https://engine.needle.tools/docs/api/SkinnedMeshRenderer) | *See MeshRenderer* |
+| [`SpriteRenderer`](https://engine.needle.tools/docs/api/SpriteRenderer) | Used to render Sprites and Spriteanimations |
+| [`Volume`](https://engine.needle.tools/docs/api/Volume) with `PostProcessing` asset | See [table below](#postprocessing) |
 
 ### Postprocessing
 
 Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs.com/package/postprocessing) under the hood. This means you can also easily add your own custom effects and get an automatically optimized postprocessing pass.
 
-- **Unity only**: *Note that Postprocessing effects using a Volume in Unity is only supported with URP*
+:::tip For Unity Users
+For Needle Engine Postprocessing in Unity you need to use URP (Universal Render Pipeline)
+:::
 
-| Effect Name | |
+
+|  | |
 | --- | --- | 
+| [`Volume`](https://engine.needle.tools/docs/api/Volume) | Add effects below |
+| **Effects** | |
 | Antialiasing | *extra Unity Component* |
 | Bloom | *via Volume asset* |
 | Chromatic Aberration | *via Volume asset* |
@@ -66,19 +70,15 @@ Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs
 | Name  | Description |
 | ------------- | ------------- |
 | `SyncedRoom` | Main networking component. Put in your scene to enable networking |
-| `Networking` | Used to setup backend server for networking. |
+| `Networking` | Used to setup a custom backend server for networking. If none is provided the default Needle websocket servers will be used. |
 | `SyncedTransform` | Automatically network object transformation |
 | `SyncedCamera` | Automatically network camera position and view to other users in room. You can define how the camera is being rendered by referencing an object |
-| `WebXRSync` | Networks WebXR avatars (AR and VR) |
-| `Voip` | Enables voice-chat |
-| `Screensharing` | Enables screen-sharing capabilities |
+| `Voip` | Enables voice-chat ([Sample](https://samples.needle.tools/collaborative-sandbox)) |
+| `Screensharing` | Enables screen-sharing capabilities ([Sample](https://samples.needle.tools/screensharing)) |
 
 ## Interaction
 | Name  | Description |
 | ------------- | ------------- |
-| `EventSystem` | Handles raising pointer events and UI events on objects in the scene |
-| `ObjectRaycater` | Required for DragControls and Duplicatable |
-| `GraphicsRaycaster` | Same as ObjectRaycaster but for UI elements |
 | `DragControls` | Allows objects to be dragged in the scene. Requires raycaster in parent hierarchy, e.g. ObjectRaycaster |
 | `Duplicatable` | Can duplicate assigned objects by drag. Requires DragControls |
 | `Interactable` | Basic component to mark an object to be interactable. |
@@ -89,6 +89,8 @@ Postprocessing effects use the [pmndrs postprocessing library](https://www.npmjs
 | `DropListener` | Add to receive file drop events for uploading |
 | `SpatialTrigger` | Use to raise event if an object enters a specific space or area. You can also use Physics events |
 | `SpatialTriggerReceiver` | Use to receive events from SpatialTrigger |
+| [`CursorFollow`](https://engine.needle.tools/docs/api/CursorFollow) | Add to make an object follow the cursor ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
+| [`ScrollFollow`](https://engine.needle.tools/docs/api/ScrollFollow) | Add to bind scroll to other components (e.g. you can bind the scroll to a timeline animation or animator) ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
 
 ## Physics
 
@@ -101,7 +103,8 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 | `SphereCollider` | *See BoxCollider* |
 | `CapsuleCollider` | *See BoxCollider* |
 | `MeshCollider` | *See BoxCollider* |
-| Physics Materials | Physics materials can be used to define e.g. the bouncyness of a collider |
+| *Physics Materials* | All Collider components use physics materials that can be used to define e.g. the bouncyness of a collider |
+| [`Attractor`](https://engine.needle.tools/docs/api/Attractor) | Add to make objects being attracted ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
 
 ## XR / WebXR  
 
@@ -109,16 +112,16 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 
 | Name  | Description |
 | ------------- | ------------- |
-| `WebXR` | Add to scene for VR, AR and Passthrough support as well as rendering Avatar models |
-| [`USDZExporter`](./everywhere-actions.md) | Add to enable USD and Quicklook support
-| `XRFlag` | Control when objects are visible, e.g. only in VR or AR or only in ThirdPerson |
-| `WebARSessionRoot` | Handles placement and scale of your scene in AR mode |
+| [`WebXR`](https://engine.needle.tools/docs/api/WebXR) | Add to scene for VR, AR and Passthrough support as well as rendering Avatar models |
+| [`USDZExporter`](https://engine.needle.tools/docs/api/USDZExporter) | Add to enable USD and Quicklook support
+| [`WebARSessionRoot`](https://engine.needle.tools/docs/api/WebARSessionRoot) | Handles placement and scale of your scene in AR mode. The center and alignment of the AR scene when placed will be at the position of this component |
 | `WebARCameraBackground` | Add to access the AR camera image and apply effects or use it for rendering |
 | `WebXRImageTracking` | Assign images to be tracked and optionally instantiate an object at the image position |
 | `WebXRPlaneTracking` | Create plane meshes or colliders for tracked planes |
 | `XRControllerModel` | Can be added to render device controllers or hand models (will be created by default when enabled in the WebXR component) |
 | `XRControllerMovement` | Can be added to provide default movement and teleport controls |
 | `XRControllerFollow` | Can be added to any object in the scene and configured to follow either left or right hands or controllers |
+| `XRFlag` | Control when objects are visible, e.g. only in VR or AR or only in ThirdPerson |
 
 
 ## Debugging  
