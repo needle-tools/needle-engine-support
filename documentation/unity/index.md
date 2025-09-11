@@ -60,7 +60,7 @@ All of these samples are available directly in Unity:
 Our samples scenes are part of a UPM package in Unity. This means that you can't edit the assets and scripts in them directly – they are read-only. To edit an asset from the samples package, copy it into your project's `Assets` folder. To edit a script from the samples package, copy it into your web project's `src` folder.
 ::: 
 
-## Start from a template
+## Start from a scene template
 
 We provide a number of Scene Templates for quickly starting new projects.  
 These allow you to go from idea to prototype in a few clicks.  
@@ -100,7 +100,7 @@ Effectively, we're going to recreate the "Minimal (Needle)" template that's ship
 
 
 :::tip Define your own templates
-If you find yourself creating many similar projects, you can create your own local or remote templates using the Project View context menu under `Create/Needle Engine/Project Template`. Templates can either be local on disk (a folder being copied) or remote repositories (a git repository being cloned).
+If you find yourself creating many similar projects, you can create your own local or remote templates using the Project View context menu under `Create/Needle Engine/Project Template`. Templates can either be local on disk (a folder being copied) or github repositories (a git repository being cloned).
 :::
 
 ## Project Folders and Files
@@ -126,7 +126,13 @@ Contains all built-in components for Needle Engine. You can learn more about the
 
 When creating a new web project in Unity, you can choose to create it from a local template (by default we ship a Vite based web template). 
 
-You can also reference remote templates by entering a repository URL in the ExportInfo project path (this can be saved with your scene for example). When creating a new web project the repository will be either cloned or downloaded (depending on if you have git installed) and searched for a `needle.config.json` file. If none can be found in the cloned repository the root directory will be used. Examples of remote template projects can be found on [github.com/needle-engine](https://github.com/needle-engine)
+### Use web projects directly from Github
+
+Besides the web project templates that already ship with the Unity integration you can setup your web project directly from github by entering the Github repository URL in the Project Folder field.     
+
+When creating a new web project the repository will be cloned (or downloaded if you don't have git installed). The repository is then searched for a `needle.config.json` file. If none can be found in the cloned repository the root directory will be used.   
+
+Examples of remote template projects can be found on [github.com/needle-engine](https://github.com/needle-engine)
 
 ![Unity ExportInfo local templates](/imgs/unity-project-remote-template.jpg)
 
@@ -137,19 +143,62 @@ If you're planning to only add custom files via NpmDefs and not change the proje
 
 ## Typescript in Unity
 
-**NPM Definitions** are [npm packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor, which makes it easily easy to share scripts between multiple web projects or Unity projects.    
+With Needle Engine for Unity your typescript code get's converted into C# stub component that can be attached to components. You can write your typescript classes like you would in any other web project. If a property is public and marked with `@serializable` it will be exposed to the Unity editor and you can attach it to objects in the scene, modify it's properties and setup object references.   
+
+:::tip 
+Needle Engine makes it easy splitting work between development and design where a web developer can write components and manage the web project while the 3D scene, content and settings are managed and can be visually edited by designers in a familiar and powerful environment. Both can see the results of their work in seconds. 
+:::
+
+### Option 1: Scripts directory
+
+Once you have your web project setup (see steps above) you can add your Needle Engine components in the `scripts` folder (this is usually at `src/scripts` inside your web project). This is usually sufficient for most projects.   
+Simply create a `.ts` file and add a Needle Engine component. The coresponding C# component will be generated automatically to be used in Unity.
+
+```ts
+import { Behaviour, serializable } from "@needle-tools/engine";
+import { Object3D } from "three";
+
+export class MyComponent extends Behaviour {
+
+  @serializable(Object3D)
+  otherObject: Object3D;
+
+  start() {
+    console.log("Hello World", this.otherObject);
+  }
+}
+
+```
+
+- [Read more about scripting](../scripting)
+
+---
+
+### Option 2: Npmdef — NPM packages in Unity
+
+**NPM Definitions** are [NPM packages](https://docs.npmjs.com/about-packages-and-modules) tightly integrated into the Unity Editor, which makes it easily easy to share scripts between multiple web- or Unity projects.    
 
 C# component stubs for TypeScript files will also be automatically generated for scripts inside NpmDef packages.
 
 #### Creating and installing an NpmDef
-To create a **NPM Definition**, right click in the Unity Project browser and select ``Create/NPM Definition``.   
-You can **install a *NPM Definition* package** to your runtime project by e.g. selecting your ``Needle Engine`` component (formerly ``Export Info``) and adding it to the ``dependencies`` list (this effectively adds the NpmDef package to your web project's package.json in the `dependencies` array just like you would do it manually or by running `npm i <path/to/package>`).
+To create a **NPM Definition** (Npmdef), right click in the Unity Project browser and select ``Create/NPM Definition``. 
+
+Next **install** the Npmdef package to your web project by selecting your ``Needle Engine`` component (formerly ``Export Info``) and adding it to the ``dependencies`` list 
+
+:::tip
+Adding or installing a Npmdef package to your web project dependencies in Unity effectively just adds the local NPM package to your package.json in the `dependencies` array. This is the same as you would do it manually or by running `npm i <path/to/package>`
+::: 
 
 ![image](https://user-images.githubusercontent.com/5083203/170374130-d0e32516-a1d4-4903-97c2-7ec9fa0b17d4.png)
 
 Don't forget to install the newly added package by e.g. clicking Install on the ExportInfo component and also restart the server if it is already running
 
-To edit the code inside a *NPM Definition* package just double click the asset *NPM Definition* asset in your project browser and it will open the vscode workspace that comes with each npmdef.
+To edit the code inside a Npmdef package just double click the asset Npmdef asset in your project browser and it will open the vscode workspace that comes with each npmdef.
+
+Unity C# components for Needle Engine components inside the Npmdef package will be generated automatically.
+
+- [Read more about scripting](../scripting)
+
 
 
 # Next Steps
