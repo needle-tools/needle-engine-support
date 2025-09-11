@@ -6,25 +6,36 @@ There are several ways to integrate Needle Engine with your website. Which one i
 
 ## Try it out
 
-If you want to quickly try out how projects made with Needle will look on your website, just add these two lines anywhere on your page for testing: 
+If you want to quickly try out how projects made with Needle will look on your website, just add these two lines anywhere on your page: 
 
-::: code-tabs
-@tab Option 1: Embedding Needle
+<codewrap>
+
 ```html
+<!-- Import the component -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-<needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksQ0gIz-latest-optimized/file"></needle-engine>
-```
-@tab Option 2: Using an iframe
-```html
-<iframe src="https://engine.needle.tools/samples-uploads/musical-instrument/"
-    allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px">
-</iframe>
-```
-@tab Resulting Website
-<iframe src="https://musicalinstrument-zubcksz1usd7h-z1usd7h.needle.run/"
-    allow="xr; xr-spatial-tracking; fullscreen;" width="100%" height="500px" style="border:0; outline: 0;">
-</iframe>
-:::
+ 
+<!-- Use it like any other HTML element -->
+ <needle-engine src="https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-Z21QnG-world/file" background-color="transparent"></needle-engine>
+ ```
+
+ </codewrap>
+
+<!-- Here is a full example:
+
+@[code html](@code/basic-webcomponent.html) -->
+
+<iframe src="/docs/code-samples/basic-webcomponent.html" style="
+    width: 100%; 
+    aspect-ratio: 16/9; 
+    outline: none; 
+    border: none;
+    "
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
+    allowfullscreen
+    ></iframe>
+
+[Open this example on Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
+
 
 # Ways to create web apps with Needle
 
@@ -135,7 +146,7 @@ When your project uses only core components and no custom scripts, you can direc
 1. Add the following snippet to your website, for example as "HTML Block" in your CMS:
     ```html
     <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-    <needle-engine src="https://cloud.needle.tools/api/v1/public/873a48a/10801b111/MusicalInstrument.glb" background-blurriness="0.8"></needle-engine>
+    <needle-engine src="https://cloud.needle.tools/view/embed?file=Z23hmXBXxC2q-XxC2q-world" background-blurriness="0.8"></needle-engine>
     ```
 2. Upload the `assets/` folder from your Web Project to your web hoster. Depending on your project settings, this folder contains one or more `.glb` files and any number of other files like audio, video, skybox and more. 
 
@@ -145,10 +156,17 @@ When your project uses only core components and no custom scripts, you can direc
 
 ## Embedding a Needle Cloud web app as iframe 
 
-If you deployed your project to Needle Cloud, you can easily display it on your own website with an iframe.  
+If you deployed your project to Needle Cloud, you can easily display it on your own website with an iframe! Use the `embed` button on your Needle Cloud's asset page to find various options.  
 
-::: warning <b>Under construction.</b> This section is not yet complete.
-:::
+<codewrap>
+
+```html
+<iframe src="https://cloud.needle.tools/view/embed?file=Z23hmXBZ21QnG-Z21QnG-world" title="The forgotten knight | Hosted on Needle Cloud" style="width: 100%; height: 100%;" frameborder="0" allow="xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation; camera; microphone" allowfullscreen></iframe>
+```
+
+<iframe src="https://cloud.needle.tools/view/embed?file=Z23hmXBZ21QnG-Z21QnG-world" title="The forgotten knight | Hosted on Needle Cloud" style="width: 100%; height: 600px" frameborder="0" allow="xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation; camera; microphone" allowfullscreen></iframe>
+
+</codewrap>
 
 # Common Workflows
 

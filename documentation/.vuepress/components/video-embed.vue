@@ -8,7 +8,29 @@ const props = {
     controls: Boolean,
     limit_height: Boolean,
     max_height: String,
+  },
+  methods: {
+    getUrl
   }
+}
+
+function getUrl(src) {
+
+  let url = new URL(src);
+  const videoId = url.searchParams.get("v");
+  url.pathname = url.pathname.replace("watch", "embed");
+  if (videoId) url.pathname += `/${videoId}`;
+  url.searchParams.set("autoplay", "0");
+  url.searchParams.set("origin", "http://docs.needle.tools");
+  url.searchParams.set("controls", "1");
+  url.searchParams.set("loop", "1");
+  url.searchParams.set("modestbranding", "1");
+  url.searchParams.set("showinfo", "0");
+  url.searchParams.set("color", "white");
+  url.searchParams.set("rel", "0");
+  src = url.toString();
+  console.log(src);
+  return src;
 }
 
 export default props;
@@ -60,9 +82,7 @@ video,
 
 <template>
   <div v-if='src.includes("youtube.com")' class="container">
-    <iframe id="ytplayer" class="video"
-      :src='src.replace("watch?v=", "embed/") + "?autoplay=0&origin=http://docs.needle.tools&controls=1&loop=1&modestbranding=1&showinfo=0&color=white&rel=0"' frameborder="0"
-      allowfullscreen />
+    <iframe id="ytplayer" class="video" :src="getUrl(src)" frameborder="0" allowfullscreen />
   </div>
   <div v-else class="container">
     <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->

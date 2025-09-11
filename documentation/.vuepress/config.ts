@@ -724,8 +724,8 @@ export default defineUserConfig({
             }
         },
         shikiPlugin({
-            langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs', 'bash'],
-            themes: { light: 'catppuccin-latte', dark: 'catppuccin-frappe' },
+            langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs', 'bash', 'html', 'js', 'css'],
+            themes: { light: 'material-theme-lighter', dark: 'material-theme' },
             lineNumbers: false,
             highlightLines: false,
             // Disabled because Shiki for vuepress is deprecated:
