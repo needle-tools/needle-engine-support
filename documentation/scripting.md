@@ -221,19 +221,18 @@ To stop a coroutine, either exit the routine by returning from it, or cache the 
 
 
 
-## Special Lifecycle hooks
+## Hooks
 
-Needle Engine also exposes a few lifecycle hooks that you can use to hook into the update loop without having to write a full component.  
-Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component)  
+Needle Engine also exposes methods that you can use to hook into to easily receive callbacks at specific moments during the Engine lifecycle. Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component or in your `<script type="module">` tag in index.html).  
 | Method name | Description |
 | -- | --
-| `onInitialized(cb, options)` | Called when a new context is initialized (before the first frame)
-| `onClear(cb, options)` | Register a callback before the engine context is cleared
-| `onDestroy(cb, options)` |  Register a callback in the engine before the context is destroyed
-| `onStart(cb, options)` | Called directly after components `start` at the beginning of a frame
-| `onUpdate(cb, options)` | Called directly after components `update`
-| `onBeforeRender(cb, options)` | called before calling render
-| `onAfterRender(cb, options)` | called before calling render
+| `onInitialized(<callback>, <options?>)` | Called when a new context is initialized (before the first frame)
+| `onClear(<callback>, <options?>)` | Register a callback before the engine context is cleared
+| `onDestroy(<callback>, <options?>)` |  Register a callback in the engine before the context is destroyed
+| `onStart(<callback>, <options?>)` | Called directly after components `start` at the beginning of a frame
+| `onUpdate(<callback>, <options?>)` | Called directly after components `update`
+| `onBeforeRender(<callback>, <options?>)` | called before calling render
+| `onAfterRender(<callback>, <options?>)` | called before calling render
 
 For example ([See example on stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts twoslash
@@ -485,7 +484,7 @@ For getting callbacks for the initial scene load see the following example ([Try
 ```  
 
 :::tip
-See all available [lifecycle hooks](#special-lifecycle-hooks)
+See all available [lifecycle hooks](#hooks)
 :::
 
 

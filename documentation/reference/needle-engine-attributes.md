@@ -1,5 +1,5 @@
 ---
-title: <needle-engine> Configuration
+title: <needle-engine> Attributes
 ---
 
 ## Attributes of the Needle Engine Web Component
@@ -88,9 +88,10 @@ Receiving loading events:
 </script>
 ```
 
-### Custom Loading Style (PRO)
+:::tip Need more control?
+For further customization or callbacks see the [scripting documentation](/scripting.md) or [Needle Engine hooks](/scripting.md#hooks). Needle Engine is fully scriptable.
+:::
 
-You can easily modify how Needle Engine looks by setting the appropriate attributes on the `<needle-engine>` web component. Please see the table above for details.
-
-![custom loading](/imgs/custom-loading-style.webp)  
-[See code on github](https://github.com/needle-engine/vite-template/blob/loading-style/custom/index.html)
+:::tip Prefer working visually?
+Needle Engine can also be used with Editors like [Unity](/unity/index.md) or [Blender](/blender/index.md).
+:::
