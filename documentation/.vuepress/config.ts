@@ -409,8 +409,8 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 text: "Scripting",
                 children: [
                     "/getting-started/typescript-essentials",
-                    "/getting-started/for-unity-developers",
                     "/scripting",
+                    "/getting-started/for-unity-developers",
                     "/component-compiler",
                     "/scripting-examples",
                     {

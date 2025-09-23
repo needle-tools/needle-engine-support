@@ -1,5 +1,5 @@
 ---
-title: Scripting in Needle Engine
+title: Typescript Essentials
 description: Differences, similarities and key concepts of Typescript, Javascript and C#.
 sidebarDepth: 2
 ---
@@ -11,6 +11,10 @@ Here are also some useful resources for learning how to write Typescript:
 - [Typescript Tutorial](https://www.typescripttutorial.net/)
 - [Learn Typescript](https://www.tutorialsteacher.com/typescript)
 - [Typescript Documentation](https://www.typescriptlang.org/docs/)
+
+### Already familiar with Typescript and Javascript?
+
+Then continue reading at [Needle Engine Scripting](/scripting.md)
 
 ### Key differences between C#, Javascript or Typescript
 

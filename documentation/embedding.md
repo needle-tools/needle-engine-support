@@ -243,3 +243,15 @@ If you deployed your project to Needle Cloud, you can easily display it on your 
 
 ::: warning <b>Under construction.</b> Needs to be documented.
 :::
+
+
+
+# Next Steps
+
+- [Learn more about the web component attributes](/reference/needle-engine-attributes.md)
+- [Learn how to extend Needle Engine with custom scripts and components](/scripting.md)
+
+
+:::tip Using Needle with Unity or Blender
+Did you know that Needle Engine seamlessly integrates in Blender and Unity? This allows you to create complex 3D scenes visually and export them directly to the web with Needle Engine. Check out our [Unity integration](/unity/index.md) and [Blender integration](/blender/index.md) for more information.
+:::

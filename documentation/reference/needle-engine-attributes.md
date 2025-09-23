@@ -16,10 +16,12 @@ The table below shows a list of available attributes and their descriptions.
 | --- | --- |
 | **Loading** | |
 | `src` | Path to one or multiple glTF or glb files.<br/>Supported types are `string`, `string[]` or a stringified array (`,` separated) |
-| **Loading Display** | *Available options to change how the Needle Engine loading display looks. Use `?debugloadingrendering` for easier editing* |
+| **Loading Display** | *Available options to change how the Needle Engine loading display looks. Use `localhost:3000?debugloadingrendering` for easier editing* |
 | `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
 | `loading-logo-src` | **PRO** — Change the loading logo image (e.g. `https://yourdomain.com/logo.png` or `/logo.png`) |
-| `hide-loading-overlay` | **PRO** — Do not show the loading overlay
+| `hide-loading-overlay` | **PRO** — Do not show the loading overlay |
+| `loading-blur` | Optional: Blur the scene until LODs are loaded (if any). Default: disabled |
+| `poster` | Optional: Set the `poster` attribute to show a placeholder image while loading. Example: `<needle-engine poster="https://yourdomain.com/poster.png">`. By just using the attribute without a url the poster in `include/poster.webp` will be used if it exists (e.g. `<needle-engine poster>`) |
 | **Events** | |
 | `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
 | `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number, progress:ProgressEvent}) { ... }`   |

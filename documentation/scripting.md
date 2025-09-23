@@ -16,17 +16,19 @@ If you are new to scripting we **highly recommend** reading the following guides
 - [Typescript Essentials](./getting-started/typescript-essentials.md)
 - [Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
 
+:::tip Already familiar with Needle Engine components?
 If you know what you're doing, feel free to jump right into the [Needle Engine API documentation](https://engine.needle.tools/docs/api/latest).
+:::
 
 ---
 
-Runtime code for Needle Engine is written in [TypeScript](https://typescriptlang.org) (recommended) or [JavaScript](https://javascript.info/). We automatically generate C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
+Runtime code for Needle Engine is written in TypeScript (recommended) or JavaScript. Needle Engine automatically generates C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
 
 Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
 
-If you want to code-along with the following examples without having to install anything you just click the following link:
-
-- [Create virtual workspace to code along](https://stackblitz.com/fork/github/needle-engine/vite-template?file=src%2Fmain.ts).
+:::tip Try it out 
+If you want to code-along with the following examples without having to install anything you just click the following link: [Create virtual workspace to code along](https://engine.needle.tools/new).
+:::
 
 ----
 
@@ -44,6 +46,9 @@ Needle Engine translates Unity Events into JavaScript method calls, which makes 
 ![image](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)   
 _An example of a Button Click Event that is working out-of-the-box in Needle Engine — no code needed._ 
 
+:::tip Built-in Components
+Checkout the component reference for a list of built-in components that you can use without writing any code: [Component Reference](/component-reference.md)
+:::
 
 ## Creating a new component
 Scripts are written in TypeScript (recommended) or JavaScript.   
@@ -261,12 +266,12 @@ To access other components, use the static methods on ``GameObject`` or ``this.g
 
 **Example:**
 ```ts twoslash
-import { Behaviour, GameObject, Renderer } from "@needle-tools/engine";
+import { Behaviour, Renderer } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
 
     start() {
-        const renderer = GameObject.getComponentInParent(this.gameObject, Renderer);
+        const renderer = this.gameObject.getComponentInParent(this.gameObject, Renderer);
         console.log(renderer);
     }
 }
@@ -284,7 +289,7 @@ export class MyComponent extends Behaviour {
 | `GameObject.destroy(Object3D \| Component)` | destroy a component or Object3D (and its components) 
 | `GameObject.addNewComponent(Object3D, Type)` | adds (and creates) a new component for a type to the provided object. Note that ``awake`` and ``onEnable`` is already called when the component is returned 
 | `GameObject.addComponent(Object3D, Component)` |  moves a component instance to the provided object. It is useful if you already have an instance e.g. when you create a component with e.g. `new MyComponent()` and then attach it to a object
-| `GameObject.removeComponent(Component)` | removes a component from a gameObject
+| `GameObject.removeComponent(Component)` | removes a component from a Object3D
 | `GameObject.getComponent(Object3D, Type)` | returns the first component matching a type on the provided object.
 | `GameObject.getComponents(Object3D, Type)` | returns all components matching a type on the provided object.
 | `GameObject.getComponentInChildren` | same as ``getComponent`` but also searches in child objects.
@@ -296,14 +301,13 @@ export class MyComponent extends Behaviour {
 
 
 ## Three.js and the HTML DOM
+  
+The three.js scene lives inside a custom HTML component called ``<needle-engine>`` (see the *index.html* in your project). You can access the `<needle-engine>` web component using `this.context.domElement` (or if you're using a hook you can use e.g. `onStart(context => context.domElement)`).   
 
-The context refers to the runtime inside a [web component](https://developer.mozilla.org/en-US/docs/Web/Web_Components).  
-The three.js scene lives inside a custom HTML component called ``<needle-engine>`` (see the *index.html* in your project). You can access the `<needle-engine>` web component using ``this.context.domElement``.   
-
-This architecture allows for potentially having multiple needle WebGL scenes on the same webpage, that can either run on their own or communicate between each other as parts of your webpage.  
+This architecture allows to embed the Needle Engine rendering onto your webpage and wherever you want. You can also overlay HTML elements on top of the 3D scene or use CSS to style the canvas. 
 
 ### Access the scene
-To access the current scene from a component you use `this.scene` which is equivalent to `this.context.scene`, this gives you the root three.js scene object.
+To access the current scene from a component you use `this.context.scene`, this gives you the root [three.js Scene](https://threejs.org/docs/#api/en/scenes/Scene) object.
 
 To traverse the hierarchy from a component you can either iterate over the children of an object   
 with a for loop:  
@@ -317,7 +321,9 @@ for(const child of this.gameObject.children) {
     console.log(child);
 }
 ```
+
 You can also use three.js specific methods to quickly iterate all objects recursively using the [`traverse`](https://threejs.org/docs/#api/en/core/Object3D.traverse) method:  
+
 ```ts twoslash
 import { Object3D } from "three";
 this.gameObject.traverse((obj: Object3D) => console.log(obj));
@@ -364,12 +370,12 @@ export class MyScript extends Behaviour
     }
 
     onDisable() {
-        // it is recommended to also unsubscribe from events when your component becomes inactive
         this.context.input.removeEventListener(InputEvents.PointerDown, this.inputPointerDown);
     }
 
-    // @nonSerialized
-    inputPointerDown = (evt: NEPointerEvent) => { console.log("POINTER DOWN anywhere on the <needle-engine> element"); }
+    private inputPointerDown = evt => { 
+        console.log("POINTER DOWN anywhere in the scene", evt); 
+    }
 }
 ```
 
@@ -387,21 +393,23 @@ export class MyScript extends Behaviour
 }
 ```
 
-If you want to handle inputs yourself you can also subscribe to [all events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events) (there are a ton). For example to subscribe to the browsers click event you can write:
+If you want to handle inputs yourself you can also subscribe to [events the browser provides](https://developer.mozilla.org/en-US/docs/Web/Events). For example to subscribe to the browsers click event you can write:
 ```ts twoslash
 import { Behaviour } from "@needle-tools/engine";
 export class MyScript extends Behaviour
 {
     onEnable() {
-        window.addEventListener("click", this.windowClick);
+        window.addEventListener("click", this.onWindowClick);
     }
 
     onDisable() {
         // unsubscribe again when the component is disabled
-        window.removeEventListener("click", this.windowClick);
+        window.removeEventListener("click", this.onWindowClick);
     }
 
-    windowClick = () => { console.log("CLICK anywhere on the page, not just on <needle-engine>"); }
+    private onWindowClick = () => { 
+        console.log("CLICK anywhere on the page, not just on <needle-engine>");
+    }
 }
 ```
 Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down). 
@@ -410,15 +418,24 @@ Note that in this case you have to handle all cases yourself. For example you ma
 
 Use ``this.context.physics.raycast()`` to perform a raycast and get a list of intersections. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
 
-Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray).
+Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray).  
 
-> **Note**: This type of raycast casts a ray against all visible objects in the scene. No physics engine is needed, which is different to the behaviour in Unity, where you always need colliders to hit objects. If you want to cast against physics colliders only, use `physics.engine.raycast` methods described below.
+Consider setting objects's layer to `Ignore Raycast` that you want to ignore from raycasting.
 
-#### Performance considerations
+:::tip
+ [This type of raycast casts a ray](https://www.youtube.com/watch?v=QkiCYT6tGH4) against all visible objects in the scene. No physics engine is needed, which is *different* to the behaviour in Unity, where you always need colliders to hit objects. If you want to cast against physics colliders only, use `physics.engine.raycast` methods described below.
+:::
 
-When using default Needle compression settings, simplified versions of meshes are automatically created and used for raycasting as well. Still, some types of meshes are slow – for example, skinned meshes or meshes with blendshapes require expensive calculations to determine exact hits. Consider setting those objects to the `Ignore Raycast` layer in Unity to avoid raycasting against them.
 
-#### Physics-based Raycasting
+:::info Faster Raycasting by default
+Needle Engine automatically uses faster raycasting methods. Under the BVH structures are created on a different browser thread to speed up raycasting. This is especially useful for complex meshes. We use a library called `three-mesh-bvh` under the hood.
+:::
+
+:::warning Performance considerations
+When using default Needle compression settings, proxy meshes  are automatically created and used for raycasting. Still, some types of meshes are slow – for example, skinned meshes or meshes with blendshapes require expensive calculations to determine exact hits. 
+:::
+
+#### Raycast Collider Meshes
 
 Another option is to use the physics raycast methods which will only return hits with colliders in the scene. 
 
@@ -429,7 +446,7 @@ const hit = this.context.physics.engine?.raycast();
 Here is an editable [example for physics raycast](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore)
 
 ### Networking
-Networking methods can be accessed via ``this.context.connection``. Please refer to the [networking docs](./networking.md) for further information.
+Networking methods can be accessed via ``this.context.connection``. Please refer to the [networking page](./networking.md) for further information.
 
 
 ## Accessing Needle Engine and components from anywhere
@@ -437,47 +454,40 @@ It is possible to access all the functionality described above using regular Jav
 
 You can find components using ``Needle.findObjectOfType(Needle.AudioSource)`` for example. It is recommended to cache those references, as searching the whole scene repeatedly is expensive. See the list for [finding adding and removing components](#finding-adding-and-removing-components) above.  
 
-For getting callbacks for the initial scene load see the following example:  
-```js
-<needle-engine loadstart="loadingStarted" progress="loadingProgress" loadfinished="loadingFinished"></needle-engine>
+For getting callbacks for the initial scene load see the following example ([Try on Stackblitz](https://stackblitz.com/edit/needle-engine-threejs-rotate-component?file=index.html))  
+```html
+<!-- Import the Needle Engine module -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"> </script>
 
-<script type="text/javascript">
-function loadingStarted() { console.log("START") }
-function loadingProgress() { console.log("LOADING...") }
-function loadingFinished() { console.log("FINISHED!") }
+<!-- Add the needle-engine web component in your HTML body -->
+<needle-engine src="https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-Z21QnG-world/file.glb"></needle-engine>
+
+<!-- Optionally add custom scripting to modify the scene -->
+<script type="module">
+  import { onStart, Behaviour, } from 'https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js';
+  
+  onStart((context) => {
+    const components = context.scene.getComponentsInChildren();
+    console.log('Hello Needle: Found ' + components.length + ' components');
+   
+    // Add a rotate component to all meshes in the scene
+    context.scene.traverse((obj) => {
+      if (obj.type === 'Mesh') obj.addComponent(MyScript);
+    });
+  });
+  
+  class MyScript extends Behaviour {
+    update() {
+      this.gameObject.rotateY(this.context.time.deltaTime);
+    }
+  }
 </script>
 ```  
 
-You can also subscribe to the globale `NeedleEngine` (sometimes also referred to as *ContextRegistry*) to receive a callback when a Needle Engine context has been created or to access all available contexts:
-```ts twoslash
-class YourComponentType extends Behaviour {}
-//---cut---
-import { NeedleEngine, GameObject, Behaviour } from "@needle-tools/engine";
+:::tip
+See all available [lifecycle hooks](#special-lifecycle-hooks)
+:::
 
-NeedleEngine.addContextCreatedCallback((args) => {
-  const context = args.context;
-  const scene = context.scene;
-  const myInstance = GameObject.getComponentInChildren(scene, YourComponentType);
-});
-```
-
-Another option is using the `onInitialized(ctx => {})` [lifecycle hook](#special-lifecycle-hooks)
-
-You can also access all available contexts via `NeedleEngine.Registered` which returns the internal array. (Note that this array should not be modified but can be used to iterate all active contexts to modify settings, e.g. set all contexts to `context.isPaused = true`) 
-
-Below you find a list of available events on the static `NeedleEngine` type.   
-You can subscribe to those events via `NeedleEngine.registerCallback(ContextEvent.ContextCreated, (args) => {})`
-
-| ContextEvent options | |
-|---|---|
-| `ContextEvent.ContextRegistered` | Called when the context is registered to the registry. |
-| `ContextEvent.ContextCreationStart` | Called before the first glb is loaded and can be used to initialize the physics engine. Can return a promise |
-| `ContextEvent.ContextCreated` | Called when the context has been created before the first frame |
-| `ContextEvent.ContextDestroyed` | Called when the context has been destroyed |
-| `ContextEvent.MissingCamera` | Called when the context could not find a camera, currently only called during creation |
-| `ContextEvent.ContextClearing` | Called when the context is being cleared: all objects in the scene are being destroyed and internal state is reset |
-| `ContextEvent.ContextCleared` | Called after the context has been cleared |
- 
 
 ## Gizmos
 

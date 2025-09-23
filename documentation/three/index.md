@@ -113,7 +113,19 @@ or [download this sample glb](https://github.com/needle-tools/needle-engine-samp
 
 
 
-## Rapid Prototyping on StackBlitz
+### Rapid Prototyping on StackBlitz
 
 For quick experiments, we provide a convenient link to create a new project ready to start: [engine.needle.tools/new](https://engine.needle.tools/new)  
 A large collection of examples are also available in our [Needle Engine Stackblitz Collection](https://stackblitz.com/@marwie/collections/needle-engine) 
+
+
+
+# Next Steps
+
+- [Learn more about the web component attributes](/reference/needle-engine-attributes.md)
+- [Learn how to extend Needle Engine with custom scripts and components](/scripting.md)
+
+
+:::tip Using Needle with Unity or Blender
+Did you know that Needle Engine seamlessly integrates in Blender and Unity? This allows you to create complex 3D scenes visually and export them directly to the web with Needle Engine. Check out our [Unity integration](/unity/index.md) and [Blender integration](/blender/index.md) for more information.
+:::
