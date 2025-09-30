@@ -28,9 +28,9 @@ The table below shows a list of available attributes and their descriptions.
 | `loadfinished` | Name of the function to call when loading finishes | 
 | **Rendering** | |
 | `background-color` | optional, hex color to be used as a background color. Examples: `rgb(255, 200, 100)`, `#dddd00` | 
-| `background-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` | 
+| `background-image` | optional, URL to a skybox image (background image) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar`. Supports [FastHDR](https://cloud.needle.tools/hdris) | 
 | `background-blurriness` | optional, bluriness value between 0 (no blur) and 1 (max blur) for the `background-image`. Example: `background-blurriness="0.5"` | 
-| `environment-image` | optional, URL to a environment image (environment light) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar` |
+| `environment-image` | optional, URL to a environment image (environment light) or a preset string: `studio`, `blurred-skybox`, `quicklook`, `quicklook-ar`. Supports [FastHDR](https://cloud.needle.tools/hdris) |
 | `contactshadows` | optional, render contact shadows |
 | `tone-mapping` | optional, supported values are `none`, `linear`, `neutral`, `agx` |
 | `tone-mapping-exposure` | optional number e.g. increase exposure with `tone-mapping-exposure="1.5"`, requires `tone-mapping` to be set |
@@ -42,6 +42,8 @@ The table below shows a list of available attributes and their descriptions.
 | `dracoDecoderPath` | URL to the draco decoder e.g. `./include/draco/` to use the local Draco decoder |
 | `dracoDecoderType` | draco decoder type. Options are `wasm` or `js`. See [three.js documentation](https://threejs.org/docs/#examples/en/loaders/DRACOLoader.setDecoderConfig) |
 | `ktx2DecoderPath` | URL to the KTX2 decoder e.g. `./include/ktx2/` to use the local KTX2 decoder |
+| **HTML** | *Options to access HTML elements* |
+| `focus-rect` | Query string to select an HTML element on your website to be used as the [camera-focus-rect](https://engine.needle.tools/docs/api/classes/Engine_Core.Context.html#setcamerafocusrect) - [Demo](https://focus-rect-demo-z23hmxbztexgt-z19e07i.needle.run/). Note that you can also set it programmatically with `ctx.setCameraFocusRect(<element>\|DOMRect)` |
 | **Internal** | |
 | `hash` | Used internally, is appended to the files being loaded to force an update (e.g. when the browser has cached a glb file). Should not be edited manually. |
 
