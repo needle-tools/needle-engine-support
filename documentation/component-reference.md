@@ -25,6 +25,13 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 | [`Animation`](https://engine.needle.tools/docs/api/Animation) | Most basic animation component. Only first clip is exported |
 | [`PlayableDirector`](https://engine.needle.tools/docs/api/PlayableDirector) with `TimelineAsset` | Export powerful sequences to control animation, audio, state and more |
 
+## Camera
+| Name  | Description |
+| ------------- | ------------- |
+| [`Camera`](https://engine.needle.tools/docs/api/Camera) |  |
+| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) |  |
+| [`ViewBox`](https://engine.needle.tools/docs/api/ViewBox) |  |
+
 ## Rendering
 | Name  | Description |
 | ------------- | ------------- |
@@ -91,6 +98,7 @@ For Needle Engine Postprocessing in Unity you need to use URP (Universal Render 
 | `SpatialTriggerReceiver` | Use to receive events from SpatialTrigger |
 | [`CursorFollow`](https://engine.needle.tools/docs/api/CursorFollow) | Add to make an object follow the cursor ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
 | [`ScrollFollow`](https://engine.needle.tools/docs/api/ScrollFollow) | Add to bind scroll to other components (e.g. you can bind the scroll to a timeline animation or animator) ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
+| [`HoverAnimation`](https://engine.needle.tools/docs/api/HoverAnimation) | |
 
 ## Physics
 
@@ -98,7 +106,7 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 
 | Name  | Description |
 | ------------- | ------------- |
-| `Rigidbody` | Add to make an object react to gravity (or be kinematic and static) |
+| [`Rigidbody`](https://engine.needle.tools/docs/api/Rigidbody) | Add to make an object react to gravity (or be kinematic and static) |
 | `BoxCollider` | A Box collider shape that objects can collide with or raise trigger events when set to `trigger` |
 | `SphereCollider` | *See BoxCollider* |
 | `CapsuleCollider` | *See BoxCollider* |
