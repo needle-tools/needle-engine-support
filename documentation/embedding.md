@@ -42,7 +42,8 @@ If you want to quickly try out how projects made with Needle will look on your w
 The most common workflows to bring Needle Engine to your website are:
 1. [Using the "Deploy to ..." components](#using-the-deploy-to-...-components)
 2. [Uploading your web app to a folder](#uploading-your-web-app-to-a-folder)
-3. [Embedding a Needle project into an existing website](#embedding-a-needle-project-into-an-existing-website)
+3. [Embedding a Needle project as iframe](#embedding-a-needle-project-as-iframe)
+4. [Embedding a Needle project into an existing website](#embedding-a-needle-project-into-an-existing-website)
 
 ## Using the "Deploy to ..." components
 
@@ -75,6 +76,35 @@ Depending on your hoster's settings, the folder location and name determine what
 - You upload your files to `/var/www/html/my-app` so that the `index.html` file is at `/var/www/html/my-app/index.html`.
 - The URL of your web app is now `https://your-website.com/my-app/`.
 :::
+
+
+## Embedding a Needle project as iframe
+
+When you have limited access to a website, for example when you're using a CMS like WordPress, you can use an iframe to embed a Needle Engine scene into your website. You may know this workflow from embedding YouTube videos or Sketchfab models.
+
+1. Make a production build of your web project. This will create a `dist/` folder with all necessary files, ready for distribution. 
+
+2. Upload the `dist/` folder from your Web Project to your web hoster.
+    ::: tip The folder can be hosted anywhere!
+    If you don't have access to your web hoster's file system, or no way to upload files there, you can upload the folder to any other webspace and  use the public URL of that in the next step.
+    :::
+
+3. Add an iframe to your website, pointing to the `index.html` file in the `dist/` folder. 
+    ```html
+    <iframe
+        src="https://your-website.com/needle-files/dist/index.html" 
+        allow="xr; xr-spatial-tracking; fullscreen;">
+    </iframe>
+    ```
+
+
+    ::: tip Permissions inside iframes
+    The list inside `allow=` depends on the features your web app uses. For example, XR applications require `xr` and `xr-spatial-tracking` to work inside iframes. 
+
+    There may be additional features needed, for example `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. See [the full list of iframe Permissions Policy directives on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
+    :::
+
+4. That's it! The scene should now be displayed on your website.
 
 ## Embedding a Needle project into an existing website
 
@@ -110,34 +140,6 @@ In some cases, you want a Needle Engine project to be part of an existing web si
     ```
 
 5. That's it! The scene should now be displayed on your website.
-
-## Embedding a Needle project as iframe
-
-When you have limited access to a website, for example when you're using a CMS like WordPress, you can use an iframe to embed a Needle Engine scene into your website. You may know this workflow from embedding YouTube videos or Sketchfab models.
-
-1. Make a production build of your web project. This will create a `dist/` folder with all necessary files, ready for distribution. 
-
-2. Upload the `dist/` folder from your Web Project to your web hoster.
-    ::: tip The folder can be hosted anywhere!
-    If you don't have access to your web hoster's file system, or no way to upload files there, you can upload the folder to any other webspace and  use the public URL of that in the next step.
-    :::
-
-3. Add an iframe to your website, pointing to the `index.html` file in the `dist/` folder. 
-    ```html
-    <iframe
-        src="https://your-website.com/needle-files/dist/index.html" 
-        allow="xr; xr-spatial-tracking; fullscreen;">
-    </iframe>
-    ```
-
-
-    ::: tip Permissions inside iframes
-    The list inside `allow=` depends on the features your web app uses. For example, XR applications require `xr` and `xr-spatial-tracking` to work inside iframes. 
-
-    There may be additional features needed, for example `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. See [the full list of iframe Permissions Policy directives on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
-    :::
-
-4. That's it! The scene should now be displayed on your website.
 
 ## Embedding scenes that use no custom scripts
 
@@ -217,34 +219,36 @@ If you deployed your project to Needle Cloud, you can easily display it on your 
 3. **Start creating!**  
    With requirements and deployment in place, go ahead and start making your project! You'll usually iterate locally, then deploy to your test server for approval, and then to the client's server.  
 
-## Wordpress
 
-1. Decide on the method you want to use to embed your Needle Engine project. You can either use the "Embedding a Needle project into an existing website" method, or the "Embedding a Needle project as iframe" method.
+# Integrations
 
-2. Upload the content of the `dist/` folder from your Web Project to your web hoster. Usually, the Wordpress uploads directory is located at `wp-content/uploads/`. 
+## Integrating with Framer
 
-    ::: tip Wordpress Backups
-    You can decide if your new project should be at `wp-content/uploads/my-project/`, or at a different location like `my-projects/my-project`. This affects if and how your project will be contained in Wordpress backups.
-    :::
+See [Integrating with Framer](./integrating-with-framer.md) for detailed instructions.
 
-3. In the page you want to add Needle Engine to, add a `HTML` block and paste the code snippet as outlined above – either as script embed, or as iframe.
+## Integrating with Wordpress
 
-## Shopify
+See [Integrating with Wordpress](./integrating-with-wordpress.md) for detailed instructions.
 
-::: warning <b>Under construction.</b> Needs to be documented.
-:::
-
-## Wix
+## Integrating with Shopify
 
 ::: warning <b>Under construction.</b> Needs to be documented.
 :::
 
-## Webflow
+## Integrating with Wix
+
+::: warning <b>Under construction.</b> Needs to be documented.
+:::
+
+## Integrating with Webflow
 
 ::: warning <b>Under construction.</b> Needs to be documented.
 :::
 
 
+
+<br/>
+<br/>
 
 # Next Steps
 

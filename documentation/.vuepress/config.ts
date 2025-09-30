@@ -370,7 +370,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         link: '/blender/',
                     },
                     {
-                        text: 'Needle Engine as Web Component',
+                        text: 'Needle Engine no Editor',
                         link: '/three/',
                     },
                     {
