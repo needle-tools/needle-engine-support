@@ -201,8 +201,8 @@ Unity C# components for Needle Engine components inside the Npmdef package will 
 
 
 # Troubleshooting
-- [Downloads: Make sure you have Nodejs installed](../getting-started/#code-editor-and-tools)
-- [Downloads: To edit code we recommend to use VSCode](../getting-started/#code-editor-and-tools)
+- [Downloads: Make sure you have Nodejs installed](../getting-started/index.md#code-editor-and-tools)
+- [Downloads: To edit code we recommend to use VSCode](../getting-started/index.md#code-editor-and-tools)
 
 # Next Steps
 

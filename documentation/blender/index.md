@@ -302,8 +302,8 @@ Make sure you've set up a web project before sending a bug report – it will al
 :::
 
 # Troubleshooting
-- [Downloads: Make sure you have Nodejs installed](https://engine.needle.tools/docs/getting-started/#code-editor-and-tools)
-- [Downloads: To edit code we recommend to use VSCode](https://engine.needle.tools/docs/getting-started/#code-editor-and-tools)
+- [Downloads: Make sure you have Nodejs installed](../getting-started/index.md#code-editor-and-tools)
+- [Downloads: To edit code we recommend to use VSCode](../getting-started/index.md#code-editor-and-tools)
 
 # Next Steps
 
