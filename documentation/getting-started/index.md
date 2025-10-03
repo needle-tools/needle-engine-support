@@ -116,7 +116,7 @@ Needle Engine uses the following tools to create your web app, but you don't nee
 :::
 
 <br/>
-<os-link windows_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1-x64.msi" osx_url="https://nodejs.org/dist/v22.13.1/node-v22.13.1.pkg">Node.js 20 LTS or 22 LTS.</os-link>
+<os-link windows_url="https://fwd.needle.tools/needle-engine/nodejs/win" osx_url="https://fwd.needle.tools/needle-engine/nodejs/osx">Node.js 20 LTS or 22 LTS.</os-link>
 Needle Engine uses Node.js to manage, preview and build the web app that you are creating locally on your computer.     
 It is also used for uploading (deploying) your website to the internet.
 
