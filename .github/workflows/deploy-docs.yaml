@@ -11,6 +11,10 @@ on:
   schedule:
     - cron: '0 0 * * 0' # every Sunday at midnight UTC
 
+concurrency:
+  group: 'deploy-docs'
+  cancel-in-progress: true
+
 jobs: 
 
   docs:
