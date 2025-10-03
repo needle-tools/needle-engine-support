@@ -301,6 +301,10 @@ If needed, in certain cases we're also able to set up custom NDAs for your proje
 Make sure you've set up a web project before sending a bug report – it will allow us to understand more about your system and setup and make it easier to reproduce the issue.
 :::
 
+# Troubleshooting
+- [Downloads: Make sure you have Nodejs installed](https://engine.needle.tools/docs/getting-started/#code-editor-and-tools)
+- [Downloads: To edit code we recommend to use VSCode](https://engine.needle.tools/docs/getting-started/#code-editor-and-tools)
+
 # Next Steps
 
 - [Concept: Web Projects](../project-structure.md)
