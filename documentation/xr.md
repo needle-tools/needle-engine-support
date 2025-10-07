@@ -2,13 +2,22 @@
 title: VR & AR (WebXR)
 ---
 
-If you just quickly want to try some XR samples [click here](https://engine.needle.tools/samples/?overlay=samples&tag=xr).  
+Needle Engine has strong WebXR support built in. If you want to try some XR samples now before diving deeper then [click here](https://engine.needle.tools/samples/?overlay=samples&tag=xr).  
 
 ## Quickstart: Enable VR or AR support to your Needle Engine scene
 
-AR and VR features in Needle Engine are designed to be modular. You can choose to not support any of them, or add only specific features. 
+**To enable AR or VR support** simply add a [`WebXR`](https://engine.needle.tools/docs/api/WebXR) component to your scene or any object in your scene.
 
-To enable AR or VR support simply add a [`WebXR`](https://engine.needle.tools/docs/api/WebXR) component to your scene or any object in your scene.
+Adding the WebXR component can be done visually by using the [Needle Engine Unity Integration](./unity/index.md) or the [Needle Engine Blender addon](./blender/index.md) or using just a few lines of code:
+ 
+```ts
+import { onStart, WebXR } from "@needle-tools/engine";
+
+onStart(context => {
+  context.scene.addComponent(WebXR);
+});
+```
+Read more about scripting for XR at the [scripting XR documentation](./scripting.md#xr-event-methods). For advanced usecases the [NeedleXRSession](https://engine.needle.tools/docs/api/NeedleXRSession) class can be used to enter or stop XR sessions or modify requested features.
    
 ### AR Settings
 
@@ -22,9 +31,6 @@ To define whether an object is visible in Browser, AR, VR, First Person, Third P
 Common usecases are hiding floors when entering AR or hiding Avatar parts in First or Third Person views.   
 For example, in first-person view a person shouldn't be able to see their own head model.
 
-## Writing custom components or scripts  
-Read more about scripting for XR at the [scripting XR documentation](./scripting.md#xr-event-methods).   
-For advanced usecases the [NeedleXRSession](https://engine.needle.tools/docs/api/NeedleXRSession) class can be used to enter or stop XR sessions.
 
 ## Supported Devices
 
