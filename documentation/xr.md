@@ -2,6 +2,30 @@
 title: VR & AR (WebXR)
 ---
 
+If you just quickly want to try some XR samples [click here](https://engine.needle.tools/samples/?overlay=samples&tag=xr).  
+
+## Quickstart: Enable VR or AR support to your Needle Engine scene
+
+AR and VR features in Needle Engine are designed to be modular. You can choose to not support any of them, or add only specific features. 
+
+To enable AR or VR support simply add a [`WebXR`](https://engine.needle.tools/docs/api/WebXR) component to your scene or any object in your scene.
+   
+### AR Settings
+
+1. **Define the AR Session root and scale**  
+  Add a `WebXR` component to your root object and modify the scale. For AR experiences, often you want to scale the scene to fit the real world.  
+2. Define the **user scale** to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
+
+### Controlling object visibility for XR
+
+To define whether an object is visible in Browser, AR, VR, First Person, Third Person add a `XR Flag` component to the object you want to control. Change options on the dropdown as needed.   
+Common usecases are hiding floors when entering AR or hiding Avatar parts in First or Third Person views.   
+For example, in first-person view a person shouldn't be able to see their own head model.
+
+## Writing custom components or scripts  
+Read more about scripting for XR at the [scripting XR documentation](./scripting.md#xr-event-methods).   
+For advanced usecases the [NeedleXRSession](https://engine.needle.tools/docs/api/NeedleXRSession) class can be used to enter or stop XR sessions.
+
 ## Supported Devices
 
 Needle Engine supports the full [WebXR specification](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API), including AR and VR. WebXR is an official web standard that brings immersive experiences to the web, with all the benefits of the web: no installation, no app store, no SDKs required.
@@ -59,22 +83,7 @@ Visit our [Needle Engine Samples](https://engine.needle.tools/samples/?overlay=s
 
 <sample src="https://engine.needle.tools/samples/collaborative-sandbox/"/>
 
-## Adding VR and AR capabilities to a scene
-
-AR, VR and networking capabilites in Needle Engine are designed to be modular. You can choose to not support any of them, or add only specific features. 
-
-### Basic capabilities
-
-1. **Enable AR and VR**  
-  Add a `WebXR` component.  
-  *Optional:* you can set a custom avatar by referencing an [Avatar Prefab](#avatars).   
-  By default, a basic `DefaultAvatar` is assigned.
-  
-2. **Enable Teleportation**  
-  Add a `TeleportTarget` component to object hierarchies that can be teleported on.  
-  To exclude specific objects, set their layer to `IgnoreRaycasting`.  
-
-### Multiplayer
+### Add Multiplayer Support
 
 1. **Enable Networking**  
   Add a `SyncedRoom` component.
@@ -90,23 +99,8 @@ These components can be anywhere inside your hierarchy. They can also all be on 
 :::
 
  > **[Castle Builder](https://castle.needle.tools/)** uses all of the above for a cross-platform multiplayer sandbox experience.   
- > — #madebyneedle 💚  
-   
-### Special AR Components
+ > — #madebyneedle 💚
 
-1. **Define the AR Session root and scale**  
-  Add a `WebARSessionRoot` component to your root object. For AR experiences, often you want to scale the scene to fit the real world.  
-2. Define the **user scale** to shrink (< 1) or enlarge (> 1) the user in relation to the scene when entering AR.
-
-### Controlling object display for XR
-
-1. **Define whether an object is visible in Browser, AR, VR, First Person, Third Person**  
-  Add a `XR Flag` component to the object you want to control.
-
-2. **Change options on the dropdown** as needed.   
-    Common usecases are
-    - hiding floors when entering AR
-    - hiding Avatar parts in First or Third Person views. For example, in first-person view a person shouldn't be able to see their own head model.
 
 ### Travelling between VR worlds
 
@@ -117,9 +111,6 @@ Requires enabling a browser flag: `chrome://flags/#webxr-navigation-permission`
 
 - **Click on objects to open links**  
   Add the `OpenURL` component that makes it very easy to build connected worlds.  
-
-## Scripting  
-Read more about scripting for XR at the [scripting XR documentation](./scripting.md#xr-event-methods)
 
 ## Avatars
 
