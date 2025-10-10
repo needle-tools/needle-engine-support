@@ -147,6 +147,40 @@ The Needle Cloud website shows all deployed versions of the app, including the l
 
 ![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
 
+## Securing Pages
+
+The Needle Cloud dashboard allows you to password-protect your pages and assets to ensure data remains confidential until a product's release. This is particularly useful when collaborating with clients.
+
+<video-embed src="https://www.youtube.com/watch?v=6JsC9TruZQY" limit_height />
+
+### How to Set a Password
+
+1. Navigate to the project you wish to protect.
+2. Click on "edit info".
+3. Locate the password section.
+4. Enter the desired password.
+5. Click on "save changes".
+
+A small lock icon 🔒 will now appear next to the project name, indicating that the pages are protected.
+
+### How to Remove the Password Protection
+
+If you wish to make the pages public under the same URL, you must remove the password protection.
+
+1. Navigate back to the project's "edit info"
+2. Remove the existing password.
+3. Save the changes.
+
+The pages will now be accessible again without requiring a password.
+
+### Accessing Protected Pages
+
+When a user attempts to access the latest version of the asset, they will be greeted with a page that asks for authentication. They must enter the correct password to access the content.
+
+:::important
+All pages for this asset will be password-protected, including the main one.
+:::
+
 ## Supported 3D Formats
 
 1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Example</a>   
