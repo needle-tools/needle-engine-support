@@ -23,13 +23,13 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 | ------------- | ------------- |
 | [`Animator`](https://engine.needle.tools/docs/api/Animator) with `AnimatorController` | Export with animation state machine, conditions, transitions  |
 | [`Animation`](https://engine.needle.tools/docs/api/Animation) | Most basic animation component. Only first clip is exported |
-| [`PlayableDirector`](https://engine.needle.tools/docs/api/PlayableDirector) with `TimelineAsset` | Export powerful sequences to control animation, audio, state and more |
+| [`PlayableDirector`](https://engine.needle.tools/docs/api/PlayableDirector) (Timeline) | Export powerful sequences to control animation, audio, state and more |
 
 ## Camera
 | Name  | Description |
 | ------------- | ------------- |
 | [`Camera`](https://engine.needle.tools/docs/api/Camera) |  |
-| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) |  |
+| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) | Orbit camera controls ([Sample](https://samples.needle.tools/collaborative-sandbox)) |
 | [`ViewBox`](https://engine.needle.tools/docs/api/ViewBox) |  |
 
 ## Rendering
@@ -37,14 +37,18 @@ Learn more in the [Scripting](./scripting.md) section of our docs.
 | ------------- | ------------- |
 | [`Camera`](https://engine.needle.tools/docs/api/Camera) |  |
 | [`Light`](https://engine.needle.tools/docs/api/Light) | DirectionalLight, PointLight, Spotlight. Note that you can use it to bake light (e.g. Rectangular Light shapes) as well |
-| [`XRFlag`](https://engine.needle.tools/docs/api/XRFlag) | Control when objects will be visible. E.g. only enable object when in AR  |
-| [`DeviceFlag`](https://engine.needle.tools/docs/api/DeviceFlag) | Control on which device objects will be visible  |
-| [`ParticleSystem`](https://engine.needle.tools/docs/api/ParticleSystem) | Experimental and currently not fully supported |
-| [`VideoPlayer`](https://engine.needle.tools/docs/api/VideoPlayer) | Playback videos from url or referenced video file (will be copied to output on export). The VideoPlayer also supports streaming from MediaStream objects or `M3U8` livestream URLs |
 | [`MeshRenderer`](https://engine.needle.tools/docs/api/MeshRenderer) | Used to handle rendering of objects including lightmapping and instancing |
 | [`SkinnedMeshRenderer`](https://engine.needle.tools/docs/api/SkinnedMeshRenderer) | *See MeshRenderer* |
-| [`SpriteRenderer`](https://engine.needle.tools/docs/api/SpriteRenderer) | Used to render Sprites and Spriteanimations |
-| [`Volume`](https://engine.needle.tools/docs/api/Volume) with `PostProcessing` asset | See [table below](#postprocessing) |
+| [`SpriteRenderer`](https://engine.needle.tools/docs/api/SpriteRenderer) | Used to render Sprites and Sprite-Animations ([Sample](https://samples.needle.tools/spritesheet-animation)) |
+| [`XRFlag`](https://engine.needle.tools/docs/api/XRFlag) | Control when objects will be visible. E.g. only enable object when in AR  |
+| [`DeviceFlag`](https://engine.needle.tools/docs/api/DeviceFlag) | Control on which device objects will be visible  |
+| [`ParticleSystem`](https://engine.needle.tools/docs/api/ParticleSystem) | Experimental ([Sample](https://samples.needle.tools/particles)) |
+| [`VideoPlayer`](https://engine.needle.tools/docs/api/VideoPlayer) | Playback videos from url or referenced video file (will be copied to output on export). The VideoPlayer also supports streaming from MediaStream objects or `M3U8` livestream URLs. ([Video Playback Sample](https://samples.needle.tools/video-playback), [Screencapture Samples](https://samples.needle.tools/screensharing)) |
+| [`GroundProjection`](https://engine.needle.tools/docs/api/GroundProjectedEnv) | Project a environment texture ([Sample](https://samples.needle.tools/ground-projection)) |
+| [`Volume`](https://engine.needle.tools/docs/api/Volume) (PostProcessing) | See [table below](#postprocessing). [Sample](https://samples.needle.tools/postprocessing) |
+| [`SeeThrough`](https://engine.needle.tools/docs/api/SeeThrough) | Use to fade-out objects when they're obscuring a point in the scene ([Sample](https://samples.needle.tools/see-through)) |
+| [`ShadowCatcher`](https://engine.needle.tools/docs/api/ShadowCatcher) | Use to catch shadows on a plane or object. The object itself will be invisible but receive shadows from other objects ([Sample](https://samples.needle.tools/shadow-catcher)) |
+| [`ContactShadows`](https://engine.needle.tools/docs/api/ContactShadows) | Use to add contact shadows to objects without having to bake them into lightmaps ([Sample](https://samples.needle.tools/contact-shadows)) |
 
 ### Postprocessing
 
@@ -59,46 +63,47 @@ For Needle Engine Postprocessing in Unity you need to use URP (Universal Render 
 | --- | --- | 
 | [`Volume`](https://engine.needle.tools/docs/api/Volume) | Add effects below |
 | **Effects** | |
-| Antialiasing | *extra Unity Component* |
-| Bloom | *via Volume asset* |
-| Chromatic Aberration | *via Volume asset* |
-| Color Adjustments / Color Correction | *via Volume asset* | 
-| Depth Of Field | *via Volume asset* |
-| Vignette | *via Volume asset* |
-| ToneMappingEffect | *via Volume asset or separate component* |
-| Pixelation | |
-| Screenspace Ambient Occlusion N8 | |
-| Screenspace Ambient Occlusion | |
-| Tilt Shift Effect | |
-| SharpeningEffect | |
-| *Your custom effect* | [See example on stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect) |
+| [`Antialiasing`](https://engine.needle.tools/docs/api/Antialiasing) | *extra Unity Component* |
+| [`BloomEffect`](https://engine.needle.tools/docs/api/BloomEffect) | *via Volume asset* |
+| [`Chromatic Aberration`](https://engine.needle.tools/docs/api/ChromaticAberration) | *via Volume asset* |
+| [`Color Adjustments / Color Correction`](https://engine.needle.tools/docs/api/ColorAdjustments) | *via Volume asset* | 
+| [`Depth Of Field`](https://engine.needle.tools/docs/api/DepthOfField) | *via Volume asset* |
+| [`Tilt Shift Effect`](https://engine.needle.tools/docs/api/TiltShiftEffect) | *via Volume asset or separate component* |
+| [`Vignette`](https://engine.needle.tools/docs/api/Vignette) | *via Volume asset* |
+| [`ToneMappingEffect`](https://engine.needle.tools/docs/api/ToneMappingEffect) | *via Volume asset or separate component* |
+| [`PixelationEffect`](https://engine.needle.tools/docs/api/PixelationEffect) | *via Volume asset or separate component* |
+| [`Screenspace Ambient Occlusion N8`](https://engine.needle.tools/docs/api/ScreenSpaceAmbientOcclusionN8) | *via Volume asset or separate component* |
+| [`Screenspace Ambient Occlusion`](https://engine.needle.tools/docs/api/ScreenSpaceAmbientOcclusion) | *via Volume asset or separate component* |
+| [`SharpeningEffect`](https://engine.needle.tools/docs/api/SharpeningEffect) | *via Volume asset or separate component* |
+| *Your custom effect* | [Example on Stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect), [Example in docs](./scripting-examples.md#adding-new-postprocessing-effects) |
 
 ## Networking
 | Name  | Description |
 | ------------- | ------------- |
-| `SyncedRoom` | Main networking component. Put in your scene to enable networking |
-| `Networking` | Used to setup a custom backend server for networking. If none is provided the default Needle websocket servers will be used. |
-| `SyncedTransform` | Automatically network object transformation |
-| `SyncedCamera` | Automatically network camera position and view to other users in room. You can define how the camera is being rendered by referencing an object |
-| `Voip` | Enables voice-chat ([Sample](https://samples.needle.tools/collaborative-sandbox)) |
-| `Screensharing` | Enables screen-sharing capabilities ([Sample](https://samples.needle.tools/screensharing)) |
+| [`SyncedRoom`](https://engine.needle.tools/docs/api/SyncedRoom) | Main networking component. Put in your scene to enable networking |
+| [`Networking`](https://engine.needle.tools/docs/api/Networking) | Used to setup a custom backend server for networking. If none is provided the default Needle websocket servers will be used. |
+| [`SyncedTransform`](https://engine.needle.tools/docs/api/SyncedTransform) | Automatically network object transformation |
+| [`SyncedCamera`](https://engine.needle.tools/docs/api/SyncedCamera) | Automatically network camera position and view to other users in room. You can define how the camera is being rendered by referencing an object |
+| [`Voip`](https://engine.needle.tools/docs/api/Voip) | Enables voice-chat ([Sample](https://samples.needle.tools/collaborative-sandbox)) |
+| [`ScreenCapture`](https://engine.needle.tools/docs/api/ScreenCapture) | Enables screen-sharing capabilities ([Sample](https://samples.needle.tools/screensharing)) |
+| [`PlayerSync`](https://engine.needle.tools/docs/api/PlayerSync) | Automatically instantiate an object per connected user. Can be used to e.g. show avatars |
 
 ## Interaction
 | Name  | Description |
 | ------------- | ------------- |
-| `DragControls` | Allows objects to be dragged in the scene. Requires raycaster in parent hierarchy, e.g. ObjectRaycaster |
-| `Duplicatable` | Can duplicate assigned objects by drag. Requires DragControls |
-| `Interactable` | Basic component to mark an object to be interactable. |
-| `OrbitControls` | Add to camera to add camera orbit control functionality |
-| `SmoothFollow` | Allows to interpolate smoothly to another object's transform |
-| `DeleteBox` | Will destroy objects with the `Deletable` component when entering the box |
-| `Deletable` | The GameObject this component is attached to will be deleted when it enters or intersects with a `DeleteBox` |
-| `DropListener` | Add to receive file drop events for uploading |
+| [`DragControls`](https://engine.needle.tools/docs/api/DragControls) | Allows objects to be dragged in the scene. Requires raycaster in parent hierarchy, e.g. ObjectRaycaster |
+| [`Duplicatable`](https://engine.needle.tools/docs/api/Duplicatable) | Can duplicate assigned objects by drag. Requires DragControls |
+| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) | Add to camera to add camera orbit control functionality |
+| [`SmoothFollow`](https://engine.needle.tools/docs/api/SmoothFollow) | Allows to interpolate smoothly to another object's transform |
+| [`DeleteBox`](https://engine.needle.tools/docs/api/DeleteBox) | Will destroy objects with the `Deletable` component when entering the box |
+| [`Deletable`](https://engine.needle.tools/docs/api/Deletable) | The GameObject this component is attached to will be deleted when it enters or intersects with a `DeleteBox` |
+| [`DropListener`](https://engine.needle.tools/docs/api/DropListener) | Add to receive file drop events for uploading |
 | `SpatialTrigger` | Use to raise event if an object enters a specific space or area. You can also use Physics events |
 | `SpatialTriggerReceiver` | Use to receive events from SpatialTrigger |
 | [`CursorFollow`](https://engine.needle.tools/docs/api/CursorFollow) | Add to make an object follow the cursor ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
 | [`ScrollFollow`](https://engine.needle.tools/docs/api/ScrollFollow) | Add to bind scroll to other components (e.g. you can bind the scroll to a timeline animation or animator) ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
 | [`HoverAnimation`](https://engine.needle.tools/docs/api/HoverAnimation) | |
+
 
 ## Physics
 
@@ -123,6 +128,7 @@ Physics is implemented using [Rapier](https://rapier.rs/).
 | [`WebXR`](https://engine.needle.tools/docs/api/WebXR) | Add to scene for VR, AR and Passthrough support as well as rendering Avatar models |
 | [`USDZExporter`](https://engine.needle.tools/docs/api/USDZExporter) | Add to enable USD and Quicklook support
 | [`WebARSessionRoot`](https://engine.needle.tools/docs/api/WebARSessionRoot) | Handles placement and scale of your scene in AR mode. The center and alignment of the AR scene when placed will be at the position of this component |
+| `XRRig` | Add to define the start position of the user in VR mode |
 | `WebARCameraBackground` | Add to access the AR camera image and apply effects or use it for rendering |
 | `WebXRImageTracking` | Assign images to be tracked and optionally instantiate an object at the image position |
 | `WebXRPlaneTracking` | Create plane meshes or colliders for tracked planes |
