@@ -56,6 +56,9 @@ async function main() {
 
         if (!version.startsWith("3") && !version.startsWith("4")) continue;
 
+        // skip next and experimental versions
+        if (version.includes("next") || version.includes("experimental")) continue;
+
         /**
          * @type {{name:string, version:string, dist:{tarball:string}}}
          */
