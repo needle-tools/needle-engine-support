@@ -1,9 +1,9 @@
-name: deploy api
-
 on:
-    # schedule once a day at 8 pm
+    # schedule in CEST (summer only) at 17:00 and 20:00 local -> 15:00 and 18:00 UTC
+    # active Apr–Oct
     schedule:
-      - cron: '0 16 * * *'
+      - cron: '0 15 * 4-10 *'
+      - cron: '0 18 * 4-10 *'
     # manual
     workflow_dispatch:
 
