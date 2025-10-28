@@ -517,9 +517,9 @@ To serialize from and to custom formats, it is possible to extend from the ``Typ
 > **Note**: In addition to matching fields, matching properties will also be exported when they match to fields in the typescript file. 
 
 ## Loading Scenes
-In Unity referenced Prefabs, SceneAssets and AssetReferences (Unity's Addressable System) will automatically be exported as glTF files (please refer to the [Export Prefabs](export.md) documentation).  
+Referenced Prefabs, SceneAssets and AssetReferences (Unity's Addressable System) will automatically be exported as glTF files (please refer to the [Export Prefabs](export.md) documentation). In Blender referenced Scenes will be exported as glTF files. 
 
-These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components, we added the concept of ``AssetReference`` types. They can be loaded at runtime and thus allow to defer loading parts of your app or loading external content.
+These exported gltf files will be serialized as plain string URIs. To simplify loading these from TypeScript components use the [``AssetReference``](https://engine.needle.tools/docs/api/AssetReference) class. An AssetReference can be loaded at runtime and allow to defer loading parts of your app or loading external content or glTF files at any point.
 
 **Example:**
 @[code ts twoslash](@code/component-prefab.ts)

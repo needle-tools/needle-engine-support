@@ -6,11 +6,11 @@ Needle Engine is a fully fledged 3D engine that runs in the browser. It comes wi
 
 ## Shaders and Materials
 
-Both PBR Materials and Custom shaders created with Shader Graph or other systems can be exported. 
+Both [PBR Materials](./export.md#physically-based-materials-pbr) and [Custom shaders](./export.md#custom-shaders) created with Shader Graph or other systems can be exported. 
 
 <img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" />
 
-Use the node based [ShaderGraph](https://unity.com/features/shader-graph) to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
+Use the node based ShaderGraph to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
 
 Read more about [PBR Materials](./export.md#physically-based-materials-pbr) • [Custom Shaders](./export.md#custom-shaders)
 

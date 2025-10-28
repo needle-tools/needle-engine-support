@@ -26,7 +26,7 @@ Be aware that this is preferred over disabling objects as disabled will still ge
 
 ### Lazy loading and multiple levels / scenes
 
-If you want to split up your application into multiple levels or scenes then you can simply use the `SceneSwitcher` component. You can then structure your application into multiple scenes or prefabs and add them to the SceneSwitcher array to be loaded and unloaded at runtime. This is a great way to avoid having to load all your content upfront and to keep loading times small (for example it is what we did on [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes) by separating each section of your website into its own scene and only loading them when necessary)
+If you want to split up your application into multiple levels or scenes then you can simply use the [`SceneSwitcher`](https://engine.needle.tools/docs/api/SceneSwitcher) component. You can then structure your application into multiple scenes or prefabs and add them to the SceneSwitcher array to be loaded and unloaded at runtime. This is a great way to avoid having to load all your content upfront and to keep loading times small (for example it is what we did on [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes) by separating each section of your website into its own scene and only loading them when necessary)
 
 ### Recommended Complexity per glTF
 
@@ -34,7 +34,7 @@ If you want to split up your application into multiple levels or scenes then you
 - Max. 500k vertices (less if you target mobile VR as well)  
 - Max. 4x 2k lightmaps  
 
-You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See the [AssetReference section in the Scripting docs](scripting.md#assetreference-and-addressables).
+You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See [Loading Scenes in the scripting docs](scripting.md#loading-scenes).
 
  The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths. There's no technical limitation to this beyond the capabilities of your device.
 
@@ -111,11 +111,22 @@ Other shaders that can be exported directly (with conversion):
 Other materials are converted using a propery name heuristic. That means that depending on what property names your materials and shaders use, you might want to either refactor your custom shader's properties to use the property names of either Universal Render Pipeline/Lit or PBRGraph, or export the material as [Custom Shader](#custom-shaders).
 
 ### Custom Shaders
-To export custom unlit shaders (for example made with ShaderGraph), add an ``ExportShader`` Asset Label to the shader you want to export. Asset Labels can be seen at the bottom of the Inspector window.
+To export custom unlit shaders (for example made with ShaderGraph) use the dropdown in the Material header to select the shader export type. Needle Engine offers support for Unity Shader export in WebGL2 format (Unlit Shaders only) or as MaterialX graphs.
 
-![2022-08-22-172029_Needle_Website_-_CustomShaders_-_Windows,_Mac,_Lin](https://user-images.githubusercontent.com/5083203/185957781-9fae18c5-09ff-490f-8958-57e138aa0003.png)
+![image](/imgs/custom-shaders.jpg)
 
-#### Limitations
+
+#### MaterialX Format
+
+MaterialX is a powerful standard for describing materials and shaders in a graph based way, independent of the rendering engine. It allows you to define complex materials, with multiple surface layers and realistic lighting.
+
+
+- [MaterialX in Needle Engine](./materialx.md) documentation
+
+
+#### WebGL2 Format (Unlit Shaders)
+ 
+**Limitations**
 - We currently only support custom **Unlit** shaders — Lit shader conversion is not officially supported.
 - Custom Lit Shaders are currently experimental. Not all rendering modes are supported. 
 - Shadow receiving on custom shaders is not supported
@@ -124,9 +135,9 @@ To export custom unlit shaders (for example made with ShaderGraph), add an ``Exp
   - UV coordinates in Unity start at the bottom left; in glTF they start at the top left.
   - X axis values are flipped in glTF compared to Unity. This is a variant of a left-handed to right-handed coordinate system change. Data used in shaders may need to be flipped on X to display correctly.  
 
-::: note Not part of the glTF specification
+<!-- ::: note Not part of the glTF specification
 Note that **Custom Shaders** aren't officially part of the glTF specification. Our implementation of custom shaders uses an extension called KHR_techniques_webgl, that stores the WebGL shader code directly in the glTF file. The resulting assets will work in viewers based on Needle Engine.
-:::
+::: -->
 
 ## 💡 Exporting Lightmaps 
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
