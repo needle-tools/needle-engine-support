@@ -190,9 +190,9 @@ It's worth noting that the overlay element [will be always displayed fullscreen 
 
 ## AR: Customize or hide the exit AR button
 
-By default Needle Engine will create a close button for AR sessions (X in top right corner). To hide this button or change how it looks you can use the `exit-ar` slot.
+By default Needle Engine will create a close button for AR sessions (X in top right corner). To hide this button or change how it looks you can use the `quit-ar` slot. The close button will be displayed during an screen-based AR session (e.g. when using a phone or the WebXR emulator in chrome). You can apply styles using CSS.
 
-This will replace the default close button with your own HTML element. It will be displayed during an AR session. You can apply styles using CSS.
+Replace the default AR close button with your own HTML element:
 
 ```html
   <needle-engine>
@@ -202,7 +202,7 @@ This will replace the default close button with your own HTML element. It will b
   </needle-engine>
 ```
 
-This will hide the default close button:
+Hide the AR close button:
 
 ```html
   <needle-engine>
