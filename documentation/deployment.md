@@ -9,10 +9,7 @@ Deployment is the process of making your application available to the public on 
 ## Available Deployment Targets 
 
 - [Needle Cloud](./cloud/#deploy-from-unity) 
-  Great for spatial web apps and sharing assets.
-- [Glitch](#deploy-to-glitch)
-  Great for experimentation and hacking on server-side code.  
-
+  Official Needle hosting option: Great for all kinds of spatial web apps and 3D assets. 
 - [Netlify](#deploy-to-netlify)
   Great for hosting your own website and custom domain names.
 - [itch.io](#deploy-to-itch.io)
@@ -21,12 +18,12 @@ Deployment is the process of making your application available to the public on 
   Free static page hosting.
 - [Vercel](#deploy-to-vercel)
   Platform for frontend developers
-- [FTP Upload](#deploy-to-ftp)
-  Deploy directly to any server with FTP support. Both FTP and SFTP are supported.
-- [Build to folder](#build-to-folder)
-  When building to a folder, you can upload the files to any web server or other hosting service.
 - [Facebook Instant Games](#deploy-to-facebook-instant-games)
   Games platform on Facebook and Facebook Messenger.
+- [FTP Upload](#deploy-to-ftp)
+  Deploy directly to any server with FTP support. Both FTP and SFTP are supported.
+- [Build to Folder / Disk](#build-to-folder)
+  When building to a folder, you can upload the files to any web server or other hosting service.
   
 ::: tip Feel something is missing? 
 Please let us know in our [forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)!
@@ -346,20 +343,25 @@ We will take care of everything else and no manual adjustments to your Needle En
 
 ## Build To Folder
 
+When building to folder / to disk your web project will be bundled and compressed and you can upload or deploy it manually. When using our default vite template the build output folder is at `<webproject>/dist`.
 
-In Unity open ``File/Build Settings`` and select ``Needle Engine`` for options:
+In Unity open ``File/Needle Engine/Build Window`` for options:
 
-![image](/imgs/unity-build-window-menu.jpg)    
+<!-- ![image](/imgs/unity-build-window-menu.jpg)     -->
 
-![image](/imgs/unity-build-window.jpg)  
+![image](/imgs/unity-build-window-2.jpg)  
 
  
 
-To build your web project for uploading to any web server you can click **Build** in the Unity Editor Build Settings Window. You can enable the ``Development Build`` checkbox to omit compression (see below) which requires toktx to be installed on your machine.   
+To build your web project for uploading to any web server you can click **Build to Disk** in the Build Settings Window.
 
 To locally preview your final build you can use the `Preview Build` button at the bottom of the window. This button will first perform a regular build, and then start a local server in the folder with the final files, so you can see what you get once you upload these files to your webserver.
 
+For debugging you may enable the ``Development Build`` checkbox to disable compression. This is not recommended for production builds that you want to deploy to the web! (see [compression](#production-builds))
+
+:::tip Note
 Nodejs is **only** required during development. The distributed website (using our default vite template) is a static page that doesn't rely on Nodejs and can be put on any regular web server. Nodejs is required if you want to run our minimalistic networking server on the same web server (automatically contained in the Glitch deployment process). 
+:::
 
 
 ---
