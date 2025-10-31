@@ -265,7 +265,7 @@ You can disable gzip compression in ``vite.config.js`` in your Needle web projec
 
 > **Note**: If the result doesn't work when uploaded it might be that your web server does not support serving gzipped files. You have two options to fix the problem:   
 Option 1: You can try enabling gzip compression on your server using a htaccess file!    
-Option 2: You can turn gzip compression off in the build settings at File/Build Window and selecting the Needle Engine platform.  
+Option 2: You can turn gzip compression off in the build settings at `File/Needle Engine/Build Window` and selecting the Needle Engine platform.  
 
 > **Note**: If you're getting errors during compression, please let us know and report a bug! If your project works locally and only fails when doing production builds, you can get unstuck right away by doing a Development Build. For that, simply toggle `Development Build` on in the Build Settings.
 
