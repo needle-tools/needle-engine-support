@@ -181,27 +181,6 @@ When a user attempts to access the latest version of the asset, they will be gre
 All pages for this asset will be password-protected, including the main one.
 :::
 
-## Supported 3D Formats
-
-1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Example</a>   
-   The glTF format is the most widely supported format for 3D on the web. It is a lightweight format that can store 3D models, animations, and textures. GLB files are binary versions of glTF files, where all data is stored in a single file.
-   glTF supports advanced compression techniques like Draco, KTX2, and Meshopt, which are fully supported by Needle Cloud and Needle Engine.
-
-2. **OpenUSD**   
-   USD is a powerful format for 3D data interchange. It is known for its use in the film and VFX industry, and is gaining popularity in the game industry. Needle Cloud supports USDZ and USD files natively through our work on USD-WASM, and also converts USD files to glTF for further processing and optimization.
-
-3. **FBX**  
-   FBX has been a popular format for 3D data interchange for many years, but is lacking a number of modern features like PBR materials and extensions. Needle Cloud converts FBX files to glTF for further processing and optimization.  
-
-4. **VRM**  
-   VRM is a format for humanoid avatars. It is based on glTF with additional constraints through the use of glTF extensions. Needle Cloud supports VRM files natively, and can optimize them like other glTF files, including complex VRM extensions like phonemes, toon shading and dynamic bones.
-
-5. **OBJ**  
-   OBJ is a simple text-based format for 3D models. It supports basic materials through MTL files, animations, and hierarchies of objects. Needle Cloud converts OBJ files to glTF for further processing and optimization. 
-
-:::tip Use glTF or USD when possible
-We recommend glTF and USD as the primary formats for 3D data interchange. They are widely supported, have modern features and a good material model.
-:::
 
 ## Cloud Assets
 
@@ -250,10 +229,10 @@ The following embed options are available:
   The [model-viewer](https://modelviewer.dev) project provides a web component for rendering simple, non-interactive 3D models in the browser.
 
 1. **three.js**  
-  If you're familiar with three.js, you can use the provided code snippet as a starting point for a three.js app that supports Needle Progressive Loading and efficiently loads files from Needle Cloud.
+  If you're familiar with three.js, you can use the provided code snippet as a starting point for a three.js app that supports [Needle Progressive Loading](https://www.npmjs.com/package/@needle-tools/gltf-progressive) and efficiently loads files from Needle Cloud.
 
 1. **React-Three-Fiber**  
-  If you're using React-Three-Fiber, you can use the provided code snippet as a starting point for a project that supports Needle Progressive Loading and efficiently loads files from Needle Cloud.
+  If you're using React-Three-Fiber, you can use the provided code snippet as a starting point for a project that supports [Needle Progressive Loading](https://www.npmjs.com/package/@needle-tools/gltf-progressive) and efficiently loads files from Needle Cloud.
 
 1. **Unity**  
   If you're using Unity, you can integrate Needle Cloud assets directly into your projects using the Needle Cloud Asset component for seamless loading and optimization.
@@ -284,6 +263,27 @@ The command line interface (CLI) for Needle Cloud allows automating file uploads
 
 See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more information about the CLI and how to use it.
 
+## Supported 3D Formats
+
+1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Example</a>   
+   The glTF format is the most widely supported format for 3D on the web. It is a lightweight format that can store 3D models, animations, and textures. GLB files are binary versions of glTF files, where all data is stored in a single file.
+   glTF supports advanced compression techniques like Draco, KTX2, and Meshopt, which are fully supported by Needle Cloud and Needle Engine.
+
+2. **OpenUSD**   
+   USD is a powerful format for 3D data interchange. It is known for its use in the film and VFX industry, and is gaining popularity in the game industry. Needle Cloud supports USDZ and USD files natively through our work on USD-WASM, and also converts USD files to glTF for further processing and optimization.
+
+3. **FBX**  
+   FBX has been a popular format for 3D data interchange for many years, but is lacking a number of modern features like PBR materials and extensions. Needle Cloud converts FBX files to glTF for further processing and optimization.  
+
+4. **VRM**  
+   VRM is a format for humanoid avatars. It is based on glTF with additional constraints through the use of glTF extensions. Needle Cloud supports VRM files natively, and can optimize them like other glTF files, including complex VRM extensions like phonemes, toon shading and dynamic bones.
+
+5. **OBJ**  
+   OBJ is a simple text-based format for 3D models. It supports basic materials through MTL files, animations, and hierarchies of objects. Needle Cloud converts OBJ files to glTF for further processing and optimization. 
+
+:::tip Use glTF or USD when possible
+We recommend glTF and USD as the primary formats for 3D data interchange. They are widely supported, have modern features and a good material model.
+:::
 
 ## RBAC (role-based access control)
 
