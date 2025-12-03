@@ -5,6 +5,7 @@ import fetch from 'node-fetch';
 import FtpDeploy from 'ftp-deploy';
 import dotenv from 'dotenv';
 import { html } from 'diff2html';
+import { join } from 'path';
 
 dotenv.config();
 
@@ -125,6 +126,13 @@ async function main() {
 
         // create version file
         fs.writeFileSync(outputDirectoryFull + "/" + versionFile, new Date().toISOString());
+
+
+        // copy components.json into API folder
+        const componentsJson = join(packageDir, "components.needle.json");
+        if(existsSync(componentsJson)) {
+            fs.copyFileSync(componentsJson, join(outputDirectoryFull, "components.needle.json"));
+        }
 
         // in dev mode we don't upload the documentation and just build one version
         if (isDev) {
