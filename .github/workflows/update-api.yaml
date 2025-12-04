@@ -1,14 +1,23 @@
 on:
-    # schedule in CEST (summer only) at 17:00 and 20:00 local -> 15:00 and 18:00 UTC
-    # active Apr–Oct
     schedule:
+      - cron: '0 12 * * *'
       - cron: '0 15 * * *'
       - cron: '0 18 * * *'
+      - cron: '0 22 * * *'
     # manual
     workflow_dispatch:
 
 
 jobs: 
+  notify_discord_start:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: tsickert/discord-webhook@v5.3.0
+        with:
+          webhook-url: ${{ secrets.DEPLOY_DISCORD_WEBHOOK }}
+          username: "Update Api 🤖"
+          content: "Starting API update process..."
+
   api:
     runs-on: ubuntu-latest
     steps:

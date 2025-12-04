@@ -18,6 +18,7 @@ dotenv.config();
 // execSync(cmd);
 
 const isDev = process.argv.includes("--dev");
+const isGithubActions = process.env.GITHUB_ACTIONS === "true";
 console.log("Dev mode: " + isDev);
 
 async function main() {
@@ -51,6 +52,8 @@ async function main() {
 
     const versions = Object.keys(content.versions).reverse();
 
+    let versionsChecked = 0;
+
     for (let i = 0; i < versions.length; i++) {
         const version = versions[i];
         const prevVersion = versions[i + 1];
@@ -59,6 +62,12 @@ async function main() {
 
         // skip next and experimental versions
         if (version.includes("next") || version.includes("experimental")) continue;
+
+        if (isGithubActions && versionsChecked >= 10) {
+            console.log("Github Actions mode: limiting to 10 versions checked");
+            break;
+        }
+        versionsChecked++;
 
         /**
          * @type {{name:string, version:string, dist:{tarball:string}}}
@@ -130,7 +139,7 @@ async function main() {
 
         // copy components.json into API folder
         const componentsJson = join(packageDir, "components.needle.json");
-        if(existsSync(componentsJson)) {
+        if (existsSync(componentsJson)) {
             fs.copyFileSync(componentsJson, join(outputDirectoryFull, "components.needle.json"));
         }
 
