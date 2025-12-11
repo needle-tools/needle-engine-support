@@ -24,7 +24,7 @@ Unglaubliche Unity-Editor-Integration, um eine Größenordnung besser,
   name="Kevin Curry"
   role="Gründer, Intangible.ai. Ex-Unity"
   src="https://x.com/kmcurry/status/1574333302022062080"
-  img="https://pbs.twimg.com/profile_images/1773236097642123264/nBGahkSO_x96.jpg"
+  img="./testimonial/KevinCurry.webp"
 >
 needle.tools ist ein wunderbares Beispiel dafür, was @NeedleTools zu 3D im Web beiträgt. Ich liebe es einfach.
 </testimonial>
@@ -33,7 +33,7 @@ needle.tools ist ein wunderbares Beispiel dafür, was @NeedleTools zu 3D im Web 
   name="Brit Gardner"
   role="Senior Software Engineer, Coherence. Ex-Blizzard"
   src="https://x.com/britg/status/1562443905580163072"
-  img="https://pbs.twimg.com/profile_images/1360002897048727553/0gscFjvt_x96.jpg"
+  img="./testimonial/BritGardner.webp"
 >
 Habe heute Morgen ein wenig damit gespielt 🤯🤯 ziemlich magisch
 </testimonial>
@@ -42,7 +42,7 @@ Habe heute Morgen ein wenig damit gespielt 🤯🤯 ziemlich magisch
   name="Marc Wakefield"
   role="Experte für Augmented Reality"
   src="https://x.com/mrm_design/status/1567391880169545729"
-  img="https://pbs.twimg.com/profile_images/1106863126958493697/tlgb3EyM_x96.jpg"
+  img="./testimonial/MarcWakefield.webp"
 >
 Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an das @NeedleTools-Team für die Arbeit daran! Ich hoffe, @Apple
  regelt seine WebXR-Situation lieber früher als später. Der AR-Teil funktionierte auf meinem @SamsungMobile S21 tadellos.
@@ -52,7 +52,7 @@ Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an 
   name="Rinesh Thomas"
   role="Spieleentwickler, Assassin's Creed VR"
   src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRTTKqCQ&s=19"
-  img="https://pbs.twimg.com/profile_images/1427818935/rinesh_small_x96.jpg"
+  img="./testimonial/RineshThomas.webp"
 >
     Das ist das Beste, was ich nach cinemachine in Unity gesehen habe. Unity sollte das übernehmen
 </testimonial>
@@ -61,7 +61,7 @@ Das ist riesig für WebXR und geteilte, immersive 3D-Erlebnisse! Vielen Dank an 
   name="Stella Cannefax"
   role="CTO Dora, Spieleentwickler"
   src="https://x.com/0xstella/status/1574853012585172993"
-  img="https://pbs.twimg.com/profile_images/1657086025661833237/Yyo56hVY_x96.jpg"
+  img="./testimonial/StellaCannefax.webp"
 >
 Dank @NeedleTools sehe ich diese Lösung häufig für webbasierte Echtzeit-3D-Tools – Szenen aus Unity exportieren, wo man das umfangreiche 3D-Editor-Ökosystem & Inhalte nutzen kann, und sie dann in der eigenen webbasierten Engine rendern
 </testimonial>
@@ -70,7 +70,7 @@ Dank @NeedleTools sehe ich diese Lösung häufig für webbasierte Echtzeit-3D-To
   name="Pete Patterson"
   role="Spatial Computing Specialist"
   src="https://x.com/VRSpatialist/status/1572300394285383680"
-  img="https://pbs.twimg.com/profile_images/1560370896866533378/aEzq15Cm_x96.jpg"
+  img="./testimonial/PetePatterson.webp"
 >
 Endlich schaue ich mir @NeedleTools mit Unity an. Super einfach, etwas in der Cloud mithilfe ihrer
  Integrationen zum Laufen zu bringen
@@ -80,7 +80,7 @@ Endlich schaue ich mir @NeedleTools mit Unity an. Super einfach, etwas in der Cl
   name="Dilmer Valecillos"
   role="Developer Advocate für Mixed Reality @Meta, Tutorial-Ersteller"
   src="https://x.com/Dilmerv/status/1562209049856188420"
-  img="https://pbs.twimg.com/profile_images/1876790676610023424/4KHnReTp_x96.jpg"
+  img="./testimonial/DilmerValecillos.webp"
 >
  Das ist fantastisch und wenn du neugierig auf #WebXR mit Unity bist, wird uns das helfen, dorthin zu gelangen
 </testimonial>
@@ -88,7 +88,7 @@ Endlich schaue ich mir @NeedleTools mit Unity an. Super einfach, etwas in der Cl
 <testimonial
   name="VRSpatialist"
   src="https://discord.com/channels/717429793926283276/722046635525537842/1030201907513405530"
-  img="https://cdn.discordapp.com/avatars/563549194137239552/b0e0746e19ad79db53cf4465ebb0791e.webp?size=96"
+  img="./testimonial/VRSpatialist.webp"
 >
  Ich bin ein langjähriger Unity-Entwickler und habe kürzlich angefangen, mit Needle Tools zu spielen, und ich liebe es! Es ist ein großartiger Einstieg für Unity-Entwickler, die WebXR und three.js lernen wollen. Die Runtime-Engine ist fantastisch und es war ziemlich einfach, meine eigene benutzerdefinierte Komponente zu erstellen
 </testimonial>
@@ -97,7 +97,7 @@ Endlich schaue ich mir @NeedleTools mit Unity an. Super einfach, etwas in der Cl
   name="Unity for Digital Twins"
   role="Unterstützt das Unternehmens-Metaverse"
   src="https://x.com/DigitalTwin/status/1576934958681055233"
-  img="https://pbs.twimg.com/profile_images/1659581582657863681/xl4kQKA__x96.jpg"
+  img="./testimonial/UnityforDigitalTwins.webp"
 >
 Wir müssen einfach WOW sagen 🤩
 </testimonial>
@@ -106,7 +106,7 @@ Wir müssen einfach WOW sagen 🤩
   name="Matthew Pieri"
   role="Spieleentwickler"
   src="https://discord.com/channels/717429793926283276/1097572505738301571/1097572505738301571"
-  img="https://pbs.twimg.com/profile_images/1109900618657878016/3cej9Jql_x96.jpg"
+  img="./testimonial/MatthewPieri.webp"
 >
 Ich habe die letzten 2,5 Monate mit dem Bau dieses Spiels verbracht, noch nie ein Spiel gebaut/noch nie Unity benutzt, aber ich liebe den ganzen Prozess mit Needle Tools absolut. So schnell! Würde gerne eine Karriere als AR-Erlebnisse-Entwickler machen!
 </testimonial>
@@ -115,7 +115,7 @@ Ich habe die letzten 2,5 Monate mit dem Bau dieses Spiels verbracht, noch nie ei
   name="Yuzu"
   role="Web-Spieleentwickler"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
-  img="https://cdn.discordapp.com/avatars/559315446105636875/c85b503132ed62d741a37cf9174646d2.webp?size=96"
+  img="./testimonial/Yuzu.webp"
 >
 Mein Workflow wurde um das 10-fache optimiert, seit ich Needle benutze
 </testimonial>
