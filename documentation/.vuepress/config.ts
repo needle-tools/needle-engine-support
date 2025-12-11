@@ -215,6 +215,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         "/networking",
                         "/materialx",
                         "/unity/editor-sync",
+                        "/responsive-web-design",
                     ]
                 },
                 {
@@ -430,6 +431,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     "/networking",
                     "/materialx",
                     "/unity/editor-sync",
+                    "/responsive-web-design",
                 ]
             },
             {
