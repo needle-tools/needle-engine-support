@@ -215,7 +215,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         "/networking",
                         "/materialx",
                         "/unity/editor-sync",
-                        "/responsive-web-design",
+                        {
+                        text: "Responsive 3D Webdesign",
+                        link:  "/responsive-3D-webdesign-with-needle-and-threejs",
+                        },
                     ]
                 },
                 {
@@ -430,8 +433,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     },
                     "/networking",
                     "/materialx",
-                    "/unity/editor-sync",
-                    "/responsive-web-design",
+                    "/unity/editor-sync",{
+                        text: "Responsive 3D Webdesign",
+                        link:  "/responsive-3D-webdesign-with-needle-and-threejs",
+                    },
                 ]
             },
             {
