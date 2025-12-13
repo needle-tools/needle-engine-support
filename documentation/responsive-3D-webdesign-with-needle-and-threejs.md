@@ -1,17 +1,23 @@
 ---
-description: "Creating responsive 3D websites doesn't have to be complicated. This site offers practical solutions and techniques on how to seamlessly and responsively integrate 3D content into your existing web layout, specifically using three.js and the Needle Engine."
+description: "Learn how to easily create 3D websites that are responsive on any screen with Needle Engine and three.js"
 ---
 
 # Responsive 3D Webdesign
 
+Needle Engine offers several building blocks to make building responsive 3d websites easy. Learn how to use and combine Focus Rect and ViewBox features:
+
 ## Focus Rect
-The main purpose of FocusRect is to make your website responsive and ensure the 3D element is always adjusting to the available space. The 3D content moves dynamic with your existing HTML layout.
+Use the Needle Engine focus rect feature to adjust the center of your 3D scene using CSS. This is the basic building block for responsive layouts. It can be enabled with one line of code and no changes to your scene are required.  
 
-### How to use Focus Rect
+### Video Tutorial
 
-Set the element you like to focus on simply by querying an HTML element on your website. You then set this element using the method: [```context.setCameraFocusRect(<element>)```](https://engine.needle.tools/docs/api/classes/Engine_Core.Context.html#setcamerafocusrect).
+<video-embed src="https://www.youtube.com/watch?v=YAPInggEIg8" limit_height />
 
-For example `onStart` [hook](/scripting.md#hooks) in your Needle Engine code (e.g., in main.ts) to query the FocusRect element and pass it to the camera.
+### How to use the Focus Rect
+
+Set the element to focus on by querying an HTML element on your website. You then set this element using the [```setCameraFocusRect(<element>)```](https://engine.needle.tools/docs/api/classes/Engine_Core.Context.html#setcamerafocusrect) method.
+
+For example using the `onStart` [hook](/scripting.md#hooks) in your Needle Engine code (e.g., in main.ts) to query the element and pass it to Needle Engine.
 
 ```ts twoslash
 import "@needle-tools/engine";
@@ -27,26 +33,20 @@ onStart((ctx)=>{
 
 [View needle-engine attributes for more](/reference/needle-engine-attributes.md)
 
-### Links to Samples
+### Focus Rect Samples
 [Demo Webpage Sword and Shield](https://portfolio-header-demo-z23hmxb19zenk-19zenk.needle.run/)
 
 [Demo Webpage Bike](https://focus-rect-demo-z23hmxbztexgt-z19e07i.needle.run/)
 
 
-### Video Tutorial
-
-This tutorial shows the Focus Rect workflow in action:
-
-<video-embed src="https://www.youtube.com/watch?v=YAPInggEIg8" limit_height />
 
 ## ViewBox
 
-[ViewBox](https://engine.needle.tools/docs/api/classes/Built-in_Components.ViewBox.html) can be used to automatically fit a certain box area into the camera view - no matter your screen size or aspect ratio.
+The [ViewBox](https://engine.needle.tools/docs/api/classes/Built-in_Components.ViewBox.html) can be used to automatically fit a certain box area into the camera view - no matter your screen size or aspect ratio.
 
-This component can be used to automatically fit a certain box area into the camera view - no matter your screen size or aspect ratio.
-This is useful for example to frame a character or object in the center of the screen and ensure it is always fully visible. You can also animate or scale the viewbox to create zoom or framing effects.
+This is useful for example to frame a character or object in the center of the screen and ensure it is always fully visible. The Viewbox can also be animated or scaled to create zoom effects or to adjust the visible area.
 
-### Video
+### ViewBox Video
 
 <video-embed src="https://www.youtube.com/watch?v=Dn9lmWy3Vak" limit_height/>
 
