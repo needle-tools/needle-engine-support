@@ -221,10 +221,10 @@ Augmented Reality experiences on iOS are somewhat limited, due to Apple currentl
 
 There are several approaches to bring AR experiences to iOS:
 
-**Needle Go App Clip (Coming Soon)**
+**Needle Go App Clip (Coming Soon)**  
 [Needle Go](ios-webxr-app-clip.md) is an upcoming iOS App Clip that enables full WebXR support on iPhone and iPad through native ARKit integration. Users can access your WebXR scenes instantly via QR codes, links, or smart app banners without installing an app. This will provide the most complete WebXR experience on iOS with support for hit testing, anchors, lighting estimation, and more.
 
-**Everywhere Actions (Available Now)**
+**Everywhere Actions (Available Now)**  
 Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill the WebXR gap on iOS, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information.
 
 :::tip Limited custom code support in QuickLook
