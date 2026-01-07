@@ -5,7 +5,7 @@
 
 - **[Community Forum](https://forum.needle.tools)** — Ask questions and get help in our community forum  
 - **[Discord](https://discord.needle.tools/?utm_source=needle_docs&utm_content=content)** — Chat with the community and share your projects
-- **[Needle AI](./ai/needle-ai)** — Get instant answers from our AI assistant trained on Needle Engine, documentation and integrations
+- **[Needle AI](./ai/index)** — Get instant answers from our AI assistant trained on Needle Engine, documentation and integrations
 
 
 ### Devlogs
