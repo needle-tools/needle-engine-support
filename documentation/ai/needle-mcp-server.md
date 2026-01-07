@@ -22,7 +22,7 @@ Talk to your AI assistant about your 3D scenes! Connect Claude, Cursor, or other
 
 2. Connect your AI assistant using the instructions below
 
-3. Optional: Install the [Needle Inspector for Chrome](./needle-inspector.md) to chat with your AI about any three.js scene in the browser.
+3. Optional: Install the [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-extension.md) to chat with your AI about any three.js scene in the browser.
 
 :::tip Works with your favorite AI tools
 Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.

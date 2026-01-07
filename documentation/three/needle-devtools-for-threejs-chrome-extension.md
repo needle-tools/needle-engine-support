@@ -140,7 +140,7 @@ Right-click any object in the hierarchy and select "Inspect" to view it in an is
 ## Next Steps
 
 - [Learn about Needle Engine](/index.md)
-- [Explore three.js integration](/three.md)
+- [Explore three.js integration](/three/index.md)
 - [Get started with Needle in Unity](/unity/index.md)
 - [Get started with Needle in Blender](/blender/index.md)
 
