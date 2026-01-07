@@ -71,6 +71,108 @@ Needle Engine provides an easy-to-use web component that can be used to display 
 
 [View needle-engine attributes](/reference/needle-engine-attributes.md)
 
+### Extending with vanilla three.js
+
+The web component works seamlessly with vanilla three.js code. Use Needle Engine's lifecycle hooks to access the scene and add your own three.js objects, modify materials, or write custom logic.
+
+**Adding objects with `onStart`:**
+
+```html
+<!-- Import Needle Engine -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+
+<!-- Add the web component -->
+<needle-engine src="your-scene.glb"></needle-engine>
+
+<!-- Extend with vanilla three.js -->
+<script type="module">
+  import { onStart } from 'https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js';
+  import * as THREE from 'three';
+
+  onStart(context => {
+    // Access the three.js scene
+    console.log("Scene loaded:", context.scene);
+
+    // Add objects using vanilla three.js
+    const geometry = new THREE.BoxGeometry(1, 1, 1);
+    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
+    const cube = new THREE.Mesh(geometry, material);
+    cube.position.set(0, 0.5, 0);
+
+    context.scene.add(cube);
+  });
+</script>
+```
+
+**Animating objects with `onUpdate`:**
+
+```typescript
+import { onStart, onUpdate } from '@needle-tools/engine';
+import * as THREE from 'three';
+
+let rotatingCube;
+
+onStart(context => {
+  // Create a rotating cube
+  const geometry = new THREE.BoxGeometry(1, 1, 1);
+  const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
+  rotatingCube = new THREE.Mesh(geometry, material);
+  context.scene.add(rotatingCube);
+});
+
+onUpdate(context => {
+  // Rotate every frame using deltaTime
+  if (rotatingCube) {
+    rotatingCube.rotation.y += context.time.deltaTime;
+  }
+});
+```
+
+**Modifying loaded scene objects:**
+
+```typescript
+import { onStart } from '@needle-tools/engine';
+
+onStart(context => {
+  // Find and modify objects from your loaded glb
+  const myObject = context.scene.getObjectByName("MyObjectName");
+  if (myObject) {
+    myObject.position.y = 2;
+    myObject.scale.setScalar(1.5);
+  }
+
+  // Or traverse the entire scene
+  context.scene.traverse(obj => {
+    if (obj.isMesh && obj.material) {
+      // Modify all materials in the scene
+      obj.material.metalness = 0.5;
+      obj.material.roughness = 0.3;
+    }
+  });
+});
+```
+
+**Available lifecycle hooks:**
+
+| Hook | When it's called |
+| --- | --- |
+| `onInitialized(callback)` | When the context is initialized (before first frame) |
+| `onStart(callback)` | At the beginning of the first frame after scene loads |
+| `onUpdate(callback)` | Every frame (perfect for animations) |
+| `onBeforeRender(callback)` | Before the scene renders |
+| `onAfterRender(callback)` | After the scene renders |
+
+All hooks provide the `context` object with access to:
+- `context.scene` - The three.js Scene
+- `context.camera` - The active Camera
+- `context.renderer` - The WebGLRenderer
+- `context.time` - Time data (deltaTime, frame count, etc.)
+- And much more...
+
+:::tip Learn more about scripting
+See the [Scripting documentation](/scripting.md#hooks) for detailed information about lifecycle hooks and the [Scripting Examples](/scripting-examples.md) for more code samples.
+:::
+
 :::tip Scripting support
 Once you outgrow the [configuration options of the web component](/reference/needle-engine-attributes.md), you can extend it with custom scripts and components, and full programmatic scene graph access.
 :::
