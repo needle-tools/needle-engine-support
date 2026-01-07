@@ -5,10 +5,10 @@ description: Needle's Everywhere Actions are a set of carefully chosen component
 
 ## What are Everywhere Actions?
 
-Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code.  
-They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**.  
+Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code.
+They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**.
 
-From low-level triggers and actions, higher-level complex interactive behaviours can be built.  
+From low-level triggers and actions, higher-level complex interactive behaviours can be built.
 
 ### Supported Platforms
 - Desktop
@@ -16,6 +16,10 @@ From low-level triggers and actions, higher-level complex interactive behaviours
 - VR Glasses
 - AR Devices
 - iOS AR – QuickLook (yes, really!)
+
+:::tip Coming Soon: Full WebXR on iOS
+Want full WebXR support on iOS? Check out [Needle Go](ios-webxr-app-clip.md), an upcoming iOS App Clip that will enable complete WebXR experiences on iPhone and iPad without requiring app installation.
+:::
 
 ## How do I use Everywhere Actions?
 

@@ -217,9 +217,15 @@ Please note that normally you should provide your users with a way to stop AR. Y
 
 ## Augmented Reality and WebXR on iOS
 
-Augmented Reality experiences on iOS are somewhat limited, due to Apple currently not supporting WebXR on iOS devices.  
+Augmented Reality experiences on iOS are somewhat limited, due to Apple currently not supporting WebXR on iOS devices.
 
-Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill that gap, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information. 
+There are several approaches to bring AR experiences to iOS:
+
+**Needle Go App Clip (Coming Soon)**
+[Needle Go](ios-webxr-app-clip.md) is an upcoming iOS App Clip that enables full WebXR support on iPhone and iPad through native ARKit integration. Users can access your WebXR scenes instantly via QR codes, links, or smart app banners without installing an app. This will provide the most complete WebXR experience on iOS with support for hit testing, anchors, lighting estimation, and more.
+
+**Everywhere Actions (Available Now)**
+Needle Engine's [Everywhere Actions](everywhere-actions.md) are designed to fill the WebXR gap on iOS, bringing automatic interactive capabilities to iOS devices for scenes composed of specific components. They support a subset of the functionality that's available in WebXR, for example spatial audio, image tracking, animations, and more. See [the docs](everywhere-actions.md) for more information.
 
 :::tip Limited custom code support in QuickLook
 Apple has strong limitations in place what kind of content can be used in QuickLook. Thus, custom script components can not automatically be converted for use in AR on iOS. You can add support for some sorts of custom code using our Everywhere Actions API.
