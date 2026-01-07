@@ -1,35 +1,14 @@
-# Support, Videos & AI
-
-## Community Forum
-
-Ask questions and get help in [Needle Forum](https://forum.needle.tools)  
+# Needle Support
 
 
-## Discord
+## Links
 
-Chat with the community and share your projects in [Needle Discord](https://discord.needle.tools/?utm_source=needle_docs&utm_content=content)
-
-
-## Needle AI
-
-Ask any question about Needle Engine, web development or our editor integrations in [our forum](https://forum.needle.tools) and get instant help from the Needle AI that has access to the latest code, documentation and our integrations.  
-
-For private questions use the [Needle Cloud AI](https://cloud.needle.tools/team#ai)
-
-Needle Engine documentation is also available via the llms.txt standard.    
-Download the files below to use as context for your local AI:
-
-- [llms.txt](https://cloud.needle.tools/llms.txt)
-- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
-- Get the markdown for any documentation page, simply change the extension: <a href="./support.md">For example for this page</a>
+- **[Community Forum](https://forum.needle.tools)** — Ask questions and get help in our community forum  
+- **[Discord](https://discord.needle.tools/?utm_source=needle_docs&utm_content=content)** — Chat with the community and share your projects
+- **[Needle AI](./ai/needle-ai)** — Get instant answers from our AI assistant trained on Needle Engine, documentation and integrations
 
 
-::: info Got feedback?
-Use the feedback buttons in the AI chat on Needle Cloud!
-:::
-
-
-## Devlogs
+### Devlogs
 
 <video-embed src="https://www.youtube.com/watch?v=9v0C7Xa6TUE" />
 
@@ -47,7 +26,7 @@ Use the feedback buttons in the AI chat on Needle Cloud!
 <br/>
 <br/>
 
-## User Interviews
+### User Interviews
 
 
 <video-embed src="https://www.youtube.com/watch?v=naPlw5aDJHs" />

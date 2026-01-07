@@ -124,6 +124,7 @@ A large collection of examples are also available in our [Needle Engine Stackbli
 
 - [Learn more about the web component attributes](/reference/needle-engine-attributes.md)
 - [Learn how to extend Needle Engine with custom scripts and components](/scripting.md)
+- [Use Needle DevTools for three.js to inspect and debug your scenes](./needle-devtools-for-threejs-chrome-extension.md)
 
 
 :::tip Using Needle with Unity or Blender
