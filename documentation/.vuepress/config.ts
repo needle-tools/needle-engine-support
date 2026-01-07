@@ -172,6 +172,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                             text: "Support & Community",
                             link: "/support",
                         },
+                        {
+                            text: "Needle Inspector",
+                            link: "/three/needle-devtools-for-threejs-chrome-extension",
+                        },
                     ],
                 },
             ]
@@ -298,16 +302,6 @@ const defaultThemeOpts: DefaultThemeOptions = {
         {
             text: "Help",
             link: "/support",
-        },
-        {
-            text: 'Samples',
-            target: "_blank",
-            link: 'https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav',
-        },
-        {
-            text: 'Pricing',
-            target: "_blank",
-            link: "https://needle.tools/pricing/?utm_source=needle_docs&utm_content=headernav"
         },
         {
             text: 'Needle',

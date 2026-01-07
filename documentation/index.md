@@ -134,11 +134,11 @@ My workflow has been optimized 10X ever since i started using needle
     <action href="https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=actionbutton">
     Samples 👓
     </action>
-    <action subtitle="with AI support" href="support">
-    Get Help 💬
-    </action>
-    <action href="https://cloud.needle.tools">
+    <action href="cloud/index">
     Cloud ⛅️
+    </action>
+    <action href="support">
+    Help 💬
     </action>
 </actiongroup>
 
