@@ -6,9 +6,33 @@
     font-size: 2em;
     font-weight: 100;">
     <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> +
+    <!-- <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> + -->
     <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/>
 </div>
+
+# Needle Engine is three.js
+
+Needle Engine is built on top of [three.js](https://threejs.org/) and provides a component-based architecture for creating interactive 3D web experiences. **All three.js APIs remain fully accessible** – you can write vanilla three.js code, use any three.js-compatible library, or mix and match as needed.
+
+The key benefits of using Needle Engine over vanilla three.js include:
+- **Component system** for organizing and reusing 3D logic
+- **Built-in features** like physics, XR, networking, and particles
+- **Editor integrations** with Unity and Blender for visual scene creation
+- **Optimized build pipeline** with automatic 3D asset optimization
+- **Faster development** with less boilerplate
+
+Whether you're building a simple scene with pure three.js or a complex application with Needle's components, you have complete flexibility. The component system is an enhancement, not a replacement – use what makes sense for your project.
+
+**On this page**, you'll learn how to use Needle Engine with vanilla JavaScript and HTML – perfect for integrating 3D into existing web projects or building from scratch without a 3D editor.
+
+**Want visual editing?** Check out our editor integrations:
+- [Unity Integration](/unity/index.md) – Full-featured 3D editor with C# scripting support
+- [Blender Integration](/blender/index.md) – Open-source 3D creation suite with Python scripting
+
+:::tip Inspect and debug with Needle Inspector
+Use the [Needle Inspector](./needle-devtools-for-threejs-chrome-extension.md) Chrome extension to inspect, debug, and edit any three.js scene directly in your browser – perfect for development and learning from other developers' work.
+:::
+
 
 # \<needle-engine> web component
 
