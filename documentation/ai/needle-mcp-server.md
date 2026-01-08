@@ -20,9 +20,13 @@ Talk to your AI assistant about your 3D scenes! Connect Claude, Cursor, or other
    npx needle-cloud start
    ```
 
-2. Connect your AI assistant using the instructions below
+2. Connect your AI assistant using the instructions below in the [How to Connect](#how-to-connect) section.
 
-3. Optional: Install the [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-extension.md) to chat with your AI about any three.js scene in the browser.
+3. Install the [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-extension.md) to chat with your AI about any three.js scene in the browser.
+
+4. Visit a three.js webpage (e.g. [needle.tools](https://needle.tools))
+
+5. Ask your local AI assistant questions about the scene!
 
 :::tip Works with your favorite AI tools
 Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
@@ -46,7 +50,7 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
 
 ## How to Connect
 
-<!-- ### Using Claude Desktop
+### <img src="/imgs/claude-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Claude Logo" alt="Claude Logo"/> Using Claude Desktop
 
 **Quick setup:**
 
@@ -59,42 +63,31 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
 
 3. Look for the 🔌 icon in the bottom-right - you're connected!
 
-**Manual setup:**
-
-If the quick setup doesn't work, you can add Needle manually:
-
-1. Find your Claude settings file:
-   - **Mac**: Open `~/Library/Application Support/Claude/claude_desktop_config.json`
-   - **Windows**: Open `%APPDATA%\Claude\claude_desktop_config.json`
-
-2. Add Needle to the file:
-   ```json
-   {
-     "mcpServers": {
-       "needle": {
-         "url": "http://localhost:8424/mcp"
-       }
-     }
-   }
-   ```
-
-3. Restart Claude Desktop
-
-Try it out: *"What objects are in my three.js scene?"*
-
-:::tip
-Claude will ask before using any tools - you stay in control!
-::: -->
 
 
-### Using Cursor
 
-**Quick setup:**
+### <img src="/imgs/vscode-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="VS Code Logo" alt="VS Code Logo"/> Using VS Code
 
-1. In Cursor, go to Settings → MCP
-2. Look for Needle in the server list and install it
+**Setup:**
 
-**Manual setup:**
+1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
+
+2. Choose "MCP: Add Server"
+
+3. Fill in the details:
+   - Name: `needle`
+   - Transport: `http`
+   - URL: `http://localhost:8424/mcp`
+
+**Using it:**
+
+Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
+
+
+
+
+
+### <img src="/imgs/cursor-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Cursor Logo" alt="Cursor Logo"/> Using Cursor 
 
 1. In your project folder, create a file: `.cursor/mcp.json`
 
@@ -117,59 +110,20 @@ Claude will ask before using any tools - you stay in control!
 Try it: *"Show me all the meshes in my scene"*
 
 
-### Using VS Code
 
-**Setup:**
-
-1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
-
-2. Choose "Preferences: Open Settings (JSON)"
-
-3. Add this:
-   ```json
-   {
-     "github.copilot.chat.mcp.servers": {
-       "needle": {
-         "transport": "http",
-         "url": "http://localhost:8424/mcp"
-       }
-     }
-   }
-   ```
-
-4. Restart VS Code
-
-**Using it:**
-
-Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
-
-
-### Using Antigravity
+### <img src="/imgs/antigravity-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Antigravity Logo" alt="Antigravity Logo"/> Using Antigravity
 
 **Quick setup:**
 
-1. Click the Agent pane menu
-2. Select "MCP Servers"
-3. Search for "Needle"
-4. Click "Install"
+1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
 
-That's it! Antigravity will connect automatically.
+2. Choose "MCP: Add Server"
 
-**Manual setup:**
+3. Fill in the details:
+   - Name: `needle`
+   - Transport: `http`
+   - URL: `http://localhost:8424/mcp`
 
-1. Go to "Manage MCP Servers"
-2. Click "View raw config"
-3. Add Needle:
-   ```json
-   {
-     "mcpServers": {
-       "needle": {
-         "transport": "http",
-         "url": "http://localhost:8424/mcp"
-       }
-     }
-   }
-   ```
 
 Antigravity is great at understanding what you want - just describe your goal!
 

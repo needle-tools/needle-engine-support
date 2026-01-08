@@ -58,7 +58,9 @@ Keep track of your scene's performance with built-in stats:
 - **Scene Statistics**: View object counts, triangle counts, and geometry stats
 - **Download Size**: See estimated bandwidth usage
 
-### AI-Powered Assistance
+### AI-Powered Assistance <div style="display:inline-flex;gap:.5em;vertical-align:middle;padding-left:.5em;"> <img style="max-height:1.2em;" src="/imgs/vscode-logo.webp" title="VS Code Logo" alt="VS Code Logo"/> <img style="max-height:1.2em;" src="/imgs/claude-logo.webp" title="Claude Logo" alt="Claude Logo"/> <img style="max-height:1.2em;" src="/imgs/cursor-logo.webp" title="Cursor Logo" alt="Cursor Logo"/> <img style="max-height:1.2em;" src="/imgs/antigravity-logo.webp" title="Antigravity Logo" alt="Antigravity Logo"/> </div>
+
+
 
 Connect the inspector to AI tools like Claude or Cursor for intelligent debugging and development assistance.
 
@@ -72,7 +74,8 @@ npx needle-cloud start
 ```
 
 Then connect your AI tool to explore your scene with natural language.   
-Learn how to connect your local AI tools: [Needle MCP documentation](../ai/needle-mcp-server).
+**Learn how to connect your local AI tools**: [Needle MCP documentation](../ai/needle-mcp-server).
+
 
 ### Export Changes
 
