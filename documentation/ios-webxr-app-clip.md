@@ -33,6 +33,10 @@ Needle Engine solves this by providing instant access to WebXR experiences throu
 
 ## Getting Started
 
+### Try it now
+
+Visit [appclip.needle.tools](https://appclip.needle.tools) on your iPhone or iPad with Safari to experience iOS WebXR in action.
+
 ### How does iOS WebXR work in Needle Engine?
 
 Needle Engine uses App Clips to instantly launch WebXR experiences in Augmented Reality without requiring app installation. The integration is automatic—your existing Needle Engine projects work on iOS without modifications.
