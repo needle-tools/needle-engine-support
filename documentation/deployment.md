@@ -63,10 +63,14 @@ but you can also select **WebP** compression and select a quality level.
 
 
 You have the option to select texture compression and progressive loading options per Texture by using the Needle Texture Importer in Unity or in the Material tab in Blender.
+
+:::details Unity: Where can I set compression settings for all textures?
+![image](/imgs/unity-compression-settings.png)
+:::
  
-:::details Unity: How can I set per-texture compression settings?
-![image](/imgs/unity-texture-compression.jpg)  
-![image](/imgs/unity-texture-compression-options.jpg)  
+:::details Unity: How can I change compression settings for individual textures?
+Texture overrides can be set per texture in the Compression & LOD settings component. You can override the max resolution, compression format and LOD settings per texture. Make sure to assign all textures that you want to override in the component.  
+![image](/imgs/unity-compression-settings-individual.png)   
 :::
 
 :::details Blender: How can I set per-texture compression settings?
@@ -74,7 +78,7 @@ Select the material tab. You will see compression options for all textures that 
 ![Texture Compression options in Blender](/blender/texture-compression.webp)
 :::
 
-:::details Toktx can not be found  
+:::details Troubleshooting: Toktx can not be found  
   Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``    
   ![image](/imgs/ktx-env-variable.webp)
 :::
@@ -92,52 +96,53 @@ Additionally you can setup mesh simplification to reduce the polycount for produ
 | **Animation compression** | No | Yes |
 
 
-:::details How can I set draco and meshopt compression settings?
-Add the MeshCompression component to select which compression should be applied per exported glTF.   
+:::details Unity: How can I set draco and meshopt compression settings?
+Use the Compression & LOD settings component to select which compression should be applied on export.   
 
-![image](/imgs/unity-mesh-compression-component.jpg)    
+![image](/imgs/unity-mesh-compression-options.jpg)   
 - To change compression for the **current scene** just add it anywhere in your root scene.
 - To change compression for a **prefab or NestedGltf** add it to a `GltfObject` or the prefab that is referenced / exported by any of your components.
 - To change compression for a **referenced scene** just add it to the referenced scene that is exported  
 :::
 
 :::details Where to find mesh simplification options to reduce the vertex count when building for production?
-Select a Mesh and open the Needle importer options to see available options for the selected mesh:  
-![image](/imgs/unity-mesh-simplification.jpg)
+Use the Compression & LOD settings component to select which compression should be applied on export.  
+![image](/imgs/unity-mesh-compression-options.jpg)   
 :::
 
 
-### Progressive Textures
+### Automatic Texture LODs (Level of Detail) — Progressive Texture Loading
 
 You can also add the `Progressive Texture Settings` component anywhere in your scene, to make all textures in your project be progressively loaded. Progressive loading is not applied to lightmaps or skybox textures at this point.   
 
 With progressive loading textures will first be loaded using a lower resolution version. A full quality version will be loaded dynamically when the texture becomes visible. This usually reduces initial loading of your scene significantly.
 
 :::details How can I enable progressive texture loading?
-### Progressive textures can be enabled per texture<br/>or for all textures in your project:  
-![image](/imgs/unity-texture-compression.jpg)    
-### Enable for all textures in the project that don't have any other specific setting:  
-![image](/imgs/unity-progressive-textures.jpg)   
+
+Use the Compression & LOD settings component to enable progressive texture loading for all textures in your project. If necessary it can be disabled (or explictly enabled) for individual textures as well.
+
+![image](/imgs/unity-compression-settings.png)
 :::
 
 ### Automatic Mesh LODs (Level of Detail)
 
-Since Needle Engine 3.36 we automatically generate LOD meshes and switch between them at runtime. LODs are loaded on demand and only when needed so so this feature both reduces your loading time as well as performance.
+Since Needle Engine 3.36 LOD meshes are automatically generated when building the project and LODs are automatically chosen at runtime based on mesh density and size on screen for each mesh.   
+
+Additionally LODs are loaded on demand and only when needed for optimal loading time as well improved performance.
 
 **Key Beneftis**
 - Faster initial loading time
 - Faster rendering time due to less vertices on screen on average
 - Faster raycasting due to the use of LOD meshes
 
-You can either disable LOD generation for your whole project in the `Progressive Loading Settings` component or in the Mesh Importer settings.
 
-![image](/imgs/unity-lods-settings-1.jpg)
+:::details Unity: How can I control LOD generation?  
+In Unity you can control LOD generation using the `Compression & LOD Settings component` component. Options are available for all exported meshes or for indiviual meshes.  
 
-![image](/imgs/unity-lods-settings-2.jpg)
-
+![image](/imgs/unity-mesh-compression-options.jpg)   
+:::
 
 ## Deployment Options  
-
 
 
 ### Deploy to Glitch 🎏
