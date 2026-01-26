@@ -213,6 +213,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     children: [
                         "/xr",
                         {
+                            text: "iOS WebXR",
+                            link: "/ios-webxr-app-clip",
+                        },
+                        {
                             text: "Image Tracking (WebXR)",
                             link: "/webxr-image-tracking",
                         },
@@ -421,6 +425,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 text: "Advanced",
                 children: [
                     "/xr",
+                    {
+                        text: "iOS WebXR",
+                        link: "/ios-webxr-app-clip",
+                    },
                     {
                         text: "Image Tracking (WebXR)",
                         link: "/webxr-image-tracking",
