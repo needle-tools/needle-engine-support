@@ -39,18 +39,6 @@ Can't find what you're looking for? Let us know in our [forum](https://forum.nee
 
 ## Deployment Options
 
-### Deploy to Glitch 🎏
-
-:::danger Deprecated - Service Discontinued
-Glitch has discontinued their hosting service. This deployment option is no longer available.
-
-**Alternatives:**
-- **[Needle Cloud](./cloud/#deploy-from-unity)** – Official Needle hosting with built-in networking support
-- **[Netlify](#deploy-to-netlify)** – Professional hosting with custom domains
-- **[Vercel](#deploy-to-vercel)** – Excellent performance for frontend projects
-- **[Build to Folder](#build-to-folder)** – Deploy to any web server manually
-:::
-
 ### <logo-header logo="/imgs/netlify-logo.webp" alt="Netlify">Deploy to Netlify</logo-header>
 
 Professional hosting with custom domains, automatic HTTPS, and continuous deployment.
@@ -172,6 +160,18 @@ Reach users on Facebook and Facebook Messenger with instant-loading games.
 See the [official Instant Games documentation](https://developers.facebook.com/docs/games/build/instant-games) for more details.
 
 **Note:** You only need to create the app – Needle Engine handles all technical requirements automatically.
+:::
+
+### Deploy to Glitch 🎏
+
+:::warning Deprecated - Service Discontinued
+Glitch has discontinued their hosting service. This deployment option is no longer available.
+
+**Alternatives:**
+- **[Needle Cloud](./cloud/#deploy-from-unity)** – Official Needle hosting with built-in networking support
+- **[Netlify](#deploy-to-netlify)** – Professional hosting with custom domains
+- **[Vercel](#deploy-to-vercel)** – Excellent performance for frontend projects
+- **[Build to Folder](#build-to-folder)** – Deploy to any web server manually
 :::
 
 ### <logo-header logo="/imgs/ftp-icon.webp" alt="FTP">Deploy to FTP</logo-header>

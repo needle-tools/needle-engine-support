@@ -47,12 +47,12 @@ Choose the approach that fits your workflow:
 Our Unity and Blender integrations include built-in deployment components. Deploy to multiple platforms with just a few clicks.
 
 **Supported platforms:**
-- [Needle Cloud](./cloud/#deploy-from-unity) – Official hosting with CLI support
-- [Netlify](./deployment.md#deploy-to-netlify) – Professional hosting
-- [Vercel](./deployment.md#deploy-to-vercel) – Frontend-optimized
-- [GitHub Pages](./deployment.md#deploy-to-github-pages) – Free static hosting
-- [FTP](./deployment.md#deploy-to-ftp) – Any web server
-- [itch.io](./deployment.md#deploy-to-itchio) – Game hosting
+- [Needle Cloud](/docs/cloud/#deploy-from-unity) – Official hosting with CLI support
+- [Netlify](/docs/how-to-guides/deployment/#deploy-to-netlify) – Professional hosting
+- [Vercel](/docs/how-to-guides/deployment/#deploy-to-vercel) – Frontend-optimized
+- [GitHub Pages](/docs/how-to-guides/deployment/#deploy-to-github-pages) – Free static hosting
+- [FTP](/docs/how-to-guides/deployment/#deploy-to-ftp) – Any web server
+- [itch.io](/docs/how-to-guides/deployment/#deploy-to-itchio) – Game hosting
 
 **How it works:**
 
@@ -67,7 +67,7 @@ Our Unity and Blender integrations include built-in deployment components. Deplo
 npx needle-cloud deploy
 ```
 
-[Learn more about deployment options](./deployment.md) • [Needle Cloud CLI docs](./cloud/)
+[Learn more about deployment options](/docs/how-to-guides/deployment/) • [Needle Cloud CLI docs](/docs/cloud/)
 
 :::tip Recommended Workflow
 This is the easiest and fastest option. Iterate locally, then upload a new version in seconds.
@@ -99,7 +99,7 @@ npx needle-cloud deploy
 - ✅ **Fast updates** – Incremental uploads for quick iterations
 - ✅ **CI/CD ready** – Perfect for automated workflows
 
-[Learn more about Needle Cloud CLI →](./cloud/)
+[Learn more about Needle Cloud CLI →](/docs/cloud/)
 
 :::tip Automated Deployment
 Add `npx needle-cloud deploy --ci` to your GitHub Actions or other CI/CD pipeline for automatic deployments on every commit.
@@ -208,7 +208,7 @@ Use Needle Engine directly from a CDN without uploading any JavaScript bundles.
 
 **Best for:** Projects hosted on Needle Cloud, quick sharing, portfolios
 
-If you've deployed to [Needle Cloud](./cloud/), embed it anywhere with a simple iframe.
+If you've deployed to [Needle Cloud](/docs/cloud/), embed it anywhere with a simple iframe.
 
 **How to get the embed code:**
 1. Go to your asset page on Needle Cloud
@@ -252,7 +252,7 @@ The app can be hosted at:
 | **Domain** | `my-app.com` | Standalone product |
 
 :::tip Development to Production
-Start on [Needle Cloud](./cloud/) for prototypes and development, then move to the client's domain for the final version. This approach balances speed with branding requirements.
+Start on [Needle Cloud](/docs/cloud/) for prototypes and development, then move to the client's domain for the final version. This approach balances speed with branding requirements.
 :::
 
 #### 3. Plan Deployment & Maintenance
@@ -263,7 +263,7 @@ Start on [Needle Cloud](./cloud/) for prototypes and development, then move to t
 - How often does content need updating?
 
 :::tip FTP Access
-Request FTP/SFTP access to a folder on the client's server. Use our [Deploy to FTP](./deployment.md#deploy-to-ftp) component for easy uploads. The client's IT team handles URL configuration.
+Request FTP/SFTP access to a folder on the client's server. Use our [Deploy to FTP](/docs/how-to-guides/deployment/#deploy-to-ftp) component for easy uploads. The client's IT team handles URL configuration.
 :::
 
 **Content Type:**
