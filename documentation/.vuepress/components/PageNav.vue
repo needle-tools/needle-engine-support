@@ -34,6 +34,8 @@
 </template>
 
 <script>
+const DEFAULT_LINK_TEXT = 'Copy for AI (LLMs)'
+
 export default {
   name: 'PageNav',
 
@@ -43,7 +45,7 @@ export default {
       activeHeader: '',
       parentLink: null,
       observer: null,
-      linkText: 'Copy URL for AI (LLMs)'
+      linkText: DEFAULT_LINK_TEXT
     }
   },
 
@@ -237,13 +239,31 @@ export default {
         // Get the full URL with protocol and host
         const fullUrl = window.location.origin + this.mdPath
 
+        // Show fetching status, if it takes more than 500ms
+        let fetchingTextTimeout = setTimeout(() => {
+          this.linkText = 'Fetching content...'
+        }, 500)
+
+        // Fetch the content from the URL
+        const response = await fetch(fullUrl);
+        clearTimeout(fetchingTextTimeout);
+
+        if (!response.ok) {
+          throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`)
+        }
+
+        const content = await response.text()
+
+        // Prepend the URL to the content
+        const contentWithUrl = `Content copied from ${fullUrl}\n\n${content}`
+
         // Try modern clipboard API first
         if (navigator.clipboard && navigator.clipboard.writeText) {
-          await navigator.clipboard.writeText(fullUrl)
+          await navigator.clipboard.writeText(contentWithUrl)
         } else {
           // Fallback for older browsers or insecure contexts
           const textArea = document.createElement('textarea')
-          textArea.value = fullUrl
+          textArea.value = contentWithUrl
           textArea.style.position = 'fixed'
           textArea.style.left = '-999999px'
           document.body.appendChild(textArea)
@@ -253,18 +273,18 @@ export default {
         }
 
         // Update link text to show success
-        this.linkText = 'Copied to clipboard!'
+        this.linkText = 'Text copied!'
 
         // Reset text after 2 seconds
         setTimeout(() => {
-          this.linkText = 'LLM url'
+          this.linkText = DEFAULT_LINK_TEXT
         }, 2000)
       } catch (err) {
         console.error('Failed to copy:', err)
         this.linkText = 'Copy failed'
 
         setTimeout(() => {
-          this.linkText = 'LLM url'
+          this.linkText = DEFAULT_LINK_TEXT
         }, 2000)
       }
     }
@@ -290,6 +310,10 @@ export default {
 
   white-space: nowrap;
   overflow: hidden;
+
+  background-color: color-mix(in srgb, var(--vp-c-bg) 50%, transparent);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
 }
 
 .page-nav-extras {
@@ -367,7 +391,8 @@ export default {
 .page-nav-link {
   display: block;
   padding: 0.25rem 0;
-  color: var(--c-text, inherit); /* Normal text color */
+  color: var(--c-text, inherit);
+  /* Normal text color */
   text-decoration: none;
   border-left: 2px solid transparent;
   padding-left: 0.5rem;
@@ -381,13 +406,16 @@ export default {
 }
 
 .page-nav-link:hover {
-  color: var(--c-text-accent, #826aed); /* Link color on hover */
+  color: var(--c-text-accent, #826aed);
+  /* Link color on hover */
   border-left-color: rgba(125, 125, 125, 0.3);
-  text-decoration: underline; /* Show it's a link */
+  text-decoration: underline;
+  /* Show it's a link */
 }
 
 .page-nav-item.active .page-nav-link {
-  color: var(--c-text-accent, #826aed); /* Link color for active */
+  color: var(--c-text-accent, #826aed);
+  /* Link color for active */
   border-left-color: var(--c-text-accent, #826aed);
   font-weight: 700 !important;
   /* Bold - force override */
