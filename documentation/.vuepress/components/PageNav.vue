@@ -180,15 +180,64 @@ export default {
     determineParentLink() {
       const currentPath = this.$route?.path || window.location.pathname
 
-      // Determine parent based on current path
-      if (currentPath.includes('/tutorials/')) {
-        this.parentLink = { text: 'All Tutorials', link: '/docs/tutorials/' }
-      } else if (currentPath.includes('/how-to-guides/')) {
-        this.parentLink = { text: 'All How-To Guides', link: '/docs/how-to-guides/' }
-      } else if (currentPath.includes('/explanation/')) {
-        this.parentLink = { text: 'All Explanations', link: '/docs/explanation/' }
-      } else if (currentPath.includes('/reference/')) {
-        this.parentLink = { text: 'All Reference', link: '/docs/reference/' }
+      // Remove /docs/ prefix and trailing slash for easier parsing
+      const pathWithoutBase = currentPath.replace(/^\/docs\//, '').replace(/\/$/, '')
+
+      // Split path into segments
+      const segments = pathWithoutBase.split('/').filter(s => s)
+
+      // Only show parent link if we're deeper than 1 level after /docs/
+      // e.g., /docs/blender -> no link (1 segment)
+      // e.g., /docs/blender/components -> yes link (2 segments)
+      if (segments.length > 1) {
+        // Try to find an existing parent page by traversing up the hierarchy
+        let foundParent = null
+
+        for (let i = segments.length - 1; i > 0; i--) {
+          const parentSegments = segments.slice(0, i)
+          const parentPath = '/docs/' + parentSegments.join('/') + '/'
+
+          // Check if this parent page likely exists
+          // We'll check common paths that we know exist
+          const knownParents = [
+            '/docs/tutorials/',
+            '/docs/how-to-guides/',
+            '/docs/explanation/',
+            '/docs/reference/',
+            '/docs/blender/',
+            '/docs/unity/',
+            '/docs/'
+          ]
+
+          // If it's a known parent or we're at depth 1, use it
+          const isKnownParent = knownParents.includes(parentPath)
+          const isDepthOne = parentSegments.length === 1
+
+          if (isKnownParent || isDepthOne) {
+            // Create a readable parent text from the parent segment
+            const parentSegment = parentSegments[parentSegments.length - 1]
+            let parentText = parentSegment
+              .split('-')
+              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+              .join(' ')
+
+            // Special cases for better text
+            if (parentPath === '/docs/tutorials/') {
+              parentText = 'All Tutorials'
+            } else if (parentPath === '/docs/how-to-guides/') {
+              parentText = 'All How-To Guides'
+            } else if (parentPath === '/docs/explanation/') {
+              parentText = 'All Explanations'
+            } else if (parentPath === '/docs/reference/') {
+              parentText = 'All Reference'
+            }
+
+            foundParent = { text: parentText, link: parentPath }
+            break
+          }
+        }
+
+        this.parentLink = foundParent
       } else {
         this.parentLink = null
       }

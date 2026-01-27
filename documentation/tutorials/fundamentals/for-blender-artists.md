@@ -144,7 +144,7 @@ Let's see what you can build without coding:
 **Add with Components:**
 - `Animator` (with AnimatorController graph) or `PlayableDirector` (uses Blender's timeline) - Plays your reveal animation
 - `Orbit Controls` - Let users rotate the view
-- `UI Button` - Switches between material variants
+- `Button` - Switches between material variants
 - `ViewBox` - Ensures it looks good on mobile and desktop
 - `WebXR` - Enable AR for placing in real space
 
