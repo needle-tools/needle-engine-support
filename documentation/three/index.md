@@ -1,3 +1,7 @@
+---
+title: Using Needle Engine with three.js
+---
+
 <br/>
 
 <div class="centered" style="display: flex;
@@ -6,76 +10,98 @@
     font-size: 2em;
     font-weight: 100;">
     <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <!-- <img src="/imgs/logo-webcomponents.png" style="max-height:70px;" title="Web Components Logo" alt="Web Components Logo"/> + -->
     <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/>
 </div>
 
 # Needle Engine is three.js
 
-Needle Engine is built on top of [three.js](https://threejs.org/) and provides a component-based architecture for creating interactive 3D web experiences. **All three.js APIs remain fully accessible** – you can write vanilla three.js code, use any three.js-compatible library, or mix and match as needed.
+**Welcome!** If you're here because you know three.js, you're in the right place. Needle Engine is a **web-based 3D engine built on top of three.js** that makes it easier and faster to create interactive 3D experiences for the web.
 
-The key benefits of using Needle Engine over vanilla three.js include:
-- **Component system** for organizing and reusing 3D logic
-- **Built-in features** like physics, XR, networking, and particles
-- **Editor integrations** with Unity and Blender for visual scene creation
-- **Optimized build pipeline** with automatic 3D asset optimization
-- **Faster development** with less boilerplate
+## What is Needle Engine?
 
-Whether you're building a simple scene with pure three.js or a complex application with Needle's components, you have complete flexibility. The component system is an enhancement, not a replacement – use what makes sense for your project.
+Think of Needle Engine as **three.js with superpowers**:
+- All the power of three.js (since it's built on it)
+- Plus a component system for better code organization
+- Plus built-in features like physics, XR, networking, and particles
+- Plus visual editing tools (Unity and Blender integrations)
+- Plus automatic optimization and compression
 
-**On this page**, you'll learn how to use Needle Engine with vanilla JavaScript and HTML – perfect for integrating 3D into existing web projects or building from scratch without a 3D editor.
+**All three.js APIs remain fully accessible** – you can write vanilla three.js code, use any three.js-compatible library, or mix and match as needed.
 
-**Want visual editing?** Check out our editor integrations:
-- [Unity Integration](/unity/index.md) – Full-featured 3D editor with C# scripting support
-- [Blender Integration](/blender/index.md) – Open-source 3D creation suite with Python scripting
+:::tip Try It in 30 Seconds
+Want to see what Needle Engine can do? Create a new project instantly:
 
-:::tip Inspect and debug with Needle Inspector
-Use the [Needle Inspector](./needle-devtools-for-threejs-chrome-extension.md) Chrome extension to inspect, debug, and edit any three.js scene directly in your browser – perfect for development and learning from other developers' work.
+🚀 **[engine.needle.tools/new](https://engine.needle.tools/new)** - Opens a ready-to-go project in StackBlitz
+
+No installation, no setup. Just click and start experimenting with three.js + Needle Engine in your browser!
 :::
 
+## Why Choose Needle Engine Over Vanilla three.js?
 
-# \<needle-engine> web component
+**Enhanced Developer Experience:**
+- 🧩 **Component system** for organizing and reusing 3D logic
+- ⚡ **Built-in features** like physics, XR, networking, particles, and UI
+- 🎨 **Editor integrations** with Unity and Blender for visual scene creation
+- 🚀 **Optimized build pipeline** with automatic 3D asset compression and optimization
+- 💨 **Faster development** with less boilerplate and better tooling
 
-Needle Engine provides an easy-to-use web component that can be used to display rich, interactive 3D scenes directly in HTML with just a few lines of code.
+**Full Flexibility:**
+Whether you're building a simple scene with pure three.js or a complex application with Needle's components, you have complete freedom. The component system is an enhancement, not a replacement – use what makes sense for your project.
 
-### Quick Start
+:::tip Want Visual Editing?
+Check out our editor integrations for powerful visual creation workflows:
+- <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="../unity/">Unity Integration</a></logo-header> – Full-featured 3D editor with C# scripting support
+- <logo-header logo="/blender/logo.png" alt="Blender"><a href="../blender/">Blender Integration</a></logo-header> – Open-source 3D creation suite with Python scripting
+:::
+
+:::tip Inspect and Debug
+Use the [Needle Inspector](./needle-devtools-for-threejs-chrome-extension.md) Chrome extension to inspect, debug, and edit any three.js scene directly in your browser – perfect for development and learning.
+:::
+
+[[toc]]
+
+---
+
+## Quick Start: Web Component
+
+The easiest way to get started is using the `<needle-engine>` web component. Display rich, interactive 3D scenes directly in HTML with just a few lines of code.
+
+### Basic Example
 
 <codewrap>
 
 ```html
 <!-- Import the component -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
- 
+
 <!-- Use it like any other HTML element -->
- <needle-engine src="https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-Z21QnG-world/file" background-color="transparent"></needle-engine>
- ```
+<needle-engine
+    src="https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-Z21QnG-world/file"
+    background-color="transparent">
+</needle-engine>
+```
 
- </codewrap>
-
-<!-- Here is a full example:
-
-@[code html](@code/basic-webcomponent.html) -->
+</codewrap>
 
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
-    width: 100%; 
-    aspect-ratio: 16/9; 
-    outline: none; 
+    width: 100%;
+    aspect-ratio: 16/9;
+    outline: none;
     border: none;
     "
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
 
-[Open this example on Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
+[Open this example on StackBlitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html) • [View all web component attributes](../reference/needle-engine-attributes.md)
 
+---
 
-[View needle-engine attributes](/reference/needle-engine-attributes.md)
-
-### Extending with vanilla three.js
+## Extending with Vanilla three.js
 
 The web component works seamlessly with vanilla three.js code. Use Needle Engine's lifecycle hooks to access the scene and add your own three.js objects, modify materials, or write custom logic.
 
-**Adding objects with `onStart`:**
+### Adding Objects with onStart
 
 ```html
 <!-- Import Needle Engine -->
@@ -104,7 +130,7 @@ The web component works seamlessly with vanilla three.js code. Use Needle Engine
 </script>
 ```
 
-**Animating objects with `onUpdate`:**
+### Animating Objects with onUpdate
 
 ```typescript
 import { onStart, onUpdate } from '@needle-tools/engine';
@@ -128,7 +154,7 @@ onUpdate(context => {
 });
 ```
 
-**Modifying loaded scene objects:**
+### Modifying Loaded Scene Objects
 
 ```typescript
 import { onStart } from '@needle-tools/engine';
@@ -152,7 +178,7 @@ onStart(context => {
 });
 ```
 
-**Available lifecycle hooks:**
+### Available Lifecycle Hooks
 
 | Hook | When it's called |
 | --- | --- |
@@ -162,6 +188,8 @@ onStart(context => {
 | `onBeforeRender(callback)` | Before the scene renders |
 | `onAfterRender(callback)` | After the scene renders |
 
+**Context Object Properties:**
+
 All hooks provide the `context` object with access to:
 - `context.scene` - The three.js Scene
 - `context.camera` - The active Camera
@@ -169,27 +197,19 @@ All hooks provide the `context` object with access to:
 - `context.time` - Time data (deltaTime, frame count, etc.)
 - And much more...
 
-:::tip Learn more about scripting
-See the [Scripting documentation](/scripting.md#hooks) for detailed information about lifecycle hooks and the [Scripting Examples](/scripting-examples.md) for more code samples.
+:::tip Learn More About Scripting
+- [Scripting Documentation](../scripting.md#hooks) - Detailed information about lifecycle hooks
+- [Scripting Examples](../scripting-examples.md) - More code samples and patterns
+- [Custom Components](../scripting.md#component-architecture) - Build reusable components
 :::
 
-:::tip Scripting support
-Once you outgrow the [configuration options of the web component](/reference/needle-engine-attributes.md), you can extend it with custom scripts and components, and full programmatic scene graph access.
-:::
+---
 
+## Installation Options
 
-:::tip Use the integrations!
-For complex 3D scenes and visual editing, we recommend using Needle Engine with one of our Editor integrations. They provide a powerful creation workflow and an state-of-the-art build pipeline with 3D optimizations.
-:::
+### Install from CDN
 
-
-## Install from CDN
-
-While our default template uses [vite](https://vitejs.dev), Needle Engine can also be used directly with vanilla Javascript – without using any bundler.  
-
-You can add a complete, prebundled version of Needle Engine to your website with just a line of code.
-This includes our core components, physics, particles, networking, XR, and more. Use this if you're not sure!
-
+Use Needle Engine directly with vanilla JavaScript – no bundler required. The prebundled version includes core components, physics, particles, networking, XR, and more.
 
 <codewrap>
 
@@ -200,59 +220,124 @@ This includes our core components, physics, particles, networking, XR, and more.
 
 </codewrap>
 
-## Install from NPM
+**When to use:**
+- Quick prototypes and experiments
+- Simple integrations into existing websites
+- Learning and exploring Needle Engine
+- Projects without a build pipeline
 
-You can work directly with Needle Engine without using any Integration. Needle Engine uses three.js as scene graph and rendering library, so all functionality from three.js is available in Needle as well.  
+### Install from NPM
 
-You can install Needle Engine from NPM by running:   
-<br/>
-`npm i @needle-tools/engine`  
+For projects using modern JavaScript tooling and bundlers:
 
+```bash
+npm install @needle-tools/engine
+```
 
-Many examples can be found on [StackBlitz](https://stackblitz.com/@marwie/collections/needle-engine).  
+**When to use:**
+- Production applications
+- Projects using bundlers (Vite, Webpack, etc.)
+- TypeScript projects
+- When you need tree-shaking and optimal bundle size
 
+**Example usage:**
 
-## Local Development with VS Code
+```typescript
+import { NeedleEngine } from '@needle-tools/engine';
+import * as THREE from 'three';
 
-If you want to work with Needle Engine without any integration, then you'll likely want to run a local server for your website. Here's how you can do that with Visual Studio Code:
+// Your code here
+```
 
-1. Open the folder with your HTML file in Visual Studio Code.
-2. Install the [LiveServer extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer).  
-3. Start live-server (there's a button "Go Live" in the footer of VSCode) 
-4. Open ``http://localhost:5500`` in your web browser, if it doesn't open automatically.
+---
 
-
-## three.js and Needle Engine
-
-Since Needle Engine uses [three.js](https://threejs.org/) as scene graph and rendering library, all functionality from three.js is available in Needle as well and can be used from component scripts. We're using a fork of three.js that includes additional features and improvements, especially in relation to WebXR, Animation, and USDZ export.
-
-
-::: tip
-Make sure to update the ``<needle-engine src="myScene.glb">`` path to an existing glb file 
-or [download this sample glb](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb) and put it in the same folder as the index.html, name it ``myScene.glb`` or update the src path.
-:::
-
-@[code](@code/basic-html.html) 
-
-
-[View on github](https://github.com/needle-tools/needle-engine-samples/tree/main/vanilla) - [View on Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
-
-
+## Development Setup
 
 ### Rapid Prototyping on StackBlitz
 
-For quick experiments, we provide a convenient link to create a new project ready to start: [engine.needle.tools/new](https://engine.needle.tools/new)  
-A large collection of examples are also available in our [Needle Engine Stackblitz Collection](https://stackblitz.com/@marwie/collections/needle-engine) 
+For quick experiments, create a new project instantly:
 
+🚀 **[engine.needle.tools/new](https://engine.needle.tools/new)** - Start a new project in seconds
 
+📚 **[StackBlitz Collection](https://stackblitz.com/@marwie/collections/needle-engine)** - Browse example projects
 
-# Next Steps
+**Perfect for:**
+- Learning and experimentation
+- Sharing code snippets
+- Quick proof-of-concepts
+- Testing ideas without local setup
 
-- [Learn more about the web component attributes](/reference/needle-engine-attributes.md)
-- [Learn how to extend Needle Engine with custom scripts and components](/scripting.md)
-- [Use Needle DevTools for three.js to inspect and debug your scenes](./needle-devtools-for-threejs-chrome-extension.md)
+### Local Development with VS Code
 
+For more control and offline development:
 
-:::tip Using Needle with Unity or Blender
-Did you know that Needle Engine seamlessly integrates in Blender and Unity? This allows you to create complex 3D scenes visually and export them directly to the web with Needle Engine. Check out our [Unity integration](/unity/index.md) and [Blender integration](/blender/index.md) for more information.
+**Setup:**
+
+1. Open your project folder in Visual Studio Code
+2. Install the [Live Server extension](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer)
+3. Click **Go Live** in the VSCode footer
+4. Open `http://localhost:5500` in your browser (usually opens automatically)
+
+**Benefits:**
+- Full control over your development environment
+- Works offline
+- Better performance for large projects
+- Easier integration with version control
+
+:::tip Sample glTF Files
+Need a test scene? [Download this sample glb](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb) to get started quickly.
+:::
+
+---
+
+## Complete HTML Example
+
+Here's a minimal but complete example showing how to use Needle Engine with vanilla HTML:
+
+@[code](@code/basic-html.html)
+
+[View on GitHub](https://github.com/needle-tools/needle-engine-samples/tree/main/vanilla) • [View on StackBlitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
+
+---
+
+## three.js Compatibility
+
+Needle Engine uses a fork of [three.js](https://threejs.org/) that includes additional features and improvements, especially for:
+- **WebXR** - Enhanced XR session management and features
+- **Animation** - Improved animation playback and blending
+- **USDZ Export** - Better support for iOS AR
+
+**Full Compatibility:**
+All standard three.js functionality is available in Needle Engine. You can:
+- Use any three.js-compatible library
+- Follow three.js tutorials and examples
+- Import existing three.js code
+- Mix vanilla three.js with Needle components
+
+---
+
+## Next Steps
+
+**Learn More:**
+- [Web Component Attributes](../reference/needle-engine-attributes.md) - Configure the `<needle-engine>` component
+- [Scripting Guide](../scripting.md) - Create custom scripts and components
+- [Scripting Examples](../scripting-examples.md) - Code samples and patterns
+- [Needle DevTools](./needle-devtools-for-threejs-chrome-extension.md) - Debug and inspect scenes
+
+**Build Bigger:**
+- <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="../unity/">Unity Integration</a></logo-header> - Visual editing with full-featured 3D editor
+- <logo-header logo="/blender/logo.png" alt="Blender"><a href="../blender/">Blender Integration</a></logo-header> - Open-source 3D creation workflow
+- [Features Overview](../features-overview.md) - See what's possible with Needle Engine
+
+**Get Help:**
+- [Forum](https://forum.needle.tools) - Ask questions and share projects
+- [Discord](https://discord.needle.tools) - Join the community
+- [Examples](https://engine.needle.tools/samples) - Browse sample projects
+
+---
+
+:::tip Using Editor Integrations
+Did you know that Needle Engine seamlessly integrates with Blender and Unity? Create complex 3D scenes visually and export them directly to the web. Perfect for large projects and team collaboration.
+
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="../unity/">Learn about Unity Integration</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="../blender/">Learn about Blender Integration</a></logo-header>
 :::

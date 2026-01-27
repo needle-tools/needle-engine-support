@@ -8,165 +8,207 @@ next: ../project-structure.md
 
 <discountbanner />
 
+# Getting Started with Needle Engine
 
-# Downloads
+**Build fully interactive 3D websites using your favorite tools.** Needle Engine works with professional 3D editors and modern web frameworks, giving you the power to create rich web experiences that deploy anywhere.
 
-With **Needle Engine**, you can create fully interactive 3D websites using your favorite framework.
+## What You'll Get
 
-Projects created with Needle Engine can be deployed anywhere on the web and get optimized automatically by our state of the art optimization pipeline with automatic LOD support – reducing asset size by up x100 without compromising quality.   
-
-Needle Engine is available as a **package for Unity, add-on for Blender, a ready-to-go Web Component**, or as a npm package for projects without an editor integration.    
-Each of these comes with the same components our building blocks and to power to create more – the choice is yours.
-
-## Choose your Workflow
-
-<tool-tiles></tool-tiles>
-
-<!-- | Tool |  |  |
-| -- | -- | -- | 
-| Node.js **(required)** | 16.x or 18.x <br>[Windows](https://nodejs.org/dist/v18.16.0/node-v18.16.0-x64.msi) <br/> [MacOS](https://nodejs.org/dist/v18.16.0/node-v18.16.0.pkg)   | For running a local development server
-| VS Code *(recommended)* | any version<br/>[Windows](https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user) <br/> [MacOS](https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal) | For code editing (optional)  |
-| **Supported Editors** | |
-| Unity | 2020.3.16+ <br/>2021.3.9+ <br/>2022.3.0+<br/>[Get Unity Hub](https://unity.com/download) | For setting up your scenes, components, animations... |
-| Blender | 3.3<br/>3.4<br/>3.5<br/>3.6<br/>[Get Blender](https://www.blender.org/download/) | For setting up your scenes, components, animations... |
-   -->
-
-  
-<!-- ### For optimized builds 
-
-| Tool | | |
-| -- | -- | -- |
-| | | |
-| **toktx** | 4.1<br/>[Windows](https://fwd.needle.tools/needle-engine/toktx/win) <br/> [MacOS](https://fwd.needle.tools/needle-engine/toktx/osx) <br/> [Mac OS Apple Silicon](https://fwd.needle.tools/needle-engine/toktx/osx-silicon) <br/> [Other Releases](https://github.com/KhronosGroup/KTX-Software/releases/tag/v4.1.0-rc3)  | For texture compression (recommended) <br/>You can read more about that [here](./deployment.md#production-builds) in our docs -->
-
-
-
-<br/>
-<br/>
-
-
-
-<!--
-<img src="/imgs/unity-logo.webp" style="max-height:70px;" />
-
-
-## Needle Engine for Unity 
-
-*Supported Unity versions: 2021.3 LTS, 2022.3 LTS*
-
-<needle-button event_goal="download_unity" event_position="getting_started" large href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Unity</strong></needle-button> 
-
-- Drop the downloaded .unitypackage file into a Unity project and confirm that you want to import it.
-- Wait a moment for the installation and import to finish. A window may open stating that "A new scoped registry is now available in the Package Manager.". This is our Needle Package registry. You can safely close that window.  
-- **Explore Samples** – Select the menu option _Needle Engine > Explore Samples_ to view, open and modify all available [sample scenes](https://engine.needle.tools/samples).  
-
-
-**See [Needle Engine for Unity](../unity/index.md)** for a full list of features and instructions on getting started.
-
+With Needle Engine, you get:
+- 🎨 **Visual authoring** in Unity or Blender
+- 🚀 **Automatic optimization** with state-of-the-art compression (up to 100x smaller files)
+- 📱 **Cross-platform** support (desktop, mobile, VR, AR)
+- ⚡ **Hot reload** for instant feedback during development
+- 🌐 **Deploy anywhere** on the web with a single command
 
 ---
 
+## Choose Your Workflow
 
-<img src="/blender/logo.png" style="max-height:70px;" />
+Pick the tool that matches your skills and project needs:
 
-## Needle Engine for Blender 
-*Supported Blender versions: 4.1+*
+<tool-tiles></tool-tiles>
 
-<needle-button event_goal="download_blender" event_position="getting_started" large href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"><strong>Download Needle Engine for Blender</strong></needle-button>  
- 
-<br/> 
+### Which Tool Is Right for You?
 
-- The Blender add-on is downloaded as a zip file.
-- In Blender, go to `File > Settings > Add-ons` and click the `Install` button.
-- Then select the downloaded zip to install it.
+**<logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity Integration</logo-header>**
+- 💼 Professional game development workflows
+- 🎮 Extensive asset ecosystem
+- 📜 C# scripting support
+- 🔧 Advanced editor features
+- [Learn more about Unity Integration](../unity/)
 
-**See [Needle Engine for Blender](../blender/index.md)** for a full list of features and instructions on getting started.
+**<logo-header logo="/blender/logo.png" alt="Blender">Blender Add-on</logo-header>**
+- 🆓 Free and open-source
+- 🎨 Powerful modeling and animation tools
+- 🐍 Python scripting
+- 💪 Industry-standard workflows
+- [Learn more about Blender Integration](../blender/)
 
-<br/>
-<br/>
-<br/>
+**<logo-header logo="/imgs/threejs-logo.webp" alt="three.js">Vanilla JavaScript</logo-header>**
+- 💻 No 3D editor needed
+- 🌐 Pure web development
+- 📦 Use with any framework (React, Vue, Svelte, etc.)
+- ✨ Full three.js compatibility
+- [Learn more about three.js Integration](../three/)
 
+---
 
+## Install a Code Editor
 
-<br/>
-<br/>
-<br/>
-
--->
-
-## Code Editor and Tools
-
-### Install a code editor
-
-Needle Engine makes it easy to build web apps. That often, but not always, includes coding with JavaScript/TypeScript or writing HTML and CSS to describe user interfacces. We recommend [Visual Studio Code](https://code.visualstudio.com) for creating and editing these files. It's a free, open-source code editor that runs on Windows, macOS, and Linux.
+**Visual Studio Code is recommended** for creating and editing JavaScript, TypeScript, HTML, and CSS files. It's a free, open-source editor that works on all platforms and integrates seamlessly with Needle Engine.
 
 <ClientOnly>
-<!-- <br/><os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Unity</os-link> — <os-link generic_url="https://engine.needle.tools/downloads/unity">Needle Engine for Blender</os-link> -->
 
 <os-link windows_url="https://code.visualstudio.com/sha/download?build=stable&os=win32-x64-user" osx_url="https://code.visualstudio.com/sha/download?build=stable&os=darwin-universal">Download Visual Studio Code</os-link>
 
-
-<br/>
-<br/>
-
-### Other useful tools
-
-::: tip
-Needle Engine uses the following tools to create your web app, but you don't need to manually install them when using the Unity or Blender integration. We'll guide you through the installation process after you've installed the Needle integration.
-:::
-
-<br/>
-<os-link windows_url="https://fwd.needle.tools/needle-engine/nodejs/win" osx_url="https://fwd.needle.tools/needle-engine/nodejs/osx">Node.js 20 LTS or 22 LTS.</os-link>
-Needle Engine uses Node.js to manage, preview and build the web app that you are creating locally on your computer.     
-It is also used for uploading (deploying) your website to the internet.
-
-<br/><os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">KTX Software – toktx texture tools.</os-link> We use toktx by the Khronos Group to locally optimize and compress your 3D files. Learn more about production builds [in the docs](../deployment.md#production-builds).
-
-<br/>
 </ClientOnly>
 
-<!--
-## Option 1: Quick Start — Starter Project ⚡
-1. **Download or Clone this repository**  
-   It's set up with the right packages and settings to get you started right away.  
+**Why VS Code?**
+- Built-in TypeScript support
+- Excellent debugging tools
+- Rich extension ecosystem
+- Live Server support for local development
+- Git integration
 
-   _Clone with HTTPS:_ ``https://github.com/needle-tools/needle-engine-support.git``  
-   _OR clone with SSH:_ ``git@github.com:needle-tools/needle-engine-support.git``  
-   _OR download directly:_ <a href="https://github.com/needle-tools/needle-engine-support/archive/refs/heads/main.zip" target="_blank">Download Repository</a>
-   
-  
-2. **Open the starter project**  
-  Open `starter/Needle Engine Starter 2020_3` for a full sandbox project that's ready to run (including a couple of simple example scenes for lightmaps and custom shaders).  
-  This is a sandbox builder project! It already comes with multi-player capabilities, and works across mobile, desktop, VR and AR.  
+---
 
-3. **Press Play**  
-  Make sure the scene CollaborativeSandbox is open, and press Play! This will automatically do some setup steps and start a local server.  
-  Once the setup is complete, a browser window will open, and your project is live.  
-  From now on, all changes you do in Unity will be immediately visible in your browser.  
+## Required Tools
 
-    > **Note**: Your browser might warn you about an untrusted SSL connection. Don't worry, the connection is still encrypted – please click "Advance" if your browser asks you to verify that you're sure you want to visit your server.  
+:::tip Automatic Installation with Unity or Blender
+When using the Unity or Blender integration, we'll guide you through installing these tools automatically. You don't need to install them manually.
+:::
 
-4. **Make it your own**  
-  Add assets and components, play around with lighting, add scripts and logic – this is your world now!  
-  You can also [publish it on the web for free](#deploy-your-project-to-glitch-) so that others can join you.  
--->
+The following tools are used by Needle Engine to create, preview, and build your web app:
 
+<ClientOnly>
 
+### Node.js (Required)
+
+<os-link windows_url="https://fwd.needle.tools/needle-engine/nodejs/win" osx_url="https://fwd.needle.tools/needle-engine/nodejs/osx">Download Node.js 20 LTS or 22 LTS</os-link>
+
+**What it does:**
+- Manages your web project dependencies
+- Runs a local development server with hot reload
+- Builds and optimizes your project for production
+- Handles deployment to hosting platforms
+
+### KTX Software (Recommended)
+
+<os-link windows_url="https://fwd.needle.tools/needle-engine/toktx/win" osx_url="https://fwd.needle.tools/needle-engine/toktx/osx" osx_silicon_url="https://fwd.needle.tools/needle-engine/toktx/osx-silicon">Download toktx texture tools</os-link>
+
+**What it does:**
+- Compresses textures for optimal web performance
+- Reduces file sizes dramatically without quality loss
+- Creates GPU-compressed formats (KTX2)
+- Required for production builds
+
+[Learn more about production builds](../deployment.md#production-builds)
+
+</ClientOnly>
+
+---
+
+## Quick Start Paths
+
+### Path 1: Start with Unity
+
+**Best for:** Game developers, Unity users, teams with existing Unity projects
+
+1. <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started">Download Needle Engine for Unity</a></logo-header>
+2. Drop the `.unitypackage` into your Unity project
+3. Wait for installation to complete
+4. Explore samples: **Needle Engine → Explore Samples**
+5. Start building!
+
+[Full Unity Getting Started Guide →](../unity/)
+
+**Supported Unity versions:** 2020.3.16+, 2021.3.9+, 2022.3.0+
+
+### Path 2: Start with Blender
+
+**Best for:** 3D artists, Blender users, open-source enthusiasts
+
+1. <logo-header logo="/blender/logo.png" alt="Blender"><a href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started">Download Needle Engine for Blender</a></logo-header>
+2. Open Blender and go to **File → Settings → Add-ons**
+3. Click **Install** and select the downloaded zip
+4. Enable the "Needle Engine" add-on
+5. Start creating!
+
+[Full Blender Getting Started Guide →](../blender/)
+
+**Supported Blender versions:** 4.1+
+
+### Path 3: Start with Web Code
+
+**Best for:** Web developers, three.js users, integration into existing sites
+
+**CDN (Fastest):**
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<needle-engine src="your-scene.glb"></needle-engine>
+```
+
+**NPM (Production):**
+```bash
+npm install @needle-tools/engine
+```
+
+[Full three.js/Web Integration Guide →](../three/)
+
+---
+
+## Your First Project
+
+Once you've installed Needle Engine, here's what to do next:
+
+### With Unity or Blender:
+
+1. **Create a new scene** with some 3D objects
+2. **Add the ExportInfo component** to configure your web project
+3. **Press Play** (Unity) or **Export** (Blender)
+4. **Watch the magic happen** – your scene opens in the browser!
+5. **Make changes** and see them update live in the browser
+
+### With Vanilla JavaScript:
+
+1. **Create an HTML file** with the `<needle-engine>` web component
+2. **Load a glTF/GLB file** or create objects with three.js
+3. **Open with a local server** (like VS Code's Live Server)
+4. **Add interactivity** with JavaScript
+
+---
 
 ## Next Steps
 
-Now that you've installed Needle Engine, you're ready to dive deeper into project creation, component workflows, scripting, deployment and more. 
+**Learn the Basics:**
+- [Getting Started: Unity](../unity/) – Unity-specific workflows
+- [Getting Started: Blender](../blender/) – Blender-specific workflows
+- [Getting Started: three.js](../three/) – Web-first development
+- [Project Structure](../project-structure.md) – Understanding your web project
+- [TypeScript Essentials](./typescript-essentials.md) – Learn TypeScript basics
 
-- [Getting Started: Unity](../unity/index.md)
-- [Getting Started: Blender](../blender/index.md)  
-- [Concept: Exporting 3D objects and content](../export.md)
-- [Concept: Project Structure](../project-structure.md)
-- [Concept: Deploy your website to the web](../deployment.md)
-- [Beginner Guide: Typescript Essentials](./typescript-essentials.md) 
-- [Beginner Guide: Needle Engine for Unity Developers](./for-unity-developers.md) 
-- [Beginner Guide: Scripting Reference](../scripting.md) 
-- [Live Examples: Needle Engine Samples](https://engine.needle.tools/samples)
+**Core Concepts:**
+- [Exporting 3D Content](../export.md) – How assets become web-ready
+- [Component System](../scripting.md) – Build reusable functionality
+- [Deployment](../deployment.md) – Publish your project to the web
 
-In case you need troubleshooting help, please see the [Questions and Answers – FAQ](../faq.md) section.  
-We welcome you to join our [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) and [Discord Community](https://discord.needle.tools).
+**Go Further:**
+- [Features Overview](../features-overview.md) – See what's possible
+- [XR Documentation](../xr.md) – Build VR and AR experiences
+- [Networking](../networking.md) – Create multiplayer experiences
+- [Live Examples](https://engine.needle.tools/samples) – Explore sample projects
 
+**For Unity Developers:**
+- [Needle Engine for Unity Developers](./for-unity-developers.md) – Key differences from traditional Unity
+
+**Get Help:**
+- [FAQ](../faq.md) – Common questions and troubleshooting
+- [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) – Ask questions and share projects
+- [Discord](https://discord.needle.tools) – Join our community
+
+---
+
+:::tip Need Help?
+If you run into issues during setup, check out our [FAQ](../faq.md) or join our [Discord community](https://discord.needle.tools) where we're happy to help!
+:::

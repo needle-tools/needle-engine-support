@@ -2,64 +2,213 @@
 title: WebXR Image Tracking with Needle Engine
 ---
 
-## What is WebXR Image Tracking
-**WebXR image tracking enables browsers to detect and track specific images in the real world** through a device's camera, providing real-time position and orientation data to anchor virtual content precisely to physical markers like posters, packaging, or artwork.   
+# WebXR Image Tracking
 
-By pointing the camera at a recognized image, the image tracking api continuously updates the spatial relationship between the virtual and physical elements, ensuring proper alignment even as the device or image moves.   
+## What is WebXR Image Tracking
+
+**WebXR image tracking enables browsers to detect and track specific images in the real world** through a device's camera, providing real-time position and orientation data to anchor virtual content precisely to physical markers like posters, packaging, or artwork.
+
+By pointing the camera at a recognized image, the image tracking API continuously updates the spatial relationship between the virtual and physical elements, ensuring proper alignment even as the device or image moves.
 
 Image tracking transforms static images into interactive AR triggers—allowing museum paintings to display overlaid information, product packages to reveal 3D animations, or business cards to show floating contact details—all through web standards without requiring users to download dedicated apps, making AR experiences instantly accessible through any compatible web browser.
 
-## Demo
+## Platform Support
 
-Needle Engine supports **WebXR Image Tracking** ([Live Demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)) on Android and **QuickLook Image Tracking** on iOS.
+Needle Engine supports image tracking across multiple platforms:
 
-Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.  
+| Platform | Technology | Status |
+| --- | --- | --- |
+| **iOS (Safari, Chrome)** | Native WebXR via [App Clip](./ios-webxr-app-clip.md) | ✅ Full support |
+| **Android** | WebXR Image Tracking | ✅ Supported (requires Chrome flag) |
+| **iOS (Alternative)** | QuickLook Image Tracking | ✅ Supported via [Everywhere Actions](./everywhere-actions.md) |
 
-:::info WebXR Image Tracking on Android
-**On Android** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.  
+### iOS: Native WebXR Image Tracking 🎉
+
+**NEW:** iOS now supports native WebXR image tracking through [Needle Go - iOS WebXR App Clip](./ios-webxr-app-clip.md)!
+
+Users can experience your image tracking AR content instantly on iPhone and iPad via:
+- QR codes
+- Smart app banners
+- Direct links
+
+**No app installation required** – powered by ARKit for high-quality tracking.
+
+[Try it now](https://appclip.needle.tools) • [Learn more about iOS WebXR](./ios-webxr-app-clip.md)
+
+### Android: WebXR Image Tracking
+
+Android devices support WebXR Image Tracking through Chrome with a browser flag enabled.
+
+:::info Enable WebXR Image Tracking on Android
+**On Android**, turn on "WebXR Incubations" in Chrome Flags:
+1. Open Chrome on your Android device
+2. Paste `chrome://flags/#webxr-incubations` in the address bar
+3. Enable the "WebXR Incubations" flag
+4. Restart Chrome
 :::
 
+## Live Demo
 
-<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />    
+[**Try the live demo →**](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr)
+
+Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.
+
+<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />
 
 <sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
 
+**How to test:**
+1. Open the demo on your device (iOS or Android)
+2. Tap the AR button to enter AR mode
+3. Point your camera at the marker image above
+4. Watch 3D content appear tracked to the marker!
 
-## Explainer
+---
 
+## Setup in Unity or Blender
 
-:::warning WebXR Image Tracking is still in a "draft" phase and not generally available
-So far, browser vendors haven't been able to agree on the final image tracking API for WebXR. As long as the specification is in "draft" phase ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)),
-you and your app's users need to follow these steps to enable WebXR ImageTracking on Android devices:
-1. Visit ``chrome://flags`` on your Android Chrome browser
-2. Find and enable the `WebXR Incubations` option
-:::
+Image tracking can be set up in both Unity and Blender by adding a `WebXRImageTracking` component to an object. Then add your images to the `Tracked Images` array.
 
-Without that spec, one can still request camera image access and run custom algorithms to determine device pose. The downside is that users will have to accept additional permissions like camera access, and the tracking will not be as accurate as with the native capabilities of the device.
+### <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity Setup</logo-header>
 
-Here are some libraries to add image tracking based on camera access and local computer vision algorithms:  
-   - [Experimental AR.js integration with Needle Engine](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
-   - [AR.js](https://github.com/AR-js-org/AR.js) (open source)
-   - [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
-
-
-### Integrations
-Image Tracking can be setup in both Unity and Blender by adding a WebXRImageTracking component to an object. Then add your images to the `Tracked Images` array.
-
-![unity screenshot](/imgs/webxr-image-tracking-unity-component.jpg)  
+![Unity WebXR Image Tracking Component](/imgs/webxr-image-tracking-unity-component.jpg)
 *Image tracking component in Unity*
 
-![blender screenshot](/imgs/webxr-image-tracking-blender-component.jpg)  
+**Steps:**
+1. Add a `WebXRImageTracking` component to a GameObject
+2. In the `Tracked Images` array, add your marker images
+3. Assign content to display when each image is detected
+4. Export and test on device
+
+### <logo-header logo="/blender/logo.png" alt="Blender">Blender Setup</logo-header>
+
+![Blender WebXR Image Tracking Component](/imgs/webxr-image-tracking-blender-component.jpg)
 *Image tracking component in Blender*
 
-## References
+**Steps:**
+1. Add a `WebXRImageTracking` component in the Needle Engine panel
+2. Add your marker images to the tracked images list
+3. Set up content to appear when images are detected
+4. Export and test on device
 
+---
+
+## Technical Details
+
+### <logo-header logo="/imgs/ios-logo.webp" alt="iOS">iOS: Full Native Support ✅</logo-header>
+
+iOS image tracking works through [Needle Go App Clip](./ios-webxr-app-clip.md) with full ARKit support:
+- ✅ **No browser flags required**
+- ✅ **No setup needed**
+- ✅ **High-quality ARKit tracking**
+- ✅ **Works in Safari and Chrome**
+- ✅ **Instant access via QR codes or links**
+
+Your Needle Engine project works automatically on iOS with image tracking enabled. [Learn more →](./ios-webxr-app-clip.md)
+
+### <logo-header logo="/imgs/android-logo.webp" alt="Android">Android: Browser Flag Required</logo-header>
+
+Android uses the WebXR Image Tracking API, which is currently in draft specification status ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)).
+
+**Requirements:**
+- Enable `WebXR Incubations` flag in Chrome (`chrome://flags/#webxr-incubations`)
+- Restart Chrome after enabling the flag
+
+:::tip
+This is a temporary requirement while browser vendors finalize the specification. Once finalized, the flag won't be needed.
+:::
+
+### Alternative Approaches
+
+If you need image tracking without WebXR support, consider these alternatives:
+
+**1. Everywhere Actions (iOS QuickLook)**
+- Works on iOS without App Clip
+- Uses Apple's QuickLook with USDZ
+- Limited to QuickLook capabilities
+- [Learn more about Everywhere Actions](./everywhere-actions.md)
+
+**2. Camera-Based Libraries**
+These require camera access permissions and use local computer vision:
+- [Experimental AR.js integration](https://github.com/FireDragonGameStudio/NeedleAndARjs) by FireDragonGameStudio
+- [AR.js](https://github.com/AR-js-org/AR.js) (open source)
+- [Mind AR](https://github.com/hiukim/mind-ar-js) (open source)
+
+:::tip
+For the best user experience on iOS, we recommend using the [iOS WebXR App Clip](./ios-webxr-app-clip.md) approach, which provides native ARKit tracking without requiring camera permissions or additional setup.
+:::
+
+---
+
+## Use Cases
+
+Image tracking opens up many creative possibilities:
+
+**Marketing & Advertising:**
+- Product packaging reveals 3D animations
+- Posters come to life with video content
+- Business cards show contact information in AR
+
+**Education & Museums:**
+- Paintings display historical context
+- Textbooks show 3D models
+- Exhibits provide interactive information
+
+**Retail & E-commerce:**
+- Product catalogs show 3D previews
+- Magazine ads become interactive
+- Store displays trigger AR experiences
+
+**Events & Entertainment:**
+- Concert posters show ticket info
+- Movie posters play trailers
+- Event badges trigger AR content
+
+---
+
+## Best Practices
+
+**Image Marker Design:**
+- Use high-contrast images
+- Include distinctive features
+- Avoid repeating patterns
+- Test at different sizes
+- Ensure good lighting conditions
+
+**Performance:**
+- Keep tracked content lightweight
+- Use texture compression
+- Optimize 3D models
+- Test on target devices
+
+**User Experience:**
+- Provide clear instructions
+- Show the marker image prominently
+- Handle detection/loss gracefully
+- Test in various lighting conditions
+
+---
+
+## Next Steps
+
+**Get Started:**
+- [Unity Integration](./unity/) - Set up image tracking in Unity
+- [Blender Integration](./blender/) - Set up image tracking in Blender
+- [iOS WebXR Guide](./ios-webxr-app-clip.md) - Enable native iOS support
+
+**Learn More:**
+- [XR Documentation](./xr.md) - Full XR capabilities
+- [Everywhere Actions](./everywhere-actions.md) - Alternative AR approaches
+- [Deployment Guide](./deployment.md) - Publish your AR experience
+
+**Resources:**
+- [Live Demo](https://engine.needle.tools/samples/image-tracking) - Try it now
 - [WebXR Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)
-- [WebXR Device API](https://www.w3.org/TR/webxr/)  
-- [caniuse: WebXR](https://caniuse.com/webxr)  
-- [Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
+- [WebXR Device API](https://www.w3.org/TR/webxr/)
+- [caniuse: WebXR](https://caniuse.com/webxr)
 
+---
 
-## Further reading
-- [Needle Everywhere Actions](./everywhere-actions.md) *experiences that run everywhere*
-- [XR documentation](./xr.md)
+:::tip Need Help?
+Join our [Discord community](https://discord.needle.tools) or visit our [Forum](https://forum.needle.tools) for support with image tracking and other AR features.
+:::
