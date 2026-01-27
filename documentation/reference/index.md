@@ -27,7 +27,7 @@ Reference documentation is **information-oriented** and provides:
 ## API Documentation
 
 ### Needle Engine API
-- [TypeScript API Documentation](https://engine.needle.tools/docs/api/latest) - Complete API reference
+- [**Needle Engine API Documentation**](https://engine.needle.tools/docs/api/latest) - Complete API reference
 - [Component Lifecycle Methods](./api/lifecycle-methods) - awake, start, update, onEnable, etc.
 - [Physics Event Methods](./api/physics-events) - Collision and trigger events
 - [Input Event Methods](./api/input-events) - Mouse, touch, keyboard events
@@ -37,45 +37,40 @@ Reference documentation is **information-oriented** and provides:
 ### three.js API
 - [three.js Documentation](https://threejs.org/docs/index.html) - Official three.js API
 
----
+
 
 ## Components
 
-- [Built-in Components Catalog](./components) - All 100+ built-in components
+- [Built-in Components Catalog](/docs/reference/components) - All 100+ built-in components
+- [**Needle Engine API Documentation**](https://engine.needle.tools/docs/api/latest) - Complete API reference
 
----
+
 
 ## Configuration
 
-- [needle.config.json](./needle-config-json) - Project configuration file
-- [Needle Engine Attributes](./needle-engine-attributes) - Component attributes and metadata
-- [TypeScript Decorators](./typescript-decorators) - @serializable and other decorators
+- [needle.config.json](/docs/reference/needle-config-json) - Project configuration file
+- [Needle Engine Attributes](/docs/reference/needle-engine-attributes) - Component attributes and metadata
+- [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable and other decorators
 
----
+
 
 ## Platform & Format Support
 
-- [Features Overview](../explanation/core-concepts/features-overview) - Complete feature matrix
+- [Features Overview](/docs/explanation/core-concepts/features-overview) - Complete feature matrix
 
----
+
 
 ## Troubleshooting
 
 - [FAQ](./faq) - Frequently asked questions
 
----
 
-## Additional Resources
-
-- [Additional Modules](./modules) - Optional modules and extensions
-
----
 
 ## Code Examples
 
 - [Scripting Examples](./scripting-examples) - Code snippets and patterns
 
----
+
 
 ## Need Help?
 

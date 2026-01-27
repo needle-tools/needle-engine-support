@@ -14,7 +14,7 @@ flowchart TD
 
 ## Editor project and web project
 
-The **Editor Project** is where you create your 3D scenes, add components to objects, add materials and lights, set up the environment, animate and so on. You can use all the powerful tools of your 3D software to create the content that will be exported to the web. If you're working with Unity or Blender, you'll want to install the [Needle Engine for Unity](./unity/) package or the [Needle Engine for Blender](./blender/) add-on.
+The **Editor Project** is where you create your 3D scenes, add components to objects, add materials and lights, set up the environment, animate and so on. You can use all the powerful tools of your 3D software to create the content that will be exported to the web. If you're working with Unity or Blender, you'll want to install the [Needle Engine for Unity](/docs/unity/) package or the [Needle Engine for Blender](/docs/blender/) add-on.
 
 The **Web Project** is where your web app comes together. It contains the exported 3D assets, the scripts that control the behavior of your app, and the HTML and CSS that define the look and feel. The web project is powered by Needle Engine, which is responsible for loading and displaying your 3D content, managing script components and their lifecycle, and utilizing the web platform's capabilities like WebXR, audio, networking, and more.
 
@@ -117,7 +117,7 @@ When building your web project, either by clicking "Build" in the editor or runn
 ::: file index.html
 The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder.  
 <br>
-You also find the `<needle-engine>` web component here, which displays your 3D content. You can modify its attributes to change the environment, loading style, contact shadows, and more. See the [Web Component Attributes Reference](/reference/needle-engine-attributes) for a list of available attributes.
+You also find the `<needle-engine>` web component here, which displays your 3D content. You can modify its attributes to change the environment, loading style, contact shadows, and more. See the [Web Component Attributes Reference](/docs/reference/needle-engine-attributes) for a list of available attributes.
 
 :::
 
@@ -138,7 +138,7 @@ This script is included from `index.html` and runs at startup. It imports `@need
 :::
 
 ::: file src/scripts/
-Add your custom scripts in this folder. Our [component compiler](/explanation/core-concepts/component-compiler) will automatically generate stub components for Unity and Blender from them.
+Add your custom scripts in this folder. Our [component compiler](/docs/explanation/core-concepts/component-compiler) will automatically generate stub components for Unity and Blender from them.
 :::
 
 ::: file src/scripts/MyComponent.ts
@@ -178,7 +178,7 @@ The output folder where the built web project is placed. This is where the final
 :::
 
 ::: file needle.config.json
-The [Needle config](/reference/needle-config-json). Needle integrations and build tools use this file. It contains information on where to export assets to, and where the build folder is.
+The [Needle config](/docs/reference/needle-config-json). Needle integrations and build tools use this file. It contains information on where to export assets to, and where the build folder is.
 :::
 
 ::: file vite.config.js
@@ -200,7 +200,7 @@ This file specifies which files and folders should be ignored by the git version
 ::::
 
 
-Our exporter can be used with other project structures as well. We chose Vite as bundler because of its speed and flexibility. Feel free to set up your own project structure, or use a different bundler like Webpack. Needle Engine is designed to be flexible and can usually be adapted to your needs. [Learn more about bundling and other frameworks](/how-to-guides/web-integration/).
+Our exporter can be used with other project structures as well. We chose Vite as bundler because of its speed and flexibility. Feel free to set up your own project structure, or use a different bundler like Webpack. Needle Engine is designed to be flexible and can usually be adapted to your needs. [Learn more about bundling and other frameworks](/docs/how-to-guides/web-integration/).
 
 ## Extending the web project
 
@@ -215,7 +215,7 @@ You can extend the web project by adding your own scripts, styles, and assets. Y
 
 
 :::tip Copying additional files to the output folder
-You can add additional files to your project that you want to be copied to the output folder when building. Either put them into the `include/` folder, or [configure copying](/reference/needle-config-json) them in the `needle.config.json` file.
+You can add additional files to your project that you want to be copied to the output folder when building. Either put them into the `include/` folder, or [configure copying](/docs/reference/needle-config-json) them in the `needle.config.json` file.
 :::
 
 ## Adding HTML interfaces to your web project
@@ -225,7 +225,7 @@ Your Needle Engine project is not limited to 3D content. You can create 2D user 
 If your HTML and CSS gets more complex, you may want to use a **frontend framework** like Svelte, React, or Vue. Needle Engine is designed to work well with these frameworks, and we provide examples and documentation on how to integrate them. See our [Frontend Framework Samples](https://engine.needle.tools/samples/#combine-2d-and-3d-with-any-framework) for more information.
 
 Here are some resources to get you started with 2D UIs in Needle Engine:
-- [Using HTML and CSS in Needle Engine](/how-to-guides/web-integration/)
+- [Using HTML and CSS in Needle Engine](/docs/how-to-guides/web-integration/)
 - [SvelteKit Sample](https://engine.needle.tools/samples/svelte-integration/)
 - [React Sample](https://engine.needle.tools/samples/react-sample/)
 - [Vue Sample](https://engine.needle.tools/samples/vue.js-integration)
@@ -248,7 +248,7 @@ If you already have a web project that you want to integrate with Needle Engine,
 
 #### Continue Reading
 
-- [Typescript Guide for Unity Developers](/tutorials/fundamentals/for-unity-developers)
-- [Typescript Essentials](/tutorials/fundamentals/typescript-essentials)
-- [Writing custom scripts](/how-to-guides/scripting/create-components)
-- [Everywhere Actions](/how-to-guides/everywhere-actions/)
+- [Typescript Guide for Unity Developers](/docs/tutorials/fundamentals/for-unity-developers)
+- [Typescript Essentials](/docs/tutorials/fundamentals/typescript-essentials)
+- [Writing custom scripts](/docs/how-to-guides/scripting/create-components)
+- [Everywhere Actions](/docs/how-to-guides/everywhere-actions/)
