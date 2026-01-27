@@ -268,59 +268,6 @@ The distributed website (using our default Vite template) is a static page that 
 Node.js is only required if you want to run our minimalistic networking server for multiplayer experiences.
 :::
 
----
-
-
-
-~~[Glitch](https://glitch.com/) provides fast and free hosting for websites of all sizes. Includes a built-in networking server for multiplayer experiences.~~
-
-**This section is kept for historical reference only.**
-
-:::details Unity: Deploy to Glitch step-by-step
-
-1. Add the `DeployToGlitch` component to the GameObject with the `ExportInfo` component
-
-2. Click the **Create new Glitch Remix** button
-   ![Deploy to Glitch Button](/deployment/deploytoglitch-1.jpg)
-
-3. Glitch will create a remix of the template. Copy the URL from your browser
-   ![Glitch URL](https://user-images.githubusercontent.com/5083203/179834901-f28852a9-6b06-4d87-8b5b-0384768c92c1.png)
-
-4. Paste the URL in the **Project Name** field of your `Deploy To Glitch` component
-   ![Paste URL](https://user-images.githubusercontent.com/5083203/179835274-033e5e1d-b70d-4b13-95ad-f1e2f159b14e.png)
-
-5. Wait a few seconds for Unity to receive your deployment key from Glitch
-   *The key is stored safely in the `.env` file on Glitch. Do not share it with others.*
-   ![Waiting for Key](/deployment/deploytoglitch-2.jpg)
-
-6. Click **Build & Deploy** to upload to Glitch
-
-:::
-
-:::details Blender: Deploy to Glitch step-by-step
-![Deploy To Glitch from Blender](/blender/deploy_to_glitch.webp)
-
-1. Find the Deploy To Glitch panel in the Scene tab
-2. Click the **Remix on glitch** button
-3. Your browser will open the Glitch project template
-4. Wait for Glitch to generate a new project
-5. Copy-paste the project URL as the project name in Blender
-   *(You can paste the full URL, the panel will extract the necessary information)*
-6. On Glitch, open the `.env` file and enter a password in the **DEPLOY_KEY** field
-7. Enter the same password in Blender in the **Key** field
-8. Click **DeployToGlitch** to build and upload
-9. A browser will open when finished. Refresh the page if it shows black initially.
-
-:::
-
-:::details Troubleshooting Glitch
-
-**Error: "there was an error starting the editor"**
-1. Click **OK**
-2. Go to [glitch.com](https://glitch.com/) and sign in
-3. Try clicking the button again in Unity or Blender
-
-:::
 
 ## Advanced Topics
 

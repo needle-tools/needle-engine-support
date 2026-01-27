@@ -81,8 +81,7 @@ Perfect for newcomers who want to learn the fundamentals.
 - [Getting Started](./getting-started/)
 - [TypeScript Essentials](./tutorials/fundamentals/typescript-essentials)
 - [For Unity Developers](./tutorials/fundamentals/for-unity-developers)
-
-<action href="./tutorials/">Browse all Tutorials →</action>
+- [**Browse all Tutorials**](./tutorials/)
 
 </div>
 
@@ -98,9 +97,7 @@ Get things done with focused how-to instructions.
 - [Deploy to Production](./how-to-guides/deployment/)
 - [Add Multiplayer](./how-to-guides/networking/)
 - [Enable WebXR](./how-to-guides/xr/)
-
-
-<action href="./how-to-guides/">Browse all How-To Guides →</action>
+- [**Browse all How-To Guides**](./how-to-guides/)
 
 </div>
 
@@ -115,8 +112,7 @@ Deepen your knowledge of how Needle Engine works.
 - [Vision & Philosophy](./explanation/core-concepts/vision)
 - [Technical Architecture](./explanation/architecture/technical-overview)
 - [Project Structure](./explanation/core-concepts/project-structure)
-
-<action href="./explanation/">Browse all Explanations →</action>
+- [**Browse all Explanations**](./explanation/)
 
 </div>
 
@@ -131,8 +127,7 @@ Quick reference for components, methods, and configuration.
 - [Component Reference](./reference/components)
 - [Lifecycle Methods](./reference/api/lifecycle-methods)
 - [TypeScript API Docs](https://engine.needle.tools/docs/api/latest)
-
-<action href="./reference/">Browse all Reference →</action>
+- [**Browse all Reference**](./reference/)
 
 </div>
 
@@ -141,6 +136,8 @@ Quick reference for components, methods, and configuration.
 
 
 ## What Developers Say
+
+<br/>
 
 <quoteslides>
 
@@ -256,40 +253,9 @@ My workflow has been optimized 10X ever since i started using needle
 
 </quoteslides>
 
-## Technical Details
 
-**Needle Engine** is a web-based runtime for complex and simple 3D applications alike. Built on three.js and the glTF standard, it provides:
+<br/><br/><br/>
 
-- **Full-featured 3D engine** – [PBR materials](./how-to-guides/export/#physically-based-materials-pbr), [custom shaders](./how-to-guides/export/#custom-shaders), [lightmaps](./how-to-guides/export/#lightmaps), [physics](./reference/components#physics), [particles](./reference/components#particles), [UI](./reference/components#ui), and [more](./explanation/core-concepts/features-overview)
-- **Editor integrations** – [Unity](./unity/) and [Blender](./blender/) for professional authoring workflows
-- **Built-in networking** – [Multiplayer components](./how-to-guides/networking/) for collaborative experiences
-- **Native WebXR support** – [AR and VR](./how-to-guides/xr/) on all platforms, including [iOS via App Clips](./how-to-guides/xr/ios-webxr-app-clip)
-- **Compression pipeline** – Optimized [deployment and compression](./how-to-guides/deployment/) for web delivery
-- **Component-based architecture** – [TypeScript/JavaScript scripting](./how-to-guides/scripting/create-components) with familiar patterns
-- **Extensible and flexible** – [Integrate with any web framework](./how-to-guides/web-integration/) or use [vanilla JS](./three/)
-
-<!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
-
- <br/>
- <br/>
-
-<actiongroup>
-
-
-<a class="no-external-link-icon" href="https://www.npmjs.com/package/@needle-tools/engine"><img src="https://img.shields.io/npm/v/@needle-tools/engine?style=flat&colorA=ddd&colorB=ddd"/></a>
-
-<a class="no-external-link-icon" href="https://engine.needle.tools/docs/getting-started/"><img src="https://img.shields.io/npm/dt/@needle-tools/engine.svg?style=flat&colorA=ddd&colorB=ddd"/></a>
-
-
-<a class="no-external-link-icon" href="https://discord.needle.tools"><img src="https://img.shields.io/discord/717429793926283276?style=flat&colorA=ddd&colorB=ddd&label=discord&logo=discord&logoColor=ffffff"></a>
-
-
-</actiongroup>
-
-
-
-
-<p></p>
 <copyright></copyright>
 
 <ClientOnly>

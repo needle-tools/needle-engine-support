@@ -33,7 +33,7 @@ description: Get help and connect with the Needle Engine community
 Join our active Discord community for real-time help:
 
 <actiongroup>
-<action href="https://discord.needle.tools">
+<action href="https://discord.needle.tools" icon="💬">
 Join Discord Server →
 </action>
 </actiongroup>
@@ -44,7 +44,7 @@ Join Discord Server →
 Ask detailed questions and get thorough answers:
 
 <actiongroup>
-<action href="https://forum.needle.tools/?utm_source=needle_docs&utm_content=help_page">
+<action href="https://forum.needle.tools/?utm_source=needle_docs&utm_content=help_page" icon="💭">
 Visit Forum →
 </action>
 </actiongroup>
@@ -59,7 +59,7 @@ Visit Forum →
 For commercial support, licensing, and partnership inquiries:
 
 <actiongroup>
-<action href="mailto:hi+docs@needle.tools">
+<action href="mailto:hi+docs@needle.tools" icon="📧">
 Email Support →
 </action>
 </actiongroup>
@@ -68,7 +68,7 @@ Email Support →
 Help us improve Needle Engine:
 
 <actiongroup>
-<action href="https://fwd.needle.tools/needle-engine/feedback">
+<action href="https://fwd.needle.tools/needle-engine/feedback" icon="📝">
 Submit Feedback →
 </action>
 </actiongroup>
@@ -81,7 +81,7 @@ Submit Feedback →
 Get updates on new features and releases:
 
 <actiongroup>
-<action href="https://fwd.needle.tools/needle-engine/newsletter">
+<action href="https://fwd.needle.tools/needle-engine/newsletter" icon="📬">
 Subscribe to Newsletter →
 </action>
 </actiongroup>
@@ -114,7 +114,7 @@ Follow us for updates and community highlights:
 Found a bug? Report it on GitHub:
 
 <actiongroup>
-<action href="https://github.com/needle-tools/needle-engine-support/issues">
+<action href="https://github.com/needle-tools/needle-engine-support/issues" icon="🐛">
 Report Bug →
 </action>
 </actiongroup>
@@ -123,7 +123,7 @@ Report Bug →
 Found an error in the docs?
 
 <actiongroup>
-<action href="https://github.com/needle-tools/needle-engine-support/issues">
+<action href="https://github.com/needle-tools/needle-engine-support/issues" icon="📄">
 Report Documentation Issue →
 </action>
 </actiongroup>
