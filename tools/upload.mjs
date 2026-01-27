@@ -38,6 +38,7 @@ async function runUpload() {
         console.error("No files to upload");
         return;
     }
+    console.log(`Collected ${allFiles.length} files for deployment`);
 
     // We'll build the updated manifest after successful uploads
     // For now, just keep track of all files for comparison
@@ -264,12 +265,15 @@ function recursiveCollectFilesToUpload(dir, files, currentRel) {
 
     const items = readdirSync(dir);
     for (const item of items) {
-        const relpath = `${currentRel}/${item}`;
+        // Properly construct relative path without leading/double slashes
+        const relpath = currentRel ? `${currentRel}/${item}` : item;
         const fullpath = path.resolve(dir, item);
         const stat = statSync(fullpath);
         if (stat.isDirectory()) {
+            console.log(`Entering directory: ${relpath}/`);
             recursiveCollectFilesToUpload(fullpath, files, relpath);
         } else {
+            console.log(`Found file: ${relpath} (${(stat.size / 1024).toFixed(2)} KB)`);
             const hash = calculateFileHash(fullpath);
             files.push({
                 source: fullpath,
@@ -302,22 +306,34 @@ async function startUploadWorker(client, files, uploadedFiles) {
         const sizeInMB = size / 1024 / 1024;
         for (let i = 0; i < maxRetries; i++) {
             console.log(`Upload start: ${target} (${sizeInMB.toFixed(2)} MB). Attempt #${i + 1} of ${maxRetries}`);
-            const targetDir = path.dirname(target);
-            await client.ensureDir(targetDir);
-            const promise = await client.uploadFrom(source, target)
-                .then(() => {
-                    console.log("Uploaded: ", source, " to ", target);
-                    return true;
-                })
-                .catch((err) => {
-                    console.error("Error uploading: ", source, " to ", target, err);
-                    return false;
-                });
-            if (promise === true) {
+
+            // Ensure directory exists before upload
+            // Use posix path for FTP paths (forward slashes)
+            const targetDir = target.includes('/') ? target.substring(0, target.lastIndexOf('/')) : '';
+
+            try {
+                // Always start from root directory
+                await client.cd('/');
+
+                // Ensure the directory exists first (this changes current dir)
+                if (targetDir) {
+                    await client.ensureDir(targetDir);
+                    console.log(`Ensured directory: ${targetDir}`);
+                    // Go back to root after ensureDir changes the directory
+                    await client.cd('/');
+                }
+
+                // Upload the file from root directory
+                await client.uploadFrom(source, target);
+                console.log("Uploaded: ", source, " to ", target);
                 didUpload = true;
                 break;
+            } catch (err) {
+                console.error(`Error uploading: ${source} to ${target}`, err);
+                if (i < maxRetries - 1) {
+                    await new Promise((resolve) => setTimeout(resolve, 1000 * (i + 1)));
+                }
             }
-            await new Promise((resolve) => setTimeout(resolve, 1000 * (i + 1)));
         }
         if (!didUpload) {
             throw new Error(`Failed to upload ${source} after ${maxRetries} attempts`);
