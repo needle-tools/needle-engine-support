@@ -206,7 +206,7 @@ Use coroutines for time-based updates without blocking the main thread.
 
 <video-embed src="./videos/component-time.mp4" limit_height />
 
-[Coroutines guide](/docs/how-to-guides/scripting/use-lifecycle-hooks#start-coroutines)
+[Coroutines guide](/docs/how-to-guides/scripting/use-coroutines)
 
 ---
 
@@ -524,4 +524,4 @@ export class TimedSpawn extends Behaviour {
 }
 ```
 
-[Prefab loading](#reference-and-load-a-prefab) • [Coroutines alternative](/docs/how-to-guides/scripting/use-lifecycle-hooks#start-coroutines)
+[Prefab loading](#reference-and-load-a-prefab) • [Coroutines alternative](/docs/how-to-guides/scripting/use-coroutines)
