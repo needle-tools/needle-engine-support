@@ -1,13 +1,5 @@
 ---
 title: Automatic Component Generation
-tags:
-  - codegen
-  - components
-  - unity
-  - blender
-  - editor
-  - typescript
-  - csharp
 head:
   - - meta
     - http-equiv: refresh

@@ -1,5 +1,5 @@
 # Needle Engine Documentation - Links
-# 1/27/2026, 10:00:27 PM
+# 1/27/2026, 10:13:03 PM
 # Base URL: https://engine.needle.tools/docs
 
 Needle Engine for Unity
@@ -44,15 +44,6 @@ Additional Modules
 Automatic Component Generation
   https://engine.needle.tools/docs/component-compiler
 
-Bike Configurator 🚲
-  https://engine.needle.tools/docs/showcase-bike
-
-Castle Builder 🏰
-  https://engine.needle.tools/docs/showcase-castle
-
-Castle Builder 🏰
-  https://engine.needle.tools/docs/showcase-website
-
 Creating and using Components
   https://engine.needle.tools/docs/scripting
 
@@ -92,15 +83,6 @@ iOS WebXR Support
 MaterialX
   https://engine.needle.tools/docs/materialx
 
-Mercedes-Benz Showcase
-  https://engine.needle.tools/docs/showcase-mercedes-benz
-
-Monster Hands 💀
-  https://engine.needle.tools/docs/showcase-monsterhands
-
-Monster Hands 💀
-  https://engine.needle.tools/docs/showcase-zenrepublic
-
 Needle Core Components
   https://engine.needle.tools/docs/component-reference
 
@@ -115,12 +97,6 @@ Our Vision
 
 Questions and Answers (FAQ)
   https://engine.needle.tools/docs/faq
-
-Responsive 3D Webdesign
-  https://engine.needle.tools/docs/responsive-3D-webdesign-with-needle-and-threejs
-
-Samples Projects
-  https://engine.needle.tools/docs/samples-and-modules
 
 Scripting basics For Unity Developers
   https://engine.needle.tools/docs/for-unity-developers
@@ -139,9 +115,6 @@ Testimonials
 
 Testing on local devices
   https://engine.needle.tools/docs/testing
-
-Tower Defense
-  https://engine.needle.tools/docs/showcase-towerdefence
 
 Using Needle Engine directly from HTML
   https://engine.needle.tools/docs/vanilla-js
@@ -285,6 +258,11 @@ WebXR Image Tracking
 
     Use Physics
       https://engine.needle.tools/docs/how-to-guides/scripting/use-physics
+
+  ## Web Integration
+
+    Create Responsive 3D Layouts
+      https://engine.needle.tools/docs/how-to-guides/web-integration/responsive-design
 
   ## Xr
 

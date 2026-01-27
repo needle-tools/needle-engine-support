@@ -1,7 +1,17 @@
 ---
-title: Scripting basics For Unity Developers
-editLinks: false
-sidebar: false
+title: Scripting basics For Unity Developers (Moved)
+head:
+  - - meta
+    - http-equiv: refresh
+      content: 0; url=/docs/explanation/core-concepts/features-overview
 ---
 
-# This page has been moved: [continue here](./getting-started/for-unity-developers)
+# Page Moved
+
+You will be redirected automatically in a moment...
+
+<script setup>
+if (typeof window !== 'undefined') {
+  window.location.href = '/docs/tutorials/fundamentals/for-unity-developers';
+}
+</script>
