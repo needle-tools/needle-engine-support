@@ -111,37 +111,49 @@ The following tools are used by Needle Engine to create, preview, and build your
 
 ## Quick Start Paths
 
+Choose your path based on your preferred tool and workflow:
+
 ### Path 1: Start with Unity
 
 **Best for:** Game developers, Unity users, teams with existing Unity projects
 
-1. <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started">Download Needle Engine for Unity</a></logo-header>
-2. Drop the `.unitypackage` into your Unity project
-3. Wait for installation to complete
-4. Explore samples: **Needle Engine → Explore Samples**
-5. Start building!
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="https://engine.needle.tools/downloads/unity?utm_source=needle_docs&utm_content=getting_started">Download Needle Engine for Unity</a></logo-header>
 
-[Full Unity Getting Started Guide →](../unity/)
+**What you'll learn:**
+- Install Needle Engine in Unity
+- Create your first interactive 3D scene
+- Export and preview in the browser
+- Add interactivity with components
+
+**👉 [Start Unity Tutorial →](/docs/unity/)**
 
 **Supported Unity versions:** 2020.3.16+, 2021.3.9+, 2022.3.0+
+
+---
 
 ### Path 2: Start with Blender
 
 **Best for:** 3D artists, Blender users, open-source enthusiasts
 
-1. <logo-header logo="/blender/logo.png" alt="Blender"><a href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started">Download Needle Engine for Blender</a></logo-header>
-2. Open Blender and go to **File → Settings → Add-ons**
-3. Click **Install** and select the downloaded zip
-4. Enable the "Needle Engine" add-on
-5. Start creating!
+<logo-header logo="/blender/logo.png" alt="Blender"><a href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started">Download Needle Engine for Blender</a></logo-header>
 
-[Full Blender Getting Started Guide →](../blender/)
+**What you'll learn:**
+- Install the Blender add-on
+- Set up your first web project
+- Export scenes to the web
+- Add Needle components
+
+**👉 [Start Blender Tutorial →](/docs/blender/)**
 
 **Supported Blender versions:** 4.1+
+
+---
 
 ### Path 3: Start with Web Code
 
 **Best for:** Web developers, three.js users, integration into existing sites
+
+**Quick options:**
 
 **CDN (Fastest):**
 ```html
@@ -154,58 +166,81 @@ The following tools are used by Needle Engine to create, preview, and build your
 npm install @needle-tools/engine
 ```
 
-[Full three.js/Web Integration Guide →](../three/)
+**👉 [Start three.js Tutorial →](/docs/three/)**
 
 ---
 
 ## Your First Project
 
-Once you've installed Needle Engine, here's what to do next:
+Ready to build something? Follow one of our step-by-step tutorials:
 
-### With Unity or Blender:
+### 🎓 For Unity Users
+**[Your First Unity Project →](/docs/unity/)** - Create an interactive 3D scene in Unity and export it to the web in minutes.
 
-1. **Create a new scene** with some 3D objects
-2. **Add the ExportInfo component** to configure your web project
-3. **Press Play** (Unity) or **Export** (Blender)
-4. **Watch the magic happen** – your scene opens in the browser!
-5. **Make changes** and see them update live in the browser
+### 🎓 For Blender Users
+**[Your First Blender Project →](/docs/blender/)** - Build a web-ready 3D experience using the Blender add-on.
 
-### With Vanilla JavaScript:
+### 🎓 For Web Developers
+**[Your First Web Project →](/docs/three/)** - Integrate Needle Engine into your existing web project with JavaScript.
 
-1. **Create an HTML file** with the `<needle-engine>` web component
-2. **Load a glTF/GLB file** or create objects with three.js
-3. **Open with a local server** (like VS Code's Live Server)
-4. **Add interactivity** with JavaScript
+### 🚀 Beyond the Basics
+
+After completing your first project, explore these tutorials:
+
+- **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript for custom components
+- **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Add interactivity with code
+- **[Deploy Your Project](/docs/how-to-guides/deployment/)** - Publish your 3D experience to the web
 
 ---
 
 ## Next Steps
 
-**Learn the Basics:**
-- [Getting Started: Unity](../unity/) – Unity-specific workflows
-- [Getting Started: Blender](../blender/) – Blender-specific workflows
-- [Getting Started: three.js](../three/) – Web-first development
-- [Project Structure](../explanation/core-concepts/project-structure) – Understanding your web project
-- [TypeScript Essentials](../tutorials/fundamentals/typescript-essentials) – Learn TypeScript basics
+### 📚 Learn by Doing (Tutorials)
 
-**Core Concepts:**
-- [Exporting 3D Content](../export) – How assets become web-ready
-- [Component System](../how-to-guides/scripting/create-components) – Build reusable functionality
-- [Deployment](../deployment) – Publish your project to the web
+New to Needle Engine? Start with these learning-oriented guides:
 
-**Go Further:**
-- [Features Overview](../features-overview) – See what's possible
-- [XR Documentation](../xr) – Build VR and AR experiences
-- [Networking](../networking) – Create multiplayer experiences
-- [Live Examples](https://engine.needle.tools/samples) – Explore sample projects
+- **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript basics for web development
+- **[Needle Engine for Unity Developers](/docs/tutorials/fundamentals/for-unity-developers)** - Key differences from traditional Unity
+- **[Your First Interactive Scene](/docs/unity/)** - Build something real (Unity)
+- **[Your First Interactive Scene](/docs/blender/)** - Build something real (Blender)
 
-**For Unity Developers:**
-- [Needle Engine for Unity Developers](../tutorials/fundamentals/for-unity-developers) – Key differences from traditional Unity
+### 🛠️ Solve Specific Problems (How-To Guides)
 
-**Get Help:**
-- [FAQ](../reference/faq) – Common questions and troubleshooting
-- [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) – Ask questions and share projects
-- [Discord](https://discord.needle.tools) – Join our community
+Know what you want to build? Jump straight to task-oriented guides:
+
+- **[Export 3D Content](/docs/how-to-guides/export/)** - Get your models and assets web-ready
+- **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Add interactivity with code
+- **[Deploy Your Project](/docs/how-to-guides/deployment/)** - Publish to hosting platforms
+- **[Enable WebXR](/docs/how-to-guides/xr/)** - Build VR and AR experiences
+- **[Add Multiplayer](/docs/how-to-guides/networking/)** - Create networked experiences
+
+### 💡 Understand the Concepts (Explanation)
+
+Want to understand how Needle Engine works under the hood?
+
+- **[Project Structure](/docs/explanation/core-concepts/project-structure)** - Editor vs web project architecture
+- **[Technical Architecture](/docs/explanation/architecture/technical-overview)** - How glTF extensions work
+- **[Component System](/docs/explanation/core-concepts/component-system)** - Component lifecycle and design
+
+### 📖 Look Things Up (Reference)
+
+Need to find specific information quickly?
+
+- **[Component Catalog](/docs/reference/components)** - All 400+ built-in components
+- **[API Documentation](https://engine.needle.tools/docs/api/)** - Complete TypeScript API
+- **[Features Overview](/docs/explanation/core-concepts/features-overview)** - Platform compatibility matrix
+- **[FAQ](/docs/reference/faq)** - Common questions and troubleshooting
+
+### 🎨 Get Inspired
+
+- **[Live Examples](https://engine.needle.tools/samples)** - Explore interactive samples
+- **[Showcase Projects](/docs/samples-and-showcase/)** - See what others have built
+
+### 💬 Get Help
+
+- **[Discord](https://discord.needle.tools)** - Join our community for live support
+- **[Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)** - Ask questions and share projects
+- **[FAQ](/docs/reference/faq)** - Common issues and solutions
 
 ---
 

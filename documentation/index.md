@@ -6,7 +6,7 @@ lastUpdated: false
 footer: "Copyright © 2025 Needle Tools GmbH"
 ---
 
-<discountbanner fallback_image="/docs/imgs/banner.webp" />
+<video-embed src="https://engine.needle.tools/samples-videos/showcase/hero-trailer-in-arms-reach.mp4" />
 
 # <logo-header logo="/imgs/needle-logo.webp" alt="Needle Engine Logo">Needle Engine</logo-header>
 
@@ -32,9 +32,45 @@ Powerful compression and optimization pipeline ensures your files are small and 
 
 ## Choose Your Path
 
-<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+<style>
+.path-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
 
-<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+.path-card {
+  padding: 1.5rem;
+  border: 1px solid var(--c-border);
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.path-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+@media (prefers-color-scheme: light) {
+  .path-card {
+    background: rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  }
+
+  .path-card:hover {
+    background: rgba(0, 0, 0, 0.04);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
+  }
+}
+</style>
+
+<div class="path-cards">
+
+<div class="path-card">
 
 ### 🎓 Learning
 
@@ -46,11 +82,11 @@ Perfect for newcomers who want to learn the fundamentals.
 - [TypeScript Essentials](./tutorials/fundamentals/typescript-essentials)
 - [For Unity Developers](./tutorials/fundamentals/for-unity-developers)
 
-**[Browse all Tutorials →](./tutorials/)**
+<action href="./tutorials/">Browse all Tutorials →</action>
 
 </div>
 
-<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+<div class="path-card">
 
 ### 🔧 Problem Solving
 
@@ -63,11 +99,12 @@ Get things done with focused how-to instructions.
 - [Add Multiplayer](./how-to-guides/networking/)
 - [Enable WebXR](./how-to-guides/xr/)
 
-**[Browse all How-To Guides →](./how-to-guides/)**
+
+<action href="./how-to-guides/">Browse all How-To Guides →</action>
 
 </div>
 
-<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+<div class="path-card">
 
 ### 📚 Understanding
 
@@ -79,11 +116,11 @@ Deepen your knowledge of how Needle Engine works.
 - [Technical Architecture](./explanation/architecture/technical-overview)
 - [Project Structure](./explanation/core-concepts/project-structure)
 
-**[Browse all Explanations →](./explanation/)**
+<action href="./explanation/">Browse all Explanations →</action>
 
 </div>
 
-<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+<div class="path-card">
 
 ### 📖 Reference
 
@@ -95,7 +132,7 @@ Quick reference for components, methods, and configuration.
 - [Lifecycle Methods](./reference/api/lifecycle-methods)
 - [TypeScript API Docs](https://engine.needle.tools/docs/api/latest)
 
-**[Browse all Reference →](./reference/)**
+<action href="./reference/">Browse all Reference →</action>
 
 </div>
 

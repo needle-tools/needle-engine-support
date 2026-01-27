@@ -41,11 +41,13 @@ export default props;
   max-width: 100%;
   /*
   height: v-bind('limit_height ? "400px" : "initial"');
-  
+
   */
   aspect-ratio: 16/9;
   max-height: 300px;
   max-height: v-bind('limit_height || max_height ? max_height : "initial"');
+  border-radius: 8px;
+  overflow: hidden;
 }
 
 video,
@@ -59,6 +61,7 @@ video,
   margin: .75em 0;
   max-height: v-bind('limit_height ? max_height : "100%"');
   aspect-ratio: 16/9;
+  border-radius: 8px;
 }
 
 #ytplayer {

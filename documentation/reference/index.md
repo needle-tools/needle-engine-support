@@ -27,7 +27,7 @@ Reference documentation is **information-oriented** and provides:
 ## API Documentation
 
 ### Needle Engine API
-- [TypeScript API Documentation](https://engine.needle.tools/docs/api/latest) - Complete TypeScript API
+- [TypeScript API Documentation](https://engine.needle.tools/docs/api/latest) - Complete API reference
 - [Component Lifecycle Methods](./api/lifecycle-methods) - awake, start, update, onEnable, etc.
 - [Physics Event Methods](./api/physics-events) - Collision and trigger events
 - [Input Event Methods](./api/input-events) - Mouse, touch, keyboard events
@@ -55,7 +55,7 @@ Reference documentation is **information-oriented** and provides:
 
 ## Platform & Format Support
 
-- [Features Overview](/explanation/core-concepts/features-overview) - Complete feature matrix
+- [Features Overview](../explanation/core-concepts/features-overview) - Complete feature matrix
 
 ---
 

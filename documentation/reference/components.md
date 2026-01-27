@@ -202,3 +202,54 @@ For cross-platform projects (VR, AR, desktop), mix spatial and HTML UI:
 | --- | --- |
 | `ExportInfo` | Main component for managing web project(s) (install, start, deploy) |
 | `EditorSync` | Sync material/component changes to runtime without reload (hot reload) |
+
+---
+
+## Complete API Documentation
+
+For detailed TypeScript API documentation with all methods, properties, and types:
+
+**[📖 View Complete API Reference →](https://engine.needle.tools/docs/api/)**
+
+The API documentation includes:
+- All component classes and their methods
+- Component lifecycle hooks
+- Event handlers and callbacks
+- Type definitions and interfaces
+- Code examples and usage patterns
+
+---
+
+## Related Documentation
+
+### Learn How to Use Components
+
+- **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Build your own interactive components
+- **[Component Lifecycle Methods](/docs/reference/api/lifecycle-methods)** - awake, start, update, onEnable, etc.
+- **[Input Event Methods](/docs/reference/api/input-events)** - Handle pointer, touch, and keyboard input
+- **[Physics Event Methods](/docs/reference/api/physics-events)** - Collision and trigger callbacks
+- **[XR Event Methods](/docs/reference/api/xr-events)** - WebXR-specific events
+
+### Integration Guides
+
+- **[Unity Integration](/docs/unity/)** - Using components in Unity
+- **[Blender Integration](/docs/blender/)** - Using components in Blender
+- **[three.js Integration](/docs/three/)** - Using components in web projects
+
+### Tutorials
+
+- **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript for components
+- **[For Unity Developers](/docs/tutorials/fundamentals/for-unity-developers)** - Component system differences from Unity
+
+### How-To Guides
+
+- **[Handle User Input](/docs/how-to-guides/scripting/handle-input)** - Mouse, touch, keyboard, VR controllers
+- **[Enable Networking](/docs/how-to-guides/networking/setup)** - Multiplayer and sync
+- **[Enable WebXR](/docs/how-to-guides/xr/)** - VR and AR experiences
+- **[Export 3D Content](/docs/how-to-guides/export/)** - Meshes, materials, animations
+
+### Additional Reference
+
+- **[Scripting Examples](/docs/reference/scripting-examples)** - Common code patterns
+- **[TypeScript Decorators](/docs/reference/typescript-decorators)** - @serializable and more
+- **[Time API](/docs/reference/api/time)** - deltaTime and time management

@@ -9,9 +9,9 @@ description: A collection of useful script snippets and examples.
 
 :::tip New to Scripting?
 Start with these guides first:
-- [TypeScript Essentials](./getting-started/typescript-essentials.html) - Language basics
-- [For Unity Developers](./getting-started/for-unity-developers.html) - Unity → Web guide
-- [Scripting Reference](./scripting.html) - Complete API reference
+- [TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials) - Language basics
+- [For Unity Developers](/docs/tutorials/fundamentals/for-unity-developers) - Unity → Web guide
+- [Create Custom Components](/docs/how-to-guides/scripting/create-components) - Complete component guide
 - [Video: How to write custom components](https://youtu.be/uf5UK0bLHlY?si=82U_2L4n2V7XL7RJ)
 :::
 
@@ -31,7 +31,7 @@ Every component extends `Behaviour` and uses lifecycle methods like `start()` an
 <stackblitz file="@code/basic-component.ts"></stackblitz>
 @[code ts twoslash](@code/basic-component.ts)
 
-[See all lifecycle methods](./scripting.html#lifecycle-methods) • [Component Architecture](./scripting.html#component-architecture)
+[See all lifecycle methods](/docs/reference/api/lifecycle-methods) • [Component Architecture](/docs/how-to-guides/scripting/create-components#component-lifecycle)
 
 ---
 
@@ -53,7 +53,7 @@ Reference scene objects and access them at runtime.
 Use `@serializable(Object3D)` so TypeScript knows the type. Without it, you still get the reference, but as a plain object.
 :::
 
-[Understanding references](./getting-started/for-unity-developers.html#components) • [Serialization guide](./scripting.html#script-fields)
+[Understanding references](/docs/tutorials/fundamentals/for-unity-developers#components) • [Serialization guide](/docs/how-to-guides/scripting/create-components#serializable-fields)
 
 ### Reference and Load a Prefab
 
@@ -72,7 +72,7 @@ Load prefabs or scene assets dynamically at runtime.
 Prefabs are only loaded when you call `instantiate()`, not on scene load. This keeps initial load times fast!
 :::
 
-[AssetReference API](https://engine.needle.tools/docs/api/AssetReference) • [GameObject.instantiate](./scripting.html#finding-adding-and-removing-components)
+[AssetReference API](https://engine.needle.tools/docs/api/AssetReference) • [GameObject.instantiate](/docs/how-to-guides/scripting/create-components#instantiate-objects)
 
 ### Reference and Load Scenes
 

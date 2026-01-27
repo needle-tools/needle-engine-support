@@ -35,5 +35,5 @@ When a user leaves a room, objects owned by that user will either be deleted or 
 ## Related
 
 - [Networking Overview](./index) - Getting started with networking
-- [Automatic Networking](./auto-sync) - Use @syncField for automatic syncing
+- [Sync Component State](./sync-state) - Use @syncField for automatic syncing
 - [Manual Networking](./manual-networking) - Low-level networking API

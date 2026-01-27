@@ -49,7 +49,7 @@ onStart(context => {
 Deploy your scene to any HTTPS URL and open it on an XR device. That's it!
 
 :::tip Learn More
-- [Scripting for XR](./scripting.md#xr-event-methods) - Event methods and lifecycle
+- [XR Event Methods](/reference/api/xr-events) - Event methods and lifecycle
 - [NeedleXRSession API](https://engine.needle.tools/docs/api/NeedleXRSession) - Advanced session control
 - [WebXR Component API](https://engine.needle.tools/docs/api/WebXR) - Full component reference
 :::
@@ -72,11 +72,11 @@ Needle Engine provides full WebXR support on iPhone and iPad through [App Clip t
 
 **No code changes required** – your existing Needle Engine WebXR scenes work automatically on iOS. Simply enable the WebXR component with the `createARButton` option and deploy to an HTTPS URL.
 
-[Try it now](https://appclip.needle.tools) • [Read full iOS WebXR docs](ios-webxr-app-clip.md)
+[Try it now](https://appclip.needle.tools) • [Read full iOS WebXR docs](./ios-webxr-app-clip)
 
 **Alternative: Everywhere Actions**
 
-For USDZ/QuickLook-based iOS AR experiences, see [Everywhere Actions](everywhere-actions.md). This approach uses Apple's native 3D format and supports a subset of functionality including spatial audio, animations, and interactions.
+For USDZ/QuickLook-based iOS AR experiences, see [Everywhere Actions](/how-to-guides/everywhere-actions/). This approach uses Apple's native 3D format and supports a subset of functionality including spatial audio, animations, and interactions.
 
 ### Supported Devices & Browsers
 
@@ -180,7 +180,7 @@ Track images in the real world and attach 3D content to them. Perfect for:
 - Interactive business cards
 - Museum exhibits
 
-[Try the live demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr) • [Read full Image Tracking docs](./webxr-image-tracking.md)
+[Try the live demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr) • [Read full Image Tracking docs](./image-tracking)
 
 ## Advanced Features
 
@@ -294,14 +294,14 @@ There are several experimental components for more expressive avatars. These are
 ## Next Steps
 
 **Learn More:**
-- [XR Scripting Reference](./scripting.md#xr-event-methods) - Event methods and lifecycle hooks
+- [XR Event Methods](/reference/api/xr-events) - Event methods and lifecycle hooks
 - [WebXR Component API](https://engine.needle.tools/docs/api/WebXR) - Complete component documentation
 - [NeedleXRSession API](https://engine.needle.tools/docs/api/NeedleXRSession) - Advanced session control
-- [Image Tracking Guide](./webxr-image-tracking.md) - Detailed image tracking documentation
+- [Image Tracking Guide](./image-tracking) - Detailed image tracking documentation
 
 **iOS AR Options:**
-- [iOS WebXR App Clip](ios-webxr-app-clip.md) - Native WebXR support for iPhone and iPad
-- [Everywhere Actions](everywhere-actions.md) - USDZ/QuickLook-based interactive AR
+- [iOS WebXR App Clip](./ios-webxr-app-clip) - Native WebXR support for iPhone and iPad
+- [Everywhere Actions](/how-to-guides/everywhere-actions/) - USDZ/QuickLook-based interactive AR
 
 **Get Inspired:**
 - [Browse XR Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr) - Interactive examples
