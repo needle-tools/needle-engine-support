@@ -46,6 +46,9 @@
   --code-c-text: #000;
   --copy-code-c-text: #000;
 
+  --vp-c-list-bg: #4aa18a;
+  --vp-c-list-color: #fff;  
+
   .navbar-dropdown {
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
     border-radius: .7em;
@@ -570,7 +573,8 @@ div[class*=language-] > pre code {
   counter-increment: myOrderedListItemsCounter;
   content: counter(myOrderedListItemsCounter) "";
   margin-right: 0.5em;
-  background: var(--vp-c-border);
+  background: var(--vp-c-list-bg);
+  color: var(--vp-c-list-color);
   border-radius: 3em;
   width: 30px;
   height: 30px;

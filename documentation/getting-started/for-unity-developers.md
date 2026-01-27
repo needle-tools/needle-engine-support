@@ -2,21 +2,48 @@
 title: Scripting Introduction for Unity Developers
 ---
 
-Needle Engine provides a tight integration into the Unity Editor. This allows developers and designers alike to work together in a familiar environment and deliver fast, performant and lightweight web-experiences.  
+# <logo-header logo="/imgs/unity-logo.webp" alt="Unity">For Unity Developers</logo-header>
 
-The following guide is mainly aimed at developers with a Unity3D background but it may also be useful for developers with a web or three.js background. It covers topics regarding how things are done in Unity vs in three.js or Needle Engine.
+From <logo-header logo="/imgs/unity-logo.webp" alt="Unity"></logo-header><logo-header logo="/imgs/csharp-logo.webp" alt="C#">Unity</logo-header> to <logo-header logo="/imgs/threejs-logo.webp" alt="three.js">three.js</logo-header> with <logo-header logo="/imgs/needle-logo.webp" alt="Needle Engine">Needle Engine</logo-header>
 
-If you are all new to Typescript and Javascript and you want to dive into writing scripts for Needle Engine then we also recommend reading the [Typescript Essentials Guide](./typescript-essentials) for a basic understanding between the differences between C# and Javascript/Typescript.
+Needle Engine provides tight integration with the Unity Editor, allowing developers and designers to work together in a familiar environment and deliver **fast, performant, and lightweight web experiences**.
 
-If you want to code-along you can [open engine.needle.tools/new](https://engine.needle.tools/new) to create a small project that you can edit in the browser ⚡
+**Who is this guide for?**
+- Unity developers learning web development
+- Web developers understanding Needle Engine's Unity integration
+- Teams bridging Unity and three.js workflows
+
+:::tip New to TypeScript?
+Read the [TypeScript Essentials Guide](./typescript-essentials.html) for key differences between C# and TypeScript/JavaScript.
+:::
+
+:::tip Try It Now
+Create a project in your browser: [engine.needle.tools/new](https://engine.needle.tools/new) ⚡
+:::
 
 ## The Basics
-Needle Engine is a 3d web engine running on-top of [three.js](https://threejs.org/). Three.js is one of the most popular 3D webgl based rendering libraries for the web. Whenever we refer to a `gameObject` in Needle Engine we are *actually* also talking about a three.js `Object3D`, the base type of any object in three.js. Both terms can be used interchangeably. Any `gameObject` *is* a `Object3D`.   
 
-This also means that - if you are already familiar with three.js - you will have no problem at all using Needle Engine. Everything you can do with three.js can be done in Needle Engine as well. If you are already using certain libraries then you will be able to also use them in a Needle Engine based environment.
+### <logo-header logo="/imgs/threejs-logo.webp" alt="three.js">Built on three.js</logo-header>
 
-Note: **Needle Engine's Exporter does _NOT_ compile your existing C# code to Web Assembly**.   
-While using Web Assembly _may_ result in better performance at runtime, it comes at a high cost for iteration speed and flexibility in building web experiences. Read more about our [vision](./../vision.md) and [technical overview](./../technical-overview.md). 
+Needle Engine is a 3D web engine built on [three.js](https://threejs.org/), one of the most popular WebGL rendering libraries.
+
+**Key concept:** In Needle Engine, a `gameObject` **is** a three.js `Object3D`. These terms are interchangeable.
+
+**Benefits:**
+- Full three.js compatibility - use any three.js code or library
+- Access to the entire three.js ecosystem
+- No learning curve if you already know three.js
+
+:::important How Needle Engine Works
+Needle Engine does **NOT** compile C# code to WebAssembly.
+
+**Instead:**
+- Unity defines scene structure, components, and data
+- Export process converts to glTF format
+- TypeScript/JavaScript powers runtime behavior
+
+**Why?** Fast iteration speed and maximum flexibility for web experiences. Read more: [Vision](../vision.html) • [Technical Overview](../technical-overview.html)
+::: 
 
 
 :::details How to create a new Unity project with Needle Engine? (Video)
@@ -24,19 +51,15 @@ While using Web Assembly _may_ result in better performance at runtime, it comes
 :::
 
 ## Creating a Component
-In Unity you create a new component by deriving from `MonoBehaviour`:
-```csharp
-using UnityEngine;
-public class MyComponent : MonoBehaviour { 
-}
-```
 
-A custom component in Needle Engine on the other hand is written as follows:
-```ts twoslash
-import { Behaviour } from "@needle-tools/engine"
-export class MyComponent extends Behaviour { 
-}
-```
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">Unity (C#)</logo-header> vs <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">Needle Engine (TypeScript)</logo-header>
+
+| Unity (C#) | Needle Engine (TypeScript) |
+| --- | --- |
+| ```csharp<br/>using UnityEngine;<br/>public class MyComponent : MonoBehaviour {<br/>}<br/>``` | ```typescript<br/>import { Behaviour } from "@needle-tools/engine";<br/>export class MyComponent extends Behaviour {<br/>}<br/>``` |
+| Derives from `MonoBehaviour` | Derives from `Behaviour` |
+| Compiled C# | Interpreted TypeScript/JavaScript |
+| Unity manages lifecycle | Needle Engine manages lifecycle |
 ## Script Fields
 
 ### serializable
@@ -127,28 +150,41 @@ These methods are also available on the static GameObject type. For example ``Ga
 
 To search the whole scene for one or multiple components you can use ``GameObject.findObjectOfType(Animator)`` or `GameObject.findObjectsOfType(Animator)`.
 
-## Renamed Unity Types
-Some Unity-specific types are mapped to different type names in our engine. See the following list:  
+## Type Mappings: Unity → Needle Engine
 
-| Type in Unity | Type in Needle Engine |  |
-| -- | -- | -- |
-| `UnityEvent` | `EventList` | A UnityEvent will be exported as a `EventList` type (use `serializable(EventList)` to deserialize UnityEvents) |
-| `GameObject` | `Object3D` | |
-| `Transform` | `Object3D` | In three.js and Needle Engine a GameObject and a Transform are the same (there is no `Transform` component). The only exception to that rule is when referencing a `RectTransform` which is a component in Needle Engine as well. |
-| `Color` | `RGBAColor` | The three.js color type doesnt have a alpha property. Because of that all Color types exported from Unity will be exported as `RGBAColor` which is a custom Needle Engine type |
+Some Unity types are mapped to different names in Needle Engine:
 
-## Transform
-Transform data can be accessed on the `GameObject` / `Object3D` directly. Unlike to Unity there is no extra transform component that holds this data.  
-- ``this.gameObject.position`` is the vector3 [position](https://threejs.org/docs/?q=obj#api/en/core/Object3D.position) in local space
-- ``this.gameObject.worldPosition`` is the vector3 position in world space
-- ``this.gameObject.rotation`` is the [euler rotation](https://threejs.org/docs/?q=obj#api/en/core/Object3D.rotation) in local space
-- ``this.gameObject.worldRotation`` is the euler rotation in euler angles in world space
-- ``this.gameObject.quaternion`` - is the [quaternion rotation](https://threejs.org/docs/?q=obj#api/en/core/Object3D.quaternion) in local space
-- ``this.gameObject.worldQuaternion`` is the quaternion rotation in world space
-- ``this.gameObject.scale`` - is the vector3 [scale](https://threejs.org/docs/?q=obj#api/en/core/Object3D.scale) in local space
-- ``this.gameObject.worldScale`` is the vector3 scale in world space
+| Unity Type | Needle Engine Type | Notes |
+| --- | --- | --- |
+| `UnityEvent` | `EventList` | Use `@serializable(EventList)` to deserialize |
+| `GameObject` | `Object3D` | Same as three.js `Object3D` |
+| `Transform` | `Object3D` | No separate Transform component (except `RectTransform`) |
+| `Color` | `RGBAColor` | Custom type with alpha channel (three.js `Color` has no alpha) |
 
-The major difference here to keep in mind is that `position` in three.js is by default a localspace position whereas in Unity `position` would be worldspace. The next section will explain how to get the worldspace position in three.js.
+:::tip Key Difference
+In Unity, `GameObject` and `Transform` are separate. In three.js/Needle Engine, they're the **same object**.
+:::
+
+## Transform Properties
+
+Transform data is accessed directly on `GameObject`/`Object3D` (no separate Transform component):
+
+| Property | Space | Type | three.js docs |
+| --- | --- | --- | --- |
+| `position` | **Local** | `Vector3` | [position](https://threejs.org/docs/#api/en/core/Object3D.position) |
+| `worldPosition` | World | `Vector3` | (calculated) |
+| `rotation` | **Local** | `Euler` | [rotation](https://threejs.org/docs/#api/en/core/Object3D.rotation) |
+| `worldRotation` | World | `Euler` | (calculated) |
+| `quaternion` | **Local** | `Quaternion` | [quaternion](https://threejs.org/docs/#api/en/core/Object3D.quaternion) |
+| `worldQuaternion` | World | `Quaternion` | (calculated) |
+| `scale` | **Local** | `Vector3` | [scale](https://threejs.org/docs/#api/en/core/Object3D.scale) |
+| `worldScale` | World | `Vector3` | (calculated) |
+
+:::warning Unity vs three.js
+**Major difference:** In Unity, `position` is **world space** by default. In three.js/Needle Engine, `position` is **local space**.
+
+Use `worldPosition` for world space coordinates!
+:::
 
 ### WORLD- Position, Rotation, Scale...
 
@@ -158,14 +194,24 @@ If you want to access the world coordinates in Needle Engine we have utility met
 
 Note that these utility methods like `getWorldPosition`, `getWorldRotation`, `getWorldScale` internally have a buffer of Vector3 instances and are meant to be used locally only. This means that you should not cache them in your component, otherwise your cached value will eventually be overriden. But it is safe to call `getWorldPosition` multiple times in your function to make calculations without having to worry to re-use the same instance. If you are not sure what this means you should take a look at the **Primitive Types** section in the [Typescript Essentials Guide](./typescript-essentials.md#primitive-types)
 
-## Time
-Use `this.context.time` to get access to time data:  
-- `this.context.time.time` is the time since the application started running
-- `this.context.time.deltaTime` is the time that has passed since the last frame
-- `this.context.time.frameCount` is the number of frames that have passed since the application started
-- `this.context.time.realtimeSinceStartup` is the unscaled time since the application has started running  
+## Time & Delta Time
 
-It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
+Access time data via `this.context.time`:
+
+| Property | Unity Equivalent | Description |
+| --- | --- | --- |
+| `time` | `Time.time` | Scaled time since app started |
+| `deltaTime` | `Time.deltaTime` | Time since last frame |
+| `frameCount` | `Time.frameCount` | Total frames rendered |
+| `realtimeSinceStartup` | `Time.realtimeSinceStartup` | Unscaled time since start |
+| `timeScale` | `Time.timeScale` | Time multiplier (default `1.0`) |
+
+:::tip Frame-Rate Independent Movement
+Always multiply movement by `deltaTime`:
+```ts
+this.gameObject.position.x += speed * this.context.time.deltaTime;
+```
+:::
 
 
 ## Raycasting
@@ -258,63 +304,87 @@ console.log("Hello web");
 console.log("Hello", someVariable, GameObject.findObjectOfType(Renderer), this.context);
 ```
 
-## Gizmos
-In Unity you normally have to use special methods to draw Gizmos like `OnDrawGizmos` or `OnDrawGizmosSelected`. In Needle Engine on the other hand such methods dont exist and you are free to draw gizmos from anywhere in your script. Note that it is also your responsibility then to *not* draw them in e.g. your deployed web application (you can just filter them by `if(isDevEnvironment))`).  
+## Debug Gizmos
 
-Here is an example to draw a red wire sphere for one second for e.g. visualizing a point in worldspace
-```ts twoslash
-import { Vector3 } from "three";
-const hit = { point: new Vector3(0, 0, 0) };
-// ---cut-before---
-import { Gizmos } from "@needle-tools/engine";
-Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
-```
-Here are some of the available gizmo methods:  
-| Method name |  |
+### Unity vs Needle Engine
+
+| Unity | Needle Engine |
 | --- | --- |
-| `Gizmos.DrawArrow` | |
-| `Gizmos.DrawBox` | |
-| `Gizmos.DrawBox3` | |
-| `Gizmos.DrawDirection` | |
-| `Gizmos.DrawLine` | |
-| `Gizmos.DrawRay` | |
-| `Gizmos.DrawRay` | |
-| `Gizmos.DrawSphere` | |
-| `Gizmos.DrawWireSphere` | |
+| `OnDrawGizmos()` method | Call `Gizmos` from **anywhere** |
+| `OnDrawGizmosSelected()` | Use `if(isDevEnvironment())` to filter |
+| Only in Editor | Visible in browser (filter for production!) |
+
+**Example:** Draw a red wire sphere for 1 second
+```ts
+import { Gizmos, isDevEnvironment } from "@needle-tools/engine";
+
+if (isDevEnvironment()) {
+    Gizmos.DrawWireSphere(hit.point, 0.05, 0xff0000, 1);
+}
+```
+
+### Available Gizmo Methods
+
+| Method | Description |
+| --- | --- |
+| `DrawArrow` | Arrow between two points |
+| `DrawBox` | Wireframe box |
+| `DrawBox3` | Wireframe Box3 |
+| `DrawDirection` | Direction arrow from origin |
+| `DrawLine` | Line between two points |
+| `DrawRay` | Infinite ray from origin |
+| `DrawSphere` | Solid sphere |
+| `DrawWireSphere` | Wireframe sphere |
+
+[See full Gizmos API](../scripting.html#debug-gizmos)
 
 
 ## Useful Utility Methods
 
-Import from `@needle-tools/engine` e.g. `import { getParam } from "@needle-tools/engine"`
+Import from `@needle-tools/engine`:
 
-| Method name | Description |
-| --- | --- |
-| `getParam()` | Checks if a url parameter exists. Returns true if it exists but has no value (e.g. `?help`), false if it is not found in the url or is set to 0 (e.g. `?help=0`), otherwise it returns the value (e.g. `?message=test`) |
-| `isMobileDevice()` | Returns true if the app is accessed from a mobile device |
-| `isDevEnvironment()` | Returns true if the current app is running on a local server |
-| `isMozillaXR()` | |
-| `isiOS` | |
-| `isSafari` | |
+| Method | Returns | Description |
+| --- | --- | --- |
+| `getParam(name)` | `string \| boolean` | Get URL parameter value (e.g., `?debug=1` or `?flag`) |
+| `isMobileDevice()` | `boolean` | Check if running on mobile device |
+| `isDevEnvironment()` | `boolean` | Check if running on local dev server |
+| `isiOS()` | `boolean` | Check if running on iOS |
+| `isSafari()` | `boolean` | Check if running in Safari |
+| `isMozillaXR()` | `boolean` | Check if running in Mozilla XR Viewer |
 
-```ts twoslash
-import { isMobileDevice } from "@needle-tools/engine"
-if( isMobileDevice() )
+**Examples:**
+```ts
+import { getParam, isMobileDevice, isDevEnvironment } from "@needle-tools/engine";
+
+// Check URL parameter
+if (getParam("debug")) {
+    console.log("Debug mode enabled");
+}
+
+// Platform detection
+if (isMobileDevice()) {
+    // Mobile-specific logic
+}
+
+// Development vs production
+if (isDevEnvironment()) {
+    // Show debug UI, gizmos, etc.
+}
 ```
 
-```ts twoslash
-import { getParam } from "@needle-tools/engine"
-// returns true 
-const myFlag = getParam("some_flag")
-console.log(myFlag)
-```
+## Web Projects & Package Management
 
-## The Web project
-In C# you usually work with a solution containing one or many projects. In Unity this solution is managed by Unity for you and when you open a C# script it opens the project and shows you the file.   
-You usually install Packages using Unity's built-in package manager to add features provided by either Unity or other developers (either on your team or e.g. via Unity's AssetStore). Unity does a great job of making adding and managing packages easy with their PackageManager and you might never have had to manually edit a file like the `manifest.json` (this is what Unity uses to track which packages are installed) or run a command from the command line to install a package.
+### <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity</logo-header> vs <logo-header logo="/imgs/npm-logo.webp" alt="npm">Web Development</logo-header>
 
-In a web environment you use `npm` - the Node Package Manager - to manage dependencies / packages for you. It does basically the same to what Unity's PackageManager does - it installs (downloads) packages from *some* server (you hear it usually called a *registry* in that context) and puts them inside a folder named `node_modules`.     
+| Concept | Unity | Web (Needle Engine) |
+| --- | --- | --- |
+| **Package Manager** | Unity Package Manager (UPM) | <logo-header logo="/imgs/npm-logo.webp" alt="npm">npm</logo-header> (Node Package Manager) |
+| **Package Registry** | Unity Registry / Asset Store | [npmjs.com](https://npmjs.com/) |
+| **Package List** | `manifest.json` (auto-managed) | `package.json` (editable) |
+| **Install Location** | `Packages/` | `node_modules/` |
+| **Install Command** | Unity UI | `npm install <package>` |
 
-When working with a web project most of you dependencies are installed from [npmjs.com](https://npmjs.com/). It is the most popular package registry out there for web projects.    
+**Key difference:** In Unity, package management is mostly GUI-based. In web development, you use the command line (`npm`) or edit `package.json` directly.    
 
 Here is an example of how a package.json might look like: 
 ```json
@@ -338,7 +408,13 @@ Here is an example of how a package.json might look like:
 }
 ```
 
-Our default template uses Vite as its bundler and has no frontend framework pre-installed. Needle Engine is unoppionated about which framework to use so you are free to work with whatever framework you like. We have samples for popular frameworks like Vue.js, Svelte, Next.js, React or React Three Fiber.
+### <logo-header logo="/imgs/vite-logo.webp" alt="Vite">Build Tool & Frameworks</logo-header>
+
+Our default template uses **Vite** as its bundler and has no frontend framework pre-installed. Needle Engine is unopinionated about which framework to use - work with whatever you prefer!
+
+**Supported frameworks:**
+- Vue.js, Svelte, Next.js, React, React Three Fiber
+- [See framework samples](https://engine.needle.tools/samples/?tag=framework)
 
 ## Installing packages & dependencies
 To install a dependency from npm you can open your web project in a commandline (or terminal) and run `npm i <the/package_name>` (shorthand for `npm install`)  

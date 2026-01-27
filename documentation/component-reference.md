@@ -4,51 +4,58 @@ title: Needle Core Components
 
 # Needle Core Components
 
-Here is a overview of some of the components that we provide. Many of them map to components and functionality in Unity, Blender or other integrations.
+**Built-in components** that map to Unity, Blender, and three.js functionality.
 
-For a complete list please have a look at our [API docs](https://engine.needle.tools/docs/api).
+:::tip Complete Reference
+For the full API documentation, see [engine.needle.tools/docs/api](https://engine.needle.tools/docs/api)
+:::
 
-You can always add your own components or add wrappers for Unity components we haven't provided yet.  
+:::tip Custom Components
+You can always create your own components or add wrappers for components we haven't provided yet.
 
-Learn more in the [Scripting](./scripting.md) section of our docs.
+[Learn scripting](./scripting.html) • [For Unity Developers](./getting-started/for-unity-developers.html)
+:::
 
-## Audio
-| Name  | Description |
-| ------------- | ------------- |
-| [`AudioListener`](https://engine.needle.tools/docs/api/AudioListener) |  |
-| [`AudioSource`](https://engine.needle.tools/docs/api/AudioSource) | Use to play audio |
+## 🔊 Audio
 
-## Animation
-| Name  | Description |
-| ------------- | ------------- |
-| [`Animator`](https://engine.needle.tools/docs/api/Animator) with `AnimatorController` | Export with animation state machine, conditions, transitions  |
-| [`Animation`](https://engine.needle.tools/docs/api/Animation) | Most basic animation component. Only first clip is exported |
-| [`PlayableDirector`](https://engine.needle.tools/docs/api/PlayableDirector) (Timeline) | Export powerful sequences to control animation, audio, state and more |
+| Component | Description |
+| --- | --- |
+| [`AudioListener`](https://engine.needle.tools/docs/api/AudioListener) | Receives audio in the scene (attach to camera) |
+| [`AudioSource`](https://engine.needle.tools/docs/api/AudioSource) | Plays audio clips with spatial audio support |
 
-## Camera
-| Name  | Description |
-| ------------- | ------------- |
-| [`Camera`](https://engine.needle.tools/docs/api/Camera) |  |
-| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) | Orbit camera controls ([Sample](https://samples.needle.tools/collaborative-sandbox)) |
-| [`ViewBox`](https://engine.needle.tools/docs/api/ViewBox) |  |
+## 🎬 Animation
 
-## Rendering
-| Name  | Description |
-| ------------- | ------------- |
-| [`Camera`](https://engine.needle.tools/docs/api/Camera) |  |
-| [`Light`](https://engine.needle.tools/docs/api/Light) | DirectionalLight, PointLight, Spotlight. Note that you can use it to bake light (e.g. Rectangular Light shapes) as well |
-| [`MeshRenderer`](https://engine.needle.tools/docs/api/MeshRenderer) | Used to handle rendering of objects including lightmapping and instancing |
-| [`SkinnedMeshRenderer`](https://engine.needle.tools/docs/api/SkinnedMeshRenderer) | *See MeshRenderer* |
-| [`SpriteRenderer`](https://engine.needle.tools/docs/api/SpriteRenderer) | Used to render Sprites and Sprite-Animations ([Sample](https://samples.needle.tools/spritesheet-animation)) |
-| [`XRFlag`](https://engine.needle.tools/docs/api/XRFlag) | Control when objects will be visible. E.g. only enable object when in AR  |
-| [`DeviceFlag`](https://engine.needle.tools/docs/api/DeviceFlag) | Control on which device objects will be visible  |
-| [`ParticleSystem`](https://engine.needle.tools/docs/api/ParticleSystem) | Experimental ([Sample](https://samples.needle.tools/particles)) |
-| [`VideoPlayer`](https://engine.needle.tools/docs/api/VideoPlayer) | Playback videos from url or referenced video file (will be copied to output on export). The VideoPlayer also supports streaming from MediaStream objects or `M3U8` livestream URLs. ([Video Playback Sample](https://samples.needle.tools/video-playback), [Screencapture Samples](https://samples.needle.tools/screensharing)) |
-| [`GroundProjection`](https://engine.needle.tools/docs/api/GroundProjectedEnv) | Project a environment texture ([Sample](https://samples.needle.tools/ground-projection)) |
-| [`Volume`](https://engine.needle.tools/docs/api/Volume) (PostProcessing) | See [table below](#postprocessing). [Sample](https://samples.needle.tools/postprocessing) |
-| [`SeeThrough`](https://engine.needle.tools/docs/api/SeeThrough) | Use to fade-out objects when they're obscuring a point in the scene ([Sample](https://samples.needle.tools/see-through)) |
-| [`ShadowCatcher`](https://engine.needle.tools/docs/api/ShadowCatcher) | Use to catch shadows on a plane or object. The object itself will be invisible but receive shadows from other objects ([Sample](https://samples.needle.tools/shadow-catcher)) |
-| [`ContactShadows`](https://engine.needle.tools/docs/api/ContactShadows) | Use to add contact shadows to objects without having to bake them into lightmaps ([Sample](https://samples.needle.tools/contact-shadows)) |
+| Component | Description |
+| --- | --- |
+| [`Animator`](https://engine.needle.tools/docs/api/Animator) | State machine with AnimatorController, transitions, and conditions |
+| [`Animation`](https://engine.needle.tools/docs/api/Animation) | Basic animation playback (single clip) |
+| [`PlayableDirector`](https://engine.needle.tools/docs/api/PlayableDirector) | Timeline sequences for animation, audio, state control |
+
+## 📷 Camera & Controls
+
+| Component | Description |
+| --- | --- |
+| [`Camera`](https://engine.needle.tools/docs/api/Camera) | Scene rendering viewpoint (perspective/orthographic) |
+| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) | Rotate, zoom, and pan around target • [Sample](https://samples.needle.tools/collaborative-sandbox) |
+| [`ViewBox`](https://engine.needle.tools/docs/api/ViewBox) | Defines visible area bounds |
+
+## 🎨 Rendering
+
+| Component | Description |
+| --- | --- |
+| [`Light`](https://engine.needle.tools/docs/api/Light) | Directional, Point, Spot lights with shadow support and baking |
+| [`MeshRenderer`](https://engine.needle.tools/docs/api/MeshRenderer) | Renders meshes with lightmapping and instancing |
+| [`SkinnedMeshRenderer`](https://engine.needle.tools/docs/api/SkinnedMeshRenderer) | Renders animated/deformable meshes |
+| [`SpriteRenderer`](https://engine.needle.tools/docs/api/SpriteRenderer) | Renders 2D sprites and animations • [Sample](https://samples.needle.tools/spritesheet-animation) |
+| [`ParticleSystem`](https://engine.needle.tools/docs/api/ParticleSystem) | Particle effects system • [Sample](https://samples.needle.tools/particles) |
+| [`VideoPlayer`](https://engine.needle.tools/docs/api/VideoPlayer) | Video playback, streaming (MediaStream, M3U8) • [Sample](https://samples.needle.tools/video-playback) |
+| [`XRFlag`](https://engine.needle.tools/docs/api/XRFlag) | Control visibility by mode (VR/AR/Desktop) |
+| [`DeviceFlag`](https://engine.needle.tools/docs/api/DeviceFlag) | Control visibility by device type |
+| [`GroundProjection`](https://engine.needle.tools/docs/api/GroundProjectedEnv) | Project environment texture on ground • [Sample](https://samples.needle.tools/ground-projection) |
+| [`SeeThrough`](https://engine.needle.tools/docs/api/SeeThrough) | Fade objects obscuring view • [Sample](https://samples.needle.tools/see-through) |
+| [`ShadowCatcher`](https://engine.needle.tools/docs/api/ShadowCatcher) | Invisible shadow receiver • [Sample](https://samples.needle.tools/shadow-catcher) |
+| [`ContactShadows`](https://engine.needle.tools/docs/api/ContactShadows) | Realtime contact shadows • [Sample](https://samples.needle.tools/contact-shadows) |
+| [`Volume`](https://engine.needle.tools/docs/api/Volume) | Post-processing effects (see below) • [Sample](https://samples.needle.tools/postprocessing) |
 
 ### Postprocessing
 
@@ -77,106 +84,121 @@ For Needle Engine Postprocessing in Unity you need to use URP (Universal Render 
 | [`SharpeningEffect`](https://engine.needle.tools/docs/api/SharpeningEffect) | *via Volume asset or separate component* |
 | *Your custom effect* | [Example on Stackblitz](https://stackblitz.com/edit/needle-engine-custom-postprocessing-effect), [Example in docs](./scripting-examples.md#adding-new-postprocessing-effects) |
 
-## Networking
-| Name  | Description |
-| ------------- | ------------- |
-| [`SyncedRoom`](https://engine.needle.tools/docs/api/SyncedRoom) | Main networking component. Put in your scene to enable networking |
-| [`Networking`](https://engine.needle.tools/docs/api/Networking) | Used to setup a custom backend server for networking. If none is provided the default Needle websocket servers will be used. |
-| [`SyncedTransform`](https://engine.needle.tools/docs/api/SyncedTransform) | Automatically network object transformation |
-| [`SyncedCamera`](https://engine.needle.tools/docs/api/SyncedCamera) | Automatically network camera position and view to other users in room. You can define how the camera is being rendered by referencing an object |
-| [`Voip`](https://engine.needle.tools/docs/api/Voip) | Enables voice-chat ([Sample](https://samples.needle.tools/collaborative-sandbox)) |
-| [`ScreenCapture`](https://engine.needle.tools/docs/api/ScreenCapture) | Enables screen-sharing capabilities ([Sample](https://samples.needle.tools/screensharing)) |
-| [`PlayerSync`](https://engine.needle.tools/docs/api/PlayerSync) | Automatically instantiate an object per connected user. Can be used to e.g. show avatars |
+## 🌐 Networking & Multiplayer
 
-## Interaction
-| Name  | Description |
-| ------------- | ------------- |
-| [`DragControls`](https://engine.needle.tools/docs/api/DragControls) | Allows objects to be dragged in the scene. Requires raycaster in parent hierarchy, e.g. ObjectRaycaster |
-| [`Duplicatable`](https://engine.needle.tools/docs/api/Duplicatable) | Can duplicate assigned objects by drag. Requires DragControls |
-| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) | Add to camera to add camera orbit control functionality |
-| [`SmoothFollow`](https://engine.needle.tools/docs/api/SmoothFollow) | Allows to interpolate smoothly to another object's transform |
-| [`DeleteBox`](https://engine.needle.tools/docs/api/DeleteBox) | Will destroy objects with the `Deletable` component when entering the box |
-| [`Deletable`](https://engine.needle.tools/docs/api/Deletable) | The GameObject this component is attached to will be deleted when it enters or intersects with a `DeleteBox` |
-| [`DropListener`](https://engine.needle.tools/docs/api/DropListener) | Add to receive file drop events for uploading |
-| `SpatialTrigger` | Use to raise event if an object enters a specific space or area. You can also use Physics events |
-| `SpatialTriggerReceiver` | Use to receive events from SpatialTrigger |
-| [`CursorFollow`](https://engine.needle.tools/docs/api/CursorFollow) | Add to make an object follow the cursor ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
-| [`ScrollFollow`](https://engine.needle.tools/docs/api/ScrollFollow) | Add to bind scroll to other components (e.g. you can bind the scroll to a timeline animation or animator) ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
-| [`HoverAnimation`](https://engine.needle.tools/docs/api/HoverAnimation) | |
-
-
-## Physics
-
-Physics is implemented using [Rapier](https://rapier.rs/).  
-
-| Name  | Description |
-| ------------- | ------------- |
-| [`Rigidbody`](https://engine.needle.tools/docs/api/Rigidbody) | Add to make an object react to gravity (or be kinematic and static) |
-| `BoxCollider` | A Box collider shape that objects can collide with or raise trigger events when set to `trigger` |
-| `SphereCollider` | *See BoxCollider* |
-| `CapsuleCollider` | *See BoxCollider* |
-| `MeshCollider` | *See BoxCollider* |
-| *Physics Materials* | All Collider components use physics materials that can be used to define e.g. the bouncyness of a collider |
-| [`Attractor`](https://engine.needle.tools/docs/api/Attractor) | Add to make objects being attracted ([Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction)) |
-
-## XR / WebXR  
-
-[Read the XR docs](xr.md)
-
-| Name  | Description |
-| ------------- | ------------- |
-| [`WebXR`](https://engine.needle.tools/docs/api/WebXR) | Add to scene for VR, AR and Passthrough support as well as rendering Avatar models |
-| [`USDZExporter`](https://engine.needle.tools/docs/api/USDZExporter) | Add to enable USD and Quicklook support
-| [`WebARSessionRoot`](https://engine.needle.tools/docs/api/WebARSessionRoot) | Handles placement and scale of your scene in AR mode. The center and alignment of the AR scene when placed will be at the position of this component |
-| `XRRig` | Add to define the start position of the user in VR mode |
-| `WebARCameraBackground` | Add to access the AR camera image and apply effects or use it for rendering |
-| `WebXRImageTracking` | Assign images to be tracked and optionally instantiate an object at the image position |
-| `WebXRPlaneTracking` | Create plane meshes or colliders for tracked planes |
-| `XRControllerModel` | Can be added to render device controllers or hand models (will be created by default when enabled in the WebXR component) |
-| `XRControllerMovement` | Can be added to provide default movement and teleport controls |
-| `XRControllerFollow` | Can be added to any object in the scene and configured to follow either left or right hands or controllers |
-| `XRFlag` | Control when objects are visible, e.g. only in VR or AR or only in ThirdPerson |
-
-
-## Debugging  
-| Name  | Description |
-| ------------- | ------------- |
-| `GridHelper` | Draws a grid |
-| `BoxGizmo` | Draws a box |
-| `AxesHelper` | Draws XYZ axes |
-| | Note: When you're writing custom code you can use the static `Gizmos` methods for drawing debugging lines and shapes | |
-
-## Runtime File Input/Output  
-| Name  | Description |
-| ------------- | ------------- |
-| `GltfExport` | Experimental! Use to export gltf from web runtime. |
-| `DropListener` | Receive file drop events for uploading and networking |
-
-## UI
-
-Spatial UI components are mapped from Unity UI (Canvas, not UI Toolkit) to [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui). 
-UI can be animated.   
-
-| Name  | Description |
-| ------------- | ------------- |
-| `Canvas` | Unity's UI system. Needs to be in World Space mode right now. |
-| `Text (Legacy)` | Render Text using Unity's UI Text component. Custom fonts are supported, a font atlas will be automatically generated on export. Use the font settings or the `FontAdditionalCharacters` component to control which characters are included in the atlas.<br/>**Note**: In Unity make sure to use the `Legacy/Text` component (*TextMeshPro* is not supported at the moment) |
-| `Button` | Receives click events - use the onClick event to react to it. It can be added too 3D scene objects as well.<br/>**Note**: Make sure to use the `Legacy/Text` component in the Button (or create the Button via the `UI/Legacy/Button` Unity context menu since *TextMeshPro* is not supported at the moment) |
-| `Image` | Renders a sprite image |
-| `RawImage` | Renders a texture |
-| `InputField` | Allows text input |
-
-**Note**: Depending on your project, often a mix of spatial and 2D UI makes sense for cross-platform projects where VR, AR, and screens are supported. Typically, you'd build the 2D parts with HTML for best accessibility, and the 3D parts with geometric UIs that also support depth offsets (e.g. button hover states and the like).  
-
-## Other
-
-| Name  | Description |
-| ------------- | ------------- |
-| `SceneSwitcher` | Handles loading and unloading of other scenes or prefabs / glTF files. Has features to preload, change scenes via swiping, keyboard events or URL navigation | 
-
-
-## Editor Only
-| Name  | Description |
+| Component | Description |
 | --- | --- |
-| `ExportInfo` | Main component for managing the web project(s) to e.g. install or start the web app
-| `EditorSync` | Add to enable networking material or component value changes to the running three.js app directly from the Unity Editor without having to reload |
+| [`SyncedRoom`](https://engine.needle.tools/docs/api/SyncedRoom) | Enable multiplayer networking (required for all networked features) |
+| [`Networking`](https://engine.needle.tools/docs/api/Networking) | Configure custom backend server (defaults to Needle servers) |
+| [`SyncedTransform`](https://engine.needle.tools/docs/api/SyncedTransform) | Sync object position, rotation, scale across clients |
+| [`SyncedCamera`](https://engine.needle.tools/docs/api/SyncedCamera) | Sync camera view to other users with custom rendering |
+| [`PlayerSync`](https://engine.needle.tools/docs/api/PlayerSync) | Instantiate object per connected user (avatars, etc.) |
+| [`Voip`](https://engine.needle.tools/docs/api/Voip) | Voice chat with spatial audio • [Sample](https://samples.needle.tools/collaborative-sandbox) |
+| [`ScreenCapture`](https://engine.needle.tools/docs/api/ScreenCapture) | Screen sharing capabilities • [Sample](https://samples.needle.tools/screensharing) |
+
+## 🖱️ Interaction
+
+| Component | Description |
+| --- | --- |
+| [`DragControls`](https://engine.needle.tools/docs/api/DragControls) | Drag objects in scene (requires raycaster in parent, e.g. ObjectRaycaster) |
+| [`Duplicatable`](https://engine.needle.tools/docs/api/Duplicatable) | Duplicate objects by dragging (requires DragControls) |
+| [`OrbitControls`](https://engine.needle.tools/docs/api/OrbitControls) | Camera orbit, zoom, and pan controls |
+| [`SmoothFollow`](https://engine.needle.tools/docs/api/SmoothFollow) | Smooth interpolation to another object's transform |
+| [`DeleteBox`](https://engine.needle.tools/docs/api/DeleteBox) | Destroys Deletable objects entering the box |
+| [`Deletable`](https://engine.needle.tools/docs/api/Deletable) | Object can be deleted when entering DeleteBox |
+| [`DropListener`](https://engine.needle.tools/docs/api/DropListener) | Receive file drop events for uploads |
+| [`SpatialTrigger`](https://engine.needle.tools/docs/api/SpatialTrigger) | Raise events when objects enter space/area |
+| [`SpatialTriggerReceiver`](https://engine.needle.tools/docs/api/SpatialTriggerReceiver) | Receive events from SpatialTrigger |
+| [`CursorFollow`](https://engine.needle.tools/docs/api/CursorFollow) | Make object follow cursor • [Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction) |
+| [`ScrollFollow`](https://engine.needle.tools/docs/api/ScrollFollow) | Bind scroll to animations/timeline • [Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction) |
+| [`HoverAnimation`](https://engine.needle.tools/docs/api/HoverAnimation) | Animate on hover |
+
+
+## <logo-header logo="/imgs/rapier-physics-logo.webp" alt="Rapier">Physics</logo-header>
+
+Powered by [Rapier](https://rapier.rs/) physics engine.
+
+| Component | Description |
+| --- | --- |
+| [`Rigidbody`](https://engine.needle.tools/docs/api/Rigidbody) | Physical body with gravity, mass, drag (dynamic/kinematic/static) |
+| [`BoxCollider`](https://engine.needle.tools/docs/api/BoxCollider) | Box-shaped collision volume |
+| [`SphereCollider`](https://engine.needle.tools/docs/api/SphereCollider) | Sphere-shaped collision volume |
+| [`CapsuleCollider`](https://engine.needle.tools/docs/api/CapsuleCollider) | Capsule-shaped collision volume |
+| [`MeshCollider`](https://engine.needle.tools/docs/api/MeshCollider) | Complex collision matching mesh geometry |
+| *Physics Materials* | Control friction, bounciness, and other physical properties |
+| [`Attractor`](https://engine.needle.tools/docs/api/Attractor) | Attract or repel rigidbodies • [Sample](https://engine.needle.tools/samples/scrollytelling-and-cursor-interaction) |
+
+:::tip Colliders as Triggers
+Set any collider to `isTrigger = true` to detect overlaps without physical collision response.
+:::
+
+## 🥽 XR / WebXR
+
+[Read the full XR documentation](xr.html)
+
+| Component | Description |
+| --- | --- |
+| [`WebXR`](https://engine.needle.tools/docs/api/WebXR) | Enable VR, AR, passthrough, and avatar rendering |
+| [`USDZExporter`](https://engine.needle.tools/docs/api/USDZExporter) | Enable QuickLook AR on iOS (USDZ format) |
+| [`WebARSessionRoot`](https://engine.needle.tools/docs/api/WebARSessionRoot) | AR scene placement and scale (defines center/alignment) |
+| [`XRRig`](https://engine.needle.tools/docs/api/XRRig) | Define user start position in VR |
+| [`WebARCameraBackground`](https://engine.needle.tools/docs/api/WebARCameraBackground) | Access AR camera feed for effects/rendering |
+| [`WebXRImageTracking`](https://engine.needle.tools/docs/api/WebXRImageTracking) | Track images and instantiate objects • [Sample](https://engine.needle.tools/samples/image-tracking) |
+| [`WebXRPlaneTracking`](https://engine.needle.tools/docs/api/WebXRPlaneTracking) | Create meshes/colliders for tracked planes |
+| [`XRControllerModel`](https://engine.needle.tools/docs/api/XRControllerModel) | Render VR controllers or hand models |
+| [`XRControllerMovement`](https://engine.needle.tools/docs/api/XRControllerMovement) | Default movement and teleport controls |
+| [`XRControllerFollow`](https://engine.needle.tools/docs/api/XRControllerFollow) | Make objects follow hands or controllers |
+| [`XRFlag`](https://engine.needle.tools/docs/api/XRFlag) | Control visibility by mode (VR/AR/FirstPerson/ThirdPerson) |
+
+
+## 🔧 Debugging
+
+| Component | Description |
+| --- | --- |
+| [`GridHelper`](https://engine.needle.tools/docs/api/GridHelper) | Draws debug grid |
+| [`BoxGizmo`](https://engine.needle.tools/docs/api/BoxGizmo) | Draws debug box |
+| [`AxesHelper`](https://engine.needle.tools/docs/api/AxesHelper) | Draws XYZ axes |
+
+:::tip Gizmos in Code
+Use static `Gizmos` methods for drawing debug lines and shapes in your scripts. [See Gizmos API](./scripting.html#debug-gizmos)
+:::
+
+## 📁 Runtime File Input/Output
+
+| Component | Description |
+| --- | --- |
+| [`GltfExport`](https://engine.needle.tools/docs/api/GltfExport) | Export glTF from runtime (experimental) |
+| [`DropListener`](https://engine.needle.tools/docs/api/DropListener) | Receive file drop events for uploads and networking |
+
+## 🖼️ UI
+
+Spatial UI components map from Unity UI (Canvas, not UI Toolkit) to [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui). UI can be animated.
+
+| Component | Description |
+| --- | --- |
+| [`Canvas`](https://engine.needle.tools/docs/api/Canvas) | Unity UI system (World Space mode required) |
+| [`Text`](https://engine.needle.tools/docs/api/Text) | Render text with custom fonts (auto-generated atlas). Use Legacy/Text, not TextMeshPro |
+| [`Button`](https://engine.needle.tools/docs/api/Button) | Click events with onClick. Works in 3D and UI. Use Legacy/Text for labels |
+| [`Image`](https://engine.needle.tools/docs/api/Image) | Renders sprite images |
+| [`RawImage`](https://engine.needle.tools/docs/api/RawImage) | Renders textures |
+| [`InputField`](https://engine.needle.tools/docs/api/InputField) | Text input field |
+
+:::tip HTML + Spatial UI
+For cross-platform projects (VR, AR, desktop), mix spatial and HTML UI:
+- **HTML**: 2D interfaces for best accessibility
+- **Spatial UI**: 3D interfaces with depth (e.g., button hover states)
+:::  
+
+## 🔀 Scene Management
+
+| Component | Description |
+| --- | --- |
+| [`SceneSwitcher`](https://engine.needle.tools/docs/api/SceneSwitcher) | Load/unload scenes, prefabs, glTF files with preload, swipe, keyboard, URL navigation |
+
+
+## 🛠️ Editor Only (Unity/Blender)
+
+| Component | Description |
+| --- | --- |
+| `ExportInfo` | Main component for managing web project(s) (install, start, deploy) |
+| `EditorSync` | Sync material/component changes to runtime without reload (hot reload) |
