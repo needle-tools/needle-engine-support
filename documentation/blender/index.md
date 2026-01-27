@@ -1,24 +1,41 @@
 ---
 title: Needle Engine for Blender
+description: Create interactive web experiences directly from Blender
 editLink: true
 ---
 
 # <logo-header logo="/blender/logo.png" alt="Blender">Needle Engine for Blender</logo-header>
 
-Needle Engine for Blender allows you to create highly interactive, flexible and lightweight web applications right inside Blender. Use the powerful tools of Blender to visually setup your 3D scenes, animate and design.
+**Create interactive 3D web experiences directly from Blender.** This integration brings the power of Needle Engine to your favorite 3D tool, letting you export scenes, animations, and interactive elements to the web with a single click.
 
-## Install the Blender Add-on
+:::tip What You'll Learn
+This guide covers installation, basic setup, and your first interactive web project. By the end, you'll have a working 3D website running in your browser.
+:::
+
+---
+
+## Prerequisites
+
+Before installing the Needle Engine add-on, make sure you have:
 
 <ClientOnly>
 
-Make sure you have installed <a target="_blank" href="https://www.blender.org/download/"><strong>Blender</strong> 4.5+ LTS</a> and <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg"><strong>node.js</strong></os-link>. 
+- <a target="_blank" href="https://www.blender.org/download/"><strong>Blender 4.5+ LTS</strong></a> - Your 3D creation tool
+- <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg"><strong>Node.js 20 LTS</strong></os-link> - Required for running the local web server
+
 </ClientOnly>
 
+---
+
+## Step 1: Download and Install
+
+### Download the Add-on
+
 <NoDownloadYet>
-    <needle-button 
-        event_goal="download_blender" 
-        event_position="getting_started" 
-        large 
+    <needle-button
+        event_goal="download_blender"
+        event_position="getting_started"
+        large
         href="https://engine.needle.tools/downloads/blender?utm_source=needle_docs&utm_content=getting_started"
         same_tab
         next_url="/docs/blender/"
@@ -27,151 +44,272 @@ Make sure you have installed <a target="_blank" href="https://www.blender.org/do
     </needle-button>
 </NoDownloadYet>
 
-1. In Blender, go to `Edit > Preferences > Add-ons` and click the drop down arrow to find the `Install from Disk` button. 
+### Install in Blender
 
-2. Select the downloaded zip file (named `needle-blender-plugin-*.zip`) to install it.
+1. **Open Blender Preferences**
+   - Go to `Edit > Preferences > Add-ons`
+   - Click the dropdown arrow next to the install button
+   - Select `Install from Disk`
 
-3. Search for "Needle" in the Add-ons search bar and make sure `Needle Engine Exporter for Blender` is enabled.
+2. **Select the Download**
+   - Navigate to your downloaded file (named `needle-blender-plugin-*.zip`)
+   - Click `Install Add-on`
 
+3. **Enable the Add-on**
+   - Search for "Needle" in the Add-ons search bar
+   - Check the box next to `Needle Engine Exporter for Blender`
 
-![Settings](/blender/settings.webp)
+![Blender Add-on Settings](/blender/settings.webp)
 
-## Getting Started
+---
 
-Thank you for using Needle Engine for Blender. 
+## Step 2: Create Your First Project
 
-With this add-on you can create highly interactive and optimized WebGL and WebXR experiences inside Blender, that run using Needle Engine and three.js.  
+Now that the add-on is installed, let's create your first interactive web experience.
 
-You'll be able to sequence animations, easily lightmap your scenes, add interactivity or create your own scripts written in Typescript or Javascript that run on the web.
+### Option A: Start with a Sample Project
+
+**Recommended for first-time users** - Sample projects show you what's possible and give you working examples to learn from.
+
+[Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)
+
+Open any sample `.blend` file, then skip to [Step 3: Generate Web Project](#step-3-generate-web-project).
+
+### Option B: Start from Scratch
+
+1. **Create or Open a Blender File**
+   - Create a new `.blend` file or open an existing one
+   - This will be the 3D scene that gets exported to the web
+
+2. **Locate the Needle Engine Panel**
+   - Open the Properties panel (usually on the right)
+   - Click the Scene Properties tab (icon looks like a scene/camera)
+   - Find the **Needle Engine** panel
+
+![Needle Engine Project Panel](/blender/project-panel.webp)
+
+---
+
+## Step 3: Generate Web Project
+
+1. **Set Project Path**
+   - In the Needle Engine panel, click the folder icon next to `Project Path`
+   - Choose where to create your web project folder
+   - This creates a separate folder with all web files
+
+2. **Generate Project**
+   - Click the `Generate Project` button
+   - Needle Engine will:
+     - Create a web project with all necessary files
+     - Install dependencies (this may take a minute)
+     - Start a local development server
+     - Open your browser automatically
+
+3. **See Your Scene Live**
+   - Your browser should open showing your 3D scene
+   - The scene updates automatically when you save in Blender
+   - Hot reload keeps everything in sync
 
 <video-embed src="/docs/blender/environment-light.mp4" />
-*Matching lighting and environment settings between Blender and Needle Engine. HDRI environment lights are automatically exported, directly from Blender. Once you save, the page is automatically reloaded.*
 
-:::tip Providing Feedback
+*Live sync in action: Changes to lighting and materials in Blender instantly update in the browser.*
 
-**Your feedback is invaluable** when it comes to deciding which features and workflows we should prioritize. If you have feedback for us (good or bad), please [let us know in the forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)!
+:::tip Automatic Export
+By default, your scene is automatically re-exported whenever you save the `.blend` file. The website refreshes automatically if the local server is running.
 :::
 
-## Samples for Blender
+---
 
-- [Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)
+## Step 4: Working with Your Project
 
-First create or open a new blend file that you want to be exported to the web.   
-Open the Properties window open the scene category. Select a `Project Path` in the Needle Engine panel. Then click `Generate Project`. It will automatically install and start the server - once it has finished your browser should open and the threejs scene will load.
- 
-![Project panel](/blender/project-panel.webp)
+Once your project is generated, you'll see additional options:
 
-By default your scene will automatically re-exported when you save the blend file.  
-If the local server is running (e.g. by clicking `Run Project`) the website will automatically refresh with your changed model.
+![Project Panel - Running State](/blender/project-panel-2.webp)
+
+### Running Your Project
+
+- **Run Project** (blue button) - Starts the local development server
+- The server must be running to see live updates in the browser
+- Your scene is accessible at `http://localhost:3000` (or similar)
+
+### Understanding the Project Panel
+
+![Needle Engine Project Panel Overview](/blender/project-panel-3.webp)
+
+The Needle Engine panel provides quick access to common tasks:
+
+1. **Project Path** - Location of your web project folder (click folder icon to change)
+2. **Run Project** - Start the local development server (appears when project is valid)
+3. **Directory** - Opens your web project folder in file explorer
+4. **Export** - Manually re-export scene as GLB (also happens automatically on save)
+5. **Code Editor** - Opens VS Code with your project
+6. **Main Scene** - Select which scene to export (useful for multi-scene files)
+7. **Build Buttons** - Create production-ready builds for deployment
+   - `Development` - Fast build for testing
+   - `Production` - Optimized build with compressed textures
+8. **Documentation** - Opens this documentation
+
+---
 
 
-When your web project already exists and you just want to continue working on the website  
-click the blue `Run Project` button to start the local server:  
-![Project panel](/blender/project-panel-2.webp)
 
-### Project Panel overview
-![Project panel](/blender/project-panel-3.webp)
+## Essential Setup
 
-1) The path to your web project. You can use the little folder button on the right to select a different path.
-2) The `Run Project` button shows up when the Project path shows to a valid web project. A web project is valid when it contains a `package.json`
-3) `Directory` open the directory of your web project (the `Project Path`)
-4) This button re-exports the current scene as a glb to your local web project. This also happens by default when saving your blend file.
-5) `Code Editor` tries to open the vscode workspace in your web project
-6) If you work with multiple scenes in one blend file, you can configure which scene is your Main scene and should be exported to the web. If any of your components references another scene they will also be exported as separate glb files. When clicking the "Export" button, your Main scene will be the one that's loaded in the browser.
-7) Use the `Build: Development` or `Build: Production` buttons when you want to upload your web project to a server. This will bundle your web project and produce the files that you can upload. When clicking `Build: Production` it will also apply optimization to your textures (they will be compressed for the web)
-8) Open the documentation
+### Color Management - Match Colors Between Blender and Web
 
+By default, Blender uses `Filmic` color management, which makes colors look different in the browser.
 
+**To ensure colors match:**
 
-## Blender Settings
-
-### Color Management
-
-By default the blender viewport is set to `Filmic` - with this setting your colors in Blender and in three.js will not match.
-To fix this go to the Blender Render category and in the ColorManagement panel select `View Transform`: `Standard`
+1. Open the **Render Properties** tab in Blender
+2. Find the **Color Management** section
+3. Set `View Transform` to **Standard**
 
 ![Correct color management settings](/blender/settings-color-management.webp)
 
+:::tip Why This Matters
+`Filmic` applies a cinematic tone curve that looks great for renders but doesn't match how three.js displays colors. `Standard` gives you accurate color reproduction.
+:::
 
-## Environment Lighting
+---
 
-You can change the environment lighting and skybox using the Viewport shading options.   
-Assign a cubemap to use for lighting or the background skybox. You can adjust the strength or blur to modify the appearance to your liking.      
 
-Note: To also see the skybox cubemap in the browser increase the `World Opacity` to 1.
+### Environment Lighting - Setup HDRI and Skybox
 
-Note: Alternatively you can enable the `Scene World` setting in the Viewport Shading tab to use the environment texture assigned in the blender world settings.
+Needle Engine automatically exports your environment lighting settings from Blender.
 
-![Environment](/blender/environment.webp)
+**Quick Setup:**
+
+1. Open **Viewport Shading** options (top right of 3D viewport)
+2. Assign an HDRI cubemap for lighting and/or background
+3. Adjust `Strength` and `Blur` to taste
+4. Increase `World Opacity` to 1 to show the skybox in the browser
+
+![Environment lighting options](/blender/environment.webp)
 
 <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
 
-Alternatively if you don't want to see the cubemap as a background add a Camera component to your Blender Camera and change `clearFlags: SolidColor` - note that the Camera `backgroundBlurriness` and `backgroundIntensity` settings override the Viewport shading settings.
+:::tip Alternative: Scene World
+Enable `Scene World` in the Viewport Shading tab to use the environment texture from Blender's World settings instead.
+:::
 
-![Environment Camera](/blender/environment-camera.webp)
+**Using Custom HDRI Files:**
 
-### Add your custom HDRI / EXR environment lighting and skybox
+<video-embed limit_height src="/docs/blender/custom_hdri.mp4" />
 
-<video-embed limit_height src="/docs/blender/custom_hdri.mp4" /> 
+**Camera-Specific Settings:**
+
+For more control, add a `Camera` component to your Blender camera:
+- Set `clearFlags: SolidColor` to hide the skybox but keep lighting
+- Adjust `backgroundBlurriness` and `backgroundIntensity`
+- These settings override Viewport Shading options
+
+![Camera component settings](/blender/environment-camera.webp)
+
+--- 
 
 
-## Export
+### Controlling What Gets Exported
 
-To exclude an object from being exported you can disable the Viewport and the Render display (see image below)
+**To exclude objects from export:**
+- Disable both **Viewport** and **Render** visibility icons in the Outliner
 
-![Exclude from export](/blender/dont-export.webp)
+![Exclude objects from export](/blender/dont-export.webp)
+
+Only objects visible in both viewport and render will be exported to your web project.
+
+---
 
 
-## Animation 🏇
+## Adding Interactivity
 
-For simple usecases you can use the Animation component for playback of one or multiple animationclips.  
-Just select your object, add an Animation component and assign the clip (you can add additional clips to be exported to the clips array.  
-By default it will only playback the first clip assigned when `playAutomatically` is enabled. You can trigger the other clips using a simple custom typescript component)  
-<video-embed limit_height src="/docs/blender/animation.mp4" />   
+### Animation Playback
 
-### AnimatorController
+Needle Engine offers multiple ways to animate your 3D content on the web.
 
-The animator controller can be created for more complex scenarios. It works as a statemachine which allows you to create multiple animation states in a graph and configure conditions and interpolation settings for transitioning between those. 
+#### Simple Animation Component
+
+For basic animation playback, use the `Animation` component:
+
+1. Select your animated object in Blender
+2. Add an `Animation` component (Needle Components panel)
+3. Assign your animation clip
+4. Enable `playAutomatically` to start on load
+
+<video-embed limit_height src="/docs/blender/animation.mp4" />
+
+:::tip Multiple Clips
+Add additional clips to the `clips` array. By default, only the first clip plays automatically. Trigger others using custom TypeScript or UI buttons.
+:::   
+
+#### AnimatorController - State Machine Animations
+
+For complex character animations or interactive state-based systems, use the **AnimatorController**.
 
 <video-embed src="/docs/blender/animatorcontroller-web.mp4" />
-*Create and export [animator statemachines](#animatorcontroller) for controlling complex character animations*
+
+*State machine animations for complex character control*
+
+**What is an AnimatorController?**
+- A visual state machine graph for managing animation transitions
+- Define multiple animation states and conditions for switching between them
+- Configure blend times and transition rules
+- Perfect for character controllers, interactive objects, and game mechanics
+
+**Creating an AnimatorController:**
+
+1. **Open the Editor**
+   - Use the `Editor Type` dropdown (top left of any panel)
+   - Select `AnimatorController`
+
+![Open AnimatorController editor](/blender/animatorcontroller-open.webp)
+
+2. **Create or Select an Asset**
+   - Click `+` to create a new AnimatorController
+   - Or select from existing assets
+
+<video-embed limit_height max_height="188px" src="/docs/blender/animatorcontroller-create.mp4" />
+
+**Understanding the Graph:**
+
+![AnimatorController graph overview](/blender/animatorcontroller-overview.webp)
+
+1. **Create States** - Press `Shift+A` to add new animation states
+2. **Parameters Node** - Appears automatically; defines conditions for transitions
+3. **Animation States** - Orange state is the starting state
+4. **Transitions** - Configure in the Properties panel with conditions and blend settings
+
+**Using Your AnimatorController:**
+
+1. Add an `Animator` component to the root of your animated object
+2. Assign your AnimatorController asset
+3. Control parameters from TypeScript or UI buttons
+
+![Assign AnimatorController to Animator](/blender/animatorcontroller-assigning.webp)
 
 
-#### Creating an AnimatorController
+#### PlayableDirector - Timeline Animation
 
-The AnimatorController editor can be opened using the EditorType dropdown in the topleft corner of each panel:
+Export Blender's **NLA Tracks** (Non-Linear Animation) directly to the web using the PlayableDirector component.
 
-![AnimatorController open window](/blender/animatorcontroller-open.webp)
+**Setup:**
 
-<video-embed limit_height max_height="188px" src="/docs/blender/animatorcontroller-create.mp4" /> 
-*Creating a new animator-controller asset ☝ or select one from your previously created assets*  
+1. Create NLA tracks in Blender for your animated objects
+2. Add a `PlayableDirector` component to any object
+3. In the component settings, add objects to the `animation tracks` list
+4. Needle Engine exports those objects' NLA tracks
 
-##### Graph overview  
-![AnimatorController overview](/blender/animatorcontroller-overview.webp)
-1) Use `Shift+A` to create a new AnimatorState
-2) The `Parameters` node will be created once you add a first node. Select it to setup parameters to be used in transitions (via the Node panel on the right border)
-3) This is an AnimatorState. the orange state is the start state (it can be changed using the `Set default state` button in the Node/Properties panel)
-4) The Properties for an AnimatorState can be used to setup one or multiple transitions to other states. Use the `Conditions` array to select parameters that must match the condition for doing the transition.
+![Timeline setup](/blender/timeline_setup.webp)
+![Timeline tracks](/blender/timeline.webp)
 
-#### Using an AnimatorController
+**Use Cases:**
+- Cinematic sequences
+- Scroll-driven storytelling
+- Coordinated multi-object animations
+- Timeline-based interactive experiences
 
-To use an AnimatorController add an Animator component to the root object of your animations and select the AnimatorController asset that you want to use for this object.
-
-![AnimatorController assign to animator](/blender/animatorcontroller-assigning.webp)  
-
-You can set the Animator parameters from typescript or by e.g. using the event of a Button component
-
-
-### Timeline — NLA Tracks export 🎬
-
-You can export Blender NLA tracks directly to the web.  
-Add a PlayableDirector component (via `Add Component`) to a any blender object. Assign the objects in the ``animation tracks`` list in the component for which you want the NLA tracks to be exported.
-
-![](/blender/timeline_setup.webp)  
-![](/blender/timeline.webp)  
-
-::: details Code example for interactive timeline playback
-Add this script to `src/scripts` (see custom components section) and add it to any object in Blender to make a timeline's time be controlled by scrolling in the browsers
+::: details Example: Scroll-Controlled Timeline
+Add this script to `src/scripts` to control timeline playback with mouse scrolling:
 
 ```ts twoslash
 import { Behaviour, PlayableDirector, serializable, Mathf } from "@needle-tools/engine";
@@ -212,95 +350,262 @@ export class ScrollTimeline extends Behaviour {
 ```
 :::
 
-## Interactivity 😎
+---
 
-You can add or remove components to objects in your hierarchy using the Needle Components panel:
+### Built-in Components
 
-![Component panel](/blender/components-panel.webp)  
+Needle Engine includes 100+ ready-to-use components for common interactive features.
 
-![Component panel](/blender/components-panel-select.webp)  
-*For example by adding an `OrbitControls` component to the camera object*  
-*you get basic camera controls for mobile and desktop devices*
-*Adjust settings for each component in their respective panels*
+**Adding Components:**
 
-Components can be removed using the X button in the lower right:
+1. Select an object in Blender
+2. Open the **Needle Components** panel
+3. Click `Add Component`
+4. Search and select the component you need
+
+![Needle Components panel](/blender/components-panel.webp)
+
+**Example: Camera Controls**
+
+Add `OrbitControls` to your camera for instant mouse/touch controls on all devices:
+
+![Add OrbitControls component](/blender/components-panel-select.webp)
+
+Each component has settings you can adjust right in Blender.
+
+**Removing Components:**
+
+Click the `X` button in the lower right of any component panel.
 
 ![Remove component](/blender/remove-component.webp)
 
-### Custom Components
-Custom components can also be easily added by simply writing Typescript classes. They will automatically compile and show up in Blender when saved.  
+**Popular Components:**
+- `OrbitControls` - Camera controls
+- `Animation` - Play animation clips
+- `Animator` - State machine animations
+- `WebXR` - Enable VR/AR
+- `DragControls` - Make objects draggable
+- `UIButton` - Interactive buttons
 
-To create custom components open the workspace via the Needle Project panel and add a `.ts` script file in `src/scripts` inside your web project. Please refer to the [scripting documentation](http://docs.needle.tools/scripting) to learn how to write custom components for Needle Engine.
+[See all components →](/docs/reference/components)
 
-::: warning Note
-Make sure ``@needle-tools/needle-component-compiler`` 2.x is installed in your web project (package.json devDependencies)
-::: 
+---
 
-## Lightmapping 💡
+### Custom Components - Extend with Code
 
-Needle includes a lightmapping plugin that makes it very easy to bake beautiful lights to textures and bring them to the web. The plugin will automatically generate lightmap UVs for all models marked to be lightmapped, there is no need to make a manual texture atlas. It also supports lightmapping of multiple instances with their own lightmap data. 
-For lightmapping to work, you need at least one light and one object with `Lightmapped` turned on in the `Needle Object` panel.
+Want custom behavior? Write TypeScript components that automatically appear in Blender.
 
-<video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" /> 
+**Creating Custom Components:**
 
-::: tip
-You can download the .blend file from the video [here](https://engine.needle.tools/downloads/blender/lightmaps.blend).
+1. Click `Code Editor` in the Needle Project panel to open VS Code
+2. Create a `.ts` file in `src/scripts/`
+3. Write your component class
+4. Save the file
+5. The component appears in Blender's component list automatically
+
+**Example Component:**
+
+```ts
+import { Behaviour, serializable } from "@needle-tools/engine";
+
+export class RotateObject extends Behaviour {
+    @serializable()
+    speed: number = 1;
+
+    update() {
+        this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
+    }
+}
+```
+
+[Learn more about scripting →](/docs/how-to-guides/scripting/create-components)
+
+:::warning Required Dependency
+Make sure `@needle-tools/needle-component-compiler` 2.x is in your `package.json` devDependencies for component hot-reloading.
 :::
-Use the Needle Object panel to enable lightmapping for a mesh object or light: 
 
-![Lightmapping object](/blender/lightmapping-object.webp)
+--- 
 
-For quick access to lightmap settings and baking options you can use the scene view panel in the `Needle` tab:
+## Advanced Features
 
-![Lightmapping scene panel](/blender/lightmapping-scene-panel.webp)
- 
-Alternatively you can also use the Lightmapping panel in the `Render Properties` tab:   
+### Lightmapping - Bake Beautiful Lighting
 
-![Lightmapping object](/blender/lightmapping-panel.webp)
+Bake realistic lighting directly in Blender and export it to the web for stunning visuals with great performance.
 
-::: warning Experimental Feature
-The lightmapping plugin is experimental. We recommend creating a backup of your .blend file when using it. Please report problems or errors you encounter in [our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 🙏
-::: 
+<video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" />
 
-## Texture Compression  
+**What is Lightmapping?**
+- Bakes lighting and shadows into textures
+- Dramatically improves visual quality on the web
+- No need for manual UV atlasing - automatic UV generation
+- Supports multiple instances with individual lightmaps
 
-The Needle Engine Build Pipeline automatically compresses textures using ECT1S and UASTC (depending on their usage in materials) when making a production build (**requires [toktx](../getting-started/index.md#install-these-tools-for-production-builds) being installed**). But you can override or change the compression type per texture in the Material panel.
+**Requirements:**
+- At least one light in your scene
+- Objects marked as `Lightmapped` in the Needle Object panel
 
-You can modify the compression that is being applied per texture. To override the default compression settings go to the `Material` tab and open the `Needle Material Settings`. There you will find a toggle to override the texture settings per texture used in your material. See the [texture compression table](../deployment.md#how-do-i-choose-between-etc1s-uastc-and-webp-compression) for a brief overview over the differences between each compression algorithm.
+**Quick Setup:**
 
-![Texture Compression options in Blender](/blender/texture-compression.webp)
+1. **Mark Objects for Lightmapping**
+   - Select your mesh object
+   - In the **Needle Object** panel, enable `Lightmapped`
+   - Do the same for lights you want to bake
 
-## Updating
+![Enable lightmapping on objects](/blender/lightmapping-object.webp)
 
-The lightbulb in the Needle Project panel informs you when a new version of the addon is available.  
-Simply click the icon to download the new version.    
+2. **Configure Settings**
+   - Use the **Needle** tab in the 3D viewport for quick access
+   - Or use the **Render Properties** > **Lightmapping** panel
+
+![Lightmap settings - Scene panel](/blender/lightmapping-scene-panel.webp)
+
+![Lightmap settings - Render properties](/blender/lightmapping-panel.webp)
+
+3. **Bake**
+   - Click the `Bake` button
+   - Wait for baking to complete
+   - Lightmaps are automatically exported with your scene
+
+::: tip Download Example
+Get the complete lightmapping example: [lightmaps.blend](https://engine.needle.tools/downloads/blender/lightmaps.blend)
+:::
+
+:::warning Experimental Feature
+Lightmapping is experimental. **Create a backup** of your `.blend` file before using it. [Report issues in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content).
+:::
+
+--- 
+
+### Texture Compression - Optimize File Sizes
+
+Needle Engine automatically compresses textures for optimal web performance during production builds.
+
+**How It Works:**
+- Automatic compression during `Build: Production`
+- Chooses ETC1S or UASTC based on texture usage
+- Significantly reduces file sizes without noticeable quality loss
+- Requires [toktx](/docs/getting-started/#required-tools) to be installed
+
+**Override Per-Texture Settings:**
+
+1. Select a material in Blender
+2. Go to the **Material** tab
+3. Open **Needle Material Settings**
+4. Toggle texture-specific compression settings
+
+![Texture compression override options](/blender/texture-compression.webp)
+
+**Compression Types:**
+- **ETC1S** - Smaller files, good for most textures
+- **UASTC** - Higher quality, larger files
+- **WebP** - Alternative format for certain use cases
+
+[Learn more about compression formats →](/docs/how-to-guides/deployment/#texture-compression)
+
+---
+
+## Maintenance & Support
+
+### Updating the Add-on
+
+Needle Engine notifies you when updates are available.
+
+**Update Process:**
+1. Look for the lightbulb icon in the Needle Project panel
+2. Click the icon to download the latest version
+3. Install following the same steps as initial installation
+
 ![Update notification](/blender/updates.webp)
 
-## Reporting an issue
-
-If you run into any problems we're more than happy to help! Please join [our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) for fast support.  
-
-Please also check the logs in Blender. You can find logs specific to the Needle Engine Addon via `Help/Needle` in Blender.    
-
-### Integrated Bug Reporter
-![Needle Blender Bug Reporter panel](/blender/bugreporter.webp)  
-You can also automatically create and upload a bugreport directly from Blender. Uploaded bugreports will solely be used for debugging. They are encrypted on our backend and will be deleted after 30 days.
-
-If needed, in certain cases we're also able to set up custom NDAs for your projects. Please contact us for more information.
-
-:::tip Using the Bug Reporter requires a web project
-Make sure you've set up a web project before sending a bug report – it will allow us to understand more about your system and setup and make it easier to reproduce the issue.
+:::tip Stay Updated
+Updates include bug fixes, new features, and performance improvements. We recommend updating regularly.
 :::
 
-# Troubleshooting
-- [Downloads: Make sure you have Nodejs installed](../getting-started/index.md#code-editor-and-tools)
-- [Downloads: To edit code we recommend to use VSCode](../getting-started/index.md#code-editor-and-tools)
+---
 
-# Next Steps
+### Getting Help
 
-- [Concept: Web Projects](../project-structure.md)
-- [Concept: Exporting Assets](../export.md)
-- [Concept: Deployment (Share you website)](../deployment.md)
-- [Components: Learn about Everywhere Actions](../everywhere-actions.md)
-- [Beginner Scripting: Typescript essentials](../getting-started/typescript-essentials.md)
-- [Beginner Scripting: How to write custom components](../scripting.md)
+**Need Support?**
+- [Discord Community](https://discord.needle.tools) - Real-time help and community support
+- [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) - Detailed discussions and solutions
+- [FAQ](/docs/reference/faq) - Common questions and answers
+
+**Before Reporting Issues:**
+1. Check the Blender logs: `Help > Needle` in Blender
+2. Try with a sample project to isolate the issue
+3. Make sure Node.js and dependencies are up to date
+
+**Integrated Bug Reporter:**
+
+For complex issues, use the built-in bug reporter:
+
+![Bug reporter panel](/blender/bugreporter.webp)
+
+- Automatically captures system information
+- Uploads encrypted reports (deleted after 30 days)
+- Requires a valid web project to be set up
+- For sensitive projects, custom NDAs are available - [contact us](https://needle.tools/contact)
+
+---
+
+## Troubleshooting
+
+**Common Issues:**
+
+- **Project won't generate** - [Ensure Node.js is installed](/docs/getting-started/#prerequisites)
+- **Code editing** - [We recommend VS Code](/docs/getting-started/#install-a-code-editor)
+- **Colors don't match** - Check [Color Management settings](#essential-setup)
+- **Can't see environment** - Increase World Opacity to 1 in viewport shading
+- **Textures not compressing** - [Install toktx](/docs/getting-started/#required-tools) for production builds
+
+[See full FAQ →](/docs/reference/faq)
+
+---
+
+## Next Steps
+
+Now that you have Needle Engine for Blender set up, here's where to go next:
+
+### 🎓 Learn the Fundamentals (Tutorials)
+
+New to web development or Needle Engine? Start here:
+
+- **[For Blender Artists](/docs/tutorials/fundamentals/for-blender-artists)** - Comprehensive guide for 3D artists
+- **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn coding basics for custom components
+
+### 🛠️ Solve Specific Tasks (How-To Guides)
+
+Ready to build something specific?
+
+- **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Write your own interactive behaviors
+- **[Deploy Your Project](/docs/how-to-guides/deployment/)** - Publish your website
+- **[Enable WebXR](/docs/how-to-guides/xr/)** - Add VR and AR support
+- **[Export Optimization](/docs/how-to-guides/export/)** - Optimize assets for the web
+
+### 💡 Understand How It Works (Explanation)
+
+Want to understand the architecture?
+
+- **[Project Structure](/docs/explanation/core-concepts/project-structure)** - How Blender and web projects connect
+- **[Component System](/docs/explanation/core-concepts/component-system)** - How components work
+- **[glTF Extensions](/docs/explanation/architecture/technical-overview)** - Technical details of export format
+
+### 📖 Look Things Up (Reference)
+
+Quick reference materials:
+
+- **[Component Catalog](/docs/reference/components)** - All 100+ built-in components
+- **[API Documentation](https://engine.needle.tools/docs/api/)** - Complete TypeScript API reference
+- **[FAQ](/docs/reference/faq)** - Common questions and troubleshooting
+
+### 🎨 Get Inspired
+
+- **[Sample Projects](https://engine.needle.tools/samples)** - Interactive examples
+- **[Showcase](/docs/samples-and-showcase/)** - See what others have built
+- **[Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)** - Working .blend files
+
+---
+
+:::tip Providing Feedback
+Your feedback helps us prioritize features and improvements. [Share your thoughts in the forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)!
+:::
