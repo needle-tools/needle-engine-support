@@ -113,6 +113,15 @@ p, ul, ol {
   line-height: 1.5em;
 }
 
+hr {
+  border: none;
+  // border-top: 1px solid var(--c-border);
+}
+
+h2 {
+  border-bottom: 2px dashed rgba(150,150,150,.2);
+}
+
 /*
 code {
   border-radius: .4rem;

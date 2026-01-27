@@ -40,7 +40,7 @@ export default (options = {}) => {
       // === Generate llms.txt (structured links) ===
       console.log('[generate-llms] Generating llms.txt with structured links...');
 
-      const tree = buildPageTree(app.pages);
+      const tree = buildPageTree(app.pages, processedMarkdownMap);
       let linksOutput = `# Needle Engine Documentation - Links\n`;
       linksOutput += `# ${new Date().toLocaleString('en-US')}\n`;
       linksOutput += `# Base URL: ${baseUrl}\n\n`;
@@ -78,6 +78,14 @@ Last Updated on ${new Date().toLocaleString('en-US')}
         if (page.filePath && processedMarkdownMap.has(page.filePath)) {
           const processedMarkdown = processedMarkdownMap.get(page.filePath);
           const htmlFilePath = page.htmlFilePath; // Absolute path to the generated HTML file
+
+          // Skip redirect pages (pages containing "# Page Moved")
+          if (processedMarkdown.includes('# Page Moved')) {
+            if (app.env.isDebug) {
+              console.log(`[generate-llms] Skipping redirect page: ${page.filePathRelative || page.filePath}`);
+            }
+            continue;
+          }
 
           if (page.filePath.includes("/lang") === false) {
             const pageFilename = path.basename(page.filePath);
@@ -143,8 +151,10 @@ Last Updated on ${new Date().toLocaleString('en-US')}
 
 /**
  * Build a hierarchical tree structure from pages
+ * @param {Array} pages - Array of VuePress pages
+ * @param {Map} processedMarkdownMap - Map of file paths to markdown content
  */
-function buildPageTree(pages) {
+function buildPageTree(pages, processedMarkdownMap) {
   const tree = {};
 
   for (const page of pages) {
@@ -154,6 +164,12 @@ function buildPageTree(pages) {
     // Skip files starting with underscore
     const filename = path.basename(page.filePath);
     if (filename.startsWith('_')) continue;
+
+    // Skip redirect pages (pages containing "# Page Moved")
+    if (processedMarkdownMap.has(page.filePath)) {
+      const markdown = processedMarkdownMap.get(page.filePath);
+      if (markdown && markdown.includes('# Page Moved')) continue;
+    }
 
     // Get the path segments
     const pathSegments = page.path.split('/').filter(s => s);
