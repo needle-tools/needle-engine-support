@@ -1,118 +1,245 @@
 # Feature Overview
 
-Needle Engine is a fully fledged 3D engine that runs in the browser. It comes with all the features you'd expect from a modern 3D engine, and more.  If you haven't yet, take a look at our [Homepage](https://needle.tools) and our [Samples and Showcase](https://engine.needle.tools/samples).
+**Needle Engine is a fully-fledged 3D engine for the web** with everything you'd expect from a modern 3D engine, and more. Build stunning web experiences that work everywhere – from browsers to VR headsets to mobile AR.
+
+:::tip See It In Action
+Explore our [Samples and Showcase](https://engine.needle.tools/samples) to experience what's possible.
+:::
 
 [[toc]]
 
-## Shaders and Materials
+## Cross-Platform: Desktop, Mobile, VR, and AR
 
-Both [PBR Materials](./export.md#physically-based-materials-pbr) and [Custom shaders](./export.md#custom-shaders) created with Shader Graph or other systems can be exported. 
+**One codebase, every platform.** Needle Engine runs everywhere web technology does – desktop, mobile, AR, and VR. We build Needle Engine [with XR in mind](./xr.md) as an integral part of responsive web design.
 
-<img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" />
+### Native iOS WebXR Support
 
-Use the node based ShaderGraph to create shaders for the web. ShaderGraph makes it easy for artists to keep creating without having to worry about syntax.
+**Full WebXR on iPhone and iPad** – no app required! 🎉
 
-Read more about [PBR Materials](./export.md#physically-based-materials-pbr) • [Custom Shaders](./export.md#custom-shaders)
+Native [iOS WebXR support](./ios-webxr-app-clip.md) is now available through App Clip technology. Users can experience your WebXR AR content instantly via QR codes or links, without installing an app. Powered by ARKit, it provides:
 
-## Crossplatform: VR, AR, Mobile, Desktop
-Needle Engine runs everywhere web technology does: run the same application on desktop, mobile, AR or VR. We build Needle Engine [with XR in mind](./xr.md) and consider this as and integral part of responsive webdesign!
+- Hit testing and plane detection
+- DOM overlays for UI elements
+- Image tracking
+- Anchor creation and tracking (work in progress)
+- Lighting estimation (work in progress)
 
-### iOS WebXR Support
-Native [iOS WebXR support](./ios-webxr-app-clip.md) is now available through App Clip technology. Run WebXR AR experiences instantly on iPhone and iPad with Safari without requiring app installation. Powered by ARKit, it provides full WebXR functionality including hit testing, plane detection, and DOM overlays. [Try it now](https://appclip.needle.tools) or learn more about [iOS WebXR](./ios-webxr-app-clip.md).
+[Try it now](https://appclip.needle.tools) • [Read iOS WebXR docs](./ios-webxr-app-clip.md)
 
-### Everywhere Actions
-Use [Everywhere Actions](./everywhere-actions.md) for **Interactive AR on both Android and iOS** using USDZ and QuickLook for native 3D viewing experiences.
+### Everywhere Actions for iOS and Android
 
+Use [Everywhere Actions](./everywhere-actions.md) for **interactive AR experiences** on both iOS and Android using USDZ and QuickLook. Perfect for product configurators, marketing experiences, and interactive storytelling.
 
-## Lightmaps
+**Platform Support:**
+- **VR Headsets**: Meta Quest, Apple Vision Pro, Pico, HTC Vive, Valve Index
+- **Mobile AR**: Android (WebXR), iOS (WebXR via App Clips + USDZ/QuickLook)
+- **Desktop**: All modern browsers
+- **Future devices work automatically** – that's the power of web standards
+
+[Learn more about XR support](./xr.md)
+
+## Graphics and Rendering
+
+### Shaders and Materials
+
+**Professional-grade rendering on the web.** Export both [PBR Materials](./export.md#physically-based-materials-pbr) and [Custom shaders](./export.md#custom-shaders) created with Shader Graph or other systems.
+
+<img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" alt="Shader Graph Example" />
+
+Use Unity's node-based ShaderGraph to create shaders for the web. Artists can keep creating without worrying about syntax or web-specific code.
+
+Read more: [PBR Materials](./export.md#physically-based-materials-pbr) • [Custom Shaders](./export.md#custom-shaders)
+
+### Lightmaps
+
+**Beautiful baked lighting, automatically exported to the web.**
 
 ![lightmaps](https://user-images.githubusercontent.com/5083203/186163693-093c7ae2-96eb-4d75-b98f-bf19f78032ff.gif)
 
-Lightmaps can be baked in Unity or Blender to easily add beautiful static light to your 3d content. Lightbaking for the web was never as easy. Just mark objects that you want to lightmap as static in Unity, add one or many lights to your scene (or use emissive materials) and click bake. Needle Engine will export your lightmaps per scene and automatically load and display them just as you see it in the Editor! 
+Lightmaps can be baked in Unity or Blender and automatically exported to your web experience. Just mark objects as static, add lights (or use emissive materials), click bake, and Needle Engine handles the rest. What you see in the editor is what you get on the web.
 
-> **Note**: There is no technical limitation on which lightmapper to use, as long as they end up in Unity's lightmapping data structures. Third party lightmappers such as [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218) thus are also supported. 
+**Flexible Setup:**
+- Works with Unity's built-in lightmapper
+- Compatible with third-party lightmappers like [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218)
+- Per-scene lightmaps automatically loaded
 
-- Read more about [Exporting Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps)
+[Read more about Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps)
 
-## Multiplayer and Networking
-Networking is built into the core runtime. Needle Engine deployments to Glitch come with a tiny server that allows you to deploy a multiplayer 3D environment in seconds. The built-in networked components make it easy to get started, and you can create your own synchronized components. Synchronizing variables and state is super easy!  
+### Post-Processing Effects
 
-- Read more about [Networking](https://fwd.needle.tools/needle-engine/docs/networking) • [Scripting](https://fwd.needle.tools/needle-engine/docs/scripting)
+**Industry-standard post-processing for the web.**
 
-## Animations and Sequencing
-Needle Engine brings powerful animations, state control and sequencing to the web — from just playing a single animation to orchestrating and blending complex animations and character controllers. The Exporter can translate Unity components like Animator and Timeline into a web-ready format.   
-We even added this functionality to our Blender addon so you can craft compatible animation state machines and export nla tracks as timelines to the web from within Blender too.  
-
-- Read more about [Animation Components](./component-reference.md#animation)
-
-### Animator
-
-<img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" />
-
-The [Animator and AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) components in Unity let you setup animations and define conditions for when and how to blend between them. We support exporting state machines, StateMachineBehaviours, transitions and layers. StateMachineBehaviours are also supported with ``OnStateEnter``, ``OnStateUpdate`` and ``OnStateExit`` events.  
-
-
-> **Note**: Sub-states and Blend Trees are not supported.  
-
-
-### Timeline
-
-![2022-08-23-013517_Scene](https://user-images.githubusercontent.com/5083203/186037829-ee99340d-b19c-484d-b551-94797519c9d9.png)
-
-We're also translating [Unity's Timeline](https://unity.com/features/timeline) setup and tracks into a web-ready format.  
-Supported tracks include: AnimationTrack, AudioTrack, ActivationTrack, ControlTrack, SignalTrack.   
-
-> **Note**: Sub-Timelines are currently not supported.  
-
-> **Note**: It's possible to [export custom timeline tracks](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).  
-
-- Read more about [Animation Components](./component-reference.md#animation)
-
-## Physics
-Use Rigidbodies, Mesh Colliders, Box Colliders or SphereColliders to add physics to your world.
-
-- Read more about [Physics Components](./component-reference.md#physics)
-
-<sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
-
-## UI
-Building UI using Unity's UI canvas system is in development. Features currently include exporting Text (including fonts), Images, Buttons.  
-
-See the [ui component reference](component-reference.md#ui) for supported component.
-
-<sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
-
-## Particles
-Export of Unity ParticleSystem (Shuriken) is in development. Features currently include world/local space simulation, box and sphere emitter shapes, emission over time as well as burst emission, velocity- and color over time, emission by velocity, texturesheet animation, basic trails.   
-See a [live sample](https://engine.needle.tools/samples/particles) of supported features below:
-
-<sample src="https://engine.needle.tools/samples-uploads/particles/" />
-
-## PostProcessing  
-
-Builtin effects include Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction. You can also create your own custom effects. See [the component reference](./component-reference.md#postprocessing) for a complete list.  
+Built-in effects include Bloom, Screen Space Ambient Occlusion (SSAO), Depth of Field, and Color Correction. You can also create custom effects tailored to your project.
 
 <sample src="https://engine.needle.tools/samples-uploads/postprocessing/" />
 
+[See all post-processing components](./component-reference.md#postprocessing)
+
+## Animation and Sequencing
+
+**Powerful animation tools that translate directly to the web.** From simple animations to complex state machines and cinematic sequences – Needle Engine brings professional animation workflows to web experiences.
+
+### Animator State Machines
+
+<img src="https://user-images.githubusercontent.com/5083203/186011302-176524b3-e8e5-4e6e-9b77-7faf3561bb15.png" alt="Unity Animator" />
+
+Unity's [Animator and AnimatorController](https://docs.unity3d.com/Manual/class-AnimatorController.html) let you set up animations and define conditions for blending between them. Needle Engine exports:
+
+- Animation state machines
+- StateMachineBehaviours with `OnStateEnter`, `OnStateUpdate`, and `OnStateExit` events
+- Transitions and layers
+- Parameter-driven state changes
+
+> **Note**: Sub-states and Blend Trees are not yet supported.
+
+### Timeline Sequencing
+
+![Timeline Example](https://user-images.githubusercontent.com/5083203/186037829-ee99340d-b19c-484d-b551-94797519c9d9.png)
+
+Create cinematic sequences with [Unity's Timeline](https://unity.com/features/timeline). Needle Engine translates Timeline setups into web-ready format.
+
+**Supported Tracks:**
+- AnimationTrack
+- AudioTrack
+- ActivationTrack
+- ControlTrack
+- SignalTrack
+
+> **Note**: Sub-Timelines are not yet supported. Custom timeline tracks can be exported – [see example](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).
+
+### Blender Support
+
+Animation support extends to Blender too! Create animation state machines and export NLA tracks as timelines directly from Blender.
+
+[Read more about Animation Components](./component-reference.md#animation)
+
+## Physics
+
+**Real-time physics simulation in the browser.**
+
+Add realistic physics interactions using familiar components:
+- Rigidbodies for dynamic objects
+- Colliders: Box, Sphere, and Mesh
+- Physics materials for friction and bounce
+- Raycasting and collision detection
+
+<sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
+
+[Read more about Physics Components](./component-reference.md#physics)
+
+## Particle Systems
+
+**Create stunning visual effects with Unity's Shuriken particle system.**
+
+Export Unity ParticleSystems to the web with support for:
+- World/local space simulation
+- Box and sphere emitter shapes
+- Emission over time and burst emission
+- Velocity and color over lifetime
+- Emission influenced by velocity
+- Texture sheet animation
+- Basic trails
+
+<sample src="https://engine.needle.tools/samples-uploads/particles/" />
+
+[Try live particle samples](https://engine.needle.tools/samples/particles)
+
+## User Interface
+
+**Build interactive UIs using Unity's Canvas system.**
+
+Export Unity UI components including:
+- Text (with custom fonts)
+- Images and sprites
+- Buttons with events
+- Layout groups
+- World-space and screen-space canvases
+
+<sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
+
+[See supported UI components](component-reference.md#ui)
+
+## Multiplayer and Networking
+
+**Real-time multiplayer, built-in.**
+
+Networking is integrated into the core runtime. Deploy multiplayer 3D environments in seconds with built-in networked components. Synchronizing variables and state is incredibly simple.
+
+**Features:**
+- Built-in networking components
+- Easy variable synchronization
+- Voice chat support (VoIP)
+- Works seamlessly with XR
+- Quick deployment to Glitch with included server
+
+[Read more about Networking](https://fwd.needle.tools/needle-engine/docs/networking) • [Scripting Guide](https://fwd.needle.tools/needle-engine/docs/scripting)
+
 ## Editor Integrations
-Needle Engine comes with powerful integrations into the Unity Editor and Blender.   
-It allows you to setup and export complex scenes in a visual way providing easy and flexible collaboration between artists and developers. 
 
-## Scripting
-Needle Engine uses as [component based workflow](scripting.md#component-architecture). Create custom scripts in typescript or javascript. Use our [modular npm-based package workflow](https://fwd.needle.tools/needle-engine/docs/npmdef) integrated into Unity. A [typescript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) produces Unity components magically on the fly. 
+**Visual authoring meets web deployment.**
 
-- Read more about [Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
+Powerful integrations for Unity and Blender allow artists and developers to collaborate seamlessly. Set up and export complex scenes visually, with flexible workflows for both technical and creative team members.
 
+**Unity Integration:**
+- Full component support
+- Visual scene authoring
+- Asset pipeline integration
+- Hot reload during development
 
-## And there is more
+**Blender Addon:**
+- Export glTF with Needle Engine components
+- Animation support (NLA tracks, state machines)
+- Material and lighting export
+- Node-based workflow
 
-- PostProcessing → Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction...
-- EditorSync → Live synchronize editing in Unity to the running three.js application for local development
-- Native iOS WebXR → Run WebXR AR experiences on iPhone and iPad with [App Clip technology](./ios-webxr-app-clip.md)
-- Interactive AR on iOS and Android → Use our [Everywhere Actions](./everywhere-actions.md) feature set or build your own
+## Scripting and Development
+
+**Flexible, powerful, and developer-friendly.**
+
+Needle Engine uses a [component-based architecture](scripting.md#component-architecture) familiar to Unity developers. Create custom components in TypeScript or JavaScript.
+
+**Developer Features:**
+- Component-based workflow (like Unity)
+- TypeScript and JavaScript support
+- [Modular npm-based packages](https://fwd.needle.tools/needle-engine/docs/npmdef)
+- [TypeScript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) – write TypeScript, get Unity components automatically
+- Hot module replacement for fast iteration
+- Full three.js access for advanced use cases
+
+[Read more: Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
+
+## Additional Features
+
+**Even more capabilities to power your projects:**
+
+- **EditorSync** – Live synchronize editing in Unity to your running web application for instant feedback during development
+- **Compression Pipeline** – Automatic optimization for web delivery with glTF compression and texture optimization
+- **Audio Support** – Spatial audio, audio sources, and audio listeners
+- **Image Tracking** – WebXR image tracking on Android, QuickLook image tracking on iOS
+- **Custom Components** – Extend the engine with your own components and systems
+- **Framework Integration** – Works with React, Vue, Svelte, and other web frameworks
+- **Deployment Tools** – Built-in deployment to Glitch, Vercel, and other platforms
 
 ---
-# Where to go next
 
-See our [Getting Started Guide](getting-started/) to learn about how to download and set up Needle Engine.   
-Learn about [our vision](vision) or dive deeper into some of the [technical background and glTF](technical-overview) powering it all.  
+## Where to Go Next
+
+**Get Started:**
+- [Getting Started Guide](getting-started/) – Download and set up Needle Engine
+- [Unity Integration](./unity/index.md) – Set up the Unity integration
+- [Blender Addon](./blender/index.md) – Install the Blender addon
+
+**Learn More:**
+- [Our Vision](vision) – Learn about our goals and philosophy
+- [Technical Overview](technical-overview) – Deep dive into glTF and architecture
+- [XR Documentation](xr.md) – Build immersive AR and VR experiences
+- [Browse Samples](https://engine.needle.tools/samples) – See what's possible
+
+**Start Building:**
+- [Scripting Guide](scripting) – Create custom components
+- [Component Reference](component-reference.md) – Browse all available components
+- [Deployment Guide](deployment.md) – Publish your experiences
+
+---
+
+Have questions? Join our [Discord community](https://discord.needle.tools) or check out our [support resources](support).
