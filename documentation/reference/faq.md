@@ -35,6 +35,9 @@ Note: You might need to restart the local webserver to apply the license.
 
 You might see a warning in your browser about SSL Security depending on your local configuration.  
 
+![SLL warning on chrome](/videos/ssl-warning.gif)
+
+
 This is because while the connection is encrypted, by default there's no SSL certificate that the browser can validate.
 If that happens: click `Advanced` and `Proceed to Site`. In Safari, you might need to refresh the page afterwards, because it does not automatically proceed. Now you should see your scene in the browser!  
 
@@ -43,10 +46,9 @@ The dialogue should only show up once for the same local server
 ::: tip
 Connections are secured, because we're enforcing HTTPS to make sure that WebXR and other modern web APIs work out-of-the-box. Some browsers will still complain that the SSL connection (between your local development server and the local website) can't be automatically trusted, and that you need to manually verify you trust that page. Automatic Page Reload and Websocket connections may also be affected depending on the browser and system settings.  
 
-See [the Testing docs](/how-to-guides/testing) for information on how to set up a self-signed certificate for a smoother development experience.
+See [the Testing docs](/docs/how-to-guides/testing) for information on how to set up a self-signed certificate for a smoother development experience.
 :::
 
-![SLL warning on chrome](/videos/ssl-warning.gif)
   
   
 
@@ -58,10 +60,10 @@ For that, click on the running progress bar in the bottom right corner of the Ed
 
 
 ## My objects are white after export
-This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.  
-You can either make sure you're using glTF-compatible materials and shaders, or mark shaders as "custom" to export them directly.  
-- Read more about recommended glTF workflows: <link>
-- Read more about custom shaders: <link>
+This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.
+You can either make sure you're using glTF-compatible materials and shaders, or mark shaders as "custom" to export them directly.
+- Read more about recommended glTF workflows: [Exporting Materials](/docs/how-to-guides/export/#-exporting-materials)
+- Read more about custom shaders: [Custom Shaders](/docs/how-to-guides/export/#custom-shaders)
 
 
 ## Uncaught ReferenceError: NEEDLE_ENGINE_META is not defined / NEEDLE_USE_RAPIER is not defined
@@ -101,7 +103,7 @@ This can have many reasons, but a few common ones are:
 - objects are disabled and not ignored – disabled objects get exported as well in case you want to turn them on at runtime! Set their Tag to `EditorOnly` to completely ignore them for export.
 - you have multiple ``GltfObject`` components in your scene and they all have ``EmbedSkybox`` enabled (you need to have the skybox only once per scene you export)
   
-If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting Examples in the documentation](/reference/scripting-examples#assetreference-and-addressables).
+If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting Examples in the documentation](/docs/reference/scripting-examples#assetreference-and-addressables).
 
 ## My UI is not rendering Text
 
@@ -115,7 +117,7 @@ If loading time itself is an issue you can **try to split up your content into m
 
 ## My lightmaps look different / too bright
 
-Ensure you're following [best practices for lightmaps](https://docs.needle.tools/lightmaps?utm_source=needle_docs) and read about [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects)
+Ensure you're following [best practices for lightmaps](/docs/how-to-guides/export/#recommended-lightmap-settings) and read about [mixing baked and non-baked objects](/docs/how-to-guides/export/#mixing-baked-and-non-baked-objects)
 
 ## My scene is too bright / lighting looks different than in Unity
 Make sure that your lights are set to "Baked" or "Realtime". "Mixed" is currently not supported.  
@@ -125,7 +127,7 @@ Make sure that your lights are set to "Baked" or "Realtime". "Mixed" is currentl
   ![image](https://user-images.githubusercontent.com/5083203/185429006-2a5cd6a1-8ea2-4a8e-87f8-33e3afd080ec.png)
 - Light shadow intensity can currently not be changed due to a three.js limitation.
   
-Also see the docs on [mixing baked and non-baked objects](https://github.com/needle-tools/needle-engine-support/blob/main/documentation/export.md#mixing-baked-and-non-baked-objects).
+Also see the docs on [mixing baked and non-baked objects](/docs/how-to-guides/export/#mixing-baked-and-non-baked-objects).
 
 
 ## My skybox resolution is low? How to change my skybox resolution
@@ -184,7 +186,7 @@ Check the console and the `ExportInfo` component for errors or warnings.
 
 If these warnings/errors didn't help, try the following steps in order. Give them some time to complete. Stop once your problem has been resolved. Check the console for warnings and errors.  
   
-- Make sure you follow the [Prerequisites](./getting-started/#prerequisites).
+- Make sure you follow the [Prerequisites](/docs/getting-started/#prerequisites).
 - Install your project by selecting your `ExportInfo` component and clicking `Install` 
 - Run a clean installation by selecting your `ExportInfo` component, holding Alt and clicking `Clean Install`
 - Try opening your web project directory in a command line tool and follow these steps:
@@ -215,7 +217,7 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 ## Toktx can not be found / toktx is not installed
 
-- Make sure to [download and install toktx](http://localhost:8080/docs/getting-started/.html#install-these-tools-for-production-builds)
+- Make sure to [download and install toktx](/docs/getting-started/#install-these-tools-for-production-builds)
 
 - On Windows: Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables. The default install location is ``C:\Program Files\KTX-Software\bin``   
 

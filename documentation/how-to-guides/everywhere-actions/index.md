@@ -80,9 +80,9 @@ Image tracking works natively on iOS through [Needle Go App Clip](../xr/ios-webx
 
 [Read more about Image Tracking with Needle Engine](../xr/image-tracking)
 
-<img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />    
+<img src="https://image-tracking-zubckszr0qj2.needle.run/assets/needle-marker.png" alt="Image Marker" width=300 />    
 
-<sample src="https://engine.needle.tools/samples-uploads/image-tracking" />
+<sample src="https://image-tracking-zubckszr0qj2.needle.run/" />
 
 
 ### Interactive Building Blocks Overview

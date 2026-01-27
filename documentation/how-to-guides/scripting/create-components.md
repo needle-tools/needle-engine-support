@@ -162,7 +162,7 @@ While generated C# components use the type name to produce stable GUIDs, we reco
 - [Use Lifecycle Hooks](./use-lifecycle-hooks) - awake, start, update methods
 - [Handle User Input](./handle-input) - Mouse, touch, keyboard
 - [Find Components](./find-components) - Query the scene graph
-- [Use Coroutines](./use-coroutines) - Sequenced operations
+- [Use Coroutines](./use-lifecycle-hooks#start-coroutines) - Sequenced operations
 - [Component Lifecycle Reference](../../reference/api/lifecycle-methods) - Complete API
 
 ---
