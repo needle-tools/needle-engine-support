@@ -63,7 +63,7 @@ Lightmaps can be baked in Unity or Blender and automatically exported to your we
 - Compatible with third-party lightmappers like [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218)
 - Per-scene lightmaps automatically loaded
 
-[Read more about Lightmaps](https://fwd.needle.tools/needle-engine/docs/lightmaps)
+[Read more about Lightmaps](/docs/unity/features/lightmaps)
 
 ### Post-Processing Effects
 
@@ -73,7 +73,7 @@ Built-in effects include Bloom, Screen Space Ambient Occlusion (SSAO), Depth of 
 
 <sample src="https://engine.needle.tools/samples-uploads/postprocessing/" />
 
-[See all post-processing components](./component-reference.md#postprocessing)
+[See all post-processing components](/docs/reference/components#postprocessing)
 
 ## Animation and Sequencing
 
@@ -111,7 +111,7 @@ Create cinematic sequences with [Unity's Timeline](https://unity.com/features/ti
 
 Animation support extends to Blender too! Create animation state machines and export NLA tracks as timelines directly from Blender.
 
-[Read more about Animation Components](./component-reference.md#animation)
+[Read more about Animation Components](/docs/reference/components#animation)
 
 ## Physics
 
@@ -125,7 +125,7 @@ Add realistic physics interactions using familiar components:
 
 <sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
 
-[Read more about Physics Components](./component-reference.md#physics)
+[Read more about Physics Components](/docs/reference/components#physics)
 
 ## Particle Systems
 
@@ -157,7 +157,7 @@ Export Unity UI components including:
 
 <sample src="https://engine.needle.tools/samples-uploads/screenspace-ui" />
 
-[See supported UI components](component-reference.md#ui)
+[See supported UI components](/docs/reference/components#ui)
 
 ## Multiplayer and Networking
 
@@ -172,7 +172,7 @@ Networking is integrated into the core runtime. Deploy multiplayer 3D environmen
 - Works seamlessly with XR
 - Quick deployment to Glitch with included server
 
-[Read more about Networking](https://fwd.needle.tools/needle-engine/docs/networking) • [Scripting Guide](https://fwd.needle.tools/needle-engine/docs/scripting)
+[Read more about Networking](/docs/how-to-guides/networking/) • [Scripting Guide](/docs/how-to-guides/scripting/)
 
 ## Editor Integrations
 
@@ -196,17 +196,17 @@ Powerful integrations for Unity and Blender allow artists and developers to coll
 
 **Flexible, powerful, and developer-friendly.**
 
-Needle Engine uses a [component-based architecture](scripting.md#component-architecture) familiar to Unity developers. Create custom components in TypeScript or JavaScript.
+Needle Engine uses a [component-based architecture](/docs/how-to-guides/scripting/create-components#component-architecture) familiar to Unity developers. Create custom components in TypeScript or JavaScript.
 
 **Developer Features:**
 - Component-based workflow (like Unity)
 - TypeScript and JavaScript support
-- [Modular npm-based packages](https://fwd.needle.tools/needle-engine/docs/npmdef)
-- [TypeScript to C# component compiler](https://fwd.needle.tools/needle-engine/docs/component-compiler) – write TypeScript, get Unity components automatically
+- [Modular npm-based packages](/docs/reference/npm-definition-files)
+- [TypeScript to C# component compiler](/docs/reference/component-compiler) – write TypeScript, get Unity components automatically
 - Hot module replacement for fast iteration
 - Full three.js access for advanced use cases
 
-[Read more: Scripting Reference](scripting) • [Npm Definition Files](https://fwd.needle.tools/needle-engine/docs/npmdef)
+[Read more: Scripting Reference](/docs/how-to-guides/scripting/create-components) • [Npm Definition Files](/docs/reference/npm-definition-files)
 
 ## Additional Features
 
@@ -225,21 +225,21 @@ Needle Engine uses a [component-based architecture](scripting.md#component-archi
 ## Where to Go Next
 
 **Get Started:**
-- [Getting Started Guide](getting-started/) – Download and set up Needle Engine
-- [Unity Integration](./unity/index.md) – Set up the Unity integration
-- [Blender Addon](./blender/index.md) – Install the Blender addon
+- [Getting Started Guide](/docs/getting-started/) – Download and set up Needle Engine
+- [Unity Integration](/docs/unity/) – Set up the Unity integration
+- [Blender Addon](/docs/blender/) – Install the Blender addon
 
 **Learn More:**
-- [Our Vision](vision) – Learn about our goals and philosophy
-- [Technical Overview](technical-overview) – Deep dive into glTF and architecture
-- [XR Documentation](xr.md) – Build immersive AR and VR experiences
+- [Our Vision](./vision) – Learn about our goals and philosophy
+- [Technical Overview](../architecture/technical-overview) – Deep dive into glTF and architecture
+- [XR Documentation](/docs/how-to-guides/xr/) – Build immersive AR and VR experiences
 - [Browse Samples](https://engine.needle.tools/samples) – See what's possible
 
 **Start Building:**
-- [Scripting Guide](scripting) – Create custom components
-- [Component Reference](component-reference.md) – Browse all available components
-- [Deployment Guide](deployment.md) – Publish your experiences
+- [Scripting Guide](/docs/how-to-guides/scripting/create-components) – Create custom components
+- [Component Reference](/docs/reference/components) – Browse all available components
+- [Deployment Guide](/docs/how-to-guides/deployment/) – Publish your experiences
 
 ---
 
-Have questions? Join our [Discord community](https://discord.needle.tools) or check out our [support resources](support).
+Have questions? Join our [Discord community](https://discord.needle.tools) or check out our [support resources](/docs/help/).
