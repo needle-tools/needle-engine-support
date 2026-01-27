@@ -1,0 +1,142 @@
+---
+title: Help & Community
+description: Get help and connect with the Needle Engine community
+---
+
+# Help & Community
+
+**Get support.** Find answers, ask questions, and connect with the Needle Engine community.
+
+---
+
+## Quick Help
+
+### Common Issues
+- [FAQ](../reference/faq) - Frequently asked questions
+- [Debugging Guide](../how-to-guides/debugging/) - Debug tools and techniques
+- [Common Issues](../reference/troubleshooting/common-issues) - Known issues and solutions
+
+### Documentation
+- [Tutorials](../tutorials/) - Learn step-by-step
+- [How-To Guides](../how-to-guides/) - Solve specific problems
+- [Reference](../reference/) - API documentation
+
+---
+
+## Community Support
+
+### Discord Server
+Join our active Discord community for real-time help:
+
+<actiongroup>
+<action href="https://discord.needle.tools">
+Join Discord Server →
+</action>
+</actiongroup>
+
+**Best for:** Quick questions, real-time discussions, community showcase
+
+### Forum
+Ask detailed questions and get thorough answers:
+
+<actiongroup>
+<action href="https://forum.needle.tools/?utm_source=needle_docs&utm_content=help_page">
+Visit Forum →
+</action>
+</actiongroup>
+
+**Best for:** In-depth technical questions, sharing projects, long-form discussions
+
+---
+
+## Official Support
+
+### Email Support
+For commercial support, licensing, and partnership inquiries:
+
+<actiongroup>
+<action href="mailto:hi+docs@needle.tools">
+Email Support →
+</action>
+</actiongroup>
+
+### Feedback
+Help us improve Needle Engine:
+
+<actiongroup>
+<action href="https://fwd.needle.tools/needle-engine/feedback">
+Submit Feedback →
+</action>
+</actiongroup>
+
+---
+
+## Stay Updated
+
+### Newsletter
+Get updates on new features and releases:
+
+<actiongroup>
+<action href="https://fwd.needle.tools/needle-engine/newsletter">
+Subscribe to Newsletter →
+</action>
+</actiongroup>
+
+### Social Media
+Follow us for updates and community highlights:
+
+- [Twitter/X](https://twitter.com/needletools) - News and updates
+- [YouTube](https://www.youtube.com/@needle-tools) - Video tutorials and demos
+- [GitHub](https://github.com/needle-tools) - Source code and issues
+
+---
+
+## Learning Resources
+
+### Video Tutorials
+- [Tutorials on YouTube](https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo) - Step-by-step video guides
+- [Interviews on YouTube](https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw) - Developer interviews
+
+### Documentation
+- [Getting Started](../getting-started/) - Installation and setup
+- [Tutorials](../tutorials/) - Learn by building projects
+- [How-To Guides](../how-to-guides/) - Task-oriented guides
+
+---
+
+## Report Issues
+
+### Bug Reports
+Found a bug? Report it on GitHub:
+
+<actiongroup>
+<action href="https://github.com/needle-tools/needle-engine-support/issues">
+Report Bug →
+</action>
+</actiongroup>
+
+### Documentation Issues
+Found an error in the docs?
+
+<actiongroup>
+<action href="https://github.com/needle-tools/needle-engine-support/issues">
+Report Documentation Issue →
+</action>
+</actiongroup>
+
+---
+
+## Testimonials
+
+See what developers are saying about Needle Engine:
+
+- [Testimonials](../testimonials) - Community feedback and quotes
+
+---
+
+## Need Help Right Now?
+
+1. **Check the FAQ** - [FAQ](../reference/faq)
+2. **Search the docs** - Use the search bar above
+3. **Ask on Discord** - [Discord Server](https://discord.needle.tools)
+4. **Post on Forum** - [Forum](https://forum.needle.tools)

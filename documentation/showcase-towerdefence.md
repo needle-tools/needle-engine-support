@@ -3,10 +3,20 @@ lang: en-US
 title: Tower Defense
 sidebar: false
 editLink: false
+head:
+  - - meta
+    - http-equiv: refresh
+      content: 0; url=/docs/samples-and-showcase/projects/tower-defense
 ---
 
-### Live
+# Page Moved
 
-<sample src="https://v6p9d9t4.ssl.hwcdn.net/html/7746989/index.html" />
+This page has moved to **[Samples: Tower Defense](/samples-and-showcase/projects/tower-defense)**.
 
-[Visit website](https://willitaugment.itch.io/tumbleweed-defender)
+You will be redirected automatically in a moment...
+
+<script setup>
+if (typeof window !== 'undefined') {
+  window.location.href = '/docs/samples-and-showcase/projects/tower-defense';
+}
+</script>

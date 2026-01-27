@@ -103,7 +103,7 @@ The following tools are used by Needle Engine to create, preview, and build your
 - Creates GPU-compressed formats (KTX2)
 - Required for production builds
 
-[Learn more about production builds](../deployment.md#production-builds)
+[Learn more about production builds](../deployment#production-builds)
 
 </ClientOnly>
 
@@ -185,30 +185,30 @@ Once you've installed Needle Engine, here's what to do next:
 - [Getting Started: Unity](../unity/) – Unity-specific workflows
 - [Getting Started: Blender](../blender/) – Blender-specific workflows
 - [Getting Started: three.js](../three/) – Web-first development
-- [Project Structure](../project-structure.md) – Understanding your web project
-- [TypeScript Essentials](./typescript-essentials.md) – Learn TypeScript basics
+- [Project Structure](../explanation/core-concepts/project-structure) – Understanding your web project
+- [TypeScript Essentials](../tutorials/fundamentals/typescript-essentials) – Learn TypeScript basics
 
 **Core Concepts:**
-- [Exporting 3D Content](../export.md) – How assets become web-ready
-- [Component System](../scripting.md) – Build reusable functionality
-- [Deployment](../deployment.md) – Publish your project to the web
+- [Exporting 3D Content](../export) – How assets become web-ready
+- [Component System](../how-to-guides/scripting/create-components) – Build reusable functionality
+- [Deployment](../deployment) – Publish your project to the web
 
 **Go Further:**
-- [Features Overview](../features-overview.md) – See what's possible
-- [XR Documentation](../xr.md) – Build VR and AR experiences
-- [Networking](../networking.md) – Create multiplayer experiences
+- [Features Overview](../features-overview) – See what's possible
+- [XR Documentation](../xr) – Build VR and AR experiences
+- [Networking](../networking) – Create multiplayer experiences
 - [Live Examples](https://engine.needle.tools/samples) – Explore sample projects
 
 **For Unity Developers:**
-- [Needle Engine for Unity Developers](./for-unity-developers.md) – Key differences from traditional Unity
+- [Needle Engine for Unity Developers](../tutorials/fundamentals/for-unity-developers) – Key differences from traditional Unity
 
 **Get Help:**
-- [FAQ](../faq.md) – Common questions and troubleshooting
+- [FAQ](../reference/faq) – Common questions and troubleshooting
 - [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) – Ask questions and share projects
 - [Discord](https://discord.needle.tools) – Join our community
 
 ---
 
 :::tip Need Help?
-If you run into issues during setup, check out our [FAQ](../faq.md) or join our [Discord community](https://discord.needle.tools) where we're happy to help!
+If you run into issues during setup, check out our [FAQ](../reference/faq) or join our [Discord community](https://discord.needle.tools) where we're happy to help!
 :::

@@ -45,7 +45,7 @@ Powerful compression and optimization pipeline ensures your files are small and 
     <action href="cloud/index">
     Needle Cloud ⛅️
     </action>
-    <action href="support">
+    <action href="help/">
     Help 💬
     </action>
 </actiongroup>
@@ -170,13 +170,13 @@ My workflow has been optimized 10X ever since i started using needle
 
 **Needle Engine** is a web-based runtime for complex and simple 3D applications alike. Built on three.js and the glTF standard, it provides:
 
-- **Full-featured 3D engine** – [PBR materials](./export.md#physically-based-materials-pbr), [custom shaders](./export.md#custom-shaders), [lightmaps](./export.md#lightmaps), [physics](./component-reference.md#physics), [particles](./component-reference.md#particles), [UI](./component-reference.md#ui), and [more](./features-overview)
-- **Editor integrations** – [Unity](./unity/index.md) and [Blender](./blender/index.md) for professional authoring workflows
-- **Built-in networking** – [Multiplayer components](./networking.md) for collaborative experiences
-- **Native WebXR support** – [AR and VR](./xr.md) on all platforms, including [iOS via App Clips](./ios-webxr-app-clip.md)
-- **Compression pipeline** – Optimized [deployment and compression](./deployment.md) for web delivery
-- **Component-based architecture** – [TypeScript/JavaScript scripting](./scripting.md) with familiar patterns
-- **Extensible and flexible** – [Integrate with any web framework](./html.md) or use [vanilla JS](./vanilla-js.md)
+- **Full-featured 3D engine** – [PBR materials](./export#physically-based-materials-pbr), [custom shaders](./export#custom-shaders), [lightmaps](./export#lightmaps), [physics](./reference/components#physics), [particles](./reference/components#particles), [UI](./reference/components#ui), and [more](./features-overview)
+- **Editor integrations** – [Unity](./unity/) and [Blender](./blender/) for professional authoring workflows
+- **Built-in networking** – [Multiplayer components](./networking) for collaborative experiences
+- **Native WebXR support** – [AR and VR](./xr) on all platforms, including [iOS via App Clips](./ios-webxr-app-clip)
+- **Compression pipeline** – Optimized [deployment and compression](./deployment) for web delivery
+- **Component-based architecture** – [TypeScript/JavaScript scripting](./how-to-guides/scripting/create-components) with familiar patterns
+- **Extensible and flexible** – [Integrate with any web framework](./html) or use [vanilla JS](./three/)
 
 <!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
 

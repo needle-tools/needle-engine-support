@@ -129,226 +129,164 @@ const defaultThemeOpts: DefaultThemeOptions = {
     },
     navbar: [
         {
-            text: 'Downloads',
+            text: 'Getting Started',
             link: '/getting-started/',
         },
         {
-            text: 'Overview',
-            link: '/',
+            text: 'Tutorials',
             children: [
+                "/tutorials/",
                 {
-                    text: 'What is Needle Engine?',
-                    link: '/',
-                },
-                '/testimonials',
-                {
-                    text: "Get an overview",
+                    text: "Fundamentals",
                     children: [
-                        {
-                            text: "Samples and Showcase",
-                            link: "https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=headernav"
-                        },
-                        "/vision",
-                        "/features-overview",
-                        "/technical-overview",
-                    ],
+                        "/tutorials/fundamentals/typescript-essentials",
+                        "/tutorials/fundamentals/for-unity-developers",
+                    ]
                 },
                 {
-                    text: "Resources",
-                    children: [
-                        {
-                            text: 'Pricing and Plans',
-                            link: "https://needle.tools/pricing/?utm_source=needle_docs&utm_content=headersubnav"
-                        },
-                        {
-                            text: "Changelog",
-                            link: "https://github.com/needle-tools/needle-engine-support/releases"
-                        },
-                        {
-                            text: "API Documentation",
-                            link: "https://engine.needle.tools/docs/api/latest",
-                        },
-                        {
-                            text: "Support & Community",
-                            link: "/support",
-                        },
-                        {
-                            text: "Needle Inspector",
-                            link: "/three/needle-devtools-for-threejs-chrome-extension",
-                        },
-                    ],
-                },
-            ]
-        },
-        {
-            text: 'Guides',
-            children: [
-                {
-                    text: "Integrations",
+                    text: "Platform Guides",
                     children: [
                         "/unity/",
                         "/blender/",
                         "/three/",
-                        "/embedding",
+                    ]
+                },
+            ]
+        },
+        {
+            text: 'How-To Guides',
+            children: [
+                "/how-to-guides/",
+                {
+                    text: "Scripting",
+                    children: [
+                        "/how-to-guides/scripting/create-components",
+                        "/scripting",
+                    ]
+                },
+                {
+                    text: "Export & Assets",
+                    children: [
+                        "/how-to-guides/export/",
+                        "/how-to-guides/export/materialx",
+                    ]
+                },
+                {
+                    text: "Web Integration",
+                    children: [
+                        "/how-to-guides/web-integration/",
+                        "/how-to-guides/deployment/embedding",
+                    ]
+                },
+                {
+                    text: "XR (VR & AR)",
+                    children: [
+                        "/how-to-guides/xr/",
+                        "/how-to-guides/xr/ios-webxr-app-clip",
+                        "/how-to-guides/xr/image-tracking",
+                        "/how-to-guides/everywhere-actions/",
+                    ]
+                },
+                {
+                    text: "Multiplayer",
+                    children: [
+                        "/how-to-guides/networking/",
+                    ]
+                },
+                {
+                    text: "Deployment",
+                    children: [
+                        "/how-to-guides/deployment/",
                         "/cloud/",
-                        // "/custom-integrations/",
                     ]
                 },
                 {
-                    text: "Core Concepts",
+                    text: "Testing & Debug",
                     children: [
-                        "/project-structure",
-                        {
-                            text: "Everywhere Actions",
-                            link: "/everywhere-actions",
-                        },
-                        "/export",
-                        "/html",
-                        "/testing",
-                        "/deployment",
+                        "/how-to-guides/testing",
+                        "/how-to-guides/debugging/",
                     ]
                 },
                 {
-                    text: "Advanced",
+                    text: "Integrations",
                     children: [
-                        "/xr",
-                        {
-                            text: "iOS WebXR",
-                            link: "/ios-webxr-app-clip",
-                        },
-                        {
-                            text: "Image Tracking (WebXR)",
-                            link: "/webxr-image-tracking",
-                        },
-                        "/networking",
-                        "/materialx",
-                        "/unity/editor-sync",
-                        {
-                        text: "Responsive 3D Webdesign",
-                        link:  "/responsive-3D-webdesign-with-needle-and-threejs",
-                        },
+                        "/how-to-guides/integrations/framer",
+                        "/how-to-guides/integrations/wordpress",
                     ]
                 },
-                {
-                    text: "Troubleshooting",
-                    children: [
-                        "/debugging",
-                        "/faq",
-                        {
-                            text: "Support and Community",
-                            link: "/support",
-                        },
-                    ]
-                },
-                {
-                    text: "Videos",
-                    children: [
-                        {
-                            text: "Tutorials on Youtube",
-                            target: "_blank",
-                            link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo"
-                        },
-                        {
-                            text: "Interviews on Youtube",
-                            target: "_blank",
-                            link: "https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw"
-                        },
-                    ]
-                },
+            ]
+        },
+        {
+            text: 'Explanation',
+            children: [
+                "/explanation/",
+                "/explanation/core-concepts/vision",
+                "/explanation/architecture/technical-overview",
+                "/explanation/core-concepts/project-structure",
+                "/explanation/core-concepts/component-compiler",
+                "/explanation/core-concepts/features-overview",
             ]
         },
         {
             text: 'Reference',
             children: [
+                "/reference/",
                 {
-                    text: "Scripting Overview",
+                    text: "API Reference",
                     children: [
-                        "/getting-started/typescript-essentials",
-                        "/getting-started/for-unity-developers",
-                        "/component-reference",
-                        {
-                            text: "Everywhere Actions",
-                            link: "/everywhere-actions",
-                        },
-                    ]
-                },
-                {
-                    text: "Components and Lifecycle",
-                    children: [
-                        "/scripting",
-                        "/reference/typescript-decorators",
-                        "/component-compiler",
-                        "/scripting-examples",
-                        {
-                            text: "Community Contributions",
-                            link: "/community/contributions"
-                        },
-                        "/modules",
-                    ]
-                },
-                {
-                    text: "Settings and APIs",
-                    children: [
-                        "/reference/needle-engine-attributes",
-                        "/reference/needle-config-json",
                         {
                             text: "Needle Engine API",
                             link: "https://engine.needle.tools/docs/api/latest",
                         },
-                        {
-                            text: "three.js API",
-                            link: "https://threejs.org/docs/index.html",
-                        },
+                        "/reference/api/lifecycle-methods",
+                        "/reference/api/physics-events",
+                        "/reference/api/input-events",
+                        "/reference/api/xr-events",
+                    ]
+                },
+                {
+                    text: "Components & Examples",
+                    children: [
+                        "/reference/components",
+                        "/reference/scripting-examples",
+                    ]
+                },
+                {
+                    text: "Configuration",
+                    children: [
+                        "/reference/needle-config-json",
+                        "/reference/needle-engine-attributes",
+                        "/reference/typescript-decorators",
+                    ]
+                },
+                {
+                    text: "Platform Support",
+                    children: [
+                        "/explanation/core-concepts/features-overview",
+                    ]
+                },
+                {
+                    text: "Additional Resources",
+                    children: [
+                        "/reference/modules",
+                        "/reference/faq",
                     ]
                 },
             ]
         },
         {
             text: "Help",
-            link: "/support",
-        },
-        {
-            text: 'Needle',
             children: [
+                "/help/",
+                "/help/support",
+                "/faq",
                 {
-                    text: 'Needle Website',
-                    link: 'https://needle.tools?utm_source=needle_docs&utm_content=headernav'
-                },
-                {
-                    text: 'Needle Cloud',
-                    link: 'https://cloud.needle.tools?utm_source=needle_docs&utm_content=headernav'
-                },
-                {
-                    text: 'Support Community',
+                    text: 'Forum',
                     link: 'https://forum.needle.tools?utm_source=needle_docs&utm_content=headernav'
                 },
                 {
-                    text: 'Discord Server',
+                    text: 'Discord',
                     link: 'https://discord.needle.tools'
-                },
-                {
-                    text: 'X/Twitter',
-                    link: 'https://twitter.com/needletools'
-                },
-                {
-                    text: 'YouTube',
-                    link: 'https://www.youtube.com/@needle-tools'
-                },
-                {
-                    text: 'Newsletter',
-                    link: "https://fwd.needle.tools/needle-engine/newsletter"
-                },
-                {
-                    text: 'Email',
-                    link: 'mailto:hi+docs@needle.tools'
-                },
-                {
-                    text: 'Feedback',
-                    link: 'https://fwd.needle.tools/needle-engine/feedback'
-                },
-                {
-                    text: 'Github',
-                    link: 'https://github.com/needle-tools'
                 },
             ]
         },
@@ -358,109 +296,155 @@ const defaultThemeOpts: DefaultThemeOptions = {
         '/': [
             {
                 text: "Getting Started",
+                link: "/getting-started/",
                 children: [
-                    {
-                        text: 'Downloads',
-                        link: "/getting-started/",
-                    },
-                    {
-                        text: 'Needle Engine for Unity',
-                        link: '/unity/',
-                    },
-                    {
-                        text: 'Needle Engine for Blender',
-                        link: '/blender/',
-                    },
-                    {
-                        text: 'Needle Engine no Editor',
-                        link: '/three/',
-                    },
-                    {
-                        text: 'Needle Engine on your Website',
-                        link: '/embedding',
-                    },
-                    {
-                        text: 'Needle Cloud',
-                        link: '/cloud/',
-                    },
-                    {
-                        text: 'Custom integrations',
-                        link: '/custom-integrations/',
-                    },
-                    {
-                        text: 'Support and Community',
-                        link: '/support',
-                    }
+                    "/getting-started/",
                 ]
             },
             {
-                text: "Core Concepts",
+                text: "Tutorials",
+                link: "/tutorials/",
                 children: [
-                    "/project-structure",
-                    {
-                        text: "Everywhere Actions",
-                        link: "/everywhere-actions",
-                    },
-                    "/export",
-                    "/html",
-                    "/testing",
-                    "/deployment",
+                    "/tutorials/fundamentals/typescript-essentials",
+                    "/tutorials/fundamentals/for-unity-developers",
                 ]
             },
             {
-                text: "Scripting",
+                text: "How-To Guides",
+                link: "/how-to-guides/",
                 children: [
-                    "/getting-started/typescript-essentials",
-                    "/scripting",
-                    "/getting-started/for-unity-developers",
-                    "/component-compiler",
-                    "/scripting-examples",
                     {
-                        text: "Community Contributions",
-                        link: "/community/contributions/"
+                        text: "Scripting",
+                        children: [
+                            "/how-to-guides/scripting/create-components",
+                            "/scripting",
+                        ]
+                    },
+                    {
+                        text: "Platform Integration",
+                        children: [
+                            "/unity/",
+                            "/blender/",
+                            "/three/",
+                        ]
+                    },
+                    {
+                        text: "Export & Assets",
+                        children: [
+                            "/how-to-guides/export/",
+                            "/how-to-guides/export/materialx",
+                        ]
+                    },
+                    {
+                        text: "Web Integration",
+                        children: [
+                            "/how-to-guides/web-integration/",
+                            "/how-to-guides/deployment/embedding",
+                        ]
+                    },
+                    {
+                        text: "XR (VR & AR)",
+                        children: [
+                            "/how-to-guides/xr/",
+                            "/how-to-guides/xr/ios-webxr-app-clip",
+                            "/how-to-guides/xr/image-tracking",
+                            "/how-to-guides/everywhere-actions/",
+                        ]
+                    },
+                    {
+                        text: "Multiplayer",
+                        children: [
+                            "/how-to-guides/networking/",
+                        ]
+                    },
+                    {
+                        text: "Deployment",
+                        children: [
+                            "/how-to-guides/deployment/",
+                            "/cloud/",
+                        ]
+                    },
+                    {
+                        text: "Debug & Test",
+                        children: [
+                            "/how-to-guides/debugging/",
+                            "/how-to-guides/testing",
+                        ]
+                    },
+                    {
+                        text: "Integrations",
+                        children: [
+                            "/how-to-guides/integrations/framer",
+                            "/how-to-guides/integrations/wordpress",
+                        ]
                     },
                 ]
             },
             {
-                text: "Advanced",
+                text: "Explanation",
+                link: "/explanation/",
                 children: [
-                    "/xr",
-                    {
-                        text: "iOS WebXR",
-                        link: "/ios-webxr-app-clip",
-                    },
-                    {
-                        text: "Image Tracking (WebXR)",
-                        link: "/webxr-image-tracking",
-                    },
-                    "/networking",
-                    "/materialx",
-                    "/unity/editor-sync",{
-                        text: "Responsive 3D Webdesign",
-                        link:  "/responsive-3D-webdesign-with-needle-and-threejs",
-                    },
-                ]
-            },
-            {
-                text: "Troubleshooting",
-                children: [
-                    "/debugging",
-                    "/faq",
-                    {
-                        text: "Support and Community",
-                        link: "/support",
-                    },
+                    "/explanation/core-concepts/vision",
+                    "/explanation/architecture/technical-overview",
+                    "/explanation/core-concepts/project-structure",
+                    "/explanation/core-concepts/component-compiler",
+                    "/explanation/core-concepts/features-overview",
                 ]
             },
             {
                 text: "Reference",
+                link: "/reference/",
                 children: [
-                    "/features-overview",
-                    "/technical-overview",
-                    "/component-reference",
-                    "/reference/needle-config-json",
-                    "/reference/needle-engine-attributes",
-                    "/reference/typescript-decorators",
+                    {
+                        text: "API Reference",
+                        children: [
+                            "/reference/api/lifecycle-methods",
+                            "/reference/api/physics-events",
+                            "/reference/api/input-events",
+                            "/reference/api/xr-events",
+                            "/reference/api/time",
+                        ]
+                    },
+                    {
+                        text: "Components & Examples",
+                        children: [
+                            "/reference/components",
+                            "/reference/scripting-examples",
+                        ]
+                    },
+                    {
+                        text: "Configuration",
+                        children: [
+                            "/reference/needle-config-json",
+                            "/reference/needle-engine-attributes",
+                            "/reference/typescript-decorators",
+                        ]
+                    },
+                    {
+                        text: "Platform Support",
+                        children: [
+                            "/explanation/core-concepts/features-overview",
+                        ]
+                    },
+                    {
+                        text: "Additional Resources",
+                        children: [
+                            "/reference/modules",
+                            "/reference/faq",
+                        ]
+                    },
+                ]
+            },
+            {
+                text: "Samples & Showcase",
+                link: "/samples-and-showcase/",
+            },
+            {
+                text: "Help & Community",
+                link: "/help/",
+                children: [
+                    "/help/support",
+                    "/faq",
                 ]
             },
         ]
