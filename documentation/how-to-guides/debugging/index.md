@@ -66,7 +66,7 @@ Here are some of the most commonly used:
 
 ## Debug Methods
 
-Needle Engine also has some very powerful and useful debugging methods that are part of the static `Gizmos` class. See the [scripting documentation](./scripting.md#gizmos) for more information.
+Needle Engine also has some very powerful and useful debugging methods that are part of the static `Gizmos` class. See the [scripting documentation](/docs/how-to-guides/scripting/create-components#gizmos) for more information.
 
 
 ## Local Testing of release builds

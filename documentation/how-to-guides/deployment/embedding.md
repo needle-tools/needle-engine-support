@@ -315,9 +315,9 @@ Webflow integration guide coming soon. In the meantime, use the [iframe method](
 ## Next Steps
 
 **Configuration & Customization:**
-- [Web Component Attributes](./reference/needle-engine-attributes.md) – Configure the `<needle-engine>` element
-- [Scripting Guide](./scripting.md) – Add custom functionality
-- [Deployment Options](./deployment.md) – Explore all hosting platforms
+- [Web Component Attributes](/docs/reference/needle-engine-attributes) – Configure the `<needle-engine>` element
+- [Scripting Guide](/docs/how-to-guides/scripting/create-components) – Add custom functionality
+- [Deployment Options](/docs/how-to-guides/deployment/) – Explore all hosting platforms
 
 **Editor Integrations:**
 - <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity Integration</a></logo-header> – Visual scene creation with Unity
@@ -326,7 +326,7 @@ Webflow integration guide coming soon. In the meantime, use the [iframe method](
 **Get Help:**
 - [Forum](https://forum.needle.tools) – Ask questions and share projects
 - [Discord](https://discord.needle.tools) – Join our community
-- [FAQ](./faq.md) – Common questions and troubleshooting
+- [FAQ](/docs/reference/faq) – Common questions and troubleshooting
 
 :::tip Visual Scene Creation
 Did you know Needle Engine integrates with Unity and Blender? Create complex 3D scenes visually and export them directly to the web. Perfect for non-coders or teams with 3D artists.

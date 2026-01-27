@@ -34,7 +34,7 @@ Adding AR or VR support to your Needle Engine scene is incredibly simple:
 
 **1. Add the WebXR Component**
 
-You can add it visually using the [Unity Integration](./unity/index.md) or [Blender addon](./blender/index.md), or with just a few lines of code:
+You can add it visually using the [Unity Integration](/docs/unity/) or [Blender addon](/docs/blender/), or with just a few lines of code:
 
 ```ts
 import { onStart, WebXR } from "@needle-tools/engine";
@@ -105,7 +105,7 @@ The following devices and browsers have been verified to work with Needle Engine
 | --- | --- | --- |
 | <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Chrome | Full WebXR AR support |
 | <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Firefox | Full WebXR AR support |
-| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](ios-webxr-app-clip.md) (ARKit-powered). Alternative: [Everywhere Actions](everywhere-actions.md) for USDZ/QuickLook |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](/docs/explanation/core-concepts/ios-webxr-app-clip) (ARKit-powered). Alternative: [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for USDZ/QuickLook |
 | <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 15+</logo-header> | ✔️ WebXR Viewer | Older browser option (somewhat dated) |
 | <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking |
 | <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 1</logo-header> | ❌ | no WebXR support |

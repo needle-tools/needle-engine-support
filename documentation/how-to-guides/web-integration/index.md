@@ -25,7 +25,7 @@ npm i @needle-tools/engine
 
 That's it! Needle Engine automatically bundles with your project for optimized production builds.
 
-[📖 See web component reference →](./reference/needle-engine-attributes.html)
+[📖 See web component reference →](/docs/reference/needle-engine-attributes)
 
 ::: tip Bundling and tree shaking
 
@@ -56,7 +56,7 @@ Let us know what you're building with! We're always looking to improve the exper
 :::
 
 :::tip
-Some frameworks require custom settings in `needle.config.json`. Learn more [here](./reference/needle-config-json.md). Typically, the `baseUrl` needs to be set. 
+Some frameworks require custom settings in `needle.config.json`. Learn more [here](/docs/reference/needle-config-json). Typically, the `baseUrl` needs to be set. 
 :::
 
 :::details How do I create a custom project template in Unity?
@@ -183,12 +183,12 @@ For complex requirements like partial caching, custom service workers or differe
 ## Accessing Needle Engine and Components from external javascript
     
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
-For accessing components from regular javascript outside of the engine please refer to the [interop with regular javascript section](./scripting.md#accessing-needle-engine-and-components-from-anywhere)
+For accessing components from regular javascript outside of the engine please refer to the [interop with regular javascript section](/docs/how-to-guides/scripting/create-components#accessing-needle-engine-and-components-from-anywhere)
 
 
 ## Customizing how loading looks
 
-See the *Loading Display* section in [needle engine component reference](./reference/needle-engine-attributes.md)
+See the *Loading Display* section in [needle engine component reference](/docs/reference/needle-engine-attributes)
 
 ### Builtin styles
 
@@ -200,6 +200,6 @@ Options are `light` and `dark` (default):
 
 ### Custom Loading Style — *PRO feature*  #
 
-Please see the *Loading Display* section in [needle engine component reference](./reference/needle-engine-attributes.md)
+Please see the *Loading Display* section in [needle engine component reference](/docs/reference/needle-engine-attributes)
 
 ![custom loading](/imgs/custom-loading-style.webp)

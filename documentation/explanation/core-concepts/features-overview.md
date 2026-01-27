@@ -10,13 +10,13 @@ Explore our [Samples and Showcase](https://engine.needle.tools/samples) to exper
 
 ## Cross-Platform: Desktop, Mobile, VR, and AR
 
-**One codebase, every platform.** Needle Engine runs everywhere web technology does – desktop, mobile, AR, and VR. We build Needle Engine [with XR in mind](./xr.md) as an integral part of responsive web design.
+**One codebase, every platform.** Needle Engine runs everywhere web technology does – desktop, mobile, AR, and VR. We build Needle Engine [with XR in mind](/docs/how-to-guides/xr/) as an integral part of responsive web design.
 
 ### Native iOS WebXR Support
 
 **Full WebXR on iPhone and iPad** – no app required! 🎉
 
-Native [iOS WebXR support](./ios-webxr-app-clip.md) is now available through App Clip technology. Users can experience your WebXR AR content instantly via QR codes or links, without installing an app. Powered by ARKit, it provides:
+Native [iOS WebXR support](/docs/explanation/core-concepts/ios-webxr-app-clip) is now available through App Clip technology. Users can experience your WebXR AR content instantly via QR codes or links, without installing an app. Powered by ARKit, it provides:
 
 - Hit testing and plane detection
 - DOM overlays for UI elements
@@ -24,11 +24,11 @@ Native [iOS WebXR support](./ios-webxr-app-clip.md) is now available through App
 - Anchor creation and tracking (work in progress)
 - Lighting estimation (work in progress)
 
-[Try it now](https://appclip.needle.tools) • [Read iOS WebXR docs](./ios-webxr-app-clip.md)
+[Try it now](https://appclip.needle.tools) • [Read iOS WebXR docs](/docs/explanation/core-concepts/ios-webxr-app-clip)
 
 ### Everywhere Actions for iOS and Android
 
-Use [Everywhere Actions](./everywhere-actions.md) for **interactive AR experiences** on both iOS and Android using USDZ and QuickLook. Perfect for product configurators, marketing experiences, and interactive storytelling.
+Use [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for **interactive AR experiences** on both iOS and Android using USDZ and QuickLook. Perfect for product configurators, marketing experiences, and interactive storytelling.
 
 **Platform Support:**
 - **VR Headsets**: Meta Quest, Apple Vision Pro, Pico, HTC Vive, Valve Index
@@ -36,19 +36,19 @@ Use [Everywhere Actions](./everywhere-actions.md) for **interactive AR experienc
 - **Desktop**: All modern browsers
 - **Future devices work automatically** – that's the power of web standards
 
-[Learn more about XR support](./xr.md)
+[Learn more about XR support](/docs/how-to-guides/xr/)
 
 ## Graphics and Rendering
 
 ### Shaders and Materials
 
-**Professional-grade rendering on the web.** Export both [PBR Materials](./export.md#physically-based-materials-pbr) and [Custom shaders](./export.md#custom-shaders) created with Shader Graph or other systems.
+**Professional-grade rendering on the web.** Export both [PBR Materials](/docs/how-to-guides/export/#physically-based-materials-pbr) and [Custom shaders](/docs/how-to-guides/export/#custom-shaders) created with Shader Graph or other systems.
 
 <img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" alt="Shader Graph Example" />
 
 Use Unity's node-based ShaderGraph to create shaders for the web. Artists can keep creating without worrying about syntax or web-specific code.
 
-Read more: [PBR Materials](./export.md#physically-based-materials-pbr) • [Custom Shaders](./export.md#custom-shaders)
+Read more: [PBR Materials](/docs/how-to-guides/export/#physically-based-materials-pbr) • [Custom Shaders](/docs/how-to-guides/export/#custom-shaders)
 
 ### Lightmaps
 

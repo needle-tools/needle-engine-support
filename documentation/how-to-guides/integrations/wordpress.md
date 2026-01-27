@@ -31,4 +31,4 @@ Needle Cloud offers an easy way to get the embed code for your project. Just ope
 
 ## There are more integration options
 
-See [Embedding a Needle project into an existing website](./embedding.md#integrations) for more options and details.
+See [Embedding a Needle project into an existing website](/docs/how-to-guides/deployment/embedding#platform-specific-integrations) for more options and details.

@@ -56,4 +56,4 @@ With Needle Engine 4.11 we add support for directly embedding a Needle Engine pr
 
 ## There are more integration options
 
-See [Embedding a Needle project into an existing website](./embedding.md#integrations) for more options and details.
+See [Embedding a Needle project into an existing website](/docs/how-to-guides/deployment/embedding#platform-specific-integrations) for more options and details.
