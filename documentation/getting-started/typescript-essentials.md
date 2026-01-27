@@ -4,49 +4,122 @@ description: Differences, similarities and key concepts of Typescript, Javascrip
 sidebarDepth: 2
 ---
 
-The following guide tries to highlight some of the key differences between C#, Javascript and Typescript. This is most useful for developers new to the web ecosystem.
+# TypeScript Essentials
 
-Here are also some useful resources for learning how to write Typescript:  
+<logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript</logo-header> • <logo-header logo="/imgs/javascript-logo.webp" alt="JavaScript">JavaScript</logo-header> • <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C#</logo-header>
 
-- [Typescript Tutorial](https://www.typescripttutorial.net/)
-- [Learn Typescript](https://www.tutorialsteacher.com/typescript)
-- [Typescript Documentation](https://www.typescriptlang.org/docs/)
+This guide highlights key differences between C#, JavaScript, and TypeScript—essential knowledge for developers new to the web ecosystem.
 
-### Already familiar with Typescript and Javascript?
+:::important How Needle Engine Works
+Needle Engine does **not** compile C# to WebAssembly or run C# code in the browser. Instead:
 
-Then continue reading at [Needle Engine Scripting](/scripting.md)
+- **Unity/Blender editors** define your scene structure, components, and data
+- **Export process** converts your scene hierarchy and component properties to glTF format
+- **TypeScript/JavaScript** powers the runtime behavior in the browser
 
-### Key differences between C#, Javascript or Typescript
+Think of C# scripts in Unity or Blender panels as **data structure definitions** that get exported. You'll write your runtime logic in TypeScript/JavaScript using Needle Engine's API.
+:::
+
+:::tip Already familiar with TypeScript and JavaScript?
+Skip ahead to [Needle Engine Scripting](../scripting.html) to start building!
+:::
+
+## Learning Resources
+
+- [TypeScript Tutorial](https://www.typescripttutorial.net/)
+- [Learn TypeScript](https://www.tutorialsteacher.com/typescript)
+- [TypeScript Documentation](https://www.typescriptlang.org/docs/)
+
+## <logo-header logo="/imgs/csharp-logo.webp" alt="C#">vs</logo-header> <logo-header logo="/imgs/javascript-logo.webp" alt="JavaScript">vs</logo-header> <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">Key Differences</logo-header>
 
 
-**CSharp** or **C#** is a statically typed & compiled language. It means that **before** your code can run (or be executed) it has to be compiled - translated - into IL or CIL, an intermediate language that is a little closer to *machine code*. The important bit to understand here is that your code is analyzed and has to pass certain checks and rules that are **enforced** by the compiler. You will get compiler errors **in Unity** and your application not even start running if you write code that violates any of the rules of the C# language. You will not be able to enter Play-Mode with compiler errors.
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# (CSharp)</logo-header>
 
-**Javascript** on the other hand is interpreted at runtime. That means you can write code that is not valid and cause errors - but you will not see those errors *until your program runs* or tries to **execute** exactly that line that has the error. For example you can write `var points = 100; points += "hello world";` and nobody will complain *until* you run the code in a browser.
+**Statically typed & compiled language**
 
-**Typescript** is a language designed by Microsoft that **compiles to javascript**  
-It adds a lot of features like for example **type-safety**. That means when you write code in Typescript you *can* declare types and hence get errors at *compile-time* when you try to e.g. make invalid assignments or call methods with unexpected types. Read more about types in Javascript and Typescript below. 
+- Code must be **compiled before** it runs (translated to IL/CIL)
+- Compiler **enforces** rules and catches errors before runtime
+- You'll get compiler errors in Unity if code violates C# rules
+- **Cannot enter Play Mode** with compiler errors
 
-### Types — or the lack thereof
+### <logo-header logo="/imgs/javascript-logo.webp" alt="JavaScript">JavaScript</logo-header>
 
-**Vanilla Javascript** does (as of today) **not** have any concept of *types*: there is no guarantuee that a variable that you declared as `let points = 100` will still be a *number* later in your application. That means that in Javascript it is perfectly valid code to assign `points = new Vector3(100, 0, 0);` later in your code. Or even `points = null` or `points = myRandomObject` - you get the idea. This is all OK while you write the code **but** it may crash horrible when your code is executed because later you write `points -= 1` and **now** you get errors in the browser when your application is already running.
+**Interpreted at runtime**
 
-As mentioned above **Typescript** was created to help fix that problem by adding syntax for defining types.   
+- Code runs directly in the browser without compilation
+- Errors only appear **when that specific line executes**
+- Example: `var points = 100; points += "hello world";` won't error until runtime
+- More flexibility but less safety during development
 
-It is important to understand that you *basically* still write Javascript when you write Typescript and while it *is* possible to circumvent all type checking and safety checks by e.g. adding ``//@ts-ignore`` above a erroneous line or defining all types as ``any`` this is **definitely not recommneded**. Types are here to help you find errors before they actually happen. You really dont want to deploy your website to your server only to later get reports from users or visitors telling you your app crashed while it was running. 
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript</logo-header>
 
-While *vanilla Javascript* does not offer types you can still add type-annotations to your javascript variables, classes and methods by using **[JSDoc](https://jsdoc.app/)**.
+**JavaScript with type safety** (designed by Microsoft)
 
-### Variables
+- **Compiles to JavaScript** for browser execution
+- Adds **type annotations** for compile-time error checking
+- Catches invalid assignments and method calls before runtime
+- Best of both worlds: JavaScript flexibility + C# safety
 
-In C# you write variables either by using the type or the `var` keyword.   
-For example you can either write `int points = 100;`  
-or alternatively use `var` and let the compiler figure out the correct type for you: `var points = 100`
+:::tip Why TypeScript?
+TypeScript helps you find errors **before deployment**, not after users report crashes. It's JavaScript with guardrails.
+::: 
 
-In Javascript or Typescript you have two modern options to declaring a variable.  
-For a variable that you plan to re-assign use `let`, for example `let points = 100;`  
-For a variable that you do not want to be able to re-assign use `const`, for example `const points = 100;`  
-> *Be aware of var*   
-  You might come across the `var` keyword in javascript as well but it is not recommended to use it and the modern replacement for it is `let`. Learn more about [var vs let](https://stackoverflow.com/a/11444416).
+## Types & Type Safety
+
+### JavaScript: No Type Guarantees
+
+Vanilla JavaScript has **no concept of types**—a variable can change types at any time:
+
+```js
+let points = 100;           // number
+points = new Vector3();     // now it's a Vector3
+points = null;              // now it's null
+points -= 1;                // 💥 Runtime error!
+```
+
+This is all valid JavaScript syntax, but crashes when executed.
+
+### TypeScript: Compile-Time Type Checking
+
+TypeScript solves this by adding type annotations:
+
+```ts
+let points: number = 100;
+points = new Vector3();    // ❌ TypeScript error at compile time!
+```
+
+:::warning Don't Bypass Type Safety
+While you *can* disable TypeScript checks with `//@ts-ignore` or `any` types, **this defeats the purpose**. Types help you catch errors before deployment—don't circumvent them!
+:::
+
+### Alternative: JSDoc for JavaScript
+
+If you prefer vanilla JavaScript, you can add type annotations using [JSDoc](https://jsdoc.app/):
+
+```js
+/** @type {number} */
+let points = 100;
+```
+
+## Variables
+
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# Variable Declaration</logo-header>
+
+```csharp
+int points = 100;           // Explicit type
+var points = 100;           // Type inference (still strongly typed)
+```
+
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript/JavaScript Variable Declaration</logo-header>
+
+```ts
+let points = 100;           // Reassignable variable
+const points = 100;         // Cannot reassign (recommended when possible)
+```
+
+:::warning Avoid `var`
+You might see `var` in older JavaScript code, but it's **not recommended**. Always use `let` or `const` instead. [Learn why →](https://stackoverflow.com/a/11444416)
+:::
 
 Please note that you *can* still assign values to variables declared with const if they are (for example) a custom type. Consider the following example:  
 
@@ -65,142 +138,229 @@ const myPosition : Vector3 = new Vector3(0, 0, 0);
 myPosition = new Vector3(100, 0, 0); // ⚠ ASSIGNING TO CONST IS NOT ALLOWED
 ```
 
-### Using or Importing Types
+## Imports & Modules
 
-In Unity you usually add `using` statements at the top of you code to import specific namespaces from Assemblies that are references in your project or - in certain cases - you migth find yourself importing a specific type with a name from a namespace.   
-See the following example:
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# - Using Statements</logo-header>
+
+In Unity, you import namespaces with `using` statements:
+
 ```csharp
 using UnityEngine;
-// importing just a specific type and giving it a name
+using System.Collections.Generic;
+
+// Importing a specific type with an alias
 using MonoBehaviour = UnityEngine.MonoBehaviour;
 ```
 
-This is how you do the same in Typescript to import specific types from a package:
-```ts twoslash
-import { Vector3 } from 'three';
-import { Behaviour } from '@needle-tools/engine';
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript - Import Statements</logo-header>
+
+In TypeScript, you import specific exports from packages:
+
+**Named imports (recommended):**
+```ts
+import { Vector3, Object3D } from 'three';
+import { Behaviour, serializable } from '@needle-tools/engine';
 ```
 
-You *can* also import all the types from a specific package by giving it a name which you might see here and there:
-```ts twoslash
+**Namespace imports:**
+```ts
 import * as THREE from 'three';
-const myVector : THREE.Vector3 = new THREE.Vector3(1, 2, 3);
+const myVector: THREE.Vector3 = new THREE.Vector3(1, 2, 3);
 ```
 
-### Primitive Types
-*Vector2, Vector3, Vector4...*  
-If you have a C# background you might be familiar with the difference between a class and a struct. While a class is a reference type a struct is a custom value type. Meaning it is, depending on the context, allocated on the stack and when being passed to a method by default a copy is created.   
-Consider the following example in C#:
+:::tip Which Import Style?
+**Named imports** are preferred—they enable better tree shaking (smaller bundle sizes) and clearer dependencies. Use namespace imports only when you need many types from one package.
+:::
+
+## Value Types vs Reference Types
+
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# - Value Types (Structs)</logo-header>
+
+In C#, `Vector3` is a **struct** (value type)—it gets **copied** when passed to methods:
 
 ```csharp
-void MyCallerMethod(){
-    var position = new Vector3(0,0,0);
+void MyCallerMethod() {
+    var position = new Vector3(0, 0, 0);
     MyExampleVectorMethod(position);
-    UnityEngine.Debug.Log("Position.x is " + position.x); // Here x will be 0
+    Debug.Log("Position.x is " + position.x); // ✅ Still 0 (copy was modified)
 }
-void MyExampleVectorMethod(Vector3 position){
-    position.x = 42;
+
+void MyExampleVectorMethod(Vector3 position) {
+    position.x = 42; // Modifies the COPY, not the original
 }
 ```
 
-A method is called with a Vector3 named position. Inside the method the passed in vector `position` is modified: x is set to 42. But in C# the original vector that is being passed into this method (see line 2) is **not** changed and x will **still** be 0 (line 4).  
+**Key behavior:** Assignment creates a copy:
+```csharp
+var myVector = new Vector3(1, 1, 1);
+var myOtherVector = myVector;  // Creates a COPY
+myOtherVector.x = 42;
+// Logs: 1, 42 (two separate instances)
+Debug.Log(myVector.x + ", " + myOtherVector.x);
+```
 
-The same is not true for Javascript/Typescript. Here we don't have custom value types, meaning if you come across a Vector in Needle Engine or three.js you will always have a reference type.   
-Consider the following example in typescript:  
-```ts twoslash
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript - Reference Types (Objects)</logo-header>
+
+In JavaScript/TypeScript, **all objects are reference types**—including `Vector3`:
+
+```ts
 import { Vector3 } from 'three'
 
-function myCallerMethod() : void {
-    const position = new Vector3(0,0,0);
+function myCallerMethod() {
+    const position = new Vector3(0, 0, 0);
     myExampleVectorMethod(position);
-    console.log("Position.x is " + position.x); // Here x will be 42
+    console.log("Position.x is " + position.x); // ⚠️ Now 42 (original modified!)
 }
-function myExampleVectorMethod(position: Vector3) : void {
-    position.x = 42;
+
+function myExampleVectorMethod(position: Vector3) {
+    position.x = 42; // Modifies the ORIGINAL
 }
 ```
-Do you see the difference? Because vectors and all custom objects *are* in fact reference types we will have modified the original `position` variable (line 3) and x is now 42.  
 
-This is not only important to understand for methods but also when working with variables.  
-In C# the following code will produce two instances of Vector3 and changing one will not affect the other:  
-```csharp
-var myVector = new Vector3(1,1,1);
-var myOtherVector = myVector;
-myOtherVector.x = 42;
-// will log: 1, 42
-UnityEngine.Debug.Log(myVector.x + ", " + myOtherVector.x); 
-``` 
-If you do the same in Typescript you will **not** create a copy but get a reference to the same `myVector` instance instead:
-```ts twoslash
+**Key behavior:** Assignment creates a reference:
+```ts
 import { Vector3 } from 'three'
 
-const myVector = new Vector3(1,1,1);
-const myOtherVector = myVector;
+const myVector = new Vector3(1, 1, 1);
+const myOtherVector = myVector;  // Creates a REFERENCE
 myOtherVector.x = 42;
-// will log: 42, 42
-console.log(myVector.x, myOtherVector.x); 
+// Logs: 42, 42 (same instance!)
+console.log(myVector.x, myOtherVector.x);
 ```
 
-### Vector Maths and Operators
+:::warning Critical Difference!
+In TypeScript, **modifying a Vector modifies the original**. To create a copy, use `.clone()`:
 
-While in C# you can use operator overloading this is not available in Javascript unfortunately. This means that while you can multiply a Vector3 in C# like this: 
+```ts
+const myVector = new Vector3(1, 1, 1);
+const myOtherVector = myVector.clone(); // ✅ Creates a true copy
+myOtherVector.x = 42;
+// Logs: 1, 42 (two separate instances)
+console.log(myVector.x, myOtherVector.x);
+```
+:::
+
+## Vector Math & Operators
+
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# - Operator Overloading</logo-header>
+
+C# supports operator overloading for vectors:
 
 ```csharp
-var myFirstVector = new Vector3(1,1,1);
+var myVector = new Vector3(1, 1, 1);
 var myFactor = 100f;
-myFirstVector *= myFactor;
-// → myFirstVector is now 100, 100, 100
+
+myVector *= myFactor;          // ✅ Operators work
+myVector = myVector + new Vector3(5, 0, 0);  // ✅ Addition works
+// → myVector is now (105, 100, 100)
 ```
 
-you have to use a method on the Vector3 type to archieve the same result (just with a little more boilerplate code)
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript - Method Calls</logo-header>
 
-```ts twoslash
+JavaScript/TypeScript does **not** support operator overloading. Use methods instead:
+
+```ts
 import { Vector3 } from "three"
 
-const myFirstVector : Vector3 = new Vector3(1, 1, 1)
+const myVector = new Vector3(1, 1, 1);
 const myFactor = 100;
-myFirstVector.multiplyScalar(myFactor);
-// → myFirstVector is now 100, 100, 100
+
+myVector.multiplyScalar(myFactor);           // ❌ Can't use *= operator
+myVector.add(new Vector3(5, 0, 0));          // ❌ Can't use + operator
+// → myVector is now (105, 100, 100)
 ```
 
-### Equality Checks
+**Common vector operations:**
 
-#### loose vs strict comparison
-In C# when you want to check if two variables are the same you can write it as follows:
+| Operation | C# | TypeScript |
+| --- | --- | --- |
+| Multiply | `vector *= 2` | `vector.multiplyScalar(2)` |
+| Add | `vector += other` | `vector.add(other)` |
+| Subtract | `vector -= other` | `vector.sub(other)` |
+| Length | `vector.magnitude` | `vector.length()` |
+| Normalize | `vector.normalized` | `vector.normalize()` |
+| Distance | `Vector3.Distance(a, b)` | `a.distanceTo(b)` |
+
+:::tip three.js Vector Methods
+Most three.js vector methods **modify the original vector**. For immutable operations, clone first:
+
+```ts
+const result = myVector.clone().multiplyScalar(2); // Original unchanged
+```
+:::
+
+## Equality Checks
+
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# - Single Equality Operator</logo-header>
+
 ```csharp
-var playerIsNull = myPlayer == null;
+var playerIsNull = myPlayer == null;  // Simple equality check
 ```
-in Javascript/Typescript there is a difference between `==` and `===` where `===` is more strictly checking for the type:
-```ts twoslash
-const myPlayer: any = null;
-// ---cut-before---
-const playerIsNull = myPlayer === null;
-const playerIsNullOrUndefined = myPlayer == null;
+
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript - Loose vs Strict Equality</logo-header>
+
+JavaScript/TypeScript has **two** equality operators:
+
+**Strict equality (`===`)** - Recommended:
+```ts
+const playerIsNull = myPlayer === null;      // Only true if exactly null
+const playerIsUndefined = myPlayer === undefined; // Only true if exactly undefined
 ```
-You notice that the second variable `playerIsNullOrUndefined` is using `==` which does a loose equality check in which case `null` and `undefined` will both result in `true`here. You can read more about that [here](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
 
-### Events, Binding and `this`
+**Loose equality (`==`)** - Less common:
+```ts
+const playerIsNullOrUndefined = myPlayer == null; // true for BOTH null and undefined
+```
 
-When you subscribe to an Event in C# you do it like this:
+| Expression | `===` (Strict) | `==` (Loose) |
+| --- | --- | --- |
+| `null === null` | ✅ true | ✅ true |
+| `undefined === undefined` | ✅ true | ✅ true |
+| `null === undefined` | ❌ false | ✅ true |
+| `0 === false` | ❌ false | ✅ true |
+| `"" === false` | ❌ false | ✅ true |
+
+:::tip Always Use `===`
+Use strict equality (`===`) by default. Only use loose equality (`==`) when you specifically want to check for both `null` and `undefined`.
+
+[Learn more about equality comparisons →](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Equality_comparisons_and_sameness)
+:::
+
+## Events, Binding & `this`
+
+### <logo-header logo="/imgs/csharp-logo.webp" alt="C#">C# - Simple Event Subscription</logo-header>
+
+In C#, subscribing to events is straightforward:
+
 ```csharp
-// this is how an event is declared
 event Action MyEvent;
-// you subscribe by adding to (or removing from)
+
 void OnEnable() {
-    MyEvent += OnMyEvent;
+    MyEvent += OnMyEvent;  // Subscribe
 }
+
 void OnDisable() {
-    MyEvent -= OnMyEvent;
+    MyEvent -= OnMyEvent;  // Unsubscribe
 }
-void OnMyEvent() {}
+
+void OnMyEvent() {
+    // 'this' is automatically correct
+}
 ```
-In Typescript and Javascript when you add a method to a list you have to "bind this". That essentially means you create a method where you explictly set `this` to (usually) your current class instance. There are two way to archieve this.   
 
-Please note that we are using the type `EventList` here which is a Needle Engine type to declare events (the EventList will also automatically be converted to a UnityEvent and or a event list in Blender when you use them with our Editor integrations)
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript - Binding `this`</logo-header>
 
-The short and **recommended** syntax for doing this is to use [Arrow Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).  
+In JavaScript/TypeScript, you must explicitly bind `this` when passing methods to event listeners.
 
-```ts twoslash
+:::info About EventList
+`EventList` is a Needle Engine type that automatically converts to UnityEvents (Unity) or event lists (Blender) in the editor integrations.
+:::
+
+**Method 1: Arrow Functions (Recommended):**
+
+Arrow functions automatically bind `this` to the class instance:  
+
+```ts
 import { EventList, Behaviour, serializable } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
@@ -209,45 +369,57 @@ export class MyComponent extends Behaviour {
     myEvent!: EventList;
 
     onEnable() {
-        this.myEvent.addEventListener(this.onMyEvent);
+        this.myEvent.addEventListener(this.onMyEvent);  // Subscribe
     }
 
     onDisable() {
-        this.myEvent.removeEventListener(this.onMyEvent);
+        this.myEvent.removeEventListener(this.onMyEvent);  // Unsubscribe
     }
 
-    // Declaring the function as an arrow function to automatically bind `this`
+    // ✅ Arrow function automatically binds 'this'
     private onMyEvent = () => {
-        console.log(this !== undefined, this)
+        console.log(this); // 'this' correctly refers to MyComponent instance
     }
 }
 ```
-There is also the more verbose "classical" way to archieve the same thing by manually binding this (and saving the method in a variable to later remove it again from the event list):
-```ts twoslash
+
+**Method 2: Manual Binding (Verbose):**
+
+The classical way—manually bind `this` and store the reference:
+
+```ts
 import { EventList, Behaviour, serializable } from "@needle-tools/engine";
 
 export class MyComponent extends Behaviour {
 
     @serializable(EventList)
     myEvent?: EventList;
-    
+
     private _onMyEventFn?: Function;
 
     onEnable() {
-        // bind this
+        // Manually bind 'this' and store the reference
         this._onMyEventFn = this.onMyEvent.bind(this);
-        // add the bound method to the event
         this.myEvent?.addEventListener(this._onMyEventFn);
-    } 
-    
+    }
+
     onDisable() {
+        // Must use the same bound reference to unsubscribe
         this.myEvent?.removeEventListener(this._onMyEventFn);
     }
-    
-    // Declaring the function as an arrow function to automatically bind `this`
-    private onMyEvent = () => { }
+
+    // Regular function - needs manual binding
+    private onMyEvent() {
+        console.log(this); // Without binding, 'this' would be undefined!
+    }
 }
 ```
+
+:::tip Use Arrow Functions
+Arrow functions are cleaner and less error-prone. Use them for event handlers unless you have a specific reason not to.
+
+[Learn more about arrow functions →](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions)
+:::
 
 ## What's next?
 

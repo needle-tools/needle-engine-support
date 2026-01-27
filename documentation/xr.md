@@ -14,9 +14,9 @@ Experience WebXR in action: [View XR Samples](https://engine.needle.tools/sample
 
 **True Cross-Platform Support**
 Needle Engine supports the full [WebXR specification](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API), including both AR and VR. Your experiences work on:
-- **VR Headsets**: Meta Quest, Apple Vision Pro, Pico, HTC Vive, Valve Index, and more
-- **Mobile AR**: Android devices with Chrome/Firefox
-- **iOS AR**: Native WebXR via [App Clips](ios-webxr-app-clip.md) - a unique Needle Engine advantage
+- **<logo-header logo="/imgs/meta-logo.webp" alt="Meta">VR Headsets</logo-header>**: Meta Quest, Apple Vision Pro, Pico, HTC Vive, Valve Index, and more
+- **<logo-header logo="/imgs/android-logo.webp" alt="Android">Mobile AR</logo-header>**: Android devices with Chrome/Firefox
+- **<logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS AR</logo-header>**: Native WebXR via [App Clips](ios-webxr-app-clip.md) - a unique Needle Engine advantage
 - **Emerging Tech**: Looking Glass displays, Hololens, Magic Leap, and future devices
 
 **Instant Deployment**
@@ -56,7 +56,7 @@ Deploy your scene to any HTTPS URL and open it on an XR device. That's it!
 
 ## Platform Support
 
-### iOS: Full WebXR Support Now Available
+### <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS: Full WebXR Support Now Available</logo-header>
 
 **Native iOS WebXR via App Clips** 🎉
 
@@ -85,38 +85,38 @@ The following devices and browsers have been verified to work with Needle Engine
 #### VR Headsets
 
 | Device | Browser | Features |
-| -- | -- | -- |
-| Apple Vision Pro | ✔️ Safari | hand tracking, transient pointer support |
-| Meta Quest 3 | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
-| Meta Quest 3S | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
-| Meta Quest 2 | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough (black and white) |
-| Meta Quest Pro | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough |
-| Meta Quest 1 | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup> |
-| Pico Neo 4 | ✔️ Pico Browser | passthrough, hand tracking<sup>2</sup> |
-| Pico Neo 3 | ✔️ Pico Browser | basic support (no hand tracking, inverted controller thumbsticks) |
-| Oculus Rift 1/2 | ✔️ Chrome |  |
+| --- | --- | --- |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">Apple Vision Pro</logo-header> | ✔️ Safari | hand tracking, transient pointer support |
+| <logo-header logo="/imgs/meta-logo.webp" alt="Meta">Meta Quest 3</logo-header> | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
+| <logo-header logo="/imgs/meta-logo.webp" alt="Meta">Meta Quest 3S</logo-header> | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough, depth sensing, mesh tracking |
+| <logo-header logo="/imgs/meta-logo.webp" alt="Meta">Meta Quest 2</logo-header> | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough (black and white) |
+| <logo-header logo="/imgs/meta-logo.webp" alt="Meta">Meta Quest Pro</logo-header> | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup>, passthrough |
+| <logo-header logo="/imgs/meta-logo.webp" alt="Meta">Meta Quest 1</logo-header> | ✔️ Meta Browser | hand tracking, sessiongranted<sup>1</sup> |
+| <logo-header logo="/imgs/pico-logo.webp" alt="Pico">Pico Neo 4</logo-header> | ✔️ Pico Browser | passthrough, hand tracking<sup>2</sup> |
+| <logo-header logo="/imgs/pico-logo.webp" alt="Pico">Pico Neo 3</logo-header> | ✔️ Pico Browser | basic support (no hand tracking, inverted controller thumbsticks) |
+| <logo-header logo="/imgs/meta-logo.webp" alt="Meta">Oculus Rift 1/2</logo-header> | ✔️ Chrome |  |
 | Valve Index | ✔️ Chrome |  |
 | HTC Vive | ✔️ Chrome |  |
-| Hololens 2 | ✔️ Edge | hand tracking, AR and VR modes |
+| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking, AR and VR modes |
 
 #### Mobile Devices
 
 | Device | Browser | Features |
-| -- | -- | -- |
-| Android 10+ | ✔️ Chrome | Full WebXR AR support |
-| Android 10+ | ✔️ Firefox | Full WebXR AR support |
-| iOS 14+ | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](ios-webxr-app-clip.md) (ARKit-powered). Alternative: [Everywhere Actions](everywhere-actions.md) for USDZ/QuickLook |
-| iOS 15+ | ✔️ WebXR Viewer | Older browser option (somewhat dated) |
-| Hololens 2 | ✔️ Edge | hand tracking |
-| Hololens 1 | ❌ | no WebXR support |
-| Magic Leap 2 | ✔️ | |
+| --- | --- | --- |
+| <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Chrome | Full WebXR AR support |
+| <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Firefox | Full WebXR AR support |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](ios-webxr-app-clip.md) (ARKit-powered). Alternative: [Everywhere Actions](everywhere-actions.md) for USDZ/QuickLook |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 15+</logo-header> | ✔️ WebXR Viewer | Older browser option (somewhat dated) |
+| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking |
+| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 1</logo-header> | ❌ | no WebXR support |
+| <logo-header logo="/imgs/magic-leap-logo.webp" alt="Magic Leap">Magic Leap 2</logo-header> | ✔️ | |
 
 #### Other Devices
 
 | Device | Browser | Notes |
-| -- | -- | -- |
+| --- | --- | --- |
 | Looking Glass Holographic Display | ✔️ Chrome | requires Looking Glass bridge and custom code, [see our sample](https://engine.needle.tools/samples/looking-glass/) |
-| Logitech MX Ink | ✔️ Meta Browser | officially supported, see [docs](https://logitech.github.io/mxink/WebXR/WebXrIntegration.html#using-needle-tools) |
+| <logo-header logo="/imgs/logitech-logo.webp" alt="Logitech">Logitech MX Ink</logo-header> | ✔️ Meta Browser | officially supported, see [docs](https://logitech.github.io/mxink/WebXR/WebXrIntegration.html#using-needle-tools) |
 
 <sup>1</sup>: Requires enabling browser flag: `chrome://flags/#webxr-navigation-permission`
 <sup>2</sup>: Requires enabling toggle in Developer settings

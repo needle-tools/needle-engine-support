@@ -1,22 +1,28 @@
 ---
 title: Everywhere Actions — Interactive experiences on Desktop, Android & iOS (even AR)
-description: Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code. They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**. From low-level triggers and actions, higher-level complex interactive behaviours can be built.  
+description: Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code. They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**. From low-level triggers and actions, higher-level complex interactive behaviours can be built.
 ---
+
+# Everywhere Actions
+
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender</a></logo-header>
 
 ## What are Everywhere Actions?
 
-Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code.
-They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**.
+Needle's Everywhere Actions are a set of carefully chosen components that allow you to create **interactive experiences without writing code**.
 
-From low-level triggers and actions, higher-level complex interactive behaviours can be built.
+Build experiences that work across **all platforms**:
 
 ### Supported Platforms
-- Desktop
-- Mobile (Android / iOS)
-- VR Glasses
-- AR Devices
-- <logo-header logo="/imgs/apple-logo.webp" alt="Apple"><strong>iOS WebXR – Full native AR support</strong></logo-header> (via <a href="ios-webxr-app-clip.html">App Clip</a>)
-- <logo-header logo="/imgs/quicklook-logo.webp" alt="QuickLook">iOS AR – QuickLook (Apple Vision Pro)</logo-header>
+
+| Platform | Support | Notes |
+| --- | --- | --- |
+| **Desktop** | ✅ Full support | Windows, macOS, Linux |
+| **Mobile** | ✅ Full support | Android & iOS browsers |
+| **VR Headsets** | ✅ Full support | Quest, Vive, Index, etc. |
+| **AR Devices** | ✅ Full support | ARCore, ARKit devices |
+| **<logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR</logo-header>** | ✅ **Full native AR** | Via [Needle Go App Clip](./ios-webxr-app-clip.html) |
+| **<logo-header logo="/imgs/quicklook-logo.webp" alt="QuickLook">iOS QuickLook</logo-header>** | ✅ Supported | Apple Vision Pro, iPhone, iPad |
 
 :::tip Native WebXR on iOS Now Available! 🎉
 Full WebXR support is now available on iOS through [Needle Go App Clip](ios-webxr-app-clip.md). Experience complete AR and VR on iPhone and iPad without app installation—just open your WebXR scene in Safari or Chrome!

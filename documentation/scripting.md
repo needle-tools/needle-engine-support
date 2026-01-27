@@ -9,64 +9,112 @@ tags:
     - components
 ---
 
-# Creating custom components
+# Creating Custom Components
 
-If you are new to scripting we **highly recommend** reading the following guides first:
+<logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">TypeScript</logo-header> • <logo-header logo="/imgs/javascript-logo.webp" alt="JavaScript">JavaScript</logo-header> • <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity</logo-header> • <logo-header logo="/blender/logo.png" alt="Blender">Blender</logo-header>
 
-- [Typescript Essentials](./getting-started/typescript-essentials.md)
-- [Needle Engine for Unity Developers](./getting-started/for-unity-developers.md)
+Learn how to create interactive components for Needle Engine using TypeScript or JavaScript. Components work seamlessly with Unity and Blender editor integrations.
 
-:::tip Already familiar with Needle Engine components?
-If you know what you're doing, feel free to jump right into the [Needle Engine API documentation](https://engine.needle.tools/docs/api/latest).
+:::tip Prerequisites
+New to TypeScript? Start here:
+- [TypeScript Essentials](./getting-started/typescript-essentials.html) - Language fundamentals
+- [Needle Engine for Unity Developers](./getting-started/for-unity-developers.html) - Unity to web workflow
+
+Already know Needle Engine? Jump to the [API documentation](https://engine.needle.tools/docs/api/latest).
 :::
 
----
+## How It Works
 
-Runtime code for Needle Engine is written in TypeScript (recommended) or JavaScript. Needle Engine automatically generates C# stub components out of that, which you can add to GameObjects in the editor. The C# components and their data are recreated by the runtime as JavaScript components with the same data and attached to three.js objects.  
+**Write once, use everywhere:**
 
-Both custom components as well as built-in Unity components can be mapped to JavaScript components in this way. For example, mappings for many built-in components related to animation, rendering or physics are already [included in Needle Engine](./component-reference.md#unity-components).  
+1. **Write** TypeScript/JavaScript components with runtime logic
+2. **Generate** C# stub components (Unity) or Blender panels automatically
+3. **Design** in Unity/Blender editor with serialized properties
+4. **Export** scene data to glTF format
+5. **Run** TypeScript/JavaScript in the browser with exported data
 
-:::tip Try it out 
-If you want to code-along with the following examples without having to install anything you just click the following link: [Create virtual workspace to code along](https://engine.needle.tools/new).
+:::tip Try It Live
+Code along without installing anything: [Open StackBlitz workspace →](https://engine.needle.tools/new)
 :::
 
-----
+### Component Architecture
 
-Our web runtime engine adopts a component model similar to Unity and thus provides a lot of functionality that will feel familiar.
-Components attached to three's Object3D objects have lifecycle methods like ``awake``, ``start``, ``onEnable``, ``onDisable``, ``update`` and ``lateUpdate`` that you can implement. You can also use [Coroutines](#coroutines).   
+Needle Engine uses a **component model** similar to Unity/Blender:
 
-----
+- Components attach to **three.js Object3D** (like Unity's GameObject)
+- Lifecycle methods: `awake`, `start`, `onEnable`, `onDisable`, `update`, `lateUpdate`
+- [Coroutines](#coroutines) for sequenced operations
+- Input events, physics events, XR events   
 
-## When you don't need to write code
+## No-Code Approach
 
-Often, interactive scenes can be realized using Events in Unity and calling methods on built-in components. A typical example is playing an animation on button click - you create a button, add a Click event in the inspector, and have that call Animator.SetTrigger or similar to play a specific animation.  
+Many interactive experiences can be built **without writing any code** using Unity/Blender events and built-in components.
 
-Needle Engine translates Unity Events into JavaScript method calls, which makes this a very fast and flexible workflow - set up your events as usual and when they're called they'll work the same as in Unity.  
+**Example:** Playing an animation on button click
+1. Create a UI Button in Unity
+2. Add a Click event in the Inspector
+3. Drag the Animator component
+4. Select `Animator.SetTrigger()`
+5. Done! Works the same in the browser
 
-![image](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)   
-_An example of a Button Click Event that is working out-of-the-box in Needle Engine — no code needed._ 
+![Unity Button Click Event Example](https://user-images.githubusercontent.com/2693840/187314594-7e34905d-e704-4fa3-835c-6b40f11e1c62.png)
+_Unity Events work out-of-the-box in Needle Engine—no JavaScript needed._
 
 :::tip Built-in Components
-Checkout the component reference for a list of built-in components that you can use without writing any code: [Component Reference](/component-reference.md)
+Over 100+ built-in components available—animations, physics, UI, XR, and more:
+[Browse Component Reference →](./component-reference.html)
 :::
 
-## Creating a new component
-Scripts are written in TypeScript (recommended) or JavaScript.   
-There are two ways to add custom scripts to your project:
+## Creating Your First Component
 
-- Simply add a file with an `.ts` or `.js` extension inside `src/scripts/` in your web project folder, for example `src/scripts/MyFirstScript.ts`.
+Write components in **TypeScript** (recommended) or **JavaScript**. Choose your approach:
 
-- Unity specific:   
-  Organize your code into NPM Definition Files (npm packages). These help you to modularize and re-use code between projects and if you are familiar with web development they are in fact regular npm packages that are installed locally.  
-  In Unity you can create NpmDef files via `Create > NPM Definition` and then add TypeScript files by right-clicking an NpmDef file and selecting `Create > TypeScript`. Please see [this chapter](./project-structure.md#npm-definition-files) for more information.  
+### <logo-header logo="/imgs/typescript-logo.webp" alt="TypeScript">Quick Start - Direct File Approach</logo-header>
 
+Add a `.ts` or `.js` file to `src/scripts/` in your web project:
 
-In both approaches, source directories are watched for changes and C# stub components or Blender panels are regenerated whenever a change is detected.   
-Changes to the source files also result in a hot reload of the running website – you don't have to wait for Unity to recompile the C# components. This makes iterating on code pretty much instant.  
+```
+your-project/
+└── src/
+    └── scripts/
+        └── MyFirstScript.ts  ← Add your component here
+```
 
-You can even have multiple component types inside one file (e.g. you can declare `export class MyComponent1` and `export class MyOtherComponent` in the same Typescript file).
+**Benefits:**
+- ✅ Simple and direct
+- ✅ Perfect for small projects
+- ✅ Automatic hot reload
 
-If you are new to writing Javascript or Typescript we recommend reading the [Typescript Essentials Guide](./getting-started/typescript-essentials.md) guide first before continuing with this guide.
+### <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity - NPM Definition Approach</logo-header>
+
+Organize code into reusable npm packages using NPM Definition files:
+
+1. In Unity: `Create > NPM Definition`
+2. Right-click the NpmDef: `Create > TypeScript`
+3. Write your component
+
+**Benefits:**
+- ✅ Modular code organization
+- ✅ Share code between projects
+- ✅ Standard npm package format
+
+[Learn more about NPM Definitions →](./project-structure.html#npm-definition-files)
+
+### Auto-Generation & Hot Reload
+
+**What happens automatically:**
+- 🔄 **C# stubs** (Unity) or **Blender panels** regenerate on file save
+- ⚡ **Hot reload** in browser—no Unity recompilation needed
+- 🚀 **Instant iteration**—see changes in ~1 second
+
+:::tip Multiple Components Per File
+You can export multiple components from one file:
+
+```ts
+export class MyComponent1 extends Behaviour { }
+export class MyComponent2 extends Behaviour { }
+```
+:::
 
 :::details Example: Creating a Component that rotates an object
 
@@ -123,68 +171,108 @@ While generated C# components use the type name to produce stable GUIDs, we reco
 ::: 
 
 
-## Component architecture
-Components are added to three.js `Object3Ds`. This is similar to how Components in Unity are added to `GameObjects`. Therefore when we want to access a three.js Object3D, we can access it as ``this.gameObject`` which returns the `Object3D` that the component is attached to.  
+## <logo-header logo="/imgs/needle-logo.webp" alt="three.js">Component Architecture</logo-header>
 
-***Note**: Setting ``visible`` to false on a Object3D will act like ``SetActive(false)`` in Unity - meaning it will also disable all the current components on this object and its children. Update events for inactive components are not being called until ``visible`` is set to true again.* If you want to hide an object without affecting components you can just disable the Needle Engine `Renderer` component.
+Components attach to **three.js Object3D** instances (similar to Unity's GameObject):
 
-### Lifecycle methods
+- Access the Object3D: `this.gameObject`
+- Access the scene: `this.context.scene`
+- Access components: `this.gameObject.getComponent(Type)`
 
-Note that lifecycle methods are only being called when they are declared. So only declare `update` lifecycle methods when they are actually necessary, otherwise it may hurt performance if you have many components with update loops that do nothing.
+:::warning Visibility & Active State
+Setting `visible = false` on an Object3D acts like Unity's `SetActive(false)`:
+- Disables **all** components on this object and its children
+- **No** update events called until `visible = true` again
+- To hide visually without affecting components, disable the `Renderer` component instead
+:::
 
-| Method name | Description |
-| -- | --
-| `awake()` | First method being called when a new component is created
-| `onEnable()` | Called when a component is enabled (e.g. when ``enabled`` changes from false to true)
-| `onDisable()` | Called when a component is disabled (e.g. when ``enabled`` changes from true to false)
-| `onDestroy()` | called when the Object3D or component is being destroyed
-| `start()` | Called on the start of the first frame after the component was created
-| `earlyUpdate()` | First update event
-| `update()` | Default update event
-| `lateUpdate()` | Called after update
-| `onBeforeRender()` | Last update event before render call
-| `onAfterRender()` | Called after render event
+## Lifecycle Methods
 
-### Physic event methods
-| Method name | Description |
-| -- | --
-| `onCollisionEnter(col : Collision)` | 
-| `onCollisionStay(col : Collision)` | 
-| `onCollisionExit(col : Collision)` | 
-| `onTriggerEnter(col : Collision)` | 
-| `onTriggerStay(col : Collision)` | 
-| `onTriggerExit(col : Collision)` | 
+Lifecycle methods are **only called if declared**. Don't add empty `update()` methods—they impact performance!
 
-### Input event methods
-| Method name | Description |
-| -- | --
-| `onPointerEnter(args : PointerEventData)` | Called when a cursor starts to hover over an object (or any of it's children)
-| `onPointerMove(args : PointerEventData)` | Called when a cursor moves over an object (or any of it's children)
-| `onPointerExit(args : PointerEventData)` | Called when a cursor exists (stops hovering) an object
-| `onPointerDown(args : PointerEventData)` | Called when a cursor is pressed over an object 
-| `onPointerUp(args : PointerEventData)` | Called when a cursor is released over an object
-| `onPointerClick(args : PointerEventData)` | Called when a cursor is clicked over an object
+| Method | When Called | Use For |
+| --- | --- | --- |
+| `awake()` | Component created | Initial setup, references |
+| `onEnable()` | Component enabled | Subscribe to events |
+| `start()` | First frame after creation | Initialization logic |
+| `earlyUpdate()` | Before default update | Pre-update calculations |
+| `update()` | Every frame | Main logic loop |
+| `lateUpdate()` | After all updates | Follow cameras, final adjustments |
+| `onBeforeRender()` | Just before render | Last-minute visual updates |
+| `onAfterRender()` | After render | Post-processing logic |
+| `onDisable()` | Component disabled | Unsubscribe from events |
+| `onDestroy()` | Component/Object destroyed | Cleanup resources |
 
+:::tip Performance Best Practice
+Only implement lifecycle methods you actually need. Empty `update()` loops on many components hurt performance!
+:::
 
-### XR event methods
-*requires Needle Engine >= 3.32.0*
-| Method name | Description |
-| -- | --
-| `supportsXR(mode: XRSessionMode)` | Optionally implement if you only want to receive XR callbacks for specific XR modes like `immersive-vr` or `immersive-ar`. Return `true` to notify the system that you want callbacks for the passed in mode
-| `onBeforeXR(mode: XRSessionMode, init: XRSessionInit)` | Called right before a XRSession is requested and can be used to modify the XRSessionInit object
-| `onEnterXR(args: NeedleXREventArgs)` | Callback when this component joins a xr session (or becomes active in a running XR session)
-| `onUpdateXR(args: NeedleXREventArgs)` | Callback when a xr session updates (while it is still active in XR session)
-| `onLeaveXR(args: NeedleXREventArgs)` | allback when this component exists a xr session (or when it becomes inactive in a running XR session) 
-| `onControllerAdded(args: NeedleXRControllerEventArgs)` | Callback when a controller is connected/added while in a XR session    OR when the component joins a running XR session that has already connected controllers   OR when the component becomes active during a running XR session that has already connected controllers
-| `onControllerRemoved(args: NeedleXRControllerEventArgs)` | callback when a controller is removed while in a XR session   OR when the component becomes inactive during a running XR session
+## <logo-header logo="/imgs/rapier-physics-logo.webp" alt="Rapier">Physics Event Methods</logo-header>
 
-#### Additional XR events
+Respond to physics collisions and triggers (powered by Rapier physics engine):
 
-| Method name | Description |
-| -- | --
-| `window.addEventListener("needle-xrsession-start")` | CustomEvent that is invoked when a XRSession starts. `details` contains the `NeedleXRSession`
-| `window.addEventListener("needle-xrsession-end")` | CustomEvent that is invoked when a XRSession starts. `details` contains the `NeedleXRSession`
-| `onXRSessionStart(args: { session:NeedleXRSession } )` | global event hook. To unsubscribe use `offXRSessionStart`
+| Method | Parameters | When Called |
+| --- | --- | --- |
+| `onCollisionEnter` | `col: Collision` | Rigidbody **starts** colliding with another |
+| `onCollisionStay` | `col: Collision` | Rigidbody **continues** colliding |
+| `onCollisionExit` | `col: Collision` | Rigidbody **stops** colliding |
+| `onTriggerEnter` | `col: Collision` | Collider **enters** a trigger zone |
+| `onTriggerStay` | `col: Collision` | Collider **stays** in a trigger zone |
+| `onTriggerExit` | `col: Collision` | Collider **exits** a trigger zone |
+
+## Input Event Methods
+
+Handle pointer/touch/controller interactions:
+
+| Method | Parameters | When Called |
+| --- | --- | --- |
+| `onPointerEnter` | `args: PointerEventData` | Cursor **starts** hovering (object or children) |
+| `onPointerMove` | `args: PointerEventData` | Cursor **moves** over object (or children) |
+| `onPointerExit` | `args: PointerEventData` | Cursor **stops** hovering |
+| `onPointerDown` | `args: PointerEventData` | Cursor **pressed** (mouse/touch down) |
+| `onPointerUp` | `args: PointerEventData` | Cursor **released** |
+| `onPointerClick` | `args: PointerEventData` | Cursor **clicked** (down + up on same object) |
+
+:::tip Cross-Platform Input
+These events work across **desktop, mobile, and VR**—no need to handle different input types separately!
+:::
+
+## XR Event Methods
+
+Build immersive AR/VR experiences with WebXR:
+
+| Method | Parameters | When Called |
+| --- | --- | --- |
+| `supportsXR` | `mode: XRSessionMode` | **Optional:** Filter which XR modes to support (`immersive-vr`, `immersive-ar`) |
+| `onBeforeXR` | `mode: XRSessionMode`<br/>`init: XRSessionInit` | Before XR session starts (modify init options) |
+| `onEnterXR` | `args: NeedleXREventArgs` | Component **enters** XR session |
+| `onUpdateXR` | `args: NeedleXREventArgs` | Every frame **during** XR session |
+| `onLeaveXR` | `args: NeedleXREventArgs` | Component **exits** XR session |
+| `onControllerAdded` | `args: NeedleXRControllerEventArgs` | VR controller **connected** or component joins session with controllers |
+| `onControllerRemoved` | `args: NeedleXRControllerEventArgs` | VR controller **disconnected** or component becomes inactive |
+
+### Global XR Events
+
+For global XR session events (outside components):
+
+| Event | Type | Description |
+| --- | --- | --- |
+| `"needle-xrsession-start"` | `CustomEvent` | XR session starts (`details.session` = `NeedleXRSession`) |
+| `"needle-xrsession-end"` | `CustomEvent` | XR session ends (`details.session` = `NeedleXRSession`) |
+| `onXRSessionStart` | Hook | Global hook for session start (unsubscribe with `offXRSessionStart`) |
+
+**Example:**
+```ts
+// Using CustomEvent
+window.addEventListener("needle-xrsession-start", (evt) => {
+    console.log("XR Session started:", evt.detail.session);
+});
+
+// Using global hook
+onXRSessionStart((args) => {
+    console.log("XR Session started:", args.session);
+});
+```
 
 
 ### Coroutines
@@ -221,18 +309,26 @@ To stop a coroutine, either exit the routine by returning from it, or cache the 
 
 
 
-## Hooks
+## Lifecycle Hooks
 
-Needle Engine also exposes methods that you can use to hook into to easily receive callbacks at specific moments during the Engine lifecycle. Those hooks can be inserted at any point in your web application (for example in toplevel scope or in a svelte component or in your `<script type="module">` tag in index.html).  
-| Method name | Description |
-| -- | --
-| `onInitialized(<callback>, <options?>)` | Called when a new context is initialized (before the first frame)
-| `onClear(<callback>, <options?>)` | Register a callback before the engine context is cleared
-| `onDestroy(<callback>, <options?>)` |  Register a callback in the engine before the context is destroyed
-| `onStart(<callback>, <options?>)` | Called directly after components `start` at the beginning of a frame
-| `onUpdate(<callback>, <options?>)` | Called directly after components `update`
-| `onBeforeRender(<callback>, <options?>)` | called before calling render
-| `onAfterRender(<callback>, <options?>)` | called before calling render
+Use hooks to receive callbacks at specific moments during the engine lifecycle. Hooks can be inserted **anywhere** in your web application:
+- Top-level scope in `main.ts`
+- Inside Svelte/React/Vue components
+- Inside `<script type="module">` in `index.html`
+
+| Hook | When Called | Options |
+| --- | --- | --- |
+| `onInitialized` | Context initialized (before first frame) | `{ once?: boolean }` |
+| `onStart` | After components `start()` | `{ once?: boolean }` |
+| `onUpdate` | After components `update()` | `{ once?: boolean }` |
+| `onBeforeRender` | Before render call | `{ once?: boolean }` |
+| `onAfterRender` | After render call | `{ once?: boolean }` |
+| `onClear` | Before engine context cleared | `{ once?: boolean }` |
+| `onDestroy` | Before context destroyed | `{ once?: boolean }` |
+
+:::tip Unsubscribe
+Every hook returns an unsubscribe function. Store it and call it later to stop receiving callbacks!
+:::
 
 For example ([See example on stackblitz](https://stackblitz.com/edit/needle-engine-lifecycle-hooks?file=src%2Fmain.ts))
 ```ts twoslash
@@ -279,31 +375,47 @@ export class MyComponent extends Behaviour {
 
 
 
-### Some of the available methods:
+### GameObject Methods
+
+**Component management and scene queries:**
+
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `instantiate` | `(Object3D, InstantiateOptions?)` | Create new instance with all components cloned |
+| `destroy` | `(Object3D \| Component)` | Destroy component or Object3D and its components |
+| `addNewComponent` | `(Object3D, Type)` | Create and add component (calls `awake()` and `onEnable()`) |
+| `addComponent` | `(Object3D, Component)` | Move existing component instance to object |
+| `removeComponent` | `(Component)` | Remove component from its Object3D |
+| **Query single** | | |
+| `getComponent` | `(Object3D, Type)` | Find first component of type on object |
+| `getComponentInChildren` | `(Object3D, Type)` | Find first component in children (recursive) |
+| `getComponentInParent` | `(Object3D, Type)` | Find first component in parents (recursive) |
+| `findObjectOfType` | `(Type)` | Find first component of type in entire scene |
+| **Query multiple** | | |
+| `getComponents` | `(Object3D, Type)` | Get all components of type on object |
+| `getComponentsInChildren` | `(Object3D, Type)` | Get all components of type in children (recursive) |
+| `getComponentsInParent` | `(Object3D, Type)` | Get all components of type in parents (recursive) |
+| `findObjectsOfType` | `(Type)` | Get all components of type in entire scene |
+
+:::warning Performance Tip
+`findObjectOfType` and `findObjectsOfType` search the **entire scene**. Cache results or use local queries (`getComponent*`) when possible!
+:::
 
 
-| Method |  |
-| -- | -- 
-| `GameObject.instantiate(Object3D, InstantiateOptions)` | creates a new instance of this object including new instances of all its components 
-| `GameObject.destroy(Object3D \| Component)` | destroy a component or Object3D (and its components) 
-| `GameObject.addNewComponent(Object3D, Type)` | adds (and creates) a new component for a type to the provided object. Note that ``awake`` and ``onEnable`` is already called when the component is returned 
-| `GameObject.addComponent(Object3D, Component)` |  moves a component instance to the provided object. It is useful if you already have an instance e.g. when you create a component with e.g. `new MyComponent()` and then attach it to a object
-| `GameObject.removeComponent(Component)` | removes a component from a Object3D
-| `GameObject.getComponent(Object3D, Type)` | returns the first component matching a type on the provided object.
-| `GameObject.getComponents(Object3D, Type)` | returns all components matching a type on the provided object.
-| `GameObject.getComponentInChildren` | same as ``getComponent`` but also searches in child objects.
-| `GameObject.getComponentsInChildren` | same as ``getComponents`` but also searches in child objects.
-| `GameObject.getComponentInParent` | same as ``getComponent`` but also searches in parent objects.
-| `GameObject.getComponentsInParent` | same as ``getComponents`` but also searches in parent objects.
-| `GameObject.findObjectOfType` | searches the whole scene for a type.
-| `GameObject.findObjectsOfType` | searches the whole scene for all matching types.
+## <logo-header logo="/imgs/threejs-logo.webp" alt="three.js">three.js</logo-header> & <logo-header logo="/imgs/html-logo.webp" alt="HTML">HTML DOM</logo-header>
 
+The three.js scene lives inside a custom HTML web component: `<needle-engine>`
 
-## Three.js and the HTML DOM
-  
-The three.js scene lives inside a custom HTML component called ``<needle-engine>`` (see the *index.html* in your project). You can access the `<needle-engine>` web component using `this.context.domElement` (or if you're using a hook you can use e.g. `onStart(context => context.domElement)`).   
+**Access the DOM:**
+- From components: `this.context.domElement`
+- From hooks: `onStart(context => context.domElement)`
+- HTML file: See `index.html` in your project
 
-This architecture allows to embed the Needle Engine rendering onto your webpage and wherever you want. You can also overlay HTML elements on top of the 3D scene or use CSS to style the canvas. 
+**Why this matters:**
+- Embed Needle Engine **anywhere** on your webpage
+- Overlay HTML elements on top of 3D scenes
+- Style the canvas with CSS
+- Mix 3D and 2D content seamlessly 
 
 ### Access the scene
 To access the current scene from a component you use `this.context.scene`, this gives you the root [three.js Scene](https://threejs.org/docs/#api/en/scenes/Scene) object.
@@ -337,14 +449,24 @@ for(const renderer of this.gameObject.getComponentsInChildren(Renderer))
 ```
 For more information about getting components see the next section.
 
-### Time
-Use `this.context.time` to get access to time data:  
-- `this.context.time.time` is the time since the application started running
-- `this.context.time.deltaTime` is the time that has passed since the last frame
-- `this.context.time.frameCount` is the number of frames that have passed since the application started
-- `this.context.time.realtimeSinceStartup` is the unscaled time since the application has started running  
+### Time & Delta Time
 
-It is also possible to use `this.context.time.timeScale` to deliberately slow down time for e.g. slow motion effects.
+Access time data via `this.context.time`:
+
+| Property | Type | Description |
+| --- | --- | --- |
+| `time` | `number` | Scaled time since app started (affected by `timeScale`) |
+| `deltaTime` | `number` | Time since last frame (use for smooth animations) |
+| `frameCount` | `number` | Total frames rendered since app started |
+| `realtimeSinceStartup` | `number` | Unscaled time since app started (ignores `timeScale`) |
+| `timeScale` | `number` | Time multiplier (default `1.0`, set to `0.5` for slow-motion) |
+
+:::tip Frame-Rate Independent Movement
+Always multiply movement by `deltaTime` for smooth, frame-rate independent animation:
+```ts
+this.gameObject.position.x += speed * this.context.time.deltaTime;
+```
+:::
 
 ### Input
 Receive input data for the object the component is on:
@@ -488,25 +610,39 @@ See all available [lifecycle hooks](#hooks)
 :::
 
 
-## Gizmos
+## Debug Gizmos
 
-The static `Gizmos` class can be used to draw lines, shapes and text which is mostly useful for debugging.  
-All gizmos function have multiple options for e.g. colors or for how long they should be displayed in the scene. Internally they are cached and re-used. 
+The static `Gizmos` class draws debug visualizations in your scene. Perfect for debugging!
 
-| Gizmos | |
-| -- | -- |
-| `Gizmos.DrawLabel` | Draws a label with a background optionally. It can be attached to an object. Returns a Label handle which can be used to update the text. |
-| `Gizmos.DrawRay` | Takes an origin and direction in worldspace to draw an infinite ray line |
-| `Gizmos.DrawDirection` | Takes a origin and direction to draw a direction in worldspace |
-| `Gizmos.DrawLine` | Takes two vec3 worldspace points to draw a line |
-| `Gizmos.DrawWireSphere` | Draws a wireframe sphere in worldspace |
-| `Gizmos.DrawSphere` | Draws a solid sphere in worldspace |
-| `Gizmos.DrawWireBox` | Draws a wireframe box in worldspace |
-| `Gizmos.DrawWireBox3` | Draws a wireframe box3 |
-| `Gizmos.DrawArrow` | Draws an arrow taking two points in worldspace |
+**Features:**
+- All functions accept options for colors, duration, and more
+- Internally cached and reused for performance
+- Visible in development, easily toggled off for production
+
+| Method | Parameters | Description |
+| --- | --- | --- |
+| `DrawLabel` | `(text, position, options?)` | Text label with optional background (returns handle for updates) |
+| `DrawRay` | `(origin, direction, options?)` | Infinite ray line from origin in direction |
+| `DrawDirection` | `(origin, direction, options?)` | Direction arrow from origin |
+| `DrawLine` | `(from, to, options?)` | Line between two worldspace points |
+| `DrawWireSphere` | `(center, radius, options?)` | Wireframe sphere |
+| `DrawSphere` | `(center, radius, options?)` | Solid sphere |
+| `DrawWireBox` | `(center, size, options?)` | Wireframe box |
+| `DrawWireBox3` | `(box3, options?)` | Wireframe box from Box3 object |
+| `DrawArrow` | `(from, to, options?)` | Arrow between two points |
+
+:::tip Common Options
+```ts
+{
+  color?: ColorRepresentation,  // Line/shape color
+  duration?: number,             // How long to display (seconds)
+  depthTest?: boolean           // Whether to occlude behind objects
+}
+```
+:::
 
 
-## Serialization / Components in glTF files
+## <logo-header logo="/imgs/gltf-logo.webp" alt="gltf">Serialization / Components in glTF files</logo-header>
 To embed components and recreate components with their correct types in glTF, we also need to save non-primitive types (everything that is not a ``Number``, ``Boolean`` or ``String``). You can do so is adding a ``@serializable(<type>)`` decorator above your field or property. 
 
 **Example:**
