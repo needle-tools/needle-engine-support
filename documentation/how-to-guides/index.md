@@ -49,10 +49,12 @@ Build interactive experiences with code:
 
 - [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
 - [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
+- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, and triggers
+- [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
 - [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
 - [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences
 - [Scripting Examples](/docs/reference/scripting-examples) - Code examples and snippets
-- [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - awake, start, update, etc.
+- [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - Complete lifecycle API reference
 - [Input Events](/docs/reference/api/input-events) - Input event reference
 - [Physics Events](/docs/reference/api/physics-events) - Collision and trigger events
 - [XR Events](/docs/reference/api/xr-events) - WebXR AR/VR events
