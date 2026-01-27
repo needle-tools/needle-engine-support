@@ -49,7 +49,15 @@ export default {
 
   computed: {
     mdPath() {
-      let path = window.location.pathname
+      let path
+
+      // Use $route.path for reactivity, but it doesn't include base path
+      if (this.$route?.path) {
+        const base = this.$site?.base || '/docs/'
+        path = base.replace(/\/$/, '') + this.$route.path
+      } else {
+        path = window.location.pathname
+      }
 
       // Remove .html suffix
       path = path.replace(/\.html$/, '')

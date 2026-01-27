@@ -7,7 +7,6 @@ description: Get help and connect with the Needle Engine community
 
 **Get support.** Find answers, ask questions, and connect with the Needle Engine community.
 
----
 
 ## Quick Help
 
@@ -25,7 +24,7 @@ description: Get help and connect with the Needle Engine community
 - [How-To Guides](/docs/how-to-guides/) - Solve specific problems
 - [Reference](/docs/reference/) - API documentation
 
----
+
 
 ## Community Support
 
@@ -51,7 +50,7 @@ Visit Forum →
 
 **Best for:** In-depth technical questions, sharing projects, long-form discussions
 
----
+
 
 ## Official Support
 
@@ -73,7 +72,7 @@ Submit Feedback →
 </action>
 </actiongroup>
 
----
+
 
 ## Stay Updated
 
@@ -93,7 +92,6 @@ Follow us for updates and community highlights:
 - [YouTube](https://www.youtube.com/@needle-tools) - Video tutorials and demos
 - [GitHub](https://github.com/needle-tools) - Source code and issues
 
----
 
 ## Learning Resources
 
@@ -106,7 +104,7 @@ Follow us for updates and community highlights:
 - [Tutorials](/docs/tutorials/) - Learn by building projects
 - [How-To Guides](/docs/how-to-guides/) - Task-oriented guides
 
----
+
 
 ## Report Issues
 
@@ -128,7 +126,6 @@ Report Documentation Issue →
 </action>
 </actiongroup>
 
----
 
 ## Testimonials
 

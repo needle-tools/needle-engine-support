@@ -43,7 +43,7 @@ const _previewImg = "preview.jpeg";
 // https://ogp.me/
 
 
-function renderMarkdown(content) {
+function renderMarkdown(content: string): any {
     try {
         content = content.replace(/\{@link\s+([^ ]+)(?:\s+([^\}]*))?\}/g, function (match, p1, p2) {
             if (!p1 && !p2) return match;
@@ -157,6 +157,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
     sidebar: false,
 };
 
+/*
 const siteLocaleOptions: SiteLocaleConfig & LocaleConfig<{ selectLanguageName: string }> = {
     '/': {
         lang: 'en-US',
@@ -299,6 +300,7 @@ if (existsSync(rootLanguageDirectory)) {
         }
     }
 }
+*/
 
 const patterns: string[] = [
     // default patterns
@@ -323,7 +325,7 @@ export default defineUserConfig({
     dest: "dist",
     description: _description,
     pagePatterns: patterns,
-    locales: siteLocaleOptions,
+    // locales: siteLocaleOptions,
     plugins: [
         // searchPlugin({
         // }),
