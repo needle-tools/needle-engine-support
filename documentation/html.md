@@ -2,17 +2,20 @@
 title: Frameworks, Bundlers, HTML
 ---
 
-## Bundling and web frontends
+# Web Integration & Frameworks
 
-Needle Engine is built as a web component.   
-This means you can just install `@needle-tools/engine` in your project:
+Needle Engine is a web component that works with any modern web framework or vanilla JavaScript. Install it via npm and use it anywhere.
 
+[Learn more about Needle Engine →](https://needle.tools)
+
+## Quick Start
+
+**Install:**
 ```bash
 npm i @needle-tools/engine
 ```
 
-and then use it from HTML like this:
-
+**Use in HTML:**
 ```html
 <script type="module">
   import '@needle-tools/engine';
@@ -20,7 +23,9 @@ and then use it from HTML like this:
 <needle-engine src="path/to/your.glb"></needle-engine>
 ```
 
-With our default Vite based project template, Needle Engine gets bundled into your web app on deployment. This ensures smaller files and optimizes loading times.
+That's it! Needle Engine automatically bundles with your project for optimized production builds.
+
+[📖 See web component reference →](./reference/needle-engine-attributes.html)
 
 ::: tip Bundling and tree shaking
 
@@ -29,24 +34,26 @@ With our default Vite based project template, Needle Engine gets bundled into yo
 **Tree shaking** is a common practice in web development where unused code is removed from the final bundle to reduce file size. This is similar to "code stripping" in Unity. [The MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) have a good explanation of tree shaking.
 :::
 
-### Vite, Vue, React, Svelte, React Three Fiber...
+## <logo-header logo="/imgs/vite-logo.webp" alt="Vite">Supported Frameworks & Bundlers</logo-header>
 
-Needle Engine is unoponiated about the choice of framework. Our default template uses the popular [vite](https://vitejs.dev) as bundler. From there, you can add vue, svelte, nuxt, react, react-three-fiber or other frameworks, and we have samples for a lot of them. You can also integrate other bundlers, or use none at all – just plain HTML and Javascript.  
+Needle Engine is framework-agnostic—use it with any modern web stack. Our default template uses [Vite](https://vitejs.dev), but you can integrate with any framework or bundler.
 
-Here's some example tech stacks that are possible and that we use Needle Engine with:  
+### Production-Ready Stacks
 
-- **Vite + HTML** — This is what our default template uses!
-    
-- **Vite + Vue** — This is what the [Needle Tools](https://needle.tools) website uses!. Find a sample to download [here](https://github.com/needle-tools/needle-engine-samples). 
-- **Vite + Svelte** 
-- **Vite + SvelteKit**
-- **Vite + React** — There's an experimental template shipped with the Unity integration for this that you can pick when generating a project!
-- **react-three-fiber** — There's an experimental template shipped with the Unity integration for this that you can pick when generating a project!
-- **Vercel & Nextjs** — Find a [example nextjs project here](https://github.com/needle-engine/nextjs-sample)
-- **CDN without any bundler** — Find a code example [here](./vanilla-js.md)
+| Framework | Status | Notes |
+| --- | --- | --- |
+| **Vite + HTML** | ✅ Default template | Minimal setup, great for getting started |
+| **Vite + Vue** | ✅ Production use | Powers [needle.tools](https://needle.tools) • [Sample](https://github.com/needle-tools/needle-engine-samples) |
+| **Vite + React** | ⚡ Experimental template | Available in Unity integration |
+| **Vite + Svelte** | ✅ Supported | |
+| **Vite + SvelteKit** | ✅ Supported | |
+| **Next.js** | ✅ Supported | [Example project](https://github.com/needle-engine/nextjs-sample) |
+| **react-three-fiber** | ⚡ Experimental template | Available in Unity integration |
+| **Vanilla JS (CDN)** | ✅ Supported | No bundler needed • [Guide](./three/) |
 
-In short: we're currently providing a minimal Vite template, but you can extend it or switch to other frameworks –  
-Let us know what and how you build, and how we can improve the experience for your usecase or provide an example!
+:::tip Have a Different Stack?
+Let us know what you're building with! We're always looking to improve the experience and provide more examples.
+:::
 
 :::tip
 Some frameworks require custom settings in `needle.config.json`. Learn more [here](./reference/needle-config-json.md). Typically, the `baseUrl` needs to be set. 
@@ -64,15 +71,27 @@ The dependencies come from unity when there is a NpmDef in the project (so when 
 You could also publish your packages to npm and reference them via version number.  
 :::
 
-## Creating a PWA
+## <logo-header logo="/imgs/pwa-logo.webp" alt="PWA">Progressive Web Apps (PWA)</logo-header>
 
-We support easily creating a Progressive Web App (PWA) directly from our Vite template.  
-PWAs are web applications that load like regular web pages or websites but can offer user functionality such as working offline, push notifications, and device hardware access traditionally available only to native mobile applications.   
+Turn your Needle Engine project into a Progressive Web App with offline support, automatic updates, and installability.
 
-By default, PWAs created with Needle have offline support, and can optionally refresh automatically when you publish a new version of your app. 
+**PWA Benefits:**
+- 📱 Install on home screen (mobile & desktop)
+- ⚡ Works offline
+- 🔄 Auto-update when you publish new versions
+- 🚀 Faster loading with smart caching
 
-1) Install the [Vite PWA plugin](https://vite-pwa-org.netlify.app/) in your web project: `npm install vite-plugin-pwa --save-dev`
-2) Modify `vite.config.js` as seen below. Make sure to pass the same `pwaOptions` object to both `needlePlugins` and `VitePWA`.
+### Setup
+
+**1. Install the Vite PWA plugin:**
+
+```bash
+npm install vite-plugin-pwa --save-dev
+```
+
+**2. Configure `vite.config.js`:**
+
+Pass the same `pwaOptions` object to both `needlePlugins` and `VitePWA`.
 
 ```js
 import { VitePWA } from 'vite-plugin-pwa';

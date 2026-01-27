@@ -2,7 +2,26 @@
 title: Testing on local devices
 ---
 
-## Testing on local devices
+# Testing on Local Devices
+
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender</a></logo-header>
+
+## Quick Start for Unity & Blender Users
+
+:::tip Just Press Play!
+If you're using the **Unity integration** or **Blender add-on**, you're already set up! Simply press Play and your project automatically opens in your default browser with a local development server running.
+
+**To test on other devices:**
+1. Look for the local network URL in the console (e.g., `https://192.168.0.123:3000`)
+2. Open that URL on your phone, tablet, VR headset, or other device on the same network
+3. If you see a certificate warning, you can either:
+   - Click through the warning (works on most platforms)
+   - Or follow the [certificate installation steps](#setting-up-a-self-signed-certificate-for-development) below for a smoother experience
+
+**That's it!** The information below is for advanced users who want to understand how the local server works or need to set up custom certificates.
+:::
+
+## Advanced: How Local Testing Works
 
 When using our templates, Needle Engine runs a local development server for you. Simply press play, and a website will open in your default browser, ready for testing on your local device. For testing on other devices in the same network, you may have to install a self-signed certificate (see below).
 
@@ -14,7 +33,7 @@ Our local server uses the IP address in your local network (e.g. `https://192.16
 We're using HTTPS instead of the older HTTP, because modern powerful web APIs like WebXR require a secure connection – the S stands for "secure".
 :::
 
-## Setting up a self-signed certificate for development
+## <logo-header logo="/imgs/ssl-icon.webp" alt="SSL">Setting up a self-signed certificate for development</logo-header>
 
 Different operating systems have different security requirements for local development. Typically, displaying a website will work even with a auto-generated untrusted certificate, but browsers may warn about the missing trust and some features are not available. Here's a summary:
 
@@ -50,7 +69,7 @@ _Uses the [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert) n
 | macOS | ✓ | ✓ |
 | iOS | ✓ | ✓ |
 
-### Generating a self-signed development certificate
+### <logo-header logo="/imgs/ssl-icon.webp" alt="SSL">Generating a self-signed development certificate</logo-header>
 
 - in Unity/Blender, click on "Open Workspace" to open VS Code  
 
@@ -70,7 +89,7 @@ _Uses the [vite-plugin-mkcert](https://github.com/liuweiGL/vite-plugin-mkcert) n
 - you can stop the terminal process again.
 - from now on, pressing Play in Unity/Blender will use the generated certificate for the local server, and no "security warning" will be shown anymore, since your browser now trusts the local connection.
 
-## Installing the certificate on your development devices
+## <logo-header logo="/imgs/ssl-icon.webp" alt="SSL">Installing the certificate on your development devices</logo-header>
 
 On your development devices, you need to _install_ the generated certificate and allow the OS to _trust_ it. This is different for each OS. For each of them, you'll need the rootCA.pem file that was generated, and send it to the device you want to authenticate.
 
@@ -79,11 +98,11 @@ On your development devices, you need to _install_ the generated certificate and
 
 Send the device to yourself (e.g. via E-Mail, AirDrop, iCloud, USB, Slack, ...) so that you can access it on your development devices.
 
-### Installing the certificate on Android
+### <logo-header logo="/imgs/android-logo.webp" alt="Android">Installing the certificate on Android</logo-header>
 
 1. Open the file. You'll be prompted to install the certificate.
 
-### Installing the certificate on iOS / iPadOS / VisionOS
+### <logo-header logo="/imgs/ios-logo.webp" alt="iOS">Installing the certificate on iOS / iPadOS / VisionOS</logo-header>
 1. Open the file.
 2. You'll be prompted to _add_ the profile to your device. Confirm.
 3. Go to Settings
@@ -94,11 +113,11 @@ Send the device to yourself (e.g. via E-Mail, AirDrop, iCloud, USB, Slack, ...) 
 The certificate is automatically installed on the machine you generated it on. For other machines in the local network, follow the steps below to also establish a trusted connection.
 :::
 
-### Installing the certificate on another MacOS machine
-1. Open the file. Keychain Access will open and allow you to install the certificate. 
+### <logo-header logo="/imgs/macos-logo.webp" alt="macOS">Installing the certificate on another macOS machine</logo-header>
+1. Open the file. Keychain Access will open and allow you to install the certificate.
 2. You may have to set "Trust" to "Always allow".
 
-### Installing the certificate on another Windows machine
+### <logo-header logo="/imgs/microsoft-logo.webp" alt="Windows">Installing the certificate on another Windows machine</logo-header>
 1. Open `certmgr` ("Manage user certificates") by typing <kbd>Windows key</kbd> + `certmgr`.
 2. In the left sidebar, select "Trusted Root Certification Authorities".
 3. Right-click on "Certificates" and select "All Tasks > Import".

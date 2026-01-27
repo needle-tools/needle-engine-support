@@ -2,41 +2,71 @@
 title: Exporting Assets to glTF
 ---
 
+# Exporting Assets to glTF
 
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender</a></logo-header>
 
-# Exporting Assets, Animations, Prefabs, Materials, Lightmaps...
-Add an ``ExportInfo`` component to your Unity scene to generate a new web project from a template, link to an existing web project that you want to export to, set up dependencies to other libraries and packages and to deploy your project. 
+Learn how to export your Unity and Blender scenes, assets, animations, materials, and lightmaps to the web using glTF format. Needle Engine provides powerful tools to convert your 3D content into optimized web-ready assets.
 
-By default, your scene is exported on save. This setting can be changed by disabling ``Auto Export`` in the ``ExportInfo`` component.  
+**What You Can Export:**
+- 🎨 Materials (PBR, custom shaders, MaterialX)
+- 🎬 Animations (Timeline, Animator, clips)
+- 📦 Prefabs and scenes (for lazy loading)
+- 💡 Lightmaps and skyboxes
+- 🎭 Meshes, textures, and more
 
-## 📦 Exporting glTF files 
-To export meshes, materials, animations, textures (...) create a new GameObject in your hierarchy and add a ``GltfObject`` component to it. This is the root of a new glTF file. It will be exported whenever you make a change to the scene and save.  
+:::tip Quick Start
+Add an `ExportInfo` component to your Unity scene to get started. By default, your scene exports automatically on save—you can disable this in the `ExportInfo` component settings.
+:::  
 
-Only scripts and data on and inside those root objects is exported. Scripts and data outside of them are not exported. 
+## <logo-header logo="/imgs/gltf-logo.webp" alt="glTF">Exporting glTF Files</logo-header>
 
+Create a new GameObject and add a `GltfObject` component—this becomes the root of a glTF file that exports meshes, materials, animations, textures, and more.
 
-Add a cube as a child of your root object and save your scene. Note that the output ``assets/`` folder (see [project structure](#vite-project-structure)) now contains a new ``.glb`` file with the same name as your root GameObject.  
+**How it works:**
+1. Add `GltfObject` component to a GameObject
+2. Add child objects (meshes, lights, etc.) under it
+3. Save your scene—the glTF exports automatically
+4. Find the `.glb` file in your `assets/` folder
 
-You can enable the ``Smart Export`` setting (via `Edit/Project Settings/Needle` ) to only export when a change in this object's hierarchy is detected. 
-
-:::details How to prevent specific objects from being exported
-Objects with the `EditorOnly` tag will be ignored on export including their child hierarchy.   
-Be aware that this is preferred over disabling objects as disabled will still get exported in case they're turned on later.
+:::tip Only Exports What's Inside
+Only scripts and data on and inside `GltfObject` roots are exported. Content outside these roots is ignored.
 :::
 
-### Lazy loading and multiple levels / scenes
+**Performance Tip:** Enable `Smart Export` in `Edit > Project Settings > Needle` to only export when changes are detected in the object hierarchy.
 
-If you want to split up your application into multiple levels or scenes then you can simply use the [`SceneSwitcher`](https://engine.needle.tools/docs/api/SceneSwitcher) component. You can then structure your application into multiple scenes or prefabs and add them to the SceneSwitcher array to be loaded and unloaded at runtime. This is a great way to avoid having to load all your content upfront and to keep loading times small (for example it is what we did on [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes) by separating each section of your website into its own scene and only loading them when necessary)
+:::details Excluding Objects from Export
+Objects tagged as `EditorOnly` are ignored during export (including their children). This is better than disabling objects, which still export in case they're enabled at runtime.
+:::
+
+### Lazy Loading & Multiple Scenes
+
+Split your app into multiple scenes for faster loading. Use the [`SceneSwitcher`](https://engine.needle.tools/docs/api/SceneSwitcher) component to load and unload scenes at runtime.
+
+**Benefits:**
+- Smaller initial load times
+- Load content only when needed
+- Better performance across devices
+
+**Example:** On [needle.tools](https://needle.tools?utm_source=needle_docs&utm_content=export_scenes), each section is a separate scene that loads on demand.
+
+[Learn more about loading scenes →](scripting.html#loading-scenes)
 
 ### Recommended Complexity per glTF
 
-- Max. 50 MB export size uncompressed (usually ends up ~10-20 MB compressed)  
-- Max. 500k vertices (less if you target mobile VR as well)  
-- Max. 4x 2k lightmaps  
+Keep your glTF files within these limits for optimal performance across devices:
 
-You can split up scenes and prefabs into multiple glTF files, and then load those on demand (only when needed). This keeps loading performance fast and file size small. See [Loading Scenes in the scripting docs](scripting.md#loading-scenes).
+| Metric | Recommended Max | Notes |
+| --- | --- | --- |
+| **File Size** | 50 MB uncompressed | Usually compresses to 10-20 MB |
+| **Vertices** | 500k | Lower for mobile VR |
+| **Lightmaps** | 4× 2k textures | Larger files = slower loading |
 
- The scene complexity here is recommended to ensure good performance across a range of web-capable devices and bandwidths. There's no technical limitation to this beyond the capabilities of your device.
+:::tip Split Large Scenes
+If you exceed these limits, split your content into multiple glTF files and load them on demand. This keeps performance fast across all devices.
+:::
+
+*These recommendations ensure good performance across a range of web-capable devices and bandwidths. There's no hard technical limitation beyond device capabilities.*
 
 ### Prefabs
 Prefabs can be exported as invidual glTF files and instantiated at runtime. To export a prefab as glTF just reference a prefab asset (from the project browser and not in the scene) [from one of your scripts](https://fwd.needle.tools/needle-engine/docs/addressables).  
