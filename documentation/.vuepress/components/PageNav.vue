@@ -1,6 +1,7 @@
 <template>
   <div class="page-nav-container">
-    <aside class="page-nav">
+    <!-- Desktop sidebar navigation -->
+    <aside class="page-nav page-nav-sidebar">
       <!-- Back to parent link -->
       <div class="page-nav-header" v-if="parentLink">
         <a :href="parentLink.link" class="parent-link">
@@ -30,6 +31,33 @@
         </div>
       </div>
     </aside>
+
+    <!-- Mobile breadcrumb navigation -->
+    <div class="page-nav page-nav-breadcrumb">
+      <div class="breadcrumb-row">
+        <!-- Breadcrumb trail -->
+        <nav class="breadcrumb-trail">
+          <template v-if="breadcrumbs.length > 0">
+            <a v-for="(crumb, index) in breadcrumbs" :key="index" :href="crumb.link" class="breadcrumb-item">
+              {{ crumb.text }}
+            </a>
+          </template>
+          <span class="breadcrumb-current" v-if="currentPageTitle">{{ currentPageTitle }}</span>
+        </nav>
+
+        <!-- Previous and next sections preview on the right -->
+        <div class="context-sections" v-if="prevHeaders.length > 0 || nextHeaders.length > 0">
+          <!-- <a v-for="header in prevHeaders" :key="'prev-' + header.slug" :href="`#${header.slug}`"
+            class="breadcrumb-item breadcrumb-prev" @click.prevent="scrollToHeader(header.slug)">
+            {{ header.title }}
+          </a> -->
+          <a v-for="header in nextHeaders" :key="'next-' + header.slug" :href="`#${header.slug}`"
+            class="breadcrumb-item breadcrumb-next" @click.prevent="scrollToHeader(header.slug)">
+            {{ header.title }}
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -45,7 +73,12 @@ export default {
       activeHeader: '',
       parentLink: null,
       observer: null,
-      linkText: DEFAULT_LINK_TEXT
+      linkText: DEFAULT_LINK_TEXT,
+      breadcrumbs: [],
+      currentPageTitle: '',
+      prevHeaders: [],
+      nextHeaders: [],
+      updateHeadersTimeout: null
     }
   },
 
@@ -81,11 +114,26 @@ export default {
     setTimeout(() => {
       this.extractHeaders()
       this.determineParentLink()
+      this.buildBreadcrumbs()
       this.updateActiveHeader()
+      this.updateContextHeaders()
     }, 100)
 
-    // Listen for scroll events to update active header
-    window.addEventListener('scroll', this.updateActiveHeader)
+    // Listen for scroll events to update active header and next sections
+    // Throttle to 200ms to prevent flickering
+    let didScroll = false;
+    window.addEventListener('scroll', () => {
+      this.updateActiveHeader()
+
+      // Throttle updateContextHeaders to 100ms
+      if (didScroll) return;
+      didScroll = true;
+      setTimeout(() => scheduleUpdate(), 300);
+      const scheduleUpdate = () => {
+        didScroll = false;
+        this.updateContextHeaders();
+      }
+    })
 
     // Update headers when route changes
     this.$router?.afterEach(() => {
@@ -95,7 +143,9 @@ export default {
         setTimeout(() => {
           this.extractHeaders()
           this.determineParentLink()
+          this.buildBreadcrumbs()
           this.updateActiveHeader()
+          this.updateContextHeaders()
         }, 1000)
       })
     })
@@ -175,6 +225,103 @@ export default {
         // Update URL hash
         window.history.pushState(null, '', `#${slug}`)
       }
+    },
+
+    buildBreadcrumbs() {
+      const currentPath = this.$route?.path || window.location.pathname
+      const pathWithoutBase = currentPath.replace(/^\/docs\//, '').replace(/\/$/, '')
+      const segments = pathWithoutBase.split('/').filter(s => s)
+
+      this.breadcrumbs = []
+
+      // Get all pages from VuePress (if available)
+      const allPages = this.$site?.pages || []
+
+      // Build breadcrumb trail, checking if pages exist
+      for (let i = 0; i < segments.length - 1; i++) {
+        const segmentPath = '/docs/' + segments.slice(0, i + 1).join('/') + '/'
+        const segmentText = segments[i]
+          .split('-')
+          .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+          .join(' ')
+
+        // Check if this path exists in VuePress pages
+        const pageExists = allPages.some(page => {
+          const pagePath = page.path || page.regularPath || ''
+          return pagePath === segmentPath || pagePath === segmentPath.replace(/\/$/, '')
+        })
+
+        // Only add breadcrumb if page exists or it's a known parent
+        const knownParents = [
+          '/docs/tutorials/',
+          '/docs/how-to-guides/',
+          '/docs/explanation/',
+          '/docs/reference/',
+          '/docs/blender/',
+          '/docs/unity/',
+          '/docs/'
+        ]
+
+        if (pageExists || knownParents.includes(segmentPath)) {
+          // Special case naming
+          let displayText = segmentText
+          if (segmentPath === '/docs/tutorials/') {
+            displayText = 'Tutorials'
+          } else if (segmentPath === '/docs/how-to-guides/') {
+            displayText = 'How-To Guides'
+          } else if (segmentPath === '/docs/explanation/') {
+            displayText = 'Explanations'
+          } else if (segmentPath === '/docs/reference/') {
+            displayText = 'Reference'
+          }
+
+          this.breadcrumbs.push({ text: displayText, link: segmentPath })
+        }
+      }
+
+      // Get current page title from h1 or last segment
+      const h1 = document.querySelector('h1')
+      this.currentPageTitle = h1?.textContent?.trim() || segments[segments.length - 1]
+        .split('-')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ')
+    },
+
+    updateContextHeaders() {
+      const scrollPosition = window.scrollY + window.innerHeight * 0.5
+
+      // Find previous and next headers relative to current scroll position
+      const article = document.querySelector('.vp-theme-container, .vp-page')
+      if (!article) return
+
+      const headerElements = article.querySelectorAll('h2, h3')
+      const allHeaders = []
+      let currentIndex = -1
+
+      // Collect all headers and find the current one
+      for (let i = 0; i < headerElements.length; i++) {
+        const el = headerElements[i]
+        const header = {
+          level: parseInt(el.tagName.substring(1)),
+          title: el.textContent.replace(/^#\s*/, '').trim(),
+          slug: el.id || this.slugify(el.textContent)
+        }
+        allHeaders.push(header)
+
+        // Find current header (the last one before or at scroll position)
+        if (el.offsetTop <= scrollPosition - window.innerHeight * .3) {
+          currentIndex = i
+        }
+      }
+
+      // Get previous header (one before current)
+      const previous = currentIndex > 0 ? [allHeaders[currentIndex - 1]] : []
+
+      // Get next header (one after current)
+      const upcoming = currentIndex < allHeaders.length - 1 ? [allHeaders[currentIndex + 1]] : []
+
+      this.prevHeaders = previous
+      this.nextHeaders = upcoming
     },
 
     determineParentLink() {
@@ -346,7 +493,8 @@ export default {
   position: relative;
 }
 
-.page-nav {
+/* Desktop sidebar navigation */
+.page-nav-sidebar {
   position: fixed;
   right: 2rem;
   top: 6rem;
@@ -370,17 +518,114 @@ export default {
 }
 
 @media (width > 1500px) {
-  .page-nav {
+  .page-nav-sidebar {
     margin-right: 50%;
     transform: translateX(750px);
   }
 }
 
-/* Hide on smaller screens */
+/* Hide sidebar on smaller screens */
 @media (width < 1410px) {
-  .page-nav {
+  .page-nav-sidebar {
     display: none;
   }
+}
+
+/* Mobile breadcrumb navigation */
+.page-nav-breadcrumb {
+  display: block;
+  position: fixed;
+  top: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 48rem;
+  width: calc(100% - 3rem);
+  background-color: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(125, 125, 125, 0.1);
+  padding: 0.75rem 1.5rem;
+  font-size: 0.85rem;
+  z-index: 50;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-radius: 16px;
+}
+
+/* Show breadcrumb only on narrow screens, hide on desktop */
+@media (width >=1410px) {
+  .page-nav-breadcrumb {
+    display: none;
+  }
+}
+
+.breadcrumb-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: nowrap;
+  overflow: hidden;
+}
+
+.breadcrumb-trail {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.5rem;
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.breadcrumb-item {
+  color: var(--c-text-accent, #826aed);
+  text-decoration: none;
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.breadcrumb-item:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb-item::after {
+  color: rgba(125, 125, 125, 0.5);
+}
+
+.breadcrumb-current {
+  font-weight: 600;
+  color: var(--c-text, inherit);
+  white-space: nowrap;
+}
+
+.context-sections {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  overflow: hidden;
+  max-width: 50%;
+}
+
+.breadcrumb-prev {
+  opacity: 1;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-prev::after {
+  content: ' ←';
+}
+
+.breadcrumb-next {
+  opacity: 1;
+  font-size: 0.85rem;
+}
+
+.breadcrumb-next::before {
+  content: '→ ';
 }
 
 .page-nav-header {
@@ -399,10 +644,6 @@ export default {
   transition: opacity 0.2s;
 }
 
-.parent-link:hover {
-  opacity: 0.7;
-}
-
 .back-arrow {
   font-size: 1.1em;
 }
@@ -414,7 +655,6 @@ export default {
   font-size: 0.85rem;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  opacity: 0.8;
 }
 
 .page-nav-list {
@@ -532,4 +772,12 @@ h3.active-header {
   font-weight: 800 !important;
   transition: font-weight 0.1s;
 } */
+
+/* Add top padding to page content when breadcrumb navigation is visible (mobile) */
+@media (width < 1410px) {
+
+  .vp-page {
+    margin-top: 5rem !important;
+  }
+}
 </style>
