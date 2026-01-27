@@ -14,10 +14,14 @@ Use the node based ShaderGraph to create shaders for the web. ShaderGraph makes 
 
 Read more about [PBR Materials](./export.md#physically-based-materials-pbr) • [Custom Shaders](./export.md#custom-shaders)
 
-## Crossplatform: VR, AR, Mobile, Desktop  
+## Crossplatform: VR, AR, Mobile, Desktop
 Needle Engine runs everywhere web technology does: run the same application on desktop, mobile, AR or VR. We build Needle Engine [with XR in mind](./xr.md) and consider this as and integral part of responsive webdesign!
 
-Use [Everywhere Actions](./everywhere-actions.md) for **Interactive AR on both Android and iOS**.
+### iOS WebXR Support
+Native [iOS WebXR support](./ios-webxr-app-clip.md) is now available through App Clip technology. Run WebXR AR experiences instantly on iPhone and iPad with Safari without requiring app installation. Powered by ARKit, it provides full WebXR functionality including hit testing, plane detection, and DOM overlays. [Try it now](https://appclip.needle.tools) or learn more about [iOS WebXR](./ios-webxr-app-clip.md).
+
+### Everywhere Actions
+Use [Everywhere Actions](./everywhere-actions.md) for **Interactive AR on both Android and iOS** using USDZ and QuickLook for native 3D viewing experiences.
 
 
 ## Lightmaps
@@ -104,6 +108,7 @@ Needle Engine uses as [component based workflow](scripting.md#component-architec
 
 - PostProcessing → Bloom, Screenspace Ambient Occlusion, Depth of Field, Color Correction...
 - EditorSync → Live synchronize editing in Unity to the running three.js application for local development
+- Native iOS WebXR → Run WebXR AR experiences on iPhone and iPad with [App Clip technology](./ios-webxr-app-clip.md)
 - Interactive AR on iOS and Android → Use our [Everywhere Actions](./everywhere-actions.md) feature set or build your own
 
 ---
