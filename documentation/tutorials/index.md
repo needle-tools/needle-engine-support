@@ -35,8 +35,9 @@ Tutorials are **learning-oriented** guides that take you from zero to a working 
 
 Build your foundation with these essential tutorials:
 
-- [TypeScript Essentials](./fundamentals/typescript-essentials) - Learn TypeScript basics for Needle Engine (~30 min, Beginner)
+- [For Blender Artists](./fundamentals/for-blender-artists) - 3D artists guide to interactive web experiences (~20 min, Beginner)
 - [For Unity Developers](./fundamentals/for-unity-developers) - Translate your Unity knowledge to the web (~45 min, Intermediate)
+- [TypeScript Essentials](./fundamentals/typescript-essentials) - Learn TypeScript basics for Needle Engine (~30 min, Beginner)
 
 ### Your First Project
 

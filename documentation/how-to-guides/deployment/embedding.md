@@ -292,11 +292,15 @@ Iterate efficiently:
 
 ## Platform-Specific Integrations
 
-### <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="./integrating-with-framer.html">Framer</a></logo-header>
+### <logo-header logo="/imgs/aem-logo.webp" alt="Adobe Experience Manager"><a href="../integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header>
+
+Integrate Needle Engine into AEM with custom components, Experience Fragments, and author-friendly workflows.
+
+### <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="../integrations/framer">Framer</a></logo-header>
 
 Integrate Needle Engine scenes into Framer websites.
 
-### <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="./integrating-with-wordpress.html">WordPress</a></logo-header>
+### <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="../integrations/wordpress">WordPress</a></logo-header>
 
 Embed Needle Engine in WordPress posts, pages, and custom themes.
 

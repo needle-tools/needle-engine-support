@@ -68,6 +68,7 @@ Embed Needle Engine in websites and web apps:
 - [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks, bundlers, and integration
 - [Create Responsive 3D Layouts](/docs/how-to-guides/web-integration/responsive-design) - Focus Rect and ViewBox for adaptive designs
 - [Embed in Websites](/docs/how-to-guides/deployment/embedding) - iframe, CDN, direct integration
+- [Integrate with Adobe Experience Manager](/docs/how-to-guides/integrations/adobe-experience-manager) - AEM sites and components
 - [Integrate with Framer](/docs/how-to-guides/integrations/framer) - Framer websites
 - [Integrate with WordPress](/docs/how-to-guides/integrations/wordpress) - WordPress sites
 

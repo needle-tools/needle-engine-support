@@ -67,7 +67,7 @@ Then create the HTML element to focus on:
 ```
 
 ::: tip No-Code Alternative
-You can also use [HTML attributes](/reference/needle-engine-attributes.md) to set focus rect without writing code. Add `focus-rect=".focus-area"` to your `<needle-engine>` element.
+You can also use [HTML attributes](/docs/reference/needle-engine-attributes) to set focus rect without writing code. Add `focus-rect=".focus-area"` to your `<needle-engine>` element.
 :::
 
 ### Dynamic Focus Changes

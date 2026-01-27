@@ -21,7 +21,7 @@ Think of C# scripts in Unity or Blender panels as **data structure definitions**
 :::
 
 :::tip Already familiar with TypeScript and JavaScript?
-Skip ahead to [Needle Engine Scripting](../scripting.html) to start building!
+Skip ahead to [Needle Engine Scripting](/docs/how-to-guides/scripting/create-components) to start building!
 :::
 
 ## Learning Resources
@@ -423,4 +423,6 @@ Arrow functions are cleaner and less error-prone. Use them for event handlers un
 
 ## What's next?
 
-- [Needle Engine Scripting](/scripting.md)
+- [Create Your First Component](/docs/how-to-guides/scripting/create-components)
+- [How-To Guides](/docs/how-to-guides/)
+- [API Reference](/docs/reference/)
