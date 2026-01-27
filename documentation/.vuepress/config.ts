@@ -28,6 +28,7 @@ import { existsSync } from 'fs'
 import { Element } from 'hast'
 import { SiteLocaleData } from 'vuepress/shared'
 import copyMarkdown from './plugins/copy-markdown'
+import generateLlms from './plugins/generate-llms'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 dotenv.config()
@@ -359,6 +360,7 @@ export default defineUserConfig({
         generateSharedCode,
         modifyHtmlMeta,
         copyMarkdown,
+        generateLlms({ baseUrl: _url }),
         //@ts-ignore
         googleAnalyticsPlugin({
             id: "G-V2Q445L3XQ",

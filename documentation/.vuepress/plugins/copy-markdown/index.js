@@ -42,13 +42,6 @@ export default (options = {}) => {
     onGenerated: async (app) => {
       console.log('[copy-markdown] Starting to copy processed markdown files...');
 
-      let fullTextEN = `<SYSTEM>
-This is the developer documentation for Needle.      
-Documentation: https://engine.needle.tools/docs/
-Last Updated on ${new Date().toLocaleString('en-US')}
-</SYSTEM>
-`;
-
       let count = 0;
       for (const page of app.pages) {
         // Ensure the page has a source file path (e.g. not a virtual page without one)
@@ -56,15 +49,6 @@ Last Updated on ${new Date().toLocaleString('en-US')}
         if (page.filePath && processedMarkdownMap.has(page.filePath)) {
           const processedMarkdown = processedMarkdownMap.get(page.filePath);
           const htmlFilePath = page.htmlFilePath; // Absolute path to the generated HTML file
-
-          if (page.filePath.includes("/lang") === false) {
-            const pageFilename = path.basename(page.filePath);
-            if (!pageFilename.startsWith("_")) {
-              // const pageTitle = page.title || path.basename(page.filePath, path.extname(page.filePath));
-              const pageUrl = `https://engine.needle.tools/docs/${page.htmlFilePathRelative}`;
-              fullTextEN += `${processedMarkdown}\nSource: ${pageUrl}\n\n`;
-            }
-          }
 
           if (htmlFilePath) {
             const targetDir = path.dirname(htmlFilePath);
@@ -97,23 +81,8 @@ Last Updated on ${new Date().toLocaleString('en-US')}
         }
       }
 
-      // Optional: Clear the map after use (good practice, though process exits anyway)
+      // Clear the map after use
       processedMarkdownMap.clear();
-
-      // Write the full text to a single file if needed
-      const outpath = path.join(app.dir.dest(), 'llms.txt');
-      try {
-        await fs.ensureDir(app.dir.dest());
-        await fs.writeFile(outpath, fullTextEN, 'utf-8');
-        console.log(`[copy-markdown] Saved full text to: ${path.relative(app.dir.dest(), outpath)}`);
-
-        // also copy the file to the root directory
-        const rootOutpath = path.join(process.cwd(), 'llms.txt');
-        await fs.copyFile(outpath, rootOutpath);
-
-      } catch (error) {
-        console.error(`[copy-markdown] Error writing full text file ${outpath}:`, error);
-      }
 
       console.log(`[copy-markdown] Successfully copied ${count} processed markdown files.`);
     },
