@@ -144,7 +144,14 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     ]
                 },
                 {
-                    text: "Platform Guides",
+                    text: "Scripting & Components",
+                    children: [
+                        "/how-to-guides/scripting/create-components",
+                        "/reference/scripting-examples",
+                    ]
+                },
+                {
+                    text: "Platform Workflows",
                     children: [
                         "/unity/",
                         "/blender/",
@@ -158,10 +165,11 @@ const defaultThemeOpts: DefaultThemeOptions = {
             children: [
                 "/how-to-guides/",
                 {
-                    text: "Scripting",
+                    text: "Setup & Installation",
                     children: [
-                        "/how-to-guides/scripting/create-components",
-                        "/scripting",
+                        "/unity/",
+                        "/blender/",
+                        "/getting-started/",
                     ]
                 },
                 {
@@ -172,46 +180,69 @@ const defaultThemeOpts: DefaultThemeOptions = {
                     ]
                 },
                 {
+                    text: "Scripting & Development",
+                    children: [
+                        "/how-to-guides/scripting/create-components",
+                        "/reference/scripting-examples",
+                        "/reference/api/lifecycle-methods",
+                        "/reference/api/input-events",
+                        "/reference/api/physics-events",
+                        "/reference/api/xr-events",
+                    ]
+                },
+                {
                     text: "Web Integration",
                     children: [
                         "/how-to-guides/web-integration/",
                         "/how-to-guides/deployment/embedding",
+                        "/how-to-guides/integrations/framer",
+                        "/how-to-guides/integrations/wordpress",
                     ]
                 },
                 {
-                    text: "XR (VR & AR)",
+                    text: "XR Development (VR & AR)",
                     children: [
                         "/how-to-guides/xr/",
                         "/how-to-guides/xr/ios-webxr-app-clip",
                         "/how-to-guides/xr/image-tracking",
-                        "/how-to-guides/everywhere-actions/",
+                        {
+                            text: "Everywhere Actions",
+                            link: "/how-to-guides/everywhere-actions/",
+                        },
                     ]
                 },
                 {
-                    text: "Multiplayer",
+                    text: "Multiplayer & Networking",
                     children: [
                         "/how-to-guides/networking/",
                     ]
                 },
                 {
-                    text: "Deployment",
+                    text: "Optimization & Performance",
                     children: [
                         "/how-to-guides/deployment/",
+                    ]
+                },
+                {
+                    text: "Deployment & Hosting",
+                    children: [
+                        "/how-to-guides/deployment/",
+                        "/how-to-guides/deployment/embedding",
                         "/cloud/",
                     ]
                 },
                 {
-                    text: "Testing & Debug",
+                    text: "Debugging & Testing",
                     children: [
-                        "/how-to-guides/testing",
                         "/how-to-guides/debugging/",
+                        "/how-to-guides/testing",
                     ]
                 },
                 {
-                    text: "Integrations",
+                    text: "Unity & Blender Specific",
                     children: [
-                        "/how-to-guides/integrations/framer",
-                        "/how-to-guides/integrations/wordpress",
+                        "/unity/",
+                        "/blender/",
                     ]
                 },
             ]
@@ -220,11 +251,21 @@ const defaultThemeOpts: DefaultThemeOptions = {
             text: 'Explanation',
             children: [
                 "/explanation/",
-                "/explanation/core-concepts/vision",
-                "/explanation/architecture/technical-overview",
-                "/explanation/core-concepts/project-structure",
-                "/explanation/core-concepts/component-compiler",
-                "/explanation/core-concepts/features-overview",
+                {
+                    text: "Core Concepts",
+                    children: [
+                        "/explanation/core-concepts/vision",
+                        "/explanation/core-concepts/project-structure",
+                        "/explanation/core-concepts/component-compiler",
+                        "/explanation/core-concepts/features-overview",
+                    ]
+                },
+                {
+                    text: "Architecture",
+                    children: [
+                        "/explanation/architecture/technical-overview",
+                    ]
+                },
             ]
         },
         {
@@ -242,6 +283,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         "/reference/api/physics-events",
                         "/reference/api/input-events",
                         "/reference/api/xr-events",
+                        "/reference/api/time",
                     ]
                 },
                 {
@@ -279,7 +321,7 @@ const defaultThemeOpts: DefaultThemeOptions = {
             children: [
                 "/help/",
                 "/help/support",
-                "/faq",
+                "/reference/faq",
                 {
                     text: 'Forum',
                     link: 'https://forum.needle.tools?utm_source=needle_docs&utm_content=headernav'
@@ -307,6 +349,8 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 children: [
                     "/tutorials/fundamentals/typescript-essentials",
                     "/tutorials/fundamentals/for-unity-developers",
+                    "/how-to-guides/scripting/create-components",
+                    "/reference/scripting-examples",
                 ]
             },
             {
@@ -317,7 +361,6 @@ const defaultThemeOpts: DefaultThemeOptions = {
                         text: "Scripting",
                         children: [
                             "/how-to-guides/scripting/create-components",
-                            "/scripting",
                         ]
                     },
                     {
@@ -348,7 +391,10 @@ const defaultThemeOpts: DefaultThemeOptions = {
                             "/how-to-guides/xr/",
                             "/how-to-guides/xr/ios-webxr-app-clip",
                             "/how-to-guides/xr/image-tracking",
-                            "/how-to-guides/everywhere-actions/",
+                            {
+                                text: "Everywhere Actions",
+                                link: "/how-to-guides/everywhere-actions/",
+                            },
                         ]
                     },
                     {
@@ -384,11 +430,21 @@ const defaultThemeOpts: DefaultThemeOptions = {
                 text: "Explanation",
                 link: "/explanation/",
                 children: [
-                    "/explanation/core-concepts/vision",
-                    "/explanation/architecture/technical-overview",
-                    "/explanation/core-concepts/project-structure",
-                    "/explanation/core-concepts/component-compiler",
-                    "/explanation/core-concepts/features-overview",
+                    {
+                        text: "Core Concepts",
+                        children: [
+                            "/explanation/core-concepts/vision",
+                            "/explanation/core-concepts/project-structure",
+                            "/explanation/core-concepts/component-compiler",
+                            "/explanation/core-concepts/features-overview",
+                        ]
+                    },
+                    {
+                        text: "Architecture",
+                        children: [
+                            "/explanation/architecture/technical-overview",
+                        ]
+                    },
                 ]
             },
             {
@@ -438,13 +494,16 @@ const defaultThemeOpts: DefaultThemeOptions = {
             {
                 text: "Samples & Showcase",
                 link: "/samples-and-showcase/",
+                children: [
+                    "/samples-and-showcase/examples",
+                ]
             },
             {
                 text: "Help & Community",
                 link: "/help/",
                 children: [
                     "/help/support",
-                    "/faq",
+                    "/reference/faq",
                 ]
             },
         ]

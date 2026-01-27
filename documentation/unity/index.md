@@ -2,15 +2,6 @@
 title: Needle Engine for Unity
 editLink: true
 ---
-<br/>
-<div class="centered" style="display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 2em;
-    font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-  <img src="/imgs/unity-logo.webp" style="max-height:70px;" />
-</div>
 
 # <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Needle Engine for Unity</logo-header>
 
@@ -70,9 +61,10 @@ Create **highly interactive, flexible, and lightweight web applications** right 
 Samples are UPM packages, so they're read-only by design.
 
 **To modify:**
-- Assets: Copy to your `Assets/` folder
-- Scripts: Copy to your web project's `src/` folder
-::: 
+- **Scenes:** When you open a sample via the Samples window, it's automatically copied to your `Assets/` folder where you can edit it
+- **Additional Assets:** Some materials or assets may need to be manually copied to your `Assets/` folder, depending on the sample
+- **Scripts:** Copy to your web project's `src/` folder to customize behavior
+:::
 
 ### 🚀 Start from a Scene Template (Fast!)
 
@@ -174,7 +166,9 @@ Write TypeScript code that automatically becomes available in Unity as C# stub c
 
 :::tip Perfect Team Workflow
 **Web Developer:** Writes components, manages web project
+
 **3D Designer:** Edits scenes, content, and settings in Unity
+
 **Result:** Both see changes instantly with hot reload 🔥
 :::
 

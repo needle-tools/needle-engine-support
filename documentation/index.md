@@ -8,7 +8,7 @@ footer: "Copyright © 2025 Needle Tools GmbH"
 
 <discountbanner fallback_image="/docs/imgs/banner.webp" />
 
-# Needle Engine
+# <logo-header logo="/imgs/needle-logo.webp" alt="Needle Engine Logo">Needle Engine</logo-header>
 
 **Build 3D web experiences that work everywhere.** From browser to VR headsets, mobile AR to iOS WebXR – create once, deploy anywhere. No app stores, no waiting, no limitations.
 
@@ -29,26 +29,79 @@ Collaboration and XR aren't afterthoughts – they're core features. Add multipl
 **⚡️ Optimized for Performance**
 Powerful compression and optimization pipeline ensures your files are small and load fast. Built on the glTF standard for maximum compatibility.
 
-<actiongroup>
-    <action href="getting-started/">
-    Get Started ⭐
-    </action>
-    <action href="features-overview">
-    Features 🎨
-    </action>
-    <action href="https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=actionbutton">
-    Samples 👓
-    </action>
-    <action href="xr">
-    WebXR 🥽
-    </action>
-    <action href="cloud/index">
-    Needle Cloud ⛅️
-    </action>
-    <action href="help/">
-    Help 💬
-    </action>
-</actiongroup>
+
+## Choose Your Path
+
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+
+<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+
+### 🎓 Learning
+
+**Start with step-by-step tutorials**
+
+Perfect for newcomers who want to learn the fundamentals.
+
+- [Getting Started](./getting-started/)
+- [TypeScript Essentials](./tutorials/fundamentals/typescript-essentials)
+- [For Unity Developers](./tutorials/fundamentals/for-unity-developers)
+
+**[Browse all Tutorials →](./tutorials/)**
+
+</div>
+
+<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+
+### 🔧 Problem Solving
+
+**Jump straight to practical guides**
+
+Get things done with focused how-to instructions.
+
+- [Create Components](./how-to-guides/scripting/create-components)
+- [Deploy to Production](./how-to-guides/deployment/)
+- [Add Multiplayer](./how-to-guides/networking/)
+- [Enable WebXR](./how-to-guides/xr/)
+
+**[Browse all How-To Guides →](./how-to-guides/)**
+
+</div>
+
+<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+
+### 📚 Understanding
+
+**Explore concepts and architecture**
+
+Deepen your knowledge of how Needle Engine works.
+
+- [Vision & Philosophy](./explanation/core-concepts/vision)
+- [Technical Architecture](./explanation/architecture/technical-overview)
+- [Project Structure](./explanation/core-concepts/project-structure)
+
+**[Browse all Explanations →](./explanation/)**
+
+</div>
+
+<div style="padding: 1.5rem; border: 1px solid var(--c-border); border-radius: 8px; background: var(--c-bg-light);">
+
+### 📖 Reference
+
+**Look up specific APIs**
+
+Quick reference for components, methods, and configuration.
+
+- [Component Reference](./reference/components)
+- [Lifecycle Methods](./reference/api/lifecycle-methods)
+- [TypeScript API Docs](https://engine.needle.tools/docs/api/latest)
+
+**[Browse all Reference →](./reference/)**
+
+</div>
+
+</div>
+
+
 
 ## What Developers Say
 
@@ -170,13 +223,13 @@ My workflow has been optimized 10X ever since i started using needle
 
 **Needle Engine** is a web-based runtime for complex and simple 3D applications alike. Built on three.js and the glTF standard, it provides:
 
-- **Full-featured 3D engine** – [PBR materials](./export#physically-based-materials-pbr), [custom shaders](./export#custom-shaders), [lightmaps](./export#lightmaps), [physics](./reference/components#physics), [particles](./reference/components#particles), [UI](./reference/components#ui), and [more](./features-overview)
+- **Full-featured 3D engine** – [PBR materials](./how-to-guides/export/#physically-based-materials-pbr), [custom shaders](./how-to-guides/export/#custom-shaders), [lightmaps](./how-to-guides/export/#lightmaps), [physics](./reference/components#physics), [particles](./reference/components#particles), [UI](./reference/components#ui), and [more](./explanation/core-concepts/features-overview)
 - **Editor integrations** – [Unity](./unity/) and [Blender](./blender/) for professional authoring workflows
-- **Built-in networking** – [Multiplayer components](./networking) for collaborative experiences
-- **Native WebXR support** – [AR and VR](./xr) on all platforms, including [iOS via App Clips](./ios-webxr-app-clip)
-- **Compression pipeline** – Optimized [deployment and compression](./deployment) for web delivery
+- **Built-in networking** – [Multiplayer components](./how-to-guides/networking/) for collaborative experiences
+- **Native WebXR support** – [AR and VR](./how-to-guides/xr/) on all platforms, including [iOS via App Clips](./how-to-guides/xr/ios-webxr-app-clip)
+- **Compression pipeline** – Optimized [deployment and compression](./how-to-guides/deployment/) for web delivery
 - **Component-based architecture** – [TypeScript/JavaScript scripting](./how-to-guides/scripting/create-components) with familiar patterns
-- **Extensible and flexible** – [Integrate with any web framework](./html) or use [vanilla JS](./three/)
+- **Extensible and flexible** – [Integrate with any web framework](./how-to-guides/web-integration/) or use [vanilla JS](./three/)
 
 <!-- <video-embed src="https://www.youtube.com/watch?v=p83q4siNeWo" /> -->
 

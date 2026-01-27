@@ -2,17 +2,8 @@
 title: Needle Engine for Blender
 editLink: true
 ---
-<br/>
-<div class="centered" style="display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 2em;
-    font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <img src="/blender/logo.png" style="max-height:70px;" />
-</div>
 
-# Needle Engine for Blender
+# <logo-header logo="/blender/logo.png" alt="Blender">Needle Engine for Blender</logo-header>
 
 Needle Engine for Blender allows you to create highly interactive, flexible and lightweight web applications right inside Blender. Use the powerful tools of Blender to visually setup your 3D scenes, animate and design.
 

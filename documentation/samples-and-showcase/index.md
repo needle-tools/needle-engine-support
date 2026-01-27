@@ -29,22 +29,6 @@ Download and explore complete sample projects:
 
 ---
 
-## Showcase Projects
-
-See what developers have built with Needle Engine:
-
-### Featured Projects
-
-- [Mercedes Benz](./projects/mercedes-benz) - Automotive product visualization
-- [Castle Demo](./projects/castle) - Architectural visualization
-- [Tower Defense Game](./projects/tower-defense) - Interactive web game
-- [Bike Configurator](./projects/bike) - 3D product configurator
-- [Monsterhands](./projects/monsterhands) - Creative experience
-- [Website Integration](./projects/website) - Website integration example
-- [Zen Republic](./projects/zen-republic) - Immersive experience
-
----
-
 ## Get Featured
 
 Built something cool with Needle Engine? Share it!

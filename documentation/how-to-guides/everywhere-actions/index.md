@@ -21,11 +21,11 @@ Build experiences that work across **all platforms**:
 | **Mobile** | ✅ Full support | Android & iOS browsers |
 | **VR Headsets** | ✅ Full support | Quest, Vive, Index, etc. |
 | **AR Devices** | ✅ Full support | ARCore, ARKit devices |
-| **<logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR</logo-header>** | ✅ **Full native AR** | Via [Needle Go App Clip](./ios-webxr-app-clip.html) |
+| **<logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR</logo-header>** | ✅ **Full native AR** | Via [Needle Go App Clip](../xr/ios-webxr-app-clip) |
 | **<logo-header logo="/imgs/quicklook-logo.webp" alt="QuickLook">iOS QuickLook</logo-header>** | ✅ Supported | Apple Vision Pro, iPhone, iPad |
 
 :::tip Native WebXR on iOS Now Available! 🎉
-Full WebXR support is now available on iOS through [Needle Go App Clip](ios-webxr-app-clip.md). Experience complete AR and VR on iPhone and iPad without app installation—just open your WebXR scene in Safari or Chrome!
+Full WebXR support is now available on iOS through [Needle Go App Clip](../xr/ios-webxr-app-clip). Experience complete AR and VR on iPhone and iPad without app installation—just open your WebXR scene in Safari or Chrome!
 :::
 
 ## How do I use Everywhere Actions?
@@ -71,14 +71,14 @@ Demonstrates how to attach 3D content onto a custom image marker.
 Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.
 
 :::tip iOS: Full Native Support ✅
-Image tracking works natively on iOS through [Needle Go App Clip](./ios-webxr-app-clip.md) with ARKit support—no setup required!
+Image tracking works natively on iOS through [Needle Go App Clip](../xr/ios-webxr-app-clip) with ARKit support—no setup required!
 :::
 
 :::info Android: Browser Flag Required
 **On Android** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.
 :::
 
-[Read more about Image Tracking with Needle Engine](./webxr-image-tracking.md)
+[Read more about Image Tracking with Needle Engine](../xr/image-tracking)
 
 <img src="https://engine.needle.tools/samples-uploads/image-tracking/assets/needle-marker.png" alt="Image Marker" width=300 />    
 
@@ -143,9 +143,9 @@ To see the implementation of our built-in Everywhere Actions, please take look a
 ## Further reading
 
 :::tip <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR Support</logo-header>
-Want to use full WebXR features on iPhone and iPad? Check out our [iOS WebXR with App Clip](./ios-webxr-app-clip.html) guide for complete AR and VR support without app installation.
+Want to use full WebXR features on iPhone and iPad? Check out our [iOS WebXR with App Clip](../xr/ios-webxr-app-clip) guide for complete AR and VR support without app installation.
 :::
 
 - [Visit our AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) that has many interactive AR examples with a focus on iOS AR & Quicklook
 - [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
-- [Image Tracking with Needle Engine](./webxr-image-tracking.html)
+- [Image Tracking with Needle Engine](../xr/image-tracking)

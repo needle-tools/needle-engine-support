@@ -42,9 +42,9 @@ Build your foundation with these essential tutorials:
 
 Choose your preferred tool and create your first Needle Engine scene:
 
-- **Unity:** [Unity Integration](/unity/) - Install and create your first interactive web scene
-- **Blender:** [Blender Add-on](/blender/) - Install the add-on and export to the web
-- **Web:** [Getting Started](/getting-started/) - Use Needle Engine with JavaScript/TypeScript
+- <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><strong>Unity:</strong></logo-header> <a href="../unity/">Unity Integration</a> - Install and create your first interactive web scene
+- <logo-header logo="/blender/logo.png" alt="Blender"><strong>Blender:</strong></logo-header> <a href="../blender/">Blender Add-on</a> - Install the add-on and export to the web
+- <logo-header logo="/imgs/threejs-logo.webp" alt="three.js"><strong>Web:</strong></logo-header> <a href="../getting-started/">Getting Started</a> - Use Needle Engine with JavaScript/TypeScript
 
 ---
 
@@ -66,21 +66,21 @@ Learn by building complete, real-world projects:
 
 Learn to create interactive functionality with code:
 
-- [Create Components](/how-to-guides/scripting/create-components) - Write custom TypeScript components
-- [Scripting Examples](/reference/scripting-examples) - Code examples and snippets
+- [Create Components](../how-to-guides/scripting/create-components) - Write custom TypeScript components
+- [Scripting Examples](../reference/scripting-examples) - Code examples and snippets
 
 ---
 
 ## Platform-Specific Workflows
 
-### Unity Workflows
-- [Unity Integration](/unity/) - Unity-specific features and workflows
+### <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity Workflows</logo-header>
+- [Unity Integration](../unity/) - Unity-specific features and workflows
 
-### Blender Workflows
-- [Blender Add-on](/blender/) - Blender-specific features and workflows
+### <logo-header logo="/blender/logo.png" alt="Blender">Blender Workflows</logo-header>
+- [Blender Add-on](../blender/) - Blender-specific features and workflows
 
-### Web-First Development
-- [three.js Integration](/three/) - Working with three.js directly
+### <logo-header logo="/imgs/threejs-logo.webp" alt="three.js">Web-First Development</logo-header>
+- [three.js Integration](../three/) - Working with three.js directly
 
 ---
 

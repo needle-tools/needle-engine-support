@@ -28,9 +28,9 @@ How-To Guides are **task-oriented** instructions for competent users. They are:
 
 Get Needle Engine installed and configured:
 
-- [Install for Unity](/unity/) - Unity package installation
-- [Install for Blender](/blender/) - Blender add-on installation
-- [Install for Web Projects](/getting-started/) - Getting started guide
+- [Install for Unity](../unity/) - Unity package installation
+- [Install for Blender](../blender/) - Blender add-on installation
+- [Install for Web Projects](../getting-started/) - Getting started guide
 
 ---
 
@@ -48,11 +48,11 @@ Get your 3D content ready for the web:
 Build interactive experiences with code:
 
 - [Create Components](./scripting/create-components) - Write custom TypeScript components
-- [Scripting Examples](/reference/scripting-examples) - Code examples and snippets
-- [Lifecycle Methods](/reference/api/lifecycle-methods) - awake, start, update, etc.
-- [Input Events](/reference/api/input-events) - Mouse, touch, keyboard input
-- [Physics Events](/reference/api/physics-events) - Collision and trigger events
-- [XR Events](/reference/api/xr-events) - WebXR AR/VR events
+- [Scripting Examples](../reference/scripting-examples) - Code examples and snippets
+- [Lifecycle Methods](../reference/api/lifecycle-methods) - awake, start, update, etc.
+- [Input Events](../reference/api/input-events) - Mouse, touch, keyboard input
+- [Physics Events](../reference/api/physics-events) - Collision and trigger events
+- [XR Events](../reference/api/xr-events) - WebXR AR/VR events
 
 ---
 
@@ -100,7 +100,7 @@ Get your projects live on the web:
 
 - [Deployment Guide](./deployment/) - Production builds and hosting options
 - [Embed in Websites](./deployment/embedding) - Embedding guide
-- [Deploy to Needle Cloud](/cloud/) - Official Needle hosting
+- [Deploy to Needle Cloud](../cloud/) - Official Needle hosting
 
 ---
 
@@ -117,8 +117,8 @@ Find and fix issues:
 
 Platform-specific guides:
 
-- [Unity Integration](/unity/) - Unity-specific workflows and features
-- [Blender Add-on](/blender/) - Blender-specific workflows and features
+- [Unity Integration](../unity/) - Unity-specific workflows and features
+- [Blender Add-on](../blender/) - Blender-specific workflows and features
 
 ---
 

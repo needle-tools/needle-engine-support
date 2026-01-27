@@ -2,18 +2,7 @@
 title: Using Needle Engine with three.js
 ---
 
-<br/>
-
-<div class="centered" style="display: flex;
-    align-items: center;
-    gap: 20px;
-    font-size: 2em;
-    font-weight: 100;">
-    <img src="/logo.png" style="max-height:70px;" title="Needle Logo" alt="Needle Logo"/> +
-    <img src="/imgs/threejs-logo.webp" style="max-height:70px;" title="three.js Logo" alt="three.js Logo"/>
-</div>
-
-# Needle Engine is three.js
+# <logo-header logo="/imgs/threejs-logo.webp" alt="three.js">Needle Engine + three.js</logo-header>
 
 **Welcome!** If you're here because you know three.js, you're in the right place. Needle Engine is a **web-based 3D engine built on top of three.js** that makes it easier and faster to create interactive 3D experiences for the web.
 
