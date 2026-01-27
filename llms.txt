@@ -1,18 +1,18 @@
 # Needle Engine Documentation - Links
-# 1/27/2026, 10:13:03 PM
+# 1/27/2026, 11:49:44 PM
 # Base URL: https://engine.needle.tools/docs
-
-Needle Engine for Unity
-  https://engine.needle.tools/docs/unity/
 
 Tutorials
   https://engine.needle.tools/docs/tutorials/
 
-Using Needle Engine with three.js
-  https://engine.needle.tools/docs/three/
-
 Reference
   https://engine.needle.tools/docs/reference/
+
+Needle Engine for Unity
+  https://engine.needle.tools/docs/unity/
+
+Using Needle Engine with three.js
+  https://engine.needle.tools/docs/three/
 
 How-To Guides
   https://engine.needle.tools/docs/how-to-guides/
@@ -29,109 +29,36 @@ Explanation
 Integrate with other tools
   https://engine.needle.tools/docs/custom-integrations/
 
-Needle Engine for Blender
-  https://engine.needle.tools/docs/blender/
-
 Needle Cloud
   https://engine.needle.tools/docs/cloud/
+
+Needle Engine for Blender
+  https://engine.needle.tools/docs/blender/
 
 ai
   https://engine.needle.tools/docs/ai/
 
-Additional Modules
-  https://engine.needle.tools/docs/modules
-
-Automatic Component Generation
-  https://engine.needle.tools/docs/component-compiler
-
-Creating and using Components
-  https://engine.needle.tools/docs/scripting
-
-Deployment and Optimization
-  https://engine.needle.tools/docs/deployment
-
-Embedding Needle Engine
-  https://engine.needle.tools/docs/embedding
-
-Everywhere Actions
-  https://engine.needle.tools/docs/everywhere-actions
-
-Example Projects
-  https://engine.needle.tools/docs/examples
-
-Exporting Assets to glTF
-  https://engine.needle.tools/docs/export
-
-Feature Overview
-  https://engine.needle.tools/docs/features-overview
-
 getting-started.html
   https://engine.needle.tools/docs/getting-started
 
-How To Debug
-  https://engine.needle.tools/docs/debugging
-
-Integrating with Framer
-  https://engine.needle.tools/docs/integrating-with-framer
-
-Integrating with WordPress
-  https://engine.needle.tools/docs/integrating-with-wordpress
-
-iOS WebXR Support
-  https://engine.needle.tools/docs/ios-webxr-app-clip
-
-MaterialX
-  https://engine.needle.tools/docs/materialx
-
-Needle Core Components
-  https://engine.needle.tools/docs/component-reference
-
-Needle Support
-  https://engine.needle.tools/docs/support
-
-Networking
-  https://engine.needle.tools/docs/networking
-
-Our Vision
-  https://engine.needle.tools/docs/vision
-
-Questions and Answers (FAQ)
-  https://engine.needle.tools/docs/faq
-
-Scripting basics For Unity Developers
-  https://engine.needle.tools/docs/for-unity-developers
-
-Scripting Examples
-  https://engine.needle.tools/docs/scripting-examples
-
-Structure of a Needle Engine project
-  https://engine.needle.tools/docs/project-structure
-
-Technical Overview
-  https://engine.needle.tools/docs/technical-overview
-
-Testimonials
-  https://engine.needle.tools/docs/testimonials
-
-Testing on local devices
-  https://engine.needle.tools/docs/testing
-
 Using Needle Engine directly from HTML
   https://engine.needle.tools/docs/vanilla-js
-
-VR & AR (WebXR)
-  https://engine.needle.tools/docs/xr
-
-Web Integration & Frameworks
-  https://engine.needle.tools/docs/html
-
-WebXR Image Tracking
-  https://engine.needle.tools/docs/webxr-image-tracking
 
 ## Ai
 
   Needle MCP Server — Local AI for Needle
     https://engine.needle.tools/docs/ai/needle-mcp-server
+
+## Blender
+
+  Animation in Blender
+    https://engine.needle.tools/docs/blender/animation
+
+  Components in Blender
+    https://engine.needle.tools/docs/blender/components
+
+  Lightmapping in Blender
+    https://engine.needle.tools/docs/blender/lightmapping
 
 ## Explanation
 
@@ -158,14 +85,6 @@ WebXR Image Tracking
 
     Networking Architecture
       https://engine.needle.tools/docs/explanation/networking/architecture
-
-## Getting Started
-
-  For Unity Developers
-    https://engine.needle.tools/docs/getting-started/for-unity-developers
-
-  TypeScript Essentials
-    https://engine.needle.tools/docs/getting-started/typescript-essentials
 
 ## Help
 
@@ -215,6 +134,9 @@ WebXR Image Tracking
       https://engine.needle.tools/docs/how-to-guides/export/materialx
 
   ## Integrations
+
+    Integrating with Adobe Experience Manager (AEM)
+      https://engine.needle.tools/docs/how-to-guides/integrations/adobe-experience-manager
 
     Integrating with Framer
       https://engine.needle.tools/docs/how-to-guides/integrations/framer
@@ -323,6 +245,9 @@ WebXR Image Tracking
 ## Tutorials
 
   ## Fundamentals
+
+    For Blender Artists
+      https://engine.needle.tools/docs/tutorials/fundamentals/for-blender-artists
 
     Scripting Introduction for Unity Developers
       https://engine.needle.tools/docs/tutorials/fundamentals/for-unity-developers
