@@ -4,6 +4,28 @@
 
 By default, networked Needle scenes connect to cloud infrastructure managed by Needle. For production deployments, larger audiences, or custom requirements, you can host your own networking server.
 
+## Needle's Default Networking Server
+
+::: tip Free Default Server - Sufficient for Most Projects
+Needle provides a **free, production-ready networking server** that's suitable for most projects:
+
+**Server URL:** `https://networking.needle.tools`
+**WebSocket Endpoint:** `wss://networking.needle.tools`
+
+This default server:
+- Works out of the box with no configuration needed
+- Supports up to 15-20 concurrent users per room
+- Handles state synchronization and persistence
+- Has global availability and low latency
+- Is free to use for all Needle Engine projects
+
+**You only need a custom server if:**
+- You need more than 15-20 concurrent users per room
+- You require custom server-side logic or validation
+- You need data sovereignty or on-premises hosting
+- You want full control over infrastructure and costs
+:::
+
 ## When to Use Custom Servers
 
 Consider hosting your own networking server when you need:
@@ -32,24 +54,21 @@ npm install @needle-tools/needle-networking
 
 Choose your web framework:
 
-::::code-group  
+::: code-tabs
 
-:::code-group-item Fastify
-
+@tab Fastify
 ```js
 import networking from "@needle-tools/needle-networking";
 networking.startServerFastify(fastifyApp, { endpoint: "/socket" });
 ```
-:::
 
-:::code-group-item Express
+@tab Express
 ```js
 import networking from "@needle-tools/needle-networking";
 networking.startServerExpress(expressApp, { endpoint: "/socket" });
 ```
-:::
 
-:::code-group-item Custom Framework
+@tab Custom Framework
 ```js
 import { init, onConnection } from "@needle-tools/networking";
 
@@ -74,12 +93,7 @@ yourFramework.createWebsocketRoute(options.endpoint, frameworkWebsocket => {
     onConnection(new WebsocketConnector(frameworkWebsocket));
 });
 ```
-:::
 
-::::
-
-::: tip Example Code
-See a complete example on [glitch.com/edit/#!/needle-networking](https://glitch.com/edit/#!/needle-networking?path=server.js) with Express integration.
 :::
 
 ## Configuration Options

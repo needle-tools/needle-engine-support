@@ -41,7 +41,7 @@ Reference documentation is **information-oriented** and provides:
 
 ## Components
 
-- [Built-in Components Catalog](./components) - All 400+ built-in components
+- [Built-in Components Catalog](./components) - All 100+ built-in components
 
 ---
 

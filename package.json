@@ -19,6 +19,7 @@
   "license": "ISC",
   "dependencies": {
     "@google/generative-ai": "^0.24.0",
+    "@vuepress/plugin-markdown-tab": "^2.0.0-rc.112",
     "basic-ftp": "^5.0.5",
     "diff2html": "^3.4.48",
     "dotenv": "^16.0.3",

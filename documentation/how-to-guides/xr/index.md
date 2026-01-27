@@ -2,7 +2,7 @@
 title: VR & AR (WebXR)
 ---
 
-# WebXR with Needle Engine
+# <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">WebXR with Needle Engine</logo-header>
 
 **WebXR made easy.** Build immersive AR and VR experiences that work everywhere – from Meta Quest to Apple Vision Pro, Android to iOS, and everything in between. No app stores, no installation, no SDKs. Just pure web technology.
 
@@ -294,15 +294,15 @@ There are several experimental components for more expressive avatars. These are
 ## Next Steps
 
 **Learn More:**
-- [XR Event Methods](/reference/api/xr-events) - Event methods and lifecycle hooks
+- [XR Event Methods](/docs/reference/api/xr-events) - Event methods and lifecycle hooks
 - [WebXR Component API](https://engine.needle.tools/docs/api/WebXR) - Complete component documentation
 - [NeedleXRSession API](https://engine.needle.tools/docs/api/NeedleXRSession) - Advanced session control
-- [Image Tracking Guide](./image-tracking) - Detailed image tracking documentation
+- [Image Tracking Guide](/docs/how-to-guides/xr/image-tracking) - Detailed image tracking documentation
 
 **iOS AR Options:**
-- [iOS WebXR App Clip](./ios-webxr-app-clip) - Native WebXR support for iPhone and iPad
-- [Everywhere Actions](/how-to-guides/everywhere-actions/) - USDZ/QuickLook-based interactive AR
+- [iOS WebXR App Clip](/docs/how-to-guides/xr/ios-webxr-app-clip) - Native WebXR support for iPhone and iPad
+- [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) - USDZ/QuickLook-based interactive AR
 
 **Get Inspired:**
 - [Browse XR Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr) - Interactive examples
-- [Community Contributions](./community/contributions) - Projects from the Needle community
+- [Community Projects](https://forum.needle.tools/?utm_source=needle_docs&utm_content=xr) - Projects from the Needle community

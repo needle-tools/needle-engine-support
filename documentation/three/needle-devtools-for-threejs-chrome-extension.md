@@ -142,10 +142,11 @@ Right-click any object in the hierarchy and select "Inspect" to view it in an is
 
 ## Next Steps
 
-- [Learn about Needle Engine](/index.md)
-- [Explore three.js integration](/three/index.md)
-- [Get started with Needle in Unity](/unity/index.md)
-- [Get started with Needle in Blender](/blender/index.md)
+- [Learn about Needle Engine](/docs/)
+- [Explore three.js integration](/docs/three/)
+- [Get started with Needle in Unity](/docs/unity/)
+- [Get started with Needle in Blender](/docs/blender/)
+- [AI-Powered Development](/docs/ai/) - Connect AI assistants to the inspector
 
 :::tip Using Needle Engine?
 The inspector has special features when used with Needle Engine projects, including component editing, networking inspection, and XR debugging tools.

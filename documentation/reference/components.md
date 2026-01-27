@@ -244,7 +244,7 @@ The API documentation includes:
 ### How-To Guides
 
 - **[Handle User Input](/docs/how-to-guides/scripting/handle-input)** - Mouse, touch, keyboard, VR controllers
-- **[Enable Networking](/docs/how-to-guides/networking/setup)** - Multiplayer and sync
+- **[Enable Networking](/docs/how-to-guides/networking/)** - Multiplayer and sync
 - **[Enable WebXR](/docs/how-to-guides/xr/)** - VR and AR experiences
 - **[Export 3D Content](/docs/how-to-guides/export/)** - Meshes, materials, animations
 

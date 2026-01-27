@@ -1,20 +1,27 @@
 ---
-title: Deployment and Optimization
+title: Deployment Platforms
 ---
 
-# Deployment and Optimization
+# Deployment Platforms
 
-**Get your Needle Engine projects live on the web.** This guide covers everything from [optimization and compression](#optimization-and-compression-options) to deploying on popular hosting platforms.
+**Get your Needle Engine projects live on the web.** Deploy to popular hosting platforms like Netlify, Vercel, GitHub Pages, and more.
+
+:::tip Optimize Your Build First
+Before deploying to production, optimize your project for best performance:
+**[Optimization & Compression →](/docs/how-to-guides/optimization/)**
+
+Learn about texture compression (KTX2), mesh compression (Draco/Meshopt), progressive loading, and build types.
+:::
 
 ## What does deployment mean?
 
-Deployment is the process of making your application available to the public on a website. Needle Engine ensures that your project is as small and fast as possible by using the latest compression techniques such as **KTX2**, **Draco**, and **Meshopt**. Learn more about [optimization and compression options](#optimization-and-compression-options).
+Deployment is the process of making your application available to the public on a website. Needle Engine ensures that your project is as small and fast as possible by using the latest compression techniques such as **KTX2**, **Draco**, and **Meshopt**. Learn more about [Optimization & Compression](/docs/how-to-guides/optimization/).
 
 ## Quick Start: Choose Your Platform
 
 Pick a hosting platform that fits your needs:
 
-- **[Needle Cloud](./cloud/#deploy-from-unity)** – Official Needle hosting. Great for all kinds of spatial web apps and 3D assets.
+- **[Needle Cloud](/docs/cloud/#deploy-from-unity)** – Official Needle hosting. Great for all kinds of spatial web apps and 3D assets.
 - **[Netlify](#deploy-to-netlify)** – Professional hosting with custom domains and CI/CD.
 - **[Vercel](#deploy-to-vercel)** – Optimized platform for frontend developers with excellent performance.
 - **[GitHub Pages](#deploy-to-github-pages)** – Free static hosting, great for open source projects.
@@ -26,172 +33,6 @@ Pick a hosting platform that fits your needs:
 
 :::tip Need Help?
 Can't find what you're looking for? Let us know in our [forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)!
-:::
-
----
-
-## Understanding Build Types
-
-### Development Builds
-
-Development builds are optimized for fast iteration during development:
-- **No texture compression** (KTX2) – faster build times
-- **No mesh compression** (Draco) – faster build times
-- **No progressive loading** – simpler debugging
-- **Larger file sizes** – not suitable for production
-
-**When to use:** During active development and testing.
-
-### Production Builds
-
-Production builds are optimized for performance and file size:
-- **Texture compression** using KTX2 (ETC1S or UASTC)
-- **Mesh compression** using Draco or Meshopt
-- **Progressive texture loading** for faster initial load
-- **Automatic mesh LODs** for better performance
-- **Minimal file sizes** for fast loading
-
-**When to use:** For deployment to production websites.
-
-See guides in your Editor (Unity or Blender) for accessing build options.
-
----
-
-## Production Build Setup
-
-### Required: Install toktx
-
-To make production builds, you need [toktx](https://github.com/KhronosGroup/KTX-Software/releases) installed for texture compression using the KTX2 supercompression format.
-
-**Installation:**
-1. Go to the [toktx Releases Page](https://github.com/KhronosGroup/KTX-Software/releases)
-2. Download and install the latest version (v4.1.0 or newer)
-3. Restart Unity after installation
-
-:::tip Troubleshooting
-If you've installed toktx and it's in your PATH but can't be found, restart your machine and try building again.
-:::
-
-:::details Troubleshooting: Toktx cannot be found (Windows)
-Make sure you have added toktx to your system environment variables. You may need to restart your computer after adding it to refresh the environment variables.
-
-**Default install location:** `C:\Program Files\KTX-Software\bin`
-![Environment Variables](/imgs/ktx-env-variable.webp)
-:::
-
-:::details Advanced: Custom glTF extensions
-If you plan on adding custom glTF extensions, building for production requires handling those in `gltf-transform`. See [@needle-tools/gltf-build-pipeline](https://www.npmjs.com/package/@needle-tools/gltf-build-pipeline) for reference.
-:::
-
----
-
-## Optimization and Compression Options
-
-### Texture Compression
-
-Production builds compress textures using **KTX2** (ETC1S or UASTC) or **WebP** depending on your settings and quality requirements.
-
-#### Choosing Between ETC1S, UASTC and WebP
-
-| Format | ETC1S | UASTC | WebP |
-| --- | --- | --- | --- |
-| **GPU Memory Usage** | Low | Low | High (uncompressed) |
-| **File Size** | Low | High | Very low |
-| **Quality** | Medium | Very high | Depends on quality setting |
-| **Typical usage** | Works for everything, best for color textures | High-detail data textures: normal maps, roughness, metallic | Files where ETC1S quality is insufficient but UASTC is too large |
-
-**Quick Guide:**
-- **Color textures, UI**: Use ETC1S for small file size
-- **Normal maps, detail textures**: Use UASTC for maximum quality
-- **Photography, detailed textures**: Use WebP if ETC1S quality isn't sufficient
-
-#### Setting Compression Per Texture
-
-You can override compression settings for individual textures using the Needle Texture Importer (Unity) or Material tab (Blender).
-
-:::details Unity: Global compression settings
-Configure default compression for all textures:
-
-![Unity Compression Settings](/imgs/unity-compression-settings.png)
-:::
-
-:::details Unity: Per-texture compression overrides
-Use the Compression & LOD Settings component to override settings for specific textures. Assign all textures you want to override in the component.
-
-![Unity Individual Texture Settings](/imgs/unity-compression-settings-individual.png)
-:::
-
-:::details Blender: Per-texture compression settings
-Select the Material tab to see compression options for all textures used by that material.
-
-![Texture Compression in Blender](/blender/texture-compression.webp)
-:::
-
-### Mesh Compression
-
-Production builds compress meshes to reduce file size and improve loading times.
-
-#### Choosing Between Draco and Meshopt
-
-| Format | Draco | Meshopt |
-| --- | --- | --- |
-| **GPU Memory Usage** | Medium | Low |
-| **File Size** | Lowest | Low |
-| **Animation compression** | No | Yes |
-
-**Quick Guide:**
-- **Static meshes**: Use Draco for smallest file size
-- **Animated meshes**: Use Meshopt (supports animation compression)
-
-By default, production builds use Draco compression. Use the `MeshCompression` component to choose between Draco and Meshopt per exported glTF.
-
-:::details Unity: Mesh compression settings
-Use the Compression & LOD Settings component to select compression type:
-
-![Unity Mesh Compression Options](/imgs/unity-mesh-compression-options.jpg)
-
-- **Current scene**: Add component anywhere in your root scene
-- **Prefab or NestedGltf**: Add to a `GltfObject` or the prefab referenced by your components
-- **Referenced scene**: Add to the referenced scene that is exported
-:::
-
-:::details Unity: Mesh simplification to reduce vertex count
-Use the Compression & LOD Settings component to configure mesh simplification for production builds. Append `?wireframe` to your URL to preview meshes in the browser.
-
-![Unity Mesh Compression Options](/imgs/unity-mesh-compression-options.jpg)
-:::
-
-### Progressive Texture Loading (Texture LODs)
-
-**Significantly reduce initial loading time** by loading low-resolution textures first, then upgrading to full quality when visible.
-
-Add the `Progressive Texture Settings` component anywhere in your scene to enable progressive loading for all textures. Progressive loading is not applied to lightmaps or skybox textures.
-
-**Benefits:**
-- Much faster initial load times
-- Full quality loaded on-demand
-- Seamless quality transitions
-
-:::details Unity: Enable progressive texture loading
-Use the Compression & LOD Settings component to enable progressive loading globally. Can be disabled or enabled for individual textures as needed.
-
-![Unity Compression Settings](/imgs/unity-compression-settings.png)
-:::
-
-### Automatic Mesh LODs (Level of Detail)
-
-**Since Needle Engine 3.36**, mesh LODs are automatically generated during builds and chosen at runtime based on mesh density and screen size.
-
-**Key Benefits:**
-- Faster initial loading time
-- Better rendering performance (fewer vertices on screen)
-- Faster raycasting with LOD meshes
-- Automatic on-demand loading
-
-:::details Unity: Control LOD generation
-Use the Compression & LOD Settings component to control LOD generation for all meshes or individual meshes.
-
-![Unity Mesh Compression Options](/imgs/unity-mesh-compression-options.jpg)
 :::
 
 ---
@@ -407,7 +248,7 @@ Build your project locally for manual upload to any web server or hosting servic
 
 When using our default Vite template, the build output folder is `<webproject>/dist`.
 
-**Unity: Access Build Options**
+**<logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity: Access Build Options</logo-header>**
 
 Open **File → Needle Engine → Build Window**:
 
@@ -418,6 +259,8 @@ Open **File → Needle Engine → Build Window**:
 - **Build to Disk** – Create production build in the `dist` folder
 - **Preview Build** – Build and start a local server to preview the final result
 - **Development Build** – Disable compression for debugging (not recommended for production)
+
+**Learn more:** [Optimization & Compression](/docs/how-to-guides/optimization/) - Build types, compression options, and best practices
 
 :::tip Node.js is only required during development
 The distributed website (using our default Vite template) is a static page that doesn't rely on Node.js and can be hosted on any regular web server.
@@ -519,16 +362,16 @@ Unity.exe -batchmode -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.u
 
 ## Next Steps
 
-**Learn More:**
-- [Getting Started Guide](./getting-started/) – Set up your first project
-- [Features Overview](./features-overview) – See what's possible
-- [Needle Cloud Documentation](./cloud/index.md) – Official hosting platform
+**Optimize Your Build:**
+- [Optimization & Compression](/docs/how-to-guides/optimization/) – Make your project load faster and run smoother
+- [Export Guide](/docs/how-to-guides/export/) – Best practices for 3D assets
 
-**Optimize Your Project:**
-- [Export Guide](./export.md) – Best practices for assets
-- [Component Reference](./component-reference.md) – Available components
+**Learn More:**
+- [Getting Started Guide](/docs/getting-started/) – Set up your first project
+- [Needle Cloud Documentation](/docs/cloud/) – Official hosting platform
+- [Features Overview](/docs/explanation/core-concepts/features-overview) – See what's possible
 
 **Get Help:**
-- [Forum](https://forum.needle.tools) – Ask questions and share projects
+- [Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=deployment) – Ask questions and share projects
 - [Discord](https://discord.needle.tools) – Join the community
-- [Support](./support) – Additional resources
+- [Help & Community](/docs/help/) – Additional resources

@@ -8,6 +8,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
+import { markdownTabPlugin } from '@vuepress/plugin-markdown-tab'
 
 import { rendererRich, transformerTwoslash } from '@shikijs/twoslash';
 import { fromMarkdown } from 'mdast-util-from-markdown';
@@ -436,6 +437,11 @@ export default defineUserConfig({
         markdownChartPlugin({
             // Enable Mermaid
             mermaid: true,
+        }),
+        markdownTabPlugin({
+            // Enable code tabs and regular tabs
+            codeTabs: true,
+            tabs: true,
         }),
         markdownContainerPlugin({
             type: 'file',

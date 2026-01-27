@@ -1,5 +1,37 @@
 ---
-title: How To Debug
+title: Debugging Parameters & Options
+---
+
+# Debugging Parameters & Options
+
+**Debug and inspect your Needle Engine projects** using built-in tools, browser DevTools, and the Needle Inspector.
+
+:::tip Also See
+- **[Local Development Help](/docs/how-to-guides/testing)** - Test on mobile devices, VR headsets, and set up certificates
+- **[Help & Community](/docs/help/)** - Get support and ask questions
+:::
+
+---
+
+## Needle Inspector — DevTools for three.js
+
+The **Needle Inspector** is a powerful Chrome extension for inspecting and debugging three.js, react-three-fiber, and Needle Engine projects directly in your browser.
+
+<actiongroup>
+<action href="https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo">
+Install Needle Inspector →
+</action>
+</actiongroup>
+
+**Key features:**
+- Real-time scene hierarchy inspection
+- Edit properties and see changes instantly
+- Performance monitoring (FPS, stats)
+- AI-powered assistance with MCP integration
+- Works on any three.js website
+
+**[Learn more about the Needle Inspector →](/docs/three/needle-devtools-for-threejs-chrome-extension)**
+
 ---
 
 ## Useful resources for working with glTF
@@ -71,28 +103,37 @@ You can then start your local server from within VSCode:
   
 ![](/debugging/vscode-start-debugging.webp)
 
-## Mobile 
+## Mobile Debugging
 
-### Android Debugging
+### <logo-header logo="/imgs/android-logo.webp" alt="Android">Android Debugging</logo-header>
 
-For **Android** debugging, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.  
+For **Android** debugging, you can attach Chrome Dev Tools to your device and see logs right from your PC. You have to switch your device into development mode and connect it via USB.
 
 See the official chrome documentation [here](https://developer.chrome.com/docs/devtools/remote-debugging/)
-- Make sure [Developer Mode](https://developer.android.com/studio/debug/dev-options) is enabled on your phone 
+- Make sure [Developer Mode](https://developer.android.com/studio/debug/dev-options) is enabled on your phone
 - Connect your phone to your computer via USB
 - Open this url in your browser ``chrome://inspect/#devices``
 - On your mobile device allow the USB connection to your computer
 - On your computer in chrome you should see a list of open tabs after a while (on ``chrome://inspect/#devices``)
 - Click ``Inspect`` on the tab you want to debug
 
-### iOS Debugging
+### <logo-header logo="/imgs/ios-logo.webp" alt="iOS">iOS Debugging</logo-header>
 
-For easy iOS debugging add the ``?console`` URL parameter to get a useful on-screen JavaScript console.  
+For easy iOS debugging add the ``?console`` URL parameter to get a useful on-screen JavaScript console.
 
-If you have a Mac, you can also attach to Safari (similar to the Android workflow above).   
+If you have a Mac, you can also attach to Safari (similar to the Android workflow above).
 
 WebXR usage and debugging on iOS requires using a third-party browser: [Mozilla WebXR Viewer](https://labs.mozilla.org/projects/webxr-viewer/).
 
-### Quest Debugging
+### <logo-header logo="/imgs/meta-logo.webp" alt="Meta Quest">Quest Debugging</logo-header>
 
-Quest is just an Android device - see the [Android Debugging](#android-debugging) section for steps.  
+Quest is just an Android device - see the [Android Debugging](#android-debugging) section for steps.
+
+---
+
+## Related Documentation
+
+- **[Local Development Help](/docs/how-to-guides/testing)** - Testing on mobile devices, VR headsets, and certificate setup
+- **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome DevTools extension for three.js
+- **[FAQ](/docs/reference/faq)** - Frequently asked questions and troubleshooting
+- **[Help & Community](/docs/help/)** - Get support, ask questions, and connect with the community  

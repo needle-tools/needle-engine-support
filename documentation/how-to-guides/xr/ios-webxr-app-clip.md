@@ -3,7 +3,7 @@ title: iOS WebXR Support for Needle Engine
 description: Needle Engine now supports native iOS WebXR on iPhone and iPad using ARKit-powered App Clips. Run WebXR AR experiences instantly without app installation on Safari iOS.
 ---
 
-# iOS WebXR Support for Needle Engine
+# <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">iOS WebXR Support for Needle Engine</logo-header>
 
 :::tip Now Available
 iOS WebXR support is now available natively in Needle Engine.
@@ -53,7 +53,7 @@ Users can experience your Needle Engine WebXR content through their iPhone or iP
 
 Your existing Needle Engine WebXR scenes work automatically on iOS. Simply ensure your scene:
 
-1. Has a `WebXR` component with the `createARButton` option enabled (see [WebXR documentation](xr.md))
+1. Has a `WebXR` component with the `createARButton` option enabled (see [WebXR documentation](/docs/how-to-guides/xr/))
 2. Is deployed to a publicly accessible HTTPS URL
 3. Is optimized for mobile devices
 
@@ -103,10 +103,11 @@ If you need further assistance, you can reach us at:
 
 ## Alternative: Everywhere Actions
 
-Looking for a different iOS AR approach? Check out [Everywhere Actions](everywhere-actions.md), which enables interactive AR experiences on iOS using USDZ and QuickLook (Apple's native 3D format).
+Looking for a different iOS AR approach? Check out [Everywhere Actions](/docs/how-to-guides/everywhere-actions/), which enables interactive AR experiences on iOS using USDZ and QuickLook (Apple's native 3D format).
 
 ## Related Documentation
 
-- [WebXR Documentation](xr.md) - Setting up WebXR in Needle Engine
-- [Everywhere Actions](everywhere-actions.md) - Current iOS AR solution using USDZ
-- [Deployment](deployment.md) - Publishing your Needle Engine projects
+- [WebXR Documentation](/docs/how-to-guides/xr/) - Setting up WebXR in Needle Engine
+- [Image Tracking](/docs/how-to-guides/xr/image-tracking) - WebXR image tracking guide
+- [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) - iOS AR solution using USDZ
+- [Deployment](/docs/how-to-guides/deployment/) - Publishing your Needle Engine projects

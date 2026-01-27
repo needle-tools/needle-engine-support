@@ -36,9 +36,13 @@ this.context.connection.send("player-jumped", {
 });
 ```
 
-### Send Binary Messages
+### Send Binary Messages (Advanced)
 
-For high-performance scenarios, send binary (Flatbuffer) messages:
+::: warning Advanced - Not Needed for Most Use Cases
+Binary messages with FlatBuffers are an **advanced optimization** for very high-frequency updates (100+ messages per second). **Most applications should use JSON messages** which are simpler and easier to work with.
+:::
+
+For extreme performance scenarios, send binary (Flatbuffer) messages:
 
 ```ts
 this.context.connection.sendBinary(byteArray: Uint8Array);
@@ -174,13 +178,26 @@ Use these URL parameters to understand network messages:
 http://localhost:3000/?debugnet
 ```
 
-## Using Flatbuffers
+## Using Flatbuffers (Advanced)
 
-Binary messages using [Flatbuffers](https://google.github.io/flatbuffers/) are faster and more efficient than JSON messages. Use them for high-frequency updates or large amounts of data.
+::: warning Advanced Feature - Not Necessary for Most Projects
+**You probably don't need this.** FlatBuffers are an advanced optimization for extreme performance scenarios (e.g., 100+ network messages per second).
 
-::: tip Advanced Topic
-Using Flatbuffers requires additional setup: defining schemas, compiling them to TypeScript, and registering them with the networking system. This is an advanced topic - most users should start with JSON messages.
+**For most multiplayer applications**, JSON messages are:
+- Much easier to implement and debug
+- Fully sufficient for typical gameplay (movement, interactions, chat, etc.)
+- Already optimized by Needle Engine
+
+Only consider FlatBuffers if you have profiled your application and confirmed that JSON message serialization is a bottleneck.
 :::
+
+Binary messages using [Flatbuffers](https://google.github.io/flatbuffers/) can be faster and more efficient than JSON messages for very high-frequency updates or extremely large data structures.
+
+**Requirements:**
+- Define custom FlatBuffer schemas (`.fbs` files)
+- Compile schemas to TypeScript using the FlatBuffers compiler
+- Register schemas with the networking system
+- Write custom serialization/deserialization code
 
 ### Register a Schema
 

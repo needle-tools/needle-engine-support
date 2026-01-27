@@ -91,7 +91,7 @@ Load and unload scenes dynamically for multi-scene projects.
 Try the [multi-scene loading sample](https://engine.needle.tools/samples/multi-scenes-(dynamic-loading))
 :::
 
-[SceneSwitcher component](https://engine.needle.tools/docs/api/SceneSwitcher) • [Scene management guide](./component-reference.html#scene-management)
+[SceneSwitcher component](https://engine.needle.tools/docs/api/SceneSwitcher) • [Scene management guide](/docs/reference/components#scene-management)
 
 ---
 
@@ -104,7 +104,7 @@ Make objects clickable by adding this script. Requires `ObjectRaycaster` compone
 <stackblitz file="@code/component-click.ts"></stackblitz>
 @[code ts twoslash](@code/component-click.ts)
 
-[Input events reference](./scripting.html#input-event-methods) • [Interaction components](./component-reference.html#interaction)
+[Input events reference](/docs/reference/api/input-events) • [Interaction components](/docs/reference/components#interaction)
 
 ### Networking Clicks (Multiplayer)
 
@@ -116,7 +116,7 @@ Sync clicks across all connected clients. The click event is sent to all users a
 Assign functions to the `onClick` event in Unity/Blender to trigger animations or other actions!
 :::
 
-[Networking guide](./networking.html) • [SyncedRoom component](https://engine.needle.tools/docs/api/SyncedRoom)
+[Networking guide](/docs/how-to-guides/networking/) • [SyncedRoom component](https://engine.needle.tools/docs/api/SyncedRoom)
 
 ---
 
@@ -134,7 +134,7 @@ Access animation clips for custom animation logic. You can also export arrays of
 
 @[code ts twoslash](@code/component-animationclip.ts)
 
-[Animation components](./component-reference.html#animation) • [Animator API](https://engine.needle.tools/docs/api/Animator)
+[Animation components](/docs/reference/components#animation) • [Animator API](https://engine.needle.tools/docs/api/Animator)
 
 ---
 
@@ -178,7 +178,7 @@ Nest custom objects with automatic serialization using `@serializable` decorator
 Data without type decorators still works - you'll get plain objects. Add types as needed for strongly-typed access.
 :::
 
-[Type system guide](./getting-started/typescript-essentials.html#primitive-types) • [Serialization reference](./scripting.html#script-fields)
+[Type system guide](/docs/tutorials/fundamentals/typescript-essentials#types) • [Serialization reference](/docs/how-to-guides/scripting/create-components#serializable-fields)
 
 ---
 
@@ -206,7 +206,7 @@ Use coroutines for time-based updates without blocking the main thread.
 
 <video-embed src="./videos/component-time.mp4" limit_height />
 
-[Coroutines guide](./scripting.html#coroutines)
+[Coroutines guide](/docs/how-to-guides/scripting/use-coroutines)
 
 ---
 
@@ -239,7 +239,7 @@ Add the effect to the same object as your `Volume` component. Example wrapping t
 
 @[code](@code/custom-post-effect.ts)
 
-[Post-processing components](./component-reference.html#postprocessing) • [Volume API](https://engine.needle.tools/docs/api/Volume)
+[Post-processing components](/docs/reference/components#postprocessing) • [Volume API](https://engine.needle.tools/docs/api/Volume)
 
 ### Custom ParticleSystem Behaviour
 
@@ -259,7 +259,7 @@ Create a custom audio component (though `AudioSource` covers most use cases).
 
 @[code ts twoslash](@code/component-2d-audio.ts)
 
-[AudioSource component](https://engine.needle.tools/docs/api/AudioSource) • [Audio guide](./component-reference.html#audio)
+[AudioSource component](https://engine.needle.tools/docs/api/AudioSource) • [Audio guide](/docs/reference/components#audio)
 
 ---
 
@@ -310,7 +310,7 @@ export class HtmlButtonHandler extends Behaviour {
 }
 ```
 
-[HTML DOM access](./scripting.html#threejs-and-the-html-dom) • [DOM Events](https://developer.mozilla.org/en-US/docs/Web/Events)
+[HTML DOM access](/docs/how-to-guides/scripting/create-components#accessing-html-dom) • [DOM Events](https://developer.mozilla.org/en-US/docs/Web/Events)
 
 ---
 
@@ -382,7 +382,7 @@ export class ColorOnCollision extends Behaviour {
 }
 ```
 
-[Physics events](./scripting.html#physics-event-methods) • [Collision API](https://engine.needle.tools/docs/api/Collision)
+[Physics events](/docs/reference/api/physics-events) • [Collision API](https://engine.needle.tools/docs/api/Collision)
 
 ### Physics Trigger Relay
 
@@ -408,7 +408,7 @@ export class PhysicsTriggerRelay extends Behaviour {
 }
 ```
 
-[Trigger events](./scripting.html#physics-event-methods) • [EventList guide](#create-and-invoke-unity-events)
+[Trigger events](/docs/reference/api/physics-events) • [EventList guide](#create-and-invoke-unity-events)
 
 ### Auto Reset Position
 
@@ -453,9 +453,9 @@ export class PlayAudioOnCollision extends Behaviour {
 }
 ```
 
-[AudioSource component](https://engine.needle.tools/docs/api/AudioSource) • [Audio guide](./component-reference.html#audio)
+[AudioSource component](https://engine.needle.tools/docs/api/AudioSource) • [Audio guide](/docs/reference/components#audio)
 
-[Physics documentation](./component-reference.html#physics) • [Rapier physics engine](https://rapier.rs/)
+[Physics documentation](/docs/reference/components#physics) • [Rapier physics engine](https://rapier.rs/)
 
 ---
 
@@ -524,4 +524,4 @@ export class TimedSpawn extends Behaviour {
 }
 ```
 
-[Prefab loading](#reference-and-load-a-prefab) • [Coroutines alternative](./scripting.html#coroutines)
+[Prefab loading](#reference-and-load-a-prefab) • [Coroutines alternative](/docs/how-to-guides/scripting/use-coroutines)

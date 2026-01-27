@@ -4,12 +4,13 @@
 
 Fields in your custom components can be networked very easily. Changes to the field will automatically be detected and sent to all users in the room. The changes are also persisted as part of the Room State, so users that join later will receive the current state as well.
 
+
 ## Using @syncField
 
 To automatically network a field in a component, decorate it with the `@syncField()` decorator:
 
-::::code-group
-:::code-group-item Sync a number
+:::: code-group
+::: code-group-item Sync a number
 ```ts twoslash
 import { Behaviour, syncField } from "@needle-tools/engine"
 
@@ -30,7 +31,7 @@ export class SyncedNumber extends Behaviour {
 }
 ```
 :::
-:::code-group-item Sync an object's color
+::: code-group-item Sync an object's color
 <!-- SAMPLE network color change -->
 :::
 ::::

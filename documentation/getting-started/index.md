@@ -226,7 +226,7 @@ Want to understand how Needle Engine works under the hood?
 
 Need to find specific information quickly?
 
-- **[Component Catalog](/docs/reference/components)** - All 400+ built-in components
+- **[Component Catalog](/docs/reference/components)** - All 100+ built-in components
 - **[API Documentation](https://engine.needle.tools/docs/api/)** - Complete TypeScript API
 - **[Features Overview](/docs/explanation/core-concepts/features-overview)** - Platform compatibility matrix
 - **[FAQ](/docs/reference/faq)** - Common questions and troubleshooting

@@ -8,9 +8,9 @@ description: Task-oriented guides for solving specific problems
 **Get things done.** These guides show you how to solve specific problems and accomplish particular tasks. They assume you already know what you want to achieve.
 
 **Not sure what you need?**
-- Need to **learn the basics**? See [Tutorials](../tutorials/)
-- Want to **understand concepts**? See [Explanation](../explanation/)
-- Looking for **API reference**? See [Reference](../reference/)
+- Need to **learn the basics**? See [Tutorials](/docs/tutorials/)
+- Want to **understand concepts**? See [Explanation](/docs/explanation/)
+- Looking for **API reference**? See [Reference](/docs/reference/)
 
 ---
 
@@ -28,9 +28,9 @@ How-To Guides are **task-oriented** instructions for competent users. They are:
 
 Get Needle Engine installed and configured:
 
-- [Install for Unity](../unity/) - Unity package installation
-- [Install for Blender](../blender/) - Blender add-on installation
-- [Install for Web Projects](../getting-started/) - Getting started guide
+- [Install for Unity](/docs/unity/) - Unity package installation
+- [Install for Blender](/docs/blender/) - Blender add-on installation
+- [Install for Web Projects](/docs/getting-started/) - Getting started guide
 
 ---
 
@@ -47,12 +47,15 @@ Get your 3D content ready for the web:
 
 Build interactive experiences with code:
 
-- [Create Components](./scripting/create-components) - Write custom TypeScript components
-- [Scripting Examples](../reference/scripting-examples) - Code examples and snippets
-- [Lifecycle Methods](../reference/api/lifecycle-methods) - awake, start, update, etc.
-- [Input Events](../reference/api/input-events) - Mouse, touch, keyboard input
-- [Physics Events](../reference/api/physics-events) - Collision and trigger events
-- [XR Events](../reference/api/xr-events) - WebXR AR/VR events
+- [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
+- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
+- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
+- [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences
+- [Scripting Examples](/docs/reference/scripting-examples) - Code examples and snippets
+- [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - awake, start, update, etc.
+- [Input Events](/docs/reference/api/input-events) - Input event reference
+- [Physics Events](/docs/reference/api/physics-events) - Collision and trigger events
+- [XR Events](/docs/reference/api/xr-events) - WebXR AR/VR events
 
 ---
 
@@ -60,21 +63,21 @@ Build interactive experiences with code:
 
 Embed Needle Engine in websites and web apps:
 
-- [Web Integration Overview](./web-integration/) - Frameworks, bundlers, and integration
-- [Embed in Websites](./deployment/embedding) - iframe, CDN, direct integration
-- [Integrate with Framer](./integrations/framer) - Framer websites
-- [Integrate with WordPress](./integrations/wordpress) - WordPress sites
+- [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks, bundlers, and integration
+- [Embed in Websites](/docs/how-to-guides/deployment/embedding) - iframe, CDN, direct integration
+- [Integrate with Framer](/docs/how-to-guides/integrations/framer) - Framer websites
+- [Integrate with WordPress](/docs/how-to-guides/integrations/wordpress) - WordPress sites
 
 ---
 
-## XR Development (VR & AR)
+## <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">XR Development (VR & AR)</logo-header>
 
 Build immersive experiences:
 
-- [WebXR Overview](./xr/) - VR and AR development guide
-- [iOS WebXR Support](./xr/ios-webxr-app-clip) - Native iOS WebXR via App Clips
-- [Image Tracking](./xr/image-tracking) - AR image tracking
-- [Everywhere Actions](./everywhere-actions/) - Cross-platform interactive actions (iOS QuickLook)
+- [WebXR Overview](/docs/how-to-guides/xr/) - VR and AR development guide
+- [iOS WebXR Support](/docs/how-to-guides/xr/ios-webxr-app-clip) - Native iOS WebXR via App Clips
+- [Image Tracking](/docs/how-to-guides/xr/image-tracking) - AR image tracking
+- [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) - Cross-platform interactive actions (iOS QuickLook)
 
 ---
 
@@ -82,7 +85,11 @@ Build immersive experiences:
 
 Create real-time collaborative experiences:
 
-- [Networking Guide](./networking/) - Multiplayer and networking overview
+- [Networking Overview](/docs/how-to-guides/networking/) - Multiplayer and networking guide
+- [Set Up Networking](/docs/how-to-guides/networking/setup) - Quick start (5 minutes)
+- [Sync Component State](/docs/how-to-guides/networking/sync-state) - Automatic networking with @syncField
+- [Manual Networking](/docs/how-to-guides/networking/manual-networking) - Custom messages and control
+- [Custom Servers](/docs/how-to-guides/networking/custom-servers) - Self-hosted infrastructure
 
 ---
 
@@ -90,7 +97,8 @@ Create real-time collaborative experiences:
 
 Make your experiences fast and small:
 
-- [Deployment Guide](./deployment/) - Production builds and optimization
+- [Optimization & Compression](/docs/how-to-guides/optimization/) - Texture/mesh compression, progressive loading, LODs
+- [Export Best Practices](/docs/how-to-guides/export/) - Optimize 3D assets for the web
 
 ---
 
@@ -98,9 +106,9 @@ Make your experiences fast and small:
 
 Get your projects live on the web:
 
-- [Deployment Guide](./deployment/) - Production builds and hosting options
-- [Embed in Websites](./deployment/embedding) - Embedding guide
-- [Deploy to Needle Cloud](../cloud/) - Official Needle hosting
+- [Deployment Platforms](/docs/how-to-guides/deployment/) - Netlify, Vercel, GitHub Pages, and more
+- [Embed in Websites](/docs/how-to-guides/deployment/embedding) - iframe, CDN, direct integration
+- [Deploy to Needle Cloud](/docs/cloud/) - Official Needle hosting
 
 ---
 
@@ -108,8 +116,9 @@ Get your projects live on the web:
 
 Find and fix issues:
 
-- [Debug Your App](./debugging/) - Debug tools and techniques
-- [Test on Local Devices](./testing) - Testing on mobile, VR, and other devices
+- [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension
+- [Debugging Parameters & Options](/docs/how-to-guides/debugging/) - URL parameters, VSCode debugging, mobile debugging
+- [Local Development Help](/docs/how-to-guides/testing) - Testing on phones, tablets, VR headsets, certificates
 
 ---
 
@@ -117,14 +126,14 @@ Find and fix issues:
 
 Platform-specific guides:
 
-- [Unity Integration](../unity/) - Unity-specific workflows and features
-- [Blender Add-on](../blender/) - Blender-specific workflows and features
+- [Unity Integration](/docs/unity/) - Unity-specific workflows and features
+- [Blender Add-on](/docs/blender/) - Blender-specific workflows and features
 
 ---
 
 ## Need Help?
 
-- **Want to learn the basics?** See [Tutorials](../tutorials/)
-- **Want to understand how things work?** See [Explanation](../explanation/)
-- **Looking for API docs?** See [Reference](../reference/)
-- **Stuck?** Ask in [Discord](https://discord.needle.tools) or check [FAQ](../reference/faq)
+- **Want to learn the basics?** See [Tutorials](/docs/tutorials/)
+- **Want to understand how things work?** See [Explanation](/docs/explanation/)
+- **Looking for API docs?** See [Reference](/docs/reference/)
+- **Stuck?** Visit [Help & Community](/docs/help/) or check [FAQ](/docs/reference/faq)

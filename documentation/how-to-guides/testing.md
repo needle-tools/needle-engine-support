@@ -1,10 +1,17 @@
 ---
-title: Testing on local devices
+title: Local Development Help
 ---
 
-# Testing on Local Devices
+# Local Development Help
 
-<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender</a></logo-header>
+**Test your Needle Engine projects on phones, tablets, VR headsets, and other devices** on your local network.
+
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="/docs/unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="/docs/blender/">Blender</a></logo-header>
+
+:::tip Also See
+- **[Debugging Parameters & Options](/docs/how-to-guides/debugging/)** - URL parameters, VSCode debugging, mobile debugging
+- **[Help & Community](/docs/help/)** - Get support and ask questions
+:::
 
 ## Quick Start for Unity & Blender Users
 
@@ -122,3 +129,12 @@ The certificate is automatically installed on the machine you generated it on. F
 2. In the left sidebar, select "Trusted Root Certification Authorities".
 3. Right-click on "Certificates" and select "All Tasks > Import".
 4. Select the `rootCA.pem` file (you may have to change the file type to "all") and follow the instructions.
+
+---
+
+## Related Documentation
+
+- **[Debugging Parameters & Options](/docs/how-to-guides/debugging/)** - URL parameters, VSCode debugging, mobile debugging tools
+- **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome DevTools extension for three.js
+- **[FAQ](/docs/reference/faq)** - Frequently asked questions and troubleshooting
+- **[Help & Community](/docs/help/)** - Get support, ask questions, and connect with the community
