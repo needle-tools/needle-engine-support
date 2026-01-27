@@ -53,6 +53,18 @@ async function runUpload() {
     console.log("Checking for changed files...");
     const remoteManifest = await downloadRemoteManifest(server, user, password);
 
+    // KNOWN ISSUE: VuePress/Vite uses content-hashed filenames for assets (e.g., app-8d942d5f.js).
+    // When any content changes, even a single markdown file, VuePress regenerates ALL HTML files
+    // because they reference the newly-hashed assets. This causes the upload script to detect
+    // most files as "changed" even though only source content changed.
+    //
+    // Potential solutions:
+    // 1. Use git-based change detection (git diff HEAD~1 HEAD -- dist/) to identify truly changed files
+    // 2. Implement smart upload logic that maps source .md changes to their corresponding outputs
+    // 3. Accept current behavior as technically correct (files did change, just due to asset references)
+    //
+    // For now, this will upload more files than strictly necessary when markdown files are edited.
+
     // Determine which files need to be uploaded
     const filesToUpload = allFiles.filter(file => {
         const remote = remoteManifest[file.target];
