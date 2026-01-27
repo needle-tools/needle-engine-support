@@ -178,6 +178,6 @@ export class XRSessionConfig extends Behaviour {
 
 ## Related
 
-- [XR Guide](../../how-to-guides/xr/enable-webxr) - Set up WebXR
-- [XR Platform Support](../platforms/xr-platform-support) - Device compatibility
-- [Lifecycle Methods](./lifecycle-methods) - Component lifecycle
+- [XR Guide](/docs/how-to-guides/xr/) - Set up WebXR
+- [Image Tracking](/docs/how-to-guides/xr/image-tracking) - AR image tracking
+- [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - Component lifecycle
