@@ -1,261 +1,335 @@
-# Needle Engine on your Website
+---
+title: Embedding Needle Engine
+---
 
-Needle Engine can be used to create new web apps, and can also be integrated into existing websites. In both cases, you'll want to _upload_ your project's distribution folder to a web hoster to make them accessible to the world. 
+# Embedding Needle Engine on Your Website
 
-There are several ways to integrate Needle Engine with your website. Which one is better depends on a number of factors, like complexity of your project, if you're using custom scripts or only core components, how much control you have over the target website, what the "trust level" is between you and the target website, and so on.
+**Add interactive 3D to any website.** Needle Engine can be integrated into existing websites, embedded in CMSs like WordPress, or deployed as standalone web apps. This guide covers all the ways to get your 3D content live.
 
-## Try it out
+## Quick Test: 2-Minute Integration
 
-If you want to quickly try out how projects made with Needle will look on your website, just add these two lines anywhere on your page: 
+Want to see how Needle Engine looks on your website? Add these two lines anywhere on your page:
 
 <codewrap>
 
 ```html
 <!-- Import the component -->
 <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
- 
+
 <!-- Use it like any other HTML element -->
- <needle-engine src="https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-Z21QnG-world/file" background-color="transparent"></needle-engine>
- ```
+<needle-engine src="https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-Z21QnG-world/file" background-color="transparent"></needle-engine>
+```
 
- </codewrap>
-
-<!-- Here is a full example:
-
-@[code html](@code/basic-webcomponent.html) -->
+</codewrap>
 
 <iframe src="/docs/code-samples/basic-webcomponent.html" style="
-    width: 100%; 
-    aspect-ratio: 16/9; 
-    outline: none; 
+    width: 100%;
+    aspect-ratio: 16/9;
+    outline: none;
     border: none;
     "
     allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
     allowfullscreen
     ></iframe>
 
-[Open this example on Stackblitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
+[Open this example on StackBlitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
+---
 
-# Ways to create web apps with Needle
+## Deployment Methods
 
-The most common workflows to bring Needle Engine to your website are:
-1. [Using the "Deploy to ..." components](#using-the-deploy-to-...-components)
-2. [Uploading your web app to a folder](#uploading-your-web-app-to-a-folder)
-3. [Embedding a Needle project as iframe](#embedding-a-needle-project-as-iframe)
-4. [Embedding a Needle project into an existing website](#embedding-a-needle-project-into-an-existing-website)
+Choose the approach that fits your workflow:
 
-## Using the "Deploy to ..." components
+### 1. One-Click Deployment Components (Recommended)
 
-Our Needle Engine integrations ship with built-in deployment options. You can deploy your project to Needle Cloud, FTP servers, Glitch, Itch.io, GitHub Pages, and more with just a few clicks. 
+**Best for:** Quick iterations, multiple hosting platforms, team workflows
 
-See the [Deployment](./deployment.md) section for more information on each of these options.
+Our Unity and Blender integrations include built-in deployment components. Deploy to multiple platforms with just a few clicks.
 
-1. Add the "Deploy to ..." component you want to use to your scene in Unity or Blender.
-2. Configure the necessary options and click on "Deploy".
-3. That's it! Your project is now live.
+**Supported platforms:**
+- [Needle Cloud](./cloud/#deploy-from-unity) – Official hosting with CLI support
+- [Netlify](./deployment.md#deploy-to-netlify) – Professional hosting
+- [Vercel](./deployment.md#deploy-to-vercel) – Frontend-optimized
+- [GitHub Pages](./deployment.md#deploy-to-github-pages) – Free static hosting
+- [FTP](./deployment.md#deploy-to-ftp) – Any web server
+- [itch.io](./deployment.md#deploy-to-itchio) – Game hosting
+
+**How it works:**
+
+*From Unity or Blender:*
+1. Add the "Deploy to..." component to your scene
+2. Configure the necessary options
+3. Click "Deploy"
+
+*From Command Line (Needle Cloud):*
+```bash
+# Deploy to Needle Cloud from any web project
+npx needle-cloud deploy
+```
+
+[Learn more about deployment options](./deployment.md) • [Needle Cloud CLI docs](./cloud/)
 
 :::tip Recommended Workflow
-This is the easiest option, and recommended for most workflows – it's very fast! You can iteratively work on your project on your computer, and then upload a new version to the web in seconds.
+This is the easiest and fastest option. Iterate locally, then upload a new version in seconds.
 :::
 
-## Uploading your web app to a folder
+### 2. Command-Line Deployment (Needle Cloud)
 
-If you don't want to use our "Deploy to..." components, or there's no component for your particlar workflow, you can do the same process manually. The resulting web app will be identical to what you see in your local server while working on the project. 
+**Best for:** CI/CD pipelines, automation, web-only projects, developers
 
-1. Make a production build of your web project. This will create a `dist/` folder with all necessary files, ready for distribution. It contains all necessary files, including the JavaScript bundle, the HTML file, and any other assets like textures, audio, or video files.
+Deploy to Needle Cloud directly from the command line without Unity or Blender.
 
-2. Upload the content of the `dist/` folder from your Web Project to your web hoster. You can do this via FTP, SFTP, or any other file transfer method your hoster provides. Look at the documentation of your web hoster for details. 
+**Steps:**
 
-3. That's it! Your web app is now live.
+1. Navigate to your web project folder (the one with `package.json`)
+2. Run the deploy command:
 
+```bash
+npx needle-cloud deploy
+```
 
-::: tip The folder location influences the URL of your web app.
-Depending on your hoster's settings, the folder location and name determine what the URL of your web app is. Here's an example:
-- Your domain `https://your-website.com/` points at the folder `/var/www/html` on your webspace.
-- You upload your files to `/var/www/html/my-app` so that the `index.html` file is at `/var/www/html/my-app/index.html`.
-- The URL of your web app is now `https://your-website.com/my-app/`.
+3. Follow the prompts to:
+   - Log in to your Needle Cloud account (if not already logged in)
+   - Choose or create a project
+   - Confirm deployment
+
+**Features:**
+- ✅ **Works from any web project** – No editor needed
+- ✅ **Automatic builds** – Builds and optimizes before uploading
+- ✅ **Fast updates** – Incremental uploads for quick iterations
+- ✅ **CI/CD ready** – Perfect for automated workflows
+
+[Learn more about Needle Cloud CLI →](./cloud/)
+
+:::tip Automated Deployment
+Add `npx needle-cloud deploy --ci` to your GitHub Actions or other CI/CD pipeline for automatic deployments on every commit.
 :::
 
+### 3. Manual Build & Upload
 
-## Embedding a Needle project as iframe
+**Best for:** Custom workflows, unsupported hosting platforms
 
-When you have limited access to a website, for example when you're using a CMS like WordPress, you can use an iframe to embed a Needle Engine scene into your website. You may know this workflow from embedding YouTube videos or Sketchfab models.
+Build your project and manually upload the distribution files to any web server.
 
-1. Make a production build of your web project. This will create a `dist/` folder with all necessary files, ready for distribution. 
+**Steps:**
+1. Create a production build of your web project
+   - This generates a `dist/` folder with all files
+2. Upload the contents of the `dist/` folder to your web host
+   - Use FTP, SFTP, or your host's file manager
+3. Your web app is live!
 
-2. Upload the `dist/` folder from your Web Project to your web hoster.
-    ::: tip The folder can be hosted anywhere!
-    If you don't have access to your web hoster's file system, or no way to upload files there, you can upload the folder to any other webspace and  use the public URL of that in the next step.
-    :::
+:::tip URL Structure
+The folder location determines your app's URL:
+- Domain: `https://your-website.com/` points to `/var/www/html`
+- Upload to: `/var/www/html/my-app/`
+- Your URL: `https://your-website.com/my-app/`
+:::
 
-3. Add an iframe to your website, pointing to the `index.html` file in the `dist/` folder. 
-    ```html
-    <iframe
-        src="https://your-website.com/needle-files/dist/index.html" 
-        allow="xr; xr-spatial-tracking; fullscreen;">
-    </iframe>
-    ```
+### 4. iframe Embedding
 
+**Best for:** Limited website access, CMS platforms (WordPress, Wix), quick embeds
 
-    ::: tip Permissions inside iframes
-    The list inside `allow=` depends on the features your web app uses. For example, XR applications require `xr` and `xr-spatial-tracking` to work inside iframes. 
+Embed your Needle Engine scene like you would a YouTube video.
 
-    There may be additional features needed, for example `camera; microphone; xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation;`. See [the full list of iframe Permissions Policy directives on MDN](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives).
-    :::
-
-4. That's it! The scene should now be displayed on your website.
-
-## Embedding a Needle project into an existing website
-
-In some cases, you want a Needle Engine project to be part of an existing web site, for example as a part of a blog post, a product page, or a portfolio. The process is very similar, but instead of uploading the files to the root of your web space, you _embed_ the project into an existing website with a few lines of code.
-
-1. Make a production build of your web project. This will create a `dist/` folder with all necessary files, ready for distribution. It contains all necessary files, including the JavaScript bundle, the HTML file, and any other assets like textures, audio, or video files.
-
-2. Upload the `dist/` folder from your Web Project to your web hoster. 
-    ::: tip The folder can be hosted anywhere!
-    If you don't have access to your web hoster's file system, or no way to upload files there, you can upload the folder to any other webspace and  use the public URL of that in the next step.
-    :::
-
-3. Inside your `dist` folder, you'll find an `index.html` file. We want to copy some lines from this folder, so open the file in a text editor. Typically, it looks like this:  
-    ```html
-    <head>
-        ...
-        <script type="module" crossorigin src="./assets/index-732f0764.js"></script>
-        ...
-    </head>
-    <body>
-        <needle-engine src="assets/scene.glb"></needle-engine>
-    </body>
-    ```
-
-    There are two important lines here: 
-    - the JavaScript bundle inside `<script>`, 
-    - the `<needle-engine>` HTML tag.
-
-4. On the target website, add the `<script...>` and `<needle-engine...>` tags as well. Make sure that the paths point at the location where you have uploaded the files to. 
-    ```html
-    <script type="module" src="/your-upload-folder/assets/index-732f0764.js"></script>
-    <needle-engine src="/your-upload-folder/assets/scene.glb"></needle-engine>
-    ```
-
-5. That's it! The scene should now be displayed on your website.
-
-## Embedding scenes that use no custom scripts
-
-When your project uses only core components and no custom scripts, you can directly use Needle Engine from a CDN (content-delivery network).
-
-1. Add the following snippet to your website, for example as "HTML Block" in your CMS:
-    ```html
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-    <needle-engine src="https://cloud.needle.tools/view/embed?file=Z23hmXBXxC2q-XxC2q-world" background-blurriness="0.8"></needle-engine>
-    ```
-2. Upload the `assets/` folder from your Web Project to your web hoster. Depending on your project settings, this folder contains one or more `.glb` files and any number of other files like audio, video, skybox and more. 
-
-3. Change the `src=` attribute of the `needle-engine` tag to the URL of the `.glb` file you want to display. Typically, this will be some path like `https://your-website.com/assets/MyScene.glb`. 
-
-4. That's it! The scene should now be displayed on your website.
-
-## Embedding a Needle Cloud web app as iframe 
-
-If you deployed your project to Needle Cloud, you can easily display it on your own website with an iframe! Use the `embed` button on your Needle Cloud's asset page to find various options.  
-
-<codewrap>
+**Steps:**
+1. Build and upload your project to any web host
+2. Add an iframe to your website:
 
 ```html
-<iframe src="https://cloud.needle.tools/view/embed?file=Z23hmXBZ21QnG-Z21QnG-world" title="The forgotten knight | Hosted on Needle Cloud" style="width: 100%; height: 100%;" frameborder="0" allow="xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation; camera; microphone" allowfullscreen></iframe>
+<iframe
+    src="https://your-website.com/needle-files/dist/index.html"
+    allow="xr; xr-spatial-tracking; fullscreen;"
+    style="width: 100%; height: 600px; border: none;">
+</iframe>
+```
+
+:::tip Required Permissions
+The `allow` attribute depends on your app's features:
+- **XR apps:** `xr; xr-spatial-tracking`
+- **Fullscreen:** `fullscreen`
+- **Camera/Mic:** `camera; microphone`
+- **More features:** `accelerometer; gyroscope; display-capture; geolocation`
+
+[See full list of iframe permissions →](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives)
+:::
+
+### 5. Direct Integration (Advanced)
+
+**Best for:** Existing websites, custom layouts, advanced control
+
+Embed a Needle Engine project directly into an existing webpage's HTML.
+
+**Steps:**
+
+1. Build your project (creates a `dist/` folder)
+2. Upload the `dist/` folder to your web host
+3. Open `dist/index.html` in a text editor and find these lines:
+
+```html
+<head>
+    <script type="module" crossorigin src="./assets/index-732f0764.js"></script>
+</head>
+<body>
+    <needle-engine src="assets/scene.glb"></needle-engine>
+</body>
+```
+
+4. Copy both lines to your target website, updating paths:
+
+```html
+<script type="module" src="/your-upload-folder/assets/index-732f0764.js"></script>
+<needle-engine src="/your-upload-folder/assets/scene.glb"></needle-engine>
+```
+
+---
+
+### 6. CDN for Core Components Only
+
+**Best for:** Projects without custom scripts, quick prototypes, simple scenes
+
+Use Needle Engine directly from a CDN without uploading any JavaScript bundles.
+
+**Requirements:** Your project must use only core Needle Engine components (no custom scripts).
+
+**Steps:**
+
+1. Add the CDN script to your website:
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<needle-engine src="https://your-website.com/assets/MyScene.glb"></needle-engine>
+```
+
+2. Upload your `assets/` folder to your web host
+   - Contains `.glb` files and other assets (audio, video, skybox, etc.)
+3. Update the `src` attribute to point to your uploaded `.glb` file
+
+### 7. Needle Cloud iframe
+
+**Best for:** Projects hosted on Needle Cloud, quick sharing, portfolios
+
+If you've deployed to [Needle Cloud](./cloud/), embed it anywhere with a simple iframe.
+
+**How to get the embed code:**
+1. Go to your asset page on Needle Cloud
+2. Click the "Embed" button
+3. Copy the generated iframe code
+
+```html
+<iframe
+    src="https://cloud.needle.tools/view/embed?file=Z23hmXBZ21QnG-Z21QnG-world"
+    title="Your Project | Hosted on Needle Cloud"
+    style="width: 100%; height: 600px"
+    frameborder="0"
+    allow="xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation; camera; microphone"
+    allowfullscreen>
+</iframe>
 ```
 
 <iframe src="https://cloud.needle.tools/view/embed?file=Z23hmXBZ21QnG-Z21QnG-world" title="The forgotten knight | Hosted on Needle Cloud" style="width: 100%; height: 600px" frameborder="0" allow="xr-spatial-tracking; accelerometer; gyroscope; display-capture; geolocation; camera; microphone" allowfullscreen></iframe>
 
-</codewrap>
+## Common Workflows
 
-# Common Workflows
+### Client Projects: Professional Deployment
 
-## Creating a web app for a client's website
+When building a web app for a client, consider these factors:
 
-1. **Understand what type of app you're building**, and if and how it connects to an existing website.  
-   Often, you're building a standalone app that is accessible from a link on the client's domain.  
-   But there might also be other server-side and client-side components involved. 
+#### 1. Determine the Type of Application
 
-2. **Understand which URL the web app should be accessible from.**  
-  This could either be 
+- **Standalone app** – Accessible via a link on the client's domain
+- **Integrated app** – Part of existing website with server-side/client-side components
+- **Embedded experience** – Inside a CMS or existing page
 
-    - A page on **[Needle Cloud](./cloud/)**  
-      `collaborativesandbox-zubcks1qdkhy.needle.run`  
+#### 2. Choose the URL Structure
 
-    - A **Subpage** on the client's website   
-      `my-page.com/app`
-  
-    - A new **Subdomain**  
-      `app.my-page.com`
-    - A new or existing **Domain**  
-      `my-app.com` 
+The app can be hosted at:
 
-    ::: tip There's no "good" or "bad" here.
-    A typical approach is to start on [Needle Cloud](./cloud/) for initial prototypes and during development, and move to the client's webspace and domain for the final version.  
+| Option | Example | When to Use |
+| --- | --- | --- |
+| **Needle Cloud** | `myproject.needle.run` | Prototypes, development, demos |
+| **Subpage** | `client-site.com/app` | Part of existing site |
+| **Subdomain** | `app.client-site.com` | Separate but branded |
+| **Domain** | `my-app.com` | Standalone product |
 
-    The choice mostly depends on the client's requirements regarding branding, SEO, and technical setup. Often, you'll have to discuss this with the client's IT department or webmaster. 
-    :::
-
-1. **Understand how the web app will be deployed and maintained.**  
-    - Will you have access to a folder on the client's web server so you can upload the latest version, or do they want to manage the deployment themselves?
-      ::: tip A simple approach: FTP access
-      Often, you can ask for FTP or SFTP access to a folder on the client's web server. You'll get a URL, username, and password, and then you can upload your files to that folder. We provide a "Deploy to FTP" component that makes this particularly easy. The client's IT department will set up which URL the folder is accessible from.
-        :::
-
-    - Is there a lot of content that needs to be updated regularly, or is the app mostly static?
-        ::: tip Static vs. dynamic content
-        For mostly static content, it's often enough to upload a new build from time to time. For dynamic content, you might need a CMS (content management system) or a database connection.
-        :::
-    - Which devices and browsers are the target audience using?
-        ::: tip Browser compatibility and testing
-        While Needle Engine works on all modern devices and browsers, it's always a good idea to test your app on the devices and browsers your target audience is using to make sure everything works as expected. For example, when creating an AR app for phones, you'll want to test across Android and iOS devices.
-        :::
-
-2. **Set up the project, a test deployment, and client deployment.**   
-   It's often a good idea to test the deployment process early on, to make sure you understand how it works and what the requirements are. For example, when you've decided on using FTP, then you could set up a test folder on your own web server and test the deployment process there. Once changes are approved by the client, you can then deploy to the client's server. 
-
-3. **Start creating!**  
-   With requirements and deployment in place, go ahead and start making your project! You'll usually iterate locally, then deploy to your test server for approval, and then to the client's server.  
-
-
-# Integrations
-
-## Integrating with Framer
-
-See [Integrating with Framer](./integrating-with-framer.md) for detailed instructions.
-
-## Integrating with Wordpress
-
-See [Integrating with Wordpress](./integrating-with-wordpress.md) for detailed instructions.
-
-## Integrating with Shopify
-
-::: warning <b>Under construction.</b> Needs to be documented.
+:::tip Development to Production
+Start on [Needle Cloud](./cloud/) for prototypes and development, then move to the client's domain for the final version. This approach balances speed with branding requirements.
 :::
 
-## Integrating with Wix
+#### 3. Plan Deployment & Maintenance
 
-::: warning <b>Under construction.</b> Needs to be documented.
+**Access & Updates:**
+- Will you have FTP/SFTP access to upload updates?
+- Will the client manage deployments?
+- How often does content need updating?
+
+:::tip FTP Access
+Request FTP/SFTP access to a folder on the client's server. Use our [Deploy to FTP](./deployment.md#deploy-to-ftp) component for easy uploads. The client's IT team handles URL configuration.
 :::
 
-## Integrating with Webflow
+**Content Type:**
+- **Static content** – Occasional updates via new builds
+- **Dynamic content** – May need CMS or database integration
 
-::: warning <b>Under construction.</b> Needs to be documented.
+**Target Audience:**
+- Which devices and browsers do users have?
+- Test on actual target devices (especially for AR/VR)
+
+#### 4. Set Up Test & Production Environments
+
+Test the deployment process early:
+1. Set up a test environment (your own server or subdomain)
+2. Practice the deployment workflow
+3. Get client approval on test environment
+4. Deploy to production environment
+
+#### 5. Development Workflow
+
+Iterate efficiently:
+1. Develop and test locally
+2. Deploy to test server for client review
+3. After approval, deploy to production server
+4. Repeat as needed
+
+## Platform-Specific Integrations
+
+### <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="./integrating-with-framer.html">Framer</a></logo-header>
+
+Integrate Needle Engine scenes into Framer websites.
+
+### <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="./integrating-with-wordpress.html">WordPress</a></logo-header>
+
+Embed Needle Engine in WordPress posts, pages, and custom themes.
+
+### <logo-header logo="/imgs/shopify-logo.webp" alt="Shopify">Shopify</logo-header>
+
+:::warning Under Construction
+Shopify integration guide coming soon. In the meantime, use the [iframe method](#4-iframe-embedding) for quick integration.
 :::
 
+### <logo-header logo="/imgs/webflow-logo.webp" alt="Webflow">Webflow</logo-header>
 
+:::warning Under Construction
+Webflow integration guide coming soon. In the meantime, use the [iframe method](#4-iframe-embedding) for quick integration.
+:::
 
-<br/>
-<br/>
+## Next Steps
 
-# Next Steps
+**Configuration & Customization:**
+- [Web Component Attributes](./reference/needle-engine-attributes.md) – Configure the `<needle-engine>` element
+- [Scripting Guide](./scripting.md) – Add custom functionality
+- [Deployment Options](./deployment.md) – Explore all hosting platforms
 
-- [Learn more about the web component attributes](/reference/needle-engine-attributes.md)
-- [Learn how to extend Needle Engine with custom scripts and components](/scripting.md)
+**Editor Integrations:**
+- <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity Integration</a></logo-header> – Visual scene creation with Unity
+- <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender Integration</a></logo-header> – Visual scene creation with Blender
 
+**Get Help:**
+- [Forum](https://forum.needle.tools) – Ask questions and share projects
+- [Discord](https://discord.needle.tools) – Join our community
+- [FAQ](./faq.md) – Common questions and troubleshooting
 
-:::tip Using Needle with Unity or Blender
-Did you know that Needle Engine seamlessly integrates in Blender and Unity? This allows you to create complex 3D scenes visually and export them directly to the web with Needle Engine. Check out our [Unity integration](/unity/index.md) and [Blender integration](/blender/index.md) for more information.
+:::tip Visual Scene Creation
+Did you know Needle Engine integrates with Unity and Blender? Create complex 3D scenes visually and export them directly to the web. Perfect for non-coders or teams with 3D artists.
+
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Learn about Unity Integration</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Learn about Blender Integration</a></logo-header>
 :::

@@ -15,10 +15,11 @@ From low-level triggers and actions, higher-level complex interactive behaviours
 - Mobile (Android / iOS)
 - VR Glasses
 - AR Devices
-- iOS AR – QuickLook (yes, really!)
+- <logo-header logo="/imgs/apple-logo.webp" alt="Apple"><strong>iOS WebXR – Full native AR support</strong></logo-header> (via <a href="ios-webxr-app-clip.html">App Clip</a>)
+- <logo-header logo="/imgs/quicklook-logo.webp" alt="QuickLook">iOS AR – QuickLook (Apple Vision Pro)</logo-header>
 
-:::tip Coming Soon: Full WebXR on iOS
-Want full WebXR support on iOS? Check out [Needle Go](ios-webxr-app-clip.md), an upcoming iOS App Clip that will enable complete WebXR experiences on iPhone and iPad without requiring app installation.
+:::tip Native WebXR on iOS Now Available! 🎉
+Full WebXR support is now available on iOS through [Needle Go App Clip](ios-webxr-app-clip.md). Experience complete AR and VR on iPhone and iPad without app installation—just open your WebXR scene in Safari or Chrome!
 :::
 
 ## How do I use Everywhere Actions?
@@ -60,12 +61,15 @@ Demonstrates combining animations, look at, and movement.
 
 ### Image Tracking
 
-Demonstrates how to attach 3D content onto a custom image marker.   
-Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.     
+Demonstrates how to attach 3D content onto a custom image marker.
+Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.
 
+:::tip iOS: Full Native Support ✅
+Image tracking works natively on iOS through [Needle Go App Clip](./ios-webxr-app-clip.md) with ARKit support—no setup required!
+:::
 
-:::info WebXR Image Tracking on Android
-**On Android** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.  
+:::info Android: Browser Flag Required
+**On Android** please turn on "WebXR Incubations" in the Chrome Flags. You can find those by pasting [chrome://flags/#webxr-incubations](chrome://flags/#webxr-incubations) into the Chrome browser address bar of your Android phone.
 :::
 
 [Read more about Image Tracking with Needle Engine](./webxr-image-tracking.md)
@@ -130,8 +134,12 @@ To see the implementation of our built-in Everywhere Actions, please take look a
 ## References
 - [Apple's Preliminary USD Behaviours](https://developer.apple.com/augmented-reality/quick-look/)
 
-## Further reading 
+## Further reading
+
+:::tip <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR Support</logo-header>
+Want to use full WebXR features on iPhone and iPad? Check out our [iOS WebXR with App Clip](./ios-webxr-app-clip.html) guide for complete AR and VR support without app installation.
+:::
 
 - [Visit our AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) that has many interactive AR examples with a focus on iOS AR & Quicklook
-- [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions) 
-- [Image Tracking with Needle Engine](./webxr-image-tracking.md)
+- [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- [Image Tracking with Needle Engine](./webxr-image-tracking.html)

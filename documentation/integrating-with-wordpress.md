@@ -2,10 +2,10 @@
 title: Integrating with Wordpress
 ---
 
-# Integrating with Wordpress
+# <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress">Integrating with WordPress</logo-header>
 
 
-The easiest way to integrate with Wordpress is to use an iframe. This way, you can host your Needle Engine project anywhere, and just embed it into your Wordpress page.
+The easiest way to integrate with WordPress is to use an iframe. This way, you can host your Needle Engine project anywhere, and just embed it into your WordPress page.
 
 ## Embedding a Needle project as iframe
 

@@ -2,7 +2,7 @@
 title: Integrating with Framer
 ---
 
-# Integrating with Framer
+# <logo-header logo="/imgs/framer-logo.webp" alt="Framer">Integrating with Framer</logo-header>
 
 The easiest way to integrate with [Framer](https://framer.com) is to use the [Needle Engine Framer Plugin](https://www.framer.com/marketplace/plugins/needle-engine/).   
 

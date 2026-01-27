@@ -12,36 +12,64 @@ description: 'Needle Cloud is an online service. It helps you store, manage, and
 
 ## Overview
 
-Needle Cloud is an online service. It helps you store, manage, and share 3D assets and apps on the web.
-A variety of file formats are supported, including glTF, USD, FBX, VRM, and more. Spatial web apps made with Needle can be deployed directly from the [Unity integration](#deploy-from-unity) or our Needle Cloud [command line interface](#deploy-from-the-cli) (CLI).
+**Needle Cloud is the official hosting and optimization platform for Needle Engine**—a core part of Needle Services. Store, manage, and share 3D assets and apps on the web. Deploy spatial web apps, optimize 3D files, and collaborate with your team—all from one platform.
 
-Visit [Needle Cloud](https://cloud.needle.tools) to create an account for free.
+:::tip Quick Links
+**Get Started:** [Create a free account](https://cloud.needle.tools)
+
+**Deploy Apps:** [From Unity](#deploy-from-unity) • [From CLI](#deploy-from-the-cli)
+
+**Manage Assets:** [Upload 3D Assets](#cloud-assets) • [Supported Formats](#supported-3d-formats)
+:::
 
 ![Needle Cloud Overview](/cloud/cloud-overview-page.webp)
 
-## Features
+## Why Use Needle Cloud?
 
-1. **Host spatial web apps**  
-   Apps made with Needle can be deployed to the cloud directly from our engine integrations. This allows you to give your team and customers public access to apps easily, without having to set up your own server. If needed, you can protect apps with a password.
+Needle Cloud offers significant advantages over traditional hosting solutions like FTP, self-hosting, or generic cloud storage.
 
-2. **Manage 3D assets privately and securely**  
-   Easily upload and organize your 3D files. Thanks to our fast CDN (content delivery network), your files are stored securely and can be accessed quickly from anywhere in the world.
-   Needle Cloud is not a marketplace, and not a social network. It is designed for agencies, studios and creators to manage their assets privately and securely.
+### vs. Self-Hosting / FTP
 
-3. **Optimize 3D assets from a variety of formats**  
-   Automatically compress your files to reduce their size while maintaining visual quality. This makes your files load faster, and saves bandwidth and memory on user's devices.
+| Feature | Needle Cloud | Self-Hosting / FTP |
+| --- | --- | --- |
+| **Global CDN** | ✅ Instant worldwide delivery | ❌ Single server location, slow for distant users |
+| **Automatic Optimization** | ✅ Draco, KTX2, Progressive Loading | ❌ Manual optimization required |
+| **Version Control** | ✅ Built-in with labeled versions | ❌ Manual file management |
+| **Preview URLs** | ✅ Each upload gets unique URL | ❌ Must manage URLs manually |
+| **Deploy from Editor** | ✅ One-click from Unity | ❌ Manual export and upload |
+| **Password Protection** | ✅ Built-in per-project | ❌ Server configuration required |
+| **Setup Time** | ✅ Minutes | ❌ Hours or days |
+| **Maintenance** | ✅ Zero—we handle it | ❌ Ongoing server management |
 
-4. **Sharing and Version Control**  
-   Links to your files can be shared with others and used directly in your projects. You can upload new versions of assets and apps. Individual versions can be labelled, which allows for flexible review workflows: for example, you can label a version as `main` or `experimental`. You can also revert labels back to a previous version if needed.
+### Key Benefits
 
-5. **Automation and Pipeline Tools via CLI**  
-   The `needle-cloud` CLI (command line interface) makes it easy to automate uploading and optimizing files. This is useful for integrating Needle Cloud into your existing pipeline, or for automating the upload of large numbers of files.
+**🌍 Global CDN Performance**
+Your apps and assets are served from servers closest to your users worldwide. No need to configure or pay for CDN separately—it's included.
 
-6. **License Management**  
-   Licenses for Needle Engine for solo creators and teams are managed through Needle Cloud. This ensures only authorized users can access your files and projects. Contact us for Enterprise and Edu licenses.
+**⚡ Automatic Optimization**
+Upload any format (glTF, USD, FBX, VRM) and get automatic compression with Draco, KTX2, and Progressive Loading. Saves ~90% bandwidth and memory compared to unoptimized files.
+
+**🏷️ Version Control & Preview URLs**
+Every upload gets a unique URL. Label versions as `main`, `experimental`, or `dev`. Share a labeled link once—it auto-updates when you move the label. Perfect for client reviews.
+
+**🚀 Deploy from Anywhere**
+One-click from Unity, command-line from any web project, or automated via GitHub Actions. No manual FTP uploads or SSH commands.
+
+**🔒 Built-in Security**
+Password-protect projects with one click. Role-based access control for teams. Private by default—not a marketplace or social network.
+
+**👥 Team Collaboration**
+Multiple team members can deploy and manage assets. Role-based permissions (Owner, Manager, Member, Billing) ensure the right access levels.
+
+**🤖 CI/CD Ready**
+Deploy automatically on every commit with GitHub Actions integration or custom CI/CD pipelines via the CLI.
+
+:::tip Perfect for Agencies & Studios
+Needle Cloud is designed for professional workflows. Spend time creating, not managing servers and build pipelines.
+:::
 
 
-## Deploy from Unity
+## <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Deploy from Unity</logo-header>
 
 Needle Cloud is integrated into the Unity Editor. This allows you to deploy your apps directly from Unity to Needle Cloud. You can also upload and download assets from Needle Cloud directly in Unity.
 
@@ -57,93 +85,123 @@ Needle Cloud is integrated into the Unity Editor. This allows you to deploy your
    
    ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
 
-## Deploy from the CLI
+## <logo-header logo="/imgs/needle-logo.webp" alt="Needle Cloud">Deploy from the CLI</logo-header>
 
-Needle Cloud provides a command line interface (CLI) that allows you to manage your assets and deploy your applications efficiently. You can use the CLI to automate tasks and integrate Needle Cloud into your existing workflows.
+Deploy to Needle Cloud from the command line—perfect for web projects, automation, and CI/CD pipelines.
 
-The CLI is available as an [npm package](https://www.npmjs.com/package/needle-cloud), which means that you need to have Node.js installed on your machine. You can check if you have Node.js installed by running the following command in your terminal:
+**Prerequisites:** [Node.js](https://nodejs.org/) installed on your machine. Check with `node -v` in your terminal.
+
+### Basic Usage
+
+**Option 1: npx (Recommended)**
+
+No installation needed—use `npx` to run the CLI directly:
 
 ```bash
-node -v
+npx needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
 ```
-If you don't have Node.js installed, you can download it from the [Node.js website](https://nodejs.org/).  
 
-You can install the `needle-cloud` CLI package globally or use it via `npx`. This allows you to run the CLI commands without having to install it globally. 
+**Option 2: Global Installation**
 
+Install once, use everywhere:
 
-1. **Use the npx command (recommended)**
-   ```bash
-   npx needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
-   ```
-2. **Or install needle-cloud globally**  
-   A global installation allows use to use the CLI from anywhere on your system. To install the CLI globally, run the following command in your terminal: 
-   ```bash
-   npm install -g needle-cloud
-   ```
-   Now, you can use the `needle-cloud` command in your terminal:
+```bash
+npm install -g needle-cloud
+needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
+```
 
-   ```bash
-   needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
-   ```
+### <logo-header logo="/imgs/github-logo.webp" alt="GitHub">CI/CD & Automated Deployments</logo-header>
 
-### Automated Deployments
-To deploy from **Github Actions** or **Stackblitz** you can provide an access token as `--token <access_token>`. Access tokens can be created on [your team page](https://cloud.needle.tools/team) on Needle Cloud. Make sure to create your token with `read/write` permissions.      
+Deploy automatically from GitHub Actions, GitLab CI, or other CI/CD platforms using access tokens.
 
-Use the [Needle Cloud Github Action](https://github.com/marketplace/actions/deploy-to-needle-cloud) to deploy an update from Github (e.g. every time when you push to the repository)
+**Create an Access Token:**
+1. Go to [your team page](https://cloud.needle.tools/team) on Needle Cloud
+2. Create a token with `read/write` permissions
+3. Add it as a secret in your CI/CD platform
 
-#### Example: Needle Cloud Github Action
+**GitHub Actions Example:**
+
+Use the official [Needle Cloud GitHub Action](https://github.com/marketplace/actions/deploy-to-needle-cloud):
+
 ```yml
-      - name: Deploy to Needle Cloud
-        uses: needle-tools/deploy-to-needle-cloud-action@v1
-        id: deploy
-        with:
-            token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
-            dir: ./dist
-            name: vite-template # optional
+- name: Deploy to Needle Cloud
+  uses: needle-tools/deploy-to-needle-cloud-action@v1
+  with:
+    token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
+    dir: ./dist
+    name: my-project
 ```
 
-#### Example: Deploy using a CLI command
+**CLI Command with Token:**
 
 ```bash
-# Deploy to Needle Cloud from e.g. a github action
-npx needle-cloud deploy '/path/to/output' --team 'My team' --name 'some name or id' --token '<access_token>'
+npx needle-cloud deploy '/path/to/output' \
+  --team 'My team' \
+  --name 'project-id' \
+  --token '<access_token>'
 ```
 
-### CLI Help
-Use `help` to see all available commandline options and help to individual commands.
+### Getting Help
+
 ```bash
-# see all available options
+# See all available commands
 npx needle-cloud help
-# get help for a specific command e.g. deploy
+
+# Get help for a specific command
 npx needle-cloud help deploy
 ```
 
+[📦 Full CLI documentation on npm](https://www.npmjs.com/package/needle-cloud)
 
-## Deployment URLs
 
-When deploying to Needle Cloud, each upload gets a unique URL. You can either share a link to a _specific_ version, or to a _labeled_ version with your team or clients.
+## Deployment URLs & Version Management
 
------
+Needle Cloud gives you powerful URL-based version control for your deployments. Every upload creates a permanent URL, and you can use labels to manage which version users see.
 
-In the following example, we have an app that has so far been deployed twice. Each deployment gets a specific URL, also known as a _pinned_ URL since it's pinned to a specific version.
-1. [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/)  
-   This is the first version that was uploaded.
-2. [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/)  
-   This is the second version that was uploaded.
+### Two Types of URLs
 
-The _latest_ deployment is always available at the following URL. This URL is useful for sharing with your team, as it always points to the most recent version of the app. Another common name for this version is _dev_ or _canary_.
-- [collaborativesandbox-zubcks1qdkhy<strong>-latest</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-latest.needle.run/)  
-  This URL automatically shows the new version when you upload a new version of the app.
+**1. Pinned URLs** – Link to exactly one version (never changes)
 
-The _main_ deployment is useful for sharing with clients, as it always points to the most recent version of the app that you promoted. Other common names for this version are _production_, _stable_, or _live_.
-- [collaborativesandbox-zubcks1qdkhy.needle.run](https://collaborativesandbox-zubcks1qdkhy.needle.run/)  
-  This URL does not change when you upload a new version. It will only change when you explicitly promote a new version to _main_.
+Each deployment gets a unique, permanent URL that always points to that specific version:
 
-Typically, you upload a new version, review it, and then decide whether you want to promote it to _main_.
+- [collaborativesandbox-zubcks1qdkhy<strong>-1qdkhy</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-1qdkhy.needle.run/) → Version 1
+- [collaborativesandbox-zubcks1qdkhy<strong>-2e2spt</strong>.needle.run](https://collaborativesandbox-zubcks1qdkhy-2e2spt.needle.run/) → Version 2
 
------
+These URLs never change, even when you upload new versions. Perfect for archiving or testing specific builds.
 
-The Needle Cloud website shows all deployed versions of the app, including the latest and main versions. Labels can be moved by clicking on <kbd>⋮</kbd> and selecting <kbd>Set main label</kbd> or <kbd>Remove main label</kbd>.  
+**2. Labeled URLs** – Dynamic links that update when you move the label
+
+Labels are pointers you can move between versions. Share the labeled URL once, then update what it points to:
+
+| Label URL | Purpose | Updates When |
+| --- | --- | --- |
+| `projectname-`**`latest`**`.needle.run` | Always shows newest upload | Automatically on every new upload |
+| `projectname.needle.run` (or `-`**`main`**) | Production/stable version | You manually promote a version to `main` |
+
+### Typical Workflow
+
+1. **Deploy a new version** → Gets pinned URL like `project-abc123.needle.run`
+2. **`latest` label auto-updates** → Your team sees it at `project-latest.needle.run`
+3. **Review and test** → Share the pinned URL or `latest` with your team
+4. **Promote to `main`** → Move the `main` label to this version
+5. **Clients see the update** → `project.needle.run` now shows the new version
+
+:::tip Why This Matters
+- **Client links never break** – Share `project.needle.run` once, update behind the scenes
+- **No more "v2 link"** – Labels let you update what users see without new URLs
+- **Safe rollbacks** – Move the `main` label back to a previous version instantly
+- **Preview specific builds** – Send pinned URLs for exact version testing
+:::
+
+### Managing Labels
+
+On the Needle Cloud website, click <kbd>⋮</kbd> next to any version to move labels:
+- **Set main label** – Promote this version to production
+- **Remove main label** – Unpromote (label stays on previous version)
+
+:::info Custom Labels Coming Soon
+The ability to create custom labels like `staging`, `beta`, or `client-preview` is planned for a future release. Currently, you can use `main` and `latest`, plus access any version via its pinned URL.
+:::
 
 ![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
 
@@ -184,84 +242,84 @@ All pages for this asset will be password-protected, including the main one.
 
 ## Cloud Assets
 
-### Uploading Assets
+Needle Cloud is not just for hosting apps—it's a powerful asset management system for 3D files.
 
-You can upload your files easily by dragging them into the website or selecting them from your computer.
-Non-glTF files are automatically converted to glTF for further processing, but the original files are kept for download and web viewing. 
+### Upload & Optimize
 
-### Asset Versions
+**Drag and drop** files into the website or select them from your computer. Supported formats include glTF, USD, FBX, VRM, OBJ, and more.
 
-When you visit the Edit Page of an asset, you can see all versions that were uploaded so far by you or your team. You can also tag versions to mark them as "main" or "experimental". "Latest" is the default tag for the most recent version.
+- Non-glTF files are automatically converted to glTF for optimization
+- Original files are kept for download
+- Automatic compression with Draco, KTX2, and Progressive Loading
+- Typically saves 90% or more bandwidth and memory
 
-### Sharing Links to Assets
+### Version Control & Sharing
 
-You can create links to share specific files or tagged files with your team or clients. Tagged links will automatically update when you move the tag – so you can share a "main" link once and keep updating the file without having to send a new link.
+**Track multiple versions** of each asset:
+- Upload new versions anytime
+- Label versions as `main`, `experimental`, `dev`, etc.
+- `Latest` always points to the most recent upload
+- Share tagged links that auto-update when you move labels
 
-### Using Cloud Assets in Needle Engine
+**Share with your team:**
+- Create direct download links
+- Share Needle Cloud viewer links
+- Password-protect sensitive assets
 
-Files stored in Needle Cloud can be brought directly into Needle Engine projects easily. The `Needle Cloud Asset` component takes a link to an asset, and loads it at runtime. This allows you to keep your project size small and load assets on demand that can still be updated in the cloud. 
+### Use Assets in Your Projects
 
-::: tip Use Progressive Loading where possible
-Assets stored on Needle Cloud are automatically optimized for ideal runtime usage using our Progressive Loading technology. For each mesh and texture, multiple level-of-detail versions are generated, and only the parts of the asset that are needed are loaded at runtime. 
+**In Needle Engine:**
 
-This save a lot of bandwidth and memory (typically 90% or more compared to loading the full asset).
+Use the `Needle Cloud Asset` component to load assets at runtime. Keeps project sizes small and enables cloud updates.
+
+:::tip Progressive Loading
+Cloud assets automatically load only what's needed using our Progressive Loading technology. This saves ~90% bandwidth and memory compared to loading full assets.
 :::
 
-### Embedding the Cloud Viewer on Your Website
+**In Other Engines (Unity, Unreal, etc.):**
 
-A fast way to bring 3D to your own website is to **embed** the Needle Cloud viewer. 
-To do so, go to an asset's Edit Page and click on <kbd>Embed</kbd>. You can then copy the `iframe` code snippet and paste it into your website.
+Three ways to use cloud assets:
 
-::: tip Embedding specific versions
-You can also embed the viewer with a direct link to the asset, or with a specific tag. This allows you to update the asset on Needle Cloud without having to update the embed code on your website. 
-:::
+1. **Download and Import** – Standard workflow
+2. **Direct Link** – Link to cloud asset for automatic updates
+   - Progressive Loading: Use `Progressive-World` or `Progressive-Product` link ([learn more](https://www.npmjs.com/package/@needle-tools/gltf-progressive))
+   - Draco + KTX2: Use `Optimized` link
+   - Basic glTF: Use `Upload` or `Converted` link
+3. **Needle Cloud Asset Component** – For Needle Engine projects (works in Unity builds too)
 
-### Embedding in other frameworks
+### Embed on Your Website
 
-The following embed options are available:
-1. **Needle Cloud Viewer**  
-   Use the `iframe` code snippet to embed the Needle Cloud viewer on your website.
+**Option 1: Needle Cloud Viewer** (Quick embed)
 
-1. **Needle Engine**  
-  Use the provided code snippet to embed Needle Engine on your website as [web component](./../three/).
+Go to asset's Edit Page → <kbd>Embed</kbd> → Copy iframe code. Embed specific versions or tagged versions that auto-update.
 
-1. **model-viewer**  
-  The [model-viewer](https://modelviewer.dev) project provides a web component for rendering simple, non-interactive 3D models in the browser.
+**Option 2: Choose Your Framework**
 
-1. **three.js**  
-  If you're familiar with three.js, you can use the provided code snippet as a starting point for a three.js app that supports [Needle Progressive Loading](https://www.npmjs.com/package/@needle-tools/gltf-progressive) and efficiently loads files from Needle Cloud.
+Get optimized embed code for:
+- **Needle Engine** – Full-featured [web component](./../three/)
+- **three.js** – With Progressive Loading support
+- **React-Three-Fiber** – With Progressive Loading support
+- **model-viewer** – Simple, non-interactive 3D viewer
+- **Unity** – Needle Cloud Asset component for direct integration
 
-1. **React-Three-Fiber**  
-  If you're using React-Three-Fiber, you can use the provided code snippet as a starting point for a project that supports [Needle Progressive Loading](https://www.npmjs.com/package/@needle-tools/gltf-progressive) and efficiently loads files from Needle Cloud.
+### CLI for Batch Processing
 
-1. **Unity**  
-  If you're using Unity, you can integrate Needle Cloud assets directly into your projects using the Needle Cloud Asset component for seamless loading and optimization.
+Automate uploads and optimization with the `needle-cloud` CLI:
 
-### Using Cloud Assets with other engines like Unity or Unreal
+```bash
+# Upload and optimize files
+npx needle-cloud upload path/to/file.fbx --team 'My Team'
 
-There are several ways to use assets stored on Needle Cloud in other engines like Unity or Unreal.
-1. **Download and Import**  
-   You can download the asset and import it into your project.
+# Batch process entire folders
+npx needle-cloud upload path/to/folder --recursive
+```
 
-2. **Direct Link**   
-   You can use the direct link to the asset in your project. This way, you can update the asset on Needle Cloud and it will automatically update in your project. Which link to use depends on the engine and its glTF capabilities:
-    - Support for **glTF with Progressive Loading**:   
-      Use the `Progressive-World` or `Progressive-Product` link.
-      See [npm:@needle-tools/gltf-progressive](https://www.npmjs.com/package/@needle-tools/gltf-progressive) for more information about progressive loading and how to enable it for your engine.
+**Use cases:**
+- Part of a build step (replace assets with optimized versions)
+- Batch processing large numbers of files
+- CI/CD integration
 
-    - Support for **glTF with Draco and KTX2**:
-      Use the `Optimized` link.
-    - Support for glTF, but **no compression extensions**:  
-      Use the `Upload` (for gltf/glb uploads) or `Converted` (for other uploads) link.
-
-3. **Needle Cloud Asset Component**   
-   If you are using Needle Engine, you can use the `Needle Cloud Asset` component to load assets at runtime. It will automatically choose the best link for your platform and load the asset with Progressive Loading. This is also supported at runtime in Unity Builds.
-
-## CLI for Assets
-
-The command line interface (CLI) for Needle Cloud allows automating file uploads and compression. The CLI can be used as part of a build step (replacing an asset with an optimized version), or as a standalone tool (for batch processing of files).
-
-See [npm:needle-cloud](https://www.npmjs.com/package/needle-cloud) for more information about the CLI and how to use it.
+[📦 Full CLI documentation](https://www.npmjs.com/package/needle-cloud)
 
 ## Supported 3D Formats
 
