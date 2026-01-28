@@ -557,6 +557,16 @@ div[class*=language-] > pre code {
   color: var(--vp-c-text);
 }
 
+.vp-navbar-item {
+  & .route-link:hover, .auto-link.route-link-active {
+    color: inherit;
+    border-color: inherit;
+  }
+  & .auto-link.route-link-active {
+    font-weight: 700;
+  }
+}
+
 .vp-page ol {
   counter-reset: myOrderedListItemsCounter;
   border-left: 1px solid #80808061;
