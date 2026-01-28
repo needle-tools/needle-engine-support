@@ -5,7 +5,7 @@ description: Dynamically load and switch between multiple 3D scenes with the Sce
 
 # Switch Between Scenes
 
-Dynamically load and switch between multiple 3D scenes with smooth transitions and preloading.
+Dynamically load and switch between fully interactive glTF content - complete scenes or individual assets - with smooth transitions and preloading.
 
 <video-embed src="/docs/videos/sceneswitcher.mp4" autoplay muted />
 

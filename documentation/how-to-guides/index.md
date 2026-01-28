@@ -53,7 +53,7 @@ Use built-in components for common features:
 - [Drag and Drop Files](./components/droplistener) - Let users drop 3D models into your scene
 - [Drag Objects (DragControls)](./components/drag-controls) - Make objects draggable with mouse, touch, or VR controllers
 - [Duplicate Objects (Duplicatable)](./components/duplicatable) - Spawn copies by clicking and dragging
-- [Scene Switcher](./components/scene-switcher) - Switch between multiple 3D scenes dynamically
+- [Scene Switcher](./components/scene-switcher) - Load and switch interactive glTF content (full scenes or individual assets)
 - [Video Player](./components/video-player) - Play videos, streams, and broadcasts in your scene
 
 ---
