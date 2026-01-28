@@ -157,6 +157,53 @@ export class DragMonitor extends Behaviour {
 }
 ```
 
+### Keep Objects Within Bounds
+
+Constrain dragged objects to stay within a defined area:
+
+```ts
+import { Behaviour, DragControls, Gizmos } from "@needle-tools/engine";
+
+export class DragMonitor extends Behaviour {
+
+    onBeforeRender() {
+        const dragging = DragControls.CurrentlySelected;
+
+        const boundsCenter = this.gameObject.worldPosition;
+        const boundsSize = this.gameObject.worldScale;
+
+        Gizmos.DrawWireBox(boundsCenter, boundsSize, 0xff3377);
+
+        const halfSize = boundsSize.multiplyScalar(0.5);
+
+        for (const dragControl of dragging) {
+            const obj = dragControl.draggedObject;
+            if (obj) {
+                // Clamp position within bounds
+                const pos = obj.worldPosition;
+                const minX = boundsCenter.x - halfSize.x;
+                const maxX = boundsCenter.x + halfSize.x;
+                const minY = boundsCenter.y - halfSize.y;
+                const maxY = boundsCenter.y + halfSize.y;
+                const minZ = boundsCenter.z - halfSize.z;
+                const maxZ = boundsCenter.z + halfSize.z;
+                pos.x = Math.max(minX, Math.min(maxX, pos.x));
+                pos.y = Math.max(minY, Math.min(maxY, pos.y));
+                pos.z = Math.max(minZ, Math.min(maxZ, pos.z));
+                obj.worldPosition = pos;
+            }
+        }
+    }
+}
+```
+
+**How to use:**
+1. Create an empty GameObject to define the bounds area
+2. Add this component to it
+3. Scale the GameObject to set the bounds size
+4. The component will keep all dragged objects within this box
+5. A pink wireframe box visualizes the bounds
+
 ### Change Drag Target Dynamically
 
 Useful for duplicating or switching objects mid-drag:
