@@ -1,5 +1,6 @@
 ---
 title: Deployment Platforms
+description: Deploy your Needle Engine projects to the web with one click. Learn how to publish to Netlify, Vercel, GitHub Pages, itch.io, FTP servers, and more. Includes optimization tips for production builds with KTX2 and Draco compression.
 ---
 
 # Deployment Platforms

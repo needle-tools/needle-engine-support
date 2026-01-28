@@ -1,5 +1,6 @@
 ---
 title: Structure of a Needle Engine project
+description: Understanding Needle Engine project structure - how editor projects work with web projects, file organization, and build workflows.
 ---
 
 # Structure of a Needle Engine project

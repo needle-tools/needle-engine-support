@@ -1,4 +1,5 @@
 ---
+description: Our vision for the 3D web - bridging artist-friendly workflows with modern web technologies using open standards like glTF and WebXR.
 next: features-overview
 ---
 

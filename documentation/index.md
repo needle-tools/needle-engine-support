@@ -1,5 +1,6 @@
 ---
 home: false
+description: Build 3D web experiences with Unity, Blender, or three.js that deploy instantly to any device - no app stores, no waiting, no limitations.
 next: ./getting-started/index.md
 editLink: false
 lastUpdated: false

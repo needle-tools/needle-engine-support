@@ -1,5 +1,6 @@
 ---
 title: "@serializable and other decorators"
+description: Complete reference for TypeScript decorators in Needle Engine. Learn how to use @serializable for editor properties, @syncField for multiplayer networking, @validate for change callbacks, and @prefix for component injection.
 ---
 
 The following table contains available Typescript decorators that Needle Engine provides.  

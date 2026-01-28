@@ -1,5 +1,6 @@
 ---
 title: Needle Core Components
+description: Complete catalog of 100+ built-in components for audio, animation, physics, networking, XR, UI, and more - ready to use in your projects.
 ---
 
 # Needle Core Components

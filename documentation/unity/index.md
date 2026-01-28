@@ -1,5 +1,6 @@
 ---
 title: Needle Engine for Unity
+description: Learn how to install Needle Engine for Unity and create interactive 3D web experiences. Export Unity scenes to optimized glTF, write TypeScript components with C# stubs, and deploy to any web platform with hot reload support.
 editLink: true
 ---
 

@@ -1,3 +1,8 @@
+---
+title: Networking & Multiplayer
+description: Build real-time multiplayer 3D web experiences with Needle Engine. Add shared state synchronization, voice chat (VoIP), screen sharing, and collaborative features with simple components. Supports 15-20 concurrent users on default servers, scalable to thousands with custom infrastructure.
+---
+
 # Networking & Multiplayer
 
 **Build multiplayer 3D web experiences with shared state, voice chat, and real-time synchronization.**

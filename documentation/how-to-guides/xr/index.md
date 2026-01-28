@@ -1,5 +1,6 @@
 ---
 title: VR & AR (WebXR)
+description: Build immersive VR and AR experiences that work on Meta Quest, Apple Vision Pro, Android AR, and iOS - no app stores, no installation required.
 ---
 
 # <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">WebXR with Needle Engine</logo-header>

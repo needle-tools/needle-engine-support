@@ -1,5 +1,6 @@
 ---
 title: Questions and Answers (FAQ) 💡
+description: Frequently asked questions and troubleshooting solutions for Needle Engine - from installation issues to licensing, rendering, and deployment.
 ---
 
 

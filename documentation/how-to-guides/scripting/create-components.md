@@ -1,6 +1,6 @@
 ---
 title: Create Components
-description: Write custom TypeScript/JavaScript components for Needle Engine
+description: Learn how to write custom TypeScript and JavaScript components for Needle Engine. Create interactive behaviors, use the @serializable decorator for editor integration, and leverage lifecycle methods like start() and update() for game logic.
 ---
 
 # Create Components

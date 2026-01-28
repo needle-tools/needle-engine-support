@@ -1,3 +1,7 @@
+---
+description: Deep dive into Needle Engine architecture - glTF extensions, component system, three.js rendering, and how editor projects export to the web.
+---
+
 # Technical Overview
 
 ## How it works

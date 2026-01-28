@@ -1,6 +1,7 @@
 ---
 lang: en-US
 title: Getting Started & Installation
+description: Install Needle Engine and create your first interactive 3D web experience with Unity, Blender, or JavaScript in minutes.
 next: ../project-structure.md
 ---
 

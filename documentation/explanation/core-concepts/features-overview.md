@@ -1,3 +1,7 @@
+---
+description: Complete feature overview of Needle Engine - graphics, animation, physics, networking, XR, UI, and more cross-platform capabilities.
+---
+
 # Feature Overview
 
 **Needle Engine is a fully-fledged 3D engine for the web** with everything you'd expect from a modern 3D engine, and more. Build stunning web experiences that work everywhere – from browsers to VR headsets to mobile AR.

@@ -1,5 +1,6 @@
 ---
 title: Scripting Introduction for Unity Developers
+description: Learn how Unity workflows translate to web development with Needle Engine - from C# to TypeScript, GameObjects to Object3D, and more.
 ---
 
 # <logo-header logo="/imgs/unity-logo.webp" alt="Unity">For Unity Developers</logo-header>
