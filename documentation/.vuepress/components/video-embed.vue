@@ -48,6 +48,7 @@ export default props;
   max-height: v-bind('limit_height || max_height ? max_height : "initial"');
   border-radius: 8px;
   overflow: hidden;
+  margin: .75em 0;
 }
 
 video,
@@ -58,7 +59,7 @@ video,
   height: v-bind('limit_height ? "100%" : "auto"');
   max-width: 100%;
   max-height: 100%;
-  margin: .75em 0;
+  margin: 0;
   max-height: v-bind('limit_height ? max_height : "100%"');
   aspect-ratio: 16/9;
   border-radius: 8px;
