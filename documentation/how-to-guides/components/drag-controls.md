@@ -303,25 +303,25 @@ In VR/AR, pulling controllers toward/away from your body changes object distance
 
 ## Common Questions
 
-**How do I make only specific objects draggable?**
+**How do I make only specific objects draggable?**  
 Add DragControls only to objects you want to be draggable. Objects without the component can't be dragged.
 
-**Can I drag objects in VR without seeing controllers?**
+**Can I drag objects in VR without seeing controllers?**  
 Yes! DragControls works with XR hand tracking and controller-free input. Just enable XR support.
 
-**Why does my object jump when I start dragging?**
+**Why does my object jump when I start dragging?**  
 This can happen if the drag plane is incorrectly positioned. Try changing the **Drag Mode** or ensure the object has proper colliders.
 
-**How do I prevent objects from dragging through walls?**
+**How do I prevent objects from dragging through walls?**  
 Use **Snap To Surfaces** drag mode and ensure your walls have colliders. The object will stick to surfaces.
 
-**Can I drag multiple objects at once?**
+**Can I drag multiple objects at once?**  
 Each DragControls handles one object, but you can have multiple dragging simultaneously (useful for multi-touch or VR with both hands).
 
-**How do I disable dragging temporarily?**
+**How do I disable dragging temporarily?**  
 Set **Drag Mode** to `None` or disable the DragControls component.
 
-**Does it work with networking in production?**
+**Does it work with networking in production?**  
 Yes! DragControls is designed for multiplayer. Combine with `SyncedRoom` and `SyncedTransform` for collaborative experiences.
 
 ## Debugging
