@@ -233,8 +233,7 @@ Need to find specific information quickly?
 
 ### 🎨 Get Inspired
 
-- **[Live Examples](https://engine.needle.tools/samples)** - Explore interactive samples
-- **[Showcase Projects](/docs/samples-and-showcase/)** - See what others have built
+- **[Samples & Showcase](https://samples.needle.tools)** - Explore interactive samples and see what others have built
 
 ### 💬 Get Help
 

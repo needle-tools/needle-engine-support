@@ -100,5 +100,5 @@ After completing tutorials:
 1. **Solve specific problems** - [How-To Guides](../how-to-guides/)
 2. **Deepen your understanding** - [Explanation](../explanation/)
 3. **Look up APIs** - [Reference](../reference/)
-4. **Get inspired** - [Samples & Showcase](../samples-and-showcase/)
+4. **Get inspired** - [Samples & Showcase](https://samples.needle.tools)
 5. **Get help** - [Help & Community](../help/)

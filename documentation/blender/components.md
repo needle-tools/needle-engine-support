@@ -278,15 +278,25 @@ export class MyComponent extends Behaviour {
     @serializable(Light)
     targetLight?: Light;
 
-    // Arrays
+    // Arrays with primitives (number, string, boolean)
     @serializable()
     speeds: number[] = [1, 2, 3];
+
+    // Arrays with object references need the type specified
+    @serializable(Light)
+    lights: Light[] = [];
+
+    @serializable(Object3D)
+    waypoints: Object3D[] = [];
 }
 ```
 
 All these properties become editable in Blender's component panel!
 
-**[Learn more about serializable properties →](/docs/how-to-guides/scripting/custom-component-properties)**
+:::tip Learn More
+- [Creating Components & Serialization →](/docs/how-to-guides/scripting/create-components#serialization)
+- [@serializable Decorator Reference →](/docs/reference/typescript-decorators#serializable)
+:::
 
 ---
 

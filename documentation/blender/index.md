@@ -71,7 +71,7 @@ Download and **open any sample `.blend` file** in Blender. These samples show wh
 
 1. **Find the Needle Engine Panel**
    - Open the Properties panel (right side)
-   - Click the **Scene Properties** tab (camera icon)
+   - Click the **Scene Properties** tab (scene icon with geometric shapes)
    - Scroll to find the **Needle Engine** panel
 
 2. **Set Project Path**

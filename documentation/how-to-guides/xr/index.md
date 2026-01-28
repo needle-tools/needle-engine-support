@@ -82,6 +82,18 @@ For USDZ/QuickLook-based iOS AR experiences, see [Everywhere Actions](/how-to-gu
 
 The following devices and browsers have been verified to work with Needle Engine. When new devices with WebXR support are released, they will work with your apps out of the box.
 
+#### Mobile Devices
+
+| Device | Browser | Features |
+| --- | --- | --- |
+| <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Chrome | Full WebXR AR support |
+| <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Firefox | Full WebXR AR support |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](/docs/explanation/core-concepts/ios-webxr-app-clip) (ARKit-powered). Alternative: [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for USDZ/QuickLook |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 15+</logo-header> | ✔️ WebXR Viewer | Older browser option (somewhat dated) |
+| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking |
+| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 1</logo-header> | ❌ | no WebXR support |
+| <logo-header logo="/imgs/magic-leap-logo.webp" alt="Magic Leap">Magic Leap 2</logo-header> | ✔️ | |
+
 #### VR Headsets
 
 | Device | Browser | Features |
@@ -99,17 +111,6 @@ The following devices and browsers have been verified to work with Needle Engine
 | HTC Vive | ✔️ Chrome |  |
 | <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking, AR and VR modes |
 
-#### Mobile Devices
-
-| Device | Browser | Features |
-| --- | --- | --- |
-| <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Chrome | Full WebXR AR support |
-| <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Firefox | Full WebXR AR support |
-| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](/docs/explanation/core-concepts/ios-webxr-app-clip) (ARKit-powered). Alternative: [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for USDZ/QuickLook |
-| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 15+</logo-header> | ✔️ WebXR Viewer | Older browser option (somewhat dated) |
-| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking |
-| <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 1</logo-header> | ❌ | no WebXR support |
-| <logo-header logo="/imgs/magic-leap-logo.webp" alt="Magic Leap">Magic Leap 2</logo-header> | ✔️ | |
 
 #### Other Devices
 

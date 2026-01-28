@@ -131,23 +131,89 @@ Setting `visible = false` on an Object3D acts like Unity's `SetActive(false)`:
 
 ## Serialization
 
-To serialize custom types (not Number, Boolean, or String), use the `@serializable()` decorator:
+Use `@serializable()` to expose properties in the editor (Unity/Blender) and ensure they get saved/loaded correctly.
+
+### Basic Types
+
+Primitives (number, string, boolean) only need `@serializable()`:
 
 ```ts twoslash
 import { Behaviour, serializable } from "@needle-tools/engine";
-import { Object3D } from "three";
+
+export class MyComponent extends Behaviour
+{
+    @serializable()
+    speed: number = 5;
+
+    @serializable()
+    playerName: string = "Player";
+
+    @serializable()
+    isActive: boolean = true;
+}
+```
+
+### Object References
+
+For object references and complex types, **you must specify the type**:
+
+```ts twoslash
+import { Behaviour, serializable } from "@needle-tools/engine";
+import { Object3D, Light, Camera } from "three";
 
 export class MyComponent extends Behaviour
 {
     @serializable(Object3D)
     myTarget?: Object3D;
 
-    @serializable()
-    myNumber: number = 42;
+    @serializable(Light)
+    targetLight?: Light;
+
+    @serializable(Camera)
+    mainCamera?: Camera;
 }
 ```
 
-[Learn more about serialization](../../explanation/core-concepts/serialization)
+### Arrays
+
+**Primitive arrays** don't need a type:
+
+```ts twoslash
+import { Behaviour, serializable } from "@needle-tools/engine";
+
+export class MyComponent extends Behaviour
+{
+    @serializable()
+    speeds: number[] = [1, 2, 3];
+
+    @serializable()
+    names: string[] = ["Player1", "Player2"];
+}
+```
+
+**Arrays with object references need the type specified**:
+
+```ts twoslash
+import { Behaviour, serializable } from "@needle-tools/engine";
+import { Object3D, Light } from "three";
+
+export class MyComponent extends Behaviour
+{
+    // Correct: type specified for object references
+    @serializable(Object3D)
+    waypoints: Object3D[] = [];
+
+    @serializable(Light)
+    lights: Light[] = [];
+
+    // Wrong: will not serialize correctly
+    // waypoints: Object3D[] = [];
+}
+```
+
+:::tip Reference
+See the complete [@serializable decorator reference](../../reference/typescript-decorators#serializable) for more details and advanced usage.
+:::
 
 ---
 

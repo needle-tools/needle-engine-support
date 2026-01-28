@@ -227,7 +227,7 @@ Please report the bug! To get unstuck immediately, toggle **Development Build** 
 
 :::
 
-#### Enabling gzip using a .htaccess file
+#### Enabling gzip using a htaccess file
 
 Create a file named `.htaccess` in your upload folder (or parent folder) with this content:
 
