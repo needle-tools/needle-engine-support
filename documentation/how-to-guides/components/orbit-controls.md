@@ -153,9 +153,6 @@ Users can double-click objects to focus the camera on them. Configure this behav
 | **Target Lerp Duration** | Animation duration in seconds | `1` |
 
 
-<video-embed src="/docs/videos/orbitcontrols-setcamera-and-looktarget.mp4" autoplay muted />
-
-
 ## Examples
 
 ### Product Viewer
@@ -209,6 +206,11 @@ if (orbit) {
 ```
 
 ### Animate Camera to Position
+
+
+<video-embed src="/docs/videos/orbitcontrols-setcamera-and-looktarget.mp4" autoplay muted />
+
+
 
 Smoothly move camera to look at a specific object:
 

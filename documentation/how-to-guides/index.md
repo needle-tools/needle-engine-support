@@ -54,6 +54,7 @@ Use built-in components for common features:
 - [Drag Objects (DragControls)](./components/drag-controls) - Make objects draggable with mouse, touch, or VR controllers
 - [Duplicate Objects (Duplicatable)](./components/duplicatable) - Spawn copies by clicking and dragging
 - [Scene Switcher](./components/scene-switcher) - Load and switch interactive glTF content (full scenes or individual assets)
+- [Scroll-Based Animations (ScrollFollow)](./components/scroll-follow) - Link scroll position to timelines and animations for storytelling
 - [Video Player](./components/video-player) - Play videos, streams, and broadcasts in your scene
 
 ---
