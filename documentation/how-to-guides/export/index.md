@@ -169,43 +169,19 @@ MaterialX is a powerful standard for describing materials and shaders in a graph
 Note that **Custom Shaders** aren't officially part of the glTF specification. Our implementation of custom shaders uses an extension called KHR_techniques_webgl, that stores the WebGL shader code directly in the glTF file. The resulting assets will work in viewers based on Needle Engine.
 ::: -->
 
-## 💡 Exporting Lightmaps 
+## 💡 Exporting Lightmaps
 ![2022-08-22-171650_Needle_-_Google_Chrome](https://user-images.githubusercontent.com/5083203/185957005-d04c9530-07eb-40f5-b305-9822d13b79ab.png)
 
+Lightmaps baked in your 3D editor are automatically exported to the web with Needle Engine. The lighting you see in your editor is what you get on the web!
 
-To export lightmaps simply [generate lightmaps](https://docs.unity3d.com/Manual/Lightmapping.html) in Unity. Lightmaps will be automatically exported.
+**Lightmap export works with:**
+- Unity's built-in lightmapper and third-party solutions
+- Blender's Cycles renderer with baked lighting
 
-When working on multiple scenes, disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
+### Integration-Specific Guides
 
-### Recommended Lightmap Settings
-- Lightmap Encoding: Normal Quality (adjust in Project Settings > Player)
-- Progressive GPU (faster and usually accurate enough for small scenes)
-- Non-Directional Lightmaps
-- Max Lightmap Size 2k (you can go higher, but expect large files)
-- Max 4x 2k lightmaps per scene (you can go higher, but expect large files)
-- Compress Lightmaps OFF (increases quality; otherwise will be compressed again at export time)
+**<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="/docs/tutorials/fundamentals/unity-integration#lightmaps">Unity Lightmapping Guide</a></logo-header>**
+Learn about Unity-specific lightmap settings, recommendations, and best practices for mixing baked and non-baked objects.
 
-![2022-08-22-171356_Needle_Website_-_Lightmaps_-_Windows,_Mac,_Linux_-](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad13-4e6d-a14c-c8ec5c1fcfd4.png)
-
-### Mixing Baked and Non-Baked Objects
-
-There's no 100% mapping between how Unity handles lights and environment and how three.js handle that. For example, Unity has entirely separate code paths for lightmapped and non-lightmapped objects (lightmapped objects don't receive ambient light since that is already baked into their maps), and three.js doesn't distinguish in that way.  
-
-This means that to get best results, we currently recommend specific settings if you're mixing baked and non-baked objects in a scene:  
-```
-Environment Lighting: Skybox
-Ambient Intensity: 1
-Ambient Color: black
-```
-
-**2021.3+**  
-![20220826-175324-SqBL-Unity_pMXa-needle](https://user-images.githubusercontent.com/2693840/186947184-2446672f-420c-47e8-8f7d-970a7d52bf35.png)
-
-**2020.3+**  
-![20220826-175514-tnGc-Unity_mycs-needle](https://user-images.githubusercontent.com/2693840/186947203-2d7d96c3-f566-44b4-889c-4103fac505d4.png)
-
-If you have no baked objects in your scene, then the following settings should also yield correct results:  
-```
-Environment Lighting: Color
-Ambient Color: any
-```
+**<logo-header logo="/blender/logo.png" alt="Blender"><a href="/docs/blender/lightmapping">Blender Lightmapping Guide</a></logo-header>**
+Learn how to bake lighting in Blender and export it with Needle Engine.

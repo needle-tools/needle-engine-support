@@ -133,9 +133,46 @@ Artists can create shaders in Unity and Needle Engine handles the conversion to 
 - Third-party solutions like [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218)
 - Multiple scenes with independent lightmaps
 
+#### Recommended Unity Lightmap Settings
+
+For best performance and quality on the web:
+
+- **Lightmap Encoding:** Normal Quality (adjust in Project Settings > Player)
+- **Progressive GPU** (faster and usually accurate enough for small scenes)
+- **Non-Directional Lightmaps**
+- **Max Lightmap Size:** 2k (you can go higher, but expect large files)
+- **Max 4× 2k lightmaps per scene** (you can go higher, but expect large files)
+- **Compress Lightmaps:** OFF (increases quality; otherwise compressed again at export)
+
+![lightmap settings](https://user-images.githubusercontent.com/5083203/185956392-f4031f45-ad13-4e6d-a14c-c8ec5c1fcfd4.png)
+
+**Working with multiple scenes:** Disable "Auto Generate" and bake lightmaps explicitly. Otherwise, Unity will discard temporary lightmaps on scene change.
+
+#### Mixing Baked and Non-Baked Objects
+
+For best results when mixing baked and non-baked objects, use these Unity lighting settings:
+
+```
+Environment Lighting: Skybox
+Ambient Intensity: 1
+Ambient Color: black
+```
+
+**Unity 2021.3+:**
+![Unity 2021.3+ settings](https://user-images.githubusercontent.com/2693840/186947184-2446672f-420c-47e8-8f7d-970a7d52bf35.png)
+
+**Unity 2020.3+:**
+![Unity 2020.3+ settings](https://user-images.githubusercontent.com/2693840/186947203-2d7d96c3-f566-44b4-889c-4103fac505d4.png)
+
+If you have no baked objects in your scene, these settings also work:
+```
+Environment Lighting: Color
+Ambient Color: any
+```
+
 What you see in Unity is what you get on the web!
 
-[Read more: Lightmaps](/docs/how-to-guides/export/#lightmaps)
+[Read more: Lightmaps](/docs/how-to-guides/export/#exporting-lightmaps)
 
 ---
 
