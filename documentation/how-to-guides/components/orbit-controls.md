@@ -81,10 +81,13 @@ export class AutoRotateExample extends Behaviour {
 
 <video-embed src="/docs/videos/orbitcontrols-autofit.mp4" autoplay muted />
 
-Automatically frame the entire scene when it loads:
+Automatically frame the entire scene when it loads or when users click the background:
 
 **In Editor:**
-Enable **Auto Fit** on the OrbitControls component - the camera automatically frames all objects on start.
+- Enable **Auto Fit** - Camera frames all objects on start
+- Set **Click Background To Fit Scene** - Number of clicks on background to re-fit (default: `2`)
+
+Users can double-click the background at any time to re-fit the camera to the entire scene.
 
 **From Code:**
 ```ts
