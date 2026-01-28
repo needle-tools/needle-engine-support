@@ -13,12 +13,12 @@ Respond to physics collisions and triggers (powered by Rapier physics engine).
 
 | Method | Parameters | When Called |
 | --- | --- | --- |
-| `onCollisionEnter` | `col: Collision` | Rigidbody **starts** colliding with another |
-| `onCollisionStay` | `col: Collision` | Rigidbody **continues** colliding |
-| `onCollisionExit` | `col: Collision` | Rigidbody **stops** colliding |
-| `onTriggerEnter` | `col: Collision` | Collider **enters** a trigger zone |
-| `onTriggerStay` | `col: Collision` | Collider **stays** in a trigger zone |
-| `onTriggerExit` | `col: Collision` | Collider **exits** a trigger zone |
+| `onCollisionEnter` | `col:` [`Collision`](https://engine.needle.tools/docs/api/Collision) | Rigidbody **starts** colliding with another |
+| `onCollisionStay` | `col:` [`Collision`](https://engine.needle.tools/docs/api/Collision) | Rigidbody **continues** colliding |
+| `onCollisionExit` | `col:` [`Collision`](https://engine.needle.tools/docs/api/Collision) | Rigidbody **stops** colliding |
+| `onTriggerEnter` | `col:` [`Collision`](https://engine.needle.tools/docs/api/Collision) | Collider **enters** a trigger zone |
+| `onTriggerStay` | `col:` [`Collision`](https://engine.needle.tools/docs/api/Collision) | Collider **stays** in a trigger zone |
+| `onTriggerExit` | `col:` [`Collision`](https://engine.needle.tools/docs/api/Collision) | Collider **exits** a trigger zone |
 
 ---
 
@@ -38,7 +38,7 @@ Respond to physics collisions and triggers (powered by Rapier physics engine).
 
 ## Collision Object
 
-The `Collision` parameter provides information about the collision:
+The [`Collision`](https://engine.needle.tools/docs/api/Collision) parameter provides information about the collision:
 
 ```ts
 interface Collision {

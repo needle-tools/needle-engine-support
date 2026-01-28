@@ -288,7 +288,7 @@ Don't start with your most complex scene. Begin with something simple to learn t
 **For Visual Learners:**
 - [Video Tutorials](https://www.youtube.com/@needle-tools) - Step-by-step guides
 - [Sample Projects](https://engine.needle.tools/samples) - Explore working examples
-- [Live Demos](https://needle.tools/showcase) - See what's possible
+- [Live Demos](https://samples.needle.tools/#showcase) - See what's possible
 
 **For Reading:**
 - [Blender Integration Guide](/docs/blender/) - Complete Blender workflow
@@ -298,7 +298,7 @@ Don't start with your most complex scene. Begin with something simple to learn t
 **Community:**
 - [Discord Community](https://discord.needle.tools) - Ask questions, share work
 - [Forum](https://forum.needle.tools) - Discussions and examples
-- [Showcase](https://needle.tools/showcase) - Get inspired
+- [Samples & Showcase](https://samples.needle.tools/#showcase) - Get inspired
 
 ---
 

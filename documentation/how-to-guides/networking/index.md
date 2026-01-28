@@ -35,7 +35,7 @@ Get your first multiplayer scene running in 5 minutes:
 Start with the basics:
 - **[Enable Networking](./setup)** - Add multiplayer to your project (5 min)
 - **[Sync Component State](./sync-state)** - Use `@syncField` for automatic networking
-- **[Understanding Networking](/explanation/networking/architecture)** - Learn how it works
+- **[Understanding Networking](/docs/explanation/networking/architecture)** - Learn how it works
 
 ### 🔧 Building Something Specific?
 
@@ -124,11 +124,11 @@ Yes! Use [manual networking](./manual-networking) for complete control over mess
 ## Learn More
 
 **Understanding:**
-- [Networking Architecture](/explanation/networking/architecture) - How networking works
-- [Built-in Components](/reference/components#networking) - Component catalog
+- [Networking Architecture](/docs/explanation/networking/architecture) - How networking works
+- [Built-in Components](/docs/reference/components#networking) - Component catalog
 
 **Reference:**
-- [Networking Events](/reference/api/networking-events) - Complete event reference
+- [Networking Events](/docs/reference/api/networking-events) - Complete event reference
 - [API Documentation](https://engine.needle.tools/docs/api/latest) - TypeScript API
 
 **Resources:**
@@ -139,4 +139,4 @@ Yes! Use [manual networking](./manual-networking) for complete control over mess
 
 1. **[Enable Networking](./setup)** - Get started with your first multiplayer scene
 2. **[Sync Component State](./sync-state)** - Learn automatic networking
-3. **[Understanding Networking](/explanation/networking/architecture)** - Learn the concepts
+3. **[Understanding Networking](/docs/explanation/networking/architecture)** - Learn the concepts

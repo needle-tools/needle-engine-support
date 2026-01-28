@@ -234,7 +234,7 @@ Need to find specific information quickly?
 
 ### 🎨 Get Inspired
 
-- **[Samples & Showcase](https://samples.needle.tools)** - Explore interactive samples and see what others have built
+- **[Samples & Showcase](https://samples.needle.tools/#showcase)** - Explore interactive samples and see what others have built
 
 ### 💬 Get Help
 

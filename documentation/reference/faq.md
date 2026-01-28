@@ -177,19 +177,19 @@ Ensure your project is set to Linear colorspace.
 
 
 ## I created a new script in a sub-scene but it does not work
-  When creating new scripts in npmdefs in sub-scenes (that is a scene that is exported as a reference from a script in your root export scene) you currently have to re-export the root scene again. This is because the code-gen that is responsible for registering new scripts currently only runs for scenes with a ``ExportInfo`` component. This will be fixed in the future.
+  When creating new scripts in npmdefs in sub-scenes (that is a scene that is exported as a reference from a script in your root export scene) you currently have to re-export the root scene again. This is because the code-gen that is responsible for registering new scripts currently only runs for scenes with a ``Needle Engine`` component. This will be fixed in the future.
 
 
 ## My local server does not start / I do not see a website
-  
-The most likely reason is an incorrect installation. 
-Check the console and the `ExportInfo` component for errors or warnings.  
 
-If these warnings/errors didn't help, try the following steps in order. Give them some time to complete. Stop once your problem has been resolved. Check the console for warnings and errors.  
-  
+The most likely reason is an incorrect installation.
+Check the console and the `Needle Engine` component for errors or warnings.
+
+If these warnings/errors didn't help, try the following steps in order. Give them some time to complete. Stop once your problem has been resolved. Check the console for warnings and errors.
+
 - Make sure you follow the [Prerequisites](/docs/getting-started/#prerequisites).
-- Install your project by selecting your `ExportInfo` component and clicking `Install` 
-- Run a clean installation by selecting your `ExportInfo` component, holding Alt and clicking `Clean Install`
+- Install your project by selecting your `Needle Engine` component and clicking `Install`
+- Run a clean installation by selecting your `Needle Engine` component, holding Alt and clicking `Clean Install`
 - Try opening your web project directory in a command line tool and follow these steps:
   - run ``npm install`` and then ``npm run dev-host``
   - Make sure both the local runtime package (``node_modules/@needle-tools/engine``) as well as three.js (``node_modules/three``) did install. 

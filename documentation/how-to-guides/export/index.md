@@ -16,7 +16,7 @@ Learn how to export your Unity and Blender scenes, assets, animations, materials
 - 🎭 Meshes, textures, and more
 
 :::tip Quick Start
-Add an `ExportInfo` component to your Unity scene to get started. By default, your scene exports automatically on save—you can disable this in the `ExportInfo` component settings.
+Add a `Needle Engine` component to your Unity scene to get started. By default, your scene exports automatically on save—you can disable this in the `Needle Engine` component settings.
 :::  
 
 ## <logo-header logo="/imgs/gltf-logo.webp" alt="glTF">Exporting glTF Files</logo-header>

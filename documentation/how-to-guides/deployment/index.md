@@ -182,7 +182,7 @@ Deploy directly to any server with FTP or SFTP support.
 :::details Unity: Deploy to FTP server
 
 1. Add the `DeployToFTP` component to a GameObject in your scene
-   *(Best practice: add it to the same GameObject as ExportInfo)*
+   *(Best practice: add it to the same GameObject as Needle Engine)*
 
 2. Assign an FTP server asset and fill in server, username, and password
    *Get these credentials from your hosting provider when you create an FTP account*

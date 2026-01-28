@@ -36,8 +36,10 @@ Tutorials are **learning-oriented** guides that take you from zero to a working 
 Build your foundation with these essential tutorials:
 
 - [For Blender Artists](./fundamentals/for-blender-artists) - 3D artists guide to interactive web experiences (~20 min, Beginner)
-- [For Unity Developers](./fundamentals/for-unity-developers) - Translate your Unity knowledge to the web (~45 min, Intermediate)
-- [TypeScript Essentials](./fundamentals/typescript-essentials) - Learn TypeScript basics for Needle Engine (~30 min, Beginner)
+- [For Unity Developers](./fundamentals/for-unity-developers) - Learning path for Unity developers (Beginner)
+  - [Working with Unity Integration](./fundamentals/unity-integration) - Unity workflow and glTF export (~15 min, Intermediate)
+  - [C# to TypeScript Translation](./fundamentals/c-sharp-to-typescript) - Translate your C# knowledge (~15 min, Intermediate)
+- [TypeScript Essentials](./fundamentals/typescript-essentials) - Learn TypeScript basics for Needle Engine (~20 min, Beginner)
 
 ### Your First Project
 
@@ -100,5 +102,5 @@ After completing tutorials:
 1. **Solve specific problems** - [How-To Guides](../how-to-guides/)
 2. **Deepen your understanding** - [Explanation](../explanation/)
 3. **Look up APIs** - [Reference](../reference/)
-4. **Get inspired** - [Samples & Showcase](https://samples.needle.tools)
+4. **Get inspired** - [Samples & Showcase](https://samples.needle.tools/#showcase)
 5. **Get help** - [Help & Community](../help/)

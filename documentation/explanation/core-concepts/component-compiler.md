@@ -21,8 +21,8 @@ This is thanks to the magic of the [Needle component compiler](https://www.npmjs
 
 
 ## Component Compiler in Unity
-If you want to add scripts inside the ``src/scripts`` folder in your project then you need to have a ``Component Generator`` on the GameObject with your ``ExportInfo`` component.  
-Now when adding new components in ``your/threejs/project/src/scripts``it will automatically generate Unity scripts in `Assets/Needle/Components.codegen`.  
+If you want to add scripts inside the ``src/scripts`` folder in your project then you need to have a ``Component Generator`` on the GameObject with your ``Needle Engine`` component.
+Now when adding new components in ``your/threejs/project/src/scripts``it will automatically generate Unity scripts in `Assets/Needle/Components.codegen`.
 If you want to add scripts to any NpmDef file you can just create them - each NpmDef automatically watches script changes and handles component generation, so you don't need any additional component in your scene.
 
 For C# fields to be correctly generated, it is important that you declare a Typescript type. The types can either be basic types like `number`, `string`, `boolean`, or custom classes. Custom classes need to be available in the Unity project as well.

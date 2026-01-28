@@ -201,7 +201,7 @@ For cross-platform projects (VR, AR, desktop), mix spatial and HTML UI:
 
 | Component | Description |
 | --- | --- |
-| `ExportInfo` | Main component for managing web project(s) (install, start, deploy) |
+| `Needle Engine` | Main component for managing web project(s) (install, start, deploy) |
 | `EditorSync` | Sync material/component changes to runtime without reload (hot reload) |
 
 ---
