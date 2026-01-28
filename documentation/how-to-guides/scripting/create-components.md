@@ -13,6 +13,12 @@ New to TypeScript? Start here:
 - [Needle Engine for Unity Developers](../../tutorials/fundamentals/for-unity-developers) - Unity to web workflow
 :::
 
+:::details Video: Creating Custom Components in Unity
+This video gives a short introduction to the easiest and fastest way to create custom Needle Engine components in Unity.
+
+<video-embed src="https://www.youtube.com/watch?v=uf5UK0bLHlY" limit_height />
+:::
+
 ---
 
 ## Quick Start

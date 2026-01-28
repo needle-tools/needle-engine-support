@@ -34,8 +34,8 @@ Needle Engine does **NOT** compile C# code to WebAssembly.
 Read more: [Vision](../../explanation/core-concepts/vision) • [Technical Overview](../../explanation/architecture/technical-overview)
 :::
 
-:::details Video: Getting Started with Unity (3 minutes)
-<video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
+:::details Video: Getting Started with Unity (16 minutes)
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
 :::
 
 ---
@@ -158,10 +158,10 @@ Ambient Intensity: 1
 Ambient Color: black
 ```
 
-**Unity 2021.3+:**
+**Unity 2021.3+:**  
 ![Unity 2021.3+ settings](https://user-images.githubusercontent.com/2693840/186947184-2446672f-420c-47e8-8f7d-970a7d52bf35.png)
 
-**Unity 2020.3+:**
+**Unity 2020.3+:**  
 ![Unity 2020.3+ settings](https://user-images.githubusercontent.com/2693840/186947203-2d7d96c3-f566-44b4-889c-4103fac505d4.png)
 
 If you have no baked objects in your scene, these settings also work:
@@ -368,7 +368,7 @@ Add the **EditorSync** component to enable live sync:
 
 **Code hot-reload:** TypeScript changes also reload automatically when you save.
 
-:::details Video: Editor Sync in Action
+:::details Video: From Unity Project to Live Sync with three.js (4 minutes)
 <video-embed src="https://www.youtube.com/watch?v=gZX_sqrne8U" limit_height />
 :::
 

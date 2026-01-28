@@ -15,6 +15,12 @@ If you haven't installed Needle Engine for Unity yet, see the [Unity Integration
 New to web development? Start with **[For Unity Developers](../tutorials/fundamentals/for-unity-developers)** to learn how Unity concepts translate to Needle Engine and TypeScript.
 :::
 
+:::details Video: Getting Started with Unity (16 minutes)
+This comprehensive video tutorial walks you through setting up Needle Engine in Unity and creating your first interactive web project.
+
+<video-embed src="https://www.youtube.com/watch?v=3dB-d1Jo_Mk" limit_height />
+:::
+
 ---
 
 ## Choose Your Starting Point
