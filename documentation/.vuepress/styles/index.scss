@@ -555,6 +555,8 @@ div[class*=language-] > pre code {
 
 .vp-navbar-item > a {
   display: inline-grid;
+  font-variation-settings: 'wght' 400;
+  transition: font-variation-settings 0.2s ease;
 
   &::before,
   &::after {
@@ -573,12 +575,14 @@ div[class*=language-] > pre code {
 
   &:hover, &.route-link-active {
     color: var(--vp-c-text);
-    font-weight: 700;
+    font-variation-settings: 'wght' 700;
   }
 }
 
 .vp-navbar-item > div > button {
   display: inline-grid;
+  font-variation-settings: 'wght' 400;
+  transition: font-variation-settings 0.2s ease;
 
   &::before,
   &::after {
@@ -595,13 +599,15 @@ div[class*=language-] > pre code {
   }
 
   &:hover {
-    font-weight: 700;
+    font-variation-settings: 'wght' 700;
   }
 }
 
 .vp-navbar-item {
   & .route-link, & .auto-link {
     display: inline-grid;
+    font-variation-settings: 'wght' 400;
+    transition: font-variation-settings 0.2s ease;
 
     &::before,
     &::after {
@@ -624,7 +630,7 @@ div[class*=language-] > pre code {
   }
 
   & .auto-link.route-link-active {
-    font-weight: 700;
+    font-variation-settings: 'wght' 700;
   }
 }
 
