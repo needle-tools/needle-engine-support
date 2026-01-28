@@ -117,6 +117,9 @@ export default {
       this.buildBreadcrumbs()
       this.updateActiveHeader()
       this.updateContextHeaders()
+
+      // Handle initial hash in URL if present
+      this.handleInitialHash()
     }, 100)
 
     // Listen for scroll events to update active header and next sections
@@ -146,6 +149,9 @@ export default {
           this.buildBreadcrumbs()
           this.updateActiveHeader()
           this.updateContextHeaders()
+
+          // Handle hash in URL after route change
+          this.handleInitialHash()
         }, 1000)
       })
     })
@@ -162,17 +168,81 @@ export default {
   },
 
   methods: {
+    handleInitialHash() {
+      // Check if there's a hash in the URL
+      const hash = window.location.hash
+      if (hash && hash.length > 1) {
+        // Remove the # and decode the slug
+        const slug = decodeURIComponent(hash.substring(1))
+
+        // Wait a bit more to ensure the page is fully rendered
+        // Try multiple times with increasing delays to handle slow loading
+        const attemptScroll = (attempt = 0) => {
+          const success = this.tryScrollToHeader(slug)
+          if (!success && attempt < 5) {
+            setTimeout(() => attemptScroll(attempt + 1), 200 * (attempt + 1))
+          }
+        }
+
+        setTimeout(() => attemptScroll(), 100)
+      }
+    },
+
+    tryScrollToHeader(slug) {
+      // Try to find the element by ID first
+      let element = document.getElementById(slug)
+
+      // If not found, try with CSS selector (for slugs with special characters)
+      if (!element) {
+        try {
+          element = document.querySelector(`[id="${slug}"]`)
+        } catch (e) {
+          // Invalid selector, try escaping
+          const escapedSlug = CSS.escape(slug)
+          element = document.querySelector(`#${escapedSlug}`)
+        }
+      }
+
+      if (element) {
+        const offset = 80 // Account for fixed header
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - offset
+        window.scrollTo({
+          top: elementPosition,
+          behavior: 'smooth'
+        })
+        // Update URL hash
+        window.history.pushState(null, '', `#${slug}`)
+        return true
+      }
+      return false
+    },
+
     extractHeaders() {
       // Get all h2 and h3 headers from the page content
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
       const headerElements = article.querySelectorAll('h2, h3')
-      this.headers = Array.from(headerElements).map(el => ({
-        level: parseInt(el.tagName.substring(1)),
-        title: el.textContent.replace(/^#\s*/, '').trim(),
-        slug: el.id || this.slugify(el.textContent)
-      })).filter(h => h.slug) // Only include headers with IDs
+      this.headers = Array.from(headerElements)
+        .filter(el => {
+          // Exclude headers that are inside tool tiles or other non-content components
+          // These are UI elements, not actual content sections
+          const isInsideTile = el.closest('.tile')
+          return !isInsideTile
+        })
+        .map(el => {
+          // Use the actual ID from the rendered element, not our own slugify
+          // VuePress already generates IDs for headers
+          const slug = el.id
+          const title = el.textContent.replace(/^#\s*/, '').trim()
+
+          return {
+            level: parseInt(el.tagName.substring(1)),
+            title: title,
+            slug: slug
+          }
+        })
+        .filter(h => h.slug) // Only include headers with IDs
     },
 
     slugify(text) {
@@ -214,16 +284,9 @@ export default {
     },
 
     scrollToHeader(slug) {
-      const element = document.getElementById(slug)
-      if (element) {
-        const offset = 80 // Account for fixed header
-        const elementPosition = element.offsetTop - offset
-        window.scrollTo({
-          top: elementPosition,
-          behavior: 'smooth'
-        })
-        // Update URL hash
-        window.history.pushState(null, '', `#${slug}`)
+      const success = this.tryScrollToHeader(slug)
+      if (!success) {
+        console.warn(`PageNav: Could not find element with id "${slug}"`)
       }
     },
 
