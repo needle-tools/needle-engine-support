@@ -510,14 +510,14 @@ export default {
   right: 2rem;
   top: 6rem;
   width: 200px;
-  max-height: calc(100vh - 8rem);
-  overflow-y: auto;
+  max-height: calc(95vh - 8rem);
   padding: 1rem;
   font-size: 0.9rem;
   z-index: 10;
 
   white-space: nowrap;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 
   background-color: color-mix(in srgb, var(--vp-c-bg) 50%, transparent);
   backdrop-filter: blur(10px);
