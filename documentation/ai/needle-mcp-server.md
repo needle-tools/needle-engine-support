@@ -68,7 +68,11 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
 
 ### <img src="/imgs/vscode-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="VS Code Logo" alt="VS Code Logo"/> Using VS Code
 
-**Setup:**
+**Quick setup with one click:**
+
+<a href="https://vscode.dev/redirect/mcp/install?name=Needle%20MCP&config=%7B%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22needle-cloud%22%2C%22start%22%2C%22--restart%22%5D%2C%22env%22%3A%7B%7D%7D" style="display: inline-block; padding: 10px 20px; background-color: #007ACC; color: white; text-decoration: none; border-radius: 5px; font-weight: 500;">Install Needle MCP in VS Code</a>
+
+**Or manual setup:**
 
 1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
 
