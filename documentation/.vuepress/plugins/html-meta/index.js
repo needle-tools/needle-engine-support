@@ -1,7 +1,132 @@
 import { exec, execSync } from "child_process";
 import { existsSync } from "fs";
 
-/** 
+/**
+ * Extracts a clean description from markdown content, skipping VuePress components and special syntax
+ * @param {string} content - The raw markdown content
+ * @returns {string} - Clean description text
+ */
+function extractDescriptionFromContent(content) {
+    // Skip frontmatter - find the end of it
+    const frontmatterEnd = content.indexOf('---', 5);
+    if (frontmatterEnd === -1) return '';
+
+    let contentSlice = content.slice(frontmatterEnd + 3);
+
+    // Remove VuePress component tags (both self-closing and paired)
+    // Common components: <discountbanner />, <tool-tiles>, <ClientOnly>, <needle-button>, etc.
+    contentSlice = contentSlice.replace(/<[\w-]+[^>]*\/>/g, ''); // self-closing tags like <foo />
+    contentSlice = contentSlice.replace(/<[\w-]+[^>]*>[\s\S]*?<\/[\w-]+>/g, ''); // paired tags like <foo>...</foo>
+
+    // Remove HTML comments
+    contentSlice = contentSlice.replace(/<!--[\s\S]*?-->/g, '');
+
+    // Remove VuePress directives like ::: tip, ::: warning, etc.
+    contentSlice = contentSlice.replace(/:::[\s\S]*?:::/g, '');
+
+    // Remove markdown images
+    contentSlice = contentSlice.replace(/!\[.*?\]\(.*?\)/g, '');
+
+    // Remove markdown links but keep their text
+    contentSlice = contentSlice.replace(/\[([^\]]+)\]\([^)]+\)/g, '$1');
+
+    // Remove code blocks (fenced with ``` or ~~~)
+    contentSlice = contentSlice.replace(/```[\s\S]*?```/g, '');
+    contentSlice = contentSlice.replace(/~~~[\s\S]*?~~~/g, '');
+
+    // Remove inline code
+    contentSlice = contentSlice.replace(/`[^`]+`/g, '');
+
+    // Remove HTML tags
+    contentSlice = contentSlice.replace(/<[^>]+>/g, '');
+
+    // Split into lines and process
+    const lines = contentSlice.split('\n');
+    const contentLines = [];
+    let foundFirstContent = false;
+
+    for (let line of lines) {
+        line = line.trim();
+
+        // Skip empty lines until we find content
+        if (!foundFirstContent && !line.length) continue;
+
+        // Skip headers (# ## ### etc)
+        if (line.match(/^#{1,6}\s/)) continue;
+
+        // Skip horizontal rules
+        if (line.match(/^[-*_]{3,}$/)) continue;
+
+        // Skip table of contents
+        if (line.toLowerCase().includes('[[toc]]')) continue;
+
+        // Skip lines that start with list markers (until we have some content)
+        if (!foundFirstContent && line.match(/^[-*+]\s/)) continue;
+
+        // Skip table rows
+        if (line.match(/^\|.*\|$/)) continue;
+
+        // Skip blockquotes
+        if (line.startsWith('>')) continue;
+
+        // If we get here and have text, it's likely real content
+        if (line.length > 0) {
+            foundFirstContent = true;
+            contentLines.push(line);
+
+            // Stop after we have a good amount of text (around 2-3 sentences)
+            const combined = contentLines.join(' ');
+            // Count sentence-ending punctuation
+            const sentences = combined.match(/[.!?]+/g);
+            if (sentences && sentences.length >= 2 && combined.length > 100) {
+                break;
+            }
+            // Or stop if we hit a reasonable length
+            if (combined.length > 300) {
+                break;
+            }
+        }
+    }
+
+    let description = contentLines.join(' ');
+
+    // Clean up markdown formatting
+    description = description.replace(/\*\*([^*]+)\*\*/g, '$1'); // bold
+    description = description.replace(/\*([^*]+)\*/g, '$1'); // italic
+    description = description.replace(/__([^_]+)__/g, '$1'); // bold
+    description = description.replace(/_([^_]+)_/g, '$1'); // italic
+
+    // Clean up extra whitespace
+    description = description.replace(/\s+/g, ' ').trim();
+
+    // Replace double quotes with single quotes for HTML attribute safety
+    description = description.replace(/"/g, "'");
+
+    // Limit length and try to end on a sentence
+    const maxLength = 300;
+    if (description.length > maxLength) {
+        description = description.substring(0, maxLength);
+        // Try to find the last sentence ending
+        const lastSentenceEnd = Math.max(
+            description.lastIndexOf('. '),
+            description.lastIndexOf('! '),
+            description.lastIndexOf('? ')
+        );
+        if (lastSentenceEnd > 100) {
+            description = description.substring(0, lastSentenceEnd + 1);
+        } else {
+            // Find last word boundary
+            const lastSpace = description.lastIndexOf(' ');
+            if (lastSpace > 0) {
+                description = description.substring(0, lastSpace) + '...';
+            }
+        }
+    }
+
+    return description.trim();
+}
+
+/**
  * @returns {import("vuepress").Plugin}
  */
 export const modifyHtmlMeta = (args, ctx) => {
@@ -35,72 +160,8 @@ export const modifyHtmlMeta = (args, ctx) => {
 
                 let description = frontmatter.description;
                 if (!description) {
-                    // take a slice from the content
-                    const content = page.content;
-                    const startIndex = content.indexOf('---', 5);
-                    let contentSlice = content.slice(startIndex, 2000);
-                    // remove markdown images
-                    contentSlice = contentSlice.replaceAll(/!\[.*\]\(.*\)/g, '');
-                    // try to find an empoty line to cut off the description there
-                    const startOfList = contentSlice.indexOf("- ");
-                    if (startOfList > 0)
-                        contentSlice = contentSlice.slice(0, startOfList);
-                    // try to find a table start to cut the description off there
-                    const tableStart = contentSlice.indexOf("|");
-                    if (tableStart > 0)
-                        contentSlice = contentSlice.slice(0, tableStart);
-                    const sentenceEnd = contentSlice.lastIndexOf(/\.[\n\r ]/);
-                    if (sentenceEnd > 0)
-                        contentSlice = contentSlice.slice(0, sentenceEnd + 1);
-                    // until first div
-                    const divStart = contentSlice.indexOf("<div");
-                    if (divStart > 0)
-                        contentSlice = contentSlice.slice(0, divStart);
-
-                    // replace markdown links
-                    const markdownLinksRegex = /\[(?<content>.+?)\]\(.+?\)/g;
-                    contentSlice = contentSlice.replaceAll(markdownLinksRegex, '$<content>');
-
-                    // const markdownComponentsRegex = /(<[\w\-\n\r\=\' \(\)\/]+>.*<\/.+>)/gsm;
-                    const startOfComponent = /<[\w\-\n\r\=\' \(\)\/]{5,}?>/g;
-                    const startOfComponentIndex = contentSlice.search(startOfComponent);
-                    if (startOfComponentIndex > 0)
-                        contentSlice = contentSlice.slice(0, startOfComponentIndex);
-
-                    // remove html divs and tags
-                    const htmlTagsRegex = /<.+?>/g;
-                    contentSlice = contentSlice.replaceAll(htmlTagsRegex, '');
-
-
-                    // if (contentSlice.includes("Community Scripts")) console.log(content);
-
-                    // if (contentSlice.includes("With this Addon you'll be")) 
-                    {
-                        const lines = contentSlice.split("\n");
-                        const newLines = [];
-                        for (let i = 0; i < lines.length; i++) {
-                            let line = lines[i];
-                            line = line.trim();
-                            if (line.startsWith("#"))
-                                continue;
-                            if (!line.length)
-                                continue;
-                            newLines.push(line);
-                        }
-                        contentSlice = newLines.join("\n");
-                    }
-                    // cleanup markdown
-                    contentSlice = contentSlice.replaceAll("# ", '');
-                    contentSlice = contentSlice.replaceAll("## ", '');
-                    contentSlice = contentSlice.replaceAll("### ", '');
-                    contentSlice = contentSlice.replaceAll("#### ", '');
-                    contentSlice = contentSlice.replaceAll("[[toc]]", '');
-                    contentSlice = contentSlice.replaceAll("\"", '\'');
-                    contentSlice = contentSlice.replaceAll("*", '');
-                    contentSlice = contentSlice.replaceAll("`", '');
-                    contentSlice = contentSlice.trim();
-                    description = contentSlice;
-                    if (!description.length) {
+                    description = extractDescriptionFromContent(page.content);
+                    if (!description || !description.length) {
                         description = app.siteData.description;
                     }
                     frontmatter.description = description;
