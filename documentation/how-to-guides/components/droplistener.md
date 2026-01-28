@@ -76,6 +76,39 @@ Only allow drops on a specific surface (like a table or platform):
 The Drop Area must have visible geometry for drag and drop detection to work.
 :::
 
+### Multiple Drop Zones
+
+<video-embed src="/docs/videos/droplistener-multiple.mp4" autoplay muted />
+
+Create multiple independent drop zones, each with its own drop area:
+
+**How it works:**
+1. Create two cylinders (or any meshes) as separate drop areas
+2. Create two DropListener components (can be on separate empty objects)
+3. Assign the left cylinder to DropListener 1's **Drop Area** field
+4. Assign the right cylinder to DropListener 2's **Drop Area** field
+5. Each DropListener only responds to drops on its assigned cylinder
+
+**In the video above:**
+- Left cylinder: Drop area for DropListener 1 (displays the helmet)
+- Right cylinder: Drop area for DropListener 2 (displays the camera)
+- Each has its own independent drop zone
+
+**Why this is useful:**
+- Compare different models side-by-side
+- Collaborative review tool - team members drop their designs to compare
+- Create before/after comparisons
+- Build product comparison tools
+- Each drop zone can have different settings (fit size, placement, etc.)
+- Multiple independent display areas
+
+**Example Setup:**
+- DropListener 1: Assigned to left cylinder, fits to volume 1×2×1
+- DropListener 2: Assigned to right cylinder, fits to volume 2×2×2
+- Drop different files on each cylinder to compare them side-by-side
+
+Each cylinder acts as a completely independent drop zone with its own content.
+
 ### Collaborative Scene Builder
 
 Let multiple users add objects to a shared scene:
