@@ -28,8 +28,8 @@ How-To Guides are **task-oriented** instructions for competent users. They are:
 
 Get Needle Engine installed and configured:
 
-- [Install for Unity](/docs/unity/) - Unity package installation
-- [Install for Blender](/docs/blender/) - Blender add-on installation
+- [Install for Unity](/docs/unity/) - Unity-specific workflows and features
+- [Install for Blender](/docs/blender/) - Blender-specific workflows and features
 - [Install for Web Projects](/docs/getting-started/) - Getting started guide
 
 ---
@@ -47,30 +47,25 @@ Get your 3D content ready for the web:
 
 Build interactive experiences with code:
 
+**Core Concepts:**
 - [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
-- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
-- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, and triggers
 - [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
-- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
 - [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences
+
+**Interaction & Input:**
+- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
+- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
+- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, and triggers
+
+**Platform & Device:**
+- [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) - Platform detection for iOS, Android, and browsers
+
+**Reference & Examples:**
 - [Scripting Examples](/docs/reference/scripting-examples) - Code examples and snippets
 - [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - Complete lifecycle API reference
 - [Input Events](/docs/reference/api/input-events) - Input event reference
 - [Physics Events](/docs/reference/api/physics-events) - Collision and trigger events
 - [XR Events](/docs/reference/api/xr-events) - WebXR AR/VR events
-
----
-
-## Web Integration
-
-Embed Needle Engine in websites and web apps:
-
-- [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks, bundlers, and integration
-- [Create Responsive 3D Layouts](/docs/how-to-guides/web-integration/responsive-design) - Focus Rect and ViewBox for adaptive designs
-- [Embed in Websites](/docs/how-to-guides/deployment/embedding) - iframe, CDN, direct integration
-- [Integrate with Adobe Experience Manager](/docs/how-to-guides/integrations/adobe-experience-manager) - AEM sites and components
-- [Integrate with Framer](/docs/how-to-guides/integrations/framer) - Framer websites
-- [Integrate with WordPress](/docs/how-to-guides/integrations/wordpress) - WordPress sites
 
 ---
 
@@ -97,12 +92,16 @@ Create real-time collaborative experiences:
 
 ---
 
-## Optimization & Performance
+## Web Integration
 
-Make your experiences fast and small:
+Embed Needle Engine in websites and web apps:
 
-- [Optimization & Compression](/docs/how-to-guides/optimization/) - Texture/mesh compression, progressive loading, LODs
-- [Export Best Practices](/docs/how-to-guides/export/) - Optimize 3D assets for the web
+- [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks, bundlers, and integration
+- [Create Responsive 3D Layouts](/docs/how-to-guides/web-integration/responsive-design) - Focus Rect and ViewBox for adaptive designs
+- [Embed in Websites](/docs/how-to-guides/deployment/embedding) - iframe, CDN, direct integration
+- <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="/docs/how-to-guides/integrations/framer">Integrate with Framer</a></logo-header> - Framer websites
+- <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">Integrate with WordPress</a></logo-header> - WordPress sites
+- <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Integrate with Adobe Experience Manager</a></logo-header> - AEM sites and components
 
 ---
 
@@ -116,6 +115,15 @@ Get your projects live on the web:
 
 ---
 
+## Optimization & Performance
+
+Make your experiences fast and small:
+
+- [Optimization & Compression](/docs/how-to-guides/optimization/) - Texture/mesh compression, progressive loading, LODs
+- [Export Best Practices](/docs/how-to-guides/export/) - Optimize 3D assets for the web
+
+---
+
 ## Debugging & Testing
 
 Find and fix issues:
@@ -123,15 +131,6 @@ Find and fix issues:
 - [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension
 - [Debugging Parameters & Options](/docs/how-to-guides/debugging/) - URL parameters, VSCode debugging, mobile debugging
 - [Local Development Help](/docs/how-to-guides/testing) - Testing on phones, tablets, VR headsets, certificates
-
----
-
-## Unity & Blender Specific
-
-Platform-specific guides:
-
-- [Unity Integration](/docs/unity/) - Unity-specific workflows and features
-- [Blender Add-on](/docs/blender/) - Blender-specific workflows and features
 
 ---
 

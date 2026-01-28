@@ -214,21 +214,25 @@ this.gameObject.position.x += speed * this.context.time.deltaTime;
 ```
 :::
 
+[Read more about Time](../../how-to-guides/scripting/use-lifecycle-hooks#time)
+
 
 ## Raycasting
 Use ``this.context.physics.raycast()`` to perform a raycast and get a list of intersections. If you dont pass in any options the raycast is performed from the mouse position (or first touch position) in screenspace using the currently active `mainCamera`. You can also pass in a `RaycastOptions` object that has various settings like `maxDistance`, the camera to be used or the layers to be tested against.
 
 Use ``this.context.physics.raycastFromRay(your_ray)`` to perform a raycast using a [three.js ray](https://threejs.org/docs/#api/en/math/Ray)
 
-Note that the calls above are by default raycasting against visible scene objects. That is different to Unity where you always need colliders to hit objects. The default three.js solution has both pros and cons where one major con is that it can perform quite slow depending on your scene geometry. It may be especially slow when raycasting against skinned meshes. It is therefor recommended to usually set objects with SkinnedMeshRenderers in Unity to the `Ignore Raycast` layer which will then be ignored by default by Needle Engine as well.   
+Note that the calls above are by default raycasting against visible scene objects. That is different to Unity where you always need colliders to hit objects. The default three.js solution has both pros and cons where one major con is that it can perform quite slow depending on your scene geometry. It may be especially slow when raycasting against skinned meshes. It is therefor recommended to usually set objects with SkinnedMeshRenderers in Unity to the `Ignore Raycast` layer which will then be ignored by default by Needle Engine as well.
 
-Another option is to use the physics raycast methods which will only return hits with colliders in the scene. 
+Another option is to use the physics raycast methods which will only return hits with colliders in the scene.
 
 ```ts twoslash
 const hit = this.context.physics.engine?.raycast();
 ```
 
 Here is a editable [example for physics raycast](https://stackblitz.com/edit/needle-engine-physics-raycast-example?file=src%2Fmain.ts,package.json,.gitignore)
+
+[Read more about Raycasting](../../how-to-guides/scripting/perform-raycasting)
 
 ## Input
 Use ``this.context.input`` to poll input state:
@@ -268,6 +272,8 @@ If you want to handle inputs yourself you can also subscribe to [all events the 
 window.addEventListener("click", () => { console.log("MOUSE CLICK"); });
 ```
 Note that in this case you have to handle all cases yourself. For example you may need to use different events if your user is visiting your website on desktop vs mobile vs a VR device. These cases are automatically handled by the Needle Engine input events (e.g. `PointerDown` is raised both for mouse down, touch down and in case of VR on controller button down).
+
+[Read more about Input](../../how-to-guides/scripting/handle-input)
 
 
 ## InputSystem Callbacks
@@ -372,6 +378,8 @@ if (isDevEnvironment()) {
     // Show debug UI, gizmos, etc.
 }
 ```
+
+[Read more about Platform Detection](../../how-to-guides/scripting/detect-mobile-devices)
 
 ## Web Projects & Package Management
 

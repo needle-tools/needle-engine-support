@@ -4,7 +4,7 @@
     <aside class="page-nav page-nav-sidebar">
       <!-- Back to parent link -->
       <div class="page-nav-header" v-if="parentLink">
-        <a :href="parentLink.link" class="parent-link">
+        <a :href="parentLink.link" class="parent-link" @click.prevent="handleParentLinkClick">
           <span class="back-arrow">←</span>
           <span>{{ parentLink.text }}</span>
         </a>
@@ -224,6 +224,17 @@ export default {
         })
         // Update URL hash
         window.history.pushState(null, '', `#${slug}`)
+      }
+    },
+
+    handleParentLinkClick() {
+      // Save current scroll position before navigating to parent
+      const currentPath = this.$route?.path || window.location.pathname
+      sessionStorage.setItem(`scroll-${currentPath}`, window.scrollY.toString())
+
+      // Navigate to parent link
+      if (this.parentLink?.link) {
+        window.location.href = this.parentLink.link
       }
     },
 

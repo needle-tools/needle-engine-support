@@ -67,7 +67,7 @@ Lightmaps can be baked in Unity or Blender and automatically exported to your we
 - Compatible with third-party lightmappers like [Bakery](https://assetstore.unity.com/packages/tools/level-design/bakery-gpu-lightmapper-122218)
 - Per-scene lightmaps automatically loaded
 
-[Read more about Lightmaps](/docs/unity/features/lightmaps)
+[Read more about exporting Lightmaps](/docs/how-to-guides/export/#lightmaps)
 
 ### Post-Processing Effects
 
