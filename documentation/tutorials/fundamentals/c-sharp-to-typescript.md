@@ -302,6 +302,8 @@ export class Clickable extends Behaviour {
 
 All receive a `PointerEventData` argument.
 
+[Read more about Input Events](/docs/reference/api/input-events)
+
 ---
 
 ## Debug.Log

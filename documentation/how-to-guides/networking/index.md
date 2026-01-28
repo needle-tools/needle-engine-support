@@ -9,6 +9,8 @@ description: Build real-time multiplayer 3D web experiences with Needle Engine. 
 
 Needle Engine includes a full networking solution for multiplayer experiences. Shared world state, voice chat, session persistence, and more can be achieved with our networking components and APIs.
 
+<video-embed src="/docs/videos/networking-example.mp4" autoplay muted />
+
 ## Quick Start
 
 Get your first multiplayer scene running in 5 minutes:
@@ -66,7 +68,7 @@ Find specific information:
 | `SyncedTransform` | Synchronizes object transforms (position, rotation, scale) |
 | `SyncedCamera` | Spawns a prefab for each user showing their viewpoint |
 | `VoIP` | Voice-over-IP audio connections between users |
-| `ScreenCapture` | Screen sharing via web APIs |
+| `ScreenCapture` | Screen sharing via web APIs - [Example](https://engine.needle.tools/samples/screensharing) |
 | `Networking` | Customize server backend URL or use local server |
 | `DragControls` | Drag objects with automatic ownership transfer |
 | `Duplicatable` | Duplicate objects across the network |
