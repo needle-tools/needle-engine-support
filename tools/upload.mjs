@@ -90,6 +90,41 @@ async function runUpload() {
         return;
     }
 
+    // Sort files by type to ensure HTML files are uploaded last
+    // This prevents users from accessing pages before their assets are ready
+    console.log("Sorting files by type (HTML files will be uploaded last)...");
+    filesToUpload.sort((a, b) => {
+        const extA = path.extname(a.target).toLowerCase();
+        const extB = path.extname(b.target).toLowerCase();
+
+        // Priority order (lower number = uploaded earlier)
+        const getPriority = (ext) => {
+            if (ext === '.html') return 1000; // HTML last
+            if (ext === '.js') return 1;      // JavaScript first
+            if (ext === '.css') return 2;     // CSS second
+            if (ext === '.json') return 3;    // JSON data third
+            if (ext === '.wasm') return 4;    // WebAssembly modules
+            if (['.jpg', '.jpeg', '.png', '.gif', '.webp', '.svg', '.ico'].includes(ext)) return 5; // Images
+            if (['.woff', '.woff2', '.ttf', '.otf', '.eot'].includes(ext)) return 6; // Fonts
+            if (['.mp4', '.webm', '.ogg', '.mp3', '.wav'].includes(ext)) return 7; // Media
+            if (['.glb', '.gltf', '.bin', '.ktx2'].includes(ext)) return 8; // 3D assets
+            return 9; // Other files
+        };
+
+        const priorityA = getPriority(extA);
+        const priorityB = getPriority(extB);
+
+        if (priorityA !== priorityB) {
+            return priorityA - priorityB;
+        }
+
+        // If same priority, sort alphabetically for consistency
+        return a.target.localeCompare(b.target);
+    });
+
+    const htmlCount = filesToUpload.filter(f => path.extname(f.target).toLowerCase() === '.html').length;
+    console.log(`Sorted ${filesToUpload.length} files (${htmlCount} HTML files will be uploaded last)`);
+
     console.log(`Uploading ${filesToUpload.length} files to ${server}...`);
     console.log(`Using ${parallelUploads} parallel uploads`);
 
@@ -296,9 +331,10 @@ function recursiveCollectFilesToUpload(dir, files, currentRel) {
  */
 async function startUploadWorker(client, files, uploadedFiles) {
 
-    // Take file from array
+    // Take file from the beginning of array to respect priority order
+    // (HTML files are at the end, so they'll be uploaded last)
     while (files.length > 0) {
-        const file = files.pop();
+        const file = files.shift(); // Changed from pop() to shift() to maintain sort order
         if (!file) continue;
         const { source, target, size, hash } = file;
         const maxRetries = 5;
