@@ -538,7 +538,7 @@ export default {
   top: 80px;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 48rem;
+  max-width: min(80vw, 48rem);
   width: calc(100% - 3rem);
   background-color: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
   backdrop-filter: blur(12px);
@@ -546,7 +546,7 @@ export default {
   border: 1px solid rgba(125, 125, 125, 0.1);
   padding: 0.75rem 1.5rem;
   font-size: 0.85rem;
-  z-index: 50;
+  z-index: 5;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border-radius: 16px;
 }
