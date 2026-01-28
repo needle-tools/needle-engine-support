@@ -553,15 +553,76 @@ div[class*=language-] > pre code {
   border-bottom: 2px solid var(--vp-c-accent);
 }
 
-.vp-navbar-item > a:hover, .vp-navbar-item a.route-link-active {
-  color: var(--vp-c-text);
+.vp-navbar-item > a {
+  display: inline-grid;
+
+  &::before,
+  &::after {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+  }
+
+  // Invisible bold version to reserve space
+  &::before {
+    content: attr(aria-label);
+    font-weight: 700;
+    visibility: hidden;
+    pointer-events: none;
+    height: 0;
+  }
+
+  &:hover, &.route-link-active {
+    color: var(--vp-c-text);
+    font-weight: 700;
+  }
+}
+
+.vp-navbar-item > div > button {
+  display: inline-grid;
+
+  &::before,
+  &::after {
+    grid-area: 1 / 1;
+    white-space: nowrap;
+  }
+
+  // Invisible bold version to reserve space
+  &::before {
+    content: attr(aria-label);
+    font-weight: 700;
+    visibility: hidden;
+    pointer-events: none;
+  }
+
+  &:hover {
+    font-weight: 700;
+  }
 }
 
 .vp-navbar-item {
+  & .route-link, & .auto-link {
+    display: inline-grid;
+
+    &::before,
+    &::after {
+      grid-area: 1 / 1;
+      white-space: nowrap;
+    }
+
+    // Invisible bold version to reserve space
+    &::before {
+      content: attr(aria-label);
+      font-weight: 700;
+      visibility: hidden;
+      pointer-events: none;
+    }
+  }
+
   & .route-link:hover, .auto-link.route-link-active {
     color: inherit;
     border-color: inherit;
   }
+
   & .auto-link.route-link-active {
     font-weight: 700;
   }
