@@ -9,8 +9,19 @@ const props = {
     limit_height: Boolean,
     max_height: String,
   },
+  data() {
+    return {
+      videoAspectRatio: '16/9', // Default aspect ratio
+    }
+  },
   methods: {
-    getUrl
+    getUrl,
+    onMetadataLoaded(event) {
+      const video = event.target;
+      if (video.videoWidth && video.videoHeight) {
+        this.videoAspectRatio = `${video.videoWidth}/${video.videoHeight}`;
+      }
+    }
   }
 }
 
@@ -43,7 +54,7 @@ export default props;
   height: v-bind('limit_height ? "400px" : "initial"');
 
   */
-  aspect-ratio: 16/9;
+  aspect-ratio: v-bind('videoAspectRatio');
   max-height: 300px;
   max-height: v-bind('limit_height || max_height ? max_height : "initial"');
   border-radius: 8px;
@@ -61,7 +72,7 @@ video,
   max-height: 100%;
   margin: 0;
   max-height: v-bind('limit_height ? max_height : "100%"');
-  aspect-ratio: 16/9;
+  aspect-ratio: v-bind('videoAspectRatio');
   border-radius: 8px;
 }
 
@@ -90,6 +101,6 @@ video,
   </div>
   <div v-else class="container">
     <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->
-    <video loop autoplay controls :src="src"></video>
+    <video loop autoplay controls :src="src" @loadedmetadata="onMetadataLoaded"></video>
   </div>
 </template>
