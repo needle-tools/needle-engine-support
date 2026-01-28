@@ -43,29 +43,17 @@ Get your 3D content ready for the web:
 
 ---
 
-## Scripting & Development
+## Components
 
-Build interactive experiences with code:
+Use built-in components for common features:
 
-**Core Concepts:**
-- [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
-- [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
-- [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences
-
-**Interaction & Input:**
-- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
-- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
-- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, and triggers
-
-**Platform & Device:**
-- [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) - Platform detection for iOS, Android, and browsers
-
-**Reference & Examples:**
-- [Scripting Examples](/docs/reference/scripting-examples) - Code examples and snippets
-- [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - Complete lifecycle API reference
-- [Input Events](/docs/reference/api/input-events) - Input event reference
-- [Physics Events](/docs/reference/api/physics-events) - Collision and trigger events
-- [XR Events](/docs/reference/api/xr-events) - WebXR AR/VR events
+- [Camera Controls (OrbitControls)](./components/orbit-controls) - The core camera controller for navigating 3D scenes
+- [Contact Shadows](./components/contact-shadows) - Add realistic ground shadows to your scene
+- [Cursor Follow](./components/cursor-follow) - Make objects follow the mouse or touch position
+- [Drag and Drop Files](./components/droplistener) - Let users drop 3D models into your scene
+- [Drag Objects (DragControls)](./components/drag-controls) - Make objects draggable with mouse, touch, or VR controllers
+- [Duplicate Objects (Duplicatable)](./components/duplicatable) - Spawn copies by clicking and dragging
+- [Video Player](./components/video-player) - Play videos, streams, and broadcasts in your scene
 
 ---
 
@@ -102,6 +90,32 @@ Embed Needle Engine in websites and web apps:
 - <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="/docs/how-to-guides/integrations/framer">Integrate with Framer</a></logo-header> - Framer websites
 - <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">Integrate with WordPress</a></logo-header> - WordPress sites
 - <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Integrate with Adobe Experience Manager</a></logo-header> - AEM sites and components
+
+---
+
+## Scripting & Development
+
+Build interactive experiences with code:
+
+**Core Concepts:**
+- [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
+- [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
+- [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences
+
+**Interaction & Input:**
+- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
+- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
+- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, and triggers
+
+**Platform & Device:**
+- [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) - Platform detection for iOS, Android, and browsers
+
+**Reference & Examples:**
+- [Scripting Examples](/docs/reference/scripting-examples) - Code examples and snippets
+- [Lifecycle Methods](/docs/reference/api/lifecycle-methods) - Complete lifecycle API reference
+- [Input Events](/docs/reference/api/input-events) - Input event reference
+- [Physics Events](/docs/reference/api/physics-events) - Collision and trigger events
+- [XR Events](/docs/reference/api/xr-events) - WebXR AR/VR events
 
 ---
 
