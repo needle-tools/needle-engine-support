@@ -507,7 +507,7 @@ export default {
 /* Desktop sidebar navigation */
 .page-nav-sidebar {
   position: fixed;
-  right: 2rem;
+  left: 2rem;
   top: 6rem;
   width: 200px;
   max-height: calc(95vh - 8rem);
@@ -530,8 +530,8 @@ export default {
 
 @media (width > 1500px) {
   .page-nav-sidebar {
-    margin-right: 50%;
-    transform: translateX(750px);
+    margin-left: 50%;
+    transform: translateX(-780px);
   }
 }
 
