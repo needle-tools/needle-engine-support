@@ -38,7 +38,7 @@
         <!-- Breadcrumb trail -->
         <nav class="breadcrumb-trail">
           <template v-if="breadcrumbs.length > 0">
-            <a v-for="(crumb, index) in breadcrumbs" :key="index" :href="crumb.link" class="breadcrumb-item">
+            <a v-for="(crumb, index) in breadcrumbs" :key="index" :href="crumb.link" class="breadcrumb-item" @click.prevent="navigateToPage(crumb.link)">
               {{ crumb.text }}
             </a>
           </template>
@@ -291,13 +291,28 @@ export default {
     },
 
     handleParentLinkClick() {
-      // Save current scroll position before navigating to parent
-      const currentPath = this.$route?.path || window.location.pathname
-      sessionStorage.setItem(`scroll-${currentPath}`, window.scrollY.toString())
-
       // Navigate to parent link
+      // Scroll position is now saved automatically by router.beforeEach in client.ts
       if (this.parentLink?.link) {
-        window.location.href = this.parentLink.link
+        if (this.$router) {
+          this.$router.push(this.parentLink.link)
+        } else {
+          // Fallback to window.location if router not available
+          window.location.href = this.parentLink.link
+        }
+      }
+    },
+
+    navigateToPage(link) {
+      // Navigate using Vue Router to enable scroll restoration
+      // Scroll position is saved automatically by router.beforeEach in client.ts
+      if (link) {
+        if (this.$router) {
+          this.$router.push(link)
+        } else {
+          // Fallback to window.location if router not available
+          window.location.href = link
+        }
       }
     },
 
@@ -401,8 +416,11 @@ export default {
     determineParentLink() {
       const currentPath = this.$route?.path || window.location.pathname
 
-      // Remove /docs/ prefix and trailing slash for easier parsing
-      const pathWithoutBase = currentPath.replace(/^\/docs\//, '').replace(/\/$/, '')
+      // Normalize the path - remove any duplicate /docs/ and trailing slash
+      const normalizedPath = currentPath.replace(/^(\/docs)?\/docs\//, '/docs/').replace(/\/$/, '')
+
+      // Remove /docs/ prefix for parsing
+      const pathWithoutBase = normalizedPath.replace(/^\/docs\//, '')
 
       // Split path into segments
       const segments = pathWithoutBase.split('/').filter(s => s)
@@ -416,18 +434,18 @@ export default {
 
         for (let i = segments.length - 1; i > 0; i--) {
           const parentSegments = segments.slice(0, i)
-          const parentPath = '/docs/' + parentSegments.join('/') + '/'
+          const parentPath = '/' + parentSegments.join('/') + '/'
 
           // Check if this parent page likely exists
-          // We'll check common paths that we know exist
+          // We'll check common paths that we know exist (without /docs/ prefix)
           const knownParents = [
-            '/docs/tutorials/',
-            '/docs/how-to-guides/',
-            '/docs/explanation/',
-            '/docs/reference/',
-            '/docs/blender/',
-            '/docs/unity/',
-            '/docs/'
+            '/tutorials/',
+            '/how-to-guides/',
+            '/explanation/',
+            '/reference/',
+            '/blender/',
+            '/unity/',
+            '/'
           ]
 
           // If it's a known parent or we're at depth 1, use it
@@ -443,13 +461,13 @@ export default {
               .join(' ')
 
             // Special cases for better text
-            if (parentPath === '/docs/tutorials/') {
+            if (parentPath === '/tutorials/') {
               parentText = 'All Tutorials'
-            } else if (parentPath === '/docs/how-to-guides/') {
+            } else if (parentPath === '/how-to-guides/') {
               parentText = 'All How-To Guides'
-            } else if (parentPath === '/docs/explanation/') {
+            } else if (parentPath === '/explanation/') {
               parentText = 'All Explanations'
-            } else if (parentPath === '/docs/reference/') {
+            } else if (parentPath === '/reference/') {
               parentText = 'All Reference'
             }
 
