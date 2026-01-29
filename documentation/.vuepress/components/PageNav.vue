@@ -328,7 +328,7 @@ export default {
 
       // Build breadcrumb trail, checking if pages exist
       for (let i = 0; i < segments.length - 1; i++) {
-        const segmentPath = '/docs/' + segments.slice(0, i + 1).join('/') + '/'
+        const segmentPath = '/' + segments.slice(0, i + 1).join('/') + '/'
         const segmentText = segments[i]
           .split('-')
           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
@@ -342,25 +342,25 @@ export default {
 
         // Only add breadcrumb if page exists or it's a known parent
         const knownParents = [
-          '/docs/tutorials/',
-          '/docs/how-to-guides/',
-          '/docs/explanation/',
-          '/docs/reference/',
-          '/docs/blender/',
-          '/docs/unity/',
-          '/docs/'
+          '/tutorials/',
+          '/how-to-guides/',
+          '/explanation/',
+          '/reference/',
+          '/blender/',
+          '/unity/',
+          '/'
         ]
 
         if (pageExists || knownParents.includes(segmentPath)) {
           // Special case naming
           let displayText = segmentText
-          if (segmentPath === '/docs/tutorials/') {
+          if (segmentPath === '/tutorials/') {
             displayText = 'Tutorials'
-          } else if (segmentPath === '/docs/how-to-guides/') {
+          } else if (segmentPath === '/how-to-guides/') {
             displayText = 'How-To Guides'
-          } else if (segmentPath === '/docs/explanation/') {
+          } else if (segmentPath === '/explanation/') {
             displayText = 'Explanations'
-          } else if (segmentPath === '/docs/reference/') {
+          } else if (segmentPath === '/reference/') {
             displayText = 'Reference'
           }
 
