@@ -12,7 +12,7 @@ iOS WebXR support is now available natively in Needle Engine.
 
 Needle Engine now includes native iOS WebXR support through App Clip technology. While Safari on iOS doesn't support WebXR by default, Needle Engine automatically bridges this gap using native ARKit to provide full WebXR functionality in a lightweight, instant-launch format.
 
-![](https://cloud.needle.tools/-/media/aZ7UXxYFLdVN65cb99Tnyw.gif)
+[![iOS WebXR on iPhone](https://cloud.needle.tools/-/media/WI0Q0s961BjdXgUEQHxifQ.gif)](https://appclip.needle.tools)
 
 ## How iOS WebXR Works in Needle Engine
 
@@ -49,6 +49,11 @@ iOS WebXR in Needle Engine works on iPhone and iPad devices running iOS 14 or la
 
 Users can experience your Needle Engine WebXR content through their iPhone or iPad screen, viewing and interacting with 3D content overlaid on the real world using native ARKit capabilities.
 
+
+[![iOS WebXR Physics Example](https://cloud.needle.tools/-/media/I0gsLjFwcM2pyydPfkxaiw.gif)](https://engine.needle.tools/samples/physics-playground) [![More iOS WebXR Examples](https://cloud.needle.tools/-/media/gcj_YoSns8FivafQRiCiOQ.gif)](https://appclip.needle.tools)
+
+Try out more iOS WebXR examples at [appclip.needle.tools](https://appclip.needle.tools).
+
 ## Using iOS WebXR with Needle Engine
 
 Your existing Needle Engine WebXR scenes work automatically on iOS. Simply ensure your scene:
@@ -61,7 +66,7 @@ Your existing Needle Engine WebXR scenes work automatically on iOS. Simply ensur
 
 There are two ways to enable iOS WebXR support in your Needle Engine project:
 
-**Option 1: Enable AR Button (Recommended)**
+**Option 1: Enable AR Button (Recommended)**  
 Enable the `createARButton` option in your [WebXR component](http://engine.needle.tools/docs/api/WebXR). This automatically creates a button that users can tap to enter AR mode.
 
 **Option 2: Start Programmatically**
@@ -70,7 +75,9 @@ Manually start an XR session in your code:
 NeedleXRSession.start("ar");
 ```
 
-No additional changes are required. The WebXR-to-ARKit integration is handled automatically when users access your experience on iOS Safari and Chrome. On Android the standard WebXR API is used.
+:::tip No Additional Changes Required
+The WebXR-to-ARKit integration is handled automatically when users access your experience on iOS Safari and Chrome. On Android the standard WebXR API is used.
+:::
 
 ### For Vanilla three.js Applications
 
@@ -97,6 +104,7 @@ Needle Engine's iOS WebXR support includes comprehensive functionality:
 - Image tracking
 - Anchor creation and tracking (wip)
 - Lighting estimation (wip)
+
 
 ## Troubleshooting
 
