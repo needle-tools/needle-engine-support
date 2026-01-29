@@ -6,7 +6,7 @@ description: Needle Engine now supports native iOS WebXR on iPhone and iPad usin
 # <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">iOS WebXR Support for Needle Engine</logo-header>
 
 :::tip Now Available in Beta
-iOS WebXR support is now available natively in Needle Engine Beta.
+iOS WebXR support is now available natively in **Needle Engine Beta**.
 :::
 
 
