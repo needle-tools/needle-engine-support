@@ -7,34 +7,63 @@ export default defineClientConfig({
   enhance({ app, router, siteData }) {
     // Helper to get the full path including base for storage key
     const getStorageKey = (path) => {
-      // Use window.location.pathname which includes the /docs/ base
-      // Extract the path portion that matches the router path
-      const currentFullPath = window.location.pathname
-      // Normalize - remove trailing slash for comparison, then add back
+      // Normalize the router path first
       const normalizedPath = path.endsWith('/') ? path : path + '/'
 
-      // If current path includes the router path, use the full path
-      if (currentFullPath.includes(normalizedPath)) {
-        return `scroll-${currentFullPath}`
-      }
-      // Otherwise construct it from the base
+      // Construct the full path with base
       const base = siteData.value?.base || '/docs/'
-      const fullPath = base + normalizedPath.replace(/^\//, '')
+      let fullPath = base + normalizedPath.replace(/^\//, '')
+
+      // Remove any duplicate slashes
+      fullPath = fullPath.replace(/\/+/g, '/')
+
+      // Ensure trailing slash
+      if (!fullPath.endsWith('/')) {
+        fullPath += '/'
+      }
+
       return `scroll-${fullPath}`
     }
 
     // Track whether we should restore scroll (only for back navigation)
     let shouldRestoreScroll = false
 
+    // Track scroll position continuously while on a page
+    let scrollSaveTimeout
+    const saveCurrentScrollPosition = () => {
+      const currentPath = router.currentRoute.value.path
+      if (currentPath) {
+        const scrollY = window.scrollY
+        const storageKey = getStorageKey(currentPath)
+
+        // Only save if scrolled past a threshold (to avoid saving 0)
+        if (scrollY > 50) {
+          sessionStorage.setItem(storageKey, scrollY.toString())
+        }
+      }
+    }
+
     // Override router scroll behavior to remove animation and wait for transitions
     if (router) {
+      // Listen to scroll events and save position with throttling
+      window.addEventListener('scroll', () => {
+        clearTimeout(scrollSaveTimeout)
+        scrollSaveTimeout = setTimeout(saveCurrentScrollPosition, 300)
+      })
+
       // Save scroll position before navigating away from any page
       router.beforeEach((to, from) => {
         // Save current page's scroll position when navigating away
         if (from.path) {
           const scrollY = window.scrollY
           const storageKey = getStorageKey(from.path)
-          sessionStorage.setItem(storageKey, scrollY.toString())
+
+          // Only save scroll position if user has scrolled down
+          // or if we already have a saved position for this page
+          const existingScroll = sessionStorage.getItem(storageKey)
+          if (scrollY > 0 || existingScroll !== null) {
+            sessionStorage.setItem(storageKey, scrollY.toString())
+          }
 
           // Check if we're navigating to a parent (back navigation)
           // Parent has fewer segments than child
