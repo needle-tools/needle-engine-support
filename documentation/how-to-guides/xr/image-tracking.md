@@ -55,7 +55,7 @@ Start the scene below in AR and point your phone's camera at the image marker on
 
 <img src="https://image-tracking-zubckszr0qj2.needle.run/assets/image-marker.jpg" alt="Image Marker" style="max-width: 300px" />
 
-[Download printable marker (PDF)](https://image-tracking-zubckszr0qj2.needle.run/assets/imagetracking-handout.pdf)
+[Download printable marker (PDF)](/imgs/imagetracking-handout.pdf)
 
 <sample src="https://image-tracking-zubckszr0qj2.needle.run/" />
 
