@@ -50,7 +50,7 @@ iOS WebXR in Needle Engine works on iPhone and iPad devices running iOS 14 or la
 Users can experience your Needle Engine WebXR content through their iPhone or iPad screen, viewing and interacting with 3D content overlaid on the real world using native ARKit capabilities.
 
 
-[![iOS WebXR Physics Example](https://cloud.needle.tools/-/media/I0gsLjFwcM2pyydPfkxaiw.gif)](https://engine.needle.tools/samples/physics-playground) [![More iOS WebXR Examples](https://cloud.needle.tools/-/media/gcj_YoSns8FivafQRiCiOQ.gif)](https://appclip.needle.tools)
+[![iOS WebXR Physics Example](https://cloud.needle.tools/-/media/I0gsLjFwcM2pyydPfkxaiw.gif)](https://engine.needle.tools/samples/physics-playground) [![iOS WebXR Image Tracking](https://cloud.needle.tools/-/media/vRUf9BmqW_bgNARATjmfCQ.gif)](https://engine.needle.tools/samples/image-tracking) [![More iOS WebXR Examples](https://cloud.needle.tools/-/media/gcj_YoSns8FivafQRiCiOQ.gif)](https://appclip.needle.tools)
 
 Try out more iOS WebXR examples at [appclip.needle.tools](https://appclip.needle.tools).
 
