@@ -5,6 +5,11 @@ import { nextTick } from 'vue'
 
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
+    // Only run scroll restoration on client-side (not during SSR)
+    if (typeof window === 'undefined' || !router) {
+      return
+    }
+
     // Helper to get the full path including base for storage key
     const getStorageKey = (path) => {
       // Normalize the router path first
@@ -43,74 +48,71 @@ export default defineClientConfig({
       }
     }
 
-    // Override router scroll behavior to remove animation and wait for transitions
-    if (router) {
-      // Listen to scroll events and save position with throttling
-      window.addEventListener('scroll', () => {
-        clearTimeout(scrollSaveTimeout)
-        scrollSaveTimeout = setTimeout(saveCurrentScrollPosition, 300)
-      })
+    // Listen to scroll events and save position with throttling
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollSaveTimeout)
+      scrollSaveTimeout = setTimeout(saveCurrentScrollPosition, 300)
+    })
 
-      // Save scroll position before navigating away from any page
-      router.beforeEach((to, from) => {
-        // Save current page's scroll position when navigating away
-        if (from.path) {
-          const scrollY = window.scrollY
-          const storageKey = getStorageKey(from.path)
+    // Save scroll position before navigating away from any page
+    router.beforeEach((to, from) => {
+      // Save current page's scroll position when navigating away
+      if (from.path) {
+        const scrollY = window.scrollY
+        const storageKey = getStorageKey(from.path)
 
-          // Only save scroll position if user has scrolled down
-          // or if we already have a saved position for this page
-          const existingScroll = sessionStorage.getItem(storageKey)
-          if (scrollY > 0 || existingScroll !== null) {
-            sessionStorage.setItem(storageKey, scrollY.toString())
-          }
-
-          // Check if we're navigating to a parent (back navigation)
-          // Parent has fewer segments than child
-          const fromSegments = from.path.split('/').filter(s => s)
-          const toSegments = to.path.split('/').filter(s => s)
-          shouldRestoreScroll = toSegments.length < fromSegments.length
+        // Only save scroll position if user has scrolled down
+        // or if we already have a saved position for this page
+        const existingScroll = sessionStorage.getItem(storageKey)
+        if (scrollY > 0 || existingScroll !== null) {
+          sessionStorage.setItem(storageKey, scrollY.toString())
         }
-      })
 
-      router.options.scrollBehavior = (to, from, savedPosition) => {
-        return new Promise((resolve) => {
-          // Wait for Vue's next tick to ensure DOM is updated
-          nextTick(() => {
-            // Wait a bit longer for any page transitions/animations to complete
-            // This ensures the scroll happens after the page content is visible
-            setTimeout(() => {
-              // Only restore scroll if navigating back to parent
-              if (shouldRestoreScroll) {
-                // Get the storage key for the target page
-                const storageKey = getStorageKey(to.path)
-
-                // Check if we have a manually saved scroll position
-                const manualScroll = sessionStorage.getItem(storageKey)
-
-                if (manualScroll !== null) {
-                  const scrollY = parseInt(manualScroll, 10)
-                  // Don't remove it - keep it for future navigations back to this page
-                  resolve({ top: scrollY, behavior: 'instant' })
-                  return
-                }
-              }
-
-              if (savedPosition) {
-                // Browser back/forward - use saved position instantly
-                resolve({ ...savedPosition, behavior: 'instant' })
-              } else if (to.hash) {
-                resolve({
-                  el: to.hash,
-                  behavior: 'instant',
-                })
-              } else {
-                resolve({ top: 0, behavior: 'instant' })
-              }
-            }, 100) // Wait for VuePress page transition
-          })
-        })
+        // Check if we're navigating to a parent (back navigation)
+        // Parent has fewer segments than child
+        const fromSegments = from.path.split('/').filter(s => s)
+        const toSegments = to.path.split('/').filter(s => s)
+        shouldRestoreScroll = toSegments.length < fromSegments.length
       }
+    })
+
+    router.options.scrollBehavior = (to, from, savedPosition) => {
+      return new Promise((resolve) => {
+        // Wait for Vue's next tick to ensure DOM is updated
+        nextTick(() => {
+          // Wait a bit longer for any page transitions/animations to complete
+          // This ensures the scroll happens after the page content is visible
+          setTimeout(() => {
+            // Only restore scroll if navigating back to parent
+            if (shouldRestoreScroll) {
+              // Get the storage key for the target page
+              const storageKey = getStorageKey(to.path)
+
+              // Check if we have a manually saved scroll position
+              const manualScroll = sessionStorage.getItem(storageKey)
+
+              if (manualScroll !== null) {
+                const scrollY = parseInt(manualScroll, 10)
+                // Don't remove it - keep it for future navigations back to this page
+                resolve({ top: scrollY, behavior: 'instant' })
+                return
+              }
+            }
+
+            if (savedPosition) {
+              // Browser back/forward - use saved position instantly
+              resolve({ ...savedPosition, behavior: 'instant' })
+            } else if (to.hash) {
+              resolve({
+                el: to.hash,
+                behavior: 'instant',
+              })
+            } else {
+              resolve({ top: 0, behavior: 'instant' })
+            }
+          }, 100) // Wait for VuePress page transition
+        })
+      })
     }
   },
   setup() {},
