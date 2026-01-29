@@ -72,9 +72,20 @@ NeedleXRSession.start("ar");
 
 No additional changes are required. The WebXR-to-ARKit integration is handled automatically when users access your experience on iOS Safari and Chrome. On Android the standard WebXR API is used.
 
-### For three.js Applications
+### For Vanilla three.js Applications
 
-If you're using three.js (not Needle Engine), you can still enable iOS WebXR support through Needle Go by integrating it into your existing web application.
+If you're using vanilla three.js (not Needle Engine), you can enable iOS WebXR support by linking to:
+
+```
+https://appclip.needle.tools/ar?url=<your-webxr-url>
+```
+
+**Example:**
+```
+https://appclip.needle.tools/ar?url=https://example.com/my-ar-experience
+```
+
+Use this URL in QR codes, links, or share it directly. When opened on iPhone or iPad, it launches the Needle Go App Clip with your WebXR experience.
 
 ## Supported WebXR Features
 
