@@ -17,7 +17,7 @@ description: 'Needle Cloud is an online service. It helps you store, manage, and
 :::tip Quick Links
 **Get Started:** [Create a free account](https://cloud.needle.tools)
 
-**Deploy Apps:** [From Unity](#deploy-from-unity) • [From CLI](#deploy-from-the-cli)
+**Deploy Apps:** [From Unity](#deploy-from-unity) • [From Blender](#deploy-from-blender) • [From CLI](#deploy-from-the-cli)
 
 **Manage Assets:** [Upload 3D Assets](#cloud-assets) • [Supported Formats](#supported-3d-formats)
 :::
@@ -80,10 +80,25 @@ Needle Cloud is integrated into the Unity Editor. This allows you to deploy your
    This component is used to configure the export settings for your app.  
    You can use the menu item `GameObject > Needle Engine > Add Export Info` or create a new scene from a Needle template via the menu item `File > New Scene`.
 
-3. **Click on `Upload to Needle Cloud`.**   
-   This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project. The _upload name_ of the project, visible next to the button, is saved in the scene. Future uploads will use the same upload name, and all uploaded versions will be grouped together on the Needle Cloud website.   
-   
+3. **Click on `Upload to Needle Cloud`.**  
+   This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project. The _upload name_ of the project, visible next to the button, is saved in the scene. Future uploads will use the same upload name, and all uploaded versions will be grouped together on the Needle Cloud website.
+
    ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v3.webp)
+
+## <logo-header logo="/blender/logo.png" alt="Blender">Deploy from Blender</logo-header>
+
+Needle Cloud is integrated into Blender. This allows you to deploy your apps directly from Blender to Needle Cloud.
+
+1. **Install the Blender integration, if you haven't already.**  
+   See [this page](./../blender/) for more info.
+
+2. **Find the `Needle Engine` panel in the scene tab.**  
+   This panel is used to configure the export settings for your web project and app.
+
+3. **Click on `Upload to Needle Cloud`.**  
+   This will build your app, and upload it to Needle Cloud.
+
+   ![Needle Cloud Blender Integration](/blender/blender-deploy-to-needle-cloud.webp)
 
 ## <logo-header logo="/imgs/needle-logo.webp" alt="Needle Cloud">Deploy from the CLI</logo-header>
 
