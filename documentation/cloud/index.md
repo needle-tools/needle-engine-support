@@ -83,7 +83,7 @@ Needle Cloud is integrated into the Unity Editor. This allows you to deploy your
 3. **Click on `Upload to Needle Cloud`.**   
    This will build your app, and upload it to Needle Cloud. You can also choose to deploy to a specific team and project. The _upload name_ of the project, visible next to the button, is saved in the scene. Future uploads will use the same upload name, and all uploaded versions will be grouped together on the Needle Cloud website.   
    
-   ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v1.webp)
+   ![Needle Cloud Unity Integration](/cloud/cloud-deploy-v3.webp)
 
 ## <logo-header logo="/imgs/needle-logo.webp" alt="Needle Cloud">Deploy from the CLI</logo-header>
 

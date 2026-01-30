@@ -55,7 +55,7 @@ Needle Cloud provides instant deployment, automatic HTTPS, and seamless integrat
 
 Your project will be live at `https://<your-project-name>.needle.run` with automatic updates on every deployment.
 
-![Deploy to Needle Cloud from Unity](/cloud/cloud-deploy-v1.webp)
+![Deploy to Needle Cloud from Unity](/cloud/cloud-deploy-v3.webp)
 
 **Features:**
 - **Instant deployment** – Get your project online in seconds
