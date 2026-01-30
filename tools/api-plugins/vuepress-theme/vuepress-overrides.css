@@ -1,0 +1,302 @@
+/**
+ * VuePress-style overrides for TypeDoc
+ * Makes TypeDoc output match VuePress theme styling
+ */
+
+:root {
+    /* VuePress color palette */
+    --vp-c-brand: #42b883;
+    --vp-c-brand-light: #42d392;
+    --vp-c-brand-lighter: #35eb9a;
+    --vp-c-brand-lightest: #95f0c9;
+    --vp-c-brand-dark: #33a06f;
+    --vp-c-brand-darker: #155f47;
+    --vp-c-brand-darkest: #064e3b;
+
+    /* Typography */
+    --vp-font-family-base: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+    --vp-font-family-mono: "JetBrains Mono", Menlo, Monaco, Consolas, "Courier New", monospace;
+
+    /* Spacing */
+    --vp-navbar-height: 60px;
+
+    /* Override TypeDoc colors */
+    --color-accent: var(--vp-c-brand);
+    --color-accent-hover: var(--vp-c-brand-light);
+}
+
+/* Dark mode colors */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --vp-c-bg: #1a1a1a;
+        --vp-c-bg-soft: #242424;
+        --vp-c-bg-mute: #2c2c2c;
+    }
+
+    .vp-logo-light {
+        display: none;
+    }
+    .vp-logo-dark {
+        display: block;
+    }
+}
+
+/* Light mode */
+@media (prefers-color-scheme: light) {
+    .vp-logo-light {
+        display: block;
+    }
+    .vp-logo-dark {
+        display: none;
+    }
+}
+
+/* Base typography to match VuePress */
+body {
+    font-family: var(--vp-font-family-base) !important;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+code, pre {
+    font-family: var(--vp-font-family-mono) !important;
+}
+
+/* VuePress Navbar */
+.vp-navbar-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    background: #fff;
+    border-bottom: 1px solid #e2e8f0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+}
+
+@media (prefers-color-scheme: dark) {
+    .vp-navbar-wrapper {
+        background: var(--vp-c-bg);
+        border-bottom-color: #2c2c2c;
+    }
+}
+
+.vp-navbar {
+    padding: 0;
+}
+
+.vp-navbar-container {
+    max-width: 1440px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--vp-navbar-height);
+}
+
+.vp-navbar-left {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.vp-navbar-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.vp-navbar-logo img {
+    height: 28px;
+    width: auto;
+}
+
+.vp-navbar-title {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-left: 8px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .vp-navbar-title {
+        color: #fff;
+    }
+}
+
+.vp-navbar-nav {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.vp-navbar-nav a {
+    color: #2c3e50;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s;
+    white-space: nowrap;
+}
+
+.vp-navbar-nav a:hover {
+    color: var(--vp-c-brand);
+}
+
+.vp-navbar-nav a.active {
+    color: var(--vp-c-brand);
+}
+
+@media (prefers-color-scheme: dark) {
+    .vp-navbar-nav a {
+        color: rgba(255, 255, 255, 0.9);
+    }
+}
+
+/* Adjust main content to account for fixed navbar */
+.container {
+    margin-top: var(--vp-navbar-height) !important;
+}
+
+/* VuePress Breadcrumb */
+.vp-breadcrumb {
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 24px;
+    padding: 12px 0;
+}
+
+.vp-breadcrumb a {
+    color: var(--vp-c-brand);
+    text-decoration: none;
+}
+
+.vp-breadcrumb a:hover {
+    text-decoration: underline;
+}
+
+.vp-breadcrumb-separator {
+    margin: 0 8px;
+}
+
+/* TypeDoc page title styling to match VuePress */
+.tsd-page-title h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tsd-page-title h1 {
+        color: #fff;
+    }
+}
+
+/* Links to match VuePress brand color */
+a {
+    color: var(--vp-c-brand);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--vp-c-brand-light);
+    text-decoration: underline;
+}
+
+/* Code blocks to match VuePress */
+pre code {
+    background: #f6f8fa;
+    border-radius: 6px;
+    padding: 16px;
+    display: block;
+    overflow-x: auto;
+}
+
+@media (prefers-color-scheme: dark) {
+    pre code {
+        background: #161618;
+    }
+}
+
+/* Inline code */
+code {
+    background: rgba(66, 184, 131, 0.1);
+    color: var(--vp-c-brand-darker);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+@media (prefers-color-scheme: dark) {
+    code {
+        background: rgba(66, 184, 131, 0.15);
+        color: var(--vp-c-brand-lightest);
+    }
+}
+
+/* Buttons and interactive elements */
+.tsd-accordion-summary,
+.tsd-signature {
+    border-color: #e2e8f0 !important;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tsd-accordion-summary,
+    .tsd-signature {
+        border-color: #2c2c2c !important;
+    }
+}
+
+/* Sidebar styling */
+.col-sidebar {
+    background: #fafafa;
+    border-right: 1px solid #e2e8f0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .col-sidebar {
+        background: var(--vp-c-bg-soft);
+        border-right-color: #2c2c2c;
+    }
+}
+
+/* Navigation items */
+.tsd-navigation a {
+    color: #2c3e50;
+    transition: all 0.2s;
+}
+
+.tsd-navigation a:hover,
+.tsd-navigation a.current {
+    color: var(--vp-c-brand);
+    background: rgba(66, 184, 131, 0.08);
+}
+
+@media (prefers-color-scheme: dark) {
+    .tsd-navigation a {
+        color: rgba(255, 255, 255, 0.8);
+    }
+}
+
+/* Responsive navbar */
+@media (max-width: 960px) {
+    .vp-navbar-nav {
+        display: none;
+    }
+}
+
+/* Footer styling */
+.tsd-generator {
+    border-top: 1px solid #e2e8f0;
+    padding: 24px 0;
+    margin-top: 48px;
+}
+
+@media (prefers-color-scheme: dark) {
+    .tsd-generator {
+        border-top-color: #2c2c2c;
+    }
+}

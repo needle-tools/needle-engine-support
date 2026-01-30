@@ -298,6 +298,7 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
             "./tools/api-plugins/keywords/index.js",
             "./tools/api-plugins/plausible/index.js",
             "./tools/api-plugins/component-lookup/index.js",
+            "./tools/api-plugins/vuepress-theme/index.js",
         ],
         keywords: ["typescript", "library", "threejs", "webgl", "engine", "browser", "webxr", "api"],
         footerDate: true,
@@ -328,6 +329,15 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
         console.log("Generating documentation");
         await app.generateDocs(project, outputDirectory);
         await app.generateJson(project, outputDirectory + "/api.json");
+
+        // Copy VuePress theme CSS to output directory
+        const vuepressCssSource = process.cwd() + "/tools/api-plugins/vuepress-theme/vuepress-overrides.css";
+        const vuepressCssTarget = outputDirectory + "/vuepress-overrides.css";
+        if (existsSync(vuepressCssSource)) {
+            fs.copyFileSync(vuepressCssSource, vuepressCssTarget);
+            console.log("Copied VuePress theme CSS to output directory");
+        }
+
         return outputDirectory;
     }
 
