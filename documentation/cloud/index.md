@@ -43,25 +43,25 @@ Needle Cloud offers significant advantages over traditional hosting solutions li
 
 ### Key Benefits
 
-**🌍 Global CDN Performance**
+**🌍 Global CDN Performance**  
 Your apps and assets are served from servers closest to your users worldwide. No need to configure or pay for CDN separately—it's included.
 
-**⚡ Automatic Optimization**
+**⚡ Automatic Optimization**  
 Upload any format (glTF, USD, FBX, VRM) and get automatic compression with Draco, KTX2, and Progressive Loading. Saves ~90% bandwidth and memory compared to unoptimized files.
 
-**🏷️ Version Control & Preview URLs**
+**🏷️ Version Control & Preview URLs**  
 Every upload gets a unique URL. Label versions as `main`, `experimental`, or `dev`. Share a labeled link once—it auto-updates when you move the label. Perfect for client reviews.
 
-**🚀 Deploy from Anywhere**
+**🚀 Deploy from Anywhere**  
 One-click from Unity, command-line from any web project, or automated via GitHub Actions. No manual FTP uploads or SSH commands.
 
-**🔒 Built-in Security**
+**🔒 Built-in Security**  
 Password-protect projects with one click. Role-based access control for teams. Private by default—not a marketplace or social network.
 
-**👥 Team Collaboration**
+**👥 Team Collaboration**  
 Multiple team members can deploy and manage assets. Role-based permissions (Owner, Manager, Member, Billing) ensure the right access levels.
 
-**🤖 CI/CD Ready**
+**🤖 CI/CD Ready**  
 Deploy automatically on every commit with GitHub Actions integration or custom CI/CD pipelines via the CLI.
 
 :::tip Perfect for Agencies & Studios
