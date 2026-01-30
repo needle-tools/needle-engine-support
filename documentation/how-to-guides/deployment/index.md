@@ -40,6 +40,34 @@ Can't find what you're looking for? Let us know in our [forum](https://forum.nee
 
 ## Deployment Options
 
+### <logo-header logo="/imgs/needle-logo.webp" alt="Needle Cloud">Deploy to Needle Cloud</logo-header>
+
+**Official Needle hosting** – The fastest way to get your Needle Engine projects online with built-in networking support.
+
+Needle Cloud provides instant deployment, automatic HTTPS, and seamless integration with multiplayer and networking features.
+
+:::details Unity: Deploy to Needle Cloud
+
+1. Add the **Needle Engine** component to your scene (if not already present)
+2. Click **Upload to Needle Cloud** in the component inspector
+3. Sign in to your Needle Cloud account when prompted
+4. Choose your team and project name, then click **Upload**
+
+Your project will be live at `https://<your-project-name>.needle.run` with automatic updates on every deployment.
+
+![Deploy to Needle Cloud from Unity](/cloud/cloud-deploy-v1.webp)
+
+**Features:**
+- **Instant deployment** – Get your project online in seconds
+- **Built-in networking** – Multiplayer and real-time features work out of the box
+- **Automatic HTTPS** – Secure connections by default
+- **Version management** – Keep track of all your deployments
+- **Custom domains** – Use your own domain name (Pro plan)
+
+:::
+
+**Learn more:** [Needle Cloud Documentation](/docs/cloud/)
+
 ### <logo-header logo="/imgs/netlify-logo.webp" alt="Netlify">Deploy to Netlify</logo-header>
 
 Professional hosting with custom domains, automatic HTTPS, and continuous deployment.
