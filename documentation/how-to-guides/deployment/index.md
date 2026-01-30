@@ -57,14 +57,27 @@ Your project will be live at `https://<your-project-name>.needle.run` with autom
 
 ![Deploy to Needle Cloud from Unity](/cloud/cloud-deploy-v3.webp)
 
+:::
+
+:::details Blender: Deploy to Needle Cloud
+
+1. Open the **Needle Engine** panel in your scene (if not already present)
+2. Sign in to your Needle Cloud account when prompted
+3. Then click **Upload to Needle Cloud**
+
+Your project will be live at `https://<your-blendfile-name>.needle.run` with automatic updates on every deployment.  
+Note: The deployment url will by default be based on your blend file name.
+
+![Deploy to Needle Cloud from Blender](/blender/blender-deploy-to-needle-cloud.webp)
+
+:::
+
 **Features:**
 - **Instant deployment** – Get your project online in seconds
 - **Built-in networking** – Multiplayer and real-time features work out of the box
 - **Automatic HTTPS** – Secure connections by default
 - **Version management** – Keep track of all your deployments
 - **Custom domains** – Use your own domain name (Pro plan)
-
-:::
 
 **Learn more:** [Needle Cloud Documentation](/docs/cloud/)
 
