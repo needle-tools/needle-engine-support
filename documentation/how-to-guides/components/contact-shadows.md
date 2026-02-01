@@ -229,43 +229,43 @@ Disabling this can reduce shadow artifacts but may make shadows look less comple
 
 ## Common Questions
 
-**How do contact shadows differ from regular shadows?**
+**How do contact shadows differ from regular shadows?** 
 Contact shadows are soft, ground-plane-only shadows that enhance depth perception. They don't cast onto other objects like traditional shadow mapping does.
 
-**Do contact shadows work in VR/AR?**
+**Do contact shadows work in VR/AR?** 
 Yes! Contact shadows render correctly in WebXR environments.
 
-**Can I have multiple ContactShadows in one scene?**
+**Can I have multiple ContactShadows in one scene?** 
 Generally you should only have one ContactShadows instance per scene. Use `ContactShadows.auto()` which creates only one instance.
 
-**Why are my shadows not appearing?**
+**Why are my shadows not appearing?** 
 Check that objects have visible geometry and aren't marked as transparent or wireframe. Use `?debugcontactshadows` URL parameter for diagnostics.
 
-**How do I adjust shadow size?**
+**How do I adjust shadow size?**  
 If using **Auto Fit**, shadows automatically cover the scene. Otherwise, scale the GameObject to define the shadow area.
 
-**Are contact shadows expensive?**
+**Are contact shadows expensive?**  
 They're more efficient than full shadow mapping but do require rendering the scene from below each frame. Use **Manual Update** for static scenes to improve performance.
 
-**Can contact shadows follow moving objects?**
+**Can contact shadows follow moving objects?**  
 Yes, shadows update automatically by default. For moving objects in otherwise static scenes, use manual updates and trigger `needsUpdate` when objects move.
 
 ## Performance Tips
 
-**Static Scenes:**
+**Static Scenes:**  
 Enable manual updates and only update when needed:
 ```ts
 shadows.manualUpdate = true;
 shadows.needsUpdate = true; // Only when scene changes
 ```
 
-**Reduce Texture Size:**
+**Reduce Texture Size:**  
 Shadows use a 512×512 render target by default. This is hardcoded but provides good quality/performance balance.
 
-**Adjust Blur:**
+**Adjust Blur:**  
 Lower blur values render faster. Start with `blur: 2.0` and increase only if needed.
 
-**Selective Rendering:**
+**Selective Rendering:**  
 Objects marked with certain properties (wireframe, colorWrite:false) are automatically excluded from shadow rendering.
 
 ## Debugging
@@ -283,12 +283,12 @@ This logs:
 
 ## More Information
 
-**Live Example:**
+**Live Example:**  
 - [Contact Shadows Sample](https://samples.needle.tools/contact-shadows) - Interactive demo with controls
 
-**API Documentation:**
+**API Documentation:**  
 - [ContactShadows API](https://engine.needle.tools/docs/api/ContactShadows) - Complete technical reference
 
-**Related Components:**
+**Related Components:**  
 - [Light](/docs/reference/components#light) - Traditional lighting and shadows
 - [GroundProjectedEnv](/docs/reference/components#groundprojectedenv) - Ground-projected environment reflections
