@@ -8,7 +8,7 @@ head:
 
 # Page Moved
 
-This page has moved to **[How-To Guides: Everywhere Actions](/how-to-guides/everywhere-actions/)**.
+This page has moved to **[How-To Guides: Everywhere Actions](/docs/how-to-guides/everywhere-actions/)**.
 
 You will be redirected automatically in a moment...
 

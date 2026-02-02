@@ -77,7 +77,7 @@ Needle Engine provides full WebXR support on iPhone and iPad through [App Clip t
 
 **Alternative: Everywhere Actions**
 
-For USDZ/QuickLook-based iOS AR experiences, see [Everywhere Actions](/how-to-guides/everywhere-actions/). This approach uses Apple's native 3D format and supports a subset of functionality including spatial audio, animations, and interactions.
+For USDZ/QuickLook-based iOS AR experiences, see [Everywhere Actions](/docs/how-to-guides/everywhere-actions/). This approach uses Apple's native 3D format and supports a subset of functionality including spatial audio, animations, and interactions.
 
 ### Supported Devices & Browsers
 
