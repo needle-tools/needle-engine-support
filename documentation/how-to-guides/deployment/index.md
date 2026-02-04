@@ -329,7 +329,7 @@ This approach may require duplicate code (C# for Unity, TypeScript for Needle En
 
 ### Needle Engine Command Line Arguments for Unity
 
-Needle Engine for Unity supports command-line arguments for batch exports and builds.
+Needle Engine for Unity supports command-line arguments for batch exports and builds using -batchmode (headless/CLI options).
 
 **Available Options:**
 
