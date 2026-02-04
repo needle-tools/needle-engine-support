@@ -347,7 +347,7 @@ Please refer to the [Unity Commandline Arguments documentation](https://docs.uni
 **Example Usage:**
 
 ```bash
-Unity.exe -batchmode -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit   
+Unity.exe -batchmode -executeMethod Needle.Engine.ActionsBatch.Execute -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit   
 ```
 
 ---
