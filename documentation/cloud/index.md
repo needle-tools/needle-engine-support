@@ -156,6 +156,16 @@ npx needle-cloud deploy '/path/to/output' \
   --token '<access_token>'
 ```
 
+### Starting the Needle License Server
+
+For CI/CD systems and automated builds, you can start the Needle license server using:
+
+```bash
+npx --yes needle-cloud start-server
+```
+
+This is required when running automated builds on CI/CD systems to validate your Needle Engine PRO license.
+
 ### Getting Help
 
 ```bash

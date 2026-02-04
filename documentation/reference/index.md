@@ -51,12 +51,14 @@ Reference documentation is **information-oriented** and provides:
 - [needle.config.json](/docs/reference/needle-config-json) - Project configuration file
 - [Needle Engine Attributes](/docs/reference/needle-engine-attributes) - Component attributes and metadata
 - [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable and other decorators
+- [Needle Cloud](/docs/cloud/) - Official hosting platform and license server
 
 
 
 ## Platform & Format Support
 
 - [Features Overview](/docs/explanation/core-concepts/features-overview) - Complete feature matrix
+- [Needle Cloud](/docs/cloud/) - Official hosting platform and license server
 
 
 

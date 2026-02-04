@@ -327,28 +327,34 @@ In **Project Settings → Needle Engine**, toggle **Override Play Mode** and **O
 This approach may require duplicate code (C# for Unity, TypeScript for Needle Engine). The amount of extra work depends on your project complexity.
 :::
 
-### Needle Engine Command Line Arguments for Unity (**Requires PRO license**)
+### Needle Engine Command Line Arguments for Unity
 
-Needle Engine for Unity supports command-line arguments for batch exports and builds using -batchmode (headless/CLI options).
+Needle Engine for Unity supports command-line arguments for batch exports and builds using -batchmode (headless/CLI options).  
+
+**Note**: A Needle Engine PRO license is required for command-line builds.   
 
 **Available Options:**
 
 | Argument | Description |
 | -- | -- |
 | `-executeMethod Needle.Engine.ActionsBatch.Execute` | **required** — Tells Needle Engine to run batch processing |
-| `-teamId <teamId>` | **required** — Needle Cloud team id |
+| `-teamId <teamId>` | **required** — Your Needle Cloud team id. Get via [Needle Cloud](https://cloud.needle.tools/team#edit) |
 | `-scene` | **required** — Path to a scene or asset to export<br/>Example: `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
 | `-outputPath <path>` |  **required** — Set the output path for the build<br/>Example: `-outputPath path/to/output.glb` |
-| `-buildProduction` | Run a production build |
-| `-buildDevelopment` | Run a development build |
+| `-buildProduction` | **optional** — Run a production build. Only used for Unity scenes. Either `-buildProduction` or `-buildDevelopment` must be specified. |
+| `-buildDevelopment` | **optional** — Run a development build. Only used for Unity scenes. Either `-buildProduction` or `-buildDevelopment` must be specified. |
 | `-debug` | Open a console window for debugging |  
 
 Please refer to the [Unity Commandline Arguments documentation](https://docs.unity3d.com/Documentation/Manual/CommandLineArguments.html) for Unity specific options.
 
+:::tip Needle License Server
+For automated builds on CI/CD systems make sure the Needle License server is running. See [Needle License Server Documentation](/docs/how-to-guideslicense-server/) for setup instructions.
+:::
+
 **Example Usage:**
 
 ```bash
-Unity.exe -batchmode -executeMethod Needle.Engine.ActionsBatch.Execute -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit   
+Unity.exe -batchmode -executeMethod Needle.Engine.ActionsBatch.Execute -teamId <teamId> -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit   
 ```
 
 ---
