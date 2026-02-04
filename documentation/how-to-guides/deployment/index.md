@@ -335,8 +335,9 @@ Needle Engine for Unity supports command-line arguments for batch exports and bu
 
 | Argument | Description |
 | -- | -- |
-| `-scene` | Path to a scene or asset to export<br/>Example: `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
-| `-outputPath <path>` | Set the output path for the build<br/>Example: `-outputPath path/to/output.glb` |
+| `-executeMethod Needle.Engine.ActionsBatch.Execute` | **required** — Tells Needle Engine to run batch processing |
+| `-scene` | **required** — Path to a scene or asset to export<br/>Example: `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
+| `-outputPath <path>` |  **required** — Set the output path for the build<br/>Example: `-outputPath path/to/output.glb` |
 | `-buildProduction` | Run a production build |
 | `-buildDevelopment` | Run a development build |
 | `-debug` | Open a console window for debugging |  
