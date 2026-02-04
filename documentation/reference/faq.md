@@ -30,7 +30,21 @@ Open `Addon Preferences/Needle Engine` to get to the Needle Engine addon setting
 
 Note: You might need to restart the local webserver to apply the license.
 
+## License not found in CI/CD builds
 
+**Problem:** When running automated builds on CI/CD systems (GitHub Actions, GitLab CI, etc.), you may encounter "license not found" errors even with a valid Needle Engine PRO license.
+
+**Solution:** Start the Needle License Server before running your build:
+
+```bash
+npx --yes needle-cloud start-server
+```
+
+This command validates your Needle Engine PRO license and allows automated builds to proceed.
+
+**Why is this needed?** CI/CD environments are headless and can't use the standard Unity Editor license validation. The license server provides an alternative authentication method specifically designed for automated workflows.
+
+**Learn more:** [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server)
 
 ## My local website shows an SSL error e.g. 'Your connection is not private'
 

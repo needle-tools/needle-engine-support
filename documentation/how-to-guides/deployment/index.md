@@ -348,7 +348,7 @@ Needle Engine for Unity supports command-line arguments for batch exports and bu
 Please refer to the [Unity Commandline Arguments documentation](https://docs.unity3d.com/Documentation/Manual/CommandLineArguments.html) for Unity specific options.
 
 :::tip Needle License Server
-For automated builds on CI/CD systems make sure the Needle License server is running. See [Needle License Server Documentation](/docs/how-to-guideslicense-server/) for setup instructions.
+For automated builds on CI/CD systems make sure the Needle License server is running. See [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server) for setup instructions.
 :::
 
 **Example Usage:**
