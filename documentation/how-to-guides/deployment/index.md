@@ -339,12 +339,14 @@ Needle Engine for Unity supports command-line arguments for batch exports and bu
 | `-outputPath <path>` | Set the output path for the build<br/>Example: `-outputPath path/to/output.glb` |
 | `-buildProduction` | Run a production build |
 | `-buildDevelopment` | Run a development build |
-| `-debug` | Open a console window for debugging |
+| `-debug` | Open a console window for debugging |  
+
+Please refer to the [Unity Commandline Arguments documentation](https://docs.unity3d.com/Documentation/Manual/CommandLineArguments.html) for Unity specific options.
 
 **Example Usage:**
 
 ```bash
-Unity.exe -batchmode -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit
+Unity.exe -batchmode -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit   
 ```
 
 ---
