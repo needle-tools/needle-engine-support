@@ -22,6 +22,7 @@ The table below shows a list of available attributes and their descriptions.
 | `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
 | `hide-loading-overlay` | **PRO** — Do not show the loading overlay |
 | `logo-src` | **PRO** — Change the logo image (e.g. `https://yourdomain.com/logo.png` or `/logo.png`). This logo will then be used in the QR code and XR session loading |
+| `qrcode-logo-src` | **PRO** – Change the logo image for the QR code (e.g. `https://yourdomain.com/logo.png` or `/logo.png`). If not provided the `logo-src` attribute will be used.
 | **Events** | |
 | `loadstart` | Name of the function to call when loading starts. Note that the arguments are `(ctx:Context, evt:Event)`. You can call `evt.preventDefault()` to hide the default loading overlay | 
 | `progress` | Name of the function to call when loading updates. `onProgress(ctx:Context, evt: {detail: {context:Context, name:string, index:number, count:number, totalProgress01:number, progress:ProgressEvent}) { ... }`   |
