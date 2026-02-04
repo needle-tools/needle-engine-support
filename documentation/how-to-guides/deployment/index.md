@@ -327,7 +327,7 @@ In **Project Settings → Needle Engine**, toggle **Override Play Mode** and **O
 This approach may require duplicate code (C# for Unity, TypeScript for Needle Engine). The amount of extra work depends on your project complexity.
 :::
 
-### Needle Engine Command Line Arguments for Unity
+### Needle Engine Command Line Arguments for Unity (**Requires PRO license**)
 
 Needle Engine for Unity supports command-line arguments for batch exports and builds using -batchmode (headless/CLI options).
 
@@ -336,6 +336,7 @@ Needle Engine for Unity supports command-line arguments for batch exports and bu
 | Argument | Description |
 | -- | -- |
 | `-executeMethod Needle.Engine.ActionsBatch.Execute` | **required** — Tells Needle Engine to run batch processing |
+| `-teamId <teamId>` | **required** — Needle Cloud team id |
 | `-scene` | **required** — Path to a scene or asset to export<br/>Example: `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
 | `-outputPath <path>` |  **required** — Set the output path for the build<br/>Example: `-outputPath path/to/output.glb` |
 | `-buildProduction` | Run a production build |
