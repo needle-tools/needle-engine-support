@@ -110,7 +110,7 @@ Your Needle Engine project works automatically on iOS with image tracking enable
 
 ### <logo-header logo="/imgs/android-logo.webp" alt="Android">Android: Browser Flag Required</logo-header>
 
-Android uses the WebXR Image Tracking API, which is currently in draft specification status ([Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)).
+Android uses the WebXR Image Tracking API, which is currently in draft specification status ([Marker Tracking Explainer](https://github.com/immersive-web/image-tracking/blob/main/explainer.md)).
 
 **Requirements:**
 - Enable `WebXR Incubations` flag in Chrome (`chrome://flags/#webxr-incubations`)
@@ -205,7 +205,7 @@ Image tracking opens up many creative possibilities:
 
 **Resources:**
 - [Live Demo](https://engine.needle.tools/samples/image-tracking) - Try it now
-- [WebXR Marker Tracking Explainer](https://github.com/immersive-web/marker-tracking/blob/main/explainer.md)
+- [WebXR Marker Tracking Explainer](https://github.com/immersive-web/image-tracking/blob/main/explainer.md)
 - [WebXR Device API](https://www.w3.org/TR/webxr/)
 - [caniuse: WebXR](https://caniuse.com/webxr)
 
