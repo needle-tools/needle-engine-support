@@ -364,7 +364,7 @@ export default {
             displayText = 'Reference'
           }
 
-          this.breadcrumbs.push({ text: displayText, link: segmentPath })
+          this.breadcrumbs.push({ text: displayText, link: '/docs' + segmentPath })
         }
       }
 
@@ -471,7 +471,7 @@ export default {
               parentText = 'All Reference'
             }
 
-            foundParent = { text: parentText, link: parentPath }
+            foundParent = { text: parentText, link: '/docs' + parentPath }
             break
           }
         }
