@@ -53,9 +53,16 @@ Android devices support WebXR Image Tracking through Chrome with a browser flag 
 
 Start the scene below in AR and point your phone's camera at the image marker on a screen, or print it out.
 
-<img src="https://image-tracking-zubckszr0qj2.needle.run/assets/image-marker.jpg" alt="Image Marker" style="max-width: 300px" />
+<div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
+<div style="flex: 1; max-width: 300px;"> 
+    <img src="https://image-tracking-zubckszr0qj2.needle.run/assets/imagetracking-01-marker.jpg" alt="Image Marker" style="height: auto; display: block;" />
+</div>
+<div style="flex: 1; max-width: 300px;">
+    <img src="https://image-tracking-zubckszr0qj2.needle.run/assets/imagetracking-02-marker.png" alt="Image Marker" style="height: auto; display: block; " />
+</div>
+</div>
 
-<a href="/docs/imgs/imagetracking-handout.pdf" target="_blank">Download printable marker (PDF)</a>
+<a href="/docs/imgs/imagetracking-handout.pdf" target="_blank">Download printable marker 1 (PDF)</a> – <a href="/docs/imgs/imagetracking-handout-2.pdf" target="_blank">Download printable marker 2 (PDF)</a>
 
 <sample src="https://image-tracking-zubckszr0qj2.needle.run/" />
 
