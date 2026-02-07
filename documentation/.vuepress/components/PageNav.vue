@@ -569,11 +569,19 @@ export default {
         }, 2000)
       } catch (err) {
         console.error('Failed to copy:', err)
-        this.linkText = 'Copy failed'
+
+        // Provide a more helpful error message
+        if (err.name === 'NotAllowedError' || err.message?.includes('permission')) {
+          this.linkText = 'Clipboard access denied'
+        } else if (err.message?.includes('fetch') || err.message?.includes('Failed to fetch')) {
+          this.linkText = 'Failed to fetch content'
+        } else {
+          this.linkText = 'Copy failed: ' + (err.message || 'Unknown error')
+        }
 
         setTimeout(() => {
           this.linkText = DEFAULT_LINK_TEXT
-        }, 2000)
+        }, 3000)
       }
     }
   }
