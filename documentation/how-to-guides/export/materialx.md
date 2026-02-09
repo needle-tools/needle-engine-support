@@ -144,7 +144,8 @@ function load(mtlx_url) {
     .then((res) => res.text())
     .then((mtlx) => {
         const loader = new TextureLoader();
-        Experimental_API.createMaterialXMaterial(mtlx, '', {
+        const materialNameOrIndex = 0;
+        Experimental_API.createMaterialXMaterial(mtlx, materialNameOrIndex, {
             getTexture: async (url) => {
                 return await loader.loadAsync(dir + url);
             },
