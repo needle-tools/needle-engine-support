@@ -5,8 +5,6 @@ description: Install Needle Engine and create your first interactive 3D web expe
 next: ../project-structure.md
 ---
 
-<br/>
-
 <discountbanner />
 
 # Getting Started with Needle Engine
@@ -191,6 +189,11 @@ After completing your first project, explore these tutorials:
 - **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript for custom components
 - **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Add interactivity with code
 - **[Deploy Your Project](/docs/how-to-guides/deployment/)** - Publish your 3D experience to the web
+
+1. **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript for custom components
+2. **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Add interactivity with code
+3. **[Deploy Your Project](/docs/how-to-guides/deployment/)** - Publish your 3D experience to the web
+
 
 ---
 

@@ -16,7 +16,7 @@ description: Task-oriented guides for solving specific problems
 
 ## What are How-To Guides?
 
-How-To Guides are **task-oriented** instructions for competent users. They are:
+How-To Guides are **task-oriented** instructions. They are:
 - Focused on accomplishing specific goals
 - Action-oriented with clear steps
 - Assume you understand the basics

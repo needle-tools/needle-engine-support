@@ -1,25 +1,18 @@
 <template>
-  <div class="page-nav-container">
-    <!-- Mobile hamburger menu button -->
-    <button class="page-nav-toggle" @click="toggleMobileSidebar" :class="{ 'is-open': isMobileSidebarOpen }">
-      <span class="hamburger-icon">
-        <span></span>
-        <span></span>
-        <span></span>
-      </span>
+  <div :class="['page-nav-container', { 'menu-open': mobileSidebarOpen }]">
+    <!-- Mobile hamburger button - fixed position in navbar area -->
+    <button 
+      :class="['mobile-menu-btn', { open: mobileSidebarOpen }]" 
+      @click="toggleMobileSidebar" 
+      aria-label="Toggle menu"
+    >
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
     </button>
 
-    <!-- Overlay for mobile sidebar -->
-    <div class="page-nav-overlay" v-if="isMobileSidebarOpen" @click="closeMobileSidebar"></div>
-
-    <!-- Desktop sidebar navigation -->
-    <aside class="page-nav page-nav-sidebar" :class="{ 'is-open': isMobileSidebarOpen }">
-      <!-- Close button for mobile -->
-      <button class="page-nav-close" @click="closeMobileSidebar">×</button>
-
-      <!-- Table of Contents header -->
-      <div class="page-nav-toc-header">Table of Contents</div>
-
+    <!-- Desktop sidebar navigation - only visible on screens >= 1024px -->
+    <aside class="page-nav page-nav-sidebar">
       <!-- Back to parent link -->
       <div class="page-nav-header" v-if="parentLink">
         <a :href="parentLink.link" class="parent-link" @click.prevent="handleParentLinkClick">
@@ -30,11 +23,11 @@
 
       <!-- On this page -->
       <div class="page-nav-content">
-        <p class="page-nav-title">On this page</p>
+        <p class="section-header">On this page</p>
         <ul class="page-nav-list">
           <li v-for="header in headers" :key="header.slug"
             :class="['page-nav-item', `level-${header.level}`, { active: activeHeader === header.slug }]">
-            <a :href="`#${header.slug}`" class="page-nav-link" @click.prevent="handleNavClick(header.slug)">
+            <a :href="`#${header.slug}`" class="page-nav-link" @click.prevent="scrollToHeader(header.slug)">
               {{ header.title }}
             </a>
           </li>
@@ -43,7 +36,52 @@
 
       <!-- Extras -->
       <div class="page-nav-extras">
-        <p class="page-nav-title">Extras</p>
+        <p class="section-header">Extras</p>
+        <div class="llm-link-container">
+          <a :href="mdPath" class="llm-link" @click.prevent="copyToClipboard">{{ linkText }}</a>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Mobile sidebar panel (no overlay) -->
+    <aside :class="['mobile-sidebar', { open: mobileSidebarOpen }]">
+      <!-- Back to parent link -->
+      <div class="page-nav-header" v-if="parentLink">
+        <a :href="parentLink.link" class="parent-link" @click="handleMobileParentLinkClick">
+          <span class="back-arrow">←</span>
+          <span>{{ parentLink.text }}</span>
+        </a>
+      </div>
+
+      <!-- Main Navigation Links -->
+      <div class="mobile-nav-section">
+        <p class="section-header">Navigation</p>
+        <ul class="mobile-nav-list">
+          <li><a href="/docs/getting-started/" @click="closeMobileSidebar">Getting Started</a></li>
+          <li><a href="/docs/tutorials/" @click="closeMobileSidebar">Tutorials</a></li>
+          <li><a href="/docs/how-to-guides/" @click="closeMobileSidebar">How-To Guides</a></li>
+          <li><a href="/docs/explanation/" @click="closeMobileSidebar">Explanation</a></li>
+          <li><a href="/docs/reference/" @click="closeMobileSidebar">Reference</a></li>
+          <li><a href="/docs/help/" @click="closeMobileSidebar">Help</a></li>
+        </ul>
+      </div>
+
+      <!-- On this page -->
+      <div class="mobile-nav-section" v-if="headers.length > 0">
+        <p class="section-header">On this page</p>
+        <ul class="page-nav-list">
+          <li v-for="header in headers" :key="'mobile-' + header.slug"
+            :class="['page-nav-item', `level-${header.level}`, { active: activeHeader === header.slug }]">
+            <a :href="`#${header.slug}`" class="page-nav-link" @click="scrollToHeaderMobile(header.slug)">
+              {{ header.title }}
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Extras -->
+      <div class="mobile-nav-section">
+        <p class="section-header">Extras</p>
         <div class="llm-link-container">
           <a :href="mdPath" class="llm-link" @click.prevent="copyToClipboard">{{ linkText }}</a>
         </div>
@@ -70,7 +108,7 @@ export default {
       prevHeaders: [],
       nextHeaders: [],
       updateHeadersTimeout: null,
-      isMobileSidebarOpen: false
+      mobileSidebarOpen: false
     }
   },
 
@@ -132,9 +170,6 @@ export default {
 
     // Update headers when route changes
     this.$router?.afterEach(() => {
-      // Close mobile sidebar on route change
-      this.closeMobileSidebar()
-      
       // Use multiple nextTicks and a timeout to ensure content is fully rendered
       this.$nextTick(() => {
         this.extractHeaders()
@@ -147,6 +182,9 @@ export default {
 
           // Handle hash in URL after route change
           this.handleInitialHash()
+          
+          // Close mobile sidebar on navigation
+          this.mobileSidebarOpen = false
         }, 1000)
       })
     })
@@ -160,7 +198,7 @@ export default {
     if (this.observer) {
       this.observer.disconnect()
     }
-    // Reset body overflow in case sidebar was open
+    // Restore body scroll
     document.body.style.overflow = ''
   },
 
@@ -287,25 +325,6 @@ export default {
       }
     },
 
-    handleNavClick(slug) {
-      this.scrollToHeader(slug)
-      this.closeMobileSidebar()
-    },
-
-    toggleMobileSidebar() {
-      this.isMobileSidebarOpen = !this.isMobileSidebarOpen
-      if (this.isMobileSidebarOpen) {
-        document.body.style.overflow = 'hidden'
-      } else {
-        document.body.style.overflow = ''
-      }
-    },
-
-    closeMobileSidebar() {
-      this.isMobileSidebarOpen = false
-      document.body.style.overflow = ''
-    },
-
     handleParentLinkClick() {
       // Navigate to parent link
       // Scroll position is now saved automatically by router.beforeEach in client.ts
@@ -317,6 +336,28 @@ export default {
           window.location.href = this.parentLink.link
         }
       }
+    },
+
+    // Mobile sidebar methods
+    toggleMobileSidebar() {
+      this.mobileSidebarOpen = !this.mobileSidebarOpen
+    },
+
+    closeMobileSidebar() {
+      this.mobileSidebarOpen = false
+    },
+
+    handleMobileParentLinkClick() {
+      this.closeMobileSidebar()
+      this.handleParentLinkClick()
+    },
+
+    scrollToHeaderMobile(slug) {
+      this.closeMobileSidebar()
+      // Small delay to allow sidebar to close before scrolling
+      setTimeout(() => {
+        this.scrollToHeader(slug)
+      }, 100)
     },
 
     navigateToPage(link) {
@@ -487,6 +528,7 @@ export default {
               parentText = 'All Reference'
             }
 
+            // Prepend /docs/ to the parent link path
             foundParent = { text: parentText, link: '/docs' + parentPath }
             break
           }
@@ -609,114 +651,79 @@ export default {
   position: relative;
 }
 
-/* Table of Contents header */
-.page-nav-toc-header {
+/* Mobile hamburger button - fixed position in navbar area */
+.mobile-menu-btn {
+  display: none; /* Hidden on desktop */
+  position: fixed;
+  top: 0;
+  left: 5px;
+  z-index: 101; /* Above navbar (z-index: 100) */
+  width: var(--navbar-height);
+  height: var(--navbar-height);
+  padding: 8px;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  z-index: 190 ;
+  transform: scale(0.8);
+}
+
+/* Show only on mobile (< 1024px) */
+@media (max-width: 1023px) {
+  .mobile-menu-btn {
+    display: flex;
+  }
+}
+
+.mobile-menu-btn .hamburger-line {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background-color: var(--vp-c-text, #333);
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  transform-origin: center;
+}
+
+/* Animate to X when open */
+.mobile-menu-btn.open .hamburger-line:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-btn.open .hamburger-line:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.open .hamburger-line:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/*
+.mobile-menu-btn:hover .hamburger-line {
+  background-color: var(--c-brand, #826aed);
+}
+*/
+
+/* Section header - consistent styling with line */
+.section-header {
   font-size: 0.7rem;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--c-text, inherit);
   opacity: 0.6;
-  margin-bottom: 1rem;
+  margin: 0;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(125, 125, 125, 0.15);
-}
-
-/* Mobile hamburger toggle button */
-.page-nav-toggle {
-  display: none;
-  position: fixed;
-  top: 1rem;
-  left: 1rem;
-  z-index: 100;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  border: none;
-  background-color: color-mix(in srgb, var(--vp-c-bg) 90%, transparent);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 8px;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.2s;
-}
-
-.page-nav-toggle:hover {
-  background-color: var(--vp-c-bg);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.hamburger-icon {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  gap: 4px;
-}
-
-.hamburger-icon span {
-  display: block;
-  width: 20px;
-  height: 2px;
-  background-color: var(--c-text, #333);
-  border-radius: 1px;
-  transition: all 0.3s;
-}
-
-.page-nav-toggle.is-open .hamburger-icon span:nth-child(1) {
-  transform: translateY(6px) rotate(45deg);
-}
-
-.page-nav-toggle.is-open .hamburger-icon span:nth-child(2) {
-  opacity: 0;
-}
-
-.page-nav-toggle.is-open .hamburger-icon span:nth-child(3) {
-  transform: translateY(-6px) rotate(-45deg);
-}
-
-/* Close button for mobile sidebar */
-.page-nav-close {
-  display: none;
-  position: absolute;
-  top: 0.5rem;
-  right: 0.5rem;
-  width: 32px;
-  height: 32px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  font-size: 1.5rem;
-  color: var(--c-text, inherit);
-  cursor: pointer;
-  opacity: 0.6;
-  transition: opacity 0.2s;
-}
-
-.page-nav-close:hover {
-  opacity: 1;
-}
-
-/* Overlay for mobile sidebar */
-.page-nav-overlay {
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 90;
+  padding-top: 1rem;
+  border-top:  solid rgba(125, 125, 125, 0.15);
 }
 
 /* Desktop sidebar navigation */
 .page-nav-sidebar {
   position: fixed;
   left: 2rem;
-  top: 6rem;
+  top: calc(var(--navbar-height) + 1.5rem);
   width: 200px;
   max-height: calc(95vh - 8rem);
   padding: 1rem;
@@ -727,8 +734,9 @@ export default {
   overflow-x: hidden;
   overflow-y: auto;
 
-  background-color: color-mix(in srgb, var(--vp-c-bg) 50%, transparent);
+  /* background-color: color-mix(in srgb, var(--vp-c-bg) 50%, transparent);
   backdrop-filter: blur(10px);
+  */
   border-radius: 8px;
 }
 
@@ -753,38 +761,10 @@ export default {
   }
 }
 
-/* Mobile: below 1024px */
+/* Hide sidebar below 1024px - mobile uses VuePress navbar menu */
 @media (width < 1024px) {
-  .page-nav-toggle {
-    display: flex;
-  }
-
-  .page-nav-overlay {
-    display: block;
-  }
-
-  .page-nav-close {
-    display: block;
-  }
-
   .page-nav-sidebar {
-    position: fixed;
-    left: 0;
-    top: 0;
-    width: 280px;
-    max-width: 80vw;
-    height: 100vh;
-    max-height: 100vh;
-    padding: 3rem 1.5rem 1.5rem;
-    border-radius: 0 12px 12px 0;
-    z-index: 95;
-    transform: translateX(-100%);
-    transition: transform 0.3s ease;
-    background-color: var(--vp-c-bg);
-  }
-
-  .page-nav-sidebar.is-open {
-    transform: translateX(0);
+    display: none;
   }
 }
 
@@ -806,15 +786,6 @@ export default {
 
 .back-arrow {
   font-size: 1.1em;
-}
-
-.page-nav-title {
-  font-weight: 600;
-  margin: 0 0 0.75rem 0;
-  color: var(--c-text, inherit);
-  font-size: 0.85rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
 }
 
 .page-nav-list {
@@ -841,12 +812,10 @@ export default {
   display: block;
   padding: 0.25rem 0;
   color: var(--c-text, inherit);
-  /* Normal text color */
   text-decoration: none;
   border-left: 2px solid transparent;
   padding-left: 0.5rem;
   margin-left: -0.5rem;
-  transition: all 0.2s;
 
   /* Text ellipsis overflow */
   white-space: nowrap;
@@ -856,18 +825,13 @@ export default {
 
 .page-nav-link:hover {
   color: var(--c-text-accent, #826aed);
-  /* Link color on hover */
   border-left-color: rgba(125, 125, 125, 0.3);
-  text-decoration: underline;
-  /* Show it's a link */
 }
 
 .page-nav-item.active .page-nav-link {
   color: var(--c-text-accent, #826aed);
-  /* Link color for active */
   border-left-color: var(--c-text-accent, #826aed);
-  font-weight: 700 !important;
-  /* Bold - force override */
+  font-weight: 800 !important;
 }
 
 /* LLM Link Styles */
@@ -923,6 +887,65 @@ export default {
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 }
+
+/* Mobile Sidebar Styles */
+.mobile-sidebar {
+  display: none;
+  position: fixed;
+  top: 0px; /* Below navbar */
+  left: 0;
+  bottom: 0;
+  width: 280px;
+  max-width: 85vw;
+  background: var(--c-quote-background);
+  z-index: 150; /* Below hamburger button (200) but above page content */
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
+  padding: 1rem;
+  padding-top: calc(58px + 1rem);
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.20);
+}
+
+.mobile-sidebar.open {
+  transform: translateX(0);
+}
+
+@media (max-width: 1023px) {
+  .mobile-sidebar {
+    display: block;
+  }
+}
+
+.mobile-nav-section {
+  margin-bottom: 1.0rem;
+}
+
+.mobile-nav-section:last-child {
+  border-bottom: none;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mobile-nav-list li {
+  margin: 0;
+}
+
+.mobile-nav-list a {
+  display: block;
+  padding: 0.3rem 0;
+  color: var(--c-text, inherit);
+  text-decoration: none;
+  font-size: 0.95rem;
+}
+
+.mobile-nav-list a:hover {
+  color: var(--c-text-accent, #826aed);
+}
 </style>
 
 <style>
@@ -937,5 +960,28 @@ export default {
   .theme-default-content {
     max-width: calc(100% - 20px) !important;
   }
+}
+
+/* Mobile parallax effect - move ONLY page content when menu opens (NOT navbar) */
+@media (max-width: 1023px) {
+  .vp-page {
+    transition: transform 0.3s ease;
+  }
+  
+  /* Navbar stays fixed - no parallax */
+  .vp-navbar {
+    z-index: 2000 !important;
+  }
+  
+  /*
+  .page-nav-container.menu-open ~ .vp-page,
+  body:has(.page-nav-container.menu-open) .vp-page {
+    transform: translateX(calc(100% - 20px));
+  }
+  
+  body:has(.page-nav-container.menu-open) .vp-page {
+    transform: translateX(min(calc(100% - 20px), 280px));
+  }
+  */
 }
 </style>

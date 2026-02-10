@@ -45,7 +45,7 @@ Powerful compression and optimization pipeline ensures your files are small and 
   padding: 1.5rem;
   border: 1px solid var(--c-border);
   border-radius: 12px;
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--c-quote-background);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease;
 }
@@ -58,12 +58,12 @@ Powerful compression and optimization pipeline ensures your files are small and 
 
 @media (prefers-color-scheme: light) {
   .path-card {
-    background: rgba(0, 0, 0, 0.02);
+    background: var(--c-quote-background);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   }
 
   .path-card:hover {
-    background: rgba(0, 0, 0, 0.04);
+    background: var(--c-quote-background);
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
   }
 }

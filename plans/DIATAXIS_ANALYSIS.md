@@ -161,7 +161,7 @@ The Needle Engine documentation is comprehensive (~55 main files) but currently 
 
 ### HOW-TO GUIDES (Task-Oriented)
 
-**Goal:** Solve specific problems for competent users
+**Goal:** Solve specific problems for users that have learned the basics
 
 | Current File | Diátaxis Category | Notes |
 |-------------|-------------------|-------|

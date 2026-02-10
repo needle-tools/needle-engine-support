@@ -46,7 +46,7 @@ function getClass() {
     }
 
     div.tile {
-        background: var(--b811b9c2);
+        background: var(--c-quote-background);
         border: var(--e2940f36) solid var(--7e5aa0ea);
         border-radius: 1em;
         box-shadow: 0 0px 5px 1px #0000001a;
