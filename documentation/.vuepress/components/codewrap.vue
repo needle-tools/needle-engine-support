@@ -7,7 +7,7 @@
 </template>
 
 
-<style>
+<style scoped>
 .code-wrap {
     & pre {
         white-space: pre-wrap;

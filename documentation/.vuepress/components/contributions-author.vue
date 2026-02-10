@@ -21,7 +21,7 @@ defineProps({
 </template>
 
 
-<style>
+<style scoped>
 .overview-link {
     display: block;
     padding-top: 1em;

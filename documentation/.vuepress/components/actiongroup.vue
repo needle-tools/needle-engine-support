@@ -2,7 +2,7 @@
 export default {}
 </script>
 
-<style>
+<style scoped>
 .actiongroup {
     display: flex;
     align-items: center;

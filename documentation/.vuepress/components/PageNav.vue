@@ -646,6 +646,14 @@ export default {
 }
 </script>
 
+<style>
+
+.DocSearch--active .page-nav-container {
+  display: none;
+}
+
+</style>
+
 <style scoped>
 .page-nav-container {
   position: relative;
@@ -900,7 +908,7 @@ export default {
   max-width: 85vw;
   background: var(--c-quote-background);
   z-index: 150; /* Below hamburger button (200) but above page content */
-  transform: translateX(-100%);
+  transform: translateX(calc(-100% - 20px));
   transition: transform 0.3s ease;
   overflow-y: auto;
   padding: 1rem;

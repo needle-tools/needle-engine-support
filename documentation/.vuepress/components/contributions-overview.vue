@@ -9,7 +9,7 @@
 </template>
 
 
-<style>
+<style scoped>
 .list {
     display: flex;
     flex-direction: column;

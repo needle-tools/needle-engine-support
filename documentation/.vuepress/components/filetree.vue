@@ -363,7 +363,7 @@ onMounted(() => {
 });
 </script>
 
-<style>
+<style scoped>
 
 .visually-hidden {
     position: absolute;

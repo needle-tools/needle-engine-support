@@ -135,7 +135,7 @@ export default defineComponent({
 })
 </script>
 
-<style>
+<style scoped>
 /* Global rules to ensure slide width */
 .quoteslides .quotes > div {
   /* These fixed percentages will be overridden by our JS calculations */

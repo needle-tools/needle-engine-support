@@ -148,7 +148,7 @@ export default {
     </div>
 </template>
 
-<style>
+<style scoped>
 button {
     background-color: #1374ef;
     border: none;
