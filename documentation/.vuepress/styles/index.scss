@@ -128,7 +128,7 @@ ul {
 }
 
 ul li::marker {
-  color: var(--vp-c-list-bg);
+  color: var(--vp-c-text, --vp-c-list-bg);
 }
 
 ul, ol {
@@ -329,6 +329,7 @@ td {
   outline: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 2px 15px #02022b33;
   margin: 5px auto;
+  margin-top: 13px;
   border: none;
   border-bottom: 1px solid var(--vp-c-border);
 }
@@ -764,10 +765,20 @@ div.code-group-item.active:has(iframe) {
   bottom: 1.2px;
   left: 0;
   margin-right: 1.2em;
+
+  @media screen and (max-width: 1024px) {
+      margin-right: 0;
+  }
 }
 
-.vp-site-name.vp-hide-mobile {
-  display: inline;
+/** TODO: Fix this, 
+we want to hide "needle" and not "docs" 
+when there's not enough space, and keep the logo
+*/
+@media screen and (min-width: 450px) {
+  .vp-site-name.vp-hide-mobile {
+    display: inline;
+  }
 }
 
 .vp-navbar-item>div>button:hover {

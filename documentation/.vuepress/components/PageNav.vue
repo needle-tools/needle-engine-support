@@ -666,7 +666,7 @@ export default {
   justify-content: center;
   align-items: center;
   gap: 5px;
-  z-index: 190 ;
+  z-index: 20190 ;
   transform: scale(0.8);
 }
 
@@ -769,7 +769,8 @@ export default {
 }
 
 .page-nav-header {
-  margin-bottom: 1.5rem;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(125, 125, 125, 0.15);
 }

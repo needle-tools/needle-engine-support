@@ -95,7 +95,8 @@ function getClass() {
         div.tile {
             min-width: initial;
             max-width: initial;
-            width: 70%;
+            width: 85%;
+            margin-right: 0;
         }
     }
 </style>
