@@ -499,7 +499,6 @@ export default defineUserConfig({
             const title = token.attrGet('title');
                     
             if (title === '2x') {
-                console.log("Rendering high-DPI image", src, alt);
                 token.attrSet('title', '');
                 return `<img src="${src}" srcset="${src} 2x" alt="${alt}">`;
             } else {
