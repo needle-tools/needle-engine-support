@@ -103,8 +103,11 @@ export default defineClientConfig({
               // Browser back/forward - use saved position instantly
               resolve({ ...savedPosition, behavior: 'instant' })
             } else if (to.hash) {
+              // Hash navigation - scroll to element with offset for fixed header
+              // The 'top' offset moves the target position up by that amount
               resolve({
                 el: to.hash,
+                top: 60,
                 behavior: 'instant',
               })
             } else {

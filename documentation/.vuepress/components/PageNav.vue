@@ -155,8 +155,8 @@ export default {
       this.updateActiveHeader()
       this.updateContextHeaders()
 
-      // Handle initial hash in URL if present
-      this.handleInitialHash()
+      // Note: We don't call handleInitialHash() here anymore.
+      // Browser handles hash navigation natively with CSS scroll-margin-top on headings.
     }, 100)
 
     // Listen for scroll events to update active header and next sections
@@ -187,8 +187,8 @@ export default {
           this.updateActiveHeader()
           this.updateContextHeaders()
 
-          // Handle hash in URL after route change
-          this.handleInitialHash()
+          // Note: We don't call handleInitialHash() here anymore.
+          // Browser handles hash navigation natively with CSS scroll-margin-top on headings.
           
           // Close mobile sidebar on navigation
           this.mobileSidebarOpen = false
@@ -246,7 +246,7 @@ export default {
       }
 
       if (element) {
-        const offset = 80 // Account for fixed header
+        const offset = 60; // Account for fixed header
         const elementPosition = element.getBoundingClientRect().top + window.pageYOffset - offset
         window.scrollTo({
           top: elementPosition,
