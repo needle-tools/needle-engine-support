@@ -8,6 +8,8 @@ MaterialX is a powerful standard for describing materials and shaders in a graph
 
 It's widely used across film, VFX and e-commerce, and is supported by many professional authoring tools such as Autodesk Maya and 3ds Max, Houdini, V-Ray, and Omniverse. 
 
+![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)
+
 ::: tip Learn more
 You can learn more about MaterialX on the [MaterialX website](https://www.materialx.org/).
 :::
@@ -19,9 +21,10 @@ This allows you to create complex, lit materials in Unity, and they're automatic
 The MaterialX support in Needle Engine uses the official [MaterialX JavaScript library](https://github.com/materialx/MaterialX), which means that materials are represented at the highest fidelity possible. This allows you to use any MaterialX file.
 
 ::: info Shader Graph to MaterialX requires a **Pro**, **Edu** or **Enterprise** plan.
-The MaterialX Exporter is available for users on the Pro, Edu and Enterprise plans.  
+The MaterialX Exporter is available for users on the Pro, Edu and Enterprise plans.
 [See plans and pricing.](https://needle.tools/pricing)
 :::
+
 
 ## Usecases
 
