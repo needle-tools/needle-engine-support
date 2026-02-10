@@ -1,7 +1,25 @@
 <template>
   <div class="page-nav-container">
+    <!-- Mobile hamburger menu button -->
+    <button class="page-nav-toggle" @click="toggleMobileSidebar" :class="{ 'is-open': isMobileSidebarOpen }">
+      <span class="hamburger-icon">
+        <span></span>
+        <span></span>
+        <span></span>
+      </span>
+    </button>
+
+    <!-- Overlay for mobile sidebar -->
+    <div class="page-nav-overlay" v-if="isMobileSidebarOpen" @click="closeMobileSidebar"></div>
+
     <!-- Desktop sidebar navigation -->
-    <aside class="page-nav page-nav-sidebar">
+    <aside class="page-nav page-nav-sidebar" :class="{ 'is-open': isMobileSidebarOpen }">
+      <!-- Close button for mobile -->
+      <button class="page-nav-close" @click="closeMobileSidebar">×</button>
+
+      <!-- Table of Contents header -->
+      <div class="page-nav-toc-header">Table of Contents</div>
+
       <!-- Back to parent link -->
       <div class="page-nav-header" v-if="parentLink">
         <a :href="parentLink.link" class="parent-link" @click.prevent="handleParentLinkClick">
@@ -16,7 +34,7 @@
         <ul class="page-nav-list">
           <li v-for="header in headers" :key="header.slug"
             :class="['page-nav-item', `level-${header.level}`, { active: activeHeader === header.slug }]">
-            <a :href="`#${header.slug}`" class="page-nav-link" @click.prevent="scrollToHeader(header.slug)">
+            <a :href="`#${header.slug}`" class="page-nav-link" @click.prevent="handleNavClick(header.slug)">
               {{ header.title }}
             </a>
           </li>
@@ -31,33 +49,6 @@
         </div>
       </div>
     </aside>
-
-    <!-- Mobile breadcrumb navigation -->
-    <div class="page-nav page-nav-breadcrumb">
-      <div class="breadcrumb-row">
-        <!-- Breadcrumb trail -->
-        <nav class="breadcrumb-trail">
-          <template v-if="breadcrumbs.length > 0">
-            <a v-for="(crumb, index) in breadcrumbs" :key="index" :href="crumb.link" class="breadcrumb-item" @click.prevent="navigateToPage(crumb.link)">
-              {{ crumb.text }}
-            </a>
-          </template>
-          <span class="breadcrumb-current" v-if="currentPageTitle">{{ currentPageTitle }}</span>
-        </nav>
-
-        <!-- Previous and next sections preview on the right -->
-        <div class="context-sections" v-if="prevHeaders.length > 0 || nextHeaders.length > 0">
-          <!-- <a v-for="header in prevHeaders" :key="'prev-' + header.slug" :href="`#${header.slug}`"
-            class="breadcrumb-item breadcrumb-prev" @click.prevent="scrollToHeader(header.slug)">
-            {{ header.title }}
-          </a> -->
-          <a v-for="header in nextHeaders" :key="'next-' + header.slug" :href="`#${header.slug}`"
-            class="breadcrumb-item breadcrumb-next" @click.prevent="scrollToHeader(header.slug)">
-            {{ header.title }}
-          </a>
-        </div>
-      </div>
-    </div>
   </div>
 </template>
 
@@ -78,7 +69,8 @@ export default {
       currentPageTitle: '',
       prevHeaders: [],
       nextHeaders: [],
-      updateHeadersTimeout: null
+      updateHeadersTimeout: null,
+      isMobileSidebarOpen: false
     }
   },
 
@@ -140,6 +132,9 @@ export default {
 
     // Update headers when route changes
     this.$router?.afterEach(() => {
+      // Close mobile sidebar on route change
+      this.closeMobileSidebar()
+      
       // Use multiple nextTicks and a timeout to ensure content is fully rendered
       this.$nextTick(() => {
         this.extractHeaders()
@@ -165,6 +160,8 @@ export default {
     if (this.observer) {
       this.observer.disconnect()
     }
+    // Reset body overflow in case sidebar was open
+    document.body.style.overflow = ''
   },
 
   methods: {
@@ -288,6 +285,25 @@ export default {
       if (!success) {
         console.warn(`PageNav: Could not find element with id "${slug}"`)
       }
+    },
+
+    handleNavClick(slug) {
+      this.scrollToHeader(slug)
+      this.closeMobileSidebar()
+    },
+
+    toggleMobileSidebar() {
+      this.isMobileSidebarOpen = !this.isMobileSidebarOpen
+      if (this.isMobileSidebarOpen) {
+        document.body.style.overflow = 'hidden'
+      } else {
+        document.body.style.overflow = ''
+      }
+    },
+
+    closeMobileSidebar() {
+      this.isMobileSidebarOpen = false
+      document.body.style.overflow = ''
     },
 
     handleParentLinkClick() {
@@ -593,6 +609,109 @@ export default {
   position: relative;
 }
 
+/* Table of Contents header */
+.page-nav-toc-header {
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--c-text, inherit);
+  opacity: 0.6;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.15);
+}
+
+/* Mobile hamburger toggle button */
+.page-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 100;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: none;
+  background-color: color-mix(in srgb, var(--vp-c-bg) 90%, transparent);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.2s;
+}
+
+.page-nav-toggle:hover {
+  background-color: var(--vp-c-bg);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hamburger-icon {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  gap: 4px;
+}
+
+.hamburger-icon span {
+  display: block;
+  width: 20px;
+  height: 2px;
+  background-color: var(--c-text, #333);
+  border-radius: 1px;
+  transition: all 0.3s;
+}
+
+.page-nav-toggle.is-open .hamburger-icon span:nth-child(1) {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.page-nav-toggle.is-open .hamburger-icon span:nth-child(2) {
+  opacity: 0;
+}
+
+.page-nav-toggle.is-open .hamburger-icon span:nth-child(3) {
+  transform: translateY(-6px) rotate(-45deg);
+}
+
+/* Close button for mobile sidebar */
+.page-nav-close {
+  display: none;
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-size: 1.5rem;
+  color: var(--c-text, inherit);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.page-nav-close:hover {
+  opacity: 1;
+}
+
+/* Overlay for mobile sidebar */
+.page-nav-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 90;
+}
+
 /* Desktop sidebar navigation */
 .page-nav-sidebar {
   position: fixed;
@@ -617,6 +736,7 @@ export default {
   margin-top: 2em;
 }
 
+/* Large screens: center sidebar relative to page */
 @media (width > 1500px) {
   .page-nav-sidebar {
     margin-left: 50%;
@@ -624,108 +744,48 @@ export default {
   }
 }
 
-/* Hide sidebar on smaller screens */
-@media (width < 1410px) {
+/* Medium screens (1024px - 1410px): keep sidebar visible but adjust layout */
+@media (width >= 1024px) and (width < 1410px) {
   .page-nav-sidebar {
-    display: none;
+    left: 1rem;
+    width: 180px;
+    font-size: 0.85rem;
   }
 }
 
-/* Mobile breadcrumb navigation */
-.page-nav-breadcrumb {
-  display: block;
-  position: fixed;
-  top: 80px;
-  left: 50%;
-  transform: translateX(-50%);
-  max-width: min(80vw, 48rem);
-  width: calc(100% - 3rem);
-  background-color: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(125, 125, 125, 0.1);
-  padding: 0.75rem 1.5rem;
-  font-size: 0.85rem;
-  z-index: 5;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-  border-radius: 16px;
-}
-
-/* Show breadcrumb only on narrow screens, hide on desktop */
-@media (width >=1410px) {
-  .page-nav-breadcrumb {
-    display: none;
+/* Mobile: below 1024px */
+@media (width < 1024px) {
+  .page-nav-toggle {
+    display: flex;
   }
-}
 
-.breadcrumb-row {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
-  flex-wrap: nowrap;
-  overflow: hidden;
-}
+  .page-nav-overlay {
+    display: block;
+  }
 
-.breadcrumb-trail {
-  display: flex;
-  align-items: center;
-  flex-wrap: nowrap;
-  gap: 0.5rem;
-  flex: 1;
-  min-width: 0;
-  overflow: hidden;
-}
+  .page-nav-close {
+    display: block;
+  }
 
-.breadcrumb-item {
-  color: var(--c-text-accent, #826aed);
-  text-decoration: none;
-  transition: opacity 0.2s;
-  white-space: nowrap;
-}
+  .page-nav-sidebar {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 280px;
+    max-width: 80vw;
+    height: 100vh;
+    max-height: 100vh;
+    padding: 3rem 1.5rem 1.5rem;
+    border-radius: 0 12px 12px 0;
+    z-index: 95;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    background-color: var(--vp-c-bg);
+  }
 
-.breadcrumb-item:hover {
-  text-decoration: underline;
-}
-
-.breadcrumb-item::after {
-  color: rgba(125, 125, 125, 0.5);
-}
-
-.breadcrumb-current {
-  font-weight: 600;
-  color: var(--c-text, inherit);
-  white-space: nowrap;
-}
-
-.context-sections {
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  gap: 0.5rem;
-  flex-wrap: nowrap;
-  flex-shrink: 0;
-  overflow: hidden;
-  max-width: 50%;
-}
-
-.breadcrumb-prev {
-  opacity: 1;
-  font-size: 0.85rem;
-}
-
-.breadcrumb-prev::after {
-  content: ' ←';
-}
-
-.breadcrumb-next {
-  opacity: 1;
-  font-size: 0.85rem;
-}
-
-.breadcrumb-next::before {
-  content: '→ ';
+  .page-nav-sidebar.is-open {
+    transform: translateX(0);
+  }
 }
 
 .page-nav-header {
@@ -866,18 +926,16 @@ export default {
 </style>
 
 <style>
-/* Global styles for active headers on the page (not scoped) */
-/* h2.active-header,
-h3.active-header {
-  font-weight: 800 !important;
-  transition: font-weight 0.1s;
-} */
+/* Global styles for page content layout adjustments */
 
-/* Add top padding to page content when breadcrumb navigation is visible (mobile) */
-@media (width < 1410px) {
-
+/* Between 1024px and 1410px: shift page content to make room for sidebar */
+@media (width >= 1024px) and (width < 1410px) {
   .vp-page {
-    margin-top: 5rem !important;
+    padding-left: 220px !important;
+  }
+  
+  .theme-default-content {
+    max-width: calc(100% - 20px) !important;
   }
 }
 </style>

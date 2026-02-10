@@ -691,8 +691,24 @@ div.code-group-item.active:has(iframe) {
   padding-right: 2rem;
 }
 
+.vp-site-logo {
+  margin-inline-end: 0.3em;
+}
+
+.vp-navbar-items-wrapper {
+  padding-inline-start: 1.5em;
+}
+
 .vp-site-name {
-  display: none;
+  /* display: none; */
+  font-size: 28px;
+  font-weight: 200;
+  bottom: 1.2px;
+  left: 0;
+}
+
+.vp-site-name.vp-hide-mobile {
+  display: inline;
 }
 
 .vp-navbar-item>div>button:hover {

@@ -10,13 +10,13 @@ iOS WebXR support is now available natively in **Needle Engine Beta**.
 :::
 
 
-Needle Engine now includes native iOS WebXR support through Needle Go – using Apple's App Clip technology. While Safari on iOS doesn't support WebXR by default, Needle Engine automatically bridges this gap using native ARKit to provide full WebXR functionality in a lightweight, instant-launch format.
+Needle Engine now includes native iOS WebXR support through Needle Go. While Safari on iOS doesn't support WebXR by default, Needle Engine automatically bridges this gap using native ARKit to provide full WebXR functionality in a lightweight, instant-launch format.
 
 [![iOS WebXR on iPhone](https://cloud.needle.tools/-/media/WI0Q0s961BjdXgUEQHxifQ.gif)](https://appclip.needle.tools)
 
 ## How iOS WebXR Works in Needle Engine
 
-Needle Engine automatically enables WebXR AR experiences on iPhone and iPad using App Clip technology (powered by "Needle Go"). App Clips launch instantly without requiring full app installation, making it perfect for sharing AR experiences via QR codes, links, or smart app banners.
+Needle Engine automatically enables WebXR AR experiences on iPhone and iPad using App Clip technology, in the form of our Needle Go App Clip. App Clips launch instantly without requiring full app installation, making it perfect for sharing AR experiences via QR codes, links, or smart app banners.
 
 **Key Benefits:**
 - **No Installation Required**: Users access AR experiences instantly without downloading an app

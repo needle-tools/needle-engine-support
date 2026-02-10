@@ -322,7 +322,7 @@ if (process.env.NODE_ENV === "development") {
 export default defineUserConfig({
     base: _base,
     lang: 'en-US',
-    title: _title,
+    title: 'docs',
     dest: "dist",
     description: _description,
     pagePatterns: patterns,
