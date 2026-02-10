@@ -43,7 +43,14 @@
       </div>
     </aside>
 
-    <!-- Mobile sidebar panel (no overlay) -->
+    <!-- Mobile sidebar overlay - darkens page when sidebar is open, click to close -->
+    <div 
+      :class="['mobile-sidebar-overlay', { open: mobileSidebarOpen }]" 
+      @click="closeMobileSidebar"
+      aria-hidden="true"
+    ></div>
+
+    <!-- Mobile sidebar panel -->
     <aside :class="['mobile-sidebar', { open: mobileSidebarOpen }]">
       <!-- Back to parent link -->
       <div class="page-nav-header" v-if="parentLink">
@@ -894,6 +901,32 @@ export default {
 
   .page-nav-header {
     border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* Mobile Sidebar Overlay - darkens page behind sidebar */
+.mobile-sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--overlay-bg, rgb(16 16 16 / 50%));
+  z-index: 149; /* Below mobile sidebar (150) */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.mobile-sidebar-overlay.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (max-width: 1023px) {
+  .mobile-sidebar-overlay {
+    display: block;
   }
 }
 

@@ -46,6 +46,10 @@ html {
   --c-border-dark: #dfe2e5;
   --vp-c-gutter: var(--c-border-dark);
   
+  // Overlay background for modals/sidebars
+  --overlay-bg: rgb(16 16 16 / 50%);
+  --docsearch-container-background: var(--overlay-bg);
+  
   --vp-copy-code-c-text: #fff;
   --vp-copy-code-c-bg: #fff;
   --copy-code-c-hover: #fff;
@@ -432,6 +436,11 @@ footer.DocSearch-Footer {
 
 form.DocSearch-Form {
   border-radius: 9px;
+}
+
+// Override DocSearch container background
+.DocSearch-Container {
+  background-color: var(--overlay-bg, rgb(16 16 16 / 50%)) !important;
 }
 
 @media (min-width: 751px) {

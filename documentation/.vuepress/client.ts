@@ -115,6 +115,38 @@ export default defineClientConfig({
       })
     }
   },
-  setup() {},
+  setup() {
+    // Add click handler to toggle DocSearch (close if already open)
+    if (typeof window !== 'undefined') {
+      // Use event delegation on document to catch DocSearch button clicks
+      document.addEventListener('click', (event) => {
+        const target = event.target as HTMLElement
+        const searchButton = target.closest('.DocSearch-Button')
+        
+        if (searchButton) {
+          // Check if DocSearch modal is already open
+          const isOpen = document.body.classList.contains('DocSearch--active') || 
+                         document.querySelector('.DocSearch-Modal')
+          
+          if (isOpen) {
+            // Prevent the default DocSearch behavior and close it
+            event.preventDefault()
+            event.stopPropagation()
+            
+            // Simulate Escape key to close DocSearch
+            const escapeEvent = new KeyboardEvent('keydown', {
+              key: 'Escape',
+              code: 'Escape',
+              keyCode: 27,
+              which: 27,
+              bubbles: true,
+              cancelable: true
+            })
+            document.dispatchEvent(escapeEvent)
+          }
+        }
+      }, true) // Use capture phase to intercept before DocSearch handler
+    }
+  },
   rootComponents: [PageNav],
 })
