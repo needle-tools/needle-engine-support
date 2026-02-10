@@ -1,5 +1,6 @@
 ---
 title: MaterialX
+image: https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif
 ---
 
 ## MaterialX in Needle Engine
@@ -8,7 +9,7 @@ MaterialX is a powerful standard for describing materials and shaders in a graph
 
 It's widely used across film, VFX and e-commerce, and is supported by many professional authoring tools such as Autodesk Maya and 3ds Max, Houdini, V-Ray, and Omniverse. 
 
-![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)
+[![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)](https://engine.needle.tools/samples/material-x)
 
 ::: tip Learn more
 You can learn more about MaterialX on the [MaterialX website](https://www.materialx.org/).
