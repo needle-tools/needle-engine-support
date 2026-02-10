@@ -94,7 +94,9 @@ Unity's [Animator and AnimatorController](https://docs.unity3d.com/Manual/class-
 - Transitions and layers
 - Parameter-driven state changes
 
-> **Note**: Sub-states and Blend Trees are not yet supported.
+::: tip Limited support for sub-states and blend trees
+Sub-states and Blend Trees are not yet supported.
+:::
 
 ### Timeline Sequencing
 
@@ -109,7 +111,8 @@ Create cinematic sequences with [Unity's Timeline](https://unity.com/features/ti
 - ControlTrack
 - SignalTrack
 
-> **Note**: Sub-Timelines are not yet supported. Custom timeline tracks can be exported – [see example](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).
+::: tip Limited support for sub-timelines
+ Sub-Timelines are not yet supported. Custom timeline tracks can be exported – [see example](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).
 
 ### Blender Support
 

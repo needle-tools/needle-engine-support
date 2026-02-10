@@ -61,6 +61,8 @@ html {
   
   --header-offset: calc(var(--navbar-height));
 
+  --detail-c-bg: var(--c-quote-background);
+
   .navbar-dropdown {
     box-shadow: 0 0 10px rgba(20, 20, 20, .2);
     border-radius: .7em;
@@ -244,12 +246,19 @@ details p {
 
 table {
   // flex-direction: column;
-  box-shadow: inset 0 0 40px rgba(100,100,100,.1) !important;
+  box-shadow: 0 0 40px rgba(100,100,100,.1) !important;
+  background-color: var(--c-quote-background);
   // border: 1px solid rgba(100,100,100, .2) !important;
   border-radius: .5em;
   padding: .5em;
   padding-left: 1em;
   min-width: 100%;
+}
+
+// Hide empty table headers (when using | | | pattern for headerless tables)
+// This hides thead when it ONLY contains empty th elements (no non-empty th)
+thead:not(:has(th:not(:empty))) {
+  display: none;
 }
 
 @media screen and (min-width: 1700px) {
@@ -506,6 +515,7 @@ kbd {
   color: var(--vp-c-text);
   padding: 0.2em 0.4em;
   border-radius: 1em;
+  background: var(--c-quote-background);
   font-family: inherit;
   letter-spacing: initial;
   font-size: initial;

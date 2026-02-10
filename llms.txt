@@ -1,18 +1,18 @@
 # Needle Engine Documentation - Links
-# 1/27/2026, 11:49:44 PM
+# 2/10/2026, 10:53:11 PM
 # Base URL: https://engine.needle.tools/docs
-
-Tutorials
-  https://engine.needle.tools/docs/tutorials/
-
-Reference
-  https://engine.needle.tools/docs/reference/
 
 Needle Engine for Unity
   https://engine.needle.tools/docs/unity/
 
+Tutorials
+  https://engine.needle.tools/docs/tutorials/
+
 Using Needle Engine with three.js
   https://engine.needle.tools/docs/three/
+
+Reference
+  https://engine.needle.tools/docs/reference/
 
 How-To Guides
   https://engine.needle.tools/docs/how-to-guides/
@@ -20,11 +20,11 @@ How-To Guides
 Help & Community
   https://engine.needle.tools/docs/help/
 
-Getting Started & Installation
-  https://engine.needle.tools/docs/getting-started/
-
 Explanation
   https://engine.needle.tools/docs/explanation/
+
+Getting Started & Installation
+  https://engine.needle.tools/docs/getting-started/
 
 Integrate with other tools
   https://engine.needle.tools/docs/custom-integrations/
@@ -96,17 +96,17 @@ Using Needle Engine directly from HTML
 
 ## How To Guides
 
-  VR & AR (WebXR)
-    https://engine.needle.tools/docs/how-to-guides/xr/
-
   Frameworks, Bundlers, HTML
     https://engine.needle.tools/docs/how-to-guides/web-integration/
 
-  Optimization & Compression
-    https://engine.needle.tools/docs/how-to-guides/optimization/
+  VR & AR (WebXR)
+    https://engine.needle.tools/docs/how-to-guides/xr/
 
   Networking & Multiplayer
     https://engine.needle.tools/docs/how-to-guides/networking/
+
+  Optimization & Compression
+    https://engine.needle.tools/docs/how-to-guides/optimization/
 
   Exporting Assets to glTF
     https://engine.needle.tools/docs/how-to-guides/export/
@@ -122,6 +122,35 @@ Using Needle Engine directly from HTML
 
   Local Development Help
     https://engine.needle.tools/docs/how-to-guides/testing
+
+  ## Components
+
+    Add Contact Shadows (ContactShadows)
+      https://engine.needle.tools/docs/how-to-guides/components/contact-shadows
+
+    Camera Controls (OrbitControls)
+      https://engine.needle.tools/docs/how-to-guides/components/orbit-controls
+
+    Create Scroll-Based Animations (ScrollFollow)
+      https://engine.needle.tools/docs/how-to-guides/components/scroll-follow
+
+    Drag and Drop Files into Your Scene
+      https://engine.needle.tools/docs/how-to-guides/components/droplistener
+
+    Drag Objects in Your Scene (DragControls)
+      https://engine.needle.tools/docs/how-to-guides/components/drag-controls
+
+    Duplicate Objects by Dragging (Duplicatable)
+      https://engine.needle.tools/docs/how-to-guides/components/duplicatable
+
+    Make Objects Follow the Cursor
+      https://engine.needle.tools/docs/how-to-guides/components/cursor-follow
+
+    Play Videos in Your Scene
+      https://engine.needle.tools/docs/how-to-guides/components/video-player
+
+    Switch Between Scenes (SceneSwitcher)
+      https://engine.needle.tools/docs/how-to-guides/components/scene-switcher
 
   ## Deployment
 
@@ -165,6 +194,9 @@ Using Needle Engine directly from HTML
 
     Create Components
       https://engine.needle.tools/docs/how-to-guides/scripting/create-components
+
+    Detect Mobile Devices and Platforms
+      https://engine.needle.tools/docs/how-to-guides/scripting/detect-mobile-devices
 
     Handle User Input
       https://engine.needle.tools/docs/how-to-guides/scripting/handle-input
@@ -246,17 +278,26 @@ Using Needle Engine directly from HTML
 
   ## Fundamentals
 
+    C# to TypeScript Translation Guide
+      https://engine.needle.tools/docs/tutorials/fundamentals/c-sharp-to-typescript
+
     For Blender Artists
       https://engine.needle.tools/docs/tutorials/fundamentals/for-blender-artists
 
-    Scripting Introduction for Unity Developers
+    Needle Engine for Unity Developers
       https://engine.needle.tools/docs/tutorials/fundamentals/for-unity-developers
 
-    Typescript Essentials
+    TypeScript Essentials
       https://engine.needle.tools/docs/tutorials/fundamentals/typescript-essentials
+
+    Working with Unity Integration
+      https://engine.needle.tools/docs/tutorials/fundamentals/unity-integration
 
 ## Unity
 
   Editor Sync
     https://engine.needle.tools/docs/unity/editor-sync
+
+  Getting Started with Unity
+    https://engine.needle.tools/docs/unity/getting-started
 

@@ -6,6 +6,44 @@ import { fs } from '@vuepress/utils';
  * - llms.txt: Structured links to all documentation pages
  * - llms-full.txt: Full markdown content of all pages
  */
+
+/**
+ * Strips HTML-style tags (like <style>, <script>) and their content from markdown
+ * ONLY when they are outside of code blocks (``` fenced blocks)
+ * @param {string} markdown - The raw markdown content
+ * @returns {string} - Cleaned markdown without style/script tags (preserving code examples)
+ */
+function cleanMarkdownForLLM(markdown) {
+  if (!markdown) return markdown;
+
+  // Step 1: Extract and preserve code blocks (``` fenced blocks)
+  const codeBlocks = [];
+  let cleaned = markdown.replace(/```[\s\S]*?```/g, (match) => {
+    const placeholder = `__CODE_BLOCK_${codeBlocks.length}__`;
+    codeBlocks.push(match);
+    return placeholder;
+  });
+
+  // Step 2: Remove <style> blocks (including scoped) - only outside code blocks now
+  cleaned = cleaned.replace(/<style[^>]*>[\s\S]*?<\/style>/gi, '');
+
+  // Step 3: Remove <script> blocks - only outside code blocks now
+  cleaned = cleaned.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, '');
+
+  // Step 4: Restore code blocks
+  codeBlocks.forEach((block, index) => {
+    cleaned = cleaned.replace(`__CODE_BLOCK_${index}__`, block);
+  });
+
+  // Remove excessive empty lines (more than 2 consecutive newlines -> 2 newlines)
+  cleaned = cleaned.replace(/\n{3,}/g, '\n\n');
+
+  // Trim leading/trailing whitespace
+  cleaned = cleaned.trim();
+
+  return cleaned;
+}
+
 export default (options = {}) => {
   // Use a Map to store processed markdown content keyed by absolute source file path
   const processedMarkdownMap = new Map();
@@ -91,7 +129,9 @@ Last Updated on ${new Date().toLocaleString('en-US')}
             const pageFilename = path.basename(page.filePath);
             if (!pageFilename.startsWith("_")) {
               const pageUrl = `https://engine.needle.tools/docs/${page.htmlFilePathRelative}`;
-              fullTextEN += `${processedMarkdown}\nSource: ${pageUrl}\n\n`;
+              // Clean the markdown before adding to LLM text (strip style/script tags)
+              const cleanedMarkdown = cleanMarkdownForLLM(processedMarkdown);
+              fullTextEN += `${cleanedMarkdown}\nSource: ${pageUrl}\n\n`;
             }
           }
 

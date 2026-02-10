@@ -337,7 +337,14 @@ export default {
       // Scroll position is now saved automatically by router.beforeEach in client.ts
       if (this.parentLink?.link) {
         if (this.$router) {
-          this.$router.push(this.parentLink.link)
+          // Vue Router paths should be relative to base, not include it
+          // The base is typically '/docs/', so we need to remove it from the path
+          const base = this.$site?.base || '/docs/'
+          let routerPath = this.parentLink.link
+          if (routerPath.startsWith(base)) {
+            routerPath = routerPath.substring(base.length - 1) // Keep leading slash
+          }
+          this.$router.push(routerPath)
         } else {
           // Fallback to window.location if router not available
           window.location.href = this.parentLink.link
@@ -372,7 +379,13 @@ export default {
       // Scroll position is saved automatically by router.beforeEach in client.ts
       if (link) {
         if (this.$router) {
-          this.$router.push(link)
+          // Vue Router paths should be relative to base, not include it
+          const base = this.$site?.base || '/docs/'
+          let routerPath = link
+          if (routerPath.startsWith(base)) {
+            routerPath = routerPath.substring(base.length - 1) // Keep leading slash
+          }
+          this.$router.push(routerPath)
         } else {
           // Fallback to window.location if router not available
           window.location.href = link
@@ -787,7 +800,6 @@ export default {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(125, 125, 125, 0.15);
 }
 
 .parent-link {

@@ -3,18 +3,22 @@ title: Questions and Answers (FAQ) 💡
 description: Frequently asked questions and troubleshooting solutions for Needle Engine - from installation issues to licensing, rendering, and deployment.
 ---
 
+## How do I get a license for Needle Engine?
+
+Commercial use of Needle Engine requires a valid license. You can purchase a license on our website: [https://www.needle.tools/pricing](https://www.needle.tools/pricing).
 
 ## How can I activate my Needle Engine License?
 
 ### Activating the license in Unity
 
-#### Needle Engine 4.x
+:::: tabs
+@tab Needle Engine 4.x
 
-Go to Project Settings/Needle and click on the login button. Follow the steps and log in to your Needle account.   
-After that you'll see your account information in the Unity project settings window. Select the licensed team from the dropdown.   
+Go to `Project Settings/Needle` and click on the <kbd>Login</kbd> button. Follow the steps and log in to your Needle account.   
 
-#### Needle Engine 3.x
+After that, you'll see your account information in the Unity project settings window. Select the licensed team from the dropdown.   
 
+@tab Needle Engine 3.x
 Open `Edit/Project Settings/Needle` to get the Needle Engine plugin settings. At the top of the window you'll find fields for entering your license information.
 - `Email` - Enter the email you purchased the license with
 - `Invoice ID` - Enter one of the invoice ids that you received by email
@@ -23,12 +27,12 @@ Note: You might need to restart the local webserver to apply the license.
 
 ![unity license window](/imgs/unity-needle-engine-license.jpg)
 
-### Activating the license in Blender
-Open `Addon Preferences/Needle Engine` to get to the Needle Engine addon settings 
-- `Email` - Enter the email you purchased the license with
-- `Invoice ID` - Enter one of the invoice ids that you received by email
+::::
 
-Note: You might need to restart the local webserver to apply the license.
+### Activating the license in Blender
+
+Follow the steps in [Install the Add-On](/docs/blender/#step-1-install-the-add-on), 
+then click the <kbd>Login</kbd> button in the Add-on settings and follow the steps to log in to your Needle account.
 
 ## License not found in CI/CD builds
 
@@ -71,7 +75,7 @@ See [the Testing docs](/docs/how-to-guides/testing) for information on how to se
 
 If that happens there's usually an exception either in engine code or your code. Open the dev tools (<kbd>Ctrl + Shift + I</kbd> or <kbd>F12</kbd> in Chrome) and check the Console for errors.  
 In some cases, especially when you just updated the Needle Engine package version, this can be fixed by stopping and restarting the local dev server.  
-For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>X</kbd> to cancel the running task. Then, simply press Play again.  
+For that, click on the running progress bar in the bottom right corner of the Editor, and click the little <kbd>✕</kbd> to cancel the running task. Then, simply press Play again.  
 
 
 ## My objects are white after export
@@ -105,7 +109,7 @@ You can also just declare the missing variables in e.g. your root `index.html` i
 ## THREE.EXRLoader: provided file doesnt appear to be in OpenEXR format
 
 Please make sure that sure that you have set Lightmap Encoding to **Normal Quality**.   
-Go to *Edit/Project Settings/Player* for changing the setting.  
+Go to `Edit/Project Settings/Player` for changing the setting.  
 
 ![](/faq/lightmap_encoding.jpg)  
 

@@ -51,7 +51,7 @@ Before starting, make sure you have:
 3. Choose the downloaded `.zip` file → Click `Install Add-on`
 4. Search for "Needle" and **check the box** to enable it
 
-![Blender Add-on Settings](/blender/settings.webp)
+![Blender Add-on Settings](/blender/settings.webp "2x")
 
 **✓ Checkpoint:** You should now see "Needle Engine Exporter for Blender" in your add-ons list with a checkmark.
 

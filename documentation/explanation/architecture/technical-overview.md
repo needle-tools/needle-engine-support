@@ -59,9 +59,13 @@ KHR_materials_volume
 
 More extensions and custom extensions can be added using the export callbacks of UnityGLTF (not documented yet) and the [glTF import extensions](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) of three.js.  
 
-> **Note**: Materials using these extensions can be exported from Unity via UnityGLTF's `PBRGraph` material.  
+::: tip Built-in export support for glTF PBR materials
+Materials using these extensions can be exported from Unity via UnityGLTF's `PBRGraph` material.  
+::: 
 
-> **Note**: Audio and variants are already supported in Needle Engine through `NEEDLE_components` and `NEEDLE_persistent_assets`, but there are some options for more alignment to existing proposals such as `KHR_audio` and `KHR_materials_variants`.
+::: tip Built-in support for Audio, Variants and more
+Audio and variants are already supported in Needle Engine through `NEEDLE_components` and `NEEDLE_persistent_assets`, but there are some options for more alignment to existing proposals such as `KHR_audio` and `KHR_materials_variants`.
+:::
 
 [Learn more about GLTF loading in three.js](https://threejs.org/docs/#examples/en/loaders/GLTFLoader)
 
@@ -70,9 +74,11 @@ More extensions and custom extensions can be added using the export callbacks of
 
 Needle Engine stores custom data in glTF files through our vendor extensions. These extensions are designed to be flexible and allow relatively arbitrary data to put into them. Notably, no code is stored in these files. Interactive components is restored from the data at runtime. This has some similarities to how AssetBundles function in Unity – the receiving side of an asset needs to have matching code for components stored in the file.  
 
-> We're currently not prodiving schemas for these extensions as they are still in development. The JSON snippets below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
+::: tip Extension Design and Future Changes
+We're currently not prodiving schemas for these extensions as they are still undergoing changes. The JSON snippets below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
 
-> References between pieces of data are currently constructed through a mix of indices into other parts of the glTF file and JSON pointers. We may consolidate these approaches in a future release. We're also storing string-based GUIDs for cases where ordering is otherwise hard to resolve (e.g. two components referencing each other) that we may remove in the future.  
+References between pieces of data are currently constructed through a mix of indices into other parts of the glTF file and JSON pointers. We may consolidate these approaches in a future release. We're also storing string-based GUIDs for cases where ordering is otherwise hard to resolve (e.g. two components referencing each other).  
+:::
 
 ### NEEDLE_components
 
@@ -128,11 +134,13 @@ Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR
 }
 ```
 
-> **Note**: Storing only the component type name means that type names currently need to be unique per project. We're planning to include package names in a future release to loosen this constraint to unique component type names per package instead of globally.  
+::: tip Component Type Names and Versioning
+Storing only the component type name means that type names currently need to be unique per project.
 
-> **Note**: Currently there's no versioning information in the extension (which npm packaage does a component belong to, which version of that package was it exported against). We're planning to include versioning information in a future release.  
+Currently there's no versioning information in the extension (which npm packaage does a component belong to, which version of that package was it exported against).  
 
-> **Note**: Currently all components are in the `builtin_components` array. We might rename this to just `components` in a future release.  
+All components are in the `builtin_components` array. We might rename this to just `components` in a future release.  
+:::
 
 ### NEEDLE_gameobject_data
 
@@ -149,7 +157,9 @@ This extension contains additional per-node data related to state, layers, and t
 }
 ```
 
-> **Note**: We may need to better explain why this is not another entry in [`NEEDLE_components`](#needle_components). 
+::: tip Separate from `NEEDLE_components`
+Object information is semantically different from component data.
+:::
 
 ### NEEDLE_lighting_settings
 
@@ -169,7 +179,9 @@ This is a root extension defining ambient lighting properties per glTF file.
 }
 ```
 
-> **Note**: This extension might have to be defined per-scene instead of per-file.
+::: tip Future Plans
+This extension might have to be defined per-scene instead of per-file.
+:::
 
 ### NEEDLE_lightmaps
 
@@ -187,7 +199,9 @@ This is a root extension defining a set of lightmaps for the glTF file.
 }
 ```
 
-> **Note**: At the moment this extension also contains environment texture references. We're planning to change that in a future release. 
+::: tip Lightmap Types
+At the moment this extension also contains environment texture references.
+::: 
 
 | Texture Type | Value |
 | -- | -- |
@@ -216,7 +230,9 @@ How lightmaps are applied is defined in the `MeshRenderer` component inside the 
 }
 ```
 
-> **Note**: We may change that in a future release and move lightmap-related data to a `NEEDLE_lightmap` extension entry per node. 
+::: tip Future Plans
+We may change that in a future release and move lightmap-related data to a `NEEDLE_lightmap` extension entry per node. 
+:::
 
 ### NEEDLE_persistent_assets
 
@@ -340,8 +356,9 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
   ]
 }
 ```
-
-> **Note**: We might include more type and versioning information in the future. 
+::: tip Component Type Names and Versioning
+We might include more type and versioning information in the future. 
+:::
 
 ### NEEDLE_techniques_webgl
 
@@ -396,25 +413,17 @@ This extension builds upon the archived [`KHR_techniques_webgl`](https://github.
 }     
 ```
 
-> **Note**: Currently, vertex and fragment shaders are always embedded as URI; we plan on moving that data into more reasonable bufferViews in the future.  
-
-> **Note**: There's some redundant properties in here that we plan on cleaning up.  
-
-## TypeScript and Data Mapping
-
-> 🏗️ Under Construction
-
-## Rendering with three.js
-
-> 🏗️ Under Construction
+::: tip Embedding vs. bufferViews
+Currently, vertex and fragment shaders are always embedded as URI. Some properties are redundant for embedded shaders, but kept for ease of export.
+:::
 
 ## Why aren't you compiling to WebAssembly?
 
 While Unity's compilation process from C# to IL to C++ (via IL2CPP) to WASM (via emscripten) is ingenious, it's also relatively slow. Building even a simple project to WASM takes many minutes, and that process is pretty much repeated on every code change. Some of it can be avoided through clever caching and ensuring that dev builds don't try to strip as much code, but it still stays slow.  
-> We do have a prototype for some WASM translation, but it's far from complete and the iteration speed stays slow, so we are not actively investigating this path right now. 
 
 When looking into modern web workflows, we found that code reload times during development are neglectible, usually in sub-second ranges. This of course trades some performance (interpretation of JavaScript on the fly instead of compiler optimization at build time) for flexibility, but browsers got really good at getting the most out of JavaScript.  
 
 We believe that for iteration and tight testing workflows, it's beneficial to be able to test on device and on the target platform (the browser, in this case) as quickly and as often as possible - which is why we're skipping Unity's entire play mode, effectively always running in the browser. 
 
-> **Note**: A really nice side effect is avoiding the entire slow "domain reload" step that usually costs 15-60 seconds each time you enter Play Mode. You're just "live" in the browser the moment you press Play.
+::: tip Needle Engine is fast because we skip the entire "build" step
+A really nice side effect is avoiding the entire slow "domain reload" step that usually costs 15-60 seconds each time you enter Play Mode. You're just "live" in the browser the moment you press Play.

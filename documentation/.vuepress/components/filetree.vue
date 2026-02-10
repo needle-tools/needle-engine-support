@@ -363,145 +363,159 @@ onMounted(() => {
 });
 </script>
 
-<style scoped>
-
-.visually-hidden {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    margin: -1px;
-    padding: 0;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-}
-
-div.file {
-    position: relative;
-    display: flex;
-    align-items: stretch;
-
-    @media print {
-        border-bottom: 1px solid #00000012;
-    }
-}
-
-div.header {
-    border-bottom: 1px solid #eee;
-}
-
-span.header {
-    width: 250px;
-    font-weight: bold;
-    display: inline-block;
-    margin-bottom: 0.5em;
-    margin-left: 0.1em;
-}
-
-dt:hover {
-    background-color: rgb(241, 241, 241) !important;
-}
+<style>
 
 html[data-theme='dark'] dt:hover {
     background-color: rgb(50, 50, 50) !important;
-}
-
-dt.focused {
-    border-right: 2px solid #007acc;
-    outline-offset: -2px;
 }
 
 html[data-theme='dark'] dt.focused {
     border-right-color: #4fc3f7;
 }
 
-.file.hidden, dt.hidden, dd.hidden {
-    display: none;
+dl[role="tree"] {
 
-    @media print {
-        display: block;
+    background-color: var(--c-quote-background);
+    padding: 1em;
+    border-radius: 0.5em;
+
+    & .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        margin: -1px;
+        padding: 0;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        border: 0;
     }
-}
 
-dl {
-    overflow-x: auto;
-}
-
-dd {
-    min-width: 250px;
-}
-
-dt, dd {
-    padding-bottom: 0.3em !important;
-    padding-top: 0.3em !important;
-    margin: 0;
-}
-
-dd > p {
-    margin: 0;
-}
-
-dt {
-    --depth: 0;
-    cursor: pointer;
-    font-family: monospace;
-    font-size: 0.9em;
-    position: relative;
-    padding-left: calc(var(--depth) * 1.5em) !important;
-    width: calc(250px - var(--depth) * 1.5em);
-    border-right: 1px solid #eee !important;
-    flex-shrink: 0;
-
-    &.selected {
-        font-weight: bold;
+    & div.file {
+        position: relative;
+        display: flex;
+        align-items: stretch;
 
         @media print {
-            font-weight: initial;
+            border-bottom: 1px solid #00000012;
         }
     }
+
+    & div.header {
+        border-bottom: 1px solid #eee;
+    }
+
+    & span.header {
+        width: 250px;
+        font-weight: bold;
+        display: inline-block;
+        margin-bottom: 0.5em;
+        margin-left: 0.1em;
+    }
+
+    & dt:hover {
+        background-color: rgb(241, 241, 241) !important;
+    }
+
+    & dt.focused {
+        border-right: 2px solid #007acc;
+        outline-offset: -2px;
+    }
+
+    & .file.hidden, & dt.hidden, & dd.hidden {
+        display: none;
+
+        @media print {
+            display: block;
+        }
+    }
+
+    & dl {
+        overflow-x: auto;
+    }
+
+    & dd {
+        min-width: 250px;
+    }
+
+    & dd:has(*) {
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+    }
+
+    & dt, & dd {
+        padding-bottom: 0.3em !important;
+        padding-top: 0.3em !important;
+        margin: 0;
+    }
+
+    & dd > p {
+        margin: 0;
+    }
+
+    & dt {
+        --depth: 0;
+        cursor: pointer;
+        font-family: monospace;
+        font-size: 0.9em;
+        position: relative;
+        padding-left: calc(var(--depth) * 1.5em) !important;
+        width: calc(250px - var(--depth) * 1.5em);
+        border-right: 1px solid #eee !important;
+        flex-shrink: 0;
+
+        &.selected {
+            font-weight: bold;
+
+            @media print {
+                font-weight: initial;
+            }
+        }
+    }
+
+    & dt.folder {
+        &::before {
+            content: 'folder_open';
+            content: 'folder_open' / '';
+            font-family: 'Material Symbols Outlined';
+            margin-right: 1em;
+        }
+
+        &.closed::before {
+            content: 'folder';
+            content: 'folder' / '';
+        }
+    }
+
+    & dt.file {
+        &::before {
+            content: 'draft';
+            font-family: 'Material Symbols Outlined';
+            margin-right: 1em;
+        }
+
+        &.js::before, &.ts::before, &.json::before {
+            content: 'code';
+        }
+
+        &.html::before {
+            content: 'draft';
+        }
+
+        &.css::before {
+            content: 'code';
+        }
+
+        &.glb::before {
+            content: 'deployed_code';
+        }
+    }
+
+    & dd {
+        padding-left: 1em !important;
+        flex: 1;
+        margin-top: -1px;
+    }
+
 }
 
-dt.folder {
-    &::before {
-        content: 'folder_open';
-        content: 'folder_open' / '';
-        font-family: 'Material Symbols Outlined';
-        margin-right: 1em;
-    }
-
-    &.closed::before {
-        content: 'folder';
-        content: 'folder' / '';
-    }
-}
-
-dt.file {
-    &::before {
-        content: 'draft';
-        font-family: 'Material Symbols Outlined';
-        margin-right: 1em;
-    }
-
-    &.js::before, &.ts::before, &.json::before {
-        content: 'code';
-    }
-
-    &.html::before {
-        content: 'draft';
-    }
-
-    &.css::before {
-        content: 'code';
-    }
-
-    &.glb::before {
-        content: 'deployed_code';
-    }
-}
-
-dd {
-    padding-left: 1em !important;
-    flex: 1;
-    margin-top: -0.2em;
-}
 </style>
