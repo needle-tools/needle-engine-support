@@ -10,7 +10,7 @@ iOS WebXR support is now available natively in **Needle Engine Beta**.
 :::
 
 
-Needle Engine now includes native iOS WebXR support through App Clip technology. While Safari on iOS doesn't support WebXR by default, Needle Engine automatically bridges this gap using native ARKit to provide full WebXR functionality in a lightweight, instant-launch format.
+Needle Engine now includes native iOS WebXR support through Needle Go – using Apple's App Clip technology. While Safari on iOS doesn't support WebXR by default, Needle Engine automatically bridges this gap using native ARKit to provide full WebXR functionality in a lightweight, instant-launch format.
 
 [![iOS WebXR on iPhone](https://cloud.needle.tools/-/media/WI0Q0s961BjdXgUEQHxifQ.gif)](https://appclip.needle.tools)
 
@@ -81,7 +81,7 @@ The WebXR-to-ARKit integration is handled automatically when users access your e
 
 ### For Vanilla three.js Applications
 
-If you're using vanilla three.js (not Needle Engine), you can enable iOS WebXR support by linking to:
+Even if you're using vanilla three.js without Needle Engine, you can enable iOS WebXR support by linking to:
 
 ```
 https://appclip.needle.tools/ar?url=<your-webxr-url>
@@ -104,6 +104,27 @@ Needle Engine's iOS WebXR support includes comprehensive functionality:
 - Image tracking
 - Anchor creation and tracking (wip)
 - Lighting estimation (wip)
+
+## Custom Branding for iOS AR
+
+On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription.  
+
+At the moment, setting up custom branding isn't automated, so please reach out to us at [hi@needle.tools](mailto:hi@needle.tools) if you're interested in customizing the iOS AR experience for your project.
+
+::: tip Required Branding Assets
+
+Please provide the following assets for iOS AR branding customization:
+- The URL to your experience (e.g. `https://yourdomain.com/your-ar-experience`)
+- A header image: Minimum width 1800px, Height must be 1200px, PNG or JPG, No transparency, Maximum 10MB
+- A display title (max. 30 chars) and subtitle (max. 56 chars)
+- If needed, translations for display title and subtitle
+- Your choice of "View", "Open", or "Play" for the call-to-action button text
+
+Here's an example of how the iOS AR experience looks with custom branding:
+
+![Example of iOS AR branding assets](/imgs/needlego-advancedexperience-template.webp "2x")
+
+:::
 
 
 ## Troubleshooting

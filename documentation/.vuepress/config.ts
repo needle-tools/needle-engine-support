@@ -452,12 +452,11 @@ export default defineUserConfig({
             before: (info) => `<div class="file"><dt>${info}</dt><dd>`,
             after: () => '</dd></div>',
         }),
-        markdownContainerPlugin(
-            {
-                type: 'file-tree',
-                before: (info) => `<filetree ${info}>`,
-                after: () => '</filetree>',
-            }),
+        markdownContainerPlugin({
+            type: 'file-tree',
+            before: (info) => `<filetree ${info}>`,
+            after: () => '</filetree>',
+        }),
     ],
     head: [
         ['link', { rel: 'icon', href: _url + '/icons/favicon.ico' }],
@@ -487,9 +486,27 @@ export default defineUserConfig({
             // https://v2.vuepress.vuejs.org/reference/config.html#markdown-headers
             format: (link) => cleanHeader(link),
         },
-
     },
     bundler: viteBundler(),
+    extendsMarkdown: (md) => {
+        // Custom image renderer for high-DPI images
+        const defaultImageRenderer = md.renderer.rules.image;
+        if (!defaultImageRenderer) return;
+        md.renderer.rules.image = (tokens, idx, options, env, self) => {
+            const token = tokens[idx];
+            const src = token.attrGet('src');
+            const alt = token.content;
+            const title = token.attrGet('title');
+                    
+            if (title === '2x') {
+                console.log("Rendering high-DPI image", src, alt);
+                token.attrSet('title', '');
+                return `<img src="${src}" srcset="${src} 2x" alt="${alt}">`;
+            } else {
+                return defaultImageRenderer(tokens, idx, options, env, self);
+            }
+        };
+    },
     theme: defaultTheme(defaultThemeOpts),
     /*
     alias: {

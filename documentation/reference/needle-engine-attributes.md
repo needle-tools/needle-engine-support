@@ -16,7 +16,7 @@ The table below shows a list of available attributes and their descriptions.
 | --- | --- |
 | **Loading** | |
 | `src` | Path to one or multiple glTF or glb files.<br/>Supported types are `string`, `string[]` or a stringified array (`,` separated) |
-| **Custom Display & Loading** | *Available options to change the Needle Engine loading and branding* |
+| **Custom Display & Loading** | *Available options to change the Needle Engine loading and custom branding* |
 | `loading-blur` | Optional: Blur the scene until LODs are loaded (if any). Default: disabled |
 | `poster` | Optional: Set the `poster` attribute to show a placeholder image while loading. Example: `<needle-engine poster="https://yourdomain.com/poster.png">`. By just using the attribute without a url the poster in `include/poster.webp` will be used if it exists (e.g. `<needle-engine poster>`) |
 | `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
