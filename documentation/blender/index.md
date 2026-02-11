@@ -196,6 +196,9 @@ Master the 100+ built-in components and learn to create your own custom TypeScri
 **[Lightmapping →](/docs/blender/lightmapping)**
 Bake photorealistic lighting for stunning visuals with great performance.
 
+**[Optimization & Progressive Loading →](/docs/gltf-progressive/)**
+Production builds automatically generate mesh LODs, texture LODs, and apply compression — your scenes load instantly and stream in detail on demand.
+
 **[Deploy Your Project →](/docs/how-to-guides/deployment/)**
 Publish your interactive scene to the web for everyone to see.
 
