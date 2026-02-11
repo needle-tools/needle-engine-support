@@ -164,6 +164,10 @@ Use the Compression & LOD Settings component to enable progressive loading globa
 ![Unity Compression Settings](/imgs/unity-compression-settings.png)
 :::
 
+:::tip Learn More
+Progressive loading is powered by [`@needle-tools/gltf-progressive`](/docs/gltf-progressive/), which ships with Needle Engine. It's also available as a standalone package for any three.js project.
+:::
+
 ---
 
 ## Automatic Mesh LODs (Level of Detail)

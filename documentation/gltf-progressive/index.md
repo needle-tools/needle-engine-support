@@ -5,12 +5,16 @@ description: 'Blazingly fast progressive loading for glTF, GLB, and VRM files wi
 
 # gltf-progressive
 
-**Blazingly fast loading for glTF, GLB, and VRM files** with smart density-based LOD selection for meshes and textures. Works with any three.js project.
+**Blazingly fast loading for glTF, GLB, and VRM files** with smart density-based LOD selection for meshes and textures.
 
-`@needle-tools/gltf-progressive` is a standalone npm package that adds progressive Level of Detail (LOD) loading to three.js. It loads a lightweight version of your scene instantly, then streams in full-quality meshes and textures on demand — only for what's actually visible on screen.
+`@needle-tools/gltf-progressive` ships as part of [Needle Engine](/docs/getting-started/) and powers its progressive loading pipeline out of the box. In a Needle Engine project, progressive meshes and textures are generated automatically during production builds — no extra setup required.
+
+The package is also available as a **standalone npm module** for any three.js-based project. Whether you're using vanilla three.js, React Three Fiber, or `<model-viewer>`, you can add progressive loading with a single line of code.
 
 :::tip Quick Links
-**Install:** `npm i @needle-tools/gltf-progressive`
+**Needle Engine:** Progressive loading is built in — see [Optimization & Compression](/docs/how-to-guides/optimization/)
+
+**Standalone:** `npm i @needle-tools/gltf-progressive`
 
 **Generate Assets:** [Needle Cloud](https://cloud.needle.tools) or [Needle Engine integrations](/docs/getting-started/)
 
@@ -138,17 +142,23 @@ When generating assets through [Needle Cloud](/docs/cloud/) or Needle Engine bui
 
 ## Generating Progressive Assets
 
-Progressive loading requires assets that have been processed to include LOD data. There are three ways to generate them:
+Progressive loading requires assets that have been processed to include LOD data.
+
+### Needle Engine (Automatic)
+
+**If you're using Needle Engine, progressive assets are generated automatically.** When you make a production build from Unity or Blender, the build pipeline generates all mesh and texture LODs, applies compression, and outputs progressive glTF files — ready to deploy.
+
+No manual steps are needed. You can configure the compression settings and LOD generation per project or per asset (see below).
 
 ### Needle Cloud
 
-Upload any glTF, GLB, VRM, FBX, USD, or OBJ file to [Needle Cloud](https://cloud.needle.tools). It automatically generates progressive mesh and texture LODs, applies compression, and serves assets via a global CDN.
+For standalone three.js projects or external assets, upload any glTF, GLB, VRM, FBX, USD, or OBJ file to [Needle Cloud](https://cloud.needle.tools). It automatically generates progressive mesh and texture LODs, applies compression, and serves assets via a global CDN.
 
 Use the **Progressive-World** or **Progressive-Product** download link to get a URL ready for progressive loading.
 
 See [Needle Cloud documentation](/docs/cloud/) for uploading, versioning, and sharing.
 
-### Needle Engine for Unity
+### Configuration: Unity
 
 Progressive LODs are generated automatically during production builds. Use the **Compression and LOD Settings** component to configure the behavior.
 
@@ -173,7 +183,7 @@ You can also trigger compression manually from the Unity menu:
 - **Needle Engine > Compression > Run Compression** — Compression only
 :::
 
-### Needle Engine for Blender
+### Configuration: Blender
 
 In Blender, progressive loading settings are part of the main Needle Engine scene settings panel:
 
@@ -184,7 +194,9 @@ In Blender, progressive loading settings are part of the main Needle Engine scen
 
 ---
 
-## Usage
+## Standalone Usage
+
+While `gltf-progressive` is built into Needle Engine, it can also be used as a standalone package in any three.js project.
 
 ### Installation
 
@@ -280,9 +292,11 @@ For Google's `<model-viewer>` web component, just include the script — no code
 </body>
 ```
 
-### Needle Engine
+### Needle Engine (Built In)
 
-[Needle Engine](/docs/getting-started/) natively supports progressive loading. When you make a production build, progressive meshes and textures are generated automatically. See [Optimization & Compression](/docs/how-to-guides/optimization/) for details.
+`gltf-progressive` ships with [Needle Engine](/docs/getting-started/) — progressive loading works out of the box with zero configuration. When you make a production build, progressive meshes and textures are generated automatically. The runtime LOD manager is already integrated into the rendering pipeline, so your scenes benefit from density-based LOD selection, progressive texture streaming, and optimized raycasting without any additional setup.
+
+See [Optimization & Compression](/docs/how-to-guides/optimization/) to configure compression formats and LOD generation settings in Unity and Blender.
 
 ---
 

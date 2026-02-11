@@ -221,6 +221,7 @@ Needle Engine uses a [component-based architecture](/docs/how-to-guides/scriptin
 
 - **EditorSync** – Live synchronize editing in Unity to your running web application for instant feedback during development
 - **Compression Pipeline** – Automatic optimization for web delivery with glTF compression and texture optimization
+- **[Progressive Loading](/docs/gltf-progressive/)** – Instant scene display with progressive mesh and texture streaming via `@needle-tools/gltf-progressive`
 - **Audio Support** – Spatial audio, audio sources, and audio listeners
 - **Image Tracking** – WebXR image tracking on Android, QuickLook image tracking on iOS
 - **Custom Components** – Extend the engine with your own components and systems

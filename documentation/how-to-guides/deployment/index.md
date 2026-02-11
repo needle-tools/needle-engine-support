@@ -11,7 +11,7 @@ description: Deploy your Needle Engine projects to the web with one click. Learn
 Before deploying to production, optimize your project for best performance:
 **[Optimization & Compression →](/docs/how-to-guides/optimization/)**
 
-Learn about texture compression (KTX2), mesh compression (Draco/Meshopt), progressive loading, and build types.
+Learn about texture compression (KTX2), mesh compression (Draco/Meshopt), [progressive loading](/docs/gltf-progressive/), and build types.
 :::
 
 ## What does deployment mean?
