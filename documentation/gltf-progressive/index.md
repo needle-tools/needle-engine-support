@@ -39,7 +39,7 @@ Traditional 3D optimization with tools like gltf-transform produces a single opt
 | **Caching** | File-level only | Per-LOD caching with content hashing |
 | **Typical initial savings** | — | ~90% smaller initial download |
 
-A 56 MB asset can be reduced to a **300 KB initial download** with up to 8 MB of progressive streaming — and most users will never need the full 8 MB because they only see a portion of the model at full detail.
+A 56 MB asset can be reduced to a **300 KB initial download** with up to 8 MB of progressive streaming — and most users will never need the full 8 MB because they don't need 4K textures until they zoom in close.
 
 ### What This Unlocks
 
