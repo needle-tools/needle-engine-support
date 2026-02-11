@@ -22,7 +22,7 @@
       </div>
 
       <!-- On this page -->
-      <div class="page-nav-content">
+      <div class="page-nav-content" v-if="headers.length > 0">
         <p class="section-header">On this page</p>
         <ul class="page-nav-list">
           <li v-for="header in headers" :key="header.slug"

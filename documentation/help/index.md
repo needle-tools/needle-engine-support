@@ -24,7 +24,17 @@ description: Get help and connect with the Needle Engine community
 - [How-To Guides](/docs/how-to-guides/) - Solve specific problems
 - [Reference](/docs/reference/) - API documentation
 
+---
 
+## Need Help Right Now?
+
+1. **Check the FAQ** - [FAQ](/docs/reference/faq)
+2. **Search the docs** - Use the search bar above
+3. **Try AI Assistant** - [Needle MCP Server](/docs/ai/) for AI-powered help
+4. **Ask on Discord** - [Discord Server](https://discord.needle.tools)
+5. **Post on Forum** - [Forum](https://forum.needle.tools)
+
+---
 
 ## Community Support
 
@@ -107,13 +117,3 @@ Found an error in the docs?
 See what developers are saying about Needle Engine:
 
 - [Testimonials](/docs/help/testimonials) - Community feedback and quotes
-
----
-
-## Need Help Right Now?
-
-1. **Check the FAQ** - [FAQ](/docs/reference/faq)
-2. **Search the docs** - Use the search bar above
-3. **Try AI Assistant** - [Needle MCP Server](/docs/ai/) for AI-powered help
-4. **Ask on Discord** - [Discord Server](https://discord.needle.tools)
-5. **Post on Forum** - [Forum](https://forum.needle.tools)
