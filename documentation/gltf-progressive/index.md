@@ -7,7 +7,7 @@ description: 'Blazingly fast progressive loading for glTF, GLB, and VRM files wi
 
 **Blazingly fast loading for glTF, GLB, and VRM files** with smart density-based LOD selection for meshes and textures. Works with any three.js project.
 
-`@needle-tools/gltf-progressive` is a standalone npm package that adds progressive Level of Detail (LOD) loading to three.js. It loads low-resolution meshes and textures first for a fast initial display, then upgrades to full quality on demand based on what's actually visible on screen.
+`@needle-tools/gltf-progressive` is a standalone npm package that adds progressive Level of Detail (LOD) loading to three.js. It loads a lightweight version of your scene instantly, then streams in full-quality meshes and textures on demand — only for what's actually visible on screen.
 
 :::tip Quick Links
 **Install:** `npm i @needle-tools/gltf-progressive`
@@ -19,19 +19,33 @@ description: 'Blazingly fast progressive loading for glTF, GLB, and VRM files wi
 
 ---
 
-## Why Use Progressive Loading?
+## Why Progressive Loading?
 
-Traditional 3D web experiences force users to wait for the entire model to download before seeing anything. With progressive loading, your scene appears almost instantly at a lower quality and seamlessly upgrades as higher-quality data streams in.
+Traditional 3D optimization with tools like gltf-transform produces a single optimized file. It's compressed and smaller — but users still have to download the *entire* file before seeing anything. Every mesh and every texture at full resolution, whether visible or not.
 
-| | Without Progressive Loading | With Progressive Loading |
+**gltf-progressive takes a fundamentally different approach.** Instead of one big file, it creates a tiny initial file with embedded low-quality proxies plus a set of higher-quality LOD files that stream in on demand. The result:
+
+| | Standard gltf-transform | gltf-progressive |
 | --- | --- | --- |
-| **Initial load** | Wait for full model | Instant display at lower quality |
-| **Bandwidth** | Full resolution always | Only loads what's needed |
-| **Memory** | All LODs in memory | On-demand LOD management |
-| **Mobile** | Same data as desktop | Automatic quality reduction |
-| **Typical savings** | — | ~90% smaller initial download |
+| **Initial display** | Wait for full download | Instant — proxy geometry renders immediately |
+| **What gets loaded** | Everything, always | Only the detail needed for the current view |
+| **Quality over time** | All-or-nothing | Progressive refinement as LODs stream in |
+| **Bandwidth usage** | Full file regardless of viewport | Adapts to what's on screen |
+| **Mobile / slow networks** | Same payload as desktop | Automatic quality reduction |
+| **Caching** | File-level only | Per-LOD caching with content hashing |
+| **Typical initial savings** | — | ~90% smaller initial download |
 
-A 56 MB asset can be reduced to a 300 KB initial download with up to 8 MB of progressive streaming — only loading the detail actually needed for the current view.
+A 56 MB asset can be reduced to a **300 KB initial download** with up to 8 MB of progressive streaming — and most users will never need the full 8 MB because they only see a portion of the model at full detail.
+
+### What This Unlocks
+
+Progressive loading isn't just an optimization — it changes what's possible on the web:
+
+- **Massive scenes become viable.** Environments with hundreds of high-poly objects load in seconds instead of minutes. Only nearby objects get full detail; distant ones stay lightweight.
+- **E-commerce at any scale.** Product configurators with dozens of variants don't need to preload everything. Each option streams in at the quality the viewer needs.
+- **Mobile-first 3D.** Instead of choosing between "looks good" and "loads on mobile," you get both. The same asset adapts automatically to the device and network.
+- **Instant previews everywhere.** Embed 3D content on landing pages, in emails, or in social cards without worrying about load time. The proxy loads as fast as an image.
+- **Real-time collaboration on heavy assets.** Multiple users viewing the same scene each load only the LODs relevant to their camera — no server-side rendering needed.
 
 ---
 
@@ -49,17 +63,136 @@ A 56 MB asset can be reduced to a 300 KB initial download with up to 8 MB of pro
 
 ---
 
-## Installation
+## How It Works
+
+### Mesh LODs
+
+The system generates up to **6 mesh LOD levels** using progressive simplification. Each level is roughly half the triangle count of the previous one, with the lowest quality embedded directly in the main file for instant display. Higher-quality levels are stored as separate files and streamed in as needed.
+
+At runtime, the LOD manager selects which level to show based on **screen-space density** — how many triangles per pixel the mesh would have at its current screen size. A mesh filling the screen gets full detail; the same mesh as a small element in the background gets a much simpler version. This density-based approach ensures consistent visual quality regardless of camera distance or screen resolution.
+
+**Default target:** 200,000 triangles on screen when a mesh fills the view.
+
+### Texture LODs
+
+Textures are handled similarly. The main file embeds a small preview (128px by default), while full-resolution versions stream in progressively. Each texture LOD is half the resolution of the previous one, and the runtime selects the appropriate level based on how many pixels the texture actually covers on screen.
+
+On mobile devices, 8K textures are automatically skipped. When the browser's [data-saving mode](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/saveData) is active, textures above 2K are skipped as well.
+
+### Streaming
+
+1. The main glTF loads with embedded low-quality proxies — your scene appears immediately
+2. The runtime evaluates what's visible and at what screen size
+3. Higher-quality LOD files are fetched on demand as the camera moves
+4. Geometry and textures are swapped in seamlessly — no visual disruption
+5. Previously loaded LODs are cached and reused
+
+---
+
+## Compression Methods
+
+gltf-progressive applies state-of-the-art compression to every LOD level automatically. Understanding which formats are used helps you make informed decisions about quality vs. file size.
+
+### Texture Compression
+
+| Format | Best For | GPU Memory | File Size | Quality |
+| --- | --- | --- | --- | --- |
+| **ETC1S** (KTX2) | Color textures, UI, albedo maps | Low | Low | Medium |
+| **UASTC** (KTX2) | Normal maps, metallic/roughness, detail textures | Low | Higher | Very high |
+| **WebP** | Photographic content where ETC1S quality isn't sufficient | High (uncompressed in GPU) | Very low | Configurable |
+
+**How formats are chosen automatically:**
+- **Color textures** (base color, emissive, occlusion) → **ETC1S** for the best balance of size and quality
+- **Data textures** (normal maps, metallic/roughness) → **UASTC** to preserve the precision these textures need
+- **Product visualization** → **WebP** or **UASTC** for maximum visual fidelity
+
+:::tip ETC1S vs UASTC
+Both are GPU-compressed formats (low GPU memory), but they serve different purposes. **ETC1S** is much smaller on disk and great for color textures where minor quality loss is acceptable. **UASTC** preserves more detail and is essential for normal maps and PBR data textures where compression artifacts would be visible.
+:::
+
+### Mesh Compression
+
+| Format | Best For | File Size | Animation Support |
+| --- | --- | --- | --- |
+| **Draco** | Static meshes | Smallest | No |
+| **Meshopt** | Animated meshes, blend shapes | Small | Yes |
+
+**How mesh compression is chosen:**
+- **Static meshes** → **Draco** for maximum compression (~20x reduction)
+- **Meshes with blend shapes or animations** → **Meshopt** which preserves morph targets and animation data
+- Each LOD level gets the same compression as the original, ensuring consistency
+
+### Optimization Profiles
+
+When generating assets through [Needle Cloud](/docs/cloud/) or Needle Engine builds, two optimization profiles are available:
+
+| | World | Product |
+| --- | --- | --- |
+| **Use case** | Environments, scenes, games | Product visualization, e-commerce |
+| **Mesh LOD levels** | 6 | 3 |
+| **Min texture size** | 128px | 512px |
+| **Texture compression** | ETC1S for colors, UASTC for data | UASTC / WebP for max fidelity |
+| **Priority** | Fast load, low bandwidth | Visual quality |
+
+---
+
+## Generating Progressive Assets
+
+Progressive loading requires assets that have been processed to include LOD data. There are three ways to generate them:
+
+### Needle Cloud
+
+Upload any glTF, GLB, VRM, FBX, USD, or OBJ file to [Needle Cloud](https://cloud.needle.tools). It automatically generates progressive mesh and texture LODs, applies compression, and serves assets via a global CDN.
+
+Use the **Progressive-World** or **Progressive-Product** download link to get a URL ready for progressive loading.
+
+See [Needle Cloud documentation](/docs/cloud/) for uploading, versioning, and sharing.
+
+### Needle Engine for Unity
+
+Progressive LODs are generated automatically during production builds. Use the **Compression and LOD Settings** component to configure the behavior.
+
+**Add the component:** `Add Component > Needle Engine > Optimization > Compression and LOD Settings`
+
+**Texture settings:**
+- **Texture Format** — Choose between Automatic, ETC1S, UASTC, WebP, or per-use-case modes (World, Product)
+- **Max Texture Size** — Maximum resolution (default: 8192)
+- **Generate Texture LODs** — Enable/disable progressive texture loading (default: on)
+- **LODs Max Size** — Max resolution for the initially loaded texture (default: 128px)
+- **Per-texture overrides** — Override compression format, max size, or LOD generation for individual textures
+
+**Mesh settings:**
+- **Mesh Compression** — Choose between Draco, Meshopt, Automatic, or None
+- **Generate Mesh LODs** — Enable/disable progressive mesh loading (default: on)
+- **Per-mesh overrides** — Override LOD generation for individual meshes
+
+:::details Build and compression actions
+You can also trigger compression manually from the Unity menu:
+- **Needle Engine > Compression > Run Full Compression** — Compression + LOD generation
+- **Needle Engine > Compression > Run LODs Generator** — LOD generation only
+- **Needle Engine > Compression > Run Compression** — Compression only
+:::
+
+### Needle Engine for Blender
+
+In Blender, progressive loading settings are part of the main Needle Engine scene settings panel:
+
+- **Use Progressive** — Enable progressive texture loading (default: on)
+- **Progressive Texture Size** — Preview size for initial texture load (default: 128px, options: 32–2048)
+- **Use Progressive Meshes** — Enable progressive mesh loading (default: on)
+- **Compress On Save** — Generate compressed and progressive assets after export to preview production quality locally
+
+---
+
+## Usage
+
+### Installation
 
 ```bash
 npm i @needle-tools/gltf-progressive
 ```
 
 **Peer dependency:** three.js >= 0.160.0
-
----
-
-## Usage
 
 ### three.js
 
@@ -99,7 +232,7 @@ When using import maps in HTML:
 ### React Three Fiber
 
 ```tsx
-import { useGLTF, Canvas } from "@react-three/drei";
+import { useGLTF } from "@react-three/drei";
 import { useThree } from "@react-three/fiber";
 import { useNeedleProgressive } from "@needle-tools/gltf-progressive";
 
@@ -139,7 +272,6 @@ For Google's `<model-viewer>` web component, just include the script — no code
     </script>
 </head>
 <body>
-    <!-- Use model-viewer as usual with a Needle Cloud progressive URL -->
     <model-viewer
         src="https://cloud.needle.tools/-/assets/Z23hmXBZN45qJ-ZN45qJ-world/file"
         camera-controls
@@ -154,64 +286,11 @@ For Google's `<model-viewer>` web component, just include the script — no code
 
 ---
 
-## Generating Progressive Assets
-
-Progressive loading requires assets with embedded LOD data. There are two ways to generate them:
-
-### Needle Cloud
-
-Upload any glTF, GLB, VRM, FBX, USD, or OBJ file to [Needle Cloud](https://cloud.needle.tools). It automatically generates progressive mesh and texture LODs, applies Draco/KTX2 compression, and serves assets via a global CDN.
-
-Use the **Progressive-World** or **Progressive-Product** download link from Needle Cloud to get a URL ready for progressive loading.
-
-See [Needle Cloud documentation](/docs/cloud/) for more details on uploading, versioning, and sharing assets.
-
-### Needle Engine (Unity / Blender)
-
-When building a Needle Engine project for production, progressive LODs are generated automatically during the build process. Add the `Progressive Texture Settings` and `Compression & LOD Settings` components in your scene to control the behavior.
-
-See [Optimization & Compression](/docs/how-to-guides/optimization/) for configuration details.
-
----
-
-## How It Works
-
-### Mesh LODs
-
-The LOD manager calculates **screen-space coverage** for each mesh by projecting its bounding box into screen coordinates. It then selects the appropriate LOD level based on triangle density:
-
-1. Calculate how much of the screen the mesh covers (0–1 range)
-2. For each available LOD, compute: `resultingDensity = lodDensity / screenCoverage`
-3. Select the lowest LOD where `resultingDensity < targetTriangleDensity`
-
-This density-based approach means a mesh far away gets a low-poly LOD, while the same mesh up close gets full detail — maintaining a consistent visual quality regardless of distance or screen size.
-
-**Default target:** 200,000 triangles on screen when a mesh fills the view.
-
-### Texture LODs
-
-Textures are loaded progressively based on their pixel size on screen:
-
-1. On first load, the lowest available resolution is used for instant display
-2. The system calculates how many pixels the texture occupies on screen
-3. Higher-resolution LODs are loaded when the texture is visible at a size that benefits from more detail
-4. On mobile devices, 8K textures are skipped; with data-saving mode, textures above 2K are skipped
-
-### Loading Pipeline
-
-1. **Registration** — When a glTF is loaded, LOD metadata is extracted from the `NEEDLE_progressive` extension
-2. **Lazy loading** — LOD files are fetched on demand as the camera moves
-3. **Concurrent management** — A request queue limits concurrent downloads (up to 50)
-4. **Caching** — Previously loaded LODs are cached and reused
-5. **Seamless swap** — Geometry and textures are swapped in place without visual disruption
-
----
-
-## Configuration
+## Runtime Configuration
 
 ### LOD Manager Settings
 
-Access the LOD manager to configure progressive loading behavior:
+Access the LOD manager to fine-tune progressive loading at runtime:
 
 ```ts
 import { LODsManager } from "@needle-tools/gltf-progressive";
@@ -223,9 +302,9 @@ const lodsManager = LODsManager.get(renderer);
 | --- | --- | --- |
 | `targetTriangleDensity` | `200000` | Target max triangles on screen when a mesh fills the view. Increase for higher quality, decrease for better performance. |
 | `updateInterval` | `"auto"` | How often LODs are recalculated (in frames). `0` = every frame, `2` = every other frame. `"auto"` adapts to framerate. |
-| `skinnedMeshAutoUpdateBoundsInterval` | `30` | How often skinned mesh bounds are recalculated (in frames). Higher = better performance for animated models. |
+| `skinnedMeshAutoUpdateBoundsInterval` | `30` | How often skinned mesh bounds are recalculated (in frames). Higher values improve performance for animated models. |
 | `pause` | `false` | Temporarily stop LOD updates. |
-| `manual` | `false` | Disable automatic updates. Use `lodsManager.update(scene, camera)` to update manually. |
+| `manual` | `false` | Disable automatic updates. Use `lodsManager.update(scene, camera)` to trigger manually. |
 | `overrideLodLevel` | `undefined` | Force a specific LOD level (0–6) for all meshes. Set to `undefined` to disable. |
 
 ```ts
@@ -250,13 +329,13 @@ const raycaster = new Raycaster();
 raycaster.setFromCamera(mouse, camera);
 const hits = raycaster.intersectObjects(scene.children, true);
 
-// Access a specific low-poly mesh (e.g. for physics)
+// Get a low-poly mesh for physics or custom use
 const lowPolyGeometry = getRaycastMesh(myMesh);
 ```
 
 ### Wait for LODs
 
-Wait for all LODs currently being loaded to finish:
+Wait for all in-flight LODs to finish loading — useful for screenshots or transitions:
 
 ```ts
 const result = await lodsManager.awaitLoading({
@@ -303,47 +382,6 @@ class MyPlugin implements NEEDLE_progressive_plugin {
 }
 
 LODsManager.addPlugin(new MyPlugin());
-```
-
----
-
-## glTF Extension
-
-Progressive loading data is stored in glTF files using the `NEEDLE_progressive` vendor extension. This extension defines LOD metadata for both meshes and textures.
-
-### Mesh Extension (`NEEDLE_ext_progressive_mesh`)
-
-```json
-{
-    "guid": "mesh-asset-456",
-    "lods": [
-        {
-            "path": "./meshes/mesh_high.glb",
-            "densities": [100000, 50000],
-            "indexCount": 15000,
-            "vertexCount": 8000
-        },
-        {
-            "path": "./meshes/mesh_low.glb",
-            "densities": [100000, 50000],
-            "indexCount": 3000,
-            "vertexCount": 1500
-        }
-    ]
-}
-```
-
-### Texture Extension (`NEEDLE_ext_progressive_texture`)
-
-```json
-{
-    "guid": "texture-asset-123",
-    "lods": [
-        { "path": "./textures/diffuse_1024.glb", "width": 1024, "height": 1024 },
-        { "path": "./textures/diffuse_512.glb", "width": 512, "height": 512 },
-        { "path": "./textures/diffuse_128.glb", "width": 128, "height": 128 }
-    ]
-}
 ```
 
 ---
