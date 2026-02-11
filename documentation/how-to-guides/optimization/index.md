@@ -7,6 +7,7 @@ title: Optimization & Compression
 **Make your Needle Engine projects load faster and run smoother.** Learn about compression formats, build types, and optimization techniques to deliver the best experience to your users.
 
 :::tip Also See
+- **[gltf-progressive](/docs/gltf-progressive/)** - Standalone progressive loading for any three.js project
 - **[Deployment Platforms](/docs/how-to-guides/deployment/)** - Deploy to Netlify, Vercel, GitHub Pages, and more
 - **[Export Guide](/docs/how-to-guides/export/)** - Best practices for assets
 :::

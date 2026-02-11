@@ -298,7 +298,7 @@ Needle Cloud is not just for hosting apps—it's a powerful asset management sys
 Use the `Needle Cloud Asset` component to load assets at runtime. Keeps project sizes small and enables cloud updates.
 
 :::tip Progressive Loading
-Cloud assets automatically load only what's needed using our Progressive Loading technology. This saves ~90% bandwidth and memory compared to loading full assets.
+Cloud assets automatically load only what's needed using our Progressive Loading technology. This saves ~90% bandwidth and memory compared to loading full assets. See [gltf-progressive](/docs/gltf-progressive/) for details on using progressive loading in any three.js project.
 :::
 
 **In Other Engines (Unity, Unreal, etc.):**
@@ -307,7 +307,7 @@ Three ways to use cloud assets:
 
 1. **Download and Import** – Standard workflow
 2. **Direct Link** – Link to cloud asset for automatic updates
-   - Progressive Loading: Use `Progressive-World` or `Progressive-Product` link ([learn more](https://www.npmjs.com/package/@needle-tools/gltf-progressive))
+   - Progressive Loading: Use `Progressive-World` or `Progressive-Product` link ([learn more](/docs/gltf-progressive/))
    - Draco + KTX2: Use `Optimized` link
    - Basic glTF: Use `Upload` or `Converted` link
 3. **Needle Cloud Asset Component** – For Needle Engine projects (works in Unity builds too)
