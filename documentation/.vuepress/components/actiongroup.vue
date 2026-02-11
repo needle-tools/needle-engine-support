@@ -8,10 +8,7 @@ export default {}
     align-items: center;
     justify-content: flex-start;
     flex-wrap: wrap;
-}
-
-.actiongroup > * {
-    margin: .5em .5em;
+    gap: .5em;
 }
 </style>
 

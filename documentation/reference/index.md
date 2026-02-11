@@ -74,6 +74,12 @@ Reference documentation is **information-oriented** and provides:
 
 
 
+## Pricing & Legal
+
+- [Pricing Information](https://needle.tools/pricing) - View pricing plans and options
+- [End User License Agreement](https://needle.tools/eula) - Legal terms and conditions
+
+
 ## Need Help?
 
 - **Want to learn by doing?** See [Tutorials](../tutorials/)

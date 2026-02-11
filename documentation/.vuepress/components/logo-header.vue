@@ -11,6 +11,14 @@ export default {
         alt: {
             type: String,
             default: ''
+        },
+        maxHeight: {
+            type: String,
+            default: undefined
+        },
+        aspectRatio: {
+            type: String,
+            default: undefined
         }
     },
     setup(props) {
@@ -23,8 +31,20 @@ export default {
             return withBase(props.logo)
         })
 
+        const imageStyle = computed(() => {
+            const style = {}
+            if (props.maxHeight) {
+                style.maxHeight = props.maxHeight
+            }
+            if (props.aspectRatio) {
+                style.aspectRatio = props.aspectRatio
+            }
+            return style
+        })
+
         return {
-            logoSrc
+            logoSrc,
+            imageStyle
         }
     }
 }
@@ -44,6 +64,7 @@ export default {
     width: auto;
     margin: 0;
     flex-shrink: 0;
+    object-fit: contain;
 }
 
 .logo-header-text {
@@ -56,7 +77,7 @@ export default {
 
 <template>
     <span class="logo-header">
-        <img :src="logoSrc" :alt="alt" />
+        <img :src="logoSrc" :alt="alt" :style="imageStyle" />
         <span class="logo-header-text"><slot></slot></span>
     </span>
 </template>

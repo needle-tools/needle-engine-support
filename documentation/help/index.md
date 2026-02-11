@@ -31,22 +31,14 @@ description: Get help and connect with the Needle Engine community
 ### Discord Server
 Join our active Discord community for real-time help:
 
-<actiongroup>
-<action href="https://discord.needle.tools" icon="💬">
-Join Discord Server →
-</action>
-</actiongroup>
+- [Join Discord Server](https://discord.needle.tools)
 
 **Best for:** Quick questions, real-time discussions, community showcase
 
 ### Forum
 Ask detailed questions and get thorough answers:
 
-<actiongroup>
-<action href="https://forum.needle.tools/?utm_source=needle_docs&utm_content=help_page" icon="💭">
-Visit Forum →
-</action>
-</actiongroup>
+- [Visit Forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=help_page)
 
 **Best for:** In-depth technical questions, sharing projects, long-form discussions
 
@@ -57,40 +49,31 @@ Visit Forum →
 ### Email Support
 For commercial support, licensing, and partnership inquiries:
 
-<actiongroup>
-<action href="mailto:hi+docs@needle.tools" icon="📧">
-Email Support →
-</action>
-</actiongroup>
+- [Email Support](mailto:hi+docs@needle.tools)
+
+### Pricing & Legal
+View pricing plans and license terms:
+
+- [Pricing Information](https://needle.tools/pricing)
+- [End User License Agreement](https://needle.tools/eula)
 
 ### Feedback
 Help us improve Needle Engine:
 
-<actiongroup>
-<action href="https://fwd.needle.tools/needle-engine/feedback" icon="📝">
-Submit Feedback →
-</action>
-</actiongroup>
+- [Submit Feedback](https://fwd.needle.tools/needle-engine/feedback)
 
 
 
 ## Stay Updated
 
-### Newsletter
-Get updates on new features and releases:
-
-<actiongroup>
-<action href="https://fwd.needle.tools/needle-engine/newsletter" icon="📬">
-Subscribe to Newsletter →
-</action>
-</actiongroup>
-
 ### Social Media
 Follow us for updates and community highlights:
 
-- [Twitter/X](https://twitter.com/needletools) - News and updates
-- [YouTube](https://www.youtube.com/@needle-tools) - Video tutorials and demos
-- [GitHub](https://github.com/needle-tools) - Source code and issues
+- <logo-header logo="/imgs/twitter-logo.webp" alt="Twitter/X" max-height="1.1em" aspect-ratio="1"><a href="https://twitter.com/needletools">Twitter/X</a></logo-header> - News and updates
+- <logo-header logo="/imgs/youtube-logo.webp" alt="YouTube" max-height="1.1em" aspect-ratio="1"><a href="https://www.youtube.com/@needle-tools">YouTube</a></logo-header> - Video tutorials and demos
+- <logo-header logo="/imgs/instagram-logo.webp" alt="Instagram" max-height="1.1em" aspect-ratio="1"><a href="https://instagram.com/@needle-tools">Instagram</a></logo-header> - Behind the scenes and community highlights
+- <logo-header logo="/imgs/github-logo.webp" alt="GitHub" max-height="1.1em" aspect-ratio="1"><a href="https://github.com/needle-tools">GitHub</a></logo-header> - Source code and issues
+- <logo-header logo="/imgs/discourse-logo.webp" alt="Forum" max-height="1.1em" aspect-ratio="1"><a href="https://forum.needle.tools">Forum</a></logo-header> - Community discussions and support
 
 
 ## Learning Resources
@@ -111,20 +94,12 @@ Follow us for updates and community highlights:
 ### Bug Reports
 Found a bug? Report it on GitHub:
 
-<actiongroup>
-<action href="https://github.com/needle-tools/needle-engine-support/issues" icon="🐛">
-Report Bug →
-</action>
-</actiongroup>
+- [Report Bug](https://github.com/needle-tools/needle-engine-support/issues)
 
 ### Documentation Issues
 Found an error in the docs?
 
-<actiongroup>
-<action href="https://github.com/needle-tools/needle-engine-support/issues" icon="📄">
-Report Documentation Issue →
-</action>
-</actiongroup>
+- [Report Documentation Issue](https://github.com/needle-tools/needle-engine-support/issues)
 
 
 ## Testimonials
