@@ -116,14 +116,14 @@ Both are GPU-compressed formats (low GPU memory), but they serve different purpo
 
 ### Mesh Compression
 
-| Format | Best For | File Size | Animation Support |
+| Format | Best For | File Size | Morph Targets & Animation Data |
 | --- | --- | --- | --- |
-| **Draco** | Static meshes | Smallest | No |
-| **Meshopt** | Animated meshes, blend shapes | Small | Yes |
+| **Draco** | Static meshes | Smallest | Not supported — Draco compresses mesh geometry only |
+| **Meshopt** | Animated meshes, blend shapes | Small | Supported — preserves morph targets and animation data alongside mesh compression |
 
 **How mesh compression is chosen:**
-- **Static meshes** → **Draco** for maximum compression (~20x reduction)
-- **Meshes with blend shapes or animations** → **Meshopt** which preserves morph targets and animation data
+- **Static meshes (no blend shapes)** → **Draco** for maximum geometry compression (~20x reduction)
+- **Meshes with blend shapes or morph targets** → **Meshopt**, which can compress mesh geometry while preserving morph target and animation data that Draco would discard
 - Each LOD level gets the same compression as the original, ensuring consistency
 
 ### Optimization Profiles
