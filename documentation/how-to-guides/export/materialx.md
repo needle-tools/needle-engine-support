@@ -209,15 +209,6 @@ Needle is contributing to the built-in three.js MaterialX support, so that at so
 
 When working with MaterialX in Unity, here are some common scenarios and solutions:
 
-### Universal Render Pipeline (URP) Required
-
-**Issue**: MaterialX export requires the Universal Render Pipeline (URP) to be set up in your project, as Shader Graph in Unity requires a Scriptable Render Pipeline.
-
-**Solution**:
-1. Install the Universal RP package via the Package Manager (Window > Package Manager)
-2. Create a URP Asset and Renderer in your project (Right-click in Project > Create > Rendering > URP Asset with Universal Renderer)
-3. Assign the URP Asset in Project Settings > Graphics > Scriptable Render Pipeline Settings
-
 ### Shader Graph Not Available
 
 **Issue**: Shader Graph package is not installed or visible in Unity.
@@ -226,7 +217,6 @@ When working with MaterialX in Unity, here are some common scenarios and solutio
 1. Open Package Manager (Window > Package Manager)
 2. Change the filter to "Unity Registry" if needed
 3. Search for "Shader Graph" and install it
-4. Shader Graph requires either URP or HDRP to be installed first
 
 ### Material Not Exporting as MaterialX
 
