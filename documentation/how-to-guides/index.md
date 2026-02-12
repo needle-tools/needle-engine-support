@@ -136,6 +136,7 @@ Get your projects live on the web:
 Make your experiences fast and small:
 
 - [Optimization & Compression](/docs/how-to-guides/optimization/) - Texture/mesh compression, progressive loading, LODs
+- [gltf-progressive](/docs/gltf-progressive/) - Standalone progressive loading for any three.js project
 - [Export Best Practices](/docs/how-to-guides/export/) - Optimize 3D assets for the web
 
 ---

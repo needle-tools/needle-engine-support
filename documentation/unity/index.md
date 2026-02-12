@@ -10,7 +10,7 @@ Create **highly interactive, flexible, and lightweight web applications** right 
 
 **What you can do:**
 - Use Unity's powerful editor tools for 3D scenes, animation, and design
-- Export scenes to optimized glTF format automatically
+- Export scenes to optimized glTF with [automatic LODs and progressive loading](/docs/gltf-progressive/)
 - Write TypeScript code that appears as C# components in Unity
 - Integrate seamlessly with any web frontend framework
 - Deploy anywhere on the web with hot reload support
@@ -146,6 +146,7 @@ Share code across projects with **NPM Definitions (NpmDef)**:
 ### How-To Guides (Problem-Oriented)
 - **[Export Assets](../how-to-guides/export/)** - Control what gets exported
 - **[Create Components](../how-to-guides/scripting/create-components)** - Write interactive components
+- **[Optimization & Compression](../how-to-guides/optimization/)** - Texture/mesh compression, automatic LODs, progressive loading
 - **[Deploy Your Project](../how-to-guides/deployment/)** - Publish to the web
 
 ### Explanation (Understanding-Oriented)

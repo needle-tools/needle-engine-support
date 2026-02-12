@@ -7,6 +7,7 @@ title: Optimization & Compression
 **Make your Needle Engine projects load faster and run smoother.** Learn about compression formats, build types, and optimization techniques to deliver the best experience to your users.
 
 :::tip Also See
+- **[gltf-progressive](/docs/gltf-progressive/)** - Standalone progressive loading for any three.js project
 - **[Deployment Platforms](/docs/how-to-guides/deployment/)** - Deploy to Netlify, Vercel, GitHub Pages, and more
 - **[Export Guide](/docs/how-to-guides/export/)** - Best practices for assets
 :::
@@ -161,6 +162,10 @@ Add the `Progressive Texture Settings` component anywhere in your scene to enabl
 Use the Compression & LOD Settings component to enable progressive loading globally. Can be disabled or enabled for individual textures as needed.
 
 ![Unity Compression Settings](/imgs/unity-compression-settings.png)
+:::
+
+:::tip Learn More
+Progressive loading is powered by [`@needle-tools/gltf-progressive`](/docs/gltf-progressive/), which ships with Needle Engine. It's also available as a standalone package for any three.js project.
 :::
 
 ---
