@@ -302,6 +302,8 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
             "./tools/api-plugins/keywords/index.js",
             "./tools/api-plugins/plausible/index.js",
             "./tools/api-plugins/component-lookup/index.js",
+            "./tools/api-plugins/meta-description/index.js",
+            "./tools/api-plugins/canonical-url/index.js",
         ],
         keywords: ["typescript", "library", "threejs", "webgl", "engine", "browser", "webxr", "api"],
         footerDate: true,
