@@ -5,7 +5,7 @@ import fetch from 'node-fetch';
 import FtpDeploy from 'ftp-deploy';
 import dotenv from 'dotenv';
 import { html } from 'diff2html';
-import { join } from 'path';
+import { join, resolve } from 'path';
 
 dotenv.config();
 
@@ -104,13 +104,17 @@ async function main() {
         let packageDir = "";
 
         // in dev mode, we just run on the local version
-        const localPath = "/Users/herbst/git/needle-engine-dev/modules/needle-engine/js/package~";
-        if (isDev && fs.existsSync(localPath)) {
+        const localPath = resolve(process.cwd(), "./../needle-engine-dev/modules/needle-engine/js/package~/dist");
+        if (isDev) {
+            if(!fs.existsSync(localPath)) {
+                throw new Error("Local path for development does not exist: " + localPath);
+            }
             // copy localPath to targetDirectory, using node fs
-            console.log("Copying local package to " + targetDirectory);
+            console.log("[DEV] Copying local package to " + targetDirectory);
             fs.cpSync(localPath, targetDirectory, { recursive: true });
             tarballDir = targetDirectory;
             packageDir = tarballDir;
+            console.log("[DEV] Using local package at " + localPath);
         }
         else {
             tarballDir = await downloadPackage(versionInfo, targetDirectory);
