@@ -37,26 +37,29 @@ MaterialX is a great choice if you
 
 ## Enable MaterialX support in your project
 
-To enable MaterialX support in your Needle Engine project, you need to add the `@needle-tools/materialx` package to your project.
+::: tip MaterialX is now part of Needle Engine core
+Since **Needle Engine 4.13.0**, MaterialX support is included by default in Needle Engine. You no longer need to install a separate package or add dependencies manually. Simply export your Shader Graph materials with the MaterialX export type enabled and they will work out of the box.
+:::
 
 ::: tabs
 
 @tab Unity
 
+MaterialX support is built into Needle Engine and works automatically. No additional setup is required.
+
+If you're using an older version of Needle Engine (before 4.13.0), you'll need to add the `@needle-tools/materialx` package as a dependency:
+
 1. Select the Needle Engine component in your scene.
-
 2. Find the "NpmDef Dependencies" section in the Inspector, and add a new dependency by increasing the "Size" number (e.g. from 0 to 1).
-
 3. Click the Object Picker symbol, enable Package Visibility with the eye symbol, and select the `Needle MaterialX` package from the list.
-
-   ![Find and add the MaterialX package dependency in Unity.](/materialx/add-materialx-package-dependency.jpeg)
-   _Find and add the MaterialX package dependency in Unity._
-
-You are now ready to use MaterialX in your web project.
 
 @tab Other Needle integrations
 
-1. Find and open your web project in a code editor (e.g. VS Code).  
+MaterialX support is built into Needle Engine and works automatically. No additional setup is required.
+
+If you're using an older version of Needle Engine (before 4.13.0), you'll need to install the MaterialX package:
+
+1. Find and open your web project in a code editor (e.g. VS Code).
    [Learn how to open your web project.](./project-structure.html#opening-the-web-project-in-a-code-editor)
 2. Install the Needle MaterialX package from the NPM registry in your web project.
 
@@ -64,34 +67,24 @@ You are now ready to use MaterialX in your web project.
    npm install @needle-tools/materialx
    ```
 
-   This will add the MaterialX package to your project.
-
-3. If you're using any of our Vite-based templates, you don't need to do anything else. The MaterialX package will be automatically included in your project.
-
-    ::: tip If you're unsure, you're probably using one of our Vite-based templates!
-    :::
-
-4. If you're not using the Needle Vite plugins, import and register MaterialX in your main entry file, for example in `main.ts`:
-
-   ```ts
-   import { useNeedleMaterialX } from "@needle-tools/materialx";
-   useNeedleMaterialX();
-   ```
-
-You are now ready to use MaterialX in your web project.
-
 @tab three.js
 
 You can use our MaterialX package in any three.js project, even if you're not using Needle Engine.
 
-1. Register our `MaterialX` plugin with your `GLTFLoader`:
+1. Install the MaterialX package:
+
+    ```bash
+    npm install @needle-tools/materialx
+    ```
+
+2. Register our `MaterialX` plugin with your `GLTFLoader`:
 
     ```ts
     import { useNeedleMaterialX } from "@needle-tools/materialx";
     import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader.js";
 
     const gltfLoader = new GLTFLoader();
-    
+
     // ... register other plugins such as DRACOLoader, KTX2Loader, etc.
     useNeedleMaterialX(gltfLoader);
 
@@ -101,9 +94,9 @@ You can use our MaterialX package in any three.js project, even if you're not us
     });
     ```
 
-2. Load GLB files that contain the `NEEDLE_materials_mtlx` extension. The plugin will automatically load and apply the MaterialX materials to the objects that are using them.
+3. Load GLB files that contain the `NEEDLE_materials_mtlx` extension. The plugin will automatically load and apply the MaterialX materials to the objects that are using them.
 
-3. You can enable preloading of the MaterialX WebAssembly module by calling `useNeedleMaterialX(gltfLoader, { preload: true })`. This will load the MaterialX WebAssembly module in advance, so that it is ready when you load a GLB file with MaterialX materials.
+4. You can enable preloading of the MaterialX WebAssembly module by calling `useNeedleMaterialX(gltfLoader, { preload: true })`. This will load the MaterialX WebAssembly module in advance, so that it is ready when you load a GLB file with MaterialX materials.
 
 You can find a full example of how to use MaterialX in a three.js project on StackBlitz: [MaterialX in three.js](https://stackblitz.com/edit/needle-materialx-example?file=main.js).
 
@@ -211,3 +204,44 @@ While three.js has some initial support for MaterialX, it's using a custom imple
 
 Needle is contributing to the built-in three.js MaterialX support, so that at some point we can offer both options or switch to the three.js implementation once it's more comprehensive.
 :::
+
+## <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Quick Tips for Unity</logo-header>
+
+When working with MaterialX in Unity, here are some common scenarios and solutions:
+
+### Universal Render Pipeline (URP) Required
+
+**Issue**: MaterialX export requires the Universal Render Pipeline (URP) to be set up in your project, as Shader Graph in Unity requires a Scriptable Render Pipeline.
+
+**Solution**:
+1. Install the Universal RP package via the Package Manager (Window > Package Manager)
+2. Create a URP Asset and Renderer in your project (Right-click in Project > Create > Rendering > URP Asset with Universal Renderer)
+3. Assign the URP Asset in Project Settings > Graphics > Scriptable Render Pipeline Settings
+
+### Shader Graph Not Available
+
+**Issue**: Shader Graph package is not installed or visible in Unity.
+
+**Solution**:
+1. Open Package Manager (Window > Package Manager)
+2. Change the filter to "Unity Registry" if needed
+3. Search for "Shader Graph" and install it
+4. Shader Graph requires either URP or HDRP to be installed first
+
+### Material Not Exporting as MaterialX
+
+**Issue**: Your Shader Graph material isn't being exported with MaterialX.
+
+**Solution**:
+1. Make sure you've set the Shader Export Type to "MaterialX" in the material's Needle Engine settings
+2. Ensure you're using Needle Engine 4.13.0 or later (MaterialX is built-in). For older versions, you'll need to manually add the `@needle-tools/materialx` package dependency
+3. Check the Console for any export errors or unsupported nodes in your Shader Graph
+
+### Preview Looks Different in Unity vs Web
+
+**Issue**: The material looks different between Unity's Scene view and the exported web version.
+
+**Solution**:
+- MaterialX uses physically-based rendering which may differ from Unity's preview
+- Ensure your scene has proper lighting and an environment map/skybox for accurate IBL
+- Some Shader Graph nodes (like tangent space operations) are not yet fully supported and may look different
