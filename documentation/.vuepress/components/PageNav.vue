@@ -136,7 +136,8 @@ export default {
       nextHeaders: [],
       updateHeadersTimeout: null,
       mobileSidebarOpen: false,
-      pageUrl: ''
+      pageUrl: '',
+      mdPageUrl: ''
     }
   },
 
@@ -173,11 +174,11 @@ export default {
       return ''
     },
     chatGptUrl() {
-      const question = `Hi ChatGPT! I have a question about Needle Engine. Can you please read the documentation at ${this.pageUrl} and help me?`
+      const question = `Hi ChatGPT! Can you please read [this page](${this.mdPageUrl}) and prepare to answer questions about it?`
       return `https://chat.openai.com/?q=${encodeURIComponent(question)}`
     },
     claudeUrl() {
-      const question = `Hi Claude! I have a question about Needle Engine. Can you please read the documentation at ${this.pageUrl} and help me?`
+      const question = `Hi Claude! Can you please read [this page](${this.mdPageUrl}) and prepare to answer questions about it?`
       return `https://claude.ai/new?q=${encodeURIComponent(question)}`
     }
   },
@@ -254,6 +255,7 @@ export default {
   methods: {
     updatePageUrl() {
       this.pageUrl = window.location.origin + window.location.pathname + window.location.hash
+      this.mdPageUrl = window.location.origin + this.mdPath
     },
 
     handleInitialHash() {
