@@ -926,8 +926,7 @@ export default {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem;
-  font-size: .8rem;
-  font-family: monospace;
+  font-size: 0.8rem;
   font-weight: normal;
   color: oklch(from var(--c-text, #333) l c h);
   background: oklch(from var(--c-text, #333) l c h / 0.05);
@@ -935,7 +934,6 @@ export default {
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.2s;
-  word-break: break-all;
   cursor: pointer;
 }
 
