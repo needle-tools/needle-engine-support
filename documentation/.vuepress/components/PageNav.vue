@@ -37,8 +37,18 @@
       <!-- Extras -->
       <div class="page-nav-extras">
         <p class="section-header">Extras</p>
+        <div class="ai-chat-links">
+          <a :href="chatGptUrl" target="_blank" rel="noopener" class="ai-chat-link chatgpt-link">
+            <img src="/imgs/openai-logo.webp" alt="ChatGPT" class="ai-logo" /> Ask ChatGPT
+          </a>
+          <a :href="claudeUrl" target="_blank" rel="noopener" class="ai-chat-link claude-link">
+            <img src="/imgs/claude-logo.webp" alt="Claude" class="ai-logo" /> Ask Claude
+          </a>
+        </div>
         <div class="llm-link-container">
-          <a :href="mdPath" class="llm-link" @click.prevent="copyToClipboard">{{ linkText }}</a>
+          <a :href="mdPath" class="llm-link" @click.prevent="copyToClipboard">
+            <span class="ai-logo-placeholder"></span> {{ linkText }}
+          </a>
         </div>
       </div>
     </aside>
@@ -89,8 +99,18 @@
       <!-- Extras -->
       <div class="mobile-nav-section">
         <p class="section-header">Extras</p>
+        <div class="ai-chat-links">
+          <a :href="chatGptUrl" target="_blank" rel="noopener" class="ai-chat-link chatgpt-link">
+            <img src="/imgs/openai-logo.webp" alt="ChatGPT" class="ai-logo" /> Ask ChatGPT
+          </a>
+          <a :href="claudeUrl" target="_blank" rel="noopener" class="ai-chat-link claude-link">
+            <img src="/imgs/claude-logo.webp" alt="Claude" class="ai-logo" /> Ask Claude
+          </a>
+        </div>
         <div class="llm-link-container">
-          <a :href="mdPath" class="llm-link" @click.prevent="copyToClipboard">{{ linkText }}</a>
+          <a :href="mdPath" class="llm-link" @click.prevent="copyToClipboard">
+            <span class="ai-logo-placeholder"></span> {{ linkText }}
+          </a>
         </div>
       </div>
     </aside>
@@ -98,7 +118,7 @@
 </template>
 
 <script>
-const DEFAULT_LINK_TEXT = 'Copy for AI (LLMs)'
+const DEFAULT_LINK_TEXT = 'Copy Markdown'
 
 export default {
   name: 'PageNav',
@@ -115,7 +135,8 @@ export default {
       prevHeaders: [],
       nextHeaders: [],
       updateHeadersTimeout: null,
-      mobileSidebarOpen: false
+      mobileSidebarOpen: false,
+      pageUrl: ''
     }
   },
 
@@ -143,10 +164,28 @@ export default {
       }
 
       return path
+    },
+    currentPageUrl() {
+      // Get the full URL of the current page
+      if (typeof window !== 'undefined') {
+        return window.location.origin + window.location.pathname
+      }
+      return ''
+    },
+    chatGptUrl() {
+      const question = `Hi ChatGPT! I have a question about Needle Engine. Can you please read the documentation at ${this.pageUrl} and help me?`
+      return `https://chat.openai.com/?q=${encodeURIComponent(question)}`
+    },
+    claudeUrl() {
+      const question = `Hi Claude! I have a question about Needle Engine. Can you please read the documentation at ${this.pageUrl} and help me?`
+      return `https://claude.ai/new?q=${encodeURIComponent(question)}`
     }
   },
 
   mounted() {
+    // Set the page URL on client-side mount (including hash if present)
+    this.updatePageUrl()
+
     // Initial extraction with a small delay to ensure DOM is ready
     setTimeout(() => {
       this.extractHeaders()
@@ -192,6 +231,9 @@ export default {
           
           // Close mobile sidebar on navigation
           this.mobileSidebarOpen = false
+
+          // Update page URL for AI chat links
+          this.updatePageUrl()
         }, 1000)
       })
     })
@@ -210,6 +252,10 @@ export default {
   },
 
   methods: {
+    updatePageUrl() {
+      this.pageUrl = window.location.origin + window.location.pathname + window.location.hash
+    },
+
     handleInitialHash() {
       // Check if there's a hash in the URL
       const hash = window.location.hash
@@ -672,6 +718,12 @@ export default {
   display: none;
 }
 
+/* Ensure cursor pointer works on AI links */
+.ai-chat-link,
+.llm-link {
+  cursor: pointer !important;
+}
+
 </style>
 
 <style scoped>
@@ -868,23 +920,69 @@ export default {
 }
 
 .llm-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   padding: 0.5rem;
   font-size: .8rem;
   font-family: monospace;
-  color: var(--c-text-accent, #826aed);
-  background: rgba(130, 106, 237, 0.05);
-  border: 1px solid rgba(130, 106, 237, 0.5);
+  font-weight: normal;
+  color: oklch(from var(--c-text, #333) l c h);
+  background: oklch(from var(--c-text, #333) l c h / 0.05);
+  border: 1px solid oklch(from var(--c-text, #333) l c h / 0.3);
   border-radius: 8px;
   text-decoration: none;
   transition: all 0.2s;
   word-break: break-all;
+  cursor: pointer;
+}
+
+.ai-logo-placeholder {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
 }
 
 .llm-link:hover {
-  background: rgba(130, 106, 237, 0.1);
-  border-color: var(--c-text-accent, #826aed);
+  background: oklch(from var(--c-text, #333) l c h / 0.1);
+  border-color: oklch(from var(--c-text, #333) l c h / 0.5);
   text-decoration: none;
+}
+
+/* AI Chat Links */
+.ai-chat-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.ai-chat-link {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.2s;
+  cursor: pointer;
+  color: oklch(from var(--c-text, #333) l c h);
+  background: oklch(from var(--c-text, #333) l c h / 0.05);
+  border: 1px solid oklch(from var(--c-text, #333) l c h / 0.3);
+}
+
+.ai-chat-link:hover {
+  background: oklch(from var(--c-text, #333) l c h / 0.1);
+  border-color: oklch(from var(--c-text, #333) l c h / 0.5);
+  text-decoration: none;
+}
+
+.ai-chat-link .ai-logo {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
 }
 
 /* Custom scrollbar */
