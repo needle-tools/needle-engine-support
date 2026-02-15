@@ -33,6 +33,7 @@ Reference documentation is **information-oriented** and provides:
 - [Input Event Methods](./api/input-events) - Mouse, touch, keyboard events
 - [XR Event Methods](./api/xr-events) - WebXR-specific events
 - [Time API](./api/time) - Time and deltaTime reference
+- [Scripting Examples](./scripting-examples) - Code snippets and patterns
 
 ### three.js API
 - [three.js Documentation](https://threejs.org/docs/index.html) - Official three.js API
@@ -60,17 +61,28 @@ Reference documentation is **information-oriented** and provides:
 - [Features Overview](/docs/explanation/core-concepts/features-overview) - Complete feature matrix
 - [Needle Cloud](/docs/cloud/) - Official hosting platform and license server
 
+### Editor Integrations
+- [Unity Integration](/docs/unity/) - Getting started with Needle Engine for Unity
+- [Blender Integration](/docs/blender/) - Getting started with Needle Engine for Blender
+
+
+
+## Comparisons
+
+Wondering how Needle Engine compares to other 3D web platforms and tools? We've put together detailed comparisons covering features, workflows, performance, and use cases to help you make an informed decision.
+
+- [Platform Comparison Overview](https://cloud.needle.tools/compare) - Compare Needle Engine with 24 other platforms including three.js, PlayCanvas, Spline, 8th Wall, and more
+- [Needle vs three.js](https://cloud.needle.tools/compare/needle-vs-threejs) - How our engine built on three.js adds productivity features, optimization, and DCC integration
+- [Needle vs Unity WebGL](https://cloud.needle.tools/compare/needle-vs-unity-webgl) - Web-first performance vs traditional game engine export, with ~10x faster load times
+- [Needle vs 8th Wall](https://cloud.needle.tools/compare/needle-vs-8thwall) - WebAR platforms compared: tracking capabilities, hosting, and tooling
+- [Needle vs Spline](https://cloud.needle.tools/compare/needle-vs-spline) - Compare visual editing approaches and web deployment capabilities
+- [Needle vs Adobe Aero](https://cloud.needle.tools/compare/needle-vs-aero) - AR authoring and cross-platform deployment comparison
+
 
 
 ## Troubleshooting
 
 - [FAQ](./faq) - Frequently asked questions
-
-
-
-## Code Examples
-
-- [Scripting Examples](./scripting-examples) - Code snippets and patterns
 
 
 
