@@ -153,6 +153,8 @@ Use the Compression & LOD Settings component to configure mesh simplification fo
 
 Add the `Progressive Texture Settings` component anywhere in your scene to enable progressive loading for all textures. Progressive loading is not applied to lightmaps or skybox textures.
 
+See **[gltf-progressive](/docs/gltf-progressive/)** for detailed information on how progressive loading works and advanced configuration options.
+
 **Benefits:**
 - Much faster initial load times
 - Full quality loaded on-demand
@@ -179,6 +181,8 @@ Progressive loading is powered by [`@needle-tools/gltf-progressive`](/docs/gltf-
 - Better rendering performance (fewer vertices on screen)
 - Faster raycasting with LOD meshes
 - Automatic on-demand loading
+
+See **[gltf-progressive](/docs/gltf-progressive/)** for in-depth technical details on how mesh LODs are generated and selected at runtime.
 
 :::details Unity: Control LOD generation
 Use the Compression & LOD Settings component to control LOD generation for all meshes or individual meshes.
@@ -277,6 +281,7 @@ Node.js is only required if you want to run our minimalistic networking server f
 
 ## Related Documentation
 
+- **[gltf-progressive](/docs/gltf-progressive/)** - Progressive loading for any three.js project with advanced configuration and API reference
 - **[Deployment Platforms](/docs/how-to-guides/deployment/)** - Deploy to Netlify, Vercel, GitHub Pages, and more
 - **[Export Guide](/docs/how-to-guides/export/)** - Best practices for exporting 3D assets
 - **[Debugging Parameters](/docs/how-to-guides/debugging/)** - Performance profiling and debugging
