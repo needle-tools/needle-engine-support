@@ -76,6 +76,29 @@ export default defineClientConfig({
       }
     })
 
+    // Re-trigger text fragment highlighting (#:~:text=...) after SPA navigation.
+    // Browsers process text fragments only on initial page load, not after client-side
+    // navigation. After the router settles, we reload via location.replace() so the
+    // browser can process the fragment natively - but only when a text fragment is present.
+    let isFirstNavigation = true
+    router.afterEach(() => {
+      if (isFirstNavigation) {
+        // On the first navigation (initial page load) the browser already handled the fragment
+        isFirstNavigation = false
+        return
+      }
+      nextTick(() => {
+        setTimeout(() => {
+          const hash = window.location.hash
+          if (hash && hash.includes(':~:text=')) {
+            // location.replace re-triggers native text fragment processing
+            // without adding a new history entry
+            window.location.replace(window.location.href)
+          }
+        }, 150) // after page content is rendered
+      })
+    })
+
     router.options.scrollBehavior = (to, from, savedPosition) => {
       return new Promise((resolve) => {
         // Wait for Vue's next tick to ensure DOM is updated

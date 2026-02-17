@@ -15,6 +15,6 @@ You will be redirected automatically in a moment...
 
 <script setup>
 if (typeof window !== 'undefined') {
-  window.location.href = '/docs/explanation/core-concepts/vision';
+  window.location.href = '/docs/explanation/core-concepts/vision' + window.location.search + window.location.hash;
 }
 </script>

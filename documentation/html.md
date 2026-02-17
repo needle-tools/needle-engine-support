@@ -14,6 +14,6 @@ You will be redirected automatically in a moment...
 
 <script setup>
 if (typeof window !== 'undefined') {
-  window.location.href = '/docs/how-to-guides/web-integration/';
+  window.location.href = '/docs/how-to-guides/web-integration/' + window.location.search + window.location.hash;
 }
 </script>

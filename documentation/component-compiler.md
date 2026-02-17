@@ -14,6 +14,6 @@ You will be redirected automatically in a moment...
 
 <script setup>
 if (typeof window !== 'undefined') {
-  window.location.href = '/docs/explanation/core-concepts/component-compiler';
+  window.location.href = '/docs/explanation/core-concepts/component-compiler' + window.location.search + window.location.hash;
 }
 </script>

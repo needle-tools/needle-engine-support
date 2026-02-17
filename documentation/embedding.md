@@ -14,6 +14,6 @@ You will be redirected automatically in a moment...
 
 <script setup>
 if (typeof window !== 'undefined') {
-  window.location.href = '/docs/how-to-guides/deployment/embedding';
+  window.location.href = '/docs/how-to-guides/deployment/embedding' + window.location.search + window.location.hash;
 }
 </script>

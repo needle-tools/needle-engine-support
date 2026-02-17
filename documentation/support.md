@@ -14,6 +14,6 @@ You will be redirected automatically in a moment...
 
 <script setup>
 if (typeof window !== 'undefined') {
-  window.location.href = '/docs/help/support';
+  window.location.href = '/docs/help/support' + window.location.search + window.location.hash;
 }
 </script>
