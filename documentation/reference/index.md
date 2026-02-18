@@ -80,6 +80,14 @@ Wondering how Needle Engine compares to other 3D web platforms and tools? We've 
 
 
 
+## AI & Developer Tools
+
+- [Needle MCP Server](/docs/ai/needle-mcp-server) - Connect Claude, Cursor, VS Code to Needle Engine
+- [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension for three.js scenes
+- [AI Resources](/docs/ai/) - AI assistant, llms.txt, and more
+
+
+
 ## Troubleshooting
 
 - [FAQ](./faq) - Frequently asked questions

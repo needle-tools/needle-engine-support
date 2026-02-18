@@ -135,5 +135,6 @@ Quest is just an Android device - see the [Android Debugging](#android-debugging
 
 - **[Local Development Help](/docs/how-to-guides/testing)** - Testing on mobile devices, VR headsets, and certificate setup
 - **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome DevTools extension for three.js
+- **[Needle MCP Server](/docs/ai/needle-mcp-server)** - Use AI assistants to debug and inspect scenes
 - **[FAQ](/docs/reference/faq)** - Frequently asked questions and troubleshooting
 - **[Help & Community](/docs/help/)** - Get support, ask questions, and connect with the community  

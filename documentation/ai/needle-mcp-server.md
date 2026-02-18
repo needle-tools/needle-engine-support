@@ -35,7 +35,18 @@ Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
 
 ## What Can You Do?
 
-Once connected, open the Needle Inspector on any three.js webpage and chat naturally with your AI assistant:
+### Always Available (No Inspector Required)
+
+The MCP server provides powerful tools that work anywhere:
+
+- **Search documentation**: "How do I add physics to my Needle project?"
+- **Find examples**: "Show me how to use WebXR in Needle Engine"
+- **Get help**: "What's the best way to deploy to Vercel?"
+- **Learn APIs**: "How does the serializable decorator work?"
+
+### With the Inspector Open
+
+Open the Needle Inspector on any three.js webpage to also chat about live 3D scenes:
 
 - **Explore 3D scenes**: "Show me all the lights in my scene"
 - **Inspect objects**: "What materials are used in this scene?"
@@ -68,20 +79,23 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
 
 ### <img src="/imgs/vscode-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="VS Code Logo" alt="VS Code Logo"/> Using VS Code
 
-**Setup:**
+**Quick setup:**
+
+1. Click to [Install Needle MCP in VS Code](vscode:mcp/install?%7B%22name%22%3A%22needle%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22needle-cloud%22%2C%22mcp%22%5D%7D)
+
+2. Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
+
+<details>
+<summary>Manual setup</summary>
 
 1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
-
 2. Choose "MCP: Add Server"
-
 3. Fill in the details:
    - Name: `needle`
    - Transport: `http`
    - URL: `http://localhost:8424/mcp`
 
-**Using it:**
-
-Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
+</details>
 
 
 
@@ -130,7 +144,28 @@ Antigravity is great at understanding what you want - just describe your goal!
 
 ## What to Ask
 
-Here are some examples to get you started. Make sure the Needle Inspector is open in your browser with a three.js scene loaded:
+### Documentation & Learning (Always Available)
+
+You can ask your AI about Needle Engine anytime — no Inspector needed:
+
+**Getting started:**
+> "How do I create my first Needle Engine project?"
+> "What's the difference between Unity and Blender workflows?"
+> "How do I deploy my project to Needle Cloud?"
+
+**APIs and features:**
+> "How do I use the @serializable decorator?"
+> "What lifecycle methods are available for components?"
+> "How do I implement custom networking?"
+
+**Troubleshooting:**
+> "Why isn't my texture loading?"
+> "How do I fix CORS issues?"
+> "What are common WebXR problems?"
+
+### Scene Inspection (With Inspector Open)
+
+For these examples, make sure the Needle Inspector is open in your browser with a three.js scene loaded:
 
 **Exploring scenes:**
 > "Show me all the lights in my scene"
@@ -166,9 +201,38 @@ Here are some examples to get you started. Make sure the Needle Inspector is ope
 Just ask naturally - your AI assistant can see what the Inspector sees and will help you understand and modify your 3D scene.
 
 
-## How It Works
+## Built-in Tools
 
-When you have the Needle Inspector open in Chrome:
+The Needle MCP Server comes with built-in tools that are always available, even without the Inspector:
+
+### `needle_search` — Search Needle Knowledge Base
+
+Search across Needle Engine documentation, forum posts, and community discussions. Returns results ranked by semantic similarity.
+
+**Example queries:**
+- "How to add physics components"
+- "WebXR hand tracking"
+- "Deploy to Vercel"
+- "Custom shaders in Needle"
+
+**Parameters:**
+| Parameter | Type | Description |
+|-----------|------|-------------|
+| `query` | string | What to search for |
+| `limit` | number | Maximum results (1-20, default: 5) |
+
+This is perfect for getting AI assistance with Needle Engine development — your AI can search the docs and provide accurate, up-to-date answers.
+
+### `needle_cloud_me` — Get Current User
+
+Returns information about the currently logged-in Needle Cloud user, including name, email, and profile picture.
+
+This is useful for AI workflows that need to know who's logged in or personalize responses.
+
+
+## Inspector Tools
+
+When you have the Needle Inspector open in Chrome, additional tools become available for interacting with 3D scenes:
 
 1. The Inspector connects to the MCP server running locally (`localhost:8424`)
 2. Your AI assistant can query the Inspector for scene information
@@ -177,6 +241,8 @@ When you have the Needle Inspector open in Chrome:
 5. Changes appear instantly in your browser
 
 This creates a powerful workflow where you can use natural language to explore and modify complex 3D scenes without manually clicking through the Inspector interface.
+
+See [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-extension.md) for details on the Inspector tools and capabilities.
 
 
 ## Troubleshooting

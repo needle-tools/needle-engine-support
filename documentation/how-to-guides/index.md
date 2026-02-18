@@ -146,6 +146,7 @@ Make your experiences fast and small:
 Find and fix issues:
 
 - [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension
+- [Needle MCP Server](/docs/ai/needle-mcp-server) - Use AI assistants to debug and search docs
 - [Debugging Parameters & Options](/docs/how-to-guides/debugging/) - URL parameters, VSCode debugging, mobile debugging
 - [Local Development Help](/docs/how-to-guides/testing) - Testing on phones, tablets, VR headsets, certificates
 
