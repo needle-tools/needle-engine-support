@@ -86,7 +86,9 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
 2. Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
 
 <details>
-<summary>Manual setup</summary>
+<summary>Local server setup (for Inspector integration)</summary>
+
+If you want your AI to also interact with live 3D scenes via the Needle Inspector, connect to the local server instead:
 
 1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
 2. Choose "MCP: Add Server"
@@ -95,13 +97,15 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
    - Transport: `http`
    - URL: `http://localhost:8424/mcp`
 
+See [Connection Modes](#advanced-connection-modes) for more details.
+
 </details>
 
 
 
 
 
-### <img src="/imgs/cursor-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Cursor Logo" alt="Cursor Logo"/> Using Cursor 
+### <img src="/imgs/cursor-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Cursor Logo" alt="Cursor Logo"/> Using Cursor
 
 1. In your project folder, create a file: `.cursor/mcp.json`
 
@@ -309,3 +313,44 @@ For more help:
 :::tip Using Needle Engine?
 The Inspector has special features when used with Needle Engine projects, and the AI can help you work with Needle-specific components, networking, and XR features.
 :::
+
+
+## Advanced: Connection Modes
+
+The Needle MCP Server supports two connection modes. The setup instructions above use the **local server** mode, which gives you the full experience including Inspector integration. But if you only need documentation search and don't plan to use the Inspector, there's a lighter alternative.
+
+### Local Server (HTTP/SSE) — Full Experience
+```bash
+npx needle-cloud start
+```
+Runs a persistent local server on `localhost:8424`. Your AI client connects via HTTP. This mode supports **all tools** including dynamic tools registered by the Needle Inspector at runtime — scene inspection, object editing, live debugging, etc. Use this when you're actively working with 3D scenes in the browser.
+
+If you're using Needle Engine for Unity or Blender, the local server is usually already running on your machine — the editor integrations start it automatically for license validation and login. You just need to point your AI client to `http://localhost:8424/mcp`.
+
+### stdio — Lightweight, No Server Required
+```bash
+npx needle-cloud mcp
+```
+Your AI client spawns the process directly — no server to start or keep running. Provides the built-in tools (documentation search, account info, editor paths) but **does not support Inspector tools**, since there's no server for the Inspector to connect to. This is ideal for AI-assisted coding workflows where you just need quick access to Needle Engine docs and APIs.
+
+To use stdio mode, configure your AI client with:
+```json
+{
+  "mcpServers": {
+    "needle": {
+      "command": "npx",
+      "args": ["-y", "needle-cloud", "mcp"]
+    }
+  }
+}
+```
+
+### Which should I use?
+
+| | Local Server | stdio |
+|---|---|---|
+| Documentation search | Yes | Yes |
+| Account info & editor tools | Yes | Yes |
+| Inspector scene tools | Yes | No |
+| Requires `needle-cloud start` | Yes | No |
+| Works without a running server | No | Yes |
