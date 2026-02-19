@@ -153,18 +153,18 @@ Antigravity is great at understanding what you want - just describe your goal!
 You can ask your AI about Needle Engine anytime — no Inspector needed:
 
 **Getting started:**
-> "How do I create my first Needle Engine project?"
-> "What's the difference between Unity and Blender workflows?"
+> "How do I create my first Needle Engine project?"\
+> "What's the difference between Unity and Blender workflows?"\
 > "How do I deploy my project to Needle Cloud?"
 
 **APIs and features:**
-> "How do I use the @serializable decorator?"
-> "What lifecycle methods are available for components?"
+> "How do I use the @serializable decorator?"\
+> "What lifecycle methods are available for components?"\
 > "How do I implement custom networking?"
 
 **Troubleshooting:**
-> "Why isn't my texture loading?"
-> "How do I fix CORS issues?"
+> "Why isn't my texture loading?"\
+> "How do I fix CORS issues?"\
 > "What are common WebXR problems?"
 
 ### Scene Inspection (With Inspector Open)
@@ -172,34 +172,34 @@ You can ask your AI about Needle Engine anytime — no Inspector needed:
 For these examples, make sure the Needle Inspector is open in your browser with a three.js scene loaded:
 
 **Exploring scenes:**
-> "Show me all the lights in my scene"
-> "What materials am I using?"
-> "Find all the cameras and tell me where they're positioned"
-> "List all the meshes and their triangle counts"
+> "Show me all the lights in my scene"\
+> "What materials am I using?"\
+> "Find all the cameras and tell me where they're positioned"\
+> "List all the meshes and their triangle counts"\
 > "Which objects in my scene are invisible?"
 
 **Editing and tweaking:**
-> "Change the directional light intensity to 0.5"
-> "Make the sphere at position (0, 1, 0) red"
-> "Hide all helper objects"
+> "Change the directional light intensity to 0.5"\
+> "Make the sphere at position (0, 1, 0) red"\
+> "Hide all helper objects"\
 > "Set the fog color to light blue"
 
 **Getting creative help:**
-> "How can I make this look more photorealistic?"
-> "What's the best way to add shadows to my scene?"
-> "How do I create a metallic material?"
+> "How can I make this look more photorealistic?"\
+> "What's the best way to add shadows to my scene?"\
+> "How do I create a metallic material?"\
 > "Suggest ways to improve the lighting"
 
 **Analyzing and debugging:**
-> "Why is my scene loading slowly?"
-> "Which objects have the most geometry?"
-> "Are there any materials with missing textures?"
+> "Why is my scene loading slowly?"\
+> "Which objects have the most geometry?"\
+> "Are there any materials with missing textures?"\
 > "What's causing the low frame rate?"
 
 **Learning:**
-> "Explain what this material's properties do"
-> "How does the environment map affect the scene?"
-> "What's the difference between a point light and a spot light?"
+> "Explain what this material's properties do"\
+> "How does the environment map affect the scene?"\
+> "What's the difference between a point light and a spot light?"\
 > "Show me best practices for three.js lighting"
 
 Just ask naturally - your AI assistant can see what the Inspector sees and will help you understand and modify your 3D scene.
