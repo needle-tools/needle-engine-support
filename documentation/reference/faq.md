@@ -307,7 +307,15 @@ If you want (or have to) run your AI locally you can use the Needle llms.txt fil
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
 
-## Still have questions? 
+## How do I upgrade the Needle Engine Unity package?
+
+There are two ways to upgrade:
+
+1. **Via the Needle Engine component:** At the bottom of the `Needle Engine` component in the Inspector, an update button will appear when a new version is available. Simply click it to upgrade.
+
+2. **Via Unity's Package Manager:** Open `Window/Package Manager`, find the Needle Engine package, and update it from there. To access **beta**, **alpha**, or other **preview** versions, you need to enable preview packages in the Package Manager settings first.
+
+## Still have questions?
 [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) 
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
