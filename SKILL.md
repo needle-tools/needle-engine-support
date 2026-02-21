@@ -1006,8 +1006,10 @@ const { needlePlugins } = await import("@needle-tools/engine/plugins/vite/index.
 // add needlePlugins(command, needleConfig) to plugins array
 ```
 
-**How to upgrade the Needle Engine Unity package?**
-Open Package Manager, find Needle Engine, click Update. If using a git URL, update the version tag in the URL.
+**How to update Needle Engine?**
+- **Unity / Blender:** The editor integration manages the `@needle-tools/engine` npm package version automatically. Update the editor package (Unity: Package Manager → Update; Blender: add-on update) and the runtime version follows.
+- **Standalone web project (no editor):** Update via npm as usual: `npm update @needle-tools/engine` or set a specific version in `package.json`.
+- **Pinning a version:** If `package.json` uses the `npm:` prefix for the engine dependency (e.g., `"@needle-tools/engine": "npm:@needle-tools/engine@^4.0.0"`), the version is locked and the editor will **not** override it. This is useful when you want full manual control over engine updates.
 
 **Light/color looks wrong?**
 Ensure Linear colorspace (Project Settings → Player). Don't use Mixed mode lights — use Baked or Realtime only.
