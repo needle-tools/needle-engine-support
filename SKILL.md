@@ -342,6 +342,7 @@ Stop: `this.stopCoroutine(handle)`. Nest: `yield* this.subRoutine()`.
 ### Camera & Controls
 - `Camera` — Perspective / orthographic viewpoint
 - `OrbitControls` — Rotate, zoom, pan around a target
+- `ViewBox` — Responsive viewport bounds (defines visible area)
 
 ### Rendering
 - `Light` — Directional, Point, Spot (with shadows)
@@ -355,6 +356,7 @@ Stop: `this.stopCoroutine(handle)`. Nest: `yield* this.subRoutine()`.
 - `ShadowCatcher` — Invisible mesh that receives shadows
 - `ContactShadows` — Realtime contact shadows
 - `GroundProjection` — Project environment onto ground plane
+- `SeeThrough` — Fade objects that obscure the camera view
 
 ### Post-Processing (via `Volume` component)
 `Antialiasing`, `BloomEffect`, `ChromaticAberration`, `ColorAdjustments`, `DepthOfField`, `TiltShiftEffect`, `Vignette`, `ToneMappingEffect`, `PixelationEffect`, `ScreenSpaceAmbientOcclusion`, `SharpeningEffect`
@@ -372,6 +374,8 @@ Stop: `this.stopCoroutine(handle)`. Nest: `yield* this.subRoutine()`.
 - `DropListener` — Receive file-drop events
 - `SpatialTrigger` / `SpatialTriggerReceiver` — Events when objects enter a region
 - `HoverAnimation` — Animate on hover
+- `CursorFollow` — Make object follow cursor
+- `ScrollFollow` — Bind page scroll to animations / timeline playback
 
 ### Networking
 - `SyncedRoom` — Enable multiplayer (required)
@@ -396,6 +400,7 @@ Stop: `this.stopCoroutine(handle)`. Nest: `yield* this.subRoutine()`.
 - `USDZExporter` — iOS QuickLook AR
 - `WebXRImageTracking` — Track images, instantiate objects
 - `WebXRPlaneTracking` — Plane detection meshes/colliders
+- `WebARCameraBackground` — Access AR camera feed for effects/rendering
 - `XRControllerModel` — Render controllers / hands
 - `XRControllerMovement` — Teleport + movement controls
 - `XRControllerFollow` — Objects follow hands/controllers
@@ -598,14 +603,80 @@ export class Chat extends Behaviour {
 - **PlayerSync:** Instantiates a prefab per connected user (for avatars)
 - **syncInstantiate() / syncDestroy():** Clone/destroy objects across network
 
+### Ownership
+Only the owner of an object can modify its synced state. Components like `DragControls` request ownership automatically.
+```ts
+// Request ownership
+this.context.connection.send("request-ownership", { guid: this.guid });
+// Release ownership
+this.context.connection.send("remove-ownership", { guid: this.guid });
+// Listen for ownership changes
+this.context.connection.beginListen("gained-ownership", (data) => { /* you now own it */ });
+this.context.connection.beginListen("lost-ownership", (data) => { /* ownership lost */ });
+```
+
+### Network Instantiation
+```ts
+import { syncInstantiate, syncDestroy } from "@needle-tools/engine";
+
+// Create object on all clients
+const obj = syncInstantiate(originalObject, {
+  parent: parentObject,
+  position: new Vector3(0, 1, 0),
+  rotation: new Quaternion(),
+  visible: true
+});
+
+// Destroy object on all clients
+syncDestroy(obj);
+```
+
+### Message Persistence
+```ts
+// Persistent (saved in room state, sent to late-joiners) — include guid
+this.context.connection.send("my-msg", { guid: this.guid, data: "value" });
+
+// Transient (current users only) — omit guid
+this.context.connection.send("my-msg", { data: "value" });
+
+// Persistent but delete when sender disconnects
+this.context.connection.send("my-msg", { guid: this.guid, data: "value", deleteOnDisconnect: true });
+
+// Prevent persistence even with guid
+this.context.connection.send("my-msg", { guid: this.guid, data: "value", dontSave: true });
+
+// Delete state
+this.context.connection.send("delete-state", { guid: "guid-to-delete" });
+```
+
+### Room Events
+```ts
+this.context.connection.beginListen(RoomEvents.JoinedRoom, ({ room, viewId, allowEditing, inRoom }) => { });
+this.context.connection.beginListen(RoomEvents.LeftRoom, ({ room }) => { });
+this.context.connection.beginListen(RoomEvents.UserJoinedRoom, ({ userId }) => { });
+this.context.connection.beginListen(RoomEvents.UserLeftRoom, ({ userId }) => { });
+this.context.connection.beginListen(RoomEvents.RoomStateSent, () => { /* initial sync complete */ });
+```
+
 ### Custom Server
 ```bash
 npm install @needle-tools/needle-networking
 ```
-Supports Fastify, Express, or custom WebSocket. Storage: disk (default) or S3-compatible.
 
-### Room Events
-`RoomEvents.JoinedRoom`, `RoomEvents.LeftRoom`, `RoomEvents.UserJoinedRoom`, `RoomEvents.UserLeftRoom`, `RoomEvents.RoomStateSent`.
+```js
+// Fastify
+import networking from "@needle-tools/needle-networking";
+networking.startServerFastify(fastifyApp, { endpoint: "/socket" });
+
+// Express
+networking.startServerExpress(expressApp, { endpoint: "/socket" });
+```
+
+Options: `endpoint` (default `/`), `maxUsers` (default 50), `defaultUserTimeout` (default 30s).
+Storage: disk (default `/.data`) or S3-compatible via env vars (`NEEDLE_NETWORKING_S3_ENDPOINT`, `_REGION`, `_BUCKET`, `_ACCESS_KEY_ID`, `_ACCESS_KEY`, `_PREFIX`).
+
+### Networking Debug URL Parameters
+`?debugnet` (log all messages), `?debugowner` (log ownership), `?debugnetbin` (log binary messages).
 
 ---
 
@@ -699,6 +770,70 @@ glTF/GLB, OpenUSD, FBX, VRM, OBJ — non-glTF formats auto-convert and get full 
 
 ### Cloud Assets in Engine
 Reference assets from Needle Cloud at runtime using the `NeedleCloudAsset` component. Only needed LODs load — saves ~90% bandwidth.
+
+---
+
+## AI Integration & MCP Server
+
+Needle Engine provides AI tool integration via the **Model Context Protocol (MCP)**, allowing AI assistants to search documentation and inspect/modify live 3D scenes.
+
+### MCP Server
+
+Start the local MCP server:
+```bash
+npx needle-cloud start
+```
+Runs on `localhost:8424`. Provides two tool categories:
+- **Always available:** `needle_search` (search docs & knowledge base), `needle_cloud_me` (current user info)
+- **With Inspector open:** Full scene inspection, object editing, live debugging (dynamic tools registered by Inspector)
+
+### Connecting AI Tools
+
+**Claude Desktop:**
+```bash
+claude mcp add --scope user --transport http needle http://localhost:8424/mcp
+```
+Restart Claude Desktop fully (not just close window). Look for the plug icon.
+
+**VS Code (GitHub Copilot):**
+Command Palette → "MCP: Add Server" → name: `needle`, transport: `http`, URL: `http://localhost:8424/mcp`. Use `#needle` in Copilot chat. Requires VS Code 1.102+.
+
+**Cursor:**
+Create `.cursor/mcp.json`:
+```json
+{
+  "mcpServers": {
+    "needle": { "transport": "http", "url": "http://localhost:8424/mcp" }
+  }
+}
+```
+Restart Cursor. Must use **Agent Mode** (not Ask Mode).
+
+### Connection Modes
+
+| Mode | Command | Inspector Tools | Use Case |
+|---|---|---|---|
+| **HTTP/SSE** (full) | `npx needle-cloud start` | Yes | Active 3D scene work, live editing |
+| **Stdio** (lightweight) | `npx needle-cloud mcp` | No | Code assistance, doc search only |
+
+Stdio config (no server needed):
+```json
+{ "mcpServers": { "needle": { "command": "npx", "args": ["-y", "needle-cloud", "mcp"] } } }
+```
+
+### Needle Inspector (Chrome Extension)
+
+Chrome DevTools-like extension for any three.js scene (Needle Engine, react-three-fiber, A-frame, Threlte):
+- Real-time scene hierarchy inspection and property editing
+- Performance monitoring (FPS, triangle counts, download size)
+- AI-powered assistance via MCP integration
+- Install from Chrome Web Store
+
+### llms.txt
+
+Machine-readable documentation available at:
+- `https://cloud.needle.tools/llms.txt` — structured links to all doc pages
+- `https://cloud.needle.tools/llms-full.txt` — full markdown content of all pages
 
 ---
 
@@ -889,3 +1024,5 @@ Ensure Linear colorspace (Project Settings → Player). Don't use Mixed mode lig
 - Needle Cloud: [/docs/cloud](/docs/cloud)
 - Deployment: [/docs/how-to-guides/deployment](/docs/how-to-guides/deployment)
 - Optimization: [/docs/how-to-guides/optimization](/docs/how-to-guides/optimization)
+- AI & MCP Server: [/docs/ai](/docs/ai)
+- Networking: [/docs/how-to-guides/networking](/docs/how-to-guides/networking)
