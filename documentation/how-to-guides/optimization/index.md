@@ -26,6 +26,10 @@ Development builds are optimized for fast iteration during development:
 
 **When to use:** During active development and testing.
 
+:::tip Preview Compression during Development (Unity)
+You can enable the **Preview Compression** toggle on the `Needle Engine` component to run the full production compression pipeline (texture compression, mesh compression, LOD generation) during local development. This lets you preview exactly how your scene will look and perform in a production build — without having to do a full build. See [Unity Build Options](#unity-build-window) for more details.
+:::
+
 ### Production Builds
 
 Production builds are optimized for performance and file size:
@@ -205,6 +209,14 @@ Open **File → Needle Engine → Build Window**:
 - **Build to Disk** – Create production build in the `dist` folder
 - **Preview Build** – Build and start a local server to preview the final result
 - **Development Build** – Disable compression for debugging (not recommended for production)
+
+### Preview Compression Toggle
+
+The `Needle Engine` component has a **Preview Compression** toggle at the bottom of its Inspector panel. When enabled, the full production compression pipeline runs automatically every time you export your scene during local development (e.g. when clicking Play or saving the scene with auto-export enabled).
+
+This applies the same compression and LOD generation as a production build — including texture compression (KTX2), mesh compression (Draco/Meshopt), and progressive loading LODs — directly to your local development server. This way you can verify how your final production output will look and perform without having to do a full build.
+
+You can also manually trigger compression steps from the context menu on the `Needle Engine` component under **Needle Engine → Compression** (e.g. Run Full Compression, Run Compression only, Run LODs Generator, or Clear Caches).
 
 :::tip Node.js is only required during development
 The distributed website (using our default Vite template) is a static page that doesn't rely on Node.js and can be hosted on any regular web server.
