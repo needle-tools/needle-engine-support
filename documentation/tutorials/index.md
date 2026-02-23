@@ -41,6 +41,10 @@ Build your foundation with these essential tutorials:
   - [C# to TypeScript Translation](./fundamentals/c-sharp-to-typescript) - Translate your C# knowledge (~15 min, Intermediate)
 - [TypeScript Essentials](./fundamentals/typescript-essentials) - Learn TypeScript basics for Needle Engine (~20 min, Beginner)
 
+### Coming From Another Platform?
+
+- [For 8th Wall Users](./for-8thwall-users) - Guide for 8th Wall developers transitioning to Needle Engine
+
 ### Your First Project
 
 Choose your preferred tool and create your first Needle Engine scene:
