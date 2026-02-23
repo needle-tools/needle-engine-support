@@ -829,12 +829,6 @@ Chrome DevTools-like extension for any three.js scene (Needle Engine, react-thre
 - AI-powered assistance via MCP integration
 - Install from Chrome Web Store
 
-### llms.txt
-
-Machine-readable documentation available at:
-- `https://cloud.needle.tools/llms.txt` — structured links to all doc pages
-- `https://cloud.needle.tools/llms-full.txt` — full markdown content of all pages
-
 ---
 
 ## Configuration — `needle.config.json`
