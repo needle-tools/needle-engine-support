@@ -6,8 +6,8 @@
     <title>Playground</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; overflow: hidden; background: #1a1a2e; }
-        #c { width: 100%; height: 100%; display: block; }
+        html, body { width: 100%; height: 100%; overflow: hidden; }
+        needle-engine { width: 100%; height: 100%; }
         #err {
             position: absolute; bottom: 0; left: 0; right: 0;
             padding: 10px; background: rgba(60,0,0,0.95); color: #f66;
@@ -16,79 +16,34 @@
         }
         #err.show { display: block; }
     </style>
+    <!-- Load Needle Engine via CDN script tag (pre-bundled) -->
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@4.5.0-alpha.7/dist/needle-engine.min.js"></script>
 </head>
 <body>
-    <canvas id="c"></canvas>
+    <needle-engine></needle-engine>
     <div id="err"></div>
 
-    <script type="importmap">
-    {
-        "imports": {
-            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
-            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
-        }
-    }
-    </script>
-
     <script type="module">
-        import * as THREE from 'three';
-        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+        // Wait for Needle Engine to be loaded
+        await customElements.whenDefined('needle-engine');
 
-        // Scene setup
-        const scene = new THREE.Scene();
-        scene.background = new THREE.Color(0x1a1a2e);
+        const Needle = globalThis.Needle;
+        const THREE = globalThis.THREE;
 
-        const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 1000);
-        camera.position.set(3, 2, 3);
+        // Provide a no-op serializable decorator for playground use
+        // (full serialization isn't needed - we just run the code)
+        const serializable = (type) => (target, propertyKey) => {};
 
-        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
-        renderer.setSize(innerWidth, innerHeight);
-        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+        // Make available globally for user code
+        window.Behaviour = Needle.Behaviour;
+        window.serializable = serializable;
+        window.THREE = THREE;
 
-        const controls = new OrbitControls(camera, renderer.domElement);
-        controls.enableDamping = true;
-        controls.target.set(0, 0.5, 0);
+        const engine = document.querySelector('needle-engine');
 
-        scene.add(new THREE.AmbientLight(0x404040, 0.6));
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(5, 10, 7);
-        scene.add(light);
-        scene.add(new THREE.GridHelper(10, 10, 0x444444, 0x333333));
-
-        const cube = new THREE.Mesh(
-            new THREE.BoxGeometry(1, 1, 1),
-            new THREE.MeshStandardMaterial({ color: 0x99CC33, roughness: 0.5 })
-        );
-        cube.position.y = 0.5;
-        scene.add(cube);
-
-        // Component
         let component = null;
-        const context = { time: { time: 0, deltaTime: 0 } };
-
-        let lastTime = performance.now();
-
-        function animate() {
-            requestAnimationFrame(animate);
-
-            const now = performance.now();
-            context.time.deltaTime = Math.min((now - lastTime) / 1000, 0.1);
-            context.time.time = now / 1000;
-            lastTime = now;
-
-            controls.update();
-
-            if (component && component.update) {
-                try {
-                    component.update();
-                } catch (e) {
-                    showError('Runtime: ' + e.message);
-                    component = null;
-                }
-            }
-
-            renderer.render(scene, camera);
-        }
+        let targetObject = null;
+        let context = null;
 
         function showError(msg) {
             document.getElementById('err').textContent = msg;
@@ -100,36 +55,59 @@
             document.getElementById('err').classList.remove('show');
         }
 
-        addEventListener('resize', () => {
-            camera.aspect = innerWidth / innerHeight;
-            camera.updateProjectionMatrix();
-            renderer.setSize(innerWidth, innerHeight);
-        });
+        engine.addEventListener('ready', async () => {
+            context = engine.context;
+            console.log('[playground] Needle Engine ready', context);
 
-        // Provide mock Needle Engine API
-        window.Behaviour = class Behaviour {
-            gameObject = null;
-            context = null;
-            enabled = true;
-        };
-        window.serializable = () => (target, key) => {};
+            if (!context) {
+                showError('Failed to get Needle Engine context');
+                return;
+            }
+
+            // Find or create a target object for the component
+            const scene = context.scene;
+            scene.traverse((obj) => {
+                if (!targetObject && obj.isMesh) {
+                    targetObject = obj;
+                }
+            });
+
+            if (!targetObject) {
+                // Create a simple cube
+                const geometry = new THREE.BoxGeometry(1, 1, 1);
+                const material = new THREE.MeshStandardMaterial({ color: 0x99CC33, roughness: 0.5 });
+                targetObject = new THREE.Mesh(geometry, material);
+                targetObject.position.y = 0.5;
+                scene.add(targetObject);
+
+                // Add grid
+                const grid = new THREE.GridHelper(10, 10, 0x444444, 0x333333);
+                scene.add(grid);
+            }
+
+            // Tell parent we're ready
+            parent.postMessage({ type: 'needle-playground-ready' }, '*');
+        });
 
         // Handle incoming transpiled code
         addEventListener('message', async (e) => {
-            // Ignore Vite HMR messages and any non-playground messages
             if (!e.data || typeof e.data !== 'object') return;
             if (e.data.type !== 'needle-playground-code') return;
-            console.log('[iframe] Received code update');
+            console.log('[playground] Received code update');
 
             hideError();
-            cube.rotation.set(0, 0, 0);
-            cube.position.set(0, 0.5, 0);
-            cube.scale.set(1, 1, 1);
+
+            // Reset target object transform
+            if (targetObject) {
+                targetObject.rotation.set(0, 0, 0);
+                targetObject.position.set(0, 0.5, 0);
+                targetObject.scale.set(1, 1, 1);
+            }
 
             let code = e.data.code;
 
             try {
-                // Remove import statement - we provide Behaviour globally
+                // Remove import statement - we provide globals
                 code = code.replace(/import\s*\{[^}]*\}\s*from\s*["']@needle-tools\/engine["'];?/g, '');
 
                 // Find the class name from "export { ClassName };" pattern
@@ -156,11 +134,19 @@
                     return;
                 }
 
-                // Create instance
-                const instance = new ComponentClass();
-                instance.gameObject = cube;
-                instance.context = context;
+                // Destroy previous component
+                if (component && component.onDisable) {
+                    try { component.onDisable(); } catch(e) {}
+                }
 
+                // Create instance with Needle Engine context
+                const instance = new ComponentClass();
+                instance.gameObject = targetObject;
+                instance.context = context;
+                instance.enabled = true;
+
+                if (instance.awake) instance.awake();
+                if (instance.onEnable) instance.onEnable();
                 if (instance.start) instance.start();
 
                 component = instance;
@@ -172,8 +158,19 @@
             }
         });
 
+        // Update loop
+        function animate() {
+            requestAnimationFrame(animate);
+            if (component && component.enabled && component.update) {
+                try {
+                    component.update();
+                } catch (e) {
+                    showError('Runtime: ' + e.message);
+                    component = null;
+                }
+            }
+        }
         animate();
-        parent.postMessage({ type: 'needle-playground-ready' }, '*');
     </script>
 </body>
 </html>
