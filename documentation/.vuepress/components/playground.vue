@@ -13,7 +13,6 @@ export default {
       debounceTimer: null,
       loading: true,
       compiling: false,
-      prismLoaded: false
     }
   },
   computed: {
@@ -32,9 +31,10 @@ export default {
   },
   methods: {
     getDefaultCode() {
-      return `import { Behaviour } from "@needle-tools/engine";
+      return `import { Behaviour, serializable } from "@needle-tools/engine";
 
 export class Rotator extends Behaviour {
+  @serializable()
   speed: number = 1;
 
   update() {
@@ -47,11 +47,10 @@ export class Rotator extends Behaviour {
       if (typeof window === 'undefined') return;
 
       try {
-        // Load Prism for syntax highlighting
-        await this.loadStylesheet('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-okaidia.min.css');
+        // Load Prism and inject scoped styles
         await this.loadScript('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js');
         await this.loadScript('https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-typescript.min.js');
-        this.prismLoaded = true;
+        this.injectPrismStyles();
         this.updateHighlighting();
 
         // Load esbuild
@@ -120,11 +119,27 @@ export class Rotator extends Behaviour {
       });
     },
 
+    injectPrismStyles() {
+      if (document.getElementById('playground-prism-styles')) return;
+      const style = document.createElement('style');
+      style.id = 'playground-prism-styles';
+      style.textContent = `
+        .code-highlight .token.comment, .code-highlight .token.prolog, .code-highlight .token.doctype, .code-highlight .token.cdata { color: #6a9955 !important; }
+        .code-highlight .token.punctuation { color: #d4d4d4 !important; }
+        .code-highlight .token.property, .code-highlight .token.tag, .code-highlight .token.boolean, .code-highlight .token.number, .code-highlight .token.constant, .code-highlight .token.symbol { color: #b5cea8 !important; }
+        .code-highlight .token.selector, .code-highlight .token.attr-name, .code-highlight .token.string, .code-highlight .token.char, .code-highlight .token.builtin { color: #ce9178 !important; }
+        .code-highlight .token.operator, .code-highlight .token.entity, .code-highlight .token.url { color: #d4d4d4 !important; }
+        .code-highlight .token.atrule, .code-highlight .token.attr-value, .code-highlight .token.function, .code-highlight .token.class-name { color: #dcdcaa !important; }
+        .code-highlight .token.keyword { color: #569cd6 !important; }
+        .code-highlight .token.regex, .code-highlight .token.important { color: #d16969 !important; }
+        .code-highlight code { color: #d4d4d4 !important; }
+      `;
+      document.head.appendChild(style);
+    },
+
     updateHighlighting() {
-      if (this.prismLoaded && window.Prism) {
-        // Add newline at end to ensure last line renders properly
-        const codeWithNewline = this.code + '\n';
-        this.highlightedCode = window.Prism.highlight(codeWithNewline, window.Prism.languages.typescript, 'typescript');
+      if (window.Prism?.languages?.typescript) {
+        this.highlightedCode = window.Prism.highlight(this.code + '\n', window.Prism.languages.typescript, 'typescript');
       } else {
         this.highlightedCode = this.escapeHtml(this.code) + '\n';
       }
@@ -209,7 +224,13 @@ export class Rotator extends Behaviour {
         const result = await window.esbuild.transform(this.code, {
           loader: 'ts',
           format: 'esm',
-          target: 'esnext'
+          target: 'es2022',
+          tsconfigRaw: {
+            compilerOptions: {
+              experimentalDecorators: true,
+              useDefineForClassFields: false
+            }
+          }
         });
 
         this.$refs.previewFrame?.contentWindow?.postMessage({
