@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Playground</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; background: #1a1a2e; }
+        #c { width: 100%; height: 100%; display: block; }
+        #err {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 10px; background: rgba(60,0,0,0.95); color: #f66;
+            font: 12px monospace; display: none; z-index: 10; max-height: 30%;
+            overflow: auto;
+        }
+        #err.show { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="c"></canvas>
+    <div id="err"></div>
+
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
+
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x1a1a2e);
+
+        const camera = new THREE.PerspectiveCamera(50, innerWidth / innerHeight, 0.1, 1000);
+        camera.position.set(3, 2, 3);
+
+        const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('c'), antialias: true });
+        renderer.setSize(innerWidth, innerHeight);
+        renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+
+        const controls = new OrbitControls(camera, renderer.domElement);
+        controls.enableDamping = true;
+        controls.target.set(0, 0.5, 0);
+
+        scene.add(new THREE.AmbientLight(0x404040, 0.6));
+        const light = new THREE.DirectionalLight(0xffffff, 1);
+        light.position.set(5, 10, 7);
+        scene.add(light);
+        scene.add(new THREE.GridHelper(10, 10, 0x444444, 0x333333));
+
+        const cube = new THREE.Mesh(
+            new THREE.BoxGeometry(1, 1, 1),
+            new THREE.MeshStandardMaterial({ color: 0x99CC33, roughness: 0.5 })
+        );
+        cube.position.y = 0.5;
+        scene.add(cube);
+
+        // Component
+        let component = null;
+        const context = { time: { time: 0, deltaTime: 0 } };
+
+        let lastTime = performance.now();
+
+        function animate() {
+            requestAnimationFrame(animate);
+
+            const now = performance.now();
+            context.time.deltaTime = Math.min((now - lastTime) / 1000, 0.1);
+            context.time.time = now / 1000;
+            lastTime = now;
+
+            controls.update();
+
+            if (component && component.update) {
+                try {
+                    component.update();
+                } catch (e) {
+                    showError('Runtime: ' + e.message);
+                    component = null;
+                }
+            }
+
+            renderer.render(scene, camera);
+        }
+
+        function showError(msg) {
+            document.getElementById('err').textContent = msg;
+            document.getElementById('err').classList.add('show');
+            parent.postMessage({ type: 'needle-playground-error', error: msg }, '*');
+        }
+
+        function hideError() {
+            document.getElementById('err').classList.remove('show');
+        }
+
+        addEventListener('resize', () => {
+            camera.aspect = innerWidth / innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(innerWidth, innerHeight);
+        });
+
+        // Provide mock Needle Engine API
+        window.Behaviour = class Behaviour {
+            gameObject = null;
+            context = null;
+            enabled = true;
+        };
+        window.serializable = () => (target, key) => {};
+
+        // Handle incoming transpiled code
+        addEventListener('message', async (e) => {
+            // Ignore Vite HMR messages and any non-playground messages
+            if (!e.data || typeof e.data !== 'object') return;
+            if (e.data.type !== 'needle-playground-code') return;
+            console.log('[iframe] Received code update');
+
+            hideError();
+            cube.rotation.set(0, 0, 0);
+            cube.position.set(0, 0.5, 0);
+            cube.scale.set(1, 1, 1);
+
+            let code = e.data.code;
+
+            try {
+                // Remove import statement - we provide Behaviour globally
+                code = code.replace(/import\s*\{[^}]*\}\s*from\s*["']@needle-tools\/engine["'];?/g, '');
+
+                // Find the class name from "export { ClassName };" pattern
+                const exportMatch = code.match(/export\s*\{\s*(\w+)\s*\}/);
+                const className = exportMatch ? exportMatch[1] : 'Rotator';
+
+                // Remove export statement
+                code = code.replace(/export\s*\{\s*\w+\s*\};?/g, '');
+
+                // Wrap in IIFE to avoid redeclaration errors
+                code = `(function() {\n${code}\nwindow.__PlaygroundClass = ${className};\n})();`;
+
+                // Execute via script tag
+                const script = document.createElement('script');
+                script.textContent = code;
+                document.body.appendChild(script);
+                document.body.removeChild(script);
+
+                const ComponentClass = window.__PlaygroundClass;
+                delete window.__PlaygroundClass;
+
+                if (!ComponentClass) {
+                    showError(`No ${className} class found in code`);
+                    return;
+                }
+
+                // Create instance
+                const instance = new ComponentClass();
+                instance.gameObject = cube;
+                instance.context = context;
+
+                if (instance.start) instance.start();
+
+                component = instance;
+
+            } catch (e) {
+                console.error('Execution error:', e);
+                showError(e.message);
+                component = null;
+            }
+        });
+
+        animate();
+        parent.postMessage({ type: 'needle-playground-ready' }, '*');
+    </script>
+</body>
+</html>
