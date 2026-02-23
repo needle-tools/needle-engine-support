@@ -178,7 +178,7 @@ export default {
       return `https://chat.openai.com/?q=${encodeURIComponent(question)}`
     },
     claudeUrl() {
-      const question = `Hi Claude! Can you please read this page: ${this.mdPageUrl} and prepare to answer questions about it? If I ask about something not covered on that page, fetch results from https://search.needle.tools/api/semantic-search?q=YOUR_QUERY&limit=10 (replace YOUR_QUERY with the search term) to find relevant Needle Engine documentation.`
+      const question = `Hi Claude! Can you please read this page: ${this.mdPageUrl} and prepare to answer questions about it?`
       return `https://claude.ai/new?q=${encodeURIComponent(question)}`
     }
   },
