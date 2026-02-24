@@ -20,8 +20,8 @@ If you're evaluating alternatives, here's how the two platforms differ:
 
 | Aspect | 8th Wall | Needle Engine |
 |--------|----------|---------------|
-| **AR on Android** | 8th Wall SLAM | WebXR (native Chrome/Firefox) |
-| **AR on iOS** | 8th Wall SLAM | WebXR via [App Clip](/docs/how-to-guides/xr/ios-webxr-app-clip) (ARKit) or [Interactive USDZ/QuickLook](/docs/how-to-guides/everywhere-actions/) (runtime export with interactivity) |
+| **AR on Android** | 8th Wall SLAM | **WebXR with NATIVE ARCore** (Chrome/Firefox) |
+| **AR on iOS** | 8th Wall SLAM | **WebXR via [App Clip](/docs/how-to-guides/xr/ios-webxr-app-clip) with NATIVE ARKit** or [Interactive USDZ/QuickLook](/docs/how-to-guides/everywhere-actions/) (runtime export with interactivity) |
 | **Image tracking** | Built-in | [WebXR Image Tracking](/docs/how-to-guides/xr/image-tracking) |
 | **Face tracking** | Built-in | Via [@needle-tools/facefilter](https://github.com/needle-engine/facefilter) package |
 | **VPS / Location AR** | Lightship VPS | No built-in support |
@@ -33,7 +33,8 @@ If you're evaluating alternatives, here's how the two platforms differ:
 
 ### Where Needle Engine Shines
 
-- **Native WebXR on iOS and Android** – Full WebXR on iPhone/iPad via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip) (ARKit-powered), plus interactive USDZ via [Everywhere Actions](/docs/how-to-guides/everywhere-actions/)
+- **NATIVE ARKit/ARCore tracking** – True native AR tracking quality via WebXR on iOS ([App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip)) and Android (Chrome/Firefox) - superior tracking compared to web-based SLAM
+- **Interactive USDZ export** – Runtime USDZ generation with full interactivity via [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for iOS QuickLook
 - **Flat pricing** – No per-view fees. Pay a license fee and deploy to unlimited users
 - **Performance optimization** – Automatic texture compression, mesh optimization, and progressive loading
 - **Visual editing** – Use Unity or Blender instead of code-only workflows
@@ -44,7 +45,7 @@ If you're evaluating alternatives, here's how the two platforms differ:
 ### What 8th Wall Does That Needle Doesn't (Out of the Box)
 
 - **VPS / Location-based AR** – No built-in support in Needle Engine
-- **Cloud-based editor** – Needle uses desktop editors (Unity/Blender)
+- **Cloud-based editor** – Needle uses desktop editors (Unity/Blender) and the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) Chrome extension for runtime editing, debugging, and scene inspection with undo/redo support
 
 ---
 

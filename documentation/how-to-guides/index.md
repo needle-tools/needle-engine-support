@@ -88,6 +88,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="/docs/how-to-guides/integrations/framer">Framer</a></logo-header> - Framer websites
 - <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">WordPress</a></logo-header> - WordPress sites
 - <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header> - AEM integration
+- <logo-header logo="/imgs/8thwall-logo.png" alt="8th Wall"><a href="/docs/tutorials/for-8thwall-users">8th Wall Migration</a></logo-header> - Transition guide for 8th Wall developers
 
 ---
 
