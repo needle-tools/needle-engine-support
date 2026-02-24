@@ -269,7 +269,7 @@ Unlike 8th Wall, you can host Needle Engine projects anywhere:
 
 **Needle Cloud (simplest):**
 ```bash
-npx needle-tools deploy
+npx needle-cloud deploy
 ```
 
 **Any static host:**
