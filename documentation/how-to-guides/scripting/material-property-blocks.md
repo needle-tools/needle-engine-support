@@ -1,11 +1,11 @@
 ---
 title: MaterialPropertyBlocks
-description: Override material properties per object without breaking batching and instancing
+description: Override material properties per object without manually cloning materials
 ---
 
 # MaterialPropertyBlocks
 
-MaterialPropertyBlocks let you customize material properties on individual objects while sharing the same base material. This maintains excellent performance through batching and instancing while giving you per-object control.
+MaterialPropertyBlocks let you customize material properties on individual objects while sharing the same base material. This provides a clean API for per-object variations without manually cloning materials.
 
 ::: tip Available since 4.14.0
 MaterialPropertyBlocks were introduced in Needle Engine 4.14.0.
@@ -15,9 +15,9 @@ MaterialPropertyBlocks were introduced in Needle Engine 4.14.0.
 
 ## What are MaterialPropertyBlocks?
 
-In traditional rendering, if you want multiple objects to have different colors but use the same material, you'd need to create separate material instances. This breaks batching and hurts performance.
+In traditional Three.js, if you want multiple objects to have different colors but use the same material, you'd need to clone the material for each object. This is tedious, can lead to memory bloat with many material instances, and makes it harder to manage variants that share some settings - for example, objects that need individual lightmaps or custom reflection probes while sharing the same base material.
 
-MaterialPropertyBlocks solve this by allowing **per-object property overrides** that are applied dynamically during rendering, without creating new material instances.
+MaterialPropertyBlocks solve this by allowing **per-object property overrides** that are applied dynamically during rendering, without manually creating new material instances.
 
 **How they work:**
 - Override properties are temporarily applied in `onBeforeRender`
@@ -25,11 +25,26 @@ MaterialPropertyBlocks solve this by allowing **per-object property overrides** 
 - Shader defines are managed automatically for correct shader compilation
 - Per-object texture transforms are supported
 
-**Performance benefits:**
-- ✅ Objects continue to share the same material
-- ✅ Batching and instancing remain intact
-- ✅ GPU-friendly rendering with minimal overhead
-- ✅ No material duplication in memory
+**Benefits:**
+- ✅ Clean API for per-object material variations
+- ✅ No manual material cloning required
+- ✅ Automatic memory management via WeakMaps
+- ✅ Works transparently with Groups and child meshes
+- ✅ Supports any Three.js material property
+
+::: info Note on Batching
+MaterialPropertyBlocks don't change Three.js's default rendering behavior - each mesh is still rendered as a separate draw call, just as it would be without property blocks. For GPU-level batching, you'd need to use `InstancedMesh` or `BatchedMesh` regardless of whether you use MaterialPropertyBlocks.
+:::
+
+---
+
+## Built-in Features Using MaterialPropertyBlocks
+
+Needle Engine uses MaterialPropertyBlocks under the hood for several features - so you get the benefits automatically without writing any code:
+
+1. **Lightmaps** - Apply unique lightmap textures to objects ([Sample](https://engine.needle.tools/samples/multiple-lightmaps/))
+2. **Reflection Probes** - Per-object environment maps ([Sample](https://engine.needle.tools/samples/reflection-probes/))
+3. **See-Through Component** - Dynamic transparency effects ([Sample](https://engine.needle.tools/samples/see-through/))
 
 ---
 
@@ -101,11 +116,15 @@ block.setOverride("lightMap", lightmapTexture, {
 
 **Supported property types:**
 - `number` - Roughness, metalness, opacity, etc.
+- `number[]` - Array uniforms
 - `Color` - Base color, emissive color, etc.
 - `Texture` - Albedo maps, normal maps, lightmaps, etc.
-- `Vector2`, `Vector3`, `Vector4` - Custom shader parameters
+- `Vector2`, `Vector3`, `Vector4` - UV offsets, custom shader parameters
+- `Euler` - Rotation values (e.g., `envMapRotation`)
 - `boolean` - Flags like `transparent`
 - `null` - To clear a property
+
+Essentially, any property that exists on a Three.js material can be overridden.
 
 ### Getting Override Values
 
@@ -225,6 +244,8 @@ export class LightmapApplier extends Behaviour {
 Apply different environment maps per object:
 
 ```typescript
+import { Euler } from "three";
+
 export class ReflectionProbeApplier extends Behaviour {
 
     @serializable(Texture)
@@ -234,7 +255,7 @@ export class ReflectionProbeApplier extends Behaviour {
     envMapIntensity: number = 1.0;
 
     @serializable()
-    envMapRotation: number = 0;
+    envMapRotationY: number = 0; // Rotation in radians
 
     awake() {
         const block = MaterialPropertyBlock.get(this.gameObject);
@@ -242,7 +263,8 @@ export class ReflectionProbeApplier extends Behaviour {
         if (this.envMap) {
             block.setOverride("envMap", this.envMap);
             block.setOverride("envMapIntensity", this.envMapIntensity);
-            block.setOverride("envMapRotation", this.envMapRotation);
+            // envMapRotation is an Euler in Three.js MeshStandardMaterial
+            block.setOverride("envMapRotation", new Euler(0, this.envMapRotationY, 0));
         }
     }
 }
@@ -384,39 +406,37 @@ This is handled automatically by the engine's render list management system.
 
 ## Performance Considerations
 
+### How it Works Under the Hood
+
+MaterialPropertyBlocks modify material properties temporarily during rendering:
+- Properties are applied in `onBeforeRender`
+- Original values are restored in `onAfterRender`
+- Uniforms are re-uploaded per object when values differ
+
+This has the same rendering cost as cloning materials would. The key advantage is that MaterialPropertyBlocks provide a much cleaner API and make it easier to reason about your code.
+
+### Benefits
+
+**Developer Experience:**
+- ✅ No manual material cloning or management
+- ✅ Clean API for per-object variations
+- ✅ Easy to add/remove overrides dynamically
+- ✅ Works transparently with the component system
+
+**Memory:**
+- ✅ No cloned Material objects in JavaScript heap
+- ✅ Automatic cleanup via WeakMaps
+- ✅ Single shader program shared across objects (when defines match)
+
 ### Best Practices
 
 **✅ Do:**
-- Use MaterialPropertyBlocks for per-object variations
-- Share base materials across many objects
-- Use for dynamic property changes
-- Leverage for lightmaps and environment maps
+- Use for per-object variations (colors, textures, parameters)
+- Use for dynamic property changes at runtime
+- Use for lightmaps and environment maps
 
 **❌ Don't:**
-- Use MaterialPropertyBlocks if all objects sharing a material should have the same property value (just modify the shared material directly instead)
-
-### Memory and Performance
-
-MaterialPropertyBlocks are designed to be lightweight:
-- Use WeakMaps for automatic garbage collection
-- Minimal overhead per object
-- Efficient shader compilation caching
-- No material duplication
-
----
-
-## Internal Usage in Needle Engine
-
-MaterialPropertyBlocks are used internally by several Needle Engine features:
-
-1. **Lightmaps** - Apply unique lightmap textures to objects ([Sample](https://engine.needle.tools/samples/multiple-lightmaps/))
-2. **Reflection Probes** - Per-object environment maps ([Sample](https://engine.needle.tools/samples/reflection-probes/))
-3. **See-Through Component** - Dynamic transparency effects ([Sample](https://engine.needle.tools/samples/see-through/))
-
-You can examine these components for real-world examples:
-- [`NEEDLE_lightmaps`](https://engine.needle.tools/docs/api/classes/src_engine_extensions_NEEDLE_lightmaps.NEEDLE_lightmaps) extension • [Sample](https://engine.needle.tools/samples/multiple-lightmaps/)
-- [`ReflectionProbe`](https://engine.needle.tools/docs/api/ReflectionProbe) component • [Sample](https://engine.needle.tools/samples/reflection-probes/)
-- [`SeeThrough`](https://engine.needle.tools/docs/api/SeeThrough) component • [Sample](https://engine.needle.tools/samples/see-through/)
+- Use if all objects should have the same value (just modify the shared material directly)
 
 ---
 
@@ -428,28 +448,18 @@ You can examine these components for real-world examples:
 
 **Solutions:**
 - Ensure you're calling `MaterialPropertyBlock.get()` (not creating instances manually)
-- Verify the property name matches the material's property
+- Verify the property name matches the material's property exactly (e.g., `color` not `Color`)
 - Check that the object has a material assigned
 - Confirm the object is actually rendering
 
-### Shader compilation issues
+### Shader defines not working
 
-**Problem:** Shaders not compiling correctly with defines.
-
-**Solutions:**
-- Ensure defines are set before rendering
-- Check that define values are correct types
-- Clear the shader cache if needed
-
-### Performance degradation
-
-**Problem:** Frame rate drops when using property blocks.
+**Problem:** Custom defines not affecting shader behavior.
 
 **Solutions:**
-- Avoid setting overrides every frame unless necessary
-- Use fewer property blocks if possible
-- Profile to identify bottlenecks
-- Consider static material variations for unchanging properties
+- Ensure defines are set before the first render
+- Check that define values are the correct type (usually numbers)
+- Verify the shader actually uses the define you're setting
 
 ---
 
