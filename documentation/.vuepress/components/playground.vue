@@ -127,9 +127,12 @@ export class Rotator extends Behaviour {
 
         console.log('[playground] Editor created');
 
-        // Load esbuild for transpilation
+        // Load esbuild for transpilation (shared across all playground instances)
         console.log('[playground] Loading esbuild-wasm...');
-        await this.loadScript('https://cdn.jsdelivr.net/npm/esbuild-wasm@0.20.0/lib/browser.min.js');
+        if (!window.__esbuildLoadPromise) {
+          window.__esbuildLoadPromise = this.loadScript('https://cdn.jsdelivr.net/npm/esbuild-wasm@0.20.0/lib/browser.min.js');
+        }
+        await window.__esbuildLoadPromise;
 
         if (!window.__esbuildInitPromise) {
           window.__esbuildInitPromise = window.esbuild.initialize({
