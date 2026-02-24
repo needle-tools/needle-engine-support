@@ -49,9 +49,9 @@ export default {
       };
     }
   },
-  mounted() {
-    // Initialize code from various sources
-    this.loadInitialCode();
+  async mounted() {
+    // Initialize code from various sources (must complete before init)
+    await this.loadInitialCode();
     this.detectTheme();
     this.init();
     window.addEventListener('message', this.handleMessage);
