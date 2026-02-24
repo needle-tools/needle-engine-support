@@ -2,11 +2,16 @@
 // Store non-reactive references outside Vue's reactivity system
 let monacoInstance = null;
 let editorInstance = null;
+let typesLoaded = false;
 
 export default {
   props: {
     scene: { type: String, default: 'cube' },
-    height: { type: String, default: '400px' }
+    height: { type: String, default: '400px' },
+    // Layout options: 'horizontal' (side by side) or 'vertical' (stacked)
+    layout: { type: String, default: 'horizontal' },
+    // Preview position: 'first' or 'last'
+    previewPosition: { type: String, default: 'last' },
   },
   data() {
     return {
@@ -16,11 +21,19 @@ export default {
       debounceTimer: null,
       loading: true,
       compiling: false,
+      typesReady: false,
     }
   },
   computed: {
     playgroundUrl() {
       return `/docs/playground/${this.scene}/index.html`;
+    },
+    containerClass() {
+      return {
+        'playground-container': true,
+        'layout-vertical': this.layout === 'vertical',
+        'preview-first': this.previewPosition === 'first',
+      };
     }
   },
   mounted() {
@@ -80,68 +93,12 @@ export class Rotator extends Behaviour {
           noEmit: true,
         });
 
-        // Add Needle Engine type definitions
-        monacoInstance.languages.typescript.typescriptDefaults.addExtraLib(`
-declare module "@needle-tools/engine" {
-  import * as THREE from 'three';
-
-  export class Behaviour {
-    gameObject: THREE.Object3D;
-    context: {
-      time: {
-        time: number;
-        deltaTime: number;
-        frameCount: number;
-      };
-      scene: THREE.Scene;
-      mainCamera: THREE.Camera;
-    };
-    enabled: boolean;
-
-    awake?(): void;
-    onEnable?(): void;
-    onDisable?(): void;
-    start?(): void;
-    earlyUpdate?(): void;
-    update?(): void;
-    lateUpdate?(): void;
-    onDestroy?(): void;
-
-    onBeforeRender?(): void;
-    onAfterRender?(): void;
-  }
-
-  export function serializable(type?: any): PropertyDecorator;
-}
-
-declare module 'three' {
-  export class Object3D {
-    position: Vector3;
-    rotation: Euler;
-    scale: Vector3;
-    rotateX(angle: number): this;
-    rotateY(angle: number): this;
-    rotateZ(angle: number): this;
-    add(...object: Object3D[]): this;
-    remove(...object: Object3D[]): this;
-  }
-  export class Vector3 {
-    x: number;
-    y: number;
-    z: number;
-    set(x: number, y: number, z: number): this;
-  }
-  export class Euler {
-    x: number;
-    y: number;
-    z: number;
-    set(x: number, y: number, z: number, order?: string): this;
-  }
-  export class Scene extends Object3D {}
-  export class Camera extends Object3D {}
-  export class Mesh extends Object3D {}
-}
-`, 'file:///node_modules/@needle-tools/engine/index.d.ts');
+        // Load type definitions (shared across instances)
+        if (!typesLoaded) {
+          await this.loadTypeDefinitions();
+          typesLoaded = true;
+        }
+        this.typesReady = true;
 
         // Create the editor
         const container = this.$refs.editorContainer;
@@ -203,6 +160,184 @@ declare module 'three' {
         this.error = 'Failed to load: ' + e.message;
         this.loading = false;
       }
+    },
+
+    async loadTypeDefinitions() {
+      console.log('[playground] Loading type definitions...');
+      const ts = monacoInstance.languages.typescript.typescriptDefaults;
+
+      // Fetch Three.js types
+      try {
+        const threeTypesUrl = 'https://esm.sh/@types/three@0.169.0/index.d.ts';
+        const threeTypes = await fetch(threeTypesUrl).then(r => r.text());
+        ts.addExtraLib(threeTypes, 'file:///node_modules/@types/three/index.d.ts');
+
+        // Create a model so CMD+click can navigate to it
+        const threeUri = monacoInstance.Uri.parse('file:///node_modules/@types/three/index.d.ts');
+        if (!monacoInstance.editor.getModel(threeUri)) {
+          monacoInstance.editor.createModel(threeTypes, 'typescript', threeUri);
+        }
+        console.log('[playground] Three.js types loaded');
+      } catch (e) {
+        console.warn('[playground] Failed to load Three.js types:', e);
+      }
+
+      // Add Needle Engine types with full definitions
+      const needleTypes = `
+declare module "@needle-tools/engine" {
+  import * as THREE from 'three';
+
+  /**
+   * Base class for all Needle Engine components.
+   * Extend this class to create custom behaviors that can be attached to GameObjects.
+   *
+   * @example
+   * \`\`\`typescript
+   * export class MyComponent extends Behaviour {
+   *   start() {
+   *     console.log("Component started!");
+   *   }
+   *   update() {
+   *     this.gameObject.rotateY(this.context.time.deltaTime);
+   *   }
+   * }
+   * \`\`\`
+   */
+  export class Behaviour {
+    /** The GameObject this component is attached to */
+    gameObject: THREE.Object3D;
+
+    /** The Needle Engine context providing access to scene, time, and other systems */
+    context: Context;
+
+    /** Whether this component is enabled. Disabled components don't receive update calls. */
+    enabled: boolean;
+
+    /** Called once when the component is first created */
+    awake?(): void;
+
+    /** Called when the component becomes enabled */
+    onEnable?(): void;
+
+    /** Called when the component becomes disabled */
+    onDisable?(): void;
+
+    /** Called once before the first update, after all awake calls */
+    start?(): void;
+
+    /** Called every frame before update */
+    earlyUpdate?(): void;
+
+    /** Called every frame */
+    update?(): void;
+
+    /** Called every frame after update */
+    lateUpdate?(): void;
+
+    /** Called when the component is destroyed */
+    onDestroy?(): void;
+
+    /** Called before the scene is rendered */
+    onBeforeRender?(): void;
+
+    /** Called after the scene is rendered */
+    onAfterRender?(): void;
+  }
+
+  /**
+   * Context provides access to the Needle Engine runtime.
+   */
+  export interface Context {
+    /** Time information for the current frame */
+    time: Time;
+
+    /** The Three.js scene */
+    scene: THREE.Scene;
+
+    /** The main camera */
+    mainCamera: THREE.Camera;
+
+    /** The physics engine (if available) */
+    physics?: Physics;
+
+    /** Input system */
+    input: Input;
+  }
+
+  /**
+   * Time information for the current frame.
+   */
+  export interface Time {
+    /** Total elapsed time in seconds since the engine started */
+    time: number;
+
+    /** Time in seconds since the last frame */
+    deltaTime: number;
+
+    /** Current frame number */
+    frameCount: number;
+
+    /** Time scale multiplier (1.0 = normal speed) */
+    timeScale: number;
+  }
+
+  /**
+   * Input system for handling user input.
+   */
+  export interface Input {
+    /** Get the current pointer position */
+    getPointerPosition(index?: number): { x: number; y: number } | null;
+
+    /** Check if a pointer is currently pressed */
+    getPointerPressed(index?: number): boolean;
+  }
+
+  /**
+   * Physics system interface.
+   */
+  export interface Physics {
+    /** Perform a raycast */
+    raycast(origin: THREE.Vector3, direction: THREE.Vector3, maxDistance?: number): RaycastHit | null;
+  }
+
+  export interface RaycastHit {
+    point: THREE.Vector3;
+    normal: THREE.Vector3;
+    distance: number;
+    object: THREE.Object3D;
+  }
+
+  /**
+   * Decorator to mark a property as serializable.
+   * Serializable properties can be edited in the Unity/Blender editor
+   * and will be saved/loaded with the scene.
+   *
+   * @param type - Optional type hint for the serializer
+   *
+   * @example
+   * \`\`\`typescript
+   * export class MyComponent extends Behaviour {
+   *   @serializable()
+   *   speed: number = 1;
+   *
+   *   @serializable(Object3D)
+   *   target?: THREE.Object3D;
+   * }
+   * \`\`\`
+   */
+  export function serializable(type?: any): PropertyDecorator;
+}
+`;
+
+      ts.addExtraLib(needleTypes, 'file:///node_modules/@needle-tools/engine/index.d.ts');
+
+      // Create model for navigation
+      const needleUri = monacoInstance.Uri.parse('file:///node_modules/@needle-tools/engine/index.d.ts');
+      if (!monacoInstance.editor.getModel(needleUri)) {
+        monacoInstance.editor.createModel(needleTypes, 'typescript', needleUri);
+      }
+
+      console.log('[playground] Needle Engine types loaded');
     },
 
     loadScript(src) {
@@ -275,7 +410,7 @@ declare module 'three' {
 
 <template>
   <div class="playground" :style="{ '--playground-height': height }">
-    <div class="playground-container">
+    <div :class="containerClass">
       <div class="editor-panel">
         <div class="panel-header">
           <span class="panel-title">TypeScript</span>
@@ -294,7 +429,7 @@ declare module 'three' {
           ref="previewFrame"
           :src="playgroundUrl"
           class="preview-frame"
-          allow="xr; xr-spatial-tracking; fullscreen"
+          allow="xr-spatial-tracking; fullscreen"
         ></iframe>
       </div>
     </div>
@@ -314,9 +449,41 @@ declare module 'three' {
   display: flex;
   height: var(--playground-height, 400px);
 }
+
+/* Vertical layout (stacked) */
+.playground-container.layout-vertical {
+  flex-direction: column;
+}
+.playground-container.layout-vertical .editor-panel,
+.playground-container.layout-vertical .preview-panel {
+  height: calc(var(--playground-height, 400px) / 2);
+}
+.playground-container.layout-vertical .editor-panel {
+  border-right: none;
+  border-bottom: 1px solid #333;
+}
+
+/* Preview first (swap order) */
+.playground-container.preview-first {
+  flex-direction: row-reverse;
+}
+.playground-container.preview-first .editor-panel {
+  border-right: none;
+  border-left: 1px solid #333;
+}
+.playground-container.layout-vertical.preview-first {
+  flex-direction: column-reverse;
+}
+.playground-container.layout-vertical.preview-first .editor-panel {
+  border-left: none;
+  border-bottom: none;
+  border-top: 1px solid #333;
+}
+
 @media (max-width: 768px) {
-  .playground-container { flex-direction: column; height: auto; }
-  .editor-panel, .preview-panel { width: 100% !important; height: 300px; }
+  .playground-container { flex-direction: column !important; height: auto !important; }
+  .editor-panel, .preview-panel { width: 100% !important; height: 300px !important; }
+  .editor-panel { border-right: none !important; border-left: none !important; border-bottom: 1px solid #333 !important; border-top: none !important; }
 }
 .editor-panel, .preview-panel {
   flex: 1;

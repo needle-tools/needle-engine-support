@@ -1,0 +1,14 @@
+{
+	"servers": {
+		"needle": {
+			"command": "npx",
+			"args": [
+				"-y",
+				"needle-cloud@next",
+				"mcp"
+			],
+			"type": "stdio"
+		}
+	},
+	"inputs": []
+}
