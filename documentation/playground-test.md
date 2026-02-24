@@ -4,11 +4,37 @@ This page tests the interactive code playground component.
 
 ## Basic Rotation
 
-Edit the code below and see the results instantly. Try **CMD+click** on `gameObject` or `context` to navigate to type definitions!
+Edit the code below and see the results instantly. **Drag the separator** between code and preview to resize panels! Try **CMD+click** on `gameObject` or `context` to navigate to type definitions.
 
 <playground height="450px"></playground>
 
 The playground loads with a default rotating cube component. Try modifying the code!
+
+## Custom Code Example
+
+You can pass custom initial code using the `src` prop:
+
+<playground height="400px" :src="`import { Behaviour, serializable } from '@needle-tools/engine';
+
+export class Bouncer extends Behaviour {
+  @serializable()
+  bounceHeight: number = 0.5;
+
+  @serializable()
+  bounceSpeed: number = 3;
+
+  private startY: number = 0;
+
+  start() {
+    this.startY = this.gameObject.position.y;
+  }
+
+  update() {
+    const bounce = Math.abs(Math.sin(this.context.time.time * this.bounceSpeed));
+    this.gameObject.position.y = this.startY + bounce * this.bounceHeight;
+    this.gameObject.rotateY(this.context.time.deltaTime * 2);
+  }
+}`"></playground>
 
 ## Vertical Layout (Preview on Top)
 
@@ -38,11 +64,20 @@ update() {
 }
 ```
 
+## Features
+
+- **Draggable separator**: Resize code/preview panels by dragging
+- **Custom code**: Pass initial code via `src` prop
+- **Type definitions**: CMD+click to navigate, press Escape or click Back to return
+- **Fullscreen**: Click the fullscreen button in the preview panel
+- **Theme support**: Automatically follows VuePress light/dark theme
+- **Layouts**: Horizontal (default) or vertical with `layout="vertical"`
+
 ## How It Works
 
 The playground uses:
 - **Monaco Editor** for a VSCode-like editing experience with TypeScript support
 - **esbuild-wasm** for near-instant TypeScript transpilation (~5-10ms)
-- **three.js** scene with hot-reloading component system
+- **Needle Engine** with hot-reloading component system
 
 Changes are compiled and applied in real-time as you type!
