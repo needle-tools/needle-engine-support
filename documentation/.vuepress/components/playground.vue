@@ -469,12 +469,21 @@ export function serializable(type?: any): PropertyDecorator;
       if (!container) return;
       const rect = container.getBoundingClientRect();
       const isVertical = this.layout === 'vertical';
+      const isPreviewFirst = this.previewPosition === 'first';
 
       let percentage;
       if (isVertical) {
         percentage = ((e.clientY - rect.top) / rect.height) * 100;
+        // When preview is first (top), invert so dragging down grows preview
+        if (isPreviewFirst) {
+          percentage = 100 - percentage;
+        }
       } else {
         percentage = ((e.clientX - rect.left) / rect.width) * 100;
+        // When preview is first (left), invert so dragging right grows preview
+        if (isPreviewFirst) {
+          percentage = 100 - percentage;
+        }
       }
 
       // Clamp between 20% and 80%
@@ -512,7 +521,7 @@ export function serializable(type?: any): PropertyDecorator;
         <div ref="editorContainer" class="editor-container"></div>
       </div>
       <div class="resize-handle" :class="{ 'resize-handle-vertical': layout === 'vertical' }" @mousedown="startResize"></div>
-      <div class="preview-panel">
+      <div class="preview-panel" :style="{ flex: 'none', [layout === 'vertical' ? 'height' : 'width']: (100 - editorWidth) + '%' }">
         <div class="panel-header">
           <span class="panel-title">Preview</span>
           <button class="fullscreen-btn" @click="toggleFullscreen" :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'">
@@ -589,11 +598,6 @@ export function serializable(type?: any): PropertyDecorator;
 .playground-container.layout-vertical {
   flex-direction: column;
   height: calc(var(--playground-height, 400px) * 1.5);
-}
-.playground-container.layout-vertical .editor-panel,
-.playground-container.layout-vertical .preview-panel {
-  height: 50%;
-  flex: none;
 }
 .playground-container.layout-vertical .editor-panel {
   border-right: none;
