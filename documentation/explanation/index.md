@@ -21,6 +21,7 @@ Understand the concepts, architecture, and design decisions behind Needle Engine
 - [Features Overview](./core-concepts/features-overview) - Complete feature set and capabilities
 - [Project Structure](./core-concepts/project-structure) - Editor projects vs web projects
 - [Component Compiler](./core-concepts/component-compiler) - TypeScript to C# generation
+- [Exporting to glTF](./exporting-to-gltf) - How the export system works and what gets exported
 
 ---
 
