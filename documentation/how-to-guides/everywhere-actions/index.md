@@ -1,6 +1,6 @@
 ---
-title: Everywhere Actions — Interactive experiences on Desktop, Android & iOS (even AR)
-description: Needle's Everywhere Actions are a set of carefully chosen components that allow you to create interactive experiences in Unity without writing a single line of code. They are designed to serve as building blocks for experiences across the web, mobile and XR, **including Augmented Reality on iOS**. From low-level triggers and actions, higher-level complex interactive behaviours can be built.
+title: Everywhere Actions — Interactive USDZ & QuickLook Experiences for iOS
+description: Create interactive experiences for iPhone, iPad, and Apple Vision Pro with automatic runtime USDZ export. Needle Engine generates interactive USDZ files on-the-fly with animations, material changes, spatial audio, and tap interactions for Apple QuickLook — no manual export required.
 ---
 
 # Everywhere Actions
@@ -10,6 +10,8 @@ description: Needle's Everywhere Actions are a set of carefully chosen component
 ## What are Everywhere Actions?
 
 Needle's Everywhere Actions are a set of carefully chosen components that allow you to create **interactive experiences without writing code**.
+
+**The key capability:** Needle Engine **automatically generates interactive USDZ files at runtime** for iOS. When users tap "View in AR" on iPhone or iPad, your scene is converted to USDZ on-the-fly — complete with animations, material changes, audio, and tap interactions. This is different from static USDZ export: your interactive behaviors built with Everywhere Actions are preserved.
 
 Build experiences that work across **all platforms**:
 
@@ -25,7 +27,7 @@ Build experiences that work across **all platforms**:
 | **<logo-header logo="/imgs/quicklook-logo.webp" alt="QuickLook">iOS QuickLook</logo-header>** | ✅ Supported | Apple Vision Pro, iPhone, iPad |
 
 :::tip Native WebXR on iOS Now Available! 🎉
-Full WebXR support is now available on iOS through [Needle Go App Clip](../xr/ios-webxr-app-clip). Experience complete AR and VR on iPhone and iPad without app installation—just open your WebXR scene in Safari or Chrome!
+Full WebXR support is now available on iOS through [Needle Go App Clip](../xr/ios-webxr-app-clip). Experience complete AR and VR on iPhone and iPad without app installation — just open your WebXR scene in Safari or Chrome!
 :::
 
 ## How do I use Everywhere Actions?
@@ -143,9 +145,10 @@ To see the implementation of our built-in Everywhere Actions, please take look a
 ## Further reading
 
 :::tip <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR Support</logo-header>
-Want to use full WebXR features on iPhone and iPad? Check out our [iOS WebXR with App Clip](../xr/ios-webxr-app-clip) guide for complete AR and VR support without app installation.
+Want full WebXR features on iPhone and iPad? Check out our [iOS WebXR with App Clip](../xr/ios-webxr-app-clip) guide for complete AR and VR support without app installation.
 :::
 
-- [Visit our AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) that has many interactive AR examples with a focus on iOS AR & Quicklook
-- [Needle Engine Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
+- [iOS WebXR with App Clip](../xr/ios-webxr-app-clip) — Full WebXR on iPhone and iPad
+- [AR Showcase Website](https://engine.needle.tools/projects/ar-showcase/) — Interactive AR examples with a focus on iOS AR & QuickLook
+- [Everywhere Action Samples](https://engine.needle.tools/samples/?overlay=samples&tag=everywhere+actions)
 - [Image Tracking with Needle Engine](../xr/image-tracking)
