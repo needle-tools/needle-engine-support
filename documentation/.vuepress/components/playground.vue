@@ -11,12 +11,19 @@ export default {
     layout: { type: String, default: 'horizontal' },
     // Preview position: 'first' or 'last'
     previewPosition: { type: String, default: 'last' },
-    // Initial code - can be passed as prop or via default slot
+    // Initial code - can be passed as prop, file URL, or via default slot
     src: { type: String, default: '' },
+    // File URL to load code from (e.g., /docs/playground/examples/bouncer.ts)
+    file: { type: String, default: '' },
+    // Show only editable region initially (use // #region editable / // #endregion markers)
+    focusRegion: { type: Boolean, default: false },
   },
   data() {
     return {
       code: '',
+      fullCode: '', // Complete code including hidden parts
+      editableRegion: null, // { start, end } line numbers of editable region
+      showFullCode: false, // Toggle to show full code
       error: null,
       iframeReady: false,
       debounceTimer: null,
@@ -43,22 +50,8 @@ export default {
     }
   },
   mounted() {
-    // Use src prop, slot content, or default code
-    if (this.src) {
-      this.code = this.src;
-    } else if (this.$slots.default) {
-      // Get text content from slot
-      const slotContent = this.$slots.default();
-      if (slotContent?.[0]?.children) {
-        this.code = typeof slotContent[0].children === 'string'
-          ? slotContent[0].children
-          : this.getDefaultCode();
-      } else {
-        this.code = this.getDefaultCode();
-      }
-    } else {
-      this.code = this.getDefaultCode();
-    }
+    // Initialize code from various sources
+    this.loadInitialCode();
     this.detectTheme();
     this.init();
     window.addEventListener('message', this.handleMessage);
@@ -94,6 +87,131 @@ export class Rotator extends Behaviour {
     this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
   }
 }`;
+    },
+
+    async loadInitialCode() {
+      let rawCode = '';
+
+      // Priority: file URL > src prop > slot content > default
+      if (this.file) {
+        try {
+          const response = await fetch(this.file);
+          if (response.ok) {
+            rawCode = await response.text();
+          }
+        } catch (e) {
+          console.warn('[playground] Failed to load file:', this.file, e);
+        }
+      }
+
+      if (!rawCode && this.src) {
+        rawCode = this.src;
+      }
+
+      // Try to extract text from slot content
+      if (!rawCode && this.$slots.default) {
+        const slotContent = this.$slots.default();
+        rawCode = this.extractTextFromSlot(slotContent);
+      }
+
+      if (!rawCode) {
+        rawCode = this.getDefaultCode();
+      }
+
+      // Store full code and extract editable region if focusRegion is enabled
+      this.fullCode = rawCode;
+
+      if (this.focusRegion) {
+        const { editableCode, region } = this.extractEditableRegion(rawCode);
+        if (region) {
+          this.code = editableCode;
+          this.editableRegion = region;
+        } else {
+          this.code = rawCode;
+        }
+      } else {
+        this.code = rawCode;
+      }
+    },
+
+    extractEditableRegion(code) {
+      // Look for // #region editable and // #endregion markers
+      const lines = code.split('\n');
+      let startLine = -1;
+      let endLine = -1;
+
+      for (let i = 0; i < lines.length; i++) {
+        const line = lines[i].trim();
+        if (line.match(/^\/\/\s*#region\s+editable/i)) {
+          startLine = i;
+        } else if (startLine >= 0 && line.match(/^\/\/\s*#endregion/i)) {
+          endLine = i;
+          break;
+        }
+      }
+
+      if (startLine >= 0 && endLine > startLine) {
+        // Extract just the editable region (excluding markers)
+        const editableLines = lines.slice(startLine + 1, endLine);
+        // Find minimum indentation and remove it
+        const nonEmptyLines = editableLines.filter(l => l.trim());
+        const minIndent = nonEmptyLines.length > 0
+          ? Math.min(...nonEmptyLines.map(l => l.match(/^\s*/)[0].length))
+          : 0;
+        const dedentedLines = editableLines.map(l => l.slice(minIndent));
+
+        return {
+          editableCode: dedentedLines.join('\n'),
+          region: { start: startLine, end: endLine }
+        };
+      }
+
+      return { editableCode: code, region: null };
+    },
+
+    getFullCodeWithEdits() {
+      // Rebuild full code with current edits inserted into the editable region
+      if (!this.editableRegion || !this.fullCode) {
+        return this.code;
+      }
+
+      const fullLines = this.fullCode.split('\n');
+      const { start, end } = this.editableRegion;
+
+      // Get the indentation from the original editable region
+      const originalEditableLines = fullLines.slice(start + 1, end);
+      const nonEmptyLines = originalEditableLines.filter(l => l.trim());
+      const minIndent = nonEmptyLines.length > 0
+        ? Math.min(...nonEmptyLines.map(l => l.match(/^\s*/)[0].length))
+        : 0;
+      const indentStr = ' '.repeat(minIndent);
+
+      // Re-indent the edited code
+      const editedLines = this.code.split('\n').map(l => l ? indentStr + l : l);
+
+      // Rebuild: before + edited + after
+      const before = fullLines.slice(0, start + 1);
+      const after = fullLines.slice(end);
+
+      return [...before, ...editedLines, ...after].join('\n');
+    },
+
+    extractTextFromSlot(nodes) {
+      if (!nodes) return '';
+      let text = '';
+      for (const node of nodes) {
+        if (typeof node === 'string') {
+          text += node;
+        } else if (typeof node.children === 'string') {
+          text += node.children;
+        } else if (Array.isArray(node.children)) {
+          text += this.extractTextFromSlot(node.children);
+        } else if (node.type === Symbol.for('v-txt')) {
+          text += node.children || '';
+        }
+      }
+      // Trim leading/trailing whitespace but preserve internal indentation
+      return text.replace(/^\s*\n/, '').replace(/\n\s*$/, '');
     },
 
     async init() {
@@ -378,7 +496,12 @@ export function serializable(type?: any): PropertyDecorator;
       this.error = null;
 
       try {
-        const result = await window.esbuild.transform(this.code, {
+        // Use full code with edits if we're in focus mode
+        const codeToCompile = this.editableRegion && !this.showFullCode
+          ? this.getFullCodeWithEdits()
+          : this.code;
+
+        const result = await window.esbuild.transform(codeToCompile, {
           loader: 'ts',
           format: 'esm',
           target: 'es2022',
@@ -401,6 +524,31 @@ export function serializable(type?: any): PropertyDecorator;
         this.error = line ? `Line ${line}: ${msg}` : msg;
       } finally {
         this.compiling = false;
+      }
+    },
+
+    toggleFullCode() {
+      if (this.showFullCode) {
+        // Switching back to focused view - extract current edits
+        const { editableCode, region } = this.extractEditableRegion(this.code);
+        if (region) {
+          this.fullCode = this.code;
+          this.code = editableCode;
+          this.editableRegion = region;
+        }
+      } else {
+        // Switching to full code view - merge edits into full code
+        const fullWithEdits = this.getFullCodeWithEdits();
+        this.code = fullWithEdits;
+      }
+      this.showFullCode = !this.showFullCode;
+
+      // Update editor content
+      if (this._editorInstance) {
+        const model = monacoInstance.editor.getModel(this._mainModelUri);
+        if (model) {
+          model.setValue(this.code);
+        }
       }
     },
 
@@ -512,6 +660,9 @@ export function serializable(type?: any): PropertyDecorator;
               Back
             </button>
             <span class="panel-title">{{ viewingDefinition ? 'Type Definition' : 'TypeScript' }}</span>
+            <button v-if="editableRegion && !viewingDefinition" class="toggle-code-btn" @click="toggleFullCode" :title="showFullCode ? 'Show editable section' : 'Show full code'">
+              {{ showFullCode ? 'Focus' : 'Full' }}
+            </button>
           </div>
           <span v-if="loading" class="status loading">Loading...</span>
           <span v-else-if="compiling" class="status compiling">Compiling...</span>
@@ -736,6 +887,31 @@ export function serializable(type?: any): PropertyDecorator;
 }
 .theme-light .back-btn:hover {
   background: #0055aa;
+}
+.toggle-code-btn {
+  padding: 2px 8px;
+  border: 1px solid #555;
+  background: transparent;
+  color: #aaa;
+  font-size: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 3px;
+  transition: all 0.15s;
+}
+.toggle-code-btn:hover {
+  background: rgba(255,255,255,0.1);
+  border-color: #888;
+  color: #fff;
+}
+.theme-light .toggle-code-btn {
+  border-color: #ccc;
+  color: #666;
+}
+.theme-light .toggle-code-btn:hover {
+  background: rgba(0,0,0,0.05);
+  border-color: #999;
+  color: #333;
 }
 .status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
 .status.loading { background: #1a1a3c; color: #88f; }
