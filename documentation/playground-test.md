@@ -4,11 +4,15 @@ This page tests the interactive code playground component.
 
 ## Basic Rotation
 
-Edit the code below and see the results instantly:
+Edit the code below and see the results instantly. Try **CMD+click** on `gameObject` or `context` to navigate to type definitions!
 
 <playground height="450px"></playground>
 
 The playground loads with a default rotating cube component. Try modifying the code!
+
+## Vertical Layout (Preview on Top)
+
+<playground height="500px" layout="vertical" previewPosition="first"></playground>
 
 ## Try These Experiments
 
