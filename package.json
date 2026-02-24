@@ -52,7 +52,7 @@
     "mermaid": "^11.9.0",
     "node-fetch": "^3.3.1",
     "sass-embedded": "^1.78.0",
-    "three": "npm:@needle-tools/three@^0.162.10",
+    "three": "npm:@needle-tools/three@^0.169.19",
     "typedoc": "0.27.7",
     "typedoc-plugin-coverage": "3.4.1",
     "typedoc-plugin-extras": "4.0.0",

@@ -14,27 +14,7 @@ The playground loads with a default rotating cube component. Try modifying the c
 
 You can pass custom initial code using the `src` prop:
 
-<playground height="400px" :src="`import { Behaviour, serializable } from '@needle-tools/engine';
-
-export class Bouncer extends Behaviour {
-  @serializable()
-  bounceHeight: number = 0.5;
-
-  @serializable()
-  bounceSpeed: number = 3;
-
-  private startY: number = 0;
-
-  start() {
-    this.startY = this.gameObject.position.y;
-  }
-
-  update() {
-    const bounce = Math.abs(Math.sin(this.context.time.time * this.bounceSpeed));
-    this.gameObject.position.y = this.startY + bounce * this.bounceHeight;
-    this.gameObject.rotateY(this.context.time.deltaTime * 2);
-  }
-}`"></playground>
+<playground height="400px" :src="'import { Behaviour, serializable } from \'@needle-tools/engine\';\n\nexport class Bouncer extends Behaviour {\n  @serializable()\n  bounceHeight: number = 0.5;\n\n  @serializable()\n  bounceSpeed: number = 3;\n\n  private startY: number = 0;\n\n  start() {\n    this.startY = this.gameObject.position.y;\n  }\n\n  update() {\n    const bounce = Math.abs(Math.sin(this.context.time.time * this.bounceSpeed));\n    this.gameObject.position.y = this.startY + bounce * this.bounceHeight;\n    this.gameObject.rotateY(this.context.time.deltaTime * 2);\n  }\n}'"></playground>
 
 ## Vertical Layout (Preview on Top)
 
