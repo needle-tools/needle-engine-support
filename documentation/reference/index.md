@@ -43,7 +43,7 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 - [needle.config.json](/docs/reference/needle-config-json) - Project configuration options
 - [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable and metadata
-- [Needle Engine Attributes](/docs/reference/needle-engine-attributes) - Component attributes
+- [&lt;needle-engine&gt; Web Component](/docs/reference/needle-engine-attributes) - HTML attributes and options
 
 ---
 
