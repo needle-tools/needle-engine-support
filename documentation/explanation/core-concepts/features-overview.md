@@ -69,6 +69,28 @@ Lightmaps can be baked in Unity or Blender and automatically exported to your we
 
 [Read more about exporting Lightmaps](/docs/how-to-guides/export/#exporting-lightmaps)
 
+### MaterialPropertyBlocks
+
+**Per-object material customization without breaking batching.**
+
+MaterialPropertyBlocks allow you to override material properties on individual objects while sharing the same base material, maintaining performance through efficient batching and instancing.
+
+**Key Features:**
+- Override material properties per object without creating new material instances
+- Support for both transparent and opaque rendering on the same material
+- Automatic shader define management
+- Texture coordinate transforms per object
+- Used internally by lightmaps, reflection probes, and see-through effects
+
+**Common Use Cases:**
+- Apply unique lightmap textures to objects sharing the same material
+- Per-object environment maps for localized reflections
+- Dynamic transparency effects (X-ray vision, see-through walls)
+- Color variations across instanced objects
+- Per-object texture tiling and offset
+
+[Read the MaterialPropertyBlock guide](/docs/how-to-guides/scripting/material-property-blocks)
+
 ### Post-Processing Effects
 
 **Industry-standard post-processing for the web.**

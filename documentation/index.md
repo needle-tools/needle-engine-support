@@ -110,6 +110,7 @@ Get things done with focused how-to instructions.
 
 Deepen your knowledge of how Needle Engine works.
 
+- [Features Overview](./explanation/core-concepts/features-overview)
 - [Vision & Philosophy](./explanation/core-concepts/vision)
 - [Technical Architecture](./explanation/architecture/technical-overview)
 - [Project Structure](./explanation/core-concepts/project-structure)
