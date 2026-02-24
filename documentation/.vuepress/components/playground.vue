@@ -120,9 +120,11 @@ export class Rotator extends Behaviour {
 
       // Store full code and extract editable region if focusRegion is enabled
       this.fullCode = rawCode;
+      console.log('[playground] loadInitialCode: fullCode set, length:', rawCode.length);
 
       if (this.focusRegion) {
         const { editableCode, region } = this.extractEditableRegion(rawCode);
+        console.log('[playground] loadInitialCode: focusRegion extraction', { region, editableCodeLength: editableCode.length });
         if (region) {
           this.code = editableCode;
           this.editableRegion = region;
@@ -172,11 +174,19 @@ export class Rotator extends Behaviour {
     getFullCodeWithEdits() {
       // Rebuild full code with current edits inserted into the editable region
       if (!this.editableRegion || !this.fullCode) {
+        console.log('[playground] getFullCodeWithEdits: no region or fullCode', {
+          hasRegion: !!this.editableRegion,
+          fullCodeLength: this.fullCode?.length
+        });
         return this.code;
       }
 
       const fullLines = this.fullCode.split('\n');
       const { start, end } = this.editableRegion;
+
+      console.log('[playground] getFullCodeWithEdits: rebuilding', {
+        start, end, fullLines: fullLines.length, codeLines: this.code.split('\n').length
+      });
 
       // Get the indentation from the original editable region
       const originalEditableLines = fullLines.slice(start + 1, end);
@@ -193,7 +203,9 @@ export class Rotator extends Behaviour {
       const before = fullLines.slice(0, start + 1);
       const after = fullLines.slice(end);
 
-      return [...before, ...editedLines, ...after].join('\n');
+      const result = [...before, ...editedLines, ...after].join('\n');
+      console.log('[playground] getFullCodeWithEdits result (first 300 chars):', result.substring(0, 300));
+      return result;
     },
 
     extractTextFromSlot(nodes) {
@@ -500,6 +512,11 @@ export function serializable(type?: any): PropertyDecorator;
         const codeToCompile = this.editableRegion && !this.showFullCode
           ? this.getFullCodeWithEdits()
           : this.code;
+
+        console.log('[playground] compile: editableRegion=', !!this.editableRegion,
+                    'showFullCode=', this.showFullCode,
+                    'codeToCompile length=', codeToCompile.length,
+                    'first 100 chars=', codeToCompile.substring(0, 100));
 
         const result = await window.esbuild.transform(codeToCompile, {
           loader: 'ts',
