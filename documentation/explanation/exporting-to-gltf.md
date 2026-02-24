@@ -16,32 +16,33 @@ Export your 3D content from Unity and Blender to web-optimized glTF format.
 
 ---
 
-## Quick Start
+## <logo-header logo="/imgs/gltf-logo.webp" alt="glTF">Quick Start</logo-header>
 
 ::: tip Unity
 Add a `Needle Engine` component to your scene to get started. By default, your entire scene exports automatically on save.
 :::
 
-### How Export Works
+### Export Scope
 
-**By default:** Your entire scene exports as a glTF file to the `assets/` folder, including any assets referenced in components (prefabs, scenes, materials, etc.).
+**Default behavior:**
+Your entire scene exports as a glTF file to the `assets/` folder, including any assets referenced in components.
 
-**Optional - Limit export scope:** Add a `GltfObject` component to a GameObject to export only that object and its children. Content outside `GltfObject` roots is ignored.
+**Optional - Use `GltfObject` to limit scope:**
+Add a `GltfObject` component to export only that GameObject and its children. Content outside `GltfObject` roots is ignored.
 
-**Use cases for GltfObject:**
-- Split your scene into multiple glTF files using multiple `GltfObject` components
-- **Nested GltfObjects** defer loading—child glTFs only load when the parent becomes active in the scene
-  - Example: [Hotspot sample](https://engine.needle.tools/samples/hotspots) uses nested GltfObjects for on-demand loading
-  - Note: Cross-references between nested GltfObjects are not supported
+**Advanced - Nested `GltfObject` for deferred loading:**
+Nest `GltfObject` components to defer loading—child glTFs only load when the parent becomes active.
+- See: [Hotspot sample](https://engine.needle.tools/samples/hotspots)
+- Note: Cross-references between nested GltfObjects not supported
 
-### Exclude Objects from Export
+### Settings
 
-Tag objects as `EditorOnly` to exclude them (and their children) from export. This is better than disabling objects, which still export in case they're enabled at runtime.
+**Exclude from export:**
+Tag objects as `EditorOnly` to exclude them and their children.
 
-### Performance Settings
-
-- **Smart Export** - Enable in `Edit > Project Settings > Needle` to only export when changes are detected
-- **Auto Compression** - Automatically added to the `Needle Engine` component for texture and mesh compression
+**Performance:**
+- **Smart Export** - `Edit > Project Settings > Needle` - Only export on change
+- **Auto Compression** - `CompressionSettings` component added automatically to `Needle Engine`
 
 ---
 
@@ -97,14 +98,6 @@ flowchart LR
 - [Optimization & Compression](/docs/how-to-guides/optimization/) - Texture/mesh compression settings
 - [Compression Examples](https://cloud.needle.tools/) - Real-world file size comparisons
 
-### Prefabs (Unity only)
-
-Export Unity prefabs as individual glTF files by referencing them from your scripts using `AssetReference`:
-
-@[code ts twoslash](@code/component-prefab.ts)
-
-Prefab nesting is supported—referenced prefabs are also exported automatically.
-
 ### Scene Assets (Unity & Blender)
 
 Reference other scenes from your scripts to export them as separate glTF files. Works with both Unity scenes and Blender scenes.
@@ -114,6 +107,18 @@ Reference other scenes from your scripts to export them as separate glTF files. 
 **Blender:** When you reference a Blender scene from a component, it exports as a separate glTF file automatically.
 
 **Hot Reload:** When working in a referenced scene, changes are detected and only that scene re-exports automatically.
+
+**Example:** On [needle.tools](https://needle.tools), each section is set up as a separate scene and exported into multiple glTF files that load on demand:
+
+![Scene assets example](https://user-images.githubusercontent.com/5083203/185958983-71913c97-5eec-4cfd-99f5-76798582373e.png)
+
+### Prefabs (Unity only)
+
+Export Unity prefabs as individual glTF files by referencing them from your scripts using `AssetReference`:
+
+@[code ts twoslash](@code/component-prefab.ts)
+
+Prefab nesting is supported—referenced prefabs are also exported automatically.
 
 ---
 
