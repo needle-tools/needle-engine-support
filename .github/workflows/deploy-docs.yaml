@@ -64,7 +64,16 @@ jobs:
           FTP_SERVER_USERNAME: "f0152dc5"
           FTP_SERVER_PASSWORD: ${{ secrets.FTP_PASSWORD }}
 
-    
+      # purge Cloudflare cache for docs
+      - name: Purge Cloudflare Cache
+        if: success()
+        run: |
+          curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
+            -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
+            -H "Content-Type: application/json" \
+            --data '{"prefixes":["https://engine.needle.tools/docs/"]}'
+
+
   notify_discord:
     needs: docs
     runs-on: ubuntu-latest
