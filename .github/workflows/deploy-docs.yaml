@@ -71,7 +71,7 @@ jobs:
           curl -X POST "https://api.cloudflare.com/client/v4/zones/${{ secrets.CLOUDFLARE_ZONE_ID }}/purge_cache" \
             -H "Authorization: Bearer ${{ secrets.CLOUDFLARE_API_TOKEN }}" \
             -H "Content-Type: application/json" \
-            --data '{"prefixes":["https://engine.needle.tools/docs/"]}'
+            --data '{"prefixes":["engine.needle.tools/docs/"]}'
 
 
   notify_discord:
