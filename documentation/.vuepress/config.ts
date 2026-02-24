@@ -356,7 +356,7 @@ export default defineUserConfig({
         // videoplayer
         generateMetaPlugin,
         includeSampleCode,
-        generateSharedCode,
+        // generateSharedCode, // Disabled: community contributions from GitHub discussions
         modifyHtmlMeta,
         copyMarkdown,
         generateLlms({ baseUrl: _url }),
