@@ -9,7 +9,7 @@ sidebarTitle: For 8th Wall Users
 If you're an 8th Wall developer looking for a new platform for your WebAR projects, this guide will help you understand how Needle Engine works and how your existing skills transfer over.
 
 :::tip New to Needle Engine?
-Needle Engine is a web-first 3D runtime built on three.js. It works with Unity and Blender for visual scene authoring, or you can code directly with TypeScript/JavaScript.
+Needle Engine is a web-first 3D runtime built on three.js. It works with [Unity](/docs/unity/) and [Blender](/docs/blender/) for visual scene authoring, or you can code directly with TypeScript/JavaScript.
 
 **[Try it now →](https://engine.needle.tools/new)** – Opens a ready-to-use project in your browser.
 :::
@@ -33,7 +33,7 @@ If you're evaluating alternatives, here's how the two platforms differ:
 
 ### Where Needle Engine Shines
 
-- **Interactive iOS AR without SLAM** – Runtime USDZ export with full interactivity via [Everywhere Actions](/docs/how-to-guides/everywhere-actions/), plus native WebXR via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip)
+- **Native WebXR on iOS and Android** – Full WebXR on iPhone/iPad via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip) (ARKit-powered), plus interactive USDZ via [Everywhere Actions](/docs/how-to-guides/everywhere-actions/)
 - **Flat pricing** – No per-view fees. Pay a license fee and deploy to unlimited users
 - **Performance optimization** – Automatic texture compression, mesh optimization, and progressive loading
 - **Visual editing** – Use Unity or Blender instead of code-only workflows
@@ -234,7 +234,7 @@ Needle Engine **automatically exports interactive USDZ files at runtime**:
 
 - **Automatic conversion** – Your 3D scene is converted to USDZ on-the-fly when iOS users tap "View in AR"
 - **Full interactivity** – Animations, material changes, audio, and tap interactions work in QuickLook
-- **No manual export** – Add the `USDZExporter` component and it just works
+- **No manual export** – Enable USDZ export in the `WebXR` component or add the `USDZExporter` component
 - **Works on iPhone, iPad, and Apple Vision Pro**
 
 This is fundamentally different from static USDZ export. Most tools require you to manually export a frozen 3D model. Needle Engine generates interactive USDZ files dynamically, preserving the same behaviors you built for the web.
