@@ -1,52 +1,30 @@
 ---
 title: Explanation
-description: Understand how Needle Engine works under the hood
+description: Understand how Needle Engine works and why it's designed this way
 ---
 
 # Explanation
 
-**Deepen your understanding.** These pages explain concepts, design decisions, and architecture. They help you build a mental model of how Needle Engine works.
+Understand the concepts, architecture, and design decisions behind Needle Engine.
 
-**Not sure what you need?**
-- Need to **learn the basics**? See [Tutorials](../tutorials/)
-- Want to **solve a specific problem**? See [How-To Guides](../how-to-guides/)
-- Looking for **API reference**? See [Reference](../reference/)
-
----
-
-## What is Explanation?
-
-Explanation is **understanding-oriented** documentation that provides context and clarification. It:
-- Discusses concepts and ideas
-- Provides historical context and reasoning
-- Explains design decisions and trade-offs
-- Connects topics across the system
+::: tip Looking for something else?
+- **Learn the basics** → [Tutorials](../tutorials/)
+- **Solve a specific problem** → [How-To Guides](../how-to-guides/)
+- **API reference** → [Reference](../reference/)
+:::
 
 ---
 
 ## Core Concepts
 
-Fundamental concepts to understand:
-
-- [Vision & Philosophy](./core-concepts/vision) - Why Needle Engine exists
-- [Technical Architecture](./architecture/technical-overview) - How it all works
-- [Project Structure](./core-concepts/project-structure) - Editor vs web projects
-- [Features Overview](./core-concepts/features-overview) - Complete feature set
+- [Vision & Philosophy](./core-concepts/vision) - Why Needle Engine exists and our design principles
+- [Features Overview](./core-concepts/features-overview) - Complete feature set and capabilities
+- [Project Structure](./core-concepts/project-structure) - Editor projects vs web projects
 - [Component Compiler](./core-concepts/component-compiler) - TypeScript to C# generation
 
 ---
 
 ## Architecture
 
-Deep dives into system architecture:
-
-- [Technical Overview](./architecture/technical-overview) - Complete system overview including glTF pipeline, three.js integration, and build types
-
----
-
-## Need Help?
-
-- **Want to learn by doing?** See [Tutorials](../tutorials/)
-- **Need to solve a problem?** See [How-To Guides](../how-to-guides/)
-- **Looking for API docs?** See [Reference](../reference/)
-- **Have questions?** Ask in [Discord](https://discord.needle.tools)
+- [Technical Overview](./architecture/technical-overview) - System architecture, glTF pipeline, and three.js integration
+- [Networking Architecture](./networking/architecture) - How multiplayer and networking works
