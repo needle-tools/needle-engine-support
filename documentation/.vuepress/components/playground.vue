@@ -22,6 +22,8 @@ export default {
       loading: true,
       compiling: false,
       typesReady: false,
+      isFullscreen: false,
+      isDark: true,
     }
   },
   computed: {
@@ -38,15 +40,23 @@ export default {
   },
   mounted() {
     this.code = this.getDefaultCode();
+    this.detectTheme();
     this.init();
     window.addEventListener('message', this.handleMessage);
+    // Listen for VuePress theme changes
+    this.themeObserver = new MutationObserver(() => this.detectTheme());
+    this.themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
   },
   beforeUnmount() {
     window.removeEventListener('message', this.handleMessage);
+    if (this.themeObserver) this.themeObserver.disconnect();
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     if (editorInstance) {
       editorInstance.dispose();
       editorInstance = null;
+    }
+    if (this.isFullscreen) {
+      document.exitFullscreen?.();
     }
   },
   methods: {
@@ -82,7 +92,7 @@ export class Rotator extends Behaviour {
         monacoInstance = await loader.default.init();
         console.log('[playground] Monaco initialized');
 
-        // Configure TypeScript compiler options
+        // Configure TypeScript compiler options with path mappings for module resolution
         monacoInstance.languages.typescript.typescriptDefaults.setCompilerOptions({
           target: monacoInstance.languages.typescript.ScriptTarget.ES2022,
           moduleResolution: monacoInstance.languages.typescript.ModuleResolutionKind.NodeJs,
@@ -91,6 +101,11 @@ export class Rotator extends Behaviour {
           allowNonTsExtensions: true,
           strict: false,
           noEmit: true,
+          baseUrl: 'file:///',
+          paths: {
+            '@needle-tools/engine': ['node_modules/@needle-tools/engine/index.d.ts'],
+            'three': ['node_modules/three/index.d.ts'],
+          },
         });
 
         // Load type definitions (shared across instances)
@@ -100,12 +115,18 @@ export class Rotator extends Behaviour {
         }
         this.typesReady = true;
 
-        // Create the editor
+        // Create the editor with a file:// URI model for proper go-to-definition
         const container = this.$refs.editorContainer;
+        const modelUri = monacoInstance.Uri.parse('file:///src/main.ts');
+        let model = monacoInstance.editor.getModel(modelUri);
+        if (!model) {
+          model = monacoInstance.editor.createModel(this.code, 'typescript', modelUri);
+        } else {
+          model.setValue(this.code);
+        }
         editorInstance = monacoInstance.editor.create(container, {
-          value: this.code,
-          language: 'typescript',
-          theme: 'vs-dark',
+          model,
+          theme: this.isDark ? 'vs-dark' : 'vs',
           minimap: { enabled: false },
           fontSize: 13,
           lineNumbers: 'on',
@@ -124,6 +145,49 @@ export class Rotator extends Behaviour {
           this.code = editorInstance.getValue();
           this.scheduleCompile();
         });
+
+        // Handle go-to-definition by opening the target model in the same editor
+        // Try modern API first
+        if (monacoInstance.editor.registerEditorOpener) {
+          monacoInstance.editor.registerEditorOpener({
+            openCodeEditor: (source, resource, selectionOrPosition) => {
+              console.log('[playground] Opening definition:', resource.toString());
+              const targetModel = monacoInstance.editor.getModel(resource);
+              if (targetModel && targetModel !== editorInstance.getModel()) {
+                editorInstance.setModel(targetModel);
+                if (selectionOrPosition) {
+                  if ('startLineNumber' in selectionOrPosition) {
+                    editorInstance.setSelection(selectionOrPosition);
+                    editorInstance.revealLineInCenter(selectionOrPosition.startLineNumber);
+                  } else {
+                    editorInstance.setPosition(selectionOrPosition);
+                    editorInstance.revealLineInCenter(selectionOrPosition.lineNumber);
+                  }
+                }
+                return true; // handled
+              }
+              return false; // let default handle it
+            }
+          });
+        }
+        // Fallback for older Monaco versions
+        const editorService = editorInstance._codeEditorService;
+        if (editorService) {
+          const originalOpen = editorService.openCodeEditor?.bind(editorService);
+          editorService.openCodeEditor = async (input, source, sideBySide) => {
+            console.log('[playground] editorService.openCodeEditor:', input?.resource?.toString());
+            const targetModel = monacoInstance.editor.getModel(input?.resource);
+            if (targetModel) {
+              editorInstance.setModel(targetModel);
+              if (input?.options?.selection) {
+                editorInstance.setSelection(input.options.selection);
+                editorInstance.revealLineInCenter(input.options.selection.startLineNumber);
+              }
+              return editorInstance;
+            }
+            return originalOpen?.(input, source, sideBySide);
+          };
+        }
 
         console.log('[playground] Editor created');
 
@@ -169,177 +233,145 @@ export class Rotator extends Behaviour {
       console.log('[playground] Loading type definitions...');
       const ts = monacoInstance.languages.typescript.typescriptDefaults;
 
-      // Fetch Three.js types
-      try {
-        const threeTypesUrl = 'https://esm.sh/@types/three@0.169.0/index.d.ts';
-        const threeTypes = await fetch(threeTypesUrl).then(r => r.text());
-        ts.addExtraLib(threeTypes, 'file:///node_modules/@types/three/index.d.ts');
-
-        // Create a model so CMD+click can navigate to it
-        const threeUri = monacoInstance.Uri.parse('file:///node_modules/@types/three/index.d.ts');
-        if (!monacoInstance.editor.getModel(threeUri)) {
-          monacoInstance.editor.createModel(threeTypes, 'typescript', threeUri);
-        }
-        console.log('[playground] Three.js types loaded');
-      } catch (e) {
-        console.warn('[playground] Failed to load Three.js types:', e);
-      }
-
-      // Add Needle Engine types with full definitions
-      const needleTypes = `
-declare module "@needle-tools/engine" {
-  import * as THREE from 'three';
-
-  /**
-   * Base class for all Needle Engine components.
-   * Extend this class to create custom behaviors that can be attached to GameObjects.
-   *
-   * @example
-   * \`\`\`typescript
-   * export class MyComponent extends Behaviour {
-   *   start() {
-   *     console.log("Component started!");
-   *   }
-   *   update() {
-   *     this.gameObject.rotateY(this.context.time.deltaTime);
-   *   }
-   * }
-   * \`\`\`
-   */
-  export class Behaviour {
-    /** The GameObject this component is attached to */
-    gameObject: THREE.Object3D;
-
-    /** The Needle Engine context providing access to scene, time, and other systems */
-    context: Context;
-
-    /** Whether this component is enabled. Disabled components don't receive update calls. */
-    enabled: boolean;
-
-    /** Called once when the component is first created */
-    awake?(): void;
-
-    /** Called when the component becomes enabled */
-    onEnable?(): void;
-
-    /** Called when the component becomes disabled */
-    onDisable?(): void;
-
-    /** Called once before the first update, after all awake calls */
-    start?(): void;
-
-    /** Called every frame before update */
-    earlyUpdate?(): void;
-
-    /** Called every frame */
-    update?(): void;
-
-    /** Called every frame after update */
-    lateUpdate?(): void;
-
-    /** Called when the component is destroyed */
-    onDestroy?(): void;
-
-    /** Called before the scene is rendered */
-    onBeforeRender?(): void;
-
-    /** Called after the scene is rendered */
-    onAfterRender?(): void;
-  }
-
-  /**
-   * Context provides access to the Needle Engine runtime.
-   */
-  export interface Context {
-    /** Time information for the current frame */
-    time: Time;
-
-    /** The Three.js scene */
-    scene: THREE.Scene;
-
-    /** The main camera */
-    mainCamera: THREE.Camera;
-
-    /** The physics engine (if available) */
-    physics?: Physics;
-
-    /** Input system */
-    input: Input;
-  }
-
-  /**
-   * Time information for the current frame.
-   */
-  export interface Time {
-    /** Total elapsed time in seconds since the engine started */
-    time: number;
-
-    /** Time in seconds since the last frame */
-    deltaTime: number;
-
-    /** Current frame number */
-    frameCount: number;
-
-    /** Time scale multiplier (1.0 = normal speed) */
-    timeScale: number;
-  }
-
-  /**
-   * Input system for handling user input.
-   */
-  export interface Input {
-    /** Get the current pointer position */
-    getPointerPosition(index?: number): { x: number; y: number } | null;
-
-    /** Check if a pointer is currently pressed */
-    getPointerPressed(index?: number): boolean;
-  }
-
-  /**
-   * Physics system interface.
-   */
-  export interface Physics {
-    /** Perform a raycast */
-    raycast(origin: THREE.Vector3, direction: THREE.Vector3, maxDistance?: number): RaycastHit | null;
-  }
-
-  export interface RaycastHit {
-    point: THREE.Vector3;
-    normal: THREE.Vector3;
-    distance: number;
-    object: THREE.Object3D;
-  }
-
-  /**
-   * Decorator to mark a property as serializable.
-   * Serializable properties can be edited in the Unity/Blender editor
-   * and will be saved/loaded with the scene.
-   *
-   * @param type - Optional type hint for the serializer
-   *
-   * @example
-   * \`\`\`typescript
-   * export class MyComponent extends Behaviour {
-   *   @serializable()
-   *   speed: number = 1;
-   *
-   *   @serializable(Object3D)
-   *   target?: THREE.Object3D;
-   * }
-   * \`\`\`
-   */
-  export function serializable(type?: any): PropertyDecorator;
+      // Minimal Three.js types for playground (full types are very large)
+      const threeTypes = `
+export class Object3D {
+  position: Vector3;
+  rotation: Euler;
+  scale: Vector3;
+  rotateX(angle: number): this;
+  rotateY(angle: number): this;
+  rotateZ(angle: number): this;
 }
+export class Vector3 {
+  x: number;
+  y: number;
+  z: number;
+  set(x: number, y: number, z: number): this;
+}
+export class Euler {
+  x: number;
+  y: number;
+  z: number;
+  set(x: number, y: number, z: number, order?: string): this;
+}
+export class Scene extends Object3D {}
+export class Camera extends Object3D {}
+export class Mesh extends Object3D {}
 `;
+      ts.addExtraLib(threeTypes, 'file:///node_modules/three/index.d.ts');
+      // Create model for CMD+click navigation
+      const threeUri = monacoInstance.Uri.parse('file:///node_modules/three/index.d.ts');
+      if (!monacoInstance.editor.getModel(threeUri)) {
+        monacoInstance.editor.createModel(threeTypes, 'typescript', threeUri);
+      }
+      console.log('[playground] Three.js types loaded');
 
+      // Needle Engine types - using regular exports with path mapping for resolution
+      const needleTypes = `
+import { Object3D, Scene, Camera, Vector3 } from "three";
+
+/**
+ * Base class for all Needle Engine components.
+ * Extend this class to create custom behaviors that can be attached to GameObjects.
+ */
+export class Behaviour {
+  /** The GameObject this component is attached to */
+  gameObject: Object3D;
+
+  /** The Needle Engine context providing access to scene, time, and other systems */
+  context: Context;
+
+  /** Whether this component is enabled. Disabled components don't receive update calls. */
+  enabled: boolean;
+
+  /** Called once when the component is first created */
+  awake?(): void;
+
+  /** Called when the component becomes enabled */
+  onEnable?(): void;
+
+  /** Called when the component becomes disabled */
+  onDisable?(): void;
+
+  /** Called once before the first update, after all awake calls */
+  start?(): void;
+
+  /** Called every frame before update */
+  earlyUpdate?(): void;
+
+  /** Called every frame */
+  update?(): void;
+
+  /** Called every frame after update */
+  lateUpdate?(): void;
+
+  /** Called when the component is destroyed */
+  onDestroy?(): void;
+
+  /** Called before the scene is rendered */
+  onBeforeRender?(): void;
+
+  /** Called after the scene is rendered */
+  onAfterRender?(): void;
+}
+
+/** Context provides access to the Needle Engine runtime. */
+export interface Context {
+  /** Time information for the current frame */
+  time: Time;
+  /** The Three.js scene */
+  scene: Scene;
+  /** The main camera */
+  mainCamera: Camera;
+  /** The physics engine (if available) */
+  physics?: Physics;
+  /** Input system */
+  input: Input;
+}
+
+/** Time information for the current frame. */
+export interface Time {
+  /** Total elapsed time in seconds since the engine started */
+  time: number;
+  /** Time in seconds since the last frame */
+  deltaTime: number;
+  /** Current frame number */
+  frameCount: number;
+  /** Time scale multiplier (1.0 = normal speed) */
+  timeScale: number;
+}
+
+/** Input system for handling user input. */
+export interface Input {
+  getPointerPosition(index?: number): { x: number; y: number } | null;
+  getPointerPressed(index?: number): boolean;
+}
+
+/** Physics system interface. */
+export interface Physics {
+  raycast(origin: Vector3, direction: Vector3, maxDistance?: number): RaycastHit | null;
+}
+
+export interface RaycastHit {
+  point: Vector3;
+  normal: Vector3;
+  distance: number;
+  object: Object3D;
+}
+
+/**
+ * Decorator to mark a property as serializable.
+ * Serializable properties can be edited in the Unity/Blender editor.
+ */
+export function serializable(type?: any): PropertyDecorator;
+`;
       ts.addExtraLib(needleTypes, 'file:///node_modules/@needle-tools/engine/index.d.ts');
-
-      // Create model for navigation
+      // Create model for CMD+click navigation
       const needleUri = monacoInstance.Uri.parse('file:///node_modules/@needle-tools/engine/index.d.ts');
       if (!monacoInstance.editor.getModel(needleUri)) {
         monacoInstance.editor.createModel(needleTypes, 'typescript', needleUri);
       }
-
       console.log('[playground] Needle Engine types loaded');
     },
 
@@ -406,13 +438,40 @@ declare module "@needle-tools/engine" {
       } else if (event.data?.type === 'needle-playground-error') {
         this.error = event.data.error;
       }
+    },
+
+    detectTheme() {
+      const html = document.documentElement;
+      // VuePress uses data-theme or class for theming
+      const isDark = html.classList.contains('dark') ||
+                     html.getAttribute('data-theme') === 'dark' ||
+                     html.getAttribute('color-scheme') === 'dark';
+      this.isDark = isDark;
+      this.updateEditorTheme();
+    },
+
+    updateEditorTheme() {
+      if (editorInstance && monacoInstance) {
+        monacoInstance.editor.setTheme(this.isDark ? 'vs-dark' : 'vs');
+      }
+    },
+
+    toggleFullscreen() {
+      const el = this.$refs.playgroundRoot;
+      if (!this.isFullscreen) {
+        el?.requestFullscreen?.();
+        this.isFullscreen = true;
+      } else {
+        document.exitFullscreen?.();
+        this.isFullscreen = false;
+      }
     }
   }
 }
 </script>
 
 <template>
-  <div class="playground" :style="{ '--playground-height': height }">
+  <div ref="playgroundRoot" :class="['playground', { 'is-fullscreen': isFullscreen, 'theme-light': !isDark }]" :style="{ '--playground-height': height }">
     <div :class="containerClass">
       <div class="editor-panel">
         <div class="panel-header">
@@ -427,6 +486,14 @@ declare module "@needle-tools/engine" {
       <div class="preview-panel">
         <div class="panel-header">
           <span class="panel-title">Preview</span>
+          <button class="fullscreen-btn" @click="toggleFullscreen" :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'">
+            <svg v-if="!isFullscreen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+            </svg>
+            <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+            </svg>
+          </button>
         </div>
         <iframe
           ref="previewFrame"
@@ -448,18 +515,56 @@ declare module "@needle-tools/engine" {
   background: #1e1e1e;
   border: 1px solid #333;
 }
+
+/* Light theme */
+.playground.theme-light {
+  background: #fff;
+  border-color: #e0e0e0;
+}
+
+/* Expand beyond content width - RIGHT SIDE ONLY */
+@media screen and (min-width: 1200px) {
+  .playground {
+    width: calc(100% + 100px);
+  }
+}
+@media screen and (min-width: 1500px) {
+  .playground {
+    width: calc(100% + 200px);
+  }
+}
+
+/* Fullscreen mode */
+.playground.is-fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  border-radius: 0;
+  z-index: 9999;
+}
+.playground.is-fullscreen .playground-container {
+  height: 100% !important;
+}
+
 .playground-container {
   display: flex;
   height: var(--playground-height, 400px);
 }
 
-/* Vertical layout (stacked) */
+/* Vertical layout (stacked) - taller for more 1:1 aspect */
 .playground-container.layout-vertical {
   flex-direction: column;
+  height: calc(var(--playground-height, 400px) * 1.5);
 }
 .playground-container.layout-vertical .editor-panel,
 .playground-container.layout-vertical .preview-panel {
-  height: calc(var(--playground-height, 400px) / 2);
+  height: 50%;
+  flex: none;
 }
 .playground-container.layout-vertical .editor-panel {
   border-right: none;
@@ -484,8 +589,9 @@ declare module "@needle-tools/engine" {
 }
 
 @media (max-width: 768px) {
+  .playground { min-width: auto !important; margin-left: 0 !important; margin-right: 0 !important; }
   .playground-container { flex-direction: column !important; height: auto !important; }
-  .editor-panel, .preview-panel { width: 100% !important; height: 300px !important; }
+  .editor-panel, .preview-panel { width: 100% !important; height: 300px !important; flex: none !important; }
   .editor-panel { border-right: none !important; border-left: none !important; border-bottom: 1px solid #333 !important; border-top: none !important; }
 }
 .editor-panel, .preview-panel {
@@ -495,6 +601,10 @@ declare module "@needle-tools/engine" {
   min-width: 0;
 }
 .editor-panel { border-right: 1px solid #333; }
+.theme-light .editor-panel { border-right-color: #e0e0e0; }
+.theme-light.layout-vertical .editor-panel { border-bottom-color: #e0e0e0; }
+.theme-light .playground-container.preview-first .editor-panel { border-left-color: #e0e0e0; }
+.theme-light .playground-container.layout-vertical.preview-first .editor-panel { border-top-color: #e0e0e0; }
 .panel-header {
   display: flex;
   align-items: center;
@@ -504,13 +614,23 @@ declare module "@needle-tools/engine" {
   border-bottom: 1px solid #333;
   font-size: 12px;
   flex-shrink: 0;
+  gap: 8px;
+}
+.theme-light .panel-header {
+  background: #f3f3f3;
+  border-bottom-color: #e0e0e0;
 }
 .panel-title { color: #ccc; font-weight: 500; }
+.theme-light .panel-title { color: #333; }
 .status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
 .status.loading { background: #1a1a3c; color: #88f; }
 .status.compiling { background: #3c3c00; color: #fc0; }
 .status.error { background: #3c0000; color: #f66; }
 .status.ready { background: #003c00; color: #6f6; }
+.theme-light .status.loading { background: #e8e8ff; color: #44f; }
+.theme-light .status.compiling { background: #fff8e0; color: #b80; }
+.theme-light .status.error { background: #ffe8e8; color: #c00; }
+.theme-light .status.ready { background: #e8ffe8; color: #080; }
 .editor-container {
   flex: 1;
   min-height: 0;
@@ -523,5 +643,36 @@ declare module "@needle-tools/engine" {
   font-size: 12px;
   font-family: monospace;
   white-space: pre-wrap;
+}
+.theme-light .error-bar {
+  background: #ffe8e8;
+  color: #c00;
+}
+
+/* Fullscreen button */
+.fullscreen-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #888;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+}
+.fullscreen-btn:hover {
+  background: rgba(255,255,255,0.1);
+  color: #fff;
+}
+.theme-light .fullscreen-btn {
+  color: #666;
+}
+.theme-light .fullscreen-btn:hover {
+  background: rgba(0,0,0,0.1);
+  color: #000;
 }
 </style>
