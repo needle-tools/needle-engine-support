@@ -481,7 +481,17 @@ export default defineUserConfig({
             format: (link) => cleanHeader(link),
         },
     },
-    bundler: viteBundler(),
+    bundler: viteBundler({
+        vuePluginOptions: {
+            template: {
+                compilerOptions: {
+                    // Tell Vue to treat these as custom elements (web components)
+                    isCustomElement: (tag: string) =>
+                        tag === 'monaco-editor' || tag === 'needle-engine'
+                }
+            }
+        }
+    }),
     extendsMarkdown: (md) => {
         // Custom image renderer for high-DPI images
         const defaultImageRenderer = md.renderer.rules.image;
