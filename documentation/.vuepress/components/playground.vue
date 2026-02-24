@@ -1,4 +1,8 @@
 <script>
+// Store non-reactive references outside Vue's reactivity system
+let monacoInstance = null;
+let editorInstance = null;
+
 export default {
   props: {
     scene: { type: String, default: 'cube' },
@@ -7,7 +11,6 @@ export default {
   data() {
     return {
       code: '',
-      editor: null,
       error: null,
       iframeReady: false,
       debounceTimer: null,
@@ -28,8 +31,9 @@ export default {
   beforeUnmount() {
     window.removeEventListener('message', this.handleMessage);
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
-    if (this.editor) {
-      this.editor.dispose();
+    if (editorInstance) {
+      editorInstance.dispose();
+      editorInstance = null;
     }
   },
   methods: {
@@ -50,10 +54,123 @@ export class Rotator extends Behaviour {
       if (typeof window === 'undefined') return;
 
       try {
-        // Load Monaco Editor
-        await this.loadMonaco();
+        // Load Monaco using the official loader
+        console.log('[playground] Loading Monaco loader...');
+        const loader = await import('https://esm.sh/@monaco-editor/loader@1.4.0');
 
-        // Load esbuild
+        // Configure Monaco to load from CDN
+        loader.default.config({
+          paths: {
+            vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs'
+          }
+        });
+
+        console.log('[playground] Initializing Monaco...');
+        monacoInstance = await loader.default.init();
+        console.log('[playground] Monaco initialized');
+
+        // Configure TypeScript compiler options
+        monacoInstance.languages.typescript.typescriptDefaults.setCompilerOptions({
+          target: monacoInstance.languages.typescript.ScriptTarget.ES2022,
+          moduleResolution: monacoInstance.languages.typescript.ModuleResolutionKind.NodeJs,
+          module: monacoInstance.languages.typescript.ModuleKind.ESNext,
+          experimentalDecorators: true,
+          allowNonTsExtensions: true,
+          strict: false,
+          noEmit: true,
+        });
+
+        // Add Needle Engine type definitions
+        monacoInstance.languages.typescript.typescriptDefaults.addExtraLib(`
+declare module "@needle-tools/engine" {
+  import * as THREE from 'three';
+
+  export class Behaviour {
+    gameObject: THREE.Object3D;
+    context: {
+      time: {
+        time: number;
+        deltaTime: number;
+        frameCount: number;
+      };
+      scene: THREE.Scene;
+      mainCamera: THREE.Camera;
+    };
+    enabled: boolean;
+
+    awake?(): void;
+    onEnable?(): void;
+    onDisable?(): void;
+    start?(): void;
+    earlyUpdate?(): void;
+    update?(): void;
+    lateUpdate?(): void;
+    onDestroy?(): void;
+
+    onBeforeRender?(): void;
+    onAfterRender?(): void;
+  }
+
+  export function serializable(type?: any): PropertyDecorator;
+}
+
+declare module 'three' {
+  export class Object3D {
+    position: Vector3;
+    rotation: Euler;
+    scale: Vector3;
+    rotateX(angle: number): this;
+    rotateY(angle: number): this;
+    rotateZ(angle: number): this;
+    add(...object: Object3D[]): this;
+    remove(...object: Object3D[]): this;
+  }
+  export class Vector3 {
+    x: number;
+    y: number;
+    z: number;
+    set(x: number, y: number, z: number): this;
+  }
+  export class Euler {
+    x: number;
+    y: number;
+    z: number;
+    set(x: number, y: number, z: number, order?: string): this;
+  }
+  export class Scene extends Object3D {}
+  export class Camera extends Object3D {}
+  export class Mesh extends Object3D {}
+}
+`, 'file:///node_modules/@needle-tools/engine/index.d.ts');
+
+        // Create the editor
+        const container = this.$refs.editorContainer;
+        editorInstance = monacoInstance.editor.create(container, {
+          value: this.code,
+          language: 'typescript',
+          theme: 'vs-dark',
+          minimap: { enabled: false },
+          fontSize: 13,
+          lineNumbers: 'on',
+          scrollBeyondLastLine: false,
+          automaticLayout: true,
+          tabSize: 2,
+          wordWrap: 'off',
+          padding: { top: 12 },
+          scrollbar: {
+            alwaysConsumeMouseWheel: false
+          }
+        });
+
+        // Listen for content changes
+        editorInstance.onDidChangeModelContent(() => {
+          this.code = editorInstance.getValue();
+          this.scheduleCompile();
+        });
+
+        console.log('[playground] Editor created');
+
+        // Load esbuild for transpilation
         console.log('[playground] Loading esbuild-wasm...');
         await this.loadScript('https://cdn.jsdelivr.net/npm/esbuild-wasm@0.20.0/lib/browser.min.js');
 
@@ -86,87 +203,6 @@ export class Rotator extends Behaviour {
         this.error = 'Failed to load: ' + e.message;
         this.loading = false;
       }
-    },
-
-    async loadMonaco() {
-      // Load Monaco via AMD loader
-      if (window.monaco) {
-        this.createEditor();
-        return;
-      }
-
-      await this.loadScript('https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js');
-
-      return new Promise((resolve, reject) => {
-        window.require.config({
-          paths: { vs: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs' }
-        });
-
-        // Configure workers to use CDN
-        window.MonacoEnvironment = {
-          getWorkerUrl: function(workerId, label) {
-            return `data:text/javascript;charset=utf-8,${encodeURIComponent(`
-              self.MonacoEnvironment = { baseUrl: 'https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/' };
-              importScripts('https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/base/worker/workerMain.js');
-            `)}`;
-          }
-        };
-
-        window.require(['vs/editor/editor.main'], () => {
-          this.createEditor();
-          resolve();
-        });
-      });
-    },
-
-    createEditor() {
-      const container = this.$refs.editorContainer;
-      if (!container || this.editor) return;
-
-      // Configure TypeScript
-      window.monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-        target: window.monaco.languages.typescript.ScriptTarget.ESNext,
-        moduleResolution: window.monaco.languages.typescript.ModuleResolutionKind.NodeJs,
-        module: window.monaco.languages.typescript.ModuleKind.ESNext,
-        experimentalDecorators: true,
-        allowNonTsExtensions: true,
-        strict: false
-      });
-
-      // Add Needle Engine type definitions
-      window.monaco.languages.typescript.typescriptDefaults.addExtraLib(`
-        declare module "@needle-tools/engine" {
-          export class Behaviour {
-            gameObject: any;
-            context: { time: { time: number; deltaTime: number } };
-            enabled: boolean;
-            start?(): void;
-            update?(): void;
-            onEnable?(): void;
-            onDisable?(): void;
-          }
-          export function serializable(): PropertyDecorator;
-        }
-      `, 'file:///node_modules/@needle-tools/engine/index.d.ts');
-
-      this.editor = window.monaco.editor.create(container, {
-        value: this.code,
-        language: 'typescript',
-        theme: 'vs-dark',
-        minimap: { enabled: false },
-        fontSize: 13,
-        lineNumbers: 'on',
-        scrollBeyondLastLine: false,
-        automaticLayout: true,
-        tabSize: 2,
-        wordWrap: 'off',
-        padding: { top: 12 }
-      });
-
-      this.editor.onDidChangeModelContent(() => {
-        this.code = this.editor.getValue();
-        this.scheduleCompile();
-      });
     },
 
     loadScript(src) {
