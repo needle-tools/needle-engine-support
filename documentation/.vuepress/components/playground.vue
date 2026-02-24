@@ -13,6 +13,8 @@ export default {
     layout: { type: String, default: 'horizontal' },
     // Preview position: 'first' or 'last'
     previewPosition: { type: String, default: 'last' },
+    // Initial code - can be passed as prop or via default slot
+    src: { type: String, default: '' },
   },
   data() {
     return {
@@ -26,6 +28,8 @@ export default {
       isFullscreen: false,
       isDark: true,
       viewingDefinition: false, // True when viewing a type definition file
+      editorWidth: 50, // Percentage width of editor panel
+      isResizing: false,
     }
   },
   computed: {
@@ -41,7 +45,22 @@ export default {
     }
   },
   mounted() {
-    this.code = this.getDefaultCode();
+    // Use src prop, slot content, or default code
+    if (this.src) {
+      this.code = this.src;
+    } else if (this.$slots.default) {
+      // Get text content from slot
+      const slotContent = this.$slots.default();
+      if (slotContent?.[0]?.children) {
+        this.code = typeof slotContent[0].children === 'string'
+          ? slotContent[0].children
+          : this.getDefaultCode();
+      } else {
+        this.code = this.getDefaultCode();
+      }
+    } else {
+      this.code = this.getDefaultCode();
+    }
     this.detectTheme();
     this.init();
     window.addEventListener('message', this.handleMessage);
@@ -53,6 +72,8 @@ export default {
   beforeUnmount() {
     window.removeEventListener('message', this.handleMessage);
     window.removeEventListener('keydown', this.handleKeyDown);
+    document.removeEventListener('mousemove', this.doResize);
+    document.removeEventListener('mouseup', this.stopResize);
     if (this.themeObserver) this.themeObserver.disconnect();
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     if (editorInstance) {
@@ -242,32 +263,137 @@ export class Rotator extends Behaviour {
       console.log('[playground] Loading type definitions...');
       const ts = monacoInstance.languages.typescript.typescriptDefaults;
 
-      // Minimal Three.js types for playground (full types are very large)
-      const threeTypes = `
+      // Try to fetch Three.js types from esm.sh (simplified subset)
+      let threeTypes;
+      try {
+        const threeResp = await fetch('https://esm.sh/v135/@types/three@0.169.0/index.d.ts');
+        if (threeResp.ok) {
+          threeTypes = await threeResp.text();
+          console.log('[playground] Fetched Three.js types from CDN');
+        }
+      } catch (e) {
+        console.warn('[playground] Failed to fetch Three.js types, using minimal fallback');
+      }
+
+      // Fallback minimal Three.js types
+      if (!threeTypes) {
+        threeTypes = `
 export class Object3D {
   position: Vector3;
   rotation: Euler;
   scale: Vector3;
+  parent: Object3D | null;
+  children: Object3D[];
+  name: string;
+  visible: boolean;
   rotateX(angle: number): this;
   rotateY(angle: number): this;
   rotateZ(angle: number): this;
+  add(...object: Object3D[]): this;
+  remove(...object: Object3D[]): this;
+  lookAt(vector: Vector3): void;
+  traverse(callback: (object: Object3D) => void): void;
 }
 export class Vector3 {
   x: number;
   y: number;
   z: number;
+  constructor(x?: number, y?: number, z?: number);
   set(x: number, y: number, z: number): this;
+  copy(v: Vector3): this;
+  add(v: Vector3): this;
+  sub(v: Vector3): this;
+  multiplyScalar(s: number): this;
+  normalize(): this;
+  length(): number;
+  distanceTo(v: Vector3): number;
+  clone(): Vector3;
 }
 export class Euler {
   x: number;
   y: number;
   z: number;
+  order: string;
   set(x: number, y: number, z: number, order?: string): this;
 }
-export class Scene extends Object3D {}
+export class Quaternion {
+  x: number;
+  y: number;
+  z: number;
+  w: number;
+  setFromEuler(euler: Euler): this;
+}
+export class Matrix4 {
+  elements: number[];
+  identity(): this;
+  multiply(m: Matrix4): this;
+}
+export class Color {
+  r: number;
+  g: number;
+  b: number;
+  constructor(color?: number | string);
+  set(color: number | string): this;
+  setHex(hex: number): this;
+}
+export class Scene extends Object3D {
+  background: Color | null;
+  fog: any;
+}
 export class Camera extends Object3D {}
-export class Mesh extends Object3D {}
+export class PerspectiveCamera extends Camera {
+  fov: number;
+  aspect: number;
+  near: number;
+  far: number;
+  updateProjectionMatrix(): void;
+}
+export class Mesh extends Object3D {
+  geometry: BufferGeometry;
+  material: Material | Material[];
+}
+export class BufferGeometry {
+  attributes: any;
+  dispose(): void;
+}
+export class Material {
+  visible: boolean;
+  transparent: boolean;
+  opacity: number;
+  dispose(): void;
+}
+export class MeshStandardMaterial extends Material {
+  color: Color;
+  roughness: number;
+  metalness: number;
+  map: Texture | null;
+}
+export class Texture {
+  image: any;
+  needsUpdate: boolean;
+  dispose(): void;
+}
+export class BoxGeometry extends BufferGeometry {
+  constructor(width?: number, height?: number, depth?: number);
+}
+export class SphereGeometry extends BufferGeometry {
+  constructor(radius?: number, widthSegments?: number, heightSegments?: number);
+}
+export class PlaneGeometry extends BufferGeometry {
+  constructor(width?: number, height?: number);
+}
+export class Raycaster {
+  ray: { origin: Vector3; direction: Vector3 };
+  setFromCamera(coords: { x: number; y: number }, camera: Camera): void;
+  intersectObjects(objects: Object3D[], recursive?: boolean): any[];
+}
+export class Clock {
+  elapsedTime: number;
+  getDelta(): number;
+  getElapsedTime(): number;
+}
 `;
+      }
       ts.addExtraLib(threeTypes, 'file:///node_modules/three/index.d.ts');
       // Create model for CMD+click navigation
       const threeUri = monacoInstance.Uri.parse('file:///node_modules/three/index.d.ts');
@@ -276,25 +402,46 @@ export class Mesh extends Object3D {}
       }
       console.log('[playground] Three.js types loaded');
 
-      // Needle Engine types - using regular exports with path mapping for resolution
+      // Needle Engine types - comprehensive API for playground
       const needleTypes = `
-import { Object3D, Scene, Camera, Vector3 } from "three";
+import { Object3D, Scene, Camera, Vector3, Quaternion, Color, Mesh, Material, Texture, Raycaster } from "three";
 
 /**
  * Base class for all Needle Engine components.
  * Extend this class to create custom behaviors that can be attached to GameObjects.
+ *
+ * @example
+ * \`\`\`typescript
+ * export class MyComponent extends Behaviour {
+ *   @serializable()
+ *   speed: number = 1;
+ *
+ *   update() {
+ *     this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
+ *   }
+ * }
+ * \`\`\`
  */
 export class Behaviour {
-  /** The GameObject this component is attached to */
+  /** The GameObject (Three.js Object3D) this component is attached to */
   gameObject: Object3D;
 
-  /** The Needle Engine context providing access to scene, time, and other systems */
+  /** The Needle Engine context providing access to scene, time, input, and other systems */
   context: Context;
 
-  /** Whether this component is enabled. Disabled components don't receive update calls. */
+  /** Whether this component is enabled. Disabled components don't receive lifecycle callbacks. */
   enabled: boolean;
 
-  /** Called once when the component is first created */
+  /** Unique identifier for this component instance */
+  guid: string;
+
+  /** The name of this component (typically the class name) */
+  name: string;
+
+  /** Parent GameObject in the hierarchy */
+  get parent(): Object3D | null;
+
+  /** Called once when the component is first initialized (before start) */
   awake?(): void;
 
   /** Called when the component becomes enabled */
@@ -303,77 +450,252 @@ export class Behaviour {
   /** Called when the component becomes disabled */
   onDisable?(): void;
 
-  /** Called once before the first update, after all awake calls */
+  /** Called once before the first update, after all awake calls have completed */
   start?(): void;
 
-  /** Called every frame before update */
+  /** Called every frame before update - use for input processing */
   earlyUpdate?(): void;
 
-  /** Called every frame */
+  /** Called every frame - main update logic goes here */
   update?(): void;
 
-  /** Called every frame after update */
+  /** Called every frame after all update calls - use for camera follow, etc. */
   lateUpdate?(): void;
 
   /** Called when the component is destroyed */
   onDestroy?(): void;
 
-  /** Called before the scene is rendered */
+  /** Called before the scene is rendered each frame */
   onBeforeRender?(): void;
 
-  /** Called after the scene is rendered */
+  /** Called after the scene is rendered each frame */
   onAfterRender?(): void;
+
+  /** Called when a collision starts (requires physics) */
+  onCollisionEnter?(collision: Collision): void;
+
+  /** Called while colliding (requires physics) */
+  onCollisionStay?(collision: Collision): void;
+
+  /** Called when a collision ends (requires physics) */
+  onCollisionExit?(collision: Collision): void;
+
+  /** Called when a trigger is entered (requires physics) */
+  onTriggerEnter?(other: Object3D): void;
+
+  /** Called when a trigger is exited (requires physics) */
+  onTriggerExit?(other: Object3D): void;
+
+  /** Called when pointer enters this object */
+  onPointerEnter?(event: PointerEventData): void;
+
+  /** Called when pointer exits this object */
+  onPointerExit?(event: PointerEventData): void;
+
+  /** Called when pointer is pressed on this object */
+  onPointerDown?(event: PointerEventData): void;
+
+  /** Called when pointer is released on this object */
+  onPointerUp?(event: PointerEventData): void;
+
+  /** Called when this object is clicked */
+  onPointerClick?(event: PointerEventData): void;
+
+  /** Destroy this component */
+  destroy(): void;
+
+  /** Get a component of the specified type from this GameObject */
+  getComponent<T extends Behaviour>(type: new () => T): T | null;
+
+  /** Get all components of the specified type from this GameObject */
+  getComponents<T extends Behaviour>(type: new () => T): T[];
+
+  /** Get a component in parent hierarchy */
+  getComponentInParent<T extends Behaviour>(type: new () => T): T | null;
+
+  /** Get a component in children hierarchy */
+  getComponentInChildren<T extends Behaviour>(type: new () => T): T | null;
+
+  /** Get all components in children hierarchy */
+  getComponentsInChildren<T extends Behaviour>(type: new () => T): T[];
 }
 
-/** Context provides access to the Needle Engine runtime. */
+/** Context provides access to the Needle Engine runtime systems. */
 export interface Context {
   /** Time information for the current frame */
   time: Time;
-  /** The Three.js scene */
+  /** The Three.js scene root */
   scene: Scene;
-  /** The main camera */
-  mainCamera: Camera;
-  /** The physics engine (if available) */
-  physics?: Physics;
-  /** Input system */
+  /** The main camera (can be null if no camera exists) */
+  mainCamera: Camera | null;
+  /** Physics engine interface */
+  physics: Physics;
+  /** Input system for pointer, keyboard, and touch input */
   input: Input;
+  /** The HTML canvas element */
+  domElement: HTMLCanvasElement;
+  /** Screen/viewport dimensions */
+  xr: XRContext | null;
+  /** Addressables for loading assets */
+  addressables: Addressables;
 }
 
 /** Time information for the current frame. */
 export interface Time {
-  /** Total elapsed time in seconds since the engine started */
+  /** Total elapsed time in seconds since engine started */
   time: number;
-  /** Time in seconds since the last frame */
+  /** Time in seconds since the last frame (affected by timeScale) */
   deltaTime: number;
+  /** Unscaled delta time (not affected by timeScale) */
+  unscaledDeltaTime: number;
   /** Current frame number */
   frameCount: number;
-  /** Time scale multiplier (1.0 = normal speed) */
+  /** Time scale multiplier (1.0 = normal, 0.5 = half speed, 2.0 = double speed) */
   timeScale: number;
+  /** Real time since startup (not affected by timeScale) */
+  realtimeSinceStartup: number;
 }
 
 /** Input system for handling user input. */
 export interface Input {
-  getPointerPosition(index?: number): { x: number; y: number } | null;
+  /** Get the current pointer position in normalized device coordinates (-1 to 1) */
+  getPointerPosition(index?: number): Vector2 | null;
+  /** Check if a pointer button is currently pressed */
   getPointerPressed(index?: number): boolean;
+  /** Check if a pointer button was pressed this frame */
+  getPointerDown(index?: number): boolean;
+  /** Check if a pointer button was released this frame */
+  getPointerUp(index?: number): boolean;
+  /** Get pointer position in screen pixels */
+  getPointerPositionScreenSpace(index?: number): Vector2 | null;
+  /** Check if a keyboard key is currently pressed */
+  getKeyPressed(key: string): boolean;
+  /** Check if a keyboard key was pressed this frame */
+  getKeyDown(key: string): boolean;
+  /** Check if a keyboard key was released this frame */
+  getKeyUp(key: string): boolean;
+  /** Mouse scroll delta */
+  mouseScrollDelta: Vector2;
+}
+
+/** 2D Vector for screen coordinates and input */
+export interface Vector2 {
+  x: number;
+  y: number;
 }
 
 /** Physics system interface. */
 export interface Physics {
+  /** Whether physics is enabled */
+  enabled: boolean;
+  /** Cast a ray and return the first hit */
   raycast(origin: Vector3, direction: Vector3, maxDistance?: number): RaycastHit | null;
+  /** Cast a ray and return all hits */
+  raycastAll(origin: Vector3, direction: Vector3, maxDistance?: number): RaycastHit[];
+  /** Perform a spherecast */
+  spherecast(origin: Vector3, radius: number, direction: Vector3, maxDistance?: number): RaycastHit | null;
 }
 
+/** Result of a raycast hit */
 export interface RaycastHit {
+  /** World position of the hit point */
   point: Vector3;
+  /** Surface normal at the hit point */
   normal: Vector3;
+  /** Distance from ray origin to hit point */
   distance: number;
+  /** The object that was hit */
   object: Object3D;
+  /** The collider that was hit (if using physics) */
+  collider?: any;
+}
+
+/** Collision information */
+export interface Collision {
+  /** The other object involved in the collision */
+  other: Object3D;
+  /** Contact points */
+  contacts: ContactPoint[];
+}
+
+/** A contact point in a collision */
+export interface ContactPoint {
+  /** Contact position in world space */
+  point: Vector3;
+  /** Contact normal */
+  normal: Vector3;
+}
+
+/** Pointer event data passed to pointer callbacks */
+export interface PointerEventData {
+  /** Pointer ID */
+  pointerId: number;
+  /** Screen position */
+  screenPosition: Vector2;
+  /** The object being pointed at */
+  object: Object3D;
+  /** World position of the pointer intersection */
+  point?: Vector3;
+  /** Surface normal at intersection */
+  normal?: Vector3;
+}
+
+/** XR (WebXR) context for VR/AR */
+export interface XRContext {
+  /** Whether currently in an XR session */
+  isInXR: boolean;
+  /** Whether AR is available */
+  isARSupported: boolean;
+  /** Whether VR is available */
+  isVRSupported: boolean;
+}
+
+/** Addressables system for loading assets */
+export interface Addressables {
+  /** Load a GLB/GLTF file and return the root object */
+  load(url: string): Promise<Object3D>;
 }
 
 /**
  * Decorator to mark a property as serializable.
- * Serializable properties can be edited in the Unity/Blender editor.
+ * Serializable properties are synchronized between editor and runtime.
+ *
+ * @param type Optional type hint for complex types (e.g., Object3D, Texture)
+ *
+ * @example
+ * \`\`\`typescript
+ * export class MyComponent extends Behaviour {
+ *   @serializable()
+ *   speed: number = 1;
+ *
+ *   @serializable(Object3D)
+ *   target: Object3D | null = null;
+ *
+ *   @serializable(Material)
+ *   material: Material | null = null;
+ * }
+ * \`\`\`
  */
 export function serializable(type?: any): PropertyDecorator;
+
+/**
+ * Decorator to mark a method as a syncable RPC (Remote Procedure Call).
+ * Used for networking/multiplayer functionality.
+ */
+export function syncField(): PropertyDecorator;
+
+// Utility functions that can be imported
+/** Instantiate (clone) a prefab/object */
+export function instantiate(original: Object3D, options?: { parent?: Object3D; position?: Vector3; rotation?: Quaternion }): Object3D;
+
+/** Find an object by name in the scene */
+export function findObjectOfType<T extends Behaviour>(type: new () => T, context: Context): T | null;
+
+/** Get or add a component to an object */
+export function getOrAddComponent<T extends Behaviour>(obj: Object3D, type: new () => T): T;
+
+/** Destroy an object or component */
+export function destroy(obj: Object3D | Behaviour): void;
 `;
       ts.addExtraLib(needleTypes, 'file:///node_modules/@needle-tools/engine/index.d.ts');
       // Create model for CMD+click navigation
@@ -490,15 +812,46 @@ export function serializable(type?: any): PropertyDecorator;
         editorInstance.setModel(mainModel);
         this.viewingDefinition = false;
       }
+    },
+
+    startResize(e) {
+      this.isResizing = true;
+      document.addEventListener('mousemove', this.doResize);
+      document.addEventListener('mouseup', this.stopResize);
+      e.preventDefault();
+    },
+
+    doResize(e) {
+      if (!this.isResizing) return;
+      const container = this.$refs.playgroundRoot?.querySelector('.playground-container');
+      if (!container) return;
+      const rect = container.getBoundingClientRect();
+      const isVertical = this.layout === 'vertical';
+
+      let percentage;
+      if (isVertical) {
+        percentage = ((e.clientY - rect.top) / rect.height) * 100;
+      } else {
+        percentage = ((e.clientX - rect.left) / rect.width) * 100;
+      }
+
+      // Clamp between 20% and 80%
+      this.editorWidth = Math.min(80, Math.max(20, percentage));
+    },
+
+    stopResize() {
+      this.isResizing = false;
+      document.removeEventListener('mousemove', this.doResize);
+      document.removeEventListener('mouseup', this.stopResize);
     }
   }
 }
 </script>
 
 <template>
-  <div ref="playgroundRoot" :class="['playground', { 'is-fullscreen': isFullscreen, 'theme-light': !isDark }]" :style="{ '--playground-height': height }">
+  <div ref="playgroundRoot" :class="['playground', { 'is-fullscreen': isFullscreen, 'theme-light': !isDark, 'is-resizing': isResizing }]" :style="{ '--playground-height': height, '--editor-width': editorWidth + '%' }">
     <div :class="containerClass">
-      <div class="editor-panel">
+      <div class="editor-panel" :style="{ flex: 'none', [layout === 'vertical' ? 'height' : 'width']: editorWidth + '%' }">
         <div class="panel-header">
           <div class="panel-header-left">
             <button v-if="viewingDefinition" class="back-btn" @click="goBackToCode" title="Back to your code (Escape)">
@@ -516,6 +869,7 @@ export function serializable(type?: any): PropertyDecorator;
         </div>
         <div ref="editorContainer" class="editor-container"></div>
       </div>
+      <div class="resize-handle" :class="{ 'resize-handle-vertical': layout === 'vertical' }" @mousedown="startResize"></div>
       <div class="preview-panel">
         <div class="panel-header">
           <span class="panel-title">Preview</span>
@@ -627,13 +981,66 @@ export function serializable(type?: any): PropertyDecorator;
   .editor-panel, .preview-panel { width: 100% !important; height: 300px !important; flex: none !important; }
   .editor-panel { border-right: none !important; border-left: none !important; border-bottom: 1px solid #333 !important; border-top: none !important; }
 }
+/* Disable text selection during resize */
+.playground.is-resizing {
+  user-select: none;
+}
+.playground.is-resizing iframe {
+  pointer-events: none;
+}
+
 .editor-panel, .preview-panel {
   flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0;
+  min-height: 0;
 }
-.editor-panel { border-right: 1px solid #333; }
+.editor-panel { border-right: none; }
+
+/* Resize handle */
+.resize-handle {
+  flex-shrink: 0;
+  width: 6px;
+  background: #333;
+  cursor: col-resize;
+  transition: background 0.15s;
+  position: relative;
+}
+.resize-handle:hover,
+.playground.is-resizing .resize-handle {
+  background: #0066cc;
+}
+.resize-handle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 2px;
+  height: 30px;
+  background: rgba(255,255,255,0.3);
+  border-radius: 1px;
+}
+.resize-handle-vertical {
+  width: 100%;
+  height: 6px;
+  cursor: row-resize;
+}
+.resize-handle-vertical::after {
+  width: 30px;
+  height: 2px;
+}
+.theme-light .resize-handle {
+  background: #e0e0e0;
+}
+.theme-light .resize-handle:hover,
+.theme-light.is-resizing .resize-handle {
+  background: #0066cc;
+}
+.theme-light .resize-handle::after {
+  background: rgba(0,0,0,0.2);
+}
 .theme-light .editor-panel { border-right-color: #e0e0e0; }
 .theme-light.layout-vertical .editor-panel { border-bottom-color: #e0e0e0; }
 .theme-light .playground-container.preview-first .editor-panel { border-left-color: #e0e0e0; }
