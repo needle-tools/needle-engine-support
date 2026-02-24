@@ -21,7 +21,7 @@ If you're evaluating alternatives, here's how the two platforms differ:
 | Aspect | 8th Wall | Needle Engine |
 |--------|----------|---------------|
 | **AR on Android** | 8th Wall SLAM | WebXR (native Chrome/Firefox) |
-| **AR on iOS** | 8th Wall SLAM | WebXR via [App Clip](/docs/how-to-guides/xr/ios-webxr-app-clip) (ARKit) or [USDZ/QuickLook](/docs/how-to-guides/everywhere-actions/) |
+| **AR on iOS** | 8th Wall SLAM | WebXR via [App Clip](/docs/how-to-guides/xr/ios-webxr-app-clip) (ARKit) or [Interactive USDZ/QuickLook](/docs/how-to-guides/everywhere-actions/) (runtime export with interactivity) |
 | **Image tracking** | Built-in | [WebXR Image Tracking](/docs/how-to-guides/xr/image-tracking) |
 | **Face tracking** | Built-in | Via [@needle-tools/facefilter](https://github.com/needle-engine/facefilter) package |
 | **VPS / Location AR** | Lightship VPS | No built-in support |
@@ -226,13 +226,24 @@ Needle Engine provides full WebXR support on iOS through App Clip technology:
 
 [iOS WebXR App Clip documentation →](/docs/how-to-guides/xr/ios-webxr-app-clip)
 
-### USDZ / QuickLook (Simpler Setup)
+### USDZ / QuickLook with Interactivity
 
-For product visualization and simpler AR experiences:
+Needle Engine **automatically exports interactive USDZ files at runtime**:
 
-- Export your scene to Apple's USDZ format
-- Users tap to view in AR via QuickLook
-- No code changes needed for basic viewing
+- **Automatic conversion** – Your 3D scene is converted to USDZ on-the-fly when iOS users tap "View in AR"
+- **Full interactivity** – Animations, material changes, audio, and tap interactions work in QuickLook
+- **No manual export** – Add the `USDZExporter` component and it just works
+- **Works on iPhone, iPad, and Apple Vision Pro**
+
+This is fundamentally different from static USDZ export. Most tools require you to manually export a frozen 3D model. Needle Engine generates interactive USDZ files dynamically, preserving the same behaviors you built for the web.
+
+**Supported interactions via [Everywhere Actions](/docs/how-to-guides/everywhere-actions/):**
+- Play animations on tap
+- Change materials (product configurators)
+- Show/hide objects
+- Play spatial audio
+- Transform objects (move, rotate, scale)
+- Image tracking
 
 [Everywhere Actions documentation →](/docs/how-to-guides/everywhere-actions/)
 
