@@ -44,6 +44,7 @@
         let component = null;
         let targetObject = null;
         let context = null;
+        let pendingCode = null;
 
         function showError(msg) {
             document.getElementById('err').textContent = msg;
@@ -87,6 +88,15 @@
 
             // Tell parent we're ready
             parent.postMessage({ type: 'needle-playground-ready' }, '*');
+
+            // Execute any pending code that arrived before ready
+            if (pendingCode) {
+                const code = pendingCode;
+                pendingCode = null;
+                window.dispatchEvent(new MessageEvent('message', {
+                    data: { type: 'needle-playground-code', code }
+                }));
+            }
         });
 
         // Handle incoming transpiled code
@@ -94,6 +104,13 @@
             if (!e.data || typeof e.data !== 'object') return;
             if (e.data.type !== 'needle-playground-code') return;
             console.log('[playground] Received code update');
+
+            // Wait for context and targetObject to be available
+            if (!context || !targetObject) {
+                console.log('[playground] Waiting for engine ready...');
+                pendingCode = e.data.code;
+                return;
+            }
 
             hideError();
 
