@@ -1,5 +1,5 @@
 # Needle Engine Documentation - Links
-# 2/10/2026, 10:53:11 PM
+# 2/24/2026, 12:42:37 AM
 # Base URL: https://engine.needle.tools/docs
 
 Needle Engine for Unity
@@ -20,11 +20,14 @@ How-To Guides
 Help & Community
   https://engine.needle.tools/docs/help/
 
-Explanation
-  https://engine.needle.tools/docs/explanation/
+gltf-progressive
+  https://engine.needle.tools/docs/gltf-progressive/
 
 Getting Started & Installation
   https://engine.needle.tools/docs/getting-started/
+
+Explanation
+  https://engine.needle.tools/docs/explanation/
 
 Integrate with other tools
   https://engine.needle.tools/docs/custom-integrations/
@@ -40,6 +43,9 @@ ai
 
 getting-started.html
   https://engine.needle.tools/docs/getting-started
+
+Interactive Playground Test
+  https://engine.needle.tools/docs/playground-test
 
 Using Needle Engine directly from HTML
   https://engine.needle.tools/docs/vanilla-js
@@ -96,17 +102,17 @@ Using Needle Engine directly from HTML
 
 ## How To Guides
 
-  Frameworks, Bundlers, HTML
-    https://engine.needle.tools/docs/how-to-guides/web-integration/
-
   VR & AR (WebXR)
     https://engine.needle.tools/docs/how-to-guides/xr/
 
-  Networking & Multiplayer
-    https://engine.needle.tools/docs/how-to-guides/networking/
+  Frameworks, Bundlers, HTML
+    https://engine.needle.tools/docs/how-to-guides/web-integration/
 
   Optimization & Compression
     https://engine.needle.tools/docs/how-to-guides/optimization/
+
+  Networking & Multiplayer
+    https://engine.needle.tools/docs/how-to-guides/networking/
 
   Exporting Assets to glTF
     https://engine.needle.tools/docs/how-to-guides/export/
@@ -275,6 +281,9 @@ Using Needle Engine directly from HTML
     https://engine.needle.tools/docs/three/needle-devtools-for-threejs-chrome-extension
 
 ## Tutorials
+
+  Needle Engine for 8th Wall Users
+    https://engine.needle.tools/docs/tutorials/for-8thwall-users
 
   ## Fundamentals
 
