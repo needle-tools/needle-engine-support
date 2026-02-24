@@ -33,6 +33,8 @@ If you're evaluating alternatives, here's how the two platforms differ:
 
 ### Where Needle Engine Shines
 
+- **Interactive iOS AR without SLAM** – Runtime USDZ export with full interactivity via [Everywhere Actions](/docs/how-to-guides/everywhere-actions/), plus native WebXR via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip)
+- **Flat pricing** – No per-view fees. Pay a license fee and deploy to unlimited users
 - **Performance optimization** – Automatic texture compression, mesh optimization, and progressive loading
 - **Visual editing** – Use Unity or Blender instead of code-only workflows
 - **Platform flexibility** – AR, VR, desktop, and mobile from one codebase
