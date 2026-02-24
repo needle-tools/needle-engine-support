@@ -3,6 +3,7 @@
 let monacoInstance = null;
 let editorInstance = null;
 let typesLoaded = false;
+let mainModelUri = null; // Track the main code model URI
 
 export default {
   props: {
@@ -24,6 +25,7 @@ export default {
       typesReady: false,
       isFullscreen: false,
       isDark: true,
+      viewingDefinition: false, // True when viewing a type definition file
     }
   },
   computed: {
@@ -43,12 +45,14 @@ export default {
     this.detectTheme();
     this.init();
     window.addEventListener('message', this.handleMessage);
+    window.addEventListener('keydown', this.handleKeyDown);
     // Listen for VuePress theme changes
     this.themeObserver = new MutationObserver(() => this.detectTheme());
     this.themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
   },
   beforeUnmount() {
     window.removeEventListener('message', this.handleMessage);
+    window.removeEventListener('keydown', this.handleKeyDown);
     if (this.themeObserver) this.themeObserver.disconnect();
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     if (editorInstance) {
@@ -117,10 +121,10 @@ export class Rotator extends Behaviour {
 
         // Create the editor with a file:// URI model for proper go-to-definition
         const container = this.$refs.editorContainer;
-        const modelUri = monacoInstance.Uri.parse('file:///src/main.ts');
-        let model = monacoInstance.editor.getModel(modelUri);
+        mainModelUri = monacoInstance.Uri.parse('file:///src/main.ts');
+        let model = monacoInstance.editor.getModel(mainModelUri);
         if (!model) {
-          model = monacoInstance.editor.createModel(this.code, 'typescript', modelUri);
+          model = monacoInstance.editor.createModel(this.code, 'typescript', mainModelUri);
         } else {
           model.setValue(this.code);
         }
@@ -148,6 +152,7 @@ export class Rotator extends Behaviour {
 
         // Handle go-to-definition by opening the target model in the same editor
         // Try modern API first
+        const vueThis = this;
         if (monacoInstance.editor.registerEditorOpener) {
           monacoInstance.editor.registerEditorOpener({
             openCodeEditor: (source, resource, selectionOrPosition) => {
@@ -155,6 +160,8 @@ export class Rotator extends Behaviour {
               const targetModel = monacoInstance.editor.getModel(resource);
               if (targetModel && targetModel !== editorInstance.getModel()) {
                 editorInstance.setModel(targetModel);
+                // Track if we're viewing a definition (not the main code)
+                vueThis.viewingDefinition = resource.toString() !== mainModelUri.toString();
                 if (selectionOrPosition) {
                   if ('startLineNumber' in selectionOrPosition) {
                     editorInstance.setSelection(selectionOrPosition);
@@ -179,6 +186,8 @@ export class Rotator extends Behaviour {
             const targetModel = monacoInstance.editor.getModel(input?.resource);
             if (targetModel) {
               editorInstance.setModel(targetModel);
+              // Track if we're viewing a definition (not the main code)
+              vueThis.viewingDefinition = input?.resource?.toString() !== mainModelUri.toString();
               if (input?.options?.selection) {
                 editorInstance.setSelection(input.options.selection);
                 editorInstance.revealLineInCenter(input.options.selection.startLineNumber);
@@ -440,6 +449,13 @@ export function serializable(type?: any): PropertyDecorator;
       }
     },
 
+    handleKeyDown(event) {
+      // Escape key returns to code when viewing a type definition
+      if (event.key === 'Escape' && this.viewingDefinition) {
+        this.goBackToCode();
+      }
+    },
+
     detectTheme() {
       const html = document.documentElement;
       // VuePress uses data-theme or class for theming
@@ -465,6 +481,15 @@ export function serializable(type?: any): PropertyDecorator;
         document.exitFullscreen?.();
         this.isFullscreen = false;
       }
+    },
+
+    goBackToCode() {
+      if (!editorInstance || !monacoInstance || !mainModelUri) return;
+      const mainModel = monacoInstance.editor.getModel(mainModelUri);
+      if (mainModel) {
+        editorInstance.setModel(mainModel);
+        this.viewingDefinition = false;
+      }
     }
   }
 }
@@ -475,7 +500,15 @@ export function serializable(type?: any): PropertyDecorator;
     <div :class="containerClass">
       <div class="editor-panel">
         <div class="panel-header">
-          <span class="panel-title">TypeScript</span>
+          <div class="panel-header-left">
+            <button v-if="viewingDefinition" class="back-btn" @click="goBackToCode" title="Back to your code (Escape)">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M19 12H5M12 19l-7-7 7-7"/>
+              </svg>
+              Back
+            </button>
+            <span class="panel-title">{{ viewingDefinition ? 'Type Definition' : 'TypeScript' }}</span>
+          </div>
           <span v-if="loading" class="status loading">Loading...</span>
           <span v-else-if="compiling" class="status compiling">Compiling...</span>
           <span v-else-if="error" class="status error">Error</span>
@@ -620,8 +653,37 @@ export function serializable(type?: any): PropertyDecorator;
   background: #f3f3f3;
   border-bottom-color: #e0e0e0;
 }
+.panel-header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
 .panel-title { color: #ccc; font-weight: 500; }
 .theme-light .panel-title { color: #333; }
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border: none;
+  background: #0066cc;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s;
+}
+.back-btn:hover {
+  background: #0077ee;
+}
+.theme-light .back-btn {
+  background: #0066cc;
+  color: #fff;
+}
+.theme-light .back-btn:hover {
+  background: #0055aa;
+}
 .status { font-size: 11px; padding: 2px 8px; border-radius: 10px; }
 .status.loading { background: #1a1a3c; color: #88f; }
 .status.compiling { background: #3c3c00; color: #fc0; }
