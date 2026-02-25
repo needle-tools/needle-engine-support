@@ -292,6 +292,52 @@ If this doesn't fix the problem please ask [in our forum](https://forum.needle.t
 ## My scene is not loading and the console contains a warning with 'circular references' or 'failed to update active state'
 Please see the [circular reference error](#circular-reference-error) section.
 
+## Does it work on mobile?
+
+**Yes!** Needle Engine fully supports mobile devices. Your web experiences work on both iOS and Android phones and tablets – no app required. Users simply open a URL in their mobile browser.
+
+**Mobile features include:**
+- **Full 3D rendering** on mobile browsers (Chrome, Safari, Firefox, etc.)
+- **Touch input** support out of the box
+- **Mobile AR** on Android (WebXR) and iOS (WebXR via [App Clips](/docs/explanation/core-concepts/ios-webxr-app-clip) + USDZ/QuickLook)
+- **Responsive design** – adapt your layout to different screen sizes with [responsive design tools](/docs/how-to-guides/web-integration/responsive-design)
+- **Automatic optimization** ensures fast loading even on slower mobile connections
+- **[Everywhere Actions](/docs/how-to-guides/everywhere-actions/)** for interactive AR on both iOS and Android
+
+For tips on detecting mobile devices in your scripts, see [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices). For debugging on mobile, see the [Debugging Guide](/docs/how-to-guides/debugging/).
+
+## Does it work on Quest / Pico?
+
+**Yes!** Needle Engine supports VR headsets like Meta Quest and Pico out of the box via [WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API). Users open your experience in the headset's browser – no app store, no installation required.
+
+**Supported VR headsets include:**
+- **Meta Quest** (Quest 2, Quest 3, Quest Pro)
+- **Pico** (Pico 4, Pico Neo)
+- **Apple Vision Pro**
+- **HTC Vive**, **Valve Index**, and other PC VR headsets
+- **Future devices** that support WebXR will work automatically
+
+To enable VR, simply add the `WebXR` component to your scene. See the [VR & AR (WebXR) guide](/docs/how-to-guides/xr/) for details.
+
+## Does it work on iOS?
+
+**Yes!** Needle Engine works on iOS in two ways:
+
+1. **3D in the browser** – Your web experiences run in Safari, Chrome, and other iOS browsers just like on any other platform. Touch input, responsive layout, and all engine features work out of the box.
+
+2. **AR on iOS** – Needle Engine offers two approaches for AR on iOS:
+   - **Native WebXR via [App Clips](/docs/explanation/core-concepts/ios-webxr-app-clip)** – Full WebXR AR powered by ARKit, no app install needed. Users scan a QR code or tap a link to enter AR instantly.
+   - **USDZ / QuickLook** – Use [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for interactive AR experiences using Apple's built-in QuickLook viewer.
+
+## Does it work on Android?
+
+**Yes!** Needle Engine fully supports Android devices:
+
+- **3D in the browser** – Works in Chrome, Firefox, Samsung Internet, and other Android browsers with full touch support.
+- **AR on Android** – Android has native WebXR support in Chrome. Add the `WebXR` component to your scene and users can enter AR directly from the browser – no app required.
+
+See the [VR & AR (WebXR) guide](/docs/how-to-guides/xr/) for setup instructions.
+
 ## Does my machine support WebGL 2?
 
 Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if your device supports WebGL 2, it also hints at what could be the cause of your problem, but generally make sure you have updated your browser and drivers. WebGL 1 is not supported.
