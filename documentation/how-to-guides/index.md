@@ -80,6 +80,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 ## Web Integration
 
 - [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks and bundlers
+- [Progressive Web Apps (PWA)](/docs/how-to-guides/web-integration/pwa) - Offline support, installability, auto-updates
 - [Responsive Design](/docs/how-to-guides/web-integration/responsive-design) - Adaptive 3D layouts
 - [Embed in Websites](/docs/how-to-guides/deployment/embedding) - iframe, CDN, direct integration
 
