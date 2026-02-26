@@ -42,3 +42,21 @@ The fastest way to create a new project is with `npm create needle` or by visiti
 Browse 100+ interactive samples at [**samples.needle.tools**](https://samples.needle.tools).
 
 For Unity users, additional scene templates and sample scenes are available directly in the editor via **Needle Engine > Explore Samples**.
+
+---
+
+## Create Needle CLI
+
+You can scaffold a new project from the command line using [`create-needle`](https://github.com/needle-engine/create-needle):
+
+```bash
+npm create needle
+```
+
+The CLI supports arguments to skip the interactive prompts:
+
+```bash
+npm create needle <project-name> -- --template <template>
+```
+
+See the [create-needle repository](https://github.com/needle-engine/create-needle) for all available options.
