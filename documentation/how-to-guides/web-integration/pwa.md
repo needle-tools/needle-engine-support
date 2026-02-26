@@ -15,6 +15,12 @@ Turn your Needle Engine project into a Progressive Web App with offline support,
 - 🔄 Auto-update when you publish new versions
 - 🚀 Faster loading with smart caching
 
+**Why would I want a PWA?**
+- **Tradeshows & events** — No reliable internet? No problem. Your 3D experience still works.
+- **Kiosks & installations** — Install on a device once, runs forever without browser UI
+- **Faster repeat visits** — Assets are cached, loads instantly after first visit
+- **App-like experience** — No URL bar, install to home screen, feels like a native app
+
 ## Setup
 
 **1. Install the Vite PWA plugin:**
@@ -114,6 +120,41 @@ const pwaOptions = {
 - Test offline behavior by disabling the network in Chrome DevTools (Application > Service Workers > Offline)
 - For large scenes with many assets, verify that all files are included in the precache (see [More PWA Options](#more-pwa-options))
 - Combine with [automatic updates](#automatically-update-running-apps) so the display stays current when connectivity returns
+
+## Using PWABuilder for validation
+
+[PWABuilder](https://pwabuilder.com) is a Microsoft-developed tool that helps you create and validate PWAs. It can analyze your deployed PWA and provide a score along with recommendations for improvements.
+
+**Online Tool:**
+- Visit [pwabuilder.com](https://pwabuilder.com) and enter your deployed PWA URL to get an analysis report
+
+**CLI Version:**
+
+```bash
+# Install PWABuilder CLI globally
+npm install -g @pwabuilder/pwabuilder-api
+
+# Validate your local build folder
+pwabuilder /path/to/your/dist -o ./pwa-report
+```
+
+## Installing PWAs on Different Platforms
+
+Once your PWA is deployed, users can install it on their devices:
+
+| Platform | How to Install |
+| --- | --- |
+| **Android (Chrome)** | Open the website in Chrome → Tap "Install App" or "Add to Home Screen" from the menu |
+| **iOS (Safari)** | Open the website in Safari → Tap the Share button → Tap "Add to Home Screen" |
+| **Windows (Edge/Chrome)** | Open the website in Edge/Chrome → Look for the install icon in the address bar → Click "Install" |
+| **macOS (Safari/Edge/Chrome)** | Open the website → Look for the install icon in the address bar → Click "Install" |
+
+:::info PWAs vs Fully Offline Apps
+PWAs still download assets from the web on first visit, then cache them. If you need a truly offline experience where the app works even without any internet connection from the start (e.g., at a location with no WiFi), consider:
+- **[makeFilesLocal](/docs/reference/vite-plugins#self-contained-builds-makefileslocal)** — embeds assets directly into the build so they work without network
+- **Electron** — desktop app wrapping your web content
+- **Capacitor** — native mobile app from web code
+:::
 
 ## More PWA options
 
