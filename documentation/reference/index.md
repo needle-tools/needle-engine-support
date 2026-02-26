@@ -33,6 +33,12 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 ---
 
+## Templates & Samples
+
+- [**Project Templates & Samples**](/docs/reference/templates) - Official starter templates and framework samples on GitHub
+
+---
+
 ## Components & Configuration
 
 ### Components
