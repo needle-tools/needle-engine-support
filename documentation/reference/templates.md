@@ -47,16 +47,23 @@ For Unity users, additional scene templates and sample scenes are available dire
 
 ## Create Needle CLI
 
-You can scaffold a new project from the command line using [`create-needle`](https://github.com/needle-engine/create-needle):
+You can scaffold a new project from the command line using `create-needle`:
 
 ```bash
-npm create needle
+npm create needle [directory] [options]
 ```
 
-The CLI supports arguments to skip the interactive prompts:
+| Option | Description |
+|--------|-------------|
+| `--template, -t <key>` | Template to use (e.g. `vite`, `react`, `vue`, `svelte`, `sveltekit`, `nextjs`) |
+| `--list, -l` | List available templates as JSON |
+| `--force, -f` | Overwrite existing directory |
+| `--help, -h` | Show help |
+
+**Examples:**
 
 ```bash
-npm create needle <project-name> -- --template <template>
+npx create-needle my-app --template vite
+npx create-needle my-app -t react
+npx create-needle --list
 ```
-
-See the [create-needle repository](https://github.com/needle-engine/create-needle) for all available options.
