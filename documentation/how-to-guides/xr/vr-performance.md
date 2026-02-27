@@ -59,60 +59,83 @@ Each unique mesh + material combination is a separate draw call. The browser mus
 **Target:** Keep draw calls under ~100–150 for Quest. Desktop VR can handle more.
 
 **How to reduce them:**
-- Merge static meshes in your 3D editor before export
-- Reduce the number of unique materials — objects sharing the same material are cheaper
-- Enable GPU instancing on materials in Unity or Blender — Needle Engine handles the rest automatically
-- Check your draw call count with the `?stats` URL parameter
+
+| <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
+|---|---|
+| Mark objects as **static** | Needle Engine disables matrix updates at runtime, saving CPU time |
+| Merge static meshes before export | Fewer objects = fewer draw calls |
+| Reduce unique materials | Objects sharing the same material are cheaper to render |
+| **Enable GPU instancing** on materials | Needle Engine batches instanced objects automatically, no code needed |
+| Check with `?stats` URL parameter | Shows your current draw call count |
 
 ### Shadows
 
 Realtime shadows are one of the most expensive rendering features. Each shadow-casting light requires rendering shadow maps, which in VR means additional render passes.
 
 **Fixes:**
-- **Remove realtime shadows** as a first test — if performance improves dramatically, shadows are the bottleneck
-- Use [baked lightmaps](/docs/blender/lightmapping) instead of realtime shadows for static scenes
-- Use [ContactShadows](/docs/how-to-guides/components/contact-shadows) for lightweight ground shadows on individual objects
-- If you need realtime shadows, limit them to a single directional light and reduce the shadow map resolution
-- Reduce the shadow distance to avoid rendering shadows for far-away objects
+
+| <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
+|---|---|
+| **Remove realtime shadows** as a first test | If performance improves dramatically, shadows are the bottleneck |
+| Use [baked lightmaps](/docs/blender/lightmapping) | Pre-computed lighting for static scenes — zero runtime cost |
+| Use [ContactShadows](/docs/how-to-guides/components/contact-shadows) | Lightweight ground shadows without full shadow maps |
+| Limit to a single directional light | Each shadow-casting light adds extra render passes |
+| Reduce shadow map resolution and distance | Less GPU work for shadows — in Unity, add the **Additional Light Data** component to your light (button at the bottom of the Light component) to control resolution per light |
 
 ### Transparent materials and overdraw
 
 Transparent objects (glass, particles, UI panels) can't use the GPU's depth buffer to skip hidden pixels. Each transparent layer is drawn fully, and they must be sorted back-to-front.
 
 **Fixes:**
-- Minimize the number of transparent objects in the scene
-- Reduce the screen coverage of transparent objects (smaller particle effects, etc.)
-- Use alpha cutout (`alphaTest`) or alpha hash instead of alpha blending when possible — both work with the depth buffer
+
+| <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
+|---|---|
+| Minimize transparent objects in the scene | Each transparent layer is fully drawn and can't be skipped |
+| Reduce screen coverage of transparent objects | Smaller particle effects, smaller UI panels = less overdraw |
+| Use alpha cutout (`alphaTest`) or **alpha hash** | Both work with the depth buffer, unlike alpha blending. Alpha hash is recommended — it avoids hard cutoff edges while keeping depth buffer benefits |
 
 ### Texture memory
 
 Large textures consume GPU memory and bandwidth. On Quest, GPU memory is shared with system RAM.
 
+:::tip Production builds already follow best practices
+Needle Engine production builds automatically apply [texture compression](/docs/how-to-guides/optimization/#texture-compression) (KTX2), [progressive loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods), and [mesh LODs](/docs/how-to-guides/optimization/#automatic-mesh-lods-level-of-detail). If you're testing locally and seeing poor texture performance, enable **Preview Compression** on the Needle Engine component to run the full production pipeline during development. See [Build Options](/docs/how-to-guides/optimization/#build-options) for details.
+:::
+
 **Fixes:**
-- Use [texture compression](/docs/how-to-guides/optimization/#texture-compression) (KTX2) — compressed textures use 4–8x less GPU memory than uncompressed
-- Reduce texture resolution where it won't be noticed (e.g., floor textures viewed at an angle)
-- Enable [progressive texture loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods) — low-res versions load first, full quality loads on demand, and unused high-res textures are released from GPU memory
-- Avoid WebP textures for VR if possible — they're uncompressed in GPU memory
+
+| <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
+|---|---|
+| Use [texture compression](/docs/how-to-guides/optimization/#texture-compression) (KTX2) | Compressed textures use 4–8x less GPU memory than uncompressed |
+| Reduce texture resolution where possible | Floor textures viewed at an angle don't need 4K |
+| Enable [progressive texture loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods) | Low-res loads first, full quality on demand, unused textures released from GPU memory |
+| Avoid WebP textures for VR | WebP is uncompressed in GPU memory despite small file size |
 
 ### Physics
 
 Physics simulation (Rapier) runs on the CPU and can become expensive with many active rigidbodies or complex collider shapes.
 
 **Fixes:**
-- Use simple collider shapes (box, sphere, capsule) instead of mesh colliders
-- Reduce the number of active rigidbodies
-- Set objects to kinematic or static when they don't need to move
-- Disable colliders on objects that don't need physics interaction
+
+| <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
+|---|---|
+| Use simple collider shapes (box, sphere, capsule) | Mesh colliders are much more expensive to compute |
+| Reduce active rigidbodies | Each active body adds to the physics simulation cost |
+| Set objects to kinematic or static | Only dynamic bodies need full simulation each frame |
+| Disable colliders on non-interactive objects | Fewer colliders = less work for the physics engine |
 
 ### Expensive scripts
 
 Scripts that run every frame (`update()`) add to the CPU cost. In VR, even small per-frame costs add up because the frame budget is tight.
 
 **Fixes:**
-- Profile your code in Chrome DevTools to find expensive functions
-- Avoid allocations (creating new objects/arrays) in `update()` — this triggers garbage collection which causes frame spikes
-- Use events or coroutines instead of polling in `update()` where possible
-- Cache component lookups and calculations
+
+| <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
+|---|---|
+| Profile your code in Chrome DevTools | Find the expensive functions before guessing |
+| Avoid allocations in `update()` | Creating new objects/arrays triggers garbage collection frame spikes |
+| Use events instead of polling in `update()` | Skips unnecessary checks when nothing has changed |
+| Cache component lookups and calculations | e.g. calling `findObjectOfType` every frame is expensive — do it once in `start()` and store the result |
 
 ## Quest-Specific Tips
 
