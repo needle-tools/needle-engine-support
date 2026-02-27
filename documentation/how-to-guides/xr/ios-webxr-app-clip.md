@@ -135,6 +135,12 @@ Here's an example of how the iOS AR experience looks with custom branding:
 
 Ensure that camera permissions are granted. Check in your device settings if the App Clip has access to the camera.
 
+### Geometry clips at a shorter distance than expected
+
+In extreme scenarios with very large scenes (e.g. architectural or landscape models spanning hundreds of meters or kilometers), ARKit may override your camera's far clipping plane with a shorter default (typically 100–200 meters).
+
+**Solution:** Override the far plane per frame using a custom component. See [My geometry clips / disappears at a short distance in AR](/docs/reference/faq/#my-geometry-clips-disappears-at-a-short-distance-in-ar) in the FAQ for details and a code example.
+
 ## Contact Us
 
 If you need further assistance, you can reach us at:

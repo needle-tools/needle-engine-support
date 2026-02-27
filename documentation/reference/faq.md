@@ -187,6 +187,36 @@ Ensure your project is set to Linear colorspace.
 
 
 
+## My geometry clips / disappears at a short distance in AR
+
+This only affects extreme scenarios with very large scenes (e.g. architectural or landscape models spanning hundreds of meters or kilometers). If your far clipping plane works as expected on desktop but geometry gets clipped much closer in AR (e.g. around 100–200 meters), this is typically caused by the device's AR runtime overriding your camera's far plane. For example, ARKit on iOS (used by Needle Go) imposes its own depth range limits.
+
+Needle Engine preserves your camera's far plane setting when entering XR, but the device may override it. The near plane is set to a minimum of 0.02 meters (scaled by rig world scale) to prevent close-up clipping.
+
+**Fix:** Override the far plane per frame during XR sessions with a custom component:
+
+```ts
+import { Behaviour, NeedleXRSession } from "@needle-tools/engine";
+import { PerspectiveCamera } from "three";
+
+export class XRClippingOverride extends Behaviour {
+    /** Set this to your desired far clipping distance in meters */
+    farClipPlane: number = 2000;
+
+    onUpdateXR(session: NeedleXRSession) {
+        const cam = this.context.mainCamera;
+        if (cam instanceof PerspectiveCamera) {
+            cam.far = this.farClipPlane;
+            cam.updateProjectionMatrix();
+        }
+    }
+}
+```
+
+:::tip
+Very large far plane values relative to the near plane can cause **z-fighting** (flickering surfaces). If you see visual artifacts, try increasing the near plane as well (e.g. to 0.1 or higher).
+:::
+
 ## My website doesn't have AR/VR buttons
   
 - Make sure to add the `WebXR` component somewhere inside your root `GltfObject`.
