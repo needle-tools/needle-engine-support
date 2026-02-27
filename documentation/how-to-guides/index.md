@@ -54,6 +54,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 ## <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">XR (AR & VR)</logo-header>
 
 - [WebXR Overview](/docs/how-to-guides/xr/) - AR and VR development guide
+- [VR Performance Optimization](/docs/how-to-guides/xr/vr-performance) - Profiling, bottlenecks, Quest tips
 - [iOS WebXR Support](/docs/how-to-guides/xr/ios-webxr-app-clip) - Native iOS WebXR via App Clips
 - [Image Tracking](/docs/how-to-guides/xr/image-tracking) - AR image tracking
 - [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) - Cross-platform interactions (iOS QuickLook)

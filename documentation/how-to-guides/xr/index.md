@@ -293,6 +293,12 @@ There are several experimental components for more expressive avatars. These are
 ![Avatar Example](https://user-images.githubusercontent.com/2693840/185243523-57c4b2a9-0ec7-4f88-b53b-585e879d504d.gif)
 *Example Avatar Rig with basic neck model and limb constraints*
 
+## Performance
+
+Running well in VR requires careful attention to performance — headsets render your scene twice per frame and have tight frame budgets.
+
+- [**VR Performance Optimization**](/docs/how-to-guides/xr/vr-performance) - Profiling, common bottlenecks, Quest-specific tips, and a pre-deployment checklist
+
 ## Next Steps
 
 **Learn More:**

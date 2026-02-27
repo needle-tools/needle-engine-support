@@ -293,6 +293,7 @@ Node.js is only required if you want to run our minimalistic networking server f
 
 ## Related Documentation
 
+- **[VR Performance Optimization](/docs/how-to-guides/xr/vr-performance)** - VR-specific profiling, bottlenecks, and Quest tips
 - **[gltf-progressive](/docs/gltf-progressive/)** - Progressive loading for any three.js project with advanced configuration and API reference
 - **[Deployment Platforms](/docs/how-to-guides/deployment/)** - Deploy to Netlify, Vercel, GitHub Pages, and more
 - **[Export Guide](/docs/how-to-guides/export/)** - Best practices for exporting 3D assets
