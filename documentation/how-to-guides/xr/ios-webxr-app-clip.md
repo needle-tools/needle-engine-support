@@ -107,7 +107,9 @@ Needle Engine's iOS WebXR support includes comprehensive functionality:
 
 ## Custom Branding for iOS AR
 
-On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription.  
+On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription.
+
+An active PRO subscription is required to maintain your custom branding. If your subscription lapses, the iOS AR experience will revert to the default Needle branding. To keep your custom look and feel, make sure your PRO subscription stays active.
 
 At the moment, setting up custom branding isn't automated, so please reach out to us at [hi@needle.tools](mailto:hi@needle.tools) if you're interested in customizing the iOS AR experience for your project.
 
