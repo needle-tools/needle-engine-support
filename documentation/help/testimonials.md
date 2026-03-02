@@ -107,12 +107,21 @@ We just gotta say WOW 🤩
 Spent the last 2.5 months building this game, never built a game/never used unity before, but absolutely loving the whole process with needle tools. So rapid!  Would love to make a career building AR experiences! 
 </testimonial>
 
-<testimonial 
-  name="Yuzu" 
+<testimonial
+  name="Yuzu"
   role="Web Game Developer"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
   img="/docs/testimonial/Yuzu.webp"
 >
 My workflow has been optimized 10X ever since i started using needle
+</testimonial>
+
+<testimonial
+  name="Steffen Aaland"
+  role="3D Artist"
+  src="https://www.artstation.com/steffenaaland"
+  img="/docs/testimonial/SteffenAaland.webp"
+>
+I have tested in your engine, and it worked at first try, which i have not experienced in any other engine.
 </testimonial>
 
