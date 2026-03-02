@@ -94,6 +94,27 @@ https://appclip.needle.tools/ar?url=https://example.com/my-ar-experience
 
 Use this URL in QR codes, links, or share it directly. When opened on iPhone or iPad, it launches the Needle Go App Clip with your WebXR experience.
 
+### QR Codes for Instant AR
+
+When creating QR codes for your AR experience, you can link directly to the App Clip so that users on iOS are immediately presented with the App Clip card and can enter AR without navigating your website first.
+
+To do this, encode the following URL in your QR code:
+
+```
+https://appclip.needle.tools/ar?url=<your-webxr-url>
+```
+
+**Example:**
+```
+https://appclip.needle.tools/ar?url=https://example.com/my-ar-experience
+```
+
+When an iOS user scans this QR code, the App Clip card appears immediately, allowing them to jump straight into the AR experience with a single tap.
+
+:::tip
+This is the recommended approach for physical installations, exhibitions, product packaging, or any scenario where you want users to enter AR as quickly as possible.
+:::
+
 ## Supported WebXR Features
 
 Needle Engine's iOS WebXR support includes comprehensive functionality:
@@ -107,11 +128,15 @@ Needle Engine's iOS WebXR support includes comprehensive functionality:
 
 ## Custom Branding for iOS AR
 
-On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription.
+On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription. Custom branding is only supported when using **QR codes** to launch the AR experience.
+
+Scan the QR code below with your iOS device to see how the App Clip card looks with the [image tracking sample](/docs/how-to-guides/xr/image-tracking):
+
+<img src="/imgs/needlego-qrcode.png" alt="Needle Go App Clip QR Code" style="max-width: 400px">
 
 An active PRO subscription is required to maintain your custom branding. If your subscription lapses, the iOS AR experience will revert to the default Needle branding. To keep your custom look and feel, make sure your PRO subscription stays active.
 
-At the moment, setting up custom branding isn't automated, so please reach out to us at [hi@needle.tools](mailto:hi@needle.tools) if you're interested in customizing the iOS AR experience for your project.
+Please contact us at [hi@needle.tools](mailto:hi@needle.tools) for custom branding.
 
 ::: tip Required Branding Assets
 
