@@ -484,14 +484,13 @@ export default defineUserConfig({
     bundler: viteBundler(),
     extendsMarkdown: (md) => {
         // Custom image renderer for high-DPI images
-        const defaultImageRenderer = md.renderer.rules.image;
-        if (!defaultImageRenderer) return;
+        const defaultImageRenderer = md.renderer.rules.image || md.renderer.renderToken.bind(md.renderer);
         md.renderer.rules.image = (tokens, idx, options, env, self) => {
             const token = tokens[idx];
             const src = token.attrGet('src');
             const alt = token.content;
             const title = token.attrGet('title');
-                    
+
             if (title === '2x') {
                 token.attrSet('title', '');
                 return `<img src="${src}" srcset="${src} 2x" alt="${alt}">`;
