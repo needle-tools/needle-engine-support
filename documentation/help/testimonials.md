@@ -128,8 +128,17 @@ I have tested in your engine, and it worked at first try, which i have not exper
 <testimonial
   name="Dario Sanchez"
   role="why.de"
+  src="https://why.de"
   img="/docs/testimonial/DarioSanchez.jpg"
 >
 Needle Engine has been the most flexible, easy to implement, and solid web AR implementation I've come across.
+</testimonial>
+
+<testimonial
+  name="Mike Bardeggia"
+  role="Founder, Pedestrian-X"
+  src="https://www.pedestrian-x.com/"
+>
+I've tried Adobe Aero, 8th Wall, and Niantic Lightship — all either dropped or required app store downloads. Finally, I found Needle with AppClip tech. I feel like I've found the right path with Needle.
 </testimonial>
 

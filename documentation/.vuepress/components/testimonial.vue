@@ -17,12 +17,11 @@ export default {
                 <slot></slot>
             </span>
             <div class="testimonial-footer">
-                <img :src="img" alt="Testimonial" v-if="img" />
+                <img :src="img || '/docs/testimonial/placeholder.svg'" alt="Testimonial" />
                 <p class="author">
                     <span class="name">
-                        <a :href="src" target="_blank">
-                            {{ name }}
-                        </a>
+                        <a v-if="src" :href="src" target="_blank">{{ name }}</a>
+                        <span v-else>{{ name }}</span>
                     </span>
                     <span class="role" v-if="role">
                         {{ role }}
