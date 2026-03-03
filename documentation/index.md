@@ -43,29 +43,16 @@ Powerful compression and optimization pipeline ensures your files are small and 
 
 .path-card {
   padding: 1.5rem;
-  border: 1px solid var(--c-border);
-  border-radius: 12px;
-  background: var(--c-quote-background);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  transition: box-shadow 0.3s ease, background 0.3s ease;
 }
 
 .path-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
-  background: rgba(255, 255, 255, 0.05);
-}
-
-@media (prefers-color-scheme: light) {
-  .path-card {
-    background: var(--c-quote-background);
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  }
-
-  .path-card:hover {
-    background: var(--c-quote-background);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.12);
-  }
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.8);
 }
 </style>
 

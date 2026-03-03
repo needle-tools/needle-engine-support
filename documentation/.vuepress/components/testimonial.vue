@@ -42,7 +42,7 @@ export default {
     margin: 0 0 1rem 0;
     padding: 1.5rem 1.5rem 1.5rem 2rem;
     background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(0, 0, 0, 0.06);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 1rem;
     box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     transition: box-shadow 0.3s ease, background 0.3s ease;
