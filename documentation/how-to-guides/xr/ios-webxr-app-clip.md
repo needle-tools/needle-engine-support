@@ -14,6 +14,14 @@ Needle Engine now includes native iOS WebXR support through Needle Go. While Saf
 
 [![iOS WebXR on iPhone](https://cloud.needle.tools/-/media/WI0Q0s961BjdXgUEQHxifQ.gif)](https://appclip.needle.tools)
 
+<testimonial
+  name="Dario Sanchez"
+  role="why.de"
+  img="/docs/testimonial/DarioSanchez.jpg"
+>
+Needle Engine has been the most flexible, easy to implement, and solid web AR implementation I've come across.
+</testimonial>
+
 ## How iOS WebXR Works in Needle Engine
 
 Needle Engine automatically enables WebXR AR experiences on iPhone and iPad using App Clip technology, in the form of our Needle Go App Clip. App Clips launch instantly without requiring full app installation, making it perfect for sharing AR experiences via QR codes, links, or smart app banners.

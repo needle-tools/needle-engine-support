@@ -125,3 +125,11 @@ My workflow has been optimized 10X ever since i started using needle
 I have tested in your engine, and it worked at first try, which i have not experienced in any other engine.
 </testimonial>
 
+<testimonial
+  name="Dario Sanchez"
+  role="why.de"
+  img="/docs/testimonial/DarioSanchez.jpg"
+>
+Needle Engine has been the most flexible, easy to implement, and solid web AR implementation I've come across.
+</testimonial>
+
