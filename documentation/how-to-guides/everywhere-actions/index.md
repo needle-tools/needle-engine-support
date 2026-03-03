@@ -26,6 +26,14 @@ Build experiences that work across **all platforms**:
 | **<logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS WebXR</logo-header>** | ✅ **Full native AR** | Via [Needle Go App Clip](../xr/ios-webxr-app-clip) |
 | **<logo-header logo="/imgs/quicklook-logo.webp" alt="QuickLook">iOS QuickLook</logo-header>** | ✅ Supported | Apple Vision Pro, iPhone, iPad |
 
+<testimonial
+  name="Martin F"
+  role="3D Generalist, Slovenia"
+  src="https://www.youtube.com/watch?v=1KKfct3Zpcw&t=8s"
+>
+It's the only thing I know that does Quick Look with one click and with interactions — that was amazing.
+</testimonial>
+
 :::tip Native WebXR on iOS Now Available! 🎉
 Full WebXR support is now available on iOS through [Needle Go App Clip](../xr/ios-webxr-app-clip). Experience complete AR and VR on iPhone and iPad without app installation — just open your WebXR scene in Safari or Chrome!
 :::

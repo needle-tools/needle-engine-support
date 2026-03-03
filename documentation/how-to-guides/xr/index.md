@@ -11,6 +11,14 @@ description: Build immersive VR and AR experiences that work on Meta Quest, Appl
 Experience WebXR in action: [View XR Samples](https://engine.needle.tools/samples/?overlay=samples&tag=xr)
 :::
 
+<testimonial
+  name="Toby"
+  role="XR Developer, Live Studios. MIT Reality Hack Winner"
+  src="https://www.youtube.com/watch?v=3oHyrx8e20g&t=261s"
+>
+I discovered Needle which pretty much addressed all the issues I had. There were so many pre-made components, samples, and such a well-made documentation that it felt really easy to get started. At the MIT hackathon, I think we were by far the fastest team.
+</testimonial>
+
 ## Why Choose Needle Engine for XR
 
 **True Cross-Platform Support**

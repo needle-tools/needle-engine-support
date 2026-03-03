@@ -12,7 +12,6 @@ export default {
 <template>
     <div class="root">
         <div class="testimonial">
-            <!-- <span class="marker">“</span> -->
             <span class="quote">
                 <slot></slot>
             </span>
@@ -35,20 +34,24 @@ export default {
 <style scoped>
 .root {
     display: flex;
-    /* justify-content: center; */
 }
 
 .testimonial {
     display: flex;
     flex-direction: column;
     margin: 0 0 1rem 0;
-    padding: 1.5rem;
-    background-color: var(--c-quote-background);
-    color: var(--c-quote-text);
-    border: 1px solid var(--c-border);
+    padding: 1.5rem 1.5rem 1.5rem 2rem;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(0, 0, 0, 0.06);
     border-radius: 1rem;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, .0);
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    transition: box-shadow 0.3s ease, background 0.3s ease;
     flex-grow: 1;
+
+    &:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
+        background: rgba(255, 255, 255, 0.8);
+    }
 }
 
 .testimonial-footer {
@@ -60,39 +63,51 @@ export default {
         width: 2.5rem;
         height: 2.5rem;
         border-radius: 50%;
-        margin-right: 1rem;
+        margin-right: 0.75rem;
+        object-fit: cover;
     }
 
     & .author {
         display: flex;
         flex-direction: column;
-        color: var(--c-quote-text);
         text-align: left;
         margin: 0;
 
         & .name, & .name a {
-            font-weight: bold;
-            color: var(--c-quote-text);
+            font-weight: 600;
+            color: var(--c-text);
+            text-decoration: none;
+        }
+
+        & .name a:hover {
+            color: var(--c-brand);
         }
 
         & .role {
-            color: var(--c-quote-text);
+            color: var(--c-text-lighter);
+            font-size: 0.85rem;
         }
     }
 }
 
 .quote {
-    font-size: 1.15rem;
-    margin-left: 3.5rem;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-left: 2.5rem;
     position: relative;
+    color: var(--c-text);
+    font-style: italic;
 
     &::before {
-        content:"“";
-        font-size: 6rem;
-        line-height: 5rem;
+        content: "\201C";
+        font-family: Georgia, serif;
+        font-size: 3.5rem;
+        line-height: 1;
         position: absolute;
-        left: -3.5rem;
-        color: var(--c-quote-light);
+        left: -2.5rem;
+        top: -0.5rem;
+        color: var(--c-brand);
+        font-style: normal;
     }
 }
 

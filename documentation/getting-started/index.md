@@ -20,6 +20,15 @@ With Needle Engine, you get:
 - ⚡ **Hot reload** for instant feedback during development
 - 🌐 **Deploy anywhere** on the web with a single command
 
+<testimonial
+  name="Steffen Aaland"
+  role="3D Artist"
+  src="https://www.artstation.com/steffenaaland"
+  img="/docs/testimonial/SteffenAaland.webp"
+>
+I have tested in your engine, and it worked at first try, which i have not experienced in any other engine.
+</testimonial>
+
 ---
 
 ## Choose Your Workflow

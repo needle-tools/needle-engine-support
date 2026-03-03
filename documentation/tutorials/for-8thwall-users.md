@@ -8,6 +8,14 @@ sidebarTitle: For 8th Wall Users
 
 If you're an 8th Wall developer looking for a new platform for your WebAR projects, this guide will help you understand how Needle Engine works and how your existing skills transfer over.
 
+<testimonial
+  name="Mike Bardeggia"
+  role="Founder, Pedestrian-X"
+  src="https://www.pedestrian-x.com/"
+>
+I've tried Adobe Aero, 8th Wall, and Niantic Lightship — all either dropped or required app store downloads. Finally, I found Needle with AppClip tech. I feel like I've found the right path with Needle.
+</testimonial>
+
 :::tip New to Needle Engine?
 Needle Engine is a web-first 3D runtime built on three.js. It works with [Unity](/docs/unity/) and [Blender](/docs/blender/) for visual scene authoring, or you can code directly with TypeScript/JavaScript.
 

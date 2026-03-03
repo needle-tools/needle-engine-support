@@ -15,6 +15,15 @@ Create **highly interactive, flexible, and lightweight web applications** right 
 - Integrate seamlessly with any web frontend framework
 - Deploy anywhere on the web with hot reload support
 
+<testimonial
+  name="Chris Mahoney"
+  role="Founder, Our Computer Company. Ex-Unity, Ex-Lamina1"
+  src="https://x.com/mahoneymatic/status/1562981022932684800?t=qNqojoZkk2CZrJa7dGzqng&s=19"
+  img="/docs/testimonial/ChrisMahoney.webp"
+>
+Unbelievable Unity editor integration by an order of magnitude, and as straightforward as the docs claim. Wow.
+</testimonial>
+
 ---
 
 ## Install the Unity Package

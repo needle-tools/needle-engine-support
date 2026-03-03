@@ -12,6 +12,14 @@ editLink: true
 By the end of this tutorial, you'll have the Blender add-on installed, a web project running locally, and understand how to add basic interactivity to your scenes.
 :::
 
+<testimonial
+  name="Martin F"
+  role="3D Generalist, Slovenia"
+  src="https://www.youtube.com/watch?v=1KKfct3Zpcw&t=66s"
+>
+Needle Engine really eased up a lot of developer work — it's very artist friendly. The workflow was very fast and agile.
+</testimonial>
+
 ---
 
 ## Prerequisites
