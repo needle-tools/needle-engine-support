@@ -35,6 +35,54 @@ I have tested in your engine, and it worked at first try, which i have not exper
 </testimonial>
 
 <testimonial
+  name="Steven"
+  role="CTO, Virtually Sports"
+  src="https://www.youtube.com/watch?v=naPlw5aDJHs&t=3s"
+>
+As a tool, Needle Engine has been absolutely instrumental in us getting our product out the door. The support was really, really good. It just makes the workflow so easy, even people that aren't developers only have to click one button. We definitely plan on staying with Needle for the foreseeable future.
+</testimonial>
+
+<testimonial
+  name="Paul Kirsten"
+  role="Co-founder, Prefrontal Cortex"
+  src="https://www.youtube.com/watch?v=mWRhkFi7pQA&t=78s"
+>
+You can animate something and press export and it's in the browser. That workflow is really interesting for us. You can share something with a customer and say "Here's a URL, join me" — and this always impresses people.
+</testimonial>
+
+<testimonial
+  name="Duncan Macintosh"
+  role="Director, Gamola"
+  src="https://www.youtube.com/watch?v=gZuC40Alr88&t=61s"
+>
+The reason we got into Needle, which I absolutely love, is because we were looking for a solution to show our interactive work. I saw some examples and it blew my mind. It just works on everything — that's the mad thing, it just works on every browser. It can be used by people like me who can't code.
+</testimonial>
+
+<testimonial
+  name="Fran & Nick"
+  role="Cartoon Fun, UK"
+  src="https://www.youtube.com/watch?v=F6_buCHZhWk&t=109s"
+>
+Using Needle Tools, it's just magical stuff to work with — it's brilliant. The speed of iteration, being able to see edits on the fly, is absolutely awesome. It's a total game changer. I've never seen or worked with anything like it. And none of this would be happening if it wasn't for Needle Tools.
+</testimonial>
+
+<testimonial
+  name="Toby"
+  role="XR Developer, Live Studios. MIT Reality Hack Winner"
+  src="https://www.youtube.com/watch?v=3oHyrx8e20g&t=261s"
+>
+I discovered Needle which pretty much addressed all the issues I had. I could use Unity, my existing assets, the IDE I liked. There were so many pre-made components, samples, and such a well-made documentation that it felt really easy to get started. At the MIT hackathon, I think we were by far the fastest team.
+</testimonial>
+
+<testimonial
+  name="Martin F"
+  role="3D Generalist, Slovenia"
+  src="https://www.youtube.com/watch?v=1KKfct3Zpcw&t=66s"
+>
+Needle Engine really eased up a lot of developer work — it's very artist friendly. The workflow was very fast and agile. When we saw it's multiplayer, we started screaming in our office. For everyone wanting to do web experiences or AR, I really recommend Needle Engine. Amazing support, amazing community — I love it.
+</testimonial>
+
+<testimonial
   name="Yuzu"
   role="Web Game Developer"
   src="https://discord.com/channels/717429793926283276/1264966222467043433/1265268833485066240"
