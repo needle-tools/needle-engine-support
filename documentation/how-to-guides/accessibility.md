@@ -22,16 +22,16 @@ The `AccessibilityManager` creates an invisible DOM tree alongside your 3D canva
 
 The following built-in components register themselves with the `AccessibilityManager` automatically — no configuration needed:
 
-| Component | ARIA role | Announced as |
+| Component | ARIA role | Label announced |
 | --- | --- | --- |
-| `Button` | `button` | Button label |
-| `Text` | `text` / `paragraph` | Text content |
-| `DragControls` | `application` | Draggable object name |
-| `ChangeTransformOnClick` | `button` | Object name |
-| `ChangeMaterialOnClick` | `button` | Object name |
-| `EmphasizeOnClick` | `button` | Object name |
-| `PlayAudioOnClick` | `button` | Object name |
-| `PlayAnimationOnClick` | `button` | Object name |
+| `Button` | `button` | `"<ObjectName> button"` |
+| `Text` | `text` | Text content |
+| `DragControls` | `button` | `"Drag <ObjectName>"` |
+| `ChangeTransformOnClick` | `button` | `"Move <object> to <target> on click"` |
+| `ChangeMaterialOnClick` | `button` | `"Change material to <material>"` |
+| `EmphasizeOnClick` | `button` | `"Emphasize <target> on click"` |
+| `PlayAudioOnClick` | `button` | `"Play audio: <clip>"` |
+| `PlayAnimationOnClick` | `button` | `"Plays animation <name> on <target>"` |
 
 If your scene uses any of these components, screen readers can already announce and navigate interactive elements out of the box.
 
