@@ -47,6 +47,7 @@ Build your foundation with these essential tutorials:
 ### Migrating from Other Platforms
 
 - [For 8th Wall Users](./for-8thwall-users) - Transition guide for 8th Wall developers
+- [For Adobe Aero Users](./for-adobe-aero-users) - Migration guide for Adobe Aero users
 
 ---
 
