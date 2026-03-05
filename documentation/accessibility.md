@@ -15,7 +15,7 @@ The `AccessibilityManager` creates an invisible DOM tree alongside your 3D canva
 
 - **ARIA roles and labels** — each interactive object gets a `role` and `aria-label` in the hidden DOM
 - **Live region** — hovering over 3D objects announces them to the screen reader via `aria-live="polite"` without moving focus
-- **Focus tracking** — keyboard focus can be routed to the correct accessible element when a 3D element is activated
+- **Focus API** — `focus()` and `unfocus()` let you route keyboard focus to a hidden DOM element when a 3D object is activated
 - **No visual change** — the overlay is `position: absolute; width: 1px; height: 1px; clip: rect(0,0,0,0)`, completely invisible
 
 ## Automatic Integration
@@ -88,7 +88,7 @@ accessibility.hover(this.gameObject, "Hovering over the magic portal");
 
 ### `focus(obj)` / `unfocus(obj)`
 
-Routes keyboard focus to (or away from) the accessible element for a 3D object. The element must have a `tabindex` attribute to receive focus — built-in components set this up automatically.
+Routes keyboard focus to (or away from) the accessible element for a 3D object. The hidden DOM element must be focusable (have a `tabindex` attribute) for this to have any effect.
 
 ```ts
 accessibility.focus(this.gameObject);   // give focus
@@ -128,22 +128,21 @@ export class AccessiblePortal extends Behaviour implements IPointerEventHandler 
     label: string = "Enter portal";
 
     onEnable() {
-        this.context.accessibility?.updateElement(this.gameObject, {
+        this.context.accessibility.updateElement(this.gameObject, {
             role: "button",
             label: this.label,
         });
     }
 
     onDisable() {
-        this.context.accessibility?.removeElement(this.gameObject);
+        this.context.accessibility.removeElement(this.gameObject);
     }
 
     onPointerEnter(_data: PointerEventData) {
-        this.context.accessibility?.hover(this.gameObject);
+        this.context.accessibility.hover(this.gameObject);
     }
 
     onPointerClick(_data: PointerEventData) {
-        this.context.accessibility?.focus(this.gameObject);
         // ... do the portal logic
     }
 }
