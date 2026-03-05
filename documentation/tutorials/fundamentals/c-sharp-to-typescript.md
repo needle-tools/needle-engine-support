@@ -428,6 +428,26 @@ if (isDevEnvironment()) {
 
 ---
 
+## Automatic C# to TypeScript Conversion
+
+If you have existing C# scripts and want a head start translating them to TypeScript, you can try the experimental **C# to TypeScript** package for Unity. It provides automated conversion of your C# components to Needle Engine TypeScript components.
+
+### Installation
+
+Add the package to your Unity project via the package name:
+
+```
+com.needle.csharp-to-typescript
+```
+
+You can add it through Unity's Package Manager using **Add package by name** or by adding it directly to your `manifest.json`.
+
+:::warning Experimental
+This package is currently experimental. The generated TypeScript may require manual adjustments, especially for complex scripts. Always review and test the output.
+:::
+
+---
+
 ## What's Next?
 
 **Continue learning:**
