@@ -57,74 +57,17 @@ export class MyInteractiveObject extends Behaviour {
 }
 ```
 
-## API Reference
-
-### `updateElement(obj, data)`
-
-Registers the accessible DOM element for a 3D object or component. Call this once in `onEnable` to add the object to the accessibility tree.
-
-```ts
-accessibility.updateElement(this.gameObject, {
-    role: "button",    // ARIA role — e.g. "button", "img", "region", "application"
-    label: "Play",     // Human-readable label announced by screen readers
-    hidden: false,     // When true, hides from the accessibility tree
-    busy: false,       // When true, indicates content is being updated
-});
-```
-
-To change the label dynamically after registration, call `removeElement()` first, then `updateElement()` again with the new data.
-
-### `hover(obj, text?)`
-
-Announces a hover event to screen readers via the ARIA live region. Call this when the user's cursor enters an interactive 3D object:
-
-```ts
-// On pointer enter — announces the element's aria-label
-accessibility.hover(this.gameObject);
-
-// Or announce custom text
-accessibility.hover(this.gameObject, "Hovering over the magic portal");
-```
-
-### `focus(obj)` / `unfocus(obj)`
-
-Routes keyboard focus to (or away from) the accessible element for a 3D object. The hidden DOM element must be focusable (have a `tabindex` attribute) for this to have any effect.
-
-```ts
-accessibility.focus(this.gameObject);   // give focus
-accessibility.unfocus(this.gameObject); // remove focus
-```
-
-### `removeElement(obj)`
-
-Removes the accessible DOM element for an object and stops tracking it:
-
-```ts
-accessibility.removeElement(this.gameObject);
-```
-
-### `enabled`
-
-Enables or disables the entire accessibility overlay. When disabled, the hidden DOM is removed from the page:
-
-```ts
-// Disable the overlay (e.g. for performance-critical embedded scenarios)
-this.context.accessibility.enabled = false;
-
-// Re-enable it
-this.context.accessibility.enabled = true;
-```
-
 ## Custom Component Example
 
 Here is a complete example of a custom interactive component that participates in the accessibility tree:
 
 ```ts
-import { Behaviour, IPointerEventHandler, PointerEventData } from "@needle-tools/engine";
+import { Behaviour, IPointerEventHandler, PointerEventData, serializable } from "@needle-tools/engine";
 
 export class AccessiblePortal extends Behaviour implements IPointerEventHandler {
 
     /** Label read by screen readers */
+    @serializable()
     label: string = "Enter portal";
 
     onEnable() {

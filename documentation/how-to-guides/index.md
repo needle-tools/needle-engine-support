@@ -37,6 +37,10 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
 - [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, triggers
 
+### Accessibility
+
+- [Accessibility](/docs/how-to-guides/accessibility) - Make 3D scenes accessible to screen readers and assistive technology
+
 ### Built-in Components
 
 - [Camera Controls (OrbitControls)](./components/orbit-controls) - Navigate 3D scenes
