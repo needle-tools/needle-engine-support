@@ -434,13 +434,7 @@ If you have existing C# scripts and want a head start translating them to TypeSc
 
 ### Installation
 
-Add the package to your Unity project via the package name:
-
-```
-com.needle.csharp-to-typescript
-```
-
-You can add it through Unity's Package Manager using **Add package by name** or by adding it directly to your `manifest.json`.
+Install it via Unity's Package Manager by searching for `com.needle.csharp-to-typescript`.
 
 :::warning Experimental
 This package is currently experimental. The generated TypeScript may require manual adjustments, especially for complex scripts. Always review and test the output.
