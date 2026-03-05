@@ -31,11 +31,14 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
 - [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences and delays
 
-### Interaction & Physics
+### Interaction
 
 - [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
 - [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
-- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, triggers
+
+### Physics (Rapier)
+
+- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, triggers, character controllers — powered by [Rapier](https://rapier.rs/)
 
 ### Accessibility
 
@@ -70,6 +73,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - [Networking Overview](/docs/how-to-guides/networking/) - Multiplayer guide
 - [Set Up Networking](/docs/how-to-guides/networking/setup) - Quick start (5 minutes)
 - [Sync Component State](/docs/how-to-guides/networking/sync-state) - Automatic networking with @syncField
+- [Voice Chat (VoIP)](/docs/how-to-guides/networking/#voice-chat-voip) - Built-in WebRTC voice chat with spatial audio
 - [Manual Networking](/docs/how-to-guides/networking/manual-networking) - Custom messages
 - [Custom Servers](/docs/how-to-guides/networking/custom-servers) - Self-hosted infrastructure
 

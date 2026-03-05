@@ -94,7 +94,7 @@ For Needle Engine Postprocessing in Unity you need to use URP (Universal Render 
 | [`SyncedTransform`](https://engine.needle.tools/docs/api/SyncedTransform) | Sync object position, rotation, scale across clients |
 | [`SyncedCamera`](https://engine.needle.tools/docs/api/SyncedCamera) | Sync camera view to other users with custom rendering |
 | [`PlayerSync`](https://engine.needle.tools/docs/api/PlayerSync) | Instantiate object per connected user (avatars, etc.) |
-| [`Voip`](https://engine.needle.tools/docs/api/Voip) | Voice chat with spatial audio • [Sample](https://samples.needle.tools/collaborative-sandbox) |
+| [`Voip`](https://engine.needle.tools/docs/api/Voip) | Voice chat with spatial audio via WebRTC |
 | [`ScreenCapture`](https://engine.needle.tools/docs/api/ScreenCapture) | Screen sharing capabilities • [Sample](https://samples.needle.tools/screensharing) |
 
 ## 🖱️ Interaction

@@ -126,10 +126,12 @@ Now let's add camera controls so users can explore your scene.
 
 Components are reusable behaviors you add to objects. Needle Engine includes 100+ built-in components:
 - **OrbitControls** - Mouse/touch camera controls
+- **Rigidbody** + **Colliders** - Built-in Rapier physics simulation
+- **SyncedRoom** + **Voip** - Multiplayer with voice chat
 - **Animation** - Play animation clips
 - **WebXR** - Enable VR/AR with one click
 - **DragControls** - Make objects draggable
-- And many more!
+- **VideoPlayer**, **AudioSource**, **ParticleSystem**, and many more!
 
 **[Learn more about components →](/docs/blender/components)**
 
@@ -203,6 +205,12 @@ Master the 100+ built-in components and learn to create your own custom TypeScri
 
 **[Lightmapping →](/docs/blender/lightmapping)**
 Bake photorealistic lighting for stunning visuals with great performance.
+
+**[Use Physics →](/docs/how-to-guides/scripting/use-physics)**
+Add rigidbodies, colliders, forces, and raycasting — built-in Rapier physics, no setup needed.
+
+**[Add Multiplayer →](/docs/how-to-guides/networking/)**
+Real-time networking with voice chat, synchronized state, and zero server configuration.
 
 **[Optimization & Progressive Loading →](/docs/gltf-progressive/)**
 Production builds automatically generate mesh LODs, texture LODs, and apply compression — your scenes load instantly and stream in detail on demand.

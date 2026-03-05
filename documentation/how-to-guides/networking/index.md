@@ -79,6 +79,42 @@ Find specific information:
 | `PlayerColor` | Assign each user a random color |
 | `WebXR` | Synchronize VR/AR avatars (hands and heads) |
 
+## Voice Chat (VoIP)
+
+Needle Engine includes **built-in voice chat** using WebRTC — no server configuration needed.
+
+### Quick Setup
+
+Add voice chat to any multiplayer scene:
+
+1. Add a `SyncedRoom` component (if not already present)
+2. Add a `Voip` component to your scene
+3. That's it — users can talk to each other!
+
+```ts
+import { Behaviour, Voip } from "@needle-tools/engine";
+
+export class VoiceChatSetup extends Behaviour {
+    start() {
+        // Add voice chat to the scene programmatically
+        this.gameObject.addComponent(Voip);
+    }
+}
+```
+
+### How It Works
+
+- Uses **peer-to-peer WebRTC** connections (via peer.js) — audio goes directly between users, not through a server
+- Supports **spatial audio** — voices get quieter with distance
+- Works across desktop, mobile, and VR
+- No additional server costs for voice
+
+### Screen Sharing
+
+Use the `ScreenCapture` component alongside VoIP for screen sharing capabilities — [example](https://engine.needle.tools/samples/screensharing).
+
+---
+
 ## Default Networking Infrastructure
 
 By default, Needle scenes connect to cloud infrastructure managed by Needle:

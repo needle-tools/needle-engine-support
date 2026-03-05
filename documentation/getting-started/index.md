@@ -14,7 +14,9 @@ next: ../project-structure.md
 ## What You'll Get
 
 With Needle Engine, you get:
-- 🎨 **Visual authoring** in Unity or Blender
+- 🎨 **Visual authoring** in Unity or Blender — or pure code, no editor required
+- 🎯 **Built-in Rapier physics** — rigidbodies, colliders, raycasting, character controllers
+- 🤝 **Multiplayer & voice chat** — add networking with a single component, zero server setup
 - 🚀 **Automatic optimization** with state-of-the-art compression (up to 100x smaller files)
 - 📱 **Cross-platform** support (desktop, mobile, VR, AR)
 - ⚡ **Hot reload** for instant feedback during development

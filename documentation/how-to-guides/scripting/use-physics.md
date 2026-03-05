@@ -27,7 +27,7 @@ import { Behaviour, Rigidbody } from "@needle-tools/engine";
 export class PhysicsExample extends Behaviour {
     start() {
         // Add a rigidbody component at runtime
-        const rb = this.gameObject.addNewComponent(Rigidbody);
+        const rb = this.gameObject.addComponent(Rigidbody);
 
         // Configure physics properties
         rb.mass = 10;
@@ -493,7 +493,7 @@ export class PhysicsCharacter extends Behaviour {
 
 ## Performance Tips
 
-### Reduce Physics Updates
+### Cache Component References
 
 ```ts
 // Don't do this every frame:

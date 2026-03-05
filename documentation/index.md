@@ -21,11 +21,14 @@ Build on your machine, deploy anywhere. Share your 3D experiences with a simple 
 **🌐 True Cross-Platform**
 One codebase runs everywhere – desktop, mobile, VR headsets (Meta Quest, Apple Vision Pro), and mobile AR including native iOS WebXR support. When new XR devices launch, your apps work automatically.
 
-**🎨 Work in Powerful 3D Editors**
-Use Unity or Blender for modeling, materials, animations, lightmaps, and more. Visual authoring meets web deployment. Perfect for artists and developers collaborating together.
+**🎨 Work in Unity, Blender, or Pure Code**
+Full-featured integrations for both **[Unity](/docs/unity/)** and **[Blender](/docs/blender/)** — modeling, materials, animations, lightmaps, and more. Or skip the editors entirely and [build from code](/docs/three/) with three.js.
+
+**🎯 Built-in Rapier Physics**
+Full physics simulation with rigidbodies, colliders, raycasting, and character controllers – powered by [Rapier](https://rapier.rs/), ready to use with zero setup.
 
 **🤝 Multiplayer & XR Built-In**
-Collaboration and XR aren't afterthoughts – they're core features. Add multiplayer or immersive XR with a single component.
+Collaboration and XR aren't afterthoughts – they're core features. Add multiplayer, voice chat, or immersive XR with a single component.
 
 **⚡️ Optimized for Performance**
 Powerful compression and optimization pipeline ensures your files are small and load fast. Built on the glTF standard for maximum compatibility.
@@ -68,6 +71,7 @@ Perfect for newcomers who want to learn the fundamentals.
 
 - [Getting Started](./getting-started/)
 - [TypeScript Essentials](./tutorials/fundamentals/typescript-essentials)
+- [For Blender Artists](./tutorials/fundamentals/for-blender-artists)
 - [For Unity Developers](./tutorials/fundamentals/for-unity-developers)
 - [**Browse all Tutorials**](./tutorials/)
 
@@ -83,6 +87,7 @@ Get things done with focused how-to instructions.
 
 - [Create Components](./how-to-guides/scripting/create-components)
 - [Deploy to Production](./how-to-guides/deployment/)
+- [Use Physics](./how-to-guides/scripting/use-physics)
 - [Add Multiplayer](./how-to-guides/networking/)
 - [Enable WebXR](./how-to-guides/xr/)
 - [**Browse all How-To Guides**](./how-to-guides/)

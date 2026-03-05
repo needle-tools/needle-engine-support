@@ -142,19 +142,35 @@ Animation support extends to Blender too! Create animation state machines and ex
 
 [Read more about Animation Components](/docs/reference/components#animation)
 
-## Physics
+## Physics (Rapier)
 
-**Real-time physics simulation in the browser.**
+**Real-time physics simulation in the browser, powered by [Rapier](https://rapier.rs/).**
 
-Add realistic physics interactions using familiar components:
+Add realistic physics interactions using familiar components — no additional setup or dependencies required:
 - Rigidbodies for dynamic objects
-- Colliders: Box, Sphere, and Mesh
+- Colliders: Box, Sphere, Capsule, and Mesh
 - Physics materials for friction and bounce
 - Raycasting and collision detection
+- Character controllers for player movement
+
+Works from code without any editor — add physics to any object at runtime:
+
+```ts
+import { Behaviour, Rigidbody, BoxCollider } from "@needle-tools/engine";
+
+export class PhysicsBox extends Behaviour {
+    start() {
+        // Add physics to any object — Rapier is built in
+        const rb = this.gameObject.addComponent(Rigidbody);
+        rb.useGravity = true;
+        this.gameObject.addComponent(BoxCollider);
+    }
+}
+```
 
 <sample src="https://engine.needle.tools/samples-uploads/physics-animation/" />
 
-[Read more about Physics Components](/docs/reference/components#physics)
+[Use Physics Guide](/docs/how-to-guides/scripting/use-physics) • [Physics Components](/docs/reference/components#physics)
 
 ## Particle Systems
 
@@ -215,11 +231,13 @@ Powerful integrations for Unity and Blender allow artists and developers to coll
 - Asset pipeline integration
 - Hot reload during development
 
-**Blender Addon:**
+**Blender Add-on (full-featured, first-class workflow):**
 - Export glTF with Needle Engine components
 - Animation support (NLA tracks, state machines)
-- Material and lighting export
-- Node-based workflow
+- Material and lighting export including lightmapping
+- 100+ built-in components available directly in Blender
+- Hot reload — save in Blender, see changes instantly in the browser
+- [Get started with Blender →](/docs/blender/)
 
 ## Scripting and Development
 
