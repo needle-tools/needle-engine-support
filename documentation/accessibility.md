@@ -44,29 +44,17 @@ import { Behaviour } from "@needle-tools/engine";
 
 export class MyInteractiveObject extends Behaviour {
     onEnable() {
-        const accessibility = this.context.accessibility;
-        if (!accessibility) return;
-
         // Register this object as an accessible button
-        accessibility.updateElement(this.gameObject, {
+        this.context.accessibility.updateElement(this.gameObject, {
             role: "button",
             label: "Spin the cube",
         });
     }
 
     onDisable() {
-        this.context.accessibility?.removeElement(this.gameObject);
+        this.context.accessibility.removeElement(this.gameObject);
     }
 }
-```
-
-You can also use the static accessor from anywhere:
-
-```ts
-import { AccessibilityManager } from "@needle-tools/engine";
-
-const manager = AccessibilityManager.get(context); // pass a Context
-const manager2 = AccessibilityManager.get(myComponent); // or a component
 ```
 
 ## API Reference
