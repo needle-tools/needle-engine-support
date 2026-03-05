@@ -73,7 +73,7 @@ const manager2 = AccessibilityManager.get(myComponent); // or a component
 
 ### `updateElement(obj, data)`
 
-Creates or updates the accessible DOM element for a 3D object or component.
+Registers the accessible DOM element for a 3D object or component. Call this once in `onEnable` to add the object to the accessibility tree.
 
 ```ts
 accessibility.updateElement(this.gameObject, {
@@ -84,7 +84,7 @@ accessibility.updateElement(this.gameObject, {
 });
 ```
 
-All fields in the data object are optional — you can update just the label without changing the role.
+To change the label dynamically after registration, call `removeElement()` first, then `updateElement()` again with the new data.
 
 ### `hover(obj, text?)`
 
@@ -100,7 +100,7 @@ accessibility.hover(this.gameObject, "Hovering over the magic portal");
 
 ### `focus(obj)` / `unfocus(obj)`
 
-Routes keyboard focus to (or away from) the accessible element for a 3D object:
+Routes keyboard focus to (or away from) the accessible element for a 3D object. The element must have a `tabindex` attribute to receive focus — built-in components set this up automatically.
 
 ```ts
 accessibility.focus(this.gameObject);   // give focus
