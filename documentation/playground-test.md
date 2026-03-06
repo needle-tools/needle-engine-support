@@ -73,12 +73,37 @@ update() {
 }
 ```
 
+## Tutorial Walkthrough (Multi-Section)
+
+This demonstrates the walkthrough system: multiple code sections on the page linked to a single live preview. Each editor shows a different part of the same file, and edits in any section update the shared 3D output.
+
+### Step 1: Define Properties
+
+First, let's set up our component's configurable properties. Try changing the `speed` or `amplitude` values:
+
+<playground group="intro-tutorial" file="/docs/playground/examples/tutorial-intro.ts" section="properties" hidePreview height="150px"></playground>
+
+### Step 2: Write the Update Loop
+
+Now here's where the magic happens. The `update()` method runs every frame - this is where we animate:
+
+<playground group="intro-tutorial" section="update" hidePreview height="220px"></playground>
+
+Try changing the rotation axis from `rotateY` to `rotateX`, or multiply `amplitude` by 2!
+
+### Live Result
+
+<playground-output group="intro-tutorial" file="/docs/playground/examples/tutorial-intro.ts" height="400px"></playground-output>
+
+---
+
 ## Features
 
 - **Draggable separator**: Resize code/preview panels by dragging
 - **Custom code from file**: Use `file="/path/to/code.ts"` to load external code
 - **Custom code inline**: Use slot content for inline code with formatting
 - **Focused editing**: Use `focusRegion` with `// #region editable` markers to show only relevant code
+- **Tutorial walkthroughs**: Use `group` + `section` + `hidePreview` with `<playground-output>` for multi-section tutorials
 - **Type definitions**: CMD+click to navigate, press Escape or click Back to return
 - **Fullscreen**: Click the fullscreen button in the preview panel
 - **Theme support**: Automatically follows VuePress light/dark theme
@@ -92,3 +117,13 @@ The playground uses:
 - **Needle Engine** with hot-reloading component system
 
 Changes are compiled and applied in real-time as you type!
+
+## Walkthrough Authoring Guide
+
+To create a tutorial walkthrough:
+
+1. Create a `.ts` file with `// #section name` and `// #endsection` markers around editable sections
+2. Use `<playground group="key" file="..." section="name" hidePreview>` for each code section
+3. Use `<playground-output group="key" file="..." height="400px">` for the shared preview
+4. The `file` prop only needs to be on one component per group (first to mount loads it)
+5. Add `pinned` to `<playground-output>` to make it sticky while scrolling

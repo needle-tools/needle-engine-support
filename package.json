@@ -51,6 +51,7 @@
     "mdast-util-to-hast": "^13.2.0",
     "mermaid": "^11.9.0",
     "node-fetch": "^3.3.1",
+    "playwright": "^1.58.2",
     "sass-embedded": "^1.78.0",
     "three": "npm:@needle-tools/three@^0.169.19",
     "typedoc": "0.27.7",

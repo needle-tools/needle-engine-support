@@ -1,7 +1,10 @@
 <script>
+import { getGroup, ensureGroupCode, getSectionCode, updateSection, compileGroup, registerIframe, unregisterIframe, notifyIframeReady } from './playground-store.js';
+
 // Monaco is a singleton, but editor instances are per-component
 let monacoInstance = null;
 let typesLoaded = false;
+let instanceCounter = 0;
 
 export default {
   props: {
@@ -17,6 +20,12 @@ export default {
     file: { type: String, default: '' },
     // Show only editable region initially (use // #region editable / // #endregion markers)
     focusRegion: { type: Boolean, default: false },
+    // Group key - links multiple playgrounds to a shared output via playground-output
+    group: { type: String, default: '' },
+    // Named section to display/edit (uses // #section name ... // #endsection markers in the file)
+    section: { type: String, default: '' },
+    // Hide the preview panel (editor only mode, used with group + playground-output)
+    hidePreview: { type: Boolean, default: false },
   },
   data() {
     return {
@@ -35,6 +44,8 @@ export default {
       viewingDefinition: false, // True when viewing a type definition file
       editorWidth: 50, // Percentage width of editor panel
       isResizing: false,
+      groupRef: null,
+      wordWrap: false,
     }
   },
   computed: {
@@ -47,9 +58,16 @@ export default {
         'layout-vertical': this.layout === 'vertical',
         'preview-first': this.previewPosition === 'first',
       };
+    },
+    isGrouped() {
+      return !!this.group;
     }
   },
   async mounted() {
+    // Initialize group if linked
+    if (this.group) {
+      this.groupRef = getGroup(this.group);
+    }
     // Initialize code from various sources (must complete before init)
     await this.loadInitialCode();
     this.detectTheme();
@@ -68,11 +86,20 @@ export default {
     if (this.themeObserver) this.themeObserver.disconnect();
     if (this.debounceTimer) clearTimeout(this.debounceTimer);
     if (this._editorInstance) {
+      const model = this._editorInstance.getModel();
       this._editorInstance.dispose();
+      if (model) model.dispose();
       this._editorInstance = null;
     }
     if (this.isFullscreen) {
       document.exitFullscreen?.();
+    }
+    if (this.groupRef && this.$refs.previewFrame) {
+      unregisterIframe(this.groupRef, this.$refs.previewFrame);
+    }
+    if (this._markerClearer) {
+      this._markerClearer.dispose();
+      this._markerClearer = null;
     }
   },
   methods: {
@@ -90,6 +117,25 @@ export class Rotator extends Behaviour {
     },
 
     async loadInitialCode() {
+      // Grouped mode: load from store
+      if (this.groupRef) {
+        if (this.file) {
+          await ensureGroupCode(this.groupRef, this.file);
+        }
+        // Wait for another component in the group to finish loading the file
+        if (!this.groupRef.loaded && this.groupRef._loadPromise) {
+          await this.groupRef._loadPromise;
+        }
+        if (this.groupRef.loaded && this.section) {
+          this.code = getSectionCode(this.groupRef, this.section);
+          this.fullCode = this.groupRef.fullCode;
+        } else if (this.groupRef.loaded) {
+          this.code = this.groupRef.fullCode;
+          this.fullCode = this.groupRef.fullCode;
+        }
+        return;
+      }
+
       let rawCode = '';
 
       // Priority: file URL > src prop > slot content > default
@@ -208,7 +254,7 @@ export class Rotator extends Behaviour {
       return result;
     },
 
-    extractTextFromSlot(nodes) {
+    extractTextFromSlot(nodes, topLevel = true) {
       if (!nodes) return '';
       let text = '';
       for (const node of nodes) {
@@ -217,13 +263,21 @@ export class Rotator extends Behaviour {
         } else if (typeof node.children === 'string') {
           text += node.children;
         } else if (Array.isArray(node.children)) {
-          text += this.extractTextFromSlot(node.children);
+          text += this.extractTextFromSlot(node.children, false);
         } else if (node.type === Symbol.for('v-txt')) {
           text += node.children || '';
         }
+        // Add newlines after block-level elements (VuePress wraps lines in <p> tags)
+        if (typeof node.type === 'string') {
+          if (node.type === 'p') text += '\n\n';
+          else if (node.type === 'br') text += '\n';
+        }
       }
-      // Trim leading/trailing whitespace but preserve internal indentation
-      return text.replace(/^\s*\n/, '').replace(/\n\s*$/, '');
+      if (topLevel) {
+        // Trim leading/trailing whitespace but preserve internal indentation
+        text = text.replace(/^\s*\n/, '').replace(/\n\s*$/, '');
+      }
+      return text;
     },
 
     async init() {
@@ -268,15 +322,11 @@ export class Rotator extends Behaviour {
         }
         this.typesReady = true;
 
-        // Create the editor with a file:// URI model for proper go-to-definition
+        // Create the editor with a unique file:// URI model per instance
         const container = this.$refs.editorContainer;
-        this._mainModelUri = monacoInstance.Uri.parse('file:///src/main.ts');
-        let model = monacoInstance.editor.getModel(this._mainModelUri);
-        if (!model) {
-          model = monacoInstance.editor.createModel(this.code, 'typescript', this._mainModelUri);
-        } else {
-          model.setValue(this.code);
-        }
+        this._instanceId = ++instanceCounter;
+        this._mainModelUri = monacoInstance.Uri.parse(`file:///src/playground-${this._instanceId}.ts`);
+        const model = monacoInstance.editor.createModel(this.code, 'typescript', this._mainModelUri);
         this._editorInstance = monacoInstance.editor.create(container, {
           model,
           theme: this.isDark ? 'vs-dark' : 'vs',
@@ -296,8 +346,24 @@ export class Rotator extends Behaviour {
         // Listen for content changes
         this._editorInstance.onDidChangeModelContent(() => {
           this.code = this._editorInstance.getValue();
-          this.scheduleCompile();
+          if (this.groupRef && this.section) {
+            updateSection(this.groupRef, this.section, this.code);
+          } else {
+            this.scheduleCompile();
+          }
         });
+
+        // Section editors show code fragments - suppress TypeScript diagnostics
+        // (the full code is validated at compile time by esbuild)
+        if (this.groupRef && this.section) {
+          const sectionModel = this._editorInstance.getModel();
+          const sectionUri = this._mainModelUri;
+          this._markerClearer = monacoInstance.editor.onDidChangeMarkers(([uri]) => {
+            if (uri?.toString() === sectionUri.toString()) {
+              monacoInstance.editor.setModelMarkers(sectionModel, 'typescript', []);
+            }
+          });
+        }
 
         // Handle go-to-definition by opening the target model in the same editor
         // Store reference for use in closures
@@ -358,7 +424,9 @@ export class Rotator extends Behaviour {
         this.loading = false;
         console.log('[playground] Ready!');
 
-        if (this.iframeReady) {
+        if (this.groupRef) {
+          compileGroup(this.groupRef);
+        } else if (this.iframeReady) {
           this.compile();
         }
 
@@ -498,6 +566,11 @@ export function serializable(type?: any): PropertyDecorator;
     },
 
     async compile() {
+      // Grouped mode: delegate to store
+      if (this.groupRef) {
+        await compileGroup(this.groupRef);
+        return;
+      }
       if (!this.iframeReady || this.compiling) return;
       if (!window.esbuild || !window.__esbuildReady) {
         console.log('[playground] esbuild not ready');
@@ -571,9 +644,20 @@ export function serializable(type?: any): PropertyDecorator;
 
     handleMessage(event) {
       if (event.data?.type === 'needle-playground-ready') {
+        const frame = this.$refs.previewFrame;
+        if (!frame) return; // No preview (hidePreview mode)
+        if (event.source && event.source !== frame.contentWindow) return;
         this.iframeReady = true;
-        this.compile();
+        if (this.groupRef) {
+          registerIframe(this.groupRef, frame);
+          notifyIframeReady(this.groupRef, frame);
+        } else {
+          this.compile();
+        }
       } else if (event.data?.type === 'needle-playground-error') {
+        const frame = this.$refs.previewFrame;
+        if (!frame) return;
+        if (event.source && event.source !== frame.contentWindow) return;
         this.error = event.data.error;
       }
     },
@@ -609,6 +693,13 @@ export function serializable(type?: any): PropertyDecorator;
       } else {
         document.exitFullscreen?.();
         this.isFullscreen = false;
+      }
+    },
+
+    toggleWordWrap() {
+      this.wordWrap = !this.wordWrap;
+      if (this._editorInstance) {
+        this._editorInstance.updateOptions({ wordWrap: this.wordWrap ? 'on' : 'off' });
       }
     },
 
@@ -665,9 +756,9 @@ export function serializable(type?: any): PropertyDecorator;
 </script>
 
 <template>
-  <div ref="playgroundRoot" :class="['playground', { 'is-fullscreen': isFullscreen, 'theme-light': !isDark, 'is-resizing': isResizing }]" :style="{ '--playground-height': height, '--editor-width': editorWidth + '%' }">
+  <div ref="playgroundRoot" :class="['playground', { 'is-fullscreen': isFullscreen, 'theme-light': !isDark, 'is-resizing': isResizing, 'editor-only': hidePreview }]" :style="{ '--playground-height': height, '--editor-width': editorWidth + '%' }">
     <div :class="containerClass">
-      <div class="editor-panel" :style="{ flex: 'none', [layout === 'vertical' ? 'height' : 'width']: editorWidth + '%' }">
+      <div class="editor-panel" :style="hidePreview ? {} : { flex: 'none', [layout === 'vertical' ? 'height' : 'width']: editorWidth + '%' }">
         <div class="panel-header">
           <div class="panel-header-left">
             <button v-if="viewingDefinition" class="back-btn" @click="goBackToCode" title="Back to your code (Escape)">
@@ -676,40 +767,49 @@ export function serializable(type?: any): PropertyDecorator;
               </svg>
               Back
             </button>
-            <span class="panel-title">{{ viewingDefinition ? 'Type Definition' : 'TypeScript' }}</span>
+            <span class="panel-title">{{ viewingDefinition ? 'Type Definition' : (section || 'TypeScript') }}</span>
             <button v-if="editableRegion && !viewingDefinition" class="toggle-code-btn" @click="toggleFullCode" :title="showFullCode ? 'Show editable section' : 'Show full code'">
               {{ showFullCode ? 'Focus' : 'Full' }}
             </button>
           </div>
-          <span v-if="loading" class="status loading">Loading...</span>
-          <span v-else-if="compiling" class="status compiling">Compiling...</span>
-          <span v-else-if="error" class="status error">Error</span>
-          <span v-else-if="iframeReady" class="status ready">Live</span>
+          <div class="header-right">
+            <button class="wrap-btn" @click="toggleWordWrap" :title="wordWrap ? 'Disable word wrap' : 'Enable word wrap'" :class="{ active: wordWrap }">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 6h18M3 12h15a3 3 0 1 1 0 6h-4"/><path d="m14 16-2 2 2 2"/>
+              </svg>
+            </button>
+            <span v-if="loading" class="status loading">Loading...</span>
+            <span v-else-if="groupRef?.compiling || compiling" class="status compiling">Compiling...</span>
+            <span v-else-if="groupRef?.error || error" class="status error">Error</span>
+            <span v-else-if="iframeReady || (isGrouped && !loading)" class="status ready">Live</span>
+          </div>
         </div>
         <div ref="editorContainer" class="editor-container"></div>
       </div>
-      <div class="resize-handle" :class="{ 'resize-handle-vertical': layout === 'vertical' }" @mousedown="startResize"></div>
-      <div class="preview-panel" :style="{ flex: 'none', [layout === 'vertical' ? 'height' : 'width']: (100 - editorWidth) + '%' }">
-        <div class="panel-header">
-          <span class="panel-title">Preview</span>
-          <button class="fullscreen-btn" @click="toggleFullscreen" :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'">
-            <svg v-if="!isFullscreen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
-            </svg>
-            <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
-            </svg>
-          </button>
+      <template v-if="!hidePreview">
+        <div class="resize-handle" :class="{ 'resize-handle-vertical': layout === 'vertical' }" @mousedown="startResize"></div>
+        <div class="preview-panel" :style="{ flex: 'none', [layout === 'vertical' ? 'height' : 'width']: (100 - editorWidth) + '%' }">
+          <div class="panel-header">
+            <span class="panel-title">Preview</span>
+            <button class="fullscreen-btn" @click="toggleFullscreen" :title="isFullscreen ? 'Exit fullscreen' : 'Fullscreen'">
+              <svg v-if="!isFullscreen" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+              </svg>
+              <svg v-else width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M8 3v3a2 2 0 0 1-2 2H3m18 0h-3a2 2 0 0 1-2-2V3m0 18v-3a2 2 0 0 1 2-2h3M3 16h3a2 2 0 0 1 2 2v3"/>
+              </svg>
+            </button>
+          </div>
+          <iframe
+            ref="previewFrame"
+            :src="playgroundUrl"
+            class="preview-frame"
+            allow="xr-spatial-tracking; fullscreen"
+          ></iframe>
         </div>
-        <iframe
-          ref="previewFrame"
-          :src="playgroundUrl"
-          class="preview-frame"
-          allow="xr-spatial-tracking; fullscreen"
-        ></iframe>
-      </div>
+      </template>
     </div>
-    <div v-if="error" class="error-bar">{{ error }}</div>
+    <div v-if="error || groupRef?.error" class="error-bar">{{ error || groupRef?.error }}</div>
   </div>
 </template>
 
@@ -982,5 +1082,43 @@ export function serializable(type?: any): PropertyDecorator;
 .theme-light .fullscreen-btn:hover {
   background: rgba(0,0,0,0.1);
   color: #000;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.wrap-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background 0.15s, color 0.15s;
+  opacity: 0.6;
+}
+.wrap-btn:hover { opacity: 1; background: rgba(255,255,255,0.1); }
+.wrap-btn.active { opacity: 1; color: #4fc3f7; }
+.theme-light .wrap-btn:hover { background: rgba(0,0,0,0.1); }
+.theme-light .wrap-btn.active { color: #0288d1; }
+
+/* Editor-only mode (hidePreview) */
+.playground.editor-only {
+  width: 100%;
+}
+.playground.editor-only .playground-container {
+  height: var(--playground-height, 200px);
+}
+.playground.editor-only .editor-panel {
+  width: 100% !important;
+  height: 100% !important;
+  flex: 1 !important;
 }
 </style>
