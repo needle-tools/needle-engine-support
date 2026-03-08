@@ -27,7 +27,8 @@
       ]
     },
     "include": [
-      "../../.temp/**/src/**/*.ts"
+      "../../.temp/**/src/**/*.ts",
+      "../../.temp/**/plugins/types/**/*.ts"
     ],
     "exclude": ["node_modules", "dist", "lib", "vite.config.ts", "tests"]
   }
