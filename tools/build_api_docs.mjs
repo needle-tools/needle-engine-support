@@ -244,6 +244,9 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
             packageDir + "/src/engine-components/api.ts",
             packageDir + "/src/engine-components-experimental/api.ts",
             packageDir + "/src/engine-schemes/api.ts",
+            // Vite and Next.js plugin entry points
+            packageDir + "/plugins/types/vite.d.ts",
+            packageDir + "/plugins/types/next.d.ts",
         ],
         tsconfig: "./tools/api-plugins/tsconfig.json",
         // don't include references multiple times
