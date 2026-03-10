@@ -143,6 +143,7 @@ Learn the core language concepts:
 
 **After completing both guides:**
 
+- [Convert C# to TypeScript](../../how-to-guides/unity/csharp-to-typescript) - Auto-generate starter TypeScript from existing C# components
 - [Create Components](../../how-to-guides/scripting/create-components) - Build interactive components
 - [Lifecycle Methods](../../reference/api/lifecycle-methods) - Complete lifecycle API reference
 - [Component Reference](../../reference/components) - Built-in components

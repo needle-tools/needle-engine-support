@@ -382,7 +382,7 @@ While many features work without code, you can add custom interactivity with Typ
 
 **TypeScript workflow:**
 1. Write TypeScript components in `src/scripts/`
-2. C# stubs generate automatically in Unity
+2. C# stubs generate automatically in Unity (see [Component Compiler](#component-compiler) below)
 3. Add components to GameObjects visually
 4. Configure properties in the Inspector
 
@@ -397,6 +397,53 @@ While many features work without code, you can add custom interactivity with Typ
 - [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom components
 - [C# to TypeScript Translation](/docs/tutorials/fundamentals/c-sharp-to-typescript) - For Unity developers
 - [TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials) - Language basics
+
+---
+
+## Component Compiler
+
+Needle Engine provides tools for generating code in **both directions** between TypeScript and C#.
+
+### TypeScript → C# (Automatic)
+
+When you write a TypeScript component, the **component compiler** automatically generates a matching **C# stub** in Unity. This lets you add the component to GameObjects and configure its properties in the Inspector — without writing any C# yourself.
+
+```ts
+// You write this TypeScript...
+export class Rotate extends Behaviour {
+    @serializable()
+    speed: number = 1;
+
+    update() {
+        this.gameObject.rotateY(this.context.time.deltaTime * this.speed);
+    }
+}
+```
+
+A C# stub with a matching `speed` field appears in Unity automatically. Fields, types, and tooltips are all mapped.
+
+**Key features:**
+- Runs automatically in the background when you save `.ts` files
+- Generates `partial` classes so you can [extend them](/docs/explanation/core-concepts/component-compiler#extending-generated-components) with custom editor code
+- Supports [directives](/docs/explanation/core-concepts/component-compiler#controlling-component-generation) to control generation (`@type`, `@dont-generate-component`, etc.)
+- JSDoc comments become Unity tooltips
+
+[Full component compiler reference →](/docs/explanation/core-concepts/component-compiler)
+
+### C# → TypeScript (Experimental)
+
+Going the other way, the **C# to TypeScript** package can generate **starter TypeScript files** from your existing C# components. This is useful when porting an existing Unity project to Needle Engine.
+
+It converts class structure, fields, and type mappings — but **not** method implementations. You'll need to fill in the logic manually using Needle Engine APIs.
+
+**Install via Package Manager:**
+1. Open **Window > Package Manager**
+2. Click **+** → **Add package by name...**
+3. Enter `com.needle.csharp-to-typescript`
+
+Then right-click any C# script in the Project window and select the option to generate TypeScript.
+
+[Full C# to TypeScript guide →](/docs/how-to-guides/unity/csharp-to-typescript)
 
 ---
 

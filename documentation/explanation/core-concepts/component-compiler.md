@@ -12,6 +12,10 @@ tags:
 
 ## Automatically generating Editor components
 
+:::tip Going the other way? C# → TypeScript
+If you have **existing C# components** and want to generate TypeScript starter code from them, see [Convert C# Components to TypeScript](/docs/how-to-guides/unity/csharp-to-typescript).
+:::
+
 When working in Unity or Blender then you will notice that when you create a new Needle Engine component in Typescript or Javascript it will automatically generate a Unity C# stub component OR a Blender panel for you.  
 
 This is thanks to the [Needle component compiler](https://www.npmjs.com/package/@needle-tools/needle-component-compiler) that runs behind the scenes in an editor environment and watches changes to your script files. When it notices that you created a new Needle Engine component, it will generate a **Unity C# stub component** or a **Blender Python component schema** for you. These generated components include public variables, properties and methods, that you can then set from within the Editor. You can also wire up events to methods in your components.
