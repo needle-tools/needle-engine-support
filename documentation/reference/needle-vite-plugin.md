@@ -22,6 +22,26 @@ export default defineConfig(async ({ command }) => {
 
 ---
 
+## Options Overview
+
+| Option | Type | Default | Description |
+|--------|------|---------|-------------|
+| [`makeFilesLocal`](#makefileslocal) | `boolean \| "auto" \| object` | — | Bundle external CDN assets locally for self-contained deployments |
+| `pwa` | `object \| boolean` | — | PWA configuration. See [PWA Guide](/docs/how-to-guides/web-integration/pwa). |
+| `buildPipeline` | `object` | — | Configure the Needle build pipeline for compression and optimization. See [Optimization](/docs/how-to-guides/optimization/). |
+| `useRapier` | `boolean` | `true` | Set to `false` to tree-shake the Rapier physics engine and reduce bundle size |
+| `noPoster` | `boolean` | `false` | Disable automatic poster image generation |
+| `noBuildPipeline` | `boolean` | `false` | Disable the Needle build pipeline entirely |
+| `noBuildInfo` | `boolean` | `false` | Disable generating the `buildinfo.json` file |
+| `noCopy` | `boolean` | `false` | Disable automatic copying of files to the output directory |
+| `noReload` | `boolean` | `false` | Disable the reload plugin |
+| `allowHotReload` | `boolean` | `true` | Enable or disable hot reload for the Needle plugin |
+| `useDrop` | `boolean` | `false` | Enable the Vite drop plugin |
+| `openBrowser` | `boolean` | — | Automatically open a browser using a network IP address when the local server starts |
+| `debug` | `boolean` | `false` | Enable verbose debug output for Needle plugins |
+
+---
+
 ## makeFilesLocal
 
 *Available since Needle Engine 4.16.0*
@@ -176,28 +196,6 @@ dist/
 ```
 
 At the end of each build, the plugin logs a summary showing how many files were made local, the total size, and any downloads that failed.
-
----
-
-## Other Plugin Options
-
-Below is a summary of other options available in the Needle Vite plugin. For some of these, detailed guides are available elsewhere in the documentation.
-
-| Option | Type | Default | Description |
-|--------|------|---------|-------------|
-| `pwa` | `object \| boolean` | — | PWA configuration. See [PWA Guide](/docs/how-to-guides/web-integration/pwa). |
-| `buildPipeline` | `object` | — | Configure the Needle build pipeline for compression and optimization. See [Optimization](/docs/how-to-guides/optimization/). |
-| `useRapier` | `boolean` | `true` | Set to `false` to tree-shake the Rapier physics engine and reduce bundle size |
-| `noPoster` | `boolean` | `false` | Disable automatic poster image generation |
-| `noBuildPipeline` | `boolean` | `false` | Disable the Needle build pipeline entirely |
-| `noBuildInfo` | `boolean` | `false` | Disable generating the `buildinfo.json` file |
-| `noCopy` | `boolean` | `false` | Disable automatic copying of files to the output directory |
-| `noReload` | `boolean` | `false` | Disable the reload plugin |
-| `allowHotReload` | `boolean` | `true` | Enable or disable hot reload for the Needle plugin |
-| `useDrop` | `boolean` | `false` | Enable the Vite drop plugin |
-| `openBrowser` | `boolean` | — | Automatically open a browser using a network IP address when the local server starts |
-| `loadMaterialX` | `boolean` | — | Automatically import MaterialX in `main.ts` |
-| `debug` | `boolean` | `false` | Enable verbose debug output for Needle plugins |
 
 ---
 
