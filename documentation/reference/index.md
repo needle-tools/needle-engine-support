@@ -48,6 +48,7 @@ Technical documentation for APIs, components, configuration, and platform capabi
 ### Configuration Files
 
 - [needle.config.json](/docs/reference/needle-config-json) - Project configuration options
+- [Vite Plugin Configuration](/docs/reference/needle-vite-plugin) - makeFilesLocal, PWA, build pipeline, and more
 - [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable and metadata
 - [&lt;needle-engine&gt; Web Component](/docs/reference/needle-engine-attributes) - HTML attributes and options
 

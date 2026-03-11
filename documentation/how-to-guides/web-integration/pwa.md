@@ -132,3 +132,18 @@ const pwaOptions = {
 ```
 
 For complex requirements like partial caching, custom service workers or different update strategies, you can remove the `{ pwa: pwaOptions }` option from `needlePlugins` and add PWA functionality directly through the Vite PWA plugin.
+
+## Making all external files local
+
+By default, Needle Engine loads some assets from CDNs at runtime (e.g. Draco decoders, fonts, skyboxes). For fully self-contained offline deployments, you can use the `makeFilesLocal` plugin option to download all external assets at build time and bundle them into your output.
+
+This is useful for PWAs that need to work without any network access, and also for non-PWA use cases like playable ads or app store submissions.
+
+```js
+needlePlugins(command, {
+    makeFilesLocal: "auto",  // auto-detect which features to include
+    pwa: pwaOptions,
+});
+```
+
+[Learn more about makeFilesLocal →](/docs/reference/needle-vite-plugin#makefileslocal)
