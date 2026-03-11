@@ -20,6 +20,7 @@ Technical documentation for APIs, components, configuration, and platform capabi
 ### Core APIs
 
 - [**Needle Engine API**](https://engine.needle.tools/docs/api/latest) - Complete TypeScript API reference
+- [**Built-in Components**](/docs/reference/components) - Catalog of 100+ components with descriptions
 - [Component Lifecycle](./api/lifecycle-methods) - awake, start, update, onEnable, etc.
 - [Input Events](./api/input-events) - Mouse, touch, keyboard handling
 - [Physics Events](./api/physics-events) - Collisions and triggers
@@ -39,13 +40,7 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 ---
 
-## Components & Configuration
-
-### Components
-
-- [**Built-in Components**](/docs/reference/components) - Catalog of 100+ components with descriptions
-
-### Configuration Files
+## Configuration
 
 - [needle.config.json](/docs/reference/needle-config-json) - Project configuration options
 - [Vite Plugin Configuration](/docs/reference/needle-vite-plugin) - makeFilesLocal, PWA, build pipeline, and more
