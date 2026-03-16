@@ -15,6 +15,17 @@ Turn your Needle Engine project into a Progressive Web App with offline support,
 - 🔄 Auto-update when you publish new versions
 - 🚀 Faster loading with smart caching
 
+## What Needle handles for you
+
+Needle's PWA plugin takes care of the hard parts of PWA setup automatically:
+
+- **All build assets are pre-cached** — 3D scenes, textures, audio, WASM, and scripts are cached so the app works fully offline after the first visit.
+- **Compressed files (.gz) are excluded from pre-caching** — browsers fetch the uncompressed version, so pre-caching `.gz` files would cause 404 errors. Needle excludes them automatically.
+- **SPA routing works offline** — requests for unknown URLs fall back to `index.html`, so navigation continues to work without a network connection.
+- **Web manifest is auto-generated** — sensible defaults for icons, display mode, and theme are set so you get a working installable app without any manual manifest configuration.
+
+You only need to think about a few things — see [What to watch out for](#what-to-watch-out-for) below.
+
 ## Setup
 
 **1. Install the Vite PWA plugin:**
@@ -48,9 +59,35 @@ export default defineConfig(async ({ command }) => {
         // the rest of your Vite config...
 ```
 
-:::tip All assets are cached by default
-Note that by default, all assets in your build folder are added the PWA precache – for large applications with many dynamic assets, this may not be what you want (imagine the YouTube PWA caching all videos once a user opens the app!). See [More PWA Options](#more-pwa-options) for how to customize this behavior.
-:::
+That's it! After building and deploying, your app is a fully functional PWA.
+
+## What to watch out for
+
+### Assets must be downloaded on the first visit
+
+PWAs cache everything on first load — but that means **the device must be online the first time** the app is opened. After that initial load, the app works fully offline.
+
+For kiosk or exhibition setups, make sure to open the app once on-site while connected to the internet before going offline. Check the browser's DevTools → Application → Cache Storage to confirm all assets were cached.
+
+### External and dynamically loaded assets are not pre-cached
+
+The PWA pre-cache only includes assets in your **build output folder**. Assets loaded from external sources (CDNs, remote APIs, or dynamically constructed URLs at runtime) are not cached automatically.
+
+If your app fetches external resources that must work offline, you'll need to add a custom caching strategy. See the [Vite PWA plugin docs](https://vite-pwa-org.netlify.app/workbox/generate-sw.html) for runtime caching options.
+
+### Large projects: pre-caching everything can be slow
+
+By default, all build assets are pre-cached. For large applications with many assets (large textures, audio, video), this can result in a significant download on first visit. Consider which assets are truly needed offline and customize `globPatterns` to limit what gets pre-cached:
+
+```js
+const pwaOptions = {
+  workbox: {
+    // Only pre-cache HTML, JS, CSS, WASM, and GLB files.
+    // Large textures or audio can be left for runtime/on-demand caching.
+    globPatterns: ['**/*.{html,js,css,wasm,glb}'],
+  }
+};
+```
 
 ## Testing PWAs
 
@@ -109,11 +146,13 @@ const pwaOptions = {
 };
 ```
 
-**Tips for reliable offline experiences:**
-- Deploy and open the app once while online to let the service worker cache all assets
-- Test offline behavior by disabling the network in Chrome DevTools (Application > Service Workers > Offline)
-- For large scenes with many assets, verify that all files are included in the precache (see [More PWA Options](#more-pwa-options))
-- Combine with [automatic updates](#automatically-update-running-apps) so the display stays current when connectivity returns
+**Checklist for reliable offline experiences:**
+- ✅ Deploy the app and open it **once while online** — this triggers the service worker to cache all assets
+- ✅ Verify caching in Chrome DevTools → Application → Service Workers → check "Offline", then reload
+- ✅ Check Chrome DevTools → Application → Cache Storage to confirm all required files are listed
+- ✅ For large scenes, verify that all 3D assets and textures appear in the cache
+- ✅ Combine with [automatic updates](#automatically-update-running-apps) so the display stays current when connectivity returns
+- ✅ Test your update flow: deploy a new version, wait for the update interval, confirm the page reloads
 
 ## More PWA options
 
