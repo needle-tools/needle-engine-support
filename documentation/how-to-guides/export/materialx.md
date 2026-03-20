@@ -157,6 +157,12 @@ The `Experimental_API.createMaterialXMaterial()` method currently doesn't suppor
 
 Needle Engine supports the full MaterialX specification, including OpenPBR, Standard Surface, UsdPreviewSurface and Unlit Surface nodes, and including NPR (non-photorealistic rendering) nodes like fresnel effects. Nested nodegraph definitions and custom nodes are also supported.
 
+### ShaderGraph Node Coverage
+
+The following shows the current coverage of Unity ShaderGraph nodes by the MaterialX exporter, auto-generated from the latest published exporter package.
+
+<NeedleMaterialXSupportInfo />
+
 MaterialX materials in Needle Engine support the following features:
 - **Image-Based Lighting** (IBL) automatically coming from the scene's environment map
 - **Reflection Probes** affect objects using MaterialX materials
