@@ -25,6 +25,12 @@ Understand the concepts, architecture, and design decisions behind Needle Engine
 
 ---
 
+## Features
+
+- [FastHDR Environment Lighting](./fasthdr) - Ultra-fast HDR lighting with zero CPU processing and minimal VRAM
+
+---
+
 ## Architecture
 
 - [Technical Overview](./architecture/technical-overview) - System architecture, glTF pipeline, and three.js integration

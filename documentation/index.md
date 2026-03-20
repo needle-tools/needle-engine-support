@@ -127,9 +127,15 @@ Quick reference for components, methods, and configuration.
 
 </div>
 
+## What's New
+Latest features, updates, and documentation changes
 
+<whats-new />
+
+<br/><br/>
 
 ## What Our Users Say
+[See all testimonials →](/docs/help/testimonials)
 
 <br/>
 
@@ -239,8 +245,6 @@ My workflow has been optimized 10X ever since i started using needle
 </testimonial>
 
 </quoteslides>
-
-[See all testimonials →](/docs/help/testimonials)
 
 
 <br/><br/><br/>

@@ -1,0 +1,23 @@
+{
+  "highlights": [
+    {
+      "id": "fasthdr",
+      "title": "FastHDR Environment Lighting",
+      "description": "Coming to Needle Engine: environment lighting that loads 10x faster, uses 95% less VRAM, and needs zero CPU processing. Works on every device — even budget phones.",
+      "link": "/explanation/fasthdr",
+      "video": "https://www.youtube.com/watch?v=z_w3Hrzq-7o",
+      "badge": "NEW",
+      "date": "2026-03-20",
+      "version": "4.17.0"
+    },
+    {
+      "id": "ios-webxr",
+      "title": "iOS WebXR with Needle",
+      "description": "Full WebXR AR on iPhone and iPad — no app install needed. Powered by ARKit via App Clips, launched instantly from any link or QR code.",
+      "link": "/how-to-guides/xr/ios-webxr-app-clip",
+      "image": "https://cloud.needle.tools/-/media/WI0Q0s961BjdXgUEQHxifQ.gif",
+      "badge": "NEW",
+      "date": "2026-02-01"
+    }
+  ]
+}

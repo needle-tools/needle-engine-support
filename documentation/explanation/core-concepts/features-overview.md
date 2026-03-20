@@ -54,6 +54,19 @@ Use Unity's node-based ShaderGraph to create shaders for the web. Artists can ke
 
 Read more: [PBR Materials](/docs/how-to-guides/export/#physically-based-materials-pbr) • [Custom Shaders](/docs/how-to-guides/export/#custom-shaders)
 
+### FastHDR Environment Lighting
+
+**Ultra-fast, high-quality HDRI lighting — a Needle Engine exclusive.**
+
+[FastHDR](/docs/explanation/fasthdr) is a GPU-native environment map format that loads 10x faster than EXR, uses 95% less VRAM, and requires zero CPU processing. Your scenes get stunning environment lighting that works beautifully even on budget phones and low-end devices.
+
+- 4K environment in ~134 ms (EXR: ~1,261 ms)
+- 12 MB VRAM (EXR: 256 MB)
+- Zero frame drops, zero main thread work
+- Automatic conversion during production builds
+
+[Learn more about FastHDR →](/docs/explanation/fasthdr)
+
 ### Lightmaps
 
 **Beautiful baked lighting, automatically exported to the web.**
