@@ -28,6 +28,7 @@ import { Element } from 'hast'
 import { SiteLocaleData } from 'vuepress/shared'
 import copyMarkdown from './plugins/copy-markdown'
 import generateLlms from './plugins/generate-llms'
+import { fetchEngineData } from './plugins/fetch-engine-data/index'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
 
 dotenv.config()
@@ -356,6 +357,7 @@ export default defineUserConfig({
         // videoplayer
         generateMetaPlugin,
         includeSampleCode,
+        fetchEngineData,
         // generateSharedCode, // Disabled: community contributions from GitHub discussions
         modifyHtmlMeta,
         copyMarkdown,
