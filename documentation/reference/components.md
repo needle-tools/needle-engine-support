@@ -212,8 +212,6 @@ For cross-platform projects (VR, AR, desktop), mix spatial and HTML UI:
 
 ## All Components by Category
 
-The following list is auto-generated from the latest published `@needle-tools/engine` package, ensuring it always reflects the current set of available components.
-
 <NeedleComponentsInfo />
 
 ## Complete API Documentation
