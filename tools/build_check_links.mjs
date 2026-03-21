@@ -31,7 +31,13 @@ async function scan() {
         retryErrors: true,
         retryErrorsCount: 2,
         directoryListing: true,
-        linksToSkip: ['.*favicon.ico|.*webmanifest'],
+        linksToSkip: [
+            '.*favicon.ico|.*webmanifest',
+            'https://claude.ai/.*',
+            'https://chat.openai.com/.*',
+            'https://www.artstation.com/.*',
+            'https://why.de.*',
+        ],
 
     });
 
