@@ -29,7 +29,8 @@ async function scan() {
         // recurse: true,
         error: true,
         retryErrors: true,
-        retryErrorsCount: 2,
+        retryErrorsCount: 1,
+        timeout: 10000,
         directoryListing: true,
         linksToSkip: [
             '.*favicon.ico|.*webmanifest',
@@ -46,8 +47,7 @@ async function scan() {
     console.log(brokeLinks);
     console.log(`Detected ${brokeLinks.length} broken links.`);
 
-    console.log(process.env.DEPLOY_DISCORD_WEBHOOK)
-    if (process.env.DEPLOY_DISCORD_WEBHOOK) {
+    if (brokeLinks.length > 0 && process.env.DEPLOY_DISCORD_WEBHOOK) {
 
         const brokenLinksStrings = [];
         for (const broken of brokeLinks) {
