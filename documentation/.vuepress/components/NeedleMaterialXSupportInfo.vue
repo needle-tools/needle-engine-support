@@ -33,12 +33,11 @@ export default {
     displayNodes() {
       if (this.filter === 'supported') return this.supported;
       if (this.filter === 'unsupported') return this.unsupported;
-      return null; // show both sections
+      return null;
     },
   },
   methods: {
     shortName(fullName) {
-      // "UnityEditor.ShaderGraph.AbsoluteNode" → "Absolute"
       const parts = fullName.split('.');
       const last = parts[parts.length - 1];
       return last.replace(/Node$/, '');
@@ -68,7 +67,11 @@ export default {
       </p>
     </div>
 
-    <!-- All mode: show both sections -->
+    <div class="custom-container tip">
+      <p class="custom-container-title">TIP</p>
+      <p>When using an unsupported node in Shader Graph, the exporter will show a warning hint. You can replace the unsupported node with a supported alternative, or use the <code>MATERIALX</code> keyword to provide a fallback path.</p>
+    </div>
+
     <template v-if="!displayNodes">
       <details open>
         <summary>Supported Nodes ({{ supported.length }})</summary>
@@ -84,7 +87,6 @@ export default {
       </details>
     </template>
 
-    <!-- Filtered mode -->
     <div v-else class="mtlx-nodes">
       <span v-for="n in displayNodes" :key="n"
         class="mtlx-node"
@@ -102,7 +104,7 @@ export default {
   margin: 0.5em 0 1em;
 }
 .mtlx-summary {
-  margin-bottom: 1em;
+  margin-bottom: 0.75em;
 }
 .mtlx-bar {
   height: 8px;
@@ -123,23 +125,39 @@ export default {
 .mtlx-nodes {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3em;
+  gap: 0.35em;
   padding: 0.5em 0;
 }
 .mtlx-node {
   font-size: 0.8em;
-  padding: 0.15em 0.5em;
-  border-radius: 4px;
+  padding: 0.2em 0.65em;
+  border-radius: 999px;
   font-family: var(--font-family-code);
+  font-weight: 500;
 }
 .mtlx-supported {
-  background: #3eaf7c22;
-  color: var(--c-brand, #3eaf7c);
+  background: #16a34a22;
+  color: #15803d;
+  border: 1px solid #16a34a44;
 }
 .mtlx-unsupported {
-  background: #cc000015;
-  color: var(--c-danger, #cc0000);
+  background: #ea580022;
+  color: #c2410c;
+  border: 1px solid #ea580044;
 }
+
+/* dark mode overrides */
+html.dark .mtlx-supported {
+  background: #22c55e20;
+  color: #4ade80;
+  border-color: #22c55e40;
+}
+html.dark .mtlx-unsupported {
+  background: #f9731620;
+  color: #fb923c;
+  border-color: #f9731640;
+}
+
 details {
   margin-bottom: 0.5em;
 }
