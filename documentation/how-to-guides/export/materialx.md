@@ -3,37 +3,24 @@ title: MaterialX
 image: https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif
 ---
 
-## MaterialX in Needle Engine
+## MaterialX — Complex Materials on the Web
 
-MaterialX is a powerful standard for describing materials and shaders in a graph based way, independent of the rendering engine. It allows you to define complex materials, with multiple surface layers and realistic lighting.  
-
-It's widely used across film, VFX and e-commerce, and is supported by many professional authoring tools such as Autodesk Maya and 3ds Max, Houdini, V-Ray, and Omniverse. 
+Use rich, layered materials on the web with full fidelity. Currently, you can build materials in Unity's **Shader Graph** and export them automatically — procedural textures, detail maps, multiple surface layers all just work. Blender export support is coming soon, and Needle Engine can already load any MaterialX file regardless of where it was authored.
 
 [![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)](https://engine.needle.tools/samples/material-x)
 
-::: tip Learn more
-You can learn more about MaterialX on the [MaterialX website](https://www.materialx.org/).
-:::
-
-Materials made with Unity's [**Shader Graph**](https://docs.unity3d.com/Packages/com.unity.shadergraph@17.3/manual/index.html) can be exported to MaterialX files automatically through the **Needle MaterialX Exporter**, which is part of our Unity integration package.
-
-This allows you to create complex, lit materials in Unity, and they're automatically exported along with your scene. MaterialX export extends our existing Unlit shader export, which is less portable due to the use of WebGL2 shaders. With MaterialX, you're ready for WebGPU and future rendering technologies, and can achieve high fidelity materials in your web projects.
-
-The MaterialX support in Needle Engine uses the official [MaterialX JavaScript library](https://github.com/materialx/MaterialX), which means that materials are represented at the highest fidelity possible. This allows you to use any MaterialX file.
+**Why MaterialX?** Under the hood, Needle Engine converts your materials to [MaterialX](https://www.materialx.org/) — the industry standard for portable material definitions. This means your materials are:
+- **High fidelity** — rendered using the [official MaterialX library](https://github.com/materialx/MaterialX), not an approximation
+- **Future-proof** — ready for WebGPU and next-gen rendering
+- **Pipeline-compatible** — the same format used by Maya, Houdini, V-Ray, and Omniverse
+- **Open** — load standard `.mtlx` files from any exporter or authoring tool
 
 ::: info Shader Graph to MaterialX requires a **Pro**, **Edu** or **Enterprise** plan.
 The MaterialX Exporter is available for users on the Pro, Edu and Enterprise plans.
 [See plans and pricing.](https://needle.tools/pricing)
 :::
 
-
-## Usecases
-
-MaterialX is a great choice if you 
-- are using **Graph-based materials** for your projects for artistic control and flexibility.
-- need **rich and complex surface features** such as procedural textures, detail maps, or layered materials.
-- have **existing MaterialX materials** that you want to keep throughout your studio pipeline.
-- want to ensure **consistency and compatibility** for your renderings across different rendering engines.
+Already have MaterialX files from your studio pipeline? Needle Engine can load those too — see [Using MaterialX files created externally](#using-materialx-files-created-externally).
 
 ## Enable MaterialX support in your project
 
@@ -189,8 +176,8 @@ Needle Engine currently supports MaterialX version 1.39.4. MaterialX documents w
 
 Not all features that Shader Graph supports are also supported by MaterialX. If you attempt to export an unsupported node, the exporter will log an error and stop the export process. You can then fix the issue by replacing the unsupported node with a supported one, if possible.
 
-- **Vertex displacement is not yet supported**: MaterialX supports displacement mapping, but Needle Engine does not currently support it. This means that any displacement nodes in your MaterialX files will be ignored.
-- **Realtime shadows**: Light sources in your scene will affect MaterialX materials, but realtime shadows are currently not supported.
+- **Vertex displacement** is supported since Needle Engine 4.17 (alpha).
+- **Realtime shadows** are supported since Needle Engine 4.17 (alpha).
 - **Baked Lightmaps**: Baked lightmaps are currently not supported in MaterialX materials.
 - **Tangent space** is not supported at the moment, which means that Shader Graph nodes specifying "Tangent" as space will look different.
 - **Code Nodes** are not supported at the moment.
@@ -199,11 +186,17 @@ Not all features that Shader Graph supports are also supported by MaterialX. If 
 If you have complex shaders with unsupported nodes, you can use the "MATERIALX" keyword to prevent exporting them. The "On" path of keyword switches will be exported, and the "Off" path will be ignored for export. You can use this to keep shaders with custom nodes or unsupported features functional, but still export them to MaterialX.
 :::
 
-::: info Built-in MaterialX support in three.js
-While three.js has some initial support for MaterialX, it's using a custom implementation that doesn't support many features of the standard, leading to lower accuracy in material representation. Needle Engine uses the official MaterialX JavaScript library, which means that materials are represented at the highest fidelity possible.
+::: info Needle Engine vs built-in three.js MaterialX
+Needle Engine uses the official MaterialX JavaScript library, which means materials are represented at the highest fidelity possible. three.js has some initial built-in MaterialX support, but its custom implementation doesn't yet cover many features of the standard.
 
 Needle is contributing to the built-in three.js MaterialX support, so that at some point we can offer both options or switch to the three.js implementation once it's more comprehensive.
 :::
+
+## About MaterialX
+
+[MaterialX](https://www.materialx.org/) is an open standard for describing materials and shaders in a graph-based way, independent of any rendering engine. It allows you to define complex materials with multiple surface layers and realistic lighting in a portable format.
+
+MaterialX is widely used across film, VFX, and e-commerce, and is supported by professional authoring tools such as Autodesk Maya and 3ds Max, Houdini, V-Ray, and Omniverse.
 
 ## <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Quick Tips for Unity</logo-header>
 
