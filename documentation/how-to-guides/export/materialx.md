@@ -1,6 +1,6 @@
 ---
 title: MaterialX
-image: https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif
+image: /materialx/materialx-demo.webp
 ---
 
 ## MaterialX — Complex Materials on the Web
@@ -9,8 +9,8 @@ Use rich, layered materials on the web with full fidelity. Currently, you can bu
 
 [![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)](https://engine.needle.tools/samples/material-x)
 
-**Why MaterialX?** Under the hood, Needle Engine converts your materials to [MaterialX](https://www.materialx.org/) — the industry standard for portable material definitions. This means your materials are:
-- **High fidelity** — rendered using the [official MaterialX library](https://github.com/materialx/MaterialX), not an approximation
+**Why MaterialX?** Under the hood, Needle Engine converts your materials to MaterialX — the industry standard for portable material definitions. This means your materials are:
+- **High fidelity** — rendered using the official MaterialX library, not an approximation
 - **Future-proof** — ready for WebGPU and next-gen rendering
 - **Pipeline-compatible** — the same format used by Maya, Houdini, V-Ray, and Omniverse
 - **Open** — load standard `.mtlx` files from any exporter or authoring tool
@@ -90,7 +90,9 @@ You can find a full example of how to use MaterialX in a three.js project on Sta
 ::: 
 ## Exporting materials with MaterialX support
 
-1. Create materials with Unity's Shader Graph.
+Currently, MaterialX export is available for Unity's **Shader Graph**. Blender support is on our radar. If you have existing `.mtlx` files from other tools, see [Using MaterialX files created externally](#using-materialx-files-created-externally).
+
+1. Create materials with Unity's **Shader Graph**.
 
    ![Example of a complex Shader Graph in Unity.](/materialx/shadergraph-example.webp)
    _Example of a complex Shader Graph in Unity._
@@ -194,7 +196,7 @@ Needle is contributing to the built-in three.js MaterialX support, so that at so
 
 ## About MaterialX
 
-[MaterialX](https://www.materialx.org/) is an open standard for describing materials and shaders in a graph-based way, independent of any rendering engine. It allows you to define complex materials with multiple surface layers and realistic lighting in a portable format.
+[MaterialX](https://www.materialx.org/) is an open standard for describing materials and shaders in a graph-based way, independent of any rendering engine. It allows you to define complex materials with multiple surface layers and realistic lighting in a portable format. Needle Engine uses the [official MaterialX JavaScript library](https://github.com/materialx/MaterialX) for maximum fidelity.
 
 MaterialX is widely used across film, VFX, and e-commerce, and is supported by professional authoring tools such as Autodesk Maya and 3ds Max, Houdini, V-Ray, and Omniverse.
 
@@ -228,3 +230,12 @@ When working with MaterialX in Unity, here are some common scenarios and solutio
 - MaterialX uses physically-based rendering which may differ from Unity's preview
 - Ensure your scene has proper lighting and an environment map/skybox for accurate IBL
 - Some Shader Graph nodes (like tangent space operations) are not yet fully supported and may look different
+
+## See Also
+
+- [Features Overview](/docs/explanation/core-concepts/features-overview) — full list of Needle Engine capabilities
+- [Progressive Loading](/docs/gltf-progressive/) — progressive textures and KTX2 compression, fully supported by MaterialX materials
+- [FastHDR Environment Lighting](/docs/explanation/fasthdr) — high-quality environment maps for image-based lighting
+- [Optimization & Compression](/docs/how-to-guides/optimization/) — texture compression and production build optimization
+- [Getting Started](/docs/unity/) — get started with Needle Engine for Unity
+- [Unity Shader Graph Documentation](https://docs.unity3d.com/Packages/com.unity.shadergraph@17.3/manual/index.html) — Unity's official Shader Graph reference
