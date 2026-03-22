@@ -50,6 +50,10 @@ This command validates your Needle Engine PRO license and allows automated build
 
 **Learn more:** [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server)
 
+## Can I remove the Needle Engine logo and branding (white-labelling)?
+
+Yes, the Needle Engine logo and branding can be removed with a [PRO license](https://www.needle.tools/pricing). This allows you to fully white-label your web experiences with your own branding.
+
 ## My local website shows an SSL error e.g. 'Your connection is not private'
 
 You might see a warning in your browser about SSL Security depending on your local configuration.  
