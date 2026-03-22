@@ -51,10 +51,6 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 ## Platform Support
 
-### Features & Compatibility
-
-- [Features Overview](/docs/explanation/core-concepts/features-overview) - Complete feature matrix by platform
-
 ### Editor Integrations
 
 - [Unity Integration](/docs/unity/) - Unity editor integration

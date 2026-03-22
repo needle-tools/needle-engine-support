@@ -10,17 +10,15 @@ description: Complete feature overview of Needle Engine - graphics, animation, p
 Explore our [Samples and Showcase](https://engine.needle.tools/samples) to experience what's possible.
 :::
 
-[[toc]]
-
 ## Cross-Platform: Desktop, Mobile, VR, and AR
 
 **One codebase, every platform.** Needle Engine runs everywhere web technology does – desktop, mobile, AR, and VR. We build Needle Engine [with XR in mind](/docs/how-to-guides/xr/) as an integral part of responsive web design.
 
-### Native iOS WebXR Support
+### <logo-header logo="/imgs/webxr-logo.webp" alt="WebXR">Native iOS WebXR Support</logo-header>
 
 **Full WebXR on iPhone and iPad** – no app required! 🎉
 
-Native [iOS WebXR support](/docs/explanation/core-concepts/ios-webxr-app-clip) is now available through App Clip technology. Users can experience your WebXR AR content instantly via QR codes or links, without installing an app. Powered by ARKit, it provides:
+Native [iOS WebXR support](/docs/how-to-guides/xr/ios-webxr-app-clip) is now available through App Clip technology. Users can experience your WebXR AR content instantly via QR codes or links, without installing an app. Powered by ARKit, it provides:
 
 - Hit testing and plane detection
 - DOM overlays for UI elements
@@ -28,7 +26,7 @@ Native [iOS WebXR support](/docs/explanation/core-concepts/ios-webxr-app-clip) i
 - Anchor creation and tracking (work in progress)
 - Lighting estimation (work in progress)
 
-[Try it now](https://appclip.needle.tools) • [Read iOS WebXR docs](/docs/explanation/core-concepts/ios-webxr-app-clip)
+[Try it now](https://appclip.needle.tools) • [Read iOS WebXR docs](/docs/how-to-guides/xr/ios-webxr-app-clip)
 
 ### Everywhere Actions for iOS and Android
 
@@ -38,6 +36,7 @@ Use [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for **interact
 - **VR Headsets**: Meta Quest, Apple Vision Pro, Pico, HTC Vive, Valve Index
 - **Mobile AR**: Android (WebXR), iOS (WebXR via App Clips + USDZ/QuickLook)
 - **Desktop**: All modern browsers
+- **[Image Tracking](/docs/how-to-guides/xr/image-tracking)** – WebXR image tracking on Android, QuickLook image tracking on iOS
 - **Future devices work automatically** – that's the power of web standards
 
 [Learn more about XR support](/docs/how-to-guides/xr/)
@@ -46,15 +45,17 @@ Use [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for **interact
 
 ### Shaders and Materials
 
-**Professional-grade rendering on the web.** Export both [PBR Materials](/docs/how-to-guides/export/#physically-based-materials-pbr) and [Custom shaders](/docs/how-to-guides/export/#custom-shaders) created with Shader Graph or other systems.
+**Professional-grade rendering on the web.** Export both [PBR Materials](/docs/explanation/exporting-to-gltf#physically-based-materials-pbr) and [Custom shaders](/docs/how-to-guides/export/materialx) created with Shader Graph or other systems.
 
 <img src="https://user-images.githubusercontent.com/5083203/186012027-9bbe3944-fa56-41fa-bfbb-c989fa87aebb.png" alt="Shader Graph Example" />
 
 Use Unity's node-based ShaderGraph to create shaders for the web. Artists can keep creating without worrying about syntax or web-specific code.
 
-Read more: [PBR Materials](/docs/how-to-guides/export/#physically-based-materials-pbr) • [Custom Shaders](/docs/how-to-guides/export/#custom-shaders)
+Read more: [PBR Materials](/docs/explanation/exporting-to-gltf#physically-based-materials-pbr) • [Custom Shaders](/docs/explanation/exporting-to-gltf#custom-shaders) • [MaterialX](/docs/how-to-guides/export/materialx)
 
 ### FastHDR Environment Lighting
+
+![FastHDR Ballroom](https://cloud.needle.tools/articles/fasthdr/fasthdr-ballroom.webp)
 
 **Ultra-fast, high-quality HDRI lighting — a Needle Engine exclusive.**
 
@@ -148,14 +149,15 @@ Create cinematic sequences with [Unity's Timeline](https://unity.com/features/ti
 
 ::: tip Limited support for sub-timelines
  Sub-Timelines are not yet supported. Custom timeline tracks can be exported – [see example](https://github.com/needle-tools/needle-engine-modules/tree/main/package/TimelineHtml).
+:::
 
-### Blender Support
+### <logo-header logo="/blender/logo.png" alt="Blender">Blender Support</logo-header>
 
 Animation support extends to Blender too! Create animation state machines and export NLA tracks as timelines directly from Blender.
 
 [Read more about Animation Components](/docs/reference/components#animation)
 
-## Physics (Rapier)
+## <logo-header logo="/imgs/rapier-physics-logo.webp" alt="Rapier">Physics (Rapier)</logo-header>
 
 **Real-time physics simulation in the browser, powered by [Rapier](https://rapier.rs/).**
 
@@ -238,13 +240,13 @@ Networking is integrated into the core runtime. Deploy multiplayer 3D environmen
 
 Powerful integrations for Unity and Blender allow artists and developers to collaborate seamlessly. Set up and export complex scenes visually, with flexible workflows for both technical and creative team members.
 
-**Unity Integration:**
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity Integration:</logo-header>
 - Full component support
 - Visual scene authoring
 - Asset pipeline integration
 - Hot reload during development
 
-**Blender Add-on (full-featured, first-class workflow):**
+<logo-header logo="/blender/logo.png" alt="Blender">Blender Add-on (full-featured, first-class workflow):</logo-header>
 - Export glTF with Needle Engine components
 - Animation support (NLA tracks, state machines)
 - Material and lighting export including lightmapping
@@ -276,7 +278,7 @@ Needle Engine uses a [component-based architecture](/docs/how-to-guides/scriptin
 - **Compression Pipeline** – Automatic optimization for web delivery with glTF compression and texture optimization
 - **[Progressive Loading](/docs/gltf-progressive/)** – Instant scene display with progressive mesh and texture streaming via `@needle-tools/gltf-progressive`
 - **Audio Support** – Spatial audio, audio sources, and audio listeners
-- **Image Tracking** – WebXR image tracking on Android, QuickLook image tracking on iOS
+- **[Image Tracking](/docs/how-to-guides/xr/image-tracking)** – WebXR image tracking on Android, QuickLook image tracking on iOS
 - **Custom Components** – Extend the engine with your own components and systems
 - **Framework Integration** – Works with React, Vue, Svelte, and other web frameworks
 - **Deployment Tools** – Built-in deployment to Glitch, Vercel, and other platforms

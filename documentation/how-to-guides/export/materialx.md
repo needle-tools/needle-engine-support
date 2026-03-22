@@ -3,9 +3,9 @@ title: MaterialX
 image: /materialx/materialx-demo.webp
 ---
 
-## MaterialX — Complex Materials on the Web
+## MaterialX — High-Fidelity Materials on the Web
 
-Use rich, layered materials on the web with full fidelity. Currently, you can build materials in Unity's **Shader Graph** and export them automatically — procedural textures, detail maps, multiple surface layers all just work. Blender export support is coming soon, and Needle Engine can already load any MaterialX file regardless of where it was authored.
+Use rich, layered materials on the web with full fidelity. Currently, you can build materials in Unity's **Shader Graph** and export them automatically — procedural textures, multiple surface layers all just work and Needle Engine can already load any MaterialX file regardless of where it was authored.
 
 [![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)](https://engine.needle.tools/samples/material-x)
 
