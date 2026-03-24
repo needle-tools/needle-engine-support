@@ -77,15 +77,26 @@ async function scan() {
             content: `Detected ${brokeLinks.length} broken link(s) in the documentation.`,
             embeds
         }
-        fetch(process.env.DEPLOY_DISCORD_WEBHOOK, {
+        const timeout = 10000;
+        const controller = new AbortController();
+        const signal = controller.signal;
+        setTimeout(() => {
+            controller.abort();
+        }, timeout);
+        await fetch(process.env.DEPLOY_DISCORD_WEBHOOK, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify(msg),
+            signal
         });
 
     }
+
+    setTimeout(() => {
+        process.exit(brokeLinks.length > 0 ? 1 : 0);
+    }, 2000);
 }
 scan();
 
