@@ -1,19 +1,21 @@
 ---
-description: Deep dive into Needle Engine architecture - glTF extensions, component system, three.js rendering, and how editor projects export to the web.
+description: Deep dive into Needle Engine architecture - glTF extensions, component system, three.js rendering, and the web runtime powering interactive 3D experiences.
 ---
 
 # Technical Overview
 
 ## How it works
 
-Needle Engine roughly consists of three parts:
-- a number of **components and tools** that allow you to set up scenes for Needle Engine from e.g. the Unity Editor.  
-- an **exporter** that turns scene and component data into glTF.
-- a **web runtime** that loads and runs the produced glTF files and their extensions.
+Needle Engine is a **full, production-ready web engine** for interactive 3D experiences. It runs entirely in the browser — no plugins, no app installs, no server-side rendering required.
 
-The web runtime uses three.js for rendering, adds a component system on top of the three scene graph and hooks up extension loaders for our custom glTF extensions.  
+At its core, Needle Engine is a **web runtime** built on [three.js](https://threejs.org/) that adds a powerful component system on top of the three.js scene graph, with extension loaders for custom glTF extensions. It loads standard glTF 2.0 files, restores interactive components from custom extensions at runtime, and renders them with three.js.
 
-Effectively, this turns tools like Unity or Blender into spatial web development powerhouses – adding glTF assets to the typical HTML, CSS, JavaScript and bundling workflow.  
+Needle Engine fits naturally into a standard web development workflow — HTML, CSS, JavaScript/TypeScript, and modern bundlers like Vite. You can use it purely from code, or combine it with **editor integrations** for visual scene authoring:
+
+- **Unity integration** — set up scenes, author components, and export to glTF directly from the Unity Editor
+- **Blender integration** — author and export scenes from Blender with the Needle Engine add-on
+
+These integrations are optional. Needle Engine works standalone as a web-first engine — the editor integrations simply provide a familiar visual authoring environment for artists and designers.
 
 
 ## glTF Assets
@@ -57,11 +59,11 @@ KHR_materials_unlit
 KHR_materials_volume
 ```
 
-More extensions and custom extensions can be added using the export callbacks of UnityGLTF (not documented yet) and the [glTF import extensions](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) of three.js.  
+Custom glTF extensions can be added on the import side using the [glTF import extensions](https://threejs.org/docs/#examples/en/loaders/GLTFLoader) of three.js, and on the export side through the export callbacks provided by the Unity and Blender integrations.
 
 ::: tip Built-in export support for glTF PBR materials
-Materials using these extensions can be exported from Unity via UnityGLTF's `PBRGraph` material.  
-::: 
+All material extensions listed above are fully supported. In Unity, use UnityGLTF's `PBRGraph` material. In Blender, standard Principled BSDF materials export with these extensions automatically.
+:::
 
 ::: tip Built-in support for Audio, Variants and more
 Audio and variants are already supported in Needle Engine through `NEEDLE_components` and `NEEDLE_persistent_assets`, but there are some options for more alignment to existing proposals such as `KHR_audio` and `KHR_materials_variants`.
@@ -72,17 +74,15 @@ Audio and variants are already supported in Needle Engine through `NEEDLE_compon
 
 ## Vendor-specific glTF Extensions (NEEDLE_*)
 
-Needle Engine stores custom data in glTF files through our vendor extensions. These extensions are designed to be flexible and allow relatively arbitrary data to put into them. Notably, no code is stored in these files. Interactive components is restored from the data at runtime. This has some similarities to how AssetBundles function in Unity – the receiving side of an asset needs to have matching code for components stored in the file.  
+Needle Engine stores custom data in glTF files through vendor extensions. These extensions are designed to be flexible and carry arbitrary structured data. Notably, **no code is stored in the glTF files** — only data. Interactive components are restored from this data at runtime, which means the receiving side needs to have matching component code registered (similar to how a web app needs JavaScript modules to handle its data).
 
-::: tip Extension Design and Future Changes
-We're currently not prodiving schemas for these extensions as they are still undergoing changes. The JSON snippets below demonstrates extension usage by example and includes notes on architectural choices and what we may change in future releases.  
-
-References between pieces of data are currently constructed through a mix of indices into other parts of the glTF file and JSON pointers. We may consolidate these approaches in a future release. We're also storing string-based GUIDs for cases where ordering is otherwise hard to resolve (e.g. two components referencing each other).  
+::: tip Extension Design
+The JSON snippets below demonstrate extension usage by example and include notes on architectural choices.
 :::
 
 ### NEEDLE_components
 
-This extension contains per-node component data. The component names map to type names on both the JavaScript and C# side.  
+This extension contains per-node component data. The component names map to JavaScript/TypeScript type names at runtime (and to C# type names when using the Unity integration).
 Multiple components with the same name can be added to the same node.  
 
 Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR_animation_pointer`](https://github.com/ux3d/glTF/tree/extensions/KHR_animation_pointer/extensions/2.0/Khronos/KHR_animation_pointer) extension.  
@@ -134,17 +134,13 @@ Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR
 }
 ```
 
-::: tip Component Type Names and Versioning
-Storing only the component type name means that type names currently need to be unique per project.
-
-Currently there's no versioning information in the extension (which npm packaage does a component belong to, which version of that package was it exported against).  
-
-All components are in the `builtin_components` array. We might rename this to just `components` in a future release.  
+::: tip Component Type Names
+Component type names need to be unique per project. All components are stored in the `builtin_components` array.
 :::
 
 ### NEEDLE_gameobject_data
 
-This extension contains additional per-node data related to state, layers, and tags. Layers are used for both rendering and physics, similar to how [three.js](https://threejs.org/docs/#api/en/core/Layers) and [Unity](https://docs.unity3d.com/Manual/Layers.html) treat them.  
+This extension contains additional per-node data related to state, layers, and tags. Layers are used for both rendering and physics, similar to how [three.js layers](https://threejs.org/docs/#api/en/core/Layers) work.
 
 ```json
 "NEEDLE_gameobject_data": {
@@ -179,8 +175,8 @@ This is a root extension defining ambient lighting properties per glTF file.
 }
 ```
 
-::: tip Future Plans
-This extension might have to be defined per-scene instead of per-file.
+::: tip
+This extension is defined per glTF file. Ambient settings apply to all scenes within that file.
 :::
 
 ### NEEDLE_lightmaps
@@ -200,8 +196,8 @@ This is a root extension defining a set of lightmaps for the glTF file.
 ```
 
 ::: tip Lightmap Types
-At the moment this extension also contains environment texture references.
-::: 
+This extension also contains environment texture references.
+:::
 
 | Texture Type | Value |
 | -- | -- |
@@ -230,8 +226,8 @@ How lightmaps are applied is defined in the `MeshRenderer` component inside the 
 }
 ```
 
-::: tip Future Plans
-We may change that in a future release and move lightmap-related data to a `NEEDLE_lightmap` extension entry per node. 
+::: tip
+Lightmap assignment data is stored within the `MeshRenderer` component rather than in a separate per-node extension.
 :::
 
 ### NEEDLE_persistent_assets
@@ -244,7 +240,7 @@ Examples for assets/data stored in here are:
 - SignalAssets
 - ...
 
-Data in `persistent_assets` can reference other `persistent_assets` via JSON Pointer, but by design can't reference `NEEDLE_components`. This is similar to the separation beween "Scene data" and "AssetDatabase content" in Unity. 
+Data in `persistent_assets` can reference other `persistent_assets` via JSON Pointer, but by design can't reference `NEEDLE_components`. This enforces a clean separation between reusable asset data and per-instance scene data.
 
 ```json
 {
@@ -356,13 +352,13 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
   ]
 }
 ```
-::: tip Component Type Names and Versioning
-We might include more type and versioning information in the future. 
+::: tip Persistent Assets
+These assets are always referenced by components or other persistent assets, and thus do not store type information — they are simply JSON data, and the referencing component knows what to expect.
 :::
 
 ### NEEDLE_techniques_webgl
 
-This extension builds upon the archived [`KHR_techniques_webgl`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) extension and extends it in a few crucial places. While the original extension was specified against WebGL 1.0, we're using it with WebGL 2.0 here and have added a number of  uniform types.  
+This extension builds upon the archived [`KHR_techniques_webgl`](https://github.com/KhronosGroup/glTF/tree/main/extensions/2.0/Archived/KHR_techniques_webgl) extension and extends it for WebGL 2.0 with additional uniform types.
 
 ```json
 "KHR_techniques_webgl": {
@@ -414,16 +410,19 @@ This extension builds upon the archived [`KHR_techniques_webgl`](https://github.
 ```
 
 ::: tip Embedding vs. bufferViews
-Currently, vertex and fragment shaders are always embedded as URI. Some properties are redundant for embedded shaders, but kept for ease of export.
+Vertex and fragment shaders are embedded as URI. Some properties are redundant for embedded shaders but kept for ease of export.
 :::
 
-## Why aren't you compiling to WebAssembly?
+## Why JavaScript instead of WebAssembly?
 
-While Unity's compilation process from C# to IL to C++ (via IL2CPP) to WASM (via emscripten) is ingenious, it's also relatively slow. Building even a simple project to WASM takes many minutes, and that process is pretty much repeated on every code change. Some of it can be avoided through clever caching and ensuring that dev builds don't try to strip as much code, but it still stays slow.  
+Needle Engine is built on JavaScript/TypeScript — the native language of the web. This is a deliberate architectural choice:
 
-When looking into modern web workflows, we found that code reload times during development are neglectible, usually in sub-second ranges. This of course trades some performance (interpretation of JavaScript on the fly instead of compiler optimization at build time) for flexibility, but browsers got really good at getting the most out of JavaScript.  
+- **Instant iteration** — Code changes are reflected in the browser in sub-second time thanks to hot module replacement (HMR). There's no compilation step, no build wait, no domain reload. You're always live.
+- **Web-native** — JavaScript integrates seamlessly with the DOM, web APIs, and the entire npm ecosystem. Your 3D experience is a first-class web application.
+- **Modern browsers are fast** — V8 and other JavaScript engines have become remarkably performant. For the vast majority of interactive 3D experiences, JavaScript performance is more than sufficient.
+- **Tiny footprint** — No large WASM runtime to download. Needle Engine loads fast and starts fast.
 
-We believe that for iteration and tight testing workflows, it's beneficial to be able to test on device and on the target platform (the browser, in this case) as quickly and as often as possible - which is why we're skipping Unity's entire play mode, effectively always running in the browser. 
+Other approaches (like compiling C# or C++ to WebAssembly via emscripten) produce larger bundles, have slower build times, and lose the tight integration with the web platform. Needle Engine takes the opposite approach: embrace the web, write in its native language, and iterate at web speed.
 
-::: tip Needle Engine is fast because we skip the entire "build" step
-A really nice side effect is avoiding the entire slow "domain reload" step that usually costs 15-60 seconds each time you enter Play Mode. You're just "live" in the browser the moment you press Play.
+::: tip Zero build step when using editor integrations
+When using Needle Engine with Unity or Blender, there's no slow "build" or "domain reload" step. Press Play and you're immediately live in the browser — typically in under a second.
