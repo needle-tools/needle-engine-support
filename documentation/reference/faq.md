@@ -3,7 +3,7 @@ title: Questions and Answers (FAQ) 💡
 description: Frequently asked questions and troubleshooting solutions for Needle Engine - from installation issues to licensing, rendering, and deployment.
 ---
 
-# Licensing
+<faq-section title="Licensing">
 
 ## How do I get a license for Needle Engine?
 
@@ -56,7 +56,9 @@ This command validates your Needle Engine PRO license and allows automated build
 
 Yes, the Needle Engine logo and branding can be removed with a [PRO license](https://www.needle.tools/pricing). This allows you to fully white-label your web experiences with your own branding.
 
-# Installation & Setup
+</faq-section>
+
+<faq-section title="Installation & Setup">
 
 ## My local server does not start / I do not see a website
 
@@ -148,7 +150,9 @@ If you're coming from Unity or Blender, these files might be unfamiliar. They ar
 
 When Needle Engine generates or updates a web project, it creates and manages these files for you. In most cases, you won't need to edit them by hand. If you add a new npm package (e.g. `npm install some-library`), both files will be updated automatically.
 
-# Scripting & Export
+</faq-section>
+
+<faq-section title="Scripting & Export">
 
 ## My scripts don't work after export
 
@@ -220,7 +224,9 @@ Please see the [circular reference error](#circular-reference-error) section.
 
 - For Unity: Make sure that you use the `UI/Legacy/Text` component and **not** the `TextMeshPro - Text` component
 
-# Rendering & Visuals
+</faq-section>
+
+<faq-section title="Rendering & Visuals">
 
 ## My objects are white after export
 This usually happens when you're using custom shaders or materials and their properties don't cleanly translate to known property names for glTF export.
@@ -274,7 +280,9 @@ Go to `Edit/Project Settings/Player` for changing the setting.
 
 ![](/faq/lightmap_encoding.jpg)
 
-# Performance
+</faq-section>
+
+<faq-section title="Performance">
 
 ## My website becomes too large / is loading slow (too many MB)
 
@@ -287,14 +295,18 @@ This can have many reasons, but a few common ones are:
 
 If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting Examples in the documentation](/docs/reference/scripting-examples#assetreference-and-addressables).
 
-# Deployment & Networking
+</faq-section>
+
+<faq-section title="Deployment & Networking">
 
 ## I'm using networking and Glitch and it doesn't work if more than 30 people visit the Glitch page at the same time
 
 - Deploying on Glitch is a fast way to prototype and might even work for some small productions. The little server there doesn't have the power and bandwidth to host many people in a persistent session.
 - We're working on other networking ideas, but in the meantime you can host the website somewhere else (with node.js support) or simply remix it to distribute load among multiple servers. You can also host the [networking backend package](https://www.npmjs.com/package/@needle-tools/needle-tiny-networking-ws) itself somewhere else where it can scale e.g. Google Cloud.
 
-# Platform Support
+</faq-section>
+
+<faq-section title="Platform Support">
 
 ## Does it work on mobile?
 
@@ -349,7 +361,9 @@ Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if yo
 #### Known devices to cause issues:
 - Lenovo Thinkpad - T495
 
-# Editor (Unity)
+</faq-section>
+
+<faq-section title="Editor (Unity)">
 
 ## I don't have any buttons like "Generate Project" in my components/inspector
 
@@ -362,7 +376,9 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 - Optionally add a `AR Session Root` component on your root `GltfObject` or within the child hierarchy to specify placement, scale and orientation for WebXR.
 - Optionally add a `XR Rig` component to control where users start in VR
 
-# AI
+</faq-section>
+
+<faq-section title="AI">
 
 ## I want to use Needle AI with my local AI model
 
@@ -371,7 +387,9 @@ If you want (or have to) run your AI locally you can use the Needle llms.txt fil
 - [llms.txt](https://cloud.needle.tools/llms.txt)
 - [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
 
-# Still have questions?
+</faq-section>
+
+## Still have questions?
 [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
 
 <a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
