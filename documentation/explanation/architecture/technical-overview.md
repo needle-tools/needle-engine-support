@@ -413,6 +413,42 @@ This extension builds upon the archived [`KHR_techniques_webgl`](https://github.
 Vertex and fragment shaders are embedded as URI. Some properties are redundant for embedded shaders but kept for ease of export.
 :::
 
+## MaterialX Support
+
+Needle Engine has built-in support for [MaterialX](https://materialx.org/) — the industry-standard open format for portable material and shader definitions. This enables rich, physically based materials that go beyond what glTF PBR can express, while remaining fully cross-platform.
+
+**Key capabilities:**
+- **Full MaterialX specification** — supports OpenPBR Surface, Standard Surface, UsdPreviewSurface, and Unlit Surface shading models
+- **Shader Graph export** (Unity) — author materials visually in Unity's Shader Graph and export them as MaterialX
+- **Load `.mtlx` files from any source** — materials authored in Houdini, Maya, Substance, or other DCC tools can be loaded directly
+- **Production features** — texture compression, progressive texture loading, animated material properties, vertex displacement, and realtime shadows all work with MaterialX materials
+- **Image-Based Lighting** — environment maps, reflection probes, and up to 8 realtime light sources
+
+MaterialX materials are embedded in glTF files via the `NEEDLE_techniques_webgl` extension or loaded separately at runtime. The implementation is powered by the [`@needle-tools/materialx`](https://www.npmjs.com/package/@needle-tools/materialx) package, which also works standalone with any three.js project.
+
+**Learn more:** [MaterialX Export Guide](/docs/how-to-guides/export/materialx)
+
+## WebXR Support
+
+Needle Engine has comprehensive [WebXR](https://developer.mozilla.org/en-US/docs/Web/API/WebXR_Device_API) support, enabling immersive AR and VR experiences that run directly in the browser — no app install required.
+
+**Supported platforms:**
+- **VR headsets** — Meta Quest 2/3/3S/Pro, Apple Vision Pro, Pico 4/Neo, HTC Vive, Valve Index, and any WebXR-compatible device
+- **AR on Android** — native WebXR in Chrome with hit testing, plane detection, and image tracking
+- **AR on iOS** — native WebXR powered by ARKit via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip), plus USDZ/QuickLook support through [Everywhere Actions](/docs/how-to-guides/everywhere-actions/)
+
+**Key features:**
+- **Cross-platform by default** — the same project works on phones, headsets, and desktops
+- **iOS WebXR via App Clips** — a unique capability that brings full ARKit-powered WebXR to iOS without any app installation. Users scan a QR code or tap a link to enter AR instantly
+- **Image tracking** — detect and track real-world images on both Android and iOS
+- **Multiplayer XR** — networking works seamlessly in VR and AR sessions
+- **XR visibility control** — show or hide objects based on the current mode (browser, AR, VR, first-person, third-person)
+- **Performance optimized** — automatic LODs, progressive loading, and lazy module loading ensure smooth framerates on mobile headsets
+
+Adding WebXR to a Needle Engine scene is as simple as adding a `WebXR` component. No additional setup required.
+
+**Learn more:** [VR & AR (WebXR) Guide](/docs/how-to-guides/xr/)
+
 ## Why JavaScript instead of WebAssembly?
 
 Needle Engine is built on JavaScript/TypeScript — the native language of the web. This is a deliberate architectural choice:
