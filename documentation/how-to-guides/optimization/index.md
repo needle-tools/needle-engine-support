@@ -253,6 +253,17 @@ Node.js is only required if you want to run our minimalistic networking server f
 - Use instancing for repeated objects
 - Minimize unique materials
 
+### Lazy-Loaded Modules
+
+Needle Engine **lazily loads** several heavy modules — they are only downloaded when actually needed. If your scene doesn't use these features, the user never pays the cost:
+
+- **Physics (Rapier)** — The Rapier physics engine (~2 MB Wasm) is only loaded when a physics collider or rigidbody is present in the scene. If you don't use physics, remove any colliders (including trigger colliders) to avoid the download entirely.
+- **Postprocessing** — Postprocessing effects are only loaded when a postprocessing volume is active.
+
+:::tip
+Removing unused physics colliders is one of the easiest wins — it saves ~2 MB of Wasm download. Double-check that you haven't left any colliders on objects that don't need them.
+:::
+
 ### Scene Optimization
 
 **Reduce initial load time:**
@@ -262,7 +273,8 @@ Node.js is only required if you want to run our minimalistic networking server f
 - Use `AssetReference` for on-demand loading
 
 **Improve runtime performance:**
-- Optimize physics colliders (simpler shapes when possible)
+- Avoid physics colliders if you don't need physics (saves ~2 MB Rapier Wasm download)
+- Use simpler collider shapes when physics is required
 - Disable unnecessary components
 - Use object pooling for frequently spawned objects
 - Profile with browser DevTools and Needle Inspector
