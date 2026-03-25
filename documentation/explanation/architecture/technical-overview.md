@@ -120,7 +120,7 @@ Data in `NEEDLE_components` can be animated via the currently not ratified [`KHR
       "guid": "2243275882009986562_1668529989451832962",
       "state": 0,
       "extrapolationMode": 1,
-      "playableAsset": "extensions/NEEDLE_persistent_assets/4",
+      "playableAsset": "/extensions/NEEDLE_persistent_assets/4",
       "playableGraph": {},
       "playOnAwake": true,
       "timeUpdateMode": 0,
@@ -189,7 +189,7 @@ This is a root extension defining a set of lightmaps for the glTF file.
 "NEEDLE_lightmaps": {
   "textures": [
     {
-      "pointer": "textures/20",
+      "pointer": "/textures/20",
       "type": 1,
       "index": 0
     }
@@ -265,16 +265,16 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
               "guid": "7400000_c296c4d76e956b34f8b5833ba90653c1",
               "clips": [
                 {
-                  "node": "nodes/4",
-                  "clip": "animations/0"
+                  "node": "/nodes/4",
+                  "clip": "/animations/0"
                 },
                 {
-                  "node": "nodes/9",
-                  "clip": "animations/6"
+                  "node": "/nodes/9",
+                  "clip": "/animations/6"
                 },
                 {
-                  "node": "nodes/14",
-                  "clip": "animations/12"
+                  "node": "/nodes/14",
+                  "clip": "/animations/12"
                 }
               ]
             },
@@ -326,7 +326,7 @@ Data in `persistent_assets` can reference other `persistent_assets` via JSON Poi
           "duration": 0.9833333333333333,
           "timeScale": 1,
           "asset": {
-            "clip": "animations/78",
+            "clip": "/animations/78",
             "loop": false,
             "duration": 8,
             "position": {
