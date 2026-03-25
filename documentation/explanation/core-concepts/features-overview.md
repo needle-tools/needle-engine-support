@@ -209,7 +209,7 @@ Export Unity ParticleSystems to the web with support for:
 **Build interactive UIs using Unity's Canvas system.**
 
 Export Unity UI components including:
-- Text (with custom fonts)
+- Text (with custom fonts and auto-generated font atlas, [extensible character sets](/docs/how-to-guides/components/ui-text#extending-the-character-set))
 - Images and sprites
 - Buttons with events
 - Layout groups

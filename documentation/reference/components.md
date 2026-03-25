@@ -173,7 +173,7 @@ Use static `Gizmos` methods for drawing debug lines and shapes in your scripts. 
 
 ## 🖼️ UI
 
-Spatial UI components map from Unity UI (Canvas, not UI Toolkit) to [three-mesh-ui](https://github.com/felixmariotto/three-mesh-ui). UI can be animated.
+Spatial UI components map from Unity UI (Canvas, not UI Toolkit). UI can be animated.
 
 | Component | Description |
 | --- | --- |
@@ -183,6 +183,10 @@ Spatial UI components map from Unity UI (Canvas, not UI Toolkit) to [three-mesh-
 | [`Image`](https://engine.needle.tools/docs/api/Image) | Renders sprite images |
 | [`RawImage`](https://engine.needle.tools/docs/api/RawImage) | Renders textures |
 | [`InputField`](https://engine.needle.tools/docs/api/InputField) | Text input field |
+
+Custom fonts are supported — Needle Engine auto-generates an MSDF font atlas at export time. Characters from your Text components are included automatically. To add extra characters (e.g. for runtime text or CJK), use the `FontAdditionalCharacters` component.
+
+**[How to add spatial UI text →](/docs/how-to-guides/components/ui-text)** — custom fonts, extending character sets, and more.
 
 :::tip HTML + Spatial UI
 For cross-platform projects (VR, AR, desktop), mix spatial and HTML UI:

@@ -49,6 +49,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - [Camera Controls (OrbitControls)](./components/orbit-controls) - Navigate 3D scenes
 - [Drag Objects (DragControls)](./components/drag-controls) - Drag with mouse, touch, or VR
 - [Scene Switcher](./components/scene-switcher) - Load and switch glTF content
+- [UI Text](./components/ui-text) - Spatial text with custom fonts
 - [Video Player](./components/video-player) - Play videos in 3D
 - [Scroll Follow](./components/scroll-follow) - Scroll-based animations
 - [Duplicatable](./components/duplicatable) - Spawn object copies

@@ -220,6 +220,12 @@ Please see the [circular reference error](#circular-reference-error) section.
 
 - For Unity: Make sure that you use the `UI/Legacy/Text` component and **not** the `TextMeshPro - Text` component
 
+## My UI Text is missing certain characters (e.g. Chinese, Japanese, Korean)
+
+The font atlas generated at export only contains characters from your scene's Text components plus default ASCII/European characters. To include additional characters (e.g. for runtime text), add a `FontAdditionalCharacters` component to your scene. The font itself must also support those characters.
+
+See [How to add spatial UI text](/docs/how-to-guides/components/ui-text) for full details.
+
 # Rendering & Visuals
 
 ## My objects are white after export
