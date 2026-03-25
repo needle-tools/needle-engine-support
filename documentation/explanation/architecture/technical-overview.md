@@ -37,6 +37,8 @@ NEEDLE_components
 NEEDLE_persistent_assets
 NEEDLE_lightmaps
 NEEDLE_lighting_settings
+NEEDLE_materials_mtlx
+NEEDLE_pmrem
 KHR_texture_basisu
 KHR_draco_mesh_compression
 ```
@@ -413,9 +415,90 @@ This extension builds upon the archived [`KHR_techniques_webgl`](https://github.
 Vertex and fragment shaders are embedded as URI. Some properties are redundant for embedded shaders but kept for ease of export.
 :::
 
+### NEEDLE_materials_mtlx
+
+This extension embeds [MaterialX](/docs/how-to-guides/export/materialx) material definitions in glTF files. It operates at two levels: a **root-level extension** stores MaterialX documents (XML strings) with texture references, and a **per-material extension** links each glTF material to a specific document and shader.
+
+The `textures` array maps texture names used inside the MaterialX XML to glTF texture pointers, so textures are resolved from the glTF buffers rather than external files.
+
+**Root-level extension:**
+```json
+{
+  "extensions": {
+    "NEEDLE_materials_mtlx": {
+      "documents": [
+        {
+          "name": "Perforated_Metal",
+          "version": "1.38",
+          "xml": "<?xml version='1.0' encoding='UTF-8'?><materialx version=\"1.38\">...</materialx>",
+          "textures": [
+            {
+              "pointer": "/textures/0",
+              "name": "Perforated_Metal_diffuse"
+            },
+            {
+              "pointer": "/textures/1",
+              "name": "Perforated_Metal_normal"
+            }
+          ],
+          "shaders": []
+        }
+      ]
+    }
+  }
+}
+```
+
+**Per-material extension:**
+```json
+{
+  "materials": [
+    {
+      "name": "Perforated Metal",
+      "extensions": {
+        "NEEDLE_materials_mtlx": {
+          "name": "Perforated_Metal",
+          "document": 0,
+          "shader": 0
+        }
+      }
+    }
+  ]
+}
+```
+
+::: tip MaterialX Runtime
+MaterialX shaders are compiled from XML to WebGL/WebGPU shaders at runtime via WebAssembly. The runtime is provided by [`@needle-tools/materialx`](https://www.npmjs.com/package/@needle-tools/materialx), which is lazily loaded only when a glTF contains MaterialX materials.
+:::
+
+### NEEDLE_pmrem
+
+This extension marks textures that have been pre-processed with PMREM (Prefiltered Mipmap Radiance Environment Map). During production builds, HDR environment textures (EXR) are convolved into PMREM cubemaps and compressed to KTX2 HDR format. The extension tells the runtime to load these textures with `CubeUVReflectionMapping`.
+
+```json
+{
+  "textures": [
+    {
+      "source": 0,
+      "extensions": {
+        "NEEDLE_pmrem": {
+          "source": 0
+        }
+      }
+    }
+  ]
+}
+```
+
+::: tip
+NEEDLE_pmrem replaces `KHR_texture_basisu` on the affected textures since the KTX2 HDR encoding uses a different pipeline (basisu HDR) that is not covered by the standard basisu extension.
+:::
+
+**Learn more:** [FastHDR Environment Lighting](/docs/explanation/fasthdr)
+
 ## MaterialX Support
 
-Needle Engine has built-in support for [MaterialX](https://materialx.org/) — the industry-standard open format for portable material and shader definitions. This enables rich, physically based materials that go beyond what glTF PBR can express, while remaining fully cross-platform.
+Needle Engine has built-in support for [MaterialX](/docs/how-to-guides/export/materialx) — the industry-standard open format for portable material and shader definitions. This enables rich, physically based materials that go beyond what glTF PBR can express, while remaining fully cross-platform.
 
 **Key capabilities:**
 - **Full MaterialX specification** — supports OpenPBR Surface, Standard Surface, UsdPreviewSurface, and Unlit Surface shading models
