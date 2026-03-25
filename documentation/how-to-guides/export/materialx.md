@@ -136,11 +136,6 @@ You can find a full example of how to use MaterialX in a three.js project on Sta
 
 Needle Engine supports the full MaterialX specification, including OpenPBR, Standard Surface, UsdPreviewSurface and Unlit Surface nodes, and including NPR (non-photorealistic rendering) nodes like fresnel effects. Nested nodegraph definitions and custom nodes are also supported.
 
-### ShaderGraph Node Coverage
-
-The following shows the current coverage of Unity ShaderGraph nodes by the MaterialX exporter, auto-generated from the latest published exporter package.
-
-<NeedleMaterialXSupportInfo />
 
 MaterialX materials in Needle Engine support the following features:
 - **Image-Based Lighting** (IBL) automatically coming from the scene's environment map
@@ -164,6 +159,12 @@ The Needle MaterialX Exporter leverages the graph-based structure of Unity's Sha
 - **Vertex displacement** via procedural noise or texture sampling
 - **Multiple UV channels** are supported (up to 4)
 - **Shader Keywords** are supported and will be exported as switch nodes in MaterialX.
+
+### ShaderGraph Node Coverage
+
+The following shows the current coverage of Unity ShaderGraph nodes by the MaterialX exporter, auto-generated from the latest published exporter package.
+
+<NeedleMaterialXSupportInfo />
 
 ## Supported MaterialX Version
 

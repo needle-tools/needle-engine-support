@@ -67,11 +67,6 @@ export default {
       </p>
     </div>
 
-    <div class="custom-container tip">
-      <p class="custom-container-title">TIP</p>
-      <p>When using an unsupported node in Shader Graph, the exporter will show a warning hint. You can replace the unsupported node with a supported alternative, or use the <code>MATERIALX</code> keyword to provide a fallback path.</p>
-    </div>
-
     <template v-if="!displayNodes">
       <details open>
         <summary>Supported Nodes ({{ supported.length }})</summary>
@@ -88,8 +83,7 @@ export default {
     </template>
 
     <div v-else class="mtlx-nodes">
-      <span v-for="n in displayNodes" :key="n"
-        class="mtlx-node"
+      <span v-for="n in displayNodes" :key="n" class="mtlx-node"
         :class="filter === 'supported' ? 'mtlx-supported' : 'mtlx-unsupported'">
         {{ shortName(n) }}
       </span>
@@ -97,37 +91,52 @@ export default {
   </div>
   <div v-else-if="error" class="mtlx-error">{{ error }}</div>
   <div v-else class="mtlx-loading">Loading MaterialX data...</div>
+
+
+  <div class="hint-container tip">
+    <p class="hint-container-title">TIP</p>
+    <p>When using an unsupported node in Shader Graph, the exporter will show a warning hint. You can replace the
+      unsupported node with a supported alternative, or use the <code>MATERIALX</code> keyword to provide a fallback
+      path.
+    </p>
+  </div>
 </template>
 
 <style scoped>
 .needle-mtlx {
   margin: 0.5em 0 1em;
 }
+
 .mtlx-summary {
   margin-bottom: 0.75em;
 }
+
 .mtlx-bar {
   height: 8px;
   background: var(--c-border);
   border-radius: 4px;
   overflow: hidden;
 }
+
 .mtlx-bar-fill {
   height: 100%;
   background: var(--c-brand, #3eaf7c);
   border-radius: 4px;
   transition: width 0.3s;
 }
+
 .mtlx-stats {
   font-size: 0.9em;
   margin-top: 0.4em;
 }
+
 .mtlx-nodes {
   display: flex;
   flex-wrap: wrap;
   gap: 0.35em;
   padding: 0.5em 0;
 }
+
 .mtlx-node {
   font-size: 0.8em;
   padding: 0.2em 0.65em;
@@ -135,11 +144,13 @@ export default {
   font-family: var(--font-family-code);
   font-weight: 500;
 }
+
 .mtlx-supported {
   background: #16a34a22;
   color: #15803d;
   border: 1px solid #16a34a44;
 }
+
 .mtlx-unsupported {
   background: #ea580022;
   color: #c2410c;
@@ -152,6 +163,7 @@ html.dark .mtlx-supported {
   color: #4ade80;
   border-color: #22c55e40;
 }
+
 html.dark .mtlx-unsupported {
   background: #f9731620;
   color: #fb923c;
@@ -161,11 +173,19 @@ html.dark .mtlx-unsupported {
 details {
   margin-bottom: 0.5em;
 }
+
 summary {
   cursor: pointer;
   font-weight: 600;
   padding: 0.3em 0;
 }
-.mtlx-error { color: var(--c-danger, #cc0000); }
-.mtlx-loading { opacity: 0.6; font-style: italic; }
+
+.mtlx-error {
+  color: var(--c-danger, #cc0000);
+}
+
+.mtlx-loading {
+  opacity: 0.6;
+  font-style: italic;
+}
 </style>
