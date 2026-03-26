@@ -383,29 +383,38 @@ As your project scales and you add more team members, you can assign them roles 
 
 ## FAQ
 
-1. **What is Needle Cloud?**   
+1. **What is Needle Cloud?**<br/>
    It’s an online service to upload, compress and share 3D assets and scenes.
 
-2. **How do I upload assets to Needle Cloud?**   
+2. **How do I upload assets to Needle Cloud?**<br/>
    You can upload files by dragging them onto the website, or by uploading them directly from supported integrations. If you have many files, you can use the CLI (command line interface) or the API (application programming interface).
 
-3. **How do I download optimized files from Needle Cloud?**   
+3. **How do I download optimized files from Needle Cloud?**<br/>
    You can download files from the website. Click on `Share` and then `Download`. You can also use the CLI to download files.
 
-4. **Can I share my files with others?**   
+4. **Can I share my files with others?**<br/>
    Yes, you can create links to share your files. Links can either be direct download links, or links to the Needle Cloud viewer.
 
-5. **Is there a limit to file sizes?**   
+5. **Is there a limit to file sizes?**<br/>
    Upload limits depend on your plan. Check your account details for more info.
 
-6. **Can Needle Cloud files be used with other tools?**   
-   Yes, you can use your files in other programs by exporting them as glTF. USD export is coming at a later point.
+6. **Can Needle Cloud files be used with other tools?**<br/>
+   Yes, you can download your files as glTF for use in other programs. USD files can be uploaded and viewed, but exporting back to USD is not yet supported.
 
-7. **What happens if I run out of storage space?**   
+7. **What happens if I run out of storage space?**<br/>
    You might need to upgrade your plan or delete old files to make room.
 
-8. **Do I need to be on a commercial plan to set a label on a previous deploy?**
+8. **Do I need to be on a commercial plan to set a label on a previous deploy?**<br/>
    Yes, manually setting labels (like `main`) on a specific deployment requires a commercial license. On free plans, the `main` label is automatically assigned to the latest deployment.
 
-9. **More answers**
-   Visit the [Needle Cloud FAQ](https://cloud.needle.tools/faq)
+9. **What is the difference between `latest` and `main`?**<br/>
+   `latest` automatically updates to point to your most recent deployment every time you deploy. `main` must be manually promoted — it stays on the version you chose until you move it. Use `latest` for internal previews and `main` for stable, client-facing links.
+
+10. **Can I password-protect my project on a free plan?**<br/>
+    No, password protection requires a PRO or Enterprise license. You can upgrade at [needle.tools/pricing](https://www.needle.tools/pricing).
+
+11. **Can I use custom labels like `staging` or `beta`?**<br/>
+    Custom labels are not yet available. Currently you can use `main` and `latest`. Support for custom labels is planned for a future release.
+
+12. **More answers**<br/>
+    Visit the [Needle Cloud FAQ](https://cloud.needle.tools/faq)
