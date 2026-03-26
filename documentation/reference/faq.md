@@ -364,12 +364,13 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 # AI
 
-## I want to use Needle AI with my local AI model
+## How do I use AI to help me build with Needle Engine?
 
-If you want (or have to) run your AI locally you can use the Needle llms.txt files as context for your local AI (e.g. Ollama):
-
-- [llms.txt](https://cloud.needle.tools/llms.txt)
-- [llms-full.txt](https://cloud.needle.tools/llms-full.txt)
+See the [AI Assistant & Tools](/docs/ai/) page for the full guide, including:
+- **Needle MCP Server** — connect Claude Desktop, Cursor, VS Code Copilot, and more to your live 3D scenes
+- **Needle Engine Plugin for Claude Code** — install with `/plugin install needle-engine`
+- **[llms.txt](https://cloud.needle.tools/llms.txt)** — compact reference for local models (Ollama, etc.)
+- **[llms-full.txt](https://cloud.needle.tools/llms-full.txt)** — complete documentation
 
 # Still have questions?
 [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)

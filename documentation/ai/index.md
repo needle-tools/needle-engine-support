@@ -1,82 +1,54 @@
 ---
-title: AI Assistant & Tools
-description: Use AI to get help with Needle Engine, access documentation, and integrate with AI tools
+title: AI & Needle Engine
+description: Use AI to ask questions, write code, and interact with live 3D scenes — all with Needle Engine knowledge built in.
 ---
 
-# AI Assistant & Tools
+# AI & Needle Engine
 
-Get instant help with Needle Engine using AI-powered assistants trained on our documentation, code, and integrations.
-
-## Getting AI Help
-
-::: tip Quick Options
-- **Public questions** → [Needle AI on Forum](https://forum.needle.tools)
-- **Private questions** → [Needle Cloud AI](https://cloud.needle.tools/team#ai)
-- **Needle knowledge with your AI** → [Needle MCP Server](./needle-mcp-server) (Claude Desktop, Copilot, etc.)
-:::
-
-### Needle Forum AI
-
-Ask questions in our [Needle community forum](https://forum.needle.tools) and get instant help - searches all Needle documentation, forums, and community content with embeddings. Public and searchable by the community.
-
-### Needle Cloud AI
-
-Use [Needle Cloud AI](https://cloud.needle.tools/team#ai) for private questions and team-specific help - same AI and knowledge base as Forum AI, but private to your team.
-
-::: tip Have Feedback?
-Use the feedback buttons in the AI chat on Needle Cloud to help us improve!
-:::
+Needle Engine integrates with popular AI tools so you can get help, write components, and inspect live scenes — all without leaving your workflow.
 
 ---
 
-## Developer Tools
+## Ask questions
 
-### MCP Server - Connect Your AI Tools
+**[Needle Forum AI](https://forum.needle.tools)** — Ask publicly. Searches all Needle docs, forum posts, and community content. Answers are visible to the community.
 
-Connect AI tools like Claude Desktop directly to Needle Engine projects and three.js scenes.
-
-**What you can do:**
-- **Search all Needle knowledge** - Semantic search with embeddings across docs, forums, and community content
-- Query scene hierarchies and properties in real-time
-- Interact with running Needle Engine projects
-- Access current website and project context
-
-**[Learn more about MCP Server →](./needle-mcp-server)**
-
-### Markdown Documentation
-
-Get AI-friendly markdown for any documentation page by changing `.html` to `.md` in the URL.
-
-**Example:** `https://docs.needle.tools/index.html` → `https://docs.needle.tools/index.md`
-
-Try it: <a href="./index.md"><code>/ai/index.md</code></a> or <a href="/docs/index.md"><code>/docs/index.md</code></a>
+**[Needle Cloud AI](https://cloud.needle.tools/team#ai)** — Ask privately. Same knowledge base, private to your team.
 
 ---
 
-## Local AI Models
+## Code with AI
 
-### Download Documentation Files
+Install the **Needle Engine skill** to give your AI coding assistant built-in knowledge of Needle Engine — components, lifecycle, serialization, physics, networking, WebXR, and more.
 
-Use Needle Engine documentation with local AI models like Ollama.
+| Tool | How to install |
+|------|----------------|
+| Claude Code | `/plugin install needle-engine` |
+| Other tools | See [github.com/needle-tools/ai](https://github.com/needle-tools/ai) |
 
-<div class="custom-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1rem 0;">
+The skill is open source. Contributions for additional tools (Codex, Copilot, etc.) are welcome.
 
-<div>
+---
 
-**[llms.txt](https://cloud.needle.tools/llms.txt)**
+## Connect AI to your live scenes
 
-Compact version - essential docs only
+The **[Needle MCP Server](./needle-mcp-server)** lets AI tools talk directly to your running 3D projects via the [Needle Inspector](../three/needle-devtools-for-threejs-chrome-extension). Works with Claude Desktop, Cursor, VS Code Copilot, Windsurf, and more.
 
-</div>
+**What it can do:**
+- Search all Needle documentation with semantic search
+- Inspect scene hierarchies, materials, and properties in real time
+- Edit objects and settings through natural language
+- Debug and optimize live scenes
 
-<div>
+**[Set up the MCP Server →](./needle-mcp-server)**
 
-**[llms-full.txt](https://cloud.needle.tools/llms-full.txt)**
+---
 
-Complete version - all documentation
+## Use Needle docs with any AI
 
-</div>
+Every documentation page is available as plain markdown — just change `.html` to `.md` in the URL.
 
-</div>
+For local models (Ollama, etc.) or tools that accept a context file:
 
-**Best for:** Running AI locally, offline development, custom AI setups
+- **[llms.txt](https://cloud.needle.tools/llms.txt)** — compact, essential docs
+- **[llms-full.txt](https://cloud.needle.tools/llms-full.txt)** — complete documentation
