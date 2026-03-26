@@ -404,5 +404,8 @@ As your project scales and you add more team members, you can assign them roles 
 7. **What happens if I run out of storage space?**   
    You might need to upgrade your plan or delete old files to make room.
 
-8. **More answers**   
+8. **Do I need to be on a commercial plan to set a label on a previous deploy?**
+   Yes, manually setting labels (like `main`) on a specific deployment requires a commercial license. On free plans, the `main` label is automatically assigned to the latest deployment.
+
+9. **More answers**
    Visit the [Needle Cloud FAQ](https://cloud.needle.tools/faq)
