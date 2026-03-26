@@ -38,10 +38,12 @@ function handleKeyDown(event: KeyboardEvent) {
         case 'ArrowDown':
             event.preventDefault();
             moveToNext();
+            if (focusedItem) handleItemClick(focusedItem);
             break;
         case 'ArrowUp':
             event.preventDefault();
             moveToPrevious();
+            if (focusedItem) handleItemClick(focusedItem);
             break;
         case 'ArrowRight':
             event.preventDefault();
@@ -73,6 +75,17 @@ function handleKeyDown(event: KeyboardEvent) {
         case ' ':
             event.preventDefault();
             handleItemClick(focusedItem);
+            break;
+        case 'Tab':
+            event.preventDefault();
+            if (event.shiftKey) {
+                moveToPrevious();
+            } else {
+                moveToNext();
+            }
+            if (focusedItem) {
+                handleItemClick(focusedItem);
+            }
             break;
     }
 }
@@ -291,10 +304,9 @@ function handleItemClick(item: TreeItem) {
     if (item.isFolder && canToggleFolders) {
         item.toggleChildren(!item.isExpanded);
     } else {
-        // Toggle current item
-        item.toggle();
-        const isNowSelected = !item.contentElement.classList.contains('hidden');
-        selectedItem = isNowSelected ? item : null;
+        // Always open the item, never close on click/keyboard
+        item.toggle(true);
+        selectedItem = item;
     }
     
     // Set focus to the clicked item
@@ -371,6 +383,11 @@ html[data-theme='dark'] dt:hover {
 
 html[data-theme='dark'] dt.focused {
     border-right-color: #4fc3f7;
+}
+
+html[data-theme='dark'] dt.selected {
+    background-color: rgba(180, 210, 100, 0.12) !important;
+    border-right-color: #9ab830 !important;
 }
 
 dl[role="tree"] {
@@ -465,9 +482,12 @@ dl[role="tree"] {
 
         &.selected {
             font-weight: bold;
+            background-color: rgba(180, 210, 100, 0.18);
+            border-right-color: #9ab830 !important;
 
             @media print {
                 font-weight: initial;
+                background-color: transparent;
             }
         }
     }

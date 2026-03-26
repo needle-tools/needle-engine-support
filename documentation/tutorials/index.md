@@ -42,6 +42,7 @@ Build your foundation with these essential tutorials:
 - [For Unity Developers](./fundamentals/for-unity-developers) - Learning path for Unity developers
   - [Unity Integration](./fundamentals/unity-integration) - Unity workflow and glTF export (~15 min)
   - [C# to TypeScript](./fundamentals/c-sharp-to-typescript) - Translate your C# knowledge (~15 min)
+- [Web Essentials for 3D Developers](./fundamentals/web-essentials) - Node.js, npm, TypeScript, and Vite explained for Unity/Blender devs (~15 min)
 - [TypeScript Essentials](./fundamentals/typescript-essentials) - TypeScript basics for Needle Engine (~20 min)
 
 ### Migrating from Other Platforms

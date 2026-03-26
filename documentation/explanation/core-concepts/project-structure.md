@@ -116,18 +116,11 @@ When building your web project, either by clicking "Build" in the editor or runn
 :::: file-tree name="Web Project File"
 
 ::: file index.html
-The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder.  
+The start page of your web project. You can add additional HTML, stylesheets or script imports here. Custom Needle components should be put into the `src/scripts/` folder.
 <br>
-You also find the `<needle-engine>` web component here, which displays your 3D content. You can modify its attributes to change the environment, loading style, contact shadows, and more. See the [Web Component Attributes Reference](/docs/reference/needle-engine-attributes) for a list of available attributes.
-
-:::
-
-::: file assets/
-The asset folder contains 3D and other files exported by the integration. This includes  `.glb` files, audio or video files. The folder is managed by the integration, so if you want to add additional assets, put them into `include/`instead.
-:::
-
-::: file assets/MyScene.glb
-The exported 3D scene from Unity or Blender is automatically placed here. The filename depends on how your Unity or Blender scene is named. There may be more files in this folder, depending on how your project is set up. For example, if you have multiple scenes, or use audio or video files, they will be here as well.
+You also find the `<needle-engine>` web component here, which displays your 3D content. You can modify its attributes to change the environment, loading style, contact shadows, and more. See the [Web Component Attributes Reference](/docs/reference/needle-engine-attributes) for a list of available attributes.  
+<br/>
+***Tip**: Click the files in the left column to learn more.*
 :::
 
 ::: file src/
@@ -170,12 +163,36 @@ The files in this folder are **generated and managed** by the Needle integration
 **This file is generated**. It automatically imports custom components that your project uses, both from your code and from dependency packages.
 :::
 
+::: file assets/
+The asset folder contains 3D and other files exported by the integration. This includes `.glb` files, audio or video files. The folder is managed by the integration, so if you want to add additional assets, put them into `include/` instead.
+:::
+
+::: file assets/MyScene.glb
+The exported 3D scene from Unity or Blender is automatically placed here. The filename depends on how your Unity or Blender scene is named. There may be more files in this folder, depending on how your project is set up. For example, if you have multiple scenes, or use audio or video files, they will be here as well.
+:::
+
 ::: file include/
 If you have custom assets that you want to load at runtime, add them to the include folder. On build this folder will be copied to the output folder.
 :::
 
 ::: file dist/
 The output folder where the built web project is placed. This is where the final web app is generated. It contains the bundled and minified files that are ready to be published to a server.
+:::
+
+::: file package.json
+Project configuration containing name, version, dependencies and development scripts. You can add additional npm packages as dependencies here.
+
+If you're coming from Unity or Blender, `package.json` is the web equivalent of Unity's `Packages/manifest.json` – it defines *what* your project needs. It lists your dependencies (like Needle Engine, three.js, and other libraries) along with their allowed version ranges, and contains scripts for running the dev server, building, and more.
+
+When Needle generates or updates a web project, it creates and manages this file for you. In most cases you won't need to edit it by hand. If you add a new npm package (e.g. `npm install some-library`), it is updated automatically.
+:::
+
+::: file package-lock.json
+Records the *exact* versions of every dependency that was installed, including sub-dependencies. This ensures that everyone on your team (and your CI/CD pipeline) gets identical versions when running `npm install`. Commit this file to version control but never edit it manually – it is managed automatically by npm.
+:::
+
+::: file node_modules/
+Contains all installed npm packages. This folder is created and managed by `npm install` and can be very large. **Do not commit it to version control** – it is already excluded by `.gitignore`. If you delete it, run `npm install` to restore it.
 :::
 
 ::: file needle.config.json
@@ -186,17 +203,13 @@ The [Needle config](/docs/reference/needle-config-json). Needle integrations and
 The [vite config](https://vitejs.dev/config/). Settings for building the distribution and hosting the development server are made here. Usually, you don't need to change this file, but you can add additional plugins or modify the build process if needed.
 :::
 
-::: file package.json
-Project configuration containing name, version, dependencies and development scripts. You can add additional npm packages as dependencies here.
-:::
-
 ::: file tsconfig.json
-This is the Typescript compiler configuration. It tells TypeScript that we're using modern scripting features.
+The [TypeScript compiler configuration](https://www.typescriptlang.org/tsconfig). It tells TypeScript that we're using modern scripting features. Usually you don't need to change this file.
 :::
 
 ::: file .gitignore
 This file specifies which files and folders should be ignored by the git version control system. The default web project excludes the `/dist`, `node_modules`, and `.vite` folders. If you're using some other version control system than git, you should exclude these folders.
-::: 
+:::
 
 ::::
 

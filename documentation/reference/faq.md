@@ -140,13 +140,7 @@ There are two ways to upgrade:
 
 ## What are package.json and package-lock.json?
 
-If you're coming from Unity or Blender, these files might be unfamiliar. They are standard files used by [npm](https://www.npmjs.com/) (Node Package Manager), which is the package manager for JavaScript and TypeScript projects.
-
-- **`package.json`** lists your project's dependencies (like Needle Engine, three.js, and any other libraries your project uses) along with their version ranges. Think of it like Unity's `Packages/manifest.json` – it defines *what* your project needs. It also contains project metadata and scripts for building, running a dev server, etc.
-
-- **`package-lock.json`** records the *exact* versions of every dependency that was installed, including sub-dependencies. This ensures that everyone on your team (or your CI/CD pipeline) gets the exact same versions when running `npm install`. You should commit this file to version control but never edit it manually – it is automatically managed by npm.
-
-When Needle Engine generates or updates a web project, it creates and manages these files for you. In most cases, you won't need to edit them by hand. If you add a new npm package (e.g. `npm install some-library`), both files will be updated automatically.
+See [Project Structure – package.json](/docs/explanation/core-concepts/project-structure#understanding-files-and-folders-in-the-web-project) for a full explanation of these files and how they relate to your project.
 
 # Scripting & Export
 
