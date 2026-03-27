@@ -156,7 +156,11 @@ MaterialX materials in Needle Engine support the following features:
 - **Image-Based Lighting** (IBL) automatically coming from the scene's environment map
 - **Reflection Probes** affect objects using MaterialX materials
 - **Light sources**: Directional, point, and spot lights, with a current limit of 8 lights per scene
-- **Texture compression and progressive textures**. MaterialX materials fully support the powerful texture compression and progressive loading features of Needle Engine, allowing you to use large textures. They will be only loaded when needed, and only in the resolution needed for the current view. 
+- **Realtime shadows** from directional, spot, and point lights <badge text="New in Needle Engine 5" />
+- **Vertex displacement** including procedural noise (fractal3d, position, math nodes) and texture-based displacement, with automatic normal recomputation via screen-space derivatives <badge text="New in Needle Engine 5" />
+- **Displacement animation** via animated material properties <badge text="New in Needle Engine 5" />
+- **Alpha mode detection** for mask and blend transparency <badge text="New in Needle Engine 5" />
+- **Texture compression and progressive textures**. MaterialX materials fully support the powerful texture compression and progressive loading features of Needle Engine, allowing you to use large textures. They will be only loaded when needed, and only in the resolution needed for the current view.
 - **Animated material properties** for colors, floats, vectors. Same as other materials in Needle Engine, any numeric material property can be animated.
 - All MaterialX surface models, including **OpenPBR**, **Standard Surface**, **UsdPreviewSurface**, and **Unlit Surface**.
 
@@ -167,6 +171,7 @@ The Needle MaterialX Exporter leverages the graph-based structure of Unity's Sha
 - **Textures** and color spaces
 - **Subgraphs** with one or more levels of nesting
 - **Vertex colors** are supported
+- **Vertex displacement** via procedural noise or texture sampling
 - **Multiple UV channels** are supported (up to 4)
 - **Shader Keywords** are supported and will be exported as switch nodes in MaterialX.
 
@@ -178,8 +183,6 @@ Needle Engine currently supports MaterialX version 1.39.4. MaterialX documents w
 
 Not all features that Shader Graph supports are also supported by MaterialX. If you attempt to export an unsupported node, the exporter will log an error and stop the export process. You can then fix the issue by replacing the unsupported node with a supported one, if possible.
 
-- **Vertex displacement** is supported since Needle Engine 4.17 (alpha).
-- **Realtime shadows** are supported since Needle Engine 4.17 (alpha).
 - **Baked Lightmaps**: Baked lightmaps are currently not supported in MaterialX materials.
 - **Tangent space** is not supported at the moment, which means that Shader Graph nodes specifying "Tangent" as space will look different.
 - **Code Nodes** are not supported at the moment.
