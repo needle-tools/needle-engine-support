@@ -1,6 +1,16 @@
 {
   "highlights": [
     {
+      "id": "materialx-displacement-shadows",
+      "title": "MaterialX: Displacement & Shadows",
+      "description": "MaterialX materials now support vertex displacement (procedural and texture-based), realtime shadows, displacement animation, and alpha mode detection — all built into Needle Engine 5.",
+      "link": "/how-to-guides/export/materialx",
+      "image": "https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif",
+      "badge": "NEW",
+      "date": "2026-03-22",
+      "version": "5.0.0"
+    },
+    {
       "id": "fasthdr",
       "title": "FastHDR Environment Lighting",
       "description": "Coming to Needle Engine: environment lighting that loads 10x faster, uses 95% less VRAM, and needs zero CPU processing. Works on every device — even budget phones.",
@@ -8,7 +18,7 @@
       "video": "https://www.youtube.com/watch?v=z_w3Hrzq-7o",
       "badge": "NEW",
       "date": "2026-03-20",
-      "version": "4.17.0"
+      "version": "5.0.0"
     },
     {
       "id": "ios-webxr",
