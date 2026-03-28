@@ -27,4 +27,5 @@ documentation/community/contributions.json
 .DS_Store
 documentation/.vuepress/public/.preview
 documentation/api
+documentation/reference/changelogs
 /api

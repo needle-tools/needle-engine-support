@@ -12,6 +12,7 @@
     "docs:translate": "node tools/translate.mjs",
     "docs:dev-build-api": "node tools/build_api_docs.mjs -- --dev",
     "docs:dev-api": "npm run docs:dev-build-api && npx serve api/@needle-tools/engine",
+    "docs:build-changelogs": "node tools/build_changelogs.mjs",
     "docs:build-examples": "node tools/build_examples.mjs",
     "test:links": "node tools/build_check_links.mjs"
   },

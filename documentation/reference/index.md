@@ -83,6 +83,15 @@ Compare Needle Engine with other 3D web platforms:
 
 ---
 
+## Changelogs
+
+- [**Needle Engine**](/docs/reference/changelogs/needle-engine) - Core runtime changelog
+- [**gltf-progressive**](/docs/reference/changelogs/gltf-progressive) - Progressive loading changelog
+- [**three-animation-pointer**](/docs/reference/changelogs/three-animation-pointer) - Animation pointer changelog
+- [**Needle MaterialX**](/docs/reference/changelogs/materialx) - MaterialX changelog
+
+---
+
 ## Help & Legal
 
 - [FAQ](./faq) - Frequently asked questions and troubleshooting

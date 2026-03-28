@@ -47,6 +47,10 @@ jobs:
         # if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: npm install
 
+      # fetch changelogs from npm
+      - name: Build changelogs
+        run: npm run docs:build-changelogs
+
       # run build script
       - name: Build VuePress site
         run: npm run docs:build
