@@ -17,6 +17,8 @@ And it looks **identical** to what you see in your editor.
 
 <video-embed src="https://www.youtube.com/watch?v=z_w3Hrzq-7o" limit_height />
 
+<sample src="https://needle-engine-environment-compression-demo-z23hmxbzenysl.needle.run/" lazy description="Experience FastHDR in action — click on the Next Environment button to change the FastHDR environment texture" />
+
 ## Why FastHDR?
 
 FastHDR is a GPU-native environment map format built on **KTX2 supercompression** (UASTC HDR 4x4). Unlike EXR, FastHDR files stream directly to GPU memory — no decompression on the main thread, no frame drops, no stalling. No other web 3D framework offers this — it's a Needle Engine exclusive.

@@ -12,11 +12,30 @@ export default {
     noRoom: {
       type: Boolean,
       default: false
+    },
+    lazy: {
+      type: Boolean,
+      default: false
+    },
+    description: {
+      type: String,
+      default: ""
     }
   },
   data() {
     return {
       sanitizedUrl: "",
+      loaded: false,
+    }
+  },
+  computed: {
+    shouldShow() {
+      return !this.lazy || this.loaded;
+    }
+  },
+  methods: {
+    load() {
+      this.loaded = true;
     }
   },
   watch: {
@@ -66,10 +85,16 @@ export default {
 
 <template>
   <div>
-    <iframe :src="sanitizedUrl" ref="frame1"
-      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
-    <iframe v-if="split === true" :src="sanitizedUrl" ref="frame2"
-      allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
+    <template v-if="shouldShow">
+      <iframe :src="sanitizedUrl" ref="frame1"
+        allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
+      <iframe v-if="split === true" :src="sanitizedUrl" ref="frame2"
+        allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
+    </template>
+    <div v-else class="load-embed-placeholder" @click="load">
+      <button class="load-embed-button">▶ Load embed</button>
+      <span v-if="description" class="load-embed-description">{{ description }}</span>
+    </div>
   </div>
 </template>
 
@@ -113,5 +138,43 @@ iframe:last-of-type {
   iframe {
     aspect-ratio: 9/14
   }
+}
+
+.load-embed-placeholder {
+  width: 100%;
+  aspect-ratio: 16/9;
+  border-radius: 1em;
+  border: 2px dashed var(--c-border, #e2e2e3);
+  background: color-mix(in srgb, var(--vp-c-bg, #f9f9f9) 80%, transparent);
+  color: var(--vp-c-dark, #2c3e50);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.load-embed-placeholder:hover {
+  background: var(--vp-c-bg, #fff);
+  border-color: var(--vp-c-accent, #3eaf7c);
+}
+
+.load-embed-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 1.1em;
+  cursor: pointer;
+  padding: 0;
+}
+
+.load-embed-description {
+  font-size: 0.85em;
+  opacity: 0.7;
+  text-align: center;
+  padding: 0 1em;
+  max-width: 50ch;
 }
 </style>
