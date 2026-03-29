@@ -58,7 +58,7 @@ async function main() {
         const version = versions[i];
         const prevVersion = versions[i + 1];
 
-        if (!version.startsWith("3") && !version.startsWith("4")) continue;
+        if (!version.startsWith("4") && !version.startsWith("5") && !version.startsWith("6")) continue;
 
         // skip next and experimental versions
         if (version.includes("next") || version.includes("experimental")) continue;
