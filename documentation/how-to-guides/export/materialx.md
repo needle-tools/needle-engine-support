@@ -17,6 +17,7 @@ Use rich, layered materials on the web with full fidelity. Currently, you can bu
 - **High fidelity** — rendered using the official MaterialX library, not an approximation
 - **Future-proof** — ready for WebGPU and next-gen rendering
 - **Pipeline-compatible** — the same format used by Maya, Houdini, V-Ray, and Omniverse
+- **Portable** — based on an [open industry standard](#compatible-software) used by Maya, Houdini, Unreal, and many more
 - **Open** — load standard `.mtlx` files from any exporter or authoring tool
 
 ::: info Shader Graph to MaterialX requires a **Pro**, **Edu** or **Enterprise** plan.
@@ -203,9 +204,27 @@ Needle is contributing to the built-in three.js MaterialX support, so that at so
 
 ## About MaterialX
 
-[MaterialX](https://www.materialx.org/) is an open standard for describing materials and shaders in a graph-based way, independent of any rendering engine. It allows you to define complex materials with multiple surface layers and realistic lighting in a portable format. Needle Engine uses the [official MaterialX JavaScript library](https://github.com/materialx/MaterialX) for maximum fidelity.
+[MaterialX](https://www.materialx.org/) is an open standard for describing materials and shaders in a graph-based way, independent of any rendering engine. It allows you to define complex materials with multiple surface layers and realistic lighting in a portable format. Needle Engine uses the [official MaterialX JavaScript library](https://github.com/materialx/MaterialX) for maximum fidelity and exports **fully spec-compliant** files — validated against the official [MaterialX Viewer and Graph Editor](https://github.com/AcademySoftwareFoundation/MaterialX) reference tools.
 
-MaterialX is widely used across film, VFX, and e-commerce, and is supported by professional authoring tools such as Autodesk Maya and 3ds Max, Houdini, V-Ray, and Omniverse.
+MaterialX is widely used across film, VFX, game engines, and e-commerce.
+
+### Compatible Software
+
+| Software | Version | Notes |
+|---|---|---|
+| Autodesk Maya | 2024+ | Built-in LookdevX MaterialX plugin |
+| Autodesk 3ds Max | 2024+ | Bundled MaterialX plugin |
+| Autodesk VRED | 2024+ | MaterialX import |
+| SideFX Houdini | 19+ | Native support via Solaris |
+| Unreal Engine | 5.1+ | MaterialX import, USD workflows in 5.3+ |
+| NVIDIA Omniverse | Kit 1.0.1+ | Import and rendering via MDL |
+| Chaos V-Ray | 6+ | Support in Maya and Houdini |
+| Pixar RenderMan | 24+ | Rendering via USD HdPrman |
+| Autodesk Arnold | 5.1+ | Rendering via custom operator |
+| Houdini Karma | — | Rendering in Karma CPU/XPU |
+| Apple visionOS | — | Spatial computing |
+
+For the full and up-to-date list, see the [official MaterialX Third-Party Support page](https://materialx.org/ThirdPartySupport.html).
 
 ## <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Quick Tips for Unity</logo-header>
 
