@@ -25,6 +25,16 @@ const packages = [
         title: 'Needle MaterialX',
         slug: 'materialx',
     },
+    {
+        npm: '@needle-tools/needle-component-compiler',
+        title: 'Component Compiler',
+        slug: 'component-compiler',
+    },
+    {
+        url: 'https://raw.githubusercontent.com/needle-tools/UnityGLTF/refs/heads/main/CHANGELOG.md',
+        title: 'UnityGLTF',
+        slug: 'unitygltf',
+    },
 ];
 
 const outputDir = path.resolve(process.cwd(), 'documentation/reference/changelogs');
@@ -47,6 +57,24 @@ function fetchJson(url) {
     });
 }
 
+function fetchText(url) {
+    return new Promise((resolve, reject) => {
+        const follow = (url) => {
+            https.get(url, (res) => {
+                if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
+                    follow(res.headers.location);
+                    return;
+                }
+                let data = '';
+                res.on('data', (chunk) => data += chunk);
+                res.on('end', () => resolve(data));
+                res.on('error', reject);
+            }).on('error', reject);
+        };
+        follow(url);
+    });
+}
+
 function downloadFile(url, dest) {
     return new Promise((resolve, reject) => {
         const file = fs.createWriteStream(dest);
@@ -62,6 +90,13 @@ function downloadFile(url, dest) {
         };
         follow(url);
     });
+}
+
+async function fetchChangelogFromUrl(pkg) {
+    console.log(`Fetching ${pkg.title} from ${pkg.url}...`);
+    const content = await fetchText(pkg.url);
+    console.log(`  Fetched changelog (${content.length} chars)`);
+    return { version: null, content };
 }
 
 async function extractChangelog(pkg) {
@@ -176,13 +211,23 @@ function generatePage(pkg, version, changelogContent) {
     // Trim leading newlines
     content = content.replace(/^\n+/, '');
 
+    let subtitle;
+    if (pkg.npm) {
+        subtitle = `[\`${pkg.npm}\`](https://www.npmjs.com/package/${pkg.npm}) — Latest: **${version}**`;
+    } else if (pkg.url) {
+        // Extract a GitHub repo link from raw.githubusercontent.com URLs
+        const ghMatch = pkg.url.match(/raw\.githubusercontent\.com\/([^/]+\/[^/]+)/);
+        const repoUrl = ghMatch ? `https://github.com/${ghMatch[1]}` : pkg.url;
+        subtitle = `[${pkg.title}](${repoUrl})`;
+    }
+
     return `---
 title: "${pkg.title} Changelog"
 ---
 
 # ${pkg.title} Changelog
 
-[\`${pkg.npm}\`](https://www.npmjs.com/package/${pkg.npm}) — Latest: **${version}**
+${subtitle}
 
 ${content}`;
 }
@@ -196,7 +241,9 @@ async function main() {
 
     for (const pkg of packages) {
         try {
-            const result = await extractChangelog(pkg);
+            const result = pkg.url
+                ? await fetchChangelogFromUrl(pkg)
+                : await extractChangelog(pkg);
             if (!result) continue;
 
             const page = generatePage(pkg, result.version, result.content);
