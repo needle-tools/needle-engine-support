@@ -21,12 +21,15 @@ Needle Engine integrates with popular AI tools so you can get help, write compon
 
 Install the **Needle Engine skill** to give your AI coding assistant built-in knowledge of Needle Engine — components, lifecycle, serialization, physics, networking, WebXR, and more.
 
-| Tool | How to install |
-|------|----------------|
-| Claude Code | `/plugin install needle-engine` |
-| Other tools | See [github.com/needle-tools/ai](https://github.com/needle-tools/ai) |
+```bash
+npx skills add needle-tools/ai
+```
 
-The skill is open source. Contributions for additional tools (Codex, Copilot, etc.) are welcome.
+Works with Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, Windsurf, and [40+ other agents](https://github.com/nichochar/open-skills).
+
+If you're already using `@needle-tools/engine`, the skill installs automatically via the Vite plugin — no manual setup needed.
+
+The skill is [open source](https://github.com/needle-tools/ai). Contributions are welcome.
 
 ---
 

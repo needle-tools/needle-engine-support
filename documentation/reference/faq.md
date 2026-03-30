@@ -368,7 +368,7 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 
 See the [AI Assistant & Tools](/docs/ai/) page for the full guide, including:
 - **Needle MCP Server** — connect Claude Desktop, Cursor, VS Code Copilot, and more to your live 3D scenes
-- **Needle Engine Plugin for Claude Code** — install with `/plugin install needle-engine`
+- **Needle Engine Skill** — install with `npx skills add needle-tools/ai` (works with Claude Code, Cursor, Copilot, and more)
 - **[llms.txt](https://cloud.needle.tools/llms.txt)** — compact reference for local models (Ollama, etc.)
 - **[llms-full.txt](https://cloud.needle.tools/llms-full.txt)** — complete documentation
 
