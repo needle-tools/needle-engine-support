@@ -61,7 +61,7 @@ async function main() {
         if (!version.startsWith("4") && !version.startsWith("5") && !version.startsWith("6")) continue;
 
         // skip next and experimental versions
-        if (version.includes("next") || version.includes("experimental")) continue;
+        if (version.includes("next") || version.includes("experimental") || version.includes("canary")) continue;
 
         if (isGithubActions && versionsChecked >= 10) {
             console.log("Github Actions mode: limiting to 10 versions checked");
