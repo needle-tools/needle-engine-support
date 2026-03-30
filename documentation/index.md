@@ -127,6 +127,14 @@ Quick reference for components, methods, and configuration.
 
 </div>
 
+:::tip Build with AI
+Install the **[Needle Engine skill](./ai/)** to give your AI coding assistant built-in knowledge of the engine. Works with Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, and many more. Auto-installs via the Vite plugin, or install manually:
+```bash
+npx skills add needle-tools/ai
+```
+You can also **[connect AI to your live 3D scenes](./ai/needle-mcp-server)** with the Needle MCP Server.
+:::
+
 ## What's New
 Latest features, updates, and documentation changes
 

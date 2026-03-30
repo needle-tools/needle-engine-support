@@ -193,13 +193,21 @@ Ready to build something? Follow one of our step-by-step tutorials:
 ### 🎓 For Web Developers
 **[Your First Web Project →](/docs/three/)** - Integrate Needle Engine into your existing web project with JavaScript.
 
+### 🤖 Use AI to Build Faster
+
+Install the **Needle Engine skill** to give your AI coding assistant built-in knowledge of the engine:
+
+```bash
+npx skills add needle-tools/ai
+```
+
+Works with Claude Code, Cursor, GitHub Copilot, Codex, Gemini CLI, and many more. If you're using `@needle-tools/engine`, the skill auto-installs via the Vite plugin.
+
+**[Learn more about AI & Needle Engine →](/docs/ai/)**
+
 ### 🚀 Beyond the Basics
 
 After completing your first project, explore these tutorials:
-
-- **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript for custom components
-- **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Add interactivity with code
-- **[Deploy Your Project](/docs/how-to-guides/deployment/)** - Publish your 3D experience to the web
 
 1. **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript for custom components
 2. **[Create Custom Components](/docs/how-to-guides/scripting/create-components)** - Add interactivity with code
