@@ -1,6 +1,6 @@
 <br/>
 <p align="center">
-    <img width="120" src="https://engine.needle.tools/branding/needle-logo.png" alt="logo" />
+    <a href="https://docs.needle.tools/getting-started"><img width="120" src="https://engine.needle.tools/branding/needle-logo.png" alt="logo" /></a>
 </p>
 <h2 align="center">
      Needle Engine
