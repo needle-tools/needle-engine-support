@@ -56,7 +56,7 @@ Perfect for:
 ## Quick Start
 
 :::tip Works with Unity and Blender
-FastHDR is available in both Unity and Blender integrations starting with Needle Engine 4.17.0.
+FastHDR is available in both Unity and Blender integrations starting with Needle Engine 5.0.0.
 :::
 
 ### In Unity or Blender
