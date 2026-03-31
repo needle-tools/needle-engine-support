@@ -58,6 +58,10 @@ Yes, the Needle Engine logo and branding can be removed with a [PRO license](htt
 
 # Installation & Setup
 
+## The Node.js installer asks about Chocolatey – is it needed?
+
+No, Chocolatey is not needed. During installation, the Node.js installer may show an option to install Chocolatey (a package manager for Windows). You can safely uncheck this option. Needle Engine does not use or require Chocolatey.
+
 ## My local server does not start / I do not see a website
 
 The most likely reason is an incorrect installation.
