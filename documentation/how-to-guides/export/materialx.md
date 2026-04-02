@@ -183,7 +183,10 @@ The Needle MaterialX Exporter leverages the graph-based structure of Unity's Sha
 
 ### ShaderGraph Node Coverage
 
-The following shows the current coverage of Unity ShaderGraph nodes by the MaterialX exporter, auto-generated from the latest published exporter package.
+Many nodes are supported out-of-the-box.
+We display a hint on unsupported nodes in the Shader Graph editor when a shader is set to export with MaterialX, so you can easily identify and fix any issues.
+
+The following table shows all supported and currently not supported nodes in Shader Graph for MaterialX export.
 
 <NeedleMaterialXSupportInfo />
 
@@ -207,6 +210,12 @@ If you have complex shaders with unsupported nodes, you can use the "MATERIALX" 
 Needle Engine uses the official MaterialX JavaScript library, which means materials are represented at the highest fidelity possible. three.js has some initial built-in MaterialX support, but its custom implementation doesn't yet cover many features of the standard.
 
 Needle is contributing to the built-in three.js MaterialX support, so that at some point we can offer both options or switch to the three.js implementation once it's more comprehensive.
+:::
+
+::: info Comparison with PolySpatial
+Unity's PolySpatial also exports Shader Graph materials to MaterialX, but produces non-standard MaterialX files that only work within the Apple ecosystem (visionOS). These files are not spec-compliant and cannot be used in other software or rendering engines.
+
+Needle Engine produces fully spec-compliant MaterialX files following the official [MaterialX specification](https://www.materialx.org/). This means your exported materials work everywhere MaterialX is supported — across web, film, VFX, and e-commerce pipelines, and in tools like Autodesk Maya, Houdini, V-Ray, and Omniverse.
 :::
 
 ## About MaterialX
