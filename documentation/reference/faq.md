@@ -232,6 +232,16 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 - Read more about recommended glTF workflows: [Exporting Materials](/docs/how-to-guides/export/#-exporting-materials)
 - Read more about custom shaders: [Custom Shaders](/docs/how-to-guides/export/#custom-shaders)
 
+## Where are my baked lightmaps stored after export? Is the lighting texture included in the glb?
+
+Yes. Lightmap textures are embedded directly in the glTF file via the `NEEDLE_lightmaps` extension. They are not saved as separate files — they are stored as textures in the `.glb` alongside your scene data and are automatically optimized by the Needle compression pipeline during production builds.
+
+## How do I display lightmaps from a glTF/glb file in three.js?
+
+Needle Engine handles this automatically. When loading a `.glb` file that contains lightmap data (via the `NEEDLE_lightmaps` extension), Needle Engine applies the lightmap textures to the correct materials — no manual setup required. You do not need to manually set UV channels, texture transforms, or material properties.
+
+If lightmaps are not displaying correctly, please [report the issue in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content) with a sample scene so we can investigate.
+
 ## My lightmaps look different / too bright
 
 Ensure you're following [best practices for lightmaps](/docs/how-to-guides/export/#recommended-lightmap-settings) and read about [mixing baked and non-baked objects](/docs/how-to-guides/export/#mixing-baked-and-non-baked-objects)
