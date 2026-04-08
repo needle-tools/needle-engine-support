@@ -18,7 +18,7 @@ The package is also available as a **standalone npm module** for any three.js-ba
 
 **Generate Assets:** [Needle Cloud](https://cloud.needle.tools) or [Needle Engine integrations](/docs/getting-started/)
 
-**Live Demos:** [three.js](https://engine.needle.tools/demos/gltf-progressive/threejs/) | [React Three Fiber](https://engine.needle.tools/demos/gltf-progressive/r3f/) | [model-viewer](https://engine.needle.tools/demos/gltf-progressive/modelviewer) | [Comparison](https://stackblitz.com/edit/gltf-progressive-comparison?file=package.json,index.html)
+**Live Demos:** [three.js](https://engine.needle.tools/demos/gltf-progressive/threejs/) | [React Three Fiber](https://engine.needle.tools/demos/gltf-progressive/r3f/) | [model-viewer](https://cloud.needle.tools/articles/needle-cloud-modelviewer) | [Comparison](https://stackblitz.com/edit/gltf-progressive-comparison?file=package.json,index.html)
 :::
 
 ---
