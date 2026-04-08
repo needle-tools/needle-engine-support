@@ -224,6 +224,39 @@ The font atlas generated at export only contains characters from your scene's Te
 
 See [How to add spatial UI text](/docs/how-to-guides/components/ui-text) for full details.
 
+## How do I assign a font in a custom component in Unity?
+
+When writing a custom TypeScript component with a font field, you can make Unity show a proper **Font** picker in the Inspector instead of a plain string field. At runtime the value is a URL to the auto-generated MSDF font atlas.
+
+There are two equivalent approaches:
+
+**Option 1 — type alias (recommended):**
+
+```ts
+import { Behaviour, serializable } from "@needle-tools/engine";
+
+type Font = string;
+
+export class MyTextComponent extends Behaviour {
+    @serializable(URL)
+    font: Font | null = null;
+}
+```
+
+**Option 2 — `// @type` comment:**
+
+```ts
+import { Behaviour, serializable } from "@needle-tools/engine";
+
+export class MyTextComponent extends Behaviour {
+    // @type UnityEngine.Font
+    @serializable(URL)
+    font: string | null = null;
+}
+```
+
+Both cause the component compiler to generate `public UnityEngine.Font font;` in the C# stub, so Unity users can drag-and-drop a font asset into the Inspector field. During export, Needle Engine automatically generates the MSDF font atlas and serializes the font as a URL string.
+
 # Rendering & Visuals
 
 ## My objects are white after export
