@@ -18,10 +18,7 @@ const props = {
   methods: {
     getUrl,
     getMimeType(url) {
-      if (url.endsWith('.mp4')) {
-        if (url.includes('av1')) return 'video/mp4; codecs="av01.0.05M.08"';
-        return 'video/mp4';
-      }
+      if (url.endsWith('.mp4')) return 'video/mp4';
       if (url.endsWith('.webm')) return 'video/webm';
       return undefined;
     },
