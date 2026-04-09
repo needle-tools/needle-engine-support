@@ -5,6 +5,7 @@
 const props = {
   props: {
     src: String,
+    sources: Array,
     controls: Boolean,
     limit_height: Boolean,
     max_height: String,
@@ -16,6 +17,14 @@ const props = {
   },
   methods: {
     getUrl,
+    getMimeType(url) {
+      if (url.endsWith('.mp4')) {
+        if (url.includes('av1')) return 'video/mp4; codecs="av01.0.05M.08"';
+        return 'video/mp4';
+      }
+      if (url.endsWith('.webm')) return 'video/webm';
+      return undefined;
+    },
     onMetadataLoaded(event) {
       const video = event.target;
       if (video.videoWidth && video.videoHeight) {
@@ -96,11 +105,13 @@ video,
 </style>
 
 <template>
-  <div v-if='src.includes("youtube.com")' class="container">
+  <div v-if='src && src.includes("youtube.com")' class="container">
     <iframe id="ytplayer" class="video" :src="getUrl(src)" frameborder="0" allowfullscreen />
   </div>
   <div v-else class="container">
-    <!-- <video loop autoplay="autoplay" playsinline style="pointer-events: none!important;" :src="src"></video> -->
-    <video loop autoplay controls :src="src" @loadedmetadata="onMetadataLoaded"></video>
+    <video v-if="sources && sources.length" loop autoplay muted playsinline controls @loadedmetadata="onMetadataLoaded">
+      <source v-for="s in sources" :key="s" :src="s" :type="getMimeType(s)" />
+    </video>
+    <video v-else loop autoplay muted playsinline controls :src="src" @loadedmetadata="onMetadataLoaded"></video>
   </div>
 </template>
