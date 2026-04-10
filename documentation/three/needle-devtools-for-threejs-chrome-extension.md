@@ -231,6 +231,14 @@ Game changer when working with three.js. Feels like magic the first time you use
 Polished and helpful, allows for easy runtime debugging like with Unity/Unreal. :)
 </testimonial>
 
+<testimonial
+  name="Valentin"
+  role="Chrome Web Store Review, Dec 2025"
+  img="/docs/inspector/testimonial-Valentin.jpg"
+>
+This is a really good tool for inspecting any three.js scene. It's extremely useful for quickly debugging your own projects, but it's also great for analyzing and learning how other websites are structured without painfully digging through the default browser dev tools. It does everything the official three.js editor does—just better! If you're a WebGL developer, it's a must-have in your toolbox.
+</testimonial>
+
 ## Next Steps
 
 - [Learn about Needle Engine](/docs/)
