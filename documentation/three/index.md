@@ -47,8 +47,6 @@ Check out our editor integrations for powerful visual creation workflows:
 Use the [Needle Inspector](./needle-devtools-for-threejs-chrome-extension.md) Chrome extension to inspect, debug, and edit any three.js scene directly in your browser – perfect for development and learning.
 :::
 
-[[toc]]
-
 ---
 
 ## Quick Start: Web Component
@@ -93,31 +91,70 @@ The web component works seamlessly with vanilla three.js code. Use Needle Engine
 ### Adding Objects with onStart
 
 ```html
-<!-- Import Needle Engine -->
-<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Needle Engine + three.js</title>
 
-<!-- Add the web component -->
-<needle-engine src="your-scene.glb"></needle-engine>
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/three.min.js",
+      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
+    }
+  }
+  </script>
 
-<!-- Extend with vanilla three.js -->
-<script type="module">
-  import { onStart } from 'https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js';
-  import * as THREE from 'three';
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
 
-  onStart(context => {
-    // Access the three.js scene
-    console.log("Scene loaded:", context.scene);
+  <style>
+    body { margin: 0; background: #444; }
+    needle-engine { position: absolute; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
 
-    // Add objects using vanilla three.js
-    const geometry = new THREE.BoxGeometry(1, 1, 1);
-    const material = new THREE.MeshStandardMaterial({ color: 0x00ff00 });
-    const cube = new THREE.Mesh(geometry, material);
-    cube.position.set(0, 0.5, 0);
+  <needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksZ26mT8H-latest/file" camera-controls="1" background-color="transparent" environment-image="studio" contact-shadows></needle-engine>
 
-    context.scene.add(cube);
-  });
-</script>
+  <script type="module">
+    import { onStart, onUpdate, DragControls } from '@needle-tools/engine';
+    import * as THREE from 'three';
+
+    let cube;
+
+    onStart(context => {
+      // Add objects using vanilla three.js
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const material = new THREE.MeshPhysicalMaterial({ color: 'orange', roughness: 0.4, metalness: 1 });
+      cube = new THREE.Mesh(geometry, material);
+      cube.position.set(0, 0.5, 0);
+      cube.scale.multiplyScalar(0.5);
+      context.scene.add(cube);
+      // Add components
+      cube.addComponent(DragControls);
+    });
+
+    onUpdate(context => {
+      cube.rotateX(context.time.deltaTime * .2);
+      cube.rotateY(context.time.deltaTime * .5);
+    });
+  </script>
+
+</body>
+</html>
 ```
+
+<iframe src="/docs/code-samples/three-onstart.html" style="
+    width: 100%;
+    aspect-ratio: 16/9;
+    outline: none;
+    border: none;
+    "
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
+    allowfullscreen
+    ></iframe>
 
 ### Animating Objects with onUpdate
 
@@ -167,6 +204,43 @@ onStart(context => {
 });
 ```
 
+### Using Custom Components
+
+For reusable logic, create a component class instead of using global hooks. Components have built-in lifecycle methods and can be attached to any three.js object.
+
+```typescript
+import { Behaviour, serializable } from '@needle-tools/engine';
+import * as THREE from 'three';
+
+class Hover extends Behaviour {
+
+  @serializable()
+  amplitude: number = 0.2;
+
+  @serializable()
+  frequency: number = 1;
+
+  private startY: number = 0;
+
+  start() {
+    this.startY = this.gameObject.position.y;
+  }
+
+  update() {
+    this.gameObject.position.y = this.startY + Math.sin(this.context.time.time * this.frequency) * this.amplitude;
+  }
+}
+
+onStart(context => {
+  const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(),
+    new THREE.MeshStandardMaterial({ color: 'hotpink' })
+  );
+  context.scene.add(cube);
+  cube.addComponent(Hover);
+});
+```
+
 ### Available Lifecycle Hooks
 
 | Hook | When it's called |
@@ -176,6 +250,8 @@ onStart(context => {
 | `onUpdate(callback)` | Every frame (perfect for animations) |
 | `onBeforeRender(callback)` | Before the scene renders |
 | `onAfterRender(callback)` | After the scene renders |
+| `onXRSessionStart(callback)` | When a WebXR session starts (AR or VR) |
+| `onXRSessionEnd(callback)` | When a WebXR session ends |
 
 **Context Object Properties:**
 
@@ -276,16 +352,6 @@ For more control and offline development:
 :::tip Sample glTF Files
 Need a test scene? [Download this sample glb](https://github.com/needle-tools/needle-engine-samples/raw/main/vanilla/myScene.glb) to get started quickly.
 :::
-
----
-
-## Complete HTML Example
-
-Here's a minimal but complete example showing how to use Needle Engine with vanilla HTML:
-
-@[code](@code/basic-html.html)
-
-[View on GitHub](https://github.com/needle-tools/needle-engine-samples/tree/main/vanilla) • [View on StackBlitz](https://stackblitz.com/edit/needle-engine-prebundled?file=index.html)
 
 ---
 

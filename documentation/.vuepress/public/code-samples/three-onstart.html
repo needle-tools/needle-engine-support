@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>Needle Engine + three.js</title>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/three.min.js",
+      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
+    }
+  }
+  </script>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+
+  <style>
+    body { margin: 0; background: #444; }
+    needle-engine { position: absolute; width: 100%; height: 100%; }
+  </style>
+</head>
+<body>
+
+  <needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksZ26mT8H-latest/file" camera-controls="1" background-color="transparent" environment-image="studio" contact-shadows></needle-engine>
+
+  <script type="module">
+    import { onStart, onUpdate, DragControls } from '@needle-tools/engine';
+    import * as THREE from 'three';
+
+    let cube;
+
+    onStart(context => {
+      // Add objects using vanilla three.js
+      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const material = new THREE.MeshPhysicalMaterial({ color: 'orange', roughness: 0.4, metalness: 1 });
+      cube = new THREE.Mesh(geometry, material);
+      cube.position.set(0, 0.5, 0);
+      cube.scale.multiplyScalar(0.5);
+      context.scene.add(cube);
+      // Add components
+      cube.addComponent(DragControls);
+    });
+
+    onUpdate(context => {
+      cube.rotateX(context.time.deltaTime * .2);
+      cube.rotateY(context.time.deltaTime * .5);
+    });
+  </script>
+
+</body>
+</html>
