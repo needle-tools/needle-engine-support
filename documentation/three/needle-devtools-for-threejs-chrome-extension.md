@@ -14,6 +14,16 @@
 The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting and debugging three.js, react-three-fiber, and Needle Engine projects directly in your browser. Think of it as the browser's built-in inspector, but specifically designed for 3D scenes.
 
 
+<testimonial
+  name="Sebastien Lempens"
+  role="Chrome Web Store Review, Dec 2025"
+  img="/docs/inspector/testimonial-SebastienLempens.webp"
+>
+Simply the best Three.js extension I've ever tested. Bravo!
+</testimonial>
+
+
+
 <video-embed src="https://www.youtube.com/watch?v=zSFqZSqzGGw" />
 
 ### Quick Start
@@ -24,9 +34,23 @@ The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting 
 4. The inspector will automatically detect the scene and appear
 5. Start exploring your 3D content!
 
+
+
 :::tip Works on any three.js website
 The Needle Inspector works on **any** website using three.js, react-three-fiber, or Needle Engine – not just your own projects. Use it to learn from other developers' work or debug production sites.
 :::
+
+
+
+<testimonial
+  name="KidsFab production"
+  role="Chrome Web Store Review, Jan 2026"
+>
+A must have tool for pros, beginners, and everything in between!
+</testimonial>
+
+<img src="/docs/inspector/overview.webp" />
+
 
 
 ## Features
@@ -41,7 +65,7 @@ The inspector gives you a complete view of your 3D scene hierarchy, similar to h
 
 ### Property Editing
 
-Edit any property of your 3D objects directly in the browser – no need to reload or rebuild your project.
+Edit any property of your 3D objects directly in the browser – no need to reload or rebuild your project. Changes can be undone with Ctrl+Z / Cmd+Z.
 
 - **Transform Controls**: Adjust position, rotation, and scale with intuitive number inputs
 - **Material Properties**: Change colors, textures, opacity, and rendering settings
@@ -76,7 +100,6 @@ npx needle-cloud start
 Then connect your AI tool to explore your scene with natural language.   
 **Learn how to connect your local AI tools**: [Needle MCP documentation](../ai/needle-mcp-server).
 
-
 ### Export Changes
 
 Made some tweaks you want to keep? Export your changes for later use:
@@ -109,6 +132,7 @@ The Needle Inspector automatically detects three.js scenes on any webpage you vi
 2. Ensure you are using Google Chrome or a Chromium-based browser
 3. Click "Add to Chrome" and you're ready to go!
 
+
 ## Usage Tips
 
 :::tip Toggle the inspector
@@ -135,6 +159,48 @@ Right-click any object in the hierarchy and select "Inspect" to view it in an is
 - Monitor performance metrics
 - Identify heavy objects or excessive geometry
 - Test optimization strategies in real-time
+
+
+# Screenshots
+
+<img src="/docs/inspector/threejs-journey.webp" />. 
+*Needle Inspector is a great tool for learning* 
+
+<img src="/docs/inspector/threejs-journey-behindthescenes.jpg" />. 
+*You can even explore behind the scenes 😏*
+
+
+## What Users Say
+
+<testimonial
+  name="KidsFab production"
+  role="Chrome Web Store Review, Jan 2026"
+>
+A must have tool for pros, beginners, and everything in between!
+</testimonial>
+
+<testimonial
+  name="Francesco Michelini"
+  role="Chrome Web Store Review, Dec 2025"
+>
+This extension in 5 minutes helped me solving a visual issue I was struggling to fix for two weeks. A must have for all ThreeJS devs 🍻
+</testimonial>
+
+<testimonial
+  name="Sebastien Lempens"
+  role="Chrome Web Store Review, Dec 2025"
+  img="/docs/inspector/testimonial-SebastienLempens.webp"
+>
+Simply the best Three.js extension I've ever tested. Bravo!
+</testimonial>
+
+<testimonial
+  name="Den"
+  role="Chrome Web Store Review, Jan 2026"
+  img="/docs/inspector/testimonial-Den.webp"
+>
+The best tool for inspecting and debugging Three.js apps. Special thanks for the MCP server — it's a game changer for vibe coding (in a good way)!
+</testimonial>
 
 ## Next Steps
 
