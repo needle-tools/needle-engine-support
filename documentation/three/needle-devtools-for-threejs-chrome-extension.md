@@ -23,7 +23,7 @@ The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting 
 <testimonial
   name="Sebastien Lempens"
   role="Chrome Web Store Review, Dec 2025"
-  img="/inspector/testimonial-SebastienLempens.webp"
+  img="/inspector/testimonial-SebastienLempens.png"
 >
 Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
@@ -195,7 +195,7 @@ This extension in 5 minutes helped me solving a visual issue I was struggling to
 <testimonial
   name="Sebastien Lempens"
   role="Chrome Web Store Review, Dec 2025"
-  img="/inspector/testimonial-SebastienLempens.webp"
+  img="/inspector/testimonial-SebastienLempens.png"
 >
 Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
@@ -203,7 +203,7 @@ Simply the best Three.js extension I've ever tested. Bravo!
 <testimonial
   name="Den"
   role="Chrome Web Store Review, Jan 2026"
-  img="/inspector/testimonial-Den.webp"
+  img="/inspector/testimonial-Den.jpg"
 >
 The best tool for inspecting and debugging Three.js apps. Special thanks for the MCP server — it's a game changer for vibe coding (in a good way)!
 </testimonial>
