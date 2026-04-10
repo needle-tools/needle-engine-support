@@ -1,3 +1,9 @@
+---
+title: Needle Inspector — three.js Debugger & Chrome DevTools Extension
+description: Free Chrome extension to inspect, debug, and edit any three.js, React Three Fiber, or Needle Engine scene — on any website. Supports MCP for AI-assisted debugging with Claude, Cursor, and more.
+image: /inspector/overview.webp
+---
+
 <br/>
 
 <div class="centered" style="display: flex;
@@ -17,7 +23,7 @@ The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting 
 <testimonial
   name="Sebastien Lempens"
   role="Chrome Web Store Review, Dec 2025"
-  img="/docs/inspector/testimonial-SebastienLempens.webp"
+  img="/inspector/testimonial-SebastienLempens.webp"
 >
 Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
@@ -49,7 +55,7 @@ The Needle Inspector works on **any** website using three.js, react-three-fiber,
 A must have tool for pros, beginners, and everything in between!
 </testimonial>
 
-<img src="/docs/inspector/overview.webp" />
+<img src="/inspector/overview.webp" />
 
 
 
@@ -163,10 +169,10 @@ Right-click any object in the hierarchy and select "Inspect" to view it in an is
 
 # Screenshots
 
-<img src="/docs/inspector/threejs-journey.webp" />. 
+<img src="/inspector/threejs-journey.webp" />. 
 *Needle Inspector is a great tool for learning* 
 
-<img src="/docs/inspector/threejs-journey-behindthescenes.jpg" />. 
+<img src="/inspector/threejs-journey-behindthescenes.jpg" />. 
 *You can even explore behind the scenes 😏*
 
 
@@ -189,7 +195,7 @@ This extension in 5 minutes helped me solving a visual issue I was struggling to
 <testimonial
   name="Sebastien Lempens"
   role="Chrome Web Store Review, Dec 2025"
-  img="/docs/inspector/testimonial-SebastienLempens.webp"
+  img="/inspector/testimonial-SebastienLempens.webp"
 >
 Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
@@ -197,7 +203,7 @@ Simply the best Three.js extension I've ever tested. Bravo!
 <testimonial
   name="Den"
   role="Chrome Web Store Review, Jan 2026"
-  img="/docs/inspector/testimonial-Den.webp"
+  img="/inspector/testimonial-Den.webp"
 >
 The best tool for inspecting and debugging Three.js apps. Special thanks for the MCP server — it's a game changer for vibe coding (in a good way)!
 </testimonial>
