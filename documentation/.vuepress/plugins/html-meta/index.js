@@ -143,6 +143,14 @@ export const modifyHtmlMeta = (args, ctx) => {
                 app.siteData.head.splice(index, 1);
             }
 
+            // move og:title from siteData to per-page frontmatter
+            const ogTitle = app.siteData.head.find((item) => item[0] === 'meta' && item[1].property === 'og:title');
+            const defaultOgTitle = ogTitle?.[1].content;
+            if (ogTitle) {
+                const index = app.siteData.head.indexOf(ogTitle);
+                app.siteData.head.splice(index, 1);
+            }
+
             // console.log(app);
             for (const page of app.pages) {
                 const frontmatter = page.frontmatter;
@@ -181,6 +189,13 @@ export const modifyHtmlMeta = (args, ctx) => {
                 if (!meta) {
                     // console.log("INSERT META", description);
                     frontmatter.head.push(['meta', { name: 'og:description', content: description }]);
+                }
+
+                // inject per-page og:title
+                const pageTitle = frontmatter.title ? frontmatter.title + ' — Needle Engine' : defaultOgTitle;
+                const ogTitleMeta = frontmatter.head.find((item) => item[0] === 'meta' && (item[1].property === 'og:title' || item[1].name === 'og:title'));
+                if (!ogTitleMeta && (ogTitle || frontmatter.title)) {
+                    frontmatter.head.push(['meta', { property: 'og:title', content: pageTitle }]);
                 }
 
                 if (process.env.CI && !frontmatter.image) {
