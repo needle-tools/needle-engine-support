@@ -9,7 +9,7 @@
     <img src="/imgs/chrome-logo.webp" style="max-height:70px;" title="Chrome Logo" alt="Chrome Logo"/>
 </div>
 
-# Needle Inspector — DevTools for three.js
+# Needle Inspector — DevTools & MCP for three.js
 
 The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting and debugging three.js, react-three-fiber, and Needle Engine projects directly in your browser. Think of it as the browser's built-in inspector, but specifically designed for 3D scenes.
 
@@ -113,10 +113,6 @@ The Needle Inspector automatically detects three.js scenes on any webpage you vi
 
 :::tip Toggle the inspector
 Click the Needle Inspector extension icon to show or hide the inspector panel at any time.
-:::
-
-:::tip Multiple scenes
-If a page has multiple three.js scenes, you can switch between them using the scene selector at the top of the inspector.
 :::
 
 :::tip Inspect in isolation
