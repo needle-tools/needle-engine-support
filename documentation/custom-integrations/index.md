@@ -22,7 +22,7 @@ The structure of a custom integration looks like this:
 
 1. Export your 3D assets as glTF files. At this point, your integration is likely as simple as clicking the export button in your 3D software.
 2. Use the glTF file in a web project using Needle Engine.
-   - This can be a web project created with another integration, downloaded from a sample, or a new web project made with `npx needle-create`.
+   - This can be a web project created with another integration, downloaded from a sample, or a new web project made with `npm create needle`.
    - Export the glTF file into the `assets` folder. Your web app should automatically refresh whenever you re-export the glTF file.
 3. At this point, you have a basic functional integration, and you could already add custom functionality via TypeScript in the web project.
 4. The next step is to add a way to create and adjust components in your software. Depending on the software, this can be done through a custom UI, a script, or a plugin.
@@ -45,5 +45,5 @@ A fully-flegded integration might also manage more of the web project workflow. 
 5. Uploading/downloading individual assets to Needle Cloud or another platform
 
 :::tip Reach out if you're planning to build a custom integration!
-Please reach out to us if you are interested in building a custom integration. We are happy to help you with the process, and explain more of the details. For Enterprise customers, we also provide custom integrations as a service.
+Please reach out to us at [hi+custom@needle.tools](mailto:hi+custom@needle.tools) if you are interested in building a custom integration. We are happy to help you with the process, and explain more of the details. For Enterprise customers, we also provide custom integrations as a service.
 :::

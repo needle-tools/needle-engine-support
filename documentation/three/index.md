@@ -84,9 +84,9 @@ The easiest way to get started is using the `<needle-engine>` web component. Dis
 
 ---
 
-## Extending with Vanilla three.js
+## Scripting with three.js and Needle Engine
 
-The web component works seamlessly with vanilla three.js code. Use Needle Engine's lifecycle hooks to access the scene and add your own three.js objects, modify materials, or write custom logic.
+Think of the `<needle-engine>` web component as a three.js canvas with superpowers. Use lifecycle hooks to access the scene and add your own three.js objects, modify materials, or attach built-in components.
 
 ### Adding Objects with onStart
 
