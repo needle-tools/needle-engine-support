@@ -23,7 +23,7 @@ The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting 
 <testimonial
   name="Sebastien Lempens"
   role="Chrome Web Store Review, Dec 2025"
-  img="/inspector/testimonial-SebastienLempens.png"
+  img="/docs/inspector/testimonial-SebastienLempens.png"
 >
 Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
@@ -195,7 +195,7 @@ This extension in 5 minutes helped me solving a visual issue I was struggling to
 <testimonial
   name="Sebastien Lempens"
   role="Chrome Web Store Review, Dec 2025"
-  img="/inspector/testimonial-SebastienLempens.png"
+  img="/docs/inspector/testimonial-SebastienLempens.png"
 >
 Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
@@ -203,7 +203,7 @@ Simply the best Three.js extension I've ever tested. Bravo!
 <testimonial
   name="Den"
   role="Chrome Web Store Review, Jan 2026"
-  img="/inspector/testimonial-Den.jpg"
+  img="/docs/inspector/testimonial-Den.jpg"
 >
 The best tool for inspecting and debugging Three.js apps. Special thanks for the MCP server — it's a game changer for vibe coding (in a good way)!
 </testimonial>
@@ -211,7 +211,7 @@ The best tool for inspecting and debugging Three.js apps. Special thanks for the
 <testimonial
   name="Katja Rempel"
   role="Chrome Web Store Review, Jan 2026"
-  img="/inspector/testimonial-KatjaRempel.png"
+  img="/docs/inspector/testimonial-KatjaRempel.png"
 >
 A very useful tool for debugging your own projects or understanding how others work!
 </testimonial>
@@ -226,7 +226,7 @@ Game changer when working with three.js. Feels like magic the first time you use
 <testimonial
   name="Finnbarr O'Callahan"
   role="Chrome Web Store Review, Apr 2026"
-  img="/inspector/testimonial-FinnbarrOCallahan.png"
+  img="/docs/inspector/testimonial-FinnbarrOCallahan.png"
 >
 Polished and helpful, allows for easy runtime debugging like with Unity/Unreal. :)
 </testimonial>
