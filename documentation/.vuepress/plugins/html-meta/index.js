@@ -184,7 +184,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                 }
 
                 if (process.env.CI && !frontmatter.image) {
-                    ogImageValue.content = "https://engine.needle.tools/docs/imgs/default-unfurl-image.webp";
+                    ogImageValue.content = "https://engine.needle.tools/docs/imgs/default-unfurl-image-2.webp";
                     // await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.path);
                 }
             }
