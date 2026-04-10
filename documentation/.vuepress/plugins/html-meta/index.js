@@ -151,8 +151,12 @@ export const modifyHtmlMeta = (args, ctx) => {
                     frontmatter.head = [];
                 }
                 // add og:image to frontmatter
-                const ogImageValue = { name: 'og:image', content: defaultOgImageUrl };
-                if (ogImage) {
+                // if the page has an explicit image in frontmatter, use it (with absolute URL)
+                const pageImageUrl = frontmatter.image
+                    ? (frontmatter.image.startsWith('http') ? frontmatter.image : 'https://engine.needle.tools/docs' + frontmatter.image)
+                    : defaultOgImageUrl;
+                const ogImageValue = { name: 'og:image', content: pageImageUrl };
+                if (ogImage || frontmatter.image) {
                     frontmatter.head.push(
                         ['meta', ogImageValue]
                     );
@@ -179,7 +183,7 @@ export const modifyHtmlMeta = (args, ctx) => {
                     frontmatter.head.push(['meta', { name: 'og:description', content: description }]);
                 }
 
-                if (process.env.CI) {
+                if (process.env.CI && !frontmatter.image) {
                     ogImageValue.content = "https://cdn.needle.tools/static/branding/logo_needle.png";
                     // await generateOgImageUrl(ogImageValue, frontmatter.title ?? page.data.path, description, page.path);
                 }
