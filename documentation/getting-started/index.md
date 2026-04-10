@@ -23,12 +23,11 @@ With Needle Engine, you get:
 - 🌐 **Deploy anywhere** on the web with a single command
 
 <testimonial
-  name="Steffen Aaland"
-  role="3D Artist"
-  src="https://www.artstation.com/steffenaaland"
-  img="/docs/testimonial/SteffenAaland.webp"
+  name="Steven"
+  role="CTO, Virtually Sports"
+  src="https://www.youtube.com/watch?v=naPlw5aDJHs&t=3s"
 >
-I have tested in your engine, and it worked at first try, which i have not experienced in any other engine.
+We have something like 12 products used globally, made with Needle — it's been a fantastic tool for us over the past 2-3 years. It just makes the workflow so easy, even people that aren't developers only have to click one button.
 </testimonial>
 
 ---

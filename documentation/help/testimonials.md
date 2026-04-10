@@ -39,7 +39,7 @@ I have tested in your engine, and it worked at first try, which i have not exper
   role="CTO, Virtually Sports"
   src="https://www.youtube.com/watch?v=naPlw5aDJHs&t=3s"
 >
-As a tool, Needle Engine has been absolutely instrumental in us getting our product out the door. The support was really, really good. It just makes the workflow so easy, even people that aren't developers only have to click one button. We definitely plan on staying with Needle for the foreseeable future.
+We have something like 12 products used globally, made with Needle — it's been a fantastic tool for us over the past 2-3 years. As a tool, Needle Engine has been absolutely instrumental in us getting our products out the door. The support was really, really good. It just makes the workflow so easy, even people that aren't developers only have to click one button. We definitely plan on staying with Needle for the foreseeable future.
 </testimonial>
 
 <testimonial
