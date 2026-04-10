@@ -290,29 +290,40 @@ Use Needle Engine directly with vanilla JavaScript – no bundler required. The 
 - Simple integrations into existing websites
 - Learning and exploring Needle Engine
 - Projects without a build pipeline
+- When your GLB was already built and exported (e.g. from Unity or Blender, or hosted on Needle Cloud) and you just want to display it
 
 ### Install from NPM
 
-For projects using modern JavaScript tooling and bundlers:
+For projects using modern JavaScript tooling and bundlers, use the [Vite template](https://github.com/needle-engine/vite-template) as a starting point:
 
 ```bash
-npm install @needle-tools/engine
+npm create needle
+```
+
+This sets up a ready-to-go project with Vite, TypeScript, and Needle Engine preconfigured. With a bundler, bare specifiers like `'three'` and `'@needle-tools/engine'` are resolved automatically — no import map or CDN script tag needed (and you should avoid them to prevent duplicate module instances). Then add your code:
+
+```typescript
+import { onStart } from '@needle-tools/engine';
+import * as THREE from 'three';
+
+onStart(context => {
+  const cube = new THREE.Mesh(
+    new THREE.BoxGeometry(),
+    new THREE.MeshStandardMaterial({ color: 0x00ff00 })
+  );
+  context.scene.add(cube);
+});
+```
+
+```html
+<needle-engine src="scene.glb"></needle-engine>
 ```
 
 **When to use:**
 - Production applications
-- Projects using bundlers (Vite, Webpack, etc.)
 - TypeScript projects
 - When you need tree-shaking and optimal bundle size
-
-**Example usage:**
-
-```typescript
-import { NeedleEngine } from '@needle-tools/engine';
-import * as THREE from 'three';
-
-// Your code here
-```
+- Teams and larger projects
 
 ---
 
@@ -375,6 +386,7 @@ All standard three.js functionality is available in Needle Engine. You can:
 
 **Learn More:**
 - [Web Component Attributes](../reference/needle-engine-attributes.md) - Configure the `<needle-engine>` component
+- [Core Components](../reference/components.md) - 100+ built-in components for physics, XR, audio, UI, and more
 - [Scripting Guide](../scripting.md) - Create custom scripts and components
 - [Scripting Examples](../scripting-examples.md) - Code samples and patterns
 - [Needle DevTools](./needle-devtools-for-threejs-chrome-extension.md) - Debug and inspect scenes
