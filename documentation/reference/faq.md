@@ -265,6 +265,21 @@ You can either make sure you're using glTF-compatible materials and shaders, or 
 - Read more about recommended glTF workflows: [Exporting Materials](/docs/how-to-guides/export/#-exporting-materials)
 - Read more about custom shaders: [Custom Shaders](/docs/how-to-guides/export/#custom-shaders)
 
+## Does Needle Engine support custom lit shaders?
+
+**Yes!** Needle Engine supports custom lit and unlit shaders via **MaterialX** — the industry-standard format for portable material definitions.
+
+You can author MaterialX materials in Unity's **Shader Graph** and export them automatically, or load standalone `.mtlx` files at runtime from any authoring tool (Maya, Houdini, Omniverse, and more).
+
+There is also a **WebGL2 export path**, but that only supports **unlit** shaders. For lit shaders, use MaterialX.
+
+- [MaterialX documentation](/docs/materialx)
+- [Custom Shaders overview](/docs/how-to-guides/export/#custom-shaders)
+
+::: tip
+Shader Graph → MaterialX export requires a **Pro**, **Edu**, or **Enterprise** plan. Loading external `.mtlx` files works on all plans. See [Pricing](https://needle.tools/pricing).
+:::
+
 ## Where are my baked lightmaps stored after export? Is the lighting texture included in the glb?
 
 Yes. Lightmap textures are embedded directly in the glTF file via the `NEEDLE_lightmaps` extension. They are not saved as separate files — they are stored as textures in the `.glb` alongside your scene data and are automatically optimized by the Needle compression pipeline during production builds.
