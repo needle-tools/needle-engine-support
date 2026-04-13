@@ -349,6 +349,44 @@ This can have many reasons, but a few common ones are:
 
 If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting Examples in the documentation](/docs/reference/scripting-examples#assetreference-and-addressables).
 
+## Can I manually control when the loading overlay hides instead of it auto-hiding?
+
+The default loading overlay automatically hides when all assets finish loading. There is currently no built-in API to prevent this auto-hide and then manually dismiss it later.
+
+However, since the default loading style is very minimal, a practical approach is to **use your own custom loading overlay** and control it via the `loadstart` and `loadfinished` events:
+
+```html
+<!-- Your custom loading overlay -->
+<div id="loading-overlay">
+  <p>Loading...</p>
+</div>
+
+<needle-engine src="scene.glb"></needle-engine>
+
+<script>
+  const overlay = document.getElementById("loading-overlay");
+  const engine = document.querySelector("needle-engine");
+
+  // Show overlay when loading begins
+  engine.addEventListener("loadstart", () => {
+    overlay.style.display = "flex";
+  });
+
+  // When assets are loaded, do your custom initialization
+  // before hiding the overlay
+  engine.addEventListener("loadfinished", async (ev) => {
+    // Do your custom setup here, e.g. wait for animations,
+    // additional data, or other async work
+    await myCustomInitialization();
+
+    // Now signal the app is ready
+    overlay.style.display = "none";
+  });
+</script>
+```
+
+This way you have full control over when the overlay disappears — you can wait for additional async work, animations, or any other "app ready" signal before hiding it.
+
 # Deployment & Networking
 
 ## I'm using networking and Glitch and it doesn't work if more than 30 people visit the Glitch page at the same time
