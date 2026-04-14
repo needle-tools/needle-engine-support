@@ -77,6 +77,19 @@ Your AI can actually see your 3D scene through the Inspector and help you work w
 
 
 
+### <img src="/imgs/codex-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Codex Logo" alt="Codex Logo"/> Using OpenAI Codex CLI
+
+**Quick setup:**
+
+1. Open your terminal and run:
+   ```bash
+   codex mcp add needle --url http://localhost:8424/mcp
+   ```
+
+2. Start using Codex — it will automatically connect to the Needle MCP server!
+
+
+
 ### <img src="/imgs/vscode-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="VS Code Logo" alt="VS Code Logo"/> Using VS Code
 
 **Quick setup:**
@@ -144,6 +157,7 @@ Try it: *"Show me all the meshes in my scene"*
 
 
 Antigravity is great at understanding what you want - just describe your goal!
+
 
 
 ## What to Ask
