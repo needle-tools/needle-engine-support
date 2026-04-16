@@ -34,7 +34,7 @@ Lightmapping is the process of pre-calculating lighting and baking it into textu
 
 **Before you start:**
 - At least one light in your scene
-- Objects marked as `Lightmapped` in the Needle Object panel
+- Objects marked as `Lightmapped` in the **Needle Object** panel
 - Blender's lighting set up the way you want it
 
 :::tip Download Example
@@ -47,17 +47,12 @@ Get the complete lightmapping example to learn from: [lightmaps.blend](https://e
 
 ### Step 1: Mark Objects for Lightmapping
 
-**For Mesh Objects:**
+**For Mesh & Light Objects:**
 
-1. Select your mesh object
-2. Open the **Needle Object** panel (Object Properties tab)
+1. Select your object
+2. Open the **Needle Object** panel (right Viewport Sidebar)
 3. Enable the `Lightmapped` checkbox
 
-**For Lights:**
-
-1. Select your light
-2. Open the **Needle Object** panel
-3. Enable `Lightmapped` to include it in baking
 
 ![Enable lightmapping on objects](/blender/lightmapping-object.webp)
 
@@ -67,31 +62,37 @@ Get the complete lightmapping example to learn from: [lightmaps.blend](https://e
 - **Don't** mark dynamic objects that move
 :::
 
+:::tip Use `Lightmap Scale` to control how much texel space an object occupies in the final lightmap. Large objects with simple lighting can often use a lower scale to save texture space.
+:::
 ---
 
 ### Step 2: Configure Settings
 
-You can configure lightmapping from two places:
+Open the **Needle Engine** panel (right Viewport Sidebar) and toggle the **Lightmap Preview** button to activate lightmaps. 
 
-**Option A: Scene Panel (Quick Access)**
+![Lightmap settings](/blender/lightmap-settings.webp)
 
-Open the **Needle** tab in the 3D viewport's sidebar (press `N` to toggle).
+Here you can adjust the resolution and baking quality of the final lightmap texture. Baking many objects can take a while, so for quick previews of your lighting setup, use **Preview** quality with a low resolution like 512.
 
-![Lightmap settings - Scene panel](/blender/lightmapping-scene-panel.webp)
+:::tip To inspect the lightmap baking result, click **Debug: Show Only Lightmap** to display only the lightmap texture on your objects instead of the full material.
+:::
 
-**Option B: Render Properties (Full Settings)**
 
-Go to **Render Properties** tab and find the **Lightmapping** panel.
-
-![Lightmap settings - Render properties](/blender/lightmapping-panel.webp)
 
 ---
 
 ### Step 3: Bake Lightmaps
 
-1. Click the **Bake** button (in either panel)
-2. Wait for baking to complete (progress shows in Blender)
+1. Click the **Bake Lightmap** button 
+2. Wait for baking to complete
 3. Lightmaps are automatically exported with your scene
+
+:::tip For Lightmap baking, we use the Cycles renderer. So configure your **Cycles Render Device** in Blender **Preferences → System** for a much faster baking process. 
+
+- **OptiX** for NVIDIA GPUs
+- **HIP** for AMD GPUs
+- **oneAPI** for Intel GPUs
+:::
 
 **What Happens:**
 - Needle Engine generates lightmap UVs automatically (no manual UV unwrapping needed!)
@@ -103,12 +104,13 @@ Go to **Render Properties** tab and find the **Lightmapping** panel.
 
 ## Lightmap Settings Explained
 
-### Resolution
+### Lightmap Texture Resolution
 
-**`Lightmap Resolution`** - Texels per unit
+**`Resolution`** 
+- Texture resolution of the baked lightmap
 - Higher = better quality, larger files
 - Lower = faster baking, smaller files
-- **Recommended:** 10-50 for most scenes
+- **Recommended:** 1024-4096 (based on the scene size)
 
 ### Quality
 
@@ -117,19 +119,9 @@ Go to **Render Properties** tab and find the **Lightmapping** panel.
 - Fewer samples = faster but noisier
 - **Recommended:** 128-512 for production
 
-**`Denoise`** - Remove noise from baked lightmaps
+**`Use Denoiser`** - Remove noise from baked lightmaps
 - Enable for cleaner results
 - Requires Blender's denoiser
-
-### Advanced
-
-**`Max Lightmap Size`** - Maximum texture size
-- Limits memory usage
-- **Recommended:** 2048 or 4096
-
-**`Pack Margin`** - Padding between UV islands
-- Prevents light bleeding between objects
-- **Recommended:** 4-16 pixels
 
 ---
 
@@ -180,18 +172,18 @@ Needle Engine's lightmapping plugin automatically generates lightmap UVs - no ma
 - Verify normals are correct (consistent face orientation)
 
 **Seams or artifacts:**
-- Increase `Pack Margin` setting
 - Check for overlapping UV islands
 - Ensure geometry is watertight (no gaps)
 
-**Too slow:**
+**Too slow:** 
 - Reduce lightmap resolution
 - Reduce render samples
+- Baking many objects can be slow — consider combining objects where possible
 - Bake in sections (bake one object at a time)
 
 **File too large:**
 - Lower lightmap resolution
-- Reduce `Max Lightmap Size`
+- Reduce `Lightmap Resolution`
 - Enable texture compression in production builds
 
 ---

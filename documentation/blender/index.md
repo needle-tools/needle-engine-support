@@ -32,7 +32,10 @@ Before starting, make sure you have:
 - <os-link windows_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0-x64.msi" osx_url="https://nodejs.org/dist/v20.9.0/node-v20.9.0.pkg"><strong>Node.js 20 LTS</strong></os-link>
 
 </ClientOnly>
-
+ 
+ :::tip
+  Blender's glTF Exporter has undergone a number of changes in Blender 5.1+ and is still stabilizing. We recommend Blender 5.0 or LTS versions.
+ :::
 ---
 
 ## Step 1: Install the Add-on
@@ -78,17 +81,18 @@ Download and **open any sample `.blend` file** in Blender. These samples show wh
 ### Generate the Web Project
 
 1. **Find the Needle Engine Panel**
-   - Open the Properties panel (right side)
-   - Click the **Scene Properties** tab (scene icon with geometric shapes)
-   - Scroll to find the **Needle Engine** panel
+   - Open the Viewport Sidebar (right side)
+   - Click the **Needle Engine** tab
+
+![Needle Engine Panel](/blender/needleviewportpanel.webp)
 
 2. **Set Project Path**
-   - Click the folder icon next to `Project Path`
+   - Click the folder icon next to `Web Project Path`
    - Choose a location for your web project folder
    - This folder will contain all your web files
 
 3. **Generate Project**
-   - Click the `Generate Project` button
+   - Click the `Generate Web Project` button
    - Wait while Needle Engine:
      - Creates your web project files
      - Installs dependencies (may take 1-2 minutes)
@@ -112,7 +116,7 @@ Now let's add camera controls so users can explore your scene.
 ### Add OrbitControls
 
 1. **Select your camera** in Blender
-2. Find the **Needle Components** panel (in Properties)
+2. Find the **Needle Object** panel (in Viewport Sidebar)
 3. Click `Add Component`
 4. Search for `OrbitControls` and select it
 5. **Save your Blender file** (Ctrl/Cmd + S)

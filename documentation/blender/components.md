@@ -18,7 +18,7 @@ Needle Engine includes **100+ ready-to-use components** for common interactive f
 **In Blender:**
 
 1. Select an object in your scene
-2. Open the **Needle Components** panel (usually in the Properties area)
+2. Open the **Needle Object** panel (Viewport Sidebar)
 3. Click `Add Component`
 4. Search for and select the component you need
 5. Adjust component settings in the panel
@@ -36,11 +36,16 @@ Add `OrbitControls` to your camera for instant mouse/touch controls on all devic
 ![Add OrbitControls component](/blender/components-panel-select.webp)
 
 **OrbitControls settings:**
-- `target` - What the camera orbits around
+- `lookAtTarget` - What the camera orbits around
 - `autoRotate` - Automatic rotation
 - `enableDamping` - Smooth camera movement
-- `minDistance` / `maxDistance` - Zoom limits
+- `minZoom` / `maxZoom` - Zoom limits
 - `enablePan` - Allow panning with right-click
+- ...
+
+Hover over any property to see its description.
+
+![Component Properties](/blender/propertytooltip.webp)
 
 ---
 
@@ -55,28 +60,26 @@ Add `OrbitControls` to your camera for instant mouse/touch controls on all devic
 - `PlayableDirector` - Timeline-based sequences
 - [Learn more about animation →](/docs/blender/animation)
 
-**Interaction:**
+**Interactivity:**
 - `DragControls` - Make objects draggable in 3D space
-- `ObjectRaycaster` - Detect clicks and hover on objects
+- `HoverAnimation` - Plays animation on pointer hover enter/exit events
 
 **UI & UX:**
 - `Button` - Interactive buttons
 - `Canvas` - UI container
 
-**Media:**
+**Multimedia:**
 - `VideoPlayer` - Play video files and streams
+- `AudioSource` - 3D spatial audio
 
 **Physics:**
 - `Rigidbody` - Add physics simulation
 - `BoxCollider` / `SphereCollider` / `MeshCollider` - Collision shapes
 
-**Audio:**
-- `AudioSource` - 3D spatial audio
-- `AudioListener` - Hear 3D audio (usually on camera)
-
 **Effects:**
-- `ParticleSystem` - Visual effects
-- `Light` - Dynamic lighting
+
+- `BloomEffect` - Add a glow effect to bright areas
+- `DepthOfField` - Simulate camera focus blur
 
 **Optimization:**
 - `ViewBox` - Ensure content stays framed
@@ -100,21 +103,45 @@ Click the `X` button in the lower right of any component panel.
 
 ---
 
+### Copy/Paste Components
+
+Click the `V` button in the lower right of any component panel.
+
+![Copy/Paste Menu](/blender/component-copypaste.webp)
+
+Here you can copy a component along with its configured values.
+
+![Component Actions](/blender/component-actions.webp)
+
+After clicking `Copy Component`, paste it onto another object with the `Paste as New: ...` button. Alternatively, to apply values to an existing component of the same type, select `Paste Values` from the `Component Actions` menu.
+
+![Paste Component](/blender/paste-component.webp)
+
+---
+
 ## Custom Components
 
 Want behavior that doesn't exist yet? Write your own TypeScript components that automatically appear in Blender.
 
 ### Creating Custom Components
 
-**1. Open Your Project Code**
+>First, make sure you have already generated the web project in the `Needle Engine` panel.
 
-Click `Code Editor` in the Needle Project panel to open VS Code with your web project.
+**1. Create a new component**
 
-**2. Create a Component File**
 
+Navigate to the `Needle Object` panel (right Viewport Sidebar) and click the `Create New Component` button.
+
+![Create New Component](/blender/create-new-component.webp)
+
+Enter a component name and click `Ok`. VS Code will automatically open with your web project.
+
+**Alternatively:**
+
+Click `Open Code Editor` in the `Needle Engine` panel to open VS Code with your web project.
 In your project, navigate to `src/scripts/` and create a new `.ts` file (e.g., `RotateObject.ts`).
 
-**3. Write Your Component**
+**2. Write Your Component**
 
 ```ts
 import { Behaviour, serializable } from "@needle-tools/engine";
@@ -138,13 +165,15 @@ export class RotateObject extends Behaviour {
 }
 ```
 
-**4. Save and Use**
+**3. Save and Use**
 
 - Save the file
 - The component automatically compiles
 - It appears in Blender's component list
 - Add it to objects just like built-in components
 - Your `@serializable()` properties appear as editable fields in Blender
+
+![Add Custom Component](/blender/add-custom-component.webp)
 
 ---
 
@@ -262,10 +291,10 @@ export class MyComponent extends Behaviour {
     speed: number = 5;
 
     @serializable()
-    enabled: boolean = true;
+    myBool: boolean = true;
 
     @serializable()
-    name: string = "Default";
+    myString: string = "Default";
 
     // Three.js types
     @serializable(Vector3)
@@ -293,6 +322,9 @@ export class MyComponent extends Behaviour {
 
 All these properties become editable in Blender's component panel!
 
+![Component Properties](/blender/myComponent-sample.webp)
+
+
 :::tip Learn More
 - [Creating Components & Serialization →](/docs/how-to-guides/scripting/create-components#serialization)
 - [@serializable Decorator Reference →](/docs/reference/typescript-decorators#serializable)
@@ -305,7 +337,7 @@ All these properties become editable in Blender's component panel!
 **Using Events:**
 
 ```ts
-import { Behaviour, serializable } from "@needle-tools/engine";
+import { Behaviour, EventList, PointerEventData, serializable } from "@needle-tools/engine";
 
 export class Button extends Behaviour {
 
@@ -325,8 +357,16 @@ export class Door extends Behaviour {
     }
 }
 ```
-
 In Blender, assign the Door's `open()` method to the Button's `onClick` event.
+
+:::tip
+**EventLists are powerful!** They can also toggle object active states, enable/disable components, and change property values on other components.
+
+![Component Properties](/blender/eventlist.webp)
+:::
+
+
+
 
 **Direct References:**
 
@@ -369,7 +409,7 @@ Assign the animator reference in Blender by dragging the component.
 ## Requirements
 
 :::warning Component Compiler Required
-Make sure `@needle-tools/needle-component-compiler` 2.x is in your `package.json` devDependencies for component hot-reloading to work.
+Make sure `@needle-tools/needle-component-compiler` 3.x is in your `package.json` devDependencies for component hot-reloading to work.
 :::
 
 This is included by default in new projects. If components aren't appearing in Blender, check your `package.json`.
