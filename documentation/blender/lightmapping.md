@@ -265,7 +265,7 @@ Your feedback helps us improve the feature!
 
 ## Next Steps
 
-- **[Texture Compression](/docs/how-to-guides/deployment/#texture-compression)** - Optimize lightmap file sizes
+- **[Compression & Optimization](/docs/blender/compression)** - Optimize textures and meshes for the web
 - **[Deployment Guide](/docs/how-to-guides/deployment/)** - Publish your lightmapped scenes
 - **[Components Overview](/docs/blender/components)** - Add interactivity to lit scenes
 

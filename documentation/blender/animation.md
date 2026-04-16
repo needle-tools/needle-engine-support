@@ -241,6 +241,7 @@ export class ScrollTimeline extends Behaviour {
 ## Next Steps
 
 - **[Components Overview](/docs/blender/components)** - Learn about other interactive components
+- **[Compression & Optimization](/docs/blender/compression)** - Optimize assets for the web
 - **[Custom Components](/docs/how-to-guides/scripting/create-components)** - Write code to trigger animations
 - **[Deployment](/docs/how-to-guides/deployment/)** - Publish your animated scenes
 
