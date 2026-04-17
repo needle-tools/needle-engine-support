@@ -225,10 +225,8 @@ Lightmaps baked in your 3D editor are automatically exported. The lighting you s
 
 ### <logo-header logo="/imgs/unity-logo.webp" alt="Unity">Unity</logo-header>
 
-- [Unity Export Guide](./unity/) - Unity-specific export workflows
 - [Unity Lightmapping](/docs/tutorials/fundamentals/unity-integration#lightmaps) - Settings and best practices
 
 ### <logo-header logo="/blender/logo.png" alt="Blender">Blender</logo-header>
 
-- [Blender Export Guide](./blender/) - Blender-specific export workflows
 - [Blender Lightmapping](/docs/blender/lightmapping) - Baking in Blender
