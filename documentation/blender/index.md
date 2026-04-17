@@ -152,7 +152,7 @@ By default, Blender uses `Filmic` which makes colors look different in the brows
 **To fix:**
 1. Go to **Render Properties** tab
 2. Find **Color Management** section
-3. Set `View Transform` to **Standard**
+3. Set `View` to **Standard**
 
 ![Color management settings](/blender/settings-color-management.webp)
 
