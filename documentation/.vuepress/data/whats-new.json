@@ -1,6 +1,16 @@
 {
   "highlights": [
     {
+      "id": "blender-addon-1.0.0",
+      "title": "Needle Engine for Blender 1.0.0",
+      "description": "A milestone release: completely redesigned UI, reflection probes, improved lightmapping, supercharged EventLists, 15+ new components, and support for Blender 4.2 LTS through 5.1.",
+      "link": "/blender/",
+      "image": "/docs/imgs/blender-100.webp",
+      "badge": "NEW",
+      "date": "2026-04-17",
+      "version": "Blender 1.0.0"
+    },
+    {
       "id": "materialx-displacement-shadows",
       "title": "MaterialX: Displacement & Shadows",
       "description": "MaterialX materials now support vertex displacement (procedural and texture-based), realtime shadows, displacement animation, and alpha mode detection — all built into Needle Engine 5.",
