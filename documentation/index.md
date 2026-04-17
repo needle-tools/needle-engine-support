@@ -34,9 +34,16 @@ Collaboration and XR aren't afterthoughts – they're core features. Add multipl
 Powerful compression and optimization pipeline ensures your files are small and load fast. Built on the glTF standard for maximum compatibility.
 
 
+## What's New
+Latest features, updates, and documentation changes
+
+<whats-new />
+
+<br/>
+
 ## Choose Your Path
 
-<style scoped>
+<style>
 .path-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -56,6 +63,16 @@ Powerful compression and optimization pipeline ensures your files are small and 
 .path-card:hover {
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.12);
   background: rgba(255, 255, 255, 0.8);
+}
+
+html[data-theme='dark'] .path-card {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme='dark'] .path-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 </style>
 
@@ -134,11 +151,6 @@ npx skills add needle-tools/ai
 ```
 You can also **[connect AI to your live 3D scenes](./ai/needle-mcp-server)** with the Needle MCP Server.
 :::
-
-## What's New
-Latest features, updates, and documentation changes
-
-<whats-new />
 
 <br/><br/>
 

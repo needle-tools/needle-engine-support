@@ -135,7 +135,7 @@ const resolvedLink = computed(() => withBase(props.link))
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
   overflow: hidden;
   text-decoration: none !important;
-  color: var(--c-text, #2c3e50) !important;
+  color: var(--c-text) !important;
   transition: box-shadow 0.3s ease, transform 0.3s ease, background 0.3s ease;
 }
 
@@ -144,7 +144,7 @@ const resolvedLink = computed(() => withBase(props.link))
   transform: translateY(-2px);
   background: rgba(255, 255, 255, 0.8);
   text-decoration: none !important;
-  color: var(--c-text, #2c3e50) !important;
+  color: var(--c-text) !important;
 }
 
 .card-meta {
@@ -290,14 +290,23 @@ const resolvedLink = computed(() => withBase(props.link))
   }
 }
 
-/* ── Dark mode ── */
-:root[data-theme='dark'] .whats-new-card {
+</style>
+
+<style>
+/* ── Dark mode (unscoped so html selector works) ── */
+html[data-theme='dark'] .whats-new-card {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
+  color: var(--c-text) !important;
 }
 
-:root[data-theme='dark'] .whats-new-card:hover {
+html[data-theme='dark'] .whats-new-card:hover {
   background: rgba(255, 255, 255, 0.08);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  color: var(--c-text) !important;
+}
+
+html[data-theme='dark'] .whats-new-card .card-media {
+  background: #000;
 }
 </style>

@@ -726,6 +726,20 @@ export default {
   cursor: pointer !important;
 }
 
+/* ── Dark mode for AI buttons ── */
+html[data-theme='dark'] .ai-chat-link,
+html[data-theme='dark'] .llm-link {
+  color: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+html[data-theme='dark'] .ai-chat-link:hover,
+html[data-theme='dark'] .llm-link:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
 </style>
 
 <style scoped>
@@ -1003,7 +1017,7 @@ export default {
   background: rgba(125, 125, 125, 0.3);
 }
 
-/* Dark mode adjustments */
+/* Dark mode adjustments - prefers-color-scheme fallback */
 @media (prefers-color-scheme: dark) {
   .page-nav {
     border-left-color: rgba(255, 255, 255, 0.1);
@@ -1013,6 +1027,7 @@ export default {
     border-bottom-color: rgba(255, 255, 255, 0.1);
   }
 }
+
 
 /* Mobile Sidebar Overlay - darkens page behind sidebar */
 .mobile-sidebar-overlay {

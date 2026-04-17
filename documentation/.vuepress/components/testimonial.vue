@@ -119,3 +119,16 @@ export default {
 }
 
 </style>
+
+<style>
+/* ── Dark mode (unscoped so html selector works) ── */
+html[data-theme='dark'] .testimonial {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+html[data-theme='dark'] .testimonial:hover {
+    background: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+</style>
