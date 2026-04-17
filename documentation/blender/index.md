@@ -210,9 +210,6 @@ Master the 100+ built-in components and learn to create your own custom TypeScri
 **[Lightmapping →](/docs/blender/lightmapping)**
 Bake photorealistic lighting for stunning visuals with great performance.
 
-**[Compression & Optimization →](/docs/blender/compression)**
-Compress textures and meshes for fast-loading web experiences — configure formats, progressive loading, and per-texture overrides.
-
 **[Use Physics →](/docs/how-to-guides/scripting/use-physics)**
 Add rigidbodies, colliders, forces, and raycasting — built-in Rapier physics, no setup needed.
 

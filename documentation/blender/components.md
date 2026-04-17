@@ -421,7 +421,6 @@ This is included by default in new projects. If components aren't appearing in B
 - **[Create Components Guide](/docs/how-to-guides/scripting/create-components)** - Detailed scripting tutorial
 - **[Component API Reference](https://engine.needle.tools/docs/api/)** - Complete API documentation
 - **[Animation Workflows](/docs/blender/animation)** - Use animation components
-- **[Compression & Optimization](/docs/blender/compression)** - Optimize assets for the web
 - **[TypeScript Essentials](/docs/tutorials/fundamentals/typescript-essentials)** - Learn TypeScript basics
 
 ---
