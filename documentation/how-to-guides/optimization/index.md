@@ -109,7 +109,8 @@ Use the Compression & LOD Settings component to override settings for specific t
 :::
 
 :::details Blender: Per-texture compression settings
-Select the Material tab to see compression options for all textures used by that material.
+Select an object, open the **Needle Object** panel (Viewport Sidebar), and expand **Material Settings**.
+Toggle the override for any texture in the list to customize its compression settings.
 
 ![Texture Compression in Blender](/blender/texture-compression.webp)
 :::
@@ -171,6 +172,14 @@ Use the Compression & LOD Settings component to enable progressive loading globa
 ![Unity Compression Settings](/imgs/unity-compression-settings.png)
 :::
 
+:::details Blender: Enable progressive texture loading
+Open the **Needle Engine Project Settings**, under **Export Settings** you can enable or disable progressive texture loading. 
+
+![Blender Compression Settings](/blender/compression-settings.webp)
+:::
+
+
+
 :::tip Learn More
 Progressive loading is powered by [`@needle-tools/gltf-progressive`](/docs/gltf-progressive/), which ships with Needle Engine. It's also available as a standalone package for any three.js project.
 :::
@@ -193,6 +202,12 @@ See **[gltf-progressive](/docs/gltf-progressive/)** for in-depth technical detai
 Use the Compression & LOD Settings component to control LOD generation for all meshes or individual meshes.
 
 ![Unity Mesh Compression Options](/imgs/unity-mesh-compression-options.jpg)
+:::
+
+:::details Blender: LOD/Progressive Meshes
+Open the **Needle Engine Project Settings**, under **Export Settings** you can enable or disable progressive mesh loading. 
+
+![Blender Mesh Compression Options](/blender/mesh-compressions-settings.webp)
 :::
 
 ---
