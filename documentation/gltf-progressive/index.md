@@ -185,12 +185,14 @@ You can also trigger compression manually from the Unity menu:
 
 ### Configuration: Blender
 
-In Blender, progressive loading settings are part of the main Needle Engine scene settings panel:
+In Blender, progressive loading settings are part of the main **Needle Engine Project Settings** panel:
 
-- **Use Progressive** — Enable progressive texture loading (default: on)
+- **Use Progressive Textures** — Enable progressive texture loading (default: on)
 - **Progressive Texture Size** — Preview size for initial texture load (default: 128px, options: 32–2048)
 - **Use Progressive Meshes** — Enable progressive mesh loading (default: on)
-- **Compress On Save** — Generate compressed and progressive assets after export to preview production quality locally
+- **Auto Compress** — Generate compressed and progressive assets after export to preview production quality locally
+
+![Blender Compression Options](/blender/progressive-settings.webp)
 
 ---
 
