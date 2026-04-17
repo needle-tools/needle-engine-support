@@ -406,16 +406,6 @@ Assign the animator reference in Blender by dragging the component.
 
 ---
 
-## Requirements
-
-:::warning Component Compiler Required
-Make sure `@needle-tools/needle-component-compiler` 3.x is in your `package.json` devDependencies for component hot-reloading to work.
-:::
-
-This is included by default in new projects. If components aren't appearing in Blender, check your `package.json`.
-
----
-
 ## Next Steps
 
 - **[Create Components Guide](/docs/how-to-guides/scripting/create-components)** - Detailed scripting tutorial
