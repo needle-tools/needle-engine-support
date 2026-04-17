@@ -83,8 +83,7 @@ Download and **open any sample `.blend` file** in Blender. These samples show wh
 1. **Find the Needle Engine Panel**
    - Open the Viewport Sidebar (right side)
    - Click the **Needle Engine** tab
-
-![Needle Engine Panel](/blender/needleviewportpanel.webp)
+   ![Needle Engine Panel](/blender/needleviewportpanel.webp)
 
 2. **Set Project Path**
    - Click the folder icon next to `Web Project Path`
@@ -99,7 +98,7 @@ Download and **open any sample `.blend` file** in Blender. These samples show wh
      - Starts the local development server
    - Your browser should open automatically!
 
-<video-embed src="/docs/blender/environment-light.mp4" />
+   <video-embed src="/docs/blender/environment-light.mp4" />
 
 **✓ Checkpoint:** You should see your 3D scene running in a web browser. Try rotating the view with your mouse!
 
@@ -118,13 +117,13 @@ Now let's add camera controls so users can explore your scene.
 1. **Select your camera** in Blender
 2. Find the **Needle Object** panel (in Viewport Sidebar)
 3. Click `Add Component`
-4. Search for `OrbitControls` and select it
+4. Search for `OrbitControls` and select it 
+   ![Add OrbitControls component](/blender/components-panel-select.webp)
 5. **Save your Blender file** (Ctrl/Cmd + S)
 6. Watch the browser refresh automatically
 
 **✓ Checkpoint:** You can now click and drag in the browser to orbit the camera around your scene!
 
-![Add OrbitControls component](/blender/components-panel-select.webp)
 
 ### Understanding Components
 
@@ -154,7 +153,7 @@ By default, Blender uses `Filmic` which makes colors look different in the brows
 2. Find **Color Management** section
 3. Set `View` to **Standard**
 
-![Color management settings](/blender/settings-color-management.webp)
+   ![Color management settings](/blender/settings-color-management.webp)
 
 **✓ Checkpoint:** Colors now match between Blender and the web!
 
@@ -166,8 +165,7 @@ Your HDRI environment exports automatically, but you need to make it visible.
 1. Open **Viewport Shading** options (top right of 3D viewport)
 2. Assign an HDRI cubemap
 3. Set `World Opacity` to **1**
-
-<video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
+   <video-embed limit_height max_height="300px" src="/docs/blender/environment.mp4" />
 
 **✓ Checkpoint:** Save and see your skybox appear in the browser!
 
