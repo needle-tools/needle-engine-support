@@ -52,6 +52,15 @@ This command validates your Needle Engine PRO license and allows automated build
 
 **Learn more:** [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server)
 
+## I didn't receive a confirmation email
+
+If you haven't received a confirmation email after signing up or purchasing a license, please check the following:
+- Check your **spam/junk folder** – confirmation emails sometimes end up there.
+- Make sure you entered the **correct email address** during registration.
+- Wait a few minutes – emails can sometimes be delayed.
+
+If you're still not receiving emails, there may be a service disruption. Check our [Status Page](https://status.needle.tools/) for current incidents or outages. If everything looks fine and you still haven't received the email, reach out to us at [hi@needle.tools](mailto:hi@needle.tools).
+
 ## Can I remove the Needle Engine logo and branding (white-labelling)?
 
 Yes, the Needle Engine logo and branding can be removed with a [PRO license](https://www.needle.tools/pricing). This allows you to fully white-label your web experiences with your own branding.
