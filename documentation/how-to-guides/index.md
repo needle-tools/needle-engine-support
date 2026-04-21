@@ -19,7 +19,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 
 - [Install for Unity](/docs/unity/) - Unity integration guide
 - [Install for Blender](/docs/blender/) - Blender add-on guide
-- [Install for Web Projects](/docs/getting-started/) - Vanilla JS and framework setup
+- [Use with three.js / Web](/docs/three/) - Vanilla JS, frameworks, and three.js integration
 
 ---
 

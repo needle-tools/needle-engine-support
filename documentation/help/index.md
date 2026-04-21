@@ -7,80 +7,56 @@ description: Get help and connect with the Needle Engine community
 
 Need help with Needle Engine? You're in the right place.
 
-## Getting Help
+---
 
-::: tip Quick Start
-**Stuck on something?** → Check the [FAQ](/docs/reference/faq) first, then ask on [Discord](https://discord.needle.tools) or the [Forum](https://forum.needle.tools)
-:::
-
-### Community Support
-
-<div class="custom-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin: 1rem 0;">
-
-<div>
-
-<p>💬 <strong><a href="https://discord.needle.tools">Discord Server</a></strong></p>
-<p>Real-time chat and quick questions</p>
-
-</div>
-
-<div>
-
-<p><logo-header logo="/imgs/discourse-logo.webp" alt="Forum" max-height="1.1em" aspect-ratio="1"><a href="https://forum.needle.tools"><strong>Community Forum</strong></a></logo-header></p>
-<p>In-depth discussions and troubleshooting</p>
-
-</div>
-
-<div>
-
-<p>📊 <strong><a href="https://status.needle.tools/">Status Page</a></strong></p>
-<p>Service status and incidents</p>
-
-</div>
-
-</div>
-
-### Documentation & Tools
+## Get Help
 
 - **[FAQ](/docs/reference/faq)** - Common issues and solutions
-- **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome DevTools extension
-- **[Debugging Guide](/docs/how-to-guides/debugging/)** - URL parameters, VSCode debugging, mobile debugging
-- **[AI Assistant](/docs/ai/)** - Use Claude and other AI tools with Needle Engine
-
-### Official Support
-
+- **[Discord](https://discord.needle.tools)** - Real-time chat and quick questions
+- **[Forum](https://forum.needle.tools)** - In-depth discussions and troubleshooting
+- **[Report a Bug](https://github.com/needle-tools/needle-engine-support/issues)** - GitHub issue tracker
 - **[Email Support](mailto:hi+docs@needle.tools)** - Commercial inquiries and licensing
-- **[Report Bug](https://github.com/needle-tools/needle-engine-support/issues)** - GitHub issue tracker
-- **[Submit Feedback](https://fwd.needle.tools/needle-engine/feedback)** - Help us improve
+- **[Status Page](https://status.needle.tools/)** - Service status and incidents
 
 ---
 
-## Learning Resources
+## Documentation
 
-### Documentation
-- **[Getting Started](/docs/getting-started/)** - Installation and first steps
-- **[Tutorials](/docs/tutorials/)** - Step-by-step guides
+- **[Tutorials](/docs/tutorials/)** - Step-by-step guides to learn Needle Engine
 - **[How-To Guides](/docs/how-to-guides/)** - Solve specific problems
-- **[Reference](/docs/reference/)** - API documentation and components
+- **[Explanation](/docs/explanation/)** - Understand concepts and architecture
+- **[Reference](/docs/reference/)** - API documentation, components, configuration
 
-### Video Content
+---
+
+## Developer Tools
+
+- **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome extension to inspect three.js and Needle Engine scenes
+- **[Debugging Guide](/docs/how-to-guides/debugging/)** - URL parameters, VSCode debugging, mobile debugging
+- **[AI Assistant](/docs/ai/)** - Use Claude and other AI tools with Needle Engine
+
+---
+
+## Videos
+
 - **[Tutorial Playlist](https://www.youtube.com/playlist?list=PLJ4BaFFEGP1GVTmPhKDC6QzL8Am9700Wo)** - Step-by-step video guides
 - **[Developer Interviews](https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw)** - Community showcases
 - **[YouTube Channel](https://www.youtube.com/@needle-tools)** - Latest demos and updates
 
 ---
 
-## Connect With Us
-
-### Social Media
+## Connect
 
 - <logo-header logo="/imgs/twitter-logo.webp" alt="Twitter/X" max-height="1.1em" aspect-ratio="1"><a href="https://twitter.com/needletools">Twitter/X</a></logo-header> - News and updates
 - <logo-header logo="/imgs/youtube-logo.webp" alt="YouTube" max-height="1.1em" aspect-ratio="1"><a href="https://www.youtube.com/@needle-tools">YouTube</a></logo-header> - Video tutorials and demos
 - <logo-header logo="/imgs/instagram-logo.webp" alt="Instagram" max-height="1.1em" aspect-ratio="1"><a href="https://instagram.com/@needle-tools">Instagram</a></logo-header> - Behind the scenes
 - <logo-header logo="/imgs/github-logo.webp" alt="GitHub" max-height="1.1em" aspect-ratio="1"><a href="https://github.com/needle-tools">GitHub</a></logo-header> - Source code and issues
 - <logo-header logo="/imgs/discourse-logo.webp" alt="Forum" max-height="1.1em" aspect-ratio="1"><a href="https://forum.needle.tools">Forum</a></logo-header> - Community discussions
+- **[Submit Feedback](https://fwd.needle.tools/needle-engine/feedback)** - Help us improve
 
-### Company
+---
+
+## Company
 
 - [Pricing](https://needle.tools/pricing) - License plans
 - [EULA](https://needle.tools/eula) - License agreement
@@ -91,7 +67,7 @@ Need help with Needle Engine? You're in the right place.
 ## Community Showcase
 
 ::: info Share Your Project
-Built something cool? [Reach out](mailto:hi@needle.tools) – we'd love to see it! 💚
+Built something cool? [Reach out](mailto:hi@needle.tools) – we'd love to see it!
 :::
 
 ### Devlogs

@@ -15,9 +15,7 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 ---
 
-## API Documentation
-
-### Core APIs
+## Core APIs
 
 - [**Needle Engine API**](https://engine.needle.tools/docs/api/latest) - Complete TypeScript API reference
 - [**Built-in Components**](/docs/reference/components) - Catalog of 100+ components with descriptions
@@ -27,16 +25,7 @@ Technical documentation for APIs, components, configuration, and platform capabi
 - [XR Events](./api/xr-events) - WebXR-specific events
 - [Time API](./api/time) - Time and deltaTime
 - [Scripting Examples](./scripting-examples) - Common code patterns
-
-### three.js
-
 - [three.js Documentation](https://threejs.org/docs/) - Official three.js API reference
-
----
-
-## Templates & Samples
-
-- [**Project Templates & Samples**](/docs/reference/templates) - Official starter templates and framework samples on GitHub
 
 ---
 
@@ -49,23 +38,19 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 ---
 
-## Platform Support
+## Templates & Samples
 
-### Editor Integrations
-
-- [Unity Integration](/docs/unity/) - Unity editor integration
-- [Blender Integration](/docs/blender/) - Blender add-on integration
-
-### Deployment & Hosting
-
-- [Needle Cloud](/docs/cloud/) - Official hosting platform and license server
+- [**Project Templates & Samples**](/docs/reference/templates) - Official starter templates and framework samples on GitHub
 
 ---
 
-## Developer Tools
+## Tools & Integrations
 
+- [Unity Integration](/docs/unity/) - Unity editor integration
+- [Blender Integration](/docs/blender/) - Blender add-on integration
+- [Needle Cloud](/docs/cloud/) - Official hosting platform and license server
+- [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension for three.js scenes
 - [Needle MCP Server](/docs/ai/needle-mcp-server) - AI integration for Claude Desktop, Copilot, etc.
-- [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension
 - [AI Resources](/docs/ai/) - AI assistants and documentation tools
 
 ---
@@ -85,7 +70,9 @@ Compare Needle Engine with other 3D web platforms:
 
 ## Changelogs
 
-- [**Needle Engine**](/docs/reference/changelogs/needle-engine) - Core runtime changelog
+Automatically generated from package release notes.
+
+- [**Needle Engine**](/docs/reference/changelogs/needle-engine) 🌵 - Core runtime changelog
 - [**gltf-progressive**](/docs/reference/changelogs/gltf-progressive) - Progressive loading changelog
 - [**three-animation-pointer**](/docs/reference/changelogs/three-animation-pointer) - Animation pointer changelog
 - [**Needle MaterialX**](/docs/reference/changelogs/materialx) - MaterialX changelog

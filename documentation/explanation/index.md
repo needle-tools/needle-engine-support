@@ -38,3 +38,10 @@ Understand the concepts, architecture, and design decisions behind Needle Engine
 
 - [Technical Overview](./architecture/technical-overview) - System architecture, glTF pipeline, and three.js integration
 - [Networking Architecture](./networking/architecture) - How multiplayer and networking works
+
+---
+
+## Next Steps
+
+- **Apply what you've learned** → [How-To Guides](/docs/how-to-guides/) - Task-oriented guides for specific problems
+- **API reference** → [Reference](/docs/reference/) - Components, scripting API, changelogs

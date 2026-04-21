@@ -69,6 +69,7 @@ Build your foundation with these essential tutorials:
 
 ## More Resources
 
+- **Next Steps** → [How-To Guides](/docs/how-to-guides/) - Task-oriented guides for specific problems
 - **Interactive Examples** → [Samples & Showcase](https://engine.needle.tools/samples)
 - **Get Help** → [Help & Community](../help/)
 - **FAQ** → [Frequently Asked Questions](../reference/faq)
