@@ -459,11 +459,11 @@ export default {
           .map(word => word.charAt(0).toUpperCase() + word.slice(1))
           .join(' ')
 
-        // Check if this path exists in VuePress pages
-        const pageExists = allPages.some(page => {
-          const pagePath = page.path || page.regularPath || ''
-          return pagePath === segmentPath || pagePath === segmentPath.replace(/\/$/, '')
-        })
+        // Check if this path exists via the Vue Router route table
+        const routes = this.$router?.getRoutes() || []
+        const norm = (p) => p.replace(/\/index\.html$/, '').replace(/\.html$/, '').replace(/\/$/, '')
+        const target = norm(segmentPath)
+        const pageExists = routes.some(r => norm(r.path) === target)
 
         // Only add breadcrumb if page exists or it's a known parent
         const knownParents = [
@@ -554,52 +554,50 @@ export default {
       // e.g., /docs/blender -> no link (1 segment)
       // e.g., /docs/blender/components -> yes link (2 segments)
       if (segments.length > 1) {
-        // Try to find an existing parent page by traversing up the hierarchy
+        // Try to find the nearest existing parent page by traversing up
         let foundParent = null
+
+        // Directories that contain .md files but have no index.md — skip these as parent links
+        const dirsWithoutIndex = [
+          '/explanation/architecture/',
+          '/explanation/core-concepts/',
+          '/explanation/networking/',
+          '/how-to-guides/components/',
+          '/how-to-guides/integrations/',
+          '/how-to-guides/scripting/',
+          '/reference/api/',
+          '/reference/changelogs/',
+          '/tutorials/fundamentals/',
+        ]
 
         for (let i = segments.length - 1; i > 0; i--) {
           const parentSegments = segments.slice(0, i)
           const parentPath = '/' + parentSegments.join('/') + '/'
 
-          // Check if this parent page likely exists
-          // We'll check common paths that we know exist (without /docs/ prefix)
-          const knownParents = [
-            '/tutorials/',
-            '/how-to-guides/',
-            '/explanation/',
-            '/reference/',
-            '/blender/',
-            '/unity/',
-            '/'
-          ]
-
-          // If it's a known parent or we're at depth 1, use it
-          const isKnownParent = knownParents.includes(parentPath)
-          const isDepthOne = parentSegments.length === 1
-
-          if (isKnownParent || isDepthOne) {
-            // Create a readable parent text from the parent segment
-            const parentSegment = parentSegments[parentSegments.length - 1]
-            let parentText = parentSegment
-              .split('-')
-              .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-              .join(' ')
-
-            // Special cases for better text
-            if (parentPath === '/tutorials/') {
-              parentText = 'All Tutorials'
-            } else if (parentPath === '/how-to-guides/') {
-              parentText = 'All How-To Guides'
-            } else if (parentPath === '/explanation/') {
-              parentText = 'All Explanations'
-            } else if (parentPath === '/reference/') {
-              parentText = 'All Reference'
-            }
-
-            // Prepend /docs/ to the parent link path
-            foundParent = { text: parentText, link: '/docs' + parentPath }
-            break
+          // Skip directories that don't have an index page
+          if (dirsWithoutIndex.includes(parentPath)) {
+            continue
           }
+
+          const parentSegment = parentSegments[parentSegments.length - 1]
+          let parentText = parentSegment
+            .split('-')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ')
+
+          // Special cases for better text
+          if (parentPath === '/tutorials/') {
+            parentText = 'All Tutorials'
+          } else if (parentPath === '/how-to-guides/') {
+            parentText = 'All How-To Guides'
+          } else if (parentPath === '/explanation/') {
+            parentText = 'All Explanations'
+          } else if (parentPath === '/reference/') {
+            parentText = 'All Reference'
+          }
+
+          foundParent = { text: parentText, link: '/docs' + parentPath }
+          break
         }
 
         this.parentLink = foundParent
