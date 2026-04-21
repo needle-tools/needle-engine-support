@@ -93,7 +93,6 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - [Mesh Compression](/docs/how-to-guides/optimization/compress-meshes) - Draco & Meshopt, mesh simplification
 - [Progressive Loading & LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods) - Texture LODs, mesh LODs, per-texture LOD overrides
 - [Production Build Settings](/docs/how-to-guides/optimization/production-build-settings) - Build types, Unity build window, preview compression
-- [gltf-progressive](/docs/gltf-progressive/) - Progressive loading for three.js projects
 
 ---
 
@@ -106,17 +105,17 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 
 ### Platform-Specific Integrations
 
-- <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="/docs/how-to-guides/integrations/framer">Framer</a></logo-header> - Framer websites
-- <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">WordPress</a></logo-header> - WordPress sites
-- <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header> - AEM integration
-- <logo-header logo="/imgs/8thwall-logo.png" alt="8th Wall"><a href="/docs/tutorials/for-8thwall-users">8th Wall Migration</a></logo-header> - Transition guide for 8th Wall developers
+- <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="/docs/how-to-guides/integrations/framer">Framer Plugin</a></logo-header> - Embed 3D content in Framer websites
+- <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">WordPress Plugin</a></logo-header> - Embed 3D content in WordPress sites
+- <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header> - Integrate with AEM
+- <logo-header logo="/imgs/8thwall-logo.png" alt="8th Wall"><a href="/docs/tutorials/for-8thwall-users">8th Wall Migration</a></logo-header> - Transition from 8th Wall to Needle Engine
 
 ---
 
 ## Debugging & Testing
 
-- [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension
-- [Needle MCP Server](/docs/ai/needle-mcp-server) - AI-powered debugging and search
-- [Debugging Options](/docs/how-to-guides/debugging/) - URL parameters, VSCode debugging
-- [Testing Guide](/docs/how-to-guides/testing) - Test on devices, VR headsets, certificates
+- [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - 5-star Chrome extension to inspect three.js scenes, with deep Needle Engine integration
+- [Needle MCP Server](/docs/ai/needle-mcp-server) - AI assistant for Needle Engine (docs search, project analysis)
+- [Debugging & Profiling](/docs/how-to-guides/debugging/) - URL parameters, VSCode debugging, performance profiling
+- [Local Development & Device Testing](/docs/how-to-guides/testing) - Test on phones, VR headsets, local network setup
 - [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) - Platform detection

@@ -294,7 +294,7 @@ When using our default Vite template, the build output folder is `<webproject>/d
 
 Open **File → Needle Engine → Build Window**:
 
-![Unity Build Window](/imgs/unity-build-window-2.jpg)
+![Unity Build Window](/imgs/unity-build-window-2.jpg "2x")
 
 **Available Options:**
 
