@@ -160,9 +160,7 @@ See [Needle Cloud documentation](/docs/cloud/) for uploading, versioning, and sh
 
 ### Configuration: Unity
 
-Progressive LODs are generated automatically during production builds. Use the **Compression and LOD Settings** component to configure the behavior.
-
-**Add the component:** `Add Component > Needle Engine > Optimization > Compression and LOD Settings`
+Progressive LODs are generated automatically during production builds. Use the **Compression and LOD Settings** component (on the Needle Engine / ExportInfo object) to configure the behavior.
 
 **Texture settings:**
 - **Texture Format** — Choose between Automatic, ETC1S, UASTC, WebP, or per-use-case modes (World, Product)
@@ -183,16 +181,22 @@ You can also trigger compression manually from the Unity menu:
 - **Needle Engine > Compression > Run Compression** — Compression only
 :::
 
+See [Optimization & Compression](/docs/how-to-guides/optimization/) for detailed per-texture override screenshots and instructions, and [Needle Engine for Unity](/docs/unity/) for getting started.
+
 ### Configuration: Blender
 
 In Blender, progressive loading settings are part of the main **Needle Engine Project Settings** panel:
 
 - **Use Progressive Textures** — Enable progressive texture loading (default: on)
-- **Progressive Texture Size** — Preview size for initial texture load (default: 128px, options: 32–2048)
+- **Progressive Texture Size** — Preview size for initial texture load (default: 128px, options: 32–4096)
 - **Use Progressive Meshes** — Enable progressive mesh loading (default: on)
 - **Auto Compress** — Generate compressed and progressive assets after export to preview production quality locally
 
+Per-texture compression overrides (max size, compression format) can be configured per material in **Properties → Material tab → Needle Material Settings**.
+
 ![Blender Compression Options](/blender/progressive-settings.webp)
+
+See [Optimization & Compression](/docs/how-to-guides/optimization/) for detailed per-texture override screenshots and instructions, and [Needle Engine for Blender](/docs/blender/) for getting started.
 
 ---
 

@@ -94,23 +94,32 @@ Production builds compress textures using **KTX2** (ETC1S or UASTC) or **WebP** 
 
 ### Setting Compression Per Texture
 
-You can override compression settings for individual textures using the Needle Texture Importer (Unity) or Material tab (Blender).
+You can override compression settings for individual textures — including compression format, maximum resolution, and progressive LOD generation — without changing the global defaults. This means you don't need to turn off features like progressive loading globally just because one or two textures need different settings.
 
 :::details Unity: Global compression settings
-Configure default compression for all textures:
+The **Compression and LOD Settings** component on the Needle Engine / ExportInfo object controls the default compression and LOD settings for all textures in the export:
 
 ![Unity Compression Settings](/imgs/unity-compression-settings.png)
+
+![Unity Compression and LOD Settings](/imgs/unity-compression-and-lod-settings.webp "2x")
 :::
 
-:::details Unity: Per-texture compression overrides
-Use the Compression & LOD Settings component to override settings for specific textures. Assign all textures you want to override in the component.
+:::details Unity: Per-texture compression and LOD overrides
+On the same **Compression and LOD Settings** component, use the per-texture overrides section to customize individual textures. Assign any texture you want to override and configure:
+- **Compression format** — Choose between Automatic, ETC1S, UASTC, or WebP per texture
+- **Max size** — Limit the maximum resolution for specific textures (e.g. 1024 instead of 8192)
+- **LOD generation** — Enable or disable progressive texture LOD generation per texture
+
+This is useful when most textures work great with the defaults, but a few need special handling — for example, disabling LODs for a small UI texture, or forcing UASTC on an important normal map.
 
 ![Unity Individual Texture Settings](/imgs/unity-compression-settings-individual.png)
 :::
 
-:::details Blender: Per-texture compression settings
-Select an object, open the **Needle Object** panel (Viewport Sidebar), and expand **Material Settings**.
-Toggle the override for any texture in the list to customize its compression settings.
+:::details Blender: Per-texture compression overrides
+Open the **Properties panel → Material tab → Needle Material Settings**. Each texture used by the selected material is listed with an override toggle. Enable the override to customize:
+- **Max Size** — Limit the maximum resolution for that texture
+- **Compression format** — Choose between Auto, None, ETC1S, UASTC, or WebP
+- **Quality** — Adjust WebP quality (when using WebP compression)
 
 ![Texture Compression in Blender](/blender/texture-compression.webp)
 :::
@@ -155,30 +164,44 @@ Use the Compression & LOD Settings component to configure mesh simplification fo
 
 ## Progressive Texture Loading (Texture LODs)
 
-**Significantly reduce initial loading time** by loading low-resolution textures first, then upgrading to full quality when visible.
+**Significantly reduce initial loading time** by loading low-resolution textures first (128px by default), then upgrading to full quality when visible. This can reduce initial download size by up to 90%.
 
-Add the `Progressive Texture Settings` component anywhere in your scene to enable progressive loading for all textures. Progressive loading is not applied to lightmaps or skybox textures.
+Progressive loading is enabled by default in production builds. It is not applied to lightmaps or skybox textures.
 
 See **[gltf-progressive](/docs/gltf-progressive/)** for detailed information on how progressive loading works and advanced configuration options.
 
 **Benefits:**
-- Much faster initial load times
-- Full quality loaded on-demand
-- Seamless quality transitions
+- Much faster initial load times (small preview textures load first)
+- Full quality loaded on-demand based on what's visible on screen
+- Seamless quality transitions — users see content immediately
+- On mobile, high-resolution textures are automatically skipped to save bandwidth
+
+:::tip Don't disable progressive loading globally
+If a specific texture doesn't look right with progressive LODs, override just that texture instead of disabling the feature for the entire project. Keeping progressive loading enabled for most textures dramatically reduces loading times. See the per-texture override options below.
+:::
 
 :::details Unity: Enable progressive texture loading
-Use the Compression & LOD Settings component to enable progressive loading globally. Can be disabled or enabled for individual textures as needed.
+The **Compression and LOD Settings** component (on the Needle Engine / ExportInfo object) controls progressive loading globally. You can also override LOD generation for individual textures — for example, disable LODs for a specific texture while keeping them enabled for everything else.
+
+- **Generate Texture LODs** — Enable/disable progressive loading for all textures (default: on)
+- **LODs Max Size** — Resolution of the initially loaded preview texture (default: 128px)
+- **Per-texture overrides** — Toggle LOD generation on or off for individual textures
 
 ![Unity Compression Settings](/imgs/unity-compression-settings.png)
+
+![Unity Compression and LOD Settings](/imgs/unity-compression-and-lod-settings.webp "2x")
 :::
 
 :::details Blender: Enable progressive texture loading
-Open the **Needle Engine Project Settings**, under **Export Settings** you can enable or disable progressive texture loading. 
+Open the **Needle Engine Project Settings** to configure progressive texture loading globally:
+
+- **Use Progressive Textures** — Enable/disable progressive loading (default: on)
+- **Progressive Texture Size** — Preview size for initial texture load (default: 128px, options: 32–4096)
+
+Per-texture compression settings (max size, format) can be configured per material in **Properties → Material tab → Needle Material Settings**.
 
 ![Blender Compression Settings](/blender/compression-settings.webp)
 :::
-
-
 
 :::tip Learn More
 Progressive loading is powered by [`@needle-tools/gltf-progressive`](/docs/gltf-progressive/), which ships with Needle Engine. It's also available as a standalone package for any three.js project.
@@ -218,7 +241,7 @@ Open the **Needle Engine Project Settings**, under **Export Settings** you can e
 
 Open **File → Needle Engine → Build Window**:
 
-![Unity Build Window](/imgs/unity-build-window-2.jpg)
+![Unity Build Window](/imgs/unity-build-window.webp "2x")
 
 **Available Options:**
 
@@ -233,6 +256,12 @@ The `Needle Engine` component has a **Preview Compression** toggle at the bottom
 This applies the same compression and LOD generation as a production build — including texture compression (KTX2), mesh compression (Draco/Meshopt), and progressive loading LODs — directly to your local development server. This way you can verify how your final production output will look and perform without having to do a full build.
 
 You can also manually trigger compression steps from the context menu on the `Needle Engine` component under **Needle Engine → Compression** (e.g. Run Full Compression, Run Compression only, Run LODs Generator, or Clear Caches).
+
+### Compression and LOD Settings Component
+
+The **Compression and LOD Settings** component controls all compression and LOD generation settings for the export. It is located on the Needle Engine / ExportInfo object and lets you configure texture formats, mesh compression, LOD generation, and per-texture or per-mesh overrides.
+
+![Unity Compression and LOD Settings](/imgs/unity-compression-and-lod-settings.webp "2x")
 
 :::tip Node.js is only required during development
 The distributed website (using our default Vite template) is a static page that doesn't rely on Node.js and can be hosted on any regular web server.
@@ -306,16 +335,6 @@ Removing unused physics colliders is one of the easiest wins — it saves ~2 MB 
 1. Toggle **Development Build** on in Build Settings to get unstuck immediately
 2. Report the bug to [Needle support](/docs/help/)
 3. Check that toktx is installed and in your PATH
-
-### Website doesn't work after upload
-
-**Problem:** Deployed website shows errors or doesn't load
-
-**Solution:**
-- **Option 1:** Enable gzip compression on your server (see [.htaccess example](/docs/how-to-guides/deployment/#enabling-gzip-using-a-htaccess-file))
-- **Option 2:** Turn off gzip compression in **File → Needle Engine → Build Window**
-
-![Build Options Gzip](/deployment/buildoptions_gzip.jpg)
 
 ---
 

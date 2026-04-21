@@ -214,8 +214,8 @@ Add rigidbodies, colliders, forces, and raycasting — built-in Rapier physics, 
 **[Add Multiplayer →](/docs/how-to-guides/networking/)**
 Real-time networking with voice chat, synchronized state, and zero server configuration.
 
-**[Optimization & Progressive Loading →](/docs/gltf-progressive/)**
-Production builds automatically generate mesh LODs, texture LODs, and apply compression — your scenes load instantly and stream in detail on demand.
+**[Optimization & Progressive Loading →](/docs/how-to-guides/optimization/)**
+Production builds automatically generate mesh LODs, texture LODs, and apply compression — your scenes load instantly and stream in detail on demand. You can override compression format, max size, and LOD settings per texture in **Properties → Material tab → Needle Material Settings**.
 
 **[Deploy Your Project →](/docs/how-to-guides/deployment/)**
 Publish your interactive scene to the web for everyone to see.

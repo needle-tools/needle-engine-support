@@ -358,6 +358,26 @@ This can have many reasons, but a few common ones are:
 
 If loading time itself is an issue you can **try to split up your content into multiple glb files** and load them on-demand (this is what we do on our website). For it to work you can put your content into Prefabs or Scenes and reference them from any of your scripts. Please have a look at [Scripting Examples in the documentation](/docs/reference/scripting-examples#assetreference-and-addressables).
 
+## How can I override compression or LOD settings for individual textures?
+
+You don't need to change global settings when only a few textures need special treatment. Both Unity and Blender let you override compression format, max resolution, and progressive LOD generation per texture — while keeping the defaults for everything else.
+
+**Unity:** The **Compression and LOD Settings** component (on the Needle Engine / ExportInfo object) has a **Per-Texture Overrides** section. Assign any texture you want to customize and override its compression format (ETC1S, UASTC, WebP), max size, or toggle LOD generation individually.
+
+**Blender:** Open the **Properties panel → Material tab → Needle Material Settings**. Each texture used by the material is listed with an override toggle. Enable it to set a custom max size and compression format for that texture.
+
+See [Optimization & Compression: Setting Compression Per Texture](/docs/how-to-guides/optimization/#setting-compression-per-texture) for screenshots and step-by-step instructions.
+
+## Can I disable or enable progressive texture LODs for specific textures only?
+
+**Yes — and this is much better than disabling progressive loading globally.** Progressive texture LODs dramatically reduce initial load times by loading small preview textures first and streaming full resolution on demand. If a specific texture doesn't look right with the default LOD settings, override just that texture instead of turning off the whole feature.
+
+**Unity:** On the **Compression and LOD Settings** component, add the texture to the per-texture overrides list. You can disable LOD generation for that one texture, or change the LOD preview size — while all other textures keep benefiting from progressive loading.
+
+**Blender:** Per-texture compression overrides are available in **Properties → Material tab → Needle Material Settings**. The global progressive texture size can be configured in the **Needle Engine Project Settings**.
+
+See [Optimization & Compression: Progressive Texture Loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods) and [gltf-progressive](/docs/gltf-progressive/) for more details.
+
 ## Can I manually control when the loading overlay hides instead of it auto-hiding?
 
 The default loading overlay automatically hides when all assets finish loading. There is currently no built-in API to prevent this auto-hide and then manually dismiss it later.

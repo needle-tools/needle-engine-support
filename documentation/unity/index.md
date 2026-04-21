@@ -164,7 +164,7 @@ Share code across projects with **NPM Definitions (NpmDef)**:
 ### How-To Guides (Problem-Oriented)
 - **[Export Assets](../how-to-guides/export/)** - Control what gets exported
 - **[Create Components](../how-to-guides/scripting/create-components)** - Write interactive components
-- **[Optimization & Compression](../how-to-guides/optimization/)** - Texture/mesh compression, automatic LODs, progressive loading
+- **[Optimization & Compression](../how-to-guides/optimization/)** - Texture/mesh compression, automatic LODs, progressive loading, per-texture overrides
 - **[Deploy Your Project](../how-to-guides/deployment/)** - Publish to the web
 
 ### Explanation (Understanding-Oriented)
