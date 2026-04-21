@@ -23,28 +23,7 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 
 ---
 
-## Scripting & Components
-
-### Creating Custom Components
-
-- [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
-- [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
-- [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences and delays
-
-### Interaction
-
-- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
-- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
-
-### Physics (Rapier)
-
-- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, triggers, character controllers — powered by [Rapier](https://rapier.rs/)
-
-### Accessibility
-
-- [Accessibility](/docs/how-to-guides/accessibility) - Make 3D scenes accessible to screen readers and assistive technology
-
-### Built-in Components
+## Built-in Components
 
 - [Camera Controls (OrbitControls)](./components/orbit-controls) - Navigate 3D scenes
 - [Drag Objects (DragControls)](./components/drag-controls) - Drag with mouse, touch, or VR
@@ -69,6 +48,19 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 
 ---
 
+## Scripting & Interaction
+
+- [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
+- [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
+- [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences and delays
+- [Handle User Input](/docs/how-to-guides/scripting/handle-input) - Mouse, touch, keyboard, VR controllers
+- [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) - Detect objects and hit points
+- [Use Physics](/docs/how-to-guides/scripting/use-physics) - Rigidbodies, forces, collisions, triggers — powered by [Rapier](https://rapier.rs/)
+- [Accessibility](/docs/how-to-guides/accessibility) - Make 3D scenes accessible to screen readers and assistive technology
+- [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) - Platform detection
+
+---
+
 ## Networking & Multiplayer
 
 - [Networking Overview](/docs/how-to-guides/networking/) - Multiplayer guide
@@ -87,6 +79,24 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 
 ---
 
+## Deployment
+
+- [Deployment Platforms](/docs/how-to-guides/deployment/) - Netlify, Vercel, GitHub Pages, etc.
+- [Needle Cloud](/docs/cloud/) - Official Needle hosting
+
+---
+
+## Optimization
+
+- [Optimization Overview](/docs/how-to-guides/optimization/) - Best practices, toktx setup, troubleshooting
+- [Texture Compression](/docs/how-to-guides/optimization/compress-textures) - KTX2, ETC1S, UASTC, WebP, per-texture overrides
+- [Mesh Compression](/docs/how-to-guides/optimization/compress-meshes) - Draco & Meshopt, mesh simplification
+- [Progressive Loading & LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods) - Texture LODs, mesh LODs, per-texture LOD overrides
+- [Production Build Settings](/docs/how-to-guides/optimization/production-build-settings) - Build types, Unity build window, preview compression
+- [gltf-progressive](/docs/gltf-progressive/) - Progressive loading for three.js projects
+
+---
+
 ## Web Integration
 
 - [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks and bundlers
@@ -100,24 +110,6 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">WordPress</a></logo-header> - WordPress sites
 - <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header> - AEM integration
 - <logo-header logo="/imgs/8thwall-logo.png" alt="8th Wall"><a href="/docs/tutorials/for-8thwall-users">8th Wall Migration</a></logo-header> - Transition guide for 8th Wall developers
-
----
-
-## Deployment & Optimization
-
-### Deployment
-
-- [Deployment Platforms](/docs/how-to-guides/deployment/) - Netlify, Vercel, GitHub Pages, etc.
-- [Needle Cloud](/docs/cloud/) - Official Needle hosting
-
-### Optimization
-
-- [Optimization Overview](/docs/how-to-guides/optimization/) - Best practices, toktx setup, troubleshooting
-- [Texture Compression](/docs/how-to-guides/optimization/compress-textures) - KTX2, ETC1S, UASTC, WebP, per-texture overrides
-- [Mesh Compression](/docs/how-to-guides/optimization/compress-meshes) - Draco & Meshopt, mesh simplification
-- [Progressive Loading & LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods) - Texture LODs, mesh LODs, per-texture LOD overrides
-- [Production Build Settings](/docs/how-to-guides/optimization/production-build-settings) - Build types, Unity build window, preview compression
-- [gltf-progressive](/docs/gltf-progressive/) - Progressive loading for three.js projects
 
 ---
 

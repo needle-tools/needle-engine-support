@@ -28,6 +28,9 @@ Understand the concepts, architecture, and design decisions behind Needle Engine
 
 - [Features Overview](./core-concepts/features-overview) - Complete feature set and capabilities
 - [FastHDR Environment Lighting](./fasthdr) - Ultra-fast HDR lighting with zero CPU processing and minimal VRAM
+- [Progressive Loading (gltf-progressive)](/docs/gltf-progressive/) - How progressive texture and mesh loading works under the hood
+- [Texture Compression](/docs/how-to-guides/optimization/compress-textures) - KTX2, ETC1S, UASTC & WebP formats compared
+- [Mesh Compression](/docs/how-to-guides/optimization/compress-meshes) - Draco & Meshopt compression formats
 
 ---
 
