@@ -191,3 +191,19 @@ needle.tools is a wonderful showcase of what @NeedleTools contributes to 3D via 
 Unbelievable Unity editor integration by an order of magnitude,
   and as straightforward as the docs claim. Wow.
 </testimonial>
+
+---
+
+## User Interviews
+
+<video-embed src="https://www.youtube.com/watch?v=naPlw5aDJHs" />
+
+<video-embed src="https://www.youtube.com/watch?v=1KKfct3Zpcw" />
+
+<video-embed src="https://www.youtube.com/watch?v=gZuC40Alr88" />
+
+<video-embed src="https://www.youtube.com/watch?v=F6_buCHZhWk" />
+
+<video-embed src="https://www.youtube.com/watch?v=3oHyrx8e20g" />
+
+[Watch more interviews →](https://www.youtube.com/playlist?list=PLJ4BaFFEGP1EOHCjYszc__d2yO7RkB-iw)

@@ -5,13 +5,7 @@ description: Complete API and configuration reference for Needle Engine
 
 # Reference
 
-Technical documentation for APIs, components, configuration, and platform capabilities.
-
-::: tip Looking for something else?
-- **Learn the basics** → [Tutorials](../tutorials/)
-- **Solve a specific problem** → [How-To Guides](../how-to-guides/)
-- **Understand concepts** → [Explanation](../explanation/)
-:::
+Precise, factual information for looking things up. API documentation, component catalog, configuration options, and changelogs.
 
 ---
 
@@ -31,10 +25,10 @@ Technical documentation for APIs, components, configuration, and platform capabi
 
 ## Configuration
 
+- [&lt;needle-engine&gt; Web Component](/docs/reference/needle-engine-attributes) - HTML attributes and options
 - [needle.config.json](/docs/reference/needle-config-json) - Project configuration options
 - [Vite Plugin Configuration](/docs/reference/needle-vite-plugin) - makeFilesLocal, PWA, build pipeline, and more
-- [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable and metadata
-- [&lt;needle-engine&gt; Web Component](/docs/reference/needle-engine-attributes) - HTML attributes and options
+- [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable, @syncField, and metadata
 
 ---
 
@@ -86,3 +80,11 @@ Automatically generated from package release notes.
 - [FAQ](./faq) - Frequently asked questions and troubleshooting
 - [Pricing](https://needle.tools/pricing) - License plans and pricing
 - [EULA](https://needle.tools/eula) - End user license agreement
+
+---
+
+::: tip Looking for something else?
+- [**Tutorials**](/docs/tutorials/) — Step-by-step lessons to learn Needle Engine by building projects
+- [**How-To Guides**](/docs/how-to-guides/) — Practical solutions for specific tasks like networking, XR, and deployment
+- [**Explanation**](/docs/explanation/) — Architecture, glTF pipeline, and design decisions
+:::

@@ -5,13 +5,7 @@ description: Task-oriented guides for solving specific problems with Needle Engi
 
 # How-To Guides
 
-Practical guides for accomplishing specific tasks with Needle Engine.
-
-::: tip Looking for something else?
-- **Learn the basics** → [Tutorials](/docs/tutorials/)
-- **Understand concepts** → [Explanation](/docs/explanation/)
-- **API reference** → [Reference](/docs/reference/)
-:::
+Task-oriented guides for solving specific problems. Each guide focuses on one topic and assumes you already have a project set up. If you're new, start with [Tutorials](/docs/tutorials/) instead.
 
 ---
 
@@ -119,3 +113,11 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 - [Debugging & Profiling](/docs/how-to-guides/debugging/) - URL parameters, VSCode debugging, performance profiling
 - [Local Development & Device Testing](/docs/how-to-guides/testing) - Test on phones, VR headsets, local network setup
 - [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) - Platform detection
+
+---
+
+::: tip Looking for something else?
+- [**Tutorials**](/docs/tutorials/) — Step-by-step lessons to learn Needle Engine by building projects
+- [**Explanation**](/docs/explanation/) — Architecture, glTF pipeline, and design decisions
+- [**Reference**](/docs/reference/) — API docs, component catalog, configuration, changelogs
+:::

@@ -5,16 +5,10 @@ description: Learn Needle Engine step-by-step with hands-on tutorials
 
 # Tutorials
 
-Step-by-step guides to learn Needle Engine by building real projects.
+Learn Needle Engine by following step-by-step guides that walk you through building real projects. Each tutorial teaches a specific topic from scratch — pick one that matches your background.
 
 ::: tip New to Needle Engine?
 Start with [Getting Started](../getting-started/) to install and set up your development environment first.
-:::
-
-::: tip Looking for something else?
-- **Solve a specific problem** → [How-To Guides](../how-to-guides/)
-- **Understand concepts** → [Explanation](../explanation/)
-- **API reference** → [Reference](../reference/)
 :::
 
 ---
@@ -69,7 +63,14 @@ Build your foundation with these essential tutorials:
 
 ## More Resources
 
-- **Next Steps** → [How-To Guides](/docs/how-to-guides/) - Task-oriented guides for specific problems
 - **Interactive Examples** → [Samples & Showcase](https://engine.needle.tools/samples)
 - **Get Help** → [Help & Community](../help/)
 - **FAQ** → [Frequently Asked Questions](../reference/faq)
+
+---
+
+::: tip Looking for something else?
+- [**How-To Guides**](/docs/how-to-guides/) — Practical solutions for specific tasks like networking, XR, and deployment
+- [**Explanation**](/docs/explanation/) — Architecture, glTF pipeline, and design decisions
+- [**Reference**](/docs/reference/) — API docs, component catalog, configuration, changelogs
+:::

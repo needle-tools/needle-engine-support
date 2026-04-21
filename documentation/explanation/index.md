@@ -5,13 +5,7 @@ description: Understand how Needle Engine works and why it's designed this way
 
 # Explanation
 
-Understand the concepts, architecture, and design decisions behind Needle Engine.
-
-::: tip Looking for something else?
-- **Learn the basics** → [Tutorials](../tutorials/)
-- **Solve a specific problem** → [How-To Guides](../how-to-guides/)
-- **API reference** → [Reference](../reference/)
-:::
+Background knowledge and deeper understanding of how Needle Engine works. These articles explain the architecture, design decisions, and technical concepts behind the engine — useful when you want to understand *why* things work the way they do.
 
 ---
 
@@ -41,7 +35,8 @@ Understand the concepts, architecture, and design decisions behind Needle Engine
 
 ---
 
-## Next Steps
-
-- **Apply what you've learned** → [How-To Guides](/docs/how-to-guides/) - Task-oriented guides for specific problems
-- **API reference** → [Reference](/docs/reference/) - Components, scripting API, changelogs
+::: tip Looking for something else?
+- [**Tutorials**](/docs/tutorials/) — Step-by-step lessons to learn Needle Engine by building projects
+- [**How-To Guides**](/docs/how-to-guides/) — Practical solutions for specific tasks like networking, XR, and deployment
+- [**Reference**](/docs/reference/) — API docs, component catalog, configuration, changelogs
+:::
