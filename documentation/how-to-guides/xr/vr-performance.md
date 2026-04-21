@@ -99,16 +99,16 @@ Transparent objects (glass, particles, UI panels) can't use the GPU's depth buff
 Large textures consume GPU memory and bandwidth. On Quest, GPU memory is shared with system RAM.
 
 :::tip Production builds already follow best practices
-Needle Engine production builds automatically apply [texture compression](/docs/how-to-guides/optimization/#texture-compression) (KTX2), [progressive loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods), and [mesh LODs](/docs/how-to-guides/optimization/#automatic-mesh-lods-level-of-detail). If you're testing locally and seeing poor texture performance, enable **Preview Compression** on the Needle Engine component to run the full production pipeline during development. See [Build Options](/docs/how-to-guides/optimization/#build-options) for details.
+Needle Engine production builds automatically apply [texture compression](/docs/how-to-guides/optimization/compress-textures) (KTX2), [progressive loading](/docs/how-to-guides/optimization/progressive-loading-and-lods), and [mesh LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods#automatic-mesh-lods-level-of-detail). If you're testing locally and seeing poor texture performance, enable **Preview Compression** on the Needle Engine component (Unity) or **Auto Compress** in the project settings (Blender) to run the full production pipeline during development. See [Production Build Settings](/docs/how-to-guides/optimization/production-build-settings) for details.
 :::
 
 **Fixes:**
 
 | <material-icon name="build" /> What to do | <material-icon name="lightbulb" /> Why it helps |
 |---|---|
-| Use [texture compression](/docs/how-to-guides/optimization/#texture-compression) (KTX2) | Compressed textures use 4–8x less GPU memory than uncompressed |
+| Use [texture compression](/docs/how-to-guides/optimization/compress-textures) (KTX2) | Compressed textures use 4–8x less GPU memory than uncompressed |
 | Reduce texture resolution where possible | Floor textures viewed at an angle don't need 4K |
-| Enable [progressive texture loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods) | Low-res loads first, full quality on demand, unused textures released from GPU memory |
+| Enable [progressive texture loading](/docs/how-to-guides/optimization/progressive-loading-and-lods) | Low-res loads first, full quality on demand, unused textures released from GPU memory |
 | Avoid WebP textures for VR | WebP is uncompressed in GPU memory despite small file size |
 
 ### Physics

@@ -366,7 +366,7 @@ You don't need to change global settings when only a few textures need special t
 
 **Blender:** Open the **Properties panel → Material tab → Needle Material Settings**. Each texture used by the material is listed with an override toggle. Enable it to set a custom max size and compression format for that texture.
 
-See [Optimization & Compression: Setting Compression Per Texture](/docs/how-to-guides/optimization/#setting-compression-per-texture) for screenshots and step-by-step instructions.
+See [Texture Compression: Per-Texture Overrides](/docs/how-to-guides/optimization/compress-textures#setting-compression-per-texture) for screenshots and step-by-step instructions.
 
 ## Can I disable or enable progressive texture LODs for specific textures only?
 
@@ -376,7 +376,7 @@ See [Optimization & Compression: Setting Compression Per Texture](/docs/how-to-g
 
 **Blender:** Per-texture compression overrides are available in **Properties → Material tab → Needle Material Settings**. The global progressive texture size can be configured in the **Needle Engine Project Settings**.
 
-See [Optimization & Compression: Progressive Texture Loading](/docs/how-to-guides/optimization/#progressive-texture-loading-texture-lods) and [gltf-progressive](/docs/gltf-progressive/) for more details.
+See [Progressive Loading & LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods) and [gltf-progressive](/docs/gltf-progressive/) for more details.
 
 ## Can I manually control when the loading overlay hides instead of it auto-hiding?
 

@@ -112,7 +112,11 @@ Practical guides for accomplishing specific tasks with Needle Engine.
 
 ### Optimization
 
-- [Optimization Guide](/docs/how-to-guides/optimization/) - Texture/mesh compression, progressive loading, LODs
+- [Optimization Overview](/docs/how-to-guides/optimization/) - Best practices, toktx setup, troubleshooting
+- [Texture Compression](/docs/how-to-guides/optimization/compress-textures) - KTX2, ETC1S, UASTC, WebP, per-texture overrides
+- [Mesh Compression](/docs/how-to-guides/optimization/compress-meshes) - Draco & Meshopt, mesh simplification
+- [Progressive Loading & LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods) - Texture LODs, mesh LODs, per-texture LOD overrides
+- [Production Build Settings](/docs/how-to-guides/optimization/production-build-settings) - Build types, Unity build window, preview compression
 - [gltf-progressive](/docs/gltf-progressive/) - Progressive loading for three.js projects
 
 ---

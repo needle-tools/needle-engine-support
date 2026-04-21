@@ -53,6 +53,7 @@ Get the complete lightmapping example to learn from: [lightmaps.blend](https://e
 2. Open the **Needle Object** panel (right Viewport Sidebar)
 3. Enable the `Lightmapped` checkbox
 
+![Needle Object panel with lightmapping and object settings](/blender/needle-object-settings.webp "2x")
 
 ![Enable lightmapping on objects](/blender/lightmapping-object.webp)
 
@@ -265,7 +266,7 @@ Your feedback helps us improve the feature!
 
 ## Next Steps
 
-- **[Texture Compression](/docs/how-to-guides/deployment/#texture-compression)** - Optimize lightmap file sizes
+- **[Texture Compression](/docs/how-to-guides/optimization/compress-textures)** - Optimize lightmap file sizes
 - **[Deployment Guide](/docs/how-to-guides/deployment/)** - Publish your lightmapped scenes
 - **[Components Overview](/docs/blender/components)** - Add interactivity to lit scenes
 

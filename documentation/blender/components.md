@@ -23,6 +23,8 @@ Needle Engine includes **100+ ready-to-use components** for common interactive f
 4. Search for and select the component you need
 5. Adjust component settings in the panel
 
+![Needle Object panel with object settings and components](/blender/needle-object-settings.webp "2x")
+
 ![Needle Components panel](/blender/components-panel.webp)
 
 **Component settings** appear immediately after adding. Each component has different properties you can configure directly in Blender.
