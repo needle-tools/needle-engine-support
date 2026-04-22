@@ -118,7 +118,7 @@ Now let's add camera controls so users can explore your scene.
 2. Find the **Needle Object** panel (in Viewport Sidebar)
 3. Click `Add Component`
 4. Search for `OrbitControls` and select it 
-   ![Add OrbitControls component](/blender/components-panel-select.webp)
+   ![Add OrbitControls component](/blender/components-panel-select.webp "1.5x")
 5. **Save your Blender file** (Ctrl/Cmd + S)
 6. Watch the browser refresh automatically
 
@@ -153,7 +153,7 @@ By default, Blender uses `Filmic` which makes colors look different in the brows
 2. Find **Color Management** section
 3. Set `View` to **Standard**
 
-   ![Color management settings](/blender/settings-color-management.webp)
+   ![Color management settings](/blender/settings-color-management.webp "1.5x")
 
 **✓ Checkpoint:** Colors now match between Blender and the web!
 
@@ -259,7 +259,7 @@ Detailed discussions and solutions.
 **Bug Reporter:**
 Built-in tool in Blender (`Help > Needle`) for complex issues.
 
-![Bug reporter](/blender/bugreporter.webp)
+![Bug reporter](/blender/bugreporter.webp "1.5x")
 
 ---
 

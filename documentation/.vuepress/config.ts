@@ -494,6 +494,9 @@ export default defineUserConfig({
             if (title === '2x') {
                 token.attrSet('title', '');
                 return `<img src="${src}" srcset="${src} 2x" alt="${alt}">`;
+            } else if (title === '1.5x') {
+                token.attrSet('title', '');
+                return `<img src="${src}" srcset="${src} 1.5x" alt="${alt}">`;
             } else {
                 return defaultImageRenderer(tokens, idx, options, env, self);
             }

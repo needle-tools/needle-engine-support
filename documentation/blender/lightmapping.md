@@ -53,9 +53,7 @@ Get the complete lightmapping example to learn from: [lightmaps.blend](https://e
 2. Open the **Needle Object** panel (right Viewport Sidebar)
 3. Enable the `Lightmapped` checkbox
 
-![Needle Object panel with lightmapping and object settings](/blender/needle-object-settings.webp "2x")
-
-![Enable lightmapping on objects](/blender/lightmapping-object.webp)
+![Enable lightmapping on objects](/blender/lightmapping-object.webp "2x")
 
 :::tip What to Lightmap
 - Mark static geometry (buildings, furniture, environments)
@@ -71,7 +69,7 @@ Get the complete lightmapping example to learn from: [lightmaps.blend](https://e
 
 Open the **Needle Engine** panel (right Viewport Sidebar) and toggle the **Lightmap Preview** button to activate lightmaps. 
 
-![Lightmap settings](/blender/lightmap-settings.webp)
+![Lightmap settings](/blender/lightmap-settings.webp "1.5x")
 
 Here you can adjust the resolution and baking quality of the final lightmap texture. Baking many objects can take a while, so for quick previews of your lighting setup, use **Preview** quality with a low resolution like 512.
 

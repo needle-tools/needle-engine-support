@@ -53,7 +53,7 @@ Add `OrbitControls` to your camera for instant mouse/touch controls on all devic
 
 Hover over any property to see its description.
 
-![Component Properties](/blender/propertytooltip.webp)
+![Component Properties](/blender/propertytooltip.webp "1.5x")
 
 ---
 
@@ -106,7 +106,7 @@ Hover over any property to see its description.
 
 Click the `X` button in the lower right of any component panel.
 
-![Remove component](/blender/remove-component.webp)
+![Remove component](/blender/remove-component.webp "1.5x")
 
 ---
 
@@ -114,15 +114,15 @@ Click the `X` button in the lower right of any component panel.
 
 Click the `V` button in the lower right of any component panel.
 
-![Copy/Paste Menu](/blender/component-copypaste.webp)
+![Copy/Paste Menu](/blender/component-copypaste.webp "1.5x")
 
 Here you can copy a component along with its configured values.
 
-![Component Actions](/blender/component-actions.webp)
+![Component Actions](/blender/component-actions.webp "1.5x")
 
 After clicking `Copy Component`, paste it onto another object with the `Paste as New: ...` button. Alternatively, to apply values to an existing component of the same type, select `Paste Values` from the `Component Actions` menu.
 
-![Paste Component](/blender/paste-component.webp)
+![Paste Component](/blender/paste-component.webp "1.5x")
 
 ---
 
@@ -139,7 +139,7 @@ Want behavior that doesn't exist yet? Write your own TypeScript components that 
 
 Navigate to the `Needle Object` panel (right Viewport Sidebar) and click the `Create New Component` button.
 
-![Create New Component](/blender/create-new-component.webp)
+![Create New Component](/blender/create-new-component.webp "1.5x")
 
 Enter a component name and click `Ok`. VS Code will automatically open with your web project.
 
@@ -180,7 +180,7 @@ export class RotateObject extends Behaviour {
 - Add it to objects just like built-in components
 - Your `@serializable()` properties appear as editable fields in Blender
 
-![Add Custom Component](/blender/add-custom-component.webp)
+![Add Custom Component](/blender/add-custom-component.webp "1.5x")
 
 ---
 
@@ -286,7 +286,7 @@ Use `@serializable()` to expose properties in Blender:
 
 ```ts
 import { Behaviour, serializable } from "@needle-tools/engine";
-import { Vector3, Color } from "three";
+import { Vector3, Color, Light, Object3D } from "three";
 
 export class MyComponent extends Behaviour {
 
@@ -326,7 +326,7 @@ export class MyComponent extends Behaviour {
 
 All these properties become editable in Blender's component panel!
 
-![Component Properties](/blender/myComponent-sample.webp)
+![Component Properties](/blender/myComponent-sample.webp "1.5x")
 
 
 :::tip Learn More
@@ -366,7 +366,7 @@ In Blender, assign the Door's `open()` method to the Button's `onClick` event.
 :::tip
 **EventLists are powerful!** They can also toggle object active states, enable/disable components, and change property values on other components.
 
-![Component Properties](/blender/eventlist.webp)
+![Component Properties](/blender/eventlist.webp "1.5x")
 :::
 
 
