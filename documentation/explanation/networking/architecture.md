@@ -79,6 +79,18 @@ Needle Engine supports two types of messages:
 
 ## Architecture Components
 
+```mermaid
+graph TD
+    ST["Storage"] <--> S["Server"]
+
+    S <-- "WebSocket" --> C1["Client A"]
+    S <-- "WebSocket" --> C2["Client B"]
+    S <-- "WebSocket" --> C3["Client C"]
+
+    style S fill:#99CC33,color:#1A1A1A
+    style ST fill:#99CC33,color:#1A1A1A
+```
+
 ### Client-Side
 
 **Connection API** - Available via `this.context.connection` in components:
@@ -133,6 +145,19 @@ Messages can be:
 - Useful for player-specific state that shouldn't persist
 
 ## WebRTC for Voice and Video
+
+```mermaid
+graph TD
+    S["Server"]
+    C1["Client A"]
+    C2["Client B"]
+
+    S -. Signaling .-> C1
+    S -. Signaling .-> C2
+    C1 <-- "Audio/Video (WebRTC)" --> C2
+
+    style S fill:#99CC33,color:#1A1A1A
+```
 
 For voice chat and screen sharing, Needle Engine uses [peer.js](https://peerjs.com/) which is built on WebRTC. This provides:
 - Direct peer-to-peer audio/video connections
