@@ -154,7 +154,7 @@ For testing and development, run a local networking server:
    wss://localhost:9001/socket
    ```
 
-![Needle Engine Networking component with custom server](/imgs/networking_absolute.webp)
+<img src="/imgs/networking_absolute.webp" srcset="/imgs/networking_absolute.webp 2x" alt="Needle Engine Networking component with custom server" />
 
 ## Different Servers for Development and Production
 

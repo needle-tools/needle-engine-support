@@ -89,7 +89,7 @@ Set the "Production" URL to your custom server endpoint.
 **Development Server:**
 Set the "Localhost" URL to test with a local networking server.
 
-![Needle Engine Networking component](/imgs/networking_absolute.webp)
+<img src="/imgs/networking_absolute.webp" srcset="/imgs/networking_absolute.webp 2x" alt="Needle Engine Networking component" />
 
 ### Room Settings
 

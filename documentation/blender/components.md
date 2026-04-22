@@ -25,9 +25,15 @@ Needle Engine includes **100+ ready-to-use components** for common interactive f
 
 ![Needle Object panel with object settings and components](/blender/needle-object-settings.webp "2x")
 
-![Needle Components panel](/blender/components-panel.webp)
+::: tip Needle Object Panel
+The **Needle Object** panel is found in the right viewport sidebar under the **Needle Object** tab. It shows per-object settings like export options, shadow casting, layers, material overrides, and texture compression — as well as the **Components** section below.
+:::
 
-**Component settings** appear immediately after adding. Each component has different properties you can configure directly in Blender.
+<img src="/blender/components-panel.webp" srcset="/blender/components-panel.webp 2x" alt="Needle Components panel" />
+
+::: tip
+Component settings appear immediately after adding. Each component has different properties you can configure directly in Blender.
+:::
 
 ---
 
@@ -55,6 +61,7 @@ Hover over any property to see its description.
 
 **Camera Controls:**
 - `OrbitControls` - Orbit around a target with mouse/touch
+- `ViewBox` - Ensure content stays framed
 
 **Animation:**
 - `Animation` - Play animation clips
@@ -65,6 +72,8 @@ Hover over any property to see its description.
 **Interactivity:**
 - `DragControls` - Make objects draggable in 3D space
 - `HoverAnimation` - Plays animation on pointer hover enter/exit events
+- `ScrollFollow` - Move objects based on scroll position
+- `EverywhereActions` - Trigger actions on various events (click, hover, collision, etc.)
 
 **UI & UX:**
 - `Button` - Interactive buttons
@@ -78,20 +87,16 @@ Hover over any property to see its description.
 - `Rigidbody` - Add physics simulation
 - `BoxCollider` / `SphereCollider` / `MeshCollider` - Collision shapes
 
+  <img src="/blender/rigidbody-boxcollider.webp" srcset="/blender/rigidbody-boxcollider.webp 2x" alt="Rigidbody and Box Collider components in Blender" />
+
 **Effects:**
 
 - `BloomEffect` - Add a glow effect to bright areas
 - `DepthOfField` - Simulate camera focus blur
 
-**Optimization:**
-- `ViewBox` - Ensure content stays framed
-
 **XR (Virtual & Augmented Reality):**
 - `WebXR` - Enable VR/AR with one click
 - [Learn more about WebXR →](/docs/how-to-guides/xr/)
-
-**Actions & Events:**
-- `EverywhereActions` - Trigger actions on various events (click, hover, collision, etc.)
 
 [See all 100+ components →](/docs/reference/components)
 
@@ -170,7 +175,7 @@ export class RotateObject extends Behaviour {
 **3. Save and Use**
 
 - Save the file
-- The component automatically compiles
+- The component automatically compiles to a Blender panel
 - It appears in Blender's component list
 - Add it to objects just like built-in components
 - Your `@serializable()` properties appear as editable fields in Blender
@@ -203,11 +208,6 @@ export class MyComponent extends Behaviour {
         // Your per-frame logic
     }
 
-    // Called at fixed intervals (physics)
-    fixedUpdate() {
-        // Physics calculations
-    }
-
     // Called when component is disabled
     onDisable() {
         console.log("Component disabled");
@@ -225,6 +225,8 @@ export class MyComponent extends Behaviour {
 ---
 
 ### Accessing Other Components
+
+For full details, see [Creating Components →](/docs/how-to-guides/scripting/create-components).
 
 **Find components on the same object:**
 
@@ -317,7 +319,7 @@ export class MyComponent extends Behaviour {
     @serializable(Light)
     lights: Light[] = [];
 
-    @serializable(Object3D)
+    @serializable(Object3D) // type refers to the array element type
     waypoints: Object3D[] = [];
 }
 ```
@@ -343,7 +345,7 @@ import { Behaviour, EventList, PointerEventData, serializable } from "@needle-to
 
 export class Button extends Behaviour {
 
-    @serializable()
+    @serializable(EventList)
     onClick: EventList = new EventList(); // Can assign in Blender!
 
     onPointerClick() {
