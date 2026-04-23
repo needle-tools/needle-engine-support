@@ -120,6 +120,19 @@ See [Connection Modes](#advanced-connection-modes) for more details.
 
 ### <img src="/imgs/cursor-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Cursor Logo" alt="Cursor Logo"/> Using Cursor
 
+**Quick setup:**
+
+1. Click to [Install Needle MCP in Cursor](cursor://anysphere.cursor-deeplink/mcp/install?name=needle&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIm5lZWRsZS1jbG91ZCIsIm1jcCJdfQ==)
+
+2. **Important**: Switch to Agent Mode (not Ask Mode)
+
+3. Just ask naturally — Cursor will use Needle tools automatically!
+
+<details>
+<summary>Local server setup (for Inspector integration)</summary>
+
+If you want your AI to also interact with live 3D scenes via the Needle Inspector, connect to the local server instead:
+
 1. In your project folder, create a file: `.cursor/mcp.json`
 
 2. Add this:
@@ -136,7 +149,9 @@ See [Connection Modes](#advanced-connection-modes) for more details.
 
 3. Restart Cursor
 
-4. **Important**: Switch to Agent Mode (not Ask Mode)
+See [Connection Modes](#advanced-connection-modes) for more details.
+
+</details>
 
 Try it: *"Show me all the meshes in my scene"*
 
@@ -331,7 +346,7 @@ The Inspector has special features when used with Needle Engine projects, and th
 
 ## Advanced: Connection Modes
 
-The Needle MCP Server supports two connection modes. The setup instructions above use the **local server** mode, which gives you the full experience including Inspector integration. But if you only need documentation search and don't plan to use the Inspector, there's a lighter alternative.
+The Needle MCP Server supports two connection modes. Both provide the full set of tools. The main difference is how they run.
 
 ### Local Server (HTTP/SSE) — Full Experience
 ```bash
@@ -345,7 +360,7 @@ If you're using Needle Engine for Unity or Blender, the local server is usually 
 ```bash
 npx needle-cloud mcp
 ```
-Your AI client spawns the process directly — no server to start or keep running. Provides the built-in tools (documentation search, account info, editor paths) but **does not support Inspector tools**, since there's no server for the Inspector to connect to. This is ideal for AI-assisted coding workflows where you just need quick access to Needle Engine docs and APIs.
+Your AI client spawns the process directly — no server to start or keep running. Since `needle-cloud@1.10.0`, stdio supports **all tools** including dynamic tools registered by the Needle Inspector — just like the local server mode. This makes it a great default choice: zero setup, no server to manage, and full functionality.
 
 To use stdio mode, configure your AI client with:
 ```json
@@ -361,10 +376,12 @@ To use stdio mode, configure your AI client with:
 
 ### Which should I use?
 
+Both modes support the full set of tools, including dynamic Inspector tools (since `needle-cloud@1.10.0`). The main difference is operational:
+
 | | Local Server | stdio |
 |---|---|---|
 | Documentation search | Yes | Yes |
 | Account info & editor tools | Yes | Yes |
-| Inspector scene tools | Yes | No |
+| Inspector scene tools | Yes | Yes |
 | Requires `needle-cloud start` | Yes | No |
 | Works without a running server | No | Yes |
