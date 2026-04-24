@@ -345,6 +345,16 @@ Go to `Edit/Project Settings/Player` for changing the setting.
 
 ![](/faq/lightmap_encoding.jpg)
 
+## Blender: Why does postprocessing not work?
+
+If postprocessing in Blender does not work as expected, try the following:
+1. **Disable auto postprocessing** in the Needle dropdown above the viewport (Needle icon foldout)
+2. **Add all postprocessing effects on the same object** in Blender — currently effects need to be on the same object to work together. This requirement will be relaxed in a future update where it won't matter where effects are placed in the scene.
+
+::: tip
+We're actively working on improving postprocessing for Blender. Future updates will bring more effects and remove the requirement to place them on the same object.
+:::
+
 # Performance
 
 ## My website becomes too large / is loading slow (too many MB)
