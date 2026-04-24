@@ -13,6 +13,8 @@ Use rich, layered materials on the web with full fidelity. Currently, you can bu
 
 [![MaterialX Demo](https://cloud.needle.tools/-/media/Xc99R6zbaD-kpoTw1cMRKA.gif)](https://engine.needle.tools/samples/material-x)
 
+<sample src="https://materialxdemos-z23hmxbzqk0iq.needle.run/" lazy description="Interactive MaterialX demo — explore procedural materials with real-time shadows, displacement, and transparency" />
+
 **Why MaterialX?** Under the hood, Needle Engine converts your materials to MaterialX — the industry standard for portable material definitions. This means your materials are:
 - **High fidelity** — rendered using the official MaterialX library, not an approximation
 - **Future-proof** — ready for WebGPU and next-gen rendering
