@@ -11,7 +11,7 @@ Commercial use of Needle Engine requires a valid license. You can purchase a lic
 
 ## How can I activate my Needle Engine License?
 
-### Activating the license in Unity
+#### Activating the license in Unity
 
 :::: tabs
 @tab Needle Engine 4.x
@@ -31,7 +31,7 @@ Note: You might need to restart the local webserver to apply the license.
 
 ::::
 
-### Activating the license in Blender
+#### Activating the license in Blender
 
 Follow the steps in [Install the Add-On](/docs/blender/#step-1-install-the-add-on),
 then click the <kbd>Login</kbd> button in the Add-on settings and follow the steps to log in to your Needle account.
@@ -485,21 +485,34 @@ See the [VR & AR (WebXR) guide](/docs/how-to-guides/xr/) for setup instructions.
 
 Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if your device supports WebGL 2, it also hints at what could be the cause of your problem, but generally make sure you have updated your browser and drivers. WebGL 1 is not supported.
 
-#### Known devices to cause issues:
+##### Known devices to cause issues:
 - Lenovo Thinkpad - T495
 
-# Editor (Unity)
+# Unity Editor
 
 ## I don't have any buttons like "Generate Project" in my components/inspector
 
 Please check that you're not accidentally in the Inspector's `Debug` mode – switch back to `Normal`:
 ![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
 
+# WebXR
+
 ## My website doesn't have AR/VR buttons
 
 - Make sure to add the `WebXR` component somewhere inside your root `GltfObject`.
 - Optionally add a `AR Session Root` component on your root `GltfObject` or within the child hierarchy to specify placement, scale and orientation for WebXR.
 - Optionally add a `XR Rig` component to control where users start in VR
+
+## I can't enter AR mode on my Android device
+
+If you see "WebXR not found" or simply can't enter AR, check the following:
+
+- **Device compatibility:** Your device must support [ARCore](https://developers.google.com/ar/devices). Not all Android devices do.
+- **`createARButton` is enabled:** Make sure the `WebXR` component in your scene has the `createARButton` option enabled.
+- **Test with a known-working sample:** Try the [Immersive AR sample](https://engine.needle.tools/samples/immersive-ar/) on the same device. If it works there, the issue is in your scene setup; if it doesn't, your device likely doesn't support WebXR AR.
+- **Use Chrome:** WebXR AR on Android requires Chrome. Other browsers may not support it.
+
+For AR on iOS, Needle Engine supports WebXR via [App Clips (Needle Go)](/docs/explanation/core-concepts/ios-webxr-app-clip). See also the [Platform Support](#does-it-work-on-ios) section.
 
 # AI
 
