@@ -7,6 +7,8 @@ lastUpdated: false
 footer: "Copyright © 2025 Needle Tools GmbH"
 ---
 
+<ask-ai />
+
 <video-embed :sources='["https://engine.needle.tools/samples-videos/showcase/hero-header-video-av1.mp4", "https://engine.needle.tools/samples-videos/showcase/hero-header-video-h264.mp4"]' />
 
 # <logo-header logo="/imgs/needle-logo.webp" alt="Needle Engine Logo">Needle Engine</logo-header>

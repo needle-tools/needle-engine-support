@@ -1,6 +1,7 @@
 import { defineClientConfig } from '@vuepress/client'
 import '@shikijs/twoslash/style-rich.css';
 import PageNav from './components/PageNav.vue'
+import AskAiSelection from './components/ask-ai-selection.vue'
 import { nextTick } from 'vue'
 
 export default defineClientConfig({
@@ -174,5 +175,5 @@ export default defineClientConfig({
       }, true) // Use capture phase to intercept before DocSearch handler
     }
   },
-  rootComponents: [PageNav],
+  rootComponents: [PageNav, AskAiSelection],
 })

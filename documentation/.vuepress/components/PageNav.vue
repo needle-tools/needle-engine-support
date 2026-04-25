@@ -38,11 +38,8 @@
       <div class="page-nav-extras">
         <p class="section-header">Extras</p>
         <div class="ai-chat-links">
-          <a :href="chatGptUrl" target="_blank" rel="noopener" class="ai-chat-link chatgpt-link">
-            <img src="/imgs/openai-logo.webp" alt="ChatGPT" class="ai-logo" /> Ask ChatGPT
-          </a>
-          <a :href="claudeUrl" target="_blank" rel="noopener" class="ai-chat-link claude-link">
-            <img src="/imgs/claude-logo.webp" alt="Claude" class="ai-logo" /> Ask Claude
+          <a href="#" class="ai-chat-link needle-ai-link" @click.prevent="openNeedleAI">
+            <img src="/imgs/needle-logo.webp" alt="Needle AI" class="ai-logo" /> Ask Needle AI
           </a>
         </div>
         <div class="llm-link-container">
@@ -100,11 +97,8 @@
       <div class="mobile-nav-section">
         <p class="section-header">Extras</p>
         <div class="ai-chat-links">
-          <a :href="chatGptUrl" target="_blank" rel="noopener" class="ai-chat-link chatgpt-link">
-            <img src="/imgs/openai-logo.webp" alt="ChatGPT" class="ai-logo" /> Ask ChatGPT
-          </a>
-          <a :href="claudeUrl" target="_blank" rel="noopener" class="ai-chat-link claude-link">
-            <img src="/imgs/claude-logo.webp" alt="Claude" class="ai-logo" /> Ask Claude
+          <a href="#" class="ai-chat-link needle-ai-link" @click.prevent="openNeedleAI">
+            <img src="/imgs/needle-logo.webp" alt="Needle AI" class="ai-logo" /> Ask Needle AI
           </a>
         </div>
         <div class="llm-link-container">
@@ -173,13 +167,11 @@ export default {
       }
       return ''
     },
-    chatGptUrl() {
-      const question = `Hi ChatGPT! Can you please read this page: ${this.mdPageUrl} and prepare to answer questions about it?`
-      return `https://chat.openai.com/?q=${encodeURIComponent(question)}`
-    },
-    claudeUrl() {
-      const question = `Hi Claude! Can you please read this page: ${this.mdPageUrl} and prepare to answer questions about it?`
-      return `https://claude.ai/new?q=${encodeURIComponent(question)}`
+    needleAiUrl() {
+      const page = typeof window !== 'undefined' ? window.location.href : ''
+      const title = document.querySelector('h1')?.textContent?.replace(/^#\s*/, '').trim() || ''
+      const msg = `I have a question about Needle Engine.\nPage: ${page}\nSection: ${title}`
+      return `https://cloud.needle.tools/ai/chat/needle-documentation?message=${encodeURIComponent(msg)}`
     }
   },
 
@@ -644,6 +636,10 @@ export default {
       })
 
       this.observer.observe(targetNode, config)
+    },
+
+    openNeedleAI() {
+      window.open(this.needleAiUrl, '_blank', 'noopener')
     },
 
     async copyToClipboard() {

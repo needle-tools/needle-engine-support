@@ -3,6 +3,8 @@ title: Explanation
 description: Understand how Needle Engine works and why it's designed this way
 ---
 
+<ask-ai />
+
 # Explanation
 
 Background knowledge and deeper understanding of how Needle Engine works. These articles explain the architecture, design decisions, and technical concepts behind the engine — useful when you want to understand *why* things work the way they do.
