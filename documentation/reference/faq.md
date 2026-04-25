@@ -3,6 +3,8 @@ title: Questions and Answers (FAQ) 💡
 description: Frequently asked questions and troubleshooting solutions for Needle Engine - from installation issues to licensing, rendering, and deployment.
 ---
 
+<ask-ai />
+
 # Licensing
 
 ## How do I get a license for Needle Engine?
@@ -67,14 +69,10 @@ Yes, the Needle Engine logo and branding can be removed with a [PRO license](htt
 
 # Installation & Setup
 
-## The Node.js installer asks about Chocolatey – is it needed?
-
-No, Chocolatey is not needed. During installation, the Node.js installer may show an option to install Chocolatey (a package manager for Windows). You can safely uncheck this option. Needle Engine does not use or require Chocolatey.
-
 ## My local server does not start / I do not see a website
 
 The most likely reason is an incorrect installation.
-Check the console and the `Needle Engine` component for errors or warnings.
+Check the console and the `Needle Engine` component for errors or warnings. Also check the local server terminal window that opens automatically — it often contains additional error details.
 
 If these warnings/errors didn't help, try the following steps in order. Give them some time to complete. Stop once your problem has been resolved. Check the console for warnings and errors.
 
@@ -82,9 +80,8 @@ If these warnings/errors didn't help, try the following steps in order. Give the
 - Install your project by selecting your `Needle Engine` component and clicking `Install`
 - Run a clean installation by selecting your `Needle Engine` component, holding Alt and clicking `Clean Install`
 - Try opening your web project directory in a command line tool and follow these steps:
-  - run ``npm install`` and then ``npm run dev-host``
+  - run ``npm install`` and then ``npm run dev``
   - Make sure both the local runtime package (``node_modules/@needle-tools/engine``) as well as three.js (``node_modules/three``) did install.
-  - You may run ``npm install`` in both of these directories as well.
 
 ## My local website shows an SSL error e.g. 'Your connection is not private'
 
@@ -154,6 +151,15 @@ There are two ways to upgrade:
 ## What are package.json and package-lock.json?
 
 See [Project Structure – package.json](/docs/explanation/core-concepts/project-structure#understanding-files-and-folders-in-the-web-project) for a full explanation of these files and how they relate to your project.
+
+## The Node.js installer asks about Chocolatey – is it needed?
+
+No, Chocolatey is not needed. During installation, the Node.js installer may show an option to install Chocolatey (a package manager for Windows). You can safely uncheck this option. Needle Engine does not use or require Chocolatey.
+
+## I don't have any buttons like "Generate Project" in my components/inspector
+
+Please check that you're not accidentally in the Inspector's `Debug` mode – switch back to `Normal`:
+![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
 
 # Scripting & Export
 
@@ -426,7 +432,7 @@ However, since the default loading style is very minimal, a practical approach i
 
 This way you have full control over when the overlay disappears — you can wait for additional async work, animations, or any other "app ready" signal before hiding it.
 
-# Deployment & Networking
+# Networking
 
 ## I'm using networking and Glitch and it doesn't work if more than 30 people visit the Glitch page at the same time
 
@@ -488,13 +494,6 @@ Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if yo
 ##### Known devices to cause issues:
 - Lenovo Thinkpad - T495
 
-# Unity Editor
-
-## I don't have any buttons like "Generate Project" in my components/inspector
-
-Please check that you're not accidentally in the Inspector's `Debug` mode – switch back to `Normal`:
-![20220824-025011-S2GQ-Unity_lKlT-needle](https://user-images.githubusercontent.com/2693840/186291615-56e7ebdb-1221-4326-813d-f88526fa126c.png)
-
 # WebXR
 
 ## My website doesn't have AR/VR buttons
@@ -525,6 +524,6 @@ See the [AI Assistant & Tools](/docs/ai/) page for the full guide, including:
 - **[llms-full.txt](https://cloud.needle.tools/llms-full.txt)** — complete documentation
 
 # Still have questions?
-[Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
 
-<a href="https://discord.needle.tools" target="_blank"><img height=20 src="https://img.shields.io/discord/717429793926283276?color=5562ea&label=Discord" /></a>
+- [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)
+- [Ask in our Discord community](https://discord.needle.tools)
