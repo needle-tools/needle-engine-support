@@ -308,11 +308,11 @@ export default {
     },
 
     extractHeaders() {
-      // Get all h2 and h3 headers from the page content
+      // Get all h1, h2 and h3 headers from the page content
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
-      const headerElements = article.querySelectorAll('h2, h3')
+      const headerElements = article.querySelectorAll('h1, h2, h3')
       this.headers = Array.from(headerElements)
         .filter(el => {
           // Exclude headers that are inside tool tiles or other non-content components
@@ -349,7 +349,7 @@ export default {
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
-      const headerElements = article.querySelectorAll('h2, h3')
+      const headerElements = article.querySelectorAll('h1, h2, h3')
       let currentHeader = ''
       let activeHeaderElement = null
 
@@ -508,7 +508,7 @@ export default {
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
-      const headerElements = article.querySelectorAll('h2, h3')
+      const headerElements = article.querySelectorAll('h1, h2, h3')
       const allHeaders = []
       let currentIndex = -1
 
@@ -893,8 +893,30 @@ html[data-theme='dark'] .llm-link:hover {
   line-height: 1.6;
 }
 
+.page-nav-item.level-1 {
+  margin-left: 0;
+  margin-top: 0.5rem;
+}
+
+.page-nav-item.level-1:first-child {
+  margin-top: 0;
+}
+
+.page-nav-item.level-1 > .page-nav-link {
+  font-weight: 800;
+}
+
+/* Indent level-2 and level-3 only when level-1 siblings exist */
+.page-nav-list:has(.level-1) .page-nav-item.level-2 {
+  margin-left: 0.5rem;
+}
+
 .page-nav-item.level-2 {
   margin-left: 0;
+}
+
+.page-nav-list:has(.level-1) .page-nav-item.level-3 {
+  margin-left: 1.25rem;
 }
 
 .page-nav-item.level-3 {
