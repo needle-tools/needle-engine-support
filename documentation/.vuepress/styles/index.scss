@@ -9,11 +9,15 @@ html {
 // https://ecosystem.vuejs.press/themes/default/styles.html#style-file
 :root {
   // brand colors
-  --vp-c-accent: #826aed; 
+  --vp-c-accent: #826aed;
   --vp-c-accent-bg: #d5ebaa;
   --vp-c-light: #ffffff;
   --vp-c-dark: #000000;
   --vp-c-bg: rgb(240, 244, 239);
+
+  // selection
+  --c-selection-color: #000000;
+  --c-selection-bg: #ccff6ca8;
 
   // BELOW ARE ALL DEPRECATED...
 
@@ -190,8 +194,8 @@ a code {
 */
 
 ::selection {
-  color: #000000;
-  background: #ccff6ca8;
+  color: var(--c-selection-color, #000000);
+  background: var(--c-selection-bg, #ccff6ca8);
 }
 
 .search-box {
