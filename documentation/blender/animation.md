@@ -41,6 +41,8 @@ For complex character animations or interactive state-based systems, use the **A
 
 *State machine animations for complex character control*
 
+<sample src="https://animatedcharacter_blender-zubcksznowlu.needle.run/" lazy description="Animated Character — trigger different animations on a rigged model using Everywhere Actions. Built in Blender." />
+
 **When to use:**
 - Character controllers with multiple states (idle, walk, run, jump)
 - Interactive objects with different behaviors
@@ -142,6 +144,8 @@ Export Blender's **NLA Tracks** (Non-Linear Animation) directly to the web using
 ![Timeline setup](/blender/timeline_setup.webp)
 
 ![Timeline tracks](/blender/timeline.webp)
+
+<sample src="https://turtle-metal-audio-and-animation-zubcks1hprcw.needle.run/" lazy description="Turtle Metal — animated camera movement, audio playback and character animation coordinated through a timeline. Built in Blender." />
 
 ---
 

@@ -62,6 +62,22 @@ You can control the background appearance separately using the environment camer
 
 ---
 
+## Ground Projection
+
+Reshape the lower part of the HDR sphere into a flat plane that aligns with your scene's floor — objects appear to stand inside the environment rather than floating inside a sphere. Common in car configurators and product hero shots.
+
+<sample src="https://groundprojection_blender-zubcks1agyg3.needle.run/" lazy description="Ground Projection — HDR environment with a projected ground plane so objects feel grounded in the scene. Built in Blender." />
+
+---
+
+## Reflection Probes
+
+For scenes with multiple rooms or distinct lighting zones, use **reflection probes** to capture local reflections. Objects automatically use the closest probe.
+
+<sample src="https://reflectionprobes-blender-zubcks2ksox9.needle.run/" lazy description="Bathroom with Reflection Probes — multiple reflection probes give grounded, believable reflections across different areas of the scene." />
+
+---
+
 ## Tips
 
 **Quality:**

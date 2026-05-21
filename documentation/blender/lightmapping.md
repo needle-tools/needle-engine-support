@@ -9,6 +9,8 @@ Bake realistic lighting and shadows directly in Blender and export them to the w
 
 <video-embed limit_height max_height="800px" src="/docs/blender/lightmapping.mp4" />
 
+<sample src="https://showcase_room-zubckszca25o.needle.run/" lazy description="3D Interior with See-Through Walls — combines lightmaps, reflection probes, seethrough walls and video for a presentation-ready interior scene built in Blender." />
+
 ---
 
 ## What is Lightmapping?

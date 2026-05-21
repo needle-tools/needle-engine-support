@@ -87,7 +87,9 @@ Hover over any property to see its description.
 - `Rigidbody` - Add physics simulation
 - `BoxCollider` / `SphereCollider` / `MeshCollider` - Collision shapes
 
-  <img src="/blender/rigidbody-boxcollider.webp" srcset="/blender/rigidbody-boxcollider.webp 2x" alt="Rigidbody and Box Collider components in Blender" />
+  ![Rigidbody and Box Collider components in Blender](/blender/rigidbody-boxcollider.webp "2x")
+
+  <sample src="https://physics-dragcontrol-rigidbodies-zubcksz19ek9b.needle.run/" lazy description="Physics and Drag Interaction — grab the handle and interact with rigidbody physics. Built in Blender." />
 
 **Effects:**
 
