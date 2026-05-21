@@ -26,16 +26,29 @@ export default {
     return {
       sanitizedUrl: "",
       loaded: false,
+      frame1Loaded: false,
+      frame2Loaded: false,
     }
   },
   computed: {
     shouldShow() {
       return !this.lazy || this.loaded;
+    },
+    showSpinner() {
+      if (!this.shouldShow) return false;
+      if (this.split) return !this.frame1Loaded || !this.frame2Loaded;
+      return !this.frame1Loaded;
     }
   },
   methods: {
     load() {
       this.loaded = true;
+    },
+    onFrame1Load() {
+      this.frame1Loaded = true;
+    },
+    onFrame2Load() {
+      this.frame2Loaded = true;
     }
   },
   watch: {
@@ -86,10 +99,13 @@ export default {
 <template>
   <div>
     <template v-if="shouldShow">
-      <iframe :src="sanitizedUrl" ref="frame1"
+      <iframe :src="sanitizedUrl" ref="frame1" @load="onFrame1Load"
         allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
-      <iframe v-if="split === true" :src="sanitizedUrl" ref="frame2"
+      <iframe v-if="split === true" :src="sanitizedUrl" ref="frame2" @load="onFrame2Load"
         allow="xr; xr-spatial-tracking; camera; microphone; fullscreen; display-capture"></iframe>
+      <div v-if="showSpinner" class="loading-overlay" aria-hidden="true">
+        <div class="spinner"></div>
+      </div>
     </template>
     <div v-else class="load-embed-placeholder" @click="load">
       <button class="load-embed-button">▶ Load embed</button>
@@ -103,6 +119,7 @@ div {
   margin-top: 0.3em;
   display: flex;
   flex-direction: column;
+  position: relative;
 }
 
 iframe {
@@ -110,6 +127,7 @@ iframe {
   height: 100%;
   border: 0;
   aspect-ratio: 16/9;
+  background: rgba(0, 0, 0, 0.1);
 }
 
 iframe:only-of-type {
@@ -176,5 +194,31 @@ iframe:last-of-type {
   text-align: center;
   padding: 0 1em;
   max-width: 50ch;
+}
+
+.loading-overlay {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  border-radius: 1em;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 3px solid color-mix(in srgb, currentColor 15%, transparent);
+  border-top-color: currentColor;
+  opacity: 0.4;
+  animation: sample-spin 0.8s linear infinite;
+  margin: 0;
+}
+
+@keyframes sample-spin {
+  to { transform: rotate(360deg); }
 }
 </style>
