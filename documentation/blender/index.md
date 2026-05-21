@@ -74,7 +74,7 @@ Let's start with a sample project to see how everything works.
 
 ### Get Sample Projects
 
-[Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender)
+[Download Blender Samples](https://engine.needle.tools/downloads/blender/download-samples?utm_source=needle_docs&utm_content=blender) — or [browse Blender Samples online](https://engine.needle.tools/samples/?overlay=samples&platform=blender)
 
 Download and **open any sample `.blend` file** in Blender. These samples show what's possible and help you learn by example.
 
@@ -196,7 +196,7 @@ Comprehensive guide covering what you can create without code, workflow tips, an
 - [Components →](/docs/blender/components) — 100+ built-in behaviors and creating your own
 - [Lightmapping →](/docs/blender/lightmapping) — baked lighting for stunning visuals with great performance
 - [Deploy Your Project →](/docs/how-to-guides/deployment/) — publish to Needle Cloud or self-host
-- [Sample Projects →](https://engine.needle.tools/samples) — interactive examples to learn from
+- [Sample Projects →](https://engine.needle.tools/samples) — interactive examples to learn from ([Blender Samples](https://engine.needle.tools/samples/?overlay=samples&platform=blender))
 - [FAQ →](/docs/reference/faq) — common questions and troubleshooting
 
 ---

@@ -270,5 +270,5 @@ There's a friendly Discord community, extensive documentation, video tutorials, 
 - [Components →](/docs/blender/components) — 100+ built-in behaviors and creating your own
 - [Lightmapping →](/docs/blender/lightmapping) — baked lighting for stunning visuals with great performance
 - [Deploy Your Project →](/docs/how-to-guides/deployment/) — publish to Needle Cloud or self-host
-- [Sample Projects →](https://engine.needle.tools/samples) — interactive examples to learn from
+- [Sample Projects →](https://engine.needle.tools/samples) — interactive examples to learn from ([Blender Samples](https://engine.needle.tools/samples/?overlay=samples&platform=blender))
 - [FAQ →](/docs/reference/faq) — common questions and troubleshooting
