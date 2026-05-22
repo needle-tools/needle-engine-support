@@ -130,12 +130,11 @@ export default {
     },
 
     buildUrl(selection, customQuestion) {
-      const page = typeof window !== 'undefined' ? window.location.href : ''
       let msg
       if (customQuestion) {
-        msg = `${customQuestion}\n\nContext: "${selection}"\nSource: ${page}`
+        msg = `${customQuestion}\n\nContext: "${selection}"`
       } else {
-        msg = `Please help me understand: "${selection}"\nSource: ${page}`
+        msg = `Please help me understand: "${selection}"`
       }
       return `https://cloud.needle.tools/ai/chat/needle-documentation?message=${encodeURIComponent(msg)}`
     }

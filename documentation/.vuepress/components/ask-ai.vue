@@ -38,8 +38,7 @@ export default {
       }
     },
     buildUrl(question) {
-      const page = typeof window !== 'undefined' ? window.location.href : ''
-      const msg = `${question}\nSource: ${page}`
+      const msg = `${question}`
       return `https://cloud.needle.tools/ai/chat/needle-documentation?message=${encodeURIComponent(msg)}`
     }
   }

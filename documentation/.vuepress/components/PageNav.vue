@@ -168,9 +168,8 @@ export default {
       return ''
     },
     needleAiUrl() {
-      const page = typeof window !== 'undefined' ? window.location.href : ''
       const title = document.querySelector('h1')?.textContent?.replace(/^#\s*/, '').trim() || ''
-      const msg = `I have a question about Needle Engine.\nPage: ${page}\nSection: ${title}`
+      const msg = `I have a question about Needle Engine.\nSection: ${title}`
       return `https://cloud.needle.tools/ai/chat/needle-documentation?message=${encodeURIComponent(msg)}`
     }
   },
