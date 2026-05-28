@@ -29,7 +29,7 @@ jobs:
       github.event_name == 'repository_dispatch' ||
       (github.event_name == 'discussion' && github.event.discussion.category.name == 'Share')
 
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     timeout-minutes: 15
 
     steps:
@@ -90,7 +90,7 @@ jobs:
 
   notify_discord:
     needs: docs
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     if: |
       github.event_name == 'push' ||
       github.event_name == 'repository_dispatch'
@@ -103,7 +103,7 @@ jobs:
   
   notify_discord_if_upload_fails:
     needs: docs
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     if: |
       failure() &&
       (github.event_name == 'push' || github.event_name == 'repository_dispatch')
@@ -117,7 +117,7 @@ jobs:
 
   notify_discord_by_contribution:
     needs: docs
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     if: |
       (github.event_name == 'discussion' && (github.event.action == 'created' || github.event.action == 'edited') && github.event.discussion.category.name == 'Share')
     steps:
@@ -132,7 +132,7 @@ jobs:
 
   check_links:
     needs: docs
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
 
     steps:
       - uses: actions/checkout@v4
