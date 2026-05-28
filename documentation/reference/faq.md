@@ -893,6 +893,18 @@ See the [Needle MCP Server documentation](/docs/ai/needle-mcp-server#advanced-co
 
 # Needle Cloud
 
+## I got an error from Needle Cloud (upload, optimization, deployment, ...) — what should I do?
+
+If anything goes wrong with Needle Cloud — an asset fails to upload, optimization fails, a deployment errors out, or you see any other unexpected error — please **report it**. We typically fix cloud-side issues within a few hours to a day.
+
+The fastest way to report is directly from the window where the error appeared:
+- Click the **Report** button next to the error. This sends us the relevant logs so we can investigate without needing additional info from you.
+- Alternatively, email us at [hi@needle.tools](mailto:hi@needle.tools) with a short description of what you were doing and any error message you saw.
+
+**About tokens used for failed jobs:** if optimization tokens were consumed for a job that failed due to a cloud-side error, we'll refund them. Just mention it in your report or email and we'll credit them back to your team.
+
+For ongoing service status, check [status.needle.tools](https://status.needle.tools/).
+
 ## What do the "tags" on Needle Cloud deployments do?
 
 When you set **tags** on a Needle Cloud deployment, they are written as `<meta name="keywords">` in the HTML of your deployed site (if no keywords meta tag already exists). This has two main uses:
