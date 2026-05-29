@@ -46,7 +46,13 @@ export default {
   async mounted() {
     try {
       const res = await fetch(withBase('/meta/materialx_node_coverage.json'));
-      if (!res.ok) { this.error = 'Could not load MaterialX coverage data'; return; }
+      // A missing static file is often served as the SPA fallback (index.html) with
+      // status 200, so guard against an HTML body rather than relying on res.ok alone.
+      const contentType = res.headers.get('content-type') || '';
+      if (!res.ok || !contentType.includes('json')) {
+        this.error = 'Could not load MaterialX coverage data';
+        return;
+      }
       this.data = await res.json();
     } catch (e) {
       this.error = e.message;

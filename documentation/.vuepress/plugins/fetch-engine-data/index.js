@@ -50,42 +50,85 @@ async function fetchNpmPackageFile({ registryUrl, filePath, outputFile, label })
     try {
         console.log(`[fetch-engine-data] Fetching ${label}...`);
 
-        // 1. Get the tarball URL from the registry
+        // 1. Get the registry metadata
         const meta = await fetch(registryUrl).then(r => r.json());
-        const latest = meta['dist-tags']?.latest;
-        if (!latest) {
-            console.warn(`[fetch-engine-data] Could not determine latest version for ${registryUrl}`);
-            return;
-        }
-        const tarballUrl = meta.versions?.[latest]?.dist?.tarball;
-        if (!tarballUrl) {
-            console.warn(`[fetch-engine-data] No tarball URL for ${registryUrl}@${latest}`);
+        const allVersions = Object.keys(meta.versions ?? {});
+        if (!allVersions.length) {
+            console.warn(`[fetch-engine-data] No versions listed for ${registryUrl}`);
             return;
         }
 
-        if (debugLog) console.log(`[fetch-engine-data] ${label}: v${latest} → ${tarballUrl}`);
+        // The target file may not exist in `dist-tags.latest` (e.g. a feature that
+        // only shipped in a newer release line that isn't tagged `latest` yet).
+        // Try `latest` first, then fall back to the newest version that contains it.
+        const candidates = orderVersionCandidates(allVersions, meta['dist-tags']?.latest);
 
-        // 2. Stream the tarball and extract the target file
-        const res = await fetch(tarballUrl);
-        if (!res.ok) {
-            console.warn(`[fetch-engine-data] Failed to fetch tarball: ${res.status} ${res.statusText}`);
+        for (const version of candidates) {
+            const tarballUrl = meta.versions?.[version]?.dist?.tarball;
+            if (!tarballUrl) continue;
+
+            if (debugLog) console.log(`[fetch-engine-data] ${label}: trying v${version} → ${tarballUrl}`);
+
+            const res = await fetch(tarballUrl);
+            if (!res.ok) {
+                console.warn(`[fetch-engine-data] Failed to fetch tarball v${version}: ${res.status} ${res.statusText}`);
+                continue;
+            }
+
+            const fileContent = await extractFileFromTarGz(res.body, filePath);
+            if (fileContent === null) {
+                if (debugLog) console.log(`[fetch-engine-data] "${filePath}" not in v${version}, trying older`);
+                continue;
+            }
+
+            // Validate it's valid JSON and write
+            JSON.parse(fileContent); // throws if invalid
+            fs.writeFileSync(outputFile, fileContent, 'utf-8');
+            console.log(`[fetch-engine-data] ✓ ${label} (v${version}, ${(fileContent.length / 1024).toFixed(1)}KB)`);
             return;
         }
 
-        const fileContent = await extractFileFromTarGz(res.body, filePath);
-        if (fileContent === null) {
-            console.warn(`[fetch-engine-data] File "${filePath}" not found in tarball`);
-            return;
-        }
-
-        // 3. Validate it's valid JSON and write
-        JSON.parse(fileContent); // throws if invalid
-        fs.writeFileSync(outputFile, fileContent, 'utf-8');
-        console.log(`[fetch-engine-data] ✓ ${label} (v${latest}, ${(fileContent.length / 1024).toFixed(1)}KB)`);
+        console.warn(`[fetch-engine-data] File "${filePath}" not found in any version of ${label}`);
     }
     catch (err) {
         console.warn(`[fetch-engine-data] Error fetching ${label}:`, err.message);
     }
+}
+
+/**
+ * Builds the order in which package versions should be tried when locating a file:
+ * the `latest` dist-tag first, then all remaining versions newest-first, with
+ * stable releases preferred over pre-releases. Capped to avoid pulling many tarballs.
+ * @param {string[]} versions
+ * @param {string|undefined} latest
+ * @returns {string[]}
+ */
+function orderVersionCandidates(versions, latest) {
+    const sorted = [...versions].sort(compareVersionsDesc);
+    const ordered = latest && versions.includes(latest)
+        ? [latest, ...sorted.filter(v => v !== latest)]
+        : sorted;
+    return ordered.slice(0, 10);
+}
+
+/** Parses a semver-ish string into comparable parts. */
+function parseVersion(v) {
+    const [core, prerelease = null] = String(v).split('-');
+    const [major = 0, minor = 0, patch = 0] = core.split('.').map(n => parseInt(n, 10) || 0);
+    return { major, minor, patch, prerelease };
+}
+
+/** Descending semver comparator; stable releases rank before pre-releases of the same core. */
+function compareVersionsDesc(a, b) {
+    const pa = parseVersion(a), pb = parseVersion(b);
+    if (!!pa.prerelease !== !!pb.prerelease) return pa.prerelease ? 1 : -1;
+    if (pa.major !== pb.major) return pb.major - pa.major;
+    if (pa.minor !== pb.minor) return pb.minor - pa.minor;
+    if (pa.patch !== pb.patch) return pb.patch - pa.patch;
+    if (pa.prerelease && pb.prerelease) {
+        return pb.prerelease.localeCompare(pa.prerelease, undefined, { numeric: true });
+    }
+    return 0;
 }
 
 /**

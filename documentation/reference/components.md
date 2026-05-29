@@ -210,9 +210,12 @@ For cross-platform projects (VR, AR, desktop), mix spatial and HTML UI:
 
 ---
 
+<!-- Temporarily disabled pending review of the auto-generated component list.
 ## All Components by Category
 
 <NeedleComponentsInfo />
+-->
+
 
 ## Complete API Documentation
 
