@@ -69,6 +69,24 @@ Here are some of the most commonly used:
 Needle Engine also has some very powerful and useful debugging methods that are part of the static `Gizmos` class. See the [scripting documentation](/docs/how-to-guides/scripting/create-components#gizmos) for more information.
 
 
+## Log files
+
+When running the local dev server, the Needle Engine Vite plugin writes logs to files inside your web project's `node_modules/.needle/logs` directory. Both **client-side logs** (from the browser) and **server-side logs** (from the dev server / build process) are captured there.
+
+This is useful when:
+- you want to inspect what happened without keeping the browser console open
+- an error scrolled out of view or happened on a device you can't easily attach DevTools to
+- you want to share a log with support or feed it to an AI assistant (see [AI & Needle Engine](/docs/ai/))
+
+```
+node_modules/.needle/logs
+```
+
+:::tip
+The related `node_modules/.needle/needle.alias.log` file logs how imports are resolved — useful for diagnosing the wrong version of a package being picked up. See the [Needle Vite Plugin reference](/docs/reference/needle-vite-plugin).
+:::
+
+
 ## Local Testing of release builds
 - First, install http-server: `npm install -g http-server`
 - make a build (development or production)
@@ -104,6 +122,14 @@ You can then start your local server from within VSCode:
 ![](/debugging/vscode-start-debugging.webp)
 
 ## Mobile Debugging
+
+:::tip Easiest option: read the log file
+On phones, tablets, and headsets (Android, iOS/iPadOS, Quest, visionOS, WebXR) you don't have to attach DevTools at all. The Needle Engine Vite plugin writes both **client-side and server-side logs** to `node_modules/.needle/logs` on your dev machine — so you can just open that file to see what happened on the device.
+
+This is a big time-saver even without AI: no USB cable, no remote inspector, no squinting at an on-screen console — just test on the device and read the log on your computer. And if you *are* using an AI assistant, point it at the file so it can drive a hands-on loop: it tells you what to tap, you reply "done", and it reads the fresh logs. See [Log files](#log-files) and [AI & Needle Engine](/docs/ai/).
+:::
+
+The platform-specific options below are still useful when you need live inspection (breakpoints, network, DOM).
 
 ### <logo-header logo="/imgs/android-logo.webp" alt="Android">Android Debugging</logo-header>
 

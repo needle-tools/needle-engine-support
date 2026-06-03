@@ -60,6 +60,22 @@ The **[Needle MCP Server](./needle-mcp-server)** lets AI tools talk directly to 
 
 ---
 
+## Let AI read your logs
+
+When the local dev server is running, the Needle Engine Vite plugin writes both **client-side logs** (from the browser) and **server-side logs** (from the dev server / build process) to files inside your web project's `node_modules/.needle/logs` directory:
+
+```
+node_modules/.needle/logs
+```
+
+Pointing your AI coding assistant at this folder lets it read what actually happened — browser errors, build warnings, and server output — so it can debug issues with real context instead of guessing. See [Debugging Parameters & Options](/docs/how-to-guides/debugging/) for more.
+
+:::tip Great for testing on device
+This is especially helpful when testing on any device where you can't easily attach DevTools — Android, **iOS/iPadOS**, **Meta Quest**, **visionOS (Apple Vision Pro)**, or any **WebXR** VR/AR headset. Because the logs are written to a file on your dev machine, you get the device's console output even on platforms (like iOS and visionOS) where remote debugging is awkward or unavailable. Point the AI at the log file and let it drive a hands-on loop: the AI tells you what to tap, you do it and reply "done", and the AI reads the freshly written logs to see what happened — then tells you the next step. No copy-pasting console output back and forth.
+:::
+
+---
+
 ## Use Needle docs with any AI
 
 Every documentation page is available as plain markdown — just change `.html` to `.md` in the URL.
