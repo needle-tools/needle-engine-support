@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run docs:dev",
-    "docs:dev": "vuepress dev documentation",
-    "docs:build": "vuepress build documentation",
+    "docs:dev": "NODE_OPTIONS=--localstorage-file=./node_modules/.cache/vuepress-localstorage vuepress dev documentation",
+    "docs:build": "NODE_OPTIONS=--localstorage-file=./node_modules/.cache/vuepress-localstorage vuepress build documentation",
     "docs:build-api": "node tools/build_api_docs.mjs",
     "docs:deploy": "node tools/upload.mjs",
     "docs:translate": "node tools/translate.mjs",

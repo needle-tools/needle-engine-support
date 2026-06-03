@@ -160,6 +160,12 @@ The Needle MaterialX Exporter leverages the graph-based structure of Unity's Sha
 - **Multiple UV channels** are supported (up to 4)
 - **Shader Keywords** are supported and will be exported as switch nodes in MaterialX.
 
+::: tip Known MaterialX issue: texture colorspaces in subgraphs
+The upstream MaterialX library currently has an open issue where texture samples inside nodegraphs/subgraphs can receive colorspace transforms at the wrong point, or miss them, so a subgraph can render differently than an equivalent graph with the texture sample outside the subgraph. This is a MaterialX issue, not a Needle Engine-specific one; see [AcademySoftwareFoundation/MaterialX#2353](https://github.com/AcademySoftwareFoundation/MaterialX/issues/2353).
+
+Until this is resolved upstream, avoid color-sensitive texture sampling inside reusable subgraphs when possible. Prefer sampling the texture and applying its colorspace conversion outside the subgraph, then pass the already-converted value into the subgraph for further processing.
+:::
+
 ### ShaderGraph Node Coverage
 
 Many nodes are supported out-of-the-box.
