@@ -31,6 +31,10 @@ The quickest option — it works on any Webflow plan and even renders in the Des
 </iframe>
 ```
 
+![Add a Code Embed element in Webflow](/imgs/webflow-add-code-embed.webp)
+
+![Paste the embed code into the editor](/imgs/webflow-embed-editor.webp)
+
 ## 2. Trigger the scene from a Webflow element
 
 Because an iframe is a separate page, the Webflow page and the scene talk to each other by passing **messages** ([`postMessage`](https://developer.mozilla.org/en-US/docs/Web/API/Window/postMessage)), with a small handler on each side.
@@ -47,6 +51,8 @@ Because an iframe is a separate page, the Webflow page and the scene talk to eac
   });
 </script>
 ```
+
+![Add the script in Page Settings → Custom Code → Head](/imgs/webflow-head-code.webp)
 
 **Needle project side** — listen for that message and play an animation:
 
@@ -65,6 +71,8 @@ onStart(ctx => {
 :::tip Giving an element an ID
 Select the element, open **Element Settings → ID**, and set e.g. `play-btn` — then target it with `getElementById`. Webflow blocks inline `onclick` attributes, so always wire up clicks in code like this.
 :::
+
+![Set the element's ID in Webflow](/imgs/webflow-element-id.webp)
 
 ## 3. Embed inline with `<needle-app>` (recommended for interaction)
 
@@ -93,6 +101,10 @@ Because the scene now shares the page, you can call into it directly — no `pos
 - The files must be served with cross-origin (CORS) headers. [Needle Cloud](/docs/cloud/) (`*.needle.run`) does this automatically.
 - Custom code runs on the **published** site (and in Preview), not in the Webflow Designer canvas — so test on your `.webflow.io` site.
 - Importing the engine API from `needle-app.js` requires Needle Engine 5.1 or newer.
+:::
+
+:::tip See your custom code in Preview
+By default Webflow only runs custom code on the **published** site. To also see it in **Preview** (the eye icon) while you build, open **Site Settings → Custom Code** and switch **"Run custom code in Preview"** to **ON**. (Custom code still never runs in the Designer canvas itself — that's expected.)
 :::
 
 ## Scrollytelling
