@@ -6,6 +6,10 @@ title: Embedding Needle Engine
 
 **Add interactive 3D to any website.** Needle Engine can be integrated into existing websites, embedded in CMSs like WordPress, or deployed as standalone web apps. This guide covers all the ways to get your 3D content live.
 
+:::tip Building a web project from scratch?
+This page is about getting an existing or deployed scene **onto a website** (iframe, `needle-app`, CMS platforms). If you're **building a web project** with Needle — frameworks, bundlers, the `<needle-engine>` web component — start with [Web Integration &amp; Frameworks](/docs/how-to-guides/web-integration/).
+:::
+
 ## Quick Test: 2-Minute Integration
 
 Want to see how Needle Engine looks on your website? Add these two lines anywhere on your page:

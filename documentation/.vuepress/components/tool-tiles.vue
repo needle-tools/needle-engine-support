@@ -48,6 +48,24 @@
                 <video-embed src="https://www.youtube.com/watch?v=TXEHR4Cq7iU" limit_height max_height="70xp"/>
             </template>
         </tool-tile>
+
+        <tool-tile image="/docs/imgs/threejs-logo.webp">
+            <template v-slot:tool-name>
+                Needle × three.js
+            </template>
+            <template v-slot:tool-description>
+                three.js r169
+            </template>
+            <template v-slot:download-button>
+                <needle-button
+                    event_goal="download_threejs"
+                    event_position="getting_started"
+                    large same_tab
+                    href="/docs/three/">
+                    <strong>Get Started</strong>
+                </needle-button>
+            </template>
+        </tool-tile>
     </div>
     <div>
         <tool-tile image="/docs/imgs/logo-webcomponents.png">
@@ -58,29 +76,11 @@
                 Rich, interactive 3D content made easy
             </template>
             <template v-slot:download-button>
-                <needle-button 
-                    event_goal="download_webcomponent" 
-                    event_position="getting_started" 
+                <needle-button
+                    event_goal="download_webcomponent"
+                    event_position="getting_started"
                     large same_tab
-                    href="/docs/three/">
-                    <strong>Get Started</strong>
-                </needle-button>
-            </template>
-        </tool-tile>
-
-        <tool-tile image="/docs/imgs/threejs-logo.webp">
-            <template v-slot:tool-name>
-                Needle × three.js
-            </template>
-            <template v-slot:tool-description>
-                three.js r169
-            </template>
-            <template v-slot:download-button>
-                <needle-button 
-                    event_goal="download_threejs" 
-                    event_position="getting_started" 
-                    large same_tab
-                    href="/docs/three/">
+                    href="/docs/how-to-guides/web-integration/">
                     <strong>Get Started</strong>
                 </needle-button>
             </template>
@@ -89,7 +89,7 @@
 
         <tool-tile>
             <template v-slot:tool-name>
-                Other Workflows
+                Custom Integrations
             </template>
             <template v-slot:tool-description>
                 Learn how to integrate Needle Engine into your tool or workflow
@@ -114,7 +114,7 @@ div {
     justify-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: flex-start;
+    align-items: stretch;
 }
 
 div.vertical {

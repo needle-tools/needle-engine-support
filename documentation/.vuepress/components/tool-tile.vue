@@ -65,7 +65,7 @@ function getClass() {
     }
 
     div.small {
-        height: 220px;
+        min-height: 220px;
     }
 
     div.small .description {

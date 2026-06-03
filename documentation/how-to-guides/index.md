@@ -99,6 +99,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 
 - <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="/docs/how-to-guides/integrations/framer">Framer Plugin</a></logo-header> - Embed 3D content in Framer websites
 - <logo-header logo="/imgs/wordpress-logo.webp" alt="WordPress"><a href="/docs/how-to-guides/integrations/wordpress">WordPress Plugin</a></logo-header> - Embed 3D content in WordPress sites
+- <logo-header logo="/imgs/webflow-logo.webp" alt="Webflow"><a href="/docs/how-to-guides/integrations/webflow">Webflow</a></logo-header> - Embed 3D content in Webflow sites
 - <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header> - Integrate with AEM
 - <logo-header logo="/imgs/8thwall-logo.png" alt="8th Wall"><a href="/docs/tutorials/for-8thwall-users">8th Wall Migration</a></logo-header> - Transition from 8th Wall to Needle Engine
 

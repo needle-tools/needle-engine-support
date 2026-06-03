@@ -8,6 +8,10 @@ Needle Engine is a web component that works with any modern web framework or van
 
 [Learn more about Needle Engine →](https://needle.tools)
 
+:::tip Already have a website?
+This page is about **building a web project** with Needle (frameworks, bundlers, the web component). If you already have a site — your own HTML, **Webflow**, WordPress, AEM… — and just want to drop a scene in, see [Embedding Needle Engine](/docs/how-to-guides/deployment/embedding).
+:::
+
 ## Quick Start
 
 **Install:**
@@ -33,6 +37,39 @@ That's it! Needle Engine automatically bundles with your project for optimized p
 
 **Tree shaking** is a common practice in web development where unused code is removed from the final bundle to reduce file size. This is similar to "code stripping" in Unity. [The MSDN docs](https://developer.mozilla.org/en-US/docs/Glossary/Tree_shaking) have a good explanation of tree shaking.
 :::
+
+## Examples
+
+A few common ways to use the `<needle-engine>` web component.
+
+**Show a model with lighting, shadows and camera controls**
+```html
+<needle-engine
+  src="path/to/your.glb"
+  camera-controls="1"
+  background-color="transparent"
+  environment-image="studio"
+  contact-shadows>
+</needle-engine>
+```
+
+**Run your own code once the scene is ready**
+```html
+<script type="module">
+  import { onStart } from '@needle-tools/engine';
+
+  onStart(context => {
+    console.log('Scene loaded', context.scene);
+    // add three.js objects, query components, drive animations…
+  });
+</script>
+```
+
+**Use straight from a CDN — no install, no bundler**
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<needle-engine src="https://your-host.com/assets/MyScene.glb"></needle-engine>
+```
 
 ## <logo-header logo="/imgs/vite-logo.webp" alt="Vite">Supported Frameworks & Bundlers</logo-header>
 
@@ -82,21 +119,9 @@ Turn your Needle Engine project into an installable, offline-capable Progressive
 Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
 For accessing components from regular javascript outside of the engine please refer to the [interop with regular javascript section](/docs/how-to-guides/scripting/create-components#accessing-needle-engine-and-components-from-anywhere)
 
+## Next Steps
 
-## Customizing how loading looks
-
-See the *Loading Display* section in [needle engine component reference](/docs/reference/needle-engine-attributes)
-
-### Builtin styles
-
-The needle-engine loading appearance can use a light or dark skin.  
-To change the appearance use the `loading-style` attribute on the `<needle-engine>` web component.  
-Options are `light` and `dark` (default):
-
-``<needle-engine loading-style="light"></needle-engine>``
-
-### Custom Loading Style — *PRO feature*  #
-
-Please see the *Loading Display* section in [needle engine component reference](/docs/reference/needle-engine-attributes)
-
-![custom loading](/imgs/custom-loading-style.webp)
+- [Embed on an existing website](/docs/how-to-guides/deployment/embedding) – iframe, `needle-app`, and platform guides (Webflow, Framer, WordPress, AEM)
+- [Web component attributes](/docs/reference/needle-engine-attributes) – All `<needle-engine>` options
+- [Write components & scripting](/docs/how-to-guides/scripting/create-components) – Add your own interactivity
+- [Deploy to Needle Cloud](/docs/cloud/) – One-command hosting with a shareable URL

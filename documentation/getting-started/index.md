@@ -38,6 +38,8 @@ Pick the tool that matches your skills and project needs:
 
 <tool-tiles></tool-tiles>
 
+**Already have a website?** [Embed a Needle scene into it →](/docs/how-to-guides/deployment/embedding) — your own HTML, Webflow, WordPress, and more.
+
 ---
 
 ## Install a Code Editor
