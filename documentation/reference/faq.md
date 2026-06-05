@@ -602,6 +602,17 @@ Also see the docs on [mixing baked and non-baked objects](/docs/how-to-guides/ex
 
     ![image](https://user-images.githubusercontent.com/5083203/188171443-578380ab-2036-4d70-a8a7-f8cd9da9f603.png)
 
+## How can I create FastHDR environment textures (compressed EXR)?
+
+[FastHDR](/docs/explanation/fasthdr) is Needle's GPU-native, compressed environment texture format for skyboxes and image-based lighting. It's built on **KTX2** (UASTC HDR 4x4) supercompression with pre-computed **PMREM**, so it loads ~10x faster than EXR, uses ~95% less GPU memory, and works great on mobile and low-end devices — while looking identical to your source HDR/EXR.
+
+There are two ways to create FastHDR textures:
+
+- **Let Needle Engine for Unity or Blender do it at build time.** Assign any `.hdr`/`.exr` as your scene's environment lighting, and the production build optimization step automatically converts it to FastHDR — no manual step required.
+- **Upload an HDRi or EXR file to [Needle Cloud](https://cloud.needle.tools) for compression.** This is useful for a standalone `.hdr`/`.exr` file that isn't part of a Unity or Blender scene. Needle Cloud compresses it to a hosted KTX2 FastHDR texture you can load at runtime via the `environment-image` / `background-image` attributes.
+
+You can also browse 27+ ready-made FastHDR environments in the [Needle HDR Library](https://cloud.needle.tools/hdris). See the [FastHDR documentation](/docs/explanation/fasthdr) for details.
+
 ## My Shadows are not visible or cut off
 
 Please the following points:
@@ -890,6 +901,10 @@ These commands serve different purposes:
 - **`npx needle-cloud mcp`** — Runs the MCP server in **stdio mode** instead of HTTP. Your AI client spawns the process directly — no persistent server needed. Use this when configuring MCP in tools like Claude Desktop or Cursor via `mcpServers` config. The stdio transport also proxies to the HTTP server when it's running, so if `start` is active and the Needle Inspector Chrome extension is connected, Inspector tools become available through stdio as well.
 
 See the [Needle MCP Server documentation](/docs/ai/needle-mcp-server#advanced-connection-modes) for more details.
+
+## How do I keep cloud AI from accessing my local machine?
+
+Run `npx needle-cloud settings remote-ai-tools false` to keep your files fully local — you stay in full control of what the AI can touch, with zero project data leaving your machine. Perfect for sensitive projects, client work, and enterprise privacy requirements. Re-enable anytime with `true`.
 
 # Needle Cloud
 

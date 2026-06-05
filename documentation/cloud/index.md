@@ -303,6 +303,10 @@ Needle Cloud is not just for hosting apps—it's a powerful asset management sys
 - Automatic compression with Draco, KTX2, and Progressive Loading
 - Typically saves 90% or more bandwidth and memory
 
+:::tip Environment textures (HDRi / EXR → FastHDR)
+You can also upload `.hdr` and `.exr` environment textures to Needle Cloud to compress them to **[FastHDR](/docs/explanation/fasthdr)** — Needle's GPU-native environment map format (KTX2 UASTC HDR with pre-computed PMREM). FastHDR loads ~10x faster than EXR and uses ~95% less GPU memory, which is ideal for mobile and low-end devices. This is useful for standalone `.hdr`/`.exr` files that aren't part of a Unity or Blender scene (those are converted to FastHDR automatically at build time). Browse 27+ ready-made FastHDR environments in the [Needle HDR Library](https://cloud.needle.tools/hdris).
+:::
+
 ### Version Control & Sharing
 
 **Track multiple versions** of each asset:
