@@ -56,15 +56,15 @@ Perfect for:
 ## Quick Start
 
 :::tip Works with Unity and Blender
-FastHDR is available in both Unity and Blender integrations starting with Needle Engine 5.0.0.
+FastHDR is available in both Unity and Blender integrations starting with Needle Engine 5.0.0. Since **Needle Engine 5.1**, both `.exr` **and** `.hdr` (HDRi) source files are supported — earlier versions only handled `.exr`.
 :::
 
 ### In Unity or Blender
 
-Use **any** `.exr` file — Needle Engine handles the rest:
+Use **any** `.exr` or `.hdr` file — Needle Engine handles the rest:
 
 1. Open your Needle Engine project
-2. Set your scene's **Environment Lighting** to any `.exr` HDRI
+2. Set your scene's **Environment Lighting** to any `.exr` or `.hdr` HDRI
 3. When you build for production, Needle Engine's optimization pipeline automatically converts it to FastHDR
 4. That's it! Your deployed scene loads with ultra-fast, high-quality lighting
 
@@ -91,6 +91,20 @@ You can also use built-in presets without any URL:
 ## Free HDR Library
 
 Browse **27+ free FastHDR environments** at [cloud.needle.tools/hdris](https://cloud.needle.tools/hdris) — indoor studios, outdoor landscapes, cityscapes, and more. All ready to use, all in FastHDR format.
+
+## Bring Your Own HDRi / EXR
+
+Have your own HDRi or EXR file (`.hdr` / `.exr`)? Just **drop it into [Needle Cloud](https://cloud.needle.tools)** and it's automatically compressed to FastHDR — no Unity or Blender required. You get a hosted KTX2 texture and a URL you can plug straight into the `environment-image` / `background-image` attributes:
+
+```html
+<needle-engine
+  environment-image="https://cloud.needle.tools/-/assets/.../file"
+  background-image="https://cloud.needle.tools/-/assets/.../file"
+>
+</needle-engine>
+```
+
+This is the easiest path for code-only or three.js projects, or any standalone HDRI that isn't part of an editor scene. If you *are* working in Unity or Blender, you don't need to do this manually — see [Quick Start](#quick-start) above, where any `.exr` you assign as environment lighting is converted to FastHDR automatically at build time.
 
 ## How It Works
 
