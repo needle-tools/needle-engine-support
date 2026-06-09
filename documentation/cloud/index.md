@@ -375,6 +375,46 @@ npx needle-cloud upload path/to/folder --recursive
 
 [📦 Full CLI documentation](https://www.npmjs.com/package/needle-cloud)
 
+## needle-cloud CLI
+
+The `needle-cloud` CLI lets you work with Needle Cloud from the terminal — ideal for automation and CI/CD. Deploying apps and uploading assets are covered above ([Deploy from the CLI](#deploy-from-the-cli), [CLI for Batch Processing](#cli-for-batch-processing)). It can also generate materials with AI.
+
+```bash
+# See all available commands
+npx needle-cloud help
+```
+
+[📦 Full CLI documentation](https://www.npmjs.com/package/needle-cloud)
+
+### Generate Materials with AI
+
+:::warning Preview feature
+AI material generation is a **preview feature** — the command and options may change. Feedback welcome!
+:::
+
+Generate a ready-to-use PBR material from a text prompt. Pass `--outdir` to download the result, otherwise the material identifier is printed.
+
+```bash
+npx needle-cloud generate-material "weathered copper with green patina" --outdir ./materials
+```
+
+:::details Options & example
+| Option | Description |
+| --- | --- |
+| `--resolution <res>` | Texture resolution: `256`, `512`, `1k`, `2k`, or `4k` (default `512`). |
+| `--outdir <dir>` | Folder to download the generated file(s) into. If omitted, the identifier is printed. |
+| `--name <name>` | Output filename for the downloaded material. |
+| `--team <team>` | Team name or ID to generate under. Defaults to your default team. |
+| `--token <token>` | Access token for authentication (useful in CI/CD). |
+
+```bash
+npx needle-cloud generate-material "brushed stainless steel" \
+  --resolution 2k --outdir ./assets/materials --name steel
+```
+
+AI material generation requires a **PRO** license and consumes credits from your plan's quota. If you run out, the command stops with a message — review or upgrade on your [team page](https://cloud.needle.tools/team).
+:::
+
 ## Supported 3D Formats
 
 1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Example</a>   
