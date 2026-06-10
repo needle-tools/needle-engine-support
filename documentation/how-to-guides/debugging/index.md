@@ -13,6 +13,26 @@ title: Debugging Parameters & Options
 
 ---
 
+## Fastest way to debug: read the log files
+
+**The quickest way to debug a Needle Engine project — on desktop, mobile, Meta Quest, Apple Vision Pro, or any WebXR headset — is to read the Vite log files on disk.** While your local dev server is running, the Needle Engine Vite plugin writes both **client-side logs** (the browser console) and **server-side logs** (the dev server / build) to:
+
+```
+node_modules/.needle/logs
+```
+
+This means you usually **don't need to attach DevTools at all**, which matters most on devices where remote debugging is awkward or impossible (Quest, iOS/iPadOS, visionOS, WebXR). Just reproduce the issue on the device, then open the log file on your computer.
+
+Three ways to use these logs:
+
+- **Open the files directly** in your editor — no USB cable, no on-screen console, no squinting at a headset.
+- **Point your AI coding assistant at them** (Claude Code, Cursor, Copilot, etc.). It can read the logs to debug with real context instead of guessing — and drive a hands-on loop: it tells you what to tap on the device, you reply "done", and it reads the freshly written logs. See [AI & Needle Engine](/docs/ai/).
+- **Use the [Needle MCP Server](/docs/ai/needle-mcp-server)** so an AI assistant can read your editor and project logs over MCP automatically.
+
+See [Log files](#log-files) below for details.
+
+---
+
 ## Needle Inspector — DevTools for three.js
 
 The **Needle Inspector** is a powerful Chrome extension for inspecting and debugging three.js, react-three-fiber, and Needle Engine projects directly in your browser.
@@ -174,7 +194,9 @@ WebXR usage and debugging on iOS requires using a third-party browser: [Mozilla 
 
 ### <logo-header logo="/imgs/meta-logo.webp" alt="Meta Quest">Quest Debugging</logo-header>
 
-Quest is just an Android device - see the [Android Debugging](#android-debugging) section for steps.
+**Easiest:** read the [log files](#log-files) on your dev machine. The Needle Engine Vite plugin writes the Quest's browser console (and the dev server output) to `node_modules/.needle/logs`, so you can debug a VR session without attaching anything to the headset — open the file yourself or [let your AI assistant read it](/docs/ai/). Add the `?stats` URL parameter to see FPS, draw calls, and memory in-headset, and `?console` for an on-screen console.
+
+For live inspection (breakpoints, network, DOM): Quest is just an Android device, so attach Chrome DevTools via USB — see the [Android Debugging](#android-debugging) section for steps.
 
 ---
 
