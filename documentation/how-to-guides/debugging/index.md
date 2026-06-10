@@ -87,6 +87,27 @@ The related `node_modules/.needle/needle.alias.log` file logs how imports are re
 :::
 
 
+## Send logs for support
+
+When you report a bug, support can read your logs directly instead of asking you to copy files into Discord or email. The `needle-cloud` CLI can bundle and upload your recent logs and give you back a short reference ID to include in your report:
+
+```bash
+npx needle-cloud send-logs
+```
+
+By default this uploads the current and previous CLI logs plus the editor log of your most recently used project (Unity or Blender). Sensitive data — access tokens, home directory paths, email addresses and environment variable values — is redacted before anything leaves your machine. The command requires you to be signed in (`npx needle-cloud login`); nothing is ever uploaded automatically.
+
+On success it prints a reference like `nlc-abc123def` — share that ID in your bug report.
+
+:::details Options
+| Option | Description |
+| --- | --- |
+| `--note <text>` | Attach a one-line note describing the issue. |
+| `--crash` | Upload a minimal crash payload only (smaller). |
+| `--dry-run` | Print exactly what would be uploaded without sending anything. |
+:::
+
+
 ## Local Testing of release builds
 - First, install http-server: `npm install -g http-server`
 - make a build (development or production)

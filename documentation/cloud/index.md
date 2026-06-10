@@ -415,6 +415,8 @@ npx needle-cloud generate-material "brushed stainless steel" \
 AI material generation requires a **PRO** license and consumes credits from your plan's quota. If you run out, the command stops with a message — review or upgrade on your [team page](https://cloud.needle.tools/team).
 :::
 
+The CLI can also bundle your recent logs for a bug report — see [Send logs for support](/docs/how-to-guides/debugging#send-logs-for-support) in the debugging guide.
+
 ## Supported 3D Formats
 
 1. **glTF and GLB** <a href="https://cloud.needle.tools/view?file=2oAMeWZ1hWL3C-latest-product" target="_blank">Example</a>   
