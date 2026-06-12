@@ -159,11 +159,30 @@ export const modifyHtmlMeta = (args, ctx) => {
                     frontmatter.head = [];
                 }
 
-                // inject a canonical URL so search engines (and the Algolia crawler)
-                // collapse duplicate URL variants of the same page (trailing slash,
-                // .html suffix, etc.) into a single record. page.path is the VuePress
-                // route WITHOUT the "/docs/" base, so prepend it like the og:image above.
-                const canonicalUrl = 'https://engine.needle.tools/docs' + page.path;
+                // Redirect stubs from the Diátaxis migration declare a meta refresh
+                // in frontmatter. They must NOT be indexed: point their canonical at
+                // the redirect destination and mark them noindex (which also drops them
+                // from the generated sitemap and the Algolia crawl).
+                const refreshMeta = frontmatter.head.find(
+                    (item) => item[0] === 'meta' && item[1]['http-equiv'] === 'refresh'
+                );
+
+                let canonicalUrl;
+                if (refreshMeta) {
+                    const dest = /url=(\S+)/.exec(refreshMeta[1].content || '')?.[1] || page.path;
+                    // destination is an absolute "/docs/..." path; resolve against the origin
+                    canonicalUrl = dest.startsWith('http') ? dest : 'https://engine.needle.tools' + dest;
+                    if (!frontmatter.head.find((item) => item[0] === 'meta' && item[1].name === 'robots')) {
+                        frontmatter.head.push(['meta', { name: 'robots', content: 'noindex, follow' }]);
+                    }
+                } else {
+                    // inject a canonical URL so search engines (and the Algolia crawler)
+                    // collapse duplicate URL variants of the same page (trailing slash,
+                    // .html suffix, etc.) into a single record. page.path is the VuePress
+                    // route WITHOUT the "/docs/" base, so prepend it like the og:image below.
+                    canonicalUrl = 'https://engine.needle.tools/docs' + page.path;
+                }
+
                 const hasCanonical = frontmatter.head.find((item) => item[0] === 'link' && item[1].rel === 'canonical');
                 if (!hasCanonical) {
                     frontmatter.head.push(['link', { rel: 'canonical', href: canonicalUrl }]);
