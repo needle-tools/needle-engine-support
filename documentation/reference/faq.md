@@ -170,7 +170,22 @@ Yes, the Needle Engine logo and branding can be removed with an [EDU, PRO, or En
 
 The logo appears in the **NeedleMenu** — the bottom-center toolbar in your web experience. In Unity, this is controlled by the `NeedleMenu` component. In code, you can access it via `this.context.menu`.
 
-With a qualifying license, the Needle logo and branding button are automatically removed from the menu.
+With a qualifying license, the Needle logo and branding button are automatically removed from the menu — you don't need to call anything.
+
+To hide the logo explicitly from code, call `showNeedleLogo(false)` on the menu (a method on `NeedleMenu`, accessed via `this.context.menu`):
+
+```ts
+// from inside a component
+this.context.menu.showNeedleLogo(false);
+```
+
+Hiding the logo requires an [EDU, PRO, or Enterprise license](https://www.needle.tools/pricing); without one the call has no effect in production.
+
+Logo and branding removal is an **entitlement of the license currently active on your account**, not a one-time switch. If your license lapses or is downgraded, the experience reverts to the default Needle branding until a qualifying license is active again.
+
+## I have an Indie license — is it still supported?
+
+The **Indie** license tier is no longer available for purchase, but existing Indie licenses continue to work exactly as before — including any white-labeling and logo-removal entitlements they came with. Note that the Indie tier may be removed entirely in the future. For new projects, choose an [EDU, PRO, or Enterprise license](https://www.needle.tools/pricing). If you're unsure which plan fits your project, reach out to us at [hi@needle.tools](mailto:hi@needle.tools).
 
 ## How do I remove the bottom bar / NeedleMenu?
 
@@ -751,6 +766,19 @@ However, since the default loading style is very minimal, a practical approach i
 ```
 
 This way you have full control over when the overlay disappears — you can wait for additional async work, animations, or any other "app ready" signal before hiding it.
+
+## How do I preload audio?
+
+By default an `AudioSource` only loads its audio clip the first time it plays, which can cause a short delay on the first playback. To load the clip up front instead, enable the **Preload** toggle on the `AudioSource` component:
+
+- **Unity:** Open the **Additional Audio Data** section via the button at the bottom of the `AudioSource` component, then enable **Preload**.
+- **Blender:** Enable the **Preload** toggle on the `AudioSource` component.
+
+When `preload` is enabled the clip starts loading as soon as the scene starts. In code you can also set it directly:
+
+```ts
+audioSource.preload = true;
+```
 
 # Networking
 
