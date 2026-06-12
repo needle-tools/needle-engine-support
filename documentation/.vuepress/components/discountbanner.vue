@@ -16,25 +16,61 @@ type FeedItem = {
         css?: string,
     }
     url: string | null,
+    colors?: string[],
+    priority?: number,
 }
 
 const discount = ref<FeedItem | null>(null);
 let style = ref("");
 
+// Convert a #rgb / #rrggbb hint into an rgba() string so we can tint subtly.
+function hexToRgba(hex: string, alpha: number): string | null {
+    let h = hex.replace("#", "").trim();
+    if (h.length === 3) h = h.split("").map(c => c + c).join("");
+    if (h.length !== 6) return null;
+    const r = parseInt(h.slice(0, 2), 16);
+    const g = parseInt(h.slice(2, 4), 16);
+    const b = parseInt(h.slice(4, 6), 16);
+    if ([r, g, b].some(n => Number.isNaN(n))) return null;
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// Build a faint background tint from the feed's colour hints instead of applying
+// the feed's full `banner.css` (which is a loud, high-contrast gradient).
+function subtleStyle(colors?: string[]): string {
+    const rgba = (colors ?? []).map(c => hexToRgba(c, 0.12)).filter(Boolean);
+    if (rgba.length >= 2) return `background: linear-gradient(20deg, ${rgba[0]}, ${rgba[1]});`;
+    if (rgba.length === 1) return `background: ${rgba[0]};`;
+    return "";
+}
+
+// Pick one item per page load, weighted by priority so higher-priority hints show
+// more often. The `+ 1` base weight ensures every eligible item still has a chance.
+function pickWeighted(items: FeedItem[]): FeedItem | null {
+    if (!items.length) return null;
+    const weights = items.map(it => 1 + Math.max(typeof it.priority === "number" ? it.priority : 0, 0));
+    const total = weights.reduce((a, b) => a + b, 0);
+    let r = Math.random() * total;
+    for (let i = 0; i < items.length; i++) {
+        r -= weights[i];
+        if (r < 0) return items[i];
+    }
+    return items[items.length - 1];
+}
+
 if (typeof window !== "undefined") {
     // `surface` lets the feed target by domain/path; an unset `license` shows upsell hints.
+    // No `limit` -> the feed returns up to 20 ranked items and we pick one client-side.
     const params = new URLSearchParams({
         surface: window.location.hostname + window.location.pathname,
-        limit: "1",
     });
     fetch(`https://marketer.needle.tools/api/whats-new?${params}`)
         .then(response => response.json())
         .then(data => {
-            const value: FeedItem = data.items?.[0];
+            const items: FeedItem[] = Array.isArray(data.items) ? data.items : [];
+            const value = pickWeighted(items);
             discount.value = value;
-            if (value?.banner?.css) {
-                style.value = value.banner.css;
-            }
+            style.value = subtleStyle(value?.colors);
         })
         .catch(() => { /* banner is non-critical, ignore fetch errors */ });
 }
@@ -68,53 +104,38 @@ if (typeof window !== "undefined") {
 .discount_banner {
     margin: 1rem 0;
 
-    border-radius: 1rem;
-    outline: 1px solid var(--c-border);
-    border: 1px solid rgba(255, 255, 255, 0.74);
+    border-radius: 12px;
+    border: 1px solid var(--c-border);
     line-height: initial !important;
 
+    /* Subtle, neutral card by default; the inline style adds a faint colour tint. */
     background: var(--c-background-secondary);
-    background-color: #a9d43a;
-    background: linear-gradient(20deg, #b2f040 50%, #f1dc36 100%);
-
-    box-shadow:
-        inset 0 0 1rem rgba(255, 255, 255, 0.5),
-        0 0 1rem rgba(0, 0, 0, 0.185);
-    color: rgb(0, 0, 0);
+    color: var(--c-text);
 
     @media screen and (max-width: 800px) {
         margin-left: 0;
     }
 
-    transition: all 0.4s ease-in-out;
+    transition: border-color 0.2s ease-in-out;
 
     &:hover {
-        transform: translateY(-4px);
-        transition: all 0.4s ease-in-out;
-
-        & button {
-            transition: all 0.2s ease-in-out;
-            background: #414424 !important;
-            text-shadow: 0 0 0.5em rgba(255, 255, 255, 0.9);
-        }
+        border-color: var(--c-brand);
     }
 
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-    gap: 2rem;
+    gap: 1.5rem;
 
     text-align: start;
 
-    padding: 1.3rem;
-    padding-left: 1.5rem;
-    padding-bottom: 1.5rem;
+    padding: 1rem 1.25rem;
 
     & .content {
         display: flex;
         flex-direction: column;
-        gap: 0;
+        gap: 0.15rem;
         max-width: 60ch;
         user-select: none;
 
@@ -126,15 +147,20 @@ if (typeof window !== "undefined") {
         & .main_text {
             margin: 0;
             padding: 0;
+            font-size: 1.35rem;
+            font-weight: 700;
+            line-height: 1.2em;
         }
 
         & .text {
-            line-height: 1.2em;
+            line-height: 1.3em;
+            font-size: 0.9rem;
+            color: var(--c-text-light, var(--c-text));
+            opacity: 0.85;
         }
     }
 
     & .action {
-        /* align-self: start; */
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
@@ -142,22 +168,19 @@ if (typeof window !== "undefined") {
         justify-content: start;
 
         & a {
-            transition: all 0.4s ease-in-out;
-            background-color: var(--c-brand-secondary);
-            background-color: rgb(14, 14, 14);
-            box-shadow:
-                0 0 0.3rem rgba(0, 0, 0, 0.5),
-                0 0 1rem rgba(255, 255, 255, 0.411);
-            color: white;
-            text-shadow: 0 0 0.5em rgba(255, 255, 255, 0.808);
-            border: none;
+            transition: all 0.2s ease-in-out;
+            background: transparent;
+            color: var(--c-text);
+            border: 1px solid var(--c-border);
             outline: none;
-            font-size: 1.2rem;
-            border-radius: 1rem;
-            padding: .3rem 1rem;
+            font-size: 0.9rem;
+            border-radius: 8px;
+            padding: .3rem .9rem;
+            white-space: nowrap;
 
-            &:after {
-                background-color: white !important;
+            &:hover {
+                border-color: var(--c-brand);
+                color: var(--c-brand);
             }
         }
     }

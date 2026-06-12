@@ -5,11 +5,11 @@ description: Install Needle Engine and create your first interactive 3D web expe
 next: ../project-structure.md
 ---
 
-<discountbanner />
-
 # Getting Started with Needle Engine
 
 **Build fully interactive 3D websites using your favorite tools.** Needle Engine works with professional 3D editors and modern web frameworks, giving you the power to create rich web experiences that deploy anywhere.
+
+<discountbanner />
 
 ## What You'll Get
 

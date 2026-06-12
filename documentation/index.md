@@ -41,6 +41,8 @@ Latest features, updates, and documentation changes
 
 <whats-new />
 
+<discountbanner />
+
 <br/>
 
 ## Choose Your Path
