@@ -158,6 +158,17 @@ export const modifyHtmlMeta = (args, ctx) => {
                 if (!frontmatter.head) {
                     frontmatter.head = [];
                 }
+
+                // inject a canonical URL so search engines (and the Algolia crawler)
+                // collapse duplicate URL variants of the same page (trailing slash,
+                // .html suffix, etc.) into a single record. page.path is the VuePress
+                // route WITHOUT the "/docs/" base, so prepend it like the og:image above.
+                const canonicalUrl = 'https://engine.needle.tools/docs' + page.path;
+                const hasCanonical = frontmatter.head.find((item) => item[0] === 'link' && item[1].rel === 'canonical');
+                if (!hasCanonical) {
+                    frontmatter.head.push(['link', { rel: 'canonical', href: canonicalUrl }]);
+                }
+
                 // add og:image to frontmatter
                 // if the page has an explicit image in frontmatter, use it (with absolute URL)
                 const pageImageUrl = frontmatter.image
