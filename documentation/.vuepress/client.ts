@@ -100,7 +100,15 @@ export default defineClientConfig({
       })
     })
 
+    // The very first scrollBehavior call is the initial page load. On that load the
+    // browser handles native scrolling itself - including Google text fragments
+    // (#:~:text=...), whose directive it strips from location.hash before scripts run.
+    // So we must not force a scroll on the initial load, or we'd clobber that.
+    let isInitialScroll = true
+
     router.options.scrollBehavior = (to, from, savedPosition) => {
+      const wasInitialScroll = isInitialScroll
+      isInitialScroll = false
       return new Promise((resolve) => {
         // Wait for Vue's next tick to ensure DOM is updated
         nextTick(() => {
@@ -123,10 +131,15 @@ export default defineClientConfig({
               }
             }
 
+            // A Google text fragment (#:~:text=...) is processed natively by the browser.
+            // On initial load its directive is already stripped from to.hash, so it also
+            // falls through to the initial-load guard below.
+            const isTextFragment = to.hash && to.hash.includes(':~:')
+
             if (savedPosition) {
               // Browser back/forward - use saved position instantly
               resolve({ ...savedPosition, behavior: 'instant' })
-            } else if (to.hash) {
+            } else if (to.hash && !isTextFragment) {
               // Hash navigation - scroll to element with offset for fixed header
               // The 'top' offset moves the target position up by that amount
               resolve({
@@ -134,6 +147,10 @@ export default defineClientConfig({
                 top: 60,
                 behavior: 'instant',
               })
+            } else if (wasInitialScroll || isTextFragment) {
+              // Initial page load or a text fragment: let the browser keep its native
+              // scroll position (e.g. the highlighted text) instead of jumping to top.
+              resolve(false)
             } else {
               resolve({ top: 0, behavior: 'instant' })
             }

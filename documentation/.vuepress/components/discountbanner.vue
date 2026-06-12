@@ -6,32 +6,37 @@ defineProps({
 
 import { ref } from 'vue';
 
-type Discount = {
+// Needle "What's New" feed (supersedes the old cloud discounts endpoint).
+// Docs: GET https://marketer.needle.tools/api/whats-new
+type FeedItem = {
     banner: {
         title: string,
         subtitle: string,
         cta?: string,
         css?: string,
     }
-    url: string,
+    url: string | null,
 }
 
-const discount = ref<Discount | null>(null);
+const discount = ref<FeedItem | null>(null);
 let style = ref("");
 
 if (typeof window !== "undefined") {
-    const url = window.location.hostname === "localhost"
-        ? "http://localhost:8081/v1/get/discounts"
-        : "https://cloud.needle.tools/api/v1/get/discounts";
-    fetch(url)
+    // `surface` lets the feed target by domain/path; an unset `license` shows upsell hints.
+    const params = new URLSearchParams({
+        surface: window.location.hostname + window.location.pathname,
+        limit: "1",
+    });
+    fetch(`https://marketer.needle.tools/api/whats-new?${params}`)
         .then(response => response.json())
         .then(data => {
-            const value: Discount = data.current_discounts?.[0];
+            const value: FeedItem = data.items?.[0];
             discount.value = value;
-            if(value?.banner?.css) {
+            if (value?.banner?.css) {
                 style.value = value.banner.css;
             }
-        });
+        })
+        .catch(() => { /* banner is non-critical, ignore fetch errors */ });
 }
 
 
