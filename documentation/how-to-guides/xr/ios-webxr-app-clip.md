@@ -140,7 +140,9 @@ On iOS, the Needle Go App Clip experience includes a splash screen and wording. 
 
 Scan the QR code below with your iOS device to see how the App Clip card looks with the [image tracking sample](/docs/how-to-guides/xr/image-tracking):
 
-<img src="/imgs/needlego-qrcode.png" alt="Needle Go App Clip QR Code" style="max-width: 400px">
+<img src="/imgs/needlego-qrcode.png" alt="Needle Go App Clip QR Code" style="max-width: 400px; display: block;">
+<small>https://appclip.needle.tools/ar?url=https://image-tracking-zubckszr0qj2.needle.run/</small>
+
 
 An active PRO subscription is required to maintain your custom branding. If your subscription lapses, the iOS AR experience will revert to the default Needle branding. To keep your custom look and feel, make sure your PRO subscription stays active.
 
@@ -167,6 +169,16 @@ Here's an example of how the iOS AR experience looks with custom branding:
 ### AR experiences aren't working
 
 Ensure that camera permissions are granted. Check in your device settings if the App Clip has access to the camera.
+
+### I don't see my custom branding
+
+Custom branding is only shown when the App Clip is launched via a **QR code** that encodes the App Clip URL directly. Make sure your QR code uses the following format:
+
+```
+https://appclip.needle.tools/ar?url=<your-webxr-url>
+```
+
+If you link to your website first and let users navigate to the AR experience from there, the App Clip card won't show your custom branding. See [Custom Branding for iOS AR](#custom-branding-for-ios-ar) for details.
 
 ## Contact Us
 
