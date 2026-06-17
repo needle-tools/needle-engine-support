@@ -311,8 +311,6 @@ While Needle Engine doesn't provide out-of-the-box integration with external ava
 There are several experimental components for more expressive avatars. These are subject to change, so we recommend duplicating them for your own use:
 
 - **`PlayerColor`** - Randomized synchronized player colors
-- **`AvatarEyeLook_Rotation`** - Eyes follow other avatars (synchronized)
-- **`AvatarBlink_Simple`** - Periodic eye blinking animation
 - **`OffsetConstraint`** - Position constraints for body parts
 - **`BasicIKConstraint`** - Simple IK for arms and legs
 
