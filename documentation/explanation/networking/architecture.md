@@ -112,10 +112,11 @@ graph TD
 ### Server-Side
 
 **Default Needle Servers:**
-- Managed cloud infrastructure
-- No setup required
+- Managed cloud infrastructure — no setup required
 - Free for typical usage (15-20 concurrent users)
 - Handles rooms, state persistence, and message routing
+
+The managed servers run on [Cloudflare Workers](https://workers.cloudflare.com) with [Durable Objects](https://developers.cloudflare.com/durable-objects/): one Durable Object instance per room, using the [WebSocket Hibernation API](https://developers.cloudflare.com/durable-objects/reference/websockets/) so idle rooms stay connected without consuming resources. Because rooms run at the edge, connections are routed to a nearby data center automatically, and room state lives in Durable Object storage. This is the same Cloudflare Durable Objects foundation that powers [PartyKit](https://www.partykit.io/) — globally distributed, edge-hosted rooms with no infrastructure for you to manage.
 
 **Custom Servers:**
 - Full control over infrastructure

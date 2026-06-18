@@ -152,6 +152,8 @@ By default, Needle scenes connect to cloud infrastructure managed by Needle:
 - ✅ Works fine for 15-20 concurrent users per room
 - ✅ Perfect for prototyping and small deployments
 
+These managed servers run on [Cloudflare Workers + Durable Objects](https://developers.cloudflare.com/durable-objects/) — one room per Durable Object, hosted at the edge and globally distributed. See [Networking Architecture](/docs/explanation/networking/architecture#server-side) for how it works.
+
 For production or larger deployments, you can [host your own server](./custom-servers).
 
 ## Common Questions
