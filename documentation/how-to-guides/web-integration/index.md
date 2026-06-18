@@ -80,7 +80,7 @@ Needle Engine is framework-agnostic—use it with any modern web stack. Our defa
 | Framework | Status | Notes |
 | --- | --- | --- |
 | **Vite + HTML** | ✅ Default template | Minimal setup, great for getting started |
-| **Vite + Vue** | ✅ Production use | Powers [needle.tools](https://needle.tools) • [Sample](https://github.com/needle-tools/needle-engine-samples) |
+| **Vite + Vue** | ✅ Production use | [Vue & Nuxt guide](/docs/how-to-guides/web-integration/vue) • powers [needle.tools](https://needle.tools) |
 | **Vite + React** | ⚡ Experimental template | [React guide](/docs/how-to-guides/web-integration/react) • Available in Unity integration |
 | **Vite + Svelte** | ✅ Supported | [Svelte & SvelteKit guide](/docs/how-to-guides/web-integration/sveltekit) |
 | **Vite + SvelteKit** | ✅ Supported | [Svelte & SvelteKit guide](/docs/how-to-guides/web-integration/sveltekit) |

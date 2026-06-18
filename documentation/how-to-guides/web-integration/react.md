@@ -7,8 +7,14 @@ description: Add interactive, optimized 3D scenes to a React app with Needle Eng
 
 **Want interactive 3D in your React app?** Needle Engine ships as a standard [web component](/docs/reference/needle-engine-attributes), so it drops straight into JSX — no React-specific wrapper required. Install it from npm, render `<needle-engine>`, and you get an optimized, compressed 3D scene with camera controls, lighting, physics, XR and networking built in.
 
-:::tip See a complete React project
-The **[React sample](https://engine.needle.tools/samples/react-sample/)** is a full, ready-to-run React setup — or [view the source on GitHub](https://github.com/needle-engine/react-sample). (Prefer plain HTML/JS? **[engine.needle.tools/new](https://engine.needle.tools/new)** opens a vanilla Vite starter in StackBlitz.)
+:::tip Start from a template
+Scaffold a ready-to-run project with the [`create-needle` CLI](/docs/reference/templates#create-needle-cli):
+
+```bash
+npx create-needle my-app -t react
+```
+
+Or explore the full **[React sample](https://engine.needle.tools/samples/react-sample/)** ([source](https://github.com/needle-engine/react-sample)). Prefer plain HTML/JS? **[engine.needle.tools/new](https://engine.needle.tools/new)** opens a vanilla Vite starter in StackBlitz.
 :::
 
 ## Quick Start

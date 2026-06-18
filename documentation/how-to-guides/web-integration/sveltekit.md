@@ -7,8 +7,14 @@ description: Add interactive, optimized 3D scenes to a Svelte or SvelteKit app w
 
 **Want interactive 3D in your Svelte app?** Needle Engine ships as a standard [web component](/docs/reference/needle-engine-attributes), so `<needle-engine>` drops straight into a `.svelte` template. Both plain **Svelte** (Vite SPA) and **SvelteKit** are supported — the only extra consideration is SvelteKit's server-side rendering, which we cover below.
 
-:::tip See a complete project
-The **[SvelteKit sample](https://engine.needle.tools/samples/sveltekit-integration/)** is a full, ready-to-run setup — or [view the source on GitHub](https://github.com/needle-engine/sveltekit-sample).
+:::tip Start from a template
+Scaffold a ready-to-run project with the [`create-needle` CLI](/docs/reference/templates#create-needle-cli):
+
+```bash
+npx create-needle my-app -t sveltekit   # or -t svelte for plain Svelte
+```
+
+Or explore the full **[SvelteKit sample](https://engine.needle.tools/samples/sveltekit-integration/)** ([source](https://github.com/needle-engine/sveltekit-sample)).
 :::
 
 ## Quick Start
