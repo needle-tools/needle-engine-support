@@ -398,7 +398,7 @@ export default defineUserConfig({
             }
         },
         shikiPlugin({
-            langs: ['ts', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs', 'bash', 'html', 'js', 'css'],
+            langs: ['ts', 'tsx', 'js', 'jsx', 'svelte', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs', 'bash', 'html', 'css'],
             themes: { light: 'one-light', dark: 'material-theme' },
             lineNumbers: false,
             highlightLines: false,

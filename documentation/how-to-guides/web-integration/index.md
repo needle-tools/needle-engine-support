@@ -82,8 +82,8 @@ Needle Engine is framework-agnostic—use it with any modern web stack. Our defa
 | **Vite + HTML** | ✅ Default template | Minimal setup, great for getting started |
 | **Vite + Vue** | ✅ Production use | Powers [needle.tools](https://needle.tools) • [Sample](https://github.com/needle-tools/needle-engine-samples) |
 | **Vite + React** | ⚡ Experimental template | [React guide](/docs/how-to-guides/web-integration/react) • Available in Unity integration |
-| **Vite + Svelte** | ✅ Supported | |
-| **Vite + SvelteKit** | ✅ Supported | |
+| **Vite + Svelte** | ✅ Supported | [Svelte & SvelteKit guide](/docs/how-to-guides/web-integration/sveltekit) |
+| **Vite + SvelteKit** | ✅ Supported | [Svelte & SvelteKit guide](/docs/how-to-guides/web-integration/sveltekit) |
 | **Next.js** | ✅ Supported | [Example project](https://github.com/needle-engine/nextjs-sample) |
 | **react-three-fiber** | ⚡ Experimental template | Available in Unity integration |
 | **Vanilla JS (CDN)** | ✅ Supported | No bundler needed • [Guide](./three/) |

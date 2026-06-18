@@ -8,7 +8,7 @@ description: Add interactive, optimized 3D scenes to a React app with Needle Eng
 **Want interactive 3D in your React app?** Needle Engine ships as a standard [web component](/docs/reference/needle-engine-attributes), so it drops straight into JSX — no React-specific wrapper required. Install it from npm, render `<needle-engine>`, and you get an optimized, compressed 3D scene with camera controls, lighting, physics, XR and networking built in.
 
 :::tip See a complete React project
-The **[React sample](https://engine.needle.tools/samples/react-sample/)** is a full, ready-to-run React setup. (Prefer plain HTML/JS? **[engine.needle.tools/new](https://engine.needle.tools/new)** opens a vanilla Vite starter in StackBlitz.)
+The **[React sample](https://engine.needle.tools/samples/react-sample/)** is a full, ready-to-run React setup — or [view the source on GitHub](https://github.com/needle-engine/react-sample). (Prefer plain HTML/JS? **[engine.needle.tools/new](https://engine.needle.tools/new)** opens a vanilla Vite starter in StackBlitz.)
 :::
 
 ## Quick Start
@@ -78,7 +78,7 @@ React 19 has first-class custom-element support and forwards props as attributes
 
 ## Accessing the scene from React
 
-Needle exposes global lifecycle hooks — `onStart`, `onInitialized`, `onUpdate` (plus `onBeforeRender`, `onClear`, …). Each receives the [`Context`](/docs/reference/) and **returns an unsubscribe function**, which maps cleanly onto a React `useEffect`. This is the recommended way to reach the scene from React — prefer it over reading the element imperatively.
+Needle exposes global lifecycle hooks — `onStart`, `onInitialized`, `onUpdate` (plus `onBeforeRender`, `onClear`, …). Each receives the [`Context`](/docs/api/Context) and **returns an unsubscribe function**, which maps cleanly onto a React `useEffect`. This is the recommended way to reach the scene from React — prefer it over reading the element imperatively.
 
 ### In a single component
 
