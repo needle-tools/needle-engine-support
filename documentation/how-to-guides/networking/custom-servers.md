@@ -9,8 +9,8 @@ By default, networked Needle scenes connect to cloud infrastructure managed by N
 ::: tip Free Default Server - Sufficient for Most Projects
 Needle provides a **free, production-ready networking server** that's suitable for most projects:
 
-**Server URL:** `https://networking.needle.tools`
-**WebSocket Endpoint:** `wss://networking.needle.tools`
+**Server URL:** `https://networking-2.needle.tools`
+**WebSocket Endpoint:** `wss://networking-2.needle.tools/socket`
 
 This default server:
 - Works out of the box with no configuration needed
@@ -47,7 +47,7 @@ Needle provides a ready-to-use networking server as an NPM package that you can 
 The networking server is available as a Node.js package:
 
 ```bash
-npm install @needle-tools/needle-networking
+npm install @needle-tools/networking
 ```
 
 ### Integration
@@ -58,13 +58,13 @@ Choose your web framework:
 
 @tab Fastify
 ```js
-import networking from "@needle-tools/needle-networking";
+import networking from "@needle-tools/networking";
 networking.startServerFastify(fastifyApp, { endpoint: "/socket" });
 ```
 
 @tab Express
 ```js
-import networking from "@needle-tools/needle-networking";
+import networking from "@needle-tools/networking";
 networking.startServerExpress(expressApp, { endpoint: "/socket" });
 ```
 
