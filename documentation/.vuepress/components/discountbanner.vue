@@ -4,16 +4,16 @@ defineProps({
     fallback_image: String,
 })
 
-import { ref } from 'vue';
+import { ref, nextTick } from 'vue';
 
 // Needle "What's New" feed (supersedes the old cloud discounts endpoint).
 // Docs: GET https://marketer.needle.tools/api/whats-new
 type FeedItem = {
+    id: string,
     banner: {
         title: string,
         subtitle: string,
         cta?: string,
-        css?: string,
     }
     url: string | null,
     colors?: string[],
@@ -21,7 +21,13 @@ type FeedItem = {
 }
 
 const discount = ref<FeedItem | null>(null);
+const bannerEl = ref<HTMLElement | null>(null);
 let style = ref("");
+
+// The slot reports where it showed; matches the `surface` we query the feed with.
+const SURFACE = typeof window !== "undefined"
+    ? window.location.hostname + window.location.pathname
+    : "";
 
 // Convert a #rgb / #rrggbb hint into an rgba() string so we can tint subtly.
 function hexToRgba(hex: string, alpha: number): string | null {
@@ -58,12 +64,70 @@ function pickWeighted(items: FeedItem[]): FeedItem | null {
     return items[items.length - 1];
 }
 
+// ── Engagement tracking (impression + hover) ──────────────────────────────────
+// Clicks are already counted server-side by using the feed's `url` (the /r/ click
+// redirect) as the CTA href, so we must NOT call needleWhatsNew.click(). We only add
+// impression + hover here via the shared tracker, as documented for custom/rotating
+// renderers ("mode B"). Per-session dedup + the COEP-safe beacon are handled for us.
+function loadTracker() {
+    if (typeof document === "undefined") return;
+    if (document.querySelector("script[data-needle-whatsnew-tracker]")) return;
+    const s = document.createElement("script");
+    s.defer = true;
+    s.src = "https://marketer.needle.tools/whatsnew.js";
+    s.dataset.surface = SURFACE;
+    s.setAttribute("data-needle-whatsnew-tracker", "");
+    document.head.appendChild(s);
+}
+
+// The tracker script loads async; wait for the imperative API before calling it.
+function whenTrackerReady(cb: (api: any) => void, tries = 50) {
+    const api = (window as any).needleWhatsNew;
+    if (api) return cb(api);
+    if (tries <= 0) return;
+    window.setTimeout(() => whenTrackerReady(cb, tries - 1), 200);
+}
+
+let impressionSent = false;
+function trackImpression(id: string) {
+    if (impressionSent) return;
+    impressionSent = true;
+    whenTrackerReady(api => api.impression?.(id, { surface: SURFACE }));
+}
+
+// Fire the impression only once the banner is actually scrolled into view.
+function observeImpression() {
+    const el = bannerEl.value;
+    const item = discount.value;
+    if (!el || !item) return;
+    if (typeof IntersectionObserver === "undefined") { trackImpression(item.id); return; }
+    const io = new IntersectionObserver(entries => {
+        for (const e of entries) {
+            if (e.isIntersecting) { trackImpression(item.id); io.disconnect(); break; }
+        }
+    }, { threshold: 0.5 });
+    io.observe(el);
+}
+
+let hoverSent = false;
+let hoverTimer: number | undefined;
+function onPointerEnter() {
+    const item = discount.value;
+    if (!item || hoverSent) return;
+    // Count a *sustained* hover only (~500ms dwell), not a scroll-by.
+    hoverTimer = window.setTimeout(() => {
+        hoverSent = true;
+        whenTrackerReady(api => api.hover?.(item.id, { surface: SURFACE }));
+    }, 500);
+}
+function onPointerLeave() {
+    if (hoverTimer !== undefined) { window.clearTimeout(hoverTimer); hoverTimer = undefined; }
+}
+
 if (typeof window !== "undefined") {
     // `surface` lets the feed target by domain/path; an unset `license` shows upsell hints.
     // No `limit` -> the feed returns up to 20 ranked items and we pick one client-side.
-    const params = new URLSearchParams({
-        surface: window.location.hostname + window.location.pathname,
-    });
+    const params = new URLSearchParams({ surface: SURFACE });
     fetch(`https://marketer.needle.tools/api/whats-new?${params}`)
         .then(response => response.json())
         .then(data => {
@@ -71,6 +135,10 @@ if (typeof window !== "undefined") {
             const value = pickWeighted(items);
             discount.value = value;
             style.value = subtleStyle(value?.colors);
+            if (value) {
+                loadTracker();
+                nextTick(observeImpression);
+            }
         })
         .catch(() => { /* banner is non-critical, ignore fetch errors */ });
 }
@@ -79,7 +147,8 @@ if (typeof window !== "undefined") {
 </script>
 
 <template>
-    <div v-if="discount" class="discount_banner" :style="style">
+    <div v-if="discount" ref="bannerEl" class="discount_banner" :style="style"
+        @pointerenter="onPointerEnter" @pointerleave="onPointerLeave">
         <div class="content">
             <h2 class="main_text">{{ discount.banner.title }}</h2>
             <div class="text">{{ discount.banner.subtitle }}</div>
@@ -181,8 +250,20 @@ if (typeof window !== "undefined") {
             &:hover {
                 border-color: var(--c-brand);
                 color: var(--c-brand);
+                transform: scale(1.03);
             }
         }
+    }
+}
+
+/* Keep the optional motion tasteful and accessible. */
+@media (prefers-reduced-motion: reduce) {
+    .discount_banner .action a {
+        transition: border-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+
+    .discount_banner .action a:hover {
+        transform: none;
     }
 }
 </style>

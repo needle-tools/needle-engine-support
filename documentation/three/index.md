@@ -6,6 +6,8 @@ title: Using Needle Engine with three.js
 
 **Welcome!** If you're here because you know three.js, you're in the right place. Needle Engine is a **web-based 3D engine built on top of three.js** that makes it easier and faster to create interactive 3D experiences for the web.
 
+<discountbanner />
+
 ## What is Needle Engine?
 
 Think of Needle Engine as **three.js with superpowers**:
