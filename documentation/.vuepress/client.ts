@@ -4,6 +4,69 @@ import PageNav from './components/PageNav.vue'
 import AskAiSelection from './components/ask-ai-selection.vue'
 import { nextTick } from 'vue'
 
+// Offset so hash targets clear the fixed header (matches scroll-margin-top in index.scss).
+const HEADER_OFFSET = 60
+
+const scrollToHash = (hash: string) => {
+  const el = document.querySelector(hash) as HTMLElement | null
+  if (!el) return
+  const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
+  window.scrollTo({ top, behavior: 'instant' as ScrollBehavior })
+}
+
+// Scroll to a hash target and keep re-correcting while late-loading content
+// (images without intrinsic dimensions, web fonts, web components like <ask-ai>)
+// shifts the layout underneath it. Without this, a single early scroll lands in
+// the wrong place on long, image-heavy pages such as the FAQ once the images
+// finish loading and push the target down. Aborts the moment the user scrolls
+// themselves, so we never fight a manual scroll.
+const scrollToHashRobustly = (hash: string) => {
+  if (!document.querySelector(hash)) return
+  scrollToHash(hash)
+
+  let aborted = false
+  const onLoad = () => { if (!aborted) scrollToHash(hash) }
+  const abort = () => {
+    aborted = true
+    window.removeEventListener('wheel', abort)
+    window.removeEventListener('touchmove', abort)
+    window.removeEventListener('keydown', abort)
+    window.removeEventListener('load', onLoad)
+  }
+
+  // A programmatic scroll never emits these — only a real user gesture does.
+  window.addEventListener('wheel', abort, { passive: true })
+  window.addEventListener('touchmove', abort, { passive: true })
+  window.addEventListener('keydown', abort)
+  // Final correction once everything (images, fonts) has finished loading.
+  window.addEventListener('load', onLoad)
+
+  // Re-correct each frame until the target's position holds steady for a few
+  // frames, or we run out the time budget.
+  const start = performance.now()
+  let lastTop: number | null = null
+  let stableFrames = 0
+  const tick = () => {
+    if (aborted) return
+    const el = document.querySelector(hash) as HTMLElement | null
+    if (!el) return
+    const top = Math.round(el.getBoundingClientRect().top)
+    if (lastTop !== null && Math.abs(top - lastTop) <= 1) {
+      if (++stableFrames >= 5) return abort()
+    } else {
+      stableFrames = 0
+      scrollToHash(hash)
+    }
+    lastTop = top
+    if (performance.now() - start < 3000) {
+      requestAnimationFrame(tick)
+    } else {
+      abort()
+    }
+  }
+  requestAnimationFrame(tick)
+}
+
 export default defineClientConfig({
   enhance({ app, router, siteData }) {
     // Only run scroll restoration on client-side (not during SSR)
@@ -140,13 +203,11 @@ export default defineClientConfig({
               // Browser back/forward - use saved position instantly
               resolve({ ...savedPosition, behavior: 'instant' })
             } else if (to.hash && !isTextFragment) {
-              // Hash navigation - scroll to element with offset for fixed header
-              // The 'top' offset moves the target position up by that amount
-              resolve({
-                el: to.hash,
-                top: 60,
-                behavior: 'instant',
-              })
+              // Hash navigation. Don't let vue-router do a one-shot scroll: on long,
+              // image-heavy pages the target keeps moving as images without intrinsic
+              // dimensions load. scrollToHashRobustly re-corrects until layout settles.
+              scrollToHashRobustly(to.hash)
+              resolve(false)
             } else if (wasInitialScroll || isTextFragment) {
               // Initial page load or a text fragment: let the browser keep its native
               // scroll position (e.g. the highlighted text) instead of jumping to top.
