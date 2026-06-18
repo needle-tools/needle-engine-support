@@ -34,7 +34,7 @@ async function main() {
     console.log("FETCH neelde engine versions from " + npmEndpoint);
 
     /**
-     * @type {object}
+     * @documentation/tutorials/fundamentals/typescript-essentials.md {object}
      */
     const content = await fetch(npmEndpoint).then(res => res.json());
 
@@ -42,10 +42,10 @@ async function main() {
 
     // this version file can be used to re-upload existing documentation
     // to re-upload previously uploaded documentations just change the string:
-    /** @type {string} */
+    /** @documentation/tutorials/fundamentals/typescript-essentials.md {string} */
     const versionFile = "v1";
 
-    /** @type {string[]} */
+    /** @documentation/tutorials/fundamentals/typescript-essentials.md {string[]} */
     const uploaded = new Array();
 
     const startTime = new Date().getTime();
@@ -70,7 +70,7 @@ async function main() {
         versionsChecked++;
 
         /**
-         * @type {{name:string, version:string, dist:{tarball:string}}}
+         * @documentation/tutorials/fundamentals/typescript-essentials.md {{name:string, version:string, dist:{tarball:string}}}
          */
         const versionInfo = content.versions[version];
         const remotePath = versionInfo.name + "/" + versionInfo.version;

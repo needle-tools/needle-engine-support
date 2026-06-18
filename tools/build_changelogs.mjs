@@ -112,7 +112,7 @@ async function extractChangelog(pkg) {
 
     const tarballUrl = meta.versions[latest]?.dist?.tarball;
     if (!tarballUrl) {
-        console.warn(`  No tarball URL for ${pkg.npm}@${latest}, skipping.`);
+        console.warn(`  No tarball URL for ${pkg.npm} @${latest}, skipping.`);
         return null;
     }
 
@@ -131,7 +131,7 @@ async function extractChangelog(pkg) {
         const changelogFile = files.find(f => f.toLowerCase() === 'changelog.md' || f.toLowerCase() === 'changelog');
 
         if (!changelogFile) {
-            console.warn(`  No CHANGELOG.md found in ${pkg.npm}@${latest}`);
+            console.warn(`  No CHANGELOG.md found in ${pkg.npm} @${latest}`);
             return null;
         }
 
@@ -170,7 +170,7 @@ function escapeHtmlTags(content) {
             if (j % 2 === 1) continue;
             // Escape angle brackets around tag-like content (e.g. <needle-engine>, <SomeComponent>)
             // but not standard HTML like <br>, <img>, <a>, <p>, <li>, <ul>, <ol>, <h1>-<h6>, <strong>, <em>, <code>, <pre>, <div>, <span>, <table>, <tr>, <td>, <th>, <thead>, <tbody>
-            parts[j] = parts[j].replace(/<(\/?)([a-zA-Z][a-zA-Z0-9-]*)([\s>\/])/g, (match, slash, tag, after) => {
+            parts[j] = parts[j].replace(/<(/?)([a-zA-Z][a-zA-Z0-9-]*)([\s>\/])/g, (match, slash, tag, after) => {
                 const standardHtml = [
                     'a', 'abbr', 'b', 'blockquote', 'br', 'code', 'dd', 'del', 'details', 'div', 'dl', 'dt',
                     'em', 'h1', 'h2', 'h3', 'h4', 'h5', 'h6', 'hr', 'i', 'img', 'input',
@@ -196,8 +196,8 @@ function generatePage(pkg, version, changelogContent) {
     }
     // Also remove the "All notable changes..." line that typically follows
     content = content.replace(/^\s*All notable changes to this package will be documented in this file\.\s*\n*/im, '');
-    content = content.replace(/^\s*The format is based on \[Keep a Changelog\].*\n*/im, '');
-    content = content.replace(/^\s*and this project adheres to \[Semantic Versioning\].*\n*/im, '');
+    content = content.replace(/^\s*The format is based on \[Keep a Changelog\]\.\s*\n*/im, '');
+    content = content.replace(/^\s*and this project adheres to \[Semantic Versioning\]\.\s*\n*/im, '');
 
     // Clean up version headings: ## [3.3.4] - 2025-09-10 → ## 3.3.4 - 2025-09-10
     content = content.replace(/^(#{1,3})\s*\[([^\]]+)\]/gm, '$1 $2');
@@ -221,7 +221,7 @@ function generatePage(pkg, version, changelogContent) {
         subtitle = `[${pkg.title}](${repoUrl})`;
     }
 
-    return `---
+    return `--- 
 title: "${pkg.title} Changelog"
 ---
 
