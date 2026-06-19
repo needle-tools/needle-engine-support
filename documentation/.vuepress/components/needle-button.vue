@@ -49,10 +49,11 @@ function get_next_url() {
     <a 
         :href="get_next_url()" 
         :target="same_tab ? '_self' : '_blank'" 
-        class="no-external-link-icon" 
-        :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''"
+        class="no-external-link-icon"
+        :data-rybbit-event="event_goal || undefined"
+        :data-rybbit-prop-position="(event_goal && event_position) ? event_position : undefined"
     >
-        <button :class="event_goal ? ('plausible-event-name=' + event_goal + (event_position ? (' plausible-event-position=' + event_position) : '')) : ''">
+        <button :data-rybbit-event="event_goal || undefined" :data-rybbit-prop-position="(event_goal && event_position) ? event_position : undefined">
             <slot></slot>
             <p v-if="false">{{ get_next_url() }}</p>
         </button>

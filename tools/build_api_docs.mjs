@@ -318,7 +318,7 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
             "typedoc-plugin-extras",
             "./tools/api-plugins/index.js",
             "./tools/api-plugins/keywords/index.js",
-            "./tools/api-plugins/plausible/index.js",
+            "./tools/api-plugins/rybbit/index.js",
             "./tools/api-plugins/component-lookup/index.js",
             "./tools/api-plugins/meta-description/index.js",
             "./tools/api-plugins/canonical-url/index.js",
@@ -336,8 +336,7 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
         useFirstParagraphOfCommentAsSummary: true,
 
         // analytics
-        plausibleSiteDomain: "api.needle.tools",
-        plausibleSiteOrigin: "analytics.needle.tools/js/",
+        rybbitSiteId: "aa45202539de",
     });
 
     // inline sources plugin

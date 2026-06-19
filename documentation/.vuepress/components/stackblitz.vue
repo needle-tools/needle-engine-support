@@ -139,7 +139,7 @@ export default {
 
 <template>
     <div>
-        <button @click="openProject" class="plausible-event-name=Click+Create+Stackblitz+Project">
+        <button @click="openProject" data-rybbit-event="Click Create Stackblitz Project">
             Open in StackBlitz
         </button>
         <div class="code">
