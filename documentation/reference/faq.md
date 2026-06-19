@@ -796,7 +796,7 @@ audioSource.preload = true;
 **Mobile features include:**
 - **Full 3D rendering** on mobile browsers (Chrome, Safari, Firefox, etc.)
 - **Touch input** support out of the box
-- **Mobile AR** on Android (WebXR) and iOS (WebXR via [App Clips](/docs/explanation/core-concepts/ios-webxr-app-clip) + USDZ/QuickLook)
+- **Mobile AR** on Android (WebXR) and iOS (WebXR via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip) + USDZ/QuickLook)
 - **Responsive design** – adapt your layout to different screen sizes with [responsive design tools](/docs/how-to-guides/web-integration/responsive-design)
 - **Automatic optimization** ensures fast loading even on slower mobile connections
 - **[Everywhere Actions](/docs/how-to-guides/everywhere-actions/)** for interactive AR on both iOS and Android
@@ -841,8 +841,18 @@ See [WebXR device support](/docs/how-to-guides/xr/#vr-headsets) for the full fea
 1. **3D in the browser** – Your web experiences run in Safari, Chrome, and other iOS browsers just like on any other platform. Touch input, responsive layout, and all engine features work out of the box.
 
 2. **AR on iOS** – Needle Engine offers two approaches for AR on iOS:
-   - **Native WebXR via [App Clips](/docs/explanation/core-concepts/ios-webxr-app-clip)** – Full WebXR AR powered by ARKit, no app install needed. Users scan a QR code or tap a link to enter AR instantly.
+   - **Native WebXR via [App Clips](/docs/how-to-guides/xr/ios-webxr-app-clip)** – Full WebXR AR powered by ARKit, no app install needed. Users scan a QR code or tap a link to enter AR instantly.
    - **USDZ / QuickLook** – Use [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for interactive AR experiences using Apple's built-in QuickLook viewer.
+
+## How does AR on iOS work?
+
+Safari on iOS doesn't support WebXR natively. Needle Engine bridges this gap using **[Needle Go](/docs/how-to-guides/xr/ios-webxr-app-clip)**, an App Clip that runs your WebXR scene on top of native ARKit. When a user taps "Enter AR", iOS launches the App Clip on demand (no app install), and the same WebXR scene that runs in Chrome on Android runs inside it. The App Clip is essentially a lightweight browser/runtime that adds the WebXR API to iOS.
+
+## Does iOS AR need manual setup or an Apple Developer account?
+
+**No.** You don't need an Apple Developer account, and you don't build or publish your own App Clip. All iOS AR experiences run through Needle's shared **Needle Go** App Clip — your existing scene just loads inside it, with no project changes. Simply make sure your scene has a `WebXR` component with `createARButton` enabled and is deployed to a public HTTPS URL (the same setup that works on Android).
+
+iOS AR works on any plan, including the free tier, with default Needle branding. A PRO subscription is only needed if you want to [customize the App Clip splash screen](/docs/how-to-guides/xr/ios-webxr-app-clip#custom-branding-for-ios-ar).
 
 ## Does it work on Android?
 
@@ -877,7 +887,7 @@ If you see "WebXR not found" or simply can't enter AR, check the following:
 - **Test with a known-working sample:** Try the [Immersive AR sample](https://engine.needle.tools/samples/immersive-ar/) on the same device. If it works there, the issue is in your scene setup; if it doesn't, your device likely doesn't support WebXR AR.
 - **Use Chrome:** WebXR AR on Android requires Chrome. Other browsers may not support it.
 
-For AR on iOS, Needle Engine supports WebXR via [App Clips (Needle Go)](/docs/explanation/core-concepts/ios-webxr-app-clip). See also the [Platform Support](#does-it-work-on-ios) section.
+For AR on iOS, Needle Engine supports WebXR via [App Clips (Needle Go)](/docs/how-to-guides/xr/ios-webxr-app-clip). See also the [Platform Support](#does-it-work-on-ios) section.
 
 ## How do I access the tracked object from an image tracking event?
 

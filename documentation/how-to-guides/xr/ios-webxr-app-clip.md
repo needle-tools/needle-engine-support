@@ -26,6 +26,8 @@ Needle Engine has been the most flexible, easy to implement, and solid web AR im
 
 Needle Engine automatically enables WebXR AR experiences on iPhone and iPad using App Clip technology, in the form of our Needle Go App Clip. App Clips launch instantly without requiring full app installation, making it perfect for sharing AR experiences via QR codes, links, or smart app banners.
 
+The App Clip acts as a lightweight browser/runtime: Needle Engine adds the WebXR API on top of native ARKit, so the same WebXR scene that runs in Chrome on Android runs here too. There's no Apple Developer account or App Clip setup required — your scene runs inside Needle's shared **Needle Go** App Clip.
+
 **Key Benefits:**
 - **No Installation Required**: Users access AR experiences instantly without downloading an app
 - **Native iOS WebXR**: Run WebXR scenes on iPhone and iPad with full ARKit integration

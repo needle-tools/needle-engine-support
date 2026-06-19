@@ -115,7 +115,7 @@ The following devices and browsers have been verified to work with Needle Engine
 | --- | --- | --- |
 | <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Chrome | Full WebXR AR support |
 | <logo-header logo="/imgs/android-logo.webp" alt="Android">Android 10+</logo-header> | ✔️ Firefox | Full WebXR AR support |
-| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](/docs/explanation/core-concepts/ios-webxr-app-clip) (ARKit-powered). Alternative: [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for USDZ/QuickLook |
+| <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 14+</logo-header> | ✔️ Safari<br/>✔️ Chrome | Full WebXR via [App Clip technology](/docs/how-to-guides/xr/ios-webxr-app-clip) (ARKit-powered). Alternative: [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for USDZ/QuickLook |
 | <logo-header logo="/imgs/apple-logo.webp" alt="Apple">iOS 15+</logo-header> | ✔️ WebXR Viewer | Older browser option (somewhat dated) |
 | <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 2</logo-header> | ✔️ Edge | hand tracking |
 | <logo-header logo="/imgs/microsoft-logo.webp" alt="Microsoft">Hololens 1</logo-header> | ❌ | no WebXR support |
