@@ -366,6 +366,12 @@ Please check that you're not accidentally in the Inspector's `Debug` mode – sw
 - Needle uses typescript / javascript for components and generates C# stubs for them.
 - Components that already have matching JS will show that in the Inspector.
 
+## My custom TypeScript component doesn't show up in the Unity/Blender component menu
+
+Make sure your script is located inside the web project's `src/scripts` folder. The Needle component compiler only picks up scripts in this folder to generate the matching Unity stub components / Blender component panels — components placed elsewhere won't appear in Unity's or Blender's component menu.
+
+You can change which folder is watched via the `scriptsDirectory` setting in [needle.config.json](/docs/reference/needle-config-json) (it defaults to `src/scripts`). When you change the config, restart Blender for the new setting to take effect.
+
 ## Does C# component generation work with javascript only too?
   While generating C# components does technically run with vanilla javascript too we don't recommend it and fully support it since it is more guesswork or simply impossible for the generator to know which C# type to create for your javascript class. Below you find a minimal example on how to generate a Unity Component from javascript if you really want to tho.
 
