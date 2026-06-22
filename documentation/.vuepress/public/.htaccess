@@ -16,10 +16,24 @@ Header set Content-Type "text/markdown; charset=UTF-8"
 
 </IfModule>
 
-# Content negotiation: prefer HTML by default for extensionless URLs.
-# Markdown is a fallback variant (low source quality), so browsers get .html
-# and only clients explicitly requesting text/markdown receive the .md variant.
+# Extensionless URLs always resolve to HTML — no content negotiation.
+# Disabling MultiViews removes the .html/.md ambiguity entirely, so an
+# extensionless URL has exactly one variant. This makes responses safely
+# cacheable behind Cloudflare (which ignores `Vary: accept`) and removes the
+# "first fetch wins" race. Markdown stays reachable at its explicit .md URL
+# (discoverable via llms.txt and the .md sibling convention) for AI agents.
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+RewriteEngine On
+
+# Serve foo.html for an extensionless request to /foo, when foo.html exists.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.+?)/?$ $1.html [L]
+</IfModule>
+
 <IfModule mod_mime.c>
-AddType text/html .html
-AddType "text/markdown;qs=0.4" .md
+AddType text/markdown .md
 </IfModule> 
