@@ -98,6 +98,22 @@ Try the samples, follow the tutorials, and get familiar with the workflow while 
 
 **Questions?** Reach out on our [Forum](https://forum.needle.tools) or [Discord](https://discord.needle.tools).
 
+## I'm a teacher with an EDU license — how do I give my students access?
+
+Your EDU license belongs to your **Needle Cloud team**, and you share it by inviting your students as members of that team. You don't request a separate license per student.
+
+1. Open your [Needle Cloud team page](https://cloud.needle.tools/team).
+2. Invite each student as a member (for example, using their school email address).
+3. Once they accept, they're covered by the team's EDU license and can deploy their projects to your team.
+
+So for an Intro to VR class teaching the Unity-to-Needle workflow: each student doesn't apply for their own EDU license — you apply once, then add the whole class as members of your team. Their work is then covered for the duration of the course.
+
+When the course ends, you can remove students from the team to free up seats for the next cohort.
+
+## Can a faculty-led class project be hosted on Needle Cloud under our EDU license?
+
+Yes. A project that you set up for students to learn from and contribute to during class can be hosted on Needle Cloud under your team's EDU license. Add the students as members of the team (see above) so they can deploy to and collaborate on the shared project.
+
 ## I'm attending a course that uses Needle Engine — how do I get access?
 
 If your course already uses Needle Engine, you don't need to apply for your own license. Ask your teacher or instructor to **invite you to their Needle Cloud team**. Once you're added, you'll have access to the EDU license through their team — no separate application needed.
