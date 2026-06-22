@@ -14,4 +14,12 @@ Header set Cache-Control "public, max-age=120, must-revalidate"
 Header set Content-Type "text/markdown; charset=UTF-8"
 </FilesMatch>
 
+</IfModule>
+
+# Content negotiation: prefer HTML by default for extensionless URLs.
+# Markdown is a fallback variant (low source quality), so browsers get .html
+# and only clients explicitly requesting text/markdown receive the .md variant.
+<IfModule mod_mime.c>
+AddType text/html .html
+AddType "text/markdown;qs=0.4" .md
 </IfModule> 

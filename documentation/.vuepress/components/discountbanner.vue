@@ -147,8 +147,13 @@ if (typeof window !== "undefined") {
 </script>
 
 <template>
-    <div v-if="discount" ref="bannerEl" class="discount_banner" :style="style"
+    <div v-if="discount" ref="bannerEl" class="discount_banner"
+        :class="{ clickable: discount.url && !discount.banner.cta }" :style="style"
         @pointerenter="onPointerEnter" @pointerleave="onPointerLeave">
+        <!-- No CTA but a link present: make the whole banner clickable.
+             Uses the feed `url` (the /r/ click redirect) so clicks still count server-side. -->
+        <a v-if="discount.url && !discount.banner.cta" class="stretched_link" :href="discount.url"
+            target="_blank" :aria-label="discount.banner.title"></a>
         <div class="content">
             <h2 class="main_text">{{ discount.banner.title }}</h2>
             <div class="text">{{ discount.banner.subtitle }}</div>
@@ -170,7 +175,22 @@ if (typeof window !== "undefined") {
     margin: 1rem 0;
 }
 
+/* Whole-banner click target used when the feed item has a link but no CTA. */
+.discount_banner.clickable {
+    cursor: pointer;
+}
+
+.stretched_link {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    /* The link itself is invisible; the banner content shows through. */
+    text-decoration: none;
+    border: none;
+}
+
 .discount_banner {
+    position: relative;
     margin: 1rem 0;
 
     border-radius: 12px;
