@@ -138,7 +138,21 @@ Needle Engine's iOS WebXR support includes comprehensive functionality:
 
 ## Custom Branding for iOS AR
 
-On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription. Custom branding is only supported when using **QR codes** to launch the AR experience.
+On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription — your own header image, title, subtitle, and call-to-action button.
+
+Custom branding is delivered through a **dedicated branded link** we set up for your experience, of the form:
+
+```
+https://appclip.needle.tools/x/<your-experience>
+```
+
+Opening this link on an iPhone or iPad shows **your** App Clip card (your image, title, and subtitle) before launching into AR.
+
+::: tip Now works from a link click — not only QR codes
+Previously, custom branding only appeared when launching via a **QR code**. Your branded `/x/…` link now also shows your custom card when **tapped directly** in Safari — so you can put it behind an *Enter AR* button on your website, send it in a message, or link to it from any app. Opening it in Safari presents your branded App Clip card automatically.
+
+Note: only your branded `/x/…` link carries your branding. The generic `…/ar?url=…` link always shows the default Needle card, because Apple selects the card by URL **path** (and your branded experience is registered on its own path).
+:::
 
 Scan the QR code below with your iOS device to see how the App Clip card looks with the [image tracking sample](/docs/how-to-guides/xr/image-tracking):
 
@@ -174,13 +188,14 @@ Ensure that camera permissions are granted. Check in your device settings if the
 
 ### I don't see my custom branding
 
-Custom branding is only shown when the App Clip is launched via a **QR code** that encodes the App Clip URL directly. Make sure your QR code uses the following format:
+Custom branding is shown on your dedicated **branded link** (`https://appclip.needle.tools/x/<your-experience>`), opened in **Safari** on iOS — via either a direct tap or a QR code. If it doesn't appear, check:
 
-```
-https://appclip.needle.tools/ar?url=<your-webxr-url>
-```
+- You're using your branded `/x/<your-experience>` link, **not** the generic `https://appclip.needle.tools/ar?url=…` link (the generic one always shows the default Needle card).
+- You opened it in **Safari**. App Clip cards don't appear in Chrome or Firefox on iOS — those browsers prompt you to open the page in Safari first.
+- Your custom branding is active (PRO) and the experience has been approved on Apple's side (a newly set-up experience can take a little while to go live).
+- The full Needle Go app isn't already installed on the device — if it is, iOS shows an "Open" banner instead of the App Clip card.
 
-If you link to your website first and let users navigate to the AR experience from there, the App Clip card won't show your custom branding. See [Custom Branding for iOS AR](#custom-branding-for-ios-ar) for details.
+See [Custom Branding for iOS AR](#custom-branding-for-ios-ar) for details.
 
 ## Contact Us
 
