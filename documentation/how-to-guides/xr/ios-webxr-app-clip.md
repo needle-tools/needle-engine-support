@@ -154,6 +154,26 @@ Previously, custom branding only appeared when launching via a **QR code**. Your
 Note: only your branded `/x/…` link carries your branding. The generic `…/ar?url=…` link always shows the default Needle card, because Apple selects the card by URL **path** (and your branded experience is registered on its own path).
 :::
 
+### Connecting your branded experience to the *Enter AR* button
+
+If you're building with Needle Engine, you can make the built-in *Enter AR* button (and any `NeedleXRSession.start("ar")` call) launch **your** branded App Clip experience instead of the default Needle card. Set `NeedleXRSession.appClipUrl` once, early in your app — for example at startup or in a component's `start()`:
+
+```ts
+import { NeedleXRSession } from "@needle-tools/engine";
+
+// Use your branded experience id …
+NeedleXRSession.appClipUrl = "your-experience";
+
+// … or the full branded URL:
+NeedleXRSession.appClipUrl = "https://appclip.needle.tools/x/your-experience";
+```
+
+From then on, when an iOS visitor taps *Enter AR*, Needle Engine opens your branded `/x/your-experience` link and iOS shows your custom App Clip card.
+
+::: tip Must match your registered link
+The value must resolve to the exact branded link we set up for you (`https://appclip.needle.tools/x/<your-experience>`). The engine opens it as-is and does **not** append any query parameters, because Apple selects the App Clip card by the registered URL. Providing only the experience id expands it onto `https://appclip.needle.tools/x/`. Available in Needle Engine 5.1.0 and later.
+:::
+
 Scan the QR code below with your iOS device to see how the App Clip card looks with the [image tracking sample](/docs/how-to-guides/xr/image-tracking):
 
 <img src="/imgs/needlego-qrcode.png" alt="Needle Go App Clip QR Code" style="max-width: 400px; display: block;">
@@ -191,23 +211,20 @@ Ensure that camera permissions are granted. Check in your device settings if the
 Custom branding is shown on your dedicated **branded link** (`https://appclip.needle.tools/x/<your-experience>`), opened in **Safari** on iOS — via either a direct tap or a QR code. If it doesn't appear, check:
 
 - You're using your branded `/x/<your-experience>` link, **not** the generic `https://appclip.needle.tools/ar?url=…` link (the generic one always shows the default Needle card).
+- If you launch AR from Needle Engine's *Enter AR* button, set `NeedleXRSession.appClipUrl` to your branded experience (see [Connecting your branded experience to the *Enter AR* button](#connecting-your-branded-experience-to-the-enter-ar-button)). Without it, the button opens the default Needle card.
 - You opened it in **Safari**. App Clip cards don't appear in Chrome or Firefox on iOS — those browsers prompt you to open the page in Safari first.
 - Your custom branding is active (PRO) and the experience has been approved on Apple's side (a newly set-up experience can take a little while to go live).
 - The full Needle Go app isn't already installed on the device — if it is, iOS shows an "Open" banner instead of the App Clip card.
 
 See [Custom Branding for iOS AR](#custom-branding-for-ios-ar) for details.
 
-## Contact Us
-
-If you need further assistance, you can reach us at:
-
-- Email: [hi@needle.tools](mailto:hi@needle.tools)
-- Website: [needle.tools](https://needle.tools)
-- Discord: [Discord community](https://discord.needle.tools)
-
 ## Alternative: Everywhere Actions
 
 Looking for a different iOS AR approach? Check out [Everywhere Actions](/docs/how-to-guides/everywhere-actions/), which enables interactive AR experiences on iOS using USDZ and QuickLook (Apple's native 3D format).
+
+### Apple Vision Pro
+
+The instant App Clip AR flow above is for iPhone and iPad. On Apple Vision Pro, Needle Engine falls back to QuickLook for AR — so for custom, interactive AR on visionOS, use [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) (USDZ + QuickLook) rather than the WebXR App Clip.
 
 ## Related Documentation
 
