@@ -264,6 +264,7 @@ The plugin also injects build metadata (`NEEDLE_ENGINE_VERSION`, `NEEDLE_ENGINE_
 
 ## See Also
 
+- [Upgrading Vite (4 → 8)](/docs/help/upgrading-vite) — Move an older project from the pinned Vite 4 setup to Vite 8
 - [Progressive Web Apps (PWA)](/docs/how-to-guides/web-integration/pwa) — Offline support and installability
 - [Optimization & Compression](/docs/how-to-guides/optimization/) — Build pipeline, KTX2, Draco
 - [Deployment Platforms](/docs/how-to-guides/deployment/) — Hosting and deployment options

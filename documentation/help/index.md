@@ -12,6 +12,7 @@ Need help with Needle Engine? You're in the right place.
 ## Get Help
 
 - **[FAQ](/docs/reference/faq)** - Common issues and solutions
+- **[Upgrading Vite (4 → 8)](/docs/help/upgrading-vite)** - Move an older project from the pinned Vite 4 setup to Vite 8
 - **[Discord](https://discord.needle.tools)** - Real-time chat and quick questions
 - **[Forum](https://forum.needle.tools)** - In-depth discussions and troubleshooting
 - **[Report a Bug](https://github.com/needle-tools/needle-engine-support/issues)** - GitHub issue tracker
