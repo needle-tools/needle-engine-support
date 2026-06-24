@@ -157,6 +157,20 @@ The `allow` attribute depends on your app's features:
 [See full list of iframe permissions →](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Permissions-Policy#directives)
 :::
 
+:::warning AR/VR doesn't work in the iframe? Check the *parent* page
+WebXR needs the `xr-spatial-tracking` permission policy, and the iframe `allow` attribute only **delegates** a feature the **embedding page already has**. If you set `allow="xr; xr-spatial-tracking"` but still see
+
+```
+[Violation] Permissions policy violation: xr-spatial-tracking is not allowed in this document
+```
+
+then the page hosting the iframe isn't granting the feature. Make sure:
+- the `<iframe>` has it in [`allow`](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#allow): `allow="xr; xr-spatial-tracking; fullscreen"`, **and**
+- the **parent page** is itself permitted the feature (don't send a restrictive `Permissions-Policy` response header that omits `xr-spatial-tracking`).
+
+This is about the *document's* policy, not the device — so it can appear even on a Quest. Learn more: [iframe `allow` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#allow).
+:::
+
 ### 5. `<needle-app>` (Same-Document Embed)
 
 **Best for:** Existing websites (Webflow, custom HTML) where the scene should be *part of the page* — clickable HTML driving the scene, or scroll-driven 3D.

@@ -911,6 +911,20 @@ If you see "WebXR not found" or simply can't enter AR, check the following:
 
 For AR on iOS, Needle Engine supports WebXR via [App Clips (Needle Go)](/docs/how-to-guides/xr/ios-webxr-app-clip). See also the [Platform Support](#does-it-work-on-ios) section.
 
+## AR/VR doesn't work in an iframe (console shows "xr-spatial-tracking is not allowed in this document")
+
+WebXR is gated by the `xr-spatial-tracking` permission policy. When your scene runs inside an `<iframe>`, the **embedding page must grant it** — having the feature on your own page is not enough. Both of these must be true:
+
+1. The `<iframe>` lists it in its [`allow` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#allow):
+   ```html
+   <iframe src="https://your-app…" allow="xr; xr-spatial-tracking; fullscreen"></iframe>
+   ```
+2. The **page containing the iframe** is itself permitted the feature — the `allow` attribute only *delegates* a feature the parent already has. If the parent page sends a restrictive `Permissions-Policy` header that omits `xr-spatial-tracking`, the iframe can't receive it.
+
+This is about the *document's* permission policy, not the device's capability, so the violation can appear **even on a headset like Quest**. When the policy isn't granted, the engine reports XR as unsupported (and from Needle Engine 5.1.x it does so quietly instead of repeating the violation in the console).
+
+See [iframe `allow` attribute](https://developer.mozilla.org/en-US/docs/Web/HTML/Reference/Elements/iframe#allow) and the [Embedding guide](/docs/how-to-guides/deployment/embedding#_4-iframe-embedding).
+
 ## How do I access the tracked object from an image tracking event?
 
 Each `WebXRTrackedImage` received from the `image-tracking` event gives you access to the assigned 3D object via `img.model.object`:
