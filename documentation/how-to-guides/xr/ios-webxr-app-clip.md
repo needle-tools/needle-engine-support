@@ -206,6 +206,12 @@ Here's an example of how the iOS AR experience looks with custom branding:
 
 Ensure that camera permissions are granted. Check in your device settings if the App Clip has access to the camera.
 
+### Taking a screenshot in AR isn't working
+
+Taking screenshots while in AR (the immersive App Clip session) is **not yet supported** on iOS. This is a current limitation of the iOS WebXR App Clip — we're actively working on it.
+
+If this matters for your project, please let us know at [hi@needle.tools](mailto:hi@needle.tools) so we can gauge interest and prioritize it accordingly.
+
 ### I don't see my custom branding
 
 Custom branding is shown on your dedicated **branded link** (`https://appclip.needle.tools/x/<your-experience>`), opened in **Safari** on iOS — via either a direct tap or a QR code. If it doesn't appear, check:
