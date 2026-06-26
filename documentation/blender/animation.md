@@ -244,6 +244,7 @@ export class ScrollTimeline extends Behaviour {
 
 ## Next Steps
 
+- **[Play Animations](/docs/how-to-guides/animation)** - Cross-editor guide: triggering from UI, controlling from code, and building animations/timelines at runtime
 - **[Components Overview](/docs/blender/components)** - Learn about other interactive components
 - **[Custom Components](/docs/how-to-guides/scripting/create-components)** - Write code to trigger animations
 - **[Deployment](/docs/how-to-guides/deployment/)** - Publish your animated scenes

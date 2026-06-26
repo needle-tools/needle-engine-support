@@ -691,6 +691,30 @@ If postprocessing in Blender does not work as expected, try the following:
 We're actively working on improving postprocessing for Blender. Future updates will bring more effects and remove the requirement to place them on the same object.
 :::
 
+# Animation
+
+## How can I play animations in Needle Engine?
+
+Needle Engine has several ways to play animations, and most of them need **little or no code** — you author them in Unity or Blender and they run on the web. From simplest to most powerful:
+
+| Approach | Best for | No-code in editor? | Trigger from UI? |
+| --- | --- | --- | --- |
+| **`Animation` component** | A single clip, or a few clips you start one at a time | Yes | Yes (Button → `play`) |
+| **`Animator` / `AnimatorController`** | Multiple states (idle → walk → run, or step 1 → 2 → 3) with conditions, blending, and chained playback | Yes | Yes (set parameters) |
+| **Timeline (`PlayableDirector`)** | A **sequence** of clips that play one after another, with **synced audio**, camera moves, and other tracks | Yes | Yes (Button → `play`) |
+| **Everywhere Actions (`PlayAnimationOnClick`)** | No-code click-to-play that also works in AR / USDZ on iOS | Yes | Click on object |
+| **Code (`animation.play()`, builders)** | Fully custom or runtime-generated sequences | — | Yes (call from code) |
+
+For most "play this, then that" needs — especially with audio — reach for **Timeline** before writing your own sequencing code.
+
+**See the full guide: [Play Animations](/docs/how-to-guides/animation)** — editor (no-code) setup, triggering from UI, controlling from code, and building animations/timelines/controllers at runtime.
+
+## How do I play multiple animations one after another, with sound, triggered by a button?
+
+Use a **Timeline** driven by a **`PlayableDirector`** component. Arrange your animation clips and audio clips on tracks along one shared timeline (Unity Timeline or Blender NLA), leave `playOnAwake` off, and start the whole sequence with a single `director.play()` — wired to a `Button`'s `onClick` (no code) or called from a component. `play()` returns a promise that resolves once the entire sequence finishes. You generally don't need to write your own sequencing controller.
+
+For the full walkthrough — including the button script, building the sequence in code with `TimelineBuilder`, and the `AnimatorController` alternative — see [Play Animations → Play a sequence with sound on a button press](/docs/how-to-guides/animation#play-a-sequence-of-animations-with-sound-on-a-button-press).
+
 # Performance
 
 ## My website becomes too large / is loading slow (too many MB)

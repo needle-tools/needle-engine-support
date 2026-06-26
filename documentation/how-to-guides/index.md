@@ -40,6 +40,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 
 ## Scripting & Interaction
 
+- [Play Animations](/docs/how-to-guides/animation) - Animation component, Animator, and Timeline — authored in the editor (no code) or driven from TypeScript
 - [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
 - [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more
 - [Use Coroutines](/docs/how-to-guides/scripting/use-coroutines) - Time-based sequences and delays
