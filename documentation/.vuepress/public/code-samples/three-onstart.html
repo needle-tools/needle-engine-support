@@ -8,13 +8,15 @@
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/three.min.js",
-      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
+      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/three.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+      "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"
     }
   }
   </script>
 
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"></script>
 
   <style>
     body { margin: 0; background: #444; }
@@ -28,12 +30,13 @@
   <script type="module">
     import { onStart, onUpdate, DragControls } from '@needle-tools/engine';
     import * as THREE from 'three';
+    import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
     let cube;
 
     onStart(context => {
       // Add objects using vanilla three.js
-      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const geometry = new RoundedBoxGeometry(1, 1, 1, 4, 0.08);
       const material = new THREE.MeshPhysicalMaterial({ color: 'orange', roughness: 0.4, metalness: 1 });
       cube = new THREE.Mesh(geometry, material);
       cube.position.set(0, 0.5, 0);

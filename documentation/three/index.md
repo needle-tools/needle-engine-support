@@ -103,13 +103,15 @@ Think of the `<needle-engine>` web component as a three.js canvas with superpowe
   <script type="importmap">
   {
     "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/three.min.js",
-      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
+      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/three.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+      "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"
     }
   }
   </script>
 
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"></script>
 
   <style>
     body { margin: 0; background: #444; }
@@ -123,12 +125,13 @@ Think of the `<needle-engine>` web component as a three.js canvas with superpowe
   <script type="module">
     import { onStart, onUpdate, DragControls } from '@needle-tools/engine';
     import * as THREE from 'three';
+    import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
     let cube;
 
     onStart(context => {
       // Add objects using vanilla three.js
-      const geometry = new THREE.BoxGeometry(1, 1, 1);
+      const geometry = new RoundedBoxGeometry(1, 1, 1, 4, 0.08);
       const material = new THREE.MeshPhysicalMaterial({ color: 'orange', roughness: 0.4, metalness: 1 });
       cube = new THREE.Mesh(geometry, material);
       cube.position.set(0, 0.5, 0);
@@ -281,11 +284,42 @@ Use Needle Engine directly with vanilla JavaScript – no bundler required. The 
 <codewrap>
 
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js">
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/three.min.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+    "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+    "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"
+  }
+}
+</script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"></script>
+<needle-engine src="scene.glb"></needle-engine>
+
+<script type="module">
+  import { onStart } from "@needle-tools/engine";
+  import * as THREE from "three";
+  import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+
+  onStart(context => {
+    const cube = new THREE.Mesh(
+      new THREE.BoxGeometry(),
+      new THREE.MeshStandardMaterial({ color: "orange" })
+    );
+    context.scene.add(cube);
+
+    // This uses the matching @needle-tools/three examples tree.
+    const controls = new OrbitControls(context.camera, context.renderer.domElement);
+    controls.target.copy(cube.position);
+    controls.update();
+  });
 </script>
 ```
 
 </codewrap>
+
+The `three` entry points at the Three build bundled with the selected Needle Engine release. Addon imports such as `three/addons/controls/OrbitControls.js` should point at the matching `@needle-tools/three` package declared by that Engine release. For Needle Engine `5.1.2`, that matching package is `@needle-tools/three@0.169.19`. Avoid `@needle-tools/three@latest` in import maps unless you have checked that it matches your Engine version.
 
 **When to use:**
 - Quick prototypes and experiments
@@ -304,13 +338,30 @@ npm create needle
 
 This sets up a ready-to-go project with Vite, TypeScript, and Needle Engine preconfigured. With a bundler, bare specifiers like `'three'` and `'@needle-tools/engine'` are resolved automatically — no import map or CDN script tag needed (and you should avoid them to prevent duplicate module instances). Then add your code:
 
+If you create a vanilla package manually, keep `three` as the Needle-provided alias for your Engine version:
+
+```json
+{
+  "dependencies": {
+    "@needle-tools/engine": "5.1.2",
+    "three": "npm:@needle-tools/three@0.169.19"
+  },
+  "devDependencies": {
+    "vite": "^7.0.0"
+  }
+}
+```
+
+With npm, that alias is installed as `node_modules/three`, so imports like `three/addons/...` resolve to the same package's `examples/jsm/` tree. The Needle Vite plugin also keeps dependencies aligned to that same Three package in larger projects.
+
 ```typescript
 import { onStart } from '@needle-tools/engine';
 import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js';
 
 onStart(context => {
   const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(),
+    new RoundedBoxGeometry(1, 1, 1, 4, 0.08),
     new THREE.MeshStandardMaterial({ color: 0x00ff00 })
   );
   context.scene.add(cube);

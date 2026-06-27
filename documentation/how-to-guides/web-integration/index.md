@@ -75,9 +75,21 @@ A few common ways to use the `<needle-engine>` web component.
 
 **Use straight from a CDN — no install, no bundler**
 ```html
-<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/three.min.js",
+    "three/addons/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+    "three/examples/jsm/": "https://cdn.jsdelivr.net/npm/@needle-tools/three@0.169.19/examples/jsm/",
+    "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"
+  }
+}
+</script>
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.2/dist/needle-engine.min.js"></script>
 <needle-engine src="https://your-host.com/assets/MyScene.glb"></needle-engine>
 ```
+
+When importing from a CDN, keep `three` and `three/addons/` on the versions that belong to the selected Needle Engine release. With npm/Vite, install `three` as Needle's alias, for example `"three": "npm:@needle-tools/three@0.169.19"` for `@needle-tools/engine@5.1.2`.
 
 ## <logo-header logo="/imgs/vite-logo.webp" alt="Vite">Supported Frameworks & Bundlers</logo-header>
 
