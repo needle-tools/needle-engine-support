@@ -7,6 +7,10 @@ description: Use AI to ask questions, write code, and interact with live 3D scen
 
 Needle Engine integrates with popular AI tools so you can get help, write components, and inspect live scenes — all without leaving your workflow.
 
+:::tip New to AI agents?
+Start with [Understanding AI Agents](/docs/explanation/understanding-ai-agents) for the concepts behind turns, tools, MCP, and agent loops. If terminal output feels unfamiliar, read [Understanding Terminal Commands in AI Agent Workflows](/docs/explanation/understanding-ai-agent-terminal-commands). Use the [AI Agent Glossary](/docs/reference/ai-agent-glossary) or [Terminal Command Glossary](/docs/reference/terminal-command-glossary) when you want to look something up.
+:::
+
 ---
 
 ## Code with AI

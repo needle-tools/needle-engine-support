@@ -38,6 +38,10 @@ Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
 
 Your agent can also pull the edits you made by hand in the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) and apply them to your source code — tweak a material in the browser, then ask your AI to make it permanent.
 
+:::tip Understanding the concepts
+If MCP, tools, turns, stdio, or agent mode are new to you, read [Understanding AI Agents](/docs/explanation/understanding-ai-agents). If terminal commands are the unfamiliar part, read [Understanding Terminal Commands in AI Agent Workflows](/docs/explanation/understanding-ai-agent-terminal-commands). For lookup, see the [AI Agent Glossary](/docs/reference/ai-agent-glossary) and [Terminal Command Glossary](/docs/reference/terminal-command-glossary).
+:::
+
 ## How to Connect
 
 For the local HTTP setups below, first start the server with `npx needle-cloud start` and keep it running. If you're using Needle Engine for Unity or Blender, the editor integrations usually start it automatically. The VS Code and Cursor install links use [stdio mode](#stdio), which starts the MCP process automatically.

@@ -48,6 +48,8 @@ Precise, factual information for looking things up. API documentation, component
 - [Needle Mesh Baker](/docs/products/needle-mesh-baker) - Browser tool to reduce meshes and bake PBR textures
 - [Needle MCP Server](/docs/ai/needle-mcp-server) - AI integration for Claude Desktop, Copilot, etc.
 - [AI Resources](/docs/ai/) - AI assistants and documentation tools
+- [AI Agent Glossary](/docs/reference/ai-agent-glossary) - Agent terms, MCP concepts, and tool lookup
+- [Terminal Command Glossary](/docs/reference/terminal-command-glossary) - Shell, Git, Docker, runtime, platform-specific, and Needle debugging commands
 
 ---
 
