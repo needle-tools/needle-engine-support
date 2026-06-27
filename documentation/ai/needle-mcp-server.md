@@ -32,6 +32,10 @@ Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
 > "Change the main light color to warm orange"\
 > "Why is my scene running slowly?"
 
+:::tip Understanding the concepts
+If MCP, tools, turns, stdio, or agent mode are new to you, read [Understanding AI Agents](/docs/explanation/understanding-ai-agents). If terminal commands are the unfamiliar part, read [Understanding Terminal Commands in AI Agent Workflows](/docs/explanation/understanding-ai-agent-terminal-commands). For lookup, see the [AI Agent Glossary](/docs/reference/ai-agent-glossary) and [Terminal Command Glossary](/docs/reference/terminal-command-glossary).
+:::
+
 
 ## How to Connect
 

@@ -16,6 +16,8 @@ Background knowledge and deeper understanding of how Needle Engine works. These 
 - [Vision & Philosophy](./core-concepts/vision) - Why Needle Engine exists and our design principles
 - [Project Structure](./core-concepts/project-structure) - Editor projects vs web projects
 - [Component Compiler](./core-concepts/component-compiler) - TypeScript to C# generation
+- [Understanding AI Agents](./understanding-ai-agents) - How agent loops, tools, MCP, and AI-assisted 3D workflows fit together
+- [Understanding Terminal Commands in AI Agent Workflows](./understanding-ai-agent-terminal-commands) - A gentle guide for people who do not usually work in terminals
 - [Exporting to glTF](./exporting-to-gltf) - How the export system works and what gets exported
 
 ---
