@@ -292,7 +292,13 @@ By default only visible objects receive input events. You can set the object's l
 
 ### No setup required
 
-There is **no `EventSystem` or raycaster component to add manually**. The first time a pointer event is needed, Needle Engine automatically adds an `ObjectRaycaster` to the scene and routes hits to your components. Just add a component with an `onPointerClick` (or other pointer) method to a mesh and it works.
+There is **no `EventSystem` or raycaster component to add manually** — both are managed for you:
+
+- The `EventSystem` is a **singleton the engine creates automatically** (one per scene). You never assign it to a GameObject yourself.
+- It automatically adds an `ObjectRaycaster` covering the whole scene if none exists, so hits are routed to your components.
+- Adding an interactive component (`DragControls`, `Duplicatable`, `OpenURL`, …) also pulls in a raycaster on its own.
+
+Just add a component with an `onPointerClick` (or other pointer) method to a mesh and it works. You do not need to place an `EventSystem` on the scene root or anywhere else.
 
 ---
 
