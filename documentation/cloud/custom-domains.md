@@ -68,16 +68,32 @@ Use the **copy** button next to each value to avoid typos.
 
 ## Common gotchas
 
+::: tip Stuck on "Validating…"? Let us check for you
+When a domain isn't verifying, click **Verify** — we run a live DNS check and tell you, per
+record, exactly what's wrong: not found yet, the wrong value, blocked by a wildcard, or
+entered with your domain accidentally doubled (see below). You usually don't have to debug DNS
+by hand.
+:::
+
+::: warning Don't include your domain in the record name
+Many DNS providers **add your domain automatically** to whatever you type in a record's *name*
+field. If you paste the full name shown (e.g. `_acme-challenge.yourdomain.com`), it can end up
+**doubled** — `_acme-challenge.yourdomain.com.yourdomain.com` — and we'll never find it. Enter
+only the **label** (the part before your domain, e.g. `_acme-challenge`); the provider appends
+the rest. If you're unsure, add it and click **Verify** — we'll tell you if it landed at the
+wrong name.
+:::
+
 ::: warning Cloudflare: use "DNS only" (grey cloud)
 If your domain is on **Cloudflare**, set the routing record to **DNS only** (grey cloud),
 not **Proxied** (orange cloud). A proxied record conflicts with the connection.
 :::
 
 ::: warning Wildcard / catch-all DNS hides your records
-Some hosts (e.g. all-inkl and similar shared hosting) point **every** subdomain at their web
-server by default (a *wildcard* / catch-all). Because a DNS name can't be both a `CNAME` and
-a `TXT` record at the same time, that wildcard can **shadow** the `_acme-challenge` /
-`_cf-custom-hostname` records — so we never see them and validation gets stuck.
+Some DNS providers point **every** subdomain at their web server by default (a *wildcard* /
+catch-all). Because a DNS name can't be both a `CNAME` and a `TXT` record at the same time,
+that wildcard can **shadow** the `_acme-challenge` / `_cf-custom-hostname` records — so we
+never see them and validation gets stuck.
 
 If your domain is stuck on **Validating…**, check for a wildcard / catch-all at your DNS
 provider and make sure the verification records are added as **explicit** records that
