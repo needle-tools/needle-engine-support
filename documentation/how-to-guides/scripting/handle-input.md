@@ -280,11 +280,32 @@ For pointer events (`onPointerClick`, etc.) to work:
 
 1. **Object must be visible** - `visible = true`
 2. **GameObject needs geometry** - A mesh 
-3. **Layer not set to "Ignore Raycast"**
+3. **Layer not set to "Ignore Raycast"** (layer `2`)
+
+:::tip No Collider needed for clicks
+Pointer events raycast against the object's **visible mesh geometry** — just add your component to a mesh and clicks work. A `Collider` is only required for **physics** raycasts (`this.context.physics.engine.raycast()`), not for `onPointerClick` and the other pointer events.
+:::
 
 :::tip For input on invisible objects use Layer Masks
 By default only visible objects receive input events. You can set the object's layer mask to a different layer, then disable rendering for that layer in the main camera. This way the object can still receive pointer events while being invisible.
 :::
+
+### No setup required
+
+There is **no `EventSystem` or raycaster component to add manually**. The first time a pointer event is needed, Needle Engine automatically adds an `ObjectRaycaster` to the scene and routes hits to your components. Just add a component with an `onPointerClick` (or other pointer) method to a mesh and it works.
+
+---
+
+## Troubleshooting: `onPointerClick` not firing
+
+If your pointer event method is never called, check these in order:
+
+1. **Is the component on (or above) a mesh?** Pointer events raycast against **visible mesh geometry**. Add the component to the GameObject that has the mesh, or a parent of it.
+2. **You do _not_ need a `Collider`.** Clicks work without any physics collider — a `Collider` is only for physics raycasts (`this.context.physics.engine.raycast()`). Adding one is not required and won't fix a non-firing click on its own.
+3. **Is the object visible?** Only visible objects receive input by default (`visible = true`). For input on hidden objects, use [Layer Masks](#requirements-for-pointer-events).
+4. **Is the layer raycastable?** The object's layer must not be set to "Ignore Raycast" (layer `2`), which the raycaster skips.
+5. **Is the method spelled exactly `onPointerClick`?** Method names are case-sensitive (`onPointerClick`, `onPointerDown`, `onPointerEnter`, …) and take a single `PointerEventData` argument.
+6. **Is the component enabled and the object active** in the hierarchy?
 
 ---
 

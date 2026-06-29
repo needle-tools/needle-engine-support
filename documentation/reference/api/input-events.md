@@ -205,8 +205,12 @@ When using browser events directly, you need to handle platform differences your
 For input events to work:
 
 1. **Object must be visible** (`visible = true`)
-2. **Object's layer** must not be set to "Ignore Raycast"
-3. **GameObject must have a collider** - Only required when using physics-based raycasting. For regular pointer events, a mesh with geometry is sufficient.
+2. **Object's layer** must not be set to "Ignore Raycast" (layer `2`)
+3. **GameObject has visible mesh geometry** - Pointer events raycast against the mesh itself.
+
+:::tip No Collider needed for clicks
+A `Collider` is **only** required for physics raycasts (`this.context.physics.engine.raycast()`). Regular pointer events like `onPointerClick` raycast against the visible mesh, so adding your component to a mesh is enough.
+:::
 
 ---
 
