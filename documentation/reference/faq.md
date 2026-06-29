@@ -1038,6 +1038,35 @@ Needle Cloud also automatically sets `<meta name="description">`, Open Graph tag
 
 Hovering over interactive objects announces them to screen readers via an ARIA live region. Custom components can participate by calling `this.context.accessibility.updateElement()`, `.focus()`, and `.hover()`.
 
+## My embedded scene shows "Refused to display … because it set 'X-Frame-Options' to 'sameorigin'"
+
+`X-Frame-Options` (and its modern successor, the Content-Security-Policy `frame-ancestors` directive) is a response header sent by the **page inside the `<iframe>`** that controls which sites are allowed to frame it. When the embedding site isn't permitted, the browser refuses to render the frame and the embed stays blank:
+
+```
+Refused to display 'https://…' in a frame because it set
+'X-Frame-Options' to 'deny'.
+```
+
+**On Needle Cloud, cross-site embedding is a licensed feature.** Deployments from a team **without** a commercial Needle Engine license (i.e. the free/Basic tier) are served with anti-clickjacking headers:
+
+```
+X-Frame-Options: DENY
+Content-Security-Policy: frame-ancestors 'self' https://*.needle.tools
+```
+
+That means a free-tier deployment (e.g. a `*.needle.run` URL) can only be framed on Needle's own domains — embedding it on your own website is blocked. Deployments from a team with an **EDU, Pro, or Enterprise** license send no such header and can be embedded anywhere, including on a custom domain.
+
+**How to fix it:**
+
+- **Embed your Needle Cloud deployment on your own site → use a licensed team.** Deploy from a team that holds an EDU, Pro, or Enterprise license. Those deployments aren't sent the framing restriction, so they embed cross-origin out of the box. See [Pricing](https://needle.tools/pricing).
+- **Free tier / quick sharing:** embed the scene from Needle's own domain instead. The Needle Cloud viewer embed (`https://cloud.needle.tools/view/embed?file=…`, via the asset's <kbd>Embed</kbd> button) is allowed by `frame-ancestors`. See [Needle Cloud iframe](/docs/how-to-guides/deployment/embedding#_8-needle-cloud-iframe).
+- **Self-hosting your build:** a production `dist/` build you host yourself sends no `X-Frame-Options` at all, so it frames anywhere. If embeds are *still* refused, a **proxy, CDN, or host in front of it** (Cloudflare, nginx, Apache, IIS, or a CMS/security plugin) is injecting the header — remove that rule, or replace it with `frame-ancestors 'self' https://embedding-site.com` to allowlist the embedding domain.
+- **Check you're framing the scene, not a wrapper page** — a login screen, redirect target, or CMS admin page in front of the content can carry its own `X-Frame-Options`. Inspect the failed URL in DevTools → Network.
+
+**Prefer an inline embed?** If the scene should be *part of* the page rather than inside a frame, use [`<needle-app>`](/docs/how-to-guides/deployment/embedding#_5-needle-app-same-document-embed), which runs in the host document and isn't affected by `X-Frame-Options` at all.
+
+Once the frame loads, see [AR/VR doesn't work in an iframe](#ar-vr-doesn-t-work-in-an-iframe-console-shows-xr-spatial-tracking-is-not-allowed-in-this-document) for the related WebXR [`xr-spatial-tracking` permission policy](#ar-vr-doesn-t-work-in-an-iframe-console-shows-xr-spatial-tracking-is-not-allowed-in-this-document), which governs whether AR/VR runs *inside* the frame.
+
 # Still have questions?
 
 - [Ask in our forum](https://forum.needle.tools/?utm_source=needle_docs&utm_content=content)

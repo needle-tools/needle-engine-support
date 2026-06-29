@@ -349,6 +349,22 @@ Shopify integration guide coming soon. In the meantime, use the [iframe method](
 
 Embed Needle Engine in Webflow pages — as an iframe, or inline with `<needle-app>` for direct interaction and scrollytelling.
 
+## Troubleshooting
+
+### "Refused to display … X-Frame-Options" (embed stays blank)
+
+On Needle Cloud, **cross-site embedding is a licensed feature**. Deployments from a team **without** a commercial license (the free/Basic tier) are served with anti-clickjacking headers — `X-Frame-Options: DENY` and `Content-Security-Policy: frame-ancestors 'self' https://*.needle.tools` — so they can only be framed on Needle's own domains. Deployments from an **EDU, Pro, or Enterprise** team send no such header and embed anywhere, custom domains included.
+
+- **Embed on your own site:** deploy from a team with an EDU, Pro, or Enterprise license (see [Pricing](https://needle.tools/pricing)). On the free tier, embed via Needle's own domain instead — the [Needle Cloud viewer embed](#_8-needle-cloud-iframe) (`view/embed`) is allowed by `frame-ancestors`.
+- **Self-hosted build:** a `dist/` build you host yourself sends no `X-Frame-Options` and frames anywhere. If it's still refused, a proxy/CDN/host in front of it (Cloudflare, nginx, Apache, IIS, security/CMS plugins) is injecting the header — remove that rule, or replace it with `frame-ancestors 'self' https://embedding-site.com`.
+- **Want it inline instead of framed?** [`<needle-app>`](#_5-needle-app-same-document-embed) runs in the host document and isn't subject to `X-Frame-Options`.
+
+See the [FAQ entry](/docs/reference/faq#my-embedded-scene-shows-refused-to-display-because-it-set-x-frame-options-to-sameorigin) for more detail.
+
+### AR/VR doesn't work inside the iframe
+
+Here the frame loads fine — this is about *permissions*: WebXR needs the `xr-spatial-tracking` permission policy, granted by both the `<iframe allow="…">` attribute **and** the parent page's permissions policy. See the warning under [§4 iframe Embedding](#_4-iframe-embedding) above and the [FAQ](/docs/reference/faq#ar-vr-doesn-t-work-in-an-iframe-console-shows-xr-spatial-tracking-is-not-allowed-in-this-document).
+
 ## Next Steps
 
 **Configuration & Customization:**
