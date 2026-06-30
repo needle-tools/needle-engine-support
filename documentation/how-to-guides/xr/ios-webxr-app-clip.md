@@ -206,11 +206,13 @@ Here's an example of how the iOS AR experience looks with custom branding:
 
 Ensure that camera permissions are granted. Check in your device settings if the App Clip has access to the camera.
 
-### Taking a screenshot in AR isn't working
+### Why is there a black background when I take a screenshot in AR mode on iOS? Only the 3D model is visible
 
-Taking screenshots while in AR (the immersive App Clip session) is **not yet supported** on iOS. This is a current limitation of the iOS WebXR App Clip — we're actively working on it.
+This is expected: **capturing the camera feed in an AR screenshot is not yet supported** on iOS. On the iOS WebXR App Clip, a screenshot taken during an AR session contains only your 3D content over a black/transparent background — the real-world camera frames are not available to the screenshot, so you cannot composite them into the captured image today.
 
-If this matters for your project, please let us know at [hi@needle.tools](mailto:hi@needle.tools) so we can gauge interest and prioritize it accordingly.
+Note that requesting the `camera-access` feature (or adding a `WebARCameraBackground` component) does **not** fix this on iOS. That is the Android / standard-WebXR path for exposing camera frames; on the iOS App Clip the camera feed isn't accessible that way, and adding `WebARCameraBackground` can instead cause a black screen when entering AR. So there is currently no code workaround to include the live camera in an iOS AR screenshot.
+
+We're actively working on AR camera capture for iOS. If this matters for your project, please let us know at [hi@needle.tools](mailto:hi@needle.tools) so we can gauge interest and prioritize it accordingly.
 
 ### I don't see my custom branding
 
