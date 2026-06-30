@@ -127,31 +127,47 @@ This is the recommended approach for physical installations, exhibitions, produc
 
 ## Supported WebXR Features
 
-Needle Engine's iOS WebXR support includes comprehensive functionality:
+Needle Engine's iOS WebXR support includes:
 
 - WebXR session management
 - Hit testing and plane detection
 - DOM overlays for UI elements
 - Image tracking
-- Anchor creation and tracking (wip)
-- Lighting estimation (wip)
+
+In progress: anchor creation and tracking, lighting estimation, and capturing the camera background in AR screenshots. [Let us know](mailto:hi@needle.tools) if your project needs one of these — it helps us prioritize.
 
 ## Custom Branding for iOS AR
 
-On iOS, the Needle Go App Clip experience includes a splash screen and wording. This branding can be customized for your project with a PRO subscription — your own header image, title, subtitle, and call-to-action button.
+By default the Needle Go App Clip card shows Needle branding. With a **PRO subscription** you can make it **yours** — your own header image, title, subtitle, and call-to-action — so users see your brand on the App Clip card before launching into AR.
 
-Custom branding is delivered through a **dedicated branded link** we set up for your experience, of the form:
+[**Get PRO**](https://cloud.needle.tools/get-pro) &nbsp;–&nbsp; or email [hi@needle.tools](mailto:hi@needle.tools) and we'll set it up.
+
+### How it works
+
+We register a **dedicated branded link** for your experience:
 
 ```
 https://appclip.needle.tools/x/<your-experience>
 ```
 
-Opening this link on an iPhone or iPad shows **your** App Clip card (your image, title, and subtitle) before launching into AR.
+Opening it on iPhone or iPad (in **Safari**) shows **your** App Clip card before launching into AR — from a direct link or button tap, not only a QR code.
 
-::: tip Now works from a link click — not only QR codes
-Previously, custom branding only appeared when launching via a **QR code**. Your branded `/x/…` link now also shows your custom card when **tapped directly** in Safari — so you can put it behind an *Enter AR* button on your website, send it in a message, or link to it from any app. Opening it in Safari presents your branded App Clip card automatically.
+### What we need from you
 
-Note: only your branded `/x/…` link carries your branding. The generic `…/ar?url=…` link always shows the default Needle card, because Apple selects the card by URL **path** (and your branded experience is registered on its own path).
+To set up your branded experience, send us:
+
+- The URL to your experience (e.g. `https://yourdomain.com/your-ar-experience`)
+- A **header image** — 1800 × 1200 px, PNG or JPG, no transparency, max 10 MB
+- A **display title** (max. 30 chars) and **subtitle** (max. 56 chars)
+- Optional translations for the title and subtitle
+- The **call-to-action** label: "View", "Open", or "Play"
+
+Here's how a branded card looks — your image, title, and subtitle on the App Clip card:
+
+<img src="/imgs/needlego-advancedexperience-light.webp" alt="Custom branding example: your image, title and subtitle on the iOS App Clip card" style="max-width: 280px; display: block;">
+
+::: tip Keep PRO active
+Custom branding requires an active **PRO subscription** — if it lapses, the experience reverts to the default Needle branding. [Get PRO](https://cloud.needle.tools/get-pro)
 :::
 
 ### Connecting your branded experience to the *Enter AR* button
@@ -173,32 +189,6 @@ From then on, when an iOS visitor taps *Enter AR*, Needle Engine opens your bran
 ::: tip Must match your registered link
 The value must resolve to the exact branded link we set up for you (`https://appclip.needle.tools/x/<your-experience>`). The engine opens it as-is and does **not** append any query parameters, because Apple selects the App Clip card by the registered URL. Providing only the experience id expands it onto `https://appclip.needle.tools/x/`. Available in Needle Engine 5.1.0 and later.
 :::
-
-Scan the QR code below with your iOS device to see how the App Clip card looks with the [image tracking sample](/docs/how-to-guides/xr/image-tracking):
-
-<img src="/imgs/needlego-qrcode.png" alt="Needle Go App Clip QR Code" style="max-width: 400px; display: block;">
-<small>https://appclip.needle.tools/ar?url=https://image-tracking-zubckszr0qj2.needle.run/</small>
-
-
-An active PRO subscription is required to maintain your custom branding. If your subscription lapses, the iOS AR experience will revert to the default Needle branding. To keep your custom look and feel, make sure your PRO subscription stays active.
-
-Please contact us at [hi@needle.tools](mailto:hi@needle.tools) for custom branding.
-
-::: tip Required Branding Assets
-
-Please provide the following assets for iOS AR branding customization:
-- The URL to your experience (e.g. `https://yourdomain.com/your-ar-experience`)
-- A header image: Minimum width 1800px, Height must be 1200px, PNG or JPG, No transparency, Maximum 10MB
-- A display title (max. 30 chars) and subtitle (max. 56 chars)
-- If needed, translations for display title and subtitle
-- Your choice of "View", "Open", or "Play" for the call-to-action button text
-
-Here's an example of how the iOS AR experience looks with custom branding:
-
-![Example of iOS AR branding assets](/imgs/needlego-advancedexperience-template.webp "2x")
-
-:::
-
 
 ## Troubleshooting
 
