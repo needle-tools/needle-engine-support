@@ -560,6 +560,15 @@ kbd {
   font-weight: bold; 
 }
 
+div[class*=language-] {
+  border: 1px solid color-mix(in srgb, var(--vp-c-border) 50%, transparent);
+  box-shadow: 0 2px 5px color-mix(in srgb, var(--vp-c-border) 20%, transparent);
+  transition: all .2s ease-in-out !important;
+  &:hover {
+    box-shadow: 0 5px 10px color-mix(in srgb, var(--vp-c-border) 50%, transparent);
+  }
+}
+
 div[class*=language-] > pre {
   scrollbar-color: var(--vp-c-accent-bg) transparent;
   scrollbar-width: thin;
