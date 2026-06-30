@@ -136,7 +136,7 @@ Needle Engine's iOS WebXR support includes:
 
 In progress: anchor creation and tracking, lighting estimation, and capturing the camera background in AR screenshots. [Let us know](mailto:hi@needle.tools) if your project needs one of these — it helps us prioritize.
 
-## Custom Branding for iOS AR
+## <svg width="0.95em" height="0.95em" viewBox="0 0 24 24" style="vertical-align:-0.12em;margin-right:0.35em" aria-hidden="true"><defs><linearGradient id="webxrFlag" x1="6" y1="4" x2="19" y2="12" gradientUnits="userSpaceOnUse"><stop offset="0" stop-color="#FF3366"/><stop offset="1" stop-color="#E60039"/></linearGradient></defs><path d="M5 2.5v19" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 4H19L14 8 19 12H6Z" fill="url(#webxrFlag)"/></svg> Custom Branding for iOS AR
 
 By default the Needle Go App Clip card shows Needle branding. With a **PRO subscription** you can make it **yours** — your own header image, title, subtitle, and call-to-action — so users see your brand on the App Clip card before launching into AR.
 
