@@ -148,7 +148,6 @@ Thanks to @NeedleTools, seeing quite a bit of this solution for web-based real t
 <testimonial
   name="Rinesh Thomas"
   role="Game Developer, Assassin's Creed VR"
-  src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="/docs/testimonial/RineshThomas.webp"
 >
     This is the best thing I have seen after cinemachine in unity. Unity should acquire this

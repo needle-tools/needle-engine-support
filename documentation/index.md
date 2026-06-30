@@ -244,7 +244,6 @@ Unbelievable Unity editor integration by an order of magnitude,
 <testimonial
   name="Rinesh Thomas"
   role="Game Developer, Assassin's Creed VR"
-  src="https://x.com/rineshthomas/status/1566342798063947777?t=z6sG3Z7mol-NfIRfTTKqCQ&s=19"
   img="./testimonial/RineshThomas.webp"
 >
     This is the best thing I have seen after cinemachine in unity. Unity should acquire this
