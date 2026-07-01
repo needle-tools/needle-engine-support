@@ -26,6 +26,11 @@ const packages = [
         slug: 'materialx',
     },
     {
+        npm: '@needle-tools/usd',
+        title: 'Needle USD',
+        slug: 'usd',
+    },
+    {
         npm: '@needle-tools/needle-component-compiler',
         title: 'Component Compiler',
         slug: 'component-compiler',

@@ -70,6 +70,7 @@ Automatically generated from package release notes.
 - [**gltf-progressive**](/docs/reference/changelogs/gltf-progressive) - Progressive loading changelog
 - [**three-animation-pointer**](/docs/reference/changelogs/three-animation-pointer) - Animation pointer changelog
 - [**Needle MaterialX**](/docs/reference/changelogs/materialx) - MaterialX changelog
+- [**Needle USD**](/docs/reference/changelogs/usd) - USD (OpenUSD) changelog
 - [**Component Compiler**](/docs/reference/changelogs/component-compiler) - Component Compiler changelog
 - [**UnityGLTF**](/docs/reference/changelogs/unitygltf) - UnityGLTF changelog
 
