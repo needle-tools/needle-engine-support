@@ -9,9 +9,11 @@ description: 'Connect your own domain (e.g. yourdomain.com) to a deployment on N
 This feature is rolling out. Details (especially the exact DNS records) may still change.
 :::
 
-Connect your **own domain** — like `yourdomain.com` or `viewer.yourdomain.com` — to a Needle
-Cloud deployment. Visitors then reach your 3D app on your own address, with a TLS
-certificate issued and renewed automatically. No server setup, no certificate management.
+Connect a **subdomain of your own domain** — like `www.yourdomain.com` or
+`viewer.yourdomain.com` — to a Needle Cloud deployment. Visitors then reach your 3D app on your own
+address, with a TLS certificate issued and renewed automatically. No server setup, no certificate
+management. *(Root domains like `yourdomain.com` are supported too, via a redirect — see
+[Root / apex domains](#root-apex-domains).)*
 
 ::: tip Requirements
 - A **Pro** plan (custom domains are a Pro feature).
@@ -30,7 +32,8 @@ HTTPS certificate and start serving your domain.
 
 1. Open your **deployment** in [Needle Cloud](https://cloud.needle.tools) and find the
    **Custom domains** section.
-2. Enter your domain (e.g. `yourdomain.com`) and click **Connect**.
+2. Enter a **subdomain** (e.g. `www.yourdomain.com`) and click **Connect**.   
+  *(For a root domain like `yourdomain.com`, see [Root / apex domains](#root-apex-domains).)*
 3. The domain appears as **Validating…** with a short list of **DNS records to add**.
 4. Add those records at your DNS provider (see below), then click **Verify**.
 5. Once your records are in place and verified, the status turns **Active** — your domain is
@@ -42,19 +45,16 @@ You add the records wherever you manage your domain's DNS (your **registrar** or
 provider — e.g. Cloudflare, GoDaddy, Namecheap, IONOS, Squarespace). DNS changes can take a
 few minutes to a couple of hours to take effect (*propagation*).
 
-### Apex vs. subdomain
+### The routing record — a CNAME on a subdomain
 
-The record you add to **point the domain at us** depends on what kind of domain it is:
+Connect a **subdomain** — `www.yourdomain.com`, `viewer.yourdomain.com`, `app.yourdomain.com` — and
+add the **CNAME** record shown in the connect dialog. That's the routing done; the subdomain now
+points at your deployment.
 
-| Your domain | Type | Record to add |
-| --- | --- | --- |
-| `yourdomain.com` (an **apex** / root domain) | A | an **A record** to the IP shown in the connect dialog |
-| `viewer.yourdomain.com` (a **subdomain**) | CNAME | a **CNAME** to the target shown in the connect dialog |
-
-::: tip Why an apex needs an A record
-An apex (root) domain can't be a `CNAME` — that's a DNS rule, not a Needle limitation. So for
-`yourdomain.com` you add an **A record** to the IP we show you. For a subdomain like
-`viewer.yourdomain.com`, a `CNAME` is fine.
+::: tip Prefer a subdomain
+A subdomain is the recommended (and simplest) way to connect a custom domain — one `CNAME` and it
+just works. Want visitors to reach your **root** domain (`yourdomain.com`) too? See
+[Root / apex domains](#root-apex-domains) below.
 :::
 
 ### The verification records
@@ -66,51 +66,78 @@ than one `_acme-challenge` value; add all of them (same name, different values).
 
 Use the **copy** button next to each value to avoid typos.
 
-## Common gotchas
+## Root / apex domains
 
-::: tip Stuck on "Validating…"? Let us check for you
-When a domain isn't verifying, click **Verify** — we run a live DNS check and tell you, per
-record, exactly what's wrong: not found yet, the wrong value, blocked by a wildcard, or
-entered with your domain accidentally doubled (see below). You usually don't have to debug DNS
-by hand.
+A **root** (or *apex*) domain is the bare domain with no subdomain — `yourdomain.com`. By a DNS
+rule, a root domain **can't be a `CNAME`**, so it can't be pointed at Needle Cloud directly. Use
+your root domain in two steps:
+
+1. **Connect a subdomain** — usually `www.yourdomain.com` — exactly as above (CNAME + verification
+   records → **Active**). This serves your app. *(In the connect dialog, if you type a root domain
+   we'll offer a one-click "Use `www.…`" to do this for you.)*
+2. **Redirect the root to the subdomain.** At your registrar / DNS provider, set up a **301
+   (permanent) redirect** so `yourdomain.com` → `https://www.yourdomain.com/`, and **enable HTTPS**
+   on the forward — often labeled **"SSL"** (or "Let's Encrypt") — so `https://yourdomain.com`
+   doesn't show a certificate warning. Most providers
+   offer this under "URL forwarding" / "redirect" — e.g. **all-inkl** "Weiterleitung", **Porkbun** /
+   **Namecheap** "URL forwarding", **Cloudflare** "Redirect Rules". Choose **permanent (301)**, not
+   temporary — it's the SEO-correct choice.
+
+Now visitors typing `yourdomain.com` are sent to `www.yourdomain.com`, which serves your app. This
+is standard practice — much of the web canonicalises to `www`.
+
+::: tip Need your bare root domain to serve directly?
+Serving a root domain *directly* — so the address stays `yourdomain.com`, with no redirect — needs
+a dedicated setup and isn't available on the standard plan. If that matters for your project,
+[get in touch](mailto:hi@needle.tools) and we'll help you find the best option. For now, the
+**subdomain + redirect** above is the reliable path that works everywhere today.
 :::
 
-::: warning Don't include your domain in the record name
+## Troubleshooting
+
+### Stuck on "Validating…"? Let us check for you
+
+When a domain isn't verifying, click **Verify** — we run a live DNS check and tell you, per
+record, exactly what's wrong: not found yet, the wrong value, blocked by a wildcard, or entered
+with your domain accidentally doubled (see below). You usually don't have to debug DNS by hand.
+
+### Don't include your domain in the record name
+
 Many DNS providers **add your domain automatically** to whatever you type in a record's *name*
 field. If you paste the full name shown (e.g. `_acme-challenge.yourdomain.com`), it can end up
 **doubled** — `_acme-challenge.yourdomain.com.yourdomain.com` — and we'll never find it. Enter
-only the **label** (the part before your domain, e.g. `_acme-challenge`); the provider appends
-the rest. If you're unsure, add it and click **Verify** — we'll tell you if it landed at the
-wrong name.
-:::
+only the **label** (the part before your domain, e.g. `_acme-challenge`); the provider appends the
+rest. If you're unsure, add it and click **Verify** — we'll tell you if it landed at the wrong name.
 
-::: warning Cloudflare: use "DNS only" (grey cloud)
-If your domain is on **Cloudflare**, set the routing record to **DNS only** (grey cloud),
-not **Proxied** (orange cloud). A proxied record conflicts with the connection.
-:::
+### Cloudflare: use "DNS only" (grey cloud)
 
-::: warning Wildcard / catch-all DNS hides your records
+If your domain is on **Cloudflare**, set the routing record to **DNS only** (grey cloud), not
+**Proxied** (orange cloud). A proxied record conflicts with the connection.
+
+### A wildcard / catch-all is hiding your records
+
 Some DNS providers point **every** subdomain at their web server by default (a *wildcard* /
-catch-all). Because a DNS name can't be both a `CNAME` and a `TXT` record at the same time,
-that wildcard can **shadow** the `_acme-challenge` / `_cf-custom-hostname` records — so we
-never see them and validation gets stuck.
+catch-all). Because a DNS name can't be both a `CNAME` and a `TXT` record at the same time, that
+wildcard can **shadow** the `_acme-challenge` / `_cf-custom-hostname` records — so we never see
+them and validation gets stuck.
 
-If your domain is stuck on **Validating…**, check for a wildcard / catch-all at your DNS
-provider and make sure the verification records are added as **explicit** records that
-override it.
-:::
+If your domain is stuck on **Validating…**, check for a wildcard / catch-all at your DNS provider
+and make sure the verification records are added as **explicit** records that override it.
 
-- **Propagation:** records aren't instant. If Verify says it's not validated yet, wait a few
-  minutes and try again.
-- **Trailing slashes / `http://`:** enter just the bare domain (`yourdomain.com`), not a full
-  URL.
+### Propagation takes time
+
+DNS records aren't instant. If Verify says it's not validated yet, wait a few minutes and try again.
+
+### Enter the bare hostname, not a URL
+
+Type just the hostname (`www.yourdomain.com`) — no `http://`, no trailing slash, no path.
 
 ## How do I know it worked?
 
 The status badge tells you:
 
 - **Validating…** — we're waiting for your DNS records / certificate.
-- **Active** — your domain is live with HTTPS. Open `https://yourdomain.com/` to see it.
+- **Active** — your domain is live with HTTPS. Open `https://www.yourdomain.com/` to see it.
 - **Failed** — something went wrong; re-check your records and click Verify.
 
 ## Removing a domain
