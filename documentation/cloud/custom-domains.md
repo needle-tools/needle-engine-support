@@ -95,6 +95,11 @@ a dedicated setup and isn't available on the standard plan. If that matters for 
 **subdomain + redirect** above is the reliable path that works everywhere today.
 :::
 
+## Email is unaffected
+
+Connecting a custom domain only changes where **web** traffic for that name goes. Your **email**
+(the `MX` records) keeps working as before — connecting a domain to Needle Cloud does not touch it.
+
 ## Troubleshooting
 
 ### Stuck on "Validating…"? Let us check for you
@@ -134,22 +139,9 @@ DNS records aren't instant. If Verify says it's not validated yet, wait a few mi
 
 Type just the hostname (`www.yourdomain.com`) — no `http://`, no trailing slash, no path.
 
-## How do I know it worked?
+## What's next
 
-The status badge tells you:
-
-- **Validating…** — we're waiting for your DNS records / certificate.
-- **Active** — your domain is live with HTTPS. Open `https://www.yourdomain.com/` to see it.
-- **Failed** — something went wrong; re-check your records and click Verify.
-
-## Removing a domain
-
-In the **Custom domains** section, use the **disconnect** (trash) action next to the domain.
-This stops serving that domain and removes it cleanly. This can't be undone, but you can
-re-connect it later.
-
-## Email is unaffected
-
-Connecting a custom domain only changes where **web** traffic for that name goes. Your
-**email** (the `MX` records) keeps working as before — connecting a domain to Needle Cloud
-does not touch it.
+- **[Needle Cloud](https://cloud.needle.tools)** — manage your deployments, versions, and custom
+  domains.
+- **[Deploy from Unity or Blender](https://engine.needle.tools/docs/getting-started/)** — build a
+  3D web app and publish it to Needle Cloud in a few clicks.
