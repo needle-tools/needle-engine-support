@@ -3,6 +3,8 @@ title: Custom Domains
 description: 'Connect your own domain (e.g. yourdomain.com) to a deployment on Needle Cloud, so visitors reach your 3D app on your own address with automatic HTTPS.'
 ---
 
+![Custom Domains](/cloud/custom-domains-header.webp)
+
 # Custom Domains
 
 ::: warning Draft
@@ -16,7 +18,7 @@ management. *(Root domains like `yourdomain.com` are supported too, via a redire
 [Root / apex domains](#root-apex-domains).)*
 
 ::: tip Requirements
-- A **Pro** plan (custom domains are a Pro feature).
+- A **[Pro plan](https://needle.tools/pricing)** (custom domains are a Pro feature).
 - A **deployment** to connect the domain to.
 - Access to your domain's **DNS settings** (at your registrar / DNS provider).
 :::
