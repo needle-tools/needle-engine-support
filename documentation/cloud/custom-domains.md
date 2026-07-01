@@ -61,12 +61,14 @@ just works. Want visitors to reach your **root** domain (`yourdomain.com`) too? 
 
 ### The verification records
 
-Alongside the routing record above, the connect dialog shows one or more **TXT records**
-(names starting with `_cf-custom-hostname` and `_acme-challenge`). These prove you control
-the domain and let us issue the certificate. **Add every record shown** — there may be more
-than one `_acme-challenge` value; add all of them (same name, different values).
+Alongside the routing record, the connect dialog shows two more records that let us issue and
+**auto-renew** your certificate:
 
-Use the **copy** button next to each value to avoid typos.
+- a **TXT** record at `_cf-custom-hostname.…` — proves you control the domain.
+- a **CNAME** record at `_acme-challenge.…` → `…dcv.cloudflare.com` — delegates certificate
+  validation to us, so renewals happen automatically and you never have to touch this again.
+
+**Add every record exactly as shown** — use the **copy** button next to each value to avoid typos.
 
 ## Root / apex domains
 
