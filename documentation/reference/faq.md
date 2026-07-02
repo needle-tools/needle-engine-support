@@ -639,6 +639,33 @@ Also see the docs on [mixing baked and non-baked objects](/docs/how-to-guides/ex
 
     ![image](https://user-images.githubusercontent.com/5083203/188171443-578380ab-2036-4d70-a8a7-f8cd9da9f603.png)
 
+## Do you offer free skyboxes / HDRI environments?
+
+**Yes — and they're built right into Needle Cloud.** When you upload an asset, the viewer's **Rendering** panel lets you pick from **27+ free FastHDR skyboxes** (indoor studios, outdoor landscapes, cityscapes, and more) and configure how the asset is lit and displayed — no code required. You can set the **environment intensity and rotation**, the **background intensity, blur, and rotation**, and toggle **Ground Projection** right in the viewer, then share or embed the result. Browse the full set in the [Needle HDR Library](https://cloud.needle.tools/hdris).
+
+They're pre-optimized in [FastHDR](/docs/explanation/fasthdr) format, so they load ~10× faster than EXR and use ~95% less GPU memory — great even on mobile.
+
+**Prefer your own environment?** You can bring your own `.exr` / `.hdr` (HDRi) and use it directly:
+
+- **On Needle Cloud** — [upload your HDRi/EXR](https://cloud.needle.tools) and it's compressed to a hosted FastHDR (KTX2) texture you can select in the viewer, just like the built-in ones.
+- **In Unity or Blender** — assign any `.exr`/`.hdr` as your scene's Environment Lighting; it's converted to FastHDR automatically during the production build.
+
+For code-only or three.js projects, point the `environment-image` / `background-image` attributes at any library URL — or use a built-in preset like `studio` with no URL at all:
+
+```html
+<!-- A FastHDR skybox by URL (a library HDRI, or your own uploaded to Needle Cloud) -->
+<needle-engine
+  environment-image="https://cloud.needle.tools/-/assets/ZUBcksTan5t-Tan5t-hdri-pmrem/file.pmrem.ktx2"
+  background-image="https://cloud.needle.tools/-/assets/ZUBcksTan5t-Tan5t-hdri-pmrem/file.pmrem.ktx2"
+  background-blurriness="0.3">
+</needle-engine>
+
+<!-- Or a built-in preset, no URL needed -->
+<needle-engine environment-image="studio" background-image="studio"></needle-engine>
+```
+
+See the [FastHDR documentation](/docs/explanation/fasthdr) and [Environment Lighting in Blender](/docs/blender/environment) for details.
+
 ## How can I create FastHDR environment textures (compressed EXR)?
 
 [FastHDR](/docs/explanation/fasthdr) is Needle's GPU-native, compressed environment texture format for skyboxes and image-based lighting. It's built on **KTX2** (UASTC HDR 4x4) supercompression with pre-computed **PMREM**, so it loads ~10x faster than EXR, uses ~95% less GPU memory, and works great on mobile and low-end devices — while looking identical to your source HDR/EXR.
