@@ -35,7 +35,7 @@ The upload opens Needle Cloud in a pop-up window. If your browser blocks it, cli
 
 ## Update an asset with new versions
 
-Re-uploading the same `.blend` file creates a **new version of the same asset** instead of a new asset — the asset name is taken from your blend file name. Iterate in Blender, upload again, and every link, embed and project that references the asset can pick up the update.
+The asset is named after your blend file. When you upload again from a blend file with the same name, the asset gets a **new version** — no new asset is created. Only the exported glTF is uploaded, never your blend file. This means you can iterate in Blender and upload again, and every link, embed and project that references the asset picks up the update.
 
 Needle Cloud keeps all versions of your asset:
 
