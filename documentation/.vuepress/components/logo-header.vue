@@ -16,6 +16,10 @@ export default {
             type: String,
             default: undefined
         },
+        maxWidth: {
+            type: String,
+            default: undefined
+        },
         aspectRatio: {
             type: String,
             default: undefined
@@ -35,6 +39,9 @@ export default {
             const style = {}
             if (props.maxHeight) {
                 style.maxHeight = props.maxHeight
+            }
+            if (props.maxWidth) {
+                style.maxWidth = props.maxWidth
             }
             if (props.aspectRatio) {
                 style.aspectRatio = props.aspectRatio

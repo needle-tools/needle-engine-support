@@ -77,6 +77,8 @@ Uploaded assets are regular glTF files with optimized delivery — you can use t
 
 **With three.js or react-three-fiber** — use the asset's `Progressive` link together with [gltf-progressive](/docs/gltf-progressive/) to get automatic LODs and progressive texture loading in any three.js scene.
 
+**With React, Vue or Svelte** — the `<needle-engine>` web component works in every framework. Follow the dedicated guides for [React](/docs/how-to-guides/web-integration/react), [Vue](/docs/how-to-guides/web-integration/vue) and [SvelteKit](/docs/how-to-guides/web-integration/sveltekit), or see all [web framework integrations](/docs/how-to-guides/web-integration/).
+
 **In other tools** — download the optimized glTF, or link to it directly. See [Use Assets in Your Projects](/docs/cloud/#use-assets-in-your-projects).
 
 ## Included components

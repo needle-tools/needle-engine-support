@@ -120,7 +120,13 @@ this.context.scene.add(model.scene);
 
 ## React, Vue, Svelte Integration
 
-The same APIs work inside any framework. A typical pattern with React:
+The same APIs work inside any framework. The dedicated guides cover setup, bundling and framework-specific patterns:
+
+- [<logo-header logo="/imgs/react-logo.svg" alt="React" max-height="1.2em">Needle Engine + React</logo-header>](/docs/how-to-guides/web-integration/react)
+- [<logo-header logo="/imgs/vue-logo.svg" alt="Vue" max-height="1.2em">Needle Engine + Vue & Nuxt</logo-header>](/docs/how-to-guides/web-integration/vue)
+- [<logo-header logo="/imgs/svelte-logo.svg" alt="Svelte" max-height="1.2em">Needle Engine + Svelte & SvelteKit</logo-header>](/docs/how-to-guides/web-integration/sveltekit)
+
+A typical pattern with React:
 
 ```tsx
 import { useEffect, useRef } from "react";

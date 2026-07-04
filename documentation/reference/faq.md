@@ -9,7 +9,7 @@ description: Frequently asked questions and troubleshooting solutions for Needle
 
 ## How do I get a license for Needle Engine?
 
-Commercial use of Needle Engine requires a valid license. You can purchase a license on our website: [https://www.needle.tools/pricing](https://www.needle.tools/pricing).
+Commercial use of Needle Engine requires a valid license. You can purchase a license on our website: [https://needle.tools/pricing](https://needle.tools/pricing).
 
 ## How can I activate my Needle Engine License?
 
@@ -182,7 +182,7 @@ Account deletion is currently handled manually. To delete your account, send a r
 
 ## Can I remove the Needle Engine logo and branding (white-labelling)?
 
-Yes, the Needle Engine logo and branding can be removed with an [EDU, PRO, or Enterprise license](https://www.needle.tools/pricing). This allows you to fully white-label your web experiences with your own branding.
+Yes, the Needle Engine logo and branding can be removed with an [EDU, PRO, or Enterprise license](https://needle.tools/pricing). This allows you to fully white-label your web experiences with your own branding.
 
 The logo appears in the **NeedleMenu** — the bottom-center toolbar in your web experience. In Unity, this is controlled by the `NeedleMenu` component. In code, you can access it via `this.context.menu`.
 
@@ -195,19 +195,19 @@ To hide the logo explicitly from code, call `showNeedleLogo(false)` on the menu 
 this.context.menu.showNeedleLogo(false);
 ```
 
-Hiding the logo requires an [EDU, PRO, or Enterprise license](https://www.needle.tools/pricing); without one the call has no effect in production.
+Hiding the logo requires an [EDU, PRO, or Enterprise license](https://needle.tools/pricing); without one the call has no effect in production.
 
 Logo and branding removal is an **entitlement of the license currently active on your account**, not a one-time switch. If your license lapses or is downgraded, the experience reverts to the default Needle branding until a qualifying license is active again.
 
 ## I have an Indie license — is it still supported?
 
-The **Indie** license tier is no longer available for purchase, but existing Indie licenses continue to work exactly as before — including any white-labeling and logo-removal entitlements they came with. Note that the Indie tier may be removed entirely in the future. For new projects, choose an [EDU, PRO, or Enterprise license](https://www.needle.tools/pricing). If you're unsure which plan fits your project, reach out to us at [hi@needle.tools](mailto:hi@needle.tools).
+The **Indie** license tier is no longer available for purchase, but existing Indie licenses continue to work exactly as before — including any white-labeling and logo-removal entitlements they came with. Note that the Indie tier may be removed entirely in the future. For new projects, choose an [EDU, PRO, or Enterprise license](https://needle.tools/pricing). If you're unsure which plan fits your project, reach out to us at [hi@needle.tools](mailto:hi@needle.tools).
 
 ## How do I remove the bottom bar / NeedleMenu?
 
 The bottom-center toolbar is the **NeedleMenu**. To remove it entirely, delete or disable the `NeedleMenu` component in Unity. In code, you can access it via `this.context.menu`.
 
-Note that removing the Needle branding button from the menu requires an [EDU, PRO, or Enterprise license](https://www.needle.tools/pricing). With a Basic license the branding button must remain visible.
+Note that removing the Needle branding button from the menu requires an [EDU, PRO, or Enterprise license](https://needle.tools/pricing). With a Basic license the branding button must remain visible.
 
 # Installation & Setup
 

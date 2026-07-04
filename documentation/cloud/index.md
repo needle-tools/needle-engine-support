@@ -488,7 +488,7 @@ As your project scales and you add more team members, you can assign them roles 
    `latest` automatically updates to point to your most recent deployment every time you deploy. `main` must be manually promoted — it stays on the version you chose until you move it. Use `latest` for internal previews and `main` for stable, client-facing links.
 
 10. **Can I password-protect my project on a free plan?**<br/>
-    No, password protection requires a PRO or Enterprise license. You can upgrade at [needle.tools/pricing](https://www.needle.tools/pricing).
+    No, password protection requires a PRO or Enterprise license. You can upgrade at [needle.tools/pricing](https://needle.tools/pricing).
 
 11. **Can I use custom labels like `staging` or `beta`?**<br/>
     Custom labels are not yet available. Currently you can use `main` and `latest`. Support for custom labels is planned for a future release.

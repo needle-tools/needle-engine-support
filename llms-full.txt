@@ -3867,7 +3867,7 @@ description: Frequently asked questions and troubleshooting solutions for Needle
 
 ## How do I get a license for Needle Engine?
 
-Commercial use of Needle Engine requires a valid license. You can purchase a license on our website: [https://www.needle.tools/pricing](https://www.needle.tools/pricing).
+Commercial use of Needle Engine requires a valid license. You can purchase a license on our website: [https://needle.tools/pricing](https://needle.tools/pricing).
 
 ## How can I activate my Needle Engine License?
 
