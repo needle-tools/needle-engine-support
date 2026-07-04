@@ -70,6 +70,8 @@ Note: The deployment url will by default be based on your blend file name.
 
 ![Deploy to Needle Cloud from Blender](/blender/blender-deploy-to-needle-cloud.webp)
 
+To publish just a 3D asset from Blender (no web project required), use `File > Export > Upload glTF to Needle Cloud` — see [Upload glTF to Needle Cloud](/docs/blender/upload-to-needle-cloud).
+
 :::
 
 **Features:**

@@ -36,7 +36,9 @@ Needle Cloud offers significant advantages over traditional hosting solutions li
 | **Automatic Optimization** | ✅ Draco, KTX2, Progressive Loading | ❌ Manual optimization required |
 | **Version Control** | ✅ Built-in with labeled versions | ❌ Manual file management |
 | **Preview URLs** | ✅ Each upload gets unique URL | ❌ Must manage URLs manually |
-| **Deploy from Editor** | ✅ One-click from Unity | ❌ Manual export and upload |
+| **Deploy from Editor** | ✅ One-click from Unity and Blender | ❌ Manual export and upload |
+| **Deploy from GitHub** | ✅ [Official GitHub Action](https://github.com/marketplace/actions/deploy-to-needle-cloud) | ❌ Custom CI/CD scripts required |
+| **3D Asset Viewer** | ✅ Customizable without code | ❌ Build and host your own viewer |
 | **Password Protection** | ✅ Built-in per-project | ❌ Server configuration required |
 | **Setup Time** | ✅ Minutes | ❌ Hours or days |
 | **Maintenance** | ✅ Zero—we handle it | ❌ Ongoing server management |
@@ -99,6 +101,10 @@ Needle Cloud is integrated into Blender. This allows you to deploy your apps dir
    This will build your app, and upload it to Needle Cloud.
 
    ![Needle Cloud Blender Integration](/blender/blender-deploy-to-needle-cloud.webp)
+
+:::tip Publish a single 3D asset instead
+To publish just your scene as an optimized 3D asset — no web project required — use `File > Export > Upload glTF to Needle Cloud` in Blender. [Learn more →](/docs/blender/upload-to-needle-cloud)
+:::
 
 ## <logo-header logo="/imgs/needle-logo.webp" alt="Needle Cloud">Deploy from the CLI</logo-header>
 
@@ -296,7 +302,7 @@ Needle Cloud is not just for hosting apps—it's a powerful asset management sys
 
 ### Upload & Optimize
 
-**Drag and drop** files into the website or select them from your computer. Supported formats include glTF, USD, FBX, VRM, OBJ, and more.
+**Drag and drop** files into the website or select them from your computer. Supported formats include glTF, USD, FBX, VRM, OBJ, and more. From Blender, you can also [upload your scene as a glTF asset directly](/docs/blender/upload-to-needle-cloud) via `File > Export > Upload glTF to Needle Cloud`.
 
 - Non-glTF files are automatically converted to glTF for optimization
 - Original files are kept for download

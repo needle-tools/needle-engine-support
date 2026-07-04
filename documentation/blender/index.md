@@ -66,6 +66,10 @@ Before starting, make sure you have:
 
 **✓ Checkpoint:** You should now see "Needle Engine Exporter for Blender" in your add-ons list with a checkmark.
 
+:::tip Just want to publish a 3D model?
+With the add-on installed, you can publish any scene as an optimized 3D asset via `File > Export > Upload glTF to Needle Cloud` — no web project needed. [Learn more →](/docs/blender/upload-to-needle-cloud)
+:::
+
 ---
 
 ## Step 2: Create Your First Project
@@ -191,22 +195,23 @@ Your Blender scenes are now running on the web with hot reload!
 **[For Blender Artists →](/docs/tutorials/fundamentals/for-blender-artists)**
 Comprehensive guide covering what you can create without code, workflow tips, and when you might want scripting.
 
-- [Environment Lighting →](/docs/blender/environment) — custom HDRIs, skybox settings, and automatic compression
-- [Animation →](/docs/blender/animation) — playback, state machines, and timeline export
-- [Components →](/docs/blender/components) — 100+ built-in behaviors and creating your own
-- [Lightmapping →](/docs/blender/lightmapping) — baked lighting for stunning visuals with great performance
-- [Deploy Your Project →](/docs/how-to-guides/deployment/) — publish to Needle Cloud or self-host
-- [Sample Projects →](https://engine.needle.tools/samples) — interactive examples to learn from ([Blender Samples](https://engine.needle.tools/samples/?overlay=samples&platform=blender))
-- [FAQ →](/docs/reference/faq) — common questions and troubleshooting
+- [Environment Lighting](/docs/blender/environment) — custom HDRIs, skybox settings, and automatic compression
+- [Animation](/docs/blender/animation) — playback, state machines, and timeline export
+- [Components](/docs/blender/components) — 100+ built-in behaviors and creating your own
+- [Lightmapping](/docs/blender/lightmapping) — baked lighting for stunning visuals with great performance
+- [Deploy Your Project](/docs/how-to-guides/deployment/) — publish to Needle Cloud or self-host
+- [Upload glTF to Needle Cloud](/docs/blender/upload-to-needle-cloud) — publish your scene as an optimized 3D asset in one click, no web project required
+- [Sample Projects](https://engine.needle.tools/samples) — interactive examples to learn from ([Blender Samples](https://engine.needle.tools/samples/?overlay=samples&platform=blender))
+- [FAQ](/docs/reference/faq) — common questions and troubleshooting
 
 ---
 
 ## Getting Help
 
-**[Discord Community →](https://discord.needle.tools)**
+**[Discord Community](https://discord.needle.tools)**
 Ask questions and get real-time help from the community.
 
-**[Forum →](https://forum.needle.tools)**
+**[Forum](https://forum.needle.tools)**
 Detailed discussions and solutions.
 
 **Bug Reporter:**
