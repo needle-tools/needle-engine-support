@@ -231,7 +231,11 @@ These components can be placed anywhere in your hierarchy. They can all be on th
 
 ### HTML Content Overlays in AR
 
-Display custom HTML UI elements during AR sessions using the `dom-overlay` feature:
+Display custom HTML UI elements during AR sessions using the `dom-overlay` feature.
+
+::: warning UI must be a child of `<needle-engine>`
+Only element children of `<needle-engine>` are visible during an AR session: they are slotted into the AR overlay (the WebXR `dom-overlay` root) automatically, keep their document styling, and remain interactive. **Any HTML elsewhere on the page — however it is positioned — is not rendered while in AR.** Do not try to insert elements into the component's shadow DOM manually; document stylesheets don't apply there.
+:::
 
 ```html
 <needle-engine>
@@ -239,12 +243,14 @@ Display custom HTML UI elements during AR sessions using the `dom-overlay` featu
         <div class="positioning-container">
           <p>Your content for AR and desktop</p>
           <p class="only-in-ar">This only appears in AR</p>
+          <!-- interactive children must re-enable pointer events -->
+          <button style="pointer-events: auto;">Clickable in AR</button>
         </div>
     </div>
 </needle-engine>
 ```
 
-Control visibility with CSS:
+Use the classes `ar`, `vr` and `desktop` on direct children to control in which modes they are shown (elements without any of these classes are shown in all modes, including on desktop). Control finer-grained visibility with CSS via the `ar-session-active` class that is added while an AR session runs:
 
 ```css
 .only-in-ar {
@@ -256,8 +262,16 @@ Control visibility with CSS:
 }
 ```
 
+:::tip Pointer events
+If you disable pointer events on a wrapper element (as above, so that it doesn't block touches on the 3D scene), remember that `pointer-events` is inherited: re-enable it with `pointer-events: auto` on every interactive child (buttons, links), otherwise they will not be clickable in AR.
+:::
+
 :::tip Styling Note
 The overlay element will always be displayed fullscreen while in XR. To align content differently, create a container _inside_ the AR element.
+:::
+
+:::warning Not available on Quest
+Meta Quest browsers currently don't get the `dom-overlay` feature (it breaks session-granted VR→AR transitions), so design AR UI as optional there — use 3D UI for anything essential.
 :::
 
 [See live example](https://engine.needle.tools/samples-uploads/ar-overlay/)
@@ -279,6 +293,16 @@ By default, Needle Engine creates an "X" button in the top-right corner to exit 
 ```html
 <needle-engine>
   <div slot="quit-ar"></div>
+</needle-engine>
+```
+
+Alternatively, add the class `quit-ar` to any element inside your overlay UI — clicking it will end the AR session (this is what the [AR overlay sample](https://engine.needle.tools/samples-uploads/ar-overlay/) uses):
+
+```html
+<needle-engine>
+  <div class="ar">
+    <button class="quit-ar" style="pointer-events: auto;">Close</button>
+  </div>
 </needle-engine>
 ```
 
