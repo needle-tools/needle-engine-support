@@ -243,8 +243,7 @@ Only element children of `<needle-engine>` are visible during an AR session: the
         <div class="positioning-container">
           <p>Your content for AR and desktop</p>
           <p class="only-in-ar">This only appears in AR</p>
-          <!-- interactive children must re-enable pointer events -->
-          <button style="pointer-events: auto;">Clickable in AR</button>
+          <button>Clickable in AR</button>
         </div>
     </div>
 </needle-engine>
@@ -263,7 +262,7 @@ Use the classes `ar`, `vr` and `desktop` on direct children to control in which 
 ```
 
 :::tip Pointer events
-If you disable pointer events on a wrapper element (as above, so that it doesn't block touches on the 3D scene), remember that `pointer-events` is inherited: re-enable it with `pointer-events: auto` on every interactive child (buttons, links), otherwise they will not be clickable in AR.
+Disable pointer events on the fullscreen wrapper (as above) so it doesn't block touches on the 3D scene. Interactive elements inside (buttons, links, inputs, and anything with the `data-needle-clickable` attribute) remain clickable automatically — Needle Engine provides a zero-specificity default (`:where()`), so any CSS rule of yours overrides it if you deliberately want an element non-interactive.
 :::
 
 :::tip Styling Note
