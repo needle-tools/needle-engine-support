@@ -261,6 +261,14 @@ The ability to create custom labels like `staging`, `beta`, or `client-preview` 
 
 ![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
 
+## Custom Domains
+
+Serve your deployment on your own address — like `www.yourdomain.com` or `viewer.yourdomain.com` — instead of the default `project.needle.run` URL. You add a couple of DNS records at your provider, and Needle Cloud issues and renews a TLS certificate automatically. No server setup, no certificate management.
+
+Custom domains are a [Pro plan](https://needle.tools/pricing) feature.
+
+[Set up a custom domain →](/docs/cloud/custom-domains)
+
 ## Securing Pages
 
 The Needle Cloud dashboard allows you to password-protect your pages and assets to ensure data remains confidential until a product's release. This is particularly useful when collaborating with clients.
