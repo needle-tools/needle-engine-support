@@ -437,8 +437,8 @@ The CLI can also bundle your recent logs for a bug report — see [Send logs for
    The glTF format is the most widely supported format for 3D on the web. It is a lightweight format that can store 3D models, animations, and textures. GLB files are binary versions of glTF files, where all data is stored in a single file.
    glTF supports advanced compression techniques like Draco, KTX2, and Meshopt, which are fully supported by Needle Cloud and Needle Engine.
 
-2. **OpenUSD**   
-   USD is a powerful format for 3D data interchange. It is known for its use in the film and VFX industry, and is gaining popularity in the game industry. Needle Cloud supports USDZ and USD files natively through our work on USD-WASM, and also converts USD files to glTF for further processing and optimization.
+2. **OpenUSD** <a href="/docs/cloud/openusd">Learn more</a>   
+   USD is a powerful format for 3D data interchange. It is known for its use in the film and VFX industry, and is gaining popularity in the game industry. Needle Cloud supports USDZ and USD files natively through our work on USD-WASM, and also converts USD files to glTF for further processing and optimization. See [OpenUSD & MaterialX on Needle Cloud](/docs/cloud/openusd) for supported features and how it works.
 
 3. **FBX**  
    FBX has been a popular format for 3D data interchange for many years, but is lacking a number of modern features like PBR materials and extensions. Needle Cloud converts FBX files to glTF for further processing and optimization.  
@@ -449,8 +449,15 @@ The CLI can also bundle your recent logs for a bug report — see [Send logs for
 5. **OBJ**  
    OBJ is a simple text-based format for 3D models. It supports basic materials through MTL files, animations, and hierarchies of objects. Needle Cloud converts OBJ files to glTF for further processing and optimization. 
 
+6. **STL**  
+   STL is a simple, widely-used format for 3D printing and CAD. It stores plain triangle meshes without materials, textures, or scene hierarchy. Needle Cloud converts STL files to glTF for further processing and optimization.
+
 :::tip Use glTF or USD when possible
 We recommend glTF and USD as the primary formats for 3D data interchange. They are widely supported, have modern features and a good material model.
+:::
+
+:::tip Gaussian Splats — coming soon
+We're actively working on **Gaussian Splatting** support. Native Gaussian Splat support is coming to **Needle Engine 6**.
 :::
 
 ## RBAC (role-based access control)
@@ -491,6 +498,9 @@ As your project scales and you add more team members, you can assign them roles 
 
 8. **Do I need to be on a commercial plan to set a label on a previous deploy?**<br/>
    Yes, manually setting labels (like `main`) on a specific deployment requires a commercial license. On free plans, the `main` label is automatically assigned to the latest deployment.
+
+9. **Does Needle Engine support Gaussian Splats?**<br/>
+   Gaussian Splat support will come natively to Needle Engine 6. We're actively working on Gaussian Splatting support across Needle Engine and Needle Cloud.
 
 9. **What is the difference between `latest` and `main`?**<br/>
    `latest` automatically updates to point to your most recent deployment every time you deploy. `main` must be manually promoted — it stays on the version you chose until you move it. Use `latest` for internal previews and `main` for stable, client-facing links.

@@ -4,7 +4,7 @@
       "id": "openusd-materialx-browser",
       "title": "OpenUSD and MaterialX, in the Browser",
       "description": "Strongly improved OpenUSD 26.05 and MaterialX 1.39.5 support across Needle USD Viewer, Needle Cloud, and Needle Engine — host and share USD and MaterialX, with seamless three.js integration, lights, shadows and displacement, and a huge MaterialX performance boost.",
-      "link": "/how-to-guides/export/materialx",
+      "link": "/cloud/openusd",
       "image": "/docs/imgs/openusd-materialx.webp",
       "badge": "NEW",
       "date": "2026-07-14",

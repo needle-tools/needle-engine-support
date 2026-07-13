@@ -604,6 +604,10 @@ There is also a **WebGL2 export path**, but that only supports **unlit** shaders
 Shader Graph → MaterialX export requires a **Pro**, **Edu**, or **Enterprise** plan. Loading external `.mtlx` files works on all plans. See [Pricing](https://needle.tools/pricing).
 :::
 
+## Does Needle Engine support Gaussian Splats?
+
+Gaussian Splat support will come **natively to Needle Engine 6**. We're actively working on Gaussian Splatting support across Needle Engine and Needle Cloud.
+
 ## Where are my baked lightmaps stored after export? Is the lighting texture included in the glb?
 
 Yes. Lightmap textures are embedded directly in the glTF file via the `NEEDLE_lightmaps` extension. They are not saved as separate files — they are stored as textures in the `.glb` alongside your scene data and are automatically optimized by the Needle compression pipeline during production builds.
