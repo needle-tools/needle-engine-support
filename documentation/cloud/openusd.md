@@ -8,7 +8,7 @@ description: 'Host, share, and view OpenUSD and MaterialX on the web with Needle
 
 # OpenUSD & MaterialX on Needle Cloud
 
-![OpenUSD and MaterialX in the browser](/docs/imgs/openusd-materialx.webp)
+![OpenUSD and MaterialX in the browser](/imgs/openusd-materialx.webp)
 
 Needle Cloud lets you **host, share, and view OpenUSD and MaterialX directly in the browser** — no plugin, no download, no desktop DCC required. Upload a `.usd`, `.usdz` or MaterialX file and get a shareable link that renders the real composed stage through Hydra, on desktop and mobile.
 
