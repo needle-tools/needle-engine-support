@@ -1045,6 +1045,18 @@ The fastest way to report is directly from the window where the error appeared:
 
 For ongoing service status, check [status.needle.tools](https://status.needle.tools/).
 
+## How do I add 3D content to Adobe Portfolio?
+
+Adobe Portfolio can't run 3D itself, but you can **embed** a Needle scene on any Portfolio page — no code required:
+
+1. **Upload your model to [Needle Cloud](https://cloud.needle.tools).** Drag your 3D file onto the page. Needle Cloud accepts **glTF/GLB, USD/USDZ, FBX, VRM, and OBJ**, and automatically compresses and progressively loads it so it opens fast, even on mobile.
+2. **Copy the embed code.** Open the asset's **Edit** page → click <kbd>Embed</kbd> → copy the iframe snippet.
+3. **Paste it into Portfolio.** Add an **Embed** module to your page and paste the code.
+
+One caveat: Portfolio's Embed module accepts iframe code but has historically restricted it to certain providers. If it rejects the embed with an *"invalid embed code"* error, link to the full-screen Needle Cloud viewer URL (`https://cloud.needle.tools/view?file=…`) as a button or thumbnail instead.
+
+See the full walkthrough: [Integrating with Adobe Portfolio](/docs/how-to-guides/integrations/adobe-portfolio).
+
 ## What do the "tags" on Needle Cloud deployments do?
 
 When you set **tags** on a Needle Cloud deployment, they are written as `<meta name="keywords">` in the HTML of your deployed site (if no keywords meta tag already exists). This has two main uses:

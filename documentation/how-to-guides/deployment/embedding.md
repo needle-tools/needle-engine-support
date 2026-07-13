@@ -331,6 +331,10 @@ Iterate efficiently:
 
 Integrate Needle Engine into AEM with custom components, Experience Fragments, and author-friendly workflows.
 
+### <logo-header logo="/imgs/adobe-portfolio-logo.svg" alt="Adobe Portfolio"><a href="../integrations/adobe-portfolio">Adobe Portfolio</a></logo-header>
+
+Drop a 3D file onto Needle Cloud and paste its embed code into a Portfolio Embed module — no code required.
+
 ### <logo-header logo="/imgs/framer-logo.webp" alt="Framer"><a href="../integrations/framer">Framer</a></logo-header>
 
 Integrate Needle Engine scenes into Framer websites.
