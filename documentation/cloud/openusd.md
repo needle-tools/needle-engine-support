@@ -1,6 +1,7 @@
 ---
 title: OpenUSD & MaterialX on Needle Cloud
-description: 'Host, share, and view OpenUSD and MaterialX on the web with Needle Cloud. Upload USD, USDA, USDC, USDZ and MaterialX files, render them through Hydra in the browser, and optimize them automatically — powered by OpenUSD 26.05 and MaterialX 1.39.5.'
+description: 'Host, share, and view OpenUSD and MaterialX right in the browser. Upload USD, USDA, USDC, USDZ and MaterialX files to Needle Cloud, render the real composed stage through Hydra, and get an optimized, web-ready GLB automatically — powered by OpenUSD 26.05 and MaterialX 1.39.5.'
+image: /imgs/openusd-materialx.webp
 ---
 
 <br/>
