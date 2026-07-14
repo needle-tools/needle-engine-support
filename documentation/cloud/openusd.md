@@ -76,6 +76,71 @@ USD files can be uploaded, viewed, shared and downloaded as glTF. Exporting an e
 - **USD on the web** — drop your USD file into Needle Cloud and it's **automatically converted to an optimized GLB**. Just reference that GLB URL from Needle Engine, three.js, or any framework — Draco, KTX2 and [Progressive Loading](/docs/gltf-progressive/) are already applied.
 - **three.js** — use the [`@needle-tools/usd`](https://www.npmjs.com/package/@needle-tools/usd) package (1.0) to load and render USD directly via Hydra, or embed the converted glTF with Progressive Loading.
 
+## Integrate live USD in your own Needle Engine project
+
+Want to render **real, composed USD** (not the converted GLB) directly in your own Needle Engine app? Use the [`@needle-tools/usd`](https://www.npmjs.com/package/@needle-tools/usd) package — the same OpenUSD 26.05 wasm runtime and three.js Hydra bridge that power the USD Viewer. It plugs into Needle Engine so you can point a `<needle-engine>` at a `.usd` / `.usdz` file.
+
+**1. Install the package**
+
+```sh
+npm install @needle-tools/usd @needle-tools/engine three
+```
+
+**2. Enable cross-origin isolation**
+
+The USD runtime is threaded (it uses `SharedArrayBuffer`), so the page must be served with cross-origin isolation headers:
+
+```
+Cross-Origin-Embedder-Policy: require-corp
+Cross-Origin-Opener-Policy: same-origin
+```
+
+For local Vite development, add the package plugin — it sets these headers for you:
+
+```js
+// vite.config.js
+import { needleUSD } from "@needle-tools/usd/vite";
+
+export default {
+  plugins: [needleUSD()],
+};
+```
+
+**3. Register the USD plugin and load a stage**
+
+The only rule is ordering: **register the USD plugin before Needle Engine loads a USD file**. Put the `<needle-engine>` element in your HTML without a `src`, then set the source once `addPluginForNeedleEngine()` has resolved:
+
+```html
+<!doctype html>
+<html>
+  <body style="margin:0">
+    <needle-engine camera-controls contactshadows="0.7"></needle-engine>
+
+    <script type="module">
+      import "@needle-tools/engine";
+      import { addPluginForNeedleEngine } from "@needle-tools/usd/plugins";
+
+      // Register the USD plugin, then point Needle Engine at your USD/USDZ file.
+      // getFiles returns the set of files to load — empty for a single self-contained file.
+      await addPluginForNeedleEngine({ getFiles: () => [] });
+      document.querySelector("needle-engine").setAttribute("src", "./model.usdz");
+    </script>
+  </body>
+</html>
+```
+
+That's it — the stage is composed through Hydra and rendered inside Needle Engine, with full environment lighting, shadows, and MaterialX.
+
+:::tip Folder & drag-and-drop workflows
+For USD files that **reference other files**, return the active file set from `getFiles` instead of an empty array: `getFiles: () => [...]`. The first entry must be the root USD file, and each file should carry a stable `path` property so references resolve. Pass `autoPlay: true` to `addPluginForNeedleEngine` to start USD timeline playback automatically after loading.
+:::
+
+:::tip Which path should I use?
+For most product/marketing scenes, **[dropping the USD into Needle Cloud](#use-usd-assets-in-your-projects)** and referencing the auto-generated GLB is the fastest, lightest option (Draco, KTX2, Progressive Loading included). Reach for the `@needle-tools/usd` package when you need the **live, fully-composed USD stage** — variants, payloads, point instancers, purpose visibility, and MaterialX resolved at runtime.
+:::
+
+For the full package reference (three.js usage, import maps, low-level Hydra API), see the [`@needle-tools/usd` package on npm](https://www.npmjs.com/package/@needle-tools/usd).
+
 ## Related
 
 - [Needle Cloud overview](/docs/cloud/) — hosting, optimization, versioning, and sharing
