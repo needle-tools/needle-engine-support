@@ -105,11 +105,19 @@ See how your frame and shaders are actually built:
 
 - **Material Node Graphs**: Explore materials as node graphs (including three.js TSL / node materials), drill from the scene into materials and subgraphs
 - **Render Graph**: Capture a frame and see every render call, pass, target and their dependencies
-- **Code Panel**: The generated shader / TSL source for the selection, one click away
+
+### Code View — Shaders & Source
+
+The code behind any selection, one click away:
+
+<img src="https://cloud.needle.tools/-/media/XBuyTvCZ72dXacDzus2qUQ.gif" alt="Code panel in the Needle Inspector — the source behind the selected object or material" loading="lazy" style="max-width: min(500px, 100%);" />
+
+- **TSL, compiled shaders & three.js source**: Switch between the TSL code, the compiled vertex/fragment shaders and the three.js source of the selected material or object
+- **Follows your selection**: Lock the view to pin a source while you keep browsing — and copy out whatever you need
 
 <img src="https://cloud.needle.tools/-/media/Yv1pEJ9weTPRoRsq-Sfmiw.gif" alt="Node graph with the code panel side by side — TSL and three.js source for the selected material" loading="lazy" style="max-width: min(500px, 100%);" />
 
-*Node graph and code panel side by side — TSL, compiled shader code and three.js source code for the selected material*
+*Works side by side with the node graph — the source for exactly what you're looking at*
 
 ### Resources & Memory
 
