@@ -34,8 +34,8 @@ Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
 
 Your agent can also pull the edits you made by hand in the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) and apply them to your source code — tweak a material in the browser, then ask your AI to make it permanent.
 
-:::tip AI editing on your own projects is a Pro feature
-Reading and exploring scenes works with a free account. Using AI/MCP tools to **edit your own (local) projects** is part of [Needle Inspector Pro](/docs/three/needle-devtools-for-threejs-chrome-extension#free-vs-pro) — a one-time purchase, included with Needle Engine Pro.
+:::tip MCP & AI editing is a Pro feature
+Using the MCP/AI tools of the Needle Inspector requires [Needle Inspector Pro](/docs/three/needle-devtools-for-threejs-chrome-extension#free-vs-pro) — a one-time purchase, included with Needle Engine Pro.
 :::
 
 ## How to Connect

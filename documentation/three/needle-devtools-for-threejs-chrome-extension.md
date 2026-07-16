@@ -95,7 +95,7 @@ Drop new content straight into a running scene — no downloads, no code changes
 - **Drag & Drop**: Pull a material onto any mesh in the scene
 - **One-click Lighting**: Set an HDRI as the scene environment and background instantly
 
-Browsing the library is free; applying assets to **your own projects** is part of [Pro](#free-vs-pro).
+Browsing the library is free; **applying assets** is part of [Pro](#free-vs-pro).
 
 ### Node Graphs & Rendering Insight
 
@@ -103,8 +103,10 @@ See how your frame and shaders are actually built:
 
 <img src="https://cloud.needle.tools/-/media/DXpp8Bsku7cPBguuBD_2Hw.gif" alt="Material node graph in the Needle Inspector — traversing and editing a three.js node material" loading="lazy" style="max-width: min(500px, 100%);" />
 
-- **Material Node Graphs**: Explore materials as node graphs (including three.js TSL / node materials), drill from the scene into materials and subgraphs
+- **Material Node Graphs**: Explore materials as node graphs (including three.js TSL / node materials)
 - **Render Graph**: Capture a frame and see every render call, pass, target and their dependencies
+
+Viewing the full graph is free — **stepping into subgraphs and functions** and re-capturing frames is part of [Pro](#free-vs-pro).
 
 ### Code View — Shaders & Source
 
@@ -114,6 +116,8 @@ The code behind any selection, one click away:
 
 - **TSL, compiled shaders & three.js source**: Switch between the TSL code, the compiled vertex/fragment shaders and the three.js source of the selected material or object
 - **Follows your selection**: Lock the view to pin a source while you keep browsing — and copy out whatever you need
+
+Your own three.js/object source and authored shaders are free. The inspector-**generated** sources — compiled shaders and reconstructed TSL — show a trimmed preview on the free tier; the full output is part of [Pro](#free-vs-pro).
 
 <img src="https://cloud.needle.tools/-/media/Yv1pEJ9weTPRoRsq-Sfmiw.gif" alt="Node graph with the code panel side by side — TSL and three.js source for the selected material" loading="lazy" style="max-width: min(500px, 100%);" />
 
@@ -149,7 +153,7 @@ npx needle-cloud start
 Then connect your AI tool and talk to your scene.   
 **Learn how to connect your local AI tools**: [Needle MCP documentation](../ai/needle-mcp-server).
 
-AI editing on your own projects is part of [Pro](#free-vs-pro).
+MCP &amp; AI editing is part of [Pro](#free-vs-pro).
 
 ### Keep What You Make
 
@@ -169,15 +173,17 @@ Inspecting, debugging, learning from any website — free forever, that's the po
 
 | | Free | Pro |
 |---|---|---|
-| Scene hierarchy, search, live inspection | ✓ on any website | ✓ |
-| Property viewing, node graphs, render graph, code panel | ✓ on any website | ✓ |
-| Performance stats | ✓ | ✓ |
-| Live property editing | ✓ on public sites | ✓ everywhere, incl. your local projects |
-| Assets browser | browse & preview | ✓ apply to your projects |
+| Scene hierarchy, search, live inspection | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on any website | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Property viewing, node graphs, render graph, code view | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on any website | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Node-graph drill-down (subgraphs & functions), frame re-capture | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| TSL & compiled shader code | trimmed preview | full source |
+| Performance stats | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Live property editing | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on public sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> everywhere, incl. your local projects |
+| Assets browser | browse & preview | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> apply |
 | Resources & memory list | preview | full list |
-| AI chat & MCP editing on your projects | – | ✓ |
-| Changeset download (JSON/text) | – | ✓ |
-| GLB export | – | ✓ |
+| MCP & AI editing | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Changeset download (JSON/text) | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| GLB export | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 
 **Needle Inspector Pro is a one-time purchase — no subscription, yours forever.** It's also **included with every [Needle Engine Pro](https://needle.tools/pricing) license**, so if your team already uses Needle Engine Pro, just sign in.
 
