@@ -67,6 +67,22 @@ npx --yes needle-cloud start-server
 
 In CI/CD, add `NEEDLE_CLOUD_TOKEN` as a repository secret and expose it in your workflow.
 
+**Option 3: Set the licensed team directly in your build config**
+
+`needle-cloud login` signs you into your account, but it doesn't ask which team's license to use. So if your PRO license belongs to a specific team, name that team for the Needle plugin directly. As long as you're logged in (or have `NEEDLE_CLOUD_TOKEN` set), the build starts the license server for you.
+
+In **Vite** (`vite.config.js`), pass the team in the settings argument (the third parameter) of `needlePlugins`:
+
+```js
+needlePlugins(command, needleConfig, {
+    license: { team: "your-team-id" }
+}),
+```
+
+In **Next.js**, pass the same `license: { team }` option in your Needle Next config.
+
+Your team ID is on your [Needle Cloud team page](https://cloud.needle.tools/team). This takes precedence over any team selected during login.
+
 After starting the license server, run your build as usual (e.g. `npm run build`).
 
 **Learn more:** [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server)
@@ -76,6 +92,7 @@ After starting the license server, run your build as usual (e.g. `npm run build`
 This typically happens when the license server can't find your PRO license. Common causes:
 
 - **Wrong team selected:** If you have multiple Needle Cloud teams, make sure you're logged in to the team that owns the PRO license. Run `npx needle-cloud login` and select the correct team. You can verify your current account and team with `npx needle-cloud me`.
+- **Multiple teams and PRO on a specific team:** `needle-cloud login` signs in your account but doesn't select a team, so on a multi-team account the license server may not use the team that owns your PRO license. Set the team explicitly with the `license.team` plugin option — see [Option 3](#how-do-i-activate-my-license-in-a-standalone-web-project-or-ci-cd) above.
 - **No access token set in CI/CD:** In automated environments, set the `NEEDLE_CLOUD_TOKEN` environment variable with a token from your PRO team. See [How do I activate my license in a standalone web project or CI/CD?](#how-do-i-activate-my-license-in-a-standalone-web-project-or-ci-cd) above.
 - **License server not running:** If you're using Unity or Blender with a Needle scene open, the license server is started automatically. Otherwise, run `npx --yes needle-cloud start-server` before your build command.
 
