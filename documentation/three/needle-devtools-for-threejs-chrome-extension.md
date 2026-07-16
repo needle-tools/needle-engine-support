@@ -175,15 +175,15 @@ Inspecting, debugging, learning from any website — free forever, that's the po
 |---|---|---|
 | Scene hierarchy, search, live inspection | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on any website | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | Property viewing, node graphs, render graph, code view | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on any website | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
-| Node-graph drill-down (subgraphs & functions), frame re-capture | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Node-graph drill-down (subgraphs & functions), frame re-capture | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | TSL & compiled shader code | trimmed preview | full source |
 | Performance stats | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | Live property editing | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on public sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> everywhere, incl. your local projects |
 | Assets browser | browse & preview | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> apply |
 | Resources & memory list | preview | full list |
-| MCP & AI editing | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
-| Changeset download (JSON/text) | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
-| GLB export | – | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| MCP & AI editing | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Changeset download (JSON/text) | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| GLB export | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 
 **Needle Inspector Pro is a one-time purchase — no subscription, yours forever.** It's also **included with every [Needle Engine Pro](https://needle.tools/pricing) license**, so if your team already uses Needle Engine Pro, just sign in.
 
