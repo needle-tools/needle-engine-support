@@ -167,9 +167,9 @@ Taking your work home is part of [Pro](#free-vs-pro).
 
 ## Free vs Pro
 
-The rule is simple: **looking is free, working on your project is Pro.**
+The rule is simple: **looking is free — going deeper is Pro.**
 
-Inspecting, debugging, learning from any website — free forever, that's the point of the tool. Pro is for when the inspector becomes part of your own workflow:
+Inspecting, debugging, learning from any website — free forever. Pro is for pointing it at your own scene, and for the deeper layers anywhere:
 
 | | Free | Pro |
 |---|---|---|
@@ -302,7 +302,7 @@ This is a really good tool for inspecting any three.js scene. It's extremely use
 
 **[Install free from the Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)** — you'll be inspecting your first scene a minute from now.
 
-And when the inspector becomes part of your daily workflow: **Get Pro** in the toolbar unlocks editing your own projects, the full resource list, AI editing and export. One-time purchase, yours forever — included with [Needle Engine Pro](https://needle.tools/pricing).
+Working on your own scene, or ready to go deeper? **Get Pro** in the toolbar unlocks live-editing your projects, node-graph drill-down, the full resource list, AI editing and export. One-time purchase, yours forever — included with [Needle Engine Pro](https://needle.tools/pricing).
 
 ## Next Steps
 
