@@ -156,11 +156,15 @@ Opening it on iPhone or iPad (in **Safari**) shows **your** App Clip card before
 
 To set up your branded experience, send us:
 
-- The URL to your experience (e.g. `https://yourdomain.com/your-ar-experience`)
+- The **public URL of your deployed experience** — the live page the branded card should open (e.g. `https://yourdomain.com/your-ar-experience`). This is your own hosted page, not an `appclip.needle.tools/x/…` link; we create that branded link for you.
 - A **header image** — 1800 × 1200 px, PNG or JPG, no transparency, max 10 MB
 - A **display title** (max. 30 chars) and **subtitle** (max. 56 chars)
 - Optional translations for the title and subtitle
 - The **call-to-action** label: "View", "Open", or "Play"
+
+::: tip How long it takes
+Once we have your assets, plan for about **1–2 business days** before your branded card is live. We register the link on our side quickly, but Apple then has to register and cache the App Clip card metadata on their servers — that Apple-side step is what takes most of the time, and it applies to both new links and updates to an existing one.
+:::
 
 Here's how a branded card looks — your image, title, and subtitle on the App Clip card:
 
@@ -211,7 +215,7 @@ Custom branding is shown on your dedicated **branded link** (`https://appclip.ne
 - You're using your branded `/x/<your-experience>` link, **not** the generic `https://appclip.needle.tools/ar?url=…` link (the generic one always shows the default Needle card).
 - If you launch AR from Needle Engine's *Enter AR* button, set `NeedleXRSession.appClipUrl` to your branded experience (see [Connecting your branded experience to the *Enter AR* button](#connecting-your-branded-experience-to-the-enter-ar-button)). Without it, the button opens the default Needle card.
 - You opened it in **Safari**. App Clip cards don't appear in Chrome or Firefox on iOS — those browsers prompt you to open the page in Safari first.
-- Your custom branding is active (PRO) and the experience has been approved on Apple's side (a newly set-up experience can take a little while to go live).
+- Your custom branding is active (PRO) and the experience has been approved on Apple's side. A newly set-up or updated branded link typically takes **1–2 business days** to go live, because Apple registers and caches the App Clip card metadata on their servers before it appears.
 - The full Needle Go app isn't already installed on the device — if it is, iOS shows an "Open" banner instead of the App Clip card.
 
 See [Custom Branding for iOS AR](#custom-branding-for-ios-ar) for details.
