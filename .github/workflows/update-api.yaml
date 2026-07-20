@@ -10,7 +10,7 @@ on:
 
 jobs:
   notify_discord_start:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     steps:
       - uses: tsickert/discord-webhook@v5.3.0
         with:
@@ -19,20 +19,21 @@ jobs:
           content: "Starting API update process..."
 
   api:
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     outputs:
       uploaded_count: ${{ steps.build.outputs.uploaded_count }}
       uploaded_versions: ${{ steps.build.outputs.uploaded_versions }}
       versions_checked: ${{ steps.build.outputs.versions_checked }}
       duration: ${{ steps.build.outputs.duration }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
 
       - name: Setup Node.js
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v4
         with:
           # choose node.js version to use
           node-version: '20'
+          cache: 'npm'
 
       # install dependencies if the cache did not hit
       - name: Install dependencies
@@ -48,7 +49,7 @@ jobs:
 
   notify_discord:
     needs: api
-    runs-on: ubuntu-latest
+    runs-on: [self-hosted, Linux, X64, nuc]
     steps:
       - uses: tsickert/discord-webhook@v5.3.0
         if: ${{ needs.api.outputs.uploaded_count != '0' }}
