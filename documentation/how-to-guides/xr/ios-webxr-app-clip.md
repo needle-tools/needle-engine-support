@@ -174,6 +174,12 @@ Here's how a branded card looks — your image, title, and subtitle on the App C
 Custom branding requires an active **PRO subscription** — if it lapses, the experience reverts to the default Needle branding. [Get PRO](https://cloud.needle.tools/get-pro)
 :::
 
+### Removing Needle Go branding entirely
+
+PRO custom branding personalizes the App Clip **card** (header image, title, subtitle, call-to-action), but the experience still launches through our shared **Needle Go** App Clip, so the Needle Go identity remains part of the flow.
+
+For a **fully white-label App Clip** — your own App Clip with no Needle Go branding — we offer a dedicated, custom setup on an **Enterprise** basis. The exact scope depends on your requirements and is arranged per contract. If that's what you need, get in touch at [hi@needle.tools](mailto:hi@needle.tools) and we'll walk you through the options.
+
 ### Connecting your branded experience to the *Enter AR* button
 
 If you're building with Needle Engine, you can make the built-in *Enter AR* button (and any `NeedleXRSession.start("ar")` call) launch **your** branded App Clip experience instead of the default Needle card. Set `NeedleXRSession.appClipUrl` once, early in your app — for example at startup or in a component's `start()`:
