@@ -210,6 +210,29 @@ Track images in the real world and attach 3D content to them. Perfect for:
 
 [Try the live demo](https://engine.needle.tools/samples/image-tracking?utm_source=docs&utm_content=xr) • [Read full Image Tracking docs](./image-tracking)
 
+### Anchoring the AR Scene
+
+Keep your placed AR content locked to a fixed point in the real world. When anchoring is enabled, Needle Engine creates a WebXR anchor for the AR scene and keeps the scene pinned to that anchored point throughout the session — so your content stays put instead of slowly drifting as the device refines its tracking.
+
+Enable it by turning on **`useXRAnchor`** on your `WebXR` component (the same component you added to enable XR — see [Quickstart](#quickstart-enable-xr-in-2-minutes)). In the [Unity Integration](/docs/unity/) or [Blender addon](/docs/blender/) it's a checkbox on the component; in code:
+
+```ts
+import { onStart, WebXR } from "@needle-tools/engine";
+
+onStart(context => {
+  const webxr = context.scene.addComponent(WebXR);
+  webxr.useXRAnchor = true;
+});
+```
+
+The same `useXRAnchor` option is also available on the `WebARSessionRoot` component if you configure AR placement there.
+
+<video-embed src="https://cloud.needle.tools/-/media/3h9GjipkqjTHM0OieS-oVA.mp4" limit_height max_height="50vh" />
+
+:::tip Platform support
+Scene anchoring is available today in WebXR AR on **Android**. On **iOS** via the [Needle Go App Clip](./ios-webxr-app-clip), anchoring isn't available yet — it's on our roadmap. This is a newer, experimental option, so we'd love your feedback at [hi@needle.tools](mailto:hi@needle.tools).
+:::
+
 ## Advanced Features
 
 ### Multiplayer & Networking in XR
