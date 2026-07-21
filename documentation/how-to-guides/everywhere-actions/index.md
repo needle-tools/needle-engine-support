@@ -47,6 +47,33 @@ select it and then click `Add Component > Needle > Everywhere Actions > [Action]
 
 ![](/imgs/everywhere-actions-component-menu.gif)
 
+## Open a configured product in QuickLook (no manual USDZ export)
+
+A common pattern: build a **web UI or product configurator** with Needle Engine — a visitor browses and configures a product in the mobile browser (picking a model, materials, colors, size) — and then opens exactly what they configured in **QuickLook** on iOS.
+
+You don't prepare or pre-export any USDZ files for this. Needle Engine's [`USDZExporter`](https://engine.needle.tools/docs/api/USDZExporter) generates the USDZ **at runtime from the current scene**, so whatever the user configured is exactly what opens in QuickLook — with no Reality Converter step, no per-product export, and no build-time preparation. You just build your app.
+
+**Setup:** add a `USDZExporter` component to your scene (commonly on the same object as `WebXR`). It has an **Object To Export** field: leave it empty to export the **whole scene** (the default — regardless of which object the component sits on), or assign a specific object to export just that object and its children. The component can also automatically add a "View in AR" button that, on iOS/iPadOS/visionOS, exports to USDZ and opens QuickLook.
+
+To open a specific selected product from your own UI, assign it and trigger the export:
+
+```ts
+import { USDZExporter } from "@needle-tools/engine";
+import { Object3D } from "three";
+
+// e.g. when the user taps your own "View in your room" button
+async function openInQuickLook(exporter: USDZExporter, product: Object3D) {
+  exporter.objectToExport = product; // omit / leave unset to export the whole configured scene
+  await exporter.exportAndOpen();     // builds the USDZ at runtime and opens QuickLook on iOS
+}
+```
+
+Leave `objectToExport` unset to export the entire current scene — ideal when the configured result *is* the whole scene. Turn on the exporter's `interactive` option to also carry [Everywhere Actions](#list-of-everywhere-actions) behaviors (animations, material changes, audio, taps) into the QuickLook file.
+
+:::tip Same scene, everywhere
+Because the export happens at runtime from your live scene, the browser preview, WebXR / [Needle Go](../xr/ios-webxr-app-clip) on iOS, and the QuickLook USDZ all reflect the same configured state. You build once and it works across platforms — no separate export pipeline to maintain.
+:::
+
 ## List of Everywhere Actions
 
 | Action | Description | Example Use Cases |
