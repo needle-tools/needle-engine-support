@@ -214,6 +214,18 @@ Note that requesting the `camera-access` feature (or adding a `WebARCameraBackgr
 
 We're actively working on AR camera capture for iOS. If this matters for your project, please let us know at [hi@needle.tools](mailto:hi@needle.tools) so we can gauge interest and prioritize it accordingly.
 
+### My AR objects don't stay perfectly in place on iOS (anchors)
+
+On iOS through the Needle Go App Clip, **AR anchors aren't available yet**, so placed content can drift slightly as the device refines its tracking — whereas QuickLook uses Apple's full native ARKit anchoring and stays rock-solid. Setting `useXRAnchor` has no effect on iOS today.
+
+Good news: **anchor support is on its way to the App Clip / Needle Go.** The App Clip already runs on **native ARKit** (that's how hit testing and plane detection work today), so bringing anchors to iOS is on our roadmap — it's something we build into Needle Go, not a feature we're waiting on Apple to add to Safari/WebKit. It's in progress now.
+
+In the meantime:
+- **[Anchoring already works on Android](/docs/how-to-guides/xr/#anchoring-the-ar-scene)** via `useXRAnchor` — stability there is comparable to QuickLook.
+- On iOS, place the scene as precisely as possible with the positioning reticle — the more accurate the initial placement, the less any drift stands out.
+
+If anchoring on iOS matters for your project, please let us know at [hi@needle.tools](mailto:hi@needle.tools) — it helps us gauge interest and prioritize it.
+
 ### I don't see my custom branding
 
 Custom branding is shown on your dedicated **branded link** (`https://appclip.needle.tools/x/<your-experience>`), opened in **Safari** on iOS — via either a direct tap or a QR code. If it doesn't appear, check:
