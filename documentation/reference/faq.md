@@ -85,7 +85,7 @@ Your team ID is on your [Needle Cloud team page](https://cloud.needle.tools/team
 
 After starting the license server, run your build as usual (e.g. `npm run build`).
 
-**Unity headless / batch exports:** the same token approach applies to command-line Unity builds (`-executeMethod Needle.Engine.ActionsBatch.Execute`). On a build machine there is no browser to complete an interactive login, so provide the token via the `NEEDLE_CLOUD_TOKEN` environment variable or the `-token <token>` argument — the license is then verified with the token and the interactive login is skipped. A read-only token is sufficient. See [Needle Engine command-line arguments for Unity](/docs/how-to-guides/deployment/#needle-engine-command-line-arguments-for-unity).
+**Unity headless / batch exports:** the same token approach applies to command-line Unity builds (`-executeMethod Needle.Engine.ActionsBatch.Execute`). On a build machine there is no browser to complete an interactive login, so provide the token via the `NEEDLE_CLOUD_TOKEN` environment variable or the `-token <token>` argument — the license is then verified with the token and the interactive login is skipped. The token needs the **Editor** permission to build/export (and **Write** as well if it should also deploy) — a read-only token verifies the license but the export is rejected. See [Needle Engine command-line arguments for Unity](/docs/how-to-guides/deployment/#needle-engine-command-line-arguments-for-unity).
 
 **Learn more:** [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server)
 
@@ -973,6 +973,58 @@ Use a detector [like this one](https://get.webgl.org/webgl2/) to determine if yo
 - Make sure to add the `WebXR` component somewhere inside your root `GltfObject`.
 - Optionally add a `AR Session Root` component on your root `GltfObject` or within the child hierarchy to specify placement, scale and orientation for WebXR.
 - Optionally add a `XR Rig` component to control where users start in VR
+
+## How do I change the label of the "View in AR" / QuickLook button?
+
+The AR, VR and QuickLook buttons are created by the `WebXRButtonFactory`. Because the buttons live inside the Needle Menu's shadow DOM, a plain `document.querySelector(...)` can't reach them — grab the shared button from the factory instead. The factory caches each button, so you get the same instance the `WebXR` component uses, regardless of order:
+
+```ts
+import { Behaviour, WebXRButtonFactory } from "@needle-tools/engine";
+
+export class CustomizeQuicklookButton extends Behaviour {
+    start() {
+        // returns the shared button (creates it if it doesn't exist yet)
+        const button = WebXRButtonFactory.getOrCreate().createQuicklookButton();
+        // the button is [icon, text] — update only the text node so the icon stays
+        button.lastChild!.textContent = "Your label";
+    }
+}
+```
+
+The same pattern works for the other buttons via `createARButton()` and `createVRButton()`. If you'd rather build your own button entirely, disable the built-in one on the `WebXR` component (`useQuicklookExport` / `createARButton`) and add a custom entry to the menu with `context.menu.appendChild({ label: "Your label", onClick: () => { /* ... */ } })`.
+
+## How do I add fullscreen, mute or QR code buttons to the menu?
+
+The general-purpose menu buttons — fullscreen, mute and QR code — are created by the `ButtonsFactory` (this is separate from the `WebXRButtonFactory` that handles the AR/VR/QuickLook buttons). Get or create a button from the factory and add it to the menu via `context.menu`:
+
+```ts
+import { Behaviour, ButtonsFactory } from "@needle-tools/engine";
+
+export class AddMenuButtons extends Behaviour {
+    start() {
+        const factory = ButtonsFactory.getOrCreate();
+        const menu = this.context.menu;
+
+        const fullscreen = factory.createFullscreenButton(this.context);
+        if (fullscreen) menu.appendChild(fullscreen); // null if the device has no Fullscreen API
+        menu.appendChild(factory.createMuteButton(this.context));
+        menu.appendChild(factory.createQRCode());
+    }
+}
+```
+
+Each `create…` call returns the shared button (and creates it on first use), so calling it again just hands back the same instance — handy if you also want to relabel or restyle it.
+
+To add your **own** button instead of the built-in ones, pass a `ButtonInfo` object to the menu — no factory needed:
+
+```ts
+this.context.menu.appendChild({
+    label: "Say hello",
+    onClick: () => console.log("Hello!"),
+});
+```
+
+Like the AR/VR buttons, these live inside the Needle Menu's shadow DOM, so reach them through the factory or `context.menu` rather than `document.querySelector`.
 
 ## I can't enter AR mode on my Android device
 
