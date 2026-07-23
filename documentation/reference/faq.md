@@ -85,6 +85,8 @@ Your team ID is on your [Needle Cloud team page](https://cloud.needle.tools/team
 
 After starting the license server, run your build as usual (e.g. `npm run build`).
 
+**Unity headless / batch exports:** the same token approach applies to command-line Unity builds (`-executeMethod Needle.Engine.ActionsBatch.Execute`). On a build machine there is no browser to complete an interactive login, so provide the token via the `NEEDLE_CLOUD_TOKEN` environment variable or the `-token <token>` argument — the license is then verified with the token and the interactive login is skipped. A read-only token is sufficient. See [Needle Engine command-line arguments for Unity](/docs/how-to-guides/deployment/#needle-engine-command-line-arguments-for-unity).
+
 **Learn more:** [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server)
 
 ## My build uses a BASIC license even though I have PRO

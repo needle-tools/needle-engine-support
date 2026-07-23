@@ -339,8 +339,9 @@ Needle Engine for Unity supports command-line arguments for batch exports and bu
 
 | Argument | Description |
 | -- | -- |
-| `-executeMethod Needle.Engine.ActionsBatch.Execute` | **required** — Tells Needle Engine to run batch processing |
-| `-teamId <teamId>` | **required** — Your Needle Cloud team id. Get via [Needle Cloud](https://cloud.needle.tools/team#edit) |
+| `-token <token>` | **required on CI / build machines** — A Needle Cloud access token, used to verify your license **without an interactive browser login**. A build machine has no browser to sign in, so a token must be provided (via this argument or the `NEEDLE_CLOUD_TOKEN` environment variable). Only optional if that machine is already signed in interactively (`needle-cloud login`). The token is created for a specific team, so it already carries the team — you don't also need `-teamId`. See [How to obtain a token](#getting-a-needle-cloud-access-token) below. |
+| `-teamId <teamId>` | **required only when not using a token** — Your Needle Cloud team id. When signing in interactively, this selects which team's license to use (a user can belong to several teams). **Ignored when a token is provided**, because the token is already team-scoped. Get it via [Needle Cloud](https://cloud.needle.tools/team#edit). |
+| `-executeMethod Needle.Engine.ActionsBatch.Execute` | **required** — The entry point that runs the Needle Engine export headlessly, without opening the Editor UI. It exports the scene or asset given by `-scene` to `-outputPath`, and for a scene with `-buildProduction`/`-buildDevelopment` also builds the web project — the same operation you'd trigger from the Needle Engine window, run from the command line. |
 | `-scene` | **required** — Path to a scene or asset to export<br/>Example: `Assets/path/to/myObject.prefab` or `Assets/path/to/myScene.unity` |
 | `-outputPath <path>` |  **required** — Set the output path for the build<br/>Example: `-outputPath path/to/output.glb` |
 | `-buildProduction` | **optional** — Run a production build. Only used for Unity scenes. Either `-buildProduction` or `-buildDevelopment` must be specified. |
@@ -349,14 +350,38 @@ Needle Engine for Unity supports command-line arguments for batch exports and bu
 
 Please refer to the [Unity Commandline Arguments documentation](https://docs.unity3d.com/Documentation/Manual/CommandLineArguments.html) for Unity specific options.
 
-:::tip Needle License Server
-For automated builds on CI/CD systems make sure the Needle License server is running. See [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server) for setup instructions.
+:::tip Needle License Server & CI authentication
+For automated builds on CI/CD systems make sure the Needle License server is running (`npx --yes needle-cloud@version-2 start-server`). See [Needle Cloud Documentation - Starting the License Server](/docs/cloud/#starting-the-needle-license-server) for setup instructions.
+
+On a build machine there is **no browser to complete an interactive login**, so you must provide an access token — either via the `-token <token>` argument or the `NEEDLE_CLOUD_TOKEN` environment variable. When a token is present, Needle Engine verifies the license directly with the token and skips the interactive login. The license server itself does **not** need to be logged in in this case — the token carries the authentication.
+:::
+
+### Getting a Needle Cloud access token
+
+Create a token on your [Needle Cloud team page](https://cloud.needle.tools/team) for the team that holds your PRO/Enterprise license — see [Starting the Needle License Server](/docs/cloud/#starting-the-needle-license-server) in the Needle Cloud docs for the full walkthrough. For a build a **read-only** token is sufficient (it only reads your license).
+
+:::warning
+Treat the token like a password. Prefer the `NEEDLE_CLOUD_TOKEN` environment variable (from a CI secret) over passing `-token` on the command line, since command lines are often written to logs.
 :::
 
 **Example Usage:**
 
 ```bash
 Unity.exe -batchmode -executeMethod Needle.Engine.ActionsBatch.Execute -teamId <teamId> -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit   
+```
+
+**Example Usage (CI / build machine, token auth):**
+
+```bash
+# Provide the token via the environment (recommended) so it is not written to the command line / logs.
+export NEEDLE_CLOUD_TOKEN=<your_team_access_token>
+
+# Start the license server yourself: in batch mode Unity does NOT start it automatically
+# (it does in the interactive Editor). It does not need to be logged in when a token is used.
+npx --yes needle-cloud@version-2 start-server --integration unity &
+
+# No -teamId needed: the token is already scoped to its team.
+Unity.exe -batchmode -nographics -executeMethod Needle.Engine.ActionsBatch.Execute -projectPath "C:/MyProject" -scene "Assets/Scenes/MyScene.unity" -buildProduction -quit
 ```
 
 ---
