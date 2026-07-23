@@ -358,7 +358,13 @@ On a build machine there is **no browser to complete an interactive login**, so 
 
 ### Getting a Needle Cloud access token
 
-Create a token on your [Needle Cloud team page](https://cloud.needle.tools/team) for the team that holds your PRO/Enterprise license — see [Starting the Needle License Server](/docs/cloud/#starting-the-needle-license-server) in the Needle Cloud docs for the full walkthrough. For a build a **read-only** token is sufficient (it only reads your license).
+Create a token on your [Needle Cloud team page](https://cloud.needle.tools/team) for the team that holds your PRO/Enterprise license — see [Starting the Needle License Server](/docs/cloud/#starting-the-needle-license-server) in the Needle Cloud docs for the full walkthrough.
+
+**Choose the right permissions for the token** (a read-only token verifies the license but the build will still be rejected):
+- **Building/exporting** needs the **Editor** permission. Without it the build fails with *"the role in your team does not allow you to use Unity"*.
+- **Deploying** the result additionally needs **Write**.
+
+If your Needle Cloud token dialog has presets, pick **"CI Build"** (Read + Editor) to build, or **"CI Build & Deploy"** (Read + Write + Editor) to build and deploy. Otherwise select those scopes.
 
 :::warning
 Treat the token like a password. Prefer the `NEEDLE_CLOUD_TOKEN` environment variable (from a CI secret) over passing `-token` on the command line, since command lines are often written to logs.
