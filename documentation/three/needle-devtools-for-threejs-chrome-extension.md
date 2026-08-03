@@ -164,6 +164,8 @@ Your edits shouldn't die with the browser tab:
 - **Texture Export**: Right-click any texture slot to download that texture as a PNG
 - **Undo History**: Nothing is destructive while you iterate
 
+<img src="https://cloud.needle.tools/-/media/7f7aI5PTXntuxFr107YJQA.gif" alt="Right-clicking a texture slot to download the texture as a PNG in the Needle Inspector" loading="lazy" style="max-width: min(500px, 100%);" />
+
 Taking your work home is part of [Pro](#free-vs-pro).
 
 ## Free vs Pro
