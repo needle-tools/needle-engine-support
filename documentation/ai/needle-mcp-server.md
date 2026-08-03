@@ -172,6 +172,10 @@ The Needle MCP Server comes with built-in tools that are always available, even 
 | Read Log | Read or search the editor log file by keyword. |
 | Read glTF / GLB | Summarize a glTF/GLB file — nodes, meshes, materials, animations, extensions. Supports JSON pointer queries. |
 
+:::tip No MCP? Use the Search API
+The Search tool's knowledge base is also a public HTTP endpoint — see [Search API](/docs/ai/#search-api). Handy for agents without MCP support, CI scripts, or your own tooling.
+:::
+
 ## <logo-header logo="/blender/logo.png" alt="Blender">Blender Tools</logo-header>
 
 When you're using the **[Needle Blender add-on](/docs/blender/)**, it also registers Blender-specific MCP tools. This means your AI can do more than just read files: it can inspect your Blender scene structure and help make targeted changes.
@@ -183,6 +187,7 @@ When you're using the **[Needle Blender add-on](/docs/blender/)**, it also regis
 | Selected Objects | Read the current Blender selection, optionally with full object details. |
 | Object Selection | Select one or more Blender objects by name and set the active object. |
 | Scene Settings | Read Needle scene settings such as compression, XR, networking, rendering, and export-related options. |
+| Change Scene Settings | Change those scene settings — they control which components are implicitly added during export. |
 | Add Component | Add a Needle component to a Blender object and optionally set initial properties. |
 | Component Properties | Change one or more properties on an existing Needle component. |
 | Object Transform | Move, rotate, and scale Blender objects. |

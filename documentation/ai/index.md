@@ -87,6 +87,20 @@ For local models (Ollama, etc.) or tools that accept a context file:
 
 ---
 
+## Search API
+
+The knowledge base behind the MCP server and Needle Cloud AI is also a public HTTP endpoint — no API key needed. Useful for agents without MCP support, CI scripts, or your own tooling.
+
+```bash
+curl -s "https://search.needle.tools/api/semantic-search?q=how+to+add+a+rigidbody&limit=5"
+```
+
+Returns embedding-ranked results with content — documentation, API reference, forum posts, Discord, and Needle source code. `POST /api/ask` runs the same search through an LLM if you want an answer instead of results.
+
+**[Full API reference →](https://search.needle.tools/api-docs)**
+
+---
+
 ## Ask questions
 
 **[Needle Forum AI](https://forum.needle.tools)** — Ask publicly. Searches all Needle docs, forum posts, and community content. Answers are visible to the community.
