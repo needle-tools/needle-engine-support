@@ -160,7 +160,8 @@ MCP &amp; AI editing is part of [Pro](#free-vs-pro).
 Your edits shouldn't die with the browser tab:
 
 - **Changeset Download**: Every property change you made, as JSON (structured) or readable text — hand it to a teammate, commit it, or let your AI agent apply it to the source
-- **GLB Export**: Export objects or whole scenes as glTF/GLB
+- **GLB Export**: Export objects or whole scenes as glTF/GLB — **textures and animations included**
+- **Texture Export**: Right-click any texture slot to download that texture as a PNG
 - **Undo History**: Nothing is destructive while you iterate
 
 Taking your work home is part of [Pro](#free-vs-pro).
