@@ -456,13 +456,13 @@ That's the whole model: components on objects, a lifecycle, and a context they s
 
 **Start a real project.** These examples run from a CDN to keep them copyable, but a project gets you hot reload, TypeScript, and the editor integrations. [Getting Started](/docs/getting-started/) — pick Unity, Blender, or code.
 
-**Write components properly.** [Create Components](/docs/how-to-guides/scripting/create-components) covers `@serializable`, exposing fields to Unity and Blender, and how components are organised in a project.
+**Open components up to the editor.** [Create Components](/docs/how-to-guides/scripting/create-components) covers `@serializable`, so fields can be set per object in Unity and Blender, and where component files live in a project.
 
 **Look things up.** [Scripting Examples](/docs/reference/scripting-examples) is snippets by topic. [Component Reference](/docs/reference/components) lists every built-in component — a lot of what you might write by hand already exists.
 
-**See it at scale.** The [samples gallery](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=walkthrough_next) has 150+ finished projects to pull apart, from configurators to multiplayer games.
+**See it at scale.** The [samples gallery](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=walkthrough_next) has 150+ finished projects to pull apart, from configurators to multiplayer games. In Unity and Blender you can install them from the Samples window and open any scene directly.
 
-**Take the examples with you.** Each step is one HTML file plus one JS file, with no build step and no dependencies to install. Copy the code from any step above, or [browse all of them on GitHub](https://github.com/needle-tools/needle-engine-support/tree/main/documentation/.vuepress/public/code-samples) — save a pair next to each other, open the HTML, and it runs.
+**Keep the code from this page.** Every step here is a single HTML file that loads one JS file — no build step, nothing to install. Copy a step's code from above, or take the files from [the docs repository](https://github.com/needle-tools/needle-engine-support/tree/main/documentation/.vuepress/public/code-samples). Save the pair side by side, open the HTML, and it runs.
 
 Something missing or unclear on this page? [Open an issue](https://github.com/needle-tools/needle-engine-support/issues) or ask in [Discord](https://discord.needle.tools).
 
