@@ -99,8 +99,23 @@ export default {
     showPopup(x, y) {
       const popup = this._popup
       if (!popup) return
-      popup.style.top = `${y + window.scrollY - 50}px`
-      popup.style.left = `${x}px`
+      // Always place the popup BELOW the selection, with a gap so it never
+      // overlaps or sits too close to the selected text.
+      const gap = 16
+      let top = y + window.scrollY + gap
+      let left = x + window.scrollX
+      const range = this._savedRange
+      if (range && range.getBoundingClientRect) {
+        const rect = range.getBoundingClientRect()
+        if (rect && rect.height) {
+          // rect.bottom is the bottom edge of the whole selection (last line),
+          // so the popup is always beneath the entire selection, never above it.
+          top = rect.bottom + window.scrollY + gap
+          left = rect.left + rect.width / 2 + window.scrollX
+        }
+      }
+      popup.style.top = `${top}px`
+      popup.style.left = `${left}px`
       popup.classList.add('visible')
       if (this._input) {
         this._input.value = ''
