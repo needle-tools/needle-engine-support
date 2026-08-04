@@ -29,3 +29,8 @@ documentation/.vuepress/public/.preview
 documentation/api
 documentation/reference/changelogs
 /api
+
+# Agent skills installed via `npx skills add` — local tooling, not project content.
+# Matches .agents/skills/, .claude/skills/, .cursor/skills/ and any other agent dir.
+.*/skills/
+skills-lock.json

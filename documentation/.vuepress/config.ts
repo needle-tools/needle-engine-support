@@ -22,7 +22,8 @@ import { generateSharedCode } from './plugins/generate-shared-code/index'
 import * as dotenv from 'dotenv'
 import { googleAnalyticsPlugin } from '@vuepress/plugin-google-analytics'
 import { modifyHtmlMeta } from './plugins/html-meta/index'
-import { existsSync } from 'fs'
+import { existsSync, readdirSync, readFileSync, utimesSync } from 'fs'
+import * as nodePath from 'node:path'
 
 import { Element } from 'hast'
 import { SiteLocaleData } from 'vuepress/shared'
@@ -35,6 +36,95 @@ dotenv.config()
 
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
+
+/**
+ * Dev-only: files under `.vuepress/public/code-samples` live in Vite's publicDir,
+ * so they are outside the module graph and never trigger HMR. On top of that, pages
+ * that print them via `@[code](@code/...)` resolve that import at markdown-compile
+ * time, so editing a sample leaves the printed snippet stale too.
+ *
+ * This watcher fixes both: it touches any page referencing the changed file (so
+ * VuePress recompiles it and re-reads the import), then asks the browser to reload
+ * (so embedded iframes re-fetch the updated scene).
+ *
+ * Production builds are unaffected — everything is read fresh at build time.
+ */
+function collectMarkdownFilesReferencing(dir: string, needle: string, out: string[] = []): string[] {
+    let entries: ReturnType<typeof readdirSync>;
+    try {
+        entries = readdirSync(dir, { withFileTypes: true });
+    } catch {
+        return out;
+    }
+    for (const entry of entries) {
+        // skip dotfolders (incl. .vuepress) and dependencies
+        if (entry.name.startsWith('.') || entry.name === 'node_modules') continue;
+        const full = nodePath.join(dir, entry.name);
+        if (entry.isDirectory()) {
+            collectMarkdownFilesReferencing(full, needle, out);
+        }
+        else if (entry.name.endsWith('.md')) {
+            try {
+                if (readFileSync(full, 'utf-8').includes(needle)) out.push(full);
+            } catch { /* unreadable file — ignore */ }
+        }
+    }
+    return out;
+}
+
+const watchCodeSamplesPlugin = {
+    name: 'needle:watch-code-samples',
+    apply: 'serve' as const,
+    configureServer(server: any) {
+        const samplesDir = nodePath.resolve(__dirname, 'public', 'code-samples');
+        const docsDir = nodePath.resolve(__dirname, '..');
+
+        /*
+          Vite builds its `publicFiles` set once at startup, so a sample added
+          afterwards 404s until the server restarts. Reading from disk per
+          request avoids that. Registered directly (not via a returned
+          function) so it runs before Vite's own static middleware.
+
+          Dev only — production builds copy `public/` verbatim, which is what
+          keeps the printed code byte-identical to the code that runs.
+        */
+        server.middlewares.use((req: any, res: any, next: any) => {
+            const url: string = (req.url || '').split('?')[0];
+            const marker = '/code-samples/';
+            const at = url.indexOf(marker);
+            if (at === -1) return next();
+
+            const rel = decodeURIComponent(url.slice(at + marker.length));
+            const target = nodePath.resolve(samplesDir, rel);
+            // stay inside the samples dir
+            if (!target.startsWith(samplesDir) || !existsSync(target)) return next();
+
+            const type = target.endsWith('.html') ? 'text/html'
+                : target.endsWith('.js') ? 'text/javascript'
+                    : target.endsWith('.css') ? 'text/css'
+                        : 'application/octet-stream';
+            res.setHeader('Content-Type', `${type}; charset=utf-8`);
+            res.setHeader('Cache-Control', 'no-cache');
+            res.end(readFileSync(target));
+        });
+
+        server.watcher.add(samplesDir);
+
+        server.watcher.on('change', (file: string) => {
+            const normalized = file.split(nodePath.sep).join('/');
+            if (!normalized.includes('/code-samples/')) return;
+
+            // 1. Recompile pages that print this file, so the snippet is current.
+            const stamp = new Date();
+            for (const md of collectMarkdownFilesReferencing(docsDir, `@code/${nodePath.basename(file)}`)) {
+                try { utimesSync(md, stamp, stamp); } catch { /* ignore */ }
+            }
+
+            // 2. Reload the page, so embedded iframes re-fetch the scene.
+            server.ws.send({ type: 'full-reload' });
+        });
+    },
+};
 
 const _title = "Needle Engine Documentation";
 const _description = "Needle Engine is a web-based runtime for 3D apps. It runs on your machine for development, and can be deployed anywhere. It is flexible, extensible, and collaboration and XR come naturally. Needle Exporter for Unity bridges the Unity Editor and the web runtime. It helps you to export your assets, animations, lightmaps and so on to the web. It is built around the glTF standard for 3D assets.";
@@ -483,7 +573,11 @@ export default defineUserConfig({
             format: (link) => cleanHeader(link),
         },
     },
-    bundler: viteBundler(),
+    bundler: viteBundler({
+        viteOptions: {
+            plugins: [watchCodeSamplesPlugin],
+        },
+    }),
     extendsMarkdown: (md) => {
         // Custom image renderer for high-DPI images
         const defaultImageRenderer = md.renderer.rules.image || md.renderer.renderToken.bind(md.renderer);

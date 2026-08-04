@@ -13,7 +13,8 @@ Background knowledge and deeper understanding of how Needle Engine works. These 
 
 ## Core Concepts
 
-- [Vision & Philosophy](./core-concepts/vision) - Why Needle Engine exists and our design principles
+- [Why Needle Engine exists](/docs/why) - The problems it solves, who it's for, and how it relates to three.js, R3F and Unity WebGL
+- [Vision & Philosophy](./core-concepts/vision) - Where we think the 3D web is going and our design principles
 - [Project Structure](./core-concepts/project-structure) - Editor projects vs web projects
 - [Component Compiler](./core-concepts/component-compiler) - TypeScript to C# generation
 - [Exporting to glTF](./exporting-to-gltf) - How the export system works and what gets exported

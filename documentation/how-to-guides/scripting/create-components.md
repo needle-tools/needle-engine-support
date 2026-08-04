@@ -7,6 +7,8 @@ description: Learn how to write custom TypeScript and JavaScript components for 
 
 Learn how to create interactive components for Needle Engine using TypeScript or JavaScript.
 
+Prefer to see it running first? The [Scripting Walkthrough](/docs/how-to-guides/scripting/examples) builds this up one concept at a time, live.
+
 :::tip Prerequisites
 New to TypeScript? Start here:
 - [TypeScript Essentials](../../tutorials/fundamentals/typescript-essentials) - Language fundamentals

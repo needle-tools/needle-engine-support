@@ -15,6 +15,8 @@ footer: "Copyright © 2025 Needle Tools GmbH"
 
 **Build 3D web experiences that work everywhere.** From browser to VR headsets, mobile AR to iOS WebXR – create once, deploy anywhere. No app stores, no waiting, no limitations.
 
+New here? [Why Needle Engine exists](/docs/why) covers the problem it solves, who it's for, and how it compares to three.js, React Three Fiber and Unity WebGL.
+
 ## Why Needle Engine?
 
 **🚀 Deploy Instantly to the Web**

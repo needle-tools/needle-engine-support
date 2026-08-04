@@ -1,5 +1,5 @@
 # Needle Engine Documentation - Links
-# 2/24/2026, 12:42:37 AM
+# 8/4/2026, 3:30:46 PM
 # Base URL: https://engine.needle.tools/docs
 
 Needle Engine for Unity
@@ -38,17 +38,17 @@ Needle Cloud
 Needle Engine for Blender
   https://engine.needle.tools/docs/blender/
 
-ai
+AI & Needle Engine
   https://engine.needle.tools/docs/ai/
 
 getting-started.html
   https://engine.needle.tools/docs/getting-started
 
-Interactive Playground Test
-  https://engine.needle.tools/docs/playground-test
-
 Using Needle Engine directly from HTML
   https://engine.needle.tools/docs/vanilla-js
+
+Why Needle Engine exists
+  https://engine.needle.tools/docs/why
 
 ## Ai
 
@@ -63,10 +63,30 @@ Using Needle Engine directly from HTML
   Components in Blender
     https://engine.needle.tools/docs/blender/components
 
+  Environment Lighting in Blender
+    https://engine.needle.tools/docs/blender/environment
+
   Lightmapping in Blender
     https://engine.needle.tools/docs/blender/lightmapping
 
+  Upload glTF to Needle Cloud from Blender
+    https://engine.needle.tools/docs/blender/upload-to-needle-cloud
+
+## Cloud
+
+  Custom Domains
+    https://engine.needle.tools/docs/cloud/custom-domains
+
+  OpenUSD & MaterialX on Needle Cloud
+    https://engine.needle.tools/docs/cloud/openusd
+
 ## Explanation
+
+  Exporting to glTF
+    https://engine.needle.tools/docs/explanation/exporting-to-gltf
+
+  FastHDR Environment Lighting
+    https://engine.needle.tools/docs/explanation/fasthdr
 
   ## Architecture
 
@@ -94,19 +114,19 @@ Using Needle Engine directly from HTML
 
 ## Help
 
-  Needle Support
-    https://engine.needle.tools/docs/help/support
+  Upgrading Vite (4 → 8)
+    https://engine.needle.tools/docs/help/upgrading-vite
 
-  Testimonials
+  What Our Users Say
     https://engine.needle.tools/docs/help/testimonials
 
 ## How To Guides
 
-  VR & AR (WebXR)
-    https://engine.needle.tools/docs/how-to-guides/xr/
-
   Frameworks, Bundlers, HTML
     https://engine.needle.tools/docs/how-to-guides/web-integration/
+
+  VR & AR (WebXR)
+    https://engine.needle.tools/docs/how-to-guides/xr/
 
   Optimization & Compression
     https://engine.needle.tools/docs/how-to-guides/optimization/
@@ -114,25 +134,31 @@ Using Needle Engine directly from HTML
   Networking & Multiplayer
     https://engine.needle.tools/docs/how-to-guides/networking/
 
-  Exporting Assets to glTF
-    https://engine.needle.tools/docs/how-to-guides/export/
-
-  Everywhere Actions — Interactive experiences on Desktop, Android & iOS (even AR)
-    https://engine.needle.tools/docs/how-to-guides/everywhere-actions/
-
   Deployment Platforms
     https://engine.needle.tools/docs/how-to-guides/deployment/
+
+  Everywhere Actions — Interactive USDZ & QuickLook Experiences for iOS
+    https://engine.needle.tools/docs/how-to-guides/everywhere-actions/
 
   Debugging Parameters & Options
     https://engine.needle.tools/docs/how-to-guides/debugging/
 
+  Accessibility
+    https://engine.needle.tools/docs/how-to-guides/accessibility
+
   Local Development Help
     https://engine.needle.tools/docs/how-to-guides/testing
+
+  Play Animations
+    https://engine.needle.tools/docs/how-to-guides/animation
 
   ## Components
 
     Add Contact Shadows (ContactShadows)
       https://engine.needle.tools/docs/how-to-guides/components/contact-shadows
+
+    Add Spatial UI Text
+      https://engine.needle.tools/docs/how-to-guides/components/ui-text
 
     Camera Controls (OrbitControls)
       https://engine.needle.tools/docs/how-to-guides/components/orbit-controls
@@ -173,8 +199,14 @@ Using Needle Engine directly from HTML
     Integrating with Adobe Experience Manager (AEM)
       https://engine.needle.tools/docs/how-to-guides/integrations/adobe-experience-manager
 
+    Integrating with Adobe Portfolio
+      https://engine.needle.tools/docs/how-to-guides/integrations/adobe-portfolio
+
     Integrating with Framer
       https://engine.needle.tools/docs/how-to-guides/integrations/framer
+
+    Integrating with Webflow
+      https://engine.needle.tools/docs/how-to-guides/integrations/webflow
 
     Integrating with Wordpress
       https://engine.needle.tools/docs/how-to-guides/integrations/wordpress
@@ -196,6 +228,20 @@ Using Needle Engine directly from HTML
     Sync Component State
       https://engine.needle.tools/docs/how-to-guides/networking/sync-state
 
+  ## Optimization
+
+    Mesh Compression: Draco & Meshopt
+      https://engine.needle.tools/docs/how-to-guides/optimization/compress-meshes
+
+    Production Build Settings
+      https://engine.needle.tools/docs/how-to-guides/optimization/production-build-settings
+
+    Progressive Loading & Automatic LODs
+      https://engine.needle.tools/docs/how-to-guides/optimization/progressive-loading-and-lods
+
+    Texture Compression: KTX2, ETC1S, UASTC & WebP
+      https://engine.needle.tools/docs/how-to-guides/optimization/compress-textures
+
   ## Scripting
 
     Create Components
@@ -207,8 +253,20 @@ Using Needle Engine directly from HTML
     Handle User Input
       https://engine.needle.tools/docs/how-to-guides/scripting/handle-input
 
+    Load 3D Web Assets at Runtime
+      https://engine.needle.tools/docs/how-to-guides/scripting/load-3d-web-assets-at-runtime
+
+    MaterialPropertyBlocks
+      https://engine.needle.tools/docs/how-to-guides/scripting/material-property-blocks
+
     Perform Raycasting
       https://engine.needle.tools/docs/how-to-guides/scripting/perform-raycasting
+
+    Scripting Image Tracking
+      https://engine.needle.tools/docs/how-to-guides/scripting/image-tracking
+
+    Scripting Walkthrough
+      https://engine.needle.tools/docs/how-to-guides/scripting/examples
 
     Use Coroutines
       https://engine.needle.tools/docs/how-to-guides/scripting/use-coroutines
@@ -224,10 +282,25 @@ Using Needle Engine directly from HTML
     Create Responsive 3D Layouts
       https://engine.needle.tools/docs/how-to-guides/web-integration/responsive-design
 
+    Progressive Web Apps (PWA)
+      https://engine.needle.tools/docs/how-to-guides/web-integration/pwa
+
+    Using Needle Engine with React
+      https://engine.needle.tools/docs/how-to-guides/web-integration/react
+
+    Using Needle Engine with Svelte and SvelteKit
+      https://engine.needle.tools/docs/how-to-guides/web-integration/sveltekit
+
+    Using Needle Engine with Vue and Nuxt
+      https://engine.needle.tools/docs/how-to-guides/web-integration/vue
+
   ## Xr
 
     iOS WebXR Support for Needle Engine
       https://engine.needle.tools/docs/how-to-guides/xr/ios-webxr-app-clip
+
+    VR Performance Optimization
+      https://engine.needle.tools/docs/how-to-guides/xr/vr-performance
 
     WebXR Image Tracking with Needle Engine
       https://engine.needle.tools/docs/how-to-guides/xr/image-tracking
@@ -249,11 +322,17 @@ Using Needle Engine directly from HTML
   needle.config.json
     https://engine.needle.tools/docs/reference/needle-config-json
 
+  Project Templates & Samples
+    https://engine.needle.tools/docs/reference/templates
+
   Questions and Answers (FAQ) 💡
     https://engine.needle.tools/docs/reference/faq
 
   Scripting Examples
     https://engine.needle.tools/docs/reference/scripting-examples
+
+  Vite Plugin Configuration
+    https://engine.needle.tools/docs/reference/needle-vite-plugin
 
   ## Api
 
@@ -275,15 +354,41 @@ Using Needle Engine directly from HTML
     XR Event Methods
       https://engine.needle.tools/docs/reference/api/xr-events
 
+  ## Changelogs
+
+    Component Compiler Changelog
+      https://engine.needle.tools/docs/reference/changelogs/component-compiler
+
+    gltf-progressive Changelog
+      https://engine.needle.tools/docs/reference/changelogs/gltf-progressive
+
+    Needle Engine Changelog
+      https://engine.needle.tools/docs/reference/changelogs/needle-engine
+
+    Needle MaterialX Changelog
+      https://engine.needle.tools/docs/reference/changelogs/materialx
+
+    Needle USD Changelog
+      https://engine.needle.tools/docs/reference/changelogs/usd
+
+    three-animation-pointer Changelog
+      https://engine.needle.tools/docs/reference/changelogs/three-animation-pointer
+
+    UnityGLTF Changelog
+      https://engine.needle.tools/docs/reference/changelogs/unitygltf
+
 ## Three
 
-  Needle Inspector — DevTools for three.js
+  Needle Inspector — three.js Debugger & Chrome DevTools Extension
     https://engine.needle.tools/docs/three/needle-devtools-for-threejs-chrome-extension
 
 ## Tutorials
 
   Needle Engine for 8th Wall Users
     https://engine.needle.tools/docs/tutorials/for-8thwall-users
+
+  Needle Engine for Adobe Aero Users
+    https://engine.needle.tools/docs/tutorials/for-adobe-aero-users
 
   ## Fundamentals
 
@@ -298,6 +403,9 @@ Using Needle Engine directly from HTML
 
     TypeScript Essentials
       https://engine.needle.tools/docs/tutorials/fundamentals/typescript-essentials
+
+    Web Essentials for 3D Developers
+      https://engine.needle.tools/docs/tutorials/fundamentals/web-essentials
 
     Working with Unity Integration
       https://engine.needle.tools/docs/tutorials/fundamentals/unity-integration

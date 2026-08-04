@@ -9,6 +9,8 @@ next: ../project-structure.md
 
 **Build fully interactive 3D websites using your favorite tools.** Needle Engine works with professional 3D editors and modern web frameworks, giving you the power to create rich web experiences that deploy anywhere.
 
+Still deciding? [Why Needle Engine exists](/docs/why) — the problem it solves, who it's for, and who it isn't for.
+
 <discountbanner />
 
 ## What You'll Get

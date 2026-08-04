@@ -27,8 +27,7 @@
     "vue-github-button": "^3.1.0"
   },
   "devDependencies": {
-    "@needle-tools/engine": "^4.17.0-next.6fec029",
-    "@needle-tools/gltf-progressive": "^1.2.14",
+    "@needle-tools/engine": "6.0.0-alpha.2",
     "@needle-tools/helper": "^0.11.0",
     "@shikijs/twoslash": "^1.17.7",
     "@tweenjs/tween.js": "^25.0.0",
@@ -53,7 +52,7 @@
     "mermaid": "^11.9.0",
     "node-fetch": "^3.3.1",
     "sass-embedded": "^1.78.0",
-    "three": "npm:@needle-tools/three@^0.162.10",
+    "three": "npm:@needle-tools/three@0.185.2-alpha.1",
     "typedoc": "0.27.7",
     "typedoc-plugin-coverage": "3.4.1",
     "typedoc-plugin-extras": "4.0.0",

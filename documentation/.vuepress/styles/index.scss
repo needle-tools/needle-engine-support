@@ -193,6 +193,50 @@ a code {
 }
 */
 
+/*
+  Inline code.
+
+  Overrides the theme's `:not(pre) > code` (same selector, later in the cascade,
+  so `.hint-container :not(pre) > code` still wins inside tip/warning blocks).
+
+  Docs prose regularly carries three or four identifiers in one sentence. At the
+  theme's fill weight each one reads as a chip and the paragraph turns into a row
+  of buttons. Halving the tint and moving to em-based padding keeps code marked
+  as code while letting the sentence read as a sentence — and deriving the tint
+  from the surrounding text colour means it follows light/dark for free.
+*/
+:not(pre) > code {
+  /*
+    The page sits on a tinted background (`--vp-c-bg`), so a faint wash of
+    currentColor disappears into it. The fill carries the shape and an inset
+    hairline gives the edge definition — inset rather than `border` so the
+    chip's box doesn't grow and shift the surrounding text.
+  */
+  background: color-mix(in srgb, currentColor 10%, transparent);
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 14%, transparent);
+  border-radius: 0.3em;
+  /*
+    Tight horizontal padding on purpose. Anything wider pushes trailing
+    punctuation away from the word, so a sentence reads "extending Behaviour ."
+    with the full stop visibly adrift.
+  */
+  padding: 0.12em 0.26em;
+  /* Monospace faces are optically larger than the body face at equal size. */
+  font-size: 0.875em;
+  /* Stop `->` or `!=` in prose being drawn as a single glyph. */
+  font-variant-ligatures: none;
+  /* Keep a long identifier from widening the whole column. */
+  overflow-wrap: break-word;
+}
+
+/*
+  Two adjacent chips (`a`, `b`) otherwise merge into one block of tint with a
+  comma floating inside it. A hair of separation keeps them countable.
+*/
+:not(pre) > code + code {
+  margin-left: 0.15em;
+}
+
 ::selection {
   color: var(--c-selection-color, #000000);
   background: var(--c-selection-bg, #ccff6ca8);
@@ -565,15 +609,31 @@ kbd {
 
 div[class*=language-] {
   border: 1px solid color-mix(in srgb, var(--vp-c-border) 50%, transparent);
-  box-shadow: 0 2px 5px color-mix(in srgb, var(--vp-c-border) 20%, transparent);
-  transition: all .2s ease-in-out !important;
+  /* Layered shadows read as depth; a single hard offset reads as a drawn box. */
+  box-shadow:
+    0 1px 2px color-mix(in srgb, var(--vp-c-border) 18%, transparent),
+    0 2px 6px color-mix(in srgb, var(--vp-c-border) 14%, transparent);
+  /* Only the property that actually changes — `all` forces the browser to
+     watch every animatable property on every code block on the page. */
+  transition: box-shadow .2s ease-in-out;
+
   &:hover {
-    box-shadow: 0 5px 10px color-mix(in srgb, var(--vp-c-border) 50%, transparent);
+    box-shadow:
+      0 2px 4px color-mix(in srgb, var(--vp-c-border) 25%, transparent),
+      0 6px 16px color-mix(in srgb, var(--vp-c-border) 30%, transparent);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  div[class*=language-] {
+    transition: none;
   }
 }
 
 div[class*=language-] > pre {
-  scrollbar-color: var(--vp-c-accent-bg) transparent;
+  /* Muted rather than the full accent green — a scrollbar under a code block
+     should be findable, not read as a highlight bar across the snippet. */
+  scrollbar-color: color-mix(in srgb, var(--vp-c-accent-bg) 40%, transparent) transparent;
   scrollbar-width: thin;
 }
 
