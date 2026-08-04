@@ -30,6 +30,13 @@
             <a :href="`#${header.slug}`" class="page-nav-link" @click.prevent="scrollToHeader(header.slug)">
               {{ header.title }}
             </a>
+            <ul v-if="activeHeader === header.slug && header.childLinks.length" class="page-nav-child-list">
+              <li v-for="child in header.childLinks" :key="child.link" class="page-nav-child-item">
+                <a :href="child.link" class="page-nav-child-link" @click.prevent="navigateToChildLink(child.link)">
+                  {{ child.text }}
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -89,6 +96,14 @@
             <a :href="`#${header.slug}`" class="page-nav-link" @click="scrollToHeaderMobile(header.slug)">
               {{ header.title }}
             </a>
+            <ul v-if="activeHeader === header.slug && header.childLinks.length" class="page-nav-child-list">
+              <li v-for="child in header.childLinks" :key="'mobile-' + child.link" class="page-nav-child-item">
+                <a :href="child.link" class="page-nav-child-link"
+                  @click.prevent="navigateToChildLink(child.link, true)">
+                  {{ child.text }}
+                </a>
+              </li>
+            </ul>
           </li>
         </ul>
       </div>
@@ -113,6 +128,10 @@
 
 <script>
 const DEFAULT_LINK_TEXT = 'Copy Markdown'
+// Once a heading has moved this far above its CSS scroll-margin position,
+// consider its section finished and activate the next heading in the document.
+const ACTIVE_HEADER_EXIT_DISTANCE = 80
+const EXPLICIT_HEADER_SCROLL_GRACE = 600
 
 export default {
   name: 'PageNav',
@@ -129,6 +148,10 @@ export default {
       prevHeaders: [],
       nextHeaders: [],
       updateHeadersTimeout: null,
+      explicitHeaderSlug: '',
+      explicitHeaderCanResetOnScroll: false,
+      explicitHeaderResetTimer: null,
+      windowScrollHandler: null,
       mobileSidebarOpen: false,
       pageUrl: '',
       mdPageUrl: ''
@@ -193,8 +216,12 @@ export default {
     // Listen for scroll events to update active header and next sections
     // Throttle to 200ms to prevent flickering
     let didScroll = false;
-    window.addEventListener('scroll', () => {
-      this.updateActiveHeader()
+    this.windowScrollHandler = () => {
+      if (this.explicitHeaderSlug && this.explicitHeaderCanResetOnScroll) {
+        this.releaseExplicitHeader()
+      } else {
+        this.updateActiveHeader()
+      }
 
       // Throttle updateContextHeaders to 100ms
       if (didScroll) return;
@@ -204,10 +231,20 @@ export default {
         didScroll = false;
         this.updateContextHeaders();
       }
-    })
+    }
+    window.addEventListener('scroll', this.windowScrollHandler)
+    // A clicked sidebar heading temporarily owns the selection while its
+    // smooth scroll runs. Release it on the next real user interaction.
+    window.addEventListener('wheel', this.releaseExplicitHeader, { passive: true })
+    window.addEventListener('touchmove', this.releaseExplicitHeader, { passive: true })
+    window.addEventListener('pointerdown', this.releaseExplicitHeader, { passive: true })
+    window.addEventListener('keydown', this.releaseExplicitHeaderOnKeydown)
 
     // Update headers when route changes
     this.$router?.afterEach(() => {
+      this.explicitHeaderSlug = ''
+      this.explicitHeaderCanResetOnScroll = false
+      clearTimeout(this.explicitHeaderResetTimer)
       // Use multiple nextTicks and a timeout to ensure content is fully rendered
       this.$nextTick(() => {
         this.extractHeaders()
@@ -235,7 +272,12 @@ export default {
   },
 
   beforeUnmount() {
-    window.removeEventListener('scroll', this.updateActiveHeader)
+    window.removeEventListener('scroll', this.windowScrollHandler)
+    window.removeEventListener('wheel', this.releaseExplicitHeader)
+    window.removeEventListener('touchmove', this.releaseExplicitHeader)
+    window.removeEventListener('pointerdown', this.releaseExplicitHeader)
+    window.removeEventListener('keydown', this.releaseExplicitHeaderOnKeydown)
+    clearTimeout(this.explicitHeaderResetTimer)
     if (this.observer) {
       this.observer.disconnect()
     }
@@ -299,7 +341,7 @@ export default {
     },
 
     extractHeaders() {
-      // Get all h1, h2 and h3 headers from the page content
+      // Get all h1, h2 and h3 headers from the page content.
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
@@ -320,7 +362,8 @@ export default {
           return {
             level: parseInt(el.tagName.substring(1)),
             title: title,
-            slug: slug
+            slug: slug,
+            childLinks: this.extractChildLinks(el)
           }
         })
         .filter(h => h.slug) // Only include headers with IDs
@@ -333,42 +376,123 @@ export default {
         .replace(/\s+/g, '-')
     },
 
-    updateActiveHeader() {
-      const scrollPosition = window.scrollY + 100 // Offset for fixed header
+    extractChildLinks(heading) {
+      const links = []
+      const seenLinks = new Set()
+      let sibling = heading.nextElementSibling
+      const addLink = (text, href) => {
+        text = text?.replace(/\s+/g, ' ').trim()
+        if (!href || !text || seenLinks.has(href)) return
 
+        seenLinks.add(href)
+        links.push({ text, link: href })
+      }
+
+      // Links in lists directly inside this section are its next navigation
+      // level. Custom tool tiles are supported as well because their visual
+      // card layout is rendered with divs instead of a semantic list.
+      // Stop at the next heading so links from another section are not pulled
+      // into the currently expanded branch.
+      while (sibling && !/^H[1-4]$/.test(sibling.tagName)) {
+        if (sibling.matches('ul, ol')) {
+          Array.from(sibling.children).forEach(item => {
+            if (item.tagName !== 'LI') return
+            const link = item.querySelector(':scope > a, :scope > * > a, a')
+            addLink(link?.textContent, link?.getAttribute('href'))
+          })
+        }
+
+        const tiles = sibling.matches('.tile')
+          ? [sibling]
+          : Array.from(sibling.querySelectorAll('.tile'))
+        tiles.forEach(tile => {
+          const titleElement = tile.querySelector('h3')
+          const title = titleElement?.innerText || titleElement?.textContent
+          const tileLinks = Array.from(tile.querySelectorAll('a[href]'))
+          // Prefer the documentation destination over download/marketing URLs.
+          const link = tileLinks.find(anchor => {
+            const href = anchor.getAttribute('href') || ''
+            return href.startsWith('/docs/') || href.startsWith('./') || href.startsWith('../')
+          }) || tileLinks[0]
+          addLink(title, link?.getAttribute('href'))
+        })
+
+        sibling = sibling.nextElementSibling
+      }
+
+      return links
+    },
+
+    updateActiveHeader() {
       // Find the current active header based on scroll position
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
-      const headerElements = article.querySelectorAll('h1, h2, h3')
-      let currentHeader = ''
-      let activeHeaderElement = null
+      const headerElements = Array.from(article.querySelectorAll('h1, h2, h3'))
+      if (headerElements.length === 0) return
 
       // Remove 'active-header' class from all headers first
       headerElements.forEach(el => el.classList.remove('active-header'))
 
-      for (const el of headerElements) {
-        if (el.offsetTop <= scrollPosition + window.innerHeight * .3) {
-          currentHeader = el.id
-          activeHeaderElement = el
-        } else {
-          break
-        }
-      }
+      // Use the same anchor offset as CSS (`scroll-margin-top: 60px`), with a
+      // small look-behind area. As soon as the previous heading leaves that
+      // area, the first upcoming heading becomes active. This also works near
+      // the end of short pages where the next heading cannot scroll to the top.
+      const scrollMarginTop = parseFloat(getComputedStyle(headerElements[0]).scrollMarginTop) || 60
+      const activeBoundary = scrollMarginTop - ACTIVE_HEADER_EXIT_DISTANCE
+      const explicitHeaderElement = this.explicitHeaderSlug
+        ? headerElements.find(el => el.id === this.explicitHeaderSlug)
+        : null
+      const activeHeaderElement = explicitHeaderElement || headerElements.find(el =>
+        el.getBoundingClientRect().top >= activeBoundary
+      ) || headerElements[headerElements.length - 1]
 
       // Add 'active-header' class to the current header element
       if (activeHeaderElement) {
         activeHeaderElement.classList.add('active-header')
       }
 
-      this.activeHeader = currentHeader
+      this.activeHeader = activeHeaderElement?.id || ''
     },
 
     scrollToHeader(slug) {
+      // Give an explicit click precedence over position-based highlighting.
+      // Programmatic smooth-scroll events keep this selection; the next user
+      // scroll/pointer interaction releases it.
+      this.explicitHeaderSlug = slug
+      this.explicitHeaderCanResetOnScroll = false
+      clearTimeout(this.explicitHeaderResetTimer)
+      this.explicitHeaderResetTimer = setTimeout(() => {
+        this.explicitHeaderCanResetOnScroll = true
+      }, EXPLICIT_HEADER_SCROLL_GRACE)
+      this.activeHeader = slug
+      this.updateActiveHeader()
+
       const success = this.tryScrollToHeader(slug)
       if (!success) {
+        this.explicitHeaderSlug = ''
+        this.explicitHeaderCanResetOnScroll = false
+        clearTimeout(this.explicitHeaderResetTimer)
+        this.updateActiveHeader()
         console.warn(`PageNav: Could not find element with id "${slug}"`)
       }
+    },
+
+    releaseExplicitHeader(event) {
+      // Do not change the sidebar layout between pointer-down and click; a
+      // collapsing branch could otherwise move the intended link away before
+      // its click handler runs.
+      if (event?.type === 'pointerdown' && event.target?.closest?.('.page-nav-container')) return
+      if (!this.explicitHeaderSlug) return
+      this.explicitHeaderSlug = ''
+      this.explicitHeaderCanResetOnScroll = false
+      clearTimeout(this.explicitHeaderResetTimer)
+      this.updateActiveHeader()
+    },
+
+    releaseExplicitHeaderOnKeydown(event) {
+      const scrollKeys = ['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End', ' ']
+      if (scrollKeys.includes(event.key)) this.releaseExplicitHeader()
     },
 
     handleParentLinkClick() {
@@ -430,6 +554,18 @@ export default {
           window.location.href = link
         }
       }
+    },
+
+    navigateToChildLink(link, closeMobile = false) {
+      if (closeMobile) this.closeMobileSidebar()
+
+      const target = new URL(link, window.location.origin)
+      if (target.origin !== window.location.origin) {
+        window.location.href = target.href
+        return
+      }
+
+      this.navigateToPage(target.pathname + target.search + target.hash)
     },
 
     buildBreadcrumbs() {
@@ -917,6 +1053,36 @@ html[data-theme='dark'] .llm-link:hover {
 .page-nav-item.level-3 {
   margin-left: 1rem;
   font-size: 0.85rem;
+}
+
+.page-nav-child-list {
+  list-style: none;
+  margin: 0.1rem 0 0.35rem 0.75rem;
+  padding: 0 0 0 0.6rem;
+  border-left: 1px solid color-mix(in srgb, var(--c-text-accent, #826aed) 45%, transparent);
+}
+
+.page-nav-child-item {
+  margin: 0;
+  line-height: 1.35;
+}
+
+.page-nav-child-link {
+  display: block;
+  padding: 0.2rem 0;
+  color: var(--c-text, inherit);
+  font-size: 0.8rem;
+  font-weight: 400;
+  opacity: 0.85;
+  overflow: hidden;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.page-nav-child-link:hover {
+  color: var(--c-text-accent, #826aed);
+  opacity: 1;
 }
 
 .page-nav-link {
