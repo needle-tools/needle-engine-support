@@ -134,7 +134,7 @@ async function main() {
         await produceDocs(packageDir, outputDirectoryFull, baseUrl);
         console.log("API documentation generated at " + outputDirectoryFull);
 
-        if (prevVersion)
+        if (!isDev && prevVersion)
             await createApiDiff(outputDirectoryFull, remotePath, baseUrl, version, prevVersion);
 
         // create version file
@@ -258,10 +258,16 @@ async function produceDocs(packageDir, outputDirectory, hostedBaseUrl) {
             packageDir + "/src/engine-components/api.ts",
             packageDir + "/src/engine-components-experimental/api.ts",
             packageDir + "/src/engine-schemes/api.ts",
+            packageDir + "/src/engine/engine_playable_ad.ts",
+            packageDir + "/src/engine/platforms/wechat-platform.ts",
+            packageDir + "/src/engine/platforms/wechat-platform-context.ts",
             // Vite and Next.js plugin entry points
             packageDir + "/plugins/types/index.d.ts",
-            packageDir + "/plugins/types/vite.d.ts",
-            packageDir + "/plugins/types/next.d.ts",
+            packageDir + "/plugins/vite/index.d.ts",
+            packageDir + "/plugins/vite/single-html.d.ts",
+            packageDir + "/plugins/vite/playable-ads.d.ts",
+            packageDir + "/plugins/vite/wechat-mini-game.d.ts",
+            packageDir + "/plugins/next/next.d.ts",
         ],
         tsconfig: "./tools/api-plugins/tsconfig.json",
         // don't include references multiple times
