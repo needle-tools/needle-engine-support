@@ -438,7 +438,7 @@ The same page runs on a phone, a desktop and a headset. You can check which one 
 
 </walkthrough-step>
 
-`DeviceUtilities` answers questions about the device: `isMobileDevice()`, `isDesktop()`, and more specific ones like `isIPad()`, `isAndroidDevice()`, `isiOS()` and `isVisionOS()`. Here it picks the sphere's segment count, since a phone has less to spend on geometry than a desktop. The label shows which branch ran.
+`DeviceUtilities` answers questions about the device: `isMobileDevice()`, `isDesktop()`, and more specific ones like `isIPad()`, `isAndroidDevice()`, `isiOS()` and `isVisionOS()`. Here it decides what gets built at all — a CRT monitor on a desktop, a candybar phone on a mobile. Open this page on your phone to see the other one. The label tells you which branch ran.
 
 Check once at startup when the result decides how something is built, as it does here. Checking every frame costs more and the answer doesn't change.
 

@@ -333,10 +333,28 @@ html[data-theme="light"] .walkthrough-stage {
     max-height: none;
   }
 
-  /* Stacked, the stage has no code column to match — give it its own ratio. */
+  /*
+    Stacked, the stage has no code column to match, so it sets its own size.
+    Taller than a landscape ratio on purpose: the scene shares this space
+    with engine UI — XR buttons, warnings, the menu — and a 16/10 letterbox
+    leaves almost nothing for the scene itself on a phone.
+  */
+  .walkthrough-pane {
+    max-height: none;
+  }
+
   .walkthrough-stage {
     height: auto;
-    aspect-ratio: 16 / 10;
+    aspect-ratio: 4 / 3;
+    min-height: 24rem;
+  }
+}
+
+/* Narrow phones: go taller still, since the width has nowhere left to give. */
+@media (max-width: 560px) {
+  .walkthrough-stage {
+    aspect-ratio: 3 / 4;
+    min-height: 26rem;
   }
 }
 </style>
