@@ -26,7 +26,7 @@ Available attributes to change the Needle Engine loading and custom branding
 | --- | --- |
 | `loading-blur` | Optional: Blur the scene until LODs are loaded (if any). Default: disabled |
 | `poster` | Optional: Set the `poster` attribute to show a placeholder image while loading. Example: `<needle-engine poster="https://yourdomain.com/poster.png">`. By just using the attribute without a url the poster in `include/poster.webp` will be used if it exists (e.g. `<needle-engine poster>`) |
-| `loading-background` | Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
+| `loading-background` | Change the loading background color (e.g. `#dd5500` or `transparent`). By default the loader shows a theme-dependent semi-transparent scrim with a backdrop blur so the progress bar stays readable over the scene; when a `poster` is set the default is `transparent`. See the CSS variables below for a fully transparent loader |
 | `hide-loading-overlay` | Do not show the loading overlay |
 | `logo-src` | **PRO** — Change the logo image (e.g. `https://yourdomain.com/logo.png` or `/logo.png`). This logo will then be used in the QR code and XR session loading |
 | `qrcode-logo-src` | **PRO** – Change the logo image for the QR code (e.g. `https://yourdomain.com/logo.png` or `/logo.png`). If not provided the `logo-src` attribute will be used.
@@ -92,6 +92,15 @@ Needle Engine 6 renders an animated progress bar (with an optional logo) that ca
 | `--needle-loading-background` | scrim color behind the loader | per theme |
 | `--needle-loading-blur` | backdrop blur behind the loader | `6px` |
 | `--needle-loading-color` | text color | per theme |
+
+For example, to remove the scrim entirely so the page shows through while loading:
+
+```css
+needle-engine {
+    --needle-loading-background: transparent;
+    --needle-loading-blur: 0px;
+}
+```
 
 The `poster` image can be styled via CSS variables, or fully via `needle-engine::part(poster)`:
 
