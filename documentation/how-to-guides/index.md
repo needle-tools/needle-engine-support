@@ -75,6 +75,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 ## Deployment
 
 - [Deployment Platforms](/docs/how-to-guides/deployment/) - Netlify, Vercel, GitHub Pages, etc.
+- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) - AppLovin, Unity Ads, TikTok, Google Ads, WeChat/Weixin, Meta, and Mintegral platform guides
 - [Needle Cloud](/docs/cloud/) - Official Needle hosting
 
 ---

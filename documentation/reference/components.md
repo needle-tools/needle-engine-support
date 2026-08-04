@@ -177,7 +177,7 @@ Spatial UI components map from Unity UI (Canvas, not UI Toolkit). UI can be anim
 
 | Component | Description |
 | --- | --- |
-| [`Canvas`](https://engine.needle.tools/docs/api/Canvas) | Unity UI system (World Space mode required) |
+| [`Canvas`](https://engine.needle.tools/docs/api/Canvas) | Screen-space or world-space UI root |
 | [`Text`](https://engine.needle.tools/docs/api/Text) | Render text with custom fonts (auto-generated atlas). Use Legacy/Text, not TextMeshPro |
 | [`Button`](https://engine.needle.tools/docs/api/Button) | Click events with onClick. Works in 3D and UI. Use Legacy/Text for labels |
 | [`Image`](https://engine.needle.tools/docs/api/Image) | Renders sprite images |

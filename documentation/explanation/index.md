@@ -17,6 +17,7 @@ Background knowledge and deeper understanding of how Needle Engine works. These 
 - [Project Structure](./core-concepts/project-structure) - Editor projects vs web projects
 - [Component Compiler](./core-concepts/component-compiler) - TypeScript to C# generation
 - [Exporting to glTF](./exporting-to-gltf) - How the export system works and what gets exported
+- [How Playable Ads Work](/docs/explanation/playable-ads) - Ad networks, mediation, MRAID, platform SDKs, measurement, A/B testing, and packaging policies
 
 ---
 
