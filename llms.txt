@@ -1,12 +1,12 @@
 # Needle Engine Documentation - Links
-# 8/4/2026, 6:02:00 PM
+# 8/4/2026, 9:26:16 PM
 # Base URL: https://engine.needle.tools/docs
-
-Needle Engine for Unity
-  https://engine.needle.tools/docs/unity/
 
 Tutorials
   https://engine.needle.tools/docs/tutorials/
+
+Needle Engine for Unity
+  https://engine.needle.tools/docs/unity/
 
 Using Needle Engine with three.js
   https://engine.needle.tools/docs/three/
@@ -88,6 +88,9 @@ Why Needle Engine exists
   FastHDR Environment Lighting
     https://engine.needle.tools/docs/explanation/fasthdr
 
+  How Playable Ads Work
+    https://engine.needle.tools/docs/explanation/playable-ads
+
   ## Architecture
 
     Technical Overview
@@ -122,23 +125,23 @@ Why Needle Engine exists
 
 ## How To Guides
 
-  VR & AR (WebXR)
-    https://engine.needle.tools/docs/how-to-guides/xr/
-
   Frameworks, Bundlers, HTML
     https://engine.needle.tools/docs/how-to-guides/web-integration/
 
-  Optimization & Compression
-    https://engine.needle.tools/docs/how-to-guides/optimization/
+  VR & AR (WebXR)
+    https://engine.needle.tools/docs/how-to-guides/xr/
 
   Networking & Multiplayer
     https://engine.needle.tools/docs/how-to-guides/networking/
 
-  Deployment Platforms
-    https://engine.needle.tools/docs/how-to-guides/deployment/
+  Optimization & Compression
+    https://engine.needle.tools/docs/how-to-guides/optimization/
 
   Everywhere Actions — Interactive USDZ & QuickLook Experiences for iOS
     https://engine.needle.tools/docs/how-to-guides/everywhere-actions/
+
+  Deployment Platforms
+    https://engine.needle.tools/docs/how-to-guides/deployment/
 
   Debugging Parameters & Options
     https://engine.needle.tools/docs/how-to-guides/debugging/
@@ -186,8 +189,37 @@ Why Needle Engine exists
 
   ## Deployment
 
+    Build Playable Ads
+      https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads
+
     Embedding Needle Engine
       https://engine.needle.tools/docs/how-to-guides/deployment/embedding
+
+    ## Playable Ads
+
+      Build and Test a WeChat/Weixin Mini Game
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/wechat-mini-games
+
+      Build and Upload a Google Ads Playable
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/google-ads
+
+      Build and Upload a Meta Playable Ad
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/meta
+
+      Build and Upload a Mintegral Playable Ad
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/mintegral
+
+      Build and Upload a TikTok Playable Ad
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/tiktok
+
+      Build and Upload a Unity Ads Playable
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/unity-ads
+
+      Build and Upload an AppLovin Playable Ad
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/applovin
+
+      Test Playable Ads
+        https://engine.needle.tools/docs/how-to-guides/deployment/playable-ads/testing
 
   ## Export
 
@@ -321,6 +353,9 @@ Why Needle Engine exists
 
   needle.config.json
     https://engine.needle.tools/docs/reference/needle-config-json
+
+  Playable Ad Build Profiles
+    https://engine.needle.tools/docs/reference/playable-ads
 
   Project Templates & Samples
     https://engine.needle.tools/docs/reference/templates

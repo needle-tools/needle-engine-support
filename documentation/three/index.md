@@ -36,6 +36,8 @@ No installation, no setup. Just click and start experimenting with three.js + Ne
 - 🚀 **Optimized build pipeline** with automatic 3D asset compression and optimization
 - 💨 **Faster development** with less boilerplate and better tooling
 
+[Why Needle Engine exists](/docs/why) goes into this properly — the problem it solves, who it suits, and where plain three.js or React Three Fiber is the better answer.
+
 **Full Flexibility:**
 Whether you're building a simple scene with pure three.js or a complex application with Needle's components, you have complete freedom. The component system is an enhancement, not a replacement – use what makes sense for your project.
 
@@ -88,187 +90,15 @@ The easiest way to get started is using the `<needle-engine>` web component. Dis
 
 ## Scripting with three.js and Needle Engine
 
-Think of the `<needle-engine>` web component as a three.js canvas with superpowers. Use lifecycle hooks to access the scene and add your own three.js objects, modify materials, or attach built-in components.
+Think of the `<needle-engine>` web component as a three.js canvas with superpowers. You can reach the scene through lifecycle hooks and add your own three.js objects, or attach components to them.
 
-### Adding Objects with onStart
+The [Scripting Walkthrough](/docs/how-to-guides/scripting/examples) covers all of it in short steps, each one running live next to the code that produces it:
 
-```html
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Needle Engine + three.js</title>
+- writing a component and attaching it to an object
+- the lifecycle: `awake`, `onEnable`, `start`, `update`, `onDestroy`
+- pointer input, physics, networking, AR and VR, audio, and gizmos
 
-  <script type="importmap">
-  {
-    "imports": {
-      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/three.min.js",
-      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
-    }
-  }
-  </script>
-
-  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
-
-  <style>
-    body { margin: 0; background: #444; }
-    needle-engine { position: absolute; width: 100%; height: 100%; }
-  </style>
-</head>
-<body>
-
-  <needle-engine src="https://cloud.needle.tools/-/assets/ZUBcksZ26mT8H-latest/file" camera-controls="1" background-color="transparent" environment-image="studio" contact-shadows></needle-engine>
-
-  <script type="module">
-    import { onStart, onUpdate, DragControls } from '@needle-tools/engine';
-    import * as THREE from 'three';
-
-    let cube;
-
-    onStart(context => {
-      // Add objects using vanilla three.js
-      const geometry = new THREE.BoxGeometry(1, 1, 1);
-      const material = new THREE.MeshPhysicalMaterial({ color: 'orange', roughness: 0.4, metalness: 1 });
-      cube = new THREE.Mesh(geometry, material);
-      cube.position.set(0, 0.5, 0);
-      cube.scale.multiplyScalar(0.5);
-      context.scene.add(cube);
-      // Add components
-      cube.addComponent(DragControls);
-    });
-
-    onUpdate(context => {
-      cube.rotateX(context.time.deltaTime * .2);
-      cube.rotateY(context.time.deltaTime * .5);
-    });
-  </script>
-
-</body>
-</html>
-```
-
-<iframe src="/docs/code-samples/three-onstart.html" style="
-    width: 100%;
-    aspect-ratio: 16/9;
-    outline: none;
-    border: none;
-    "
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; xr-spatial-tracking"
-    allowfullscreen
-    ></iframe>
-
-### Animating Objects with onUpdate
-
-```typescript
-import { onStart, onUpdate } from '@needle-tools/engine';
-import * as THREE from 'three';
-
-let rotatingCube;
-
-onStart(context => {
-  // Create a rotating cube
-  const geometry = new THREE.BoxGeometry(1, 1, 1);
-  const material = new THREE.MeshStandardMaterial({ color: 0xff0000 });
-  rotatingCube = new THREE.Mesh(geometry, material);
-  context.scene.add(rotatingCube);
-});
-
-onUpdate(context => {
-  // Rotate every frame using deltaTime
-  if (rotatingCube) {
-    rotatingCube.rotation.y += context.time.deltaTime;
-  }
-});
-```
-
-### Modifying Loaded Scene Objects
-
-```typescript
-import { onStart } from '@needle-tools/engine';
-
-onStart(context => {
-  // Find and modify objects from your loaded glb
-  const myObject = context.scene.getObjectByName("MyObjectName");
-  if (myObject) {
-    myObject.position.y = 2;
-    myObject.scale.setScalar(1.5);
-  }
-
-  // Or traverse the entire scene
-  context.scene.traverse(obj => {
-    if (obj.isMesh && obj.material) {
-      // Modify all materials in the scene
-      obj.material.metalness = 0.5;
-      obj.material.roughness = 0.3;
-    }
-  });
-});
-```
-
-### Using Custom Components
-
-For reusable logic, create a component class instead of using global hooks. Components have built-in lifecycle methods and can be attached to any three.js object.
-
-```typescript
-import { Behaviour, serializable } from '@needle-tools/engine';
-import * as THREE from 'three';
-
-class Hover extends Behaviour {
-
-  @serializable()
-  amplitude: number = 0.2;
-
-  @serializable()
-  frequency: number = 1;
-
-  private startY: number = 0;
-
-  start() {
-    this.startY = this.gameObject.position.y;
-  }
-
-  update() {
-    this.gameObject.position.y = this.startY + Math.sin(this.context.time.time * this.frequency) * this.amplitude;
-  }
-}
-
-onStart(context => {
-  const cube = new THREE.Mesh(
-    new THREE.BoxGeometry(),
-    new THREE.MeshStandardMaterial({ color: 'hotpink' })
-  );
-  context.scene.add(cube);
-  cube.addComponent(Hover);
-});
-```
-
-### Available Lifecycle Hooks
-
-| Hook | When it's called |
-| --- | --- |
-| `onInitialized(callback)` | When the context is initialized (before first frame) |
-| `onStart(callback)` | At the beginning of the first frame after scene loads |
-| `onUpdate(callback)` | Every frame (perfect for animations) |
-| `onBeforeRender(callback)` | Before the scene renders |
-| `onAfterRender(callback)` | After the scene renders |
-| `onXRSessionStart(callback)` | When a WebXR session starts (AR or VR) |
-| `onXRSessionEnd(callback)` | When a WebXR session ends |
-
-**Context Object Properties:**
-
-All hooks provide the `context` object with access to:
-- `context.scene` - The three.js Scene
-- `context.camera` - The active Camera
-- `context.renderer` - The WebGLRenderer
-- `context.time` - Time data (deltaTime, frame count, etc.)
-- And much more...
-
-:::tip Learn More About Scripting
-- [Scripting Documentation](../scripting.md#hooks) - Detailed information about lifecycle hooks
-- [Scripting Examples](../scripting-examples.md) - More code samples and patterns
-- [Custom Components](../scripting.md#component-architecture) - Build reusable components
-:::
+Every example there is a single HTML file that loads the engine from a CDN, so you can copy one into a file and open it — no project, no build step.
 
 ---
 

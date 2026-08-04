@@ -450,6 +450,38 @@ It's the tidier answer for AR and VR differences, because the rule lives on the 
 
 ---
 
+## 14 · Audio
+
+<walkthrough-tags symbols="AudioSource, play, pause, getOrAddComponent" />
+
+<walkthrough-takeaway>
+
+Sound is a component you put on an object. Because it sits on the radio, it comes from the radio — orbit away and it gets quieter.
+
+</walkthrough-takeaway>
+
+<walkthrough-step src="/docs/code-samples/walkthrough-14-audio.html" title="A radio with 3D buttons for play, pause and track switching, and bars that move while it plays">
+
+@[code js](@code/walkthrough-14-audio.js)
+
+</walkthrough-step>
+
+Click the buttons on the radio itself. They're objects in the scene with a `Button` component, using the pointer methods from [step 06](#06-pointer-input) — `onPointerDown` presses one into the case, `onPointerUp` releases it, and `onPointerClick` calls the matching method on the radio. The action is passed per button as an init object, so one class covers all three.
+
+One `AudioSource` plays all three tracks, and `play()` takes a clip, so changing track is a single call. `Radio` adds the `AudioSource` itself with `getOrAddComponent`, so attaching `Radio` is all you need — and an object that already has one keeps it.
+
+`spatialBlend: 1` makes the sound positional. It comes from wherever the object is and fades as you orbit away. Set it to `0` for flat audio at constant volume, which is what you want for music or narration covering the whole scene.
+
+Nothing plays on load, and that isn't a choice. Browsers block audio until the visitor interacts with the page, so `playOnAwake` is off and the first sound waits for a button press. Design for it: a scene that expects sound to start by itself will be silent for everyone.
+
+The bars are honest fakery. `Visualiser` checks `isPlaying` and drives the heights from a sine wave, easing towards the target so they settle rather than snap. It never reads the audio — a real spectrum needs an `AnalyserNode` from the Web Audio API.
+
+The case is modelled at life size, about 30cm across, because AR places a scene at real-world scale. Build it in arbitrary units and it arrives as furniture.
+
+→ [Spatial Audio sample](https://engine.needle.tools/samples/spatial-audio) · [AudioSource API](https://engine.needle.tools/docs/api/AudioSource)
+
+---
+
 ## What's next
 
 That's the whole model: components on objects, a lifecycle, and a context they share. Everything else in Needle Engine is built the same way, so a component you meet later will look like the ones on this page.
