@@ -29,6 +29,8 @@ export default defineConfig(async ({ command }) => {
 | [`buildPipeline`](#build-pipeline) | `object` | — | Configure compression and optimization for production builds |
 | `noBuildPipeline` | `boolean` | `false` | Disable the Needle build pipeline entirely |
 | [`makeFilesLocal`](#makefileslocal) | `boolean \| "auto" \| object` | — | Bundle external CDN assets locally for self-contained deployments |
+| [`singleHtml`](/docs/reference/playable-ads) | `boolean \| object \| object[]` | — | Package the completed build into one or more self-contained HTML artifacts |
+| [`playableAd`](/docs/reference/playable-ads) | `boolean \| object` | — | Apply platform-neutral playable-ad defaults |
 | `pwa` | `object \| boolean` | — | PWA configuration. See [PWA Guide](/docs/how-to-guides/web-integration/pwa). |
 | [`useRapier`](#defines) | `boolean` | `true` | Set to `false` to tree-shake the Rapier physics engine and reduce bundle size |
 | [`noCopy`](#copy-files) | `boolean` | `false` | Disable automatic copying of files to the output directory |
@@ -246,6 +248,16 @@ When enabled, downloaded assets are placed in an `ext/` directory inside your bu
 
 ---
 
+## Playable ads
+
+Playable packaging is documented separately to keep this general Vite-plugin reference focused.
+
+- [Build and upload playable ads](/docs/how-to-guides/deployment/playable-ads)
+- [Playable profile and option reference](/docs/reference/playable-ads)
+- [Test playable artifacts](/docs/how-to-guides/deployment/playable-ads/testing)
+
+---
+
 ## Defines
 
 The plugin injects [Vite defines](https://vite.dev/config/shared-options.html#define) — compile-time constants that enable tree-shaking of optional features.
@@ -268,4 +280,6 @@ The plugin also injects build metadata (`NEEDLE_ENGINE_VERSION`, `NEEDLE_ENGINE_
 - [Progressive Web Apps (PWA)](/docs/how-to-guides/web-integration/pwa) — Offline support and installability
 - [Optimization & Compression](/docs/how-to-guides/optimization/) — Build pipeline, KTX2, Draco
 - [Deployment Platforms](/docs/how-to-guides/deployment/) — Hosting and deployment options
+- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) — Multi-profile builds and ad-network upload workflows
+- [How Playable Ads Work](/docs/explanation/playable-ads) — Mediation, MRAID, platform SDKs, measurement, experiments, and packaging constraints
 - [needle.config.json](/docs/reference/needle-config-json) — Project configuration file

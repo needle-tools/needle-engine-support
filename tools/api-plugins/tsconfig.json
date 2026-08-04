@@ -28,8 +28,9 @@
     },
     "include": [
       "../../.temp/**/src/**/*.ts",
-      "../../.temp/**/plugins/types/**/*.ts"
+      "../../.temp/**/plugins/types/**/*.ts",
+      "../../.temp/**/plugins/vite/**/*.d.ts",
+      "../../.temp/**/plugins/next/**/*.d.ts"
     ],
     "exclude": ["node_modules", "dist", "lib", "vite.config.ts", "tests"]
   }
-  

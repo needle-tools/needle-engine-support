@@ -28,6 +28,7 @@ Precise, factual information for looking things up. API documentation, component
 - [&lt;needle-engine&gt; Web Component](/docs/reference/needle-engine-attributes) - HTML attributes and options
 - [needle.config.json](/docs/reference/needle-config-json) - Project configuration options
 - [Vite Plugin Configuration](/docs/reference/needle-vite-plugin) - makeFilesLocal, PWA, build pipeline, and more
+- [Playable Ad Build Profiles](/docs/reference/playable-ads) - Platform profiles, shared options, output contracts, and host bridges
 - [TypeScript Decorators](/docs/reference/typescript-decorators) - @serializable, @syncField, and metadata
 
 ---

@@ -28,6 +28,7 @@ Pick a hosting platform that fits your needs:
 - **[GitHub Pages](#deploy-to-github-pages)** – Free static hosting, great for open source projects.
 - **[itch.io](#deploy-to-itchio)** – Perfect for games and interactive experiences.
 - **[Facebook Instant Games](#deploy-to-facebook-instant-games)** – Reach users on Facebook and Messenger.
+- **[Playable Ads](/docs/how-to-guides/deployment/playable-ads)** – Build platform-specific artifacts for AppLovin, Unity Ads, TikTok, Google Ads, Mintegral, and WeChat/Weixin, and prepare Meta campaigns.
 - **[FTP Upload](#deploy-to-ftp)** – Deploy directly to any server with FTP/SFTP support.
 - **[Build to Folder](#build-to-folder)** – Upload manually to any web server or hosting service.
 - **[Glitch](#deploy-to-glitch-)** *(Deprecated)* – Glitch has discontinued their hosting service.
@@ -39,6 +40,10 @@ Can't find what you're looking for? Let us know in our [forum](https://forum.nee
 ---
 
 ## Deployment Options
+
+### Build playable ads
+
+Use Needle's platform profiles to build one interactive project into independent AppLovin and Unity Ads single-HTML artifacts, TikTok, Google Ads, and Mintegral ZIPs, and a WeChat/Weixin Mini Game project. See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for Vite configuration, validation, and platform guides. For mediation, MRAID, host SDKs, measurement, A/B testing, and resource policies, read [How Playable Ads Work](/docs/explanation/playable-ads).
 
 ### <logo-header logo="/imgs/needle-logo.webp" alt="Needle Cloud">Deploy to Needle Cloud</logo-header>
 
