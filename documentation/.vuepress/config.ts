@@ -37,6 +37,9 @@ dotenv.config()
 const _url = "https://engine.needle.tools/docs"
 const _base = "/docs/";
 
+/** True when running `vuepress build` rather than `vuepress dev`. */
+const isBuild = process.argv.includes('build');
+
 /**
  * Dev-only: files under `.vuepress/public/code-samples` live in Vite's publicDir,
  * so they are outside the module graph and never trigger HMR. On top of that, pages
@@ -414,6 +417,15 @@ export default defineUserConfig({
     lang: 'en-US',
     title: 'docs',
     dest: "dist",
+    /*
+      Builds write to their own temp and cache directories, so running
+      `docs:build` while `docs:dev` is up no longer rewrites the dev server's
+      state underneath it. Sharing them made the running dev server serve a
+      blank page, or throw `__GA_OPTIONS__ is not defined` — the Google
+      Analytics client config is registered on build but not in dev.
+    */
+    temp: nodePath.resolve(__dirname, isBuild ? '.temp-build' : '.temp'),
+    cache: nodePath.resolve(__dirname, isBuild ? '.cache-build' : '.cache'),
     description: _description,
     pagePatterns: patterns,
     // locales: siteLocaleOptions,

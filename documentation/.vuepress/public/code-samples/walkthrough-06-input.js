@@ -17,12 +17,15 @@ class Pressable extends Behaviour {
 
   onPointerEnter() {
     this.block.setOverride('color', new THREE.Color('#f2c14e'));
-    this.context.domElement.style.cursor = 'pointer';
+    // Use the input system rather than setting style.cursor yourself: it
+    // counts how many objects asked for a cursor, so moving between two
+    // hovered objects doesn't reset it back to the default.
+    this.context.input.setCursor('pointer');
   }
 
   onPointerExit() {
     this.block.clearAllOverrides();
-    this.context.domElement.style.cursor = 'default';
+    this.context.input.unsetCursor('pointer');
   }
 
   onPointerClick() {

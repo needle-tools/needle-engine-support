@@ -1,5 +1,6 @@
 import { Behaviour, onStart } from '@needle-tools/engine';
 import * as THREE from 'three';
+import { configureDemoScene } from './walkthrough-base.js';
 
 // A component is a class extending Behaviour.
 // Override only the lifecycle methods you need.
@@ -14,8 +15,9 @@ class Rotate extends Behaviour {
 }
 
 onStart(context => {
+  const radius = 1;
   const shape = new THREE.Mesh(
-    new THREE.IcosahedronGeometry(1, 0),
+    new THREE.IcosahedronGeometry(radius, 0),
     new THREE.MeshStandardMaterial({
       color: '#7dd3a0',
       roughness: 0.35,
@@ -23,8 +25,14 @@ onStart(context => {
       flatShading: true,
     })
   );
+  // Lift it by its radius so it sits on the floor instead of through it.
+  shape.position.y = radius;
   context.scene.add(shape);
 
   // Attach it — the component wires itself into the render loop.
   shape.addComponent(Rotate);
+});
+
+configureDemoScene({ 
+  useContactShadows: true,
 });

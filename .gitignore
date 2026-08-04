@@ -34,3 +34,6 @@ documentation/reference/changelogs
 # Matches .agents/skills/, .claude/skills/, .cursor/skills/ and any other agent dir.
 .*/skills/
 skills-lock.json
+
+documentation/.vuepress/.temp-build
+documentation/.vuepress/.cache-build

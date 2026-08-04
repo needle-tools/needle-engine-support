@@ -1,5 +1,6 @@
 import { Behaviour, onStart } from '@needle-tools/engine';
 import * as THREE from 'three';
+import { configureDemoScene } from './walkthrough-base.js';
 
 // Each component does one small thing, and knows nothing about the others.
 class Rotate extends Behaviour {
@@ -11,7 +12,7 @@ class Rotate extends Behaviour {
 }
 
 class Bob extends Behaviour {
-  amplitude = 0.25;
+  amplitude = 0.5;
   frequency = 0.5;
 
   awake() {
@@ -21,17 +22,20 @@ class Bob extends Behaviour {
 
   update() {
     const t = this.context.time.time;
-    this.gameObject.position.y =
-      this.baseY + Math.sin(t * this.frequency * Math.PI * 2) * this.amplitude;
+    const wave = Math.sin(t * this.frequency * Math.PI * 2);
+    // Map the wave to 0..1 so the object only ever rises from where it
+    // started, instead of sinking below the ground on the way down.
+    this.gameObject.position.y = this.baseY + (wave + 1) * 0.5 * this.amplitude;
   }
 }
 
 class Breathe extends Behaviour {
-  amount = 0.08;
+  amount = 0.3;
+  frequency = 1.5;
 
   update() {
     const t = this.context.time.time;
-    const s = 1 + Math.sin(t * 1.5) * this.amount;
+    const s = 1 + Math.sin(t * this.frequency) * this.amount;
     this.gameObject.scale.set(s, s, s);
   }
 }
@@ -46,10 +50,17 @@ onStart(context => {
       flatShading: true,
     })
   );
+  // The shape has a radius of 1 and Breathe scales it up to 1.3, so start it
+  // 1.3 above the floor. Its lowest point then just touches y = 0.
+  shape.position.y = 1.3;
   context.scene.add(shape);
 
   // Three components, one object. Stack them in any order.
   shape.addComponent(Rotate);
   shape.addComponent(Bob);
   shape.addComponent(Breathe);
+});
+
+configureDemoScene({ 
+  useContactShadows: true,
 });

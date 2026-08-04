@@ -1,5 +1,5 @@
 # Needle Engine Documentation - Links
-# 8/4/2026, 3:30:46 PM
+# 8/4/2026, 6:02:00 PM
 # Base URL: https://engine.needle.tools/docs
 
 Needle Engine for Unity
@@ -122,11 +122,11 @@ Why Needle Engine exists
 
 ## How To Guides
 
-  Frameworks, Bundlers, HTML
-    https://engine.needle.tools/docs/how-to-guides/web-integration/
-
   VR & AR (WebXR)
     https://engine.needle.tools/docs/how-to-guides/xr/
+
+  Frameworks, Bundlers, HTML
+    https://engine.needle.tools/docs/how-to-guides/web-integration/
 
   Optimization & Compression
     https://engine.needle.tools/docs/how-to-guides/optimization/

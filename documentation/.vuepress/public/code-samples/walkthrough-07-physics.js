@@ -35,6 +35,21 @@ class FlashOnHit extends Behaviour {
   }
 }
 
+// Click a ball to punt it upwards. An impulse is an instant change in
+// velocity, so this is a kick rather than a force applied over time.
+class ClickToLaunch extends Behaviour {
+
+  strength = 1;
+
+  awake() {
+    this.body = this.gameObject.getComponent(Rigidbody);
+  }
+
+  onPointerClick() {
+    this.body.applyImpulse(new THREE.Vector3(0, this.context.time.deltaTime * this.strength, 0));
+  }
+}
+
 // Bounciness runs from 0 (stops dead) to 1 (keeps all its energy).
 // Ordered dullest to bounciest, so they read left to right in the scene.
 const kinds = [
@@ -58,7 +73,8 @@ onStart(context => {
   BoxCollider.add(floor);
   floor.addComponent(FlashOnHit);
 
-  const geometry = new THREE.SphereGeometry(0.35);
+  const radius = 0.5;
+  const geometry = new THREE.SphereGeometry(radius);
 
   // One ball per material, spaced apart so they only ever hit the floor and
   // never each other — otherwise the bounce heights aren't comparable.
@@ -75,13 +91,17 @@ onStart(context => {
     // physics material on that collider decides how it behaves on impact.
     ball.addComponent(Rigidbody);
     ball.addComponent(SphereCollider, {
-      radius: 0.35,
+      radius: radius,
       sharedMaterial: {
         bounciness: kind.bounciness,
         // Maximum: the ball's own value wins, rather than being averaged
         // with the floor's.
         bounceCombine: PhysicsMaterialCombine.Maximum,
       },
+    });
+
+    ball.addComponent(ClickToLaunch, {
+      strength: radius * 500,
     });
   });
 });

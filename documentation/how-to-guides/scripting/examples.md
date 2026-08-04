@@ -24,7 +24,7 @@ You don't need a project set up to follow along. Every example is one HTML page 
 
 <walkthrough-takeaway>
 
-Logic lives on the object it belongs to. You write a class, attach it to an object, and it runs — there's no central `animate()` function to add it to and no update list to maintain.
+You write a class, attach it to an object, and it starts running. The same class also appears in Unity and Blender. Artists can use it there to build scenes.
 
 </walkthrough-takeaway>
 
@@ -38,6 +38,10 @@ A component is a class extending `Behaviour`. Override the methods you need — 
 
 Inside a component, `this.gameObject` is the object it's attached to and `this.context` is the shared runtime. `this.context.time.deltaTime` is how many seconds passed since the last frame; multiplying by it is what keeps the shape turning at the same rate on a 60 Hz and a 144 Hz screen.
 
+::: info Coming from plain three.js?
+Normally you keep one `animate()` function that calls into every moving part, and add each new one to it by hand. Here `update` sits on the component itself. Adding behaviour to an object never means editing a shared function, and deleting the object takes its logic with it.
+:::
+
 → [Create Components](/docs/how-to-guides/scripting/create-components) · [Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks)
 
 ---
@@ -48,7 +52,7 @@ Inside a component, `this.gameObject` is the object it's attached to and `this.c
 
 <walkthrough-takeaway>
 
-Components stack. Each one handles a single behaviour and doesn't know the others exist, so you can add, remove or reorder them freely.
+An object can have any number of components. You can add or remove them at any time — including while the scene is running.
 
 </walkthrough-takeaway>
 
@@ -60,7 +64,9 @@ Components stack. Each one handles a single behaviour and doesn't know the other
 
 The shape has three components on it: one turns it, one moves it up and down, one scales it. None of them refer to each other.
 
-They coexist because each writes to a different property — `rotation.y`, `position.y`, and `scale`. Two components writing the same property is the one case where order starts to matter, and it's worth avoiding.
+They coexist here because each writes to a different property — `rotation.y`, `position.y`, and `scale`. Two components writing the same property is the one case where order starts to matter.
+
+Independent is the default, not a rule. When a component does need another, `getComponent` finds it on the same object — step 07 uses it to reach a `Rigidbody`.
 
 `Bob` reads its starting height in `awake` rather than in a field initializer, because `this.gameObject` isn't set until the component is attached to something.
 
@@ -74,7 +80,7 @@ They coexist because each writes to a different property — `rotation.y`, `posi
 
 <walkthrough-takeaway>
 
-Every component goes through the same sequence, whatever it does: set up, switch on, run each frame, switch off, clean up. Open your browser console, then use the buttons below the scene.
+Every component follows the same sequence. Set up, switch on, run each frame, switch off, clean up. Open your browser console, then use the buttons below the scene.
 
 </walkthrough-takeaway>
 
@@ -115,7 +121,7 @@ A rule that saves a lot of debugging: whatever you set up in `awake`, undo in `o
 
 <walkthrough-takeaway>
 
-A component class is a template. `addComponent` takes an object of values as its second argument, so each copy can be configured differently without writing a subclass.
+A component class is a template. `addComponent` takes a second argument with values. Each copy can be configured differently, without writing a subclass.
 
 </walkthrough-takeaway>
 
@@ -159,7 +165,7 @@ The examples on this page leave it out for one reason: decorators need a compile
 
 <walkthrough-takeaway>
 
-A component only ever moves its own object. Parent an object to another and it inherits that motion, so nesting the same component builds complex movement out of one simple class.
+A component only ever acts on its own object. Because a child inherits its parent's position and rotation, nesting objects lets one simple component build up complex results.
 
 </walkthrough-takeaway>
 
@@ -187,7 +193,7 @@ This is the difference from [step 04](#04-one-class-many-instances): there the c
 
 <walkthrough-takeaway>
 
-Pointer methods are part of a component, like `awake` or `update`. Needle raycasts the scene for you and calls them on whatever is under the pointer — you don't set up a raycaster or track which object was hit.
+Pointer methods are part of a component, like `awake` or `update`. Needle works out what is under the pointer and calls them on that object.
 
 </walkthrough-takeaway>
 
@@ -198,6 +204,10 @@ Pointer methods are part of a component, like `awake` or `update`. Needle raycas
 </walkthrough-step>
 
 Hover a box to highlight it, click to start and stop it spinning. The same component is on all five, and each one only ever touches its own object — there's no central list of what's hovered or selected.
+
+::: info Coming from plain three.js?
+This is the part you normally write yourself. You set up a `Raycaster`, convert pointer coordinates to normalised device space, and intersect the scene each frame. You also track which object was hit last, so you can tell enter from exit. Needle does all of that and calls the methods on the object instead.
+:::
 
 `onPointerEnter` and `onPointerExit` come in pairs, so anything changed in one gets restored in the other. This component stores `restColor` in `awake` and puts it back on exit, rather than assuming what the colour was.
 
@@ -215,19 +225,21 @@ These same methods fire for touch and for VR controllers, so a component written
 
 ## 07 · Physics and collisions
 
-<walkthrough-tags symbols="Rigidbody, BoxCollider, SphereCollider, PhysicsMaterial, onCollisionEnter" />
+<walkthrough-tags symbols="Rigidbody, BoxCollider, SphereCollider, PhysicsMaterial, onCollisionEnter, applyImpulse" />
 
 <walkthrough-takeaway>
 
-Physics is two components, not a system you set up. Add a `Rigidbody` to be moved by physics and a collider to give the object a shape — collisions then arrive as component methods, the same way pointer events do.
+Physics is two components, not a system you set up. A `Rigidbody` makes an object move. A collider gives it a shape. Collisions then arrive as component methods, like pointer events do.
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-07-physics.html" title="Three balls with different bounciness dropped onto a floor that flashes when hit">
+<walkthrough-step src="/docs/code-samples/walkthrough-07-physics.html" title="Three balls with different bounciness dropped onto a floor that flashes when hit — click a ball to launch it">
 
 @[code js](@code/walkthrough-07-physics.js)
 
 </walkthrough-step>
+
+Click any ball to launch it upwards, and the difference in bounciness shows on the way back down. `applyImpulse` is an instant change in velocity — a kick. `applyForce` is the other option, for a push applied over time.
 
 The two components do different jobs and you usually need both. **`Rigidbody`** makes an object move under gravity and respond to forces. A **collider** gives it a shape to collide with. An object with a collider but no `Rigidbody` never moves — which is exactly what you want for the floor here, and for walls and static scenery generally.
 
@@ -235,10 +247,8 @@ The two components do different jobs and you usually need both. **`Rigidbody`** 
 
 Each ball carries a different **physics material** on its collider — `bounciness` rising from `0` on the left to `0.95` on the right, which is the entire difference between the clay, plastic and rubber balls. `bounceCombine: Maximum` makes each ball's own value decide the result; the default averages it with the floor's, so a bouncy ball on a dead floor would only half bounce.
 
-::: warning A collider is its own shape
-A collider does not read the mesh it sits on — `BoxCollider` defaults to a 1×1×1 box whatever the mesh size. On a 9×9 floor that leaves a small pad in the middle, and anything landing elsewhere drops straight through.
-
-`BoxCollider.add(object)` measures the object's geometry and sizes the collider to match, which is why the floor here doesn't set a size by hand. Pass `{ rigidbody: true }` and it adds a `Rigidbody` at the same time. This helper exists on `BoxCollider` only — for a sphere or capsule, set the shape yourself.
+::: tip A collider is its own shape
+A collider doesn't read the mesh — `BoxCollider` defaults to 1×1×1 whatever the object's size, so anything landing off that pad falls through. `BoxCollider.add(object)` fits it to the geometry for you. Other collider types have no such helper.
 :::
 
 ### Mass and density
@@ -303,4 +313,156 @@ Assigning `this.index = 2` now syncs on its own — no channel name, no `send`, 
 Like [`@serializable`](#marking-fields-as-serializable), it's a decorator, so it needs a compile step — which is why the runnable example on this page uses the explicit calls instead.
 
 → [Networking Overview](/docs/how-to-guides/networking/) · [Sync Component State](/docs/how-to-guides/networking/sync-state) · [Manual Networking](/docs/how-to-guides/networking/manual-networking) — including `dontSave` and `deleteOnDisconnect` for finer control over what persists
+
+---
+
+## 09 · AR and VR
+
+<walkthrough-tags symbols="WebXR" />
+
+<walkthrough-takeaway>
+
+XR is one component. Add `WebXR` to the scene and the page gains AR and VR. There is no separate build, and your existing components keep working.
+
+</walkthrough-takeaway>
+
+<walkthrough-step src="/docs/code-samples/walkthrough-09-webxr.html" title="A scene with AR and VR enabled by a single WebXR component">
+
+@[code js](@code/walkthrough-09-webxr.js)
+
+</walkthrough-step>
+
+The buttons appear by themselves when the device supports a mode, so a desktop shows nothing, a phone offers AR, and a headset offers VR. `useDefaultControls` adds movement and teleporting in VR, and `createQRCode` puts a QR code on desktop so you can open the same URL on a phone to try AR.
+
+`arScale` is worth setting for AR. Your scene is placed at real-world size, so a shape two units across arrives as a two-metre object in the room. Raising `arScale` makes the scene appear smaller — `8` here brings it down to something that sits on a table.
+
+Nothing else in the scene knows about XR. `Spin` is the same component from step 01 and needs no changes to run in a headset — that's the point of the platform being the web rather than a build target.
+
+→ [WebXR Guides](/docs/how-to-guides/xr/) · [iOS WebXR](/docs/how-to-guides/xr/ios-webxr-app-clip) · [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for AR on iOS via QuickLook
+
+---
+
+## 10 · Following the cursor
+
+<walkthrough-tags symbols="CursorFollow, LookAt" />
+
+<walkthrough-takeaway>
+
+Plenty of what you'd write by hand already exists as a component. One built-in follows the pointer. Another aims an object at a target. Together they make a head that watches you, with no custom code.
+
+</walkthrough-takeaway>
+
+<walkthrough-step src="/docs/code-samples/walkthrough-10-cursor.html" title="A head whose eyes track the mouse pointer">
+
+@[code js](@code/walkthrough-10-cursor.js)
+
+</walkthrough-step>
+
+`CursorFollow` moves an object to trail the pointer, and `damping` sets how far behind it lags. `LookAt` turns an object to face a target. Neither knows about the other — they're connected only by pointing at the same object.
+
+The two-speed effect comes from two targets rather than two behaviours: the head aims at a heavily damped one so it swings round slowly, while the eyes aim at a barely damped one and flick across almost instantly. The pupils are children of the eyes, so they follow for free — the same nesting idea as [step 05](#05-components-in-a-hierarchy).
+
+Before writing a component, it's worth checking whether one exists. The [Component Reference](/docs/reference/components) lists them all.
+
+→ [Cursor Follow](/docs/how-to-guides/components/cursor-follow) · [Component Reference](/docs/reference/components)
+
+---
+
+## 11 · Loading a model
+
+<walkthrough-tags symbols="loadAsset" />
+
+<walkthrough-takeaway>
+
+You can load a model from any URL at runtime. What comes back is an ordinary object, so components attach to it like anything else.
+
+</walkthrough-takeaway>
+
+<walkthrough-step src="/docs/code-samples/walkthrough-11-loading.html" title="A model downloaded from a URL at runtime, with a spinner shown while it loads">
+
+@[code js](@code/walkthrough-11-loading.js)
+
+</walkthrough-step>
+
+`loadAsset(url)` fetches and parses the file, then hands back an object with `.scene` and `.animations`. It doesn't add anything to your scene — you decide where it goes and when.
+
+That gap is worth using. The example shows a spinner first, removes it once the file arrives, then adds the model. Loading takes as long as it takes, and the alternative is an empty screen.
+
+`asset.scene` is a plain `THREE.Object3D`, which is why `addComponent(Spin)` works on it exactly as it did on shapes you created yourself. Nothing about a loaded object is special.
+
+This is one of four ways to load a model, and the right choice depends on what you're doing — a single root scene, switching between many, spawning copies of one, or a quick one-off like this.
+
+→ [Load 3D Web Assets at Runtime](/docs/how-to-guides/scripting/load-3d-web-assets-at-runtime) compares all four
+
+---
+
+## 12 · Seeing what your code is doing
+
+<walkthrough-tags symbols="Gizmos" />
+
+<walkthrough-takeaway>
+
+Gizmos let you draw into the scene from code, so you can see a value instead of logging it.
+
+</walkthrough-takeaway>
+
+<walkthrough-step src="/docs/code-samples/walkthrough-12-gizmos.html" title="An orbiting marker with its path, position and heading drawn as gizmos">
+
+@[code js](@code/walkthrough-12-gizmos.js)
+
+</walkthrough-step>
+
+`Orbit` moves the marker. `ShowWhatItIsDoing` draws the circle it's following, a sphere at its position, a line back to the centre, and a label with the live coordinates.
+
+You call a `Gizmos` method and it draws, at the position you give it. Each call lasts one frame, which is why these sit in `update` — stop calling and the gizmo is gone. Pass a duration to make one stay longer. That's useful for things that happen once, like marking a raycast hit or a collision point.
+
+Positions are in world space. `Gizmos.DrawLabel` is the one to reach for when you'd otherwise `console.log` a number every frame: you get it next to the thing it describes, rather than scrolling past in the console.
+
+→ [Debugging & Profiling](/docs/how-to-guides/debugging/) · [Gizmos API](https://engine.needle.tools/docs/api/Gizmos)
+
+---
+
+## 13 · Adapting to the device
+
+<walkthrough-tags symbols="DeviceUtilities, XRFlag, XRStateFlag" />
+
+<walkthrough-takeaway>
+
+The same page runs on a phone, a desktop and a headset. You can check which one you're on, and mark objects to appear only in certain modes.
+
+</walkthrough-takeaway>
+
+<walkthrough-step src="/docs/code-samples/walkthrough-13-device.html" title="A sphere whose detail depends on the device, plus two boxes that only appear in AR or VR">
+
+@[code js](@code/walkthrough-13-device.js)
+
+</walkthrough-step>
+
+`DeviceUtilities` answers questions about the device: `isMobileDevice()`, `isDesktop()`, and more specific ones like `isIPad()`, `isAndroidDevice()`, `isiOS()` and `isVisionOS()`. Here it picks the sphere's segment count, since a phone has less to spend on geometry than a desktop. The label shows which branch ran.
+
+Check once at startup when the result decides how something is built, as it does here. Checking every frame costs more and the answer doesn't change.
+
+`XRFlag` handles the other case: an object that should only exist in some modes. Set `visibleIn` and the object hides everywhere else. That's why the two boxes are missing above — one is marked AR only, the other AR and VR, and you're viewing this in a browser. Modes combine with `|`, and the options are `Browser`, `AR`, `VR`, `FirstPerson` and `ThirdPerson`.
+
+It's the tidier answer for AR and VR differences, because the rule lives on the object instead of in a check somewhere else that has to find it.
+
+→ [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) · [WebXR Guides](/docs/how-to-guides/xr/)
+
+---
+
+## What's next
+
+That's the whole model: components on objects, a lifecycle, and a context they share. Everything else in Needle Engine is built the same way, so a component you meet later will look like the ones on this page.
+
+**Start a real project.** These examples run from a CDN to keep them copyable, but a project gets you hot reload, TypeScript, and the editor integrations. [Getting Started](/docs/getting-started/) — pick Unity, Blender, or code.
+
+**Write components properly.** [Create Components](/docs/how-to-guides/scripting/create-components) covers `@serializable`, exposing fields to Unity and Blender, and how components are organised in a project.
+
+**Look things up.** [Scripting Examples](/docs/reference/scripting-examples) is snippets by topic. [Component Reference](/docs/reference/components) lists every built-in component — a lot of what you might write by hand already exists.
+
+**See it at scale.** The [samples gallery](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=walkthrough_next) has 150+ finished projects to pull apart, from configurators to multiplayer games.
+
+**Take the examples with you.** Each step is one HTML file plus one JS file, with no build step and no dependencies to install. Copy the code from any step above, or [browse all of them on GitHub](https://github.com/needle-tools/needle-engine-support/tree/main/documentation/.vuepress/public/code-samples) — save a pair next to each other, open the HTML, and it runs.
+
+Something missing or unclear on this page? [Open an issue](https://github.com/needle-tools/needle-engine-support/issues) or ask in [Discord](https://discord.needle.tools).
 

@@ -1,4 +1,5 @@
 import { getDirname, path } from '@vuepress/utils';
+import { resolveCodeImports, makeCodeImportResolver } from '../resolve-code-imports.js';
 import { fs } from '@vuepress/utils'; // Use VuePress's fs wrapper (usually fs-extra)
 
 // You might need this if running as a local file, but often not needed when published as npm package
@@ -23,7 +24,7 @@ export default (options = {}) => {
         // during the page compilation phase.
         if (env && env.filePath) {
           // Store the markdown source *before* it's rendered to HTML
-          processedMarkdownMap.set(env.filePath, src);
+          processedMarkdownMap.set(env.filePath, resolveCodeImports(src, makeCodeImportResolver(app)));
           // Optional: Log for debugging
           // if (app.env.isDebug) {
           //   console.log(`[copy-markdown] Captured markdown for: ${env.filePath}`);

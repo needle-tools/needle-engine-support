@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>09 · WebXR</title>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/three.min.js",
+      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"
+    }
+  }
+  </script>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine/dist/needle-engine.min.js"></script>
+
+  <style>
+    body { margin: 0; background: #999; }
+    needle-engine { position: absolute; width: 100%; height: 100%; }
+  </style>
+</head>
+
+<body>
+
+  <needle-engine background="transparent" camera-controls></needle-engine>
+
+  <!-- Shared stage: lighting, ground, look. Edit walkthrough-base.js to restyle every step. -->
+  <script type="module" src="./walkthrough-base.js"></script>
+
+  <!-- The example itself — this is the file printed in the docs -->
+  <script type="module" src="./walkthrough-09-webxr.js"></script>
+
+</body>
+
+</html>

@@ -1,4 +1,5 @@
 import { path } from '@vuepress/utils';
+import { resolveCodeImports, makeCodeImportResolver } from '../resolve-code-imports.js';
 import { fs } from '@vuepress/utils';
 
 /**
@@ -53,7 +54,7 @@ export default (options = {}) => {
     name: 'vuepress-plugin-generate-llms',
 
     // Hook into markdown-it instance setup to capture raw markdown
-    extendsMarkdown: (md) => {
+    extendsMarkdown: (md, app) => {
       // Store the original render function
       const originalRender = md.render;
 
@@ -63,7 +64,7 @@ export default (options = {}) => {
         // during the page compilation phase.
         if (env && env.filePath) {
           // Store the markdown source *before* it's rendered to HTML
-          processedMarkdownMap.set(env.filePath, src);
+          processedMarkdownMap.set(env.filePath, resolveCodeImports(src, makeCodeImportResolver(app)));
         }
 
         // Call the original render function to proceed with HTML generation

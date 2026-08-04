@@ -212,7 +212,7 @@ a code {
     hairline gives the edge definition — inset rather than `border` so the
     chip's box doesn't grow and shift the surrounding text.
   */
-  background: color-mix(in srgb, currentColor 10%, transparent);
+  background: color-mix(in srgb, var(--c-text-accent) 10%, transparent);
   box-shadow: inset 0 0 0 1px color-mix(in srgb, currentColor 14%, transparent);
   border-radius: 0.3em;
   /*

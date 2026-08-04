@@ -16,9 +16,18 @@ export default {
       networking steps, where a single view can't show anything syncing.
     */
     split: { type: Boolean, default: false },
+    /*
+      Drop the iframe once the step has been off screen for a while, and
+      rebuild it when it comes back. A page with a dozen steps would
+      otherwise hold a dozen live WebGL contexts, and browsers start
+      discarding the oldest ones somewhere around sixteen.
+    */
+    autoUnload: { type: Boolean, default: true },
+    /** Seconds off screen before unloading. */
+    unloadAfter: { type: Number, default: 2 },
   },
   data() {
-    return { loaded: false };
+    return { loaded: false, mounted: false, offScreenTimer: null };
   },
   computed: {
     actionList() {
@@ -55,10 +64,51 @@ export default {
       return [`${this.src}${join}room=${room}`, `${this.src}${join}room=${room}`];
     },
   },
+  mounted() {
+    // Without IntersectionObserver, just mount everything and never unload.
+    if (!this.autoUnload || typeof IntersectionObserver === 'undefined') {
+      this.mounted = true;
+      return;
+    }
+
+    this.observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          clearTimeout(this.offScreenTimer);
+          this.offScreenTimer = null;
+          this.mounted = true;
+        }
+        else if (this.mounted && !this.offScreenTimer) {
+          this.offScreenTimer = setTimeout(() => {
+            this.mounted = false;
+            this.loaded = false;
+            this.offScreenTimer = null;
+          }, this.unloadAfter * 1000);
+        }
+      },
+      // A little margin so a step reloads just before it scrolls into view.
+      { rootMargin: '200px' }
+    );
+    this.observer.observe(this.$el);
+  },
+
+  beforeUnmount() {
+    clearTimeout(this.offScreenTimer);
+    this.observer?.disconnect();
+  },
+
   methods: {
     send(action) {
-      // Same origin — the example page is served from this site.
-      this.$refs.frame?.contentWindow?.postMessage(action, window.location.origin);
+      /*
+        Query the DOM rather than using a ref: the iframes are rendered in a
+        v-for, so `$refs.frame` is an array, and a split step has more than
+        one frame to reach. Same origin — the example page is served from
+        this site — so the origin can be pinned rather than using "*".
+      */
+      const frames = this.$el?.querySelectorAll('iframe') ?? [];
+      frames.forEach(frame =>
+        frame.contentWindow?.postMessage(action, window.location.origin)
+      );
     },
   },
 };
@@ -76,7 +126,7 @@ export default {
         class="walkthrough-stage"
       >
         <iframe
-          :ref="i === 0 ? 'frame' : undefined"
+          v-if="mounted"
           :src="frameSrc"
           :title="frameSources.length > 1 ? `${title} (visitor ${i + 1})` : title"
           loading="lazy"

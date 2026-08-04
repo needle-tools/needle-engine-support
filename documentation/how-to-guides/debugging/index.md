@@ -86,7 +86,7 @@ Here are some of the most commonly used:
 
 ## Debug Methods
 
-Needle Engine also has some very powerful and useful debugging methods that are part of the static `Gizmos` class. See the [scripting documentation](/docs/how-to-guides/scripting/create-components#gizmos) for more information.
+Needle Engine also has some very powerful and useful debugging methods that are part of the static `Gizmos` class. See the [Scripting Walkthrough](/docs/how-to-guides/scripting/examples#12-seeing-what-your-code-is-doing) for a live example, or the [Gizmos API](https://engine.needle.tools/docs/api/Gizmos) for the full list.
 
 
 ## Log files

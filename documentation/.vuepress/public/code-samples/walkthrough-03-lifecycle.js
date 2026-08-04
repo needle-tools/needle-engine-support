@@ -1,5 +1,8 @@
 import { Behaviour, onStart, destroy } from '@needle-tools/engine';
 import * as THREE from 'three';
+import { configureDemoScene } from './walkthrough-base.js';
+
+configureDemoScene({ useContactShadows: true });
 
 // Open the browser console to see the order these run in.
 class Beacon extends Behaviour {
@@ -31,14 +34,18 @@ class Beacon extends Behaviour {
 }
 
 onStart(context => {
+  const height = 1.2;
   const beacon = new THREE.Mesh(
-    new THREE.ConeGeometry(0.8, 1.6, 4),
+    new THREE.ConeGeometry(1, height, 6),
     new THREE.MeshStandardMaterial({
       color: '#7dd3a0',
       roughness: 0.35,
       flatShading: true,
     })
   );
+  // A cone is centred on its middle, so lift it by half its height to
+  // stand it on the floor.
+  beacon.position.y = height / 2;
   context.scene.add(beacon);
 
   const component = beacon.addComponent(Beacon);
