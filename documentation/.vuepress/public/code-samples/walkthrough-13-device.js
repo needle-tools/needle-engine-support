@@ -5,6 +5,7 @@ import {
   DeviceUtilities,
   XRFlag,
   XRStateFlag,
+  WebXR,
 } from '@needle-tools/engine';
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
@@ -32,6 +33,7 @@ class ShowDetectedDevice extends Behaviour {
 onStart(context => {
 
   context.menu.showQRCodeButton("desktop-only");
+  context.scene.addComponent(WebXR);
 
   // Check the device once and build accordingly. Phones have less to spend
   // on geometry than a desktop, so the sphere gets fewer segments.
