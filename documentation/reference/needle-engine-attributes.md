@@ -26,11 +26,10 @@ Available attributes to change the Needle Engine loading and custom branding
 | --- | --- |
 | `loading-blur` | Optional: Blur the scene until LODs are loaded (if any). Default: disabled |
 | `poster` | Optional: Set the `poster` attribute to show a placeholder image while loading. Example: `<needle-engine poster="https://yourdomain.com/poster.png">`. By just using the attribute without a url the poster in `include/poster.webp` will be used if it exists (e.g. `<needle-engine poster>`) |
-| `loading-background` | **PRO** — Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
-| `hide-loading-overlay` | **PRO** — Do not show the loading overlay |
+| `loading-background` | Default: `transparent`. Change the loading background color (e.g. `#dd5500`) |
+| `hide-loading-overlay` | Do not show the loading overlay |
 | `logo-src` | **PRO** — Change the logo image (e.g. `https://yourdomain.com/logo.png` or `/logo.png`). This logo will then be used in the QR code and XR session loading |
 | `qrcode-logo-src` | **PRO** – Change the logo image for the QR code (e.g. `https://yourdomain.com/logo.png` or `/logo.png`). If not provided the `logo-src` attribute will be used.
-
 
 ### Visual Settings
 | | |
@@ -65,10 +64,77 @@ For files that require a decoder (e.g. Draco compressed glb files), we automatic
 | --- | --- |
 | `hash` | Used internally, is appended to the files being loaded to force an update (e.g. when the browser has cached a GLB file). Should not be edited manually. |
 
+### Loading screen (Needle Engine 6)
+
+::: warning Preview — Needle Engine 6 (alpha)
+The loading screen was redesigned in **Needle Engine 6** (currently in alpha) and the options in this section are **in preview** — attribute names, CSS variables and defaults may still change before the stable release. Everything above this section applies to the current stable release.
+:::
+
+Needle Engine 6 renders an animated progress bar (with an optional logo) that can be themed via HTML attributes or CSS custom properties.
+
+| Attribute | |
+| --- | --- |
+| `loading-style` | Color theme of the loading overlay: `auto` (default — follows the OS `prefers-color-scheme`), `light`, or `dark` |
+| `loading-layout` | `centered` (default — bar centered, max 50% width) or `minimal` (thin bar pinned to the top edge) |
+| `loading-logo` | Show the logo on the loading overlay: `true` / `false` (off by default). The image comes from `loading-logo-src` or `logo-src`, otherwise the Needle logo |
+| `loading-logo-src` | **PRO** — Custom loading logo image (URL, `data:` or `blob:` URL). Falls back to `logo-src`, then the Needle logo. Mirrors `qrcode-logo-src` |
+
+**CSS custom properties** — set any of these on the `<needle-engine>` element (inline `style` or in your CSS) to restyle the loader. A consumer value always wins over the built-in theme default:
+
+| Variable | Controls | Default |
+| --- | --- | --- |
+| `--needle-loading-bar` | progress bar fill color | per theme |
+| `--needle-loading-bar-track` | unfilled track color | per theme |
+| `--needle-loading-bar-done` | fill color once complete | same as fill |
+| `--needle-loading-bar-sheen` | animated highlight color | per theme |
+| `--needle-loading-sheen-size` | sheen tile width (smaller = more bands) | per layout |
+| `--needle-loading-sheen-speed` | time to scroll one sheen band | per layout |
+| `--needle-loading-background` | scrim color behind the loader | per theme |
+| `--needle-loading-blur` | backdrop blur behind the loader | `6px` |
+| `--needle-loading-color` | text color | per theme |
+
+The `poster` image can be styled via CSS variables, or fully via `needle-engine::part(poster)`:
+
+| Variable | Controls | Default |
+| --- | --- | --- |
+| `--needle-loading-poster-overlay` | color painted over the image (darken/tint) | `transparent` |
+| `--needle-loading-poster-blur` | blur amount | `0` (url) / `50px` (bare `poster`) |
+| `--needle-loading-poster-size` | `cover` / `contain` / … | `cover` |
+| `--needle-loading-poster-position` | background position | `center` |
+| `--needle-loading-poster-opacity` | poster opacity | `1` |
+
+Example — a centered dark loader with a custom bar color and a darkened poster:
+```html
+<needle-engine
+  loading-style="dark"
+  loading-layout="centered"
+  poster="/poster.jpg"
+  style="--needle-loading-bar:#78e08f; --needle-loading-poster-overlay:rgba(0,0,0,.5)">
+</needle-engine>
+```
+
+Or restyle the loading bar from your stylesheet — set the variables on the `<needle-engine>` element (they win over the built-in theme):
+```css
+needle-engine {
+  --needle-loading-bar: #c9d497;                      /* fill color */
+  --needle-loading-bar-track: rgba(85, 87, 12, 0.18); /* unfilled track */
+  --needle-loading-bar-sheen: rgba(255, 255, 255, .5); /* animated highlight */
+  --needle-loading-sheen-size: 400px;                  /* smaller = more/tighter bands */
+  --needle-loading-sheen-speed: 1s;                  /* smaller = faster */
+}
+
+/* Optionally give dark mode its own bar color */
+@media (prefers-color-scheme: dark) {
+  needle-engine { --needle-loading-bar: #dbe6a8; }
+}
+```
+
+::: tip Setting `poster="0"` disables the poster (same as omitting it). A poster automatically turns off the scrim/backdrop blur, since it becomes the background.
+:::
+
 **Upgrade notice**:   
-- Removed attributes in Needle Engine 4.5.0: `loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color`
-- Replaced `loading-logo-src` (old) with `logo-src` (new). 
-- Since Needle Engine 4.10.0 the `<needle-engine>` loading display has been modified and will not render a logo anymore
+- Needle Engine **4.x–5.x**: `loading-style`, `loading-background-color`, `loading-text-color`, `primary-color`, `secondary-color` were removed in 4.5.0, and the loading display rendered no logo since 4.10.0.
+- Needle Engine **6** (alpha) reintroduces a redesigned, themeable loading screen — see [Loading screen (Needle Engine 6)](#loading-screen-needle-engine-6) above. `loading-style` returns with a new meaning (color theme: `auto`/`light`/`dark`), the logo is available again (opt-in via `loading-logo`), and `loading-logo-src` becomes the loading-specific logo source (mirroring `qrcode-logo-src`).
 
 ## Examples
 
