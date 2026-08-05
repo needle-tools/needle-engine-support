@@ -27,9 +27,9 @@ onStart(context => {
     useDefaultControls: true,
     // On a desktop, show a QR code so the page can be opened on a phone.
     createQRCode: true,
-    // In AR the scene is placed at real-world scale. This shape is about
-    // 2 metres across, so shrink it to something that fits on a table.
-    // Higher values make the scene appear smaller.
+    // In AR the scene is placed at real-world scale, so one unit is one
+    // metre. arScale scales you rather than the scene: larger values make
+    // you bigger, so everything else looks smaller.
     arScale: 8,
   });
 });

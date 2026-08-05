@@ -1,8 +1,9 @@
-import { Behaviour, onStart, AudioSource, getOrAddComponent, OrbitControls } from '@needle-tools/engine';
+import { Behaviour, onStart, AudioSource, getOrAddComponent } from '@needle-tools/engine';
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
 
-configureDemoScene({ showGrid: false, useContactShadows: true });
+// The radio is only 30cm across, so it needs closer limits than the default.
+configureDemoScene({ showGrid: false, useContactShadows: true, minZoom: 0.2, maxZoom: 5 });
 
 // Real-world sizes, in metres — a portable radio is about 30cm across.
 // Worth getting right: in AR the scene is placed at life size.
@@ -40,7 +41,7 @@ class Radio extends Behaviour {
       loop: true,
       // 1 is positional: the sound comes from the radio and fades with distance.
       spatialBlend: 1,
-      minDistance: .3, 
+      minDistance: 1, 
       maxDistance: 10,
     });
   }
@@ -101,8 +102,7 @@ class Button extends Behaviour {
   }
 }
 
-// Bars that move while something is playing. The heights are made up —
-// this reads the clock, not the audio.
+// Bars driven by the audio itself, read through the Web Audio API.
 class Visualiser extends Behaviour {
   bars = [];
 
@@ -112,13 +112,33 @@ class Visualiser extends Behaviour {
     this.audio = this.gameObject.getComponent(AudioSource);
   }
 
+  // The analyser can only be built once the audio exists, which happens on
+  // the first play. Returns null until then.
+  getFrequencies() {
+    if (!this.analyser) {
+      const sound = this.audio.Sound;
+      const context = this.audio.audioContext;
+      if (!sound || !context) return null;
+
+      this.analyser = context.createAnalyser();
+      // 32 bins is plenty for nine bars, and cheap.
+      this.analyser.fftSize = 64;
+      sound.getOutput().connect(this.analyser);
+      this.frequencies = new Uint8Array(this.analyser.frequencyBinCount);
+    }
+
+    this.analyser.getByteFrequencyData(this.frequencies);
+    return this.frequencies;
+  }
+
   update() {
-    const playing = this.audio.isPlaying;
-    const t = this.context.time.time;
+    const frequencies = this.audio.isPlaying ? this.getFrequencies() : null;
 
     this.bars.forEach((bar, i) => {
-      const wave = Math.sin(t * (5 + i * 1.7) + i) * 0.5 + 0.5;
-      const target = playing ? BAR_MIN + wave * (BAR_MAX - BAR_MIN) : BAR_MIN;
+      // Skip the lowest bins: they hold most of the energy and would leave
+      // the other bars barely moving.
+      const level = frequencies ? frequencies[i + 2] / 255 : 0;
+      const target = BAR_MIN + level * (BAR_MAX - BAR_MIN);
 
       // Ease towards the target so the bars settle instead of snapping.
       bar.scale.y += (target - bar.scale.y) * this.context.time.deltaTime * 12;
@@ -220,10 +240,4 @@ onStart(context => {
 
     button.addComponent(Button, { action: entry.action });
   });
-
-  const orbit = context.mainCamera.getComponent(OrbitControls);
-  if(orbit) {
-    orbit.minZoom = .5;
-    orbit.maxZoom = 5;
-  }
 });

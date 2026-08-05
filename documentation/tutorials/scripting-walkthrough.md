@@ -10,7 +10,7 @@ editLink: true
 
 Needle Engine scripting in a handful of short steps. Each one adds a single idea, runs live in the page, and shows the whole file that produces it — the code on the left is the code running on the right.
 
-You don't need a project set up to follow along. Every example is one HTML page that loads the engine from a CDN, so you can copy it into a file and open it in a browser. That also means no compile step, so the examples use plain JavaScript without decorators — see [marking fields as serializable](#marking-fields-as-serializable) for what changes in a real project.
+You don't need a project set up to follow along. Every example is one HTML page that loads the engine from a CDN, so you can copy it into a file and open it in a browser. That also means no compile step, so the examples are plain JavaScript rather than TypeScript — see [marking fields as serializable](#marking-fields-as-serializable) for what TypeScript adds.
 
 ::: tip Looking for something else?
 [Scripting Examples](/docs/reference/scripting-examples) has copy-paste snippets by topic. The [samples gallery](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=walkthrough) has finished projects to pull apart.
@@ -111,6 +111,8 @@ The component logs a line each time one of its methods runs. On first activation
 
 A rule that saves a lot of debugging: whatever you set up in `awake`, undo in `onDestroy`; whatever you subscribe to in `onEnable`, unsubscribe in `onDisable`.
 
+For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you when it's disabled or destroyed, so you don't write the `onDisable` half at all — [step 08](#08-networking) uses it for a network listener.
+
 → [Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) · [Lifecycle Methods reference](/docs/reference/api/lifecycle-methods)
 
 ---
@@ -137,7 +139,7 @@ Anything the init object doesn't mention keeps the value declared on the class, 
 
 ### Marking fields as serializable
 
-In a real project you would mark those fields with `@serializable()`:
+In a TypeScript project, mark those fields with `@serializable()`:
 
 ```ts
 import { Behaviour, serializable } from "@needle-tools/engine";
@@ -153,7 +155,7 @@ export class Wave extends Behaviour {
 
 That does two things a plain field can't. The field shows up in the Unity or Blender inspector, so someone who doesn't write code can set it per object. And its value is written into the glTF on export, so it survives into the running app instead of resetting to the default.
 
-The examples on this page leave it out for one reason: decorators need a compile step, and these pages run straight from a CDN with no build. Any component you write in an actual project should use it.
+The examples on this page leave it out because decorators need TypeScript, and these pages run straight from a CDN. Use it for any component you write in a project.
 
 → [Create Components](/docs/how-to-guides/scripting/create-components) · [@serializable reference](/docs/reference/typescript-decorators#serializable)
 
@@ -215,7 +217,9 @@ It also does it faster than a plain raycast. Meshes get a [BVH](https://github.c
 
 Recolouring one box is where this would normally get awkward. All five meshes share a single `MeshStandardMaterial`, so setting `material.color` on hover would recolour the whole row. The usual workaround is to clone the material per object, which multiplies material instances for the sake of one property.
 
-`MaterialPropertyBlock` avoids that. `MaterialPropertyBlock.get(object)` returns a per-object override set — the override is applied in `onBeforeRender` and the original restored in `onAfterRender`, so the material itself is never modified and stays shared. `clearAllOverrides()` puts the box back to the shared colour, which is why the component doesn't need to remember what the original was.
+`MaterialPropertyBlock` avoids that. `MaterialPropertyBlock.get(object)` gives you a set of overrides for one object, and the engine applies them per object at render time — the material itself is never modified and stays shared.
+
+It also makes the component simpler. `clearAllOverrides()` restores the shared colour, so there is no saved original to store in `awake` and no risk of restoring a stale value later.
 
 These same methods fire for touch and for VR controllers, so a component written this way works on a phone and in a headset without changes.
 
@@ -283,11 +287,11 @@ Multiplayer is a component sending and receiving, not a separate architecture. J
 
 Two views of the same room, side by side — the same thing two people opening the link would see. Click a cube in either one and it changes in both.
 
-`SyncedRoom` joins a room, and that's the whole connection setup. After that, `connection.send(channel, data)` broadcasts to everyone else in the room and `connection.beginListen(channel, callback)` receives. The channel is any string both sides agree on — here it comes from the object's name, so each cube has its own.
+`SyncedRoom` joins a room, and that's the whole connection setup — see [Set Up Networking](/docs/how-to-guides/networking/setup) for rooms, servers and hosting. After that, `connection.send(channel, data)` broadcasts to everyone else in the room and `connection.beginListen(channel, callback)` receives. The channel is any string both sides agree on — here it comes from the object's name, so each cube has its own.
 
-Three details that matter more than they look:
+Three things to note:
 
-**The `guid` is what makes the change stick.** A message sent with a `guid` is stored in the room state on the server, so anyone who joins later receives it — the cubes look right to them rather than resetting to the starting colour. Drop the `guid` and the message is delivered only to people already in the room, and is forgotten the moment it arrives. That single field is the difference between a room with a memory and one without. The value identifies *what* the message is about, which is why it's per cube here.
+**The `guid` makes the change persist.** A message sent with one is stored in the room state on the server, so anyone joining later receives it. Without a `guid` the message only reaches people already in the room and is then forgotten. The value identifies which object the message is about, which is why it is per cube here.
 
 **The click applies the colour locally as well as sending it.** `send` broadcasts to everyone else in the room — it does not come back to the sender. Leave out the local `apply` and the one person who clicked is the only one who sees nothing happen.
 
@@ -310,7 +314,7 @@ export class SharedColor extends Behaviour {
 
 Assigning `this.index = 2` now syncs on its own — no channel name, no `send`, no listener to clean up, and persistence is handled for you rather than depending on remembering the `guid`.
 
-Like [`@serializable`](#marking-fields-as-serializable), it's a decorator, so it needs a compile step — which is why the runnable example on this page uses the explicit calls instead.
+Like [`@serializable`](#marking-fields-as-serializable), it's a decorator and needs TypeScript — which is why the runnable example on this page uses the explicit calls instead.
 
 → [Networking Overview](/docs/how-to-guides/networking/) · [Sync Component State](/docs/how-to-guides/networking/sync-state) · [Manual Networking](/docs/how-to-guides/networking/manual-networking) — including `dontSave` and `deleteOnDisconnect` for finer control over what persists
 
@@ -332,11 +336,13 @@ XR is one component. Add `WebXR` to the scene and the page gains AR and VR. Ther
 
 </walkthrough-step>
 
-The buttons appear by themselves when the device supports a mode, so a desktop shows nothing, a phone offers AR, and a headset offers VR. `useDefaultControls` adds movement and teleporting in VR, and `createQRCode` puts a QR code on desktop so you can open the same URL on a phone to try AR.
+The buttons appear by themselves when a mode is available: a phone offers AR, a headset offers VR, and a desktop with a headset connected offers VR too. Without one, `createSendToQuestButton` can offer to open the page on a Quest instead, and `createQRCode` shows a QR code so you can open the same URL on a phone to try AR. `useDefaultControls` adds movement and teleporting in VR.
 
-`arScale` is worth setting for AR. Your scene is placed at real-world size, so a shape two units across arrives as a two-metre object in the room. Raising `arScale` makes the scene appear smaller — `8` here brings it down to something that sits on a table.
+`arScale` is worth setting for AR. Your scene is placed at real-world size, so a cube one unit across appears as a one-metre block in the room.
 
-Nothing else in the scene knows about XR. `Spin` is the same component from step 01 and needs no changes to run in a headset — that's the point of the platform being the web rather than a build target.
+It scales *you*, not the scene: raise it and you become larger relative to everything, so the scene looks smaller. `8` here shrinks it to something that sits on a table.
+
+`Spin` is the same component from step 01, unchanged, running in a headset.
 
 → [WebXR Guides](/docs/how-to-guides/xr/) · [iOS WebXR](/docs/how-to-guides/xr/ios-webxr-app-clip) · [Everywhere Actions](/docs/how-to-guides/everywhere-actions/) for AR on iOS via QuickLook
 
@@ -358,9 +364,9 @@ Plenty of what you'd write by hand already exists as a component. One built-in f
 
 </walkthrough-step>
 
-`CursorFollow` moves an object to trail the pointer, and `damping` sets how far behind it lags. `LookAt` turns an object to face a target. Neither knows about the other — they're connected only by pointing at the same object.
+`CursorFollow` moves an object towards the pointer, and `damping` sets how smoothly it gets there — higher values ease in more gradually, lower values track it closely. `LookAt` turns an object to face a target.
 
-The two-speed effect comes from two targets rather than two behaviours: the head aims at a heavily damped one so it swings round slowly, while the eyes aim at a barely damped one and flick across almost instantly. The pupils are children of the eyes, so they follow for free — the same nesting idea as [step 05](#05-components-in-a-hierarchy).
+The pupils are children of the eyes, so turning an eye takes its pupil with it — the same nesting idea as [step 05](#05-components-in-a-hierarchy).
 
 Before writing a component, it's worth checking whether one exists. The [Component Reference](/docs/reference/components) lists them all.
 
@@ -390,7 +396,7 @@ You can load a model from any URL at runtime. What comes back is an ordinary obj
 
 `fitCamera()` on `OrbitControls` frames whatever is in the scene, which saves guessing at a camera position for a model whose size you don't know in advance.
 
-Loading takes as long as it takes, and a visitor on a slow connection sees an empty scene until it finishes. Worth showing something in the meantime — a placeholder, a progress indicator, or a low-resolution version swapped out on arrival.
+Assets exported through Needle are compressed and progressively loaded by default, so a model like this one starts showing up early rather than arriving all at once.
 
 This is one of four ways to load a model, and the right choice depends on what you're doing — a single root scene, switching between many, spawning copies of one, or a quick one-off like this.
 
@@ -418,7 +424,7 @@ Gizmos let you draw into the scene from code, so you can see a value instead of 
 
 You call a `Gizmos` method and it draws, at the position you give it. Each call lasts one frame, which is why these sit in `update` — stop calling and the gizmo is gone. Pass a duration to make one stay longer. That's useful for things that happen once, like marking a raycast hit or a collision point.
 
-Positions are in world space. `Gizmos.DrawLabel` is the one to reach for when you'd otherwise `console.log` a number every frame: you get it next to the thing it describes, rather than scrolling past in the console.
+Positions are in world space. `Gizmos.DrawLabel` draws readable text in the scene, which is what you want for a value that changes every frame — you see it attached to the object it belongs to, instead of watching it scroll past in the console.
 
 → [Debugging & Profiling](/docs/how-to-guides/debugging/) · [Gizmos API](https://engine.needle.tools/docs/api/Gizmos)
 
@@ -442,11 +448,21 @@ The same page runs on a phone, a desktop and a headset. You can check which one 
 
 `DeviceUtilities` answers questions about the device: `isMobileDevice()`, `isDesktop()`, and more specific ones like `isIPad()`, `isAndroidDevice()`, `isiOS()` and `isVisionOS()`. Here it decides what gets built at all — a CRT monitor on a desktop, a candybar phone on a mobile. Open this page on your phone to see the other one. The label tells you which branch ran.
 
-Check once at startup when the result decides how something is built, as it does here. Checking every frame costs more and the answer doesn't change.
+The result is cached, so calling it is cheap and you can check wherever it reads best. Here it happens once at startup, because the answer decides what gets built.
 
-`XRFlag` handles the other case: an object that should only exist in some modes. Set `visibleIn` and the object hides everywhere else. That's why the two boxes are missing above — one is marked AR only, the other AR and VR, and you're viewing this in a browser. Modes combine with `|`, and the options are `Browser`, `AR`, `VR`, `FirstPerson` and `ThirdPerson`.
+`XRFlag` handles the other case: an object that should only exist in some modes. Set `visibleIn` and the object hides everywhere else. That's why the two boxes are missing above — one is marked AR only, the other AR and VR, and you're viewing this in a browser.
 
-It's the tidier answer for AR and VR differences, because the rule lives on the object instead of in a check somewhere else that has to find it.
+The avatar head is the case this exists for. In VR you are looking out through it, so rendering it fills your view with the inside of your own skull. Everyone else still needs to see it, and so do you in third person or when the scene is mirrored into AR:
+
+```ts
+head.addComponent(XRFlag, {
+    visibleIn: XRStateFlag.Browser | XRStateFlag.ThirdPerson | XRStateFlag.AR,
+});
+```
+
+Combine modes with `|`. The options are `Browser`, `AR`, `VR`, `FirstPerson` and `ThirdPerson` — and `FirstPerson` / `ThirdPerson` are what make this work, because the same headset session switches between them.
+
+The rule lives on the object, which is why this beats a check elsewhere: the head knows when to hide itself, and nothing has to go looking for it when a session starts.
 
 → [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) · [WebXR Guides](/docs/how-to-guides/xr/)
 
@@ -474,11 +490,11 @@ One `AudioSource` plays all three tracks, and `play()` takes a clip, so changing
 
 `spatialBlend: 1` makes the sound positional. It comes from wherever the object is and fades as you orbit away. Set it to `0` for flat audio at constant volume, which is what you want for music or narration covering the whole scene.
 
-Nothing plays on load, and that isn't a choice. Browsers block audio until the visitor interacts with the page, so `playOnAwake` is off and the first sound waits for a button press. Design for it: a scene that expects sound to start by itself will be silent for everyone.
+Browsers block audio until the visitor interacts with the page, but Needle handles that for you: it waits for the first interaction and starts playback then. `playOnAwake` works as you would expect, for audio and for video, and you don't have to write anything for it. It is off here only because the buttons decide when playback starts.
 
-The bars are honest fakery. `Visualiser` checks `isPlaying` and drives the heights from a sine wave, easing towards the target so they settle rather than snap. It never reads the audio — a real spectrum needs an `AnalyserNode` from the Web Audio API.
+The bars follow the actual sound. `AudioSource.Sound` is the underlying three.js audio object and `audioContext` is the Web Audio context, so `Visualiser` connects an `AnalyserNode` to the output and reads the frequency data each frame. Nothing about that is Needle-specific — it's the standard Web Audio API, reachable because the engine doesn't hide it.
 
-The case is modelled at life size, about 30cm across, because AR places a scene at real-world scale. Build it in arbitrary units and it arrives as furniture.
+The analyser is created on first use rather than in `start`, because the audio object doesn't exist until something plays.
 
 → [Spatial Audio sample](https://engine.needle.tools/samples/spatial-audio) · [AudioSource API](https://engine.needle.tools/docs/api/AudioSource)
 
@@ -488,7 +504,7 @@ The case is modelled at life size, about 30cm across, because AR places a scene 
 
 That's the whole model: components on objects, a lifecycle, and a context they share. Everything else in Needle Engine is built the same way, so a component you meet later will look like the ones on this page.
 
-**Start a real project.** These examples run from a CDN to keep them copyable, but a project gets you hot reload, TypeScript, and the editor integrations. [Getting Started](/docs/getting-started/) — pick Unity, Blender, or code.
+**Set up a project.** These examples run from a CDN to keep them copyable, but a project adds hot reload, TypeScript, and the editor integrations. [Getting Started](/docs/getting-started/) — pick Unity, Blender, or code.
 
 **Open components up to the editor.** [Create Components](/docs/how-to-guides/scripting/create-components) covers `@serializable`, so fields can be set per object in Unity and Blender, and where component files live in a project.
 

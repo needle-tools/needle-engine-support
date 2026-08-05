@@ -14,8 +14,23 @@ export let showGrid = true;
 export let useContactShadows = false;
 export let orbitZoom = true;
 
+/*
+  Zoom limits, in metres, mapped onto the camera's min/max distance.
+
+  Set per step, because the scenes differ by two orders of magnitude: the
+  audio radio is 30cm across, the loaded world model is tens of metres. A
+  single pair of limits either traps the camera far away from the small
+  scenes or lets you fly through the large ones.
+
+  fitCamera() is clamped by these too, so a minZoom larger than the scene
+  stops it framing anything properly.
+*/
+export let minZoom = 0.5;
+export let maxZoom = 30;
+
 /**
- * @param {{ showGrid?: boolean, useContactShadows?: boolean, orbitZoom?: boolean }} config
+ * @param {{ showGrid?: boolean, useContactShadows?: boolean, orbitZoom?: boolean,
+ *           minZoom?: number, maxZoom?: number }} config
  */
 export function configureDemoScene(config = {}) {
   if (config.showGrid !== undefined) {
@@ -26,6 +41,12 @@ export function configureDemoScene(config = {}) {
   }
   if (config.orbitZoom !== undefined) {
     orbitZoom = config.orbitZoom;
+  }
+  if (config.minZoom !== undefined) {
+    minZoom = config.minZoom;
+  }
+  if (config.maxZoom !== undefined) {
+    maxZoom = config.maxZoom;
   }
 }
 
@@ -39,19 +60,37 @@ export function stageMaterial(color = '#7dd3a0') {
   });
 }
 
-onInitialized(context => {
+/*
+  The step files are a separate <script type="module"> from this one, so this
+  module evaluates first and registers the callback below before a step has
+  had the chance to call configureDemoScene. Each module script is its own
+  task, and the engine can initialise between them — so reading the config
+  straight away sometimes read the defaults instead, leaving the grid on in a
+  step that turned it off.
+
+  Waiting for DOMContentLoaded removes the race: deferred module scripts all
+  finish evaluating before it fires, so every configureDemoScene call has
+  landed by then.
+*/
+const allModulesEvaluated = new Promise(resolve => {
+  if (document.readyState === 'complete') resolve();
+  else document.addEventListener('DOMContentLoaded', resolve, { once: true });
+});
+
+onInitialized(async context => {
+  await allModulesEvaluated;
+
   const scene = context.scene;
 
   const orbit = context.mainCamera.getComponent(OrbitControls);
   if (orbit) {
-    orbit.minZoom = 2;
-    orbit.maxZoom = 30;
     orbit.autoRotate = false;
+    orbit.minZoom = minZoom;
+    orbit.maxZoom = maxZoom;
     if (!orbitZoom) {
       orbit.enableZoom = false;
     }
   }
-
 
   if (showGrid) {
     // A faint grid gives the scene a floor without stealing attention.
