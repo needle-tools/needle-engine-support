@@ -16,7 +16,7 @@ class Orbit extends Behaviour {
 const ball = (radius, color) =>
   new THREE.Mesh(
     new THREE.IcosahedronGeometry(radius, 1),
-    new THREE.MeshStandardMaterial({ color, roughness: 0.4, flatShading: true })
+    new THREE.MeshStandardMaterial({ color, roughness: 0.2, flatShading: true })
   );
 
 // A pivot that turns, with `child` parked `radius` out to one side.

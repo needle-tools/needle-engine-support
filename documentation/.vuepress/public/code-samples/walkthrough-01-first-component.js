@@ -1,6 +1,9 @@
 import { Behaviour, onStart } from '@needle-tools/engine';
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
+configureDemoScene({ 
+  useContactShadows: true,
+});
 
 // A component is a class extending Behaviour.
 // Override only the lifecycle methods you need.
@@ -34,8 +37,4 @@ onStart(context => {
 
   // Attach it — the component wires itself into the render loop.
   shape.addComponent(Rotate);
-});
-
-configureDemoScene({ 
-  useContactShadows: true,
 });

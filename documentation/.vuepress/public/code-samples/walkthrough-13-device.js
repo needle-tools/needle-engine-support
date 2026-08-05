@@ -10,7 +10,7 @@ import {
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
 
-configureDemoScene({ showGrid: false });
+configureDemoScene({ showGrid: false, useContactShadows: true });
 
 const material = (color, roughness = 0.5) =>
   new THREE.MeshStandardMaterial({ color, roughness });

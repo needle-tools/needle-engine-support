@@ -207,6 +207,8 @@ Hover a box to highlight it, click to start and stop it spinning. The same compo
 
 ::: info Coming from plain three.js?
 This is the part you normally write yourself. You set up a `Raycaster`, convert pointer coordinates to normalised device space, and intersect the scene each frame. You also track which object was hit last, so you can tell enter from exit. Needle does all of that and calls the methods on the object instead.
+
+It also does it faster than a plain raycast. Meshes get a [BVH](https://github.com/gkjohnson/three-mesh-bvh) built for them, so a hit test descends a tree instead of walking every triangle — which is the difference between a dense mesh being fine to click on and being unusable.
 :::
 
 `onPointerEnter` and `onPointerExit` come in pairs, so anything changed in one gets restored in the other. This component stores `restColor` in `awake` and puts it back on exit, rather than assuming what the colour was.
@@ -214,8 +216,6 @@ This is the part you normally write yourself. You set up a `Raycaster`, convert 
 Recolouring one box is where this would normally get awkward. All five meshes share a single `MeshStandardMaterial`, so setting `material.color` on hover would recolour the whole row. The usual workaround is to clone the material per object, which multiplies material instances for the sake of one property.
 
 `MaterialPropertyBlock` avoids that. `MaterialPropertyBlock.get(object)` returns a per-object override set — the override is applied in `onBeforeRender` and the original restored in `onAfterRender`, so the material itself is never modified and stays shared. `clearAllOverrides()` puts the box back to the shared colour, which is why the component doesn't need to remember what the original was.
-
-Needle uses the same mechanism internally for lightmaps and reflection probes.
 
 These same methods fire for touch and for VR controllers, so a component written this way works on a phone and in a headset without changes.
 
@@ -378,17 +378,19 @@ You can load a model from any URL at runtime. What comes back is an ordinary obj
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-11-loading.html" title="A model downloaded from a URL at runtime, with a spinner shown while it loads">
+<walkthrough-step src="/docs/code-samples/walkthrough-11-loading.html" title="A model downloaded from a URL at runtime and framed by the camera">
 
 @[code js](@code/walkthrough-11-loading.js)
 
 </walkthrough-step>
 
-`loadAsset(url)` fetches and parses the file, then hands back an object with `.scene` and `.animations`. It doesn't add anything to your scene — you decide where it goes and when.
+`loadAsset(url)` fetches and parses the file, then hands back an object with `.scene` and `.animations`. It doesn't add anything to your scene, so you decide where the model goes and when it appears.
 
-That gap is worth using. The example shows a spinner first, removes it once the file arrives, then adds the model. Loading takes as long as it takes, and the alternative is an empty screen.
+`asset.scene` is a plain `THREE.Object3D`. You can add components to it, move it, or parent it to something else, exactly as with a shape you built yourself. Nothing about a loaded object is special.
 
-`asset.scene` is a plain `THREE.Object3D`, which is why `addComponent(Spin)` works on it exactly as it did on shapes you created yourself. Nothing about a loaded object is special.
+`fitCamera()` on `OrbitControls` frames whatever is in the scene, which saves guessing at a camera position for a model whose size you don't know in advance.
+
+Loading takes as long as it takes, and a visitor on a slow connection sees an empty scene until it finishes. Worth showing something in the meantime — a placeholder, a progress indicator, or a low-resolution version swapped out on arrival.
 
 This is one of four ways to load a model, and the right choice depends on what you're doing — a single root scene, switching between many, spawning copies of one, or a quick one-off like this.
 

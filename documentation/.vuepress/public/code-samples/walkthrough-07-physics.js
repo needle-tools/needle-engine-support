@@ -46,16 +46,19 @@ class ClickToLaunch extends Behaviour {
   }
 
   onPointerClick() {
-    this.body.applyImpulse(new THREE.Vector3(0, this.context.time.deltaTime * this.strength, 0));
+    this.body?.applyImpulse(new THREE.Vector3(0, this.context.time.deltaTime * this.strength, 0));
   }
+
+  onPointerEnter() { this.context.input.setCursor("pointer") }
+  onPointerExit() { this.context.input.setCursor("default") }
 }
 
 // Bounciness runs from 0 (stops dead) to 1 (keeps all its energy).
 // Ordered dullest to bounciest, so they read left to right in the scene.
 const kinds = [
   { name: 'clay', color: '#6aa9e8', bounciness: 0 },
-  { name: 'plastic', color: '#7dd3a0', bounciness: 0.4 },
-  { name: 'rubber', color: '#f2c14e', bounciness: 0.95 },
+  { name: 'plastic', color: '#7dd3a0', bounciness: 0.5 },
+  { name: 'rubber', color: '#f2c14e', bounciness: 0.98 },
 ];
 
 onStart(context => {
@@ -101,7 +104,7 @@ onStart(context => {
     });
 
     ball.addComponent(ClickToLaunch, {
-      strength: radius * 500,
+      strength: radius * 800,
     });
   });
 });

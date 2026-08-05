@@ -56,8 +56,8 @@ class SceneBoundsOnClick extends Behaviour {
 
   onPointerClick() {
     const bounds = getBoundingBox(this.context.scene);
-    Gizmos.DrawWireBox3(bounds, 0x00ff00, 1, true);
-    this.context.time.timeScale = 0.2;
+    Gizmos.DrawWireBox3(bounds, 0x55ff00, 1, true);
+    this.context.time.timeScale = 5;
     setTimeout(()=> {
       this.context.time.timeScale = 1;
     }, 1000);
@@ -76,7 +76,7 @@ onStart(async context => {
   marker.addComponent(Orbit);
   marker.addComponent(ShowWhatItIsDoing);
 
-  const cylinder = ObjectUtils.createPrimitive("Cylinder", { parent: context.scene });
+  const cylinder = ObjectUtils.createPrimitive("Cylinder", { parent: context.scene, scale: [1, .1, 1] });
   cylinder.addComponent(SceneBoundsOnClick);
 
   context.mainCamera.position.z = 9;

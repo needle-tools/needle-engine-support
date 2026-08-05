@@ -7,8 +7,23 @@ import { nextTick } from 'vue'
 // Offset so hash targets clear the fixed header (matches scroll-margin-top in index.scss).
 const HEADER_OFFSET = 60
 
+/*
+  Heading anchors are not always valid CSS selectors. This site slugifies
+  headings without escaping, so "## 13 · Adapting to the device" becomes
+  "#13-adapting-to-the-device" and "### 4. iframe Embedding" becomes
+  "#4.-iframe-embedding". An ID selector may not start with a digit, and a
+  dot reads as a class, so querySelector throws a SyntaxError on both and
+  takes the rest of the navigation handler with it.
+
+  getElementById has no selector grammar to violate, so it just works.
+*/
+const findByHash = (hash: string): HTMLElement | null => {
+  if (!hash || hash.length < 2) return null
+  return document.getElementById(decodeURIComponent(hash.slice(1)))
+}
+
 const scrollToHash = (hash: string) => {
-  const el = document.querySelector(hash) as HTMLElement | null
+  const el = findByHash(hash)
   if (!el) return
   const top = el.getBoundingClientRect().top + window.scrollY - HEADER_OFFSET
   window.scrollTo({ top, behavior: 'instant' as ScrollBehavior })
@@ -21,7 +36,7 @@ const scrollToHash = (hash: string) => {
 // finish loading and push the target down. Aborts the moment the user scrolls
 // themselves, so we never fight a manual scroll.
 const scrollToHashRobustly = (hash: string) => {
-  if (!document.querySelector(hash)) return
+  if (!findByHash(hash)) return
   scrollToHash(hash)
 
   let aborted = false
@@ -48,7 +63,7 @@ const scrollToHashRobustly = (hash: string) => {
   let stableFrames = 0
   const tick = () => {
     if (aborted) return
-    const el = document.querySelector(hash) as HTMLElement | null
+    const el = findByHash(hash)
     if (!el) return
     const top = Math.round(el.getBoundingClientRect().top)
     if (lastTop !== null && Math.abs(top - lastTop) <= 1) {
