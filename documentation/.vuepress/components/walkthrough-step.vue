@@ -301,6 +301,20 @@ export default {
   overflow: hidden;
 }
 
+/*
+  Chrome makes scrollable regions keyboard-focusable on its own, so the code
+  block is already a tab stop — with the browser's default black ring, which
+  looks like an error against the docs palette. Restyle it rather than adding
+  a tabindex of our own, which would only create a second stop on the same
+  block. Inset, because the ring would otherwise sit outside the rounded
+  corners.
+*/
+.walkthrough-code :deep(div[class*="language-"] > pre):focus-visible {
+  outline: 2px solid var(--vp-c-accent, #826aed);
+  outline-offset: -2px;
+  border-radius: 1em;
+}
+
 .walkthrough-code :deep(div[class*="language-"] > pre) {
   height: 100%;
   margin: 0;
