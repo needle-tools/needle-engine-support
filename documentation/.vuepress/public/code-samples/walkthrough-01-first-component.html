@@ -25,7 +25,8 @@
 
 <body>
 
-  <needle-engine background="transparent" camera-controls></needle-engine>
+  <!-- Iridescence is a reflection effect, so it needs an environment to reflect. -->
+  <needle-engine background="transparent" environment-image="studio" camera-controls></needle-engine>
 
   <!-- Shared stage: lighting, ground, look. Edit walkthrough-base.js to restyle every step. -->
   <script type="module" src="./walkthrough-base.js"></script>

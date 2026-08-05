@@ -51,7 +51,6 @@ onInitialized(context => {
       orbit.enableZoom = false;
     }
   }
-  console.log(context.mainCamera.position);
 
 
   if (showGrid) {

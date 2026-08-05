@@ -6,6 +6,12 @@ import { fs } from '@vuepress/utils';
  * VuePress plugin that generates LLM-friendly documentation files:
  * - llms.txt: Structured links to all documentation pages
  * - llms-full.txt: Full markdown content of all pages
+ *
+ * Both are written to the build output only. They used to be copied to the
+ * repository root and committed as well, which served no purpose — `upload.mjs`
+ * publishes from `dist/` — while rewriting a 1.6 MB generated file on every
+ * build. That buried real changes under tens of thousands of diff lines and
+ * conflicted on every merge.
  */
 
 /**
@@ -91,11 +97,6 @@ export default (options = {}) => {
         await fs.ensureDir(app.dir.dest());
         await fs.writeFile(linksOutpath, linksOutput, 'utf-8');
         console.log(`[generate-llms] Saved links file to: ${path.relative(app.dir.dest(), linksOutpath)}`);
-
-        // Also copy to root directory
-        const rootLinksOutpath = path.join(process.cwd(), 'llms.txt');
-        await fs.copyFile(linksOutpath, rootLinksOutpath);
-        console.log(`[generate-llms] Copied to root: llms.txt`);
       } catch (error) {
         console.error(`[generate-llms] Error writing file ${linksOutpath}:`, error);
       }
@@ -176,11 +177,6 @@ Last Updated on ${new Date().toLocaleString('en-US')}
         await fs.ensureDir(app.dir.dest());
         await fs.writeFile(fullOutpath, fullTextEN, 'utf-8');
         console.log(`[generate-llms] Saved full text to: ${path.relative(app.dir.dest(), fullOutpath)}`);
-
-        // Also copy to root directory
-        const rootFullOutpath = path.join(process.cwd(), 'llms-full.txt');
-        await fs.copyFile(fullOutpath, rootFullOutpath);
-        console.log(`[generate-llms] Copied to root: llms-full.txt`);
       } catch (error) {
         console.error(`[generate-llms] Error writing full text file ${fullOutpath}:`, error);
       }
