@@ -93,6 +93,7 @@ html[data-theme='dark'] .path-card:hover {
 Perfect for newcomers who want to learn the fundamentals.
 
 - [Getting Started](./getting-started/)
+- [Scripting Walkthrough](./tutorials/scripting-walkthrough)
 - [TypeScript Essentials](./tutorials/fundamentals/typescript-essentials)
 - [For Blender Artists](./tutorials/fundamentals/for-blender-artists)
 - [For Unity Developers](./tutorials/fundamentals/for-unity-developers)
@@ -108,7 +109,6 @@ Perfect for newcomers who want to learn the fundamentals.
 
 Get things done with focused how-to instructions.
 
-- [Scripting Walkthrough](./tutorials/scripting-walkthrough) — learn scripting step by step, live
 - [Create Components](./how-to-guides/scripting/create-components)
 - [Deploy to Production](./how-to-guides/deployment/)
 - [Use Physics](./how-to-guides/scripting/use-physics)
