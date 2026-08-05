@@ -65,6 +65,8 @@ export default {
     },
   },
   mounted() {
+    this.addCopyButtons();
+
     // Without IntersectionObserver, just mount everything and never unload.
     if (!this.autoUnload || typeof IntersectionObserver === 'undefined') {
       this.mounted = true;
@@ -98,6 +100,38 @@ export default {
   },
 
   methods: {
+    /*
+      Give the code blocks a copy button.
+
+      @vuepress/plugin-copy-code adds these itself, but it scans the page once
+      the markdown has rendered — and every component here is registered with
+      defineAsyncComponent, so this one resolves after that scan. Its slot
+      content is not in the DOM yet, and the plugin never sees it: the code
+      panels were the only blocks on the page without a copy button.
+
+      The button below is the same element the plugin creates. Its click
+      handler is delegated on the window and matches
+      `div[class*="language-"] > button.vp-copy-code-button`, taking the next
+      sibling as the code to copy — so inserting one here is all that's
+      needed, and copying, the copied state and the styling all come from the
+      plugin as usual.
+    */
+    addCopyButtons() {
+      this.$el.querySelectorAll('div[class*="language-"] > pre').forEach(pre => {
+        // The attribute is the plugin's own "already handled" marker.
+        if (pre.hasAttribute('copy-code')) return;
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.classList.add('vp-copy-code-button');
+        button.setAttribute('aria-label', 'Copy code');
+        button.setAttribute('data-copied', 'Copied');
+
+        pre.parentElement?.insertBefore(button, pre);
+        pre.setAttribute('copy-code', '');
+      });
+    },
+
     send(action) {
       /*
         Query the DOM rather than using a ref: the iframes are rendered in a
