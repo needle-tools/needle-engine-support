@@ -18,15 +18,8 @@ onStart(context => {
   const radius = 1;
   const shape = new THREE.Mesh(
     new THREE.IcosahedronGeometry(radius, 0),
-    // MeshPhysicalMaterial adds effects on top of the standard one.
-    // Iridescence is a thin film over the surface, like oil on water: the
-    // colour shifts with the viewing angle as the shape turns.
-    //
-    // It shows up in reflections, so it needs a dark, polished, metallic
-    // surface and an environment to reflect. A bright albedo would just
-    // drown it — hence the near-black base colour here.
     new THREE.MeshPhysicalMaterial({
-      color: '#ebfd97',
+      color: '#b3ffbd',
       roughness: 0.4,
       metalness: 1,
       iridescence: 1,

@@ -48,6 +48,7 @@ Build your foundation with these essential tutorials:
 
 ## Scripting & Components
 
+- [Scripting Walkthrough](./scripting-walkthrough) - Learn scripting in short steps, each running live next to its code (~30 min)
 - [Create Components](../how-to-guides/scripting/create-components) - Write custom TypeScript components
 - [Scripting Examples](../reference/scripting-examples) - Code examples and patterns
 

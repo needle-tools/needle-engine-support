@@ -40,7 +40,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 
 ## Scripting & Interaction
 
-- [Scripting Walkthrough](/docs/how-to-guides/scripting/examples) - Learn scripting one concept at a time, with live runnable examples
+- [Scripting Walkthrough](/docs/tutorials/scripting-walkthrough) - Learn scripting one concept at a time, with live runnable examples
 - [Play Animations](/docs/how-to-guides/animation) - Animation component, Animator, and Timeline — authored in the editor (no code) or driven from TypeScript
 - [Create Components](/docs/how-to-guides/scripting/create-components) - Write custom TypeScript components
 - [Use Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) - awake, start, update, and more

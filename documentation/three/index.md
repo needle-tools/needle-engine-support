@@ -92,7 +92,7 @@ The easiest way to get started is using the `<needle-engine>` web component. Dis
 
 Think of the `<needle-engine>` web component as a three.js canvas with superpowers. You can reach the scene through lifecycle hooks and add your own three.js objects, or attach components to them.
 
-The [Scripting Walkthrough](/docs/how-to-guides/scripting/examples) covers all of it in short steps, each one running live next to the code that produces it:
+The [Scripting Walkthrough](/docs/tutorials/scripting-walkthrough) covers all of it in short steps, each one running live next to the code that produces it:
 
 - writing a component and attaching it to an object
 - the lifecycle: `awake`, `onEnable`, `start`, `update`, `onDestroy`
