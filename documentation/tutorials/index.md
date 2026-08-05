@@ -33,6 +33,7 @@ Build your foundation with these essential tutorials:
 
 ### For Developers
 
+- [Scripting Walkthrough](./scripting-walkthrough) - Write your first components step by step, each one running live next to its code (~30 min)
 - [For Unity Developers](./fundamentals/for-unity-developers) - Learning path for Unity developers
   - [Unity Integration](./fundamentals/unity-integration) - Unity workflow and glTF export (~15 min)
   - [C# to TypeScript](./fundamentals/c-sharp-to-typescript) - Translate your C# knowledge (~15 min)
@@ -46,11 +47,11 @@ Build your foundation with these essential tutorials:
 
 ---
 
-## Scripting & Components
+## After the Walkthrough
 
-- [Scripting Walkthrough](./scripting-walkthrough) - Learn scripting in short steps, each running live next to its code (~30 min)
-- [Create Components](../how-to-guides/scripting/create-components) - Write custom TypeScript components
-- [Scripting Examples](../reference/scripting-examples) - Code examples and patterns
+- [Create Components](../how-to-guides/scripting/create-components) - `@serializable`, exposing fields to Unity and Blender, and where component files live
+- [Scripting Examples](../reference/scripting-examples) - Copy-paste snippets by topic
+- [Component Reference](../reference/components) - Every built-in component
 
 ---
 

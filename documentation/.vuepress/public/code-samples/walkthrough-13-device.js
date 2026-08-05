@@ -15,13 +15,6 @@ configureDemoScene({ showGrid: false, useContactShadows: true });
 const material = (color, roughness = 0.5) =>
   new THREE.MeshStandardMaterial({ color, roughness });
 
-class Spin extends Behaviour {
-  speed = 0.4;
-
-  update() {
-    this.gameObject.rotation.y += this.speed * this.context.time.deltaTime;
-  }
-}
 
 // Draws which branch was taken, so you can see the result of the check.
 class ShowDetectedDevice extends Behaviour {
@@ -69,6 +62,7 @@ function buildMonitor() {
 // A candybar phone, roughly 4.5 x 13cm. Standing up so you can see it.
 function buildPhone() {
   const phone = new THREE.Group();
+
   const shell = material('#3b4a53', 0.45);
 
   const body = new THREE.Mesh(new THREE.BoxGeometry(0.048, 0.13, 0.018), shell);
@@ -111,8 +105,8 @@ onStart(context => {
   // Check the device once, then build for it. A phone and a desktop want
   // different things on screen, not just different detail levels.
   const device = DeviceUtilities.isMobileDevice() ? buildPhone() : buildMonitor();
+  device.rotateY(Math.PI / 2 * .3);
   context.scene.add(device);
-  device.addComponent(Spin);
   device.addComponent(ShowDetectedDevice);
 
   // XRFlag hides an object outside the modes you list. This one is only

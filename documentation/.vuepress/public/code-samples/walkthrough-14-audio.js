@@ -23,6 +23,7 @@ class Radio extends Behaviour {
   // A plain field, so it can be overridden per instance through
   // addComponent — but a default here means it works without that.
   tracks = [
+    './audio/marcel-elzach.ogg',
     './audio/tribal.ogg',
     './audio/beach.ogg',
     './audio/disney.ogg',
@@ -35,6 +36,7 @@ class Radio extends Behaviour {
     // keeps this safe if somebody adds their own.
     this.audio = getOrAddComponent(this.gameObject, AudioSource, {
       playOnAwake: false,
+      preload: true,
       loop: true,
       // 1 is positional: the sound comes from the radio and fades with distance.
       spatialBlend: 1,
