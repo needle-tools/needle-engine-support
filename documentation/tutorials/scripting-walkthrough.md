@@ -271,7 +271,7 @@ These same methods fire for touch and for VR controllers, so a component written
 
 <walkthrough-takeaway>
 
-Physics is two components, not a system you set up. A `Rigidbody` makes an object move. A collider gives it a shape. Collisions then arrive as component methods, like pointer events do.
+Physics is two components, not a system you set up. A `Rigidbody` makes an object move. A collider gives it a shape. The engine then calls your component when something hits it, the same way it calls pointer events — you don't write any physics code to receive them.
 
 </walkthrough-takeaway>
 
@@ -289,8 +289,10 @@ The two components do different jobs and you usually need both. **`Rigidbody`** 
 
 Each ball carries a different **physics material** on its collider — `bounciness` rising from `0` on the left to `0.95` on the right, which is the entire difference between the clay, plastic and rubber balls. `bounceCombine: Maximum` makes each ball's own value decide the result; the default averages it with the floor's, so a bouncy ball on a dead floor would only half bounce.
 
-::: tip A collider is its own shape
-A collider doesn't read the mesh — `BoxCollider` defaults to 1×1×1 whatever the object's size, so anything landing off that pad falls through. `BoxCollider.add(object)` fits it to the geometry for you. Other collider types have no such helper.
+A collider is its own shape and doesn't read the mesh — `BoxCollider` defaults to 1×1×1 whatever the object's size, so anything landing off that pad falls through. `BoxCollider.add(object)` fits it to the geometry for you. Other collider types have no such helper.
+
+::: tip Needle Engine only downloads what you use
+The physics engine is a separate chunk, fetched the first time a physics component is added. A project with no physics never downloads that code at all — it isn't shipped in the page and left unused.
 :::
 
 ### Mass and density
@@ -540,11 +542,11 @@ The analyser is created on first use rather than in `start`, because the audio o
 
 ## 16 · Post-processing
 
-<walkthrough-tags symbols="Volume, BloomEffect, DepthOfField, VolumeParameter" />
+<walkthrough-tags symbols="BloomEffect, DepthOfField, ScreenSpaceAmbientOcclusionN8, VolumeParameter" />
 
 <walkthrough-takeaway>
 
-Effects are components too. Add them to a `Volume`, set their values, and switch them on and off with the same `enabled` flag as everything else.
+Bloom, depth of field, ambient occlusion and the rest ship as components. Add one to the scene to switch it on, remove it to switch it off — the same as any other component.
 
 </walkthrough-takeaway>
 
@@ -561,21 +563,21 @@ Effects are components too. Add them to a `Volume`, set their values, and switch
 
 </walkthrough-step>
 
-A `Volume` holds the effects. Add it anywhere in the scene, then add each effect as a component next to it — the Volume collects them and passes them to the renderer. Turn both buttons off to see the scene underneath.
+An effect registers itself when you add it. There is no manager or profile asset to set up first — `addComponent` is the whole setup, and `context.postprocessing` is the subsystem it registers with if you need to reach it directly. Turn all three buttons off to see the scene underneath.
 
-Effect settings are `VolumeParameter` objects rather than plain numbers, so values go through `.value`. That extra step is what lets a value be overridden per volume, and animated or blended between volumes.
+Effect settings are `VolumeParameter` objects rather than plain numbers, so values go through `.value`. That extra step is what lets a setting be animated, or blended between one set of values and another.
 
-Bloom only affects what is already brighter than its `threshold`. The orbs use an emissive material to get there — a plain colour would stay below the line and never glow, however high you push the intensity.
+Bloom only affects what is already brighter than its `threshold`. The lamps use an emissive material to get there — a plain colour stays below the line and never glows, however high you push the intensity.
 
 `focusDistance` is a distance from the camera in metres, not a point in the scene, so it doesn't follow anything on its own. `AutoFocus` does what a camera does: it raycasts through the middle of the view and focuses on whatever it hits. `screenPoint` is in normalized device coordinates, so `(0, 0)` is the centre, and hits come back sorted with the nearest first.
 
 It runs on a timer rather than every frame — focus doesn't need measuring 60 times a second — and eases towards each new distance, which is what makes it rack focus instead of snapping. Orbit the scene and watch the focus follow what you point at.
 
-::: tip Effects load only when used
-Post-processing ships as a separate chunk. A scene without a `Volume` never downloads it.
+::: tip Needle Engine only downloads what you use
+The post-processing library is a separate chunk, fetched the first time an effect component is added. A project with no effects never downloads that code at all — it isn't shipped in the page and left unused. The same is true of physics, in [step 08](#08-physics-and-collisions).
 :::
 
-→ [Postprocessing components](/docs/reference/components#postprocessing) · [Postprocessing sample](https://samples.needle.tools/postprocessing) · [Volume API](https://engine.needle.tools/docs/api/Volume)
+→ [Post-Processing Effects](/docs/how-to-guides/rendering/postprocessing) · [Postprocessing components](/docs/reference/components#postprocessing) · [Postprocessing sample](https://samples.needle.tools/postprocessing)
 
 ---
 

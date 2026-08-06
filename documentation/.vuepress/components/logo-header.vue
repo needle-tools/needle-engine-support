@@ -66,12 +66,19 @@ export default {
     vertical-align: middle;
 }
 
+/*
+  A fixed square, not height with width:auto. The logos have very different
+  aspect ratios — a wide wordmark next to a round badge — so sizing by height
+  alone left every label starting at a different x and the list looking
+  ragged. contain scales each logo inside the box without distorting it.
+*/
 .logo-header img {
-    height: 1.6em;
-    width: auto;
+    width: var(--logo-header-size, 1.6em);
+    height: var(--logo-header-size, 1.6em);
     margin: 0;
     flex-shrink: 0;
     object-fit: contain;
+    object-position: center;
 }
 
 .logo-header-text {
