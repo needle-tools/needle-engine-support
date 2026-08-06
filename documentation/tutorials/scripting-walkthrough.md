@@ -66,7 +66,7 @@ The shape has three components on it: one turns it, one moves it up and down, on
 
 They coexist here because each writes to a different property — `rotation.y`, `position.y`, and `scale`. Two components writing the same property is the one case where order starts to matter.
 
-Independent is the default, not a rule. When a component does need another, `getComponent` finds it on the same object — step 08 uses it to reach a `Rigidbody`.
+Independent is the default, not a rule. When a component does need another, `getComponent` finds it on the same object — step 10 uses it to reach a `Rigidbody`.
 
 `Bob` reads its starting height in `awake` rather than in a field initializer, because `this.gameObject` isn't set until the component is attached to something.
 
@@ -111,7 +111,7 @@ The component logs a line each time one of its methods runs. On first activation
 
 A rule that saves a lot of debugging: whatever you set up in `awake`, undo in `onDestroy`; whatever you subscribe to in `onEnable`, unsubscribe in `onDisable`.
 
-For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you when it's disabled or destroyed, so you don't write the `onDisable` half at all — [step 09](#09-networking) uses it for a network listener.
+For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you when it's disabled or destroyed, so you don't write the `onDisable` half at all — [step 11](#11-networking) uses it for a network listener.
 
 → [Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) · [Lifecycle Methods reference](/docs/reference/api/lifecycle-methods)
 
@@ -221,7 +221,7 @@ A clone's components are ordinary components. `getComponent` and `getComponentIn
 Here the original is built in code so the example stays self-contained. In a project it's more often a model you loaded, or an object placed in Unity or Blender and referenced with `@serializable`. `instantiate` treats them all the same.
 :::
 
-To spawn a copy for everyone in a networked scene, `syncInstantiate` does the same job across the connection — see [step 09](#09-networking).
+To spawn a copy for everyone in a networked scene, `syncInstantiate` does the same job across the connection — see [step 11](#11-networking).
 
 → [Duplicatable component](/docs/how-to-guides/components/duplicatable) · [syncInstantiate](/docs/how-to-guides/networking/sync-state#syncinstantiate)
 
@@ -265,7 +265,89 @@ These same methods fire for touch and for VR controllers, so a component written
 
 ---
 
-## 08 · Physics and collisions
+## 08 · Moving the camera
+
+<walkthrough-tags symbols="OrbitControls, fitCamera, setCameraTargetPosition, setLookTargetPosition" />
+
+<walkthrough-takeaway>
+
+Scenes come with camera controls already working. Drag to orbit, scroll to zoom, and double-click anything to focus it. From code you can frame objects or move the camera yourself.
+
+</walkthrough-takeaway>
+
+<walkthrough-step
+  src="/docs/code-samples/walkthrough-08-camera.html"
+  title="Three objects the camera can frame, focus and fly between"
+  :actions='[
+    { "name": "frameAll",  "code": "orbit.fitCamera()",                            "label": "Frame everything" },
+    { "name": "frameOne",  "code": "orbit.fitCamera({ objects: [tower] })",        "label": "Frame one object" },
+    { "name": "fromFront", "code": "orbit.fitCamera({ fitDirection })",            "label": "Frame from the front" },
+    { "name": "viewpoint", "code": "orbit.setCameraTargetPosition(pos, 1.2)",      "label": "Fly to a viewpoint" }
+  ]'>
+
+@[code js](@code/walkthrough-08-camera.js)
+
+</walkthrough-step>
+
+Try the scene before the buttons. **Double-click** any object to focus it, and **double-click empty space** — anywhere the click doesn’t hit an object — to frame everything again. That comes with `OrbitControls` — you don't write it.
+
+`fitCamera()` frames the whole scene. Pass `objects` to frame a selection instead, which is how you point the camera at one thing without knowing where it is. Pass `fitDirection` and it also decides which side to look from, rather than fitting from wherever the camera happens to be — that is the difference between the third button and the first two.
+
+The red dot is the point the camera turns around. It normally has nothing to show for it, so `ShowOrbitTarget` draws one: right-drag to pan and watch it slide, and see it stop at the edge of an invisible box. That box is `targetBounds`, which takes an object and reads its world position as the centre and its world scale as the size. Without it, panning can carry the view off the scene entirely.
+
+`setCameraTargetPosition` and `setLookTargetPosition` move the camera somewhere specific. The second argument is the travel time in seconds, so `1.2` eases over that long and `true` jumps there instantly. Both take a point rather than a rotation, because the controls aim the camera at a look target — the second call is what decides where it ends up pointing.
+
+::: tip Driving the camera yourself
+`<needle-engine camera-controls="false">` stops the engine adding controls at all. The camera is then yours to manage: link it to scroll, animate it along a path, or leave it fixed. Keeping the controls and switching off just rotation, zoom or panning is usually the smaller change.
+:::
+
+→ [Camera Controls (OrbitControls)](/docs/how-to-guides/components/orbit-controls)
+
+---
+
+## 09 · Custom camera controls
+
+<walkthrough-tags symbols="camera-controls, getPointerPositionRC, Mathf.clamp" />
+
+<walkthrough-takeaway>
+
+Turn the built-in controls off and the camera is an ordinary object you can move. This one follows the cursor within a set angle, and zooms in on whatever you hold down.
+
+</walkthrough-takeaway>
+
+<walkthrough-step
+  src="/docs/code-samples/walkthrough-09-custom-camera.html"
+  title="A camera that looks towards the cursor, and zooms in on what you hold"
+  :actions='[
+    { "name": "front", "code": "rig.moveTo(VIEWPOINTS.front)", "label": "Move to the front" },
+    { "name": "side",  "code": "rig.moveTo(VIEWPOINTS.side)",  "label": "Move to the side" }
+  ]'>
+
+@[code js](@code/walkthrough-09-custom-camera.js)
+
+</walkthrough-step>
+
+Move the cursor across the scene. The camera turns towards it and stops — 18° to either side, 9° up and down. It never swings round, because nothing in the code lets it.
+
+Hold down any object to look closer. Three things happen together: the field of view narrows, the camera turns to aim at that object, and the glance eases back to centre so the cursor stops pulling the view off the thing you are inspecting. Let go and all three reverse.
+
+The page sets `camera-controls="false"`, so the engine adds no controls of its own and the camera is left to this component.
+
+There is a second way. A component that reports `isCameraController` — as `CameraRig` does — takes the place of the default controls: the engine checks for one when the context is created, and only adds `OrbitControls` if it finds none. That check happens once, at startup, so it suits a camera set up in Unity or Blender. Setting the attribute is the straightforward route for a scene built entirely in code.
+
+`getPointerPositionRC` gives the cursor from `-1` to `1` with `0` at the centre, which is already the shape you want — how far from the middle, regardless of canvas size. Clamping it before use means a cursor that leaves the canvas can't push the camera further.
+
+Everything moves by easing towards a target rather than being set outright: position, field of view, look-at point and the glance angles. That is what makes an interruption harmless — pressing the other button mid-flight just changes where the camera is heading, with no transition to cancel.
+
+The rig aims from a point each frame rather than turning the camera a little more each time. Accumulating would drift, and the limits would stop meaning anything. Yaw turns around world up and pitch around the camera's own right, which keeps the horizon level — rotating in the camera's local space rolls it, slightly but visibly.
+
+Hovering brightens the object with a `MaterialPropertyBlock`, which overrides the colour on that one object rather than on the material it shares — the same as [step 07](#07-pointer-input).
+
+→ [Camera Controls (OrbitControls)](/docs/how-to-guides/components/orbit-controls) · [OrbitControls API](https://engine.needle.tools/docs/api/OrbitControls) · [Handle User Input](/docs/how-to-guides/scripting/handle-input)
+
+---
+
+## 10 · Physics and collisions
 
 <walkthrough-tags symbols="Rigidbody, BoxCollider, SphereCollider, PhysicsMaterial, onCollisionEnter, applyImpulse" />
 
@@ -275,9 +357,9 @@ Physics is two components, not a system you set up. A `Rigidbody` makes an objec
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-08-physics.html" title="Three balls with different bounciness dropped onto a floor that flashes when hit — click a ball to launch it">
+<walkthrough-step src="/docs/code-samples/walkthrough-10-physics.html" title="Three balls with different bounciness dropped onto a floor that flashes when hit — click a ball to launch it">
 
-@[code js](@code/walkthrough-08-physics.js)
+@[code js](@code/walkthrough-10-physics.js)
 
 </walkthrough-step>
 
@@ -309,7 +391,7 @@ Physics is powered by [Rapier](https://rapier.rs/), which the engine loads on de
 
 ---
 
-## 09 · Networking
+## 11 · Networking
 
 <walkthrough-tags symbols="SyncedRoom, connection.send, connection.beginListen, syncField" />
 
@@ -319,9 +401,9 @@ Multiplayer is a component sending and receiving, not a separate architecture. J
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-09-networking.html" title="Two visitors in one room, clicking cubes to change their colour for both" split>
+<walkthrough-step src="/docs/code-samples/walkthrough-11-networking.html" title="Two visitors in one room, clicking cubes to change their colour for both" split>
 
-@[code js](@code/walkthrough-09-networking.js)
+@[code js](@code/walkthrough-11-networking.js)
 
 </walkthrough-step>
 
@@ -360,7 +442,7 @@ Like [`@serializable`](#marking-fields-as-serializable), it's a decorator and ne
 
 ---
 
-## 10 · AR and VR
+## 12 · AR and VR
 
 <walkthrough-tags symbols="WebXR" />
 
@@ -370,9 +452,9 @@ XR is one component. Add `WebXR` to the scene and the page gains AR and VR. Ther
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-10-webxr.html" title="A scene with AR and VR enabled by a single WebXR component">
+<walkthrough-step src="/docs/code-samples/walkthrough-12-webxr.html" title="A scene with AR and VR enabled by a single WebXR component">
 
-@[code js](@code/walkthrough-10-webxr.js)
+@[code js](@code/walkthrough-12-webxr.js)
 
 </walkthrough-step>
 
@@ -388,7 +470,7 @@ It scales *you*, not the scene: raise it and you become larger relative to every
 
 ---
 
-## 11 · Following the cursor
+## 13 · Following the cursor
 
 <walkthrough-tags symbols="CursorFollow, LookAt" />
 
@@ -398,9 +480,9 @@ Plenty of what you'd write by hand already exists as a component. One built-in f
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-11-cursor.html" title="A head whose eyes track the mouse pointer">
+<walkthrough-step src="/docs/code-samples/walkthrough-13-cursor.html" title="A head whose eyes track the mouse pointer">
 
-@[code js](@code/walkthrough-11-cursor.js)
+@[code js](@code/walkthrough-13-cursor.js)
 
 </walkthrough-step>
 
@@ -414,7 +496,7 @@ Before writing a component, it's worth checking whether one exists. The [Compone
 
 ---
 
-## 12 · Loading a model
+## 14 · Loading a model
 
 <walkthrough-tags symbols="loadAsset" />
 
@@ -424,9 +506,9 @@ You can load a model from any URL at runtime. What comes back is an ordinary obj
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-12-loading.html" title="A model downloaded from a URL at runtime and framed by the camera">
+<walkthrough-step src="/docs/code-samples/walkthrough-14-loading.html" title="A model downloaded from a URL at runtime and framed by the camera">
 
-@[code js](@code/walkthrough-12-loading.js)
+@[code js](@code/walkthrough-14-loading.js)
 
 </walkthrough-step>
 
@@ -444,7 +526,7 @@ This is one of four ways to load a model, and the right choice depends on what y
 
 ---
 
-## 13 · Seeing what your code is doing
+## 15 · Seeing what your code is doing
 
 <walkthrough-tags symbols="Gizmos" />
 
@@ -454,9 +536,9 @@ Gizmos let you draw into the scene from code, so you can see a value instead of 
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-13-gizmos.html" title="An orbiting marker with its path, position and heading drawn as gizmos">
+<walkthrough-step src="/docs/code-samples/walkthrough-15-gizmos.html" title="An orbiting marker with its path, position and heading drawn as gizmos">
 
-@[code js](@code/walkthrough-13-gizmos.js)
+@[code js](@code/walkthrough-15-gizmos.js)
 
 </walkthrough-step>
 
@@ -470,7 +552,7 @@ Positions are in world space. `Gizmos.DrawLabel` draws readable text in the scen
 
 ---
 
-## 14 · Adapting to the device
+## 16 · Adapting to the device
 
 <walkthrough-tags symbols="DeviceUtilities, XRFlag, XRStateFlag" />
 
@@ -480,9 +562,9 @@ The same page runs on a phone, a desktop and a headset. You can check which one 
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-14-device.html" title="A sphere whose detail depends on the device, plus two boxes that only appear in AR or VR">
+<walkthrough-step src="/docs/code-samples/walkthrough-16-device.html" title="A sphere whose detail depends on the device, plus two boxes that only appear in AR or VR">
 
-@[code js](@code/walkthrough-14-device.js)
+@[code js](@code/walkthrough-16-device.js)
 
 </walkthrough-step>
 
@@ -508,7 +590,7 @@ The rule lives on the object, which is why this beats a check elsewhere: the hea
 
 ---
 
-## 15 · Audio
+## 17 · Audio
 
 <walkthrough-tags symbols="AudioSource, play, pause, getOrAddComponent" />
 
@@ -518,9 +600,9 @@ Sound is a component you put on an object. Because it sits on the radio, it come
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-15-audio.html" title="A radio with 3D buttons for play, pause and track switching, and bars that move while it plays">
+<walkthrough-step src="/docs/code-samples/walkthrough-17-audio.html" title="A radio with 3D buttons for play, pause and track switching, and bars that move while it plays">
 
-@[code js](@code/walkthrough-15-audio.js)
+@[code js](@code/walkthrough-17-audio.js)
 
 </walkthrough-step>
 
@@ -540,7 +622,7 @@ The analyser is created on first use rather than in `start`, because the audio o
 
 ---
 
-## 16 · Post-processing
+## 18 · Post-processing
 
 <walkthrough-tags symbols="BloomEffect, DepthOfField, ScreenSpaceAmbientOcclusionN8, VolumeParameter" />
 
@@ -551,7 +633,7 @@ Bloom, depth of field, ambient occlusion and the rest ship as components. Add on
 </walkthrough-takeaway>
 
 <walkthrough-step
-  src="/docs/code-samples/walkthrough-16-postprocessing.html"
+  src="/docs/code-samples/walkthrough-18-postprocessing.html"
   title="Glowing orbs receding into the distance, with bloom and depth of field"
   :actions='[
     { "name": "bloom", "code": "bloom.enabled = !bloom.enabled", "label": "Toggle bloom" },
@@ -559,7 +641,7 @@ Bloom, depth of field, ambient occlusion and the rest ship as components. Add on
     { "name": "ao",    "code": "ao.enabled = !ao.enabled",       "label": "Toggle ambient occlusion" }
   ]'>
 
-@[code js](@code/walkthrough-16-postprocessing.js)
+@[code js](@code/walkthrough-18-postprocessing.js)
 
 </walkthrough-step>
 
@@ -574,7 +656,7 @@ Bloom only affects what is already brighter than its `threshold`. The lamps use 
 It runs on a timer rather than every frame — focus doesn't need measuring 60 times a second — and eases towards each new distance, which is what makes it rack focus instead of snapping. Orbit the scene and watch the focus follow what you point at.
 
 ::: tip Needle Engine only downloads what you use
-The post-processing library is a separate chunk, fetched the first time an effect component is added. A project with no effects never downloads that code at all — it isn't shipped in the page and left unused. The same is true of physics, in [step 08](#08-physics-and-collisions).
+The post-processing library is a separate chunk, fetched the first time an effect component is added. A project with no effects never downloads that code at all — it isn't shipped in the page and left unused. The same is true of physics, in [step 10](#10-physics-and-collisions).
 :::
 
 → [Post-Processing Effects](/docs/how-to-guides/rendering/postprocessing) · [Postprocessing components](/docs/reference/components#postprocessing) · [Postprocessing sample](https://samples.needle.tools/postprocessing)

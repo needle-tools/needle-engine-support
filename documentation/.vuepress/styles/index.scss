@@ -6,6 +6,24 @@ html {
   scroll-behavior: auto !important;
 }
 
+/*
+  Give the sidebar more room on wide screens. The theme fixes it at 20rem at
+  every size, which truncates entries that are only a little too long — the
+  walkthrough's step titles lose their last word or two while there is empty
+  space either side of the page.
+
+  Only grows once the viewport can spare it, so the content column keeps its
+  width. Components that lay themselves out against the sidebar read
+  --sidebar-width, so they follow along.
+*/
+@media (min-width: 1400px) {
+  :root { --sidebar-width: 22rem; }
+}
+
+@media (min-width: 1700px) {
+  :root { --sidebar-width: 24rem; }
+}
+
 // https://ecosystem.vuejs.press/themes/default/styles.html#style-file
 :root {
   // brand colors

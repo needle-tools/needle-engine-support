@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no">
-  <title>09 · Networking</title>
+  <title>09 · Custom camera controls</title>
 
   <script type="importmap">
   {
@@ -25,13 +25,15 @@
 
 <body>
 
-  <needle-engine background="transparent" camera-controls></needle-engine>
+  <!-- camera-controls="false" stops the engine adding its own controls,
+       so the camera is left entirely to the component in the script below. -->
+  <needle-engine background="transparent" camera-controls="false"></needle-engine>
 
   <!-- Shared stage: lighting, ground, look. Edit walkthrough-base.js to restyle every step. -->
   <script type="module" src="./walkthrough-base.js"></script>
 
   <!-- The example itself — this is the file printed in the docs -->
-  <script type="module" src="./walkthrough-09-networking.js"></script>
+  <script type="module" src="./walkthrough-09-custom-camera.js"></script>
 
 </body>
 

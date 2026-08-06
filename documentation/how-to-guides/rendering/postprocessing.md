@@ -10,7 +10,7 @@ description: Add bloom, depth of field and ambient occlusion to a scene, control
 Post-processing runs over the finished image each frame. Needle Engine ships each effect as a component, so adding one is the same as adding any other component.
 
 ::: tip Want to see them running first?
-The [Scripting Walkthrough](/docs/tutorials/scripting-walkthrough#16-post-processing) has a live scene with bloom, depth of field and ambient occlusion, each on its own toggle.
+The [Scripting Walkthrough](/docs/tutorials/scripting-walkthrough#18-post-processing) has a live scene with bloom, depth of field and ambient occlusion, each on its own toggle.
 :::
 
 ## Add an effect
@@ -180,7 +180,7 @@ update() {
 
 ## Related
 
-- [Scripting Walkthrough — Post-processing](/docs/tutorials/scripting-walkthrough#16-post-processing) — a live example with toggles
+- [Scripting Walkthrough — Post-processing](/docs/tutorials/scripting-walkthrough#18-post-processing) — a live example with toggles
 - [Component reference](/docs/reference/components#postprocessing) — every effect that ships with the engine
 - [Postprocessing sample](https://samples.needle.tools/postprocessing)
 - [postprocessing library](https://github.com/pmndrs/postprocessing) — the effects Needle builds on

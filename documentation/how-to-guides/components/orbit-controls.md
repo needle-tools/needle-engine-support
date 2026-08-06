@@ -49,6 +49,51 @@ OrbitControls is typically added automatically to your camera in Unity or Blende
 2. Add the `OrbitControls` component
 3. Export - camera controls are now active!
 
+### Taking Over the Camera
+
+Set `camera-controls` on the `<needle-engine>` element to stop the engine adding default camera controls:
+
+```html
+<needle-engine src="scene.glb" camera-controls="false"></needle-engine>
+```
+
+The camera is then yours to manage. Nothing moves it unless you do — drive it from a scroll position, animate it along a path, or leave it locked off for a fixed product shot.
+
+`false`, `False`, `0` and `none` all switch it off. Any other value turns it on, including the attribute on its own:
+
+```html
+<!-- Both of these enable controls -->
+<needle-engine camera-controls></needle-engine>
+<needle-engine camera-controls="true"></needle-engine>
+```
+
+Leave the attribute off entirely and the scene decides, based on whether an `OrbitControls` component was exported with it.
+
+If you want the controls but not all of their interactions, keep them and switch off the parts you don't need instead. See [Rotation Controls](#rotation-controls), [Zoom Controls](#zoom-controls) and [Pan Controls](#pan-controls).
+
+### Replacing Them With Your Own
+
+You can also leave `camera-controls` enabled and supply your own controller. When the context is created, the engine looks for a camera controller on the main camera and only adds `OrbitControls` if it doesn't find one. A component that reports `isCameraController` is that controller:
+
+```ts
+import { Behaviour } from "@needle-tools/engine";
+
+export class MyCameraControls extends Behaviour {
+    // Tells the engine this camera already has controls.
+    get isCameraController() {
+        return true;
+    }
+
+    update() {
+        // Move this.gameObject however you like.
+    }
+}
+```
+
+Attach it to the camera in Unity or Blender and export. The engine finds it and adds nothing of its own.
+
+That check runs once, as the context is created. A component added later from code arrives after the decision has been made, so for a code-only scene set `camera-controls="false"` instead — see [step 09 of the Scripting Walkthrough](/docs/tutorials/scripting-walkthrough#09-custom-camera-controls) for a worked example.
+
 ## Core Features
 
 ### Auto-Rotate

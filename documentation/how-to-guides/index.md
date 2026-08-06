@@ -85,7 +85,6 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 
 - [Post-Processing Effects](/docs/how-to-guides/rendering/postprocessing) - Bloom, depth of field, ambient occlusion, and writing your own effect
 - [MaterialPropertyBlocks](/docs/how-to-guides/scripting/material-property-blocks) - Override material values per object without cloning the material
-- [MaterialX](/docs/how-to-guides/export/materialx) - Export Shader Graph and node-based materials
 
 ---
 

@@ -579,6 +579,30 @@ Both cause the component compiler to generate `public UnityEngine.Font font;` in
 
 # Rendering & Visuals
 
+## How do I replace the default camera controls with my own?
+
+Two ways, depending on where your controller comes from.
+
+**From a scene you export.** The engine looks for a camera controller on the main camera when the context is created, and only adds `OrbitControls` if it doesn't find one. A component that reports `isCameraController` takes that place:
+
+```ts
+export class MyCameraControls extends Behaviour {
+    get isCameraController() {
+        return true;
+    }
+}
+```
+
+Attach it to the camera in Unity or Blender and leave `camera-controls` enabled. The engine finds it and adds nothing of its own.
+
+**From code.** That check happens once, as the context is created, so a component added later arrives too late to be seen. Turn the defaults off in the HTML instead and move the camera yourself:
+
+```html
+<needle-engine src="scene.glb" camera-controls="false"></needle-engine>
+```
+
+`false`, `False`, `0` and `none` all switch it off. See [Camera Controls](/docs/how-to-guides/components/orbit-controls#taking-over-the-camera), or [step 09 of the Scripting Walkthrough](/docs/tutorials/scripting-walkthrough#09-custom-camera-controls) for a working example.
+
 ## Can I use camera stacking (URP overlay cameras) to render UI without post-processing?
 
 No, Unity's URP camera stacking is not supported in Needle Engine. The overlay camera concept does not translate to the three.js rendering pipeline used under the hood.
