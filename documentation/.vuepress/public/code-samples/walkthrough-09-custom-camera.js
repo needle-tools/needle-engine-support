@@ -244,7 +244,6 @@ class Inspectable extends Behaviour {
   }
 
   onPointerExit() {
-    this.context.input.unsetCursor('zoom-in');
     // Back to whatever the shared material says, with nothing to remember.
     this.block.clearAllOverrides();
     // this.release(); // we could release here on pointer exit as well
@@ -259,6 +258,7 @@ class Inspectable extends Behaviour {
   }
 
   onPointerUp() {
+    this.context.input.unsetCursor('zoom-in');
     this.release();
   }
 
