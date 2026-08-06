@@ -27,7 +27,7 @@ export default {
     unloadAfter: { type: Number, default: 2 },
   },
   data() {
-    return { loaded: false, mounted: false, offScreenTimer: null };
+    return { loaded: false, mounted: false, offScreenTimer: null, reloadKey: 0 };
   },
   computed: {
     actionList() {
@@ -132,6 +132,16 @@ export default {
       });
     },
 
+    /*
+      Start the example over. Bumping the key makes Vue throw the old iframe
+      away and build a new one, which is a real reload — reassigning src
+      would leave the previous WebGL context and its scene alive.
+    */
+    reload() {
+      this.loaded = false;
+      this.reloadKey++;
+    },
+
     send(action) {
       /*
         Query the DOM rather than using a ref: the iframes are rendered in a
@@ -161,12 +171,33 @@ export default {
       >
         <iframe
           v-if="mounted"
+          :key="reloadKey"
           :src="frameSrc"
           :title="frameSources.length > 1 ? `${title} (visitor ${i + 1})` : title"
           loading="lazy"
           @load="loaded = true"
           allow="xr; xr-spatial-tracking; camera; microphone; fullscreen"
         ></iframe>
+        <!-- Only offered once there is something running to restart. -->
+        <button
+          v-if="mounted"
+          type="button"
+          class="walkthrough-reload"
+          title="Restart the example"
+          aria-label="Restart the example"
+          @click="reload"
+        >
+          <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+            <path
+              d="M20 11a8 8 0 1 0-2.3 6.3M20 5v6h-6"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+          </svg>
+        </button>
       </div>
       <div
         v-if="actionList.length"
@@ -286,7 +317,46 @@ export default {
   .walkthrough-actions button { transition: none; }
 }
 
+/*
+  Sits over the top-right of the scene. Icon only, no fill — the examples have
+  light backgrounds and a chip would read as part of the scene. Faint until
+  hovered, so it stays out of the way of the thing it's sitting on.
+*/
+.walkthrough-reload {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  display: flex;
+  padding: 0.25rem;
+  border: 0;
+  background: none;
+  color: var(--vp-c-text-2, #6b7280);
+  opacity: 0.45;
+  cursor: pointer;
+  transition: opacity 0.15s ease, color 0.15s ease;
+}
+
+.walkthrough-reload:hover {
+  opacity: 1;
+  color: var(--vp-c-accent, #826aed);
+}
+
+.walkthrough-reload:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--vp-c-accent, #826aed);
+  outline-offset: 2px;
+  border-radius: 0.35rem;
+}
+
+/* Coarse pointers have no hover, so it can't rely on it to become visible. */
+@media (hover: none) {
+  .walkthrough-reload { opacity: 0.7; }
+}
+
 .walkthrough-stage {
+  /* Anchors the reload button to this box rather than the page. */
+  position: relative;
   min-width: 0;
   /* min-height:0 lets it shrink inside the flex column; the cap lives on the
      pane and the code panel, never on the grid container — capping the
