@@ -66,7 +66,7 @@ The shape has three components on it: one turns it, one moves it up and down, on
 
 They coexist here because each writes to a different property — `rotation.y`, `position.y`, and `scale`. Two components writing the same property is the one case where order starts to matter.
 
-Independent is the default, not a rule. When a component does need another, `getComponent` finds it on the same object — step 07 uses it to reach a `Rigidbody`.
+Independent is the default, not a rule. When a component does need another, `getComponent` finds it on the same object — step 08 uses it to reach a `Rigidbody`.
 
 `Bob` reads its starting height in `awake` rather than in a field initializer, because `this.gameObject` isn't set until the component is attached to something.
 
@@ -111,7 +111,7 @@ The component logs a line each time one of its methods runs. On first activation
 
 A rule that saves a lot of debugging: whatever you set up in `awake`, undo in `onDestroy`; whatever you subscribe to in `onEnable`, unsubscribe in `onDisable`.
 
-For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you when it's disabled or destroyed, so you don't write the `onDisable` half at all — [step 08](#08-networking) uses it for a network listener.
+For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you when it's disabled or destroyed, so you don't write the `onDisable` half at all — [step 09](#09-networking) uses it for a network listener.
 
 → [Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) · [Lifecycle Methods reference](/docs/reference/api/lifecycle-methods)
 
@@ -189,7 +189,45 @@ This is the difference from [step 04](#04-one-class-many-instances): there the c
 
 ---
 
-## 06 · Pointer input
+## 06 · Cloning objects
+
+<walkthrough-tags symbols="instantiate, destroy, getComponentInChildren" />
+
+<walkthrough-takeaway>
+
+`instantiate` copies an object, its children, and the components on all of them. Build something once, then make as many as you need while the scene runs.
+
+</walkthrough-takeaway>
+
+<walkthrough-step
+  src="/docs/code-samples/walkthrough-06-instantiate.html"
+  title="Windmills cloned from one original, each turning at its own speed"
+  :actions='[
+    { "name": "spawn", "code": "instantiate(original, { parent, position })", "label": "Add one" },
+    { "name": "clear", "code": "destroy(clone)",                              "label": "Remove all" }
+  ]'>
+
+@[code js](@code/walkthrough-06-instantiate.js)
+
+</walkthrough-step>
+
+The windmill is built once, in `buildWindmill`. `Sway` sits on the root and `Spin` on the blades, a child object — and both come along when the object is cloned. Cloning copies the whole subtree, not just the top. **Remove all** leaves the original standing, and **Add one** clones it again.
+
+`parent` puts the clone into the scene as part of the call. Leave it out and you get an object that exists but isn't anywhere yet, which you add yourself. `position`, `rotation` and `scale` are set the same way, and take plain arrays.
+
+A clone's components are ordinary components. `getComponent` and `getComponentInChildren` find them, and each clone has its own instances — so giving one a new `speed` leaves the others turning at theirs.
+
+::: tip Where the original usually comes from
+Here the original is built in code so the example stays self-contained. In a project it's more often a model you loaded, or an object placed in Unity or Blender and referenced with `@serializable`. `instantiate` treats them all the same.
+:::
+
+To spawn a copy for everyone in a networked scene, `syncInstantiate` does the same job across the connection — see [step 09](#09-networking).
+
+→ [Duplicatable component](/docs/how-to-guides/components/duplicatable) · [syncInstantiate](/docs/how-to-guides/networking/sync-state#syncinstantiate)
+
+---
+
+## 07 · Pointer input
 
 <walkthrough-tags symbols="onPointerEnter, onPointerExit, onPointerClick, MaterialPropertyBlock" />
 
@@ -199,9 +237,9 @@ Pointer methods are part of a component, like `awake` or `update`. Needle works 
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-06-input.html" title="Five boxes that highlight on hover and start spinning when clicked">
+<walkthrough-step src="/docs/code-samples/walkthrough-07-input.html" title="Five boxes that highlight on hover and start spinning when clicked">
 
-@[code js](@code/walkthrough-06-input.js)
+@[code js](@code/walkthrough-07-input.js)
 
 </walkthrough-step>
 
@@ -227,7 +265,7 @@ These same methods fire for touch and for VR controllers, so a component written
 
 ---
 
-## 07 · Physics and collisions
+## 08 · Physics and collisions
 
 <walkthrough-tags symbols="Rigidbody, BoxCollider, SphereCollider, PhysicsMaterial, onCollisionEnter, applyImpulse" />
 
@@ -237,9 +275,9 @@ Physics is two components, not a system you set up. A `Rigidbody` makes an objec
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-07-physics.html" title="Three balls with different bounciness dropped onto a floor that flashes when hit — click a ball to launch it">
+<walkthrough-step src="/docs/code-samples/walkthrough-08-physics.html" title="Three balls with different bounciness dropped onto a floor that flashes when hit — click a ball to launch it">
 
-@[code js](@code/walkthrough-07-physics.js)
+@[code js](@code/walkthrough-08-physics.js)
 
 </walkthrough-step>
 
@@ -269,7 +307,7 @@ Physics is powered by [Rapier](https://rapier.rs/), which the engine loads on de
 
 ---
 
-## 08 · Networking
+## 09 · Networking
 
 <walkthrough-tags symbols="SyncedRoom, connection.send, connection.beginListen, syncField" />
 
@@ -279,9 +317,9 @@ Multiplayer is a component sending and receiving, not a separate architecture. J
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-08-networking.html" title="Two visitors in one room, clicking cubes to change their colour for both" split>
+<walkthrough-step src="/docs/code-samples/walkthrough-09-networking.html" title="Two visitors in one room, clicking cubes to change their colour for both" split>
 
-@[code js](@code/walkthrough-08-networking.js)
+@[code js](@code/walkthrough-09-networking.js)
 
 </walkthrough-step>
 
@@ -320,7 +358,7 @@ Like [`@serializable`](#marking-fields-as-serializable), it's a decorator and ne
 
 ---
 
-## 09 · AR and VR
+## 10 · AR and VR
 
 <walkthrough-tags symbols="WebXR" />
 
@@ -330,9 +368,9 @@ XR is one component. Add `WebXR` to the scene and the page gains AR and VR. Ther
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-09-webxr.html" title="A scene with AR and VR enabled by a single WebXR component">
+<walkthrough-step src="/docs/code-samples/walkthrough-10-webxr.html" title="A scene with AR and VR enabled by a single WebXR component">
 
-@[code js](@code/walkthrough-09-webxr.js)
+@[code js](@code/walkthrough-10-webxr.js)
 
 </walkthrough-step>
 
@@ -348,7 +386,7 @@ It scales *you*, not the scene: raise it and you become larger relative to every
 
 ---
 
-## 10 · Following the cursor
+## 11 · Following the cursor
 
 <walkthrough-tags symbols="CursorFollow, LookAt" />
 
@@ -358,9 +396,9 @@ Plenty of what you'd write by hand already exists as a component. One built-in f
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-10-cursor.html" title="A head whose eyes track the mouse pointer">
+<walkthrough-step src="/docs/code-samples/walkthrough-11-cursor.html" title="A head whose eyes track the mouse pointer">
 
-@[code js](@code/walkthrough-10-cursor.js)
+@[code js](@code/walkthrough-11-cursor.js)
 
 </walkthrough-step>
 
@@ -374,7 +412,7 @@ Before writing a component, it's worth checking whether one exists. The [Compone
 
 ---
 
-## 11 · Loading a model
+## 12 · Loading a model
 
 <walkthrough-tags symbols="loadAsset" />
 
@@ -384,9 +422,9 @@ You can load a model from any URL at runtime. What comes back is an ordinary obj
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-11-loading.html" title="A model downloaded from a URL at runtime and framed by the camera">
+<walkthrough-step src="/docs/code-samples/walkthrough-12-loading.html" title="A model downloaded from a URL at runtime and framed by the camera">
 
-@[code js](@code/walkthrough-11-loading.js)
+@[code js](@code/walkthrough-12-loading.js)
 
 </walkthrough-step>
 
@@ -404,7 +442,7 @@ This is one of four ways to load a model, and the right choice depends on what y
 
 ---
 
-## 12 · Seeing what your code is doing
+## 13 · Seeing what your code is doing
 
 <walkthrough-tags symbols="Gizmos" />
 
@@ -414,9 +452,9 @@ Gizmos let you draw into the scene from code, so you can see a value instead of 
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-12-gizmos.html" title="An orbiting marker with its path, position and heading drawn as gizmos">
+<walkthrough-step src="/docs/code-samples/walkthrough-13-gizmos.html" title="An orbiting marker with its path, position and heading drawn as gizmos">
 
-@[code js](@code/walkthrough-12-gizmos.js)
+@[code js](@code/walkthrough-13-gizmos.js)
 
 </walkthrough-step>
 
@@ -430,7 +468,7 @@ Positions are in world space. `Gizmos.DrawLabel` draws readable text in the scen
 
 ---
 
-## 13 · Adapting to the device
+## 14 · Adapting to the device
 
 <walkthrough-tags symbols="DeviceUtilities, XRFlag, XRStateFlag" />
 
@@ -440,9 +478,9 @@ The same page runs on a phone, a desktop and a headset. You can check which one 
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-13-device.html" title="A sphere whose detail depends on the device, plus two boxes that only appear in AR or VR">
+<walkthrough-step src="/docs/code-samples/walkthrough-14-device.html" title="A sphere whose detail depends on the device, plus two boxes that only appear in AR or VR">
 
-@[code js](@code/walkthrough-13-device.js)
+@[code js](@code/walkthrough-14-device.js)
 
 </walkthrough-step>
 
@@ -468,7 +506,7 @@ The rule lives on the object, which is why this beats a check elsewhere: the hea
 
 ---
 
-## 14 · Audio
+## 15 · Audio
 
 <walkthrough-tags symbols="AudioSource, play, pause, getOrAddComponent" />
 
@@ -478,13 +516,13 @@ Sound is a component you put on an object. Because it sits on the radio, it come
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-14-audio.html" title="A radio with 3D buttons for play, pause and track switching, and bars that move while it plays">
+<walkthrough-step src="/docs/code-samples/walkthrough-15-audio.html" title="A radio with 3D buttons for play, pause and track switching, and bars that move while it plays">
 
-@[code js](@code/walkthrough-14-audio.js)
+@[code js](@code/walkthrough-15-audio.js)
 
 </walkthrough-step>
 
-Click the buttons on the radio itself. They're objects in the scene with a `Button` component, using the pointer methods from [step 06](#06-pointer-input) — `onPointerDown` presses one into the case, `onPointerUp` releases it, and `onPointerClick` calls the matching method on the radio. The action is passed per button as an init object, so one class covers all three.
+Click the buttons on the radio itself. They're objects in the scene with a `Button` component, using the pointer methods from [step 07](#07-pointer-input) — `onPointerDown` presses one into the case, `onPointerUp` releases it, and `onPointerClick` calls the matching method on the radio. The action is passed per button as an init object, so one class covers all three.
 
 One `AudioSource` plays all three tracks, and `play()` takes a clip, so changing track is a single call. `Radio` adds the `AudioSource` itself with `getOrAddComponent`, so attaching `Radio` is all you need — and an object that already has one keeps it.
 
