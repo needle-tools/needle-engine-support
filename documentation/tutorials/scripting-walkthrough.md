@@ -538,6 +538,44 @@ The analyser is created on first use rather than in `start`, because the audio o
 
 ---
 
+## 16 · Post-processing
+
+<walkthrough-tags symbols="Volume, BloomEffect, DepthOfField, VolumeParameter" />
+
+<walkthrough-takeaway>
+
+Effects are components too. Add them to a `Volume`, set their values, and switch them on and off with the same `enabled` flag as everything else.
+
+</walkthrough-takeaway>
+
+<walkthrough-step
+  src="/docs/code-samples/walkthrough-16-postprocessing.html"
+  title="Glowing orbs receding into the distance, with bloom and depth of field"
+  :actions='[
+    { "name": "bloom", "code": "bloom.enabled = !bloom.enabled", "label": "Bloom" },
+    { "name": "dof",   "code": "dof.enabled = !dof.enabled",     "label": "Depth of field" }
+  ]'>
+
+@[code js](@code/walkthrough-16-postprocessing.js)
+
+</walkthrough-step>
+
+A `Volume` holds the effects. Add it anywhere in the scene, then add each effect as a component next to it — the Volume collects them and passes them to the renderer. Turn both buttons off to see the scene underneath.
+
+Effect settings are `VolumeParameter` objects rather than plain numbers, so values go through `.value`. That extra step is what lets a value be overridden per volume, and animated or blended between volumes.
+
+Bloom only affects what is already brighter than its `threshold`. The orbs use an emissive material to get there — a plain colour would stay below the line and never glow, however high you push the intensity.
+
+`focusDistance` is a distance from the camera in metres, not a point in the scene. It doesn't follow anything on its own, so `FocusOn` recalculates it each frame and the middle orb stays sharp as you orbit.
+
+::: tip Effects load only when used
+Post-processing ships as a separate chunk. A scene without a `Volume` never downloads it.
+:::
+
+→ [Postprocessing components](/docs/reference/components#postprocessing) · [Postprocessing sample](https://samples.needle.tools/postprocessing) · [Volume API](https://engine.needle.tools/docs/api/Volume)
+
+---
+
 ## What's next
 
 That's the whole model: components on objects, a lifecycle, and a context they share. Everything else in Needle Engine is built the same way, so a component you meet later will look like the ones on this page.
