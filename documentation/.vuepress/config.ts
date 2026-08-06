@@ -588,6 +588,30 @@ export default defineUserConfig({
     bundler: viteBundler({
         viteOptions: {
             plugins: [watchCodeSamplesPlugin],
+            /*
+              Prebundle the heavy dependencies at server start.
+
+              Every component is registered with defineAsyncComponent, so these
+              are not imported until a component using them first renders. Vite
+              then discovers a new dependency mid-session, re-optimizes and
+              forces a reload — and that reload re-evaluates @vuepress/client,
+              whose clientDataSymbol is a fresh `Symbol()` each evaluation. The
+              app root provided under the old symbol, so the next component to
+              inject gets undefined and throws "useClientData() is called
+              without provider". Listing them here means they are found up
+              front and the mid-session reload never happens.
+            */
+            optimizeDeps: {
+                /*
+                  @needle-tools/engine and three are deliberately NOT listed.
+                  Prebundling makes esbuild resolve every import in them, and
+                  the installed engine imports
+                  three/examples/jsm/loaders/HDRLoader.js, which does not exist
+                  in the three it ships with — so the dev server fails to
+                  start. They stay lazy.
+                */
+                include: ['markdown-it', 'vue-github-button'],
+            },
         },
     }),
     extendsMarkdown: (md) => {

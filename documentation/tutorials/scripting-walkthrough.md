@@ -552,8 +552,9 @@ Effects are components too. Add them to a `Volume`, set their values, and switch
   src="/docs/code-samples/walkthrough-16-postprocessing.html"
   title="Glowing orbs receding into the distance, with bloom and depth of field"
   :actions='[
-    { "name": "bloom", "code": "bloom.enabled = !bloom.enabled", "label": "Bloom" },
-    { "name": "dof",   "code": "dof.enabled = !dof.enabled",     "label": "Depth of field" }
+    { "name": "bloom", "code": "bloom.enabled = !bloom.enabled", "label": "Toggle bloom" },
+    { "name": "dof",   "code": "dof.enabled = !dof.enabled",     "label": "Toggle depth of field" },
+    { "name": "ao",    "code": "ao.enabled = !ao.enabled",       "label": "Toggle ambient occlusion" }
   ]'>
 
 @[code js](@code/walkthrough-16-postprocessing.js)
@@ -566,7 +567,9 @@ Effect settings are `VolumeParameter` objects rather than plain numbers, so valu
 
 Bloom only affects what is already brighter than its `threshold`. The orbs use an emissive material to get there — a plain colour would stay below the line and never glow, however high you push the intensity.
 
-`focusDistance` is a distance from the camera in metres, not a point in the scene. It doesn't follow anything on its own, so `FocusOn` recalculates it each frame and the middle orb stays sharp as you orbit.
+`focusDistance` is a distance from the camera in metres, not a point in the scene, so it doesn't follow anything on its own. `AutoFocus` does what a camera does: it raycasts through the middle of the view and focuses on whatever it hits. `screenPoint` is in normalized device coordinates, so `(0, 0)` is the centre, and hits come back sorted with the nearest first.
+
+It runs on a timer rather than every frame — focus doesn't need measuring 60 times a second — and eases towards each new distance, which is what makes it rack focus instead of snapping. Orbit the scene and watch the focus follow what you point at.
 
 ::: tip Effects load only when used
 Post-processing ships as a separate chunk. A scene without a `Volume` never downloads it.
