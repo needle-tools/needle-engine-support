@@ -17,7 +17,7 @@
         }
     </script>
     <!-- the .light version does not include dependencies like Rapier.js (so no physics) to reduce the bundle size, if your project needs physics then just change it to needle-engine.min.js -->
-    <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@stable/dist/needle-engine.min.js"></script>
+    <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.9/dist/needle-engine.min.js"></script>
 
     <style>
         body {
@@ -43,7 +43,7 @@
 </body>
 
 <script type="module">
-    import { onStart } from 'https://cdn.jsdelivr.net/npm/@needle-tools/engine@stable/dist/needle-engine.min.js';
+    import { onStart } from 'https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.9/dist/needle-engine.min.js';
     onStart((context) => {
         console.log('Hello Needle');
     });
