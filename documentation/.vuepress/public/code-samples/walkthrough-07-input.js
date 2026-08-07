@@ -24,7 +24,9 @@ class Pressable extends Behaviour {
   }
 
   onPointerExit() {
-    this.block.clearAllOverrides();
+    // Remove the one property this component set, rather than clearing
+    // every override on the object. Anything else using the block keeps its own.
+    this.block.removeOveride('color');
     this.context.input.unsetCursor('pointer');
   }
 

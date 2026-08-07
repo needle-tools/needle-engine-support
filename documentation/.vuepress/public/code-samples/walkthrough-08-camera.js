@@ -77,6 +77,12 @@ class ShowOrbitTarget extends Behaviour {
       new THREE.SphereGeometry(0.06, 16, 12),
       new THREE.MeshBasicMaterial({ color: '#e8536d' })
     );
+    /*
+      Layer 2 is IgnoreRaycast, and raycasts skip it by default. Without this
+      the marker sits between the camera and the scene, so double-clicking to
+      focus would keep hitting the marker instead of the object behind it.
+    */
+    this.marker.layers.set(2);
     this.gameObject.add(this.marker);
   }
 

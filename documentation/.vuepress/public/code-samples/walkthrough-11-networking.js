@@ -9,11 +9,12 @@ const COLORS = ['#f2c14e', '#7dd3a0', '#6aa9e8', '#e88a8a', '#b7aaf0'];
 // Click a cube and everyone in the room sees it change colour.
 class SharedColor extends Behaviour {
   index = 0;
+  // Identifies which cube a message is about. Both visitors must agree on
+  // it, so it is set where the component is added.
+  key = '';
 
   awake() {
     this.material = this.gameObject.material;
-    // A name both visitors agree on, so each knows which cube is meant.
-    this.channel = `color-${this.gameObject.name}`;
   }
 
   onEnable() {
@@ -21,7 +22,7 @@ class SharedColor extends Behaviour {
     // is disabled or destroyed.
     this.autoCleanup(
       this.context.connection.beginListen("change-index", data => {
-        if(data.guid === this.channel)
+        if(data.guid === this.key)
           this.apply(data.index);
       })
     );
@@ -37,7 +38,7 @@ class SharedColor extends Behaviour {
     // Then tell everyone else in the room. Including a `guid` makes the
     // server keep this message in the room state, so whoever joins later
     // still gets it. Without one it only reaches people already here.
-    this.context.connection.send("change-index", { index: next, guid: this.channel });
+    this.context.connection.send("change-index", { index: next, guid: this.key });
   }
 
   apply(index) {
@@ -62,6 +63,12 @@ onStart(context => {
     cube.position.x = (i - 1) * 1.5;
     context.scene.add(cube);
 
-    cube.addComponent(SharedColor);
+    /*
+      The key has to be the same for this cube in every visitor's browser.
+      Here the cube's name gives one. In a scene exported from Unity or
+      Blender it is common to use the component's own `guid` instead, which
+      the export assigns and every client receives.
+    */
+    cube.addComponent(SharedColor, { key: `color-${cube.name}` });
   }
 });

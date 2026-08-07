@@ -11,7 +11,7 @@ class Rotate extends Behaviour {
   }
 }
 
-class Bob extends Behaviour {
+class MoveUpDown extends Behaviour {
   amplitude = 0.5;
   frequency = 0.5;
 
@@ -57,7 +57,7 @@ onStart(context => {
 
   // Three components, one object. Stack them in any order.
   shape.addComponent(Rotate);
-  shape.addComponent(Bob);
+  shape.addComponent(MoveUpDown);
   shape.addComponent(Breathe);
 });
 

@@ -20,8 +20,8 @@ const material = (color, roughness = 0.5) =>
 class ShowDetectedDevice extends Behaviour {
   update() {
     const label = DeviceUtilities.isMobileDevice()
-      ? 'Mobile detected'
-      : 'Desktop detected — open this on a phone to see the other branch';
+      ? "You're on a phone, so you get the phone"
+      : "You're on a desktop, so you get the monitor — open this on a phone to see the other one";
     Gizmos.DrawLabel(new THREE.Vector3(0, 0.62, 0), label, 0.03);
   }
 }
@@ -94,6 +94,13 @@ function buildPhone() {
   );
   aerial.position.set(0.018, 0.074, -0.004);
   body.add(aerial);
+
+  /*
+    A phone is about 13cm tall and a monitor about 40cm, so at life size
+    the phone sits tiny under the label. Scale it up for the demo, which
+    keeps the parts modelled at real dimensions relative to each other.
+  */
+  phone.scale.setScalar(2.6);
 
   return phone;
 }

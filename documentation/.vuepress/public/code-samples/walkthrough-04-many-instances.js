@@ -8,8 +8,8 @@ configureDemoScene({ useContactShadows: true });
 // so each copy gets its own values without a separate subclass.
 class Wave extends Behaviour {
   // Defaults — anything the init object doesn't set keeps these.
-  amplitude = 0.4;
-  speed = 2;
+  amplitude = 0.45;
+  speed = 2.2;
   offset = 0;
 
   awake() {
@@ -48,12 +48,11 @@ onStart(context => {
       );
       context.scene.add(cube);
 
-      // 144 instances of the same component, each phase-shifted by distance
-      // from the centre so the grid reads as one wave.
+      // One component per cube, phase-shifted by distance from the centre
+      // so the grid reads as a single wave. amplitude and speed are left
+      // out, so every cube keeps the defaults declared on the class.
       cube.addComponent(Wave, {
         offset: Math.hypot(x - grid / 2, z - grid / 2) * 0.6,
-        amplitude: 0.45,
-        speed: 2.2,
       });
     }
   }

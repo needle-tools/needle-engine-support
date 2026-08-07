@@ -452,6 +452,13 @@ html[data-theme="light"] .walkthrough-stage {
   }
 
   /*
+    Stacked, the scene comes first. It is the point of the step, and a reader
+    scrolling on a phone should meet it before a screen of source.
+  */
+  .walkthrough-pane { order: 1; }
+  .walkthrough-code { order: 2; }
+
+  /*
     Stacked, the stage has no code column to match, so it sets its own size.
     Taller than a landscape ratio on purpose: the scene shares this space
     with engine UI — XR buttons, warnings, the menu — and a 16/10 letterbox
@@ -461,10 +468,16 @@ html[data-theme="light"] .walkthrough-stage {
     max-height: none;
   }
 
+  /*
+    Leave a gutter down the right. The iframe swallows touch, so a
+    full-width scene traps a finger dragging over it and the page stops
+    scrolling. This strip is always page, never scene.
+  */
   .walkthrough-stage {
     height: auto;
     aspect-ratio: 4 / 3;
     min-height: 24rem;
+    width: calc(100% - 3rem);
   }
 }
 

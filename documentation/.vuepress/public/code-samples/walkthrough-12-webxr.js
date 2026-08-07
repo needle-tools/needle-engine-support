@@ -1,4 +1,4 @@
-import { Behaviour, onStart, WebXR } from '@needle-tools/engine';
+import { Behaviour, onStart, WebXR, XRRig } from '@needle-tools/engine';
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
 
@@ -32,4 +32,17 @@ onStart(context => {
     // you bigger, so everything else looks smaller.
     arScale: 8,
   });
+
+  /*
+    Where the visitor stands when the session starts.
+
+    In XR the user is parented to a rig, so moving the rig moves the user.
+    Put it where you want someone to arrive, and face it the way you want
+    them looking. Without one they start at the world origin.
+  */
+  const rig = new THREE.Object3D();
+  rig.position.set(0, 0, 2.5);
+  rig.lookAt(0, 0, 0);
+  context.scene.add(rig);
+  rig.addComponent(XRRig);
 });

@@ -4,7 +4,6 @@ import { configureDemoScene } from './walkthrough-base.js';
 
 configureDemoScene({ useContactShadows: true });
 
-// Open the browser console to see the order these run in.
 class Beacon extends Behaviour {
   awake() {
     console.log('awake — runs once, right after addComponent');
@@ -12,10 +11,6 @@ class Beacon extends Behaviour {
 
   onEnable() {
     console.log('onEnable — the component switched on');
-  }
-
-  onDisable() {
-    console.log('onDisable — the component switched off');
   }
 
   start() {
@@ -26,6 +21,10 @@ class Beacon extends Behaviour {
     // Only runs while the component is enabled. Disable it and the cone
     // stops turning — nothing else about the object changes.
     this.gameObject.rotation.y += 0.9 * this.context.time.deltaTime;
+  }
+
+  onDisable() {
+    console.log('onDisable — the component switched off');
   }
 
   onDestroy() {

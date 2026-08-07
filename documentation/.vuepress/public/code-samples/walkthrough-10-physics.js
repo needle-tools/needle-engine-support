@@ -57,7 +57,7 @@ class ClickToLaunch extends Behaviour {
 // Ordered dullest to bounciest, so they read left to right in the scene.
 const kinds = [
   { name: 'clay', color: '#6aa9e8', bounciness: 0 },
-  { name: 'plastic', color: '#7dd3a0', bounciness: 0.5 },
+  { name: 'plastic', color: '#7dd3a0', bounciness: 0.75 },
   { name: 'rubber', color: '#f2c14e', bounciness: 0.98 },
 ];
 
@@ -104,7 +104,7 @@ onStart(context => {
     });
 
     ball.addComponent(ClickToLaunch, {
-      strength: radius * 800,
+      strength: radius * 400,
     });
   });
 });

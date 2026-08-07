@@ -8,9 +8,17 @@ editLink: true
 
 # Scripting Walkthrough
 
-Needle Engine scripting in a handful of short steps. Each one adds a single idea, runs live in the page, and shows the whole file that produces it — the code on the left is the code running on the right.
+Learn Needle Engine scripting one idea at a time. Each step runs live beside the script that drives it.
 
-You don't need a project set up to follow along. Every example is one HTML page that loads the engine from a CDN, so you can copy it into a file and open it in a browser. That also means no compile step, so the examples are plain JavaScript rather than TypeScript — see [marking fields as serializable](#marking-fields-as-serializable) for what TypeScript adds.
+The first few steps cover the basics the rest builds on. After that you can jump to whatever you need.
+
+Each example is an HTML page that loads the engine from a CDN, plus the script shown here. The page never changes, so only the script is printed. Both files are in [the docs repository](https://github.com/needle-tools/needle-engine-support/tree/main/documentation/.vuepress/public/code-samples).
+
+There is no build step, so the code is plain JavaScript. See [marking fields as serializable](#marking-fields-as-serializable) for what TypeScript adds.
+
+::: tip New to Needle Engine?
+The components you write here are the same ones an artist configures in Unity or Blender, and the same code runs on desktop, mobile and in XR. [Why Needle Engine exists](/docs/why) covers the problem it solves and how it compares to three.js, React Three Fiber and Unity WebGL.
+:::
 
 ::: tip Looking for something else?
 [Scripting Examples](/docs/reference/scripting-examples) has copy-paste snippets by topic. The [samples gallery](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=walkthrough) has finished projects to pull apart.
@@ -24,7 +32,7 @@ You don't need a project set up to follow along. Every example is one HTML page 
 
 <walkthrough-takeaway>
 
-You write a class, attach it to an object, and it starts running. The same class also appears in Unity and Blender. Artists can use it there to build scenes.
+Write a class, attach it to an object, and it starts running. That same class shows up as a component in Unity and Blender, so an artist can use it without touching code.
 
 </walkthrough-takeaway>
 
@@ -34,9 +42,11 @@ You write a class, attach it to an object, and it starts running. The same class
 
 </walkthrough-step>
 
-A component is a class extending `Behaviour`. Override the methods you need — here just `update`, which runs once per frame — and attach it with `addComponent`.
+A component is a class extending `Behaviour`. Override the methods you want, then attach it with `addComponent`. This one overrides `update`, which the engine calls once per frame.
 
-Inside a component, `this.gameObject` is the object it's attached to and `this.context` is the shared runtime. `this.context.time.deltaTime` is how many seconds passed since the last frame; multiplying by it is what keeps the shape turning at the same rate on a 60 Hz and a 144 Hz screen.
+Two properties are available inside any component. `this.gameObject` is the object it is attached to. `this.context` is the shared runtime: time, input, physics, the scene.
+
+The rotation is multiplied by `this.context.time.deltaTime`, the seconds since the last frame. This is what keeps the speed the same on every device. Leave it out and the shape turns per frame instead of per second, so it spins faster on hardware that draws more frames.
 
 ::: info Coming from plain three.js?
 Normally you keep one `animate()` function that calls into every moving part, and add each new one to it by hand. Here `update` sits on the component itself. Adding behaviour to an object never means editing a shared function, and deleting the object takes its logic with it.
@@ -52,7 +62,7 @@ Normally you keep one `animate()` function that calls into every moving part, an
 
 <walkthrough-takeaway>
 
-An object can have any number of components. You can add or remove them at any time — including while the scene is running.
+Build behaviour by stacking small components rather than writing one big one. An object can hold any number, and you can add or remove them while the scene runs.
 
 </walkthrough-takeaway>
 
@@ -62,13 +72,15 @@ An object can have any number of components. You can add or remove them at any t
 
 </walkthrough-step>
 
-The shape has three components on it: one turns it, one moves it up and down, one scales it. None of them refer to each other.
+One shape, three components: `Rotate` turns it, `MoveUpDown` lifts it, `Breathe` scales it. Each is a few lines long and knows nothing about the other two.
 
-They coexist here because each writes to a different property — `rotation.y`, `position.y`, and `scale`. Two components writing the same property is the one case where order starts to matter.
+That is the point of the pattern. Three small components are easier to write, reuse and remove than one component doing three jobs. They combine here because each writes to a different property — `rotation.y`, `position.y` and `scale`. Order only starts to matter when two of them write the same one.
 
-Independent is the default, not a rule. When a component does need another, `getComponent` finds it on the same object — step 10 uses it to reach a `Rigidbody`.
+Components can reach each other when they need to. `getComponent` finds another on the same object.
 
-`Bob` reads its starting height in `awake` rather than in a field initializer, because `this.gameObject` isn't set until the component is attached to something.
+`MoveUpDown` and `Breathe` both read `this.context.time.time`, the seconds since the scene started. Passing it through `Math.sin` gives a value that rises and falls forever, so neither has to track a position or a direction of its own.
+
+`MoveUpDown` records its starting height in `awake`. That is the first method to run once a component becomes active, and the earliest point where `this.gameObject` exists. A field initializer would run before the component is attached to anything, with nothing yet to read.
 
 → [Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks)
 
@@ -80,7 +92,7 @@ Independent is the default, not a rule. When a component does need another, `get
 
 <walkthrough-takeaway>
 
-Every component follows the same sequence. Set up, switch on, run each frame, switch off, clean up. Open your browser console, then use the buttons below the scene.
+Every component runs through the same sequence: set up, switch on, update each frame, switch off, clean up. Knowing which method runs when is what stops setup code landing in the wrong place.
 
 </walkthrough-takeaway>
 
@@ -99,19 +111,29 @@ Every component follows the same sequence. Set up, switch on, run each frame, sw
 
 </walkthrough-step>
 
-Each button runs the line next to it, and there are three different scopes here.
+Each button runs the line printed beside it. Try them in order and watch the cone — the three buttons switch things off at three different levels.
 
 **Disable** stops this one behaviour: `update` is no longer called, so the cone stops turning. Nothing else about the object changes — it keeps its position and material, and any other components on it keep running. **Enable** starts it again from where it left off.
 
-**Hide object** sets `visible = false`, which in Needle does more than hide. It deactivates the whole object: every component on it *and on its children* gets `onDisable` and stops updating. It's the equivalent of Unity's `SetActive(false)`. If you want an object hidden but still running, disable its `Renderer` component instead.
+**Hide object** sets `visible = false`, which in Needle does more than hide. It deactivates the whole object: every component on it *and on its children* gets `onDisable` and stops updating. To hide an object but keep it running, disable its `Renderer` component instead.
 
 **Destroy** removes the component for good.
 
-The component logs a line each time one of its methods runs. On first activation the order is `awake` → `onEnable` → `start`, then `update` every frame. Setting `enabled` back and forth fires `onEnable` and `onDisable` each time, but `awake` and `start` only ever run once. After `destroy` the instance is finished — attaching the behaviour again creates a new one, starting from `awake`.
+::: info Coming from Unity?
+`visible = false` is the equivalent of `SetActive(false)`. It deactivates the object and everything under it, rather than only hiding it from view.
+:::
 
-A rule that saves a lot of debugging: whatever you set up in `awake`, undo in `onDestroy`; whatever you subscribe to in `onEnable`, unsubscribe in `onDisable`.
+### When each method runs
 
-For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you when it's disabled or destroyed, so you don't write the `onDisable` half at all — [step 11](#11-networking) uses it for a network listener.
+On first activation the order is `awake` → `onEnable` → `start`, then `update` on every frame after that.
+
+`awake` and `start` run once and never again. `onEnable` and `onDisable` run every time the component is switched on and off. After `destroy` the instance is finished; attaching the behaviour again creates a new one, starting from `awake`.
+
+That difference decides where your code belongs. Read a starting value once in `awake`. Put anything that has to happen on every switch-on, such as subscribing to an event, in `onEnable`.
+
+One rule keeps components tidy. Undo in `onDestroy` whatever you set up in `awake`. Unsubscribe in `onDisable` whatever you subscribe to in `onEnable`.
+
+For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and the component unsubscribes it for you. You don't write the `onDisable` half at all — [step 11](#11-networking) uses it for a network listener.
 
 → [Lifecycle Hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) · [Lifecycle Methods reference](/docs/reference/api/lifecycle-methods)
 
@@ -123,19 +145,19 @@ For subscriptions there's a shortcut. Wrap one in `this.autoCleanup(...)` and th
 
 <walkthrough-takeaway>
 
-A component class is a template. `addComponent` takes a second argument with values. Each copy can be configured differently, without writing a subclass.
+One class, many copies, each set up differently. `addComponent` takes a second argument with values, so you configure an instance instead of writing a subclass for every variation.
 
 </walkthrough-takeaway>
 
-<walkthrough-step src="/docs/code-samples/walkthrough-04-many-instances.html" title="144 cubes sharing one component class, each given a different phase offset">
+<walkthrough-step src="/docs/code-samples/walkthrough-04-many-instances.html" title="100 cubes sharing one component class, each given a different phase offset">
 
 @[code js](@code/walkthrough-04-many-instances.js)
 
 </walkthrough-step>
 
-144 cubes share one `Wave` class, one geometry and one material. Only the `offset` differs per cube.
+100 cubes, one `Wave` class, one geometry and one material. Only `offset` differs, and it is what turns 100 identical cubes into a wave.
 
-Anything the init object doesn't mention keeps the value declared on the class, so `amplitude = 0.6` acts as a default. The values are assigned after the instance is constructed, which is why they're plain class fields rather than constructor parameters.
+Anything the second argument leaves out keeps the value declared on the class. `amplitude` and `speed` are never passed here, so every cube uses the defaults on `Wave`. Values are assigned after the instance is built, which is why they are plain class fields rather than constructor parameters.
 
 ### Marking fields as serializable
 
@@ -146,16 +168,16 @@ import { Behaviour, serializable } from "@needle-tools/engine";
 
 export class Wave extends Behaviour {
     @serializable()
-    amplitude: number = 0.6;
+    amplitude: number = 0.45;
 
     @serializable()
-    speed: number = 2;
+    speed: number = 2.2;
 }
 ```
 
-That does two things a plain field can't. The field shows up in the Unity or Blender inspector, so someone who doesn't write code can set it per object. And its value is written into the glTF on export, so it survives into the running app instead of resetting to the default.
+That does two things a plain field cannot. The field appears in the Unity or Blender inspector, so someone who does not write code can set it per object. Its value is also written into the glTF on export, so it arrives in the running app instead of falling back to the default.
 
-The examples on this page leave it out because decorators need TypeScript, and these pages run straight from a CDN. Use it for any component you write in a project.
+The examples here leave it out because decorators need TypeScript, and these pages run straight from a CDN. Use it for any component you write in a project.
 
 → [Create Components](/docs/how-to-guides/scripting/create-components) · [@serializable reference](/docs/reference/typescript-decorators#serializable)
 
@@ -163,11 +185,11 @@ The examples on this page leave it out because decorators need TypeScript, and t
 
 ## 05 · Components in a hierarchy
 
-<walkthrough-tags symbols="Group, LineLoop, addComponent" />
+<walkthrough-tags symbols="Group, addComponent, rotation" />
 
 <walkthrough-takeaway>
 
-A component only ever acts on its own object. Because a child inherits its parent's position and rotation, nesting objects lets one simple component build up complex results.
+Nesting does the hard part. Each component moves only the object it sits on, but a child inherits its parent's position and rotation, so simple parts combine into complex motion.
 
 </walkthrough-takeaway>
 
@@ -177,13 +199,13 @@ A component only ever acts on its own object. Because a child inherits its paren
 
 </walkthrough-step>
 
-`Orbit` turns its own object and knows nothing else. Used four times it produces a spinning sun, two planets, and a moon.
+`Orbit` does one thing: it turns the object it is on. Four copies produce a spinning sun, two planets and a moon.
 
-The pivots are what make it work. A pivot sits at the centre of an orbit with the child parked out to one side, so turning the pivot swings the child around it — the child has no orbit logic at all. The drawn ring is the circle that child travels.
+The pivots do the rest. A pivot sits at the centre of an orbit with the child parked out to one side, so turning the pivot carries the child around it. Nothing in `Orbit` knows what an orbit is.
 
-Two things follow from that, both visible in the scene. The moon's pivot is a child of the **planet**, so it inherits the planet's orbit and adds its own on top. And tilting the outer pivot by `rotation.z` tilts that whole orbit — ring, planet and all — because everything under a pivot moves with it.
+Two results are visible in the scene. The moon's pivot is a child of the **planet**, so it inherits the planet's orbit and adds its own on top. Tilting the outer pivot by `rotation.z` tilts that whole orbit, because everything under a pivot moves with it.
 
-This is the difference from [step 04](#04-one-class-many-instances): there the copies were siblings and independent. Here they're nested, so their transforms compound.
+That is the difference from [step 04](#04-one-class-many-instances). There the copies were siblings and independent. Here they are nested, so their transforms compound.
 
 → [Create Components](/docs/how-to-guides/scripting/create-components)
 
@@ -195,7 +217,7 @@ This is the difference from [step 04](#04-one-class-many-instances): there the c
 
 <walkthrough-takeaway>
 
-`instantiate` copies an object, its children, and the components on all of them. Build something once, then make as many as you need while the scene runs.
+Build something once, then copy it as often as you like while the scene runs. `instantiate` takes the object, its children and every component on them.
 
 </walkthrough-takeaway>
 
@@ -211,11 +233,15 @@ This is the difference from [step 04](#04-one-class-many-instances): there the c
 
 </walkthrough-step>
 
-The windmill is built once, in `buildWindmill`. `Sway` sits on the root and `Spin` on the blades, a child object — and both come along when the object is cloned. Cloning copies the whole subtree, not just the top. **Remove all** leaves the original standing, and **Add one** clones it again.
+`buildWindmill` builds one windmill, and `instantiate` makes every copy after that. Press **Add one** to add one, and **Remove all** to leave only the original.
 
-`parent` puts the clone into the scene as part of the call. Leave it out and you get an object that exists but isn't anywhere yet, which you add yourself. `position`, `rotation` and `scale` are set the same way, and take plain arrays.
+`Sway` sits on the root and `Spin` on the blades, which is a child object. Both come along with the copy, because `instantiate` takes the whole subtree rather than the top object.
 
-A clone's components are ordinary components. `getComponent` and `getComponentInChildren` find them, and each clone has its own instances — so giving one a new `speed` leaves the others turning at theirs.
+Use `instantiate` to copy objects. (three.js `clone()` doesn't take components along.)
+
+The second argument places the copy. `parent` adds it to the scene as part of the call. Leave it out and you get the copy back without it being added, so you add it yourself. `position`, `rotation` and `scale` work the same way and take plain arrays.
+
+A clone's components are ordinary components. `getComponent` and `getComponentInChildren` find them, and each clone owns its own instances. Giving one clone a new `speed` leaves the rest turning at theirs.
 
 ::: tip Where the original usually comes from
 Here the original is built in code so the example stays self-contained. In a project it's more often a model you loaded, or an object placed in Unity or Blender and referenced with `@serializable`. `instantiate` treats them all the same.
@@ -233,7 +259,7 @@ To spawn a copy for everyone in a networked scene, `syncInstantiate` does the sa
 
 <walkthrough-takeaway>
 
-Pointer methods are part of a component, like `awake` or `update`. Needle works out what is under the pointer and calls them on that object.
+Handling clicks takes no setup. Pointer methods belong to a component, like `awake` or `update`, and the engine calls them on whichever object is under the pointer.
 
 </walkthrough-takeaway>
 
@@ -243,23 +269,23 @@ Pointer methods are part of a component, like `awake` or `update`. Needle works 
 
 </walkthrough-step>
 
-Hover a box to highlight it, click to start and stop it spinning. The same component is on all five, and each one only ever touches its own object — there's no central list of what's hovered or selected.
+Hover a box to highlight it, click to start and stop it spinning. The same component is on all five, and each copy handles its own box. Adding a sixth box means adding the component to it, and nothing else.
 
 ::: info Coming from plain three.js?
 This is the part you normally write yourself. You set up a `Raycaster`, convert pointer coordinates to normalised device space, and intersect the scene each frame. You also track which object was hit last, so you can tell enter from exit. Needle does all of that and calls the methods on the object instead.
 
-It also does it faster than a plain raycast. Meshes get a [BVH](https://github.com/gkjohnson/three-mesh-bvh) built for them, so a hit test descends a tree instead of walking every triangle — which is the difference between a dense mesh being fine to click on and being unusable.
+It also does it faster than a plain raycast. Meshes get a [BVH](https://github.com/gkjohnson/three-mesh-bvh) built for them. A hit test then descends a tree instead of walking every triangle, which keeps clicking a dense mesh cheap.
 :::
 
-`onPointerEnter` and `onPointerExit` come in pairs, so anything changed in one gets restored in the other. This component stores `restColor` in `awake` and puts it back on exit, rather than assuming what the colour was.
+`onPointerEnter` and `onPointerExit` come in pairs. Whatever one changes, the other puts back.
 
-Recolouring one box is where this would normally get awkward. All five meshes share a single `MeshStandardMaterial`, so setting `material.color` on hover would recolour the whole row. The usual workaround is to clone the material per object, which multiplies material instances for the sake of one property.
+Recolouring a single box is where this usually gets awkward. All five meshes share one `MeshStandardMaterial`, so setting `material.color` on hover would recolour the whole row. The common workaround is to clone the material per object, which creates five materials to vary one property.
 
-`MaterialPropertyBlock` avoids that. `MaterialPropertyBlock.get(object)` gives you a set of overrides for one object, and the engine applies them per object at render time — the material itself is never modified and stays shared.
+`MaterialPropertyBlock` solves it. `MaterialPropertyBlock.get(object)` returns a set of overrides for one object, and the engine applies them per object as it renders. The material itself is never touched and stays shared.
 
-It also makes the component simpler. `clearAllOverrides()` restores the shared colour, so there is no saved original to store in `awake` and no risk of restoring a stale value later.
+On exit the component removes the one property it set, and the shared colour comes back. There is no original to save in `awake` and no stale value to put back later. `clearAllOverrides()` removes every override at once, which is worth avoiding when something else may have set one.
 
-These same methods fire for touch and for VR controllers, so a component written this way works on a phone and in a headset without changes.
+The same methods fire for touch and for VR controllers, so this component works on a phone and in a headset with no changes.
 
 → [Handle User Input](/docs/how-to-guides/scripting/handle-input) · [Perform Raycasting](/docs/how-to-guides/scripting/perform-raycasting) · [MaterialPropertyBlocks](/docs/how-to-guides/scripting/material-property-blocks)
 
@@ -271,7 +297,7 @@ These same methods fire for touch and for VR controllers, so a component written
 
 <walkthrough-takeaway>
 
-Scenes come with camera controls already working. Drag to orbit, scroll to zoom, and double-click anything to focus it. From code you can frame objects or move the camera yourself.
+Camera controls come with the scene, so orbit, zoom and double-click-to-focus already work. From code you can frame any object, or send the camera to a shot you chose.
 
 </walkthrough-takeaway>
 
@@ -289,19 +315,36 @@ Scenes come with camera controls already working. Drag to orbit, scroll to zoom,
 
 </walkthrough-step>
 
-Try the scene before the buttons. **Double-click** any object to focus it, and **double-click empty space** — anywhere the click doesn’t hit an object — to frame everything again. That comes with `OrbitControls` — you don't write it.
+For most projects you never touch them. This step covers the two times you do: framing an object from code, and sending the camera to a viewpoint you chose.
 
-`fitCamera()` frames the whole scene. Pass `objects` to frame a selection instead, which is how you point the camera at one thing without knowing where it is. Pass `fitDirection` and it also decides which side to look from, rather than fitting from wherever the camera happens to be — that is the difference between the third button and the first two.
+Try the scene before the buttons. Drag to orbit and scroll to zoom. **Double-click** any object to focus it, and **double-click empty space** to frame everything again. All of that comes with `OrbitControls`.
 
-The red dot is the point the camera turns around. It normally has nothing to show for it, so `ShowOrbitTarget` draws one: right-drag to pan and watch it slide, and see it stop at the edge of an invisible box. That box is `targetBounds`, which takes an object and reads its world position as the centre and its world scale as the size. Without it, panning can carry the view off the scene entirely.
+### Framing objects
 
-`setCameraTargetPosition` and `setLookTargetPosition` move the camera somewhere specific. The second argument is the travel time in seconds, so `1.2` eases over that long and `true` jumps there instantly. Both take a point rather than a rotation, because the controls aim the camera at a look target — the second call is what decides where it ends up pointing.
+`fitCamera()` frames the whole scene. It works out the distance from the bounds of whatever it is framing, so you never guess at a camera position. That helps most with a model whose size you don't know ahead of time.
+
+Two options change what it does:
+
+- `objects` frames a selection instead of everything. This is how you point the camera at one thing without knowing where that thing is.
+- `fitDirection` also chooses which side to look from. Without it, the camera fits from wherever it already happens to be. That is the only difference between the third button and the first two.
+
+### The point the camera turns around
+
+The red dot marks it. That point is normally invisible, so `ShowOrbitTarget` draws a marker on it. Making something invisible visible is worth doing whenever it is hard to reason about.
+
+Right-drag to pan and watch the dot slide, then stop at the edge of a box. That box is `targetBounds`. It takes an object, and reads its world position as the centre and its world scale as the size. Panning then stays inside it, which keeps a visitor from wandering off the scene and losing it.
+
+### Moving to a viewpoint
+
+`setCameraTargetPosition` and `setLookTargetPosition` place the camera somewhere specific. The second argument is the travel time in seconds: `1.2` eases over that long, and `true` arrives instantly.
+
+Both take a point rather than a rotation, because the controls aim the camera at a look target. The second call is what decides where the camera ends up pointing.
 
 ::: tip Driving the camera yourself
-`<needle-engine camera-controls="false">` stops the engine adding controls at all. The camera is then yours to manage: link it to scroll, animate it along a path, or leave it fixed. Keeping the controls and switching off just rotation, zoom or panning is usually the smaller change.
+`<needle-engine camera-controls="false">` stops the engine adding controls at all, and [step 09](#09-custom-camera-controls) does exactly that. If you only want to remove part of the behaviour, keeping the controls and switching off rotation, zoom or panning is the smaller change.
 :::
 
-→ [Camera Controls (OrbitControls)](/docs/how-to-guides/components/orbit-controls)
+→ [Camera Controls (OrbitControls)](/docs/how-to-guides/components/orbit-controls) · [OrbitControls API](https://engine.needle.tools/docs/api/OrbitControls)
 
 ---
 
@@ -311,7 +354,7 @@ The red dot is the point the camera turns around. It normally has nothing to sho
 
 <walkthrough-takeaway>
 
-Turn the built-in controls off and the camera is an ordinary object you can move. This one follows the cursor within a set angle, and zooms in on whatever you hold down.
+Writing your own camera controls is a component, not a project. Turn the built-in ones off, move the camera in `update`, and you decide exactly what it can do.
 
 </walkthrough-takeaway>
 
@@ -327,21 +370,27 @@ Turn the built-in controls off and the camera is an ordinary object you can move
 
 </walkthrough-step>
 
-Move the cursor across the scene. The camera turns towards it and stops — 18° to either side, 9° up and down. It never swings round, because nothing in the code lets it.
+A camera controller is a component like any other. It reads input in `update` and moves the object it sits on. There is no special base class and no system to register with. `CameraRig` below is the whole thing.
 
-Hold down any object to look closer. Three things happen together: the field of view narrows, the camera turns to aim at that object, and the glance eases back to centre so the cursor stops pulling the view off the thing you are inspecting. Let go and all three reverse.
+That matters because built-in controls are general by design. Sometimes you want a camera that behaves one specific way: locked to a corridor, driven by scroll, or limited like this one. Writing forty lines is usually less work than bending orbit controls into shape.
 
-The page sets `camera-controls="false"`, so the engine adds no controls of its own and the camera is left to this component.
+Try it first. Move the cursor across the scene and the camera turns towards it, up to 18° to either side and 9° up and down. Hold down any object and the camera leans in. The field of view narrows, the aim moves onto that object, and the cursor glance eases back to centre. Let go and all three reverse.
 
-There is a second way. A component that reports `isCameraController` — as `CameraRig` does — takes the place of the default controls: the engine checks for one when the context is created, and only adds `OrbitControls` if it finds none. That check happens once, at startup, so it suits a camera set up in Unity or Blender. Setting the attribute is the straightforward route for a scene built entirely in code.
+### Switching the defaults off
 
-`getPointerPositionRC` gives the cursor from `-1` to `1` with `0` at the centre, which is already the shape you want — how far from the middle, regardless of canvas size. Clamping it before use means a cursor that leaves the canvas can't push the camera further.
+The page sets `camera-controls="false"`. The engine then adds no controls of its own, and the camera is left to this component.
 
-Everything moves by easing towards a target rather than being set outright: position, field of view, look-at point and the glance angles. That is what makes an interruption harmless — pressing the other button mid-flight just changes where the camera is heading, with no transition to cancel.
+A component can also take their place. When the context is created, the engine looks for a camera controller on the main camera, and only adds `OrbitControls` if it finds none. `CameraRig` reports `isCameraController`, which is what marks it as one. That check runs once at startup, so it suits a camera set up in Unity or Blender. For a scene built entirely in code, the attribute is the simpler route.
 
-The rig aims from a point each frame rather than turning the camera a little more each time. Accumulating would drift, and the limits would stop meaning anything. Yaw turns around world up and pitch around the camera's own right, which keeps the horizon level — rotating in the camera's local space rolls it, slightly but visibly.
+### What the rig does
 
-Hovering brightens the object with a `MaterialPropertyBlock`, which overrides the colour on that one object rather than on the material it shares — the same as [step 07](#07-pointer-input).
+`getPointerPositionRC` gives the cursor from `-1` to `1`, with `0` at the centre. That is already what you want: how far from the middle, whatever the canvas size. Clamp it before use and a cursor leaving the canvas stops pushing the camera further.
+
+Position, field of view, look-at point and glance angles all ease towards a value instead of jumping to it. This is what makes an interruption safe. Press the other button while the camera is moving and it simply heads somewhere else.
+
+The rig aims from a point each frame rather than turning the camera a little more each time. That keeps the angle limits exact, however long you move the cursor around. Yaw turns around world up, and pitch around the camera's own right, which keeps the horizon level. Rotating in the camera's local space would roll it, slightly but visibly.
+
+Hovering brightens the object with a `MaterialPropertyBlock`, the same as [step 07](#07-pointer-input). It overrides the colour on that one object, not on the material it shares.
 
 → [Camera Controls (OrbitControls)](/docs/how-to-guides/components/orbit-controls) · [OrbitControls API](https://engine.needle.tools/docs/api/OrbitControls) · [Handle User Input](/docs/how-to-guides/scripting/handle-input)
 
@@ -353,7 +402,7 @@ Hovering brightens the object with a `MaterialPropertyBlock`, which overrides th
 
 <walkthrough-takeaway>
 
-Physics is two components, not a system you set up. A `Rigidbody` makes an object move. A collider gives it a shape. The engine then calls your component when something hits it, the same way it calls pointer events — you don't write any physics code to receive them.
+Physics is two components, not a system you set up. A `Rigidbody` makes an object move. A collider gives it a shape. The engine then calls your component when something hits it, the same way it calls pointer events. You don't have to write any physics code to receive them.
 
 </walkthrough-takeaway>
 
@@ -363,15 +412,19 @@ Physics is two components, not a system you set up. A `Rigidbody` makes an objec
 
 </walkthrough-step>
 
-Click any ball to launch it upwards, and the difference in bounciness shows on the way back down. `applyImpulse` is an instant change in velocity — a kick. `applyForce` is the other option, for a push applied over time.
+Click any ball to launch it upwards. The difference in bounciness shows on the way back down.
 
-The two components do different jobs and you usually need both. **`Rigidbody`** makes an object move under gravity and respond to forces. A **collider** gives it a shape to collide with. An object with a collider but no `Rigidbody` never moves — which is exactly what you want for the floor here, and for walls and static scenery generally.
+`applyImpulse` is an instant change in velocity, like a kick. Use `applyForce` instead for a push applied over time.
 
-`onCollisionEnter(collision)` fires on the component when its object is hit. `collision.gameObject` is the *other* object involved, so the floor can report what landed on it without holding a list of balls. There's also `onCollisionExit` and `onCollisionStay`, the latter running every frame that the contact lasts.
+You usually need both components. **`Rigidbody`** makes an object fall and respond to forces. A **collider** gives it a shape to collide with. An object with a collider and no `Rigidbody` never moves, which is exactly right for the floor here, and for walls and scenery.
 
-Each ball carries a different **physics material** on its collider — `bounciness` rising from `0` on the left to `0.95` on the right, which is the entire difference between the clay, plastic and rubber balls. `bounceCombine: Maximum` makes each ball's own value decide the result; the default averages it with the floor's, so a bouncy ball on a dead floor would only half bounce.
+`onCollisionEnter(collision)` fires on the component when its object is hit. `collision.gameObject` is the *other* object involved, so the floor can report what landed on it without keeping a list of balls.
 
-A collider is its own shape and doesn't read the mesh — `BoxCollider` defaults to 1×1×1 whatever the object's size, so anything landing off that pad falls through. `BoxCollider.add(object)` fits it to the geometry for you. Other collider types have no such helper.
+There are two more: `onCollisionExit` when the contact ends, and `onCollisionStay` on every frame it lasts.
+
+Each ball carries a different **physics material** on its collider. `bounciness` rises from `0` on the left to `0.98` on the right. That is the entire difference between the clay, plastic and rubber balls. `bounceCombine: Maximum` lets each ball's own value decide the result. The default averages it with the floor's, so a bouncy ball on a dead floor would only half bounce.
+
+A collider is its own shape and doesn't read the mesh. `BoxCollider` defaults to 1×1×1 whatever the object's size, so anything landing off that pad falls through. `BoxCollider.add(object)` fits it to the geometry for you. Other collider types have no such helper.
 
 ::: tip Needle Engine only downloads what you use
 The physics engine is a separate chunk, fetched the first time a physics component is added. A project with no physics never downloads that code at all — it isn't shipped in the page and left unused.
@@ -381,7 +434,7 @@ The physics engine is a separate chunk, fetched the first time a physics compone
 
 Nothing here sets a mass, because you rarely need to. A `Rigidbody` has `autoMass` on by default and works out its mass from the colliders attached to it, using `mass = density × volume`.
 
-That means **size already affects weight**. Double a ball's radius and it gets heavier on its own, with no code change — which is usually what you want and is easy to break by hardcoding a mass.
+That means **size already affects weight**. Double a ball's radius and it gets heavier on its own, with no code change. Hardcoding a mass breaks that.
 
 To make something heavier or lighter than its size suggests, set `density` on the collider rather than `mass` on the body. Density is a real-world figure: water is `1.0` (the engine default), rubber `1.2`, steel `7.8`. Setting `mass` directly still works, but it switches `autoMass` off, and from then on the value stays fixed even if the object is rescaled.
 
@@ -397,7 +450,7 @@ Physics is powered by [Rapier](https://rapier.rs/), which the engine loads on de
 
 <walkthrough-takeaway>
 
-Multiplayer is a component sending and receiving, not a separate architecture. Join a room, send when something changes, and listen for the same event to apply what others did.
+Multiplayer needs no separate architecture. Join a room, send a message when something changes, and listen for the same message to apply what other people did.
 
 </walkthrough-takeaway>
 
@@ -407,21 +460,25 @@ Multiplayer is a component sending and receiving, not a separate architecture. J
 
 </walkthrough-step>
 
-Two views of the same room, side by side — the same thing two people opening the link would see. Click a cube in either one and it changes in both.
+Two views of the same room, side by side. This is what two people opening the same link would see. Click a cube in either one and it changes in both.
 
-`SyncedRoom` joins a room, and that's the whole connection setup — see [Set Up Networking](/docs/how-to-guides/networking/setup) for rooms, servers and hosting. After that, `connection.send(channel, data)` broadcasts to everyone else in the room and `connection.beginListen(channel, callback)` receives. The channel is any string both sides agree on — here it comes from the object's name, so each cube has its own.
+`SyncedRoom` joins a room, and that is the whole connection setup. See [Set Up Networking](/docs/how-to-guides/networking/setup) for rooms, servers and hosting.
 
-Three things to note:
+From there, `connection.send(channel, data)` broadcasts to everyone else in the room, and `connection.beginListen(channel, callback)` receives. The channel is any string both sides agree on. All three cubes share one channel here, and the message says which cube it is about.
 
-**The `guid` makes the change persist.** A message sent with one is stored in the room state on the server, so anyone joining later receives it. Without a `guid` the message only reaches people already in the room and is then forgotten. The value identifies which object the message is about, which is why it is per cube here.
+Three details are worth knowing:
 
-**The click applies the colour locally as well as sending it.** `send` broadcasts to everyone else in the room — it does not come back to the sender. Leave out the local `apply` and the one person who clicked is the only one who sees nothing happen.
+**The `guid` makes the change persist.** A message sent with one is stored in the room state on the server, so anyone joining later receives it. Without a `guid` the message only reaches people already in the room and is then forgotten.
+
+The value also identifies which cube changed, so it has to mean the same thing in every visitor's browser. Each component is given one where it is added, built from the cube's name. A scene exported from Unity or Blender usually uses the component's own `guid`, which the export assigns and every client receives.
+
+**The click applies the colour locally as well as sending it.** `send` broadcasts to everyone else in the room. It does not come back to the sender. Leave out the local `apply` and the one person who clicked is the only one who sees nothing happen.
 
 **`beginListen` is wrapped in `autoCleanup`.** A listener that outlives its component keeps firing against an object that's gone. Subscribing in `onEnable` and letting `autoCleanup` unsubscribe is the pairing rule from [step 03](#03-the-component-lifecycle).
 
 ### Syncing a field instead
 
-Explicit messages are worth understanding, but for keeping a value in step there's much less to write:
+Explicit messages are worth understanding. To keep a single value in step, though, there is far less to write:
 
 ```ts
 export class SharedColor extends Behaviour {
@@ -434,7 +491,7 @@ export class SharedColor extends Behaviour {
 }
 ```
 
-Assigning `this.index = 2` now syncs on its own — no channel name, no `send`, no listener to clean up, and persistence is handled for you rather than depending on remembering the `guid`.
+Assigning `this.index = 2` now syncs on its own. There is no channel name, no `send` and no listener to clean up. Persistence is handled for you, rather than depending on you remembering the `guid`.
 
 Like [`@serializable`](#marking-fields-as-serializable), it's a decorator and needs TypeScript — which is why the runnable example on this page uses the explicit calls instead.
 
@@ -444,11 +501,11 @@ Like [`@serializable`](#marking-fields-as-serializable), it's a decorator and ne
 
 ## 12 · AR and VR
 
-<walkthrough-tags symbols="WebXR" />
+<walkthrough-tags symbols="WebXR, XRRig" />
 
 <walkthrough-takeaway>
 
-XR is one component. Add `WebXR` to the scene and the page gains AR and VR. There is no separate build, and your existing components keep working.
+One component adds AR and VR. There is no separate build and no separate code path — the components you already wrote keep running in a headset.
 
 </walkthrough-takeaway>
 
@@ -458,11 +515,15 @@ XR is one component. Add `WebXR` to the scene and the page gains AR and VR. Ther
 
 </walkthrough-step>
 
-The buttons appear by themselves when a mode is available: a phone offers AR, a headset offers VR, and a desktop with a headset connected offers VR too. Without one, `createSendToQuestButton` can offer to open the page on a Quest instead, and `createQRCode` shows a QR code so you can open the same URL on a phone to try AR. `useDefaultControls` adds movement and teleporting in VR.
+The buttons appear on their own when a mode is available. A phone offers AR, a headset offers VR, and so does a desktop with a headset connected.
 
-`arScale` is worth setting for AR. Your scene is placed at real-world size, so a cube one unit across appears as a one-metre block in the room.
+Two options cover the machines without one. `createSendToQuestButton` offers to open the page on a Quest. `createQRCode` shows a QR code, so you can open the same URL on a phone and try AR. `useDefaultControls` adds movement and teleporting once you are in VR.
 
-It scales *you*, not the scene: raise it and you become larger relative to everything, so the scene looks smaller. `8` here shrinks it to something that sits on a table.
+`arScale` is worth setting for AR, because a scene is placed at real-world size. A cube one unit across arrives as a one-metre block in the room.
+
+The value scales *you*, not the scene. Raise it and you become larger relative to everything, so the scene looks smaller. `8` here brings it down to something that sits on a table.
+
+`XRRig` decides where the visitor arrives. In XR the user is parented to a rig, so moving the rig moves the user — put one where you want someone to start, facing the way you want them to look. Without one they begin at the world origin, which may be inside your scene. A scene can hold several rigs and switch between them during a session with `setAsActiveXRRig()`.
 
 `Spin` is the same component from step 01, unchanged, running in a headset.
 
@@ -476,7 +537,7 @@ It scales *you*, not the scene: raise it and you become larger relative to every
 
 <walkthrough-takeaway>
 
-Plenty of what you'd write by hand already exists as a component. One built-in follows the pointer. Another aims an object at a target. Together they make a head that watches you, with no custom code.
+Check for a built-in component before writing one. Two of them make a head that watches you, with no code of your own: one follows the pointer, the other aims an object at a target.
 
 </walkthrough-takeaway>
 
@@ -486,11 +547,11 @@ Plenty of what you'd write by hand already exists as a component. One built-in f
 
 </walkthrough-step>
 
-`CursorFollow` moves an object towards the pointer, and `damping` sets how smoothly it gets there — higher values ease in more gradually, lower values track it closely. `LookAt` turns an object to face a target.
+`CursorFollow` moves an object towards the pointer. `damping` sets how smoothly it gets there: higher values ease in gradually, lower values track the pointer closely. `LookAt` turns an object to face a target.
 
-The pupils are children of the eyes, so turning an eye takes its pupil with it — the same nesting idea as [step 05](#05-components-in-a-hierarchy).
+The pupils are children of the eyes, so turning an eye takes its pupil with it. That is the same nesting idea as [step 05](#05-components-in-a-hierarchy).
 
-Before writing a component, it's worth checking whether one exists. The [Component Reference](/docs/reference/components) lists them all.
+The [Component Reference](/docs/reference/components) lists everything that ships with the engine. It is worth a look before writing something yourself.
 
 → [Cursor Follow](/docs/how-to-guides/components/cursor-follow) · [Component Reference](/docs/reference/components)
 
@@ -502,7 +563,7 @@ Before writing a component, it's worth checking whether one exists. The [Compone
 
 <walkthrough-takeaway>
 
-You can load a model from any URL at runtime. What comes back is an ordinary object, so components attach to it like anything else.
+Load a model from any URL while the scene is running. What comes back is an ordinary object, so components attach to it like anything else.
 
 </walkthrough-takeaway>
 
@@ -514,13 +575,13 @@ You can load a model from any URL at runtime. What comes back is an ordinary obj
 
 `loadAsset(url)` fetches and parses the file, then hands back an object with `.scene` and `.animations`. It doesn't add anything to your scene, so you decide where the model goes and when it appears.
 
-`asset.scene` is a plain `THREE.Object3D`. You can add components to it, move it, or parent it to something else, exactly as with a shape you built yourself. Nothing about a loaded object is special.
+`asset.scene` is a plain `THREE.Object3D`. Add components to it, move it, or parent it to something else, exactly as with a shape you built yourself. A loaded object is not special in any way.
 
-`fitCamera()` on `OrbitControls` frames whatever is in the scene, which saves guessing at a camera position for a model whose size you don't know in advance.
+`fitCamera()` on `OrbitControls` frames whatever is in the scene. That saves guessing at a camera position for a model whose size you don't know in advance.
 
-Assets exported through Needle are compressed and progressively loaded by default, so a model like this one starts showing up early rather than arriving all at once.
+Assets exported through Needle are compressed and progressively loaded by default, so a model like this one appears early instead of arriving all at once.
 
-This is one of four ways to load a model, and the right choice depends on what you're doing — a single root scene, switching between many, spawning copies of one, or a quick one-off like this.
+This is one of four ways to load a model. Which one fits depends on what you are doing: a single root scene, switching between many, spawning copies of one, or a quick one-off like this.
 
 → [Load 3D Web Assets at Runtime](/docs/how-to-guides/scripting/load-3d-web-assets-at-runtime) compares all four
 
@@ -532,7 +593,7 @@ This is one of four ways to load a model, and the right choice depends on what y
 
 <walkthrough-takeaway>
 
-Gizmos let you draw into the scene from code, so you can see a value instead of logging it.
+Draw into the scene from code to see what a value is doing. Gizmos put it on the object it belongs to, instead of in the console.
 
 </walkthrough-takeaway>
 
@@ -542,11 +603,13 @@ Gizmos let you draw into the scene from code, so you can see a value instead of 
 
 </walkthrough-step>
 
-`Orbit` moves the marker. `ShowWhatItIsDoing` draws the circle it's following, a sphere at its position, a line back to the centre, and a label with the live coordinates.
+`Orbit` moves the marker. `ShowWhatItIsDoing` draws the circle it follows, a sphere at its position, a line back to the centre, and a label with the live coordinates.
 
-You call a `Gizmos` method and it draws, at the position you give it. Each call lasts one frame, which is why these sit in `update` — stop calling and the gizmo is gone. Pass a duration to make one stay longer. That's useful for things that happen once, like marking a raycast hit or a collision point.
+Call a `Gizmos` method and it draws at the position you give it. Positions are in world space.
 
-Positions are in world space. `Gizmos.DrawLabel` draws readable text in the scene, which is what you want for a value that changes every frame — you see it attached to the object it belongs to, instead of watching it scroll past in the console.
+Each call lasts one frame, which is why these sit in `update`. Stop calling and the gizmo is gone. Pass a duration to keep one on screen longer, which suits things that happen once — a raycast hit, or a collision point.
+
+`Gizmos.DrawLabel` draws readable text in the scene. That suits a value which changes every frame, because you see it on the object it belongs to rather than scrolling past in the console.
 
 → [Debugging & Profiling](/docs/how-to-guides/debugging/) · [Gizmos API](https://engine.needle.tools/docs/api/Gizmos)
 
@@ -558,7 +621,7 @@ Positions are in world space. `Gizmos.DrawLabel` draws readable text in the scen
 
 <walkthrough-takeaway>
 
-The same page runs on a phone, a desktop and a headset. You can check which one you're on, and mark objects to appear only in certain modes.
+The same page runs on a phone, a desktop and a headset. Check which one you are on, and mark objects to appear only in the modes you choose.
 
 </walkthrough-takeaway>
 
@@ -568,11 +631,13 @@ The same page runs on a phone, a desktop and a headset. You can check which one 
 
 </walkthrough-step>
 
-`DeviceUtilities` answers questions about the device: `isMobileDevice()`, `isDesktop()`, and more specific ones like `isIPad()`, `isAndroidDevice()`, `isiOS()` and `isVisionOS()`. Here it decides what gets built at all — a CRT monitor on a desktop, a candybar phone on a mobile. Open this page on your phone to see the other one. The label tells you which branch ran.
+`DeviceUtilities` answers questions about the device. `isMobileDevice()` and `isDesktop()` cover most cases, with `isIPad()`, `isAndroidDevice()`, `isiOS()` and `isVisionOS()` for the rest.
 
-The result is cached, so calling it is cheap and you can check wherever it reads best. Here it happens once at startup, because the answer decides what gets built.
+Here the answer decides what gets built: a CRT monitor on a desktop, a candybar phone on a mobile. Open this page on your phone to see the other branch. The label reports which one ran.
 
-`XRFlag` handles the other case: an object that should only exist in some modes. Set `visibleIn` and the object hides everywhere else. That's why the two boxes are missing above — one is marked AR only, the other AR and VR, and you're viewing this in a browser.
+Results are cached, so a check costs nothing and can go wherever it reads best. This one runs at startup, because it decides what to build.
+
+`XRFlag` covers the other case: an object that should exist in some modes only. Set `visibleIn` and the object hides everywhere else. That is why two boxes are missing above — one is marked AR only, the other AR and VR, and you are in a browser.
 
 The avatar head is the case this exists for. In VR you are looking out through it, so rendering it fills your view with the inside of your own skull. Everyone else still needs to see it, and so do you in third person or when the scene is mirrored into AR:
 
@@ -582,9 +647,9 @@ head.addComponent(XRFlag, {
 });
 ```
 
-Combine modes with `|`. The options are `Browser`, `AR`, `VR`, `FirstPerson` and `ThirdPerson` — and `FirstPerson` / `ThirdPerson` are what make this work, because the same headset session switches between them.
+Combine modes with `|`. The options are `Browser`, `AR`, `VR`, `FirstPerson` and `ThirdPerson`. The last two are what make this work, because the same headset session switches between them.
 
-The rule lives on the object, which is why this beats a check elsewhere: the head knows when to hide itself, and nothing has to go looking for it when a session starts.
+The rule lives on the object. The head knows when to hide itself, and nothing has to go looking for it when a session starts.
 
 → [Detect Mobile Devices](/docs/how-to-guides/scripting/detect-mobile-devices) · [WebXR Guides](/docs/how-to-guides/xr/)
 
@@ -596,7 +661,7 @@ The rule lives on the object, which is why this beats a check elsewhere: the hea
 
 <walkthrough-takeaway>
 
-Sound is a component you put on an object. Because it sits on the radio, it comes from the radio — orbit away and it gets quieter.
+Sound is a component you put on an object. This one sits on the radio, so the sound comes from the radio and fades as you orbit away.
 
 </walkthrough-takeaway>
 
@@ -606,15 +671,17 @@ Sound is a component you put on an object. Because it sits on the radio, it come
 
 </walkthrough-step>
 
-Click the buttons on the radio itself. They're objects in the scene with a `Button` component, using the pointer methods from [step 07](#07-pointer-input) — `onPointerDown` presses one into the case, `onPointerUp` releases it, and `onPointerClick` calls the matching method on the radio. The action is passed per button as an init object, so one class covers all three.
+Click the buttons on the radio itself. They are objects in the scene with a `Button` component, using the pointer methods from [step 07](#07-pointer-input). `onPointerDown` presses one into the case, `onPointerUp` releases it, and `onPointerClick` calls the matching method on the radio. Each button gets its action as an init object, so one class covers all three.
 
-One `AudioSource` plays all three tracks, and `play()` takes a clip, so changing track is a single call. `Radio` adds the `AudioSource` itself with `getOrAddComponent`, so attaching `Radio` is all you need — and an object that already has one keeps it.
+One `AudioSource` plays every track. `play()` takes a clip, so changing track is a single call.
+
+`Radio` adds the `AudioSource` itself with `getOrAddComponent`. Attaching `Radio` is therefore all you need, and an object that already has an `AudioSource` keeps the one it has.
 
 `spatialBlend: 1` makes the sound positional. It comes from wherever the object is and fades as you orbit away. Set it to `0` for flat audio at constant volume, which is what you want for music or narration covering the whole scene.
 
-Browsers block audio until the visitor interacts with the page, but Needle handles that for you: it waits for the first interaction and starts playback then. `playOnAwake` works as you would expect, for audio and for video, and you don't have to write anything for it. It is off here only because the buttons decide when playback starts.
+Browsers block audio until the visitor interacts with the page. The engine handles that: it waits for the first interaction and starts playback then. `playOnAwake` works as you would expect, for audio and for video, with nothing to write yourself. It is off here only because the buttons decide when playback starts.
 
-The bars follow the actual sound. `AudioSource.Sound` is the underlying three.js audio object and `audioContext` is the Web Audio context, so `Visualiser` connects an `AnalyserNode` to the output and reads the frequency data each frame. Nothing about that is Needle-specific — it's the standard Web Audio API, reachable because the engine doesn't hide it.
+The bars follow the actual sound. `AudioSource.Sound` is the underlying three.js audio object, and `audioContext` is the Web Audio context. `Visualiser` connects an `AnalyserNode` to the output and reads the frequency data each frame. That is the standard Web Audio API, reachable because the engine does not hide it.
 
 The analyser is created on first use rather than in `start`, because the audio object doesn't exist until something plays.
 
@@ -645,15 +712,19 @@ Bloom, depth of field, ambient occlusion and the rest ship as components. Add on
 
 </walkthrough-step>
 
-An effect registers itself when you add it. There is no manager or profile asset to set up first — `addComponent` is the whole setup, and `context.postprocessing` is the subsystem it registers with if you need to reach it directly. Turn all three buttons off to see the scene underneath.
+An effect registers itself when you add it. There is no manager or profile asset to set up first — `addComponent` is the whole setup. Turn all three buttons off to see the scene underneath.
+
+`context.postprocessing` is the subsystem effects register with, if you ever need to reach it directly.
 
 Effect settings are `VolumeParameter` objects rather than plain numbers, so values go through `.value`. That extra step is what lets a setting be animated, or blended between one set of values and another.
 
-Bloom only affects what is already brighter than its `threshold`. The lamps use an emissive material to get there — a plain colour stays below the line and never glows, however high you push the intensity.
+Bloom only affects what is already brighter than its `threshold`. The lamps use an emissive material to get there. A plain colour stays below the line and never glows, however high you push the intensity.
 
-`focusDistance` is a distance from the camera in metres, not a point in the scene, so it doesn't follow anything on its own. `AutoFocus` does what a camera does: it raycasts through the middle of the view and focuses on whatever it hits. `screenPoint` is in normalized device coordinates, so `(0, 0)` is the centre, and hits come back sorted with the nearest first.
+`focusDistance` is a distance from the camera in metres, not a point in the scene, so it follows nothing on its own. `AutoFocus` does what a camera does: it raycasts through the middle of the view and focuses on whatever it hits.
 
-It runs on a timer rather than every frame — focus doesn't need measuring 60 times a second — and eases towards each new distance, which is what makes it rack focus instead of snapping. Orbit the scene and watch the focus follow what you point at.
+`screenPoint` is in normalized device coordinates, so `(0, 0)` is the centre. Hits come back sorted, nearest first.
+
+The raycast runs on a timer rather than every frame, because focus does not need measuring 60 times a second. Each new distance is eased into, which is what makes it rack focus instead of snapping. Orbit the scene and watch the focus follow what you point at.
 
 ::: tip Needle Engine only downloads what you use
 The post-processing library is a separate chunk, fetched the first time an effect component is added. A project with no effects never downloads that code at all — it isn't shipped in the page and left unused. The same is true of physics, in [step 10](#10-physics-and-collisions).
@@ -665,17 +736,17 @@ The post-processing library is a separate chunk, fetched the first time an effec
 
 ## What's next
 
-That's the whole model: components on objects, a lifecycle, and a context they share. Everything else in Needle Engine is built the same way, so a component you meet later will look like the ones on this page.
+That is the whole idea: components on objects, a lifecycle, and a context they share. Everything else in Needle Engine works the same way, so a component you meet later will look like the ones on this page.
 
 **Set up a project.** These examples run from a CDN to keep them copyable, but a project adds hot reload, TypeScript, and the editor integrations. [Getting Started](/docs/getting-started/) — pick Unity, Blender, or code.
 
-**Open components up to the editor.** [Create Components](/docs/how-to-guides/scripting/create-components) covers `@serializable`, so fields can be set per object in Unity and Blender, and where component files live in a project.
+**Open components up to the editor.** [Create Components](/docs/how-to-guides/scripting/create-components) covers `@serializable`, which lets fields be set per object in Unity and Blender. It also covers where component files live in a project.
 
 **Look things up.** [Scripting Examples](/docs/reference/scripting-examples) is snippets by topic. [Component Reference](/docs/reference/components) lists every built-in component — a lot of what you might write by hand already exists.
 
 **See it at scale.** The [samples gallery](https://engine.needle.tools/samples?utm_source=needle_docs&utm_content=walkthrough_next) has 150+ finished projects to pull apart, from configurators to multiplayer games. In Unity and Blender you can install them from the Samples window and open any scene directly.
 
-**Keep the code from this page.** Every step here is a single HTML file that loads one JS file — no build step, nothing to install. Copy a step's code from above, or take the files from [the docs repository](https://github.com/needle-tools/needle-engine-support/tree/main/documentation/.vuepress/public/code-samples). Save the pair side by side, open the HTML, and it runs.
+**Keep the code from this page.** Every step is one HTML page and one JS file, with no build step and nothing to install. Take both from [the docs repository](https://github.com/needle-tools/needle-engine-support/tree/main/documentation/.vuepress/public/code-samples) — the script alone won't run, since the page is what loads the engine. Save the pair side by side, open the HTML, and it works.
 
 Something missing or unclear on this page? [Open an issue](https://github.com/needle-tools/needle-engine-support/issues) or ask in [Discord](https://discord.needle.tools).
 
