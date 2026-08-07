@@ -27,15 +27,16 @@ jobs:
       duration: ${{ steps.build.outputs.duration }}
     steps:
       - uses: actions/checkout@v4
+        with:
+          # keep node_modules from the previous run on the self-hosted runner
+          clean: false
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           # choose node.js version to use
           node-version: '20'
-          cache: 'npm'
 
-      # install dependencies if the cache did not hit
       - name: Install dependencies
         run: npm install
 

@@ -90,11 +90,6 @@ async function main() {
             const versionExists = responses.every(response => response.status === 200 && !response.redirected);
             if (versionExists) {
                 console.log("API documentation already exists for " + versionInfo.name + " " + versionInfo.version);
-
-                // check if diff exists
-                if (prevVersion)
-                    await createApiDiff(outputDirectoryFull, remotePath, baseUrl, version, prevVersion);
-
                 continue;
             }
         }
