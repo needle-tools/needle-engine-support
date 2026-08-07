@@ -2,7 +2,7 @@ import { Behaviour, Camera, MaterialPropertyBlock, Mathf, onStart } from '@needl
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
 
-configureDemoScene({ showGrid: false, useContactShadows: true });
+configureDemoScene({ showGrid: false, useContactShadows: true, autoFrame: false });
 
 // Yaw turns around this, so the horizon never tilts.
 const WORLD_UP = new THREE.Vector3(0, 1, 0);

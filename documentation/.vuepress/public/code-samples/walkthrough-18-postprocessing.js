@@ -10,7 +10,7 @@ import {
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
 
-configureDemoScene({ showGrid: false });
+configureDemoScene({ showGrid: false, autoFrame: false });
 
 // The viewpoint the example opens on.
 const CAMERA_POSITION = new THREE.Vector3(-1.642094, 0.709587, 4.062127);

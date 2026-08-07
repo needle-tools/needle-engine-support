@@ -2,7 +2,7 @@ import { Behaviour, Gizmos, Mathf, onStart, OrbitControls } from '@needle-tools/
 import * as THREE from 'three';
 import { configureDemoScene } from './walkthrough-base.js';
 
-configureDemoScene({ showGrid: false, useContactShadows: true });
+configureDemoScene({ showGrid: false, useContactShadows: true, autoFrame: false });
 
 // How far the camera may be panned, as a box around the origin.
 const PAN_AREA = new THREE.Vector3(2.4, 1.2, 2.4);

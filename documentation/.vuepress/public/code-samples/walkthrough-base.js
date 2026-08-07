@@ -28,9 +28,23 @@ export let orbitZoom = true;
 export let minZoom = 0.5;
 export let maxZoom = 30;
 
+/*
+  Whether the stage frames the scene itself.
+
+  The engine fits the camera once at startup, against whatever size the
+  canvas has at that moment. On the docs page each example is an iframe that
+  is mounted while the reader scrolls, so that measurement often happens
+  before the frame has its final size — and the scene ends up half out of
+  view. Framing it here instead, and again whenever the canvas resizes, gets
+  the same result at any size.
+
+  Steps that place their own camera set this to false.
+*/
+export let autoFrame = true;
+
 /**
  * @param {{ showGrid?: boolean, useContactShadows?: boolean, orbitZoom?: boolean,
- *           minZoom?: number, maxZoom?: number }} config
+ *           minZoom?: number, maxZoom?: number, autoFrame?: boolean }} config
  */
 export function configureDemoScene(config = {}) {
   if (config.showGrid !== undefined) {
@@ -41,6 +55,9 @@ export function configureDemoScene(config = {}) {
   }
   if (config.orbitZoom !== undefined) {
     orbitZoom = config.orbitZoom;
+  }
+  if (config.autoFrame !== undefined) {
+    autoFrame = config.autoFrame;
   }
   if (config.minZoom !== undefined) {
     minZoom = config.minZoom;
@@ -77,6 +94,51 @@ const allModulesEvaluated = new Promise(resolve => {
   else document.addEventListener('DOMContentLoaded', resolve, { once: true });
 });
 
+/*
+  Frame the scene, and frame it again whenever the canvas changes size.
+
+  One fit is not enough: the iframe is mounted as the reader scrolls, so the
+  first measurement can be of a box that is still settling. Re-fitting on
+  resize also keeps the scene framed when the window changes or the layout
+  reflows.
+
+  It stops as soon as the reader moves the camera themselves — after that the
+  view is theirs, and re-framing it would undo what they did.
+*/
+function frameSceneOnResize(context, orbit) {
+  // The engine's own startup fit is the one that measures too early.
+  orbit.autoFit = false;
+
+  const element = context.domElement;
+  let userTookOver = false;
+
+  const fit = () => {
+    if (userTookOver) return;
+    orbit.fitCamera({
+      // Same options the engine's own startup fit uses, so the scenes are
+      // framed as before — only measured once the canvas has its real size.
+      centerCamera: 'y',
+      objects: context.scene.children,
+      // immediate, because an animated fit reads the camera's in-flight
+      // distance and feeds it back into the next one.
+      immediate: true,
+    });
+  };
+
+  // A pointer or wheel on the scene means the reader is driving now.
+  const release = () => { userTookOver = true; };
+  element.addEventListener('pointerdown', release, { once: true, passive: true });
+  element.addEventListener('wheel', release, { once: true, passive: true });
+
+  // Wait a frame so the scene's own onStart has added its objects.
+  delayForFrames(1).then(() => {
+    fit();
+    if (typeof ResizeObserver !== 'undefined') {
+      new ResizeObserver(fit).observe(element);
+    }
+  });
+}
+
 onInitialized(async context => {
   await allModulesEvaluated;
 
@@ -90,6 +152,7 @@ onInitialized(async context => {
     if (!orbitZoom) {
       orbit.enableZoom = false;
     }
+    if (autoFrame) frameSceneOnResize(context, orbit);
   }
 
   if (showGrid) {

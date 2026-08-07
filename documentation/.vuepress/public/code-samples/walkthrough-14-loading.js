@@ -2,7 +2,7 @@ import { Behaviour, onStart, loadAsset, OrbitControls } from '@needle-tools/engi
 import { configureDemoScene } from './walkthrough-base.js';
 
 // A large model, so allow the camera much further out than the default.
-configureDemoScene({ showGrid: false, maxZoom: 200 });
+configureDemoScene({ showGrid: false, maxZoom: 200, autoFrame: false });
 
 const URL = 'https://cloud.needle.tools/-/assets/Z23hmXBZ21QnG-world/file';
 
