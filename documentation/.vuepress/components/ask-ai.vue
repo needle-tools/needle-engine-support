@@ -23,6 +23,9 @@ export default {
 
         const btn = document.createElement('a')
         btn.className = 'ask-ai-btn'
+        // Keeps the button out of anything that reads a heading as text, such
+        // as the sidebar in PageNav.
+        btn.setAttribute('data-nav-ignore', '')
         btn.href = '#'
         btn.target = '_blank'
         btn.rel = 'noopener'

@@ -191,7 +191,7 @@ export default {
       return ''
     },
     needleAiUrl() {
-      const title = document.querySelector('h1')?.textContent?.replace(/^#\s*/, '').trim() || ''
+      const title = this.headingText(document.querySelector('h1'))
       const msg = `I have a question about Needle Engine.\nSection: ${title}`
       return `https://cloud.needle.tools/ai/chat/needle-documentation?message=${encodeURIComponent(msg)}`
     }
@@ -357,7 +357,7 @@ export default {
           // Use the actual ID from the rendered element, not our own slugify
           // VuePress already generates IDs for headers
           const slug = el.id
-          const title = el.textContent.replace(/^#\s*/, '').trim()
+          const title = this.headingText(el)
 
           return {
             level: parseInt(el.tagName.substring(1)),
@@ -374,6 +374,29 @@ export default {
         .toLowerCase()
         .replace(/[^\w\s-]/g, '')
         .replace(/\s+/g, '-')
+    },
+
+    /*
+      The text of a heading, as a reader sees it.
+
+      Headings pick up decoration at runtime, such as the "Ask AI" button that
+      appears on hover. Reading textContent takes that along, so the sidebar
+      showed entries like "06 · Cloning objectsAsk AI". Anything marked
+      data-nav-ignore is left out, so a new decoration only has to set that
+      attribute to stay out of the navigation.
+
+      Note the anchor link stays in: VuePress puts the heading text inside it,
+      so skipping it would leave nothing behind.
+    */
+    headingText(el) {
+      if (!el) return ''
+      let text = ''
+      for (const node of el.childNodes) {
+        if (node.nodeType === Node.ELEMENT_NODE &&
+            node.matches('[data-nav-ignore]')) continue
+        text += node.textContent
+      }
+      return text.replace(/^#\s*/, '').trim()
     },
 
     extractChildLinks(heading) {
@@ -406,8 +429,7 @@ export default {
           ? [sibling]
           : Array.from(sibling.querySelectorAll('.tile'))
         tiles.forEach(tile => {
-          const titleElement = tile.querySelector('h3')
-          const title = titleElement?.innerText || titleElement?.textContent
+          const title = this.headingText(tile.querySelector('h3'))
           const tileLinks = Array.from(tile.querySelectorAll('a[href]'))
           // Prefer the documentation destination over download/marketing URLs.
           const link = tileLinks.find(anchor => {
@@ -622,7 +644,7 @@ export default {
 
       // Get current page title from h1 or last segment
       const h1 = document.querySelector('h1')
-      this.currentPageTitle = h1?.textContent?.trim() || segments[segments.length - 1]
+      this.currentPageTitle = this.headingText(h1) || segments[segments.length - 1]
         .split('-')
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ')
@@ -642,10 +664,11 @@ export default {
       // Collect all headers and find the current one
       for (let i = 0; i < headerElements.length; i++) {
         const el = headerElements[i]
+        const text = this.headingText(el)
         const header = {
           level: parseInt(el.tagName.substring(1)),
-          title: el.textContent.replace(/^#\s*/, '').trim(),
-          slug: el.id || this.slugify(el.textContent)
+          title: text,
+          slug: el.id || this.slugify(text)
         }
         allHeaders.push(header)
 
