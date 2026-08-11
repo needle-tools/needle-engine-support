@@ -34,6 +34,8 @@ This is looking for a sample marker with "disable environment light" and if it f
 
 
 const samplesRepositoryBranch = "docs/code-marker";
+const downloadConcurrency = 8;
+const downloadAttempts = 3;
 
 
 /** 
@@ -89,7 +91,7 @@ async function getCode() {
     const branchName = samplesRepositoryBranch;
     const filesUrl = `https://api.github.com/repos/needle-tools/needle-engine-samples/git/trees/${branchName}?recursive=1`
     console.log("Load code files from branch", branchName, "...", filesUrl);
-    const files = await fetch(filesUrl).then(r => r.json());
+    const files = await fetchWithRetry(filesUrl).then(r => r.json());
     if (files.message) {
         console.warn("Failed to load code files from branch", branchName, files.message);
         return parsedCode;
@@ -114,18 +116,57 @@ async function getCode() {
  * @returns {Promise<GithubFileContentResponse[]>}
  * */
 async function loadCodeFiles(baseUrl, codeFiles) {
-    const promises = [];
-    for (const file of codeFiles) {
-        if (file.path.endsWith("register_types.js")) continue;
-        const fullUrl = baseUrl + file.path;
-        const promise = fetch(fullUrl).then(r => r.text()).then(t => {
-            file.content = t;
-            return file;
-        });
-        promises.push(promise);
+    const files = codeFiles.filter(file => !file.path.endsWith("register_types.js"));
+    const results = new Array(files.length);
+    let nextIndex = 0;
+
+    async function downloadNext() {
+        while (nextIndex < files.length) {
+            const index = nextIndex++;
+            const file = files[index];
+            const response = await fetchWithRetry(baseUrl + file.path);
+            file.content = await response.text();
+            results[index] = file;
+        }
     }
-    const results = await Promise.all(promises);
+
+    const workerCount = Math.min(downloadConcurrency, files.length);
+    await Promise.all(Array.from({ length: workerCount }, () => downloadNext()));
     return results;
+}
+
+/**
+ * Fetch a build input and retry temporary network or server failures.
+ * Invalid URLs and other permanent HTTP errors fail immediately.
+ *
+ * @param {string} url
+ * @returns {Promise<import("node-fetch").Response>}
+ */
+async function fetchWithRetry(url) {
+    let lastError;
+
+    for (let attempt = 1; attempt <= downloadAttempts; attempt++) {
+        let response;
+        try {
+            response = await fetch(url);
+        }
+        catch (error) {
+            lastError = error;
+        }
+
+        if (response?.ok) return response;
+        if (response) {
+            const error = new Error(`HTTP ${response.status} for ${url}`);
+            if (response.status !== 429 && response.status < 500) throw error;
+            lastError = error;
+        }
+
+        if (attempt < downloadAttempts) {
+            await new Promise(resolve => setTimeout(resolve, 250 * 2 ** (attempt - 1)));
+        }
+    }
+
+    throw new Error(`Failed to download ${url} after ${downloadAttempts} attempts`, { cause: lastError });
 }
 
 function getGithubUrl(branchName, filepath, line) {

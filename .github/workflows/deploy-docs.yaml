@@ -42,8 +42,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # choose node.js version to use
-          node-version: '20.15'
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
@@ -144,8 +143,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # choose node.js version to use
-          node-version: '20.15'
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
