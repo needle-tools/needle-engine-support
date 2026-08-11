@@ -292,6 +292,14 @@ To check the format of your drives, you can:
 
 ![image](/imgs/ktx-env-variable.webp)
 
+## My build fails with 'Reason: colourspace: parameter space not set'
+
+You may also see `value "32" of type 'gint' is invalid or out of range for property 'space' of type 'VipsInterpretation'` in the same output.
+
+This is fixed in **Needle Engine 5.1.11**. Upgrade your Needle Engine package — see [How do I upgrade the Needle Engine Unity package?](#how-do-i-upgrade-the-needle-engine-unity-package).
+
+The cause is two incompatible versions of `sharp`, the image library used to compress textures, being loaded at the same time. It affects fresh installs only, so an existing project can start failing after deleting `node_modules`, clearing the npm cache, or setting up on a new machine — without anything in the project having changed. Upgrading is the only fix.
+
 ## I'm getting an error 'failed to load config ... vite.config.js' when running npm commands on Mac OS
 
 You're likely using an x86_64 version of Unity on an (ARM) Apple Silicon processor. Unity 2020.3 is only available for x86_64, later versions also have Apple Silicon versions.
