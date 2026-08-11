@@ -1,9 +1,9 @@
 ---
-title: Playable Ad Build Profiles
-description: Configuration and runtime API reference for Needle Engine playable outputs.
+title: Playable Build Profiles
+description: Configuration and runtime API reference for Needle Engine playable ads and hosted games.
 ---
 
-# Playable Ad Build Profiles
+# Playable Build Profiles
 
 ## Package entry points
 
@@ -31,6 +31,8 @@ type NeedlePlayableAdsOptions = {
     build?: {
         useRapier?: boolean;
         usePostprocessing?: boolean;
+        useDraco?: boolean;
+        useKTX2?: boolean;
         noPeer?: boolean;
         excludeOptionalModules?: string[];
     };
@@ -50,12 +52,28 @@ Add at least one platform. The build stops for a duplicate or unknown platform.
 | `meta` | `archiveName` | `dist/Meta/playable.zip` |
 | `mintegral` | `name`, `actionPoints` | `dist/Mintegral/<name>.zip` |
 | `wechat` | WeChat options; `appId` required | `dist/WeChat/` |
+| `discord` | `outputDirectory` | `dist/Discord/` |
+| `youtube` | `outputDirectory`, `archiveName` | `dist/YouTube/playable.zip` |
+| `facebook-instant-games` | `outputDirectory`, `archiveName`, orientation, bundle config | `dist/FacebookInstantGames/playable.zip` |
 
 Unity requires at least one iOS or Android store destination. WeChat requires an AppID.
 
 ::: info Opt-in behavior
 Only the `platforms` array selects outputs. Store URLs and project names do not select outputs.
 :::
+
+### Shared build options
+
+| Option | Effect when `true` | Effect when `false` | Default |
+| --- | --- | --- | --- |
+| `useRapier` | Include Rapier physics | Remove Rapier physics | Detect from scene components |
+| `usePostprocessing` | Include post-processing | Remove post-processing | Detect from scene components |
+| `useDraco` | Include the Draco decoder | Remove the Draco decoder | Detect from assets; `false` when WeChat is selected |
+| `useKTX2` | Include the KTX2 decoder | Remove the KTX2 decoder | Detect from assets; `false` when WeChat is selected |
+| `noPeer` | Remove PeerJS networking | Keep PeerJS networking | Profile setting |
+| `excludeOptionalModules` | Remove the listed modules | — | `[]` |
+
+Set `useDraco` or `useKTX2` when you need to override the default. Do not remove a decoder that a packaged asset uses.
 
 ## Build helpers
 
@@ -136,6 +154,14 @@ The profile also rejects browser popups and `XMLHttpRequest`.
 
 The Mintegral ZIP, folder, and HTML file use `name`.
 
+### Hosted games
+
+| Target | Package behavior |
+| --- | --- |
+| `discord` | Keeps the localized browser build as a deployable folder. Add `@discord/embedded-app-sdk` in the application source. |
+| `youtube` | Creates a ZIP, adds the YouTube SDK and required lifecycle hooks, and validates bundle rules. |
+| `facebook-instant-games` | Creates a ZIP with the Instant Games SDK, loading lifecycle, and `fbapp-config.json`. |
+
 ## Runtime bridge
 
 ```ts
@@ -206,6 +232,8 @@ The report describes the build. Run the platform validator before upload.
 | `excludeOptionalModules` | Module IDs replaced for this target |
 | `useRapier` | Include Rapier; capability-driven when omitted |
 | `usePostprocessing` | Include post-processing; capability-driven when omitted |
+| `useDraco` | Include the Draco decoder; follows packaged assets when omitted |
+| `useKTX2` | Include the KTX2 decoder; follows packaged assets when omitted |
 | `maxJavaScriptBytes` | Per-file parser budget; default 2,048,000 bytes |
 | `maxPackageBytes` | Optional package budget |
 | `origin` | Local `import.meta` origin |
@@ -223,6 +251,6 @@ Import `createWechatPlatformContext()` from `@needle-tools/engine/playable/wecha
 
 ## Related
 
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads)
+- [Build Playable Ads and Hosted Games](/docs/how-to-guides/deployment/playable-ads)
 - [Test Playable Ads](/docs/how-to-guides/deployment/playable-ads/testing)
 - [How Playable Ads Work](/docs/explanation/playable-ads)

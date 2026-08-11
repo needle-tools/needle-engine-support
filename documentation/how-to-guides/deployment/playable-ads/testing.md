@@ -1,9 +1,9 @@
 ---
-title: Test Playable Ads
-description: Test a playable package, runtime, platform host, and device.
+title: Test Playables
+description: Test a playable ad or hosted game package, runtime, platform host, and device.
 ---
 
-# Test Playable Ads
+# Test Playables
 
 Test the generated output at four levels. Use the same file for each applicable test.
 
@@ -99,6 +99,9 @@ Use the device test that the platform supplies:
 - Meta placement preview
 - Playturbo QR preview
 - WeChat Developer Tools Preview
+- Discord Developer Activity Shelf
+- YouTube Dev Link on desktop, mobile web, Android, and iOS
+- Facebook Instant Games staged build
 
 ## Run Needle tests
 
@@ -128,5 +131,5 @@ Run the platform and device tests after the Needle tests.
 
 ## Related pages
 
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads)
-- [Playable Ad Build Profiles](/docs/reference/playable-ads)
+- [Build Playable Ads and Hosted Games](/docs/how-to-guides/deployment/playable-ads)
+- [Playable Build Profiles](/docs/reference/playable-ads)

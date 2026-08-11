@@ -57,7 +57,7 @@ playable.zip
 └── config.json
 ```
 
-TikTok requires the hosted `Playable-sdk.js`. The ZIP contains all other game files.
+TikTok requires its hosted [Playable SDK](https://sf16-muse-va.ibytedtos.com/obj/union-fe-nc-i18n/playable/sdk/playable-sdk.js). The ZIP contains all other game files.
 
 ## 3. Upload the ZIP file
 
