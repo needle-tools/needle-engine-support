@@ -18,9 +18,10 @@ The `discord` target creates `dist/Discord/`. Deploy this folder to an HTTPS web
 3. Create an application.
 4. Under **Installation**, enable **User Install** and **Guild Install**.
 5. Under **OAuth2**, add `https://127.0.0.1` as a redirect URI for initial testing.
-6. Copy the application ID. This is the public client ID.
+6. Enable **Public Client** if the Activity authenticates without a server.
+7. Copy the application ID. This is the public client ID.
 
-Do not put the client secret or bot token in the web project. Exchange OAuth tokens on a server.
+Never put a client secret or bot token in the web project. A public client uses PKCE and does not use a client secret. A confidential client exchanges the authorization code on a server.
 
 <!-- SCREENSHOT PLACEHOLDER
 Title: Discord Developer Portal — Activity application
@@ -64,11 +65,63 @@ await discord.subscribe(Events.ACTIVITY_INSTANCE_PARTICIPANTS_UPDATE, event => {
 });
 ```
 
-`instanceId` is ready after you create the SDK object. Participant commands are ready after `discord.ready()`.
+`instanceId` is ready after you create the SDK object. `discord.ready()` completes the SDK handshake. Authenticate the SDK before you request participant names.
 
-Discord display names require an authenticated user. Call `authorize()`, exchange the returned code on your server, then pass the access token to `authenticate()`. Keep the client secret on the server. Read [Building Your First Activity](https://docs.discord.com/developers/activities/building-an-activity#step-5-authorizing--authenticating-users) for the complete flow.
+### Authenticate without a server
 
-After authentication, request and subscribe to the participant list. If Discord returns code `4006`, the user is not authenticated or the token does not contain the required scope.
+Use a public client with PKCE when the game needs participant names for UI. Keep the token in memory:
+
+```ts
+function base64Url(bytes: Uint8Array) {
+    return btoa(String.fromCharCode(...bytes))
+        .replace(/\+/g, "-")
+        .replace(/\//g, "_")
+        .replace(/=+$/, "");
+}
+
+async function authenticatePublicClient(discord: DiscordSDK, clientId: string) {
+    const verifier = base64Url(crypto.getRandomValues(new Uint8Array(48)));
+    const digest = await crypto.subtle.digest(
+        "SHA-256",
+        new TextEncoder().encode(verifier),
+    );
+    const challenge = base64Url(new Uint8Array(digest));
+
+    const { code } = await discord.commands.authorize({
+        client_id: clientId,
+        response_type: "code",
+        prompt: "none",
+        scope: ["identify"],
+        code_challenge: challenge,
+        code_challenge_method: "S256",
+    });
+
+    const response = await fetch("https://discord.com/api/oauth2/token", {
+        method: "POST",
+        headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        body: new URLSearchParams({
+            client_id: clientId,
+            grant_type: "authorization_code",
+            code,
+            code_verifier: verifier,
+        }),
+    });
+    if (!response.ok) throw new Error(`Discord OAuth failed (${response.status})`);
+
+    const { access_token } = await response.json();
+    await discord.commands.authenticate({ access_token });
+}
+```
+
+Call this function after `discord.ready()` and before `getInstanceConnectedParticipants()`.
+
+::: info Participant data is UI data
+Discord states that Activity client data can be changed by the client. Use it for names, avatars, and local presentation. Verify identity on your server before it grants accounts, purchases, saved progress, or other trusted state.
+:::
+
+Use a confidential client when your server needs a verified Discord identity. Leave **Public Client** disabled, exchange the authorization code on the server, and send the access token to the Activity. Read [Building Your First Activity](https://docs.discord.com/developers/activities/building-an-activity#step-5-authorizing--authenticating-users) for this flow.
+
+After authentication, request and subscribe to the participant list. If Discord returns code `4006`, the SDK session is not authenticated or the access token is invalid.
 
 The Embedded App SDK supplies the room ID and participant list. Your game server sends positions, rotations, shots, and game state. Needle networking can send this state.
 
@@ -271,10 +324,12 @@ An agent can test the full desktop flow with an authorized Discord test applicat
 5. Open the Activity from the Developer Activity Shelf.
 6. Inspect the Activity iframe, not only the main Discord window.
 7. Confirm that the canvas has non-black pixels and changes after input.
-8. Confirm that `discord.ready()` completes and no request is blocked by the Content Security Policy.
-9. Start a second client in the same instance. Confirm two room users and two rendered player objects.
-10. Test input, resize, audio unlock, reconnect, and leave cleanup.
-11. Restore the production root mapping after the test.
+8. Confirm this SDK order: `ready`, `authorize`, token exchange, `authenticate`, participant request.
+9. Confirm that the participant list contains the signed-in user's display name.
+10. Confirm that no request is blocked by the Content Security Policy.
+11. Start a second client in the same instance. Confirm two room users, two participant names, and two rendered player objects.
+12. Test input, resize, audio unlock, reconnect, and leave cleanup.
+13. Restore the production root mapping after the test.
 
 The agent must report the tested Discord client version, Activity application ID, mapping targets, build commit, and exact errors. A clean parent-window console does not prove that the Activity iframe works.
 
