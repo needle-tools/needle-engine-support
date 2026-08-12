@@ -66,6 +66,10 @@ await discord.subscribe(Events.ACTIVITY_INSTANCE_PARTICIPANTS_UPDATE, event => {
 
 `instanceId` is ready after you create the SDK object. Participant commands are ready after `discord.ready()`.
 
+Discord display names require an authenticated user. Call `authorize()`, exchange the returned code on your server, then pass the access token to `authenticate()`. Keep the client secret on the server. Read [Building Your First Activity](https://docs.discord.com/developers/activities/building-an-activity#step-5-authorizing--authenticating-users) for the complete flow.
+
+After authentication, request and subscribe to the participant list. If Discord returns code `4006`, the user is not authenticated or the token does not contain the required scope.
+
 The Embedded App SDK supplies the room ID and participant list. Your game server sends positions, rotations, shots, and game state. Needle networking can send this state.
 
 Connect Needle networking after the SDK is ready. Use the Activity instance ID as part of the room name:
@@ -123,25 +127,28 @@ Serve `dist/Discord/` from an HTTPS host. Keep all Vite paths relative.
 Use this workflow to test the SDK, URL mappings, and multiplayer. Discord recommends this workflow because it uses the same proxy as production.
 
 1. Build the Discord target.
-2. Serve `dist/Discord/` on a local port:
+2. Start an HTTPS tunnel. Discord uses `cloudflared` in its local development guide:
 
    ```sh
+   cloudflared tunnel --url http://127.0.0.1:5173
+   ```
+
+3. Copy the `trycloudflare.com` host from the terminal.
+4. Serve `dist/Discord/` and allow that exact host:
+
+   ```sh
+   __VITE_ADDITIONAL_SERVER_ALLOWED_HOSTS=YOUR_TUNNEL_HOST \
    npx vite preview --host 127.0.0.1 --port 5173 --outDir dist/Discord
    ```
 
-3. Start an HTTPS tunnel. Discord uses `cloudflared` in its local development guide:
-
-   ```sh
-   cloudflared tunnel --url http://localhost:5173
-   ```
-
-4. Copy the `trycloudflare.com` host from the terminal.
-5. In the Developer Portal, open **Activities → URL Mappings**.
-6. Add `/needle-networking` with target `networking-2.needle.tools/socket` if the game uses Needle networking.
-7. Add `/` with the tunnel host as its target. Remove `https://` from the target.
-8. Open **Activities → Settings** and enable Activities.
-9. Check that Discord created the default **Launch** entry point command.
-10. Keep **Application URL Override** disabled.
+   Replace `YOUR_TUNNEL_HOST` with the hostname only. Vite rejects other host headers.
+5. Open the tunnel URL in a browser. Confirm that it shows the game.
+6. In the Developer Portal, open **Activities → URL Mappings**.
+7. Add `/needle-networking` with target `networking-2.needle.tools/socket` if the game uses Needle networking.
+8. Add `/` with the tunnel host as its target. Remove `https://` from the target.
+9. Open **Activities → Settings** and enable Activities.
+10. Check that Discord created the default **Launch** entry point command.
+11. Keep **Application URL Override** disabled.
 
 Reset the root mapping after the test. A quick-tunnel hostname can be assigned to another user after the tunnel stops.
 
