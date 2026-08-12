@@ -46,7 +46,45 @@ await discord.ready();
 
 Use the SDK for participant data, channel data, invitations, rich presence, purchases, and instance events. Read the [Embedded App SDK reference](https://docs.discord.com/developers/developer-tools/embedded-app-sdk).
 
-## 3. Add the build target
+## 3. Add multiplayer
+
+Discord gives every running Activity an `instanceId`. Players in the same Activity receive the same value. Use it as the room ID for your game server.
+
+```ts
+import { DiscordSDK, Events } from "@discord/embedded-app-sdk";
+
+const discord = new DiscordSDK("YOUR_APPLICATION_ID");
+const roomId = discord.instanceId;
+
+await discord.ready();
+const { participants } = await discord.commands.getInstanceConnectedParticipants();
+
+await discord.subscribe(Events.ACTIVITY_INSTANCE_PARTICIPANTS_UPDATE, event => {
+    updatePlayerNames(event.participants);
+});
+```
+
+`instanceId` is ready after you create the SDK object. Participant commands are ready after `discord.ready()`.
+
+The Embedded App SDK supplies the room ID and participant list. Your game server sends positions, rotations, shots, and game state. Needle networking can send this state.
+
+For the Space Strike sample, add these URL mappings in this order:
+
+| Prefix | Target |
+| --- | --- |
+| `/needle-networking` | `networking-2.needle.tools/socket` |
+| `/` | Your game host |
+
+Use `wss://<your-application-id>.discordsays.com/needle-networking` in the Activity. Discord sends this request to the mapped WebSocket server.
+
+Read [Multiplayer Experience](https://docs.discord.com/developers/activities/development-guides/multiplayer-experience) and [Networking](https://docs.discord.com/developers/activities/development-guides/networking).
+
+<!-- SCREENSHOT PLACEHOLDER
+Title: Discord Activity — two connected players
+Capture: Two player ships with different colors and visible name badges.
+-->
+
+## 4. Add the build target
 
 ```js
 playableAds: {
@@ -65,7 +103,7 @@ npm run build -- --production
 
 Serve `dist/Discord/` from an HTTPS host. Keep all Vite paths relative.
 
-## 4. Test the Activity locally
+## 5. Test the Activity locally
 
 Discord desktop and web require HTTPS. Test through Discord's proxy so local and production URLs behave the same way.
 
@@ -77,10 +115,11 @@ Discord desktop and web require HTTPS. Test through Discord's proxy so local and
    ```
 
 3. In the Developer Portal, open **Activities → URL Mappings**.
-4. Add prefix `/` and set the target to the tunnel host without `https://`.
-5. Open **Activities → Settings** and enable Activities.
-6. Check that Discord created the default **Launch** entry point command.
-7. Keep **Application URL Override** disabled.
+4. If the game uses Needle networking, add `/needle-networking` and set its target to `networking-2.needle.tools/socket`.
+5. Add prefix `/` and set the target to the tunnel host without `https://`.
+6. Open **Activities → Settings** and enable Activities.
+7. Check that Discord created the default **Launch** entry point command.
+8. Keep **Application URL Override** disabled.
 
 ::: info Development access
 An Activity that is not distributed is available only to its owner and developer-team members. Enable Discord **Developer Mode** to find it in the Developer Activity Shelf.
@@ -93,7 +132,7 @@ Title: Discord Activity — local URL mapping
 Capture: The root URL mapping to the HTTPS tunnel used for local development.
 -->
 
-## 5. Test in Discord
+## 6. Test in Discord
 
 1. Open a test server or direct message.
 2. Open the App Launcher or Activity shelf.
@@ -111,7 +150,7 @@ Title: Needle Activity running in Discord
 Capture: The Activity running from the Developer Activity Shelf with the game canvas visible.
 -->
 
-## 6. Deploy and release
+## 7. Deploy and release
 
 Deploy `dist/Discord/` to a stable HTTPS host. To use Needle Cloud, follow [Deploy from the CLI](/docs/cloud/#deploy-from-the-cli) and select `dist/Discord/` as the deployment directory.
 
@@ -133,6 +172,8 @@ Do not let an agent publish the Activity, change discovery settings, or use a cl
 ## Network requests
 
 Discord routes Activity traffic through its proxy. Add one URL mapping for each external service. Call the mapped path from the game. For example, map `/api` to `api.example.com`, then call `/api` from the Activity.
+
+Put specific paths before the root `/` mapping. This lets `/needle-networking` reach the WebSocket server while `/` reaches the game host.
 
 Read [Discord URL Mapping](https://docs.discord.com/developers/activities/development-guides/local-development#url-mapping).
 
