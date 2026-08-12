@@ -1,4 +1,9 @@
 <script>
+import { zip } from './zip.js';
+
+// How long the copy button stays in its "Copied" state, matching the plugin.
+const COPIED_DURATION = 2000;
+
 export default {
   props: {
     // Path to the self-contained runnable example page
@@ -66,6 +71,13 @@ export default {
   },
   mounted() {
     this.addCopyButtons();
+    this.addDownloadButtons();
+    /*
+      Capture, so this runs before the copy plugin's own listener on the window
+      and can stop the event reaching it. Copying is handled here instead, to
+      annotate the shared-stage import on its way to the clipboard.
+    */
+    this.$el.addEventListener('click', this.onCodeButtonClick, true);
 
     // Without IntersectionObserver, just mount everything and never unload.
     if (!this.autoUnload || typeof IntersectionObserver === 'undefined') {
@@ -96,7 +108,9 @@ export default {
 
   beforeUnmount() {
     clearTimeout(this.offScreenTimer);
+    clearTimeout(this.copiedTimer);
     this.observer?.disconnect();
+    this.$el?.removeEventListener('click', this.onCodeButtonClick, true);
   },
 
   methods: {
@@ -130,6 +144,363 @@ export default {
         pre.parentElement?.insertBefore(button, pre);
         pre.setAttribute('copy-code', '');
       });
+    },
+
+    /*
+      A button beside the copy button that saves the whole example.
+
+      The code panel shows one file, and that file imports the shared stage —
+      so copying it alone gives a script that cannot run. This takes the page
+      and everything it references instead.
+    */
+    addDownloadButtons() {
+      this.$el.querySelectorAll('div[class*="language-"] > pre').forEach(pre => {
+        const wrapper = pre.parentElement;
+        if (!wrapper || wrapper.querySelector('.walkthrough-download')) return;
+
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'walkthrough-download';
+        button.title = 'Download this example';
+        button.setAttribute('aria-label', 'Download this example');
+        button.innerHTML =
+          // Sized to sit level with the copy icon beside it, which renders at
+          // 1.25rem. An outlined glyph reads heavier, so it goes a shade smaller.
+          '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">' +
+          '<path d="M12 3v12m0 0 4-4m-4 4-4-4M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2" ' +
+          'fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" ' +
+          'stroke-linejoin="round"/></svg>';
+
+        /*
+          Ahead of the copy button, never between it and the code. The copy
+          plugin takes its button's next sibling as the block to copy, so
+          anything inserted in that gap would be copied instead of the code.
+        */
+        wrapper.insertBefore(button, wrapper.firstChild);
+      });
+    },
+
+    onCodeButtonClick(event) {
+      const button = event.target?.closest?.(
+        '.walkthrough-download, div[class*="language-"] > button.vp-copy-code-button'
+      );
+      if (!button) return;
+
+      event.stopPropagation();
+      if (button.classList.contains('walkthrough-download')) this.downloadExample(button);
+      else this.copyCode(button);
+    },
+
+    /*
+      Copy the code, with each relative import spelled out as a full URL.
+
+      Someone who pastes this into their own project has no walkthrough-base.js
+      next to it, and the failure gives no hint of where the file lives. The
+      comment puts the address on the line the error points at.
+    */
+    async copyCode(button) {
+      const pre = button.parentElement?.querySelector('pre');
+      if (!pre) return;
+
+      const folder = new URL('.', new URL(this.src, window.location.href));
+      const text = (pre.textContent || '').replace(
+        /(from\s+['"])(\.\/[^'"]+)(['"];?)/g,
+        (match, before, relative, after) => {
+          const url = new URL(relative, folder).href;
+          const label = relative.endsWith('walkthrough-base.js') ? 'shared demo stage — ' : '';
+          return `${before}${relative}${after} // ${label}${url}`;
+        }
+      );
+
+      await this.writeClipboard(text);
+      this.track('walkthrough_copy');
+
+      // The plugin's own "Copied" styling comes from this class.
+      button.classList.add('copied');
+      clearTimeout(this.copiedTimer);
+      this.copiedTimer = setTimeout(() => {
+        button.classList.remove('copied');
+        button.blur();
+      }, COPIED_DURATION);
+    },
+
+    async writeClipboard(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        return;
+      }
+      catch {
+        // Falls through — the Clipboard API needs a secure context, and the
+        // examples should still be copyable when the docs are served plainly.
+      }
+      const field = document.createElement('textarea');
+      field.value = text;
+      field.setAttribute('readonly', '');
+      field.style.position = 'fixed';
+      field.style.opacity = '0';
+      document.body.appendChild(field);
+      field.select();
+      try { document.execCommand('copy'); } finally { field.remove(); }
+    },
+
+    /*
+      Save the example as a zip: the page, the scripts it loads, and whatever
+      those scripts reference.
+
+      Nothing here is a list to keep up to date. It reads the page the step
+      already points at and follows what it asks for, so a new sample — or a
+      new asset in an existing one — is picked up on its own.
+    */
+    async downloadExample(button) {
+      if (button.hasAttribute('data-busy')) return;
+      button.setAttribute('data-busy', '');
+
+      try {
+        const files = await this.collectExampleFiles();
+        const url = URL.createObjectURL(zip(files));
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = `${this.exampleName()}.zip`;
+        link.click();
+        // Counted only once the archive exists, so a failure is not a download.
+        this.track('walkthrough_download');
+        // Revoked on the next task, once the browser has taken the blob.
+        setTimeout(() => URL.revokeObjectURL(url), 0);
+      }
+      catch (error) {
+        console.error('[walkthrough] could not build the download', error);
+      }
+      finally {
+        button.removeAttribute('data-busy');
+      }
+    },
+
+    /*
+      Report a walkthrough interaction to the site's own analytics.
+
+      Rybbit is on every docs page and is the one that also runs in dev, so an
+      event can be checked while working on it. Only the step name is sent.
+
+      Guarded throughout: an ad blocker leaves window.rybbit undefined, and a
+      counter must never be the reason a download or a copy fails.
+    */
+    track(name) {
+      try {
+        window.rybbit?.event?.(name, { step: this.exampleName() });
+      }
+      catch {
+        // Analytics stays out of the way of the thing the reader asked for.
+      }
+    },
+
+    exampleName() {
+      const path = new URL(this.src, window.location.href).pathname;
+      return path.split('/').pop().replace(/\.html?$/, '') || 'needle-example';
+    },
+
+    /*
+      The step this example belongs to: the heading above it on the page, and
+      the id that links straight back to that section.
+
+      Taken from the page rather than passed in, so a step never has to repeat
+      its own title and the two can never drift apart. The Ask AI button is
+      appended into headings, so it is left out here the same way the sidebar
+      leaves it out.
+    */
+    stepInfo() {
+      for (let node = this.$el; node; node = node.parentElement) {
+        for (let prev = node.previousElementSibling; prev; prev = prev.previousElementSibling) {
+          if (prev.tagName !== 'H2') continue;
+          let text = '';
+          for (const child of prev.childNodes) {
+            if (child.nodeType === Node.ELEMENT_NODE && child.matches('[data-nav-ignore]')) continue;
+            text += child.textContent;
+          }
+          return { title: text.trim(), anchor: prev.id };
+        }
+      }
+      return null;
+    },
+
+    /*
+      A still of the scene as the reader has it on screen right now, including
+      whatever angle they orbited to.
+
+      The canvas keeps no drawing buffer between frames, so the pixels have to
+      be read in the same task as the render — hence renderNow() immediately
+      followed by toDataURL, with nothing awaited in between.
+    */
+    capturePreview() {
+      try {
+        const frame = this.$el.querySelector('iframe');
+        const context = frame?.contentWindow?.document?.querySelector('needle-engine')?.context;
+        const canvas = context?.renderer?.domElement;
+        if (!canvas) return null;
+
+        context.renderNow();
+        const dataUrl = canvas.toDataURL('image/png');
+
+        const binary = atob(dataUrl.slice(dataUrl.indexOf(',') + 1));
+        const bytes = new Uint8Array(binary.length);
+        for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+        return bytes;
+      }
+      catch {
+        // A step still loading has nothing to photograph, and that is no
+        // reason to withhold the files.
+        return null;
+      }
+    },
+
+    async collectExampleFiles() {
+      const page = new URL(this.src, window.location.href);
+      const folder = new URL('.', page);
+      const html = await fetch(page).then(response => response.text());
+      const encoder = new TextEncoder();
+
+      // Taken before anything is awaited, while the frame is still on screen.
+      const preview = this.capturePreview();
+
+      /*
+        Named index.html rather than kept as-is, so serving the folder opens
+        the example with no path to type.
+      */
+      const files = [
+        { name: 'index.html', bytes: encoder.encode(html) },
+        { name: 'README.md', bytes: encoder.encode(this.readme(!!preview)) },
+      ];
+      if (preview) files.push({ name: 'preview.png', bytes: preview });
+
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      const queue = Array.from(doc.querySelectorAll('script[src], link[href]'))
+        .map(el => el.getAttribute('src') || el.getAttribute('href'))
+        .filter(ref => ref?.startsWith('./'));
+
+      const seen = new Set();
+      while (queue.length) {
+        const relative = queue.shift();
+        if (seen.has(relative)) continue;
+        seen.add(relative);
+
+        const response = await fetch(new URL(relative, folder));
+        if (!response.ok) continue;
+
+        const name = relative.replace(/^\.\//, '');
+        // Scripts can name files of their own, such as the audio clips in the
+        // audio step, so read them as text and follow what they point at.
+        if (/\.m?js$/.test(name)) {
+          const source = await response.text();
+          files.push({ name, bytes: encoder.encode(source) });
+          const matches = source.match(/['"]\.\/[^'"]+['"]/g) ?? [];
+          matches.forEach(match => queue.push(match.slice(1, -1)));
+        }
+        else {
+          files.push({ name, bytes: new Uint8Array(await response.arrayBuffer()) });
+        }
+      }
+
+      return files;
+    },
+
+    /*
+      The README that ships in the zip.
+
+      It is a map, not a lesson: say what this folder is, get it running, name
+      the files, then point at the guide for each thing a reader might do next.
+      Every link is a markdown link, so it stays clickable wherever the file is
+      read. Link labels sit on one line — markdown allows no break between a
+      label and its destination.
+    */
+    readme(hasPreview = false) {
+      const step = this.exampleName();
+      const info = this.stepInfo();
+      const walkthrough = 'https://engine.needle.tools/docs/tutorials/scripting-walkthrough';
+      // Straight to the section this came from, rather than the top of a long page.
+      const section = info?.anchor ? `${walkthrough}#${info.anchor}` : walkthrough;
+      return [
+        `# ${info?.title || this.title}`,
+        '',
+        `${this.title}.`,
+        '',
+        `A runnable copy of one step from the [Needle Engine scripting walkthrough](${section}).`,
+        '',
+        ...(hasPreview ? ['![Preview of the scene](preview.png)', ''] : []),
+        '## Run it',
+        '',
+        '1. Serve this folder:',
+        '',
+        '   ```bash',
+        '   npx serve .',
+        '   ```',
+        '',
+        '2. Open the address it prints.',
+        '',
+        'You get the scene from the docs, now running on your machine. Needle Engine',
+        'and three.js load from a CDN, so there is nothing to install.',
+        '',
+        'Serving matters: browsers block ES modules loaded straight off disk, so',
+        'opening `index.html` by hand shows an empty page.',
+        '',
+        '## What is in the folder',
+        '',
+        '| File | What it does |',
+        '| --- | --- |',
+        '| `index.html` | Loads the engine, then both scripts below |',
+        `| \`${step}.js\` | The example — the file printed in the docs |`,
+        '| `walkthrough-base.js` | The shared stage: lighting, ground, camera framing |',
+        ...(hasPreview ? ['| `preview.png` | The scene as you had it when you downloaded this |'] : []),
+        '',
+        `Edit \`${step}.js\`. Every step shares \`walkthrough-base.js\`, which exists`,
+        'only to give the example something to sit in.',
+        '',
+        '## Change something',
+        '',
+        '- Numbers on a component are yours to play with: a speed, a colour, a size.',
+        '- Set them per object instead of writing a new class:',
+        '  `cube.addComponent(Wave, { speed: 2 })`',
+        '- Multiply per-frame motion by `this.context.time.deltaTime`, so it runs at',
+        '  one speed on every display.',
+        '- Copy an object with `instantiate()`. It brings the components along, which',
+        '  three.js `clone()` leaves behind.',
+        '',
+        'The [walkthrough](https://engine.needle.tools/docs/tutorials/scripting-walkthrough) covers each of these with a live scene beside it.',
+        '',
+        '## Publish it',
+        '',
+        'Drag this folder, or the zip, onto [Needle Cloud](https://cloud.needle.tools)',
+        'and you get a link to share. It looks for `index.html` at the top level,',
+        'which is where the download puts it.',
+        '',
+        '## Start a project',
+        '',
+        'A CDN suits one file. For a project, start from the Vite template:',
+        '',
+        '```bash',
+        'npm create needle',
+        '```',
+        '',
+        'That gives you npm, Vite and TypeScript ready to go, so you get hot reload',
+        'and compression.',
+        '',
+        'The [getting started guides](https://engine.needle.tools/docs/getting-started/) cover Unity and Blender too,',
+        'where the components you write show up in the editor for an artist to use.',
+        '',
+        '## Work with AI',
+        '',
+        'The Needle Engine skill hands your AI assistant the whole engine as context,',
+        'so it writes components that fit:',
+        '',
+        '```bash',
+        'npx skills add needle-tools/ai',
+        '```',
+        '',
+        'It works with Claude Code, Cursor, Copilot, Codex, Gemini CLI and others. In',
+        'a project that already uses `@needle-tools/engine`, the Vite plugin installs',
+        'it for you.',
+        '',
+        'More in [AI & Needle Engine](https://engine.needle.tools/docs/ai/).',
+        '',
+      ].join('\n');
     },
 
     /*
@@ -213,6 +584,53 @@ export default {
     </div>
   </div>
 </template>
+
+<!--
+  Not scoped: the download button is created in script, so it carries no
+  scope attribute for a scoped rule to match. It sits beside the copy button
+  and borrows its metrics, so the two read as one pair.
+-->
+<style>
+.walkthrough-download {
+  position: absolute;
+  top: 0.5em;
+  right: calc(0.5em + 2.5rem);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 0;
+  border-radius: 0.5rem;
+  background: none;
+  color: var(--copy-code-c-text, currentColor);
+  opacity: 0;
+  cursor: pointer;
+  transition: opacity 0.4s;
+}
+
+div[class*="language-"]:hover .walkthrough-download,
+.walkthrough-download:focus-visible,
+.walkthrough-download[data-busy] {
+  opacity: 1;
+}
+
+.walkthrough-download:hover,
+.walkthrough-download:focus-visible {
+  background: var(--copy-code-c-hover);
+}
+
+/* Fetching the files takes a moment on a cold cache. */
+.walkthrough-download[data-busy] {
+  cursor: progress;
+}
+
+@media print {
+  .walkthrough-download { display: none; }
+}
+</style>
 
 <style scoped>
 .walkthrough-step {
