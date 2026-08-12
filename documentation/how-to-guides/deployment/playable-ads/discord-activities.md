@@ -175,6 +175,24 @@ npm run build -- --production
 
 Serve `dist/Discord/` from an HTTPS host. Keep all Vite paths relative.
 
+## Switch between development and production
+
+Change only the Activity URL setting. Keep the OAuth and networking settings:
+
+| Developer Portal setting | Proxy development | Direct local development | Production |
+| --- | --- | --- | --- |
+| **OAuth2 → Public Client** | Enabled | Enabled | Enabled |
+| **OAuth2 → Redirect URI** | `https://127.0.0.1` | `https://127.0.0.1` | `https://127.0.0.1` |
+| **Activities → URL Mapping `/needle-networking`** | `networking-2.needle.tools/socket` | Not used by the override | `networking-2.needle.tools/socket` |
+| **Activities → URL Mapping `/`** | HTTPS tunnel hostname | Keep the production hostname | Deployed hostname |
+| **Application URL Override** | Disabled | `https://127.0.0.1:5173/` | Disabled |
+
+Mapping targets contain the hostname and path only. Do not add `https://`, `wss://`, or `index.html`. Put `/needle-networking` before `/`.
+
+::: tip Return to production
+Disable **Application URL Override** and restore the `/` mapping to the deployed hostname. The OAuth settings do not change.
+:::
+
 ## 5. Test through the Discord proxy
 
 Use this workflow to test the SDK, URL mappings, and multiplayer. Discord recommends this workflow because it uses the same proxy as production.
