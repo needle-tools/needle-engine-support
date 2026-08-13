@@ -32,7 +32,18 @@ export default {
     unloadAfter: { type: Number, default: 2 },
   },
   data() {
-    return { loaded: false, mounted: false, offScreenTimer: null, reloadKey: 0 };
+    return {
+      loaded: false,
+      mounted: false,
+      offScreenTimer: null,
+      reloadKey: 0,
+      /*
+        Width of the scrollbar inside the frame, in pixels. A step that scrolls
+        inside its own page — the spline one — puts a scrollbar down the right
+        edge, exactly where the reload button sits.
+      */
+      frameScrollbar: 0,
+    };
   },
   computed: {
     actionList() {
@@ -510,7 +521,35 @@ export default {
     */
     reload() {
       this.loaded = false;
+      this.frameScrollbar = 0;
       this.reloadKey++;
+    },
+
+    /*
+      Measure the frame's scrollbar so the reload button can step around it.
+
+      Read from the frame itself rather than assumed: the width differs between
+      platforms, and an overlay scrollbar takes none at all.
+    */
+    onFrameLoad(event) {
+      this.loaded = true;
+
+      const measure = () => {
+        try {
+          const view = event.target.contentWindow;
+          if (!view) return;
+          const width = view.innerWidth - view.document.documentElement.clientWidth;
+          this.frameScrollbar = width > 0 ? width : 0;
+        }
+        catch {
+          // A frame from elsewhere cannot be measured, and a button one
+          // scrollbar off is no reason to fail.
+        }
+      };
+
+      measure();
+      // Again next frame, in case the page grows to its full height after load.
+      requestAnimationFrame(measure);
     },
 
     send(action) {
@@ -539,6 +578,7 @@ export default {
         v-for="(frameSrc, i) in frameSources"
         :key="i"
         class="walkthrough-stage"
+        :style="{ '--wt-frame-scrollbar': frameScrollbar + 'px' }"
       >
         <iframe
           v-if="mounted"
@@ -546,7 +586,7 @@ export default {
           :src="frameSrc"
           :title="frameSources.length > 1 ? `${title} (visitor ${i + 1})` : title"
           loading="lazy"
-          @load="loaded = true"
+          @load="onFrameLoad"
           allow="xr; xr-spatial-tracking; camera; microphone; fullscreen"
         ></iframe>
         <!-- Only offered once there is something running to restart. -->
@@ -743,7 +783,8 @@ div[class*="language-"]:hover .walkthrough-download,
 .walkthrough-reload {
   position: absolute;
   top: 0.5rem;
-  right: 0.5rem;
+  /* Clear of the frame's own scrollbar, when it has one. */
+  right: calc(0.5rem + var(--wt-frame-scrollbar, 0px));
   z-index: 1;
   display: flex;
   padding: 0.25rem;
