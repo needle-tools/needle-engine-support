@@ -1,6 +1,7 @@
 ---
 title: Scripting Walkthrough
 description: Learn Needle Engine scripting one step at a time — short, self-contained examples running live next to the code that produces them.
+image: /imgs/scripting-walkthrough-unfurl.webp
 editLink: true
 ---
 
