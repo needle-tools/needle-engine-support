@@ -750,7 +750,7 @@ A spline is a path through a list of points. Put a `SplineWalker` on the camera 
   title="A camera circling a podium as you scroll, with shapes spiralling in to hang above it"
   :actions='[
     { "name": "path",   "code": "spline.getPointAt(t)", "label": "Show the path" },
-    { "name": "replay", "code": "passes.reset()",         "label": "Reset scene" }
+    { "name": "replay", "code": "scrollTo({ top: 0 })",         "label": "Reset scene" }
   ]'>
 
 @[code js](@code/walkthrough-19-spline.js)
@@ -777,7 +777,7 @@ Their walkers are driven by the same scroll as the camera, each reading the slic
 
 All four shapes are in the scene from the start, waiting at the head of their paths, so you can see where each is headed before moving at all. Nothing is spawned along the way, and nothing needs tearing down: **Reset scene** just puts the scrollbar back at the top and the whole scene follows.
 
-`ease` shapes that reading before it reaches the walker. A spline is smooth through space, but something moved along it at a constant rate still sets off and stops abruptly; easing lingers near each end and moves quickest through the middle. `ZoomWithScroll` reads the same value to open the lens wide at the start and close in as the camera arrives. `approach` bends the trip further: raising the scroll to a power means the early part of it covers much less ground, so the camera hangs back while the shapes are still arriving and only comes close once they have gathered.
+`ease` shapes that reading before it reaches the walker. A spline is smooth through space, but something moved along it at a constant rate still sets off and stops abruptly; easing lingers near each end and moves quickest through the middle. `approach` bends the trip further: raising the scroll to a power means the early part of it covers much less ground, so the camera hangs back while the shapes are still arriving and only comes close once they have gathered.
 
 ::: tip Building a scroll-driven page?
 The page pins the scene with `position: fixed` and puts a tall empty element behind it. That element gives the page its scroll length, and nothing else has to move. Open the [example page](/docs/code-samples/walkthrough-19-spline.html) on its own to see it full size.
