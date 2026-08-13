@@ -757,30 +757,18 @@ A spline is a path through a list of points. Put a `SplineWalker` on the camera 
 
 </walkthrough-step>
 
-Scroll inside the scene to move the camera. Press **Show the path** to draw every curve in the scene at once.
+Scroll inside the scene to move the camera. Press **Show the path** to draw every curve at once.
 
-`SplineContainer` holds the points. `addKnot` adds one, and the component fits a smooth curve through all of them — so a handful of points describes a path you would not want to write out by hand.
+A spline is a path through a list of points. `SplineContainer` holds one and smooths the curve between them, so a few points give you a shape that would be tedious to describe any other way.
 
-`getPointAt` samples that curve: pass 0 for the start, 1 for the end, anything between for a point along the way. **Show the path** walks that range in small steps and joins the results with gizmos, which is all it takes to see a curve that has no geometry of its own. Each path is drawn in the colour of whatever travels it.
+`SplineWalker` moves an object along that path. Its `position01` runs from 0 at the start to 1 at the end, whatever the length. Scroll progress is also 0 to 1, so one sets the other directly.
 
-`closed` joins the last point back to the first, so the path is a loop rather than a line with two ends. Scrolling to the bottom brings the camera back where it started, with no closing point to place on top of the opening one.
+Every position in the scene is read from the scrollbar each frame, so the scene follows it in both directions.
 
-`SplineWalker` moves an object along that curve. Its `position01` runs from 0 at the start to 1 at the end, whatever the length of the path, which is what makes it easy to drive: scroll progress is already a 0 to 1 number.
-
-`autoRun` is off here. Left on, the walker travels the path by itself in `duration` seconds, which is what you want for a title sequence rather than something a reader steers.
-
-Setting `lookAt` keeps the podium in frame the whole way round. It takes an object, so an empty one placed where you want the attention works well. Leave it out and the camera faces along the curve instead, which suits a fly-through.
-
-The shapes fly in on splines of their own — a helix, one turn around the podium while the radius closes to nothing and the shape climbs to its place in the column. Nothing describes that curve: a dozen knots are placed along it and the spline smooths them out, which is why a motion that would be awkward to animate by hand is a short loop here.
-
-Their walkers are driven by the same scroll as the camera, each reading the slice between where it sets off and where it arrives. The slices overlap, so all four are in the air together rather than queuing up. Nothing is a one-way animation — scroll back up and the shapes fly out again, because every position in the scene is read from the scrollbar rather than played.
-
-All four shapes are in the scene from the start, waiting at the head of their paths, so you can see where each is headed before moving at all. Nothing is spawned along the way, and nothing needs tearing down: **Reset scene** just puts the scrollbar back at the top and the whole scene follows.
-
-`ease` shapes that reading before it reaches the walker. A spline is smooth through space, but something moved along it at a constant rate still sets off and stops abruptly; easing lingers near each end and moves quickest through the middle. `approach` bends the trip further: raising the scroll to a power means the early part of it covers much less ground, so the camera hangs back while the shapes are still arriving and only comes close once they have gathered.
+The camera, the four shapes and the path drawing are each a small component of your own — the walker is a convenience, not a requirement.
 
 ::: tip Building a scroll-driven page?
-The page pins the scene with `position: fixed` and puts a tall empty element behind it. That element gives the page its scroll length, and nothing else has to move. Open the [example page](/docs/code-samples/walkthrough-19-spline.html) on its own to see it full size.
+The page pins the scene with `position: fixed` and puts a tall empty element behind it. That element gives the page its scroll length, and nothing else has to move. Open the <a href="/docs/code-samples/walkthrough-19-spline.html" target="_blank">example page</a> on its own to see it full size.
 :::
 
 → [SplineContainer API](https://engine.needle.tools/docs/api/SplineContainer) · [SplineWalker API](https://engine.needle.tools/docs/api/SplineWalker) · [Splines sample](https://samples.needle.tools/splines)
