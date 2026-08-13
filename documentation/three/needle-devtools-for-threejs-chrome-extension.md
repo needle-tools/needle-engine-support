@@ -123,6 +123,20 @@ Your own three.js/object source and authored shaders are free. The inspector-**g
 
 *Works side by side with the node graph — the source for exactly what you're looking at*
 
+### Performance Panel
+
+What the frame actually costs, live — with history, so you can look at the spike instead of chasing it.
+
+<!-- portrait capture (376x600 native) — the shared 500px width upscaled it and it read as blurry -->
+<img src="https://cloud.needle.tools/-/media/Zl1RM8T4tCkgrLo-W2QZzA.gif" alt="Performance panel in the Needle Inspector — live FPS, CPU and GPU memory, render passes, draw calls and triangles for a running three.js scene" loading="lazy" style="max-width: min(376px, 100%); max-height: 600px;" />
+
+- **FPS, CPU memory and GPU memory (VRAM)** as running graphs, with the current value next to each
+- **Render passes, draw calls and triangles per frame** — the GPU's real work, counted across every pass (shadows, prepass, post-processing), not just the scene's raw triangle count
+- **Potential VRAM saving**: how much texture memory compression would reclaim
+- **In scene vs. loaded**: meshes, geometries, materials and textures that are actually in the current scene, next to everything the page has loaded
+- **Events**: jank and big loads marked on the timeline — a long frame names the function and file behind it, and in local development you can **jump straight to the line of code** that caused the stall
+- **Pause** at any moment to read the numbers behind a spike
+
 ### Resources & Memory
 
 Find out what's actually loaded, what it costs, and what never unloads — the "why is my app at 2 GB" panel.
@@ -238,7 +252,55 @@ Pro is a **one-time purchase** — no subscription. The current price is always 
 
 Yes — inspecting, debugging and learning from any three.js website is free and always will be. Paid features only concern working on your own projects.
 
-## What Users Say
+## What Developers Are Saying
+
+<!-- newest first — keep it that way when adding a review -->
+
+<testimonial
+  name="Quentin Brohan"
+  role="Chrome Web Store Review, Apr 2026"
+>
+Great app for debugging, trying new ideas or quick edits from the browser!
+<br><br>
+Things I love:
+<ul>
+<li>Fly camera for exploration.</li>
+<li>Changing assets/textures in a click.</li>
+<li>Seeing the structure of the scene and show/hide elements.</li>
+<li>Quick edits of elements for debugging and exploring ideas/concept at a glance by directly changing three.js props from the UI.</li>
+</ul>
+</testimonial>
+
+<testimonial
+  name="Finnbarr O'Callahan"
+  role="Chrome Web Store Review, Apr 2026"
+  img="/docs/inspector/testimonial-FinnbarrOCallahan.png"
+>
+Polished and helpful, allows for easy runtime debugging like with Unity/Unreal. :)
+</testimonial>
+
+<testimonial
+  name="Stéphane Cabaret"
+  role="Chrome Web Store Review, Mar 2026"
+>
+Great tool for helping and setting many 3D parameters (lights, objects positions) inside Chrome.
+</testimonial>
+
+<testimonial
+  name="Denis Shapkin"
+  role="Chrome Web Store Review, Jan 2026"
+  img="/docs/inspector/testimonial-Den.jpg"
+>
+The best tool for inspecting and debugging Three.js apps. Special thanks for the MCP server — it's a game changer for vibe coding (in a good way)!
+</testimonial>
+
+<testimonial
+  name="Katja Rempel"
+  role="Chrome Web Store Review, Jan 2026"
+  img="/docs/inspector/testimonial-KatjaRempel.png"
+>
+A very useful tool for debugging your own projects or understanding how others work!
+</testimonial>
 
 <testimonial
   name="KidsFab production"
@@ -263,34 +325,10 @@ Simply the best Three.js extension I've ever tested. Bravo!
 </testimonial>
 
 <testimonial
-  name="Den"
-  role="Chrome Web Store Review, Jan 2026"
-  img="/docs/inspector/testimonial-Den.jpg"
->
-The best tool for inspecting and debugging Three.js apps. Special thanks for the MCP server — it's a game changer for vibe coding (in a good way)!
-</testimonial>
-
-<testimonial
-  name="Katja Rempel"
-  role="Chrome Web Store Review, Jan 2026"
-  img="/docs/inspector/testimonial-KatjaRempel.png"
->
-A very useful tool for debugging your own projects or understanding how others work!
-</testimonial>
-
-<testimonial
   name="Patrick Byrn"
   role="Chrome Web Store Review, Dec 2025"
 >
 Game changer when working with three.js. Feels like magic the first time you use it.
-</testimonial>
-
-<testimonial
-  name="Finnbarr O'Callahan"
-  role="Chrome Web Store Review, Apr 2026"
-  img="/docs/inspector/testimonial-FinnbarrOCallahan.png"
->
-Polished and helpful, allows for easy runtime debugging like with Unity/Unreal. :)
 </testimonial>
 
 <testimonial

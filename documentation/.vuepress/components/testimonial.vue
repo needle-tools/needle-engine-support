@@ -121,6 +121,13 @@ export default {
 </style>
 
 <style>
+/* The card carries only a BOTTOM margin, so the first quote after a heading sat
+   flush against it. Unscoped + :has() so it matches this component's root only
+   (".root" alone is far too generic to style globally). */
+:is(h1, h2, h3, h4) + .root:has(> .testimonial) {
+    margin-top: 1.5rem;
+}
+
 /* ── Dark mode (unscoped so html selector works) ── */
 html[data-theme='dark'] .testimonial {
     background: rgba(255, 255, 255, 0.05);
