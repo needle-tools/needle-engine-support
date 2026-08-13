@@ -250,7 +250,13 @@ Pro is a **one-time purchase** — no subscription. The current price is always 
 
 ### Can I inspect websites I didn't build?
 
-Yes — inspecting, debugging and learning from any three.js website is free and always will be. Paid features only concern working on your own projects.
+Yes — browsing, inspecting and learning from any three.js website is free, and you can tweak properties on public sites to see what happens. Pro is for going further: live-editing your own projects, drilling into node graphs, the full resource list, AI editing and export. See [Free vs Pro](#free-vs-pro).
+
+### How do I install the Needle Inspector?
+
+Install it free from the **[Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)** — click *Add to Chrome* in Chrome or any Chromium-based browser (Edge, Brave, Arc, Opera). No account needed to start inspecting.
+
+Then click the Needle icon in the toolbar to enable the inspector on a site, and open any page with a three.js scene — see [Quick Start](#quick-start).
 
 ## What Developers Are Saying
 
