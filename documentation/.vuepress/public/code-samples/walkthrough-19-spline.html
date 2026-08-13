@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no">
+  <title>19 · Scroll along a spline</title>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.9/dist/three.min.js",
+      "@needle-tools/engine": "https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.9/dist/needle-engine.min.js"
+    }
+  }
+  </script>
+
+  <script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/engine@5.1.9/dist/needle-engine.min.js"></script>
+
+  <style>
+    body { margin: 0; background: #999; }
+
+    /*
+      The scene is pinned and the track behind it gives the page its length.
+      This is the usual shape of a scroll-driven page: nothing on screen moves
+      away, and the scrollbar becomes a control rather than a way to reach
+      more content.
+    */
+    needle-engine { position: fixed; inset: 0; }
+    .scroll-track { height: 500vh; }
+  </style>
+</head>
+
+<body>
+
+  <!-- camera-controls="false" leaves the camera to the SplineWalker in the script. -->
+  <needle-engine background="transparent" camera-controls="false"></needle-engine>
+
+  <!-- Empty on purpose: its only job is to make the page tall enough to scroll. -->
+  <div class="scroll-track"></div>
+
+  <!-- Shared stage: lighting, ground, look. Edit walkthrough-base.js to restyle every step. -->
+  <script type="module" src="./walkthrough-base.js"></script>
+
+  <!-- The example itself — this is the file printed in the docs -->
+  <script type="module" src="./walkthrough-19-spline.js"></script>
+
+</body>
+
+</html>
