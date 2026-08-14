@@ -655,6 +655,14 @@ There is also a **WebGL2 export path**, but that only supports **unlit** shaders
 Shader Graph → MaterialX export requires a **Pro**, **Edu**, or **Enterprise** plan. Loading external `.mtlx` files works on all plans. See [Pricing](https://needle.tools/pricing).
 :::
 
+## Can I try the Material Lab?
+
+The Material Lab is a product we're currently working on. It isn't publicly available yet, but it's coming soon.
+
+To hear about it first:
+- Sign up at [needle.tools](https://needle.tools) to get notified
+- Follow us on [Twitter/X](https://twitter.com/needletools) and [YouTube](https://www.youtube.com/@needle-tools)
+
 ## Does Needle Engine support Gaussian Splats?
 
 Gaussian Splat support will come **natively to Needle Engine 6**. We're actively working on Gaussian Splatting support across Needle Engine and Needle Cloud.
