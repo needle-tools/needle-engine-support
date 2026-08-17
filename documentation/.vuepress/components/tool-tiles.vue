@@ -7,7 +7,6 @@
                 Needle × Unity
             </template>
             <template v-slot:tool-description>
-                Unity 2022.3 LTS<br/>
                 Unity 6 LTS<br/>
                 Unity 6.3 LTS
             </template>

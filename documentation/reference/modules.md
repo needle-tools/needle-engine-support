@@ -11,7 +11,7 @@ Below you can find links to other repositories that contain Unity packages. Thes
      Video Track (sync video playback to a Timeline)
      CssTrack (control css properties from the Timeline)
      
-   - **Splines (for Unity 2022.1+)**  
+   - **Splines**  
      Export splines to three.js
      SplineWalker for controlling camera motion based on a spline
      Timeline track to control SplineWalker
