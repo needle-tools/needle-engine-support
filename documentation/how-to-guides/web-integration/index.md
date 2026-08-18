@@ -123,9 +123,37 @@ Turn your Needle Engine project into an installable, offline-capable Progressive
 [Learn how to set up PWA support →](/docs/how-to-guides/web-integration/pwa)
 
 ## Accessing Needle Engine and Components from external javascript
-    
-Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).  
-For accessing components from regular javascript outside of the engine please refer to the [interop with regular javascript section](/docs/how-to-guides/scripting/create-components#accessing-needle-engine-and-components-from-anywhere)
+
+Code that you expose can be accessed from JavaScript after bundling. This allows to build viewers and other applications where there's a split between data known at edit time and data only known at runtime (e.g. dynamically loaded files, user generated content).
+
+Everything the runtime exposes is available on the global `Needle` namespace — no import needed, which also makes it the handiest way to poke at a running scene from the browser console. Run `console.log(Needle)` for an overview.
+
+```js
+// The context that is currently active
+Needle.Context.Current.scene;
+Needle.Context.Current.time.deltaTime;
+
+// Find components anywhere in the scene
+const audio = Needle.findObjectOfType(Needle.AudioSource);
+```
+
+Cache references you look up — searching the whole scene repeatedly is expensive.
+
+You can also go through the web component, which is useful when a page contains more than one scene:
+
+```js
+const engine = document.querySelector("needle-engine");
+
+// Resolves once the scene has finished loading
+const context = await engine.getContext();
+
+// Or read it synchronously — undefined until the scene is ready
+engine.context;
+```
+
+::: tip Wait for the scene to start
+`Needle.Context.Current` is set once the update loop runs, so it is `null` before the first frame — and on a page with several `<needle-engine>` elements it points at whichever context rendered last. To run code as soon as a scene is ready, use the [lifecycle hooks](/docs/how-to-guides/scripting/use-lifecycle-hooks) (`Needle.onStart(context => ...)`) or the `loadfinished` event.
+:::
 
 ## Next Steps
 
