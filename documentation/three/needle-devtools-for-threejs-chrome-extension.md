@@ -232,6 +232,14 @@ Only pages where you enable it are affected, and the overhead while inspecting i
 
 Inspecting runs entirely in your browser — your scene is not uploaded anywhere. Only when you actively use the built-in AI chat is the relevant scene context sent to Needle Cloud to answer your request. When you connect your own AI tools via MCP instead, your scene context goes directly to them — not through Needle Cloud.
 
+### What usage data does the inspector collect?
+
+Usage analytics, so we know which features are worth improving: which panels and tools you open, counts and *types* — "a MeshStandardMaterial was inspected", never what it's called. Alongside that we record the hostname of pages the inspector runs on, which is how we find and fix site-specific bugs, the usual basics (browser, language, screen size), your account details once you sign in, and — if you use the built-in AI chat — the text of your prompt, which is how we see where the assistant falls short.
+
+We deliberately don't collect the names of your objects, materials, textures or assets, what you type into search fields or text inputs, or the query string of pages you inspect. Crash reports are limited to errors thrown by the inspector's own code.
+
+All of it goes to Needle directly — there's no third-party analytics service in the middle. Working somewhere this doesn't fly? [Talk to us](mailto:hi+inspector@needle.tools).
+
 ### Does it work for my local development?
 
 Yes — that's where the inspector shines. It works on localhost and LAN dev servers out of the box (Vite, webpack, plain file servers, anything), plays fine with hot reload, and your edits survive alongside it. Editing your own projects is the core of [Pro](#free-vs-pro).
