@@ -334,6 +334,62 @@ lodsManager.targetTriangleDensity = 300000;
 lodsManager.updateInterval = 2;
 ```
 
+### Manually Loading LODs
+
+Automatic LOD selection inspects a material's texture slots and a mesh's geometry when the object is first rendered, and caches that information. Anything you assign **afterwards** — a swapped `map`, a texture assigned to a custom shader uniform, a geometry you pulled out of another model — is not part of that evaluation, so nothing requests a higher level and you keep seeing the low-resolution preview embedded in the glTF.
+
+Request the level yourself with `NEEDLE_progressive`. In Needle Engine it is re-exported, so no extra dependency is needed:
+
+```ts
+// Needle Engine
+import { NEEDLE_progressive } from "@needle-tools/engine";
+// Standalone three.js / R3F / model-viewer
+import { NEEDLE_progressive } from "@needle-tools/gltf-progressive";
+```
+
+Assign your textures first, then request LOD `0` (the highest resolution). Passing a **material** updates all of its texture slots in place:
+
+```ts
+material.map = myTexture;
+NEEDLE_progressive.assignTextureLOD(material, 0);
+```
+
+The returned promise resolves once every slot has been upgraded, so you can `await` it (or use `.then()`) when you need to know that the material is fully loaded — for a screenshot, for example.
+
+Custom shaders are supported — for a `ShaderMaterial` or `RawShaderMaterial` the `uniforms` are scanned for textures and `uniformsNeedUpdate` is set for you. You can also pass a `Mesh` to cover all of its materials at once.
+
+Passing a single **texture** works differently: the upgraded texture is *returned* rather than assigned, because the call has no way of knowing which slot it belongs to.
+
+```ts
+NEEDLE_progressive.assignTextureLOD(texture, 0).then(fullres => {
+    if (!fullres) return;
+    material.uniforms._MyTexture.value = fullres;
+    material.uniformsNeedUpdate = true;
+});
+```
+
+Meshes work the same way, but are assigned in place:
+
+```ts
+NEEDLE_progressive.assignMeshLOD(mesh, 0).then(geometry => {
+    // the geometry is already assigned to the mesh here
+});
+```
+
+| Member | Description |
+| --- | --- |
+| `assignTextureLOD(materialOrMeshOrTexture, level, options?)` | Load a texture level. `0` is the highest resolution. A material or mesh is updated in place; a texture is returned. |
+| `assignMeshLOD(mesh, level, options?)` | Load a geometry level and assign it to the mesh. Pass `{ apply: false }` to only load it, or a function to apply it yourself. |
+| `hasLODLevelAvailable(obj, level?)` | Check whether there is anything to stream before requesting a level. Accepts a mesh, geometry, texture, material or material array. |
+| `getMeshLODExtension(geometry)` | The raw LOD metadata for a geometry — available levels, vertex/index counts, densities. |
+| `maxConcurrentLoadingTasks` | How many LOD resources load in parallel. Defaults to 50 on desktop, 20 on mobile. |
+
+By default a request is ignored when a higher-quality level is already assigned, so calling `assignTextureLOD(material, 0)` repeatedly is cheap. Pass `{ force: true }` to pin an exact level instead — useful for explicit downgrades and debugging.
+
+::: tip Custom shaders and automatic streaming
+Textures held in custom shader uniforms are currently only picked up by the explicit `assignTextureLOD` call above, not by automatic LOD selection. If you export a custom shader and assign its textures at runtime, request LOD `0` explicitly once the textures are in place.
+:::
+
 ### Raycasting Optimization
 
 Enable low-poly meshes for raycasting to get faster, smoother interactions with high-poly models:

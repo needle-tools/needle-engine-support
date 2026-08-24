@@ -865,6 +865,26 @@ See [Texture Compression: Per-Texture Overrides](/docs/how-to-guides/optimizatio
 
 See [Progressive Loading & LODs](/docs/how-to-guides/optimization/progressive-loading-and-lods) and [gltf-progressive](/docs/gltf-progressive/) for more details.
 
+## Textures I assign at runtime stay at the lowest LOD — how do I load the full resolution?
+
+Automatic LOD selection inspects a material's texture slots when the object is first rendered and caches that information. Textures you assign **later** — a swapped `map`, or a texture assigned to a custom shader uniform — are not part of that evaluation, so nothing requests a higher level and you keep seeing the low-resolution preview embedded in the glTF.
+
+Request the level yourself after assigning the texture:
+
+```ts
+import { NEEDLE_progressive } from "@needle-tools/engine";
+
+// pass a material or mesh to upgrade all of its texture slots in place
+NEEDLE_progressive.assignTextureLOD(material, 0);
+
+// pass a single texture and the upgraded texture is returned instead
+NEEDLE_progressive.assignTextureLOD(texture, 0).then(tex => {
+    if (tex) material.uniforms._MyTexture.value = tex;
+});
+```
+
+See [Manually Loading LODs](/docs/gltf-progressive/#manually-loading-lods) for the full API, including custom shaders, single textures, and meshes.
+
 ## Can I manually control when the loading overlay hides instead of it auto-hiding?
 
 The default loading overlay automatically hides when all assets finish loading. There is currently no built-in API to prevent this auto-hide and then manually dismiss it later.
