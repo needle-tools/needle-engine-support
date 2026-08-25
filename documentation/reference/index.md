@@ -45,6 +45,7 @@ Precise, factual information for looking things up. API documentation, component
 - [Blender Integration](/docs/blender/) - Blender add-on integration
 - [Needle Cloud](/docs/cloud/) - Official hosting platform and license server
 - [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) - Chrome DevTools extension for three.js scenes
+- [Needle Mesh Baker](/docs/products/needle-mesh-baker) - Browser tool to reduce meshes and bake PBR textures
 - [Needle MCP Server](/docs/ai/needle-mcp-server) - AI integration for Claude Desktop, Copilot, etc.
 - [AI Resources](/docs/ai/) - AI assistants and documentation tools
 

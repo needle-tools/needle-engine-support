@@ -136,4 +136,5 @@ Removing unused physics colliders is one of the easiest wins. Double-check that 
 - **[Export Guide](/docs/how-to-guides/export/)** - Best practices for exporting 3D assets
 - **[Debugging Parameters](/docs/how-to-guides/debugging/)** - Performance profiling and debugging
 - **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome DevTools for three.js
+- **[Needle Mesh Baker](/docs/products/needle-mesh-baker)** - Reduce meshes and bake PBR textures in the browser
 - **[Help & Community](/docs/help/)** - Get support and ask questions

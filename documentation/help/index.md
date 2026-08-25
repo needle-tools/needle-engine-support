@@ -24,6 +24,7 @@ Need help with Needle Engine? You're in the right place.
 ## Developer Tools
 
 - **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)** - Chrome extension to inspect three.js and Needle Engine scenes
+- **[Needle Mesh Baker](/docs/products/needle-mesh-baker)** - Browser tool to reduce meshes and bake PBR textures
 - **[Debugging Guide](/docs/how-to-guides/debugging/)** - URL parameters, VSCode debugging, mobile debugging
 - **[AI Assistant](/docs/ai/)** - Use Claude and other AI tools with Needle Engine
 

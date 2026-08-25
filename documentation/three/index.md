@@ -51,6 +51,10 @@ Check out our editor integrations for powerful visual creation workflows:
 Use the [Needle Inspector](./needle-devtools-for-threejs-chrome-extension.md) Chrome extension to inspect, debug, and edit any three.js scene directly in your browser – perfect for development and learning.
 :::
 
+:::tip Optimize Your Assets
+Use the [Needle Mesh Baker](/docs/products/needle-mesh-baker) to turn heavy models into reduced meshes with baked PBR textures – right in your browser, without uploading anything.
+:::
+
 ---
 
 ## Quick Start: Web Component
