@@ -1,16 +1,24 @@
 ---
 title: Needle Mesh Baker — Optimize 3D Models in the Browser
-description: Turn heavy glTF, OBJ and FBX models into lightweight production meshes with baked PBR textures. Runs entirely in your browser, no upload.
+description: Reduce a model's triangle count and bake its appearance into textures — 800,000 triangles down to 6,000, and it still looks the same. Runs in your browser; nothing is uploaded.
 image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 ---
 
 # Needle Mesh Baker
 
-The **Needle Mesh Baker** turns detailed 3D models into assets you can actually ship on the web. Drop in a model, set a triangle budget, and get back a **reduced mesh with the appearance of the original baked onto it** — base color, normals, roughness, metallic and more, as a single material.
+The **Needle Mesh Baker** reduces a model's triangle count and bakes its appearance into textures. The result is a single mesh with a single material that still looks like the original.
 
-It runs entirely in your browser. Your model is never uploaded — see the [FAQ](#faq).
+- **Built to render fast** — far fewer triangles, one draw call instead of many, a smaller download
+- **Keeps the look** — the silhouette is held onto while triangles come off, and color, normals, roughness and metallic are baked into the textures
+- **Quick to bake** — it runs on your own GPU, so there is no upload to sit through and no queue to wait in
+- **100% local** — your model never leaves your machine ([really](#is-my-model-uploaded-to-needle))
+- **Yours to download** — the finished mesh comes back as a plain `.glb`
 
-<img src="https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif" alt="The Needle Mesh Baker workbench, comparing a source model with its reduced mesh side by side" />
+Drop in a model, set a triangle budget, and compare the result against the source before you download it.
+
+<img src="https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif" alt="The Needle Mesh Baker workbench, comparing an 800,000 triangle source model with the 6,000 triangle result side by side" />
+
+*800,000 triangles on the left, 6,000 on the right.*
 
 ## Quick Start
 
@@ -74,7 +82,9 @@ These are in development and not yet available. If one of them is what your proj
 
 **Loading, baking, previewing and comparing are free** — bring as many models as you like and take the tool as far as you want before deciding anything.
 
-**Downloading a baked result** needs a free Needle account plus a one-time Mesh Baker purchase. It is also **included with [Needle Engine Pro](https://needle.tools/pricing)**, so if your team already has a Pro license, just sign in. The current price and any running discount are shown in the purchase dialog.
+**Downloading a baked result** needs a free Needle account plus the Mesh Baker itself — **a one-time purchase with lifetime access. No subscription, and it stays yours.** It is also **included with [Needle Engine Pro](https://needle.tools/pricing)**, so if your team already has a Pro license, just sign in. The current price and any running discount are shown in the purchase dialog.
+
+The baker is **developed continuously** — it gets better over time, and updates come with the purchase you already made. What is [coming next](#coming-soon) is not a separate product to buy again.
 
 A **command-line version** is available on request, so you can integrate baking into your own asset pipeline or CI and process models in batches instead of one at a time. Get in touch at [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
 
@@ -99,12 +109,12 @@ The only network traffic involving model data goes the *other* way: if you sign 
 The baker does send anonymous usage statistics, kept deliberately coarse: enough to see what kind of models people bring and which settings get used, not enough to identify a model.
 
 - Size, triangle and vertex counts as ranges (*5–10MB*, *200k–1M*), never exact numbers
-- How many meshes and materials a model has — never which
+- How many meshes and materials a model has
 - Whether things like normals, UVs, vertex colors or skinning are present
 - The file type, and the settings you picked
 - Milestones — model loaded, bake started, bake finished, result downloaded
 
-Failures also report a shortened error message so we can fix what broke. Exact file sizes and raw counts are deliberately bucketed, because a precise number next to a timestamp can single out an individual upload.
+Failures also report a shortened error message so we can fix what broke.
 
 ### Do I need an account to try it?
 
@@ -131,6 +141,14 @@ Start with how the model is simplified. Rebuilding the surface is the better def
 ### Can I run it in my own pipeline or CI?
 
 Yes — a command-line version exists for exactly that, so baking can run as a build step or over a whole folder of models. It is licensed separately: write to [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
+
+### Is it a subscription?
+
+No. One-time purchase, lifetime access, and updates are included as the baker keeps being developed. It also comes with [Needle Engine Pro](https://needle.tools/pricing) if you already have that.
+
+### Who builds it?
+
+Needle — the team behind [Needle Engine](/docs/), the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension), and the Unity and Blender integrations. The people building it are industry professionals with 15+ years in real-time 3D, and the baker exists because we kept hitting the same problem in our own production work.
 
 ## Next Steps
 
