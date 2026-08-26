@@ -571,7 +571,15 @@ export default defineUserConfig({
 
         // stackblitz
         ['script', { src: 'https://unpkg.com/@stackblitz/sdk/bundles/sdk.umd.js' }],
-        ['script', { src: 'https://analytics-2.needle.tools/api/script.js', defer: "", "data-site-id": "28921995b35b" }]
+        ['script', { src: 'https://analytics-2.needle.tools/api/script.js', defer: "", "data-site-id": "28921995b35b" }],
+
+        // WebMCP (document.modelContext) ships behind an origin trial in Chrome and Edge.
+        // Without a token for this origin the API is simply absent there and the tool
+        // registration in webmcp.ts no-ops. Register the origin at
+        // https://developer.chrome.com/origintrials and put the token in .env.
+        ...(process.env.WEBMCP_ORIGIN_TRIAL_TOKEN
+            ? [['meta', { 'http-equiv': 'origin-trial', content: process.env.WEBMCP_ORIGIN_TRIAL_TOKEN }]]
+            : []) as any,
 
     ],
     markdown: {

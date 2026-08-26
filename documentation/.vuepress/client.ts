@@ -3,6 +3,7 @@ import '@shikijs/twoslash/style-rich.css';
 import PageNav from './components/PageNav.vue'
 import AskAiSelection from './components/ask-ai-selection.vue'
 import { nextTick } from 'vue'
+import { registerWebMCPTools } from './webmcp'
 
 // Offset so hash targets clear the fixed header (matches scroll-margin-top in index.scss).
 const HEADER_OFFSET = 60
@@ -236,6 +237,9 @@ export default defineClientConfig({
     }
   },
   setup() {
+    // Expose the Needle search API to browser AI agents as a WebMCP tool.
+    registerWebMCPTools()
+
     // Add click handler to toggle DocSearch (close if already open)
     if (typeof window !== 'undefined') {
       // Use event delegation on document to catch DocSearch button clicks

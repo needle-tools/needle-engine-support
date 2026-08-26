@@ -60,6 +60,16 @@ The **[Needle MCP Server](./needle-mcp-server)** lets AI tools talk directly to 
 
 ---
 
+## Let the browser's agent use Needle apps
+
+**[WebMCP](/docs/ai/webmcp)** is an emerging web standard that lets a page describe what it can do to the AI agent in your browser. Needle web apps are adopting it, so an agent can operate them directly — no install, no server, no API keys.
+
+Where the [Needle MCP Server](/docs/ai/needle-mcp-server) connects your *coding assistant* to your project, WebMCP connects the agent in your *browser* to the Needle app you have open.
+
+**[How WebMCP works →](/docs/ai/webmcp)**
+
+---
+
 ## Let AI read your logs
 
 When the local dev server is running, the Needle Engine Vite plugin writes both **client-side logs** (from the browser) and **server-side logs** (from the dev server / build process) to files inside your web project's `node_modules/.needle/logs` directory:
@@ -98,6 +108,54 @@ curl -s "https://search.needle.tools/api/semantic-search?q=how+to+add+a+rigidbod
 Returns embedding-ranked results with content — documentation, API reference, forum posts, Discord, and Needle source code. `POST /api/ask` runs the same search through an LLM if you want an answer instead of results.
 
 **[Full API reference →](https://search.needle.tools/api-docs)**
+
+---
+
+## WebMCP: search from inside the browser
+
+These docs register a [WebMCP](/docs/ai/webmcp) tool called `search-needle-knowledge-base`. While you have a docs page open, an AI agent in your browser can search all Needle documentation, API reference, forum posts, Discord threads, and source code through it — no MCP server, no extension, no API key.
+
+### Add the same tool to your own site
+
+The search API is public, so any page can expose it as a WebMCP tool in a few lines. Useful if you build documentation, a template gallery, or an editor UI on top of Needle and want a browser agent to look things up for you.
+
+```js
+// The spec moved this from navigator to document; resolve either.
+const modelContext = document.modelContext ?? navigator.modelContext;
+
+await modelContext?.registerTool({
+  name: "search-needle-knowledge-base",
+  description:
+    "Search Needle Engine documentation, API reference, forum posts and source code. " +
+    "Returns ranked excerpts with the URL of each source.",
+  inputSchema: {
+    type: "object",
+    properties: {
+      query: { type: "string", description: "A natural language question or keywords." },
+      limit: { type: "number", description: "How many results to return, 1-20." },
+    },
+    required: ["query"],
+  },
+  async execute({ query, limit = 5 }, { signal } = {}) {
+    const params = new URLSearchParams({ q: query, limit: String(limit) });
+    const res = await fetch(`https://search.needle.tools/api/semantic-search?${params}`, { signal });
+    const { results } = await res.json();
+
+    return {
+      content: [{
+        type: "text",
+        text: results
+          .map(r => `### ${r.title}\n${r.url}\n\n${r.content}`)
+          .join("\n\n---\n\n"),
+      }],
+    };
+  },
+});
+```
+
+`execute` returns MCP content blocks. Returning markdown with the source URL per result — rather than raw JSON — gives the agent something it can cite and follow. Keep the rate limit in mind: 10 requests per minute per IP, so don't call it on every keystroke.
+
+**[More about WebMCP →](/docs/ai/webmcp)**
 
 ---
 
