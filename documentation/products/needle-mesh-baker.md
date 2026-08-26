@@ -16,13 +16,15 @@ The **Needle Mesh Baker** reduces a model's triangle count and bakes its appeara
 
 Drop in a model, set a triangle budget, and compare the result against the source before you download it.
 
+**[Open the Needle Mesh Baker →](https://mesh-baker.needle.tools)**
+
 <img src="https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif" alt="The Needle Mesh Baker workbench, comparing an 800,000 triangle source model with the 6,000 triangle result side by side" />
 
 *800,000 triangles on the left, 6,000 on the right.*
 
 ## Quick Start
 
-1. Open the Needle Mesh Baker in your browser
+1. Open [mesh-baker.needle.tools](https://mesh-baker.needle.tools) in your browser
 2. Drop a `.glb`, `.gltf`, `.obj`, `.fbx` or `.zip` onto the page — or load a model from your Needle Cloud library
 3. Set your triangle budget under **Geometry**, or switch to targeting a maximum surface error
 4. Press **Bake**, then compare the result against the source in the two linked viewers

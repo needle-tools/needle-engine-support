@@ -252,6 +252,7 @@ To use stdio mode, configure your AI client with:
 
 ::: tip Looking for something else?
 - [**AI for Needle Engine**](/docs/ai/) — Coding skills, prompt files, and AI workflows
+- [**WebMCP**](/docs/ai/webmcp) — Let the AI agent in your browser operate Needle web apps directly
 - [**Needle Inspector for Chrome**](/docs/three/needle-devtools-for-threejs-chrome-extension) — Chat with your AI about live 3D scenes
 - [**three.js Integration**](/docs/three/) — Using Needle with any three.js project
 :::
