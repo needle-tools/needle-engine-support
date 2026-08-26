@@ -45,17 +45,25 @@ const clamp = (value: unknown, min: number, max: number, fallback: number) => {
   return Math.min(max, Math.max(min, Math.round(n)))
 }
 
-const text = (value: string, isError = false) => ({
-  content: [{ type: 'text', text: value }],
+/**
+ * WebMCP types the execute return as `any` — it defines no result shape of its own.
+ * We follow the MCP convention anyway: `structuredContent` is the real payload, and
+ * the `content` text block mirrors it for agents that only read the MCP text channel.
+ */
+const result = (summary: string, structured?: object, isError = false) => ({
+  content: [{ type: 'text', text: summary }],
+  ...(structured ? { structuredContent: structured } : {}),
   ...(isError ? { isError: true } : {}),
 })
+
+const failure = (message: string) => result(message, { error: message }, true)
 
 /**
  * Renders results as markdown rather than raw JSON: the URL of each hit is the
  * part the agent needs to cite or follow, and a flat list keeps it obvious which
  * excerpt belongs to which page.
  */
-const format = (query: string, results: SearchResult[]) => {
+const summarize = (query: string, results: SearchResult[]) => {
   if (!results.length) {
     return `No results for "${query}".`
   }
@@ -72,6 +80,15 @@ const format = (query: string, results: SearchResult[]) => {
 
 const searchTool = {
   name: 'search-needle-knowledge-base',
+  title: 'Search Needle knowledge base',
+  annotations: {
+    // Pure lookup: nothing on the page or the server changes.
+    readOnlyHint: true,
+    // Results include forum posts and Discord messages — user-generated text that can
+    // carry prompt injection. The hint tells the agent to treat the payload as data,
+    // not instructions.
+    untrustedContentHint: true,
+  },
   description:
     'Search the Needle knowledge base for anything about Needle Engine and Needle tools: ' +
     'documentation, API reference, forum posts, community Discord threads and Needle source code. ' +
@@ -105,7 +122,7 @@ const searchTool = {
     options?: { signal?: AbortSignal },
   ) {
     const query = (args?.query ?? '').trim()
-    if (!query) return text('Missing "query" — pass the question or keywords to search for.', true)
+    if (!query) return failure('Missing "query" — pass the question or keywords to search for.')
 
     const params = new URLSearchParams({
       q: query,
@@ -123,16 +140,30 @@ const searchTool = {
       })
       if (response.status === 429) {
         // The endpoint is public and rate-limited to 10 requests per minute per IP.
-        return text('Needle search is rate limited right now. Wait a moment and try again.', true)
+        return failure('Needle search is rate limited right now. Wait a moment and try again.')
       }
       if (!response.ok) {
-        return text(`Needle search failed with HTTP ${response.status}.`, true)
+        return failure(`Needle search failed with HTTP ${response.status}.`)
       }
       const data = await response.json()
-      return text(format(query, Array.isArray(data?.results) ? data.results : []))
+      const results: SearchResult[] = Array.isArray(data?.results) ? data.results : []
+
+      return result(summarize(query, results), {
+        query,
+        count: results.length,
+        results: results.map(r => ({
+          title: r.title ?? null,
+          url: r.url ?? null,
+          source: r.source ?? null,
+          type: r.type ?? null,
+          score: r.score ?? null,
+          content: r.content ?? '',
+          truncated: r.truncated ?? false,
+        })),
+      })
     } catch (err) {
       if (options?.signal?.aborted) throw err
-      return text(`Needle search request failed: ${err instanceof Error ? err.message : String(err)}`, true)
+      return failure(`Needle search request failed: ${err instanceof Error ? err.message : String(err)}`)
     }
   },
 }
