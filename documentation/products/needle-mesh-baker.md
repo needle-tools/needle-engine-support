@@ -38,11 +38,16 @@ Loading, baking, previewing and comparing all happen locally, on your machine. N
 
 A single reduced mesh with the appearance of the original baked onto it. Useful for LODs, background props, kitbashed scans, CAD imports and anything with more triangles or materials than it deserves.
 
+- **One draw call** — however many meshes and materials went in, one mesh with one material comes out. On scenes built from many small parts that is often the bigger win, not the triangle count
 - **Set a triangle budget**, or ask instead for a maximum deviation from the original surface and let the baker find the triangle count
 - **Two ways to simplify** — rebuild the surface from scratch, which cleans up messy or broken source models, or reduce the model's own triangles and keep the structure it was authored with
 - **Baked PBR textures** — base color, normal, roughness, metallic, emissive, opacity, and optional ambient occlusion, up to 4K
 - **Live preview** — drag the budget and watch the mesh change, so you can find the right number before running a full bake
 - **Tuning where it matters** — how hard edges are treated, whether small parts are protected from the budget, and how much of the original silhouette to defend
+
+<img src="https://cloud.needle.tools/-/media/OmyFW4xbcXb16jKypYtFRw.gif" alt="A heavily armoured character in the Needle Mesh Baker, 1,300,000 triangles on the left and the 5,900 triangle result on the right" loading="lazy" />
+
+*1,300,000 triangles down to 5,900 — the detail moved from the geometry into the normal map.*
 
 ## Getting models in
 
@@ -66,6 +71,27 @@ Optimization is only worth it if you can see what it cost you. The workbench is 
 - **A quality score** — instead of eyeballing it, get the difference between source and result back as a number
 - **Every baked texture**, shown as it came out
 
+## Let an AI agent drive it
+
+The baker registers itself as a set of [WebMCP](https://webmachinelearning.github.io/webmcp/) tools, so an AI agent in your browser can bake a model by calling them instead of clicking through the interface. Ask for what you want in plain language and watch it happen in the workbench in front of you.
+
+> *"Load this model, get it under 10k triangles, show me the wireframe, and download it when it looks right."*
+
+Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. That screenshot step matters more than it sounds: a triangle count tells an agent the model got smaller, not whether it still looks right — being able to *see* the two previews is what lets it judge the trade the way you would.
+
+**Where it works**
+
+| Browser | Status |
+|---|---|
+| ChatGPT Atlas | Works out of the box |
+| Microsoft Edge 147+ | Works out of the box |
+| Chrome 149+ | Behind `chrome://flags/#enable-webmcp-testing` |
+| Firefox, Safari | Not yet |
+
+Since it is the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app's own browser doing the calling, this works directly — no server to run, no configuration, no separate MCP setup. On browsers without WebMCP nothing is registered and nothing is downloaded, so there is no cost to it being there.
+
+Baking still happens entirely on your machine. An agent drives the same in-browser pipeline you do, and your model is no more uploaded than when you click the buttons yourself — with one exception: uploading a result to your Needle Cloud library sends it, and that only ever happens if you ask for it.
+
 ## Coming soon
 
 These are in development and not yet available. If one of them is what your project needs, tell us at [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker) — it helps us prioritize.
@@ -82,13 +108,30 @@ These are in development and not yet available. If one of them is what your proj
 
 ## Downloads and licensing
 
-**Loading, baking, previewing and comparing are free** — bring as many models as you like and take the tool as far as you want before deciding anything.
+Everything up to the download is free. You can bring as many models as you like, bake them, and compare the results before deciding whether it is worth anything to you.
 
-**Downloading a baked result** needs a free Needle account plus the Mesh Baker itself — **a one-time purchase with lifetime access. No subscription, and it stays yours.** It is also **included with [Needle Engine Pro](https://needle.tools/pricing)**, so if your team already has a Pro license, just sign in. The current price and any running discount are shown in the purchase dialog.
+| | Free | Mesh Baker |
+|---|---|---|
+| Load models, bake, preview, compare | ✅ | ✅ |
+| Quality metrics and channel inspection | ✅ | ✅ |
+| Drive it with an AI agent | ✅ | ✅ |
+| **Download the baked `.glb`** | — | ✅ |
+| Upload results to Needle Cloud | — | ✅ |
+| Needle account required | — | free account |
 
-The baker is **developed continuously** — it gets better over time, and updates come with the purchase you already made. What is [coming next](#coming-soon) is not a separate product to buy again.
+### What it costs
 
-A **command-line version** is available on request, so you can integrate baking into your own asset pipeline or CI and process models in batches instead of one at a time. Get in touch at [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
+**A one-time purchase with lifetime access.** No subscription, no seats to renew — it stays yours. The current price, and any running discount, is shown in the purchase dialog.
+
+Already have **[Needle Engine Pro](https://needle.tools/pricing)**? The Mesh Baker is included. Sign in and it unlocks.
+
+### What you get after that
+
+**Every update, at no extra cost.** The baker is developed continuously, and what is [coming next](#coming-soon) arrives as part of the purchase you already made — not as a new product to buy again.
+
+### Batch and CI use
+
+A **command-line version** is available on request, so baking can run as a build step or over a whole folder of models instead of one at a time. It is licensed separately — write to [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
 
 ## Requirements
 
@@ -157,3 +200,14 @@ Needle — the team behind [Needle Engine](/docs/), the [Needle Inspector](/docs
 - [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) — inspect, debug and live-edit three.js scenes in your browser
 - [Optimization & Compression](/docs/how-to-guides/optimization/) — texture compression, mesh compression, progressive loading and LODs
 - [Needle Engine + three.js](/docs/three/) — using Needle Engine in three.js projects
+
+<style>
+/* The OpenAI mark is black on transparent, so it disappears against the dark
+   theme unless it is flipped. */
+.inline-logo {
+  display: inline;
+  height: 1.05em;
+  vertical-align: -0.14em;
+}
+html.dark .inline-logo { filter: invert(1); }
+</style>
