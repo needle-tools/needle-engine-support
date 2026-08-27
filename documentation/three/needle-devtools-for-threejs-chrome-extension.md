@@ -159,6 +159,12 @@ The only three.js tool where your AI assistant can **see and edit the running sc
 - **Built-in AI Chat**: Ask questions about the open scene without leaving the browser
 - **Same tool set everywhere**: Everything the built-in chat can do, external MCP clients can do too (the full tool list is shown in the inspector's settings)
 
+#### Ask AI about anything
+
+Right-click any object in the **hierarchy** or the **3D scene** — or any **property in the inspector** — and *Ask AI about this*. The chat opens as a small bubble pinned to the thing you asked about, so the AI already has the context, and you can keep several conversations going at once while you work.
+
+<img src="https://cloud.needle.tools/-/media/QH2pLpoBMHb9MxSs6VCX6Q.gif" alt="Contextual AI chat bubbles in the Needle Inspector — asking about an object straight from the three.js scene, hierarchy or inspector" loading="lazy" style="max-width: min(500px, 100%);" />
+
 Setup is simple:
 ```bash
 npx needle-cloud start
