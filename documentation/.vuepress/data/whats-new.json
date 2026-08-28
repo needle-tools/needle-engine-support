@@ -1,6 +1,16 @@
 {
   "highlights": [
     {
+      "id": "mesh-baker",
+      "title": "Introducing: Needle Mesh Baker",
+      "description": "Turn heavy 3D models into production-ready assets, in your browser. 3.2 million triangles down to 3,000 in seconds — geometry reduced, the original's detail baked into PBR textures, and nothing ever uploaded. Ideal for sculpts, scans, CAD and AI-generated models.",
+      "link": "/products/needle-mesh-baker",
+      "image": "https://cloud.needle.tools/-/media/YK_W-UvRZGYtoMsMx_NSBw.gif",
+      "badge": "NEW",
+      "date": "2026-08-28",
+      "version": "Mesh Baker 1.0"
+    },
+    {
       "id": "openusd-materialx-browser",
       "title": "OpenUSD and MaterialX, in the Browser",
       "description": "Strongly improved OpenUSD 26.05 and MaterialX 1.39.5 support across Needle USD Viewer, Needle Cloud, and Needle Engine — host and share USD and MaterialX, with seamless three.js integration, lights, shadows and displacement, and a huge MaterialX performance boost.",
