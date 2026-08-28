@@ -128,7 +128,7 @@ Each button runs the line printed beside it. Try them in order and watch the con
 
 On first activation the order is `awake` → `onEnable` → `start`, then `update` on every frame after that.
 
-`awake` and `start` run once and never again. `onEnable` and `onDisable` run every time the component is switched on and off. After `destroy` the instance is finished; attaching the behaviour again creates a new one, starting from `awake`.
+`awake` and `start` run once per component and never again, not even if you remove it from an object and add it back. Only a new component runs `awake`. `onEnable` and `onDisable` run every time the component is switched on and off.
 
 That difference decides where your code belongs. Read a starting value once in `awake`. Put anything that has to happen on every switch-on, such as subscribing to an event, in `onEnable`.
 
