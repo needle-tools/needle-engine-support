@@ -768,7 +768,7 @@ Every position in the scene is read from the scrollbar each frame, so the scene 
 The camera, the four shapes and the path drawing are each a small component of your own — the walker is a convenience, not a requirement.
 
 ::: tip Building a scroll-driven page?
-The page pins the scene with `position: fixed` and puts a tall empty element behind it. That element gives the page its scroll length, and nothing else has to move. Open the <a href="/docs/code-samples/walkthrough-19-spline.html" target="_blank">example page</a> on its own to see it full size.
+The page pins the scene with `position: fixed` and puts a tall empty element behind it. That element gives the page its scroll length, and nothing else has to move. On a phone, Needle Engine takes every touch gesture so camera controls can drag and pinch. This page has them off and sets `touch-action: pan-y` on `needle-engine`, which hands vertical drags back to the browser to scroll with. A page that orbits keeps the default and scrolls elsewhere. Open the <a href="/docs/code-samples/walkthrough-19-spline.html" target="_blank">example page</a> on its own to see it full size.
 :::
 
 → [SplineContainer API](https://engine.needle.tools/docs/api/SplineContainer) · [SplineWalker API](https://engine.needle.tools/docs/api/SplineWalker) · [Splines sample](https://samples.needle.tools/splines)

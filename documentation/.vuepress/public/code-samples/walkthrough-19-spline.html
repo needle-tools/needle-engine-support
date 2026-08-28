@@ -26,7 +26,21 @@
       away, and the scrollbar becomes a control rather than a way to reach
       more content.
     */
-    needle-engine { position: fixed; inset: 0; }
+    needle-engine {
+      position: fixed;
+      inset: 0;
+
+      /*
+        Needle Engine takes every touch gesture by default, which is what lets
+        camera controls drag and pinch on a phone. A drag the browser claims
+        for scrolling never reaches them.
+
+        This page has camera controls off, so it gives vertical drags back and
+        they scroll instead. A page that orbits should leave this alone.
+      */
+      touch-action: pan-y;
+    }
+
     .scroll-track { height: 500vh; }
   </style>
 </head>
