@@ -20,7 +20,7 @@ Drop in a model, set a triangle budget, and compare the result against the sourc
 
 <img src="https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif" alt="The Needle Mesh Baker workbench, comparing an 800,000 triangle source model with the 6,000 triangle result side by side" />
 
-*800,000 triangles on the left, 6,000 on the right.*
+*The model on the left has 800,000 triangles. The model on the right has 6,000.*
 
 ## Quick Start
 
@@ -36,7 +36,7 @@ Loading, baking, previewing and comparing all happen locally, on your machine. N
 
 ## What it produces
 
-A single reduced mesh with the appearance of the original baked onto it. It is the shortest path from a sculpt, a photogrammetry scan, a CAD export or an AI-generated model to something that can actually run in real time — and it works just as well on LODs, background props and anything else carrying more triangles or materials than it deserves.
+A single reduced mesh with the appearance of the original baked onto it. Use it on sculpts, photogrammetry scans, CAD exports, AI-generated models, LODs and background props — anything carrying more triangles or materials than it needs.
 
 - **One draw call** — however many meshes and materials went in, one mesh with one material comes out. On scenes built from many small parts that is often the bigger win, not the triangle count
 - **Set a triangle budget**, or ask instead for a maximum deviation from the original surface and let the baker find the triangle count
@@ -47,19 +47,19 @@ A single reduced mesh with the appearance of the original baked onto it. It is t
 
 <img src="https://cloud.needle.tools/-/media/hTfJmobS6DTDa6WWbe-GRg.gif" alt="Dragging the triangle budget in the Needle Mesh Baker while the wireframe result updates live, 1,328,920 triangles down to 6,830" loading="lazy" />
 
-*Dragging the budget, with the result rebuilding as it moves. How far is too far depends on how close the thing is ever seen, which is a judgement rather than a number — so it is made by looking at the silhouette, not by guessing and re-running.*
+*You drag the triangle budget, and the result rebuilds while you drag. This model goes from 1,328,920 triangles to 6,830.*
 
 ## Why this is not just decimation
 
-A sculpt carries its detail *as geometry* — every scratch, feather and bolt is real triangles. Simply decimating that throws the detail away: the mesh gets lighter and visibly worse, and because the UVs are only shifted around rather than rebuilt, the textures distort with it. That is survivable for a 20% reduction. It is not survivable for 99%.
+A sculpt carries its detail *as geometry* — every scratch, feather and bolt is real triangles. Simply decimating that throws the detail away: the mesh gets lighter and visibly worse, and because the UVs are only shifted around rather than rebuilt, the textures distort with it. That is fine for a 20% reduction. It is not fine for 99%.
 
-The workflow that does survive it is baking: build a new low-poly mesh, give it new UVs and tangents, then transfer the original's surface into textures on it — the normal map is what puts the scratches and bolts back, as shading rather than geometry. Blender, Houdini, xNormal and Substance can all do this, and it is fiddly enough in each of them that "why is my normal map broken" is a genre of forum post.
+The workflow that does survive it is baking: build a new low-poly mesh, give it new UVs and tangents, then transfer the original's surface into textures on it — the normal map is what puts the scratches and bolts back, as shading rather than geometry. Blender, Houdini, xNormal and Substance can all do this, and getting a correct normal map out of any of them takes care.
 
 The baker does that whole chain in one step, and gets the parts that are easy to get wrong — tangent space, normal orientation — right by default.
 
 <img src="https://cloud.needle.tools/-/media/XEutsc3aScR4WdGjPOPlQQ.gif" alt="Dragging the key light around in the Needle Mesh Baker: the 3.1 million triangle source and the 5,914 triangle result catch the light the same way" loading="lazy" />
 
-*Moving the key light is the honest test. At 5,914 triangles the armour has almost no geometry left to catch a highlight — every fold and rivet reacting here is the baked normal map.*
+*The key light moves across both models. The result has 5,914 triangles, so its detail comes from the baked normal map and not from geometry.*
 
 ## Getting models in
 
@@ -85,7 +85,7 @@ Optimization is only worth it if you can see what it cost you. The workbench is 
 
 <img src="https://cloud.needle.tools/-/media/YK_W-UvRZGYtoMsMx_NSBw.gif" alt="A 3,200,000 triangle bust of Nefertiti beside its 3,000 triangle baked result in the Needle Mesh Baker's two linked viewers" loading="lazy" />
 
-*3,200,000 triangles on the left, 3,000 on the right — a 99.9% reduction, and the pair is the only way to know whether that is acceptable for what you are building.*
+*The model on the left has 3,200,000 triangles. The model on the right has 3,000. That is a reduction of 99.9%.*
 
 ## Let an AI agent drive it
 
@@ -93,7 +93,7 @@ The baker registers itself as a set of [WebMCP](https://webmachinelearning.githu
 
 > *"Load this model, get it under 10k triangles, show me the wireframe, and download it when it looks right."*
 
-Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. That screenshot step matters more than it sounds: a triangle count tells an agent the model got smaller, not whether it still looks right — being able to *see* the two previews is what lets it judge the trade the way you would.
+Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. Screenshots matter here: a triangle count tells an agent that the model got smaller, not whether it still looks right.
 
 **Where it works**
 
@@ -199,7 +199,7 @@ The baked textures come out uncompressed, so they stay sharp for whatever you do
 
 They solve different halves of the problem, and they compose. The baker decides **how detailed the asset is at all** — bring the source down to the highest quality you would ever want on screen. [Progressive loading](/docs/how-to-guides/optimization/progressive-loading-and-lods) then decides **how much of that arrives when**, streaming the detail in as it is needed.
 
-Baking first is what makes the second step cheap: progressive loading of a model that was never optimized still ends up delivering every one of its triangles eventually.
+Bake first: progressive loading of an unoptimized model still delivers every triangle eventually.
 
 ### Can I bake animated or skinned characters?
 
