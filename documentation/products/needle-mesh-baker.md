@@ -6,9 +6,9 @@ image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 
 # Needle Mesh Baker
 
-The **Needle Mesh Baker** reduces a model's triangle count and bakes its appearance into textures. The result is a single mesh with a single material that still looks like the original.
+The **Needle Mesh Baker** reduces a model's triangle count and bakes its appearance into textures. The result is usually a single mesh with a single material, and it still looks like the original.
 
-- **Built to render fast** — far fewer triangles, one draw call instead of many, a smaller download
+- **Built to render fast** — far fewer triangles, far fewer draw calls, a smaller download
 - **Keeps the look** — the silhouette is held onto while triangles come off, and color, normals, roughness and metallic are baked into the textures
 - **Quick to bake** — it runs on your own GPU, so even a model with millions of triangles takes seconds. No upload to sit through, no queue to wait in
 - **100% local** — your model never leaves your machine ([really](#is-my-model-uploaded-to-needle))
@@ -36,9 +36,9 @@ Loading, baking, previewing and comparing all happen locally, on your machine. N
 
 ## What it produces
 
-A single reduced mesh with the appearance of the original baked onto it. Use it on sculpts, photogrammetry scans, CAD exports, AI-generated models, LODs and background props — anything carrying more triangles or materials than it needs.
+A reduced mesh with the appearance of the original baked onto it. Use it on sculpts, photogrammetry scans, CAD exports, AI-generated models, LODs and background props — anything carrying more triangles or materials than it needs.
 
-- **One draw call** — however many meshes and materials went in, one mesh with one material comes out. On scenes built from many small parts that is often the bigger win, not the triangle count
+- **Far fewer draw calls** — however many meshes and materials went in, usually one mesh with one material comes out. Surfaces that have to be drawn differently, such as transparent ones, stay separate. On scenes built from many small parts this is often the bigger win, not the triangle count
 - **Set a triangle budget**, or ask instead for a maximum deviation from the original surface and let the baker find the triangle count
 - **Two ways to simplify** — rebuild the surface from scratch, which cleans up messy or broken source models, or reduce the model's own triangles and keep the structure it was authored with
 - **Baked PBR textures** — base color, normal, roughness, metallic, emissive, opacity, and optional ambient occlusion, up to 4K
@@ -89,9 +89,11 @@ Optimization is only worth it if you can see what it cost you. The workbench is 
 
 ## Bake from the Needle Inspector
 
-From **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) 2.5** you can bake a mesh without leaving the scene it belongs to. Pick a mesh in any live three.js or Needle Engine scene, send it to the baker, and it opens here as if you had dropped the file yourself — every setting and comparison view works the same.
+From **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) 2.5** you can bake without leaving the scene the mesh belongs to.
 
-When the bake finishes, the result goes straight back into the running scene. There is no Apply step and no re-import: the scene updates, and you judge the optimized mesh in the place it will actually ship. Keep adjusting the budget and re-baking until it holds up.
+Drag whatever you want from the hierarchy into a group — one object or a hundred — and bake each group on its own. A group comes back as one mesh, with transparent surfaces kept apart from opaque ones because they cannot share a material. A scene built from many small parts loses most of its draw calls along with its triangles.
+
+The result goes straight back into the running scene. There is no Apply step and no re-import, and a toggle switches between the original and the baked version so you can compare the two in place, at the size and lighting they will actually ship with. Adjust the budget, bake again, toggle again.
 
 The two windows talk to each other directly. The mesh does not travel through a server, and it is not uploaded any more than a dropped file is.
 

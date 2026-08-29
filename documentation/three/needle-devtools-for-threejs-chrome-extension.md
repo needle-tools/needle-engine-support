@@ -190,11 +190,13 @@ Taking your work home is part of [Pro](#free-vs-pro).
 
 ### Optimize a Mesh Without Leaving the Scene
 
-**New in 2.5:** send any mesh straight to the **[Needle Mesh Baker](/docs/products/needle-mesh-baker)**.
+**New in 2.5:** send meshes straight to the **[Needle Mesh Baker](/docs/products/needle-mesh-baker)** without leaving the scene.
 
-Pick a mesh that is too heavy and send it to the baker. Set a triangle budget there, and the baked result comes back into the running scene on its own — no download, no re-import. You judge the optimized mesh in the place it actually ships, and can keep adjusting the budget until it holds up.
+Drag objects from the hierarchy into a group — as many as you like — and bake each group on its own. A group comes back as one mesh, with transparent surfaces kept apart from opaque ones because they cannot share a material. A scene built from many small parts loses most of its draw calls along with its triangles.
 
-Baking runs in your browser, and the mesh is not uploaded. Keeping a baked result needs the Mesh Baker; sending a mesh over and looking at what comes back does not.
+The baked result lands in the running scene, and a toggle switches between the original and the baked version so you can compare the two in place. Adjust the triangle budget and bake again until it holds up.
+
+Baking runs in your browser, and the mesh is not uploaded. Keeping a baked result needs the Mesh Baker; sending meshes over and looking at what comes back does not.
 
 ## Free vs Pro
 
