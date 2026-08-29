@@ -3,9 +3,9 @@
     {
       "id": "mesh-baker",
       "title": "Introducing: Needle Mesh Baker",
-      "description": "Turn heavy 3D models into production-ready assets, in your browser. 3.2 million triangles down to 3,000 in seconds — geometry reduced, the original's detail baked into PBR textures, and nothing ever uploaded. Ideal for sculpts, scans, CAD and AI-generated models.",
+      "description": "Turn heavy 3D models into production-ready assets, in your browser. 880,000 triangles down to 6,000 in seconds — geometry reduced, the original's detail baked into PBR textures, and nothing ever uploaded. Ideal for sculpts, scans, CAD and AI-generated models.",
       "link": "/products/needle-mesh-baker",
-      "image": "https://cloud.needle.tools/-/media/YK_W-UvRZGYtoMsMx_NSBw.gif",
+      "image": "https://cloud.needle.tools/-/media/v6hluVYqFTaPb7or_SRlsw.gif",
       "badge": "NEW",
       "date": "2026-08-28",
       "version": "Mesh Baker 1.0"
