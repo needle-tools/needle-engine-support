@@ -80,9 +80,20 @@ export default {
       }
     },
 
+    // Selections inside form fields (the search box, the popup's own input) are
+    // editing, not reading — no "Ask AI" for those.
+    isEditableTarget(el) {
+      if (!el || !el.tagName) return false
+      return el.tagName === 'INPUT' || el.tagName === 'TEXTAREA' || el.isContentEditable
+    },
+
     onMouseUp(e) {
       if (this._popup && this._popup.contains(e.target)) return
+      if (this.isEditableTarget(e.target)) return
       setTimeout(() => {
+        // Re-check after the delay: focus may have landed in a field meanwhile
+        // (e.g. a click that opened the search modal).
+        if (this.isEditableTarget(document.activeElement)) return
         const sel = window.getSelection()
         const text = sel?.toString().trim()
         if (!text || text.length < 3) {
