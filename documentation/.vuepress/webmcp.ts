@@ -17,32 +17,15 @@
  * the API to be present at all in those browsers.
  */
 
-const SEARCH_ENDPOINT = 'https://search.needle.tools/api/semantic-search'
+import { SearchError, clamp, semanticSearch, type SearchResult } from './search-api'
 
+// Agents read every result in full, so they get fewer than the search box shows.
 const DEFAULT_LIMIT = 5
 const DEFAULT_MAX_CHARS = 1500
-
-type SearchResult = {
-  type?: string
-  score?: number
-  title?: string
-  source?: string
-  content?: string
-  contentLength?: number
-  truncated?: boolean
-  url?: string
-  timestamp?: string
-}
 
 type ModelContextLike = {
   registerTool?: (tool: unknown, options?: unknown) => Promise<unknown>
   provideContext?: (context: { tools: unknown[] }) => unknown
-}
-
-const clamp = (value: unknown, min: number, max: number, fallback: number) => {
-  const n = typeof value === 'number' ? value : parseInt(String(value ?? ''), 10)
-  if (!Number.isFinite(n)) return fallback
-  return Math.min(max, Math.max(min, Math.round(n)))
 }
 
 /**
@@ -124,29 +107,12 @@ const searchTool = {
     const query = (args?.query ?? '').trim()
     if (!query) return failure('Missing "query" — pass the question or keywords to search for.')
 
-    const params = new URLSearchParams({
-      q: query,
-      limit: String(clamp(args?.limit, 1, 20, DEFAULT_LIMIT)),
-      max_chars: String(clamp(args?.maxChars, 200, 10000, DEFAULT_MAX_CHARS)),
-    })
-
     try {
-      // Requires `Access-Control-Allow-Origin` on search.needle.tools. The endpoints are
-      // public and unauthenticated, so `*` is enough — but without it the browser blocks
-      // the read and this surfaces as a bare "Failed to fetch" TypeError below.
-      const response = await fetch(`${SEARCH_ENDPOINT}?${params}`, {
-        headers: { accept: 'application/json' },
+      const { results } = await semanticSearch(query, {
+        limit: clamp(args?.limit, 1, 20, DEFAULT_LIMIT),
+        maxChars: clamp(args?.maxChars, 200, 10000, DEFAULT_MAX_CHARS),
         signal: options?.signal,
       })
-      if (response.status === 429) {
-        // The endpoint is public and rate-limited to 10 requests per minute per IP.
-        return failure('Needle search is rate limited right now. Wait a moment and try again.')
-      }
-      if (!response.ok) {
-        return failure(`Needle search failed with HTTP ${response.status}.`)
-      }
-      const data = await response.json()
-      const results: SearchResult[] = Array.isArray(data?.results) ? data.results : []
 
       return result(summarize(query, results), {
         query,
@@ -163,6 +129,8 @@ const searchTool = {
       })
     } catch (err) {
       if (options?.signal?.aborted) throw err
+      // SearchError already phrases the rate-limit and HTTP cases for a reader.
+      if (err instanceof SearchError) return failure(err.message)
       return failure(`Needle search request failed: ${err instanceof Error ? err.message : String(err)}`)
     }
   },

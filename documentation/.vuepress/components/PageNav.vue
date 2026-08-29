@@ -868,7 +868,8 @@ export default {
 
 <style>
 
-.DocSearch--active .page-nav-container {
+/* SearchBox.vue sets this on <body> while its modal is open. */
+.needle-search-active .page-nav-container {
   display: none;
 }
 

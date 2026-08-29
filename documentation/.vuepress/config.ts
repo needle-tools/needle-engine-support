@@ -5,7 +5,6 @@ import { path } from '@vuepress/utils'
 import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 // import * as videoplayer from "vuepress-plugin-core-video-player";
 // import { pwaPlugin } from '@vuepress/plugin-pwa'
-import { docsearchPlugin } from '@vuepress/plugin-docsearch'
 import { shikiPlugin } from '@vuepress/plugin-shiki'
 import { markdownChartPlugin } from '@vuepress/plugin-markdown-chart'
 
@@ -430,16 +429,13 @@ export default defineUserConfig({
     pagePatterns: patterns,
     // locales: siteLocaleOptions,
     plugins: [
-        // searchPlugin({
-        // }),
-        // @ts-ignore
-        docsearchPlugin({
-            appId: "2LT25GG3KX",
-            apiKey: "389be16f732f82c611e1b0f22c031dff",
-            indexName: "engine-needle",
-            injectStyles: true,
-            // initialQuery: "scripting",
-        }),
+        /*
+          Search is Needle Search, not a plugin: components/SearchBox.vue is
+          picked up by registerComponentsPlugin below, and the default theme
+          renders any global component of that name into the navbar. It queries
+          the same embedding-ranked knowledge base as the MCP server, which the
+          crawl step in .github/workflows/deploy-docs.yaml refreshes on deploy.
+        */
         sitemapPlugin({
             hostname: _url,
             devServer: true,
