@@ -1,6 +1,6 @@
 ---
 title: WebMCP — Use Needle Apps Through Your Browser's AI Agent
-description: Needle docs, the Inspector and the Mesh Baker hand their capabilities to the AI agent in your browser. Ask for what you want and the agent operates the site directly — no install, no server, no API keys.
+description: Needle docs, the Inspector, the Mesh Baker and FastCut hand their capabilities to the AI agent in your browser. Ask for what you want and the agent operates the site directly — no install, no server, no API keys.
 ---
 
 # WebMCP
@@ -16,6 +16,8 @@ Nothing to install, no server to run, no API key. If your browser's agent suppor
 **Work with a live 3D scene.** The [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) hands over the scene graph on the page — what is in it, how it is set up, and changing it. *"What is making this scene slow?"*, *"list every material using a transparent shader"*.
 
 **Optimize a model.** The [Needle Mesh Baker](/docs/products/needle-mesh-baker) can load a model and bake it down to a triangle budget. *"Bake this to 6,000 triangles and show me the comparison."*
+
+**Cut out and pack images.** [FastCut](https://fastcut.needle.tools) removes backgrounds, splits sprite sheets and packs images into a grid. *"Remove the background from these four and export them as one sheet."*
 
 **Manage your projects.** [Needle Cloud](/docs/cloud/) is being fitted with tools for your hosted projects and assets.
 

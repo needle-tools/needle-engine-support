@@ -64,7 +64,7 @@ The **[Needle MCP Server](./needle-mcp-server)** lets AI tools talk directly to 
 
 **[WebMCP](/docs/ai/webmcp)** is an emerging web standard that lets a page hand tools to the AI agent built into the browser. Instead of scraping the page, the agent calls those tools directly — no install, no server, no API keys.
 
-These docs use it: every page here registers a search tool covering all Needle documentation, API reference, forum posts, Discord threads, and source code. The [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) and [Needle Mesh Baker](/docs/products/needle-mesh-baker) expose tools too.
+These docs use it: every page here registers a search tool covering all Needle documentation, API reference, forum posts, Discord threads, and source code. The [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension), [Needle Mesh Baker](/docs/products/needle-mesh-baker) and [FastCut](https://fastcut.needle.tools) expose tools too.
 
 **[WebMCP in Needle apps →](/docs/ai/webmcp)**
 
