@@ -27,7 +27,7 @@ Drop in a model, set a triangle budget, and compare the result against the sourc
 1. Open [mesh-baker.needle.tools](https://mesh-baker.needle.tools) in your browser
 2. Drop a `.glb`, `.gltf`, `.obj`, `.fbx` or `.zip` onto the page — or load a model from your Needle Cloud library
 3. Set your triangle budget under **Geometry**, or switch to targeting a maximum surface error
-4. Press **Bake**, then compare the result against the source in the two linked viewers
+4. Press **Optimize asset**, then compare the result against the source in the two linked viewers
 5. **Download** the result as a `.glb`
 
 :::tip Nothing is uploaded
@@ -87,6 +87,14 @@ Optimization is only worth it if you can see what it cost you. The workbench is 
 
 *The model on the left has 3,200,000 triangles. The model on the right has 3,000. That is a reduction of 99.9%.*
 
+## Bake from the Needle Inspector
+
+From **[Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) 2.5** you can bake a mesh without leaving the scene it belongs to. Pick a mesh in any live three.js or Needle Engine scene, send it to the baker, and it opens here as if you had dropped the file yourself — every setting and comparison view works the same.
+
+When the bake finishes, the result goes straight back into the running scene. There is no Apply step and no re-import: the scene updates, and you judge the optimized mesh in the place it will actually ship. Keep adjusting the budget and re-baking until it holds up.
+
+The two windows talk to each other directly. The mesh does not travel through a server, and it is not uploaded any more than a dropped file is.
+
 ## Let an AI agent drive it
 
 The baker registers itself as a set of [WebMCP](https://webmachinelearning.github.io/webmcp/) tools, so an AI agent in your browser can bake a model by calling them instead of clicking through the interface. Ask for what you want in plain language and watch it happen in the workbench in front of you.
@@ -111,8 +119,6 @@ Baking still happens entirely on your machine. An agent drives the same in-brows
 ## Coming soon
 
 These are in development and not yet available. If one of them is what your project needs, tell us at [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker) — it helps us prioritize.
-
-**Baking straight from the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension).** Pick a mesh in a live three.js or Needle Engine scene, send it to the baker, and have the finished result go straight back into the running scene — no download, no re-import, and the optimized mesh judged in the context it actually ships in.
 
 **Impostors.** For models that are far away or repeated many times — vegetation, crowds, distant architecture, dense scans — an alternative to reducing geometry that still lights and shadows like the real thing, at a fraction of the cost.
 
@@ -155,7 +161,7 @@ A **command-line version** is available on request, so baking can run as a build
 
 ## Requirements
 
-- A desktop browser — Chrome, Edge or another Chromium-based browser is recommended
+- Works best on a desktop browser — Chrome, Edge or another Chromium-based browser. On a phone the workbench says so and lets you continue anyway
 - Baking uses your graphics card, so a machine that can run 3D content comfortably will bake comfortably
 - Everything runs locally, which means no upload wait and no queue — bake times and the size of model you can handle depend on your machine
 
@@ -171,7 +177,7 @@ The only network traffic involving model data goes the *other* way: if you sign 
 
 **No.** Object, mesh, material, texture and file names are never collected — nor is any geometry, any texture, or any part of your file's contents.
 
-The baker does send anonymous usage statistics, kept deliberately coarse: enough to see what kind of models people bring and which settings get used, not enough to identify a model.
+The baker does send usage statistics, kept deliberately coarse: enough to see what kind of models people bring and which settings get used, not enough to identify a model. While you are signed in they are linked to your Needle account, the same way the rest of your account activity is.
 
 - Size, triangle and vertex counts as ranges (*5–10MB*, *200k–1M*), never exact numbers
 - How many meshes and materials a model has

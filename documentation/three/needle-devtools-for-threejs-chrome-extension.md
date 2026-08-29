@@ -188,6 +188,14 @@ Your edits shouldn't die with the browser tab:
 
 Taking your work home is part of [Pro](#free-vs-pro).
 
+### Optimize a Mesh Without Leaving the Scene
+
+**New in 2.5:** send any mesh straight to the **[Needle Mesh Baker](/docs/products/needle-mesh-baker)**.
+
+Pick a mesh that is too heavy and send it to the baker. Set a triangle budget there, and the baked result comes back into the running scene on its own — no download, no re-import. You judge the optimized mesh in the place it actually ships, and can keep adjusting the budget until it holds up.
+
+Baking runs in your browser, and the mesh is not uploaded. Keeping a baked result needs the Mesh Baker; sending a mesh over and looking at what comes back does not.
+
 ## Free vs Pro
 
 The rule is simple: **looking is free — going deeper is Pro.**
