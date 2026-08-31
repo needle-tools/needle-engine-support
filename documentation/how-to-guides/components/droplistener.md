@@ -213,4 +213,4 @@ Yes for local file drops. URL pasting and multiplayer require internet connectio
 
 **Related Guides:**
 - [Networking & Multiplayer](/docs/how-to-guides/networking/) - Set up multiplayer features
-- [Loading Scenes](/docs/how-to-guides/scripting/index#loading-scenes) - Load content dynamically
+- [Loading 3D assets](/docs/how-to-guides/scripting/load-3d-web-assets-at-runtime) - Load content dynamically

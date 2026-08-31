@@ -8,7 +8,7 @@ description: Build, test, and upload a Mintegral playable ad.
 Mintegral uses the Playturbo/Mindworks host API. It does not use MRAID.
 
 ::: info Generated output
-Needle creates `dist/Mintegral/MyGame.zip`. The ZIP contains all game resources and the Playturbo lifecycle integration.
+Upload `dist/Mintegral/MyGame.zip` to Mintegral or the Playturbo reviewer.
 :::
 
 ## Requirements
@@ -41,7 +41,7 @@ dist/Mintegral/MyGame.zip
     └── MyGame.html
 ```
 
-See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for the complete Vite configuration.
+See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads/) for the complete Vite configuration.
 
 ## 2. Add lifecycle calls
 
@@ -82,7 +82,7 @@ platforms: [{
 }]
 ```
 
-Call `getPlayableAd().track?.(2)` with the one-based action number. Needle adds `action.json` to the ZIP.
+Call `getPlayableAd().track?.(2)` with the one-based action number.
 
 ## 3. Build and test the ZIP
 
@@ -135,19 +135,21 @@ Capture: The offer assignment with the playable creative set selected.
 Apply the creative set to an offer. An unassigned creative set does not enter review.
 :::
 
-## Test with an agent
+## Ask an agent to test
 
-```sh
-agent-browser --session mintegral open https://www.playturbo.com/review
-agent-browser --session mintegral snapshot -i -C
-agent-browser --session mintegral upload @eN /absolute/path/to/dist/Mintegral/MyGame.zip
-agent-browser --session mintegral wait 3000
-agent-browser --session mintegral errors
+Copy this prompt and replace the artifact path:
+
+```text
+Validate my Mintegral playable at <absolute path to dist/Mintegral/MyGame.zip>.
+
+1. Extract the ZIP and confirm that the ZIP, folder, and HTML file use the same valid name.
+2. Open the HTML from the extracted folder and record rendering and console errors.
+3. Open the Playturbo reviewer, upload the ZIP, and continue through the game until every required test finishes.
+4. Trigger gameReady, gameEnd, the install CTA, and every configured action point.
+5. Use the preview controls to test portrait, landscape, mouse input, touch input, and the QR/device preview when available.
+
+Return the tested file path and hash, screenshots, console errors, and every reviewer result, including tests that did not reach Test Success.
 ```
-
-Continue the game until all required tests finish.
-
-Use the Playturbo [Preview controls](https://doc.playturbo.com/playable-tools-content-editor/content-editor-user-guide/editing-page-module-intro/project-operation-area/preview) for orientation, QR, and device tests.
 
 ## Troubleshooting
 

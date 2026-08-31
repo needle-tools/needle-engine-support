@@ -8,7 +8,7 @@ description: Build, test, and upload a Meta playable ad.
 A Meta playable ad contains a lead-in video, a full-screen game, and an app-install CTA.
 
 ::: info Generated output
-Needle creates `dist/Meta/playable.zip`. The ZIP contains one self-contained `index.html` file.
+Upload `dist/Meta/playable.zip`. It contains one self-contained `index.html` file.
 :::
 
 ## Requirements
@@ -33,7 +33,7 @@ playableAds: {
 }
 ```
 
-See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for the complete Vite configuration.
+See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads/) for the complete Vite configuration.
 
 ## 2. Build the ZIP file
 
@@ -119,16 +119,6 @@ Capture: The running playable, Refresh playable, and Done controls.
 Meta supports selected Facebook, Instagram, and Audience Network placements. Ads Manager lists the enabled placements for the campaign.
 :::
 
-## Test with an agent
-
-Use Meta Playable Preview without a campaign. Upload the ZIP and record all console, CSP, file-load, and CTA results.
-
-The upload control opens a file chooser. Handle the file chooser after you select **Upload playable asset**.
-
-Select **Refresh playable** before a second test.
-
-Use Ads Manager only for an authorized draft. Do not publish a campaign or change its spend without permission.
-
 ## Test on a device
 
 Use the device or placement preview in Ads Manager. Test portrait layout, touch, audio, hide, resume, performance, and CTA access.
@@ -138,13 +128,29 @@ Title: Meta Ads Manager — mobile placement preview
 Capture: The mobile or placement preview with the playable running.
 -->
 
+## Ask an agent to test
+
+Copy this prompt and replace the artifact path:
+
+```text
+Validate my Meta playable ad at <absolute path to dist/Meta/playable.zip>.
+
+1. Open Meta Playable Preview and upload the ZIP.
+2. Start and complete the playable, then press the install CTA.
+3. Record every package, CSP, file-load, console, and CTA result.
+4. Select Refresh playable and repeat the test once.
+5. Test portrait layout, touch, audio, hide/resume behavior, and performance.
+
+Return the tested file path and hash, screenshots, the complete result panel, console errors, and CTA result. If a Meta draft is available, test its preview and include those results.
+```
+
 ## Troubleshooting
 
 | Error | Action |
 | --- | --- |
 | Upload control is absent | Check the objective, registered app, permissions, and placements. |
 | ZIP rejected | Check the 5 MB limit. Check that `index.html` is at the ZIP root. |
-| CSP blocks a data URL | Rebuild the Meta profile. The profile uses Blob URLs for embedded game files. |
+| CSP blocks a game file | Build the Meta target again and upload the new ZIP without editing it. |
 | Redirect rejected | Call `NeedlePlayableAd.open()`. Do not use `window.open()` or `location`. |
 | CTA does not work locally | Use Meta Playable Preview. The preview supplies `FbPlayableAd`. |
 

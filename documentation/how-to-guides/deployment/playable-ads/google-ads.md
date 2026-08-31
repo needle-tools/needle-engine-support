@@ -8,7 +8,7 @@ description: Build, test, and upload a playable to a Google Ads App campaign.
 Google Ads calls this file an **HTML5/Playable asset**. App campaigns use a ZIP file.
 
 ::: info Generated output
-Needle creates `dist/GoogleAds/playable.zip`. The ZIP includes orientation data and the Google Exit API integration.
+Upload `dist/GoogleAds/playable.zip`. It contains the selected orientation settings and opens the campaign's store destination from your CTA.
 :::
 
 ## Requirements
@@ -35,7 +35,7 @@ playableAds: {
 
 Set `orientation` to `portrait`, `landscape`, or `portrait,landscape`.
 
-See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for the complete Vite configuration.
+See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads/) for the complete Vite configuration.
 
 ## 2. Build the ZIP file
 
@@ -55,7 +55,7 @@ Google applies these limits:
 - Local storage: not permitted
 
 ::: info Exit API
-Needle includes Google's hosted `exitapi.js`. `NeedlePlayableAd.open()` calls `ExitApi.exit()`.
+Call `NeedlePlayableAd.open()` from the CTA. In Google Ads, this opens the store destination configured in the campaign.
 :::
 
 Google reads the final store URL from the campaign.
@@ -111,13 +111,21 @@ Use a temporary HTTPS address for an additional iOS and Android test. This test 
 
 The browser test does not test the Google Ads host API.
 
-## Test with an agent
+## Ask an agent to test
 
-Use the public HTML5 Validator. Record its complete report.
+Copy this prompt and replace the artifact path:
 
-The upload control opens a native file chooser in some browsers. Handle the file chooser before the test continues.
+```text
+Validate my Google Ads playable at <absolute path to dist/GoogleAds/playable.zip>.
 
-Use an authenticated account only for an authorized draft. Do not publish a campaign or change its spend without permission.
+1. Open the public Google HTML5 Validator and select For App Campaigns.
+2. Upload the ZIP, including handling the native file chooser if the browser opens one.
+3. Record the complete validation report, not only the final status.
+4. Test every configured orientation and confirm that the CTA calls NeedlePlayableAd.open().
+5. Report package size, file count, external-file findings, console errors, and all validator warnings or errors.
+
+If a Google Ads draft is available, upload the asset to the draft and report the preview result. Stop after validation.
+```
 
 ## Troubleshooting
 

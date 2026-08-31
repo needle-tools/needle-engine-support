@@ -232,7 +232,7 @@ Networking is integrated into the core runtime. Deploy multiplayer 3D environmen
 - Works seamlessly with XR
 - Quick deployment to Glitch with included server
 
-[Read more about Networking](/docs/how-to-guides/networking/) • [Scripting Guide](/docs/how-to-guides/scripting/)
+[Read more about Networking](/docs/how-to-guides/networking/) • [Scripting Guide](/docs/how-to-guides/scripting/create-components)
 
 ## Editor Integrations
 
@@ -263,12 +263,12 @@ Needle Engine uses a [component-based architecture](/docs/how-to-guides/scriptin
 **Developer Features:**
 - Component-based workflow (like Unity)
 - TypeScript and JavaScript support
-- [Modular npm-based packages](/docs/reference/npm-definition-files)
-- [TypeScript to C# component compiler](/docs/reference/component-compiler) – write TypeScript, get Unity components automatically
+- [Modular npm-based packages](/docs/unity/getting-started#option-2-npmdef-advanced)
+- [TypeScript to C# component compiler](/docs/explanation/core-concepts/component-compiler) – write TypeScript, get Unity components automatically
 - Hot module replacement for fast iteration
 - Full three.js access for advanced use cases
 
-[Read more: Scripting Reference](/docs/how-to-guides/scripting/create-components) • [Npm Definition Files](/docs/reference/npm-definition-files)
+[Read more: Scripting Reference](/docs/how-to-guides/scripting/create-components) • [NPM Definitions](/docs/unity/getting-started#option-2-npmdef-advanced)
 
 ## Additional Features
 

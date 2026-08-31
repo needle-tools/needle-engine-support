@@ -8,7 +8,7 @@ description: Build, test, and upload an AppLovin playable ad.
 AppLovin accepts one self-contained HTML file.
 
 ::: info Generated output
-Needle creates `dist/AppLovin/index.html`. The file includes MRAID 2.0 support and all game resources.
+Upload `dist/AppLovin/index.html` directly to AppLovin. Do not ZIP it.
 :::
 
 ## Requirements
@@ -36,7 +36,7 @@ playableAds: {
 }
 ```
 
-See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for the complete Vite configuration.
+See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads/) for the complete Vite configuration.
 
 ## 2. Build the file
 
@@ -101,17 +101,22 @@ Install AppLovin Playable Preview for [iOS](https://apps.apple.com/us/app/playab
 
 Test touch, audio, pause, resume, orientation, and the CTA.
 
-## Test with an agent
+## Ask an agent to test
 
-```sh
-agent-browser --session applovin open "https://p.applov.in/playablePreview?create=1"
-agent-browser --session applovin snapshot -i -C
-agent-browser --session applovin upload @eN /absolute/path/to/dist/AppLovin/index.html
-agent-browser --session applovin wait 3000
-agent-browser --session applovin errors
+Copy this prompt and replace the artifact path:
+
+```text
+Validate my AppLovin playable at <absolute path to dist/AppLovin/index.html>.
+
+1. Open AppLovin Playable Preview and upload the HTML file.
+2. Record the complete validation result.
+3. Start and complete the playable. Confirm that the first interaction starts the game and does not open the store.
+4. Test the install CTA separately.
+5. Test portrait and landscape, then reload and repeat the first interaction.
+6. Inspect the playable frame for console errors and external game requests.
+
+Return the tested file path and hash, screenshots of both orientations, every validator warning or error, console errors, external requests, and the CTA result.
 ```
-
-Use the upload element from the latest snapshot. Inspect the playable frame for game requests.
 
 ## Troubleshooting
 

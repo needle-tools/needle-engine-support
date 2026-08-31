@@ -8,7 +8,7 @@ description: Build, test, and upload a Unity Ads playable.
 Unity Ads accepts one inline `index.html` file. The file must be smaller than 5 MB.
 
 ::: info Generated output
-Needle creates `dist/UnityAds/index.html`. The file includes MRAID 3.0 and the configured store URL.
+Upload `dist/UnityAds/index.html` directly to Unity Ads. Do not ZIP it.
 :::
 
 ## Requirements
@@ -37,7 +37,7 @@ playableAds: {
 }
 ```
 
-Add at least one store URL. See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for the complete Vite configuration.
+Add at least one store URL. See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads/) for the complete Vite configuration.
 
 ## 2. Build the file
 
@@ -88,11 +88,20 @@ Title: Unity creative pack — device test QR code
 Capture: The QR code panel and creative-pack name. Hide account data.
 -->
 
-## Test with an agent
+## Ask an agent to test
 
-Upload the HTML to an authorized draft. Record the complete validation report. Keep the campaign inactive.
+Copy this prompt and replace the artifact path:
 
-Use the Unity preview to test MRAID and the store action.
+```text
+Validate my Unity Ads playable at <absolute path to dist/UnityAds/index.html>.
+
+1. Confirm that the file is below 5 MB and is not inside a ZIP.
+2. If a Unity Ads draft is available, upload the HTML and record the complete validation report.
+3. Use the Unity preview to test portrait and landscape, audio after first interaction, pause/resume, MRAID behavior, and the store CTA.
+4. Record console errors, validator warnings, and the destination opened by the CTA.
+
+Return the tested file path and hash, screenshots, validation report, console errors, and CTA result.
+```
 
 ## Troubleshooting
 

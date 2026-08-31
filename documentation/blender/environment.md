@@ -36,7 +36,7 @@ You can use any `.exr` or `.hdr` file — including large, high-resolution envir
 
 ## Automatic Compression (FastHDR)
 
-You don't need to worry about environment map file sizes. When you **build your project** or **deploy to Needle Cloud**, Needle Engine automatically converts your environment maps into the [FastHDR](/docs/fasthdr) format. This means:
+You don't need to worry about environment map file sizes. When you **build your project** or **deploy to Needle Cloud**, Needle Engine automatically converts your environment maps into the [FastHDR](/docs/explanation/fasthdr) format. This means:
 
 - **Use any size** — 2K, 4K, or larger HDRIs all work great
 - **Automatic compression** — files get dramatically smaller (e.g. a 21 MB EXR becomes ~7 MB)
@@ -96,7 +96,7 @@ For scenes with multiple rooms or distinct lighting zones, use **reflection prob
 
 ## Next Steps
 
-- **[FastHDR Deep Dive](/docs/fasthdr)** — Learn more about how environment compression works
+- **[FastHDR Deep Dive](/docs/explanation/fasthdr)** — Learn more about how environment compression works
 - **[Lightmapping](/docs/blender/lightmapping)** — Combine environment lighting with baked lightmaps
 - **[Optimization Guide](/docs/how-to-guides/optimization/)** — More ways to optimize your scenes for the web
 

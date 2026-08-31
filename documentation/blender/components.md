@@ -74,7 +74,7 @@ Hover over any property to see its description.
 - `HoverAnimation` - Plays animation on pointer hover enter/exit events
 - `ScrollFollow` - Move objects based on scroll position
 - `EverywhereActions` - Trigger actions on various events (click, hover, collision, etc.)
-- [Learn more about interactivity →](/docs/how-to-guides/scripting/)
+- [Learn more about interactivity →](/docs/how-to-guides/scripting/create-components)
 
 **UI & UX:**
 - `Button` - Interactive buttons
@@ -282,7 +282,7 @@ const camera = GameObject.findObjectOfType(Camera);
 const allEnemies = GameObject.findObjectsOfType(Enemy);
 ```
 
-**[Learn more about finding objects and components →](/docs/how-to-guides/scripting/find-objects-and-components)**
+**[Learn more about object references →](/docs/how-to-guides/scripting/create-components#object-references)**
 
 ---
 

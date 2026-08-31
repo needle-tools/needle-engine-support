@@ -8,7 +8,7 @@ description: Build and test a Needle Engine WeChat/Weixin Mini Game.
 WeChat is also called Weixin in China. This guide uses “WeChat.”
 
 ::: info Supported output
-Needle creates a regular Mini Game project in `dist/WeChat`. The output includes the Needle WeChat platform adapter.
+Import `dist/WeChat` as a Mini Game project in WeChat Developer Tools.
 :::
 
 ::: warning Mini Game Playable
@@ -116,15 +116,21 @@ Title: WeChat/Weixin — device preview
 Capture: The game running on a device after interaction. Hide account data.
 -->
 
-## Test with an agent
+## Ask an agent to test
 
-Use an Electron agent or the WeChat IDE driver. Compile the project and record the console output.
+Copy this prompt and provide access to WeChat Developer Tools:
 
-Interact with the canvas. Capture a rendered frame. A successful compile message does not prove that the game renders.
+```text
+Validate my WeChat Mini Game in dist/WeChat using WeChat Developer Tools.
 
-Do not change the AppID or domain checks without permission. Do not upload a build without permission.
+1. Import the folder that contains game.json and compile it with the configured test AppID.
+2. Record the complete console output and fix nothing without first reporting the error.
+3. Interact with the canvas and capture a rendered frame; a successful compile message alone is not a pass.
+4. Test scene rendering, textures, mouse and touch input, single-pointer behavior, audio after interaction, particles, orientation, hide, and resume.
+5. If device preview is available, generate the preview QR code and report the Developer Tools version and base-library version.
 
-Run the Needle browser integration test before the Developer Tools test. The browser test covers files, rendering, input, lifecycle, audio, and startup.
+Return rendered screenshots, console errors, compile results, input and lifecycle results, and the exact AppID and versions used. Stop after the Developer Tools and device-preview tests.
+```
 
 ## Use a custom platform entry
 

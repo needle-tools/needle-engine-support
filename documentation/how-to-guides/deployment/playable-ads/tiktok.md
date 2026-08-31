@@ -8,7 +8,7 @@ description: Build, test, and upload a TikTok playable ad.
 TikTok accepts a ZIP file. The ZIP root must contain `index.html` and `config.json`.
 
 ::: info Generated output
-Needle creates `dist/TikTok/playable.zip`. The build uses the TikTok Playable SDK instead of MRAID.
+Upload `dist/TikTok/playable.zip`. TikTok supplies its Playable SDK when it runs the ad.
 :::
 
 ## Requirements
@@ -41,7 +41,7 @@ playableAds: {
 | `1` | Portrait only |
 | `2` | Landscape only |
 
-See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) for the complete Vite configuration.
+See [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads/) for the complete Vite configuration.
 
 ## 2. Build the ZIP file
 
@@ -57,7 +57,7 @@ playable.zip
 └── config.json
 ```
 
-TikTok requires the hosted `Playable-sdk.js`. The ZIP contains all other game files.
+TikTok requires its hosted [Playable SDK](https://sf16-muse-va.ibytedtos.com/obj/union-fe-nc-i18n/playable/sdk/playable-sdk.js). The ZIP contains all other game files.
 
 ## 3. Upload the ZIP file
 
@@ -115,13 +115,20 @@ Title: TikTok Ads Manager — mobile QR preview
 Capture: The QR code panel and selected playable. Hide account data.
 -->
 
-## Test with an agent
+## Ask an agent to test
 
-Upload the ZIP to an authorized Creative Library draft. Record all validator messages.
+Copy this prompt and replace the artifact path:
 
-For a local test, extract the ZIP. Then use the [browser test procedure](/docs/how-to-guides/deployment/playable-ads/testing).
+```text
+Validate my TikTok playable at <absolute path to dist/TikTok/playable.zip>.
 
-Do not publish a campaign or change its spend without permission.
+1. Inspect the ZIP and confirm that index.html and config.json are at its root.
+2. Extract it and run the browser test procedure from this documentation. Record rendering, console errors, and network requests.
+3. If a TikTok Creative Library draft is available, upload the ZIP and record every validator message.
+4. Open the preview, complete the game, test the CTA, and check portrait and landscape safe zones.
+
+Return the tested file path and hash, ZIP findings, screenshots, browser errors, network requests, and the complete TikTok validation result.
+```
 
 ## Troubleshooting
 

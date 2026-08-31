@@ -1,9 +1,9 @@
 ---
-title: Test Playable Ads
-description: Test a playable package, runtime, platform host, and device.
+title: Test Playables
+description: Test a playable ad or hosted game package, runtime, platform host, and device.
 ---
 
-# Test Playable Ads
+# Test Playables
 
 Test the generated output at four levels. Use the same file for each applicable test.
 
@@ -45,19 +45,22 @@ Extract a ZIP into a new temporary folder. Do not reuse files from an earlier bu
 A ready message does not prove that the scene renders. Check the canvas pixels.
 :::
 
-### Agent command
+### Ask an agent to run the browser test
 
-```sh
-agent-browser --session playable --allow-file-access open file:///absolute/path/to/index.html
-agent-browser --session playable set viewport 390 844
-agent-browser --session playable errors
-agent-browser --session playable console
-agent-browser --session playable network requests
-agent-browser --session playable screenshot evidence/portrait.png
-agent-browser --session playable close
+Copy this prompt and replace the entry path:
+
+```text
+Browser-test the playable at <absolute path to the HTML entry> in an isolated browser session with local-file access enabled.
+
+1. Test at 390 × 844 and at 844 × 390.
+2. Confirm that a compressed mesh and its texture render; inspect canvas pixels rather than relying only on a ready message.
+3. Start and complete the game. Confirm that the first interaction does not open the store, then test the CTA separately.
+4. Hide and restore the page. Check animation, timers, and audio after pause and resume.
+5. Test muted audio and the WebGL fallback.
+6. Record console errors and network requests from the playable itself.
+
+Return screenshots for both orientations, the tested file path and hash, interaction results, console errors, and network requests. Keep credentials and evidence outside the upload artifact.
 ```
-
-Take a new snapshot after each navigation or dialog. Keep credentials and test evidence outside the upload file.
 
 ## 3. Test in the platform host
 
@@ -72,10 +75,6 @@ Record these items:
 - File hash and test date
 
 The validator page makes its own network requests. Identify the requests that came from the playable frame.
-
-::: info Agent permissions
-An agent can upload an authorized draft and record results. Do not submit, publish, activate, or change spend without permission.
-:::
 
 ## 4. Test on devices
 
@@ -99,22 +98,9 @@ Use the device test that the platform supplies:
 - Meta placement preview
 - Playturbo QR preview
 - WeChat Developer Tools Preview
-
-## Run Needle tests
-
-From the Needle Engine package, run:
-
-```sh
-npm run test:playable
-cd tests/playwright
-npx playwright test tests/plugins/playable-single-html.integration.spec.ts tests/plugins/wechat-platform.integration.spec.ts
-```
-
-These tests build each platform output. They test local loading, textured rendering, host APIs, network requests, and runtime errors.
-
-The WeChat test also runs the generated Mini Game package in the browser host adapter.
-
-Run the platform and device tests after the Needle tests.
+- Discord Developer Activity Shelf
+- YouTube Dev Link on desktop, mobile web, Android, and iOS
+- Facebook Instant Games staged build
 
 ## Troubleshooting
 
@@ -128,5 +114,5 @@ Run the platform and device tests after the Needle tests.
 
 ## Related pages
 
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads)
-- [Playable Ad Build Profiles](/docs/reference/playable-ads)
+- [Build Playable Ads and Hosted Games](/docs/how-to-guides/deployment/playable-ads/)
+- [Playable Build Profiles](/docs/reference/playable-ads)
