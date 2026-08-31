@@ -116,7 +116,10 @@ The baker registers itself as a set of [WebMCP](https://webmachinelearning.githu
 
 > *"Load this model, get it under 10k triangles, show me the wireframe, and download it when it looks right."*
 
-<video-embed src="https://cloud.needle.tools/-/media/Iv9obHDJ2EXU2jcs84PcGg.mp4" />
+<!-- crop: the recording captured the app window's own rounded corners and 1px
+     border, which are baked into the frames — trim them so only the page's
+     corner radius shows. -->
+<video-embed src="https://cloud.needle.tools/-/media/Iv9obHDJ2EXU2jcs84PcGg.mp4" :crop="8" shadow outline />
 
 *ChatGPT calling the baker's WebMCP tools: it loads the model, sets the budget, runs the bake and checks the result — in the same workbench you would have clicked through yourself.*
 
