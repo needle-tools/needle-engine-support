@@ -116,6 +116,10 @@ The baker registers itself as a set of [WebMCP](https://webmachinelearning.githu
 
 > *"Load this model, get it under 10k triangles, show me the wireframe, and download it when it looks right."*
 
+<video-embed src="https://cloud.needle.tools/-/media/Iv9obHDJ2EXU2jcs84PcGg.mp4" />
+
+*ChatGPT calling the baker's WebMCP tools: it loads the model, sets the budget, runs the bake and checks the result — in the same workbench you would have clicked through yourself.*
+
 Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. Screenshots matter here: a triangle count tells an agent that the model got smaller, not whether it still looks right.
 
 **Where it works**
