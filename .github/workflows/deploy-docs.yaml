@@ -42,8 +42,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # choose node.js version to use
-          node-version: '20.15'
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies
@@ -59,6 +58,9 @@ jobs:
         env:
           # @see https://docs.github.com/en/actions/reference/authentication-in-a-workflow#about-the-github_token-secret
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Test generated internal links
+        run: npm run test:links:local
 
       # deploy to FTP
       - name: Deploy to FTP
@@ -144,8 +146,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          # choose node.js version to use
-          node-version: '20.15'
+          node-version-file: '.nvmrc'
           cache: 'npm'
 
       - name: Install dependencies

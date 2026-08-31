@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "24.x"
+  },
   "scripts": {
     "start": "npm run docs:dev",
     "docs:dev": "vuepress dev documentation",
@@ -14,7 +17,8 @@
     "docs:dev-api": "npm run docs:dev-build-api && npx serve api/@needle-tools/engine",
     "docs:build-changelogs": "node tools/build_changelogs.mjs",
     "docs:build-examples": "node tools/build_examples.mjs",
-    "test:links": "node tools/build_check_links.mjs"
+    "test:links": "node tools/build_check_links.mjs",
+    "test:links:local": "node tools/check_internal_links.mjs"
   },
   "author": "",
   "license": "ISC",

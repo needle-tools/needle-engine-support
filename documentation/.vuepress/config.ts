@@ -1,4 +1,4 @@
-import { App, defineUserConfig, LocaleConfig, SiteLocaleConfig } from 'vuepress'
+import { defineUserConfig, LocaleConfig, SiteLocaleConfig } from 'vuepress'
 import { defaultTheme, DefaultThemeOptions, NavbarGroupOptions, NavbarLinkOptions, NavItemOptions } from '@vuepress/theme-default'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { path } from '@vuepress/utils'
@@ -465,36 +465,6 @@ export default defineUserConfig({
             id: "G-V2Q445L3XQ",
             debug: false,
         }),
-        (args, ctx) => {
-            return {
-                name: "kill-broken-pages",
-                onInitialized: async (app) => {
-                    // for (const page of app.pages) {
-                    //     if (!page.filePathRelative) {
-                    //         // This one is allowed – only one that is expected to come from a virtual page
-                    //         if (page.path === "/404.html") continue;
-                    //         console.error("Broken page", page.path);
-                    //     }
-                    // }
-                    const nonBrokenPages = app.pages.filter(x => x.filePathRelative);
-                    const nonBrokenLinks = nonBrokenPages.map(x => x.filePathRelative);
-                    let allLinks = app.pages.flatMap(x => x.links).map(x => x.relative);
-                    allLinks = allLinks.map(x => x.endsWith("/") ? x + "index.md" : x);
-                    const missingLinks = allLinks.filter(x => !nonBrokenLinks.includes(x));
-                    if (missingLinks.length > 0) {
-                        console.error("Missing Links found:", missingLinks); //, allLinks, nonBrokenLinks);
-                    }
-                    /*
-                    console.log("app", app.pages.map(x => {
-                        if (!x.filePathRelative) {
-                            console.error("Broken page", x.path);
-                        }return { path: x.path, data: { ...x, content: undefined, contentRendered: undefined, ...x.routeMeta }, eData: { ...x.data } }}));
-                    */
-                },
-                onPrepared: async (app: App) => {
-                },
-            }
-        },
         shikiPlugin({
             langs: ['ts', 'tsx', 'js', 'jsx', 'svelte', 'json', 'vue', 'md', 'mermaid', 'csharp', 'cs', 'bash', 'html', 'css'],
             themes: { light: 'one-light', dark: 'material-theme' },
