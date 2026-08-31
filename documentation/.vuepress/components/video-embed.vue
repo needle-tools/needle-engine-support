@@ -65,6 +65,14 @@ export default props;
   max-height: v-bind('limit_height || max_height ? max_height : "initial"');
   border-radius: 8px;
   overflow: hidden;
+  /*
+    A <video> gets composited onto its own layer, and a parent's rounded
+    corners do not clip a composited child — the frames paint square and
+    poke out past the radius. Giving the container its own stacking context
+    and layer forces the clip to apply.
+  */
+  isolation: isolate;
+  transform: translateZ(0);
   margin: .75em 0;
 }
 

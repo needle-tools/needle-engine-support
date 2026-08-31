@@ -122,6 +122,8 @@ The baker registers itself as a set of [WebMCP](https://webmachinelearning.githu
 
 Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. Screenshots matter here: a triangle count tells an agent that the model got smaller, not whether it still looks right.
 
+**Generating a model counts as bringing one.** An agent that can make 3D models — the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app, for one — can create an asset from a description and hand it straight to the baker, then optimize and compare it without you leaving the conversation. Generated models tend to arrive dense, so this pairs well: ask for the thing you want, then ask for it under a triangle budget.
+
 **Where it works**
 
 | Browser | Status |
@@ -144,8 +146,6 @@ These are in development and not yet available. If one of them is what your proj
 **Animated and skinned assets.** Today a skinned mesh is baked in the pose it arrives in and the result is static. Keeping rigs and animations through the bake is something we are working on.
 
 **Gaussian splat baking.** Bring a `.ply` splat capture and turn it into a regular textured mesh — one that loads and renders like any other glTF asset, with no special runtime needed.
-
-**3D model generation.** Create a model from scratch inside the baker — free, and running on your own machine like everything else here — then take it through the same optimization and comparison workflow as anything you bring yourself.
 
 **Quad remeshing.** A clean quad topology for the workflows that need one, rather than the triangles a real-time renderer is happy with.
 
