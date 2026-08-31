@@ -1,6 +1,6 @@
 ---
-title: Needle Mesh Baker — Optimize 3D Models in the Browser
-description: Reduce a model's triangle count and bake its appearance into textures — 800,000 triangles down to 6,000, and it still looks the same. Runs in your browser; nothing is uploaded.
+title: Needle Mesh Baker — Generate & Optimize 3D Models in the Browser
+description: Generate a 3D model from text or an image, then cut it from 800,000 triangles to 6,000 with the detail baked into textures. Runs on your own GPU in the browser; nothing is uploaded.
 image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 ---
 
@@ -11,10 +11,11 @@ The **Needle Mesh Baker** reduces a model's triangle count and bakes its appeara
 - **Built to render fast** — far fewer triangles, far fewer draw calls, a smaller download
 - **Keeps the look** — the silhouette is held onto while triangles come off, and color, normals, roughness and metallic are baked into the textures
 - **Quick to bake** — it runs on your own GPU, so even a model with millions of triangles takes seconds. No upload to sit through, no queue to wait in
+- **No model? Generate one** — describe what you want, or drop in a single image, and the baker builds a 3D model from it, then optimizes it in the same place. That runs on your own GPU too
 - **100% local** — your model never leaves your machine ([really](#is-my-model-uploaded-to-needle))
 - **Yours to download** — the finished mesh comes back as a plain `.glb`
 
-Drop in a model, set a triangle budget, and compare the result against the source before you download it.
+Drop in a model — or generate one — set a triangle budget, and compare the result against the source before you download it.
 
 **[Open the Needle Mesh Baker →](https://mesh-baker.needle.tools)**
 
@@ -125,7 +126,7 @@ The baker registers itself as a set of [WebMCP](https://webmachinelearning.githu
 
 Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. Screenshots matter here: a triangle count tells an agent that the model got smaller, not whether it still looks right.
 
-**Generating a model counts as bringing one.** An agent that can make 3D models — the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app, for one — can create an asset from a description and hand it straight to the baker, then optimize and compare it without you leaving the conversation. Generated models tend to arrive dense, so this pairs well: ask for the thing you want, then ask for it under a triangle budget.
+**Generation is a tool too.** An agent can ask the baker to build a model from a description or an image and then optimize it, all in one conversation — or hand over a model it made itself, like the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app does. Either way the generated mesh arrives dense, which is exactly what the rest of the workbench is for: ask for the thing you want, then ask for it under a triangle budget.
 
 **Where it works**
 

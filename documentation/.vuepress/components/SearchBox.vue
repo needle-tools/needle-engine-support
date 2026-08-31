@@ -788,7 +788,12 @@ onBeforeUnmount(() => {
   // search ends in a tall empty panel.
   align-items: flex-start;
 
-  padding: calc(var(--navbar-height, 3.6rem) + 1rem) 1rem 1rem;
+  /*
+    The navbar is a floating pill, not a flush bar: index.scss gives it
+    margin-top: 13px, so it ends ~13px below where --navbar-height alone would
+    put it. Reserve that too, or the modal tucks under the pill.
+  */
+  padding: calc(var(--navbar-height, 3.6rem) + 13px + 0.75rem) 1rem 1rem;
 
   background: var(--overlay-bg, rgb(16 16 16 / 50%));
   backdrop-filter: blur(2px);
@@ -1223,7 +1228,8 @@ onBeforeUnmount(() => {
     too, and the close button in the form is the third way out.
   */
   .needle-search-overlay {
-    padding: calc(var(--navbar-height, 3.6rem) + 0.5rem) 0.5rem 0.5rem;
+    // Same clearance as above, narrower sides.
+    padding: calc(var(--navbar-height, 3.6rem) + 13px + 0.75rem) 0.5rem 0.5rem;
   }
 
   .needle-search-modal {
