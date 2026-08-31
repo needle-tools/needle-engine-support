@@ -38,6 +38,19 @@ Loading, baking, previewing and comparing all happen locally, on your machine. N
 
 A reduced mesh with the appearance of the original baked onto it. Use it on sculpts, photogrammetry scans, CAD exports, AI-generated models, LODs and background props — anything carrying more triangles or materials than it needs.
 
+<image-slides
+  ratio="1920/1020"
+  :images="[
+    { src: '/docs/mesh-baker/bear.webp', alt: 'A 1,900,000 triangle sculpted bear beside its 6,000 triangle baked result in the Needle Mesh Baker, wireframe shown on the result', caption: 'A sculpt: 1,900,000 triangles down to 6,000, a 99.7% reduction.' },
+    { src: '/docs/mesh-baker/vase.webp', alt: 'A 540,000 triangle ornamented vase beside its 640 triangle baked result in the Needle Mesh Baker, wireframe shown on the result', caption: 'Relief detail on a vase: 540,000 triangles down to 640, a 99.9% reduction.' },
+    { src: '/docs/mesh-baker/warrior.webp', alt: 'A 1,900,000 triangle character with two swords beside its 10,000 triangle baked result in the Needle Mesh Baker, wireframe shown on the result', caption: 'A character: 1,900,000 triangles down to 10,000, a 99.5% reduction.' },
+    { src: '/docs/mesh-baker/goblin.webp', alt: 'An 850,000 triangle goblin figurine beside its 2,500 triangle baked result in the Needle Mesh Baker, wireframe shown on the result', caption: 'A figurine: 850,000 triangles down to 2,500, a 99.7% reduction.' },
+    { src: '/docs/mesh-baker/backpack.webp', alt: 'A 700,000 triangle leather backpack beside its 4,400 triangle baked result in the Needle Mesh Baker', caption: 'A scanned prop: 700,000 triangles down to 4,400, a 99.4% reduction.' },
+    { src: '/docs/mesh-baker/nefertiti.webp', alt: 'A 3,200,000 triangle photogrammetry bust of Nefertiti beside its 2,400 triangle baked result in the Needle Mesh Baker', caption: 'A photogrammetry scan: 3,200,000 triangles down to 2,400, a 99.9% reduction.' },
+    { src: '/docs/mesh-baker/knight.webp', alt: 'A 1,000,000 triangle golden knight statue beside its 5,800 triangle baked result in the Needle Mesh Baker', caption: 'A polished metal statue: 1,000,000 triangles down to 5,800, a 99.4% reduction.' }
+  ]"
+/>
+
 - **Far fewer draw calls** — however many meshes and materials went in, usually one mesh with one material comes out. Surfaces that have to be drawn differently, such as transparent ones, stay separate. On scenes built from many small parts this is often the bigger win, not the triangle count
 - **Set a triangle budget**, or ask instead for a maximum deviation from the original surface and let the baker find the triangle count
 - **Two ways to simplify** — rebuild the surface from scratch, which cleans up messy or broken source models, or reduce the model's own triangles and keep the structure it was authored with
