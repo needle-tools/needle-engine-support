@@ -33,10 +33,10 @@ When the page publishes its own tools, the agent gets intent instead of pixels. 
 
 WebMCP is new, and the honest answer is that the client side is ahead of nothing and behind a lot. Two pieces have to line up: a browser that implements WebMCP, and an agent that actually calls the tools it finds.
 
-- **Browser** — Chromium-based browsers. Chrome ships it behind an [origin trial](https://developer.chrome.com/origintrials) from version 149, and you can turn it on locally for any site with the `chrome://flags/#enable-webmcp-testing` flag.
-- **Agent** — this is the limiting factor today. Gemini in Chrome and Chrome's [Model Context Tool Inspector extension](https://developer.chrome.com/docs/ai/webmcp) can call page tools. Agentic browsers and assistants like ChatGPT, Atlas, Claude and Perplexity still drive pages by clicking and scraping, so they will not pick these tools up yet.
+- **Browser** — Chromium-based browsers. Edge 147+ and ChatGPT Atlas expose it directly. Chrome implements it from version 149 but only reveals it to a site carrying an [origin trial](https://developer.chrome.com/origintrials) token — a site that ships one works for ordinary visitors with no flag, which is how the [Needle Mesh Baker](/docs/products/needle-mesh-baker) does it. For a site that does not, `chrome://flags/#enable-webmcp-testing` turns it on locally.
+- **Agent** — the narrower of the two. The <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app calls page tools, as do Gemini in Chrome and Chrome's [Model Context Tool Inspector extension](https://developer.chrome.com/docs/ai/webmcp). Assistants that still drive pages by clicking and scraping will not pick them up.
 
-The standard is deliberately model-agnostic, so support is expected to broaden. Needle apps expose their tools now, which means they work the moment your agent of choice learns to use them.
+The standard is deliberately model-agnostic, so support keeps broadening. Needle apps expose their tools now, which means they work the moment your agent of choice learns to use them.
 
 ::: tip Not seeing any tools?
 Almost always one of the two above: the browser has WebMCP switched off, or the agent you are using does not call WebMCP tools yet. [Chrome's WebMCP guide](https://developer.chrome.com/docs/ai/webmcp) tracks the current state.

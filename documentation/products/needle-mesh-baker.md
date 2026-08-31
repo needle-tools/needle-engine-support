@@ -130,8 +130,10 @@ Agents can load a model from a URL or from your Needle Cloud library, change any
 |---|---|
 | ChatGPT Atlas | Works out of the box |
 | Microsoft Edge 147+ | Works out of the box |
-| Chrome 149+ | Behind `chrome://flags/#enable-webmcp-testing` |
+| Chrome 149+ | Works out of the box |
 | Firefox, Safari | Not yet |
+
+WebMCP is still being standardized, so Chrome only exposes it to sites carrying an origin-trial token. The baker ships one, which is why it works there without you turning on a flag.
 
 Since it is the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app's own browser doing the calling, this works directly — no server to run, no configuration, no separate MCP setup. On browsers without WebMCP nothing is registered and nothing is downloaded, so there is no cost to it being there.
 

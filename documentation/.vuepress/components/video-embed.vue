@@ -88,6 +88,13 @@ video,
   max-height: v-bind('limit_height ? max_height : "100%"');
   aspect-ratio: v-bind('videoAspectRatio');
   border-radius: 8px;
+  /*
+    border-radius alone does not round a <video>: the frames are painted on a
+    composited layer that neither its own radius nor the parent's overflow
+    clips. clip-path is applied by the compositor itself, so it is the one that
+    actually cuts the corners off the picture.
+  */
+  clip-path: inset(0 round 8px);
 }
 
 #ytplayer {
