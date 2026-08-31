@@ -127,5 +127,5 @@ Regular Mini Games and production Mini Game Playables use different release proc
 
 ## Related pages
 
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads)
+- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads.html)
 - [Playable Ad Build Profiles](/docs/reference/playable-ads)

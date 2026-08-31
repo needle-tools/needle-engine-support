@@ -77,7 +77,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 
 - [Deployment Platforms](/docs/how-to-guides/deployment/) - Netlify, Vercel, GitHub Pages, etc.
 - [Needle Cloud](/docs/cloud/) - Official Needle hosting
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) - AppLovin, Unity Ads, TikTok, Google Ads, WeChat/Weixin, Meta, and Mintegral platform guides
+- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads.html) - AppLovin, Unity Ads, TikTok, Google Ads, WeChat/Weixin, Meta, and Mintegral platform guides
 
 ---
 
@@ -116,7 +116,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 - <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="/docs/how-to-guides/integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header> - Integrate with AEM
 - <logo-header logo="/imgs/adobe-portfolio-logo.svg" alt="Adobe Portfolio"><a href="/docs/how-to-guides/integrations/adobe-portfolio">Adobe Portfolio</a></logo-header> - Embed 3D content in Adobe Portfolio sites
 - <logo-header logo="/imgs/8thwall-logo.png" alt="8th Wall"><a href="/docs/tutorials/for-8thwall-users">8th Wall Migration</a></logo-header> - Transition from 8th Wall to Needle Engine
-- [Ad Networks](/docs/how-to-guides/deployment/playable-ads) - Playable ads for AppLovin, Unity Ads, TikTok, Google Ads, WeChat/Weixin, Meta and Mintegral
+- [Ad Networks](/docs/how-to-guides/deployment/playable-ads.html) - Playable ads for AppLovin, Unity Ads, TikTok, Google Ads, WeChat/Weixin, Meta and Mintegral
 
 ---
 

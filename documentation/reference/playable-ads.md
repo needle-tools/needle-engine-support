@@ -223,6 +223,6 @@ Import `createWechatPlatformContext()` from `@needle-tools/engine/playable/wecha
 
 ## Related
 
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads)
+- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads.html)
 - [Test Playable Ads](/docs/how-to-guides/deployment/playable-ads/testing)
 - [How Playable Ads Work](/docs/explanation/playable-ads)

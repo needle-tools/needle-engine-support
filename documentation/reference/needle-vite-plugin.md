@@ -252,7 +252,7 @@ When enabled, downloaded assets are placed in an `ext/` directory inside your bu
 
 Playable packaging is documented separately to keep this general Vite-plugin reference focused.
 
-- [Build and upload playable ads](/docs/how-to-guides/deployment/playable-ads)
+- [Build and upload playable ads](/docs/how-to-guides/deployment/playable-ads.html)
 - [Playable profile and option reference](/docs/reference/playable-ads)
 - [Test playable artifacts](/docs/how-to-guides/deployment/playable-ads/testing)
 
@@ -280,6 +280,6 @@ The plugin also injects build metadata (`NEEDLE_ENGINE_VERSION`, `NEEDLE_ENGINE_
 - [Progressive Web Apps (PWA)](/docs/how-to-guides/web-integration/pwa) — Offline support and installability
 - [Optimization & Compression](/docs/how-to-guides/optimization/) — Build pipeline, KTX2, Draco
 - [Deployment Platforms](/docs/how-to-guides/deployment/) — Hosting and deployment options
-- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads) — Multi-profile builds and ad-network upload workflows
+- [Build Playable Ads](/docs/how-to-guides/deployment/playable-ads.html) — Multi-profile builds and ad-network upload workflows
 - [How Playable Ads Work](/docs/explanation/playable-ads) — Mediation, MRAID, platform SDKs, measurement, experiments, and packaging constraints
 - [needle.config.json](/docs/reference/needle-config-json) — Project configuration file
