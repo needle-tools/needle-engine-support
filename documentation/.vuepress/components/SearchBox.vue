@@ -549,6 +549,14 @@ onBeforeUnmount(() => {
                 <button type="submit" class="needle-search-submit" :disabled="!query.trim() || loading">
                   {{ loading ? 'Searching…' : 'Search' }}
                 </button>
+                <!-- Escape and the backdrop both close this, but neither is
+                     discoverable on a touch device. -->
+                <button
+                  type="button"
+                  class="needle-search-close needle-search-icon"
+                  aria-label="Close search"
+                  @click="closeSearch"
+                >close</button>
               </form>
 
               <div ref="list" class="needle-search-body">
@@ -726,7 +734,17 @@ onBeforeUnmount(() => {
   }
 
   .needle-search-button {
-    padding: 0 0.45rem;
+    // A lone icon in a bordered pill reads as a button in a way its neighbour
+    // (the colour-mode toggle) does not. Without the label there is nothing to
+    // frame, so drop the frame and let the icon sit like the icon next to it.
+    padding: 0 0.35rem;
+    border-color: transparent;
+    background: transparent;
+
+    &:hover {
+      border-color: transparent;
+      background: var(--vp-c-control);
+    }
   }
 }
 
@@ -751,6 +769,12 @@ onBeforeUnmount(() => {
 .needle-search-overlay {
   position: fixed;
   inset: 0;
+  /*
+    Deliberately BELOW the navbar, which PageNav raises to 2000 under 1024px.
+    The navbar holds the button that toggles this shut, so covering it leaves
+    no way out of the modal on a touch device. Everything here stays clear of
+    the navbar instead — see the padding below.
+  */
   z-index: 200;
 
   // The modal's `max-height: 100%` resolves against this element's content box.
@@ -859,6 +883,31 @@ onBeforeUnmount(() => {
   &:disabled {
     opacity: 0.5;
     cursor: default;
+  }
+}
+
+.needle-search-close {
+  flex: none;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 50%;
+
+  background: transparent;
+  color: var(--vp-c-text-subtle);
+  font-size: 1.25rem;
+
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+
+  &:hover {
+    background: var(--vp-c-control);
+    color: var(--vp-c-text);
   }
 }
 
@@ -1168,15 +1217,17 @@ onBeforeUnmount(() => {
 }
 
 @media screen and (max-width: 719px) {
+  /*
+    Full-bleed sides, but the navbar stays uncovered and tappable — it holds
+    the toggle that closes this. The exposed backdrop below the modal closes it
+    too, and the close button in the form is the third way out.
+  */
   .needle-search-overlay {
-    padding: 0;
+    padding: calc(var(--navbar-height, 3.6rem) + 0.5rem) 0.5rem 0.5rem;
   }
 
   .needle-search-modal {
     max-width: none;
-    height: 100%;
-    border: none;
-    border-radius: 0;
   }
 
   .needle-search-keys {
