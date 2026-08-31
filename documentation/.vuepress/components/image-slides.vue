@@ -45,6 +45,14 @@ export default {
        * logical slide the reader is on is `active`.
        */
       physical: 0,
+      /*
+        False until mounted in a browser. Autoplay MUST NOT start before that:
+        the watcher below runs immediately, which during server-side rendering
+        means setInterval on the build machine, with no unmount to clear it —
+        VuePress then finishes rendering, prints success, and the node process
+        hangs forever on a live timer instead of exiting.
+      */
+      ready: false,
       // Set while the reader is driving; cleared `resumeDelay` after the last
       // manual move, so autoplay picks up again on its own.
       manuallyPaused: false,
@@ -77,6 +85,7 @@ export default {
     },
     autoplayRunning() {
       return (
+        this.ready &&
         this.autoplay &&
         this.slides.length > 1 &&
         !this.manuallyPaused &&
@@ -110,6 +119,9 @@ export default {
 
     this._onScroll = () => this.syncFromScroll()
     this.$refs.track?.addEventListener('scroll', this._onScroll, { passive: true })
+
+    // Last: releases autoplay now that there is a browser to run it in.
+    this.ready = true
   },
   beforeUnmount() {
     this.stopTimer()
@@ -123,6 +135,9 @@ export default {
   methods: {
     startTimer() {
       this.stopTimer()
+      // Belt and braces alongside `ready`: a timer on the server would keep the
+      // build's node process alive after rendering has finished.
+      if (typeof window === 'undefined') return
       this._timer = setInterval(() => this.advance(), this.interval)
     },
     stopTimer() {
