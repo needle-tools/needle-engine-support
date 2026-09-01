@@ -172,7 +172,7 @@ Everything up to the download is free. You can bring as many models as you like,
 
 ### What it costs
 
-**A one-time purchase with lifetime access.** No subscription, no seats to renew — it stays yours. The current price, and any running discount, is shown in the purchase dialog.
+**A one-time purchase with lifetime access.** No subscription, no seats to renew, no limit on how many models you bake — it stays yours. The current price, and any running discount, is shown in the purchase dialog.
 
 Already have **[Needle Engine Pro](https://needle.tools/pricing)**? The Mesh Baker is included. Sign in and it unlocks.
 
@@ -226,6 +226,12 @@ Anywhere. The output is industry-standard glTF with PBR materials, so it opens i
 
 The baked textures come out uncompressed, so they stay sharp for whatever you do next. Run them through your usual texture compression on the way into your project — a Needle Engine production build does this for you and converts them to GPU-compressed KTX2 automatically. See [Optimization & Compression](/docs/how-to-guides/optimization/).
 
+### Do I own the results? Can I use them commercially?
+
+**Yes.** Your source model stays yours, and the result is yours too — both baked models and generated ones. Use them commercially, ship them in a product, sell them, or redistribute them. There are no royalties, no revenue share, and no attribution requirement. Needle takes no rights to your models or your results.
+
+Baking does not change who owns the source. A model that you bought from a marketplace, or that another artist made, keeps the license it came with. Generation does not create rights either. If you have no right to the image you used, or to the character you asked for, you have no right to the model that comes out. You are responsible for what you put into the baker and for what you do with the result. See the [EULA](https://needle.tools/eula).
+
 ### How does this relate to progressive loading?
 
 They solve different halves of the problem, and they compose. The baker decides **how detailed the asset is at all** — bring the source down to the highest quality you would ever want on screen. [Progressive loading](/docs/how-to-guides/optimization/progressive-loading-and-lods) then decides **how much of that arrives when**, streaming the detail in as it is needed.
@@ -243,6 +249,12 @@ Start with how the model is simplified. Rebuilding the surface is the better def
 ### Can I run it in my own pipeline or CI?
 
 Yes — a command-line version exists for exactly that, so baking can run as a build step or over a whole folder of models. It is licensed separately: write to [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
+
+### Is there a limit on how many models I can bake?
+
+**No.** The browser version has no limit — not per month, and not in total. Load as many models as you want and bake them as often as you want. Everything runs on your machine, so there is nothing for us to count.
+
+This applies to you, using the baker in the browser. It does not apply to automated baking: a build step, a folder of models processed in one run, or a service that bakes models for other people. For those, use the [command-line version](#batch-and-ci-use). It needs a separate license.
 
 ### Is it a subscription?
 
