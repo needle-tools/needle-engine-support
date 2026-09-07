@@ -20,6 +20,8 @@ description: 'Needle Cloud is an online service. It helps you store, manage, and
 **Deploy Apps:** [From Unity](#deploy-from-unity) • [From Blender](#deploy-from-blender) • [From CLI](#deploy-from-the-cli)
 
 **Manage Assets:** [Upload 3D Assets](#cloud-assets) • [Supported Formats](#supported-3d-formats)
+
+**Ask AI:** [Needle Cloud AI](#needle-cloud-ai)
 :::
 
 ![Needle Cloud Overview](/cloud/cloud-overview-page.webp)
@@ -389,6 +391,14 @@ npx needle-cloud upload path/to/folder --recursive
 
 [📦 Full CLI documentation](https://www.npmjs.com/package/needle-cloud)
 
+## Needle Cloud AI
+
+[Needle Cloud AI](https://cloud.needle.tools/team#ai) answers questions about Needle Engine using the Needle documentation and community knowledge base. Chats are private to your team.
+
+The Unity and Blender integrations automatically register your web project with the local [Needle MCP Server](/docs/ai/needle-mcp-server#built-in-tools), provided by the `needle-cloud` CLI. Needle Cloud AI can then find your project files and logs without you entering a project path or attaching files. Ask it to explain your code, search project files, or read logs to help debug an issue. You can enable or disable local project access in a chat.
+
+See [AI & Needle Engine](/docs/ai/) for more ways to use AI with your projects.
+
 ## needle-cloud CLI
 
 The `needle-cloud` CLI lets you work with Needle Cloud from the terminal — ideal for automation and CI/CD. Deploying apps and uploading assets are covered above ([Deploy from the CLI](#deploy-from-the-cli), [CLI for Batch Processing](#cli-for-batch-processing)). It can also generate materials with AI.
@@ -472,6 +482,7 @@ As your project scales and you add more team members, you can assign them roles 
 | **Manager** | The manager role can manage the whole team (including billing and member roles), see all projects, uploads and deployments |
 | **Billing** | The billing role is specialized for financial operations, can oversee the team's billing information, review and manage project cost and handle payment options. <br/>The billing role has view-only access to deployments and assets and can not perform deployments or upload assets. <br/>The billing role can be assigned at no extra cost. The role is limited to one member per team. |
 | **Member** | The member role (developer role) can create deployments, upload/download assets for optimization or use AI features. |
+| **Guest** | Read-only access to team projects, deployments and assets, including downloads. Guests cannot upload assets or create deployments and do not require a paid license seat. |
 
 ## FAQ
 
