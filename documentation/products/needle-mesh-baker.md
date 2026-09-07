@@ -1,6 +1,6 @@
 ---
 title: Needle Mesh Baker — Generate & Optimize 3D Models in the Browser
-description: Generate a 3D model from text or an image, then cut it from 800,000 triangles to 6,000 with the detail baked into textures. Runs on your own GPU in the browser; nothing is uploaded.
+description: Generate 3D models from text or images and reduce triangle counts with detail baked into textures. Process models locally on your GPU in the browser.
 image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 ---
 
@@ -8,11 +8,12 @@ image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 
 The **Needle Mesh Baker** reduces a model's triangle count and bakes its appearance into textures. The result is usually a single mesh with a single material, and it still looks like the original.
 
-- **Built to render fast** — far fewer triangles, far fewer draw calls, a smaller download
-- **Keeps the look** — the silhouette is held onto while triangles come off, and color, normals, roughness and metallic are baked into the textures
-- **Quick to bake** — it runs on your own GPU, so even a model with millions of triangles takes seconds. No upload to sit through, no queue to wait in
+- **Built to render fast** — fewer triangles and draw calls, with potentially smaller files
+- **Keeps the look** — reduce the triangle count while preserving the silhouette and baking color, normals, roughness and metallic into textures
+- **Bake on your GPU** — process complex models without an upload or processing queue. Bake times depend on your hardware and settings
 - **No model? Generate one** — describe what you want, or drop in a single image, and the baker builds a 3D model from it, then optimizes it in the same place. That runs on your own GPU too
-- **100% local** — your model never leaves your machine ([really](#is-my-model-uploaded-to-needle))
+- **[WebMCP ready](#let-an-ai-agent-drive-it)** — use the ChatGPT app to directly control and use the Mesh Baker. Generate an image in ChatGPT, turn it into a 3D model in the baker, then optimize and compare the result — all in one conversation
+- **Local processing** — models are processed in your browser. Uploading a result to Needle Cloud is optional ([privacy details](#is-my-model-uploaded-to-needle))
 - **Yours to download** — the finished mesh comes back as a plain `.glb`
 
 Drop in a model — or generate one — set a triangle budget, and compare the result against the source before you download it.
@@ -31,8 +32,8 @@ Drop in a model — or generate one — set a triangle budget, and compare the r
 4. Press **Optimize asset**, then compare the result against the source in the two linked viewers
 5. **Download** the result as a `.glb`
 
-:::tip Nothing is uploaded
-Loading, baking, previewing and comparing all happen locally, on your machine. No geometry, no textures and no file names are sent anywhere. See [Is my model uploaded to Needle?](#is-my-model-uploaded-to-needle)
+:::tip Local processing
+Importing local files, baking, previewing and comparing all happen on your machine. Results are only uploaded to Needle Cloud when you choose to upload them. See [Is my model uploaded to Needle?](#is-my-model-uploaded-to-needle)
 :::
 
 ## What it produces
@@ -57,7 +58,7 @@ A reduced mesh with the appearance of the original baked onto it. Use it on scul
 - **Two ways to simplify** — rebuild the surface from scratch, which cleans up messy or broken source models, or reduce the model's own triangles and keep the structure it was authored with
 - **Baked PBR textures** — base color, normal, roughness, metallic, emissive, opacity, and optional ambient occlusion, up to 4K
 - **Live preview** — drag the budget and watch the mesh change, so you can find the right number before running a full bake
-- **Tuning where it matters** — how hard edges are treated, whether small parts are protected from the budget, and how much of the original silhouette to defend
+- **Tuning where it matters** — how hard edges are treated, whether small parts are protected from the budget, and how much of the original silhouette to preserve
 
 <img src="https://cloud.needle.tools/-/media/hTfJmobS6DTDa6WWbe-GRg.gif" alt="Dragging the triangle budget in the Needle Mesh Baker while the wireframe result updates live, 1,328,920 triangles down to 6,830" loading="lazy" />
 
@@ -65,11 +66,11 @@ A reduced mesh with the appearance of the original baked onto it. Use it on scul
 
 ## Why this is not just decimation
 
-A sculpt carries its detail *as geometry* — every scratch, feather and bolt is real triangles. Simply decimating that throws the detail away: the mesh gets lighter and visibly worse, and because the UVs are only shifted around rather than rebuilt, the textures distort with it. That is fine for a 20% reduction. It is not fine for 99%.
+A sculpt can carry fine detail as geometry, from scratches to feathers and bolts. At large reductions, simplification alone can lose that surface detail. Baking preserves much of it in textures on the reduced mesh.
 
-The workflow that does survive it is baking: build a new low-poly mesh, give it new UVs and tangents, then transfer the original's surface into textures on it — the normal map is what puts the scratches and bolts back, as shading rather than geometry. Blender, Houdini, xNormal and Substance can all do this, and getting a correct normal map out of any of them takes care.
+The workflow is to create a web-ready mesh, give it new UVs and tangents, then transfer the original's surface appearance into textures. A normal map recreates fine detail through shading. Larger shapes and the silhouette still depend on the mesh.
 
-The baker does that whole chain in one step, and gets the parts that are easy to get wrong — tangent space, normal orientation — right by default.
+The baker combines simplification, UV creation and texture baking in one step, including tangent-space and normal-map setup.
 
 <img src="https://cloud.needle.tools/-/media/XEutsc3aScR4WdGjPOPlQQ.gif" alt="Dragging the key light around in the Needle Mesh Baker: the 3.1 million triangle source and the 5,914 triangle result catch the light the same way" loading="lazy" />
 
@@ -94,7 +95,7 @@ Optimization is only worth it if you can see what it cost you. The workbench is 
 - **Isolate any channel** — the finished result, the bare mesh, or a single map such as base color, normal or roughness
 - **Wireframe overlay**, so you can see where the triangles actually went
 - **Preview lighting** — light type, environment, tone mapping, floor and shadows, applied identically to both sides
-- **A quality score** — instead of eyeballing it, get the difference between source and result back as a number
+- **A quality score** — measure the difference between source and result alongside your visual comparison
 - **Every baked texture**, shown as it came out
 
 <img src="https://cloud.needle.tools/-/media/YK_W-UvRZGYtoMsMx_NSBw.gif" alt="A 3,200,000 triangle bust of Nefertiti beside its 3,000 triangle baked result in the Needle Mesh Baker's two linked viewers" loading="lazy" />
@@ -141,7 +142,7 @@ WebMCP is still being standardized, so Chrome only exposes it to sites carrying 
 
 Since it is the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app's own browser doing the calling, this works directly — no server to run, no configuration, no separate MCP setup. On browsers without WebMCP nothing is registered and nothing is downloaded, so there is no cost to it being there.
 
-Baking still happens entirely on your machine. An agent drives the same in-browser pipeline you do, and your model is no more uploaded than when you click the buttons yourself — with one exception: uploading a result to your Needle Cloud library sends it, and that only ever happens if you ask for it.
+Baking still happens entirely on your machine. An agent drives the same in-browser pipeline you do. Uploading a result to Needle Cloud requires your request. Information returned to your agent, such as preview screenshots or model data you ask it to retrieve, is handled by that agent and its provider.
 
 ## Coming soon
 
@@ -194,27 +195,27 @@ A **command-line version** is available on request, so baking can run as a build
 
 ### Is my model uploaded to Needle?
 
-**No.** Import, geometry reduction, texture baking and preview all run inside your browser, on your machine. The model file is read locally and the result is written to a local download. It is never sent to Needle or to any other server.
+**Not for baking.** Importing local files, geometry reduction, texture baking and preview all run inside your browser. You can save the result as a local download.
 
-The only network traffic involving model data goes the *other* way: if you sign in and pick an asset from your own Needle Cloud library, that file is downloaded to your browser. Nothing you bake is sent back.
+Loading an asset from Needle Cloud downloads it to your browser. Choosing to upload a result sends the model and its file name to your Needle Cloud library. This is optional and is not required to bake or download locally.
 
 ### Do you collect mesh names, material names or file names?
 
-**No.** Object, mesh, material, texture and file names are never collected — nor is any geometry, any texture, or any part of your file's contents.
+Usage events do not include object, mesh, material, texture or file names, or geometry and texture data. If you choose to upload a result to Needle Cloud, the upload includes the model and its file name.
 
-The baker does send usage statistics, kept deliberately coarse: enough to see what kind of models people bring and which settings get used, not enough to identify a model. While you are signed in they are linked to your Needle account, the same way the rest of your account activity is.
+The baker sends coarse usage statistics to understand which model sizes, features and settings people use. While you are signed in they are linked to your Needle account, the same way the rest of your account activity is.
 
 - Size, triangle and vertex counts as ranges (*5–10MB*, *200k–1M*), never exact numbers
-- How many meshes and materials a model has
+- Mesh and material counts, grouped into ranges
 - Whether things like normals, UVs, vertex colors or skinning are present
 - The file type, and the settings you picked
 - Milestones — model loaded, bake started, bake finished, result downloaded
 
-Failures also report a shortened error message so we can fix what broke.
+Failures also report a shortened error message so we can fix what broke. Error messages can contain names or paths supplied by a loader or browser; shortening a message does not remove that information.
 
 ### Do I need an account to try it?
 
-No. You only need an account when you want to **download** a result, or to browse your Needle Cloud assets. Everything else works signed out.
+No. Loading local files, baking and comparing results work signed out. You need an account to **download** a result, browse your Needle Cloud assets or upload a result to Needle Cloud.
 
 ### Does it work offline?
 
@@ -244,7 +245,7 @@ Not yet. A skinned mesh is baked in the pose it arrives in, and the output is st
 
 ### My model looks wrong after baking. What should I change?
 
-Start with how the model is simplified. Rebuilding the surface is the better default for scans, CAD and models with broken geometry, but it can round off sharp edges — for something clean and deliberately modelled, reduce its own triangles instead. If small parts vanish, protect them from the budget. If hard edges soften, tell the baker to defend them. And look at the result with the wireframe and the channel views before blaming the triangle budget: a texture problem can look a lot like a geometry problem.
+Start with how the model is simplified. Rebuilding the surface is the better default for scans, CAD and models with broken geometry, but it can round off sharp edges — for something clean and deliberately modelled, reduce its own triangles instead. If small parts vanish, protect them from the budget. If hard edges soften, adjust the settings to preserve them. And look at the result with the wireframe and the channel views before changing the triangle budget: a texture problem can look a lot like a geometry problem.
 
 ### Can I run it in my own pipeline or CI?
 
@@ -252,9 +253,9 @@ Yes — a command-line version exists for exactly that, so baking can run as a b
 
 ### Is there a limit on how many models I can bake?
 
-**No.** The browser version has no limit — not per month, and not in total. Load as many models as you want and bake them as often as you want. Everything runs on your machine, so there is nothing for us to count.
+**No.** The browser version has no limit — not per month, and not in total. Load as many models as you want and bake them as often as you want. Processing runs on your machine, with no per-model usage quota.
 
-This applies to you, using the baker in the browser. It does not apply to automated baking: a build step, a folder of models processed in one run, or a service that bakes models for other people. For those, use the [command-line version](#batch-and-ci-use). It needs a separate license.
+This covers interactive use in the browser, including asking an AI agent to operate the workbench for you. Batch processing, CI build steps and services that bake models for other people require the separately licensed [command-line version](#batch-and-ci-use).
 
 ### Is it a subscription?
 
