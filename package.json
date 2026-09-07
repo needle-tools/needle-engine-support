@@ -61,6 +61,7 @@
   },
   "overrides": {
     "typedoc": "0.27.7",
-    "@typescript/vfs": "1.6.4"
+    "@typescript/vfs": "1.6.4",
+    "js-yaml": "4.3.1"
   }
 }
