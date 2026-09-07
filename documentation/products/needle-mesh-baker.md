@@ -193,6 +193,20 @@ A **command-line version** is available on request, so baking can run as a build
 
 ## FAQ
 
+### Do I need an account to try it?
+
+No. Loading local files, baking and comparing results work signed out. You need an account to **download** a result, browse your Needle Cloud assets or upload a result to Needle Cloud.
+
+### Is it a subscription?
+
+No. One-time purchase, lifetime access, and updates are included as the baker keeps being developed. It also comes with [Needle Engine Pro](https://needle.tools/pricing) if you already have that.
+
+### Is there a limit on how many models I can bake?
+
+**No.** The browser version has no limit — not per month, and not in total. Load as many models as you want and bake them as often as you want. Processing runs on your machine, with no per-model usage quota.
+
+This covers interactive use in the browser, including asking an AI agent to operate the workbench for you. Batch processing, CI build steps and services that bake models for other people require the separately licensed [command-line version](#batch-and-ci-use).
+
 ### Is my model uploaded to Needle?
 
 **Not for baking.** Importing local files, geometry reduction, texture baking and preview all run inside your browser. You can save the result as a local download.
@@ -213,10 +227,6 @@ The baker sends coarse usage statistics to understand which model sizes, feature
 
 Failures also report a shortened error message so we can fix what broke. Error messages can contain names or paths supplied by a loader or browser; shortening a message does not remove that information.
 
-### Do I need an account to try it?
-
-No. Loading local files, baking and comparing results work signed out. You need an account to **download** a result, browse your Needle Cloud assets or upload a result to Needle Cloud.
-
 ### Does it work offline?
 
 The page itself has to load once, but the baking pipeline does not talk to a server, so the actual work does not depend on your connection.
@@ -233,12 +243,6 @@ The baked textures come out uncompressed, so they stay sharp for whatever you do
 
 Baking does not change who owns the source. A model that you bought from a marketplace, or that another artist made, keeps the license it came with. Generation does not create rights either. If you have no right to the image you used, or to the character you asked for, you have no right to the model that comes out. You are responsible for what you put into the baker and for what you do with the result. See the [EULA](https://needle.tools/eula).
 
-### How does this relate to progressive loading?
-
-They solve different halves of the problem, and they compose. The baker decides **how detailed the asset is at all** — bring the source down to the highest quality you would ever want on screen. [Progressive loading](/docs/how-to-guides/optimization/progressive-loading-and-lods) then decides **how much of that arrives when**, streaming the detail in as it is needed.
-
-Bake first: progressive loading of an unoptimized model still delivers every triangle eventually.
-
 ### Can I bake animated or skinned characters?
 
 Not yet. A skinned mesh is baked in the pose it arrives in, and the output is static — so for characters, bake a distant LOD and keep the animated original for close range. Carrying rigs and animations through the bake is [in development](#coming-soon).
@@ -247,19 +251,15 @@ Not yet. A skinned mesh is baked in the pose it arrives in, and the output is st
 
 Start with how the model is simplified. Rebuilding the surface is the better default for scans, CAD and models with broken geometry, but it can round off sharp edges — for something clean and deliberately modelled, reduce its own triangles instead. If small parts vanish, protect them from the budget. If hard edges soften, adjust the settings to preserve them. And look at the result with the wireframe and the channel views before changing the triangle budget: a texture problem can look a lot like a geometry problem.
 
+### How does this relate to progressive loading?
+
+They solve different halves of the problem, and they compose. The baker decides **how detailed the asset is at all** — bring the source down to the highest quality you would ever want on screen. [Progressive loading](/docs/how-to-guides/optimization/progressive-loading-and-lods) then decides **how much of that arrives when**, streaming the detail in as it is needed.
+
+Bake first: progressive loading of an unoptimized model still delivers every triangle eventually.
+
 ### Can I run it in my own pipeline or CI?
 
 Yes — a command-line version exists for exactly that, so baking can run as a build step or over a whole folder of models. It is licensed separately: write to [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
-
-### Is there a limit on how many models I can bake?
-
-**No.** The browser version has no limit — not per month, and not in total. Load as many models as you want and bake them as often as you want. Processing runs on your machine, with no per-model usage quota.
-
-This covers interactive use in the browser, including asking an AI agent to operate the workbench for you. Batch processing, CI build steps and services that bake models for other people require the separately licensed [command-line version](#batch-and-ci-use).
-
-### Is it a subscription?
-
-No. One-time purchase, lifetime access, and updates are included as the baker keeps being developed. It also comes with [Needle Engine Pro](https://needle.tools/pricing) if you already have that.
 
 ### Who builds it?
 
