@@ -391,6 +391,64 @@ npx needle-cloud upload path/to/folder --recursive
 
 [📦 Full CLI documentation](https://www.npmjs.com/package/needle-cloud)
 
+## Team Webhooks
+
+Send team notifications to **Slack, Discord, Microsoft Teams, or a REST endpoint** when deployments, 3D model uploads, or payments need your attention.
+
+:::details Set up webhook notifications
+1. Open your [Needle Cloud team page](https://cloud.needle.tools/team) as a team admin.
+2. Under **Webhooks**, click **Add webhook** and paste your destination's webhook URL.
+3. Choose which events to receive: **Deployment succeeded**, **Deployment failed**, **3D model upload succeeded**, **Payment upcoming**, or **Payment failed**.
+4. Save the webhook, then use **Test** to check the connection.
+
+You can edit, pause, or delete webhooks from the same panel and check the last delivery result. For REST endpoints, open **Payload & verification** in the webhook editor for the JSON format and signature verification details.
+:::
+
+:::details Delivery formats
+
+**Slack, Discord & Microsoft Teams**
+
+Needle Cloud detects the format from your webhook URL and sends a formatted chat message. Deployment notifications include:
+
+- Project name and deployment link
+- Who deployed it, the team, and file size, when available
+- Links to edit the project and open the CI job, when available
+
+**REST endpoints**
+
+Your endpoint receives an HTTP `POST` with a JSON body:
+
+| Field | Contains |
+| --- | --- |
+| `id` | Delivery identifier |
+| `event` | Event name, such as `deployment.succeeded` |
+| `created_at` | Time the event occurred |
+| `org` | Team identifier and name |
+| `data` | Details specific to the event |
+
+Open **Payload & verification** in the webhook editor for examples. Return a `2xx` response to acknowledge receipt.
+:::
+
+:::details Signing secrets & verification (REST endpoints)
+
+**What is a signing secret?**
+
+A signing secret is a private key shared between Needle Cloud and your server. It lets your server check who signed a webhook and whether its body has changed. It does not encrypt the message or grant API access.
+
+**Set up verification**
+
+1. Copy the **Signing secret** from the webhook editor and store it securely on your server.
+2. Calculate **HMAC-SHA256** over the incoming **raw request body bytes**, using the secret as the key.
+3. Encode the result as lowercase hexadecimal and add the prefix `sha256=`.
+4. Compare it with the **`X-Needle-Signature`** header using a constant-time comparison. Reject missing or mismatched signatures before processing the event.
+
+**Keep in mind**
+
+- Verify the raw body before parsing JSON. Reformatting the JSON changes the bytes and breaks verification.
+- Keep the secret out of browser code and public repositories.
+- Slack, Discord, and Teams do not need this verification step. Keep their webhook URLs private because those URLs contain credentials.
+:::
+
 ## Needle Cloud AI
 
 [Needle Cloud AI](https://cloud.needle.tools/team#ai) answers questions about Needle Engine using the Needle documentation and community knowledge base. Chats are private to your team.
