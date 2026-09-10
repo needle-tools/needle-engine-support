@@ -40,8 +40,6 @@ Background knowledge and deeper understanding of how Needle Engine works. These 
 
 ## Distribution
 
-How a build reaches an audience, and the outside systems it has to satisfy.
-
 - [How Playable Ads Work](/docs/explanation/playable-ads) - Ad networks, mediation, MRAID, platform SDKs, measurement, A/B testing, and packaging policies
 
 ---
