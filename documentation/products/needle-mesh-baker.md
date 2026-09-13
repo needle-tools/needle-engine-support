@@ -1,6 +1,6 @@
 ---
 title: Needle Mesh Baker — Generate, Optimize and Bake 3D Models
-description: Generate 3D models, reduce triangles and draw calls, bake PBR textures, optimize animated and skinned glTF assets, or rebuild geometry with voxel remeshing and conservative wrap mode — locally in your browser.
+description: Generate 3D models, reduce triangles and draw calls, bake PBR textures, optimize animated and skinned 3D assets, or rebuild geometry with voxel remeshing and conservative wrap mode — locally in your browser.
 image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 ---
 
@@ -90,7 +90,7 @@ The baker combines simplification, UV creation and texture baking in one step, i
 | `.zip` | An archive containing any of the above, with relative paths preserved |
 | Needle Cloud | Sign in to pick a model from your own asset library |
 
-Skinned `.glb` and `.gltf` assets can retain their skin, hierarchy and animation clips. Animation mode controls whether optimization measures all clips, uses only the authored pose, or freezes the selected preview frame into static geometry.
+Skinned `.glb`, `.gltf` and `.fbx` assets can retain their skin, hierarchy and animation clips. Animation mode controls whether optimization measures all clips, uses only the authored pose, or freezes the selected preview frame into static geometry.
 
 ## Geometry methods
 
@@ -109,7 +109,7 @@ For compatible static workflows this can turn many input draw calls into one. Do
 
 ## Animation baking and skinned mesh optimization
 
-Mesh Baker supports animation-aware optimization for skinned glTF assets. You can preview clips and poses before baking, then choose how motion affects the result:
+Mesh Baker supports animation-aware optimization for skinned 3D assets, including glTF/GLB and FBX. You can preview clips and poses before baking, then choose how motion affects the result:
 
 - **Optimize for clips** samples the animations, retains the rig and clips, and protects geometry needed across the poses.
 - **Ignore clips** retains the animated document but optimizes against its authored pose.
@@ -273,7 +273,7 @@ Baking does not change who owns the source. A model that you bought from a marke
 
 ### Can I bake animated or skinned characters?
 
-Yes. For a skinned glTF asset, choose **Optimize for clips** to retain the rig and animation clips while the baker samples motion during optimization. Choose **Ignore clips** to retain the animated document while optimizing its authored pose, or **Freeze pose** when you want a static result from one selected animation frame.
+Yes. For a skinned or animated glTF/GLB or FBX asset, choose **Optimize for clips** to retain the rig and animation clips while the baker samples motion during optimization. Choose **Ignore clips** to retain the animated document while optimizing its authored pose, or **Freeze pose** when you want a static result from one selected animation frame.
 
 ### My model looks wrong after baking. What should I change?
 
