@@ -15,8 +15,13 @@ Talk to your AI assistant about your local and online 3D scenes! Connect Claude,
 
 ### Quick Start
 
-1. [Connect your AI assistant](#how-to-connect) to the Needle MCP Server.
-2. Start asking questions about Needle Engine, your project, or your 3D scenes!
+1. Open your terminal and start the local Needle MCP Server:
+   ```bash
+   npx needle-cloud start
+   ```
+   Keep the terminal open while using the server. Your AI assistant connects at `http://localhost:8424/mcp`.
+2. [Connect your AI assistant](#how-to-connect) to the Needle MCP Server.
+3. Start asking questions about Needle Engine, your project, or your 3D scenes!
 
 :::tip Works with your favorite AI tools
 Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
@@ -27,18 +32,15 @@ Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
 
 > "How do I add physics to my Needle project?"\
 > "Show me how to use WebXR in Needle Engine"\
-> "What's the best way to deploy to Vercel?"\
 > "Show me all the lights in my scene"\
 > "Change the main light color to warm orange"\
 > "Why is my scene running slowly?"
 
 Your agent can also pull the edits you made by hand in the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension) and apply them to your source code — tweak a material in the browser, then ask your AI to make it permanent.
 
-:::tip MCP & AI editing is a Pro feature
-Using the MCP/AI tools of the Needle Inspector requires [Needle Inspector Pro](/docs/three/needle-devtools-for-threejs-chrome-extension#free-vs-pro) — a one-time purchase, included with Needle Engine Pro.
-:::
-
 ## How to Connect
+
+For the local HTTP setups below, first start the server with `npx needle-cloud start` and keep it running. If you're using Needle Engine for Unity or Blender, the editor integrations usually start it automatically. The VS Code and Cursor install links use [stdio mode](#stdio), which starts the MCP process automatically.
 
 ### <img src="/imgs/claude-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Claude Logo" alt="Claude Logo"/> Using Claude Desktop
 
