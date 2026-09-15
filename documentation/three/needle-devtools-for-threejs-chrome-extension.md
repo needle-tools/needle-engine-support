@@ -94,79 +94,9 @@ Explore the scene from another angle. Click the camera icon in the top right to 
 
 #### Inspect Above HTML and Change the Background
 
-The fly camera can display the scene above the website's HTML, so page content no longer blocks your view. Keep the website background or switch to a neutral light or dark checkerboard to inspect transparency, edges, and post-processing effects more clearly.
+The fly camera can display the scene above the website's HTML, so page content no longer blocks your view. You can also temporarily expand the canvas to fill the browser viewport during inspection. Keep the website background or switch to a neutral light or dark checkerboard to inspect transparency, edges, and post-processing effects more clearly.
 
 <img src="https://cloud.needle.tools/-/media/3dlbe4M7nU3ctMQJvvztIQ.gif" alt="Fly camera displaying a three.js scene above website content and switching between the website background and light and dark checkerboards" loading="lazy" style="max-width: min(500px, 100%);" />
-
-### Pop-Out Window
-
-Move the Inspector into a separate window to give your scene more space. Arrange the window beside your browser or on another monitor while you inspect the running scene. The pop-out window remembers its position and restores it when you reopen it.
-
-<img src="https://cloud.needle.tools/-/media/mQUplopt_8cwxITmKOxLiw.gif" alt="Needle Inspector panels in a separate pop-out window beside the running scene" loading="lazy" style="max-width: min(500px, 100%);" />
-
-### Built-in Assets Browser
-
-Drop new content straight into a running scene — no downloads, no code changes:
-
-<img src="https://cloud.needle.tools/-/media/OIAq3e4FBuBjQDZ8pnpZ1g.gif" alt="Assets browser in the Needle Inspector — browsing the asset library and dropping materials and HDRIs into a live three.js scene" loading="lazy" style="max-width: min(500px, 100%);" />
-
-- **HDRIs & Materials**: Browse a curated asset library with instant previews
-- **Drag & Drop**: Pull a material onto any mesh in the scene
-- **One-click Lighting**: Set an HDRI as the scene environment and background instantly
-
-Browsing the library is free; **applying assets** is part of [Pro](#free-vs-pro).
-
-### Node Graphs & Rendering Insight
-
-See how your frame and shaders are actually built:
-
-<img src="https://cloud.needle.tools/-/media/DXpp8Bsku7cPBguuBD_2Hw.gif" alt="Material node graph in the Needle Inspector — traversing and editing a three.js node material" loading="lazy" style="max-width: min(500px, 100%);" />
-
-- **Material Node Graphs**: Explore materials as node graphs (including three.js TSL / node materials)
-- **Render Graph**: Capture a frame and see every render call, pass, target and their dependencies
-
-Viewing the full graph is free — **stepping into subgraphs and functions** and re-capturing frames is part of [Pro](#free-vs-pro).
-
-### Code View — Shaders & Source
-
-The code behind any selection, one click away:
-
-<img src="https://cloud.needle.tools/-/media/XBuyTvCZ72dXacDzus2qUQ.gif" alt="Code panel in the Needle Inspector — the source behind the selected object or material" loading="lazy" style="max-width: min(500px, 100%);" />
-
-- **TSL, compiled shaders & three.js source**: Switch between the TSL code, the compiled vertex/fragment shaders and the three.js source of the selected material or object
-- **Follows your selection**: Lock the view to pin a source while you keep browsing — and copy out whatever you need
-
-Your own three.js/object source and authored shaders are free. The inspector-**generated** sources — compiled shaders and reconstructed TSL — show a trimmed preview on the free tier; the full output is part of [Pro](#free-vs-pro).
-
-<img src="https://cloud.needle.tools/-/media/Yv1pEJ9weTPRoRsq-Sfmiw.gif" alt="Node graph with the code panel side by side — TSL and three.js source for the selected material" loading="lazy" style="max-width: min(500px, 100%);" />
-
-*Works side by side with the node graph — the source for exactly what you're looking at*
-
-### Performance Panel
-
-Track frame rate, memory use, and rendering work over time. Pause the graphs to investigate a spike.
-
-<!-- portrait capture (376x600 native) — the shared 500px width upscaled it and it read as blurry -->
-<img src="https://cloud.needle.tools/-/media/Zl1RM8T4tCkgrLo-W2QZzA.gif" alt="Performance panel in the Needle Inspector — live FPS, CPU and GPU memory, render passes, draw calls and triangles for a running three.js scene" loading="lazy" style="max-width: min(376px, 100%); max-height: 600px;" />
-
-- **FPS, CPU memory and GPU memory (VRAM)** as running graphs, with the current value next to each
-- **Render passes, draw calls and triangles per frame** — the GPU's real work, counted across every pass (shadows, prepass, post-processing), not just the scene's raw triangle count
-- **Potential VRAM saving**: how much texture memory compression would reclaim
-- **In scene vs. loaded**: meshes, geometries, materials and textures that are actually in the current scene, next to everything the page has loaded
-- **Events**: jank and big loads marked on the timeline — a long frame names the function and file behind it, and in local development you can **jump straight to the line of code** that caused the stall
-- **Pause** at any moment to read the numbers behind a spike
-
-### Resources & Memory
-
-Inspect loaded textures, geometries, and materials with estimated memory use. Track what loads and unloads to investigate memory growth and potential memory leaks in your three.js scene.
-
-<img src="https://cloud.needle.tools/-/media/9HBWd1PMn-bQoOHk4Mt0NQ.gif" alt="Resources panel in the Needle Inspector — textures, geometries and materials with memory estimates" loading="lazy" style="max-width: min(500px, 100%);" />
-
-- **Every texture, geometry and material** with memory estimates
-- **Load/unload tracking**: Spot resources that never get freed — memory leaks show up as rows that never disappear
-- **Draw calls, triangles, FPS and download size** at a glance
-
-The free tier shows a preview of each group; the **full resource list** is part of [Pro](#free-vs-pro).
 
 ### AI-Powered Assistance <div style="display:inline-flex;gap:.5em;vertical-align:middle;padding-left:.5em;"> <img style="max-height:1.2em;" src="/imgs/vscode-logo.webp" title="VS Code Logo" alt="VS Code Logo"/> <img style="max-height:1.2em;" src="/imgs/claude-logo.webp" title="Claude Logo" alt="Claude Logo"/> <img style="max-height:1.2em;" src="/imgs/cursor-logo.webp" title="Cursor Logo" alt="Cursor Logo"/> <img style="max-height:1.2em;" src="/imgs/antigravity-logo.webp" title="Antigravity Logo" alt="Antigravity Logo"/> </div>
 
@@ -210,6 +140,76 @@ Use these tools to save changes made to the running scene:
 
 Saving edits, GLB export, and texture export require [Pro](#free-vs-pro).
 
+### Performance Panel
+
+Track frame rate, memory use, and rendering work over time. Pause the graphs to investigate a spike.
+
+<!-- portrait capture (376x600 native) — the shared 500px width upscaled it and it read as blurry -->
+<img src="https://cloud.needle.tools/-/media/Zl1RM8T4tCkgrLo-W2QZzA.gif" alt="Performance panel in the Needle Inspector — live FPS, CPU and GPU memory, render passes, draw calls and triangles for a running three.js scene" loading="lazy" style="max-width: min(376px, 100%); max-height: 600px;" />
+
+- **FPS, CPU memory and GPU memory (VRAM)** as running graphs, with the current value next to each
+- **Render passes, draw calls and triangles per frame** — the GPU's real work, counted across every pass (shadows, prepass, post-processing), not just the scene's raw triangle count
+- **Potential VRAM saving**: how much texture memory compression would reclaim
+- **In scene vs. loaded**: meshes, geometries, materials and textures that are actually in the current scene, next to everything the page has loaded
+- **Events**: jank and big loads marked on the timeline — a long frame names the function and file behind it, and in local development you can **jump straight to the line of code** that caused the stall
+- **Pause** at any moment to read the numbers behind a spike
+
+### Resources & Memory
+
+Inspect loaded textures, geometries, and materials with estimated memory use. Track what loads and unloads to investigate memory growth and potential memory leaks in your three.js scene.
+
+<img src="https://cloud.needle.tools/-/media/9HBWd1PMn-bQoOHk4Mt0NQ.gif" alt="Resources panel in the Needle Inspector — textures, geometries and materials with memory estimates" loading="lazy" style="max-width: min(500px, 100%);" />
+
+- **Every texture, geometry and material** with memory estimates
+- **Load/unload tracking**: Spot resources that never get freed — memory leaks show up as rows that never disappear
+- **Draw calls, triangles, FPS and download size** at a glance
+
+The free tier shows a preview of each group; the **full resource list** is part of [Pro](#free-vs-pro).
+
+### Node Graphs & Rendering Insight
+
+See how your frame and shaders are actually built:
+
+<img src="https://cloud.needle.tools/-/media/DXpp8Bsku7cPBguuBD_2Hw.gif" alt="Material node graph in the Needle Inspector — traversing and editing a three.js node material" loading="lazy" style="max-width: min(500px, 100%);" />
+
+- **Material Node Graphs**: Explore materials as node graphs (including three.js TSL / node materials)
+- **Render Graph**: Capture a frame and see every render call, pass, target and their dependencies
+
+Viewing the full graph is free — **stepping into subgraphs and functions** and re-capturing frames is part of [Pro](#free-vs-pro).
+
+### Code View — Shaders & Source
+
+The code behind any selection, one click away:
+
+<img src="https://cloud.needle.tools/-/media/XBuyTvCZ72dXacDzus2qUQ.gif" alt="Code panel in the Needle Inspector — the source behind the selected object or material" loading="lazy" style="max-width: min(500px, 100%);" />
+
+- **TSL, compiled shaders & three.js source**: Switch between the TSL code, the compiled vertex/fragment shaders and the three.js source of the selected material or object
+- **Follows your selection**: Lock the view to pin a source while you keep browsing — and copy out whatever you need
+
+Your own three.js/object source and authored shaders are free. The inspector-**generated** sources — compiled shaders and reconstructed TSL — show a trimmed preview on the free tier; the full output is part of [Pro](#free-vs-pro).
+
+<img src="https://cloud.needle.tools/-/media/Yv1pEJ9weTPRoRsq-Sfmiw.gif" alt="Node graph with the code panel side by side — TSL and three.js source for the selected material" loading="lazy" style="max-width: min(500px, 100%);" />
+
+*Works side by side with the node graph — the source for exactly what you're looking at*
+
+### Built-in Assets Browser
+
+Drop new content straight into a running scene — no downloads, no code changes:
+
+<img src="https://cloud.needle.tools/-/media/OIAq3e4FBuBjQDZ8pnpZ1g.gif" alt="Assets browser in the Needle Inspector — browsing the asset library and dropping materials and HDRIs into a live three.js scene" loading="lazy" style="max-width: min(500px, 100%);" />
+
+- **HDRIs & Materials**: Browse a curated asset library with instant previews
+- **Drag & Drop**: Pull a material onto any mesh in the scene
+- **One-click Lighting**: Set an HDRI as the scene environment and background instantly
+
+Browsing the library is free; **applying assets** is part of [Pro](#free-vs-pro).
+
+### Pop-Out Window
+
+Move the Inspector into a separate window to give your scene more space. Arrange the window beside your browser or on another monitor while you inspect the running scene. The pop-out window remembers its position and restores it when you reopen it.
+
+<img src="https://cloud.needle.tools/-/media/mQUplopt_8cwxITmKOxLiw.gif" alt="Needle Inspector panels in a separate pop-out window beside the running scene" loading="lazy" style="max-width: min(500px, 100%);" />
+
 ### Optimize a Mesh Without Leaving the Scene
 
 **New in 2.5:** send meshes straight to the **[Needle Mesh Baker](/docs/products/needle-mesh-baker)** without leaving the scene.
@@ -249,7 +249,22 @@ To buy: open the inspector on any page and click **Get Pro** in the toolbar — 
 - Needle Engine
 - A-Frame (via three.js)
 - Threlte
+- TresJS
 - Any three.js-based framework
+
+## Needle Inspector vs. PlayCanvas and Spline
+
+Choosing a browser-based 3D tool depends on where you want to build and edit your scene.
+
+**Needle Inspector** works directly with a running three.js scene, including React Three Fiber and Needle Engine projects. Open your localhost project or a public website, inspect the scene, and edit transforms, materials, and lights in place. Use **File → Save Edits** to share changes as JSON and **File → Load Edits** to apply saved edits to the running scene. A connected AI agent can also read edits through MCP and apply them to your local project's source code. Live editing on development servers, saving edits, and Inspector MCP tools require Needle Inspector Pro.
+
+**[PlayCanvas Editor](https://developer.playcanvas.com/user-manual/editor/)** provides a browser-based development environment for building applications with the PlayCanvas Engine. Choose it when you want to author scenes and develop a PlayCanvas application in a visual editor.
+
+**[Spline](https://docs.spline.design/basics/what-is-spline)** provides a collaborative design environment for creating interactive 3D experiences. It supports [code exports](https://docs.spline.design/exporting-your-scene/web/exporting-as-code), including three.js and React Three Fiber, and its [desktop app](https://spline.design/download) includes an MCP server for connecting AI clients.
+
+If you already have a three.js project, Needle Inspector lets you inspect and make visual edits while keeping your existing framework, build tools, and source files. Save edits for a teammate or ask your AI agent to apply them to the project, then continue developing in your usual editor.
+
+MCP also gives your AI agent access to the code it has running on localhost. It can inspect the resulting scene, check object properties, investigate unexpected behavior, and test changes in the running project. You and your agent can move between source code and the live scene, using what actually happens in the browser to guide the next edit.
 
 ## Installation
 
