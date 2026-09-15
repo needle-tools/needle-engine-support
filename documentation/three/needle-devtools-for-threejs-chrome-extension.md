@@ -245,8 +245,9 @@ To buy: open the inspector on any page and click **Get Pro** in the toolbar — 
 ## Supported Platforms
 
 - Modern three.js versions — **WebGL and WebGPU** renderers, including TSL / node materials
-- React Three Fiber
 - Needle Engine
+- React Three Fiber
+- Angular Three (Angular)
 - A-Frame (via three.js)
 - Threlte
 - TresJS
