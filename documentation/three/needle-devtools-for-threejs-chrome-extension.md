@@ -1,6 +1,6 @@
 ---
 title: Needle Inspector — three.js Debugger & Chrome DevTools Extension
-description: Inspect and debug three.js scenes with WebGL and WebGPU support, including React Three Fiber and Needle Engine. Pro adds editing on development servers, full resource lists, AI tools via MCP, and export.
+description: Chrome DevTools for three.js — inspect and debug WebGL, WebGPU, React Three Fiber, and Needle Engine scenes with the free Needle Inspector Chrome extension. Pro adds live property editing on development servers, memory and leak tools, AI editing via MCP (Claude, Cursor, and more), and exporting your changes.
 image: /inspector/overview-needle-inspector.webp
 ---
 
@@ -15,9 +15,9 @@ image: /inspector/overview-needle-inspector.webp
     <img src="/imgs/chrome-logo.webp" style="max-height:70px;" title="Chrome Logo" alt="Chrome Logo"/>
 </div>
 
-# Needle Inspector — DevTools & MCP for three.js
+# Needle Inspector — DevTools and MCP for three.js
 
-The **Needle Inspector** is a Chrome extension for inspecting and debugging three.js, React Three Fiber, and Needle Engine scenes directly in your browser. It supports WebGL and WebGPU renderers and provides a scene hierarchy, property editor, performance graphs, and AI tools.
+The **Needle Inspector** brings Chrome DevTools for three.js to your browser. Use this free Chrome extension to inspect and debug three.js, React Three Fiber (react-three-fiber), and Needle Engine scenes with WebGL and WebGPU renderers. Think of it as the browser's built-in inspector for 3D scenes: explore the scene hierarchy, inspect properties, and track performance. Needle Inspector Pro adds live property editing on development servers, memory and leak tools, AI editing via MCP, and export.
 
 
 <testimonial
@@ -43,7 +43,7 @@ Click the toolbar icon again to disable the Inspector for that site. This also r
 
 
 
-:::tip Inspect public websites
+:::tip Inspect three.js websites
 You can inspect three.js, React Three Fiber, and Needle Engine scenes on public websites as well as your own projects. Use it to understand how a scene is built or investigate a production issue.
 :::
 
@@ -158,7 +158,7 @@ Track frame rate, memory use, and rendering work over time. Pause the graphs to 
 
 ### Resources & Memory
 
-Inspect loaded resources and their estimated memory use to investigate memory growth.
+Inspect loaded textures, geometries, and materials with estimated memory use. Track what loads and unloads to investigate memory growth and potential memory leaks in your three.js scene.
 
 <img src="https://cloud.needle.tools/-/media/9HBWd1PMn-bQoOHk4Mt0NQ.gif" alt="Resources panel in the Needle Inspector — textures, geometries and materials with memory estimates" loading="lazy" style="max-width: min(500px, 100%);" />
 
@@ -170,7 +170,7 @@ The free tier shows a preview of each group; the **full resource list** is part 
 
 ### AI-Powered Assistance <div style="display:inline-flex;gap:.5em;vertical-align:middle;padding-left:.5em;"> <img style="max-height:1.2em;" src="/imgs/vscode-logo.webp" title="VS Code Logo" alt="VS Code Logo"/> <img style="max-height:1.2em;" src="/imgs/claude-logo.webp" title="Claude Logo" alt="Claude Logo"/> <img style="max-height:1.2em;" src="/imgs/cursor-logo.webp" title="Cursor Logo" alt="Cursor Logo"/> <img style="max-height:1.2em;" src="/imgs/antigravity-logo.webp" title="Antigravity Logo" alt="Antigravity Logo"/> </div>
 
-Let your AI assistant **inspect and edit the running scene**. Use the built-in AI chat or connect an MCP client such as Claude Code, Cursor, VS Code, or Antigravity.
+Let your AI assistant **inspect and edit the running three.js scene**. Use the built-in AI chat or connect an MCP client such as Claude Code, Cursor, VS Code, or Antigravity.
 
 <img src="https://cloud.needle.tools/-/media/eycVjikaWUeHS86A3HfP4g.gif" alt="AI chat in the Needle Inspector — asking questions about the running three.js scene and editing it with AI" loading="lazy" style="max-width: min(500px, 100%);" />
 
