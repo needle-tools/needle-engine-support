@@ -1,6 +1,6 @@
 ---
 title: Needle Inspector — three.js Debugger & Chrome DevTools Extension
-description: Chrome DevTools for three.js — inspect and debug any three.js scene (WebGL & WebGPU), React Three Fiber, or Needle Engine project on any website, free. Pro adds live-editing your own projects, memory & leak tools, AI editing via MCP (Claude, Cursor & more), and exporting your changes.
+description: Inspect and debug three.js scenes with WebGL and WebGPU support, including React Three Fiber and Needle Engine. Pro adds editing on development servers, full resource lists, AI tools via MCP, and export.
 image: /inspector/overview-needle-inspector.webp
 ---
 
@@ -17,7 +17,7 @@ image: /inspector/overview-needle-inspector.webp
 
 # Needle Inspector — DevTools & MCP for three.js
 
-The **Needle Inspector** is a powerful Chrome DevTools extension for inspecting and debugging three.js, react-three-fiber, and Needle Engine projects — WebGL and WebGPU — directly in your browser. Think of it as the browser's built-in inspector, but specifically designed for 3D scenes.
+The **Needle Inspector** is a Chrome extension for inspecting and debugging three.js, React Three Fiber, and Needle Engine scenes directly in your browser. It supports WebGL and WebGPU renderers and provides a scene hierarchy, property editor, performance graphs, and AI tools.
 
 
 <testimonial
@@ -35,15 +35,16 @@ This extension in 5 minutes helped me solving a visual issue I was struggling to
 ### Quick Start
 
 1. Install the extension from the [Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)
-2. Enable the inspector by clicking the Needle icon in the browser toolbar (click it again anytime to hide the inspector)
-3. Navigate to any webpage with a three.js scene
-4. The inspector will automatically detect the scene and appear
-5. Start exploring your 3D content!
+2. Open a webpage with a three.js scene.
+3. Click the Needle icon in the browser toolbar to enable the Inspector for that site. The page reloads.
+4. When the Inspector detects a scene, browse the hierarchy and select an object to inspect its properties.
+
+Click the toolbar icon again to disable the Inspector for that site. This also reloads the page.
 
 
 
-:::tip Works on any three.js website
-The Needle Inspector works on **any** website using three.js, react-three-fiber, or Needle Engine – not just your own projects. Use it to learn from other developers' work or debug production sites.
+:::tip Inspect public websites
+You can inspect three.js, React Three Fiber, and Needle Engine scenes on public websites as well as your own projects. Use it to understand how a scene is built or investigate a production issue.
 :::
 
 
@@ -63,7 +64,7 @@ A must have tool for pros, beginners, and everything in between!
 
 ### Real-time Scene Inspection
 
-The inspector gives you a complete view of your 3D scene hierarchy, similar to how the browser's Elements panel shows your HTML structure. Free, on every website.
+Browse your 3D scene hierarchy, similar to how the browser's Elements panel shows your HTML structure. Scene hierarchy inspection is free.
 
 <img src="https://cloud.needle.tools/-/media/7dkT_1C-SETizR1mieW05A.gif" alt="Scene hierarchy in the Needle Inspector — browsing objects, meshes, lights and cameras of a live three.js scene" loading="lazy" style="max-width: min(500px, 100%);" />
 
@@ -83,7 +84,25 @@ Tweak transforms, materials, lights and textures on the running scene and watch 
 - **Textures**: Preview, inspect and swap texture slots
 - **Visibility & Flags**: Show/hide objects, toggle features live
 
-Try it on any public three.js site for free. Editing **your own projects** (localhost) is part of [Pro](#free-vs-pro).
+Property editing is free on ordinary public websites. Editing on localhost, LAN development servers, and supported development, preview, and staging hosts requires [Pro](#free-vs-pro).
+
+### Free-Fly Camera
+
+Explore the scene from another angle. Click the camera icon in the top right to enable the fly camera, then use WASD to move through the scene. The camera remembers its last position and restores it when you return.
+
+<img src="https://cloud.needle.tools/-/media/BpvuEmacbFta1Bd5kiovuQ.gif" alt="Free-fly camera in the Needle Inspector — moving through a running three.js scene" loading="lazy" style="max-width: min(500px, 100%);" />
+
+#### Inspect Above HTML and Change the Background
+
+The fly camera can display the scene above the website's HTML, so page content no longer blocks your view. Keep the website background or switch to a neutral light or dark checkerboard to inspect transparency, edges, and post-processing effects more clearly.
+
+<img src="https://cloud.needle.tools/-/media/3dlbe4M7nU3ctMQJvvztIQ.gif" alt="Fly camera displaying a three.js scene above website content and switching between the website background and light and dark checkerboards" loading="lazy" style="max-width: min(500px, 100%);" />
+
+### Pop-Out Window
+
+Move the Inspector into a separate window to give your scene more space. Arrange the window beside your browser or on another monitor while you inspect the running scene. The pop-out window remembers its position and restores it when you reopen it.
+
+<img src="https://cloud.needle.tools/-/media/mQUplopt_8cwxITmKOxLiw.gif" alt="Needle Inspector panels in a separate pop-out window beside the running scene" loading="lazy" style="max-width: min(500px, 100%);" />
 
 ### Built-in Assets Browser
 
@@ -125,7 +144,7 @@ Your own three.js/object source and authored shaders are free. The inspector-**g
 
 ### Performance Panel
 
-What the frame actually costs, live — with history, so you can look at the spike instead of chasing it.
+Track frame rate, memory use, and rendering work over time. Pause the graphs to investigate a spike.
 
 <!-- portrait capture (376x600 native) — the shared 500px width upscaled it and it read as blurry -->
 <img src="https://cloud.needle.tools/-/media/Zl1RM8T4tCkgrLo-W2QZzA.gif" alt="Performance panel in the Needle Inspector — live FPS, CPU and GPU memory, render passes, draw calls and triangles for a running three.js scene" loading="lazy" style="max-width: min(376px, 100%); max-height: 600px;" />
@@ -139,7 +158,7 @@ What the frame actually costs, live — with history, so you can look at the spi
 
 ### Resources & Memory
 
-Find out what's actually loaded, what it costs, and what never unloads — the "why is my app at 2 GB" panel.
+Inspect loaded resources and their estimated memory use to investigate memory growth.
 
 <img src="https://cloud.needle.tools/-/media/9HBWd1PMn-bQoOHk4Mt0NQ.gif" alt="Resources panel in the Needle Inspector — textures, geometries and materials with memory estimates" loading="lazy" style="max-width: min(500px, 100%);" />
 
@@ -151,13 +170,13 @@ The free tier shows a preview of each group; the **full resource list** is part 
 
 ### AI-Powered Assistance <div style="display:inline-flex;gap:.5em;vertical-align:middle;padding-left:.5em;"> <img style="max-height:1.2em;" src="/imgs/vscode-logo.webp" title="VS Code Logo" alt="VS Code Logo"/> <img style="max-height:1.2em;" src="/imgs/claude-logo.webp" title="Claude Logo" alt="Claude Logo"/> <img style="max-height:1.2em;" src="/imgs/cursor-logo.webp" title="Cursor Logo" alt="Cursor Logo"/> <img style="max-height:1.2em;" src="/imgs/antigravity-logo.webp" title="Antigravity Logo" alt="Antigravity Logo"/> </div>
 
-The only three.js tool where your AI assistant can **see and edit the running scene**. Built-in AI chat, plus MCP for Claude Code, Cursor, VS Code, Antigravity & co.
+Let your AI assistant **inspect and edit the running scene**. Use the built-in AI chat or connect an MCP client such as Claude Code, Cursor, VS Code, or Antigravity.
 
 <img src="https://cloud.needle.tools/-/media/eycVjikaWUeHS86A3HfP4g.gif" alt="AI chat in the Needle Inspector — asking questions about the running three.js scene and editing it with AI" loading="lazy" style="max-width: min(500px, 100%);" />
 
 - **MCP Integration**: Your agent reads the hierarchy, inspects objects, changes properties, and pulls your pending edits (`get_edits`) to apply them to your source code
 - **Built-in AI Chat**: Ask questions about the open scene without leaving the browser
-- **Same tool set everywhere**: Everything the built-in chat can do, external MCP clients can do too (the full tool list is shown in the inspector's settings)
+- **Available tools**: View the MCP tool list in the Inspector settings. Some tools are specific to the built-in chat or available only in certain contexts.
 
 #### Ask AI about anything
 
@@ -170,23 +189,26 @@ Setup is simple:
 npx needle-cloud start
 ```
 
-Then connect your AI tool and talk to your scene.   
+Keep the terminal open, then connect your AI client to `http://localhost:8424/mcp`.
 **Learn how to connect your local AI tools**: [Needle MCP documentation](../ai/needle-mcp-server).
 
 MCP &amp; AI editing is part of [Pro](#free-vs-pro).
 
-### Keep What You Make
+### Save and Export Changes
 
-Your edits shouldn't die with the browser tab:
+Use these tools to save changes made to the running scene:
 
-- **Changeset Download**: Every property change you made, as JSON (structured) or readable text — hand it to a teammate, commit it, or let your AI agent apply it to the source
+- **Save and Load Edits**: Use **File → Save Edits** to export your edits as JSON, and **File → Load Edits** to load them back into the Inspector. Hand the JSON to an AI agent to apply the changes to your local project's source code, or share it with a team member. You can also save a readable text version.
+- **Edits via MCP**: A connected AI agent can read your edits directly with `get_edits` and apply them to your project's source code.
 - **GLB Export**: Export objects or whole scenes as glTF/GLB — **textures and animations included**
 - **Texture Export**: Right-click any texture slot to download that texture as a PNG
-- **Undo History**: Nothing is destructive while you iterate
+- **Undo History**: Undo and redo edits made through the Inspector command system
 
-<img src="https://cloud.needle.tools/-/media/7f7aI5PTXntuxFr107YJQA.gif" alt="Right-clicking a texture slot to download the texture as a PNG in the Needle Inspector" loading="lazy" style="max-width: min(500px, 100%);" />
+<img src="https://cloud.needle.tools/-/media/csWFKkAIFwPggN1L2-v9sA.gif" alt="Exporting Inspector edits to JSON and loading edits from JSON to share changes with an AI agent or team member" loading="lazy" style="max-width: min(500px, 100%);" />
 
-Taking your work home is part of [Pro](#free-vs-pro).
+<img src="https://cloud.needle.tools/-/media/7f7aI5PTXntuxFr107YJQA.gif" alt="Right-clicking a texture slot to export the texture as a PNG in the Needle Inspector" loading="lazy" style="max-width: min(500px, 100%);" />
+
+Saving edits, GLB export, and texture export require [Pro](#free-vs-pro).
 
 ### Optimize a Mesh Without Leaving the Scene
 
@@ -200,22 +222,20 @@ Baking runs in your browser, and the mesh is not uploaded. Keeping a baked resul
 
 ## Free vs Pro
 
-The rule is simple: **looking is free — going deeper is Pro.**
-
-Inspecting, debugging, learning from any website — free forever. Pro is for pointing it at your own scene, and for the deeper layers anywhere:
+The free version includes scene inspection, performance stats, and property editing on ordinary public websites. Pro adds editing on development servers, full resource lists and generated shader code, node-graph drill-down, AI tools, and export.
 
 | | Free | Pro |
 |---|---|---|
-| Scene hierarchy, search, live inspection | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on any website | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
-| Property viewing, node graphs, render graph, code view | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on any website | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Scene hierarchy, search, live inspection | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on supported sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Property viewing, node graphs, render graph, code view | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on supported sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | Node-graph drill-down (subgraphs & functions), frame re-capture | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | TSL & compiled shader code | trimmed preview | full source |
 | Performance stats | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
-| Live property editing | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on public sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> everywhere, incl. your local projects |
+| Live property editing | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on public sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> including development servers |
 | Assets browser | browse & preview | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> apply |
 | Resources & memory list | preview | full list |
-| MCP & AI editing | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
-| Changeset download (JSON/text) | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Inspector MCP tools & AI editing | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
+| Save Edits (JSON/text) | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | GLB export | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 
 **Needle Inspector Pro is a one-time purchase — no subscription, yours forever.** It's also **included with every [Needle Engine Pro](https://needle.tools/pricing) license**, so if your team already uses Needle Engine Pro, just sign in.
@@ -224,10 +244,10 @@ To buy: open the inspector on any page and click **Get Pro** in the toolbar — 
 
 ## Supported Platforms
 
-- three.js (all versions) — **WebGL and WebGPU** renderers, including TSL / node materials
-- react-three-fiber
+- Modern three.js versions — **WebGL and WebGPU** renderers, including TSL / node materials
+- React Three Fiber
 - Needle Engine
-- A-frame (via three.js)
+- A-Frame (via three.js)
 - Threlte
 - Any three.js-based framework
 
@@ -242,7 +262,7 @@ To buy: open the inspector on any page and click **Get Pro** in the toolbar — 
 
 ### Does the inspector slow my site down?
 
-Only pages where you enable it are affected, and the overhead while inspecting is small. When the extension is toggled off it does nothing at all.
+The Inspector hooks into scenes on sites where you enable it. Inspection, frame capture, and other tools add work, so the impact depends on the scene and the tools you use. Disable it from the toolbar when you finish; the page reloads without the Inspector.
 
 ### Does my scene data leave the browser?
 
@@ -250,19 +270,19 @@ Inspecting runs entirely in your browser — your scene is not uploaded anywhere
 
 ### What usage data does the inspector collect?
 
-Usage analytics, so we know which features are worth improving: which panels and tools you open, counts and *types* — "a MeshStandardMaterial was inspected", never what it's called. Alongside that we record the hostname of pages the inspector runs on, which is how we find and fix site-specific bugs, the usual basics (browser, language, screen size), your account details once you sign in, and — if you use the built-in AI chat — the text of your prompt, which is how we see where the assistant falls short.
+The Inspector records feature usage, such as which panels and tools you open, resource counts, and object types. These events use types such as `MeshStandardMaterial`, rather than object names. Analytics also include the inspected page's hostname and path, plus the page title and referrer in pageview events, browser information, language, and screen size. Once you sign in, analytics include account details. If you use the built-in AI chat, we also record prompt text to help improve the assistant.
 
 We deliberately don't collect the names of your objects, materials, textures or assets, what you type into search fields or text inputs, or the query string of pages you inspect. Crash reports are limited to errors thrown by the inspector's own code.
 
-All of it goes to Needle directly — there's no third-party analytics service in the middle. Working somewhere this doesn't fly? [Talk to us](mailto:hi+inspector@needle.tools).
+Analytics are sent directly to Needle. If you have questions about data collection or requirements for your workplace, [contact us](mailto:hi+inspector@needle.tools).
 
 ### Does it work for my local development?
 
-Yes — that's where the inspector shines. It works on localhost and LAN dev servers out of the box (Vite, webpack, plain file servers, anything), plays fine with hot reload, and your edits survive alongside it. Editing your own projects is the core of [Pro](#free-vs-pro).
+Yes. You can inspect scenes on localhost and LAN development servers, including projects served with Vite or webpack. Live editing on development servers requires [Pro](#free-vs-pro). Changes affect the running scene; a reload or hot update can replace edited objects. Use **File → Save Edits** to save them, or ask your AI agent to read them via MCP and apply them to your source code.
 
 ### Which three.js versions and frameworks are supported?
 
-All modern three.js versions with both the WebGL and WebGPU renderers, and everything built on three.js: React Three Fiber, Threlte, A-Frame and more.
+The Inspector supports modern three.js versions with WebGL and WebGPU renderers, including scenes built with React Three Fiber, Threlte, and A-Frame. Detection and available tools can vary with the three.js version and how the site creates its scene.
 
 ### Do I need Needle Engine?
 
@@ -270,17 +290,17 @@ No. The inspector works on any three.js scene. Needle Engine projects get extra 
 
 ### What does Pro cost?
 
-Pro is a **one-time purchase** — no subscription. The current price is always shown in the extension (**Get Pro** in the toolbar). It's included with [Needle Engine Pro](https://needle.tools/pricing) licenses.
+Needle Inspector Pro is a **one-time purchase** — no subscription. The current price is always shown in the extension (**Get Pro** in the toolbar). It's included with [Needle Engine Pro](https://needle.tools/pricing) licenses.
 
 ### Can I inspect websites I didn't build?
 
-Yes — browsing, inspecting and learning from any three.js website is free, and you can tweak properties on public sites to see what happens. Pro is for going further: live-editing your own projects, drilling into node graphs, the full resource list, AI editing and export. See [Free vs Pro](#free-vs-pro).
+Yes. Scene inspection is free on supported public websites, and you can edit properties on ordinary public sites. Pro adds editing on development hosts, node-graph drill-down, full resource lists, Inspector MCP tools, AI editing, and export. See [Free vs Pro](#free-vs-pro).
 
 ### How do I install the Needle Inspector?
 
 Install it free from the **[Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)** — click *Add to Chrome* in Chrome or any Chromium-based browser (Edge, Brave, Arc, Opera). No account needed to start inspecting.
 
-Then click the Needle icon in the toolbar to enable the inspector on a site, and open any page with a three.js scene — see [Quick Start](#quick-start).
+Open a page with a three.js scene, then click the Needle toolbar icon to enable the Inspector for that site. The page reloads — see [Quick Start](#quick-start).
 
 ## What Developers Are Saying
 
@@ -372,9 +392,9 @@ This is a really good tool for inspecting any three.js scene. It's extremely use
 
 ## Get the Inspector
 
-**[Install free from the Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)** — you'll be inspecting your first scene a minute from now.
+**[Install free from the Chrome Web Store](https://chromewebstore.google.com/detail/needle-inspector-%E2%80%94-devtoo/jonplpbnhmanoekkgcepnedhghflblmo)**, then enable the Inspector on a page with a three.js scene.
 
-Working on your own scene, or ready to go deeper? **Get Pro** in the toolbar unlocks live-editing your projects, node-graph drill-down, the full resource list, AI editing and export. One-time purchase, yours forever — included with [Needle Engine Pro](https://needle.tools/pricing).
+**Get Pro** in the toolbar unlocks editing on development servers, node-graph drill-down, full resource lists, Inspector MCP tools, AI editing, and export. Needle Inspector Pro is a one-time purchase and is included with [Needle Engine Pro](https://needle.tools/pricing).
 
 ## Next Steps
 
