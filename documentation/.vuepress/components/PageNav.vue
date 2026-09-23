@@ -128,6 +128,9 @@
 
 <script>
 const DEFAULT_LINK_TEXT = 'Copy Markdown'
+// Breathing room kept between the highlighted entry and the sidebar's edge.
+const ACTIVE_ITEM_MARGIN = 24
+
 // Once a heading has moved this far above its CSS scroll-margin position,
 // consider its section finished and activate the next heading in the document.
 const ACTIVE_HEADER_EXIT_DISTANCE = 80
@@ -345,7 +348,12 @@ export default {
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
-      const headerElements = article.querySelectorAll('h1, h2, h3')
+      // Hidden copies of the page are still in the DOM - the in-page editor
+      // leaves the rendered content there while it stands in for it - and
+      // their headings would be listed a second time.
+      const headerElements = [...article.querySelectorAll('h1, h2, h3')].filter((el) =>
+        el.checkVisibility ? el.checkVisibility() : el.offsetParent !== null,
+      )
       this.headers = Array.from(headerElements)
         .filter(el => {
           // Exclude headers that are inside tool tiles or other non-content components
@@ -474,7 +482,35 @@ export default {
         activeHeaderElement.classList.add('active-header')
       }
 
-      this.activeHeader = activeHeaderElement?.id || ''
+      const nextActive = activeHeaderElement?.id || ''
+      const moved = nextActive !== this.activeHeader
+      this.activeHeader = nextActive
+      if (moved) this.$nextTick(this.keepActiveItemVisible)
+    },
+
+    /**
+     * Keep the highlighted entry inside the sidebar's own scroll area.
+     *
+     * On a long page the list is taller than the sidebar, so the highlight
+     * walks out of view as the page scrolls. Only the sidebar is scrolled,
+     * and only when the entry is actually outside it, so the page itself and
+     * a reader scrolling the list by hand are left alone.
+     */
+    keepActiveItemVisible() {
+      const scroller = document.querySelector('.page-nav-sidebar')
+      if (!scroller || scroller.scrollHeight <= scroller.clientHeight) return
+
+      const item = scroller.querySelector('.page-nav-item.active')
+      if (!item) return
+
+      const view = scroller.getBoundingClientRect()
+      const rect = item.getBoundingClientRect()
+      const margin = ACTIVE_ITEM_MARGIN
+
+      let delta = 0
+      if (rect.top < view.top + margin) delta = rect.top - view.top - margin
+      else if (rect.bottom > view.bottom - margin) delta = rect.bottom - view.bottom + margin
+      if (delta) scroller.scrollTop += delta
     },
 
     scrollToHeader(slug) {
