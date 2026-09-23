@@ -4,7 +4,7 @@ description: Generate 3D models, reduce triangles and draw calls, bake PBR textu
 image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 ---
 
-# Needle Mesh Baker
+# Mesh Baker
 
 **Needle Mesh Baker** generates and optimizes 3D models in your browser. It reduces triangles and draw calls, bakes appearance into textures, rebuilds difficult geometry, and optimizes skinned meshes while preserving their rigs and animation clips.
 
@@ -60,6 +60,7 @@ Mesh Baker exports a `.glb` file. The result depends on the selected geometry an
 - the source geometry with newly baked materials
 - a skinned mesh with its rig and animation clips
 - a pixel or voxel representation
+- an octahedral impostor representation
 
 Use these outputs for LODs, animated characters, background objects, scans, generated models, and CAD imports.
 
@@ -105,13 +106,15 @@ The workbench shows the source on the left and the result on the right. The came
 
 A dense model can store small details in its geometry. Examples include scratches, feathers, seams, and bolts. Geometry reduction removes some of this detail. Texture baking transfers the detail to maps on the reduced mesh.
 
+![](/imgs/c894efd9-b2a3-45ee-925f-4a1e020717cb.webp "2x")
+
 Mesh Baker creates the reduced mesh, UVs, and tangents. It then projects the source appearance onto the result. A normal map preserves small surface details in shading. The mesh still controls large shapes and the silhouette.
 
 You can also keep the source geometry and bake new materials only, reducing draw calls. Use this when material count and draw calls are the main problem, for example, when you have a model made out of many low-poly parts that share the same material.
 
 <img src="https://cloud.needle.tools/-/media/XEutsc3aScR4WdGjPOPlQQ.gif" alt="Dragging the key light around in the Needle Mesh Baker: the 3.1 million triangle source and the 5,914 triangle result catch the light the same way" loading="lazy" />
 
-*The result has 5,914 triangles. The normal map preserves detail as the light moves.*
+*Normal maps preserve surface detail under changing lighting conditions, even for low-poly models.*
 
 ## Choose a geometry method
 
@@ -382,7 +385,7 @@ Mesh Baker reduces the total geometry and material cost. [Progressive loading](/
 
 Yes. The command-line version can run as a build step or process a folder. It requires a separate license. Contact [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
 
-### Who builds it?
+### Other tools from Needle
 
 Needle builds Mesh Baker, [Needle Engine](/docs/), [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension), and the Unity and Blender integrations for Needle Engine.
 
