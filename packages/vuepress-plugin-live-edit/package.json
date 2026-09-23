@@ -14,7 +14,9 @@
     "src"
   ],
   "scripts": {
-    "test": "node --test \"test/**/*.test.mjs\""
+    "test": "npm run test:node && npm run test:browser",
+    "test:node": "node --test \"test/**/*.test.mjs\"",
+    "test:browser": "vitest run"
   },
   "dependencies": {
     "@babel/parser": "^7.28.0",
@@ -36,5 +38,11 @@
     "prosemirror-transform": "^1.12.1",
     "prosemirror-view": "^1.42.5",
     "sharp": "^0.35.4"
+  },
+  "devDependencies": {
+    "@vitest/browser": "^5.0.1",
+    "@vitest/browser-playwright": "^5.0.1",
+    "playwright": "^1.63.0",
+    "vitest": "^5.0.1"
   }
 }
