@@ -1,6 +1,6 @@
 ---
 title: Needle Inspector — three.js Debugger & Chrome DevTools Extension
-description: Chrome DevTools for three.js — inspect and debug WebGL, WebGPU, React Three Fiber, and Needle Engine scenes with the free Needle Inspector Chrome extension. Pro adds live property editing on development servers, memory and leak tools, AI editing via MCP (Claude, Cursor, and more), and exporting your changes.
+description: Chrome DevTools for three.js — inspect and debug WebGL, WebGPU, React Three Fiber, and Needle Engine scenes with the free Needle Inspector Chrome extension. Animate the Inspector camera with clips and keyframes. Pro adds live property editing on development servers, memory and leak tools, AI editing via MCP, and export.
 image: /inspector/overview-needle-inspector.webp
 ---
 
@@ -97,6 +97,12 @@ Explore the scene from another angle. Click the camera icon in the top right to 
 The fly camera can display the scene above the website's HTML, so page content no longer blocks your view. You can also temporarily expand the canvas to fill the browser viewport during inspection. Keep the website background or switch to a neutral light or dark checkerboard to inspect transparency, edges, and post-processing effects more clearly.
 
 <img src="https://cloud.needle.tools/-/media/3dlbe4M7nU3ctMQJvvztIQ.gif" alt="Fly camera displaying a three.js scene above website content and switching between the website background and light and dark checkerboards" loading="lazy" style="max-width: min(500px, 100%);" />
+
+### Camera Animation Timeline
+
+Open the **Animation** workspace to build a camera move while viewing the live scene. Use the free-fly camera to frame a view, add a camera clip, then capture more views as keyframes. Drag keys to change their timing, scrub or play the timeline to preview the move, and move or trim clips to arrange shots with hard cuts. Select a clip or keyframe to edit it in the Inspector.
+
+Camera animations are saved locally for the inspected page. Camera animation is limited in the free version. [Pro](#free-vs-pro) supports longer sequences and lets you import or export the camera animation as JSON from the camera track menu. This JSON file is separate from the [scene GLB export](#save-and-export-changes). The timeline currently animates the Inspector camera, not arbitrary scene objects.
 
 ### AI-Powered Assistance <div style="display:inline-flex;gap:.5em;vertical-align:middle;padding-left:.5em;"> <img style="max-height:1.2em;" src="/imgs/vscode-logo.webp" title="VS Code Logo" alt="VS Code Logo"/> <img style="max-height:1.2em;" src="/imgs/claude-logo.webp" title="Claude Logo" alt="Claude Logo"/> <img style="max-height:1.2em;" src="/imgs/cursor-logo.webp" title="Cursor Logo" alt="Cursor Logo"/> <img style="max-height:1.2em;" src="/imgs/antigravity-logo.webp" title="Antigravity Logo" alt="Antigravity Logo"/> </div>
 
@@ -232,6 +238,7 @@ The free version includes scene inspection, performance stats, and property edit
 | TSL & compiled shader code | trimmed preview | full source |
 | Performance stats | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
 | Live property editing | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> on public sites | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> including development servers |
+| Camera animation timeline | limited keyframes | longer sequences, JSON import/export |
 | Assets browser | browse & preview | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> apply |
 | Resources & memory list | preview | full list |
 | Inspector MCP tools & AI editing | <img src="/inspector/dash.svg" alt="no" width="16" height="16" style="display:inline;vertical-align:-3px;"> | <img src="/inspector/check.svg" alt="yes" width="16" height="16" style="display:inline;vertical-align:-3px;"> |
