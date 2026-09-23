@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "start": "npm run docs:dev",
     "docs:dev": "vuepress dev documentation",
@@ -14,7 +17,8 @@
     "docs:dev-api": "npm run docs:dev-build-api && npx serve api/@needle-tools/engine",
     "docs:build-changelogs": "node tools/build_changelogs.mjs",
     "docs:build-examples": "node tools/build_examples.mjs",
-    "test:links": "node tools/build_check_links.mjs"
+    "test:links": "node tools/build_check_links.mjs",
+    "test:live-edit": "node --test \"packages/vuepress-plugin-live-edit/test/**/*.test.mjs\""
   },
   "author": "",
   "license": "ISC",
@@ -29,6 +33,7 @@
   "devDependencies": {
     "@needle-tools/engine": "6.0.0-alpha.2",
     "@needle-tools/helper": "^0.11.0",
+    "@needle-tools/vuepress-plugin-live-edit": "file:packages/vuepress-plugin-live-edit",
     "@shikijs/twoslash": "^1.17.7",
     "@tweenjs/tween.js": "^25.0.0",
     "@types/hast": "^3.0.4",

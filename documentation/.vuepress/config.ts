@@ -30,6 +30,7 @@ import copyMarkdown from './plugins/copy-markdown'
 import generateLlms from './plugins/generate-llms'
 import { fetchEngineData } from './plugins/fetch-engine-data/index'
 import { markdownContainerPlugin } from '@vuepress/plugin-markdown-container'
+import { liveEditPlugin } from '@needle-tools/vuepress-plugin-live-edit'
 
 dotenv.config()
 
@@ -550,6 +551,17 @@ export default defineUserConfig({
             type: 'file-tree',
             before: (info) => `<filetree ${info}>`,
             after: () => '</filetree>',
+        }),
+        /*
+          In-page WYSIWYG editing, dev server only - `vuepress build` never sees
+          it. Adds an Edit button to every page that has a markdown source
+          behind it. Containers and components are autodiscovered from this
+          config and ./components, so the editor's menus stay in step with the
+          site without a second list to maintain.
+        */
+        liveEditPlugin({
+            componentsDir: path.resolve(__dirname, './components'),
+            configFile: path.resolve(__dirname, './config.ts'),
         }),
     ],
     head: [

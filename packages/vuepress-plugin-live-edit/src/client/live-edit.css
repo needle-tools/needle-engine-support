@@ -1,0 +1,971 @@
+/*
+ * Editor chrome, loaded only on the dev server. Scoped under `live-edit-*`.
+ * Colours read VuePress's custom properties so the chrome follows the theme.
+ */
+
+.live-edit-launch {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.55rem 0.95rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 999px;
+  background: var(--vp-c-bg, #fff);
+  color: var(--vp-c-text-1, #213547);
+  font: inherit;
+  font-size: 0.875rem;
+  box-shadow: 0 2px 12px rgb(0 0 0 / 12%);
+  cursor: pointer;
+}
+
+.live-edit-launch:hover {
+  border-color: var(--vp-c-brand-1, #3eaf7c);
+  color: var(--vp-c-brand-1, #3eaf7c);
+}
+
+/* Status bar. */
+.live-edit-bar {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 1.25rem;
+  z-index: 60;
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+  max-width: calc(100vw - 2.5rem);
+  padding: 0.45rem 0.7rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 10px;
+  background: var(--vp-c-bg, #fff);
+  color: var(--vp-c-text-1, #213547);
+  font-size: 0.78rem;
+  box-shadow: 0 2px 14px rgb(0 0 0 / 14%);
+}
+
+.live-edit-bar__file { font-weight: 600; }
+.live-edit-bar__hint,
+.live-edit-bar__status { color: var(--vp-c-text-2, #67676c); }
+.live-edit-bar__status.is-ok { color: var(--vp-c-brand-1, #3eaf7c); }
+.live-edit-bar__status.is-error { color: #d93025; }
+.live-edit-bar__toggle { display: inline-flex; gap: 0.3rem; align-items: center; }
+
+.live-edit-bar button {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft, #f6f6f7);
+  color: inherit;
+  font: inherit;
+  font-size: 0.78rem;
+  cursor: pointer;
+}
+
+.live-edit-conflict {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 4.5rem;
+  z-index: 60;
+  max-width: 26rem;
+  padding: 0.75rem;
+  border: 1px solid #d93025;
+  border-radius: 8px;
+  background: var(--vp-c-bg, #fff);
+  font-size: 0.82rem;
+}
+
+.live-edit-conflict button {
+  margin-top: 0.5rem;
+  padding: 0.35rem 0.7rem;
+  border: 1px solid #d93025;
+  border-radius: 6px;
+  background: transparent;
+  color: #d93025;
+  font: inherit;
+  cursor: pointer;
+}
+
+/* The editing surface is the page's content element. */
+.live-edit-surface { outline: none; }
+.live-edit-surface:focus { outline: none; }
+
+/* Block gutter handle and insert menu. */
+/*
+  The visible button is 22px, but the hit area is padded so the pointer does
+  not have to land precisely on it after crossing the gutter.
+*/
+.live-edit-handle {
+  position: absolute;
+  z-index: 55;
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: var(--vp-c-bg, #fff);
+  color: var(--vp-c-text-2, #67676c);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.live-edit-handle::before {
+  content: '';
+  position: absolute;
+  inset: -10px -14px;
+}
+
+.live-edit-handle:hover {
+  border-color: var(--vp-c-brand-1, #3eaf7c);
+  color: var(--vp-c-brand-1, #3eaf7c);
+}
+
+.live-edit-menu {
+  position: absolute;
+  z-index: 70;
+  width: 17rem;
+  max-height: 22rem;
+  overflow: hidden auto;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 10px;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 6px 22px rgb(0 0 0 / 16%);
+}
+
+.live-edit-menu__filter {
+  width: 100%;
+  padding: 0.5rem 0.7rem;
+  border: 0;
+  border-bottom: 1px solid var(--vp-c-border, #e2e2e3);
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.82rem;
+  outline: none;
+}
+
+.live-edit-menu__list { display: flex; flex-direction: column; padding: 0.25rem; }
+
+.live-edit-menu__item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.35rem 0.5rem;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: inherit;
+  font: inherit;
+  font-size: 0.8rem;
+  text-align: left;
+  cursor: pointer;
+}
+
+.live-edit-menu__item:hover { background: var(--vp-c-bg-soft, #f4f4f5); }
+.live-edit-menu__item em { font-style: normal; font-size: 0.72rem; color: var(--vp-c-text-2, #67676c); }
+
+/* Containers use the theme's hint-container classes; this is the chrome. */
+.live-edit-container { position: relative; }
+
+/* No box of its own; the title is a real direct child of the container. */
+.live-edit-container__header { display: contents; }
+
+/* Only the type picker is chrome. */
+.live-edit-container__type {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+.live-edit-container:hover .live-edit-container__type,
+.live-edit-container:focus-within .live-edit-container__type { opacity: 1; }
+
+.live-edit-container__info { flex: 1; min-width: 0; margin: 0; }
+
+.live-edit-container__type,
+.live-edit-code__info {
+  padding: 0.15rem 0.35rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: var(--vp-c-bg, #fff);
+  color: inherit;
+  font: inherit;
+  font-size: 0.74rem;
+}
+
+
+/* Component attribute form. */
+.live-edit-component {
+  border: 1px dashed var(--vp-c-border, #d7d7d9);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft, #f9f9fa);
+  font-size: 0.8rem;
+}
+
+.live-edit-component__header {
+  display: flex;
+  gap: 0.6rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding: 0.4rem 0.65rem;
+  border-bottom: 1px solid var(--vp-c-border, #e2e2e3);
+}
+
+.live-edit-component__tag { font-family: var(--vp-font-family-mono, monospace); font-weight: 600; }
+.live-edit-component__source { font-size: 0.72rem; color: var(--vp-c-text-2, #67676c); }
+
+.live-edit-component__form { display: grid; gap: 0.3rem; padding: 0.55rem 0.65rem; }
+
+.live-edit-component__row {
+  display: grid;
+  grid-template-columns: auto 9rem minmax(0, 1fr);
+  gap: 0.45rem;
+  align-items: center;
+}
+
+.live-edit-component__name {
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.75rem;
+  overflow-wrap: anywhere;
+}
+
+.live-edit-component__name.is-extra { color: var(--vp-c-text-2, #67676c); }
+
+.live-edit-component__row input[type='text'],
+.live-edit-component__inner textarea,
+.live-edit-source textarea {
+  width: 100%;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: var(--vp-c-bg, #fff);
+  color: inherit;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.75rem;
+}
+
+.live-edit-component__row input[type='text']:disabled { opacity: 0.45; }
+
+.live-edit-component__hint {
+  grid-column: 2 / -1;
+  font-size: 0.7rem;
+  color: var(--vp-c-text-2, #67676c);
+}
+
+.live-edit-component__inner { display: grid; gap: 0.25rem; padding: 0 0.65rem 0.6rem; }
+.live-edit-component__label { font-size: 0.72rem; color: var(--vp-c-text-2, #67676c); }
+
+/* Source fallback: tables, HTML. */
+.live-edit-source {
+  position: relative;
+  padding: 1.35rem 0.5rem 0.5rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft, #f9f9fa);
+}
+
+.live-edit-source__label {
+  position: absolute;
+  top: 0.35rem;
+  left: 0.6rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2, #67676c);
+}
+
+.live-edit-source textarea { resize: vertical; }
+
+/* Code blocks carry the theme's own classes; this is the chrome. */
+.live-edit-code { position: relative; }
+
+.live-edit-code__header {
+  position: absolute;
+  top: 0.3rem;
+  right: 0.3rem;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.live-edit-code:hover .live-edit-code__header,
+.live-edit-code:focus-within .live-edit-code__header { opacity: 1; }
+
+.live-edit-code__info { width: 7rem; }
+
+.ProseMirror-gapcursor { display: none; pointer-events: none; position: absolute; }
+.ProseMirror-gapcursor:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: -2px;
+  width: 20px;
+  border-top: 1px solid currentcolor;
+}
+.ProseMirror-focused .ProseMirror-gapcursor { display: block; }
+
+/* Images sit at page size; the panel hangs below them on hover. */
+.live-edit-image { position: relative; display: inline-block; max-width: 100%; }
+.live-edit-image img { display: block; max-width: 100%; height: auto; }
+.live-edit-image.is-drop-target img { outline: 2px dashed var(--vp-c-brand-1, #3eaf7c); outline-offset: 3px; }
+
+/* The hover area. Starts flush with the image's bottom edge; its padding is
+   the visual gap, so moving down from the image never leaves it. */
+.live-edit-image__panel {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 57;
+  display: block;
+  width: max(22rem, 100%);
+  padding-top: 0.35rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.12s;
+}
+
+/* The visible card. */
+.live-edit-image__card {
+  display: grid;
+  gap: 0.3rem;
+  padding: 0.5rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 8px;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 14%);
+}
+
+.live-edit-image.is-pinned .live-edit-image__panel,
+.live-edit-image:hover .live-edit-image__panel,
+.live-edit-image:focus-within .live-edit-image__panel {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.live-edit-image__row {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr) auto;
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.live-edit-image__label {
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--vp-c-text-2, #67676c);
+}
+
+.live-edit-image__card input[type='text'] {
+  width: 100%;
+  padding: 0.25rem 0.4rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: var(--vp-c-bg-soft, #fbfbfc);
+  color: inherit;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.74rem;
+}
+
+.live-edit-image__controls { display: flex; gap: 0.3rem; align-items: center; }
+.live-edit-image__size { margin-left: auto; font-size: 0.68rem; color: var(--vp-c-text-2, #67676c); }
+
+.live-edit-image__card button,
+.live-edit-image__scale {
+  padding: 0.2rem 0.4rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: var(--vp-c-bg, #fff);
+  color: var(--vp-c-text-2, #67676c);
+  font: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.live-edit-image__card button.is-danger { color: #d93025; }
+/* Carries attributes markdown cannot express, so the image saves as a tag. */
+.live-edit-image.is-html .live-edit-image__more {
+  border-color: var(--vp-c-brand-1, #3eaf7c);
+  color: var(--vp-c-brand-1, #3eaf7c);
+}
+
+/* Pressed, so the pane below is visibly this button's doing. */
+.live-edit-image__card button.live-edit-image__more.is-open {
+  border-color: var(--vp-c-text-1, #3c3c43);
+  background: var(--vp-c-text-1, #3c3c43);
+  color: var(--vp-c-bg, #fff);
+}
+
+/* Only offered once the panel is pinned, since that is the state it closes. */
+.live-edit-image__close {
+  border-color: var(--vp-c-brand-1, #3eaf7c) !important;
+  color: var(--vp-c-brand-1, #3eaf7c) !important;
+}
+
+.live-edit-image__extras { display: grid; gap: 0.25rem; }
+
+.live-edit-image__attr {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr) auto;
+  gap: 0.3rem;
+}
+
+.live-edit-image__add { justify-self: start; }
+.live-edit-image__note { font-size: 0.68rem; color: var(--vp-c-text-2, #67676c); }
+
+/* Container title, styled by the theme; only the inner span is editable. */
+.live-edit-container__title { margin: 0; }
+.live-edit-container__info { outline: none; }
+.live-edit-container__info:empty::before {
+  content: attr(data-placeholder);
+  opacity: 0.45;
+}
+
+/* Components render themselves; the form opens on demand. */
+.live-edit-component { position: relative; }
+
+.live-edit-component__toggle {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 2;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--vp-c-bg, #fff) 90%, transparent);
+  color: var(--vp-c-text-2, #67676c);
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.7rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.live-edit-component:hover .live-edit-component__toggle,
+.live-edit-component.is-editing .live-edit-component__toggle,
+.live-edit-component.is-unrendered .live-edit-component__toggle { opacity: 1; }
+
+.live-edit-component.is-unrendered .live-edit-component__preview {
+  padding: 0.5rem 0.65rem;
+  border: 1px dashed var(--vp-c-border, #d7d7d9);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft, #f9f9fa);
+}
+
+.live-edit-component__summary { font-size: 0.78rem; overflow-wrap: anywhere; }
+
+.live-edit-component__panel {
+  margin-top: 0.4rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft, #f9f9fa);
+  font-size: 0.8rem;
+}
+
+/* Frontmatter panel: a field per row, nested YAML shown as-is. */
+.live-edit-frontmatter {
+  position: fixed;
+  right: 1.25rem;
+  bottom: 4.5rem;
+  z-index: 60;
+  display: grid;
+  gap: 0.5rem;
+  width: min(38rem, calc(100vw - 2.5rem));
+  max-height: 60vh;
+  overflow: auto;
+  padding: 0.75rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 10px;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 6px 22px rgb(0 0 0 / 16%);
+}
+
+.live-edit-frontmatter__grid {
+  display: grid;
+  grid-template-columns: 9rem minmax(0, 1fr) auto;
+  gap: 0.3rem 0.4rem;
+  align-items: center;
+}
+
+.live-edit-frontmatter__key,
+.live-edit-frontmatter__value {
+  padding: 0.3rem 0.45rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft, #fbfbfc);
+  color: inherit;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.78rem;
+}
+
+.live-edit-frontmatter__key.is-block {
+  padding: 0.3rem 0;
+  border: 0;
+  background: none;
+  color: var(--vp-c-text-2, #67676c);
+  align-self: start;
+}
+
+.live-edit-frontmatter__block {
+  margin: 0;
+  padding: 0.3rem 0.45rem;
+  border: 1px dashed var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  overflow-x: auto;
+  color: var(--vp-c-text-2, #67676c);
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.74rem;
+  white-space: pre;
+}
+
+.live-edit-frontmatter__grid button,
+.live-edit-frontmatter__add {
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: transparent;
+  color: var(--vp-c-text-2, #67676c);
+  font: inherit;
+  font-size: 0.74rem;
+  cursor: pointer;
+}
+
+.live-edit-frontmatter__add { justify-self: start; }
+.live-edit-frontmatter__empty { margin: 0; font-size: 0.8rem; color: var(--vp-c-text-2, #67676c); }
+
+.live-edit-bar button.is-active {
+  border-color: var(--vp-c-brand-1, #3eaf7c);
+  color: var(--vp-c-brand-1, #3eaf7c);
+}
+
+
+/* A tight list has no space between items, matching the rendered page. */
+.live-edit-surface ul[data-tight] li > p,
+.live-edit-surface ol[data-tight] li > p {
+  margin: 0;
+  font: inherit;
+  line-height: inherit;
+}
+
+/* Raw HTML blocks render as written. */
+.live-edit-html { position: relative; }
+.live-edit-html.is-editing .live-edit-html__preview { opacity: 0.5; }
+
+.live-edit-html__toggle {
+  position: absolute;
+  top: 0.35rem;
+  right: 0.35rem;
+  z-index: 2;
+  padding: 0.2rem 0.45rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--vp-c-bg, #fff) 90%, transparent);
+  color: var(--vp-c-text-2, #67676c);
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.7rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.12s;
+}
+
+.live-edit-html:hover .live-edit-html__toggle,
+.live-edit-html.is-editing .live-edit-html__toggle { opacity: 1; }
+
+.live-edit-html textarea {
+  width: 100%;
+  margin-top: 0.4rem;
+  padding: 0.5rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft, #fbfbfc);
+  color: inherit;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.76rem;
+  resize: vertical;
+}
+
+/* Tables: the theme styles the table; this is the editing chrome. */
+.live-edit-table { position: relative; }
+
+/* Placed by the table-tools plugin: columns above the table, rows to its left. */
+.live-edit-table-tools {
+  position: absolute;
+  z-index: 58;
+  display: flex;
+  gap: 0.1rem;
+  align-items: center;
+  padding: 0.15rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 7px;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 14%);
+  white-space: nowrap;
+}
+
+.live-edit-table-tools.is-rows { flex-direction: column; }
+
+.live-edit-table-tools__sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 0.1rem 0.15rem;
+  background: var(--vp-c-border, #e2e2e3);
+}
+
+.live-edit-table-tools button {
+  min-width: 1.5rem;
+  padding: 0.1rem 0.25rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--vp-c-text-1, #213547);
+  font: inherit;
+  font-size: 0.72rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.live-edit-table-tools button:hover {
+  border-color: var(--vp-c-brand-1, #3eaf7c);
+  color: var(--vp-c-brand-1, #3eaf7c);
+}
+
+.live-edit-table-tools button[data-danger] { color: #d93025; }
+.live-edit-table-tools button[data-danger]:hover { border-color: #d93025; color: #d93025; }
+
+.live-edit-table .selectedCell {
+  position: relative;
+  background: color-mix(in srgb, var(--vp-c-brand-1, #3eaf7c) 12%, transparent);
+}
+
+.live-edit-table .column-resize-handle {
+  position: absolute;
+  right: -2px;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: var(--vp-c-brand-1, #3eaf7c);
+  pointer-events: none;
+}
+
+.live-edit-surface.resize-cursor { cursor: col-resize; }
+
+/* Menu heading. */
+.live-edit-menu__heading {
+  padding: 0.45rem 0.7rem 0.15rem;
+  font-size: 0.7rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-2, #67676c);
+}
+
+/* A details container uses its native marker; the title is the summary. */
+.live-edit-container[open] > .live-edit-container__body { display: block; }
+
+/* Inline markup renders in place; the source is available as a tooltip. */
+.live-edit-html-inline { display: inline; }
+
+/* Comments, style and script render nothing on the page, so they take no
+   vertical space here either. The chip sits in the gap above the next block. */
+.live-edit-html.is-invisible {
+  height: 0;
+  margin: 0;
+  overflow: visible;
+}
+
+.live-edit-html.is-invisible .live-edit-html__preview {
+  position: absolute;
+  transform: translateY(-1.1rem);
+}
+
+.live-edit-html.is-invisible .live-edit-html__toggle { top: -1.1rem; right: auto; left: 5.5rem; }
+.live-edit-html.is-invisible.is-editing { height: auto; margin: 0.5rem 0; }
+.live-edit-html.is-invisible.is-editing .live-edit-html__preview { position: static; transform: none; }
+.live-edit-html.is-invisible.is-editing .live-edit-html__toggle { top: 0.35rem; left: auto; right: 0.35rem; }
+
+.live-edit-html__chip {
+  display: inline-block;
+  padding: 0.05rem 0.35rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: var(--vp-c-bg-soft, #f6f6f7);
+  color: var(--vp-c-text-2, #67676c);
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.68rem;
+}
+
+/* An array-valued bound prop, edited as a list of records. */
+.live-edit-component__list {
+  display: grid;
+  gap: 0.2rem;
+  padding: 0.4rem 0.65rem 0.6rem;
+}
+
+.live-edit-list { display: grid; gap: 0.3rem; }
+.live-edit-list__rows { display: grid; }
+
+/*
+  Separated by a rule, not boxed. The panel around them is already a box, and
+  a box per entry inside it stacks three framed layers on top of each other.
+*/
+.live-edit-list__row {
+  display: grid;
+  /* grip, thumbnail, fields, remove. minmax(0,1fr) lets the fields shrink
+     rather than pushing the remove button over them. */
+  grid-template-columns: auto auto minmax(0, 1fr) auto;
+  gap: 0.45rem;
+  align-items: start;
+  padding: 0.45rem 0;
+  border-top: 1px solid var(--vp-c-border, #e2e2e3);
+}
+
+.live-edit-list__row:first-child { border-top: 0; padding-top: 0.15rem; }
+
+/*
+  As tall as the row's fields and as wide as the picture needs at that height,
+  so the thumbnail is the shape of the image rather than a square crop of it.
+*/
+.live-edit-list__thumb {
+  position: relative;
+  align-self: stretch;
+  display: block;
+  /* Fixed: a width driven by the picture would size the column, which would
+     resize the row, which would resize the picture. */
+  width: 6rem;
+  overflow: hidden;
+  /* A plate rather than a frame: one less outline in a nested panel. */
+  background: var(--vp-c-bg, #fff);
+}
+
+/*
+  Taken out of the flow, so the picture fills the box without having any say
+  in how tall it is. Left in the flow it falls back to its own height when the
+  box has none of its own yet, and a tall picture stretches the row.
+*/
+.live-edit-list__thumb img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  /* The whole picture at its own proportions, not a crop of it. */
+  object-fit: contain;
+}
+
+.live-edit-list__thumb.is-missing img { visibility: hidden; }
+
+.live-edit-list__thumb.is-missing::after {
+  content: '?';
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  color: var(--vp-c-text-3, #9b9ba3);
+  font-size: 0.9rem;
+}
+
+.live-edit-list__row.is-dragging { opacity: 0.4; }
+
+/* No border to recolour now, so the drop target is shown by its fill. */
+.live-edit-list__row.is-over {
+  background: color-mix(in srgb, var(--vp-c-brand-1, #3eaf7c) 12%, transparent);
+}
+
+.live-edit-list__grip {
+  padding-top: 0.15rem;
+  color: var(--vp-c-text-3, #9b9ba3);
+  font-size: 0.85rem;
+  line-height: 1;
+  cursor: grab;
+  user-select: none;
+}
+
+.live-edit-list__fields { display: grid; gap: 0.2rem; min-width: 0; }
+
+.live-edit-list__field {
+  display: grid;
+  grid-template-columns: 4.5rem minmax(0, 1fr);
+  gap: 0.35rem;
+  align-items: center;
+}
+
+.live-edit-list__key {
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.7rem;
+  color: var(--vp-c-text-2, #67676c);
+}
+
+.live-edit-list__field input {
+  width: 100%;
+  padding: 0.2rem 0.35rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: var(--vp-c-bg-soft, #fbfbfc);
+  color: inherit;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.72rem;
+}
+
+.live-edit-list__remove,
+.live-edit-list__add,
+.live-edit-list__source {
+  padding: 0.15rem 0.4rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--vp-c-text-2, #67676c);
+  font: inherit;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+
+.live-edit-list__remove { color: #d93025; align-self: start; }
+.live-edit-list__actions { display: flex; gap: 0.3rem; }
+
+.live-edit-list textarea {
+  width: 100%;
+  min-height: 7rem;
+  padding: 0.4rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 6px;
+  background: var(--vp-c-bg-soft, #fbfbfc);
+  color: inherit;
+  font-family: var(--vp-font-family-mono, monospace);
+  font-size: 0.72rem;
+  resize: vertical;
+}
+
+/* Formatting controls above a text selection. */
+.live-edit-format {
+  position: absolute;
+  z-index: 59;
+  display: flex;
+  gap: 0.1rem;
+  align-items: center;
+  padding: 0.2rem;
+  border: 1px solid var(--vp-c-border, #e2e2e3);
+  border-radius: 8px;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 3px 14px rgb(0 0 0 / 16%);
+  white-space: nowrap;
+}
+
+.live-edit-format__sep {
+  width: 1px;
+  align-self: stretch;
+  margin: 0.15rem 0.2rem;
+  background: var(--vp-c-border, #e2e2e3);
+}
+
+.live-edit-format button {
+  min-width: 1.7rem;
+  padding: 0.15rem 0.35rem;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--vp-c-text-1, #213547);
+  font: inherit;
+  font-size: 0.78rem;
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.live-edit-format button:hover { background: var(--vp-c-bg-soft, #f4f4f5); }
+
+.live-edit-format button.is-active {
+  border-color: var(--vp-c-brand-1, #3eaf7c);
+  color: var(--vp-c-brand-1, #3eaf7c);
+}
+
+.live-edit-format button.is-bold { font-weight: 700; }
+.live-edit-format button.is-italic { font-style: italic; }
+.live-edit-format button.is-code { font-family: var(--vp-font-family-mono, monospace); font-size: 0.7rem; }
+
+
+/* Form inputs are sized by their grid cell, not by their default width. */
+.live-edit-surface input,
+.live-edit-surface textarea,
+.live-edit-list input,
+.live-edit-list textarea,
+.live-edit-frontmatter input,
+.live-edit-frontmatter textarea,
+.live-edit-image__extras input {
+  box-sizing: border-box;
+  min-width: 0;
+}
+
+
+/*
+  A class setting `display` outranks the user agent's `[hidden] { display:none }`,
+  so the floating controls need it stated explicitly or `hidden` does nothing.
+*/
+.live-edit-format[hidden],
+.live-edit-table-tools[hidden],
+.live-edit-menu[hidden],
+.live-edit-handle[hidden],
+.live-edit-html__preview[hidden],
+.live-edit-list__rows[hidden] {
+  display: none;
+}
+
+/*
+  Change marks. A line in the left margin rather than a background, so the
+  text keeps the colour and contrast it has when reading.
+*/
+.live-edit-surface > .live-edit-changed,
+.live-edit-surface > .live-edit-git-changed {
+  position: relative;
+}
+
+.live-edit-surface > .live-edit-changed::before,
+.live-edit-surface > .live-edit-git-changed::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  border-radius: 2px;
+  pointer-events: none;
+}
+
+/* Unsaved: nearest the text, since it is the more urgent of the two. */
+.live-edit-surface > .live-edit-changed::before {
+  left: -14px;
+  background: var(--vp-c-warning-1, #e0a03a);
+}
+
+/* Committed state: further out, so both can show at once. */
+.live-edit-surface > .live-edit-git-changed::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -22px;
+  width: 3px;
+  border-radius: 2px;
+  background: var(--vp-c-brand-1, #3eaf7c);
+  pointer-events: none;
+}
+
+.live-edit-warnings {
+  position: fixed;
+  right: 1rem;
+  bottom: 4.2rem;
+  z-index: 60;
+  max-width: min(30rem, calc(100vw - 2rem));
+  padding: 0.6rem 0.8rem;
+  border: 1px solid var(--vp-c-warning-1, #e0a03a);
+  border-radius: 8px;
+  background: var(--vp-c-bg, #fff);
+  box-shadow: 0 4px 16px rgb(0 0 0 / 14%);
+  font-size: 0.78rem;
+}
+
+.live-edit-warnings p { margin: 0 0 0.3rem; font-weight: 600; }
+.live-edit-warnings ul { margin: 0; padding-left: 1.1rem; }
+.live-edit-warnings li { margin: 0.15rem 0; }
+.live-edit-bar__status.is-warn { color: var(--vp-c-warning-1, #e0a03a); }
