@@ -9,7 +9,7 @@ Standalone products that work alongside your project. They are useful with Needl
 
 ## [Needle Mesh Baker](/docs/products/needle-mesh-baker)
 
-Turn heavy models into lightweight production meshes. Drop in a `.glb`, `.obj` or `.fbx`, set a triangle budget, and get back a reduced mesh with the appearance of the original baked onto it. Runs entirely in your browser — nothing is uploaded.
+Generate or import a model, then reduce its geometry and draw calls, keep its existing UVs and textures, bake new materials, make octahedral or pixel impostors, or optimize animation. Gaussian `.ply` clouds, parts-to-skin conversion, segmentation and experimental rigging are also available. The browser processes local models locally; Cloud upload is optional. The product guide compares output choices and compatibility.
 
 ## [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension)
 

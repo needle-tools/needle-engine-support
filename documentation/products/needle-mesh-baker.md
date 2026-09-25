@@ -1,22 +1,22 @@
 ---
 title: Needle Mesh Baker — Generate, Optimize and Bake 3D Models
-description: Generate 3D models, reduce triangles and draw calls, bake PBR textures, optimize animated and skinned 3D assets, or rebuild geometry with voxel remeshing and conservative wrap mode — locally in your browser.
+description: Generate 3D models, simplify meshes while keeping UVs and textures, bake PBR maps, create impostors and optimize animated assets locally in your browser.
 image: https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif
 ---
 
 # Needle Mesh Baker
 
-The **Needle Mesh Baker** generates and optimizes 3D models in your browser. It reduces triangles and draw calls, bakes appearance into textures, rebuilds difficult geometry, and optimizes skinned meshes while preserving their rigs and animation clips.
+The **Needle Mesh Baker** generates and optimizes 3D models in your browser. It reduces triangles and draw calls, bakes appearance into textures or vertex colors, rebuilds difficult geometry, and optimizes skinned meshes while preserving their rigs and animation clips.
 
 - **Built to render fast** — fewer triangles and draw calls, with potentially smaller files
 - **Animation-aware** — preserve a skinned mesh and its clips, optimize an authored pose, or freeze a selected animation frame
 - **Multiple geometry methods** — simplify authored topology, voxel-remesh difficult assets, create a conservative outer wrap, or bake textures without changing geometry
-- **Keeps the look** — reduce the triangle count while preserving the silhouette and baking color, normals, roughness and metallic into textures
+- **Keeps visible detail** — use geometry for the silhouette and bake fine color and shading detail onto the reduced result
 - **Bake on your GPU** — process complex models without an upload or processing queue. Bake times depend on your hardware and settings
 - **No model? Generate one** — describe what you want, or drop in a single image, and the baker builds a 3D model from it, then optimizes it in the same place. That runs on your own GPU too
 - **[WebMCP ready](#let-an-ai-agent-drive-it)** — use the ChatGPT app to directly control and use the Mesh Baker. Generate an image in ChatGPT, turn it into a 3D model in the baker, then optimize and compare the result — all in one conversation
 - **Local processing** — models are processed in your browser. Uploading a result to Needle Cloud is optional ([privacy details](#is-my-model-uploaded-to-needle))
-- **Yours to download** — the finished mesh comes back as a plain `.glb`
+- **Yours to download** — results are `.glb` files; standard meshes work in glTF viewers, while advanced impostor and rig effects need matching Needle support
 
 Drop in a model — or generate one — set a triangle budget, and compare the result against the source before you download it.
 
@@ -29,7 +29,7 @@ Drop in a model — or generate one — set a triangle budget, and compare the r
 ## Quick Start
 
 1. Open [mesh-baker.needle.tools](https://mesh-baker.needle.tools) in your browser
-2. Drop a `.glb`, `.gltf`, `.obj`, `.fbx` or `.zip` onto the page — or load a model from your Needle Cloud library
+2. Drop a `.glb`, `.gltf`, `.obj`, `.fbx`, `.ply` or `.zip` onto the page — or load a model from your Needle Cloud library
 3. Set your triangle budget under **Geometry**, or switch to targeting a maximum surface error
 4. Press **Optimize asset**, then compare the result against the source in the two linked viewers
 5. **Download** the result as a `.glb`
@@ -40,7 +40,7 @@ Importing local files, baking, previewing and comparing all happen on your machi
 
 ## What it produces
 
-An optimized glTF asset with the appearance of the original baked onto it. Depending on the selected workflow, the result can be a single atlased mesh, a structure-preserving animated asset, a remeshed surface, or a conservative wrap. It is useful for LODs, animated characters, background props, kitbashed scans, CAD imports and anything with more triangles, materials, or draw calls than it needs.
+The result is a `.glb` whose content depends on the workflow: a reduced mesh with baked appearance, an animated asset with its rig and clips, an impostor, or a remeshed surface. It is useful for LODs, animated characters, background props, scans, CAD imports and models with more triangles, materials or draw calls than they need.
 
 <image-slides
   ratio="1920/1020"
@@ -58,7 +58,9 @@ An optimized glTF asset with the appearance of the original baked onto it. Depen
 - **Far fewer draw calls** — however many meshes and materials went in, usually one mesh with one material comes out. Surfaces that have to be drawn differently, such as transparent ones, stay separate. On scenes built from many small parts this is often the bigger win, not the triangle count
 - **Set a triangle budget**, or ask instead for a maximum deviation from the original surface and let the baker find the triangle count
 - **Four geometry methods** — simplify authored topology, rebuild it on a voxel grid, create a watertight outer wrap, or keep the geometry and bake textures only
-- **Draw-call reduction** — combine many source materials into an atlas and export one material where the selected workflow allows it
+- **Optional quad remeshing** — target a quad count during remeshing; the exported glTF triangulates the faces because glTF stores triangles
+- **Three material representations** — a detailed PBR atlas, a small stylized gradient atlas, or vertex colors without texture files
+- **Other representations** — octahedral impostors for distant objects and pixel impostors for intentionally blocky, pixel-scale objects
 - **Skinned mesh and animation optimization** — retain rigs and clips while measuring simplification across sampled poses
 - **Baked PBR textures** — base color, normal, roughness, metallic, emissive, opacity, and optional ambient occlusion, up to 4K
 - **Live preview** — drag the budget and watch the mesh change, so you can find the right number before running a full bake
@@ -87,6 +89,7 @@ The baker combines simplification, UV creation and texture baking in one step, i
 | `.glb` / `.gltf` | Loaded directly |
 | `.obj` + `.mtl` + textures | Select all files together |
 | `.fbx` | Loaded directly |
+| `.ply` | Triangle mesh or Gaussian splat cloud; a splat cloud is reconstructed into a mesh before baking |
 | `.zip` | An archive containing any of the above, with relative paths preserved |
 | Needle Cloud | Sign in to pick a model from your own asset library |
 
@@ -100,6 +103,30 @@ Choose the method that matches the source asset and the result you need:
 - **Voxel remesh** rebuilds topology on a voxel grid before reduction. It can combine disconnected parts and clean up scans, generated assets, CAD imports and broken geometry.
 - **Wrap** creates a watertight conservative outer shell. Controls for minimum hole size and offset help produce robust collision meshes, proxy geometry and aggressive low-detail representations.
 - **Bake textures only** keeps the source geometry while rebaking its appearance, which is useful when material and draw-call cost—not topology—is the main problem.
+
+For quad remeshing, choose **Quads** under geometry topology and set a quad budget. The GLB stores triangulated faces for compatibility, while the baker reports the quad count. The GLB does not preserve editable quad faces, and a triangle target and quad target are different budgets.
+
+### Keep existing UVs and textures while reducing the mesh
+
+Yes. Choose **Mesh** as the representation, **Geometry → Method → Simplify**, **Mesh Type → Triangles**, and **Bake → Materials → Keep source materials**. Then set a triangle target or surface-error limit and run **Optimize asset**. This reduces the existing mesh without creating a new texture atlas. The result keeps its source materials, textures and UV layout.
+
+The control targets **triangles**, not an exact vertex count. Vertex count usually falls too, but UV seams and material boundaries can require extra vertices. At very low triangle budgets, some UV seams may need to move to reach the target, so inspect the textured result before downloading. Keeping source materials also keeps their separate draw calls; choose **Merge and bake** if reducing material count matters more than reusing the original UVs.
+
+## Choose the output representation
+
+For a model seen up close, start with a mesh and PBR textures. Use an impostor when the object will usually occupy a small area of the screen. Choose a pixel impostor when the blocky look itself is the goal.
+
+| Representation | Use it when | Output and runtime |
+|---|---|---|
+| **Mesh with PBR atlas** | You need the closest general-purpose replacement for the source. | Standard glTF mesh and PBR textures; no custom loader. |
+| **Mesh with gradient trims** | A tiny LOD matters more than preserving every surface detail. | Small, stylized color/material atlas and geometric normals; no custom loader. |
+| **Mesh with vertex colors** | Texture payload dominates a very small asset. | Appearance on vertices, without baked texture files; the color boundaries may need additional vertices. |
+| **Octahedral impostor** | A distant prop or repeated object needs a convincing view-dependent substitute. | A GLB with a visible fallback; its full camera-dependent effect needs the Needle impostor loader. |
+| **Pixel impostor** | You want a deliberately voxel or pixel-art silhouette, including oblique views. | A GLB with a solid voxel fallback; additional display modes need the Needle pixel-impostor loader. |
+
+Impostors are separate output modes for objects usually seen at a distance or repeated many times. An ordinary glTF viewer displays their fallback, while a supporting viewer displays the full effect. For octahedral impostors, more captured views improve transitions but use more texture space. Pixel impostors have an intentionally blocky silhouette.
+
+The **PBR atlas** can transfer base color, normal, roughness, metallic, emissive and opacity, with optional ambient occlusion. **Gradient trims** keep a small stylized atlas and omit the fine normal texture. **Vertex colors** remove texture payloads and bake the selected appearance onto the reduced vertices. Pick the representation before assuming a texture-resolution change will make the file smaller.
 
 ## Reduce materials and draw calls
 
@@ -117,6 +144,22 @@ Mesh Baker supports animation-aware optimization for skinned 3D assets, includin
 
 Animation-aware surface-error targeting can decide how many triangles are necessary instead of forcing one fixed budget. This makes the workflow useful for animated characters and moving props as well as static assets.
 
+**Parts to skin** handles a different input: a model animated as separate rigid objects. It creates a skinned GLB and retains the animation clips, which can reduce the draw calls of articulated props and mechanical assets. The parts keep their rigid motion; the conversion does not invent soft bending between them.
+
+## Generate or reconstruct a source
+
+The **Generate** panel can make a model from a text prompt or an image on a compatible desktop GPU. Image generation is the better choice when you have a clean picture of one object; text generation is useful for drafts or when no reference image exists. The first run downloads model weights and can take much longer than later runs. Check the in-app capability and download estimate before starting. This is local GPU processing, not a cloud generation queue.
+
+For image generation, remove the background so the object has real transparency. A photographed background can become part of the reconstructed shape; a painted checkerboard is not transparency. The workbench can cut out a chosen image, and its experimental phone-camera flow can send a photo to the desktop for cutout and review before generation. Up to three additional, consistent views of the **same** object can guide an agent-triggered image generation. Different AI interpretations of an object are poor extra views.
+
+Generated models and imported Gaussian-splat `.ply` files can be remeshed and baked like other sources. A Gaussian capture can become a regular textured GLB that does not need a splat renderer in the destination app. This route is for opaque captures; translucent Gaussian volumes are not yet supported.
+
+## Segment, rig and pose a model
+
+**Smart mesh segmentation** finds likely parts from the model's shape and appearance. Use **Parts → Auto** or request a part count, preview the colored regions, then select and merge parts where needed. This is currently an inspection and editing workflow; exporting the proposed parts as separate GLB objects is not yet available.
+
+Under **Experiments → Show Deformation settings**, you can suggest or place pins, adjust a rig with IK handles, mirror edits and author pose slots. **Wiggle** previews secondary motion. Download exports a skinned GLB with standard joints, weights and pose clips. Other glTF readers can play those clips; live IK and secondary motion need Needle's rig runtime. This editor is experimental and needs a compatible WebGPU device.
+
 ## Comparing before and after
 
 Optimization is only worth it if you can see what it cost you. The workbench is built around two viewers with synchronized cameras — source on the left, result on the right:
@@ -126,6 +169,8 @@ Optimization is only worth it if you can see what it cost you. The workbench is 
 - **Preview lighting** — light type, environment, tone mapping, floor and shadows, applied identically to both sides
 - **A quality score** — measure the difference between source and result alongside your visual comparison
 - **Every baked texture**, shown as it came out
+
+If surface detail disappears, raise the geometry budget or use a full PBR atlas. If the file is still too large, try a smaller texture or a compact material mode. If the silhouette is wrong, texture resolution will not fix it.
 
 <img src="https://cloud.needle.tools/-/media/YK_W-UvRZGYtoMsMx_NSBw.gif" alt="A 3,200,000 triangle bust of Nefertiti beside its 3,000 triangle baked result in the Needle Mesh Baker's two linked viewers" loading="lazy" />
 
@@ -154,9 +199,9 @@ The baker registers itself as a set of [WebMCP](https://webmachinelearning.githu
 
 *ChatGPT calling the baker's WebMCP tools: it loads the model, sets the budget, runs the bake and checks the result — in the same workbench you would have clicked through yourself.*
 
-Agents can load a model from a URL or from your Needle Cloud library, change any build setting, run the bake, take screenshots of the before/after previews to check their own work, and download or upload the result. Screenshots matter here: a triangle count tells an agent that the model got smaller, not whether it still looks right.
+An agent can load a model from a URL, a file supplied in the conversation or your Needle Cloud library. It can inspect the workbench state, choose supported settings, bake, read the report and compare screenshots before saving. A triangle count shows that the model got smaller; the screenshot helps check whether it still looks right. Downloads and uploads follow the same account and license rules as the workbench controls.
 
-**Generation is a tool too.** An agent can ask the baker to build a model from a description or an image and then optimize it, all in one conversation — or hand over a model it made itself, like the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app does. Either way the generated mesh arrives dense, which is exactly what the rest of the workbench is for: ask for the thing you want, then ask for it under a triangle budget.
+**Generation is a tool too.** An agent can ask the baker to build a model from a description or an image and then optimize it, all in one conversation — or hand over a reference image it made itself, like the <img class="inline-logo" src="/imgs/openai-logo.webp" title="ChatGPT" alt="ChatGPT" /> ChatGPT app does. On a compatible machine, it can check the model-weight download before starting, refine a generation and try a new surface on the same shape. The generated model uses the same remeshing and baking controls as an imported model.
 
 **Where it works**
 
@@ -173,18 +218,13 @@ Since it is the <img class="inline-logo" src="/imgs/openai-logo.webp" title="Cha
 
 Baking still happens entirely on your machine. An agent drives the same in-browser pipeline you do. Uploading a result to Needle Cloud requires your request. Information returned to your agent, such as preview screenshots or model data you ask it to retrieve, is handled by that agent and its provider.
 
-## More workflows
+## Use it in a build pipeline
 
-- **Octahedral and pixel impostors** replace distant or repeated models with much cheaper representations that preserve their appearance from changing viewpoints.
-- **Gaussian splat to mesh** turns a `.ply` splat capture into a regular textured glTF mesh without requiring a splat renderer at runtime.
+The separately licensed CLI can run mesh bakes, parts-to-skin conversion, impostor bakes and impostor texture compression over files. It is useful for repeatable LOD generation and asset processing in CI; contact [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI) about batch or service licensing.
 
-## Coming soon
+For a model headed to another 3D app, check whether it supports the chosen output. Standard optimized meshes work as ordinary glTF. Full impostor effects need the matching Needle loader in the destination app.
 
-**Quad remeshing.** A clean quad topology for the workflows that need one, rather than the triangles a real-time renderer is happy with.
-
-**Vertex color bakes with PBR.** Appearance carried in the vertices instead of a texture, for models small enough that a texture is the larger half of the file.
-
-See the live [Mesh Baker roadmap](https://mesh-baker.needle.tools/roadmap/) for features still in development.
+See the live [Mesh Baker roadmap](https://mesh-baker.needle.tools/roadmap/) for work still in development.
 
 ## Downloads and licensing
 
@@ -207,7 +247,7 @@ Already have **[Needle Engine Pro](https://needle.tools/pricing)**? The Mesh Bak
 
 ### What you get after that
 
-**Every update, at no extra cost.** The baker is developed continuously, and what is [coming next](#coming-soon) arrives as part of the purchase you already made — not as a new product to buy again.
+**Updates are included.** The baker is developed continuously; see the [live roadmap](https://mesh-baker.needle.tools/roadmap/) for features in development.
 
 ### Batch and CI use
 
@@ -215,9 +255,9 @@ A **command-line version** is available on request, so baking can run as a build
 
 ## Requirements
 
-- Works best on a desktop browser — Chrome, Edge or another Chromium-based browser. On a phone the workbench says so and lets you continue anyway
-- Baking uses your graphics card, so a machine that can run 3D content comfortably will bake comfortably
-- Everything runs locally, which means no upload wait and no queue — bake times and the size of model you can handle depend on your machine
+- The workbench works best on a desktop Chromium browser such as Chrome or Edge. A phone can open the workbench, but some features are unavailable there
+- Baking uses your computer's graphics hardware when available. Image and text generation require a compatible desktop WebGPU device
+- Local processing has no model-upload queue; bake time and the model size you can handle depend on your machine and settings
 
 ## FAQ
 
@@ -257,13 +297,15 @@ Failures also report a shortened error message so we can fix what broke. Error m
 
 ### Does it work offline?
 
-The page itself has to load once, but the baking pipeline does not talk to a server, so the actual work does not depend on your connection.
+Once the page and a model are loaded, an active bake does not need a processing server. Opening the site, loading a Cloud asset, uploading a result, or downloading generation weights needs a connection.
 
 ### Where can I use the results?
 
-Anywhere. The output is industry-standard glTF with PBR materials, so it opens in Needle Engine, three.js, React Three Fiber, Blender, Unity, or any other software that reads glTF. Nothing about it is Needle-specific.
+Standard mesh bakes use glTF meshes and PBR materials, so they open in Needle Engine, three.js, React Three Fiber, Blender, Unity and other glTF readers. Skinned exports also use standard glTF skins and animation clips.
 
-The baked textures come out uncompressed, so they stay sharp for whatever you do next. Run them through your usual texture compression on the way into your project — a Needle Engine production build does this for you and converts them to GPU-compressed KTX2 automatically. See [Optimization & Compression](/docs/how-to-guides/optimization/).
+Octahedral and pixel impostors include visible fallback geometry. Their full camera-dependent appearance requires the matching Needle loader in the destination app. An experimental rig's skin and pose clips work without its runtime, but live IK and secondary motion need Needle's rig support. Check the [output representation table](#choose-the-output-representation) before promising identical appearance in every viewer.
+
+PBR mesh atlases normally come out uncompressed so they remain suitable for later processing. Run them through your usual texture compression on the way into a project — a Needle Engine production build can convert them to GPU-compressed KTX2. Impostor textures also have a separate compression workflow. See [Optimization & Compression](/docs/how-to-guides/optimization/).
 
 ### Do I own the results? Can I use them commercially?
 
@@ -274,6 +316,10 @@ Baking does not change who owns the source. A model that you bought from a marke
 ### Can I bake animated or skinned characters?
 
 Yes. For a skinned or animated glTF/GLB or FBX asset, choose **Optimize for clips** to retain the rig and animation clips while the baker samples motion during optimization. Choose **Ignore clips** to retain the animated document while optimizing its authored pose, or **Freeze pose** when you want a static result from one selected animation frame.
+
+### Can I reduce triangles without rebaking my textures?
+
+Yes. Choose **Simplify** under Geometry and **Keep source materials** under Bake. The result reuses your textures and UV layout instead of making a new atlas. See [Keep existing UVs and textures while reducing the mesh](#keep-existing-uvs-and-textures-while-reducing-the-mesh) for the full settings and low-budget caveat.
 
 ### My model looks wrong after baking. What should I change?
 
