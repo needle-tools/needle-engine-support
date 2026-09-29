@@ -181,12 +181,27 @@
   right: 0.4rem;
   z-index: 2;
   opacity: 0;
+  /* Invisible and out of the way: it used to swallow clicks meant for the
+     title underneath it. */
+  pointer-events: none;
   transition: opacity 0.12s;
 }
 .live-edit-container:hover .live-edit-container__type,
-.live-edit-container:focus-within .live-edit-container__type { opacity: 1; }
+.live-edit-container:focus-within .live-edit-container__type { opacity: 1; pointer-events: auto; }
 
-.live-edit-container__info { flex: 1; min-width: 0; margin: 0; }
+/*
+  Fills the title line. As an inline span it was only as wide as the words in
+  it, so a click anywhere else on the line did nothing and the title looked
+  like it could not be edited. The padding keeps the caret clear of the type
+  picker in the corner.
+*/
+.live-edit-container__info {
+  display: block;
+  min-width: 0;
+  margin: 0;
+  padding-right: 6rem;
+  cursor: text;
+}
 
 .live-edit-container__type,
 .live-edit-code__info {

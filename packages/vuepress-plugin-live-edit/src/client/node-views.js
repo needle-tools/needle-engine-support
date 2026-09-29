@@ -133,6 +133,12 @@ export class ContainerView {
     this.info.textContent = node.attrs.info ?? ''
     this.info.dataset.placeholder = containerTitleFallback(node.attrs.name)
     this.info.addEventListener('input', () => setAttrs(view, getPos, { info: this.info.textContent }))
+    /*
+      A `details` container's title is its `<summary>`, and clicking one opens
+      or closes the disclosure. Putting the caret in the title should not fold
+      the container away; the marker beside it still toggles.
+    */
+    this.info.addEventListener('click', (event) => event.preventDefault())
     this.title.append(this.info)
 
     this.contentDOM = el('div', 'live-edit-container__body')
