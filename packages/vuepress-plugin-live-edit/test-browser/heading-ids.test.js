@@ -36,3 +36,34 @@ describe('heading ids', () => {
     expect(ids(host)).toEqual([''])
   })
 })
+
+/*
+  A site can configure how VuePress slugs a heading, and this one does:
+  `## 11 · Networking` is rendered with `id="11-networking"`, while the default
+  slug would be `_11-·-networking`. Ids are therefore taken from the rendered
+  page, not computed again.
+*/
+describe('ids the site already gave a heading', () => {
+  const heading = (text, level = 2) => ({ type: 'heading', attrs: { level }, content: [{ type: 'text', text }] })
+
+  test('are used in preference to the default slug', () => {
+    const known = new Map([['11 · Networking', '11-networking']])
+    const { host } = mountEditor([heading('11 · Networking')], { headingIds: known })
+    expect(host.querySelector('h2').id).toBe('11-networking')
+  })
+
+  test('a heading with no id on the page falls back to a slug', () => {
+    const known = new Map([['11 · Networking', '11-networking']])
+    const { host } = mountEditor([heading('Something New')], { headingIds: known })
+    expect(host.querySelector('h2').id).toBe('something-new')
+  })
+
+  test('retitling a heading moves it off the harvested id', () => {
+    const known = new Map([['Before', 'before-from-page']])
+    const { view, host } = mountEditor([heading('Before')], { headingIds: known })
+    expect(host.querySelector('h2').id).toBe('before-from-page')
+
+    view.dispatch(view.state.tr.insertText('After', 1, 7))
+    expect(host.querySelector('h2').id).toBe('after')
+  })
+})

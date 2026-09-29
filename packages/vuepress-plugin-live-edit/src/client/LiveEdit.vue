@@ -98,6 +98,7 @@ async function load() {
       doc: data.doc,
       registry: registry.value,
       route: targetRoute,
+      headingIds: surface.headingIds,
       onChange: (doc) => {
         pendingDoc = doc
         if (autosave.value) scheduleSave()

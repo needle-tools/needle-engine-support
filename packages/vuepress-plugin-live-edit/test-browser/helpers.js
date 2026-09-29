@@ -21,7 +21,7 @@ const REGISTRY = { containers: [], components: [] }
 /** Tear down everything a test mounted. */
 const mounted = []
 
-export function mountEditor(content, { registry = REGISTRY } = {}) {
+export function mountEditor(content, { registry = REGISTRY, headingIds } = {}) {
   const host = document.createElement('div')
   // takeOverContent adds this in production; the CSS selectors expect it.
   host.className = 'live-edit-surface'
@@ -32,6 +32,7 @@ export function mountEditor(content, { registry = REGISTRY } = {}) {
     doc: { type: 'doc', content },
     registry,
     route: '/test.html',
+    headingIds,
     onChange: () => {},
     onStatus: () => {},
   })

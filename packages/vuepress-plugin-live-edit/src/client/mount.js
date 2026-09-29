@@ -93,6 +93,17 @@ export function takeOverContent() {
 
   const anchor = captureAnchor(original)
 
+  /*
+    The ids the site put on its headings. The slug is the site's business - it
+    is configurable in VuePress and this one is not the default - so they are
+    read off the rendered page rather than computed again.
+  */
+  const headingIds = new Map()
+  for (const heading of original.querySelectorAll('h1, h2, h3, h4, h5, h6')) {
+    const text = (heading.textContent || '').replace(/\s+/g, ' ').trim()
+    if (text && heading.id) headingIds.set(text, heading.id)
+  }
+
   /** Is this the page's rendered content, rather than the editor or chrome? */
   const isContent = (node) =>
     node !== host &&
@@ -164,6 +175,7 @@ export function takeOverContent() {
 
   return {
     host,
+    headingIds,
     capture: () => captureAnchor(host),
     restore,
     settle: () => restoreAnchor(host, anchor),

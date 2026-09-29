@@ -146,7 +146,7 @@ function handleImageTransfer(view, dataTransfer, context) {
  * @param {(status: { kind: string, message: string }) => void} [options.onStatus]
  * @returns {EditorView}
  */
-export function createEditor({ mount, doc, registry, route, onChange, onStatus }) {
+export function createEditor({ mount, doc, registry, route, onChange, onStatus, headingIds: knownHeadingIds }) {
   const context = { route, onStatus }
 
   const state = EditorState.create({
@@ -164,7 +164,7 @@ export function createEditor({ mount, doc, registry, route, onChange, onStatus }
       tableTools(),
       selectionToolbar(),
       changeMarks(),
-      headingIds(),
+      headingIds(knownHeadingIds),
     ],
   })
 

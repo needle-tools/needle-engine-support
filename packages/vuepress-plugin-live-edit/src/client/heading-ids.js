@@ -5,8 +5,11 @@
  * rendered content is hidden, so those ids have to be on the editor's own
  * headings or the links land on nothing and the page does not move.
  *
- * VuePress's own slugify is used rather than a copy of it, so the ids match
- * what the page ships with, and they follow the text as it is edited.
+ * A site can configure how VuePress slugs a heading, and this one does, so the
+ * ids are taken from the page the editor is standing in for. A heading that
+ * has just been typed or retitled has no id there yet; those fall back to
+ * VuePress's default slug, which is also what the table of contents reads back
+ * off the editor, so in-page links stay consistent either way.
  */
 
 import { Plugin, PluginKey } from 'prosemirror-state'
@@ -15,14 +18,15 @@ import { slugify } from '@mdit-vue/shared'
 
 export const headingIdsKey = new PluginKey('live-edit-heading-ids')
 
-function build(doc) {
+function build(doc, known) {
   const decorations = []
   /** Repeated headings get a counter, as the rendered page does. */
   const seen = new Map()
 
   doc.descendants((node, pos) => {
     if (node.type.name !== 'heading') return
-    const base = slugify(node.textContent)
+    const text = node.textContent.replace(/\s+/g, ' ').trim()
+    const base = known?.get(text) ?? slugify(text)
     if (!base) return
 
     const count = seen.get(base) ?? 0
@@ -33,12 +37,15 @@ function build(doc) {
   return DecorationSet.create(doc, decorations)
 }
 
-export function headingIds() {
+/**
+ * @param {Map<string, string>} [known] heading text to the id the site gave it
+ */
+export function headingIds(known) {
   return new Plugin({
     key: headingIdsKey,
     state: {
-      init: (_config, state) => build(state.doc),
-      apply: (tr, value, _old, newState) => (tr.docChanged ? build(newState.doc) : value),
+      init: (_config, state) => build(state.doc, known),
+      apply: (tr, value, _old, newState) => (tr.docChanged ? build(newState.doc, known) : value),
     },
     props: {
       decorations(state) {
