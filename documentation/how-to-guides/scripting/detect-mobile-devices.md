@@ -460,5 +460,4 @@ if ('ontouchstart' in window) {
 
 **Reference:**
 - [DeviceUtilities API Documentation](https://engine.needle.tools/docs/api/DeviceUtilities) - Complete API reference
-- [Utility Functions Reference](/docs/reference/api/utilities) - Complete utilities API
 - [Component Reference](/docs/reference/components) - All built-in components

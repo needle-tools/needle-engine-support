@@ -18,6 +18,7 @@
     "docs:build-changelogs": "node tools/build_changelogs.mjs",
     "docs:build-examples": "node tools/build_examples.mjs",
     "test:links": "node tools/build_check_links.mjs",
+    "test:links:local": "node tools/check_links_local.mjs",
     "test:live-edit": "node --test \"packages/vuepress-plugin-live-edit/test/**/*.test.mjs\""
   },
   "author": "",

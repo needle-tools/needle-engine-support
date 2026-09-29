@@ -1,7 +1,7 @@
 ---
 title: What Our Users Say
 description: Hear from developers, artists, and studios who use Needle Engine to build interactive 3D web experiences, WebXR apps, and AR content.
-next: getting-started/
+next: /getting-started/
 ---
 
 # What Our Users Say

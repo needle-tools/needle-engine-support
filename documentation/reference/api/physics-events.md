@@ -123,5 +123,5 @@ For physics events to work:
 ## Related
 
 - [Lifecycle Methods](./lifecycle-methods) - Component lifecycle
-- [Component Reference](../components/) - Built-in physics components
-- [How to use Physics](../../how-to-guides/physics/) - Physics setup guide
+- [Component Reference](/docs/reference/components) - Built-in physics components
+- [How to use Physics](/docs/how-to-guides/scripting/use-physics) - Physics setup guide

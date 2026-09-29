@@ -170,7 +170,7 @@ Export custom shaders in two formats:
 
 MaterialX is a standard for describing materials in a graph-based way, independent of the rendering engine.
 
-[Learn more about MaterialX →](./materialx)
+[Learn more about MaterialX →](/docs/how-to-guides/export/materialx)
 
 #### WebGL2 Format
 

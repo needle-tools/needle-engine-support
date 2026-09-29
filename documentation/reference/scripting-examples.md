@@ -204,7 +204,7 @@ Use coroutines for time-based updates without blocking the main thread.
 
 @[code ts twoslash](@code/component-time.ts)
 
-<video-embed src="./videos/component-time.mp4" limit_height />
+<video-embed src="/videos/component-time.mp4" limit_height />
 
 [Coroutines guide](/docs/how-to-guides/scripting/use-coroutines)
 

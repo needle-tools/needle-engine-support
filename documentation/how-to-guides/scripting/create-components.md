@@ -54,7 +54,7 @@ Organize code into reusable npm packages using NPM Definition files:
 - Share code between projects
 - Standard npm package format
 
-[Learn more about NPM Definitions](../../explanation/core-concepts/npm-modules)
+[Learn more about NPM Definitions](/docs/reference/modules)
 
 ---
 
@@ -235,7 +235,6 @@ While generated C# components use the type name to produce stable GUIDs, we reco
 
 - [Use Lifecycle Hooks](./use-lifecycle-hooks) - awake, start, update methods
 - [Handle User Input](./handle-input) - Mouse, touch, keyboard
-- [Find Components](./find-components) - Query the scene graph
 - [Use Coroutines](./use-coroutines) - Sequenced operations
 - [Component Lifecycle Reference](../../reference/api/lifecycle-methods) - Complete API
 

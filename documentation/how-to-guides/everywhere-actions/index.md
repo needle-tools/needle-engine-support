@@ -5,7 +5,7 @@ description: Create interactive experiences for iPhone, iPad, and Apple Vision P
 
 # Everywhere Actions
 
-<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender</a></logo-header>
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="/docs/unity/">Unity</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="/docs/blender/">Blender</a></logo-header>
 
 ## What are Everywhere Actions?
 

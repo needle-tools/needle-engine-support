@@ -108,8 +108,8 @@ Great, thanks for applying! Here's what to expect:
 
 **You can start right now.** You don't have to wait — download Needle Engine and start building today. You can deploy to Needle Cloud right away with the free Basic license:
 - [Get Started with Needle Engine](/docs/getting-started/)
-- [Download for Unity](/docs/downloads/unity)
-- [Download for Blender](/docs/downloads/blender)
+- [Download for Unity](/docs/unity/)
+- [Download for Blender](/docs/blender/)
 
 Try the samples, follow the tutorials, and get familiar with the workflow while your application is in review.
 

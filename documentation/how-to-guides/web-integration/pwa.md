@@ -151,7 +151,7 @@ Once your PWA is deployed, users can install it on their devices:
 
 :::info PWAs vs Fully Offline Apps
 PWAs still download assets from the web on first visit, then cache them. If you need a truly offline experience where the app works even without any internet connection from the start (e.g., at a location with no WiFi), consider:
-- **[makeFilesLocal](/docs/reference/vite-plugins#self-contained-builds-makefileslocal)** — embeds assets directly into the build so they work without network
+- **[makeFilesLocal](/docs/reference/needle-vite-plugin#makefileslocal)** — embeds assets directly into the build so they work without network
 - **Electron** — desktop app wrapping your web content
 - **Capacitor** — native mobile app from web code
 :::

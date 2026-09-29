@@ -553,5 +553,4 @@ This shows:
 - [ISceneEventListener API](https://engine.needle.tools/docs/api/ISceneEventListener) - Scene transition interface
 
 **Related Guides:**
-- [Loading Scenes](/docs/how-to-guides/scripting/index#loading-scenes) - Load scenes programmatically
-- [Asset References](/docs/how-to-guides/scripting/reference-assets) - Reference external assets
+- [Loading Scenes](/docs/how-to-guides/scripting/load-3d-web-assets-at-runtime) - Load scenes programmatically

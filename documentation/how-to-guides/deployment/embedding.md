@@ -327,7 +327,7 @@ Iterate efficiently:
 
 ## Platform-Specific Integrations
 
-### <logo-header logo="/imgs/aem-logo.webp" alt="Adobe Experience Manager"><a href="../integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header>
+### <logo-header logo="/imgs/adobe-experience-manager-logo.webp" alt="Adobe Experience Manager"><a href="../integrations/adobe-experience-manager">Adobe Experience Manager</a></logo-header>
 
 Integrate Needle Engine into AEM with custom components, Experience Fragments, and author-friendly workflows.
 
@@ -377,8 +377,8 @@ Here the frame loads fine — this is about *permissions*: WebXR needs the `xr-s
 - [Deployment Options](/docs/how-to-guides/deployment/) – Explore all hosting platforms
 
 **Editor Integrations:**
-- <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Unity Integration</a></logo-header> – Visual scene creation with Unity
-- <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Blender Integration</a></logo-header> – Visual scene creation with Blender
+- <logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="/docs/unity/">Unity Integration</a></logo-header> – Visual scene creation with Unity
+- <logo-header logo="/blender/logo.png" alt="Blender"><a href="/docs/blender/">Blender Integration</a></logo-header> – Visual scene creation with Blender
 
 **Get Help:**
 - [Forum](https://forum.needle.tools) – Ask questions and share projects
@@ -388,5 +388,5 @@ Here the frame loads fine — this is about *permissions*: WebXR needs the `xr-s
 :::tip Visual Scene Creation
 Did you know Needle Engine integrates with Unity and Blender? Create complex 3D scenes visually and export them directly to the web. Perfect for non-coders or teams with 3D artists.
 
-<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="./unity/">Learn about Unity Integration</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="./blender/">Learn about Blender Integration</a></logo-header>
+<logo-header logo="/imgs/unity-logo.webp" alt="Unity"><a href="/docs/unity/">Learn about Unity Integration</a></logo-header> • <logo-header logo="/blender/logo.png" alt="Blender"><a href="/docs/blender/">Learn about Blender Integration</a></logo-header>
 :::
