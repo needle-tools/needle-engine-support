@@ -151,6 +151,7 @@ export default {
       prevHeaders: [],
       nextHeaders: [],
       updateHeadersTimeout: null,
+      headingsObserver: null,
       explicitHeaderSlug: '',
       explicitHeaderCanResetOnScroll: false,
       explicitHeaderResetTimer: null,
@@ -211,6 +212,7 @@ export default {
       this.buildBreadcrumbs()
       this.updateActiveHeader()
       this.updateContextHeaders()
+      this.watchHeadings()
 
       // Note: We don't call handleInitialHash() here anymore.
       // Browser handles hash navigation natively with CSS scroll-margin-top on headings.
@@ -281,6 +283,11 @@ export default {
     window.removeEventListener('pointerdown', this.releaseExplicitHeader)
     window.removeEventListener('keydown', this.releaseExplicitHeaderOnKeydown)
     clearTimeout(this.explicitHeaderResetTimer)
+    clearTimeout(this.updateHeadersTimeout)
+    if (this.headingsObserver) {
+      this.headingsObserver.disconnect()
+      this.headingsObserver = null
+    }
     if (this.observer) {
       this.observer.disconnect()
     }
@@ -354,7 +361,7 @@ export default {
       const headerElements = [...article.querySelectorAll('h1, h2, h3')].filter((el) =>
         el.checkVisibility ? el.checkVisibility() : el.offsetParent !== null,
       )
-      this.headers = Array.from(headerElements)
+      const next = Array.from(headerElements)
         .filter(el => {
           // Exclude headers that are inside tool tiles or other non-content components
           // These are UI elements, not actual content sections
@@ -375,6 +382,31 @@ export default {
           }
         })
         .filter(h => h.slug) // Only include headers with IDs
+
+      // Assigning on every call would re-render the list on each keystroke
+      // while the page is being edited.
+      if (JSON.stringify(next) !== JSON.stringify(this.headers)) this.headers = next
+    },
+
+    /**
+     * Rebuild the entry list when the page's content changes.
+     *
+     * The in-page editor rewrites headings as they are typed, so a list built
+     * once at mount goes stale: renaming a heading, or adding one, left the
+     * sidebar showing what used to be there.
+     */
+    watchHeadings() {
+      const article = document.querySelector('.vp-theme-container, .vp-page')
+      if (!article || this.headingsObserver) return
+
+      this.headingsObserver = new MutationObserver(() => {
+        clearTimeout(this.updateHeadersTimeout)
+        this.updateHeadersTimeout = setTimeout(() => {
+          this.extractHeaders()
+          this.updateActiveHeader()
+        }, 250)
+      })
+      this.headingsObserver.observe(article, { childList: true, subtree: true, characterData: true })
     },
 
     slugify(text) {
