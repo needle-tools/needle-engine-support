@@ -40,8 +40,10 @@ function buildOptions(registry) {
   /** @type {Array<{ label: string, hint?: string, create: () => import('prosemirror-model').Node }>} */
   const options = [
     { label: 'Text', create: () => schema.nodes.paragraph.create() },
-    { label: 'Heading 2', create: () => schema.nodes.heading.create({ level: 2 }) },
-    { label: 'Heading 3', create: () => schema.nodes.heading.create({ level: 3 }) },
+    ...[1, 2, 3, 4].map((level) => ({
+      label: `Heading ${level}`,
+      create: () => schema.nodes.heading.create({ level }),
+    })),
     {
       label: 'Bullet list',
       create: () =>

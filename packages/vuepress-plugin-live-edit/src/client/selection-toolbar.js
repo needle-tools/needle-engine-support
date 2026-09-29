@@ -65,8 +65,12 @@ function editLink(state, dispatch, view) {
 
 const BUTTONS = [
   { label: 'P', title: 'Paragraph', command: setBlockType(schema.nodes.paragraph), active: (s) => blockActive(s, schema.nodes.paragraph) },
-  { label: 'H2', title: 'Heading 2', command: setBlockType(schema.nodes.heading, { level: 2 }), active: (s) => blockActive(s, schema.nodes.heading, { level: 2 }) },
-  { label: 'H3', title: 'Heading 3', command: setBlockType(schema.nodes.heading, { level: 3 }), active: (s) => blockActive(s, schema.nodes.heading, { level: 3 }) },
+  ...[1, 2, 3, 4].map((level) => ({
+    label: `H${level}`,
+    title: `Heading ${level}`,
+    command: setBlockType(schema.nodes.heading, { level }),
+    active: (state) => blockActive(state, schema.nodes.heading, { level }),
+  })),
   { separator: true },
   { label: 'B', title: 'Bold', command: toggleMark(schema.marks.strong), active: (s) => markActive(s, schema.marks.strong), className: 'is-bold' },
   { label: 'I', title: 'Italic', command: toggleMark(schema.marks.em), active: (s) => markActive(s, schema.marks.em), className: 'is-italic' },
