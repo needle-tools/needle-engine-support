@@ -279,8 +279,13 @@ export const schema = new Schema({
       toDOM: (node) => ['a', node.attrs, 0],
     },
     code: {
-      // Inline code is verbatim, so it excludes other marks.
-      excludes: '_',
+      /*
+        Verbatim in its own content, but it can still sit inside emphasis:
+        `**Key alias: \`three/addons\`**` is bold code. Excluding other marks
+        dropped the strong on load, and the bold was then written back as a
+        closing `**` after a space, which CommonMark does not close - so the
+        asterisks showed up as text in a paragraph nobody had edited.
+      */
       parseDOM: [{ tag: 'code' }],
       toDOM: () => ['code', 0],
     },

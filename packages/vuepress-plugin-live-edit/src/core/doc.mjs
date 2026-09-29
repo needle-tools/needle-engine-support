@@ -372,23 +372,23 @@ function serializeInline(fragment) {
   }
 
   fragment.forEach((node) => {
-    if (node.type.name === 'image') {
-      closeTo(0)
-      out += serializeImage(node)
-      return
-    }
+    // A line break ends any run of emphasis it sits in.
     if (node.type.name === 'hard_break') {
       closeTo(0)
       out += '\\\n'
       return
     }
-    if (node.type.name === 'html_inline') {
-      closeTo(0)
-      out += node.attrs.text
-      return
-    }
-    if (!node.isText) return
 
+    const name = node.type.name
+    if (!node.isText && name !== 'image' && name !== 'html_inline') return
+
+    /*
+      Images and inline tags take part in the mark stack, exactly as text does.
+      Closing every mark before them instead moved the emphasis inside: a bold
+      tag came back as `<tag>**text**</tag>`, which begins a line with a tag
+      and so is read as raw HTML, printing the asterisks; and a linked image
+      lost its link the same way.
+    */
     const marks = [...node.marks].sort(
       (a, b) => MARK_ORDER.indexOf(a.type.name) - MARK_ORDER.indexOf(b.type.name),
     )
@@ -400,6 +400,15 @@ function serializeInline(fragment) {
     for (const mark of marks.slice(shared)) {
       out += openDelimiter(mark)
       open.push(mark)
+    }
+
+    if (name === 'image') {
+      out += serializeImage(node)
+      return
+    }
+    if (name === 'html_inline') {
+      out += node.attrs.text
+      return
     }
 
     const isCode = marks.some((mark) => mark.type.name === 'code')

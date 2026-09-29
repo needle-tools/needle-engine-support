@@ -611,3 +611,121 @@ test('the text of an absorbed block is not lost', () => {
   assert.equal(last.type.name, 'paragraph')
   assert.equal(last.textContent, 'kept')
 })
+
+/*
+  Inline code sat inside emphasis all over the docs - `**Key alias: `x`**` -
+  but the code mark excluded every other mark, so the strong was dropped when
+  the page loaded. Writing the paragraph back then produced `**Key alias: **`,
+  whose closing delimiter follows a space and therefore does not close, and the
+  asterisks turned up as text in a paragraph nobody had touched.
+*/
+
+/** Rebuild every block without its original source, forcing serialization. */
+function withoutOrigins(doc) {
+  const blocks = []
+  doc.forEach((block) => blocks.push(block.type.create({ ...block.attrs, oSrc: null }, block.content, block.marks)))
+  return doc.type.create(doc.attrs, blocks)
+}
+
+const marksOn = (doc, text) => {
+  let found = null
+  doc.descendants((node) => {
+    if (node.isText && node.text === text) found = node.marks.map((mark) => mark.type.name).sort()
+  })
+  return found
+}
+
+test('inline code inside bold keeps the bold', () => {
+  const doc = markdownToDoc('**Key alias: `three/addons`**\n', {})
+  assert.deepEqual(marksOn(doc, 'three/addons'), ['code', 'strong'])
+})
+
+test('bold around inline code survives being written back', () => {
+  const source = '**Key alias: `three/addons`**\n'
+  const markdown = docToMarkdown(withoutOrigins(markdownToDoc(source, {})), source, {})
+  assert.equal(markdown, source)
+})
+
+test('a closing delimiter is never left after a space', () => {
+  for (const source of [
+    '**bold `code`**\n',
+    '**bold `code` after**\n',
+    '_em `code`_\n',
+    '**[link](/a) `code`**\n',
+  ]) {
+    const markdown = docToMarkdown(withoutOrigins(markdownToDoc(source, {})), source, {})
+    assert.ok(!/\s\*\*/.test(markdown.replace(/^\*\*/, '')), `space before a closing ** in ${JSON.stringify(markdown)}`)
+    // And it still reads back as the same marks.
+    assert.deepEqual(marksOn(markdownToDoc(markdown, {}), 'code'), marksOn(markdownToDoc(source, {}), 'code'))
+  }
+})
+
+/*
+  The corpus guard for the whole class of bug: rewrite every block of every
+  document from the document tree, with no original bytes reused, and check
+  that the emphasis, links and inline code all read back the same. Blocks that
+  are stored as raw markup keep their text verbatim rather than as marks, so
+  they are not counted.
+*/
+const RAW_BLOCKS = new Set(['html', 'component', 'source', 'code_block', 'table'])
+
+function proseMarkCounts(doc) {
+  const counts = {}
+  const walk = (node) =>
+    node.forEach((child) => {
+      if (RAW_BLOCKS.has(child.type.name)) return
+      if (child.isText) for (const mark of child.marks) counts[mark.type.name] = (counts[mark.type.name] ?? 0) + 1
+      else walk(child)
+    })
+  walk(doc)
+  return counts
+}
+
+test('rewriting a whole document keeps every mark in its prose', () => {
+  const offenders = []
+
+  for (const file of files) {
+    const source = readFileSync(file, 'utf8')
+    const before = markdownToDoc(source, options)
+    const rewritten = docToMarkdown(withoutOrigins(markdownToDoc(source, options)), source, options)
+    const after = markdownToDoc(rewritten, options)
+
+    const a = proseMarkCounts(before)
+    const b = proseMarkCounts(after)
+    for (const name of new Set([...Object.keys(a), ...Object.keys(b)])) {
+      if ((a[name] ?? 0) !== (b[name] ?? 0)) {
+        offenders.push(`${path.relative(DOCS_DIR, file)}: ${name} ${a[name] ?? 0} -> ${b[name] ?? 0}`)
+        break
+      }
+    }
+  }
+
+  assert.deepEqual(offenders, [])
+})
+
+/*
+  Emphasis around an inline tag, and a link around an image. Closing every mark
+  before the tag moved the emphasis inside it, which turns a paragraph into a
+  raw HTML block and prints the asterisks; the same fault dropped the link off
+  a linked image.
+*/
+test('bold around an inline tag stays outside it', () => {
+  const source = '**<logo-header logo="/a.webp" alt="U">Unity: Access Build Options</logo-header>**\n'
+  const markdown = docToMarkdown(withoutOrigins(markdownToDoc(source, options)), source, options)
+
+  assert.equal(markdown, source)
+  // Emphasis inside the tag would make this a raw HTML block, not a paragraph.
+  assert.equal(markdownToDoc(markdown, options).firstChild.type.name, 'paragraph')
+})
+
+test('a linked image keeps its link', () => {
+  const source = '[![alt](/a.webp)](https://example.com)\n'
+  const markdown = docToMarkdown(withoutOrigins(markdownToDoc(source, options)), source, options)
+  assert.equal(markdown, source)
+
+  let linked = false
+  markdownToDoc(markdown, options).descendants((node) => {
+    if (node.type.name === 'image' && node.marks.some((mark) => mark.type.name === 'link')) linked = true
+  })
+  assert.ok(linked, `image lost its link: ${JSON.stringify(markdown)}`)
+})
