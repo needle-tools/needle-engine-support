@@ -554,3 +554,4 @@ This shows:
 
 **Related Guides:**
 - [Loading Scenes](/docs/how-to-guides/scripting/load-3d-web-assets-at-runtime) - Load scenes programmatically
+- [Asset References](/docs/api/AssetReference) - Reference external assets

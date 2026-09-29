@@ -282,6 +282,8 @@ const camera = GameObject.findObjectOfType(Camera);
 const allEnemies = GameObject.findObjectsOfType(Enemy);
 ```
 
+**[Learn more about finding objects and components →](/docs/how-to-guides/scripting/use-lifecycle-hooks#use-other-components)**
+
 
 
 ---

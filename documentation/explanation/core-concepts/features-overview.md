@@ -263,12 +263,12 @@ Needle Engine uses a [component-based architecture](/docs/how-to-guides/scriptin
 **Developer Features:**
 - Component-based workflow (like Unity)
 - TypeScript and JavaScript support
-- Modular npm-based packages
+- [Modular npm-based packages](/docs/how-to-guides/scripting/create-components#unity-npm-definition-approach)
 - [TypeScript to C# component compiler](/docs/explanation/core-concepts/component-compiler) – write TypeScript, get Unity components automatically
 - Hot module replacement for fast iteration
 - Full three.js access for advanced use cases
 
-[Read more: Scripting Reference](/docs/how-to-guides/scripting/create-components)
+[Read more: Scripting Reference](/docs/how-to-guides/scripting/create-components) • [Npm Definition Files](/docs/how-to-guides/scripting/create-components#unity-npm-definition-approach)
 
 ## Additional Features
 
