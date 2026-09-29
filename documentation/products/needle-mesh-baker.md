@@ -123,19 +123,25 @@ The workbench shows the source on the left and the result on the right. The came
 
 _Looking at the "surface" (normals + lighting) and the "wireframe" (outlines of individual triangles)._
 
-### Choose the output representation
+### Output Modes
 
-Meshes are ordinary glTF and load anywhere. Impostors carry visible fallback geometry, but their view-dependent effect needs the matching Needle loader in the target app.
+Mesh Baker serves a variety of common 3D asset workflows for realtime apps, games, VFX and more. There are several different output modes to choose from:
 
-| Representation | Use it when | Runtime |
-| --- | --- | --- |
-| Mesh with PBR atlas | General-purpose replacement for the source | Plain glTF mesh and textures |
-| Mesh with gradient trims | A tiny LOD matters more than fine surface detail | Plain glTF, very small texture |
-| Mesh with vertex colors | Texture payload dominates a small asset | Plain glTF, no texture files |
-| Octahedral impostor | Distant or repeated objects | Fallback in any viewer, full effect needs the Needle impostor loader |
-| Pixel impostor | A deliberately blocky silhouette | Fallback in any viewer, extra display modes need the Needle pixel-impostor loader |
+| Mode                     | Use it when                                      | Runtime                              |
+| ------------------------ | ------------------------------------------------ | ------------------------------------ |
+| Mesh with PBR atlas      | General-purpose replacement for the source       | glTF with baked PBR textures         |
+| Mesh with gradient trims | A tiny LOD matters more than fine surface detail | glTF with tiny textures              |
+| Mesh with vertex colors  | Texture payload dominates a small asset          | glTF with vertex colors              |
+| Octahedral impostor      | Distant or repeated objects, last LOD level      | Use the Needle impostor loader       |
+| Pixel impostor           | Pixel games with many assets                     | Use the Needle pixel-impostor loader |
 
-Pick the representation before reaching for a smaller texture resolution. If the silhouette is wrong, texture size will not fix it.
+### Unlimited Image-to-3D
+
+The **Generate** panel builds a model from a text prompt or from a single image, on the GPU in your browser. Use an image when you have a clean picture of one object, and text for drafts or when there is no reference. The first run downloads the model weights and takes considerably longer than later runs; the panel shows the download size and whether your device is capable before you start.
+
+For image generation, cut the background out so the object is actually transparent. A photographed backdrop becomes part of the reconstructed shape, and a painted checkerboard is not transparency. The workbench can cut out an image for you, and an experimental phone-camera flow sends a photo to the desktop for cutout and review. Up to three extra views of the same object can guide generation; separate AI renderings of a similar object are not usable as extra views.
+
+Generated models use the same remeshing and baking controls as imported ones.
 
 ## Geometry Optimization
 
@@ -161,17 +167,13 @@ Use **Simplify** for source meshes that are already split up into meshes in the 
 
 To cut triangles without building a new atlas, set **Representation → Mesh**, **Geometry → Method → Simplify**, **Mesh Type → Triangles** and **Bake → Materials → Keep source materials**, then set a triangle or surface-error target and run **Optimize**. The result keeps the source materials, textures and UV layout.
 
-The target counts triangles, not vertices. Vertex count usually drops too, but UV seams and material boundaries need extra vertices, and at low budgets seams may move, so check the textured result before downloading. Keeping the source materials also keeps their draw calls; switch to **Merge and bake** when draw call count matters more than reusing the UVs.
-
 ### Quad remeshing
 
-Select **Quads** under **Mesh Type** to run the selected source topology through [AutoRemesher](https://github.com/huxingyi/autoremesher).
+Select **Quads** under **Mesh Type** to quadify the selected source topology with [AutoRemesher](https://github.com/huxingyi/autoremesher).
 
-Use quad remeshing when you need a more regular surface before baking, and want to continue working with quads in a 3D tool, for example for sculpting, subdivision, retopology, or rigging workflows. For production assets, use the triangle output for better performance, smaller file size, and bigger surface simplification potential.
+Use quad remeshing when you need a more regular surface, and want to continue working with quads in a 3D tool, for example for sculpting, subdivision, retopology, or manual rigging workflows. For realtime assets, Triangle mode usually produces smaller file size, and has more surface simplification potential.
 
-A quad budget and a triangle budget are separate targets. The baker reports the quad count it reached; the exported `.glb` holds the triangulated faces, not editable quads.
-
-:::tip
+:::tip Restoring Quads in Blender or other softwares
 The glTF format stores triangles, so Mesh Baker turns each quad into two triangles during export. You can restore the quads in Blender or another 3D tool; in Blender, select the mesh and run **Mesh → Faces → Tris to Quads**.
 :::
 
@@ -179,7 +181,7 @@ The glTF format stores triangles, so Mesh Baker turns each quad into two triangl
 
 Use **Hull Mesh (VFX)** to create a mesh that wraps the source and acts as "hull" around it. The hull mesh will attempt to fully contain the source mesh, so no parts of the source peek outside of the hull. The most important parameter is the expected surface offset, usually 1-5%, which defines how tightly the hull wraps around the mesh. A minimum hole size setting controls which openings get closed. This method is suitable for visual effects, collision meshes and physics proxies.
 
-Mesh Baker includes various preset visual effects based on wrap meshes, such as ice, snow, vines, aura, and energy shields.
+Mesh Baker includes various preset visual effects based on wrap meshes, such as ice, snow, vines, aura, and energy shields. Each of them provides several settings to tune the effect, and hull meshes are of course also usable with your own effects and shaders.
 
 ### Keep the source geometry
 
@@ -209,19 +211,16 @@ The color modes provide different trade-offs:
 
 - **Flat** gives each triangle a constant color. This is great for stylized assets.
 - **Bake** samples color at the existing vertices.
-- **Fit colors per triangle** adds per-corner gradients to better match the source.
-- **Limit gradients** restricts those gradients for a flatter result.
-- **Auto** selects an experimental fit.
 
-Modes other than **Bake** split triangle corners and can increase the vertex count. Ambient occlusion can be multiplied into the vertex RGB values. Other PBR properties are not stored in the vertex colors yet.
+Modes other than **Bake** split triangle corners and can increase the vertex count. Ambient occlusion can be multiplied into the vertex RGB values. 
 
 ### Gradient Trim Sheet
 
-Select **Gradient trim sheet** to optimize for a tiny texture. This mode is for stylized assets that use a single small texture to color a large surface. The result is a single material with extremely low texture cost (a few kilobytes). There is no baked normal map; shading uses the geometric normals.
+Select **Gradient trim sheet** to optimize for a tiny texture. This mode is for stylized assets that use a single small texture to color a large surface. The result is a single material with extremely low texture cost (a few kilobytes).
 
 Optionally, enable **Pixelized sampling** to create a small stylized texture with pixelated filtering. The optional gravity alignment rotates UV charts so they align better to the world up direction.
 
-:::tip
+:::tip Great for stylized outputs
 This mode is great for a gradient-texturing material style, and can be used with animated meshes as well. If you're looking for more pixelization options, check out "Voxelization and Pixelization" below.
 
 :::
@@ -246,21 +245,25 @@ After a bake, you can inspect each map on the result and download it as a PNG to
 
 ### Optimize animated and skinned meshes
 
-Mesh Baker supports animated and skinned 3D assets, including glTF/GLB and FBX. You can preview clips and poses before baking, then choose how motion affects the result:
+Mesh Baker supports animated and skinned 3D assets, including glTF/GLB and FBX. It can also optimize many-part meshes to produce a single skinned mesh with the expected surface appearance, greatly improving runtime performance.
+
+You can preview clips and poses before baking, then choose how motion affects the result:
 
 - **Optimize for clips** results in a mesh that has more triangles in areas that deform during animation. It samples the animations, keeps the rig and clips, and keeps more geometry in areas that deform more. This is the best choice for skinned characters and animated objects.
 - **Ignore clips** results in an optimized and rigged asset, but does not look at the animation clips (for example, if you don't have animation yet). This method guesses how various bones might move, and optimizes for that.
 - **Freeze pose** converts the selected animation frame to a static asset and removes the animation and bones.
 
-A surface-error target works here too, so the triangle count can follow what the animation needs instead of being fixed up front.
-
 :::tip Use Triangle mode for animated assets
 Quad remeshing does currently not support animation-aware optimization. Use triangles for skinned meshes.
 :::
 
-### Convert rigid parts to a skinned mesh
+## Smart Segmentation
 
-**Parts to skin** takes a model animated as separate rigid objects and writes a skinned `.glb` with the animation clips kept. This reduces the draw calls of articulated props and mechanical assets. The parts keep their rigid motion; no soft bending is introduced between them.
+**Smart mesh segmentation** proposes parts from the model's shape and appearance. Use **Parts → Auto**, or ask for a part count, then review the coloured regions and merge parts where needed.
+
+## Posing and rigging
+
+Under **Experiments → Show Deformation settings** you can place pins, adjust a rig with IK handles, mirror edits and author pose slots. **Wiggle** previews secondary motion. Download writes a skinned `.glb` with standard joints, weights and pose clips, which any glTF reader can play; live IK and secondary motion need Needle's rig runtime.
 
 ## Voxelization and pixelization
 
@@ -288,22 +291,6 @@ See the [Mesh Baker roadmap](https://mesh-baker.needle.tools/roadmap/) for featu
 ## Gaussian Splat to Mesh
 
 **Gaussian splat to mesh** converts a `.ply` splat capture into a textured glTF mesh, so the result does not need a splat renderer in the target app. The capture is reconstructed into a mesh and can then be remeshed and baked like any other source. This works for opaque captures; translucent Gaussian volumes are not supported yet.
-
-## Generate a model
-
-The **Generate** panel builds a model from a text prompt or from a single image, on the GPU in your browser. Use an image when you have a clean picture of one object, and text for drafts or when there is no reference. The first run downloads the model weights and takes considerably longer than later runs; the panel shows the download size and whether your device is capable before you start.
-
-For image generation, cut the background out so the object is actually transparent. A photographed backdrop becomes part of the reconstructed shape, and a painted checkerboard is not transparency. The workbench can cut out an image for you, and an experimental phone-camera flow sends a photo to the desktop for cutout and review. Up to three extra views of the same object can guide generation; separate AI renderings of a similar object are not usable as extra views.
-
-Generated models use the same remeshing and baking controls as imported ones.
-
-## Segment, rig and pose
-
-These are experimental and need a WebGPU-capable device.
-
-**Smart mesh segmentation** proposes parts from the model's shape and appearance. Use **Parts → Auto**, or ask for a part count, then review the coloured regions and merge parts where needed. Exporting the parts as separate objects is not available yet.
-
-Under **Experiments → Show Deformation settings** you can place pins, adjust a rig with IK handles, mirror edits and author pose slots. **Wiggle** previews secondary motion. Download writes a skinned `.glb` with standard joints, weights and pose clips, which any glTF reader can play; live IK and secondary motion need Needle's rig runtime.
 
 ## Ecosystem Integration
 
@@ -425,7 +412,7 @@ The page must load first. The baking pipeline then runs without a server connect
 
 Use the `.glb` output in Needle Engine, three.js, React Three Fiber, Blender, Unity, or other software that supports glTF.
 
-Octahedral and pixel impostors include fallback geometry that any viewer shows, but their full appearance needs the matching Needle loader. A rig exported from the experimental pose editor plays its clips anywhere; live IK and secondary motion need Needle's rig runtime. See [Choose the output representation](#choose-the-output-representation).
+Octahedral and pixel impostors include fallback geometry that any viewer shows, but their full appearance needs the matching Needle loader. A rig exported from the experimental pose editor plays its clips anywhere; live IK and secondary motion need Needle's rig runtime. See [Output Modes](#output-modes).
 
 The exported textures are uncompressed. Compress them when you add the asset to a project. A Needle Engine production build converts them to GPU-compressed KTX2 automatically. Impostor textures have their own compression step. See [Optimization & Compression](/docs/how-to-guides/optimization/).
 
