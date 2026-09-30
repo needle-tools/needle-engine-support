@@ -196,8 +196,8 @@ NeedleXRSession.appClipUrl = "https://appclip.needle.tools/x/your-experience";
 
 From then on, when an iOS visitor taps *Enter AR*, Needle Engine opens your branded `/x/your-experience` link and iOS shows your custom App Clip card.
 
-::: tip Must match your registered link
-The value must resolve to the exact branded link we set up for you (`https://appclip.needle.tools/x/<your-experience>`). The engine opens it as-is and does **not** append any query parameters, because Apple selects the App Clip card by the registered URL. Providing only the experience id expands it onto `https://appclip.needle.tools/x/`. Available in Needle Engine 5.1.0 and later.
+::: tip Use your registered link or a matching sub-path
+The value must use the branded `/x/<your-experience>` link we set up for you, or a sub-path covered by that registered prefix. Query parameters on the branded link do not require another App Clip card registration. If `appClipUrl` includes query parameters, the engine keeps them. It does not automatically add query parameters from the current page. For example, `appClipUrl = "your-experience"` resolves to `https://appclip.needle.tools/x/your-experience`. Available in Needle Engine 5.1.0 and later.
 :::
 
 ## Troubleshooting

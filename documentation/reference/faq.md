@@ -218,6 +218,16 @@ Hiding the logo requires an [EDU, PRO, or Enterprise license](https://needle.too
 
 Logo and branding removal is an **entitlement of the license currently active on your account**, not a one-time switch. If your license lapses or is downgraded, the experience reverts to the default Needle branding until a qualifying license is active again.
 
+## Can I disable Needle Engine telemetry?
+
+With a PRO or Enterprise license, add `no-telemetry` to the `<needle-engine>` element in your page before the engine initializes:
+
+```html
+<needle-engine src="scene.glb" no-telemetry></needle-engine>
+```
+
+This disables Needle Engine telemetry. It does not affect license checks or analytics that you add to your website.
+
 ## I have an Indie license — is it still supported?
 
 The **Indie** license tier is no longer available for purchase, but existing Indie licenses continue to work exactly as before — including any white-labeling and logo-removal entitlements they came with. Note that the Indie tier may be removed entirely in the future. For new projects, choose an [EDU, PRO, or Enterprise license](https://needle.tools/pricing). If you're unsure which plan fits your project, reach out to us at [hi@needle.tools](mailto:hi@needle.tools).
