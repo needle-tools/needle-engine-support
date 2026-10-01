@@ -7,6 +7,12 @@ description: Use AI to ask questions, write code, and interact with live 3D scen
 
 Needle Engine integrates with popular AI tools so you can get help, write components, and inspect live scenes — all without leaving your workflow.
 
+Want your coding assistant to set up Needle MCP? Copy this prompt:
+
+```text
+Please connect this AI assistant to the Needle MCP Server. Follow https://engine.needle.tools/docs/ai/needle-mcp-server and choose the connection mode this assistant supports. If needed, start the local server with npx needle-cloud start and register http://localhost:8424/mcp. If this assistant supports stdio MCP, you can configure npx needle-cloud mcp instead. Verify that Needle tools are available, or tell me exactly what I need to do to finish the setup.
+```
+
 ---
 
 ## Code with AI
