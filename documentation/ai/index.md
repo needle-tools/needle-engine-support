@@ -10,7 +10,16 @@ Needle Engine integrates with popular AI tools so you can get help, write compon
 Want your coding assistant to set up Needle MCP? Copy this prompt:
 
 ```text
-Please connect this AI assistant to the Needle MCP Server. Follow https://engine.needle.tools/docs/ai/needle-mcp-server and choose the connection mode this assistant supports. If needed, start the local server with npx needle-cloud start and register http://localhost:8424/mcp. If this assistant supports stdio MCP, you can configure npx needle-cloud mcp instead. Verify that Needle tools are available, or tell me exactly what I need to do to finish the setup.
+Please connect this AI assistant to the Needle MCP Server.
+Follow https://engine.needle.tools/docs/ai/needle-mcp-server
+and choose the connection mode this assistant supports.
+
+For HTTP, run npx needle-cloud start if needed and register
+http://localhost:8424/mcp. For stdio, configure
+npx needle-cloud mcp instead.
+
+Verify that Needle tools are available. If you can't complete a step,
+tell me exactly what I need to do.
 ```
 
 ---
@@ -89,7 +98,10 @@ Pointing your AI coding assistant at this folder lets it read what actually happ
 Copy this prompt into an AI coding assistant opened in your web project:
 
 ```text
-I'm debugging my Needle Engine project. Please read the latest client and server logs in node_modules/.needle/logs, explain what went wrong, and help me fix it.
+I'm debugging my Needle Engine project.
+Please read the latest client and server logs in
+node_modules/.needle/logs.
+Explain what went wrong and help me fix it.
 ```
 
 :::tip Great for testing on device
