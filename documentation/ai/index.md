@@ -80,8 +80,14 @@ node_modules/.needle/logs
 
 Pointing your AI coding assistant at this folder lets it read what actually happened — browser errors, build warnings, and server output — so it can debug issues with real context instead of guessing. See [Debugging Parameters & Options](/docs/how-to-guides/debugging/) for more.
 
+Copy this prompt into an AI coding assistant opened in your web project:
+
+```text
+I'm debugging my Needle Engine project. Please read the latest client and server logs in node_modules/.needle/logs, explain what went wrong, and help me fix it.
+```
+
 :::tip Great for testing on device
-This is especially helpful when testing on any device where you can't easily attach DevTools — Android, **iOS/iPadOS**, **Meta Quest**, **visionOS (Apple Vision Pro)**, or any **WebXR** VR/AR headset. Because the logs are written to a file on your dev machine, you get the device's console output even on platforms (like iOS and visionOS) where remote debugging is awkward or unavailable. Point the AI at the log file and let it drive a hands-on loop: the AI tells you what to tap, you do it and reply "done", and the AI reads the freshly written logs to see what happened — then tells you the next step. No copy-pasting console output back and forth.
+This is especially helpful when testing on any device where you can't easily attach DevTools — Android, **iOS/iPadOS**, **Meta Quest**, **visionOS (Apple Vision Pro)**, or any **WebXR** VR/AR headset. Because the logs are written to a file on your dev machine, the assistant can inspect the device's console output without you copying it into the chat.
 :::
 
 ---

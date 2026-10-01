@@ -206,6 +206,22 @@ The value must use the branded `/x/<your-experience>` link we set up for you, or
 
 Ensure that camera permissions are granted. Check in your device settings if the App Clip has access to the camera.
 
+### The App Clip opens, but my page or AR does not start
+
+First identify where the launch stops:
+
+1. **No App Clip card:** Open the link in Safari on iPhone or iPad. For custom branding, use the registered `/x/` link and check [I don't see my custom branding](#i-dont-see-my-custom-branding) below.
+2. **The App Clip opens, but the page does not load:** Open the target page URL directly in Safari to check that it is reachable. If the page loads, add `?console` to the experience URL to show Needle Engine's on-screen JavaScript console. For a branded station link with a path, for example, use `https://appclip.needle.tools/x/my-project/station1/?console`. The console can only appear once the page has loaded enough to start Needle Engine.
+3. **The page loads, but AR does not start automatically:** Try its *Enter AR* button. If manual entry works, note this in your report: it helps distinguish a missed App Clip start signal (`sessiongranted`) from an AR or page-loading failure. Needle Engine 5.1.14 includes a fix for late registration of this signal; update to it once published.
+
+During local development, the Needle Vite plugin writes browser and server output to `node_modules/.needle/logs` on your computer. This does not provide logs for a deployed site; see [Debugging and log files](/docs/how-to-guides/debugging/#log-files).
+
+:::tip Debug with an AI coding assistant
+Copy the prompt in [Let AI read your logs](/docs/ai/#let-ai-read-your-logs). Add the App Clip launch link and tell the assistant which step above fails. Reproduce the problem while your local dev server runs; the assistant can then compare new log entries for page-load errors or App Clip handoff messages such as `sessiongranted`. A deployed site does not write these logs to your computer.
+:::
+
+If Needle Go's `…` menu is visible, choose **Send Feedback**. The draft email includes the current URL, app version, device and iOS information. Its attachment currently repeats device information; it does **not** contain captured JavaScript or native error logs. Add what you observed and when it happened. If the menu never appears, send the invocation URL, device and iOS version, approximate time, and the last visible screen to [support@needle.tools](mailto:support@needle.tools). For a reproducible project issue, create a report in Unity with **Needle Engine → Report a Bug → Create Bug Report (from current scene)** and include the same steps.
+
 ### Why is there a black background when I take a screenshot in AR mode on iOS? Only the 3D model is visible
 
 This is expected: **capturing the camera feed in an AR screenshot is not yet supported** on iOS. On the iOS WebXR App Clip, a screenshot taken during an AR session contains only your 3D content over a black/transparent background — the real-world camera frames are not available to the screenshot, so you cannot composite them into the captured image today.

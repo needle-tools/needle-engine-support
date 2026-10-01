@@ -186,11 +186,9 @@ See the official chrome documentation [here](https://developer.chrome.com/docs/d
 
 ### <logo-header logo="/imgs/ios-logo.webp" alt="iOS">iOS Debugging</logo-header>
 
-For easy iOS debugging add the ``?console`` URL parameter to get a useful on-screen JavaScript console.
+For a Needle Engine page on iOS, add the `?console` URL parameter to show an on-screen JavaScript console after the page starts. During local development, use the [Vite log files](#log-files) for browser and server output.
 
-If you have a Mac, you can also attach to Safari (similar to the Android workflow above).
-
-WebXR usage and debugging on iOS requires using a third-party browser: [Mozilla WebXR Viewer](https://labs.mozilla.org/projects/webxr-viewer/).
+Needle Engine runs WebXR on iPhone and iPad through the Needle Go App Clip. See [App Clip troubleshooting](/docs/how-to-guides/xr/ios-webxr-app-clip/#the-app-clip-opens-but-my-page-or-ar-does-not-start) for the steps to collect a useful report when the page or AR does not start. You can inspect a Safari tab from a connected Mac, but the published Needle Go App Clip does not expose its embedded web view to Safari Web Inspector.
 
 ### <logo-header logo="/imgs/meta-logo.webp" alt="Meta Quest">Quest Debugging</logo-header>
 
