@@ -10,6 +10,7 @@ Needle Engine is a web component that works with any modern web framework or van
 
 **Dedicated integration guides:**
 
+- [Needle Engine + Angular](/docs/how-to-guides/web-integration/angular)
 - [<logo-header logo="/imgs/react-logo.svg" alt="React" max-height="1.2em">Needle Engine + React</logo-header>](/docs/how-to-guides/web-integration/react)
 - [<logo-header logo="/imgs/vue-logo.svg" alt="Vue" max-height="1.2em">Needle Engine + Vue & Nuxt</logo-header>](/docs/how-to-guides/web-integration/vue)
 - [<logo-header logo="/imgs/svelte-logo.svg" alt="Svelte" max-height="1.2em">Needle Engine + Svelte & SvelteKit</logo-header>](/docs/how-to-guides/web-integration/sveltekit)
@@ -93,6 +94,7 @@ Needle Engine is framework-agnostic—use it with any modern web stack. Our defa
 | **Vite + Svelte** | ✅ Supported | [Svelte & SvelteKit guide](/docs/how-to-guides/web-integration/sveltekit) |
 | **Vite + SvelteKit** | ✅ Supported | [Svelte & SvelteKit guide](/docs/how-to-guides/web-integration/sveltekit) |
 | **Next.js** | ✅ Supported | [Example project](https://github.com/needle-engine/nextjs-sample) |
+| **Angular** | ⚡ Integration guide | [Angular guide](/docs/how-to-guides/web-integration/angular) • signed license generation for Angular builds |
 | **react-three-fiber** | ⚡ Experimental template | Available in Unity integration |
 | **Vanilla JS (CDN)** | ✅ Supported | No bundler needed • [Guide](/docs/three/) |
 
@@ -157,7 +159,7 @@ engine.context;
 
 ## Next Steps
 
-- Framework guides – [React](/docs/how-to-guides/web-integration/react), [Vue & Nuxt](/docs/how-to-guides/web-integration/vue), [Svelte & SvelteKit](/docs/how-to-guides/web-integration/sveltekit), [three.js / vanilla JS](/docs/three/), [PWA](/docs/how-to-guides/web-integration/pwa)
+- Framework guides – [Angular](/docs/how-to-guides/web-integration/angular), [React](/docs/how-to-guides/web-integration/react), [Vue & Nuxt](/docs/how-to-guides/web-integration/vue), [Svelte & SvelteKit](/docs/how-to-guides/web-integration/sveltekit), [three.js / vanilla JS](/docs/three/), [PWA](/docs/how-to-guides/web-integration/pwa)
 - [Embed on an existing website](/docs/how-to-guides/deployment/embedding) – iframe, `needle-app`, and platform guides (Webflow, Framer, WordPress, AEM)
 - [Web component attributes](/docs/reference/needle-engine-attributes) – All `<needle-engine>` options
 - [Write components & scripting](/docs/how-to-guides/scripting/create-components) – Add your own interactivity

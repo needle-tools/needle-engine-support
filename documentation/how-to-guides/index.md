@@ -101,6 +101,7 @@ Head to [Getting Started](/docs/getting-started/) to install Needle Engine for [
 ## Web Integration
 
 - [Web Integration Overview](/docs/how-to-guides/web-integration/) - Frameworks and bundlers
+- [Use Needle Engine with Angular](/docs/how-to-guides/web-integration/angular) - Add a scene and include a signed license in Angular builds
 - [Use Needle Engine with React](/docs/how-to-guides/web-integration/react) - Add 3D to a React app with the `<needle-engine>` web component
 - [Use Needle Engine with Svelte & SvelteKit](/docs/how-to-guides/web-integration/sveltekit) - Add 3D to a Svelte/SvelteKit app, including SSR handling
 - [Use Needle Engine with Vue & Nuxt](/docs/how-to-guides/web-integration/vue) - Add 3D to a Vue/Nuxt app, including `isCustomElement` and SSR handling
