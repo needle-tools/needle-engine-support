@@ -41,7 +41,8 @@ export function liveEditPlugin(options = {}) {
       name: 'vuepress-plugin-live-edit',
 
       // Only in dev, so ProseMirror stays out of production bundles.
-      clientConfigFile: enabled ? path.join(PACKAGE_DIR, 'src/client/config.js') : undefined,
+      // VuePress writes this into a quoted JS import without escaping backslashes.
+      clientConfigFile: enabled ? path.join(PACKAGE_DIR, 'src/client/config.js').replaceAll('\\', '/') : undefined,
 
       // VuePress serializes these itself, unlike Vite's `define`.
       define: {
