@@ -10,11 +10,12 @@ Needle Engine is a web component that works with any modern web framework or van
 
 **Dedicated integration guides:**
 
-- [Needle Engine + Angular](/docs/how-to-guides/web-integration/angular)
 - [<logo-header logo="/imgs/react-logo.svg" alt="React" max-height="1.2em">Needle Engine + React</logo-header>](/docs/how-to-guides/web-integration/react)
 - [<logo-header logo="/imgs/vue-logo.svg" alt="Vue" max-height="1.2em">Needle Engine + Vue & Nuxt</logo-header>](/docs/how-to-guides/web-integration/vue)
 - [<logo-header logo="/imgs/svelte-logo.svg" alt="Svelte" max-height="1.2em">Needle Engine + Svelte & SvelteKit</logo-header>](/docs/how-to-guides/web-integration/sveltekit)
 - [<logo-header logo="/imgs/threejs-logo.webp" alt="three.js" max-height="1.2em">Needle Engine + three.js / vanilla JS</logo-header>](/docs/three/)
+- [Needle Engine + Angular](/docs/how-to-guides/web-integration/angular)
+- [Drive Needle Engine from an external render loop](/docs/how-to-guides/web-integration/external-render-loop)
 - [<logo-header logo="/imgs/pwa-logo.webp" alt="PWA" max-height="1.2em" max-width="2em">Progressive Web Apps</logo-header>](/docs/how-to-guides/web-integration/pwa)
 
 :::tip Already have a website?
