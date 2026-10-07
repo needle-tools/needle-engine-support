@@ -31,7 +31,7 @@ Mesh Baker can optimize geometry and meshes, and has lots of configuration optio
 
 **[Open Needle Mesh Baker →](https://mesh-baker.needle.tools)**
 
-<img src="https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif" alt="Needle Mesh Baker workbench, comparing an 800,000 triangle source model with the 6,000 triangle result side by side" />
+<img src="https://cloud.needle.tools/-/media/cFXofjsyv3nAGCJOZvFGsw.gif" alt="Needle Mesh Baker workbench, comparing an 800,000 triangle source model with the 6,000 triangle result side by side" width="850" height="480" loading="eager" fetchpriority="high" />
 
 _Load a model, press Optimize. The demo model goes from 800,000 triangles to 6,000._
 
