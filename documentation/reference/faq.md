@@ -191,6 +191,12 @@ If you haven't received a confirmation email after signing up or purchasing a li
 
 If you're still not receiving emails, there may be a service disruption. Check our [Status Page](https://status.needle.tools/) for current incidents or outages. If everything looks fine and you still haven't received the email, reach out to us at [hi@needle.tools](mailto:hi@needle.tools).
 
+## Why can't I sign in to my Needle account?
+
+Check that your device's date and time are correct, and enable automatic time synchronization if available. Check the time zone too, especially if you recently traveled or set the clock manually. Sign-in tokens contain timestamps; if your device clock differs from the server by more than a few minutes, sign-in may fail. Products that require an account then cannot confirm your license or enable features such as downloads. A different time zone alone does not cause this when the device's actual time is correct.
+
+After correcting the clock, reload the page and sign in again. If sign-in still fails, contact [Needle support](mailto:hi@needle.tools) with the error message and your browser name.
+
 ## Can I change the billing email address for invoices?
 
 Yes. Go to your team's **Billing** section on [Needle Cloud](https://cloud.needle.tools/team), click <kbd>Edit</kbd>, then click <kbd>Edit Payment Info</kbd>. There you can change the invoice email address, billing address, payment methods and cards, tax ID, and review past payments and upcoming invoices. The billing email doesn't have to match your Needle account email.
