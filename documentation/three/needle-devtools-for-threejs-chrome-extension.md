@@ -315,6 +315,10 @@ No. The inspector works on any three.js scene. Needle Engine projects get extra 
 
 Needle Inspector Pro is a **one-time purchase** — no subscription. The current price is always shown in the extension (**Get Pro** in the toolbar). It's included with [Needle Engine Pro](https://needle.tools/pricing) licenses.
 
+### Where can I buy Needle Inspector Pro?
+
+**[Buy Needle Inspector Pro →](https://cloud.needle.tools/buy/needle-inspector-pro)**. Sign in or create a Needle account to complete the purchase. If your account already includes Pro, you can use it without buying another license.
+
 ### Can I inspect websites I didn't build?
 
 Yes. Scene inspection is free on supported public websites, and you can edit properties on ordinary public sites. Pro adds editing on development hosts, node-graph drill-down, full resource lists, Inspector MCP tools, AI editing, and export. See [Free vs Pro](#free-vs-pro).
