@@ -1159,7 +1159,7 @@ See the [AI Assistant & Tools](/docs/ai/) page for the full guide, including:
 
 ## The Needle Inspector Chrome extension doesn't show any tools in my AI assistant
 
-If you're using the Needle Inspector Chrome extension and the live scene tools (e.g. selecting objects, reading scene data) don't appear in your AI assistant's tool list, make sure the **Needle MCP server is running locally**. The Chrome extension connects to the local MCP server at `localhost:8424` — without it, the Inspector tools won't be available to your AI assistant.
+If you're using the Needle Inspector Chrome extension and the live scene tools (e.g. selecting objects, reading scene data) don't appear in your AI assistant's tool list, make sure the **Needle MCP server is running locally**. The Chrome extension connects to the local server at `localhost:8424`. The `needle-cloud mcp` stdio command starts that server automatically; HTTP clients can start it with `needle-cloud start`.
 
 Start the local MCP server with:
 ```bash
@@ -1174,7 +1174,7 @@ These commands serve different purposes:
 
 - **`npx needle-cloud start`** (alias: `start-server`) — Starts the local Needle Cloud server on `localhost:8424`. This handles license validation, provides MCP tools for AI assistants, and acts as the bridge for the Needle Inspector Chrome extension. If you're using Unity or Blender, this server is usually started automatically by the editor integration. In standalone web projects or CI/CD pipelines, run this manually before your build command.
 
-- **`npx needle-cloud mcp`** — Runs the MCP server in **stdio mode** instead of HTTP. Your AI client spawns the process directly — no persistent server needed. Use this when configuring MCP in tools like Claude Desktop or Cursor via `mcpServers` config. The stdio transport also proxies to the HTTP server when it's running, so if `start` is active and the Needle Inspector Chrome extension is connected, Inspector tools become available through stdio as well.
+- **`npx -y needle-cloud mcp`** - Connects an AI client over stdio. The client starts this command, which reuses the shared local server or starts it if needed. The Needle Inspector and editor tools are available through the same server. Closing the stdio connection leaves the shared server available to other apps.
 
 See the [Needle MCP Server documentation](/docs/ai/needle-mcp-server#advanced-connection-modes) for more details.
 
