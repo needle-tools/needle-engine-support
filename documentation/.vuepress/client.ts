@@ -1,4 +1,5 @@
 import { defineClientConfig } from '@vuepress/client'
+import { updateEmbedMode } from './embed-mode'
 import '@shikijs/twoslash/style-rich.css';
 import PageNav from './components/PageNav.vue'
 import AskAiSelection from './components/ask-ai-selection.vue'
@@ -89,6 +90,8 @@ export default defineClientConfig({
     if (typeof window === 'undefined' || !router) {
       return
     }
+
+    router.afterEach(updateEmbedMode)
 
     // Helper to get the full path including base for storage key
     const getStorageKey = (path) => {
