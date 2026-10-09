@@ -268,7 +268,12 @@ img {
   border-radius: .5em;
 }
 
-
+.mesh-baker-demo {
+  display: block;
+  width: 100%;
+  max-width: 850px;
+  height: auto;
+}
 
 .tip, .info, .warning, .danger, .note {
   max-width: 700px;
