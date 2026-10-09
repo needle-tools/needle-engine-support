@@ -20,3 +20,23 @@ html.docs-embed {
     padding-top: 1rem;
   }
 }
+
+html.docs-embed-transparent {
+  --vp-c-bg: transparent !important;
+
+  &, body, #app, .vp-theme-container, .vp-page {
+    background: transparent !important;
+  }
+}
+
+html.docs-embed-text-color .vp-page {
+  color: var(--embed-text-color);
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--embed-text-color) !important;
+  }
+}
+
+html.docs-embed-link-color .vp-page a:not(.header-anchor) {
+  color: var(--embed-link-color) !important;
+}
