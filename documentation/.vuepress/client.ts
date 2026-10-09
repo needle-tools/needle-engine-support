@@ -227,6 +227,14 @@ export default defineClientConfig({
               // dimensions load. scrollToHashRobustly re-corrects until layout settles.
               scrollToHashRobustly(to.hash)
               resolve(false)
+            } else if (wasInitialScroll && new URLSearchParams(window.location.search).has('embed')) {
+              // An embedded page is recreated when its host reloads. Restore its
+              // own saved offset while leaving normal pages to native scrolling.
+              const stored = sessionStorage.getItem(getStorageKey(to.path))
+              const scrollY = Number(stored)
+              resolve(stored !== null && Number.isFinite(scrollY) && scrollY > 0
+                ? { top: scrollY, behavior: 'instant' }
+                : false)
             } else if (wasInitialScroll || isTextFragment) {
               // Initial page load or a text fragment: let the browser keep its native
               // scroll position (e.g. the highlighted text) instead of jumping to top.

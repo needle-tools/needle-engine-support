@@ -44,7 +44,6 @@ jobs:
         with:
           # choose node.js version to use
           node-version: '20.15'
-          cache: 'npm'
 
       - name: Install dependencies
         run: npm install
