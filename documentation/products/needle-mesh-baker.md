@@ -25,6 +25,7 @@ Mesh Baker can optimize geometry and meshes, and has lots of configuration optio
 - **Physically-based rendering support.** Preserves surface appearance for color, normals, roughness, metallic, occlusion, emission and more.
 - **100% local, GPU-accelerated processing.** Process complex models privately and securely, on your machine.
 - **Built-in Image-to-3D Generation.** Drop in an image, and the baker builds a 3D model from it using your GPU, then make it production ready right away.
+- **Built-in Ask AI chat.** Ask about settings and the current model, request a visual tour of the workbench, or let the assistant load a model, adjust settings, and run a bake.
 - **[WebMCP ready](#mcp-integration-for-ai).** Use the ChatGPT app to control Mesh Baker directly from your agents.
 - **Integrated with Needle Cloud.** You can pick models right from your Needle Cloud uploads, or upload optimized assets for sharing and management.
 - **Industry-standard glTF import and export.** Optimized assets can be downloaded as plain `.glb` files, ready for any engine or workflow (three.js, Unity, Blender, Unreal, Godot, and more).
@@ -44,7 +45,7 @@ _Load a model, press Optimize. The demo model goes from 800,000 triangles to 6,0
 5. **Download** the result as a `.glb`
 
 :::tip Processing happens on your machine, 100% local
-Importing local files, baking, previewing and comparing all happen on your machine. Even image-to-3D generation runs right in your browser. There is no server / backend. That also means: the more powerful your machine is, the faster Mesh Baker will be.
+Importing local files, baking, previewing and comparing all happen on your machine. Even image-to-3D generation runs right in your browser. These processing steps do not need a server. Ask AI chat and optional Needle Cloud features do need a connection. The more powerful your machine is, the faster Mesh Baker will be.
 :::
 
 ## Overview
@@ -308,6 +309,8 @@ Inspector and Mesh Baker communicate directly between the two browser windows. T
 
 ### MCP Integration for AI
 
+Mesh Baker also has a built-in **Ask AI** chat in the workbench. It works inside the page; WebMCP lets a separate compatible browser agent control the workbench.
+
 Mesh Baker provides [WebMCP](https://webmachinelearning.github.io/webmcp/) tools. A compatible browser agent can load a model, change settings, start a bake, inspect the result, and download or upload the result.
 
 An agent can load from a URL, from a file in the conversation, or from your Needle Cloud library. Downloads and uploads follow the same account and license rules as the controls in the workbench. On a browser without WebMCP nothing is registered and nothing is downloaded.
@@ -373,6 +376,26 @@ A separately licensed command-line version runs mesh bakes, parts-to-skin conver
 ### Do I need an account to try it?
 
 No. You can load local files, bake, and compare results while signed out. You need an account to download a result or use Needle Cloud.
+
+### What can the built-in Ask AI chat do?
+
+Click **Ask AI** beside **Docs** and sign in. You can ask about a setting or the loaded model, ask for a triangle target, or have the assistant change settings and start a bake. It reads the current workbench state and can inspect the bake result when it finishes. If the workbench is empty, it can load the public demo owl without uploading your own model.
+
+The chat uses your selected Needle Cloud team. Choose the team from the name at the top of the chat. Ask AI can search that team's assets and load one into the workbench. Downloads and uploads still follow the workbench's license rules. To upload a finished bake, explicitly ask for a new asset or a new version of an existing team asset.
+
+If team asset or upload actions are missing on a preview deployment, open Mesh Baker at [mesh-baker.needle.tools](https://mesh-baker.needle.tools) or [better-meshes.com](https://better-meshes.com). Those account actions are withheld on untrusted page origins.
+
+### Can Ask AI show me how to use a control?
+
+Yes. Ask it to show you a workflow, or click **Generate a visual tour** in an empty chat. The assistant chooses the controls and writes a short explanation for each highlighted step. You can move through the tour with **Next** and **Back**. A step can wait until you load a model or finish a bake; if you have no model, the tour can offer a button to load the demo owl. The tour remains visible after a reload until you dismiss it.
+
+### Can I continue an Ask AI chat from Needle Cloud or another browser tab?
+
+Yes. A Mesh Baker link with `?chat=<chat-id>&team=<team-id>` opens that team conversation after you sign in to an account with access to the team. The chat also restores the previous conversation in the same browser session. Chat history is stored in Needle Cloud; a link does not transfer a model loaded in the workbench or local files attached on another device.
+
+### Does Ask AI send my model to Needle Cloud?
+
+Chat messages and images attached to chat are sent to Needle Cloud. Models attached to chat and their baked results stay in this browser; the chat receives their names, local IDs, and summary information so it can operate on them. Loading a team asset downloads it to your browser. Uploading a finished model to your team is a separate action you must request and requires a Mesh Baker license.
 
 ### Is it a subscription?
 
