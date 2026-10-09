@@ -14,11 +14,20 @@ export const updateEmbedMode = () => {
 
   const textColor = isEmbed ? params.get('textColor') : null
   const linkColor = isEmbed ? params.get('linkColor') : null
+  const fontSizeValue = isEmbed ? params.get('fontSize')?.trim() : null
   const validTextColor = textColor && CSS.supports('color', textColor) ? textColor : null
   const validLinkColor = linkColor && CSS.supports('color', linkColor) ? linkColor : null
+  const fontSizeMatch = fontSizeValue?.match(/^(\d+(?:\.\d+)?)(px|rem|%)?$/)
+  const parsedFontSize = fontSizeMatch && Number(fontSizeMatch[1]) > 0
+    ? `${fontSizeMatch[1]}${fontSizeMatch[2] || 'px'}`
+    : null
+  const fontSize = parsedFontSize && CSS.supports('font-size', parsedFontSize) ? parsedFontSize : null
 
   html.classList.toggle('docs-embed-text-color', !!validTextColor)
   html.classList.toggle('docs-embed-link-color', !!validLinkColor)
+  html.classList.toggle('docs-embed-font-size', !!fontSize)
+  if (fontSize) html.style.setProperty('--embed-font-size', fontSize)
+  else html.style.removeProperty('--embed-font-size')
   if (validTextColor) html.style.setProperty('--embed-text-color', validTextColor)
   else html.style.removeProperty('--embed-text-color')
   for (const property of ['--vp-c-text', '--vp-c-text-mute', '--vp-c-text-subtle']) {

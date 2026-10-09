@@ -37,6 +37,14 @@ html.docs-embed-text-color .vp-page {
   }
 }
 
+html.docs-embed-font-size {
+  font-size: var(--embed-font-size);
+
+  .vp-page {
+    font-size: 1rem;
+  }
+}
+
 html.docs-embed-link-color .vp-page a:not(.header-anchor) {
   color: var(--embed-link-color) !important;
 }
