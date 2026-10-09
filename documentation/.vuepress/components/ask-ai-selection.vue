@@ -88,9 +88,15 @@ export default {
     },
 
     onMouseUp(e) {
+      // The selection prompt is part of the standalone docs UI.
+      if (document.documentElement.classList.contains('docs-embed')) {
+        this.hidePopup()
+        return
+      }
       if (this._popup && this._popup.contains(e.target)) return
       if (this.isEditableTarget(e.target)) return
       setTimeout(() => {
+        if (document.documentElement.classList.contains('docs-embed')) return
         // Re-check after the delay: focus may have landed in a field meanwhile
         // (e.g. a click that opened the search modal).
         if (this.isEditableTarget(document.activeElement)) return
