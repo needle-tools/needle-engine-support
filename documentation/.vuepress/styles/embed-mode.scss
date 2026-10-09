@@ -1,0 +1,22 @@
+html.docs-embed {
+  --header-offset: 0;
+
+  .vp-navbar,
+  .vp-sidebar,
+  .vp-sidebar-mask,
+  .vp-toggle-sidebar-button,
+  .page-nav-container {
+    display: none !important;
+  }
+
+  .vp-page {
+    margin-left: 0 !important;
+    padding-top: 2rem !important;
+    padding-left: 0 !important;
+    padding-inline-start: 0 !important;
+  }
+
+  .theme-default-content {
+    padding-top: 1rem;
+  }
+}
