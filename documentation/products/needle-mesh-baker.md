@@ -136,6 +136,8 @@ Mesh Baker serves a variety of common 3D asset workflows for realtime apps, game
 | Octahedral impostor      | Distant or repeated objects, last LOD level      | Use the Needle impostor loader       |
 | Pixel impostor           | Pixel games with many assets                     | Use the Needle pixel-impostor loader |
 
+For Three.js apps, use the [Needle Mesh Baker runtime package on npm](https://www.npmjs.com/package/@needle-tools/three-mesh-effects) to load exported impostors and deformation rigs, and to render the built-in hull effects.
+
 ### Unlimited Image-to-3D
 
 The **Generate** panel builds a model from a text prompt or from a single image, on the GPU in your browser. Use an image when you have a clean picture of one object, and text for drafts or when there is no reference. The first run downloads the model weights and takes considerably longer than later runs; the panel shows the download size and whether your device is capable before you start.
