@@ -374,20 +374,75 @@ Get optimized embed code for:
 
 ### CLI for Batch Processing
 
-Automate uploads and optimization with the `needle-cloud` CLI:
+Use `upload` to store a source asset and get its links as soon as the upload
+finishes. Optimization runs in the background. Use `upload --wait` when the next
+build step needs the optimized result; `optimize` is shorthand for that waiting
+workflow and accepts the same optimization and download options.
 
 ```bash
-# Upload and optimize files
-npx needle-cloud upload path/to/file.fbx --team 'My Team'
+# Upload the source without waiting for background processing
+npx needle-cloud upload path/to/model.glb --team 'My Team'
 
-# Batch process entire folders
-npx needle-cloud upload path/to/folder --recursive
+# Wait for optimization and download the result
+npx needle-cloud upload path/to/model.glb --wait --outdir ./optimized
+
+# Existing optimize commands continue to work
+npx needle-cloud optimize path/to/model.glb --outdir ./optimized
+
+# Upload a folder as one group and return its source-file links
+npx needle-cloud upload path/to/folder --format json
 ```
 
-**Use cases:**
-- Part of a build step (replace assets with optimized versions)
-- Batch processing large numbers of files
-- CI/CD integration
+Folders are collected recursively without a `--recursive` flag. Supported model
+files are grouped into one upload, rather than creating a separate asset for each
+file. Use `--no-optimize` to upload without requesting processing. It cannot be
+combined with `--wait`.
+
+When waiting, select the optimized variant with `--progressive true|false` and
+`--usecase product|world`. These options and `--outdir` require `--wait` on `upload`;
+`optimize` always waits.
+
+**Output for scripts**
+
+```bash
+# Print only the URL for this exact uploaded source file
+npx needle-cloud upload path/to/model.glb --format source-url
+
+# Print only the asset's management-page URL
+npx needle-cloud upload path/to/model.glb --format edit-url
+
+# Return identity, source links and processing status as JSON
+npx needle-cloud upload path/to/model.glb --format json
+```
+
+Both commands support `--format cli` (default), `json`, `source-url` and
+`edit-url`. Progress and diagnostics, including verbose output, go to stderr.
+Stdout contains only the selected result; failures return a nonzero exit code.
+
+| JSON field | Meaning |
+| --- | --- |
+| `assetId` | The asset containing this upload. |
+| `versionId` | The uploaded source version; it stays the same after optimization. |
+| `editUrl` | Open the asset's management page. |
+| `sourceUrl` | Retrieve the exact uploaded source file; null for a multi-file upload. |
+| `optimizedUrl` | Retrieve the selected optimized version after waiting; otherwise null. |
+| `processingStatus` | `unknown` without waiting, `not_requested` with `--no-optimize`, or `completed` after the requested optimization finishes. |
+| `files` | Uploaded file paths and their pinned source URLs. |
+| `optimization` | When awaited: the optimized version ID, progressive setting and use case. |
+
+Source URLs identify a specific upload, so a later upload or optimization does not
+replace the file they return. For fixtures that need the original input, use
+`sourceUrl` or `files[].sourceUrl`; optimized links are reported separately.
+
+For multiple files, use `--format json`. `source-url` refuses an ambiguous
+multi-file result before uploading; `edit-url` returns the group's management URL.
+Without waiting, processing is not queried. `not_requested` applies to this command
+and does not cancel jobs from previous uploads. `completed` applies to the selected
+optimization variant, rather than every background processing job.
+
+Use `--team` with your saved login, or provide a team's access token with `--token`
+or the `NEEDLE_CLOUD_TOKEN` environment variable for CI. Access tokens retain their
+team scope.
 
 [📦 Full CLI documentation](https://www.npmjs.com/package/needle-cloud)
 
