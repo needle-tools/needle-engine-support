@@ -257,9 +257,38 @@ On the Needle Cloud website, click <kbd>⋮</kbd> next to any version to move la
 - **Set main label** – Promote this version to production
 - **Remove main label** – Unpromote (label stays on previous version)
 
-:::info Custom Labels Coming Soon
-The ability to create custom labels like `staging`, `beta`, or `client-preview` is planned for a future release. Currently, you can use `main` and `latest`, plus access any version via its pinned URL.
-:::
+You can also manage labels from the CLI (Needle Cloud CLI 2.10 or later):
+
+```bash
+# Inspect labels, version IDs and their output URLs
+npx needle-cloud label list <content-id> --team "My Team"
+
+# Promote the version currently targeted by latest
+npx needle-cloud label set <content-id> main --from latest
+
+# Roll back to a completed older version
+npx needle-cloud label set <content-id> main --version <version-id>
+
+# Create or move a custom label
+npx needle-cloud label set <content-id> staging --from latest --format json
+```
+
+Provide exactly one of `--version` or `--from`. The version must belong to the
+content item and have completed processing. Related completed outputs move with
+the label. `latest` is automatic: use it as a source, but choose another label as
+the destination. Custom label names use lowercase letters, numbers, hyphens or
+underscores, such as `staging`, `beta`, or `client-preview`.
+
+Use the content and version IDs returned by upload, or shown by `list` and
+`label list`. Authentication accepts a saved login, `--token`, or
+`NEEDLE_CLOUD_TOKEN`; use `--team` to select a team. Listing requires read access;
+setting also requires write access.
+
+Both commands support `--format json`, with diagnostics on stderr. Listing returns
+labels with source version IDs and all source/derived output URLs. Setting returns
+the selected version, observed previous versions and confirmed output URLs. These
+are snapshots; concurrent label changes are not locked. If an update is accepted
+but cannot be confirmed, the command reports that and exits nonzero.
 
 ![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
 
