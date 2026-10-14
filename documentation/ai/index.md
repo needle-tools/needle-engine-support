@@ -14,9 +14,10 @@ Please connect this AI assistant to the Needle MCP Server.
 Follow https://engine.needle.tools/docs/ai/needle-mcp-server
 and choose the connection mode this assistant supports.
 
-For HTTP, run npx needle-cloud start if needed and register
-http://localhost:8424/mcp. For stdio, configure
-npx needle-cloud mcp instead.
+Prefer stdio: configure the command npx -y needle-cloud mcp.
+It reuses or starts the shared local server automatically. If this assistant
+only supports HTTP, run npx needle-cloud start and register
+http://localhost:8424/mcp instead.
 
 Verify that Needle tools are available. If you can't complete a step,
 tell me exactly what I need to do.
@@ -63,7 +64,7 @@ The skill is [open source](https://github.com/needle-tools/ai). Contributions ar
 
 ## Connect AI to your live scenes
 
-The **[Needle MCP Server](./needle-mcp-server)** lets AI tools talk directly to your running 3D projects via the [Needle Inspector](../three/needle-devtools-for-threejs-chrome-extension). Works with Claude Desktop, Cursor, VS Code Copilot, Windsurf, and more.
+The **[Needle MCP Server](/docs/ai/needle-mcp-server)** lets AI tools talk directly to your running 3D projects via the [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension). Works with Claude Desktop, Cursor, VS Code Copilot, Windsurf, and more.
 
 **What it can do:**
 - Search all Needle documentation with semantic search
@@ -71,7 +72,7 @@ The **[Needle MCP Server](./needle-mcp-server)** lets AI tools talk directly to 
 - Edit objects and settings through natural language
 - Debug and optimize live scenes
 
-**[Set up the MCP Server →](./needle-mcp-server)**
+**[Set up the MCP Server →](/docs/ai/needle-mcp-server)**
 
 ---
 
@@ -141,4 +142,4 @@ Returns embedding-ranked results with content — documentation, API reference, 
 
 **[Needle Cloud AI](https://cloud.needle.tools/team#ai)** — Ask privately. Same knowledge base, private to your team.
 
-The Unity and Blender integrations automatically register your web project with the local [Needle MCP Server](./needle-mcp-server#built-in-tools), provided by the `needle-cloud` CLI. Needle Cloud AI can then find your project files and logs without you entering a project path or attaching files. Ask questions about your code or use your logs to debug an issue. You can enable or disable local project access in a chat.
+The Unity and Blender integrations automatically register your web project with the local [Needle MCP Server](/docs/ai/needle-mcp-server#built-in-tools), provided by the `needle-cloud` CLI. Needle Cloud AI can then find your project files and logs without you entering a project path or attaching files. Ask questions about your code or use your logs to debug an issue. You can enable or disable local project access in a chat.

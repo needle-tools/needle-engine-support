@@ -15,13 +15,11 @@ Talk to your AI assistant about your local and online 3D scenes! Connect Claude,
 
 ### Quick Start
 
-1. Open your terminal and start the local Needle MCP Server:
-   ```bash
-   npx needle-cloud start
-   ```
-   Keep the terminal open while using the server. Your AI assistant connects at `http://localhost:8424/mcp`.
-2. [Connect your AI assistant](#how-to-connect) to the Needle MCP Server.
-3. Start asking questions about Needle Engine, your project, or your 3D scenes!
+1. [Configure your AI assistant](#how-to-connect) to run `npx -y needle-cloud mcp` as an MCP server.
+2. Start your AI assistant. It launches the MCP command for you. The command reuses or starts the shared local server at `localhost:8424`, so the Needle Inspector and editor integrations can connect too.
+3. Ask about Needle Engine, your project, or your 3D scenes.
+
+If your AI client only supports an HTTP MCP URL, see [Local Server (HTTP)](#local-server-http) below.
 
 :::tip Works with your favorite AI tools
 Works with Claude Desktop, Cursor, VS Code Copilot, Antigravity, and more.
@@ -40,23 +38,35 @@ Your agent can also pull the edits you made by hand in the [Needle Inspector](/d
 
 ## How to Connect
 
-For the local HTTP setups below, first start the server with `npx needle-cloud start` and keep it running. If you're using Needle Engine for Unity or Blender, the editor integrations usually start it automatically. The VS Code and Cursor install links use [stdio mode](#stdio), which starts the MCP process automatically.
+The stdio command `npx -y needle-cloud mcp` starts the shared local server when needed. For the HTTP setups below, run `npx needle-cloud start` first and keep it running. Unity and Blender editor integrations may already have started it.
 
-### <img src="/imgs/claude-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Claude Logo" alt="Claude Logo"/> Using Claude Desktop
+### <img src="/imgs/claude-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Claude Logo" alt="Claude Logo"/> Using Claude Code
 
 **Quick setup:**
 
 1. Open your terminal and run:
    ```bash
-   claude mcp add --scope user --transport http needle http://localhost:8424/mcp
+   claude mcp add --scope user --transport stdio needle -- npx -y needle-cloud mcp
    ```
 
-2. Restart Claude Desktop
+2. Start or restart Claude Code. It starts the Needle MCP command automatically. Use `/mcp` to check the connection.
 
-3. Look for the 🔌 icon in the bottom-right - you're connected!
+### <img src="/imgs/claude-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Claude Logo" alt="Claude Logo"/> Using Claude Desktop
 
+Open Claude Desktop **Settings > Developer > Edit Config** and add Needle to your MCP configuration. If you already have other servers, add the `needle` entry to your existing `mcpServers` object:
 
+```json
+{
+  "mcpServers": {
+    "needle": {
+      "command": "npx",
+      "args": ["-y", "needle-cloud", "mcp"]
+    }
+  }
+}
+```
 
+Save the configuration, fully quit Claude Desktop, and reopen it. It starts the MCP command when it connects; you do not need to start a separate server.
 
 ### <img src="/imgs/codex-logo.webp" style="height:3em; vertical-align:middle; margin-top:-.1lh; margin-right:.5em;" title="Codex Logo" alt="Codex Logo"/> Using OpenAI Codex CLI
 
@@ -64,7 +74,7 @@ For the local HTTP setups below, first start the server with `npx needle-cloud s
 
 1. Open your terminal and run:
    ```bash
-   codex mcp add needle --url http://localhost:8424/mcp
+   codex mcp add needle -- npx -y needle-cloud mcp
    ```
 
 2. Start using Codex — it will automatically connect to the Needle MCP server!
@@ -80,18 +90,9 @@ For the local HTTP setups below, first start the server with `npx needle-cloud s
 2. Type `#needle` in Copilot chat to see Needle tools, or just ask naturally!
 
 <details>
-<summary>Local server setup (for Inspector integration)</summary>
+<summary>HTTP alternative</summary>
 
-If you want your AI to also interact with live 3D scenes via the Needle Inspector, connect to the local server instead:
-
-1. Open Command Palette: `Cmd+Shift+P` (Mac) or `Ctrl+Shift+P` (Windows/Linux)
-2. Choose "MCP: Add Server"
-3. Fill in the details:
-   - Name: `needle`
-   - Transport: `http`
-   - URL: `http://localhost:8424/mcp`
-
-See [Connection Modes](#advanced-connection-modes) for more details.
+If you need an HTTP connection, start `npx needle-cloud start` and add a server with URL `http://localhost:8424/mcp` in VS Code's "MCP: Add Server" command. The stdio setup above also supports Needle Inspector tools.
 
 </details>
 
@@ -110,27 +111,22 @@ See [Connection Modes](#advanced-connection-modes) for more details.
 3. Just ask naturally — Cursor will use Needle tools automatically!
 
 <details>
-<summary>Local server setup (for Inspector integration)</summary>
+<summary>HTTP alternative</summary>
 
-If you want your AI to also interact with live 3D scenes via the Needle Inspector, connect to the local server instead:
+If you need an HTTP connection, start `npx needle-cloud start` and add this to `.cursor/mcp.json`:
 
-1. In your project folder, create a file: `.cursor/mcp.json`
+```json
+{
+  "mcpServers": {
+    "needle": {
+      "transport": "http",
+      "url": "http://localhost:8424/mcp"
+    }
+  }
+}
+```
 
-2. Add this:
-   ```json
-   {
-     "mcpServers": {
-       "needle": {
-         "transport": "http",
-         "url": "http://localhost:8424/mcp"
-       }
-     }
-   }
-   ```
-
-3. Restart Cursor
-
-See [Connection Modes](#advanced-connection-modes) for more details.
+The stdio setup above also supports Needle Inspector tools.
 
 </details>
 
@@ -217,7 +213,7 @@ When you have the Needle Inspector open in Chrome, additional tools become avail
 
 This creates a powerful workflow where you can use natural language to explore and modify complex 3D scenes without manually clicking through the Inspector interface.
 
-See [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-extension.md) for details on the Inspector tools and capabilities.
+See [Needle Inspector for Chrome](/docs/three/needle-devtools-for-threejs-chrome-extension) for details on the Inspector tools and capabilities.
 
 
 
@@ -226,21 +222,22 @@ See [Needle Inspector for Chrome](../three/needle-devtools-for-threejs-chrome-ex
 
 The Needle MCP Server supports two connection modes. Both provide the full set of tools. The main difference is how they run.
 
-### Local Server (HTTP/SSE)
+### Local Server (HTTP)
+
 ```bash
 npx needle-cloud start
 ```
-Runs a persistent local server on `localhost:8424`. Your AI client connects via HTTP.
 
-If you're using Needle Engine for Unity or Blender, the local server is usually already running on your machine — the editor integrations start it automatically. See the [setup instructions above](#how-to-connect) to connect your AI client.
+Starts the shared local server on `localhost:8424`. Connect your AI client to `http://localhost:8424/mcp` and keep this process running. Unity and Blender editor integrations may already have started it.
 
 ### stdio
-```bash
-npx needle-cloud mcp
-```
-Your AI client spawns the process directly — no server to start or keep running.
 
-To use stdio mode, configure your AI client with:
+```bash
+npx -y needle-cloud mcp
+```
+
+Use this as the command in your AI client's MCP configuration. The client starts the stdio process. It reuses the shared local server if one exists, or starts it automatically; Inspector and editor tools work through this connection too. When the AI client closes the stdio process, the shared server remains available to other apps.
+
 ```json
 {
   "mcpServers": {
