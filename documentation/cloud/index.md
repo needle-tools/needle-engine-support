@@ -541,6 +541,8 @@ The Unity and Blender integrations automatically register your web project with 
 
 See [AI & Needle Engine](/docs/ai/) for more ways to use AI with your projects.
 
+Need more AI usage? [Top up AI credits](/docs/cloud/ai-credits) to keep chatting. Purchased credits are valid for 365 days and carry across monthly allowance resets until they expire.
+
 ## needle-cloud CLI
 
 The `needle-cloud` CLI lets you work with Needle Cloud from the terminal — ideal for automation and CI/CD. Deploying apps and uploading assets are covered above ([Deploy from the CLI](#deploy-from-the-cli), [CLI for Batch Processing](#cli-for-batch-processing)). It can also generate materials with AI.

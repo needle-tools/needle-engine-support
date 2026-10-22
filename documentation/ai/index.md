@@ -142,4 +142,6 @@ Returns embedding-ranked results with content — documentation, API reference, 
 
 **[Needle Cloud AI](https://cloud.needle.tools/team#ai)** — Ask privately. Same knowledge base, private to your team.
 
+Need more AI usage? [AI credits and top-ups](/docs/cloud/ai-credits) explains how to buy credits, when they expire, and how they work with your monthly allowance.
+
 The Unity and Blender integrations automatically register your web project with the local [Needle MCP Server](/docs/ai/needle-mcp-server#built-in-tools), provided by the `needle-cloud` CLI. Needle Cloud AI can then find your project files and logs without you entering a project path or attaching files. Ask questions about your code or use your logs to debug an issue. You can enable or disable local project access in a chat.
