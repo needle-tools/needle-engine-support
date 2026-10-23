@@ -136,8 +136,6 @@ Mesh Baker serves a variety of common 3D asset workflows for realtime apps, game
 | Octahedral impostor      | Distant or repeated objects, last LOD level      | Use the Needle impostor loader       |
 | Pixel impostor           | Pixel games with many assets                     | Use the Needle pixel-impostor loader |
 
-For Three.js apps, use the [Needle Mesh Baker runtime package on npm](https://www.npmjs.com/package/@needle-tools/three-mesh-effects) to load exported impostors and deformation rigs, and to render the built-in hull effects.
-
 ### Unlimited Image-to-3D
 
 The **Generate** panel builds a model from a text prompt or from a single image, on the GPU in your browser. Use an image when you have a clean picture of one object, and text for drafts or when there is no reference. The first run downloads the model weights and takes considerably longer than later runs; the panel shows the download size and whether your device is capable before you start.
@@ -185,6 +183,10 @@ The glTF format stores triangles, so Mesh Baker turns each quad into two triangl
 Use **Hull Mesh (VFX)** to create a mesh that wraps the source and acts as "hull" around it. The hull mesh will attempt to fully contain the source mesh, so no parts of the source peek outside of the hull. The most important parameter is the expected surface offset, usually 1-5%, which defines how tightly the hull wraps around the mesh. A minimum hole size setting controls which openings get closed. This method is suitable for visual effects, collision meshes and physics proxies.
 
 Mesh Baker includes various preset visual effects based on wrap meshes, such as ice, snow, vines, aura, and energy shields. Each of them provides several settings to tune the effect, and hull meshes are of course also usable with your own effects and shaders.
+
+![Hull effect preview](https://needle.click/3f8bbjvfjxbgswy3cvbx.gif)
+
+To restore exported effects in Three.js, use the [runtime package integration](/docs/products/needle-mesh-baker.html#load-runtime-effects-in-three.js).
 
 ### Keep the source geometry
 
@@ -266,7 +268,7 @@ Quad remeshing does currently not support animation-aware optimization. Use tria
 
 ## Posing and rigging
 
-Under **Experiments → Show Deformation settings** you can place pins, adjust a rig with IK handles, mirror edits and author pose slots. **Wiggle** previews secondary motion. Download writes a skinned `.glb` with standard joints, weights and pose clips, which any glTF reader can play; live IK and secondary motion need Needle's rig runtime.
+Under **Experiments → Show Deformation settings** you can place pins, adjust a rig with IK handles, mirror edits and author pose slots. **Wiggle** previews secondary motion. Download writes a skinned `.glb` with standard joints, weights and pose clips, which any glTF reader can play; live IK and secondary motion need [Needle's rig runtime](/docs/products/needle-mesh-baker.html#load-runtime-effects-in-three.js).
 
 ## Voxelization and pixelization
 
@@ -279,7 +281,7 @@ The preview provides four display modes:
 - **Volume raycast** renders a bounding box and traces the voxel volume in the shader.
 - **Stable screen pixels** uses the volume raycast and aligns the result to a fixed screen-pixel grid.
 
-The output stores base color, normals, and material data for its surface voxels. The downloaded glTF contains a geometry fallback and a versioned Needle extension for the specialized runtime modes.
+The output stores base color, normals, and material data for its surface voxels. The downloaded glTF contains a geometry fallback and a versioned Needle extension for the specialized runtime modes. See [runtime integration for Three.js](/docs/products/needle-mesh-baker.html#load-runtime-effects-in-three.js) to load the extension and set up its display modes.
 
 Use a regular optimized mesh or an octahedral impostor when you need a smooth silhouette.
 
@@ -287,15 +289,32 @@ Use a regular optimized mesh or an octahedral impostor when you need a smooth si
 
 **Octahedral impostors** replace a model with view-dependent baked images. Use them for distant or repeated objects, where the object covers a small part of the screen.
 
-More captured views make the transitions between angles smoother and cost more texture space. The exported `.glb` carries fallback geometry that any glTF viewer shows; the camera-dependent effect needs the Needle impostor loader.
+More captured views make the transitions between angles smoother and cost more texture space. The exported `.glb` carries fallback geometry that any glTF viewer shows; the camera-dependent effect needs the [Needle runtime loader](/docs/products/needle-mesh-baker.html#load-runtime-effects-in-three.js).
 
-See the [Mesh Baker roadmap](https://mesh-baker.needle.tools/roadmap/) for feature status and planned work.
+![Octahedral impostor preview](https://needle.click/yyqae2kdwecbmg5cqw2q.gif)
 
 ## Gaussian Splat to Mesh
 
 **Gaussian splat to mesh** converts a `.ply` splat capture into a textured glTF mesh, so the result does not need a splat renderer in the target app. The capture is reconstructed into a mesh and can then be remeshed and baked like any other source. This works for opaque captures; translucent Gaussian volumes are not supported yet.
 
 ## Ecosystem Integration
+
+### Load runtime effects in Three.js
+
+Install `@needle-tools/three-mesh-effects` and wrap your `GLTFLoader` with `useLoader` once to load exported hull effects, impostors, and deformation rigs automatically:
+
+```js
+import { useLoader } from '@needle-tools/three-mesh-effects';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+const loader = useLoader(new GLTFLoader(), renderer);
+const { scene: model } = await loader.loadAsync('/model.glb');
+scene.add(model);
+```
+
+Use your existing Three.js renderer and scene. Each runtime handler loads only when the asset declares its extension. Configure compression decoders on the `GLTFLoader` as usual; deformation rigs still need a per-frame update.
+
+See the [npm package README](https://www.npmjs.com/package/@needle-tools/three-mesh-effects#readme) for installation, renderer requirements, and the effect-specific setup.
 
 ### Optimize objects from Needle Inspector
 
@@ -437,7 +456,7 @@ The page must load first. The baking pipeline then runs without a server connect
 
 Use the `.glb` output in Needle Engine, three.js, React Three Fiber, Blender, Unity, or other software that supports glTF.
 
-Octahedral and pixel impostors include fallback geometry that any viewer shows, but their full appearance needs the matching Needle loader. A rig exported from the experimental pose editor plays its clips anywhere; live IK and secondary motion need Needle's rig runtime. See [Output Modes](#output-modes).
+Octahedral and pixel impostors include fallback geometry that any viewer shows, but their full appearance needs the matching Needle loader. A rig exported from the experimental pose editor plays its clips anywhere; live IK and secondary motion need [Needle's rig runtime](/docs/products/needle-mesh-baker.html#load-runtime-effects-in-three.js). See [Output Modes](#output-modes).
 
 The exported textures are uncompressed. Compress them when you add the asset to a project. A Needle Engine production build converts them to GPU-compressed KTX2 automatically. Impostor textures have their own compression step. See [Optimization & Compression](/docs/how-to-guides/optimization/).
 
@@ -468,6 +487,8 @@ Mesh Baker reduces the total geometry and material cost. [Progressive loading](/
 Yes. The command-line version can run as a build step or process a folder. It requires a separate license. Contact [hi@needle.tools](mailto:hi@needle.tools?subject=Needle%20Mesh%20Baker%20CLI).
 
 ## More Tools by Needle
+
+See the [Mesh Baker roadmap](https://mesh-baker.needle.tools/roadmap/) for feature status and planned work.
 
 - [Needle Inspector](/docs/three/needle-devtools-for-threejs-chrome-extension): inspect, debug, and edit three.js scenes in the browser.
 - [Optimization & Compression](/docs/how-to-guides/optimization/): configure texture compression, mesh compression, progressive loading, and LODs.
