@@ -84,6 +84,9 @@ npx vite build -- --production
 
 Without `--production`, the pipeline is skipped (useful for quick test builds).
 
+For the complete build-and-deploy workflow, output locations, and verification
+steps, see [Deploy with optimized models](/docs/cloud/#deploy-with-optimized-models).
+
 ### Cloud vs local compression
 
 The pipeline supports two modes:

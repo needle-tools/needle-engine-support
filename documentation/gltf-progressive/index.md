@@ -83,6 +83,27 @@ Textures are handled similarly. The main file embeds a small preview (128px by d
 
 On mobile devices, 8K textures are automatically skipped. When the browser's [data-saving mode](https://developer.mozilla.org/en-US/docs/Web/API/NetworkInformation/saveData) is active, textures above 2K are skipped as well.
 
+#### Supported texture maps
+
+The asset pipeline can generate progressive texture LODs for these material maps:
+
+| Map | glTF texture slot |
+| --- | --- |
+| Base color | `baseColorTexture` |
+| Metallic / roughness | `metallicRoughnessTexture` |
+| Normal | `normalTexture` |
+| Ambient occlusion | `occlusionTexture` |
+| Emissive | `emissiveTexture` |
+| Lightmap | `lightmapTexture` and exported lightmap variants |
+| Specular color / strength | `specularColorTexture`, `specularTexture` |
+
+LOD generation also depends on texture size and processing settings; small textures
+may not need additional levels.
+
+**Compression is separate from progressive loading.** Thickness maps are compressed
+but currently do not receive progressive texture LODs. This does not prevent the
+model or its other supported textures from being optimized.
+
 ### Streaming
 
 1. The main glTF loads with embedded low-quality proxies — your scene appears immediately

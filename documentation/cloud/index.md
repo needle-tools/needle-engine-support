@@ -135,6 +135,37 @@ needle-cloud deploy '/dist' --team 'My team' --name 'some-project-id'
 
 The `--team` option accepts either the **team name** (case-insensitive) or the **team ID**. You can find both on your [Needle Cloud team page](https://cloud.needle.tools/team). If `--team` is not provided, your Needle Cloud **default team** is used.
 
+### Deploy with optimized models
+
+`needle-cloud deploy ./dist` uploads your existing build output. Choose how to
+optimize the models before deploying:
+
+**Needle Engine project:** With `needlePlugins()` configured and the build pipeline
+enabled, make your team's read/write Cloud access token available to the build
+process as `NEEDLE_CLOUD_TOKEN`, then run:
+
+```bash
+npx vite build -- --production
+npx needle-cloud deploy ./dist --non-interactive
+```
+
+The plugin sends models from the build's `assets` directory to Cloud, waits for
+optimization, and copies the results into your build output. Those optimized files
+are deployed with your website. Plain `vite build` skips this production step;
+check the build log for completed compression. See [Vite build configuration](/docs/reference/needle-vite-plugin#build-pipeline).
+
+**Standalone models:** Upload and optimize a model, then reference its returned
+`optimizedUrl` in your application:
+
+```bash
+npx needle-cloud upload ./model.glb --wait --non-interactive --output json
+```
+
+Use Needle Engine or [gltf-progressive](/docs/gltf-progressive/) for progressive
+output, or select `--progressive false` for a loader without progressive support.
+Add `--outdir ./optimized` to download the result for bundling instead.
+See [CLI asset options](/docs/cloud/#cli-for-batch-processing).
+
 ### <logo-header logo="/imgs/github-logo.webp" alt="GitHub">CI/CD & Automated Deployments</logo-header>
 
 Deploy automatically from GitHub Actions, GitLab CI, or other CI/CD platforms using access tokens.
@@ -345,8 +376,13 @@ Needle Cloud is not just for hosting apps—it's a powerful asset management sys
 
 - Non-glTF files are automatically converted to glTF for optimization
 - Original files are kept for download
-- Automatic compression with Draco, KTX2, and Progressive Loading
+- Modern mesh and texture optimization, including Draco/Meshopt and KTX2, based on the supplied models and processing settings
+- Progressive mesh and texture LODs where applicable
 - Typically saves 90% or more bandwidth and memory
+
+Cloud optimizes meshes and textures based on your models and processing settings.
+Compression and progressive loading are separate: a texture can be compressed
+without receiving progressive LODs. See [progressive texture support](/docs/gltf-progressive/#supported-texture-maps).
 
 :::tip Environment textures (HDRi / EXR → FastHDR)
 You can also upload `.hdr` and `.exr` environment textures to Needle Cloud to compress them to **[FastHDR](/docs/explanation/fasthdr)** — Needle's GPU-native environment map format (KTX2 UASTC HDR with pre-computed PMREM). FastHDR loads ~10x faster than EXR and uses ~95% less GPU memory, which is ideal for mobile and low-end devices. This is useful for standalone `.hdr`/`.exr` files that aren't part of a Unity or Blender scene (those are converted to FastHDR automatically at build time). Browse 27+ ready-made FastHDR environments in the [Needle HDR Library](https://cloud.needle.tools/hdris).
@@ -407,6 +443,13 @@ Use `upload` to store a source asset and get its links as soon as the upload
 finishes. Optimization runs in the background. Use `upload --wait` when the next
 build step needs the optimized result; `optimize` is shorthand for that waiting
 workflow and accepts the same optimization and download options.
+
+**Safe to repeat:** Cloud checks file content hashes before transferring data.
+Unchanged files already stored in the same team are reused, as are matching stored
+optimization results. Repeating the command avoids redundant file transfers and
+compression. Changed files or processing settings, or results no longer available
+in Cloud, can require uploading or processing again. Use `--name <identifier>` to
+keep updating the same asset.
 
 ```bash
 # Upload the source without waiting for background processing
@@ -544,6 +587,9 @@ See [AI & Needle Engine](/docs/ai/) for more ways to use AI with your projects.
 Need more AI usage? [Top up AI credits](/docs/cloud/ai-credits) to keep chatting. Purchased credits are valid for 365 days and carry across monthly allowance resets until they expire.
 
 ## needle-cloud CLI
+
+See the [CLI reference](/docs/cloud/cli) for command behavior, automation, content
+management, local AI tools, and browser SDK notes.
 
 The `needle-cloud` CLI lets you work with Needle Cloud from the terminal — ideal for automation and CI/CD. Deploying apps and uploading assets are covered above ([Deploy from the CLI](#deploy-from-the-cli), [CLI for Batch Processing](#cli-for-batch-processing)). It can also generate materials with AI.
 
