@@ -586,6 +586,15 @@ See [AI & Needle Engine](/docs/ai/) for more ways to use AI with your projects.
 
 Need more AI usage? [Top up AI credits](/docs/cloud/ai-credits) to keep chatting. Purchased credits are valid for 365 days and carry across monthly allowance resets until they expire.
 
+## Cloud REST API
+
+For programmatic uploads and asset management, use the [Cloud REST API reference](https://cloud.needle.tools/api/docs)
+or [download its OpenAPI document](https://cloud.needle.tools/api/openapi.json).
+It documents upload registration and file transfer, metadata updates, moving content
+to Trash, and restoring it, including authentication, request bodies and examples.
+The [Needle Engine API](/docs/api/latest) describes the engine runtime and is a
+separate reference.
+
 ## needle-cloud CLI
 
 See the [CLI reference](/docs/cloud/cli) for command behavior, automation, content
