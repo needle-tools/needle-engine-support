@@ -9,9 +9,8 @@
  *
  * Unlike a keyword index, the API runs an embedding search on every call and
  * takes a few seconds, and it is rate limited to 10 requests per minute per IP.
- * Both rule out search-as-you-type: queries only go out on submit, results are
- * cached for the session, and the waiting state is explicit about what is
- * happening rather than pretending to be instant.
+ * Queries wait for a pause in typing, results are cached for the session,
+ * and the waiting state is explicit about what is happening.
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
 import { useRouter } from 'vuepress/client'
@@ -29,6 +28,7 @@ const RECENT_KEY = 'needle-search-recent'
 const MAX_RECENT = 6
 /** How long to wait before admitting the search is taking a while. */
 const SLOW_AFTER_MS = 2500
+const SEARCH_DELAY_MS = 900
 
 const router = useRouter()
 
@@ -57,6 +57,12 @@ const cache = new Map<string, { results: SearchResult[]; durationMs?: number }>(
 
 let controller: AbortController | null = null
 let slowTimer: ReturnType<typeof setTimeout> | null = null
+let searchTimer: ReturnType<typeof setTimeout> | null = null
+
+const cancelScheduledSearch = () => {
+  if (searchTimer) clearTimeout(searchTimer)
+  searchTimer = null
+}
 
 // ── result presentation ───────────────────────────────────────────────────────
 
@@ -232,8 +238,10 @@ const resetTransient = () => {
 }
 
 const search = async (raw: string) => {
+  cancelScheduledSearch()
   const q = raw.trim()
   if (!q) return
+  if (loading.value && q === submitted.value) return
 
   controller?.abort()
   resetTransient()
@@ -295,6 +303,16 @@ const search = async (raw: string) => {
 
 const submit = () => search(query.value)
 
+watch(query, value => {
+  cancelScheduledSearch()
+  const q = value.trim()
+  if (!open.value || !q || q === submitted.value) return
+  searchTimer = setTimeout(() => {
+    searchTimer = null
+    if (open.value) void search(q)
+  }, SEARCH_DELAY_MS)
+})
+
 // ── recent queries ────────────────────────────────────────────────────────────
 
 const loadRecent = () => {
@@ -334,6 +352,7 @@ const openSearch = () => {
 }
 
 const closeSearch = () => {
+  cancelScheduledSearch()
   if (!open.value) return
   open.value = false
   controller?.abort()
@@ -491,6 +510,7 @@ onMounted(() => {
 })
 
 onBeforeUnmount(() => {
+  cancelScheduledSearch()
   window.removeEventListener('keydown', onKeydown)
   controller?.abort()
   if (slowTimer) clearTimeout(slowTimer)
