@@ -135,6 +135,8 @@
 </template>
 
 <script>
+import { resolveRoute } from 'vuepress/client'
+
 const DEFAULT_LINK_TEXT = 'Copy Markdown'
 // Breathing room kept between the highlighted entry and the sidebar's edge.
 const ACTIVE_ITEM_MARGIN = 24
@@ -458,6 +460,7 @@ export default {
       let sibling = heading.nextElementSibling
       const addLink = (text, href) => {
         text = text?.replace(/\s+/g, ' ').trim()
+        if (href) href = this.resolveChildLink(href)
         if (!href || !text || seenLinks.has(href)) return
 
         seenLinks.add(href)
@@ -679,10 +682,26 @@ export default {
       }
     },
 
+    resolveChildLink(link) {
+      const target = new URL(link, window.location.href)
+      if (target.origin !== window.location.origin) return target.href
+
+      const base = this.$site?.base || '/docs/'
+      const routePath = target.pathname.startsWith(base)
+        ? target.pathname.slice(base.length - 1)
+        : target.pathname
+      const candidates = [routePath, `${routePath}.html`, `${routePath.replace(/\/$/, '')}/`]
+      const matchingPath = candidates.map(path => resolveRoute(path)).find(route => !route.notFound)?.path
+      if (matchingPath && target.pathname.startsWith(base)) {
+        target.pathname = base.replace(/\/$/, '') + matchingPath
+      }
+      return target.pathname + target.search + target.hash
+    },
+
     navigateToChildLink(link, closeMobile = false) {
       if (closeMobile) this.closeMobileSidebar()
 
-      const target = new URL(link, window.location.origin)
+      const target = new URL(this.resolveChildLink(link), window.location.href)
       if (target.origin !== window.location.origin) {
         window.location.href = target.href
         return
