@@ -67,6 +67,24 @@
         </tool-tile>
     </div>
     <div>
+        <tool-tile image="/docs/imgs/needle-logo.webp">
+            <template v-slot:tool-name>
+                Vibe coding
+            </template>
+            <template v-slot:tool-description>
+                Set up your AI coding assistant with Needle Engine skills and connect it to live scenes with MCP.
+            </template>
+            <template v-slot:download-button>
+                <needle-button
+                    event_goal="setup_ai"
+                    event_position="getting_started"
+                    large same_tab
+                    href="/docs/ai/">
+                    <strong>Set Up AI</strong>
+                </needle-button>
+            </template>
+        </tool-tile>
+
         <tool-tile image="/docs/imgs/logo-webcomponents.png">
             <template v-slot:tool-name>
                 &lt;needle-engine&gt;<br/>Web Component

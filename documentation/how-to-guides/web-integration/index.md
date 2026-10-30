@@ -22,6 +22,10 @@ Needle Engine is a web component that works with any modern web framework or van
 This page is about **building a web project** with Needle (frameworks, bundlers, the web component). If you already have a site — your own HTML, **Webflow**, WordPress, AEM… — and just want to drop a scene in, see [Embedding Needle Engine](/docs/how-to-guides/deployment/embedding).
 :::
 
+:::tip Using AI?
+Set up your AI coding assistant with the **Needle Engine skill** for help building your integration. Connect the **Needle MCP Server** to inspect and edit live scenes. Follow the [AI setup guide](/docs/ai/).
+:::
+
 ## Quick Start
 
 **Install:**

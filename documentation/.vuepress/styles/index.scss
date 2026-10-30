@@ -1012,3 +1012,68 @@ div[class*=language-]::before {
     max-width: none;
   }
 }
+
+// The start-page navigation has a compact label column, unlike data tables.
+.docs-next-steps {
+  table {
+    display: table;
+    box-sizing: border-box;
+    width: 100%;
+    min-width: 0;
+    max-width: 100%;
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+    padding: .5rem 1rem;
+  }
+
+  th, td {
+    width: auto;
+    min-width: 0;
+    padding: .75rem 1rem !important;
+  }
+
+  th:first-child, td:first-child {
+    width: 12rem;
+  }
+
+  .docs-step-icon {
+    display: inline-block;
+    width: 1.15em;
+    height: 1.15em;
+    margin-right: .4em;
+    vertical-align: -.2em;
+    color: var(--c-text-accent);
+  }
+
+  @media (max-width: 600px) {
+    th:first-child, td:first-child {
+      width: 40%;
+    }
+
+    .docs-step-icon {
+      display: block;
+      margin-bottom: .35em;
+    }
+  }
+}
+
+// Keep the copyable setup prompt compact without shortening the copied text.
+.ai-setup-prompt div[class*='language-'] > pre {
+  max-height: min(22rem, 50vh);
+  overflow: auto;
+  box-sizing: border-box;
+  padding: 0;
+  font-size: .85rem;
+  line-height: 1.5;
+
+  code {
+    width: 100%;
+    min-width: 0;
+    padding: .75rem 3.5rem .75rem 1rem;
+    font-size: inherit;
+    line-height: inherit;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}

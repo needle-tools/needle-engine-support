@@ -1,27 +1,50 @@
 ---
-title: AI & Needle Engine
+title: Use Needle with AI
 description: Use AI to ask questions, write code, and interact with live 3D scenes — all with Needle Engine knowledge built in.
 ---
 
-# AI & Needle Engine
+# Use Needle with AI
 
 Needle Engine integrates with popular AI tools so you can get help, write components, and inspect live scenes — all without leaving your workflow.
 
-Want your coding assistant to set up Needle MCP? Copy this prompt:
+## Set up your AI assistant
+
+Copy this prompt into your coding assistant to connect it to Needle MCP:
+
+<div class="ai-setup-prompt">
 
 ```text
-Please connect this AI assistant to the Needle MCP Server.
+Connect this AI assistant to the Needle MCP Server.
 Follow https://engine.needle.tools/docs/ai/needle-mcp-server
-and choose the connection mode this assistant supports.
+using the connection mode this assistant supports.
 
-Prefer stdio: configure the command npx -y needle-cloud mcp.
-It reuses or starts the shared local server automatically. If this assistant
-only supports HTTP, run npx needle-cloud start and register
-http://localhost:8424/mcp instead.
+Check for an existing Needle MCP configuration first. Reuse or update it
+rather than adding a duplicate.
 
-Verify that Needle tools are available. If you can't complete a step,
-tell me exactly what I need to do.
+Prefer stdio:
+- Command: npx
+- Arguments: -y needle-cloud mcp
+
+This command reuses or starts the shared local server automatically.
+
+If only HTTP is supported, run `npx needle-cloud start` and connect to
+`http://localhost:8424/mcp`. Use this address only if the assistant can
+reach the machine running the server. If it cannot, explain the connection
+requirements from the guide.
+
+After configuration, list the available Needle tools and run a documentation
+search to verify the connection. If an assistant restart is required, say so
+and explain how to verify after restarting.
+
+Report configuration and verification separately: configured, restart required,
+and verified (tools listed and documentation search succeeded), as applicable.
+Do not report setup as complete until verification succeeds.
+
+If permissions or another restriction prevent a step, explain what remains
+and provide the exact manual command or configuration needed to continue.
 ```
+
+</div>
 
 ---
 
@@ -86,7 +109,9 @@ These docs use it: every page here registers a search tool covering all Needle d
 
 ---
 
-## Let AI read your logs
+<span id="let-ai-read-your-logs"></span>
+
+## Let AI read your Needle Engine logs
 
 When the local dev server is running, the Needle Engine Vite plugin writes both **client-side logs** (from the browser) and **server-side logs** (from the dev server / build process) to files inside your web project's `node_modules/.needle/logs` directory:
 
@@ -111,7 +136,9 @@ This is especially helpful when testing on any device where you can't easily att
 
 ---
 
-## Use Needle docs with any AI
+<span id="use-needle-docs-with-any-ai"></span>
+
+## Use Needle docs with your AI assistant
 
 Every documentation page is available as plain markdown — just change `.html` to `.md` in the URL.
 
@@ -122,7 +149,9 @@ For local models (Ollama, etc.) or tools that accept a context file:
 
 ---
 
-## Search API
+<span id="search-api"></span>
+
+## Search the Needle Knowledge Base API
 
 The knowledge base behind the search box on this site, the MCP server and Needle Cloud AI is also a public HTTP endpoint — no API key needed. Useful for agents without MCP support, CI scripts, or your own tooling.
 

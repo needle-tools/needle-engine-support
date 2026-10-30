@@ -1061,11 +1061,10 @@ html[data-theme='dark'] .llm-link:hover {
   margin-top: 2em;
 }
 
-/* Large screens: center sidebar relative to page */
-@media (width > 1500px) {
+/* Follow the article's left edge, with a 2rem gap after the sidebar. */
+@media (min-width: 1410px) {
   .page-nav-sidebar {
-    margin-left: 50%;
-    transform: translateX(-780px);
+    left: calc(50% - var(--content-width) / 2 - 232px - 2rem);
   }
 }
 
@@ -1397,8 +1396,14 @@ html[data-theme='dark'] .llm-link:hover {
     padding-left: 220px !important;
   }
   
-  .theme-default-content {
-    max-width: calc(100% - 20px) !important;
+  .vp-page [vp-content] {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: calc(var(--content-width) + 4rem);
+    margin-left: 0;
+    margin-right: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
 
