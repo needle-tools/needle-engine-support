@@ -67,7 +67,7 @@
         </tool-tile>
     </div>
     <div>
-        <tool-tile image="/docs/imgs/needle-logo.webp">
+        <tool-tile class="vibe-coding-tile" image="/docs/imgs/vibe-coding.webp">
             <template v-slot:tool-name>
                 Vibe coding
             </template>
@@ -125,6 +125,13 @@
 </template>
 
 <style scoped>
+
+:deep(.vibe-coding-tile > img) {
+    width: 110px;
+    height: 110px;
+    max-height: 110px;
+}
+
 
 div {
     display: flex;

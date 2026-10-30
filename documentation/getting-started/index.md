@@ -7,38 +7,13 @@ next: ../project-structure.md
 
 # Getting Started with Needle Engine
 
-**Build fully interactive 3D websites using your favorite tools.** Needle Engine works with professional 3D editors and modern web frameworks, giving you the power to create rich web experiences that deploy anywhere.
-
-Still deciding? [Why Needle Engine exists](/docs/why) — the problem it solves, who it's for, and who it isn't for.
-
-<discountbanner />
-
-## What You'll Get
-
-With Needle Engine, you get:
-- 🎨 **Visual authoring** in Unity or Blender — or pure code, no editor required
-- 🎯 **Built-in Rapier physics** — rigidbodies, colliders, raycasting, character controllers
-- 🤝 **Multiplayer & voice chat** — add networking with a single component, zero server setup
-- 🚀 **Automatic optimization** with state-of-the-art compression (up to 100x smaller files)
-- 📱 **Cross-platform** support (desktop, mobile, VR, AR)
-- ⚡ **Hot reload** for instant feedback during development
-- 🌐 **Deploy anywhere** on the web with a single command
-
-<testimonial
-  name="Steven"
-  role="CTO, Virtually Sports"
-  src="https://www.youtube.com/watch?v=naPlw5aDJHs&t=3s"
->
-We have something like 12 products used globally, made with Needle — it's been a fantastic tool for us over the past 2-3 years. It just makes the workflow so easy, even people that aren't developers only have to click one button.
-</testimonial>
-
----
+Choose a workflow below to install Needle Engine and create your first web project.
 
 ## Choose Your Workflow
 
-Pick the tool that matches your skills and project needs:
-
 <tool-tiles></tool-tiles>
+
+Still deciding? Read the [Needle Engine overview](/docs/needle-engine) or [why it exists](/docs/why).
 
 **Already have a website?** [Embed a Needle scene into it →](/docs/how-to-guides/deployment/embedding) — your own HTML, Webflow, WordPress, and more.
 
