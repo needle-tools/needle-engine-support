@@ -30,13 +30,17 @@
             <a :href="`#${header.slug}`" class="page-nav-link" @click.prevent="scrollToHeader(header.slug)">
               {{ header.title }}
             </a>
-            <ul v-if="activeHeader === header.slug && header.childLinks.length" class="page-nav-child-list">
-              <li v-for="child in header.childLinks" :key="child.link" class="page-nav-child-item">
-                <a :href="child.link" class="page-nav-child-link" @click.prevent="navigateToChildLink(child.link)">
-                  {{ child.text }}
-                </a>
-              </li>
-            </ul>
+            <div v-if="header.childLinks.length" class="page-nav-child-wrapper"
+              :class="{ expanded: expandedHeader === header.slug }"
+              :inert="expandedHeader !== header.slug">
+              <ul class="page-nav-child-list">
+                <li v-for="child in header.childLinks" :key="child.link" class="page-nav-child-item">
+                  <a :href="child.link" class="page-nav-child-link" @click.prevent="navigateToChildLink(child.link)">
+                    {{ child.text }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -96,14 +100,18 @@
             <a :href="`#${header.slug}`" class="page-nav-link" @click="scrollToHeaderMobile(header.slug)">
               {{ header.title }}
             </a>
-            <ul v-if="activeHeader === header.slug && header.childLinks.length" class="page-nav-child-list">
-              <li v-for="child in header.childLinks" :key="'mobile-' + child.link" class="page-nav-child-item">
-                <a :href="child.link" class="page-nav-child-link"
-                  @click.prevent="navigateToChildLink(child.link, true)">
-                  {{ child.text }}
-                </a>
-              </li>
-            </ul>
+            <div v-if="header.childLinks.length" class="page-nav-child-wrapper"
+              :class="{ expanded: expandedHeader === header.slug }"
+              :inert="expandedHeader !== header.slug">
+              <ul class="page-nav-child-list">
+                <li v-for="child in header.childLinks" :key="'mobile-' + child.link" class="page-nav-child-item">
+                  <a :href="child.link" class="page-nav-child-link"
+                    @click.prevent="navigateToChildLink(child.link, true)">
+                    {{ child.text }}
+                  </a>
+                </li>
+              </ul>
+            </div>
           </li>
         </ul>
       </div>
@@ -131,10 +139,8 @@ const DEFAULT_LINK_TEXT = 'Copy Markdown'
 // Breathing room kept between the highlighted entry and the sidebar's edge.
 const ACTIVE_ITEM_MARGIN = 24
 
-// Once a heading has moved this far above its CSS scroll-margin position,
-// consider its section finished and activate the next heading in the document.
-const ACTIVE_HEADER_EXIT_DISTANCE = 80
 const EXPLICIT_HEADER_SCROLL_GRACE = 600
+const CHILD_LINK_GRACE = 150
 
 export default {
   name: 'PageNav',
@@ -143,6 +149,9 @@ export default {
     return {
       headers: [],
       activeHeader: '',
+      expandedHeader: '',
+      pendingExpandedHeader: '',
+      expandHeaderTimer: null,
       parentLink: null,
       observer: null,
       linkText: DEFAULT_LINK_TEXT,
@@ -248,6 +257,9 @@ export default {
     // Update headers when route changes
     this.$router?.afterEach(() => {
       this.explicitHeaderSlug = ''
+      this.expandedHeader = ''
+      this.pendingExpandedHeader = ''
+      clearTimeout(this.expandHeaderTimer)
       this.explicitHeaderCanResetOnScroll = false
       clearTimeout(this.explicitHeaderResetTimer)
       // Use multiple nextTicks and a timeout to ensure content is fully rendered
@@ -283,6 +295,7 @@ export default {
     window.removeEventListener('pointerdown', this.releaseExplicitHeader)
     window.removeEventListener('keydown', this.releaseExplicitHeaderOnKeydown)
     clearTimeout(this.explicitHeaderResetTimer)
+    clearTimeout(this.expandHeaderTimer)
     clearTimeout(this.updateHeadersTimeout)
     if (this.headingsObserver) {
       this.headingsObserver.disconnect()
@@ -490,24 +503,30 @@ export default {
       const article = document.querySelector('.vp-theme-container, .vp-page')
       if (!article) return
 
-      const headerElements = Array.from(article.querySelectorAll('h1, h2, h3'))
+      const navigationSlugs = new Set(this.headers.map(header => header.slug))
+      const headerElements = Array.from(article.querySelectorAll('h1, h2, h3')).filter(el =>
+        navigationSlugs.has(el.id) && !el.closest('.tile') &&
+        (el.checkVisibility ? el.checkVisibility() : el.offsetParent !== null)
+      )
       if (headerElements.length === 0) return
 
       // Remove 'active-header' class from all headers first
       headerElements.forEach(el => el.classList.remove('active-header'))
 
-      // Use the same anchor offset as CSS (`scroll-margin-top: 60px`), with a
-      // small look-behind area. As soon as the previous heading leaves that
-      // area, the first upcoming heading becomes active. This also works near
-      // the end of short pages where the next heading cannot scroll to the top.
-      const scrollMarginTop = parseFloat(getComputedStyle(headerElements[0]).scrollMarginTop) || 60
-      const activeBoundary = scrollMarginTop - ACTIVE_HEADER_EXIT_DISTANCE
+      // Each section spans from its heading to the next navigation heading.
+      // Select the range containing the viewport center, so long sections
+      // remain active while their content is being read.
+      const readingPosition = window.innerHeight / 2
       const explicitHeaderElement = this.explicitHeaderSlug
         ? headerElements.find(el => el.id === this.explicitHeaderSlug)
         : null
-      const activeHeaderElement = explicitHeaderElement || headerElements.find(el =>
-        el.getBoundingClientRect().top >= activeBoundary
-      ) || headerElements[headerElements.length - 1]
+      const sectionBounds = headerElements.map(el => el.getBoundingClientRect().top)
+      const activeSectionIndex = headerElements.findIndex((el, index) => {
+        const sectionTop = sectionBounds[index]
+        const sectionBottom = sectionBounds[index + 1] ?? Infinity
+        return sectionTop <= readingPosition && readingPosition < sectionBottom
+      })
+      const activeHeaderElement = explicitHeaderElement || headerElements[Math.max(0, activeSectionIndex)]
 
       // Add 'active-header' class to the current header element
       if (activeHeaderElement) {
@@ -517,7 +536,21 @@ export default {
       const nextActive = activeHeaderElement?.id || ''
       const moved = nextActive !== this.activeHeader
       this.activeHeader = nextActive
+      this.scheduleExpandedHeader(nextActive, !!explicitHeaderElement)
       if (moved) this.$nextTick(this.keepActiveItemVisible)
+    },
+
+    scheduleExpandedHeader(slug, immediate = false) {
+      // Wait for a stable heading, without restarting on every scroll event.
+      if (!immediate && slug === this.pendingExpandedHeader) return
+      clearTimeout(this.expandHeaderTimer)
+      this.pendingExpandedHeader = slug
+      const expand = () => {
+        this.expandedHeader = slug
+        this.expandHeaderTimer = null
+      }
+      if (immediate) expand()
+      else this.expandHeaderTimer = setTimeout(expand, CHILD_LINK_GRACE)
     },
 
     /**
@@ -1144,6 +1177,31 @@ html[data-theme='dark'] .llm-link:hover {
 .page-nav-item.level-3 {
   margin-left: 1rem;
   font-size: 0.85rem;
+}
+
+.page-nav-child-wrapper {
+  display: grid;
+  grid-template-rows: 0fr;
+  visibility: hidden;
+  transition: grid-template-rows 200ms ease, visibility 200ms;
+}
+
+.page-nav-child-wrapper.expanded {
+  grid-template-rows: 1fr;
+  visibility: visible;
+}
+
+.page-nav-child-wrapper > .page-nav-child-list {
+  min-height: 0;
+  overflow: hidden;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page-nav-child-wrapper {
+    transition: none;
+  }
 }
 
 .page-nav-child-list {
