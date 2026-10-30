@@ -22,6 +22,10 @@ Needle Engine really eased up a lot of developer work — it's very artist frien
 
 ---
 
+## Quick Start Video
+
+<video-embed src="https://www.youtube.com/watch?v=TXEHR4Cq7iU" limit_height />
+
 ## Prerequisites
 
 Before starting, make sure you have:

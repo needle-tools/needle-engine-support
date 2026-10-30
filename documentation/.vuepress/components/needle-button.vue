@@ -5,6 +5,7 @@ export default {
     props: {
         href: String,
         secondary: Boolean,
+        disabled: Boolean,
         same_tab: Boolean,
         large: Boolean,
         event_goal: String,
@@ -46,18 +47,19 @@ function get_next_url() {
 </script>
 
 <template>
-    <a 
-        :href="get_next_url()" 
+    <component
+        :is="disabled ? 'span' : 'a'"
+        :href="disabled ? undefined : get_next_url()"
         :target="same_tab ? '_self' : '_blank'" 
         class="no-external-link-icon"
         :data-rybbit-event="event_goal || undefined"
         :data-rybbit-prop-position="(event_goal && event_position) ? event_position : undefined"
     >
-        <button :data-rybbit-event="event_goal || undefined" :data-rybbit-prop-position="(event_goal && event_position) ? event_position : undefined">
+        <button :disabled="disabled" :data-rybbit-event="event_goal || undefined" :data-rybbit-prop-position="(event_goal && event_position) ? event_position : undefined">
             <slot></slot>
             <p v-if="false">{{ get_next_url() }}</p>
         </button>
-    </a>
+    </component>
 </template>
 
 
@@ -76,7 +78,12 @@ button {
     font-size: v-bind('large ? "1em" : ".8em"');
 }
 
-button:hover {
+button:disabled {
+    cursor: default;
+    opacity: 0.65;
+}
+
+button:not(:disabled):hover {
     background-color: #6248be;
     background-color: v-bind('secondary ? "#bbb" : "#6248be"');
     transition: background-color .2s ease-in-out;

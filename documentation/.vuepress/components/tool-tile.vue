@@ -4,6 +4,7 @@ export default {
     props: {
         image: String,
         docs_url: String,
+        reserve_next_steps: Boolean,
     },
     methods: {
         getClass,
@@ -11,7 +12,7 @@ export default {
 }
 
 function getClass() {
-    if (!this.$slots['video-tutorial']) {
+    if (!this.docs_url && !this.reserve_next_steps) {
         return "small";
     } else {
         return "";
@@ -25,9 +26,11 @@ function getClass() {
         <img :src="image" alt="Tool Image" :class='image ? "": "hidden"'/>
         <h3><slot name="tool-name"></slot></h3>
         <p class="description"><slot name="tool-description"></slot></p>
-        <slot name="download-button"></slot>
-        <p><slot name="video-tutorial"></slot></p>
-        <a v-if="docs_url":href="docs_url">Next Steps</a>
+        <div class="tile-actions">
+            <slot name="download-button"></slot>
+            <a v-if="docs_url" :href="docs_url">Next Steps</a>
+            <a v-else-if="reserve_next_steps" class="next-steps-placeholder" aria-hidden="true">Next Steps</a>
+        </div>
     </div>
 </template>
 
@@ -39,6 +42,23 @@ function getClass() {
         aspect-ratio: 1/1;
         object-fit: contain;
         pointer-events: none;
+    }
+
+    .tile-actions {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 1em;
+        margin-top: auto;
+        padding-top: 1em;
+    }
+
+    .tile-actions > a {
+        line-height: 1.6;
+    }
+
+    .next-steps-placeholder {
+        visibility: hidden;
     }
 
     img.hidden {

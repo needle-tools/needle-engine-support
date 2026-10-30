@@ -20,9 +20,6 @@
                     <strong>Download</strong>
                 </needle-button>
             </template>
-            <template v-slot:video-tutorial>
-                <video-embed src="https://www.youtube.com/watch?v=gfslrxhkH3E" limit_height max_height="70xp"/>
-            </template>
         </tool-tile>
 
         <tool-tile image="/docs/blender/logo.png" docs_url="/docs/blender/">
@@ -43,8 +40,16 @@
                     <strong>Download</strong>
                 </needle-button>
             </template>
-            <template v-slot:video-tutorial>
-                <video-embed src="https://www.youtube.com/watch?v=TXEHR4Cq7iU" limit_height max_height="70xp"/>
+        </tool-tile>
+
+        <tool-tile image="/docs/imgs/needle-logo.webp" reserve_next_steps>
+            <template v-slot:tool-name>
+                Needle Editor
+            </template>
+            <template v-slot:download-button>
+                <needle-button large disabled>
+                    <strong>Coming soon</strong>
+                </needle-button>
             </template>
         </tool-tile>
 
@@ -53,7 +58,7 @@
                 Needle × three.js
             </template>
             <template v-slot:tool-description>
-                three.js r169
+                three.js r185
             </template>
             <template v-slot:download-button>
                 <needle-button
@@ -65,8 +70,7 @@
                 </needle-button>
             </template>
         </tool-tile>
-    </div>
-    <div>
+
         <tool-tile class="vibe-coding-tile" image="/docs/imgs/vibe-coding.webp">
             <template v-slot:tool-name>
                 Vibe coding
