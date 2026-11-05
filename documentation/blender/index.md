@@ -32,14 +32,11 @@ Before starting, make sure you have:
 
 <ClientOnly>
 
-- <a target="_blank" href="https://www.blender.org/download/"><strong>Blender 4.5+ LTS</strong></a>
+- <a target="_blank" href="https://www.blender.org/download/"><strong>Blender 4.5 LTS / 5.2 LTS</strong></a>
 - <os-link windows_url="https://fwd.needle.tools/needle-engine/nodejs/win" osx_url="https://fwd.needle.tools/needle-engine/nodejs/osx"><strong>Node.js 22 LTS or 24 LTS</strong></os-link>
 
 </ClientOnly>
  
- :::tip
-  Blender's glTF Exporter has undergone a number of changes in Blender 5.1+ and is still stabilizing. We recommend Blender 5.0 or LTS versions.
- :::
 ---
 
 ## Step 1: Install the Add-on

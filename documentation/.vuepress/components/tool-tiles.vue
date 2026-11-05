@@ -28,7 +28,7 @@
             </template>
             <template v-slot:tool-description>
                 Blender 4.5 LTS<br/>
-                Blender 5.0.1
+                Blender 5.2 LTS
             </template>
             <template v-slot:download-button>
                 <needle-button 
