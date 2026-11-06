@@ -132,35 +132,6 @@ cannot add shutdown support to an already-running old server. After that, start
 the updated CLI or reopen your project. `needle-cloud status` shows the running
 server's port and PID.
 
-## Import a model URL
-
-::: tip Upcoming CLI support
-URL imports are available on the URL-import feature branch and require an updated Cloud API and worker.
-:::
-
-```bash
-npx needle-cloud upload https://example.com/model.gltf --team "My Team"
-npx needle-cloud import https://example.com/model.glb --wait --format source-url
-npx needle-cloud upload https://example.com/model.glb --content-id <asset-id>
-```
-
-`import` is an alias of `upload`. Public HTTP(S) glTF 2.0 files (`.gltf` and `.glb`)
-are downloaded by Cloud together with referenced buffers and images; your computer
-does not download and re-upload the package. Other model formats are not supported
-for URL imports. The source and its references must be publicly accessible.
-
-Without `--wait`, the command returns an edit link and queued import identity.
-JSON adds `importStatus: "pending"`, with no source files yet. `--wait` waits for
-import and the selected optimization, returns `importStatus: "completed"`, and
-fills `sourceUrl` with the hosted model entrypoint. Referenced files appear in
-`files`. `--format source-url` requires `--wait` for URLs.
-
-Use `--content-id` to append to an existing 3D asset that you can upload to.
-`--name` sets the import name. `--no-optimize` disables processing after import
-and cannot be combined with `--wait`. Identical imports already queued or running
-in the same team reuse that job. Import or optimization failures fail the command
-when waiting.
-
 ## Upload assets
 
 ```bash
@@ -410,6 +381,35 @@ Or use the official [GitHub Action](https://github.com/marketplace/actions/deplo
     dir: ./dist
     name: my-project
 ```
+
+## Import a model URL
+
+::: tip Upcoming CLI support
+URL imports are available on the URL-import feature branch and require an updated Cloud API and worker.
+:::
+
+```bash
+npx needle-cloud upload https://example.com/model.gltf --team "My Team"
+npx needle-cloud import https://example.com/model.glb --wait --format source-url
+npx needle-cloud upload https://example.com/model.glb --content-id <asset-id>
+```
+
+`import` is an alias of `upload`. Public HTTP(S) glTF 2.0 files (`.gltf` and `.glb`)
+are downloaded by Cloud together with referenced buffers and images; your computer
+does not download and re-upload the package. Other model formats are not supported
+for URL imports. The source and its references must be publicly accessible.
+
+Without `--wait`, the command returns an edit link and queued import identity.
+JSON adds `importStatus: "pending"`, with no source files yet. `--wait` waits for
+import and the selected optimization, returns `importStatus: "completed"`, and
+fills `sourceUrl` with the hosted model entrypoint. Referenced files appear in
+`files`. `--format source-url` requires `--wait` for URLs.
+
+Use `--content-id` to append to an existing 3D asset that you can upload to.
+`--name` sets the import name. `--no-optimize` disables processing after import
+and cannot be combined with `--wait`. Identical imports already queued or running
+in the same team reuse that job. Import or optimization failures fail the command
+when waiting.
 
 ## AI evaluation images and quota actions
 
