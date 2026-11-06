@@ -30,6 +30,8 @@ adds a second address that points at the same deployment. You prove you own the 
 point it at us by adding a couple of **DNS records** at your provider; we then issue the
 HTTPS certificate and start serving your domain.
 
+Your domain serves `main` when set, otherwise `latest`. See [which version your domain serves](#which-version-does-my-domain-serve).
+
 ## Connect a domain
 
 1. Open your **deployment** in [Needle Cloud](https://cloud.needle.tools) and find the
@@ -96,6 +98,28 @@ a dedicated setup and isn't available on the standard plan. If that matters for 
 [get in touch](mailto:hi@needle.tools) and we'll help you find the best option. For now, the
 **subdomain + redirect** above is the reliable path that works everywhere today.
 :::
+
+## Which version does my domain serve?
+
+A custom domain connects to your **deployment**. It automatically serves the version
+with the **`main` label**, if one is set. Otherwise, it follows **`latest`**.
+
+- **With `main` set:** new uploads update `latest`, but your custom domain keeps serving
+  the version marked `main`. Move `main` to another version when you want to publish it
+  on your domain.
+- **Without `main`:** your custom domain follows `latest`, so a new deployment updates
+  what visitors see automatically.
+
+For example, if version 3 is marked `main` and you upload version 4, your domain still
+serves version 3. Move `main` to version 4 to publish that version at the same address.
+
+There is no separate version or label selector when connecting a domain. You cannot
+bind a custom domain directly to an arbitrary label or a pinned version; control the
+published version using `main` on the deployment.
+
+Your domain address stays the same when its served version changes, so QR codes and
+links using that address remain valid. You do not need to change DNS for each upload
+or when moving `main`.
 
 ## Email is unaffected
 
