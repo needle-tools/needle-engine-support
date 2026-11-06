@@ -278,6 +278,11 @@ be confirmed afterward, the command reports that explicitly and exits nonzero.
 
 Diagnostics go to stderr; stdout contains only the requested result.
 
+For website deployments, `deploy --label main` creates or moves `main` to the exact
+version just deployed. The GitHub Action supports the same workflow through
+`label: main`. See [updating a label during deployment](/docs/cloud/#update-a-label-during-deployment)
+for CLI and GitHub Action examples and required token permissions.
+
 ## Local tools in Needle Cloud AI
 
 [Needle Cloud AI](https://cloud.needle.tools/team#ai) can use local tools provided by this CLI to read project files, search your code, and inspect logs. You can enable or disable local tools in an individual chat. See the [Needle Cloud AI documentation](https://engine.needle.tools/docs/cloud/#needle-cloud-ai) for how this works with your Unity or Blender project.

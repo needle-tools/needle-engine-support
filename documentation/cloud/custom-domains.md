@@ -113,6 +113,11 @@ with the **`main` label**, if one is set. Otherwise, it follows **`latest`**.
 For example, if version 3 is marked `main` and you upload version 4, your domain still
 serves version 3. Move `main` to version 4 to publish that version at the same address.
 
+You can also move `main` automatically during deployment using the CLI's
+`--label main` option or the GitHub Action's `label: main` input. See
+[updating a label during deployment](/docs/cloud/#update-a-label-during-deployment)
+for examples. This updates the version your custom domain serves without changing DNS.
+
 There is no separate version or label selector when connecting a domain. You cannot
 bind a custom domain directly to an arbitrary label or a pinned version; control the
 published version using `main` on the deployment.

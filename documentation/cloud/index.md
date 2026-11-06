@@ -321,6 +321,38 @@ the selected version, observed previous versions and confirmed output URLs. Thes
 are snapshots; concurrent label changes are not locked. If an update is accepted
 but cannot be confirmed, the command reports that and exits nonzero.
 
+### Update a label during deployment
+
+The CLI and the official [Deploy to Needle Cloud GitHub Action](https://github.com/marketplace/actions/deploy-to-needle-cloud)
+can create or move `main` as part of a deployment. Use `--label main` with the CLI:
+
+```bash
+npx needle-cloud deploy ./dist --name my-project --label main
+```
+
+Or add `label: main` to your GitHub Action step, after building your website:
+
+```yml
+- uses: needle-tools/deploy-to-needle-cloud-action@v1
+  with:
+    token: ${{ secrets.NEEDLE_CLOUD_TOKEN }}
+    dir: ./dist
+    name: my-project
+    label: main
+```
+
+Each successful deployment with this option moves `main` to the **exact version just
+deployed**. Your `main` URL and any [custom domains](/docs/cloud/custom-domains#which-version-does-my-domain-serve)
+following it then serve that version automatically. You do not need a separate manual
+promotion step. Omit the option when you want to review a deployment before moving `main`.
+
+Use an access token with **read and write permissions** (for example, through
+`NEEDLE_CLOUD_TOKEN` for the CLI). If you pin an older CLI release, make sure it supports
+`deploy --label`; the Action's `overrideVersion` input selects its CLI version.
+`latest` remains automatic and cannot be passed as the label to set. If uploading
+succeeds but assigning the label fails, the command reports a failure; the uploaded
+version still exists.
+
 ![Needle Cloud Version List](/cloud/cloud-edit-page.webp)
 
 ## Custom Domains
