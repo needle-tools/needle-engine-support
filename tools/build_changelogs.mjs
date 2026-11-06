@@ -2,6 +2,7 @@ import https from 'https';
 import fs from 'fs';
 import os from 'os';
 import path from 'path';
+import { pathToFileURL } from 'node:url';
 import { execSync } from 'child_process';
 
 const packages = [
@@ -29,6 +30,7 @@ const packages = [
         npm: '@needle-tools/usd',
         title: 'Needle USD',
         slug: 'usd',
+        viewerChangelogUrl: 'https://github.com/needle-tools/usd-viewer/blob/main/CHANGELOG.md',
     },
     {
         npm: '@needle-tools/needle-component-compiler',
@@ -192,9 +194,11 @@ function escapeHtmlTags(content) {
     return lines.join('\n');
 }
 
-function generatePage(pkg, version, changelogContent) {
+export function generatePage(pkg, version, changelogContent) {
     // Remove the first H1 heading if it just says "Changelog" since we provide our own title
     let content = changelogContent;
+    // The USD package changelog links outside its package directory to the viewer repository.
+    if (pkg.viewerChangelogUrl) content = content.replaceAll('](../CHANGELOG.md)', '](' + pkg.viewerChangelogUrl + ')');
     const h1Match = content.match(/^#\s+changelog\s*$/im);
     if (h1Match) {
         content = content.substring(0, h1Match.index) + content.substring(h1Match.index + h1Match[0].length);
@@ -263,7 +267,7 @@ async function main() {
     console.log('Done building changelogs.');
 }
 
-main().catch(e => {
+if (process.argv[1] && import.meta.url === pathToFileURL(path.resolve(process.argv[1])).href) main().catch(e => {
     console.error('Fatal error:', e);
     process.exit(1);
 });
