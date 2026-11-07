@@ -13,7 +13,7 @@
  * and the waiting state is explicit about what is happening.
  */
 import { computed, nextTick, onBeforeUnmount, onMounted, ref, useTemplateRef, watch } from 'vue'
-import { useRouter } from 'vuepress/client'
+import { useRouter, useSiteData } from 'vuepress/client'
 import {
   DOCS_SOURCE_BOOST,
   DOCS_SOURCE_ID,
@@ -31,6 +31,7 @@ const SLOW_AFTER_MS = 2500
 const SEARCH_DELAY_MS = 900
 
 const router = useRouter()
+const site = useSiteData()
 
 const open = ref(false)
 const query = ref('')
@@ -396,7 +397,14 @@ const go = (r: SearchResult, event?: MouseEvent) => {
   if (url.hash.includes(':~:text=')) {
     window.location.assign(url.href)
   } else {
-    router.push(url.pathname + url.search + url.hash)
+    // Vue Router adds the site base; search URLs already include it.
+    const base = site.value.base
+    if (!url.pathname.startsWith(base)) {
+      window.location.assign(url.href)
+      return
+    }
+    const pathname = url.pathname.slice(base.length - 1)
+    router.push(pathname + url.search + url.hash)
   }
 }
 
