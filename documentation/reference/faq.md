@@ -222,7 +222,13 @@ this.context.menu.showNeedleLogo(false);
 
 Hiding the logo requires an [EDU, PRO, or Enterprise license](https://needle.tools/pricing); without one the call has no effect in production.
 
-Logo and branding removal is an **entitlement of the license currently active on your account**, not a one-time switch. If your license lapses or is downgraded, the experience reverts to the default Needle branding until a qualifying license is active again.
+The license is verified when you upload or deploy your project and remains valid for that published version. **Branding does not reappear in an already published build when your subscription expires.**
+
+## What happens to published projects when my Pro subscription expires?
+
+**Versions published while Pro is active can continue running commercially after your subscription expires, without Needle branding reappearing.** You need an active Pro subscription again when making changes or publishing an update.
+
+The same licensing rules apply whether you host the project on your own server or on Needle Cloud. Needle Cloud storage limits and paid hosting features are separate from the published version's license and depend on your current plan.
 
 ## Can I disable Needle Engine telemetry?
 
