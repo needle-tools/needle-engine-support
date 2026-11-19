@@ -32,6 +32,12 @@ Understand development vs production builds, use the Unity Build Window, preview
 
 ---
 
+## Optimize standalone assets in Needle Cloud
+
+Use [Cloud upload and workflows](/docs/cloud/#upload-optimize) when you have individual models to optimize. Choose a workflow for mesh and texture compression or progressive LODs, then download the optimized glTF variant or use its hosted URL.
+
+Choose [Create Image 3D](/docs/cloud/#create-image-3d) for a rotatable WebP preview, such as a library card or product preview. Use glTF when you need editable geometry, animation, or the model inside your scene.
+
 ## Production Build Setup
 
 ### Required: Install toktx

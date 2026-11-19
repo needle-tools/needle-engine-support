@@ -54,7 +54,7 @@ Your apps and assets are served from servers closest to your users worldwide. No
 Upload any format (glTF, USD, FBX, VRM) and get automatic compression with Draco, KTX2, and Progressive Loading. Saves ~90% bandwidth and memory compared to unoptimized files.
 
 **🏷️ Version Control & Preview URLs**  
-Every upload gets a unique URL. Label versions as `main`, `experimental`, or `dev`. Share a labeled link once—it auto-updates when you move the label. Perfect for client reviews.
+Every upload gets a unique URL. Use the automatic `latest` label for new uploads or set `main` to a version you want to share.
 
 **🚀 Deploy from Anywhere**  
 One-click from Unity, command-line from any web project, or automated via GitHub Actions. No manual FTP uploads or SSH commands.
@@ -299,9 +299,6 @@ npx needle-cloud label set <content-id> main --from latest
 
 # Roll back to a completed older version
 npx needle-cloud label set <content-id> main --version <version-id>
-
-# Create or move a custom label
-npx needle-cloud label set <content-id> staging --from latest --format json
 ```
 
 Provide exactly one of `--version` or `--from`. The version must belong to the
@@ -404,29 +401,53 @@ Needle Cloud is not just for hosting apps—it's a powerful asset management sys
 
 ### Upload & Optimize
 
-**Drag and drop** files into the website or select them from your computer. Supported formats include glTF, USD, FBX, VRM, OBJ, and more. From Blender, you can also [upload your scene as a glTF asset directly](/docs/blender/upload-to-needle-cloud) via `File > Export > Upload glTF to Needle Cloud`.
+1. Open [Upload in Needle Cloud](https://cloud.needle.tools/upload), then drop files or select them from your computer. You can preview files before signing in. If you’re signed out, **Upload** asks you to create an account and returns you to your selected files.
+2. Review your files and, where available, adjust **Viewer settings** for lighting and background.
+3. If the preview shows **Workflow**, choose your team's default workflow, another preset, or **No processing**. Then click **Upload** to add the files to your library.
+4. Open the asset and check **Versions** for the original file and any generated variants. To process an existing version, use **Run workflow** where available.
 
-- Non-glTF files are automatically converted to glTF for optimization
-- Original files are kept for download
-- Modern mesh and texture optimization, including Draco/Meshopt and KTX2, based on the supplied models and processing settings
-- Progressive mesh and texture LODs where applicable
-- Typically saves 90% or more bandwidth and memory
+For models, Cloud can convert supported source formats to glTF and generate optimized variants with mesh and texture compression. Progressive workflows also generate mesh and texture levels of detail where supported. A compressed texture can still have a single level of detail. See [progressive texture support](/docs/gltf-progressive/#supported-texture-maps).
 
-Cloud optimizes meshes and textures based on your models and processing settings.
-Compression and progressive loading are separate: a texture can be compressed
-without receiving progressive LODs. See [progressive texture support](/docs/gltf-progressive/#supported-texture-maps).
+You can also [upload directly from Blender](/docs/blender/upload-to-needle-cloud) via **File → Export → Upload glTF to Needle Cloud**, or use the [Cloud CLI](/docs/cloud/cli) for batch uploads.
 
 :::tip Environment textures (HDRi / EXR → FastHDR)
 You can also upload `.hdr` and `.exr` environment textures to Needle Cloud to compress them to **[FastHDR](/docs/explanation/fasthdr)** — Needle's GPU-native environment map format (KTX2 UASTC HDR with pre-computed PMREM). FastHDR loads ~10x faster than EXR and uses ~95% less GPU memory, which is ideal for mobile and low-end devices. This is useful for standalone `.hdr`/`.exr` files that aren't part of a Unity or Blender scene (those are converted to FastHDR automatically at build time). Browse 27+ ready-made FastHDR environments in the [Needle HDR Library](https://cloud.needle.tools/hdris).
+:::
+
+### Create Image 3D
+
+Image 3D packages a rotatable capture of a 3D asset into a single WebP. Each 512 px example below is about 260–355 kB. It displays as a regular image and becomes interactive when the dependency-free viewer loads (about 36 kB with Brotli or 42 kB with gzip). [Image 3D on npm](https://www.npmjs.com/package/@needle-tools/image-3d)
+
+<div class="image-3d-gallery">
+  <div class="image-3d-gallery-grid">
+    <image-3d-example data-auto-rotate="0.6" data-environment="studio" src="https://cloud.needle.tools/-/assets/ZUBcksAAb43-Z1CEnlr-image3d-512/file.webp" alt="Futuristic motorcycle design" />
+    <image-3d-example data-auto-rotate="0.6" data-environment="studio" src="https://cloud.needle.tools/-/assets/ZUBcksZ2uFCuB-Z2uFCuB-image3d-512/file.webp" alt="Stylish handbag design" />
+    <image-3d-example data-auto-rotate="0.6" data-environment="studio" src="https://cloud.needle.tools/-/assets/ZUBcksZVOR2Y-ZVOR2Y-image3d-512/file.webp" alt="Blue athletic sneaker" />
+    <image-3d-example data-auto-rotate="0.6" data-environment="studio" src="https://cloud.needle.tools/-/assets/ZUBcksZJ5HAV-QXzOI-image3d-512/file.webp" alt="V8 engine model" />
+  </div>
+</div>
+
+Choose **Workflow → Create Image3D** when uploading a supported 3D asset, or choose it from **Run workflow** on an existing version. The preset generates interactive WebP variants at 256 px and 512 px. Open, download, share, or embed the result from **Versions**. The original asset stays available, and its existing thumbnail stays in place.
+
+Use Image 3D to let viewers rotate an asset without downloading the full model, or to show a preview while the full model loads. Use an optimized glTF variant when the application needs the model itself, for example for animation or scene interaction. Image 3D generation uses your team's asset optimization allowance.
+
+:::details Embed an Image 3D capture on your site
+Load the 0.1.2 viewer once and use a WebP exported by Image 3D. Add `data-environment="studio"` to opt in to studio lighting. Add `data-auto-rotate` for the default speed or give it a signed speed in radians per second. Negative values reverse the direction.
+
+```html
+<script type="module" src="https://cdn.jsdelivr.net/npm/@needle-tools/image-3d@0.1.2/dist/img-3d.js"></script>
+<img data-img-3d data-environment="studio" data-auto-rotate="-.2"
+     src="model.webp" alt="Interactive product preview">
+```
 :::
 
 ### Version Control & Sharing
 
 **Track multiple versions** of each asset:
 - Upload new versions anytime
-- Label versions as `main`, `experimental`, `dev`, etc.
-- `Latest` always points to the most recent upload
-- Share tagged links that auto-update when you move labels
+- Set `main` to the version you want to share
+- `latest` automatically points to the most recent upload
+- Share the `main` link once and update its target when you promote a version
 
 **Share with your team:**
 - Create direct download links
